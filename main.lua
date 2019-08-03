@@ -46,7 +46,15 @@ local tt_set_spell = function (tt)
     add_entry_to_tooltip("spell", id, tt)
 end
 
+local tt_set_unit = function (tt)
+    local _, unit = tt:GetUnit()
+    local guid = UnitGUID(unit)
+    local _, _, _, _, _, id, _ = strsplit("-", guid)
+    add_entry_to_tooltip("npc", id, tt)
+end
+
 for _, tt in pairs { GameTooltip } do
     tt:HookScript("OnTooltipSetItem", tt_set_item)
     tt:HookScript("OnTooltipSetSpell", tt_set_spell)
+    tt:HookScript("OnTooltipSetUnit", tt_set_unit)
 end
