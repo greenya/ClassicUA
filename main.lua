@@ -23,6 +23,10 @@ local get_entry = function (type, id)
 end
 
 local add_entry_to_tooltip = function (type, id, tt)
+    if tt.ClassicUA_entry_shown then
+        return
+    end
+
     local entry = get_entry(type, id)
     if entry then
         tt:AddLine(" ")
@@ -30,6 +34,7 @@ local add_entry_to_tooltip = function (type, id, tt)
         if entry[2] then
             tt:AddLine(entry[2], 1, 1, 1, true)
         end
+        tt.ClassicUA_entry_shown = true
     end
 end
 
@@ -53,8 +58,13 @@ local tt_set_unit = function (tt)
     add_entry_to_tooltip("npc", id, tt)
 end
 
+local tt_cleared = function (tt)
+    tt.ClassicUA_entry_shown = nil
+end
+
 for _, tt in pairs { GameTooltip } do
     tt:HookScript("OnTooltipSetItem", tt_set_item)
     tt:HookScript("OnTooltipSetSpell", tt_set_spell)
     tt:HookScript("OnTooltipSetUnit", tt_set_unit)
+    tt:HookScript("OnTooltipCleared", tt_cleared)
 end
