@@ -5,4 +5,6 @@
 ## Author: greenya
 ## Version: 0.1
 
+entries\item.lua
+entries\spell.lua
 main.lua
