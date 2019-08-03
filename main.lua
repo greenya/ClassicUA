@@ -39,11 +39,5 @@ end
 
 
 for _, tt in pairs { GameTooltip } do
-    local prev = tt:GetScript("OnTooltipSetItem")
-    tt:SetScript("OnTooltipSetItem", function (tt, ...)
-        OnTooltipSetItem(tt, ...)
-        if prev then
-            return prev(tt, ...)
-        end
-    end)
+    tt:HookScript("OnTooltipSetItem", OnTooltipSetItem)
 end
