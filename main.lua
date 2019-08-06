@@ -89,3 +89,36 @@ for _, tt in pairs { GameTooltip } do
     tt:HookScript("OnTooltipSetUnit", tt_set_unit)
     tt:HookScript("OnTooltipCleared", tt_cleared)
 end
+
+-- [ quests ]
+
+-- state: 1 for details, 2 for progress, 3 for reward
+local show_quest = function (state)
+    local id = GetQuestID()
+    local entry = get_entry("quest", id)
+    if entry then
+        print("-------------------")
+        print("[title] " .. entry[1])
+        if state == 1 then
+            print("[desc] " .. entry[2])
+            print("[obj] " .. entry[3])
+        elseif state == 2 then
+            print("[progress] " .. entry[4])
+        else
+            print("[reward] " .. entry[5])
+        end
+        print("-------------------")
+    end
+end
+
+QuestFrameDetailPanel:HookScript("OnShow", function (event)
+    show_quest(1)
+end)
+
+QuestFrameProgressPanel:HookScript("OnShow", function (event)
+    show_quest(2)
+end)
+
+QuestFrameRewardPanel:HookScript("OnShow", function(event)
+    show_quest(3)
+end)
