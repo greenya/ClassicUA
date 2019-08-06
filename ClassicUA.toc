@@ -5,7 +5,11 @@
 ## Author: greenya
 ## Version: 0.1
 
+entries\class.lua
 entries\item.lua
 entries\npc.lua
+entries\quest_a.lua
+entries\quest_h.lua
+entries\race.lua
 entries\spell.lua
 main.lua
