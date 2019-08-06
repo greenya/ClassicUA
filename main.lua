@@ -1,14 +1,35 @@
 local _, addonTable = ...
+
+local player_class = false
+local player_race = false
+local player_is_male = false
+local player_is_alliance = false
+
 local frame = CreateFrame("frame")
 
 frame:RegisterEvent("ADDON_LOADED")
+frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
         print("ClassicUA loaded.")
         self:UnregisterEvent("ADDON_LOADED")
+    elseif event == "PLAYER_ENTERING_WORLD" then
+        local guid = UnitGUID("player")
+        local _, class, _, race, sex = GetPlayerInfoByGUID(guid)
+        local faction = UnitFactionGroup("player")
+
+        player_class = class
+        player_race = race
+        player_is_male = sex == 2
+        player_is_alliance = faction == "Alliance"
+
+        addonTable.quest = player_is_alliance and addonTable.quest_a or addonTable.quest_h
+        addonTable[ player_is_alliance and "quest_h" or "quest_a" ] = nil
     end
 end)
+
+-- [ tooltips ]
 
 local get_entry = function (type, id)
     id = tonumber(id)
