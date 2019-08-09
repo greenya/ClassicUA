@@ -83,7 +83,7 @@ local tt_cleared = function (tt)
     tt.ClassicUA_entry_shown = nil
 end
 
-for _, tt in pairs { GameTooltip } do
+for _, tt in pairs { GameTooltip, ItemRefTooltip } do
     tt:HookScript("OnTooltipSetItem", tt_set_item)
     tt:HookScript("OnTooltipSetSpell", tt_set_spell)
     tt:HookScript("OnTooltipSetUnit", tt_set_unit)
