@@ -29,18 +29,30 @@ local prepare_codes = function (name, race, class, is_male)
         ["{ІМ'Я}"] = string.upper(name),
     }
 
-    codes["{раса}"] = at.race[race]["н"][sex] -- "н" is default grammatical case
+    -- race
+
     for _, c in ipairs(cases) do
         codes["{раса:" .. c .. "}"] = at.race[race][c][sex]
         codes["{Раса:" .. c .. "}"] = at.race[race][c][sex]:gsub("^%l", string.upper)
         codes["{РАСА:" .. c .. "}"] = string.upper(at.race[race][c][sex])
+        if c == "н" then -- "н" is default grammatical case
+            codes["{раса}"] = codes["{раса:н}"]
+            codes["{Раса}"] = codes["{Раса:н}"]
+            codes["{РАСА}"] = codes["{РАСА:н}"]
+        end
     end
 
-    codes["{клас}"] = at.class[class]["н"][sex] -- "н" is default grammatical case
+    -- class
+
     for _, c in ipairs(cases) do
         codes["{клас:" .. c .. "}"] = at.class[class][c][sex]
         codes["{Клас:" .. c .. "}"] = at.class[class][c][sex]:gsub("^%l", string.upper)
         codes["{КЛАС:" .. c .. "}"] = string.upper(at.class[class][c][sex])
+        if c == "н" then -- "н" is default grammatical case
+            codes["{клас}"] = codes["{клас:н}"]
+            codes["{Клас}"] = codes["{Клас:н}"]
+            codes["{КЛАС}"] = codes["{КЛАС:н}"]
+        end
     end
 
     -- print_table(codes, "codes")
