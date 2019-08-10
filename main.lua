@@ -18,16 +18,32 @@ local prepare_quests = function (is_alliance)
 end
 
 local prepare_codes = function (name, race, class, is_male)
-    -- todo: generate values for all possible codes
-    print("preparing codes for: " .. name .. " / " .. race .. " / " .. class .. " / " .. (is_male and "male" or "famale"))
+    -- print("preparing codes for: " .. name .. " / " .. race .. " / " .. class .. " / " .. (is_male and "male" or "famale"))
     local at = addonTable
+    local sex = is_male and 1 or 2
+    local cases = { "н", "р", "д", "з", "о", "м", "к" }
+
     local codes = {
         ["{ім'я}"] = name,
         ["{Ім'я}"] = name,
         ["{ІМ'Я}"] = string.upper(name),
     }
 
-    print_table(codes, "codes")
+    codes["{раса}"] = at.race[race]["н"][sex] -- "н" is default grammatical case
+    for _, c in ipairs(cases) do
+        codes["{раса:" .. c .. "}"] = at.race[race][c][sex]
+        codes["{Раса:" .. c .. "}"] = at.race[race][c][sex]:gsub("^%l", string.upper)
+        codes["{РАСА:" .. c .. "}"] = string.upper(at.race[race][c][sex])
+    end
+
+    codes["{клас}"] = at.class[class]["н"][sex] -- "н" is default grammatical case
+    for _, c in ipairs(cases) do
+        codes["{клас:" .. c .. "}"] = at.class[class][c][sex]
+        codes["{Клас:" .. c .. "}"] = at.class[class][c][sex]:gsub("^%l", string.upper)
+        codes["{КЛАС:" .. c .. "}"] = string.upper(at.class[class][c][sex])
+    end
+
+    -- print_table(codes, "codes")
     addonTable.codes = codes
 end
 
