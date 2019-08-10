@@ -11,36 +11,84 @@ addonTable.class = { -- [id] = { [н/р/д/з/о/м/к] = { male, female } }
     ["к"] = { "воїне", "воїне" },
 },
 
-["PALADIN"] = {
-    -- todo: add paladin class entries
+["PALADIN"] = { -- todo: translate paladin class entries
+    ["н"] = { "paladin", "paladin" },
+    ["р"] = { "paladin", "paladin" },
+    ["д"] = { "paladin", "paladin" },
+    ["з"] = { "paladin", "paladin" },
+    ["о"] = { "paladin", "paladin" },
+    ["м"] = { "paladin", "paladin" },
+    ["к"] = { "paladin", "paladin" },
 },
 
-["HUNTER"] = {
-    -- todo: add hunter class entries
+["HUNTER"] = { -- todo: translate hunter class entries
+    ["н"] = { "hunter", "hunter" },
+    ["р"] = { "hunter", "hunter" },
+    ["д"] = { "hunter", "hunter" },
+    ["з"] = { "hunter", "hunter" },
+    ["о"] = { "hunter", "hunter" },
+    ["м"] = { "hunter", "hunter" },
+    ["к"] = { "hunter", "hunter" },
 },
 
-["ROGUE"] = {
-    -- todo: add rogue class entries
+["ROGUE"] = { -- todo: translate rogue class entries
+    ["н"] = { "rogue", "rogue" },
+    ["р"] = { "rogue", "rogue" },
+    ["д"] = { "rogue", "rogue" },
+    ["з"] = { "rogue", "rogue" },
+    ["о"] = { "rogue", "rogue" },
+    ["м"] = { "rogue", "rogue" },
+    ["к"] = { "rogue", "rogue" },
 },
 
-["PRIEST"] = {
-    -- todo: add priest class entries
+["PRIEST"] = { -- todo: translate priest class entries
+    ["н"] = { "priest", "priest" },
+    ["р"] = { "priest", "priest" },
+    ["д"] = { "priest", "priest" },
+    ["з"] = { "priest", "priest" },
+    ["о"] = { "priest", "priest" },
+    ["м"] = { "priest", "priest" },
+    ["к"] = { "priest", "priest" },
 },
 
-["SHAMAN"] = {
-    -- todo: add shaman class entries
+["SHAMAN"] = { -- todo: translate shaman class entries
+    ["н"] = { "priest", "priest" },
+    ["р"] = { "priest", "priest" },
+    ["д"] = { "priest", "priest" },
+    ["з"] = { "priest", "priest" },
+    ["о"] = { "priest", "priest" },
+    ["м"] = { "priest", "priest" },
+    ["к"] = { "priest", "priest" },
 },
 
-["MAGE"] = {
-    -- todo: add mage class entries
+["MAGE"] = { -- todo: translate mage class entries
+    ["н"] = { "mage", "mage" },
+    ["р"] = { "mage", "mage" },
+    ["д"] = { "mage", "mage" },
+    ["з"] = { "mage", "mage" },
+    ["о"] = { "mage", "mage" },
+    ["м"] = { "mage", "mage" },
+    ["к"] = { "mage", "mage" },
 },
 
-["WARLOCK"] = {
-    -- todo: add warlock class entries
+["WARLOCK"] = { -- todo: translate warlock class entries
+    ["н"] = { "warlock", "warlock" },
+    ["р"] = { "warlock", "warlock" },
+    ["д"] = { "warlock", "warlock" },
+    ["з"] = { "warlock", "warlock" },
+    ["о"] = { "warlock", "warlock" },
+    ["м"] = { "warlock", "warlock" },
+    ["к"] = { "warlock", "warlock" },
 },
 
-["DRUID"] = {
-    -- todo: add druid class entries
+["DRUID"] = { -- todo: translate druid class entries
+    ["н"] = { "druid", "druid" },
+    ["р"] = { "druid", "druid" },
+    ["д"] = { "druid", "druid" },
+    ["з"] = { "druid", "druid" },
+    ["о"] = { "druid", "druid" },
+    ["м"] = { "druid", "druid" },
+    ["к"] = { "druid", "druid" },
 },
 
 }
