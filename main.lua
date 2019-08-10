@@ -103,7 +103,7 @@ end
 local make_quest_frame = function ()
     local width, height = QuestFrame:GetSize()
     local frame = CreateFrame("frame", nil, QuestFrame)
-    frame:SetFrameStrata("LOW")
+    frame:SetFrameStrata("HIGH") -- TODO: set to LOW for Classic
     frame:SetSize(width, height - 73)
 
     frame:ClearAllPoints()
