@@ -55,6 +55,12 @@ local prepare_codes = function (name, race, class, is_male)
         end
     end
 
+    -- sex
+
+    codes["{стать:(.-):(.-)}"] = function (a, b)
+        return is_male and a or b
+    end
+
     -- print_table(codes, "codes")
     addonTable.codes = codes
 end
@@ -63,8 +69,6 @@ local make_text = function (text)
     if not text then
         return nil
     end
-
-    -- todo: preform code substitution for "{стать:1:2}"
 
     for k, v in pairs(addonTable.codes) do
         text = text:gsub(k, v)
