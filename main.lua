@@ -24,7 +24,8 @@ frame:SetScript("OnEvent", function (self, event, ...)
         player_is_male = sex == 2
         player_is_alliance = faction == "Alliance"
 
-        addonTable.quest = player_is_alliance and addonTable.quest_a or addonTable.quest_h
+        -- init faction quests and drop opposite faction quests
+        addonTable.quest_f = player_is_alliance and addonTable.quest_a or addonTable.quest_h
         addonTable[ player_is_alliance and "quest_h" or "quest_a" ] = nil
     end
 end)
@@ -33,13 +34,20 @@ end)
 
 local get_entry = function (type, id)
     id = tonumber(id)
+
     if type and id then
-        if (addonTable[type]) and (addonTable[type][id]) then
-            return addonTable[type][id]
-        else
-            return { type .. "|cff999999#|r" .. id }
+        if type == "quest" then
+            if addonTable.quest_f[id] then return addonTable.quest_f[id] end
+            if addonTable.quest_n[id] then return addonTable.quest_n[id] end
         end
+
+        if addonTable[type] and addonTable[type][id] then
+            return addonTable[type][id]
+        end
+
+        return { type .. "|cff999999#|r" .. id }
     end
+
     return false
 end
 
