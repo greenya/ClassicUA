@@ -1,44 +1,70 @@
 local _, addonTable = ...
 
-local player_class = false
-local player_race = false
-local player_is_male = false
-local player_is_alliance = false
+-- [ debug ]
 
-local frame = CreateFrame("frame")
+local print_table = function (table, title)
+    print(title .. " {")
+    for k, v in pairs(table) do print("[" .. k .. "]=" .. tostring(v)) end
+    print("} " .. title)
+end
 
-frame:RegisterEvent("ADDON_LOADED")
-frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+-- [ entries ]
 
-frame:SetScript("OnEvent", function (self, event, ...)
-    if event == "ADDON_LOADED" then
-        print("ClassicUA loaded.")
-        self:UnregisterEvent("ADDON_LOADED")
-    elseif event == "PLAYER_ENTERING_WORLD" then
-        local guid = UnitGUID("player")
-        local _, class, _, race, sex = GetPlayerInfoByGUID(guid)
-        local faction = UnitFactionGroup("player")
+local prepare_quests = function (is_alliance)
+    -- init faction quests reference
+    addonTable.quest_f = is_alliance and addonTable.quest_a or addonTable.quest_h
+    -- drop opposite faction quests
+    addonTable[ is_alliance and "quest_h" or "quest_a" ] = nil
+end
 
-        player_class = class
-        player_race = race
-        player_is_male = sex == 2
-        player_is_alliance = faction == "Alliance"
+local prepare_codes = function (name, race, class, is_male)
+    -- todo: generate values for all possible codes
+    print("preparing codes for: " .. name .. " / " .. race .. " / " .. class .. " / " .. (is_male and "male" or "famale"))
+    local at = addonTable
+    local codes = {
+        ["{ім'я}"] = name,
+        ["{Ім'я}"] = name,
+        ["{ІМ'Я}"] = string.upper(name),
+    }
 
-        -- init faction quests and drop opposite faction quests
-        addonTable.quest_f = player_is_alliance and addonTable.quest_a or addonTable.quest_h
-        addonTable[ player_is_alliance and "quest_h" or "quest_a" ] = nil
+    print_table(codes, "codes")
+    addonTable.codes = codes
+end
+
+local make_text = function (text)
+    if not text then
+        return nil
     end
-end)
 
--- [ tooltips ]
+    -- todo: preform code substitution for "{стать:1:2}"
+
+    for k, v in pairs(addonTable.codes) do
+        text = text:gsub(k, v)
+    end
+
+    return text
+end
 
 local get_entry = function (type, id)
     id = tonumber(id)
 
     if type and id then
         if type == "quest" then
-            if addonTable.quest_f[id] then return addonTable.quest_f[id] end
-            if addonTable.quest_n[id] then return addonTable.quest_n[id] end
+            local quest = nil
+
+            if addonTable.quest_f[id] then
+                quest = addonTable.quest_f[id]
+            elseif addonTable.quest_n[id] then
+                quest = addonTable.quest_n[id]
+            end
+
+            if quest then
+                local result = {}
+                for i = 1, #quest do
+                    result[i] = make_text(quest[i])
+                end
+                return result
+            end
         end
 
         if addonTable[type] and addonTable[type][id] then
@@ -50,6 +76,8 @@ local get_entry = function (type, id)
 
     return false
 end
+
+-- [ tooltips ]
 
 local add_entry_to_tooltip = function (type, id, tt)
     if tt.ClassicUA_entry_shown then
@@ -100,7 +128,14 @@ end
 
 -- [ quests ]
 
-local make_quest_frame = function ()
+local quest_frame = nil
+local quest_objectives_title = "Доручення"
+
+local get_quest_frame = function ()
+    if quest_frame then
+        return quest_frame
+    end
+
     local width, height = QuestFrame:GetSize()
     local frame = CreateFrame("frame", nil, QuestFrame)
     frame:SetFrameStrata("HIGH") -- TODO: set to LOW for Classic
@@ -186,14 +221,13 @@ local make_quest_frame = function ()
     end)
 
     frame:Show()
-    return frame
+
+    quest_frame = frame
+    return quest_frame
 end
 
-local quest_frame = make_quest_frame()
-local quest_objectives_title = "Доручення"
-
 local set_quest_content = function (title, text, obj)
-    local qf = quest_frame
+    local qf = get_quest_frame()
     local h = 16
 
     qf.title:SetPoint("TOPLEFT", qf.content, 12, -h)
@@ -258,4 +292,26 @@ end)
 
 QuestFrameRewardPanel:HookScript("OnShow", function(event)
     show_quest(3)
+end)
+
+-- [[ events ]]
+
+local event_frame = CreateFrame("frame")
+
+event_frame:RegisterEvent("ADDON_LOADED")
+event_frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+
+event_frame:SetScript("OnEvent", function (self, event, ...)
+    if event == "ADDON_LOADED" then
+        print("ClassicUA loaded.")
+        self:UnregisterEvent("ADDON_LOADED")
+    elseif event == "PLAYER_ENTERING_WORLD" then
+        local name = UnitName("player")
+        local guid = UnitGUID("player")
+        local _, class, _, race, sex = GetPlayerInfoByGUID(guid)
+        local faction = UnitFactionGroup("player")
+
+        prepare_quests(faction == "Alliance")
+        prepare_codes(name, race, class, sex == 2) -- 2 for male
+    end
 end)

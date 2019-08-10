@@ -1,8 +1,6 @@
 local _, addonTable = ...
 addonTable.race = { -- [id] = { [н/р/д/з/о/м/к] = { male, female } }
 
---[[ alliance ]]--
-
 ["Human"] = {
     ["н"] = { "чоловік", "жінка" },
     ["р"] = { "чоловіка", "жінки" },
@@ -24,8 +22,6 @@ addonTable.race = { -- [id] = { [н/р/д/з/о/м/к] = { male, female } }
 ["Gnome"] = {
     -- todo: add gnome race entries
 },
-
---[[ horde ]]--
 
 ["Orc"] = {
     -- todo: add orc race entries
