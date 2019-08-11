@@ -170,18 +170,15 @@ local get_quest_frame = function ()
 
     local width, height = QuestFrame:GetSize()
     local frame = CreateFrame("frame", nil, QuestFrame)
-    frame:SetFrameStrata("HIGH") -- TODO: set to LOW for Classic
-    frame:SetSize(width, height - 73)
-
-    frame:ClearAllPoints()
-    frame:SetPoint("TOP", 0, -52)
-    frame:SetPoint("RIGHT", frame:GetWidth() - 7, 0)
+    frame:SetFrameStrata("HIGH") -- retail: HIGH / classic: LOW
+    frame:SetSize(width, height - 73) -- retail: width, height - 73 / classic: width - 64, height - 160
+    frame:SetPoint("TOP", 0, -52) -- retail: 0, -52 / classic: 0, -72
+    frame:SetPoint("RIGHT", frame:GetWidth() - 7, 0) -- retail: frame:GetWidth() - 7, 0 / classic: frame:GetWidth() - 37, 0
 
     local texture = frame:CreateTexture(nil, "BACKGROUND")
     texture:SetTexture("Interface\\QuestFrame\\QuestBG")
-    texture:SetAllPoints()
-    texture:SetPoint("TOPLEFT", 0, -8)
-    texture:SetPoint("BOTTOMRIGHT", 226, -212)
+    texture:SetPoint("TOPLEFT", 4, -8)
+    texture:SetPoint("BOTTOMRIGHT", 226, -212) -- retail: 226, -212 / classic: 216, -174
 
     frame:SetBackdrop({
         edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
@@ -189,31 +186,21 @@ local get_quest_frame = function ()
         insets = { left = 4, right = 4, top = 4, bottom = 4 }
     })
 
+    -- scroll frame
+
     local scrollframe = CreateFrame("ScrollFrame", nil, frame)
-    scrollframe:SetPoint("TOPLEFT", 8, -8)
-    scrollframe:SetPoint("BOTTOMRIGHT", -8, 8)
+    scrollframe:SetPoint("TOPLEFT", 8, -8) -- retail: 8, -8 / classic: 8, -9
+    scrollframe:SetPoint("BOTTOMRIGHT", -8, 8) -- retail -8, 8 / classic: -8, 9
     frame.scrollframe = scrollframe
 
-    local scrollbar = CreateFrame("Slider", nil, scrollframe, "UIPanelScrollBarTemplate")
-    scrollbar:SetPoint("TOPLEFT", frame, "TOPRIGHT", -26, -27)
-    scrollbar:SetPoint("BOTTOMLEFT", frame, "BOTTOMRIGHT", 0, 26)
-    scrollbar:SetValueStep(40)
-    scrollbar.scrollStep = 40
-    scrollbar:SetValue(0)
-    scrollbar:SetWidth(16)
-    scrollbar:SetScript("OnValueChanged", function (self, value)
-        self:GetParent():SetVerticalScroll(value)
-    end)
-    frame.scrollbar = scrollbar
-
-    local scrollbg = scrollbar:CreateTexture(nil, "BACKGROUND")
-    scrollbg:SetAllPoints(scrollbar)
-    scrollbg:SetTexture(0, 0, 0, 0.4)
+    -- content frame
 
     local content = CreateFrame("Frame", nil, scrollframe)
+    content:SetSize(scrollframe:GetWidth() - 60, 0)
+    scrollframe:SetScrollChild(content)
     frame.content = content
 
-    local title = frame:CreateFontString(nil, "OVERLAY")
+    local title = content:CreateFontString(nil, "OVERLAY")
     title:SetWidth(frame:GetWidth() - 60)
     title:SetFontObject(GameFontNormalLarge)
     title:SetJustifyH("LEFT")
@@ -221,7 +208,7 @@ local get_quest_frame = function ()
     title:SetTextColor(0, 0, 0)
     frame.title = title
 
-    local text = frame:CreateFontString(nil, "OVERLAY")
+    local text = content:CreateFontString(nil, "OVERLAY")
     text:SetWidth(frame:GetWidth() - 60)
     text:SetFontObject(QuestFontNormalSmall)
     text:SetJustifyH("LEFT")
@@ -229,7 +216,7 @@ local get_quest_frame = function ()
     text:SetTextColor(0, 0, 0)
     frame.text = text
 
-    local obj_title = frame:CreateFontString(nil, "OVERLAY")
+    local obj_title = content:CreateFontString(nil, "OVERLAY")
     obj_title:SetWidth(frame:GetWidth() - 60)
     obj_title:SetFontObject(GameFontNormalLarge)
     obj_title:SetJustifyH("LEFT")
@@ -237,7 +224,7 @@ local get_quest_frame = function ()
     obj_title:SetTextColor(0, 0, 0)
     frame.obj_title = obj_title
 
-    local obj_text = frame:CreateFontString(nil, "OVERLAY")
+    local obj_text = content:CreateFontString(nil, "OVERLAY")
     obj_text:SetWidth(frame:GetWidth() - 60)
     obj_text:SetFontObject(QuestFontNormalSmall)
     obj_text:SetJustifyH("LEFT")
@@ -245,9 +232,24 @@ local get_quest_frame = function ()
     obj_text:SetTextColor(0, 0, 0)
     frame.obj_text = obj_text
 
+    -- scrollbar frame
+
+    local scrollbar = CreateFrame("Slider", nil, scrollframe, "UIPanelScrollBarTemplate")
+    scrollbar:SetPoint("TOPLEFT", frame, "TOPRIGHT", -26, -27)
+    scrollbar:SetPoint("BOTTOMLEFT", frame, "BOTTOMRIGHT", 0, 26)
+    scrollbar:SetValueStep(40)
+    scrollbar.scrollStep = 40
+    scrollbar:SetValue(1)
+    scrollbar:SetWidth(16)
+    scrollbar:SetScript("OnValueChanged", function (self, value)
+        self:GetParent():SetVerticalScroll(value)
+    end)
+    frame.scrollbar = scrollbar
+
     frame:EnableMouse(true)
     frame:EnableMouseWheel(true)
     frame:SetScript("OnMouseWheel", function(self, delta)
+        -- todo: fix bug with mouse scrolling; for some reason it doesn't scroll up properly
         local v = scrollbar:GetValue()
         scrollbar:SetValue(v - delta * 20)
     end)
@@ -287,16 +289,15 @@ local set_quest_content = function (title, text, obj)
         qf.obj_text:SetText("")
     end
 
-    qf.content:SetSize(300, h)
-    qf.scrollframe:SetScrollChild(qf.content)
-    qf.scrollbar:SetValue(0)
-
-    local scrolldelta = h - qf:GetHeight() + 16
+    local scrolldelta = h - qf:GetHeight() + 24
     if scrolldelta > 0 then
-        qf.scrollbar:SetMinMaxValues(0, scrolldelta)
+        qf.scrollbar:SetMinMaxValues(1, scrolldelta)
     else
-        qf.scrollbar:SetMinMaxValues(0, 0)
+        qf.scrollbar:SetMinMaxValues(1, 1)
     end
+
+    qf.scrollbar:SetValue(1)
+    qf.content:SetSize(qf.content:GetWidth(), h)
 end
 
 -- state: 1 for details, 2 for progress, 3 for reward
