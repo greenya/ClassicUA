@@ -8,7 +8,7 @@
 
 ## Переклад
 
-Перекладені деякі квести та підказки (предмети, спели, NPC).
+Перекладені деякі квести та підказки (предмети, спели, NPC). Якщо ви бажаєте долучитися до перекладу -- заходьте на наш [Discord сервер](https://discord.gg/VJScWRR).
 
 ## Встановлення
 
@@ -16,7 +16,9 @@
 * Розпакуйте архів в `World of Warcraft\_retail_\Interface\AddOns` і переіменуйте `ClassicUA-master` на `ClassicUA`.
 * На екрані вибору персонажа, впевніться що аддон "ClassicUA" активовано.
 
-## Links
+## Посилання
 
 * [Проект на GitHub](https://github.com/greenya/ClassicUA)
 * [Проблеми, баги, пропозиції](https://github.com/greenya/ClassicUA/issues)
+* [Facebook ком'юніті](https://www.facebook.com/classicwowua)
+* [Discord сервер](https://discord.gg/VJScWRR)
