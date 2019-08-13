@@ -111,8 +111,10 @@ end
 
 -- [ tooltips ]
 
+local tooltip_item_id_shown = false
+
 local add_entry_to_tooltip = function (type, id, tt)
-    if tt.ClassicUA_entry_shown then
+    if tooltip_item_id_shown then
         return
     end
 
@@ -123,11 +125,13 @@ local add_entry_to_tooltip = function (type, id, tt)
         if entry[2] then
             tt:AddLine(entry[2], 1, 1, 1, true)
         end
-        tt.ClassicUA_entry_shown = true
+        if type == "item" then
+            tooltip_item_id_shown = id
+        end
     end
 end
 
-local tt_set_item = function (tt)
+local tooltip_set_item = function (tt)
     local _, link = tt:GetItem()
     if link then
         local _, _, id = link:find("Hitem:(%d+):")
@@ -135,27 +139,27 @@ local tt_set_item = function (tt)
     end
 end
 
-local tt_set_spell = function (tt)
+local tooltip_set_spell = function (tt)
     local _, id = tt:GetSpell()
     add_entry_to_tooltip("spell", id, tt)
 end
 
-local tt_set_unit = function (tt)
+local tooltip_set_unit = function (tt)
     local _, unit = tt:GetUnit()
     local guid = UnitGUID(unit)
     local _, _, _, _, _, id, _ = strsplit("-", guid)
     add_entry_to_tooltip("npc", id, tt)
 end
 
-local tt_cleared = function (tt)
-    tt.ClassicUA_entry_shown = nil
+local tooltip_cleared = function (tt)
+    tooltip_item_id_shown = false
 end
 
 for _, tt in pairs { GameTooltip, ItemRefTooltip } do
-    tt:HookScript("OnTooltipSetItem", tt_set_item)
-    tt:HookScript("OnTooltipSetSpell", tt_set_spell)
-    tt:HookScript("OnTooltipSetUnit", tt_set_unit)
-    tt:HookScript("OnTooltipCleared", tt_cleared)
+    tt:HookScript("OnTooltipSetItem", tooltip_set_item)
+    tt:HookScript("OnTooltipSetSpell", tooltip_set_spell)
+    tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
+    tt:HookScript("OnTooltipCleared", tooltip_cleared)
 end
 
 -- [ quests ]
