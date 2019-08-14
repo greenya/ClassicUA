@@ -10,6 +10,15 @@ end
 
 -- [ entries ]
 
+local get_stats = function ()
+    local stats = {}
+    for _, v in ipairs({ "quest_a", "quest_h", "quest_n", "item", "spell", "npc" }) do
+        stats[v] = 0
+        for _, _ in pairs(addonTable[v]) do stats[v] = stats[v] + 1 end
+    end
+    return stats
+end
+
 local prepare_quests = function (is_alliance)
     -- init faction quests reference
     addonTable.quest_f = is_alliance and addonTable.quest_a or addonTable.quest_h
@@ -62,7 +71,7 @@ local prepare_codes = function (name, race, class, is_male)
     end
 
     -- print_table(codes, "codes")
-    addonTable.codes = codes
+    at.codes = codes
 end
 
 local make_text = function (text)
@@ -340,7 +349,15 @@ event_frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
-        print("ClassicUA loaded.")
+        local s = get_stats()
+        print("|TInterface\\AddOns\\ClassicUA\\ua:0|t ClassicUA loaded: "
+            .. s.quest_a .. " Alliance quests, "
+            .. s.quest_h .. " Horde quests, "
+            .. s.quest_n .. " neutral quests, "
+            .. s.item .. " items, "
+            .. s.spell .. " spells, "
+            .. s.npc .. " NPCs"
+        )
         self:UnregisterEvent("ADDON_LOADED")
     elseif event == "PLAYER_ENTERING_WORLD" then
         local name = UnitName("player")
