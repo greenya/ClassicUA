@@ -176,8 +176,9 @@ end
 local setup_frame_background_and_border = function (frame)
     local texture = frame:CreateTexture(nil, "BACKGROUND")
     texture:SetTexture("Interface\\QuestFrame\\QuestBG")
+    texture:SetTexCoord(0.0, 0.58, 0.0, 0.65)
     texture:SetPoint("TOPLEFT", 4, -8)
-    texture:SetPoint("BOTTOMRIGHT", 226, -212) -- retail: 226, -212 / classic: 216, -174
+    texture:SetPoint("BOTTOMRIGHT", -4, 8)
 
     frame:SetBackdrop({
         edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
