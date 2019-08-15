@@ -173,26 +173,7 @@ end
 
 -- [ frames ]
 
--- local make_frame = function ()
--- end
-
--- [ quests ]
-
-local quest_frame = nil
-local quest_objectives_title = "Доручення"
-
-local get_quest_frame = function ()
-    if quest_frame then
-        return quest_frame
-    end
-
-    local width, height = QuestFrame:GetSize()
-    local frame = CreateFrame("frame", nil, QuestFrame)
-    frame:SetFrameStrata("HIGH") -- retail: HIGH / classic: LOW
-    frame:SetSize(width, height - 73) -- retail: width, height - 73 / classic: width - 64, height - 160
-    frame:SetPoint("TOP", 0, -52) -- retail: 0, -52 / classic: 0, -72
-    frame:SetPoint("RIGHT", frame:GetWidth() - 7, 0) -- retail: frame:GetWidth() - 7, 0 / classic: frame:GetWidth() - 37, 0
-
+local setup_frame_background_and_border = function (frame)
     local texture = frame:CreateTexture(nil, "BACKGROUND")
     texture:SetTexture("Interface\\QuestFrame\\QuestBG")
     texture:SetPoint("TOPLEFT", 4, -8)
@@ -200,57 +181,30 @@ local get_quest_frame = function ()
 
     frame:SetBackdrop({
         edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
-        edgeSize = 24,
-        insets = { left = 4, right = 4, top = 4, bottom = 4 }
+        edgeSize = 24
     })
+end
 
-    -- scroll frame
-
+local setup_frame_scrollbar_and_content = function (frame, areas)
     local scrollframe = CreateFrame("ScrollFrame", nil, frame)
     scrollframe:SetPoint("TOPLEFT", 8, -8) -- retail: 8, -8 / classic: 8, -9
     scrollframe:SetPoint("BOTTOMRIGHT", -8, 8) -- retail -8, 8 / classic: -8, 9
     frame.scrollframe = scrollframe
-
-    -- content frame
 
     local content = CreateFrame("Frame", nil, scrollframe)
     content:SetSize(scrollframe:GetWidth() - 60, 0)
     scrollframe:SetScrollChild(content)
     frame.content = content
 
-    local title = content:CreateFontString(nil, "OVERLAY")
-    title:SetWidth(frame:GetWidth() - 60)
-    title:SetFontObject(GameFontNormalLarge)
-    title:SetJustifyH("LEFT")
-    title:SetJustifyV("TOP")
-    title:SetTextColor(0, 0, 0)
-    frame.title = title
-
-    local text = content:CreateFontString(nil, "OVERLAY")
-    text:SetWidth(frame:GetWidth() - 60)
-    text:SetFontObject(QuestFontNormalSmall)
-    text:SetJustifyH("LEFT")
-    text:SetJustifyV("TOP")
-    text:SetTextColor(0, 0, 0)
-    frame.text = text
-
-    local obj_title = content:CreateFontString(nil, "OVERLAY")
-    obj_title:SetWidth(frame:GetWidth() - 60)
-    obj_title:SetFontObject(GameFontNormalLarge)
-    obj_title:SetJustifyH("LEFT")
-    obj_title:SetJustifyV("TOP")
-    obj_title:SetTextColor(0, 0, 0)
-    frame.obj_title = obj_title
-
-    local obj_text = content:CreateFontString(nil, "OVERLAY")
-    obj_text:SetWidth(frame:GetWidth() - 60)
-    obj_text:SetFontObject(QuestFontNormalSmall)
-    obj_text:SetJustifyH("LEFT")
-    obj_text:SetJustifyV("TOP")
-    obj_text:SetTextColor(0, 0, 0)
-    frame.obj_text = obj_text
-
-    -- scrollbar frame
+    for k, v in pairs(areas) do
+        local a = content:CreateFontString(nil, "OVERLAY")
+        a:SetWidth(frame:GetWidth() - 60)
+        a:SetFontObject(v)
+        a:SetJustifyH("LEFT")
+        a:SetJustifyV("TOP")
+        a:SetTextColor(0, 0, 0)
+        frame[k] = a
+    end
 
     local scrollbar = CreateFrame("Slider", nil, scrollframe, "UIPanelScrollBarTemplate")
     scrollbar:SetPoint("TOPLEFT", frame, "TOPRIGHT", -26, -27)
@@ -271,6 +225,45 @@ local get_quest_frame = function ()
         local v = scrollbar:GetValue()
         scrollbar:SetValue(v - delta * 20)
     end)
+end
+
+local setup_frame_scrollbar_values = function (frame, height)
+    local delta = height - frame:GetHeight() + 24
+    if delta > 0 then
+        frame.scrollbar:SetMinMaxValues(1, delta)
+    else
+        frame.scrollbar:SetMinMaxValues(1, 1)
+    end
+
+    frame.scrollbar:SetValue(1)
+    frame.content:SetSize(frame.content:GetWidth(), height)
+end
+
+-- [ quests ]
+
+local quest_frame = nil
+local quest_objectives_title = "Доручення"
+
+local get_quest_frame = function ()
+    if quest_frame then
+        return quest_frame
+    end
+
+    local width, height = QuestFrame:GetSize()
+    local frame = CreateFrame("frame", nil, QuestFrame)
+    frame:SetFrameStrata("HIGH") -- retail: HIGH / classic: LOW
+    frame:SetSize(width, height - 73) -- retail: width, height - 73 / classic: width - 64, height - 160
+    frame:SetPoint("TOP", 0, -52) -- retail: 0, -52 / classic: 0, -72
+    frame:SetPoint("RIGHT", frame:GetWidth() - 7, 0) -- retail: frame:GetWidth() - 7, 0 / classic: frame:GetWidth() - 37, 0
+
+    setup_frame_background_and_border(frame)
+
+    setup_frame_scrollbar_and_content(frame, {
+        title = GameFontNormalLarge,
+        text = QuestFontNormalSmall,
+        obj_title = GameFontNormalLarge,
+        obj_text = QuestFontNormalSmall
+    })
 
     frame:Show()
 
@@ -279,43 +272,35 @@ local get_quest_frame = function ()
 end
 
 local set_quest_content = function (title, text, obj)
-    local qf = get_quest_frame()
+    local f = get_quest_frame()
     local h = 16
 
-    qf.title:SetPoint("TOPLEFT", qf.content, 12, -h)
-    qf.title:SetText(title)
-    h = h + qf.title:GetHeight() + 12
+    f.title:SetPoint("TOPLEFT", f.content, 12, -h)
+    f.title:SetText(title)
+    h = h + f.title:GetHeight() + 12
 
     if text then
-        qf.text:SetPoint("TOPLEFT", qf.content, 12, -h)
-        qf.text:SetText(text)
-        h = h + qf.text:GetHeight() + 12
+        f.text:SetPoint("TOPLEFT", f.content, 12, -h)
+        f.text:SetText(text)
+        h = h + f.text:GetHeight() + 12
     else
-        qf.text:SetText("")
+        f.text:SetText("")
     end
 
     if obj then
-        qf.obj_title:SetPoint("TOPLEFT", qf.content, 12, -h)
-        qf.obj_title:SetText(quest_objectives_title)
-        h = h + qf.obj_title:GetHeight() + 12
+        f.obj_title:SetPoint("TOPLEFT", f.content, 12, -h)
+        f.obj_title:SetText(quest_objectives_title)
+        h = h + f.obj_title:GetHeight() + 12
 
-        qf.obj_text:SetPoint("TOPLEFT", qf.content, 12, -h)
-        qf.obj_text:SetText(obj)
-        h = h + qf.obj_text:GetHeight() + 12
+        f.obj_text:SetPoint("TOPLEFT", f.content, 12, -h)
+        f.obj_text:SetText(obj)
+        h = h + f.obj_text:GetHeight() + 12
     else
-        qf.obj_title:SetText("")
-        qf.obj_text:SetText("")
+        f.obj_title:SetText("")
+        f.obj_text:SetText("")
     end
 
-    local scrolldelta = h - qf:GetHeight() + 24
-    if scrolldelta > 0 then
-        qf.scrollbar:SetMinMaxValues(1, scrolldelta)
-    else
-        qf.scrollbar:SetMinMaxValues(1, 1)
-    end
-
-    qf.scrollbar:SetValue(1)
-    qf.content:SetSize(qf.content:GetWidth(), h)
+    setup_frame_scrollbar_values(f, h)
 end
 
 -- state: 1 for details, 2 for progress, 3 for reward
@@ -348,9 +333,52 @@ end)
 -- [[ books ]]
 
 local book_item_id = false
+local book_frame = nil
+
+local get_book_frame = function ()
+    if book_frame then
+        return book_frame
+    end
+
+    local width, height = ItemTextFrame:GetSize()
+    local frame = CreateFrame("frame", nil, ItemTextFrame)
+    frame:SetFrameStrata("HIGH") -- retail: HIGH / classic: LOW
+    frame:SetSize(width, height - 49) -- retail: width, height - 49 / classic: width - ?, height - ?
+    frame:SetPoint("TOP", 0, -52) -- retail: 0, -52 / classic: 0, ?
+    frame:SetPoint("RIGHT", frame:GetWidth() - 7, 0) -- retail: frame:GetWidth() - 7, 0 / classic: frame:GetWidth() - ?, 0
+
+    setup_frame_background_and_border(frame)
+
+    setup_frame_scrollbar_and_content(frame, {
+        text = QuestFontNormalSmall
+    })
+
+    frame:Show()
+
+    book_frame = frame
+    return book_frame
+end
+
+local set_book_content = function (text)
+    local f = get_book_frame()
+    local h = 16
+
+    f.text:SetPoint("TOPLEFT", f.content, 12, -h)
+    f.text:SetText(text)
+    h = h + f.text:GetHeight() + 12
+
+    setup_frame_scrollbar_values(f, h)
+end
 
 local show_book = function (text)
-    print(text) -- todo: show text in book frame; attach to ItemTextFrame
+    local book = get_entry("book", book_item_id)
+    if book then
+        local page = ItemTextGetPage()
+        if not book[page] and book[1] then
+            book[page] = book[1]
+        end
+        set_book_content(book[page])
+    end
 end
 
 -- [[ events ]]
@@ -393,14 +421,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         -- p.s.: pls let me know better solution
         book_item_id = tooltip_last_shown_item_id
     elseif event == "ITEM_TEXT_READY" then
-        local book = get_entry("book", book_item_id)
-        if book then
-            local page = ItemTextGetPage()
-            if not book[page] and book[1] then
-                book[page] = book[1]
-            end
-            show_book(book[page])
-        end
+        show_book()
     elseif event == "ITEM_TEXT_CLOSED" then
         book_item_id = false
     end
