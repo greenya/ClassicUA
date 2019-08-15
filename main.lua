@@ -379,7 +379,13 @@ local show_book = function (text)
             book[page] = book[1]
         end
         set_book_content(book[page])
+        get_book_frame():Show()
     end
+end
+
+local hide_book = function ()
+    get_book_frame():Hide()
+    book_item_id = false
 end
 
 -- [[ events ]]
@@ -425,6 +431,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
     elseif event == "ITEM_TEXT_READY" then
         show_book()
     elseif event == "ITEM_TEXT_CLOSED" then
-        book_item_id = false
+        hide_book()
     end
 end)
