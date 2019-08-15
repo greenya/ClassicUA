@@ -120,10 +120,10 @@ end
 
 -- [ tooltips ]
 
-local tooltip_item_id_shown = false
+local tooltip_last_shown_item_id = false
 
 local add_entry_to_tooltip = function (type, id, tt)
-    if tooltip_item_id_shown then
+    if tooltip_last_shown_item_id then
         return
     end
 
@@ -135,7 +135,7 @@ local add_entry_to_tooltip = function (type, id, tt)
             tt:AddLine(entry[2], 1, 1, 1, true)
         end
         if type == "item" then
-            tooltip_item_id_shown = id
+            tooltip_last_shown_item_id = id
         end
     end
 end
@@ -161,7 +161,7 @@ local tooltip_set_unit = function (tt)
 end
 
 local tooltip_cleared = function (tt)
-    tooltip_item_id_shown = false
+    tooltip_last_shown_item_id = false
 end
 
 for _, tt in pairs { GameTooltip, ItemRefTooltip } do
@@ -170,6 +170,11 @@ for _, tt in pairs { GameTooltip, ItemRefTooltip } do
     tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
     tt:HookScript("OnTooltipCleared", tooltip_cleared)
 end
+
+-- [ frames ]
+
+-- local make_frame = function ()
+-- end
 
 -- [ quests ]
 
@@ -340,12 +345,23 @@ QuestFrameRewardPanel:HookScript("OnShow", function(event)
     show_quest(3)
 end)
 
+-- [[ books ]]
+
+local book_item_id = false
+
+local show_book = function (text)
+    print(text) -- todo: show text in book frame; attach to ItemTextFrame
+end
+
 -- [[ events ]]
 
 local event_frame = CreateFrame("frame")
 
 event_frame:RegisterEvent("ADDON_LOADED")
 event_frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
+event_frame:RegisterEvent("ITEM_TEXT_READY")
+event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
@@ -371,5 +387,21 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
 
         prepare_quests(faction == "Alliance")
         prepare_codes(name, race, class, sex == 2) -- 2 for male
+    elseif event == "ITEM_TEXT_BEGIN" then
+        -- we detect book item id via last shown tooltip item id
+        -- not good solution. agreed. but hey! i'm not a good programmer either
+        -- p.s.: pls let me know better solution
+        book_item_id = tooltip_last_shown_item_id
+    elseif event == "ITEM_TEXT_READY" then
+        local book = get_entry("book", book_item_id)
+        if book then
+            local page = ItemTextGetPage()
+            if not book[page] and book[1] then
+                book[page] = book[1]
+            end
+            show_book(book[page])
+        end
+    elseif event == "ITEM_TEXT_CLOSED" then
+        book_item_id = false
     end
 end)

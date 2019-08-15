@@ -5,6 +5,7 @@
 ## Author: greenya
 ## Version: 0.2
 
+entries\book.lua
 entries\class.lua
 entries\item.lua
 entries\npc.lua
