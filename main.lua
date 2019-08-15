@@ -12,7 +12,7 @@ end
 
 local get_stats = function ()
     local stats = {}
-    for _, v in ipairs({ "quest_a", "quest_h", "quest_n", "item", "spell", "npc" }) do
+    for _, v in ipairs({ "quest_a", "quest_h", "quest_n", "book", "item", "spell", "npc" }) do
         stats[v] = 0
         for _, _ in pairs(addonTable[v]) do stats[v] = stats[v] + 1 end
     end
@@ -399,6 +399,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
             .. s.quest_a .. " Alliance quests, "
             .. s.quest_h .. " Horde quests, "
             .. s.quest_n .. " neutral quests, "
+            .. s.book .. " books, "
             .. s.item .. " items, "
             .. s.spell .. " spells, "
             .. s.npc .. " NPCs"
