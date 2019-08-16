@@ -122,17 +122,17 @@ end
 
 local tooltip_last_shown_item_id = false
 
-local add_entry_to_tooltip = function (type, id, tt)
+local add_entry_to_tooltip = function (type, id, tooltip)
     if tooltip_last_shown_item_id then
         return
     end
 
     local entry = get_entry(type, id)
     if entry then
-        tt:AddLine(" ")
-        tt:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
+        tooltip:AddLine(" ")
+        tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
         if entry[2] then
-            tt:AddLine(entry[2], 1, 1, 1, true)
+            tooltip:AddLine(entry[2], 1, 1, 1, true)
         end
         if type == "item" then
             tooltip_last_shown_item_id = id
@@ -140,27 +140,31 @@ local add_entry_to_tooltip = function (type, id, tt)
     end
 end
 
-local tooltip_set_item = function (tt)
-    local _, link = tt:GetItem()
+local tooltip_set_item = function (self)
+    local _, link = self:GetItem()
     if link then
         local _, _, id = link:find("Hitem:(%d+):")
-        add_entry_to_tooltip("item", id, tt)
+        add_entry_to_tooltip("item", id, self)
     end
 end
 
-local tooltip_set_spell = function (tt)
-    local _, id = tt:GetSpell()
-    add_entry_to_tooltip("spell", id, tt)
+local tooltip_set_spell = function (self)
+    local _, id = self:GetSpell()
+    if id then
+        add_entry_to_tooltip("spell", id, self)
+    end
 end
 
-local tooltip_set_unit = function (tt)
-    local _, unit = tt:GetUnit()
-    local guid = UnitGUID(unit)
-    local _, _, _, _, _, id, _ = strsplit("-", guid)
-    add_entry_to_tooltip("npc", id, tt)
+local tooltip_set_unit = function (self)
+    local _, unit = self:GetUnit()
+    if unit then
+        local guid = UnitGUID(unit)
+        local _, _, _, _, _, id, _ = strsplit("-", guid)
+        add_entry_to_tooltip("npc", id, self)
+    end
 end
 
-local tooltip_cleared = function (tt)
+local tooltip_cleared = function (self)
     tooltip_last_shown_item_id = false
 end
 
