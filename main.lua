@@ -134,6 +134,11 @@ local add_entry_to_tooltip = function (type, id, tooltip)
         if entry[2] then
             tooltip:AddLine(entry[2], 1, 1, 1, true)
         end
+
+        if tooltip:IsShown() then -- if tooltip already shown, we re-show it to recalculate its backdrop
+            tooltip:Show()
+        end
+
         if type == "item" then
             tooltip_last_shown_item_id = id
         end
@@ -174,6 +179,25 @@ for _, tt in pairs { GameTooltip, ItemRefTooltip } do
     tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
     tt:HookScript("OnTooltipCleared", tooltip_cleared)
 end
+
+local tooltip_set_unit_aura = function (self, unit, index, filter)
+    local id = select(10, UnitAura(unit, index, filter))
+    if id then
+        add_entry_to_tooltip("spell", id, self)
+    end
+end
+
+local tooltip_set_unit_buff = function (self, unit, index)
+    tooltip_set_unit_aura(self, unit, index, "HELPFUL")
+end
+
+local tooltip_set_unit_debuff = function (self, unit, index)
+    tooltip_set_unit_aura(self, unit, index, "HARMFUL")
+end
+
+hooksecurefunc(GameTooltip, "SetUnitAura", tooltip_set_unit_aura)
+hooksecurefunc(GameTooltip, "SetUnitBuff", tooltip_set_unit_buff)
+hooksecurefunc(GameTooltip, "SetUnitDebuff", tooltip_set_unit_debuff)
 
 -- [ frames ]
 
