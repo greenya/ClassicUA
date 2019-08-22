@@ -11,8 +11,11 @@
 * Розпакуйте архів в `World of Warcraft\_classic_\Interface\AddOns` і переіменуйте `ClassicUA-master` на `ClassicUA`.
 * На екрані вибору персонажа, впевніться що аддон "ClassicUA" активовано.
 
+Також аддон можна встановити просто через Twitch App.
+
 ## Посилання
 
+* [Проект на CurseForge](https://www.curseforge.com/wow/addons/classicua)
 * [Проект на GitHub](https://github.com/greenya/ClassicUA)
 * [Проблеми, баги, пропозиції](https://github.com/greenya/ClassicUA/issues)
 * [Facebook ком'юніті](https://www.facebook.com/classicwowua)
