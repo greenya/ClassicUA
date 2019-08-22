@@ -1,9 +1,9 @@
-## Interface: 80200
+## Interface: 11302
 
 ## Title: |cff1177eeClassic|r|cffffdd00UA|r
 ## Notes: Game localization to Ukrainian language.
 ## Author: greenya
-## Version: 0.2
+## Version: 0.3
 
 entries\book.lua
 entries\class.lua
