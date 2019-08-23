@@ -214,6 +214,7 @@ local setup_frame_background_and_border = function (frame)
     })
 end
 
+-- areas: { area1 = { font, size }, ... }
 local setup_frame_scrollbar_and_content = function (frame, areas)
     local scrollframe = CreateFrame("ScrollFrame", nil, frame)
     scrollframe:SetPoint("TOPLEFT", 8, -8) -- retail: 8, -8 / classic: 8, -9
@@ -228,10 +229,12 @@ local setup_frame_scrollbar_and_content = function (frame, areas)
     for k, v in pairs(areas) do
         local a = content:CreateFontString(nil, "OVERLAY")
         a:SetWidth(frame:GetWidth() - 60)
-        a:SetFontObject(v)
         a:SetJustifyH("LEFT")
         a:SetJustifyV("TOP")
         a:SetTextColor(0, 0, 0)
+        if type(v) == "table" and #v == 2 then
+            a:SetFont(v[1], v[2])
+        end
         frame[k] = a
     end
 
@@ -272,6 +275,8 @@ end
 
 local quest_frame = nil
 local quest_objectives_title = "Доручення"
+local quest_title_font = "Fonts\\FRIZQT___CYR.TTF" -- todo: get nice custom font for quest title; path should be like "Interface\\AddOns\\ClassicUA\\font.ttf"
+local quest_text_font = "Fonts\\FRIZQT___CYR.TTF"
 
 local get_quest_frame = function ()
     if quest_frame then
@@ -287,11 +292,11 @@ local get_quest_frame = function ()
 
     setup_frame_background_and_border(frame)
 
-    setup_frame_scrollbar_and_content(frame, {
-        title = GameFontNormalLarge,
-        text = QuestFontNormalSmall,
-        obj_title = GameFontNormalLarge,
-        obj_text = QuestFontNormalSmall
+    setup_frame_scrollbar_and_content(frame, { -- todo: take quest font sizes from config
+        title = { quest_title_font, 18 },
+        text = { quest_text_font, 13 },
+        obj_title = { quest_title_font, 18 },
+        obj_text = { quest_text_font, 13 }
     })
 
     frame:Show()
@@ -363,6 +368,7 @@ end)
 
 local book_item_id = false
 local book_frame = nil
+local book_text_font = "Fonts\\FRIZQT___CYR.TTF"
 
 local get_book_frame = function ()
     if book_frame then
@@ -378,8 +384,8 @@ local get_book_frame = function ()
 
     setup_frame_background_and_border(frame)
 
-    setup_frame_scrollbar_and_content(frame, {
-        text = QuestFontNormalSmall
+    setup_frame_scrollbar_and_content(frame, { -- todo: take book font size from config
+        text = { book_text_font, 13 }
     })
 
     frame:Show()
