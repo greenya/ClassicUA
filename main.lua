@@ -111,8 +111,6 @@ local get_entry = function (type, id)
         if addonTable[type] and addonTable[type][id] then
             return addonTable[type][id]
         end
-
-        return { type .. "|cff999999#|r" .. id }
     end
 
     return false
@@ -128,6 +126,11 @@ local add_entry_to_tooltip = function (type, id, tooltip)
     end
 
     local entry = get_entry(type, id)
+
+    if not entry then -- todo: add config "Show debug info" and check it here, so player can choose to hide stuff like "item#1234" and see only existing translations
+        entry = { type .. "|cff999999#|r" .. id }
+    end
+
     if entry then
         tooltip:AddLine(" ")
         tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
@@ -138,10 +141,10 @@ local add_entry_to_tooltip = function (type, id, tooltip)
         if tooltip:IsShown() then -- if tooltip already shown, we re-show it to recalculate its backdrop
             tooltip:Show()
         end
+    end
 
-        if type == "item" then
-            tooltip_last_shown_item_id = id
-        end
+    if type == "item" then
+        tooltip_last_shown_item_id = id
     end
 end
 
@@ -349,6 +352,9 @@ local show_quest = function (state)
         else
             set_quest_content(entry[1], entry[5])
         end
+        get_quest_frame():Show()
+    else
+        get_quest_frame():Hide()
     end
 end
 
