@@ -217,8 +217,8 @@ end
 -- areas: { area1 = { font, size }, ... }
 local setup_frame_scrollbar_and_content = function (frame, areas)
     local scrollframe = CreateFrame("ScrollFrame", nil, frame)
-    scrollframe:SetPoint("TOPLEFT", 8, -8) -- retail: 8, -8 / classic: 8, -9
-    scrollframe:SetPoint("BOTTOMRIGHT", -8, 8) -- retail -8, 8 / classic: -8, 9
+    scrollframe:SetPoint("TOPLEFT", 8, -9)
+    scrollframe:SetPoint("BOTTOMRIGHT", -8, 9)
     frame.scrollframe = scrollframe
 
     local content = CreateFrame("Frame", nil, scrollframe)
@@ -285,10 +285,10 @@ local get_quest_frame = function ()
 
     local width, height = QuestFrame:GetSize()
     local frame = CreateFrame("frame", nil, QuestFrame)
-    frame:SetFrameStrata("HIGH") -- retail: HIGH / classic: LOW
-    frame:SetSize(width, height - 73) -- retail: width, height - 73 / classic: width - 64, height - 160
-    frame:SetPoint("TOP", 0, -52) -- retail: 0, -52 / classic: 0, -72
-    frame:SetPoint("RIGHT", frame:GetWidth() - 7, 0) -- retail: frame:GetWidth() - 7, 0 / classic: frame:GetWidth() - 37, 0
+    frame:SetFrameStrata("HIGH")
+    frame:SetSize(width - 64, height - 160)
+    frame:SetPoint("TOP", 0, -72)
+    frame:SetPoint("RIGHT", frame:GetWidth() - 37, 0)
 
     setup_frame_background_and_border(frame)
 
@@ -377,10 +377,10 @@ local get_book_frame = function ()
 
     local width, height = ItemTextFrame:GetSize()
     local frame = CreateFrame("frame", nil, ItemTextFrame)
-    frame:SetFrameStrata("HIGH") -- retail: HIGH / classic: LOW
-    frame:SetSize(width, height - 49) -- retail: width, height - 49 / classic: width - ?, height - ?
-    frame:SetPoint("TOP", 0, -52) -- retail: 0, -52 / classic: 0, ?
-    frame:SetPoint("RIGHT", frame:GetWidth() - 7, 0) -- retail: frame:GetWidth() - 7, 0 / classic: frame:GetWidth() - ?, 0
+    frame:SetFrameStrata("HIGH")
+    frame:SetSize(width - 64, height - 160)
+    frame:SetPoint("TOP", 0, -72)
+    frame:SetPoint("RIGHT", frame:GetWidth() - 37, 0)
 
     setup_frame_background_and_border(frame)
 
@@ -458,9 +458,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_quests(faction == "Alliance")
         prepare_codes(name, race, class, sex == 2) -- 2 for male
     elseif event == "ITEM_TEXT_BEGIN" then
-        -- we detect book item id via last shown tooltip item id
-        -- not good solution. agreed. but hey! i'm not a good programmer either
-        -- p.s.: pls let me know better solution
         book_item_id = tooltip_last_shown_item_id
     elseif event == "ITEM_TEXT_READY" then
         show_book()
