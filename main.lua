@@ -441,7 +441,8 @@ event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
 event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
         local s = get_stats()
-        print("|TInterface\\AddOns\\ClassicUA\\ua:0|t ClassicUA loaded: "
+        local v = GetAddOnMetadata("ClassicUA", "Version")
+        print("|TInterface\\AddOns\\ClassicUA\\ua:0|t ClassicUA v" .. v .. " loaded: "
             .. s.quest_a .. " Alliance quests, "
             .. s.quest_h .. " Horde quests, "
             .. s.quest_n .. " neutral quests, "
