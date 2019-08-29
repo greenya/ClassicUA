@@ -120,7 +120,7 @@ end
 
 local tooltip_last_shown_item_id = false
 
-local add_entry_to_tooltip = function (type, id, tooltip)
+local add_entry_to_tooltip = function (tooltip, type, id, field)
     if tooltip_last_shown_item_id then
         return
     end
@@ -134,8 +134,10 @@ local add_entry_to_tooltip = function (type, id, tooltip)
     if entry then
         tooltip:AddLine(" ")
         tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
-        if entry[2] then
-            tooltip:AddLine(entry[2], 1, 1, 1, true)
+
+        local content = entry[field or 2]
+        if content then
+            tooltip:AddLine(content, 1, 1, 1, true)
         end
 
         if tooltip:IsShown() then -- if tooltip already shown, we re-show it to recalculate its backdrop
@@ -152,14 +154,14 @@ local tooltip_set_item = function (self)
     local _, link = self:GetItem()
     if link then
         local _, _, id = link:find("Hitem:(%d+):")
-        add_entry_to_tooltip("item", id, self)
+        add_entry_to_tooltip(self, "item", id)
     end
 end
 
 local tooltip_set_spell = function (self)
     local _, id = self:GetSpell()
     if id then
-        add_entry_to_tooltip("spell", id, self)
+        add_entry_to_tooltip(self, "spell", id)
     end
 end
 
@@ -168,7 +170,7 @@ local tooltip_set_unit = function (self)
     if unit then
         local guid = UnitGUID(unit)
         local _, _, _, _, _, id, _ = strsplit("-", guid)
-        add_entry_to_tooltip("npc", id, self)
+        add_entry_to_tooltip(self, "npc", id)
     end
 end
 
@@ -186,7 +188,7 @@ end
 local tooltip_set_unit_aura = function (self, unit, index, filter)
     local id = select(10, UnitAura(unit, index, filter))
     if id then
-        add_entry_to_tooltip("spell", id, self)
+        add_entry_to_tooltip(self, "spell", id, "aura")
     end
 end
 
