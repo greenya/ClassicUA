@@ -118,10 +118,10 @@ end
 
 -- [ tooltips ]
 
-local tooltip_last_shown_item_id = false
+local tooltip_item_id = false
 
 local add_entry_to_tooltip = function (tooltip, type, id, field)
-    if tooltip_last_shown_item_id then
+    if tooltip_item_id then
         return
     end
 
@@ -146,7 +146,7 @@ local add_entry_to_tooltip = function (tooltip, type, id, field)
     end
 
     if type == "item" then
-        tooltip_last_shown_item_id = id
+        tooltip_item_id = id
     end
 end
 
@@ -175,7 +175,7 @@ local tooltip_set_unit = function (self)
 end
 
 local tooltip_cleared = function (self)
-    tooltip_last_shown_item_id = false
+    tooltip_item_id = false
 end
 
 for _, tt in pairs { GameTooltip, ItemRefTooltip } do
@@ -518,7 +518,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_quests(faction == "Alliance")
         prepare_codes(name, race, class, sex == 2) -- 2 for male
     elseif event == "ITEM_TEXT_BEGIN" then
-        book_item_id = tooltip_last_shown_item_id
+        book_item_id = tooltip_item_id
     elseif event == "ITEM_TEXT_READY" then
         show_book()
     elseif event == "ITEM_TEXT_CLOSED" then
