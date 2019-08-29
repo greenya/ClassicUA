@@ -280,11 +280,12 @@ end
 
 -- [ quests ]
 
-local quest_frame = nil
 local quest_objectives_title = "Доручення"
+local quest_description_title = "Опис"
 local quest_title_font = "Fonts\\FRIZQT___CYR.TTF" -- todo: get nice custom font for quest title; path should be like "Interface\\AddOns\\ClassicUA\\font.ttf"
 local quest_text_font = "Fonts\\FRIZQT___CYR.TTF"
 
+local quest_frame = nil
 local get_quest_frame = function ()
     if quest_frame then
         return quest_frame
@@ -302,8 +303,8 @@ local get_quest_frame = function ()
     setup_frame_scrollbar_and_content(frame, { -- todo: take quest font sizes from config
         title = { quest_title_font, 18 },
         text = { quest_text_font, 13 },
-        obj_title = { quest_title_font, 18 },
-        obj_text = { quest_text_font, 13 }
+        more_title = { quest_title_font, 18 },
+        more_text = { quest_text_font, 13 }
     })
 
     frame:Show()
@@ -312,77 +313,122 @@ local get_quest_frame = function ()
     return quest_frame
 end
 
-local set_quest_content = function (title, text, obj)
-    local f = get_quest_frame()
+-- frame must have properties: title, text, more_title, more_text
+local set_quest_content = function (frame, title, text, more_title, more_text)
     local h = 16
 
-    f.title:SetPoint("TOPLEFT", f.content, 12, -h)
-    f.title:SetText(title)
-    h = h + f.title:GetHeight() + 12
+    frame.title:SetPoint("TOPLEFT", frame.content, 12, -h)
+    frame.title:SetText(title)
+    h = h + frame.title:GetHeight() + 12
 
     if text then
-        f.text:SetPoint("TOPLEFT", f.content, 12, -h)
-        f.text:SetText(text)
-        h = h + f.text:GetHeight() + 12
+        frame.text:SetPoint("TOPLEFT", frame.content, 12, -h)
+        frame.text:SetText(text)
+        h = h + frame.text:GetHeight() + 12
     else
-        f.text:SetText("")
+        frame.text:SetText("")
     end
 
-    if obj then
-        f.obj_title:SetPoint("TOPLEFT", f.content, 12, -h)
-        f.obj_title:SetText(quest_objectives_title)
-        h = h + f.obj_title:GetHeight() + 12
+    if more_title and more_text then
+        frame.more_title:SetPoint("TOPLEFT", frame.content, 12, -h)
+        frame.more_title:SetText(more_title)
+        h = h + frame.more_title:GetHeight() + 12
 
-        f.obj_text:SetPoint("TOPLEFT", f.content, 12, -h)
-        f.obj_text:SetText(obj)
-        h = h + f.obj_text:GetHeight() + 12
+        frame.more_text:SetPoint("TOPLEFT", frame.content, 12, -h)
+        frame.more_text:SetText(more_text)
+        h = h + frame.more_text:GetHeight() + 12
     else
-        f.obj_title:SetText("")
-        f.obj_text:SetText("")
+        frame.more_title:SetText("")
+        frame.more_text:SetText("")
     end
 
-    setup_frame_scrollbar_values(f, h)
+    setup_frame_scrollbar_values(frame, h)
 end
 
 QuestFrameDetailPanel:HookScript("OnShow", function (event)
-    local id = GetQuestID()
-    local entry = get_entry("quest", id)
+    local frame = get_quest_frame()
+    local entry = get_entry("quest", GetQuestID())
     if entry then
-        set_quest_content(entry[1], entry[2], entry[3])
-        get_quest_frame():Show()
+        set_quest_content(frame, entry[1], entry[2], quest_objectives_title, entry[3])
+        frame:Show()
     else
-        get_quest_frame():Hide()
+        frame:Hide()
     end
 end)
 
 QuestFrameProgressPanel:HookScript("OnShow", function (event)
-    local id = GetQuestID()
-    local entry = get_entry("quest", id)
+    local frame = get_quest_frame()
+    local entry = get_entry("quest", GetQuestID())
     if entry then
-        set_quest_content(entry[1], entry[4])
-        get_quest_frame():Show()
+        set_quest_content(frame, entry[1], entry[4])
+        frame:Show()
     else
-        get_quest_frame():Hide()
+        frame:Hide()
     end
 end)
 
 QuestFrameRewardPanel:HookScript("OnShow", function (event)
-    local id = GetQuestID()
-    local entry = get_entry("quest", id)
+    local frame = get_quest_frame()
+    local entry = get_entry("quest", GetQuestID())
     if entry then
-        set_quest_content(entry[1], entry[5])
-        get_quest_frame():Show()
+        set_quest_content(frame, entry[1], entry[5])
+        frame:Show()
     else
-        get_quest_frame():Hide()
+        frame:Hide()
+    end
+end)
+
+local questlog_frame = nil
+local get_questlog_frame = function ()
+    if questlog_frame then
+        return questlog_frame
+    end
+
+    local width, height = QuestLogFrame:GetSize()
+    local frame = CreateFrame("frame", nil, QuestLogFrame)
+    frame:SetFrameStrata("HIGH")
+    frame:SetSize(width - 64, height - 234)
+    frame:SetPoint("TOP", 0, -166)
+    frame:SetPoint("RIGHT", frame:GetWidth() - 41, 0)
+
+    setup_frame_background_and_border(frame)
+
+    setup_frame_scrollbar_and_content(frame, { -- todo: take quest font sizes from config
+        title = { quest_title_font, 18 },
+        text = { quest_text_font, 13 },
+        more_title = { quest_title_font, 18 },
+        more_text = { quest_text_font, 13 }
+    })
+
+    frame:Show()
+
+    questlog_frame = frame
+    return questlog_frame
+end
+
+hooksecurefunc("SelectQuestLogEntry", function ()
+    local frame = get_questlog_frame()
+    local selection = GetQuestLogSelection()
+    if selection > 0 then
+        local id = select(8, GetQuestLogTitle(selection))
+        local entry = get_entry("quest", id)
+        if entry then
+            set_quest_content(frame, entry[1], entry[3], quest_description_title, entry[2])
+            frame:Show()
+        else
+            frame:Hide()
+        end
+    else
+        frame:Hide()
     end
 end)
 
 -- [[ books ]]
 
 local book_item_id = false
-local book_frame = nil
 local book_text_font = "Fonts\\FRIZQT___CYR.TTF"
 
+local book_frame = nil
 local get_book_frame = function ()
     if book_frame then
         return book_frame
