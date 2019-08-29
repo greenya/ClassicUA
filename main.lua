@@ -120,7 +120,8 @@ end
 
 local tooltip_item_id = false
 
-local add_entry_to_tooltip = function (tooltip, type, id, field)
+-- content_index: default is 2 (description)
+local add_entry_to_tooltip = function (tooltip, type, id, content_index)
     if tooltip_item_id then
         return
     end
@@ -135,7 +136,7 @@ local add_entry_to_tooltip = function (tooltip, type, id, field)
         tooltip:AddLine(" ")
         tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
 
-        local content = entry[field or 2]
+        local content = entry[content_index or 2]
         if content then
             tooltip:AddLine(content, 1, 1, 1, true)
         end
@@ -188,21 +189,21 @@ end
 hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
     local id = select(10, UnitAura(unit, index, filter))
     if id then
-        add_entry_to_tooltip(self, "spell", id, "aura")
+        add_entry_to_tooltip(self, "spell", id, 3)
     end
 end)
 
 hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
     local id = select(10, UnitAura(unit, index, "HELPFUL"))
     if id then
-        add_entry_to_tooltip(self, "spell", id, "aura")
+        add_entry_to_tooltip(self, "spell", id, 3)
     end
 end)
 
 hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
     local id = select(10, UnitAura(unit, index, "HARMFUL"))
     if id then
-        add_entry_to_tooltip(self, "spell", id, "aura")
+        add_entry_to_tooltip(self, "spell", id, 3)
     end
 end)
 
