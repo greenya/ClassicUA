@@ -185,24 +185,26 @@ for _, tt in pairs { GameTooltip, ItemRefTooltip } do
     tt:HookScript("OnTooltipCleared", tooltip_cleared)
 end
 
-local tooltip_set_unit_aura = function (self, unit, index, filter)
+hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
     local id = select(10, UnitAura(unit, index, filter))
     if id then
         add_entry_to_tooltip(self, "spell", id, "aura")
     end
-end
+end)
 
-local tooltip_set_unit_buff = function (self, unit, index)
-    tooltip_set_unit_aura(self, unit, index, "HELPFUL")
-end
+hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
+    local id = select(10, UnitAura(unit, index, "HELPFUL"))
+    if id then
+        add_entry_to_tooltip(self, "spell", id, "aura")
+    end
+end)
 
-local tooltip_set_unit_debuff = function (self, unit, index)
-    tooltip_set_unit_aura(self, unit, index, "HARMFUL")
-end
-
-hooksecurefunc(GameTooltip, "SetUnitAura", tooltip_set_unit_aura)
-hooksecurefunc(GameTooltip, "SetUnitBuff", tooltip_set_unit_buff)
-hooksecurefunc(GameTooltip, "SetUnitDebuff", tooltip_set_unit_debuff)
+hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
+    local id = select(10, UnitAura(unit, index, "HARMFUL"))
+    if id then
+        add_entry_to_tooltip(self, "spell", id, "aura")
+    end
+end)
 
 -- [ frames ]
 
@@ -342,34 +344,37 @@ local set_quest_content = function (title, text, obj)
     setup_frame_scrollbar_values(f, h)
 end
 
--- state: 1 for details, 2 for progress, 3 for reward
-local show_quest = function (state)
+QuestFrameDetailPanel:HookScript("OnShow", function (event)
     local id = GetQuestID()
     local entry = get_entry("quest", id)
     if entry then
-        if state == 1 then
-            set_quest_content(entry[1], entry[2], entry[3])
-        elseif state == 2 then
-            set_quest_content(entry[1], entry[4])
-        else
-            set_quest_content(entry[1], entry[5])
-        end
+        set_quest_content(entry[1], entry[2], entry[3])
         get_quest_frame():Show()
     else
         get_quest_frame():Hide()
     end
-end
-
-QuestFrameDetailPanel:HookScript("OnShow", function (event)
-    show_quest(1)
 end)
 
 QuestFrameProgressPanel:HookScript("OnShow", function (event)
-    show_quest(2)
+    local id = GetQuestID()
+    local entry = get_entry("quest", id)
+    if entry then
+        set_quest_content(entry[1], entry[4])
+        get_quest_frame():Show()
+    else
+        get_quest_frame():Hide()
+    end
 end)
 
-QuestFrameRewardPanel:HookScript("OnShow", function(event)
-    show_quest(3)
+QuestFrameRewardPanel:HookScript("OnShow", function (event)
+    local id = GetQuestID()
+    local entry = get_entry("quest", id)
+    if entry then
+        set_quest_content(entry[1], entry[5])
+        get_quest_frame():Show()
+    else
+        get_quest_frame():Hide()
+    end
 end)
 
 -- [[ books ]]
