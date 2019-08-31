@@ -250,7 +250,7 @@ local setup_frame_scrollbar_and_content = function (frame, areas)
     scrollbar:SetPoint("TOPLEFT", frame, "TOPRIGHT", -26, -27)
     scrollbar:SetPoint("BOTTOMLEFT", frame, "BOTTOMRIGHT", 0, 26)
     scrollbar:SetValueStep(40)
-    scrollbar.scrollStep = 40
+    scrollbar.scrollStep = 100
     scrollbar:SetValue(1)
     scrollbar:SetWidth(16)
     scrollbar:SetScript("OnValueChanged", function (self, value)
@@ -261,9 +261,8 @@ local setup_frame_scrollbar_and_content = function (frame, areas)
     frame:EnableMouse(true)
     frame:EnableMouseWheel(true)
     frame:SetScript("OnMouseWheel", function(self, delta)
-        -- todo: fix bug with mouse scrolling; for some reason it doesn't scroll up properly
         local v = scrollbar:GetValue()
-        scrollbar:SetValue(v - delta * 20)
+        scrollbar:SetValue(v - delta * scrollbar.scrollStep)
     end)
 end
 
