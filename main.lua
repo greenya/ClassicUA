@@ -262,7 +262,7 @@ local setup_frame_scrollbar_and_content = function (frame, areas)
     frame:EnableMouseWheel(true)
     frame:SetScript("OnMouseWheel", function(self, delta)
         local v = scrollbar:GetValue()
-        scrollbar:SetValue(v - delta * scrollbar.scrollStep)
+        scrollbar:SetValue(v - delta * self.scrollbar.scrollStep)
     end)
 end
 
