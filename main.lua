@@ -407,6 +407,10 @@ local get_questlog_frame = function ()
 end
 
 hooksecurefunc("SelectQuestLogEntry", function ()
+    if not addonTable.quest_f then -- need to test quest_f, as prepare_quests() might not be called just yet
+        return
+    end
+
     local frame = get_questlog_frame()
     local selection = GetQuestLogSelection()
     if selection > 0 then
