@@ -171,7 +171,9 @@ local tooltip_set_unit = function (self)
     if unit then
         local guid = UnitGUID(unit)
         local _, _, _, _, _, id, _ = strsplit("-", guid)
-        add_entry_to_tooltip(self, "npc", id)
+        if id then
+            add_entry_to_tooltip(self, "npc", id)
+        end
     end
 end
 
