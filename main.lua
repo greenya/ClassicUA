@@ -515,10 +515,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         local _, class, _, race, sex = GetPlayerInfoByGUID(guid)
         local faction = UnitFactionGroup("player")
 
-        -- todo: remove for Classic: fallback for non-classic race and class
-        if not addonTable.race[race] then race = "Human" end
-        if not addonTable.class[class] then race = "WARRIOR" end
-
         prepare_quests(faction == "Alliance")
         prepare_codes(name, race, class, sex == 2) -- 2 for male
     elseif event == "ITEM_TEXT_BEGIN" then
