@@ -14,4 +14,6 @@ entries\quest_h.lua
 entries\quest_n.lua
 entries\race.lua
 entries\spell.lua
+
+talent_tree.lua
 main.lua
