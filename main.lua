@@ -19,6 +19,11 @@ local get_stats = function ()
     return stats
 end
 
+local prepare_talent_tree = function (class)
+    -- keep only player class tree
+    addonTable.talent_tree = addonTable.talent_tree[class]
+end
+
 local prepare_quests = function (is_alliance)
     -- init faction quests reference
     addonTable.quest_f = is_alliance and addonTable.quest_a or addonTable.quest_h
@@ -151,6 +156,50 @@ local add_entry_to_tooltip = function (tooltip, type, id, content_index)
     end
 end
 
+local talent_tree_next_rank_text = "Наступний ранг"
+local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, rank, max_rank)
+    local talent = addonTable.talent_tree[tab_index] and addonTable.talent_tree[tab_index][talent_index] or false
+    if not talent then -- this can never be true (as we have full Classic talent tree)
+        return
+    end
+
+    local rank_to_show = math.max(rank, 1)
+    local next_rank_to_show = math.min(rank + 1, max_rank)
+
+    if not talent[rank_to_show] or not talent[max_rank] then -- this can never be true (otherwise, bug in talent_tree)
+        return
+    end
+
+    local entry = get_entry("spell", talent[rank_to_show])
+    if not entry then
+        entry = { "spell|cff999999#|r" .. talent[rank_to_show] }
+    end
+
+    tooltip:AddLine(" ")
+    tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
+
+    if entry[2] then
+        tooltip:AddLine(entry[2], 1, 1, 1, true)
+    end
+
+    if rank_to_show ~= next_rank_to_show then
+        local next_rank_desc = "spell|cff999999#|r" .. talent[next_rank_to_show]
+
+        local entry = get_entry("spell", talent[next_rank_to_show])
+        if entry and entry[2] then
+            next_rank_desc = entry[2]
+        end
+
+        tooltip:AddLine(" ")
+        tooltip:AddLine(talent_tree_next_rank_text .. ":", 1, 1, 1)
+        tooltip:AddLine(next_rank_desc, 1, 1, 1, true)
+    end
+
+    if tooltip:IsShown() then -- if tooltip already shown, we re-show it to recalculate its backdrop
+        tooltip:Show()
+    end
+end
+
 local tooltip_set_item = function (self)
     local _, link = self:GetItem()
     if link then
@@ -187,6 +236,14 @@ for _, tt in pairs { GameTooltip, ItemRefTooltip } do
     tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
     tt:HookScript("OnTooltipCleared", tooltip_cleared)
 end
+
+hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index)
+    local rank, max_rank, is_active = select(5, GetTalentInfo(tab_index, talent_index))
+    if not is_active then -- skip active talent (they get shown as spell)
+        -- print("talent", tab_index, talent_index, "rank", rank, max_rank)
+        add_talent_entry_to_tooltip(self, tab_index, talent_index, rank, max_rank)
+    end
+end)
 
 hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
     local id = select(10, UnitAura(unit, index, filter))
@@ -517,6 +574,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         local _, class, _, race, sex = GetPlayerInfoByGUID(guid)
         local faction = UnitFactionGroup("player")
 
+        prepare_talent_tree(class)
         prepare_quests(faction == "Alliance")
         prepare_codes(name, race, class, sex == 2) -- 2 for male
     elseif event == "ITEM_TEXT_BEGIN" then
