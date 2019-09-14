@@ -166,7 +166,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, 
     local rank_to_show = math.max(rank, 1)
     local next_rank_to_show = math.min(rank + 1, max_rank)
 
-    if not talent[rank_to_show] or not talent[max_rank] then -- this can never be true (otherwise, bug in talent_tree)
+    if not talent[rank_to_show] or not talent[next_rank_to_show] then -- this can never be true (otherwise, bug in talent_tree)
         return
     end
 
