@@ -3,7 +3,7 @@
 ## Title: |cff1177eeClassic|r|cffffdd00UA|r
 ## Notes: Game localization to Ukrainian language.
 ## Author: greenya
-## Version: 0.6
+## Version: 0.7
 
 entries\book.lua
 entries\class.lua
