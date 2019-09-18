@@ -549,7 +549,7 @@ end
 local event_frame = CreateFrame("frame")
 
 event_frame:RegisterEvent("ADDON_LOADED")
-event_frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+event_frame:RegisterEvent("PLAYER_LOGIN")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_READY")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
@@ -568,12 +568,13 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
             .. s.npc .. " NPCs"
         )
         self:UnregisterEvent("ADDON_LOADED")
-    elseif event == "PLAYER_ENTERING_WORLD" then
+    elseif event == "PLAYER_LOGIN" then
         local name = UnitName("player")
         local guid = UnitGUID("player")
         local _, class, _, race, sex = GetPlayerInfoByGUID(guid)
         local faction = UnitFactionGroup("player")
 
+        -- print("PLAYER_LOGIN", name, race, class, sex, faction)
         prepare_talent_tree(class)
         prepare_quests(faction == "Alliance")
         prepare_codes(name, race, class, sex == 2) -- 2 for male
