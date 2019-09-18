@@ -204,7 +204,9 @@ local tooltip_set_item = function (self)
     local _, link = self:GetItem()
     if link then
         local _, _, id = link:find("Hitem:(%d+):")
-        add_entry_to_tooltip(self, "item", id)
+        if id then
+            add_entry_to_tooltip(self, "item", id)
+        end
     end
 end
 
