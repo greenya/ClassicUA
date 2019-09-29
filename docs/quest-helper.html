@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ClassicUA Quest Helper</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 15px;
+            font-size: 14px;
+        }
+        .panel {
+            display: flex;
+        }
+        .panel > div {
+            flex: 1;
+        }
+        .field {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 44px;
+        }
+        .field > .preview {
+            position: absolute;
+            width: 100%;
+            height: calc(100% - 1px);
+            transform: translateX(100%);
+            font-family: monospace;
+            font-size: 120%;
+            overflow-y: auto;
+            border-bottom: 1px dotted gray;
+            background-color: moccasin;
+        }
+        .field > .preview .code-nil {
+            color: gray;
+        }
+        .field > label {
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 120%;
+            text-transform: uppercase;
+            color: silver;
+        }
+        .field > input,
+        .field > select,
+        .field > textarea {
+            font-size: 120%;
+            border: 0;
+            border-bottom: 1px dotted gray;
+        }
+        .field > textarea {
+            font-family: monospace;
+            height: 6em;
+        }
+        .field > textarea#quest_description {
+            height: 18em;
+        }
+        .field > textarea#quest_reward {
+            height: 10em;
+        }
+        .field > #source_links a {
+            font-family: monospace;
+            color: #000;
+        }
+        .field-group {
+            display: flex;
+        }
+        .field-group > .field {
+            flex: 1;
+        }
+        .field-group.actions {
+            padding-top: 1em;
+        }
+        .field-group.actions *:not(:first-child) {
+            margin-left: 1em;
+        }
+        .field-group button {
+            padding: .5em 1em;
+            min-width: 6em;
+        }
+        .field-group .player-sex-radio-group {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .field-group .player-sex-radio-group input[type="radio"] {
+            margin: 0;
+            width: 1.5em;
+            height: 1.5em;
+        }
+        .field-group .player-sex-radio-group label {
+            padding: 0 .5em 0 .2em;
+            font-family: monospace;
+            font-size: 200%;
+            font-weight: normal;
+            line-height: 1;
+        }
+        html.popup-shown {
+            overflow: hidden;
+        }
+        .popup {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: opacity 0.2s;
+            pointer-events: none;
+            opacity: 0;
+        }
+        .popup.show {
+            pointer-events: all;
+            opacity: 1;
+        }
+        .popup .window {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            max-width: 48em;
+            max-height: 40em;
+            box-shadow: 0 0 16px #444;
+        }
+        .window {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+        }
+        .window > .header {
+            display: flex;
+            background: skyblue;
+        }
+        .window > .header > .title {
+            flex: 1;
+            padding: 15px;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 150%;
+            text-transform: uppercase;
+        }
+        .window > .header > .dismiss {
+            width: 4em;
+        }
+        .window > .header > .dismiss:hover {
+            background: tomato;
+        }
+        .window > .content {
+            flex: 1;
+            display: flex;
+        }
+        .window > .footer {
+            display: flex;
+            padding: 15px;
+            background: khaki;
+        }
+        .icon-cross {
+            position: relative;
+        }
+        .icon-cross::before,
+        .icon-cross::after {
+            position: absolute;
+            content: ' ';
+            top: 50%;
+            left: 50%;
+            height: 1.5em;
+            width: 0.125em;
+            background-color: #000;
+        }
+        .icon-cross::before {
+            transform: rotate(45deg) translate(-400%, -33%);
+        }
+        .icon-cross::after {
+            transform: rotate(-45deg) translate(400%, -33%);
+        }
+        #import_popup .code,
+        #export_popup .code {
+            padding: 15px;
+            width: 100%;
+            font-size: 120%;
+            border: none;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="panel">
+        <div>
+            <div class="field">
+                <label>ID</label>
+                <input id="quest_id" type="number" />
+            </div>
+            <div class="field">
+                <label>Назва</label>
+                <input id="quest_title" type="text" />
+            </div>
+            <div class="field">
+                <label>Опис</label>
+                <textarea id="quest_description"></textarea>
+                <div id="quest_description_preview" class="preview"></div>
+            </div>
+            <div class="field">
+                <label>Доручення</label>
+                <textarea id="quest_objective"></textarea>
+                <div id="quest_objective_preview" class="preview"></div>
+            </div>
+            <div class="field">
+                <label>Прогрес</label>
+                <textarea id="quest_progress"></textarea>
+                <div id="quest_progress_preview" class="preview"></div>
+            </div>
+            <div class="field">
+                <label>Завершення</label>
+                <textarea id="quest_reward"></textarea>
+                <div id="quest_reward_preview" class="preview"></div>
+            </div>
+            <div class="field-group actions">
+                <button id="import">Імпорт</button>
+                <button id="export">Експорт</button>
+                <button id="reset">Очистити</button>
+            </div>
+        </div>
+        <div>
+            <div class="field">
+                <label>Оригінал</label>
+                <div id="source_links">classicdb.ch | classic.wowhead.com</div>
+            </div>
+            <div class="field-group">
+                <div class="field">
+                    <label>Стать</label>
+                    <div class="player-sex-radio-group">
+                        <input id="player_sex_m" type="radio" name="player_sex" checked /><label for="player_sex_m">Ч</label>
+                        <input id="player_sex_f" type="radio" name="player_sex" /><label for="player_sex_f">Ж</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Раса</label>
+                    <select id="player_race">
+                        <option value="Human" selected>Людина</option>
+                        <option value="Dwarf">Дворф</option>
+                        <option value="NightElf">Нічний Ельф</option>
+                        <option value="Gnome">Гном</option>
+                        <option value="Orc">Орк</option>
+                        <option value="Troll">Троль</option>
+                        <option value="Scourge">Зречений</option>
+                        <option value="Tauren">Таурен</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Клас</label>
+                    <select id="player_class">
+                        <option value="WARRIOR" selected>Воїн</option>
+                        <option value="PALADIN">Паладин</option>
+                        <option value="HUNTER">Мисливець</option>
+                        <option value="ROGUE">Пройдисвіт</option>
+                        <option value="PRIEST">Жрець</option>
+                        <option value="SHAMAN">Шаман</option>
+                        <option value="MAGE">Маг</option>
+                        <option value="WARLOCK">Чорнокнижник</option>
+                        <option value="DRUID">Друїд</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="import_popup" class="popup">
+        <div class="window">
+            <div class="header">
+                <div class="title">Імпорт</div>
+                <a class="dismiss icon-cross" href="javascript:;"></a>
+            </div>
+            <div class="content">
+                <textarea class="code" placeholder="Введіть LUA код квесту..."></textarea>
+            </div>
+            <div class="footer">
+                <div class="field-group">
+                    <button class="import">Імпортувати</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="export_popup" class="popup">
+        <div class="window">
+            <div class="header">
+                <div class="title">Експорт</div>
+                <a class="dismiss icon-cross" href="javascript:;"></a>
+            </div>
+            <div class="content">
+                <textarea class="code" readonly></textarea>
+            </div>
+            <div class="footer">
+                <div class="field-group">
+                    <button class="copy">Копіювати</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="classicua.js"></script>
+    <script type="module" src="processor.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const quest_id                  = document.getElementById('quest_id');
+            const quest_title               = document.getElementById('quest_title');
+            const quest_description         = document.getElementById('quest_description');
+            const quest_objective           = document.getElementById('quest_objective');
+            const quest_progress            = document.getElementById('quest_progress');
+            const quest_reward              = document.getElementById('quest_reward');
+
+            const quest_description_preview = document.getElementById('quest_description_preview');
+            const quest_objective_preview   = document.getElementById('quest_objective_preview');
+            const quest_progress_preview    = document.getElementById('quest_progress_preview');
+            const quest_reward_preview      = document.getElementById('quest_reward_preview');
+
+            const player_sex_m              = document.getElementById('player_sex_m');
+            const player_sex_f              = document.getElementById('player_sex_f');
+            const player_race               = document.getElementById('player_race');
+            const player_class              = document.getElementById('player_class');
+
+            const import_popup              = document.getElementById('import_popup');
+            const export_popup              = document.getElementById('export_popup');
+
+            function get_quest_object() {
+                return {
+                    id:             quest_id.value.trim(),
+                    title:          quest_title.value.trim(),
+                    description:    quest_description.value.trim(),
+                    objective:      quest_objective.value.trim(),
+                    progress:       quest_progress.value.trim(),
+                    reward:         quest_reward.value.trim(),
+                };
+            }
+
+            function set_quest_object(quest = {}) {
+                quest_id.value          = quest.id || '';
+                quest_title.value       = quest.title || '';
+                quest_description.value = quest.description || '';
+                quest_objective.value   = quest.objective || '';
+                quest_progress.value    = quest.progress || '';
+                quest_reward.value      = quest.reward || '';
+            }
+
+            function load_state() {
+                let data = {};
+                if (localStorage.classicua_quest_helper) {
+                    data = JSON.parse(localStorage.classicua_quest_helper);
+                }
+
+                // console.log('Loading state', data);
+                set_quest_object(data.quest);
+            }
+
+            function save_state() {
+                const data = {
+                    quest: get_quest_object(),
+                };
+
+                // console.log('Saving state', data);
+                localStorage.classicua_quest_helper = JSON.stringify(data);
+            }
+
+            function get_html_preview(text) {
+                let result = ClassicUA.makeText(text.trim());
+                if (result) {
+                    return result.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                } else {
+                    return '<span class="code-nil">nil</span>';
+                }
+            }
+
+            function refresh() {
+                document.getElementById('source_links').innerHTML =
+                    `<a href="https://classicdb.ch/?quest=${quest_id.value}" target="_blank">classicdb.ch</a> | ` +
+                    `<a href="https://classic.wowhead.com/quest=${quest_id.value}" target="_blank">classic.wowhead.com</a>`;
+
+                ClassicUA.setPlayer('Posipaka', player_race.value, player_class.value, player_sex_m.checked);
+
+                [
+                    [ quest_description, quest_description_preview ],
+                    [ quest_objective, quest_objective_preview ],
+                    [ quest_progress, quest_progress_preview ],
+                    [ quest_reward, quest_reward_preview ],
+                ].forEach(([ text, preview ]) => {
+                    preview.innerHTML = get_html_preview(text.value);
+                });
+            }
+
+            [
+                [ quest_id, 'keyup' ],
+                [ quest_title, 'keyup' ],
+                [ quest_description, 'keyup' ],
+                [ quest_objective, 'keyup' ],
+                [ quest_progress, 'keyup' ],
+                [ quest_reward, 'keyup' ],
+                [ player_sex_m, 'change' ],
+                [ player_sex_f, 'change' ],
+                [ player_race, 'change' ],
+                [ player_class, 'change' ],
+            ].forEach(([ element, event ]) => {
+                element.addEventListener(event, () => {
+                    save_state();
+                    refresh();
+                });
+            });
+
+            // import
+
+            document.getElementById('import').addEventListener('click', () => {
+                document.documentElement.classList.add('popup-shown');
+                import_popup.classList.add('show');
+                import_popup.querySelector('.code').focus();
+            });
+
+            import_popup.querySelector('.dismiss').addEventListener('click', () => {
+                import_popup.classList.remove('show');
+                document.documentElement.classList.remove('popup-shown');
+            });
+
+            import_popup.querySelector('.import').addEventListener('click', () => {
+                const code = import_popup.querySelector('.code').value;
+                const quest = Processor.parseQuestCode(code);
+                if (quest) {
+                    set_quest_object(quest);
+                    save_state();
+                    refresh();
+                    import_popup.classList.remove('show');
+                    document.documentElement.classList.remove('popup-shown');
+                } else {
+                    alert('Невалідний код.\nКвест не імпортовано.');
+                }
+            });
+
+            // export
+
+            document.getElementById('export').addEventListener('click', () => {
+                const code = Processor.getQuestCode(get_quest_object());
+                export_popup.querySelector('.code').value = code;
+
+                document.documentElement.classList.add('popup-shown');
+                export_popup.classList.add('show');
+            });
+
+            export_popup.querySelector('.copy').addEventListener('click', () => {
+                export_popup.querySelector('.code').select();
+                document.execCommand('copy');
+            });
+
+            export_popup.querySelector('.dismiss').addEventListener('click', () => {
+                export_popup.classList.remove('show');
+                document.documentElement.classList.remove('popup-shown');
+            });
+
+            // reset
+
+            document.getElementById('reset').addEventListener('click', () => {
+                if (confirm('Всі поля квесту будуть очищені.\nВи впевнені що хочете саме цього?')) {
+                    set_quest_object({});
+                    save_state();
+                    refresh();
+                }
+            });
+
+            load_state();
+            refresh();
+
+        });
+    </script>
+
+</body>
+</html>
