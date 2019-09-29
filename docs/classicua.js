@@ -183,12 +183,12 @@ function prepareCodes() {
 
     // race
 
-    codes.push([ /{pacа}/g, locRace[player.race]['н'][sex] ]);
-    codes.push([ /{Рacа}/g, capitalize(locRace[player.race]['н'][sex]) ]);
+    codes.push([ /{раса}/g, locRace[player.race]['н'][sex] ]);
+    codes.push([ /{Раса}/g, capitalize(locRace[player.race]['н'][sex]) ]);
     codes.push([ /{РАСА}/g, locRace[player.race]['н'][sex].toUpperCase() ]);
     [ 'н', 'р', 'д', 'з', 'о', 'м', 'к' ].forEach(c => {
-        codes.push([ new RegExp(`{рacа:${c}}`, 'g'), locRace[player.race][c][sex] ]);
-        codes.push([ new RegExp(`{Рacа:${c}}`, 'g'), capitalize(locRace[player.race][c][sex]) ]);
+        codes.push([ new RegExp(`{раса:${c}}`, 'g'), locRace[player.race][c][sex] ]);
+        codes.push([ new RegExp(`{Раса:${c}}`, 'g'), capitalize(locRace[player.race][c][sex]) ]);
         codes.push([ new RegExp(`{РАСА:${c}}`, 'g'), locRace[player.race][c][sex].toUpperCase() ]);
     });
 
