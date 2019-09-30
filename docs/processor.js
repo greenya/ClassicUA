@@ -1,4 +1,4 @@
-function getQuestPart(text) {
+function prepareText(text) {
     let result = text ? text.trim() : '';
 
     [
@@ -29,11 +29,11 @@ function getQuestPart(text) {
 function getQuestCode(quest) {
     return `[${quest.id}] = {\n`
         + [
-            [ 'title', getQuestPart(quest.title) ],
-            [ 'description', getQuestPart(quest.description) ],
-            [ 'objective', getQuestPart(quest.objective) ],
-            [ 'progress', getQuestPart(quest.progress) ],
-            [ 'reward', getQuestPart(quest.reward) ],
+            [ 'title', prepareText(quest.title) ],
+            [ 'description', prepareText(quest.description) ],
+            [ 'objective', prepareText(quest.objective) ],
+            [ 'progress', prepareText(quest.progress) ],
+            [ 'reward', prepareText(quest.reward) ],
         ].map(([ part, text ]) => {
             const value = text ? `[===[${text}]===]` : 'nil'
             return `--[[${part}]] ${value},\n`;
@@ -60,6 +60,7 @@ function parseQuestCode(code) {
 }
 
 window.Processor = {
+    prepareText,
     getQuestCode,
     parseQuestCode,
 };

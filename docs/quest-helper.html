@@ -372,7 +372,8 @@
             }
 
             function get_html_preview(text) {
-                let result = ClassicUA.makeText(text.trim());
+                const prepared = Processor.prepareText(text);
+                const result = ClassicUA.makeText(prepared);
                 if (result) {
                     return result.replace(/(?:\r\n|\r|\n)/g, '<br>');
                 } else {
