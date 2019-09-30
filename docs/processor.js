@@ -16,11 +16,8 @@ function prepareText(text) {
         [ /—/g, '-' ],
         [ /[\‘\’]/g, '\'' ],
         [ /[\“\”]/g, '\"' ], // dont know about '«' and '»'; they look pretty
-        // avoid text carry-over at these characters
-        [ / \.\.\./g, '...' ],
-        [ / \!/g, '!' ],
-        [ / \?/g, '?' ],
-        [ / \./g, '.' ],
+        // avoid text carry-over before separators
+        [ / ([\,\:\;\.\!\?])/g, '$1' ],
     ].forEach(([ t1, t2 ]) => {
         result = result.replace(t1, t2);
     });
