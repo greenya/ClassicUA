@@ -2,19 +2,25 @@ function prepareText(text) {
     let result = text ? text.trim() : '';
 
     [
-        [ '   ', ' ' ],
-        [ '  ', ' ' ],
-        [ '{c', '{с' ], // cyrilic 'c' to latin 'c'
-        [ ' ...', '...' ],
-        [ '…', '...' ],
-        [ '—', '-' ],
-        [ ' !', '!' ],
-        [ ' ?', '?' ],
-        [ ' .', '.' ],
-        [ ',{', ', {' ],
-        [ '’', '\'' ],
-        [ '“', '"' ],
-        [ '”', '"' ],
+        // just in case someone try to use lua special text brackets
+        [ /\[===\[/g, '[---[' ],
+        [ /\]===\]/g, ']---]' ],
+        // remove some redundant spacing
+        [ /[\t ]+/g, ' ' ],
+        // cyrilic 'c' to latin 'c'
+        [ /{c/g, '{с' ],
+        // add spacing between separator and code (in rare cases this might not be ok)
+        [ /([\,\:\;\.\!\?])\{/g, '$1 {' ],
+        // avoid these characters as they might be absent in the font
+        [ /…/g, '...' ],
+        [ /—/g, '-' ],
+        [ /[\‘\’]/g, '\'' ],
+        [ /[\“\”]/g, '\"' ], // dont know about '«' and '»'; they look pretty
+        // avoid text carry-over at these characters
+        [ / \.\.\./g, '...' ],
+        [ / \!/g, '!' ],
+        [ / \?/g, '?' ],
+        [ / \./g, '.' ],
     ].forEach(([ t1, t2 ]) => {
         result = result.replace(t1, t2);
     });
