@@ -91,17 +91,18 @@ local make_text = function (text)
     return text
 end
 
-local get_entry = function (type, id)
-    id = tonumber(id)
+local get_entry = function (entry_type, entry_id)
+    local at = addonTable
+    entry_id = tonumber(entry_id)
 
-    if type and id then
-        if type == "quest" then
+    if entry_type and entry_id then
+        if entry_type == "quest" then
             local quest = nil
 
-            if addonTable.quest_f[id] then
-                quest = addonTable.quest_f[id]
-            elseif addonTable.quest_n[id] then
-                quest = addonTable.quest_n[id]
+            if at.quest_f[entry_id] then
+                quest = at.quest_f[entry_id]
+            elseif at.quest_n[entry_id] then
+                quest = at.quest_n[entry_id]
             end
 
             if quest then
@@ -113,8 +114,8 @@ local get_entry = function (type, id)
             end
         end
 
-        if addonTable[type] and addonTable[type][id] then
-            return addonTable[type][id]
+        if at[entry_type] and at[entry_type][entry_id] then
+            return at[entry_type][entry_id]
         end
     end
 
@@ -126,15 +127,15 @@ end
 local tooltip_item_id = false
 
 -- content_index: default is 2 (description)
-local add_entry_to_tooltip = function (tooltip, type, id, content_index)
+local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, content_index)
     if tooltip_item_id then
         return
     end
 
-    local entry = get_entry(type, id)
+    local entry = get_entry(entry_type, entry_id)
 
-    if not entry then -- todo: add config "Show debug info" and check it here, so player can choose to hide stuff like "item#1234" and see only existing translations
-        entry = { type .. "|cff999999#|r" .. id }
+    if not entry then -- todo: check if debug info should be shown
+        entry = { entry_type .. "|cff999999#|r" .. entry_id }
     end
 
     if entry then
@@ -151,8 +152,8 @@ local add_entry_to_tooltip = function (tooltip, type, id, content_index)
         end
     end
 
-    if type == "item" then
-        tooltip_item_id = id
+    if entry_type == "item" then
+        tooltip_item_id = entry_id
     end
 end
 
