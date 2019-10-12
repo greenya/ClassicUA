@@ -127,6 +127,8 @@ local get_entry = function (entry_type, entry_id)
                 if entry_ref then
                     -- todo: maybe add caching of the result table
                     return copy_table(copy_table({}, entry_ref), entry)
+                else
+                    return copy_table({ entry_type .. "|cff999999#|r" .. entry_id .. "|cff999999=>|r" .. entry.ref }, entry)
                 end
             end
 
