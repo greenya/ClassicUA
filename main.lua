@@ -1,11 +1,16 @@
 local _, addonTable = ...
 
--- [ debug ]
+-- [ utils ]
 
 local print_table = function (table, title)
     print(title .. " {")
     for k, v in pairs(table) do print("[" .. k .. "]=" .. tostring(v)) end
     print("} " .. title)
+end
+
+local copy_table = function (target, source)
+    for k, v in pairs(source) do target[k] = v end
+    return target
 end
 
 -- [ entries ]
@@ -115,7 +120,17 @@ local get_entry = function (entry_type, entry_id)
         end
 
         if at[entry_type] and at[entry_type][entry_id] then
-            return at[entry_type][entry_id]
+            local entry = at[entry_type][entry_id]
+
+            if entry_type == "spell" and entry.ref then
+                local entry_ref = at[entry_type][entry.ref]
+                if entry_ref then
+                    -- todo: maybe add caching of the result table
+                    return copy_table(copy_table({}, entry_ref), entry)
+                end
+            end
+
+            return entry
         end
     end
 
