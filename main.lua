@@ -84,7 +84,7 @@ local prepare_codes = function (name, race, class, is_male)
     at.codes = codes
 end
 
-local make_text = function (text)
+local make_quest_text = function (text)
     if not text then
         return nil
     end
@@ -113,7 +113,7 @@ local get_entry = function (entry_type, entry_id)
             if quest then
                 local result = {}
                 for i = 1, #quest do
-                    result[i] = make_text(quest[i])
+                    result[i] = make_quest_text(quest[i])
                 end
                 return result
             end
@@ -139,6 +139,29 @@ local get_entry = function (entry_type, entry_id)
     return false
 end
 
+local make_entry_text = function (text, tooltip)
+    if not text then
+        return nil
+    end
+
+    local separator = text:find("##")
+    if separator and tooltip then
+        local pat = text:sub(separator + 2):gsub("{(%d+)}", function (a) return "(%d+)" end) -- 2 is a length of separator ("##")
+        text = text:sub(1, separator - 1)
+
+        for i = 1, tooltip:NumLines() do
+            local t = getglobal(tooltip:GetName() .. "TextLeft" .. i):GetText()
+            local v = { t:match(pat) }
+            if v[1] then
+                text = text:gsub("{(%d+)}", function (a) return v[tonumber(a)] end)
+                break
+            end
+        end
+    end
+
+    return text
+end
+
 -- [ tooltips ]
 
 local tooltip_item_id = false
@@ -159,7 +182,7 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, content_in
         tooltip:AddLine(" ")
         tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
 
-        local content = entry[content_index or 2]
+        local content = make_entry_text(entry[content_index or 2], tooltip)
         if content then
             tooltip:AddLine(content, 1, 1, 1, true)
         end
