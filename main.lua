@@ -139,27 +139,46 @@ local get_entry = function (entry_type, entry_id)
     return false
 end
 
+local function esc(x) -- (c) https://stackoverflow.com/questions/9790688/escaping-strings-for-gsub
+    return x:gsub('%%', '%%%%')
+            :gsub('^%^', '%%^')
+            :gsub('%$$', '%%$')
+            :gsub('%(', '%%(')
+            :gsub('%)', '%%)')
+            :gsub('%.', '%%.')
+            :gsub('%[', '%%[')
+            :gsub('%]', '%%]')
+            :gsub('%*', '%%*')
+            :gsub('%+', '%%+')
+            :gsub('%-', '%%-')
+            :gsub('%?', '%%?')
+ end
+
 local make_entry_text = function (text, tooltip)
     if not text then
         return nil
     end
 
-    local separator = text:find("##")
-    if separator and tooltip then
-        local pat = text:sub(separator + 2):gsub("{(%d+)}", function (a) return "(%d+)" end) -- 2 is a length of separator ("##")
-        text = text:sub(1, separator - 1)
+    text = { strsplit("#", text) }
+    if #text == 1 then
+        return text[1]
+    end
 
-        for i = 1, tooltip:NumLines() do
-            local t = getglobal(tooltip:GetName() .. "TextLeft" .. i):GetText()
-            local v = { t:match(pat) }
-            if v[1] then
-                text = text:gsub("{(%d+)}", function (a) return v[tonumber(a)] end)
+    local values = {}
+
+    for i = 2, #text do
+        local p = esc(text[i]):gsub("{(%d+)}", function (a) return "(%d+)" end)
+        for j = 1, tooltip:NumLines() do
+            local t = getglobal(tooltip:GetName() .. "TextLeft" .. j):GetText()
+            local v = { t:match(p) }
+            if #v > 0 then
+                for k = 1, #v do values[#values + 1] = v[k] end
                 break
             end
         end
     end
 
-    return text
+    return text[1]:gsub("{(%d+)}", function (a) return values[tonumber(a)] end)
 end
 
 -- [ tooltips ]
