@@ -17,7 +17,7 @@ end
 
 local get_stats = function ()
     local stats = {}
-    for _, v in ipairs({ "quest_a", "quest_h", "quest_n", "book", "item", "spell", "npc" }) do
+    for _, v in ipairs({ "quest_a", "quest_h", "quest_n", "book", "item", "spell", "npc", "object" }) do
         stats[v] = 0
         for _, _ in pairs(addonTable[v]) do stats[v] = stats[v] + 1 end
     end
@@ -98,7 +98,10 @@ end
 
 local get_entry = function (entry_type, entry_id)
     local at = addonTable
-    entry_id = tonumber(entry_id)
+
+    if entry_type ~= "object" then
+        entry_id = tonumber(entry_id)
+    end
 
     if entry_type and entry_id then
         if entry_type == "quest" then
@@ -139,7 +142,7 @@ local get_entry = function (entry_type, entry_id)
     return false
 end
 
-local function esc(x) -- (c) https://stackoverflow.com/questions/9790688/escaping-strings-for-gsub
+local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-strings-for-gsub
     return x:gsub('%%', '%%%%')
             :gsub('^%^', '%%^')
             :gsub('%$$', '%%$')
@@ -183,11 +186,12 @@ end
 
 -- [ tooltips ]
 
-local tooltip_item_id = false
+local tooltip_entry_type = false
+local tooltip_entry_id = false
 
 -- content_index: default is 2 (description)
 local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, content_index)
-    if tooltip_item_id then
+    if tooltip_entry_type then
         return
     end
 
@@ -206,14 +210,13 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, content_in
             tooltip:AddLine(content, 1, 1, 1, true)
         end
 
-        if tooltip:IsShown() then -- if tooltip already shown, we re-show it to recalculate its backdrop
+        if tooltip:IsShown() then
             tooltip:Show()
         end
     end
 
-    if entry_type == "item" then
-        tooltip_item_id = entry_id
-    end
+    tooltip_entry_type = entry_type
+    tooltip_entry_id = entry_id
 end
 
 local talent_tree_next_rank_text = "Наступний ранг"
@@ -255,9 +258,12 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, 
         tooltip:AddLine(next_rank_desc, 1, 1, 1, true)
     end
 
-    if tooltip:IsShown() then -- if tooltip already shown, we re-show it to recalculate its backdrop
+    if tooltip:IsShown() then
         tooltip:Show()
     end
+
+    tooltip_entry_type = "spell"
+    tooltip_entry_id = talent[rank_to_show]
 end
 
 local tooltip_set_item = function (self)
@@ -289,7 +295,8 @@ local tooltip_set_unit = function (self)
 end
 
 local tooltip_cleared = function (self)
-    tooltip_item_id = false
+    tooltip_entry_type = false
+    tooltip_entry_id = false
 end
 
 for _, tt in pairs { GameTooltip, ItemRefTooltip } do
@@ -325,6 +332,27 @@ hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
     local id = select(10, UnitAura(unit, index, "HARMFUL"))
     if id then
         add_entry_to_tooltip(self, "spell", id, 3)
+    end
+end)
+
+GameTooltip:HookScript("OnUpdate", function (self)
+    local name, unit = self:GetUnit()
+    if name == nil and unit == nil and not tooltip_entry_type then
+        local text = GameTooltipTextLeft1:GetText()
+        if text ~= tooltip_entry_id then
+            local entry = get_entry("object", text)
+            if entry then
+                if self:NumLines() > 1 then self:AddLine(" ") end
+                self:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
+
+                if self:IsShown() then
+                    self:Show()
+                end
+            end
+
+            tooltip_entry_type = "object"
+            tooltip_entry_id = text
+        end
     end
 end)
 
@@ -627,7 +655,8 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
             .. s.book .. " books, "
             .. s.item .. " items, "
             .. s.spell .. " spells, "
-            .. s.npc .. " NPCs"
+            .. s.npc .. " NPCs, "
+            .. s.object .. " objects"
         )
         self:UnregisterEvent("ADDON_LOADED")
     elseif event == "PLAYER_LOGIN" then
@@ -641,7 +670,9 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_quests(faction == "Alliance")
         prepare_codes(name, race, class, sex == 2) -- 2 for male
     elseif event == "ITEM_TEXT_BEGIN" then
-        book_item_id = tooltip_item_id
+        if tooltip_entry_type == "item" then
+            book_item_id = tooltip_entry_id
+        end
     elseif event == "ITEM_TEXT_READY" then
         show_book()
     elseif event == "ITEM_TEXT_CLOSED" then
