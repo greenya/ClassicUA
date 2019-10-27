@@ -2,7 +2,7 @@ local _, addonTable = ...
 addonTable.object = { -- [id] = { title }
 -- todo: sort the list of objects
 [ "Mailbox" ] = { "Поштова скринька" },
-[ "Forge" ] = { "Ковадло" },
+[ "Anvil" ] = { "Ковадло" },
 
 [ "Arthas' Tears" ] = { "Сльози Артаса" },
 [ "Beached Sea Creature" ] = { "Викинута на Берег Морська Істота" },
