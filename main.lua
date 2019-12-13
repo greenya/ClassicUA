@@ -125,7 +125,7 @@ local get_entry = function (entry_type, entry_id)
         if at[entry_type] and at[entry_type][entry_id] then
             local entry = at[entry_type][entry_id]
 
-            if entry_type == "spell" and entry.ref then
+            if entry.ref and (entry_type == "spell" or entry_type == "item") then
                 local entry_ref = at[entry_type][entry.ref]
                 if entry_ref then
                     -- todo: maybe add caching of the result table
