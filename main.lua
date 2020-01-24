@@ -13,6 +13,10 @@ local copy_table = function (target, source)
     return target
 end
 
+local upper_first = function (text)
+    return text:sub(1, 2):upper() .. text:sub(3) -- "2" and "3" because of unicode
+end
+
 -- [ entries ]
 
 local get_stats = function ()
@@ -51,9 +55,10 @@ local prepare_codes = function (name, race, class, is_male)
     -- race
 
     for _, c in ipairs(cases) do
-        codes["{раса:" .. c .. "}"] = at.race[race][c][sex]
-        codes["{Раса:" .. c .. "}"] = at.race[race][c][sex]:gsub("^%l", string.upper)
-        codes["{РАСА:" .. c .. "}"] = string.upper(at.race[race][c][sex])
+        local t = at.race[race][c][sex]
+        codes["{раса:" .. c .. "}"] = t
+        codes["{Раса:" .. c .. "}"] = upper_first(t)
+        codes["{РАСА:" .. c .. "}"] = string.upper(t)
         if c == "н" then -- "н" is default grammatical case
             codes["{раса}"] = codes["{раса:н}"]
             codes["{Раса}"] = codes["{Раса:н}"]
@@ -64,9 +69,10 @@ local prepare_codes = function (name, race, class, is_male)
     -- class
 
     for _, c in ipairs(cases) do
-        codes["{клас:" .. c .. "}"] = at.class[class][c][sex]
-        codes["{Клас:" .. c .. "}"] = at.class[class][c][sex]:gsub("^%l", string.upper)
-        codes["{КЛАС:" .. c .. "}"] = string.upper(at.class[class][c][sex])
+        local t = at.class[class][c][sex]
+        codes["{клас:" .. c .. "}"] = t
+        codes["{Клас:" .. c .. "}"] = upper_first(t)
+        codes["{КЛАС:" .. c .. "}"] = string.upper(t)
         if c == "н" then -- "н" is default grammatical case
             codes["{клас}"] = codes["{клас:н}"]
             codes["{Клас}"] = codes["{Клас:н}"]
