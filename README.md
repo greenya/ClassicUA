@@ -3,7 +3,7 @@
 
 ## Переклад
 
-Перекладені деякі квести та підказки (предмети, спели, нпц, об'єкти). Якщо ви бажаєте долучитися до перекладу -- заходьте на наш [Discord сервер](https://discord.gg/VJScWRR).
+Перекладені деякі квести та підказки (предмети, спели, нпц, об'єкти). Якщо ви бажаєте долучитися до перекладу -- заходьте на наш [Discord сервер](https://discord.gg/u4vjQ3u).
 
 ## Встановлення
 
@@ -34,7 +34,6 @@
 ## Посилання
 
 * [Проект на CurseForge](https://www.curseforge.com/wow/addons/classicua)
+* [Проект на Crowdin](https://crowdin.com/project/classicua)
 * [Проект на GitHub](https://github.com/greenya/ClassicUA)
-* [Проблеми, баги, пропозиції](https://github.com/greenya/ClassicUA/issues)
-* [Facebook ком'юніті](https://www.facebook.com/classicwowua)
-* [Discord сервер](https://discord.gg/VJScWRR)
+* [Discord сервер](https://discord.gg/u4vjQ3u)
