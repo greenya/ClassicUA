@@ -511,6 +511,11 @@ QuestFrameDetailPanel:HookScript("OnShow", function (event)
     end
 end)
 
+QuestFrameDetailPanel:HookScript("OnHide", function (event)
+    local frame = get_quest_frame()
+    frame:Hide()
+end)
+
 QuestFrameProgressPanel:HookScript("OnShow", function (event)
     local frame = get_quest_frame()
     local entry = get_entry("quest", GetQuestID())
@@ -522,6 +527,11 @@ QuestFrameProgressPanel:HookScript("OnShow", function (event)
     end
 end)
 
+QuestFrameProgressPanel:HookScript("OnHide", function (event)
+    local frame = get_quest_frame()
+    frame:Hide()
+end)
+
 QuestFrameRewardPanel:HookScript("OnShow", function (event)
     local frame = get_quest_frame()
     local entry = get_entry("quest", GetQuestID())
@@ -531,6 +541,11 @@ QuestFrameRewardPanel:HookScript("OnShow", function (event)
     else
         frame:Hide()
     end
+end)
+
+QuestFrameRewardPanel:HookScript("OnHide", function (event)
+    local frame = get_quest_frame()
+    frame:Hide()
 end)
 
 local questlog_frame = nil
