@@ -90,7 +90,7 @@ local prepare_codes = function (name, race, class, is_male)
     at.codes = codes
 end
 
-local make_quest_text = function (text)
+local make_text = function (text)
     if not text then
         return nil
     end
@@ -100,6 +100,18 @@ local make_quest_text = function (text)
     end
 
     return text
+end
+
+local make_text_array = function (array)
+    if array then
+        local result = {}
+        for i = 1, #array do
+            result[i] = make_text(array[i])
+        end
+        return result
+    else
+        return nil
+    end
 end
 
 local get_entry = function (entry_type, entry_id)
@@ -120,11 +132,14 @@ local get_entry = function (entry_type, entry_id)
             end
 
             if quest then
-                local result = {}
-                for i = 1, #quest do
-                    result[i] = make_quest_text(quest[i])
-                end
-                return result
+                return make_text_array(quest)
+            end
+        end
+
+        if entry_type == "book" then
+            local book = at.book[entry_id]
+            if book then
+                return make_text_array(book)
             end
         end
 
