@@ -224,7 +224,7 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, content_in
 
     if entry then
         tooltip:AddLine(" ")
-        tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
+        tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. entry[1], 1, 1, 1)
 
         local content = make_entry_text(entry[content_index or 2], tooltip)
         if content then
@@ -260,7 +260,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, 
     end
 
     tooltip:AddLine(" ")
-    tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
+    tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. entry[1], 1, 1, 1)
 
     if entry[2] then
         tooltip:AddLine(entry[2], 1, 1, 1, true)
@@ -364,7 +364,7 @@ GameTooltip:HookScript("OnUpdate", function (self)
             local entry = get_entry("object", text)
             if entry then
                 if self:NumLines() > 1 then self:AddLine(" ") end
-                self:AddLine("|TInterface\\AddOns\\ClassicUA\\ua:0|t " .. entry[1], 1, 1, 1)
+                self:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. entry[1], 1, 1, 1)
 
                 if self:IsShown() then
                     self:Show()
@@ -452,7 +452,7 @@ end
 
 local quest_objectives_title = "Доручення"
 local quest_description_title = "Опис"
-local quest_title_font = "Fonts\\FRIZQT___CYR.TTF" -- todo: get nice custom font for quest title; path should be like "Interface\\AddOns\\ClassicUA\\font.ttf"
+local quest_title_font = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
 local quest_text_font = "Fonts\\FRIZQT___CYR.TTF"
 
 local quest_frame = nil
@@ -684,7 +684,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
         local s = get_stats()
         local v = GetAddOnMetadata("ClassicUA", "Version")
-        print("|TInterface\\AddOns\\ClassicUA\\ua:0|t ClassicUA v" .. v .. " loaded: "
+        print("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t ClassicUA v" .. v .. " loaded: "
             .. s.quest_a .. " Alliance quests, "
             .. s.quest_h .. " Horde quests, "
             .. s.quest_n .. " neutral quests, "
