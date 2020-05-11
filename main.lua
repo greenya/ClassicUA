@@ -453,7 +453,7 @@ end
 local quest_objectives_title = "Доручення"
 local quest_description_title = "Опис"
 local quest_title_font = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
-local quest_text_font = "Fonts\\FRIZQT___CYR.TTF"
+local quest_text_font = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
 
 local quest_frame = nil
 local get_quest_frame = function ()
