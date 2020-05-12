@@ -615,7 +615,7 @@ end)
 -- [[ books ]]
 
 local book_item_id = false
-local book_text_font = "Fonts\\FRIZQT___CYR.TTF"
+local book_text_font = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
 
 local book_frame = nil
 local get_book_frame = function ()
