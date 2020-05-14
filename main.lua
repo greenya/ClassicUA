@@ -627,7 +627,7 @@ end)
 -- [[ books ]]
 
 local book_item_id = false
-local book_text_font = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
+local book_text_font = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
 
 local book_frame = nil
 local get_book_frame = function ()
@@ -645,7 +645,7 @@ local get_book_frame = function ()
     setup_frame_background_and_border(frame)
 
     setup_frame_scrollbar_and_content(frame, { -- todo: take book font size from config
-        text = { book_text_font, 13 }
+        text = { book_text_font, 15 }
     })
 
     frame:Show()
