@@ -21,7 +21,7 @@ end
 
 local get_stats = function ()
     local stats = {}
-    for _, v in ipairs({ "quest_a", "quest_h", "quest_n", "book", "item", "spell", "npc", "object" }) do
+    for _, v in ipairs({ "quest_a", "quest_h", "quest_n", "book", "item", "spell", "npc", "object", "zone" }) do
         stats[v] = 0
         for _, _ in pairs(addonTable[v]) do stats[v] = stats[v] + 1 end
     end
@@ -685,14 +685,13 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         local s = get_stats()
         local v = GetAddOnMetadata("ClassicUA", "Version")
         print("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t ClassicUA v" .. v .. " loaded: "
-            .. s.quest_a .. " Alliance quests, "
-            .. s.quest_h .. " Horde quests, "
-            .. s.quest_n .. " neutral quests, "
+            .. s.quest_a + s.quest_h + s.quest_n .. " quests, "
             .. s.book .. " books, "
             .. s.item .. " items, "
             .. s.spell .. " spells, "
             .. s.npc .. " NPCs, "
-            .. s.object .. " objects"
+            .. s.object .. " objects, "
+            .. s.zone .. " zones"
         )
         self:UnregisterEvent("ADDON_LOADED")
     elseif event == "PLAYER_LOGIN" then
