@@ -17,6 +17,21 @@ local upper_first = function (text)
     return text:sub(1, 2):upper() .. text:sub(3) -- "2" and "3" because of unicode
 end
 
+local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-strings-for-gsub
+    return x:gsub('%%', '%%%%')
+            :gsub('^%^', '%%^')
+            :gsub('%$$', '%%$')
+            :gsub('%(', '%%(')
+            :gsub('%)', '%%)')
+            :gsub('%.', '%%.')
+            :gsub('%[', '%%[')
+            :gsub('%]', '%%]')
+            :gsub('%*', '%%*')
+            :gsub('%+', '%%+')
+            :gsub('%-', '%%-')
+            :gsub('%?', '%%?')
+end
+
 -- [ entries ]
 
 local get_stats = function ()
@@ -125,7 +140,7 @@ local get_entry = function (entry_type, entry_id)
         if entry_type == "object" then
             local object = at.object[entry_id]
             if object then
-                return object[1] -- todo: make object value to be string (not array)
+                return object
             end
 
             local zone = at.zone[entry_id]
@@ -174,21 +189,6 @@ local get_entry = function (entry_type, entry_id)
 
     return false
 end
-
-local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-strings-for-gsub
-    return x:gsub('%%', '%%%%')
-            :gsub('^%^', '%%^')
-            :gsub('%$$', '%%$')
-            :gsub('%(', '%%(')
-            :gsub('%)', '%%)')
-            :gsub('%.', '%%.')
-            :gsub('%[', '%%[')
-            :gsub('%]', '%%]')
-            :gsub('%*', '%%*')
-            :gsub('%+', '%%+')
-            :gsub('%-', '%%-')
-            :gsub('%?', '%%?')
- end
 
 local make_entry_text = function (text, tooltip)
     if not text then
