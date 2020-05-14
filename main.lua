@@ -122,6 +122,18 @@ local get_entry = function (entry_type, entry_id)
     end
 
     if entry_type and entry_id then
+        if entry_type == "object" then
+            local object = at.object[entry_id]
+            if object then
+                return object[1] -- todo: make object value to be string (not array)
+            end
+
+            local zone = at.zone[entry_id]
+            if zone then
+                return zone
+            end
+        end
+
         if entry_type == "quest" then
             local quest = nil
 
@@ -364,7 +376,7 @@ GameTooltip:HookScript("OnUpdate", function (self)
             local entry = get_entry("object", text)
             if entry then
                 if self:NumLines() > 1 then self:AddLine(" ") end
-                self:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. entry[1], 1, 1, 1)
+                self:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. entry, 1, 1, 1)
 
                 if self:IsShown() then
                     self:Show()
