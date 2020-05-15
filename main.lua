@@ -48,6 +48,12 @@ local prepare_talent_tree = function (class)
     addonTable.talent_tree = addonTable.talent_tree[class]
 end
 
+local prepare_zones = function ()
+    local z = addonTable.zone
+    -- known aliases
+    z["Stormwind City"] = z["Stormwind"]
+end
+
 local prepare_quests = function (is_alliance)
     -- init faction quests reference
     addonTable.quest_f = is_alliance and addonTable.quest_a or addonTable.quest_h
@@ -132,22 +138,8 @@ end
 local get_entry = function (entry_type, entry_id)
     local at = addonTable
 
-    if entry_type ~= "object" then
-        entry_id = tonumber(entry_id)
-    end
-
     if entry_type and entry_id then
-        if entry_type == "object" then
-            local object = at.object[entry_id]
-            if object then
-                return object
-            end
-
-            local zone = at.zone[entry_id]
-            if zone then
-                return zone
-            end
-        end
+        entry_id = tonumber(entry_id)
 
         if entry_type == "quest" then
             local quest = nil
@@ -184,6 +176,41 @@ local get_entry = function (entry_type, entry_id)
             end
 
             return entry
+        end
+    end
+
+    return false
+end
+
+local get_entry_text = function (entry_key)
+    local at = addonTable
+
+    if entry_key then
+        for i = 1, 2 do
+            if i == 2 then
+                -- if failed to find original entry_key, try one more time with/out starting "The "
+                if entry_key:find("^The ") then
+                    -- remove starting "The "
+                    if #entry_key > 5 then
+                        entry_key = entry_key:sub(5)
+                    else
+                        break
+                    end
+                else
+                    -- add starting "The "
+                    entry_key = "The " .. entry_key
+                end
+            end
+
+            local object = at.object[entry_key]
+            if object then
+                return object
+            end
+
+            local zone = at.zone[entry_key]
+            if zone then
+                return zone
+            end
         end
     end
 
@@ -373,17 +400,17 @@ GameTooltip:HookScript("OnUpdate", function (self)
     if name == nil and unit == nil and not tooltip_entry_type then
         local text = GameTooltipTextLeft1:GetText()
         if text ~= tooltip_entry_id then
-            local entry = get_entry("object", text)
+            local entry = get_entry_text(text)
             if entry then
                 if self:NumLines() > 1 then self:AddLine(" ") end
-                self:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. entry, 1, 1, 1)
+                self:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. upper_first(entry), 1, 1, 1)
 
                 if self:IsShown() then
                     self:Show()
                 end
             end
 
-            tooltip_entry_type = "object"
+            tooltip_entry_type = "text"
             tooltip_entry_id = text
         end
     end
@@ -682,6 +709,51 @@ local hide_book = function ()
     book_item_id = false
 end
 
+-- [[ zone text and minimap ]]
+
+local known_pvp_zone_types = {
+    ["Alliance Territory"] = "Територія Альянсу",
+    ["Horde Territory"] = "Територія Орди",
+    ["Contested Territory"] = "Спірна територія",
+    ["(Sanctuary)"] = "(Прихисток)",
+    ["(Combat Zone)"] = "(Бойова зона)",
+    ["PvP Area"] = "PvP зона",
+}
+
+local get_pvp_zone_type = function (key)
+    return known_pvp_zone_types[key] and known_pvp_zone_types[key] or nil
+end
+
+local zone_text_lookup = {
+    -- { FontString object, lookup function }
+    { ZoneTextString, get_entry_text },
+    { SubZoneTextString, get_entry_text },
+    { MinimapZoneText, get_entry_text },
+    { PVPInfoTextString, get_pvp_zone_type },
+    { PVPArenaTextString, get_pvp_zone_type },
+}
+
+local update_zone_text = function ()
+    local text, found
+    for _, lookup in ipairs(zone_text_lookup) do
+        text = lookup[1]:GetText()
+        if text then
+            local found = lookup[2](text)
+            if found then
+                lookup[1]:SetText(upper_first(found))
+            end
+        end
+    end
+end
+
+local prepare_zone_text = function ()
+    for _, lookup in ipairs(zone_text_lookup) do
+        local _, size, style = lookup[1]:GetFont()
+        lookup[1]:SetFont("Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf", size, style)
+    end
+    update_zone_text()
+end
+
 -- [[ events ]]
 
 local event_frame = CreateFrame("frame")
@@ -691,6 +763,9 @@ event_frame:RegisterEvent("PLAYER_LOGIN")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_READY")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
+event_frame:RegisterEvent("ZONE_CHANGED")
+event_frame:RegisterEvent("ZONE_CHANGED_INDOORS")
+event_frame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
@@ -716,6 +791,8 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_talent_tree(class)
         prepare_quests(faction == "Alliance")
         prepare_codes(name, race, class, sex == 2) -- 2 for male
+        prepare_zones()
+        prepare_zone_text()
     elseif event == "ITEM_TEXT_BEGIN" then
         if tooltip_entry_type == "item" then
             book_item_id = tooltip_entry_id
@@ -724,5 +801,9 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         show_book()
     elseif event == "ITEM_TEXT_CLOSED" then
         hide_book()
+    elseif event == "ZONE_CHANGED"
+        or event == "ZONE_CHANGED_INDOORS"
+        or event == "ZONE_CHANGED_NEW_AREA" then
+        update_zone_text()
     end
 end)
