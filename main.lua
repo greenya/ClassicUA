@@ -217,7 +217,7 @@ local get_entry_text = function (entry_key)
     return false
 end
 
-local make_entry_text = function (text, tooltip)
+local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     if not text then
         return nil
     end
@@ -227,16 +227,24 @@ local make_entry_text = function (text, tooltip)
         return text[1]
     end
 
+    if not tooltip_matches_to_skip then
+        tooltip_matches_to_skip = 0
+    end
+
     local values = {}
 
     for i = 2, #text do
         local p = esc(text[i]):gsub("{(%d+)}", function (a) return "(%d+)" end)
+        local match_number = 0
         for j = 1, tooltip:NumLines() do
             local t = getglobal(tooltip:GetName() .. "TextLeft" .. j):GetText()
             local v = { t:match(p) }
             if #v > 0 then
-                for k = 1, #v do values[#values + 1] = v[k] end
-                break
+                match_number = match_number + 1
+                if match_number > tooltip_matches_to_skip then
+                    for k = 1, #v do values[#values + 1] = v[k] end
+                    break
+                end
             end
         end
     end
@@ -302,7 +310,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, 
     tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. entry[1], 1, 1, 1)
 
     if entry[2] then
-        tooltip:AddLine(entry[2], 1, 1, 1, true)
+        tooltip:AddLine(make_entry_text(entry[2], tooltip), 1, 1, 1, true)
     end
 
     if rank_to_show ~= next_rank_to_show then
@@ -310,7 +318,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, 
 
         local entry = get_entry("spell", talent[next_rank_to_show])
         if entry and entry[2] then
-            next_rank_desc = entry[2]
+            next_rank_desc = make_entry_text(entry[2], tooltip, 1)
         end
 
         tooltip:AddLine(" ")
