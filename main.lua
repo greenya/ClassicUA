@@ -252,6 +252,16 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     return text[1]:gsub("{(%d+)}", function (a) return values[tonumber(a)] end)
 end
 
+local get_text = function (entry_key)
+    local at = addonTable
+
+    if entry_key and at.text[entry_key] then
+        return at.text[entry_key]
+    else
+        return entry_key
+    end
+end
+
 -- [ tooltips ]
 
 local tooltip_entry_type = false
@@ -287,7 +297,6 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, content_in
     tooltip_entry_id = entry_id
 end
 
-local talent_tree_next_rank_text = "Наступний ранг"
 local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, rank, max_rank)
     local talent = addonTable.talent_tree[tab_index] and addonTable.talent_tree[tab_index][talent_index] or false
     if not talent then -- this can never be true (as we have full Classic talent tree)
@@ -322,7 +331,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, 
         end
 
         tooltip:AddLine(" ")
-        tooltip:AddLine(talent_tree_next_rank_text .. ":", 1, 1, 1)
+        tooltip:AddLine(get_text("Next rank") .. ":", 1, 1, 1)
         tooltip:AddLine(next_rank_desc, 1, 1, 1, true)
     end
 
@@ -497,8 +506,6 @@ end
 
 -- [ quests ]
 
-local quest_objectives_title = "Доручення"
-local quest_description_title = "Опис"
 local quest_title_font = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
 local quest_text_font = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
 
@@ -566,7 +573,7 @@ QuestFrameDetailPanel:HookScript("OnShow", function (event)
     local frame = get_quest_frame()
     local entry = get_entry("quest", GetQuestID())
     if entry then
-        set_quest_content(frame, entry[1], entry[2], quest_objectives_title, entry[3])
+        set_quest_content(frame, entry[1], entry[2], get_text("Quest Objectives"), entry[3])
         frame:Show()
     else
         frame:Hide()
@@ -649,7 +656,7 @@ hooksecurefunc("SelectQuestLogEntry", function ()
         local id = select(8, GetQuestLogTitle(selection))
         local entry = get_entry("quest", id)
         if entry then
-            set_quest_content(frame, entry[1], entry[3], quest_description_title, entry[2])
+            set_quest_content(frame, entry[1], entry[3], get_text("Description"), entry[2])
             frame:Show()
         else
             frame:Hide()
@@ -719,26 +726,13 @@ end
 
 -- [[ zone text and minimap ]]
 
-local known_pvp_zone_types = {
-    ["Alliance Territory"] = "Територія Альянсу",
-    ["Horde Territory"] = "Територія Орди",
-    ["Contested Territory"] = "Спірна територія",
-    ["(Sanctuary)"] = "(Прихисток)",
-    ["(Combat Zone)"] = "(Бойова зона)",
-    ["PvP Area"] = "PvP зона",
-}
-
-local get_pvp_zone_type = function (key)
-    return known_pvp_zone_types[key] and known_pvp_zone_types[key] or nil
-end
-
 local zone_text_lookup = {
     -- { FontString object, lookup function }
     { ZoneTextString, get_entry_text },
     { SubZoneTextString, get_entry_text },
     { MinimapZoneText, get_entry_text },
-    { PVPInfoTextString, get_pvp_zone_type },
-    { PVPArenaTextString, get_pvp_zone_type },
+    { PVPInfoTextString, get_text },
+    { PVPArenaTextString, get_text },
 }
 
 local update_zone_text = function ()
