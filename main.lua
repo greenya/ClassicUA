@@ -756,6 +756,52 @@ local prepare_zone_text = function ()
     update_zone_text()
 end
 
+-- [[ world map ]]
+
+local world_map_original_set_map_id = WorldMapFrame.SetMapID
+local world_map_dds = { WorldMapContinentDropDown, WorldMapZoneDropDown }
+
+WorldMapFrame.SetMapID = function (self, mapID)
+    world_map_original_set_map_id(self, mapID)
+
+    for _, v in ipairs(world_map_dds) do
+        local text = v.Text:GetText()
+        local found = get_entry_text(text)
+        if found then
+            v.Text:SetText(upper_first(found))
+        end
+    end
+end
+
+local world_map_dropdown_button_click = function (self)
+    local dd = DropDownList1
+    if dd:IsShown() then
+        local texts = {}
+        local buttons = {}
+
+        for i = 1, dd.numButtons do
+            local button = _G["DropDownList1Button" .. i]
+            local text = button:GetText()
+            local found = get_entry_text(text)
+            if found then
+                local t = upper_first(found)
+                texts[#texts + 1] = t
+                buttons[t] = button
+                button:SetText(t)
+            end
+        end
+
+        sort(texts)
+        local h = DropDownList1Button1:GetHeight()
+        for i = 1, #texts do
+            buttons[texts[i]]:SetPoint("TOPLEFT", 16, - i * h)
+        end
+    end
+end
+
+WorldMapContinentDropDownButton:HookScript("OnClick", world_map_dropdown_button_click)
+WorldMapZoneDropDownButton:HookScript("OnClick", world_map_dropdown_button_click)
+
 -- [[ events ]]
 
 local event_frame = CreateFrame("frame")
