@@ -50,8 +50,82 @@ end
 
 local prepare_zones = function ()
     local z = addonTable.zone
+
     -- known aliases
+    z["Crossroads"] = z["The Crossroads"]
     z["Stormwind City"] = z["Stormwind"]
+    z["Stranglethorn"] = z["Stranglethorn Vale"]
+
+    -- known taxi points
+    local known_taxi_points = {
+        "Aerie Peak, The Hinterlands",
+        "Astranaar, Ashenvale",
+        "Auberdine, Darkshore",
+        "Bloodvenom Post, Felwood",
+        "Booty Bay, Stranglethorn",
+        "Brackenwall Village, Dustwallow Marsh",
+        "Camp Mojache, Feralas",
+        "Camp Taurajo, The Barrens",
+        "Cenarion Hold, Silithus",
+        "Chillwind Camp, Western Plaguelands",
+        "Crossroads, The Barrens",
+        "Darkshire, Duskwood",
+        "Everlook, Winterspring",
+        "Feathermoon, Feralas",
+        "Flame Crest, Burning Steppes",
+        "Freewind Post, Thousand Needles",
+        "Gadgetzan, Tanaris",
+        "Grom'gol, Stranglethorn",
+        "Hammerfall, Arathi",
+        "Ironforge, Dun Morogh",
+        "Kargath, Badlands",
+        "Lakeshire, Redridge",
+        "Light's Hope Chapel, Eastern Plaguelands",
+        "Marshal's Refuge, Un'Goro Crater",
+        "Menethil Harbor, Wetlands",
+        "Moonglade",
+        "Morgan's Vigil, Burning Steppes",
+        "Nethergarde Keep, Blasted Lands",
+        "Nijel's Point, Desolace",
+        "Orgrimmar, Durotar",
+        "Ratchet, The Barrens",
+        "Refuge Pointe, Arathi",
+        "Revantusk Village, The Hinterlands",
+        "Rut'theran Village, Teldrassil",
+        "Sentinel Hill, Westfall",
+        "Shadowprey Village, Desolace",
+        "Southshore, Hillsbrad",
+        "Splintertree Post, Ashenvale",
+        "Stonard, Swamp of Sorrows",
+        "Stonetalon Peak, Stonetalon Mountains",
+        "Stormwind, Elwynn",
+        "Sun Rock Retreat, Stonetalon Mountains",
+        "Talonbranch Glade, Felwood",
+        "Talrendis Point, Azshara",
+        "Tarren Mill, Hillsbrad",
+        "Thalanaar, Feralas",
+        "The Sepulcher, Silverpine Forest",
+        "Thelsamar, Loch Modan",
+        "Theramore, Dustwallow Marsh",
+        "Thorium Point, Searing Gorge",
+        "Thunder Bluff, Mulgore",
+        "Undercity, Tirisfal",
+        "Valormok, Azshara",
+        "Zoram'gar Outpost, Ashenvale",
+    }
+
+    for _, v in ipairs(known_taxi_points) do
+        local loc, zone = strsplit(",", v)
+        if loc and zone then
+            loc = strtrim(loc)
+            zone = strtrim(zone)
+            if z[loc] and z[zone] then
+                z[v] = z[loc] .. ", " .. z[zone]
+            else
+                print("[!] ClassicUA: Failed to prepare taxi zone \"" .. v .. "\"")
+            end
+        end
+    end
 end
 
 local prepare_quests = function (is_alliance)
