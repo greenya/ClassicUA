@@ -53,6 +53,7 @@ local prepare_zones = function ()
 
     -- known aliases
     z["Crossroads"] = z["The Crossroads"]
+    z["Crusader's Outpost"] = z["Crusader Outpost"]
     z["Stormwind City"] = z["Stormwind"]
     z["Stranglethorn"] = z["Stranglethorn Vale"]
 
@@ -256,6 +257,7 @@ local get_entry = function (entry_type, entry_id)
     return false
 end
 
+-- todo: add another loop to try different "'s", e.g. "XXX's" and "XXXs'" are considered to be equal
 local get_entry_text = function (entry_key)
     local at = addonTable
 
@@ -876,6 +878,27 @@ end
 WorldMapContinentDropDownButton:HookScript("OnClick", world_map_dropdown_button_click)
 WorldMapZoneDropDownButton:HookScript("OnClick", world_map_dropdown_button_click)
 
+local world_map_area_label_update = function (self)
+    local text = self.Name:GetText()
+    if text then
+        local found = get_entry_text(text)
+        if found then
+            self.Name:SetText(upper_first(found))
+        end
+    end
+end
+
+local prepare_world_map = function ()
+    for provider, _ in pairs(WorldMapFrame.dataProviders) do
+        if provider.setAreaLabelCallback and provider.Label and provider.Label.Name then
+            local _, size, style = provider.Label.Name:GetFont()
+            provider.Label.Name:SetFont("Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf", size, style)
+            provider.Label:HookScript("OnUpdate", world_map_area_label_update)
+            break
+        end
+    end
+end
+
 -- [[ events ]]
 
 local event_frame = CreateFrame("frame")
@@ -915,6 +938,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_codes(name, race, class, sex == 2) -- 2 for male
         prepare_zones()
         prepare_zone_text()
+        prepare_world_map()
     elseif event == "ITEM_TEXT_BEGIN" then
         if tooltip_entry_type == "item" then
             book_item_id = tooltip_entry_id
