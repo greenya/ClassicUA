@@ -357,11 +357,11 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, content_in
 
     if entry then
         tooltip:AddLine(" ")
-        tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. entry[1], 1, 1, 1)
+        tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. upper_first(entry[1]), 1, 1, 1)
 
         local content = make_entry_text(entry[content_index or 2], tooltip)
         if content then
-            tooltip:AddLine(content, 1, 1, 1, true)
+            tooltip:AddLine(upper_first(content), 1, 1, 1, true)
         end
 
         if tooltip:IsShown() then
