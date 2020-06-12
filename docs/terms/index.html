@@ -20,6 +20,7 @@
         crossorigin="anonymous"></script>
 
     <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;600&display=swap"
         rel="stylesheet">
 
@@ -174,22 +175,34 @@
                             <div class="header p-3">
                                 <div class="input-group px-1">
                                     <div class="input-group-prepend">
-                                        <button class="btn btn-outline-secondary" type="button"
+                                        <button class="btn btn-outline-secondary d-flex" type="button"
                                             :class="{ 'active': !filterDropdownTagsSortAbc }"
-                                            @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc">Кількість</button>
-                                        <button class="btn btn-outline-secondary" type="button"
+                                            @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc"
+                                            title="Сортувати за кількістю термінів">
+                                            <i class="material-icons">filter_list</i>
+                                        </button>
+                                        <button class="btn btn-outline-secondary d-flex" type="button"
                                             :class="{ 'active': filterDropdownTagsSortAbc }"
-                                            @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc">Абетка</button>
+                                            @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc"
+                                            title="Сортувати за абеткою">
+                                            <i class="material-icons">sort_by_alpha</i>
+                                        </button>
                                     </div>
                                     <input v-model.trim="filterDropdownTagsText" class="form-control form-control-sm"
                                         type="text" placeholder="Шукати...">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button"
+                                        <button class="btn btn-outline-secondary d-flex" type="button"
                                             :class="{ 'active': !filterTagsMatchAll }"
-                                            @click.prevent.stop="filterTagsMatchAll = !filterTagsMatchAll">Одна</button>
-                                        <button class="btn btn-outline-secondary" type="button"
+                                            @click.prevent.stop="filterTagsMatchAll = !filterTagsMatchAll"
+                                            title="Наявність однієї мітки">
+                                            <i class="material-icons">done</i>
+                                        </button>
+                                        <button class="btn btn-outline-secondary d-flex" type="button"
                                             :class="{ 'active': filterTagsMatchAll }"
-                                            @click.prevent.stop="filterTagsMatchAll = !filterTagsMatchAll">Всі</button>
+                                            @click.prevent.stop="filterTagsMatchAll = !filterTagsMatchAll"
+                                            title="Наявність всіх міток одночасно">
+                                            <i class="material-icons">done_all</i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
