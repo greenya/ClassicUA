@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="icon" href="logo.png">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -52,6 +54,22 @@
             font-size: 32px;
         }
 
+        .logo-button {
+            margin-right: 16px;
+            padding: 0;
+            border: 0;
+        }
+
+        .logo-button img {
+            height: 40px;
+            width: auto;
+            border-radius: 20px;
+        }
+
+        .term-table-container {
+            padding-top: 64px;
+        }
+
         .term-text,
         .filter-bar input {
             font-family: 'Open Sans Condensed', sans-serif;
@@ -76,24 +94,6 @@
         .filter-bar,
         .filter-text {
             position: relative;
-        }
-
-        .filter-term-count {
-            position: absolute;
-            right: 29px;
-            top: 0;
-            margin: 6px 0;
-            padding: .25em .5em;
-            display: flex;
-            align-items: center;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            transform: translateY(0);
-            transition: transform .2s ease-in-out;
-        }
-
-        .filter-term-count.show {
-            transform: translateY(-105%);
         }
 
         .filter-term-bar {
@@ -122,22 +122,25 @@
             margin: 3px 4px !important;
         }
 
-        @media (max-width: 575px) {
-            .term-table-container {
-                padding: 0;
-            }
-
-            .term-table,
-            .term-table td {
-                border: 0 !important;
-            }
-
+        @media (max-width: 767px) {
             .term-text {
                 font-size: 18px;
             }
 
             .term-tag {
                 font-size: 14px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .term-table-container {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .term-table,
+            .term-table td {
+                border: 0 !important;
             }
         }
     </style>
@@ -151,84 +154,113 @@
         <div v-if="state == 'error'" class="fullscreen-text text-danger">
             <span><u>Помилка</u><br>{{ stateErrorText }}</span>
         </div>
-        <div v-if="state == 'ready'" class="container">
-            <h1 class="display-4 my-4">Словник термінів ClassicUA</h1>
-            <p class="lead my-4">
-                Термінів: {{ terms.length }}<br>
-                Оновлено: {{ updated }}<br>
-            </p>
-            <div class="filter-bar my-4">
-                <div class="filter-term-count" :class="{ 'show': visibleTerms.length != terms.length }">
-                    {{ visibleTerms.length }}</div>
-                <div class="input-group">
-                    <input v-model.trim="filterText" class="filter-text form-control form-control-lg" type="text"
-                        placeholder="Шукати...">
-                    <div class="filter-term-bar input-group-append">
-                        <button v-for="tag in filterTags" :key="tag.name" type="button" class="btn active-tag"
-                            :class="{ 'btn-info': tag.main && filterTagsMatchAll, 'btn-outline-info': tag.main && !filterTagsMatchAll, 'btn-secondary': !tag.main && filterTagsMatchAll, 'btn-outline-secondary': !tag.main && !filterTagsMatchAll }"
-                            @click.prevent.stop="removeFilterTag(tag)">{{ tag.name }}</button>
-                        <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" type="button"
-                            data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Мітки</span>
-                        </button>
-                        <div class="dropdown-tags dropdown-menu dropdown-menu-right py-0 shadow-lg" @click.prevent.stop>
-                            <div class="header p-3">
-                                <div class="input-group px-1">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-secondary d-flex" type="button"
-                                            :class="{ 'active': !filterDropdownTagsSortAbc }"
-                                            @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc"
-                                            title="Сортувати за кількістю термінів">
-                                            <i class="material-icons">filter_list</i>
-                                        </button>
-                                        <button class="btn btn-outline-secondary d-flex" type="button"
-                                            :class="{ 'active': filterDropdownTagsSortAbc }"
-                                            @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc"
-                                            title="Сортувати за абеткою">
-                                            <i class="material-icons">sort_by_alpha</i>
-                                        </button>
+        <div v-if="state == 'ready'" class="fixed-top">
+            <div id="about" class="collapse">
+                <div class="bg-dark">
+                    <div class="about-content container py-3 text-white">
+                        <h1>Словник термінів ClassicUA</h1>
+                        <p class="lead">Власні та загальні назви World of Warcraft українською мовою для аддону
+                            <a class="text-warning font-weight-bold" target="blank"
+                                href="https://crowdin.com/project/classicua">
+                                ClassicUA
+                            </a>
+                        </p>
+                        <hr class="bg-secondary">
+                        <p class="lead m-0">
+                            Оновлено: <span class="font-weight-bold">{{ infoDateUpdated }}</span><br>
+                            Термінів: <span class="font-weight-bold">{{ formatNumber(terms.length) }}</span><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light shadow">
+                <nav id="navbar" class="navbar navbar-light flex-nowrap container">
+                    <button class="logo-button btn" type="button" data-toggle="collapse" data-target="#about"
+                        aria-controls="about" aria-expanded="false" aria-label="Про сторінку">
+                        <img src="logo.png" alt="logo">
+                    </button>
+                    <div class="filter-bar flex-grow-1">
+                        <div class="input-group">
+                            <input v-model.lazy.trim="filterText" class="filter-text form-control form-control-lg"
+                                type="text" placeholder="Шукати...">
+                            <div class="filter-term-bar input-group-append">
+                                <button v-for="tag in filterTags" :key="tag.name" type="button" class="btn active-tag"
+                                    :class="{ 'btn-info': tag.main && filterTagsMatchAll, 'btn-outline-info': tag.main && !filterTagsMatchAll, 'btn-secondary': !tag.main && filterTagsMatchAll, 'btn-outline-secondary': !tag.main && !filterTagsMatchAll }"
+                                    @click.prevent.stop="removeFilterTag(tag)">{{ tag.name }}</button>
+                                <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    type="button" data-toggle="dropdown" data-display="static" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <span class="sr-only">Мітки</span>
+                                </button>
+                                <div class="dropdown-tags dropdown-menu dropdown-menu-right py-0 shadow-lg"
+                                    @click.prevent.stop>
+                                    <div class="header p-3">
+                                        <div class="input-group px-1">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-secondary d-flex" type="button"
+                                                    :class="{ 'active': !filterDropdownTagsSortAbc }"
+                                                    @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc"
+                                                    title="Сортувати за кількістю термінів">
+                                                    <i class="material-icons">filter_list</i>
+                                                </button>
+                                                <button class="btn btn-outline-secondary d-flex" type="button"
+                                                    :class="{ 'active': filterDropdownTagsSortAbc }"
+                                                    @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc"
+                                                    title="Сортувати за абеткою">
+                                                    <i class="material-icons">sort_by_alpha</i>
+                                                </button>
+                                            </div>
+                                            <input v-model.trim="filterDropdownTagsText"
+                                                class="form-control form-control-sm" type="text"
+                                                placeholder="Шукати...">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary d-flex" type="button"
+                                                    :class="{ 'active': !filterTagsMatchAll }"
+                                                    @click.prevent.stop="filterTagsMatchAll = !filterTagsMatchAll"
+                                                    title="Наявність однієї мітки">
+                                                    <i class="material-icons">done</i>
+                                                </button>
+                                                <button class="btn btn-outline-secondary d-flex" type="button"
+                                                    :class="{ 'active': filterTagsMatchAll }"
+                                                    @click.prevent.stop="filterTagsMatchAll = !filterTagsMatchAll"
+                                                    title="Наявність всіх міток одночасно">
+                                                    <i class="material-icons">done_all</i>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <input v-model.trim="filterDropdownTagsText" class="form-control form-control-sm"
-                                        type="text" placeholder="Шукати...">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary d-flex" type="button"
-                                            :class="{ 'active': !filterTagsMatchAll }"
-                                            @click.prevent.stop="filterTagsMatchAll = !filterTagsMatchAll"
-                                            title="Наявність однієї мітки">
-                                            <i class="material-icons">done</i>
-                                        </button>
-                                        <button class="btn btn-outline-secondary d-flex" type="button"
-                                            :class="{ 'active': filterTagsMatchAll }"
-                                            @click.prevent.stop="filterTagsMatchAll = !filterTagsMatchAll"
-                                            title="Наявність всіх міток одночасно">
-                                            <i class="material-icons">done_all</i>
+                                    <div class="content px-3 pb-3">
+                                        <button v-for="tag in visibleDropdownTags" :key="tag.name" type="button"
+                                            class="btn" :class="{ 'btn-info': tag.main, 'btn-secondary': !tag.main }"
+                                            @click.prevent.stop="toggleFilterTag(tag)">
+                                            {{ tag.name }}
+                                            <span class="badge"
+                                                :class="{ 'badge-warning': filterTags.indexOf(tag) >= 0, 'badge-light': filterTags.indexOf(tag) == -1 }">
+                                                {{ formatNumber(tag.count) }}
+                                            </span>
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="content px-3 pb-3">
-                                <button v-for="tag in visibleDropdownTags" :key="tag.name" type="button" class="btn"
-                                    :class="{ 'btn-info': tag.main, 'btn-secondary': !tag.main }"
-                                    @click.prevent.stop="toggleFilterTag(tag)">
-                                    {{ tag.name }}
-                                    <span class="badge"
-                                        :class="{ 'badge-warning': filterTags.indexOf(tag) >= 0, 'badge-light': filterTags.indexOf(tag) == -1 }">
-                                        {{ tag.count }}
-                                    </span>
-                                </button>
-                            </div>
                         </div>
                     </div>
-                </div>
+                </nav>
             </div>
         </div>
-        <div v-if="state == 'ready'" class="container term-table-container">
-            <table class="term-table table table-sm table-striped table-bordered mb-0 mb-sm-5">
+        <div v-if="state == 'ready'" class="term-table-container container">
+            <table class="term-table table table-sm table-striped table-bordered my-0 my-sm-5">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Термін</th>
                         <th scope="col">Переклад</th>
-                        <th scope="col">Мітки</th>
+                        <th scope="col">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span>Мітки</span>
+                                <span class="badge badge-warning" title="Кількість результатів пошуку">
+                                    {{ formatNumber(visibleTerms.length) }}
+                                </span>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -268,7 +300,7 @@
             data: {
                 state: 'init',
                 stateErrorText: false,
-                updated: '30.05.2020',
+                infoDateUpdated: '30.05.2020',
                 terms: [],
                 tags: [],
                 filterText: '',
@@ -289,7 +321,9 @@
             },
             computed: {
                 visibleTerms: function () {
-                    const re = this.filterText ? new RegExp(this.reEscape(this.filterText), 'i') : false;
+                    const re = this.filterText
+                        ? new RegExp(this.reEscape(this.filterText), 'i')
+                        : false;
                     const tags = this.filterTags;
                     return this.terms
                         .filter(term => !tags.length || this.termHasTags(term, tags))
@@ -297,7 +331,9 @@
                         .sort((term1, term2) => term1.en.localeCompare(term2.en));
                 },
                 visibleDropdownTags: function () {
-                    const re = this.filterDropdownTagsText ? new RegExp(this.reEscape(this.filterDropdownTagsText), 'i') : false;
+                    const re = this.filterDropdownTagsText
+                        ? new RegExp(this.reEscape(this.filterDropdownTagsText), 'i')
+                        : false;
                     return this.tags
                         .filter(tag => !re || tag.name.search(re) >= 0)
                         .sort((tag1, tag2) => this.filterDropdownTagsSortAbc
@@ -398,6 +434,9 @@
                         }
                         return false;
                     }
+                },
+                formatNumber: function (value) {
+                    return Number(value).toLocaleString();
                 },
                 reEscape: function (text) {
                     return text.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
