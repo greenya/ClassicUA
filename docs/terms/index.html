@@ -24,7 +24,7 @@
         rel="stylesheet">
 
     <!-- Vue.js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 
     <title>Словник термінів ClassicUA</title>
     <meta name="description"
@@ -52,7 +52,7 @@
         }
 
         .term-text,
-        .filter input {
+        .filter-bar input {
             font-family: 'Open Sans Condensed', sans-serif;
             font-size: 20px;
             font-weight: 600;
@@ -72,28 +72,53 @@
             white-space: normal;
         }
 
-        .filter,
+        .filter-bar,
         .filter-text {
             position: relative;
         }
 
         .filter-term-count {
             position: absolute;
+            right: 29px;
             top: 0;
-            bottom: 0;
-            left: 0;
             margin: 6px 0;
             padding: .25em .5em;
             display: flex;
             align-items: center;
-            border: 1px solid lightgray;
+            border: 1px solid #ced4da;
             border-radius: 4px;
-            transform: translateX(0);
+            transform: translateY(0);
             transition: transform .2s ease-in-out;
         }
 
         .filter-term-count.show {
-            transform: translateX(-90%);
+            transform: translateY(-105%);
+        }
+
+        .filter-term-bar {
+            max-width: 50vw;
+            overflow: auto;
+        }
+
+        .filter-term-bar button {
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .filter-term-bar .active-tag {
+            border-top-width: 4px;
+            border-bottom-width: 4px;
+        }
+
+        .dropdown-tags .content {
+            width: 508px;
+            max-width: 88vw;
+            max-height: 58vh;
+            overflow: auto;
+        }
+
+        .dropdown-tags .content button {
+            margin: 3px 4px !important;
         }
 
         @media (max-width: 575px) {
@@ -113,10 +138,6 @@
             .term-tag {
                 font-size: 14px;
             }
-
-            .filter {
-                margin-left: 40px;
-            }
         }
     </style>
 </head>
@@ -135,10 +156,57 @@
                 Термінів: {{ terms.length }}<br>
                 Оновлено: {{ updated }}<br>
             </p>
-            <div class="filter my-4">
-                <div class="filter-term-count" :class="{ 'show': filterText }">{{ visibleTerms.length }}</div>
-                <input v-model.trim="filterText" class="filter-text form-control form-control-lg" type="text"
-                    placeholder="Шукати...">
+            <div class="filter-bar my-4">
+                <div class="filter-term-count" :class="{ 'show': visibleTerms.length != terms.length }">
+                    {{ visibleTerms.length }}</div>
+                <div class="input-group">
+                    <input v-model.trim="filterText" class="filter-text form-control form-control-lg" type="text"
+                        placeholder="Шукати...">
+                    <div class="filter-term-bar input-group-append">
+                        <button v-for="tag in filterTags" :key="tag.name" type="button" class="btn active-tag"
+                            :class="{ 'btn-info': tag.main && filterTagsMatchAll, 'btn-outline-info': tag.main && !filterTagsMatchAll, 'btn-secondary': !tag.main && filterTagsMatchAll, 'btn-outline-secondary': !tag.main && !filterTagsMatchAll }"
+                            @click.prevent.stop="removeFilterTag(tag)">{{ tag.name }}</button>
+                        <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" type="button"
+                            data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Мітки</span>
+                        </button>
+                        <div class="dropdown-tags dropdown-menu dropdown-menu-right py-0 shadow-lg" @click.prevent.stop>
+                            <div class="header p-3">
+                                <div class="input-group px-1">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            :class="{ 'active': !filterDropdownTagsSortAbc }"
+                                            @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc">Кількість</button>
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            :class="{ 'active': filterDropdownTagsSortAbc }"
+                                            @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc">Абетка</button>
+                                    </div>
+                                    <input v-model.trim="filterDropdownTagsText" class="form-control form-control-sm"
+                                        type="text" placeholder="Шукати...">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            :class="{ 'active': !filterTagsMatchAll }"
+                                            @click.prevent.stop="filterTagsMatchAll = !filterTagsMatchAll">Одна</button>
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            :class="{ 'active': filterTagsMatchAll }"
+                                            @click.prevent.stop="filterTagsMatchAll = !filterTagsMatchAll">Всі</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content px-3 pb-3">
+                                <button v-for="tag in visibleDropdownTags" :key="tag.name" type="button" class="btn"
+                                    :class="{ 'btn-info': tag.main, 'btn-secondary': !tag.main }"
+                                    @click.prevent.stop="toggleFilterTag(tag)">
+                                    {{ tag.name }}
+                                    <span class="badge"
+                                        :class="{ 'badge-warning': filterTags.indexOf(tag) >= 0, 'badge-light': filterTags.indexOf(tag) == -1 }">
+                                        {{ tag.count }}
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div v-if="state == 'ready'" class="container term-table-container">
@@ -152,11 +220,12 @@
                 </thead>
                 <tbody>
                     <tr v-for="term in visibleTerms" :key="term.en">
-                        <td class="term-text" v-html="selFilterText(term.en)"></td>
-                        <td class="term-text" v-html="selFilterText(term.uk)"></td>
+                        <td class="term-text" v-html="emphasizeFilterText(term.en)"></td>
+                        <td class="term-text" v-html="emphasizeFilterText(term.uk)"></td>
                         <td>
-                            <span v-for="tag in term.tags" :key="tag.name" class="term-tag badge"
-                                :class="{ 'badge-info': tag.main, 'badge-secondary': !tag.main }">{{ tag.name }}</span>
+                            <a v-for="tag in term.tags" :key="tag.name" class="term-tag badge" href="#"
+                                :class="{ 'badge-info': tag.main, 'badge-secondary': !tag.main }"
+                                @click.prevent.stop="addFilterTag(tag)">{{ tag.name }}</a>
                         </td>
                     </tr>
                 </tbody>
@@ -189,7 +258,11 @@
                 updated: '30.05.2020',
                 terms: [],
                 tags: [],
-                filterText: ''
+                filterText: '',
+                filterTags: [],
+                filterTagsMatchAll: true,
+                filterDropdownTagsSortAbc: false,
+                filterDropdownTagsText: ''
             },
             created: function () {
                 this.state = 'load';
@@ -204,9 +277,19 @@
             computed: {
                 visibleTerms: function () {
                     const re = this.filterText ? new RegExp(this.reEscape(this.filterText), 'i') : false;
+                    const tags = this.filterTags;
                     return this.terms
+                        .filter(term => !tags.length || this.termHasTags(term, tags))
                         .filter(term => !re || term.en.search(re) >= 0 || term.uk.search(re) >= 0)
                         .sort((term1, term2) => term1.en.localeCompare(term2.en));
+                },
+                visibleDropdownTags: function () {
+                    const re = this.filterDropdownTagsText ? new RegExp(this.reEscape(this.filterDropdownTagsText), 'i') : false;
+                    return this.tags
+                        .filter(tag => !re || tag.name.search(re) >= 0)
+                        .sort((tag1, tag2) => this.filterDropdownTagsSortAbc
+                            ? tag1.name.localeCompare(tag2.name)
+                            : tag2.count - tag1.count || tag1.name.localeCompare(tag2.name));
                 }
             },
             methods: {
@@ -249,10 +332,8 @@
                         const tags = labels.map(name => this.tags.find(t => t.name == name));
                         this.terms.push(new Term(en, uk, tags));
                     });
-
-                    this.tags.sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
                 },
-                selFilterText: function (text) {
+                emphasizeFilterText: function (text) {
                     if (this.filterText) {
                         let index = 0;
                         let result = '';
@@ -266,6 +347,43 @@
                         return result + text.substr(index);
                     } else {
                         return text;
+                    }
+                },
+                addFilterTag: function (tag) {
+                    const index = this.filterTags.indexOf(tag);
+                    if (index == -1) {
+                        this.filterTags.push(tag);
+                    }
+                },
+                removeFilterTag: function (tag) {
+                    const index = this.filterTags.indexOf(tag);
+                    if (index >= 0) {
+                        this.filterTags.splice(index, 1);
+                    }
+                },
+                toggleFilterTag: function (tag) {
+                    const index = this.filterTags.indexOf(tag);
+                    if (index >= 0) {
+                        this.removeFilterTag(tag);
+                    } else {
+                        this.addFilterTag(tag);
+                    }
+                },
+                termHasTags: function (term, tags) {
+                    if (this.filterTagsMatchAll) {
+                        for (let i = 0; i < tags.length; i++) {
+                            if (term.tags.indexOf(tags[i]) == -1) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    } else {
+                        for (let i = 0; i < term.tags.length; i++) {
+                            if (tags.indexOf(term.tags[i]) >= 0) {
+                                return true;
+                            }
+                        }
+                        return false;
                     }
                 },
                 reEscape: function (text) {
