@@ -13,7 +13,9 @@ local copy_table = function (target, source)
     return target
 end
 
-local upper_first = function (text)
+-- todo: fix this function, it only works when first letter is a cyric letter
+-- also: upper() doesn't work for ukrainian letters: і, ї, є, ґ
+local capitalize = function (text)
     return text:sub(1, 2):upper() .. text:sub(3) -- "2" and "3" because of unicode
 end
 
@@ -154,7 +156,7 @@ local prepare_codes = function (name, race, class, is_male)
     for _, c in ipairs(cases) do
         local t = at.race[race][c][sex]
         codes["{раса:" .. c .. "}"] = t
-        codes["{Раса:" .. c .. "}"] = upper_first(t)
+        codes["{Раса:" .. c .. "}"] = capitalize(t)
         codes["{РАСА:" .. c .. "}"] = string.upper(t)
         if c == "н" then -- "н" is default grammatical case
             codes["{раса}"] = codes["{раса:н}"]
@@ -168,7 +170,7 @@ local prepare_codes = function (name, race, class, is_male)
     for _, c in ipairs(cases) do
         local t = at.class[class][c][sex]
         codes["{клас:" .. c .. "}"] = t
-        codes["{Клас:" .. c .. "}"] = upper_first(t)
+        codes["{Клас:" .. c .. "}"] = capitalize(t)
         codes["{КЛАС:" .. c .. "}"] = string.upper(t)
         if c == "н" then -- "н" is default grammatical case
             codes["{клас}"] = codes["{клас:н}"]
@@ -358,11 +360,11 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, content_in
 
     if entry then
         tooltip:AddLine(" ")
-        tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. upper_first(entry[1]), 1, 1, 1)
+        tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. capitalize(entry[1]), 1, 1, 1)
 
         local content = make_entry_text(entry[content_index or 2], tooltip)
         if content then
-            tooltip:AddLine(upper_first(content), 1, 1, 1, true)
+            tooltip:AddLine(capitalize(content), 1, 1, 1, true)
         end
 
         if tooltip:IsShown() then
@@ -497,7 +499,7 @@ GameTooltip:HookScript("OnUpdate", function (self)
             local entry = get_entry_text(text)
             if entry then
                 if self:NumLines() > 1 then self:AddLine(" ") end
-                self:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. upper_first(entry), 1, 1, 1)
+                self:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. capitalize(entry), 1, 1, 1)
 
                 if self:IsShown() then
                     self:Show()
@@ -819,7 +821,7 @@ local update_zone_text = function ()
         if text then
             local found = lookup[2](text)
             if found then
-                lookup[1]:SetText(upper_first(found))
+                lookup[1]:SetText(capitalize(found))
             end
         end
     end
@@ -845,7 +847,7 @@ WorldMapFrame.SetMapID = function (self, mapID)
         local text = v.Text:GetText()
         local found = get_entry_text(text)
         if found then
-            v.Text:SetText(upper_first(found))
+            v.Text:SetText(capitalize(found))
         end
     end
 end
@@ -861,7 +863,7 @@ local world_map_dropdown_button_click = function (self)
             local text = button:GetText()
             local found = get_entry_text(text)
             if found then
-                local t = upper_first(found)
+                local t = capitalize(found)
                 texts[#texts + 1] = t
                 buttons[t] = button
                 button:SetText(t)
@@ -884,7 +886,7 @@ local world_map_area_label_update = function (self)
     if text then
         local found = get_entry_text(text)
         if found then
-            self.Name:SetText(upper_first(found))
+            self.Name:SetText(capitalize(found))
         end
     end
 end
