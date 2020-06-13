@@ -13,10 +13,24 @@ local copy_table = function (target, source)
     return target
 end
 
--- todo: fix this function, it only works when first letter is a cyric letter
--- also: upper() doesn't work for ukrainian letters: і, ї, є, ґ
 local capitalize = function (text)
-    return text:sub(1, 2):upper() .. text:sub(3) -- "2" and "3" because of unicode
+    local b1 = strbyte(text, 1)
+    if b1 >= 208 and b1 <= 210 then -- this is utf8 character, 2 bytes long
+        local b2 = strbyte(text, 2)
+        if b1 == 209 and b2 == 148 then
+            return 'Є' .. text:sub(3)
+        elseif b1 == 209 and b2 == 150 then
+            return 'І' .. text:sub(3)
+        elseif b1 == 209 and b2 == 151 then
+            return 'Ї' .. text:sub(3)
+        elseif b1 == 210 and b2 == 145 then
+            return 'Ґ' .. text:sub(3)
+        else -- run out of special cases -- let default upper() handle it
+            return text:sub(1, 2):upper() .. text:sub(3)
+        end
+    else
+        return text:sub(1, 1):upper() .. text:sub(2)
+    end
 end
 
 local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-strings-for-gsub
