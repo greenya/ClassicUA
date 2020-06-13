@@ -181,9 +181,11 @@ local prepare_codes = function (name, race, class, is_male)
 
     -- sex
 
-    codes["{стать:(.-):(.-)}"] = function (a, b)
-        return is_male and a or b
-    end
+    -- only "стать" is needed, but we make possible to use any letter casing
+    -- (even if it has nothing to do with the letter case of the result, as text gets shown as is)
+    codes["{стать:(.-):(.-)}"] = function (a, b) return is_male and a or b end
+    codes["{Стать:(.-):(.-)}"] = function (a, b) return is_male and a or b end
+    codes["{СТАТЬ:(.-):(.-)}"] = function (a, b) return is_male and a or b end
 
     -- print_table(codes, "codes")
     at.codes = codes
