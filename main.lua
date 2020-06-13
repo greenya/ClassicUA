@@ -54,6 +54,7 @@ local prepare_zones = function ()
     -- known aliases
     z["Crossroads"] = z["The Crossroads"]
     z["Crusader's Outpost"] = z["Crusader Outpost"]
+    z["Dabyrie's Farmstead"] = z["Dabyrie Farmstead"]
     z["Stormwind City"] = z["Stormwind"]
     z["Stranglethorn"] = z["Stranglethorn Vale"]
 
