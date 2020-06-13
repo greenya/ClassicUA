@@ -2280,7 +2280,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="5ef698cd9fe650923ea331c15af3b160366-en">Arynia Cloudsbreak</term>
-            <descrip type="definition">нпц, жін, нічна ельфійка</descrip>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -2501,7 +2501,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="18d8042386b79e2c279fd162df0205c8400-en">Amara Nightwalker</term>
-            <descrip type="definition">нпц, жін, нічна ельфійка</descrip>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -2631,7 +2631,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="b6f0479ae87d244975439c6124592772420-en">Keeper Remulos</term>
-            <descrip type="definition">нпц, чол, хранитель діброви</descrip>
+            <descrip type="definition">нпц, чол, хранитель гаю</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -2826,7 +2826,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="f5f8590cd58a54e94377e6ae2eded4d9450-en">Dirania Silvershine</term>
-            <descrip type="definition">нпц, жін, нічна ельфійка</descrip>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -5557,7 +5557,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="67d16d00201083a2b118dd5128dd6f59876-en">Moira Bronzebeard</term>
-            <descrip type="definition">нпц, жін, дворфійка, принцеса</descrip>
+            <descrip type="definition">нпц, жін, дворфа, принцеса</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -7260,7 +7260,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="8248a99e81e752cb9b41da3fc43fbe7f1140-en">Nathanos Marris</term>
-            <descrip type="definition">нпц, чол, невмерлий</descrip>
+            <descrip type="definition">нпц, чол, невмерлий, обранець Королеви-Банші</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -7278,7 +7278,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="8ce6790cc6a94e65f17f908f462fae851142-uk">Гнилокрик</term>
+            <term id="8ce6790cc6a94e65f17f908f462fae851142-uk">Гнилоклич</term>
           </tig>
         </langSet>
       </termEntry>
@@ -8151,7 +8151,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="fb60d411a5c5b72b2e7d3527cfc84fd01276-uk">дворф/дворфійка</term>
+            <term id="fb60d411a5c5b72b2e7d3527cfc84fd01276-uk">дворф/дворфа</term>
           </tig>
         </langSet>
       </termEntry>
@@ -8164,7 +8164,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="ab1a4d0dd4d48a2ba1077c44947913061278-uk">нічний ельф/нічна ельфійка</term>
+            <term id="ab1a4d0dd4d48a2ba1077c44947913061278-uk">нічний ельф/нічна ельфа</term>
           </tig>
         </langSet>
       </termEntry>
@@ -11262,19 +11262,6 @@
           </tig>
         </langSet>
       </termEntry>
-      <termEntry id="17ed8abedc255908be746d245e50263a1762">
-        <langSet xml:lang="en">
-          <tig>
-            <term id="17ed8abedc255908be746d245e50263a1762-en">Dabyrie's Farmstead</term>
-            <descrip type="definition">локація, височина Араті</descrip>
-          </tig>
-        </langSet>
-        <langSet xml:lang="uk">
-          <tig>
-            <term id="17ed8abedc255908be746d245e50263a1762-uk">помістя Дабирі</term>
-          </tig>
-        </langSet>
-      </termEntry>
       <termEntry id="94e4451ad23909020c28b26ca3a13cb81764">
         <langSet xml:lang="en">
           <tig>
@@ -12137,7 +12124,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="9fdb62f932adf55af2c0e09e558619641900-en">Rudra Amberstill</term>
-            <descrip type="definition">нпц, жін, дворфійка</descrip>
+            <descrip type="definition">нпц, жін, дворфа</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -14716,7 +14703,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="130f1a8e9e102707f3f91b010f151b0b2296-uk">маєток Марріса</term>
+            <term id="130f1a8e9e102707f3f91b010f151b0b2296-uk">маєток Маррісів</term>
           </tig>
         </langSet>
       </termEntry>
@@ -15678,7 +15665,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="7fd804295ef7f6a2822bf4c61f9dc4a82444-uk">Срібнохвойний праліс</term>
+            <term id="7fd804295ef7f6a2822bf4c61f9dc4a82444-uk">Срібнохвоя</term>
           </tig>
         </langSet>
       </termEntry>
@@ -18135,7 +18122,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="0172d289da48c48de8c5ebf3de9f7ee12822-uk">хранитель діброви</term>
+            <term id="0172d289da48c48de8c5ebf3de9f7ee12822-uk">хранитель гаю</term>
           </tig>
         </langSet>
       </termEntry>
@@ -18351,7 +18338,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="1397386b7a1507535c59764a15ee0c982856-en">Keeper Ordanus</term>
-            <descrip type="definition">нпц, чол, хранитель діброви</descrip>
+            <descrip type="definition">нпц, чол, хранитель гаю</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -18364,7 +18351,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="42a6845a557bef704ad8ac9cb4461d432858-en">Moon Priestess Maestra</term>
-            <descrip type="definition">нпц, жін, нічна ельфійка</descrip>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -18520,7 +18507,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="2ef35a8b78b572a47f56846acbeef5d32882-en">Relara Whitemoon</term>
-            <descrip type="definition">нпц, жін, нічна ельфійка</descrip>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -18650,7 +18637,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="379a7ba015d8bf1c70b8add2c287c6fa2902-en">Mel'Thandris Starsong</term>
-            <descrip type="definition">нпц, жін, нічна ельфійка</descrip>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -18663,12 +18650,142 @@
         <langSet xml:lang="en">
           <tig>
             <term id="b8b9c74ac526fffbeb2d39ab038d1cd72904-en">Velinde Starsong</term>
-            <descrip type="definition">нпц, жін, нічна ельфійка</descrip>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
           <tig>
             <term id="b8b9c74ac526fffbeb2d39ab038d1cd72904-uk">Велінда Зорепісня</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="9e82757e9a1c12cb710ad680db11f6f12906">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="9e82757e9a1c12cb710ad680db11f6f12906-en">Thersa Windsong</term>
+            <descrip type="definition">нпц, жін, тауренка</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="9e82757e9a1c12cb710ad680db11f6f12906-uk">Терса Пісня Вітру</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="73b817090081cef1bca77232f4532c5d2908">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="73b817090081cef1bca77232f4532c5d2908-en">Alterac</term>
+            <descrip type="definition">локація, колишнє королівство</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="73b817090081cef1bca77232f4532c5d2908-uk">Альтерак</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="dba31bb5c75992690f20c2d3b370ec7c2910">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="dba31bb5c75992690f20c2d3b370ec7c2910-en">Mug'Thol</term>
+            <descrip type="definition">нпц, чол, огр</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="dba31bb5c75992690f20c2d3b370ec7c2910-uk">Муґ'Тол</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c68c9c8258ea7d85472dd6fd0015f0472912">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c68c9c8258ea7d85472dd6fd0015f0472912-en">Melisara</term>
+            <descrip type="definition">нпц, жін, банші, лейтенантка</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c68c9c8258ea7d85472dd6fd0015f0472912-uk">Мелісара</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="17eb7ecc4c38e4705361cccd903ad8c62914">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="17eb7ecc4c38e4705361cccd903ad8c62914-en">Jeremiah Payson</term>
+            <descrip type="definition">нпц, чол, невмерлий, торговець тарганами</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="17eb7ecc4c38e4705361cccd903ad8c62914-uk">Єремія Пейсон</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="340a39045c40d50dda207bcfdece883a2916">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="340a39045c40d50dda207bcfdece883a2916-en">Genavie Callow</term>
+            <descrip type="definition">нпц, жін, невмерла</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="340a39045c40d50dda207bcfdece883a2916-uk">Женаві Болотянка</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f6c9dc70ecfd8f90ba8598aa2401cd1a2918">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f6c9dc70ecfd8f90ba8598aa2401cd1a2918-en">Dabyrie Farmstead</term>
+            <descrip type="definition">локація, височина Араті</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f6c9dc70ecfd8f90ba8598aa2401cd1a2918-uk">хутір Дабірі</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="465636eb4a7ff4b267f3b765d07a02da2920">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="465636eb4a7ff4b267f3b765d07a02da2920-en">Kenata Dabyrie</term>
+            <descrip type="definition">нпц, жін, людина</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="465636eb4a7ff4b267f3b765d07a02da2920-uk">Кената Дабірі</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="6d19c113404cee55b4036fce1a37c0582922">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="6d19c113404cee55b4036fce1a37c0582922-en">Marcel Dabyrie</term>
+            <descrip type="definition">нпц, чол, людина</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="6d19c113404cee55b4036fce1a37c0582922-uk">Марсель Дабірі</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3953630da28e5181cffca1278517e3cf2924">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3953630da28e5181cffca1278517e3cf2924-en">Fardel Dabyrie</term>
+            <descrip type="definition">нпц, чол, людина</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3953630da28e5181cffca1278517e3cf2924-uk">Фардел Дабірі</term>
           </tig>
         </langSet>
       </termEntry>
