@@ -4,5 +4,5 @@
 
 ## Посилання
 
-* [Словник термінів](https://greenya.github.io/ClassicUA/terms.html)
-* [Помічник для квестів](https://greenya.github.io/ClassicUA/quest-helper/)
+* [Словник термінів](https://greenya.github.io/ClassicUA/terms/)
+* [Генератор Lua коду для квестів](https://greenya.github.io/ClassicUA/quest-helper/)
