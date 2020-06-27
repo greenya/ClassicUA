@@ -2011,7 +2011,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="a666587afda6e89aec274a3657558a27326-uk">Малфуріон Бурелють</term>
+            <term id="a666587afda6e89aec274a3657558a27326-uk">Малфуріон Лютошторм</term>
           </tig>
         </langSet>
       </termEntry>
@@ -2024,7 +2024,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="cd00692c3bfe59267d5ecfac5310286c328-uk">Іллідан Бурелють</term>
+            <term id="cd00692c3bfe59267d5ecfac5310286c328-uk">Іллідан Лютошторм</term>
           </tig>
         </langSet>
       </termEntry>
@@ -2123,7 +2123,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="b3967a0e938dc2a6340e258630febd5a344-en">The Betrayer</term>
-            <descrip type="definition">титул, Іллідан Бурелють</descrip>
+            <descrip type="definition">титул, Іллідан Лютошторм</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -2149,7 +2149,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="01386bd6d8e091c2ab4c7c7de644d37b348-en">Shan'do</term>
-            <descrip type="definition">титул, Малфуріон Бурелють
+            <descrip type="definition">титул, Малфуріон Лютошторм
 мова, нічні ельфи, "шанований вчитель"</descrip>
           </tig>
         </langSet>
@@ -3052,7 +3052,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="7d04bbbe5494ae9d2f5a76aa1c00fa2f486-uk">Бурелють</term>
+            <term id="7d04bbbe5494ae9d2f5a76aa1c00fa2f486-uk">Лютошторм</term>
           </tig>
         </langSet>
       </termEntry>
@@ -4880,7 +4880,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="4e0928de075538c593fbdabb0c5ef2c3774-en">Varimathras</term>
-            <descrip type="definition">нпц, чол, лорд</descrip>
+            <descrip type="definition">нпц, чол, демон, лорд, натрезим/жахопан</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -5049,7 +5049,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="7a53928fa4dd31e82c6ef826f341daec800-en">Timbermaw Hold</term>
-            <descrip type="definition">локація, селище, Сквернолісся, Калімдор</descrip>
+            <descrip type="definition">локація, селище, Азшара, Сквернолісся</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -5153,7 +5153,7 @@
       <termEntry id="43fa7f58b7eac7ac872209342e62e8f1816">
         <langSet xml:lang="en">
           <tig>
-            <term id="43fa7f58b7eac7ac872209342e62e8f1816-en">The Gelkis</term>
+            <term id="43fa7f58b7eac7ac872209342e62e8f1816-en">Gelkis</term>
             <descrip type="definition">група, клан, кентаври</descrip>
           </tig>
         </langSet>
@@ -5166,7 +5166,7 @@
       <termEntry id="f0adc8838f4bdedde4ec2cfad0515589818">
         <langSet xml:lang="en">
           <tig>
-            <term id="f0adc8838f4bdedde4ec2cfad0515589818-en">The Magram</term>
+            <term id="f0adc8838f4bdedde4ec2cfad0515589818-en">Magram</term>
             <descrip type="definition">група, клан, кентаври</descrip>
           </tig>
         </langSet>
@@ -10564,7 +10564,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="712a3c9878efeae8ff06d57432016ceb1656-en">Archmage Arugal</term>
-            <descrip type="definition">нпц, чол, людина, архімаг</descrip>
+            <descrip type="definition">нпц, чол, людина, архімаг, бос</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -15652,7 +15652,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="7fd804295ef7f6a2822bf4c61f9dc4a82444-uk">Срібнохвоя</term>
+            <term id="7fd804295ef7f6a2822bf4c61f9dc4a82444-uk">Срібнохвой</term>
           </tig>
         </langSet>
       </termEntry>
@@ -16388,7 +16388,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="2288f691b58edecadcc9a8691762b4fd2558-en">felguard</term>
-            <descrip type="definition">істота</descrip>
+            <descrip type="definition">істота, демон</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -16510,7 +16510,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="ef1e491a766ce3127556063d49bc2f982576-uk">обителі кургану Бурелють</term>
+            <term id="ef1e491a766ce3127556063d49bc2f982576-uk">обителі кургану Лютошторм</term>
           </tig>
         </langSet>
       </termEntry>
@@ -17186,7 +17186,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="220a7f49d42406598587a66f02584ac32680-uk">жрець тіні Алістер</term>
+            <term id="220a7f49d42406598587a66f02584ac32680-uk">жрець тіні Аллістер</term>
           </tig>
         </langSet>
       </termEntry>
@@ -17213,19 +17213,6 @@
         <langSet xml:lang="uk">
           <tig>
             <term id="7c4bf50b715509a963ce81b168ca674b2684-uk">плем'я Злобного Плавника</term>
-          </tig>
-        </langSet>
-      </termEntry>
-      <termEntry id="3a0844cee4fcf57de0c71e9ad30354782686">
-        <langSet xml:lang="en">
-          <tig>
-            <term id="3a0844cee4fcf57de0c71e9ad30354782686-en">Moonrage Pack</term>
-            <descrip type="definition">група, зграя, воргени</descrip>
-          </tig>
-        </langSet>
-        <langSet xml:lang="uk">
-          <tig>
-            <term id="3a0844cee4fcf57de0c71e9ad30354782686-uk">зграя Місяцесказу</term>
           </tig>
         </langSet>
       </termEntry>
@@ -18221,7 +18208,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="a78482ce76496fcf49085f2190e675b42840-en">Starsong</term>
-            <descrip type="definition">родовід, сім'я, нічні ельфи</descrip>
+            <descrip type="definition">родовід, нічні ельфи, сім'я</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -19540,6 +19527,1852 @@
         <langSet xml:lang="uk">
           <tig>
             <term id="3fd60983292458bf7dee75f12d5e9e053042-uk">Бесселет</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b8af7d0fbf094517781e0382102d7b273044">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b8af7d0fbf094517781e0382102d7b273044-en">Hated</term>
+            <descrip type="definition">ранг, репутація</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b8af7d0fbf094517781e0382102d7b273044-uk">ненависна</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="975e6107778ce7a40b9878bfb96a16a73046">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="975e6107778ce7a40b9878bfb96a16a73046-en">Exalted</term>
+            <descrip type="definition">ранг, репутація</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="975e6107778ce7a40b9878bfb96a16a73046-uk">возвеличена</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="5da713a690c067105aeb2fae324034053048">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="5da713a690c067105aeb2fae324034053048-en">Unfriendly</term>
+            <descrip type="definition">ранг, репутація</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="5da713a690c067105aeb2fae324034053048-uk">недружня</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ef72d53990bc4805684c9b61fa64a1023050">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ef72d53990bc4805684c9b61fa64a1023050-en">Hostile</term>
+            <descrip type="definition">ранг, репутація</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ef72d53990bc4805684c9b61fa64a1023050-uk">ворожа</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c1b70d965ca504aa751ddb62ad69c63f3052">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c1b70d965ca504aa751ddb62ad69c63f3052-en">Neutral</term>
+            <descrip type="definition">ранг, репутація</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c1b70d965ca504aa751ddb62ad69c63f3052-uk">нейтральна</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d9b1655c134b831076d6c45620a78c333054">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d9b1655c134b831076d6c45620a78c333054-en">Friendly</term>
+            <descrip type="definition">ранг, репутація</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d9b1655c134b831076d6c45620a78c333054-uk">дружня</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="dc6e224a8d74ce03bf301152d6e33e973056">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="dc6e224a8d74ce03bf301152d6e33e973056-en">Honored</term>
+            <descrip type="definition">ранг, репутація</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="dc6e224a8d74ce03bf301152d6e33e973056-uk">почесна</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3f5ee243547dee91fbd053c1c4a845aa3058">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3f5ee243547dee91fbd053c1c4a845aa3058-en">Revered</term>
+            <descrip type="definition">ранг, репутація</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3f5ee243547dee91fbd053c1c4a845aa3058-uk">шанована</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="0a5c79b1eaf15445da252ada718857e93060">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="0a5c79b1eaf15445da252ada718857e93060-en">Rokhan</term>
+            <descrip type="definition">нпц, чол, троль джунглів</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0a5c79b1eaf15445da252ada718857e93060-uk">Рохан</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1aa057313c28fa4a40c5bc084b11d2763062">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1aa057313c28fa4a40c5bc084b11d2763062-en">Bloodvenom Falls</term>
+            <descrip type="definition">локація, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1aa057313c28fa4a40c5bc084b11d2763062-uk">Кровотруйний водоспад</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="494ba9ff03bdad881378a6fd4092a6c73064">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="494ba9ff03bdad881378a6fd4092a6c73064-en">Bloodvenom River</term>
+            <descrip type="definition">локація, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="494ba9ff03bdad881378a6fd4092a6c73064-uk">Кровотруйна ріка</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d8ab1a52f058358b947cdf8261b5e1a23066">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d8ab1a52f058358b947cdf8261b5e1a23066-en">Deadwood Village</term>
+            <descrip type="definition">локація, селище, хутропузи, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d8ab1a52f058358b947cdf8261b5e1a23066-uk">селище Мертволісих</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f5496252609c43eb8a3d147ab9b9c0063068">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f5496252609c43eb8a3d147ab9b9c0063068-en">Emerald Sanctuary</term>
+            <descrip type="definition">локація, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f5496252609c43eb8a3d147ab9b9c0063068-uk">Смарагдовий прихисток</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="bb073f2855d769be5bf191f6378f71503070">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="bb073f2855d769be5bf191f6378f71503070-en">Felpaw Village</term>
+            <descrip type="definition">локація, селище, хутропузи, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="bb073f2855d769be5bf191f6378f71503070-uk">селище Сквернолапа</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="be767243ca8f574c740fb4c26cc6dceb3072">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="be767243ca8f574c740fb4c26cc6dceb3072-en">Irontree Woods</term>
+            <descrip type="definition">локація, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="be767243ca8f574c740fb4c26cc6dceb3072-uk">Залізодреві ліси</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="639d79cc857a6c76c2723b7e014fccb03074">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="639d79cc857a6c76c2723b7e014fccb03074-en">Irontree Cavern</term>
+            <descrip type="definition">локація, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="639d79cc857a6c76c2723b7e014fccb03074-uk">Залізодрева печера</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b6e710870acb098e584277457ba89d683076">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b6e710870acb098e584277457ba89d683076-en">Jadefire Glen</term>
+            <descrip type="definition">локація, табір, сатири, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b6e710870acb098e584277457ba89d683076-uk">лощина Нефритожарих</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1091660f3dff84fd648efe31391c55243078">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1091660f3dff84fd648efe31391c55243078-en">Jadefire Run</term>
+            <descrip type="definition">локація, табір, сатири, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1091660f3dff84fd648efe31391c55243078-uk">хащі Нефритожарих</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="a9986cb066812f440bc2bb6e3c13696c3080">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="a9986cb066812f440bc2bb6e3c13696c3080-en">Jaedenar</term>
+            <descrip type="definition">локація, печера, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="a9986cb066812f440bc2bb6e3c13696c3080-uk">Джеденар</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f14bc21be7eaeed046fed206a492e6523082">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f14bc21be7eaeed046fed206a492e6523082-en">Morlos'Aran</term>
+            <descrip type="definition">локація, руїни, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f14bc21be7eaeed046fed206a492e6523082-uk">Морлос'Аран</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1706f191d760c78dfcec5012e43b67143084">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1706f191d760c78dfcec5012e43b67143084-en">Ruins of Constellas</term>
+            <descrip type="definition">локація, руїни, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1706f191d760c78dfcec5012e43b67143084-uk">руїни Констелласу</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="a081cab429ff7a3b96e0a07319f1049e3086">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="a081cab429ff7a3b96e0a07319f1049e3086-en">Shadow Hold</term>
+            <descrip type="definition">локація, печера, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="a081cab429ff7a3b96e0a07319f1049e3086-uk">оплот Тіні</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="dc6a7e655d7e5840e66733e9ee67cc693088">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="dc6a7e655d7e5840e66733e9ee67cc693088-en">Shatter Scar Vale</term>
+            <descrip type="definition">локація, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="dc6a7e655d7e5840e66733e9ee67cc693088-uk">долина Шматованих порубів</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="748d6b6ed8e13f857ceaa6cfbdca14b83090">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="748d6b6ed8e13f857ceaa6cfbdca14b83090-en">Wildheart Point</term>
+            <descrip type="definition">локація, Сквернолісся</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="748d6b6ed8e13f857ceaa6cfbdca14b83090-uk">табір Шалене Серце</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="6ad4174eba19ecb5fed17411a34ff5e63092">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="6ad4174eba19ecb5fed17411a34ff5e63092-en">Deadwood</term>
+            <descrip type="definition">група, плем'я, хутропузи</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="6ad4174eba19ecb5fed17411a34ff5e63092-uk">Мертволісі</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="512fc3c5227f637e41437c999a2d31693094">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="512fc3c5227f637e41437c999a2d31693094-en">Jadefire</term>
+            <descrip type="definition">група, плем'я, сатири</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="512fc3c5227f637e41437c999a2d31693094-uk">Нефритожарі</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="60792d855cd8a912a97711f91a1f155c3096">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="60792d855cd8a912a97711f91a1f155c3096-en">Emerald Circle</term>
+            <descrip type="definition">група</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="60792d855cd8a912a97711f91a1f155c3096-uk">Смарагдове Коло</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ada5e0b63ef60e2239fa8abdd4aa2f8e3098">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ada5e0b63ef60e2239fa8abdd4aa2f8e3098-en">Kil'jaeden</term>
+            <descrip type="definition">нпц, чол, демон</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ada5e0b63ef60e2239fa8abdd4aa2f8e3098-uk">Кіл'джеден</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="cc3d69ed781b16bce06687822ae56e6d3100">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="cc3d69ed781b16bce06687822ae56e6d3100-en">Lord Banehollow</term>
+            <descrip type="definition">нпц, чол, натрезим</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="cc3d69ed781b16bce06687822ae56e6d3100-uk">лорд Пустоклят</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c5d9256689c43036581f781c61f26e503102">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c5d9256689c43036581f781c61f26e503102-en">Ur'dan</term>
+            <descrip type="definition">нпц, чол, орк</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c5d9256689c43036581f781c61f26e503102-uk">Ур'дан</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="75b9b6dc7fe44437c6e0a69fd863dbab3104">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="75b9b6dc7fe44437c6e0a69fd863dbab3104-en">Arko'narin</term>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="75b9b6dc7fe44437c6e0a69fd863dbab3104-uk">Арко'нарін</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="4aec1b3435c52abbdf8334ea0e7141e03106">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="4aec1b3435c52abbdf8334ea0e7141e03106-en">Jessir Moonbow</term>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="4aec1b3435c52abbdf8334ea0e7141e03106-uk">Жезір Лукомісяць</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ffbd6cbb019a1413183c8d08f29293073108">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ffbd6cbb019a1413183c8d08f29293073108-en">Eridan Bluewind</term>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ffbd6cbb019a1413183c8d08f29293073108-uk">Ерідана Блакитновій</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e9fb2eda3d9c55a0d89c98d6c54b5b3e3110">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e9fb2eda3d9c55a0d89c98d6c54b5b3e3110-en">Trey Lightforge</term>
+            <descrip type="definition">нпц, чол, людина</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e9fb2eda3d9c55a0d89c98d6c54b5b3e3110-uk">Трей Світлогарт</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="87f4d79e36d68c3031ccf6c55e9bbd393112">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="87f4d79e36d68c3031ccf6c55e9bbd393112-en">Xavathras</term>
+            <descrip type="definition">нпц, чол, сатир</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="87f4d79e36d68c3031ccf6c55e9bbd393112-uk">Заватрас</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="bbb001ba009ed11717eaec9305b2feb63114">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="bbb001ba009ed11717eaec9305b2feb63114-en">Xavaric</term>
+            <descrip type="definition">нпц, чол, сатир</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="bbb001ba009ed11717eaec9305b2feb63114-uk">Заварік</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="58191d2a914c6dae66371c9dcdc91b413116">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="58191d2a914c6dae66371c9dcdc91b413116-en">Hastat the Ancient</term>
+            <descrip type="definition">нпц, чол, древній знань</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="58191d2a914c6dae66371c9dcdc91b413116-uk">Гастат Древній</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f0031c7a91d74015a9addfbc589f3fe53118">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f0031c7a91d74015a9addfbc589f3fe53118-en">Stoma the Ancient</term>
+            <descrip type="definition">нпц, чол, древній знань</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f0031c7a91d74015a9addfbc589f3fe53118-uk">Стома Древній</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f231f2107df69eab0a3862d50018a9b23120">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f231f2107df69eab0a3862d50018a9b23120-en">Vartrus the Ancient</term>
+            <descrip type="definition">нпц, чол, древній знань</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f231f2107df69eab0a3862d50018a9b23120-uk">Вартрій Древній</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="a2d10d355cdebc879e4fc6ecc6f63dd73122">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="a2d10d355cdebc879e4fc6ecc6f63dd73122-en">Valdred Moray</term>
+            <descrip type="definition">нпц, чол, людина</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="a2d10d355cdebc879e4fc6ecc6f63dd73122-uk">Валдред Морей</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="7c78335a8924215ea5c22fda1aac7b753124">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="7c78335a8924215ea5c22fda1aac7b753124-en">Bolgan's Hole</term>
+            <descrip type="definition">локація, печера, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="7c78335a8924215ea5c22fda1aac7b753124-uk">нора Болґана</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="9f8684e630c4c30cad7b1f0935cd62ab3126">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="9f8684e630c4c30cad7b1f0935cd62ab3126-en">Ethel Rethor</term>
+            <descrip type="definition">локація, руїни, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="9f8684e630c4c30cad7b1f0935cd62ab3126-uk">Етель Ретор</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="dff8e9c2ac33381546d96deea99229993128">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="dff8e9c2ac33381546d96deea99229993128-en">Gelkis Village</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="dff8e9c2ac33381546d96deea99229993128-uk">поселення Ґелкісів</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c922de9e01cba8a4684f6c3471130e4c3130">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c922de9e01cba8a4684f6c3471130e4c3130-en">Ghost Walker Post</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c922de9e01cba8a4684f6c3471130e4c3130-uk">застава Блукаючих Привидів</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="fb2606a5068901da92473666256e6e5b3132">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="fb2606a5068901da92473666256e6e5b3132-en">Kodo Graveyard</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="fb2606a5068901da92473666256e6e5b3132-uk">кладовище кодо</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="35937e34256cf4e5b2f7da08871d2a0b3134">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="35937e34256cf4e5b2f7da08871d2a0b3134-en">Kolkar Village</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="35937e34256cf4e5b2f7da08871d2a0b3134-uk">поселення Колкарів</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="2ecd2bd94734e5dd392d8678bc64cdab3136">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="2ecd2bd94734e5dd392d8678bc64cdab3136-en">Kormek's Hut</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="2ecd2bd94734e5dd392d8678bc64cdab3136-uk">халупа Кормека</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="86b20716fbd5b253d27cec43127089bc3138">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="86b20716fbd5b253d27cec43127089bc3138-en">Magram Village</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="86b20716fbd5b253d27cec43127089bc3138-uk">поселення Маґрамів</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="747d3443e319a22747fbb873e8b2f9f23140">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="747d3443e319a22747fbb873e8b2f9f23140-en">Mannoroc Coven</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="747d3443e319a22747fbb873e8b2f9f23140-uk">руїни Маннорок</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="bd85282513da4089c441926e1975898c3142">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="bd85282513da4089c441926e1975898c3142-en">Ranazjar Isle</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="bd85282513da4089c441926e1975898c3142-uk">острів Раназжар</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="a41b3bb3e6b050b6c9067c67f663b9153144">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="a41b3bb3e6b050b6c9067c67f663b9153144-en">Sar'theris Strand</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="a41b3bb3e6b050b6c9067c67f663b9153144-uk">узбережжя Сар'теріс</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="5d4ae76f053f8f2516ad12961ef7fe973146">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="5d4ae76f053f8f2516ad12961ef7fe973146-en">Sargeron</term>
+            <descrip type="definition">локація, руїни, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="5d4ae76f053f8f2516ad12961ef7fe973146-uk">Сарґерон</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d87c68a56bc8eb803b44f25abb6277863148">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d87c68a56bc8eb803b44f25abb6277863148-en">Scrabblescrew's Camp</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d87c68a56bc8eb803b44f25abb6277863148-uk">табір Гвинтодряпа</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="77ee3bc58ce560b86c2b59363281e9143150">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="77ee3bc58ce560b86c2b59363281e9143150-en">Shadowbreak Ravine</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="77ee3bc58ce560b86c2b59363281e9143150-uk">Тінезбитий яр</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="32cbf687880eb1674a07bf717761dd3a3152">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="32cbf687880eb1674a07bf717761dd3a3152-en">Tethris Aran</term>
+            <descrip type="definition">локація, руїни, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="32cbf687880eb1674a07bf717761dd3a3152-uk">Тетріс Аран</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="fdbd31f2027f20378b1a80125fc862db3154">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="fdbd31f2027f20378b1a80125fc862db3154-en">Thunder Axe Fortress</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="fdbd31f2027f20378b1a80125fc862db3154-uk">фортеця Грозової Сокири</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="2227d753dc18505031869d44673728e23156">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="2227d753dc18505031869d44673728e23156-en">Valley of Bones</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="2227d753dc18505031869d44673728e23156-uk">долина Кісток</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="55d99a37b2e1badba7c8df4ccd506a883158">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="55d99a37b2e1badba7c8df4ccd506a883158-en">Valley of Spears</term>
+            <descrip type="definition">локація, Спустошище</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="55d99a37b2e1badba7c8df4ccd506a883158-uk">долина Списів</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="9808ae38758804501ca3fc0697050e033160">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="9808ae38758804501ca3fc0697050e033160-en">Maraudine</term>
+            <descrip type="definition">група, клан, кентаври</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="9808ae38758804501ca3fc0697050e033160-uk">Маравдіни</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d60678e8f2ba9c540798ebbde31177e83162">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d60678e8f2ba9c540798ebbde31177e83162-en">Putridus</term>
+            <descrip type="definition">група, секта, сатири</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d60678e8f2ba9c540798ebbde31177e83162-uk">Потрухлі</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="98b17f068d5d9b7668e19fb8ae4708413164">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="98b17f068d5d9b7668e19fb8ae4708413164-en">Hatefury</term>
+            <descrip type="definition">група, секта, сатири</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="98b17f068d5d9b7668e19fb8ae4708413164-uk">Скаженолюті</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="5e6d27a7a8a8330df4b53240737ccc853166">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="5e6d27a7a8a8330df4b53240737ccc853166-en">Slitherblade</term>
+            <descrip type="definition">група, плем'я, наги</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="5e6d27a7a8a8330df4b53240737ccc853166-uk">Слизькорізи</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ce393994e8cf430867408678d1a5a9c83168">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ce393994e8cf430867408678d1a5a9c83168-en">Twilight's Hammer</term>
+            <descrip type="definition">група, клан, культ</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ce393994e8cf430867408678d1a5a9c83168-uk">Молот Сутінків</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="73e5080f0f3804cb9cf470a8ce895dac3170">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="73e5080f0f3804cb9cf470a8ce895dac3170-en">khan</term>
+            <descrip type="definition">ранг, кентаври</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="73e5080f0f3804cb9cf470a8ce895dac3170-uk">хан</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e25cfa90f04351958216f97e3efdabe93172">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e25cfa90f04351958216f97e3efdabe93172-en">doomguard</term>
+            <descrip type="definition">істота, демон</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e25cfa90f04351958216f97e3efdabe93172-uk">вартовий приречення</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="45c166d697d65080d54501403b4332563174">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="45c166d697d65080d54501403b4332563174-en">Khan Hratha</term>
+            <descrip type="definition">нпц, чол, кентавр</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="45c166d697d65080d54501403b4332563174-uk">хан Грата</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="59dfa2df42d9e3d41f5b02bfc32229dd3176">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="59dfa2df42d9e3d41f5b02bfc32229dd3176-en">Khan Shaka</term>
+            <descrip type="definition">нпц, чол, кентавр</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="59dfa2df42d9e3d41f5b02bfc32229dd3176-uk">хан Шака</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ba95d78a7c942571185308775a97a3a03178">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ba95d78a7c942571185308775a97a3a03178-en">Khan Jehn</term>
+            <descrip type="definition">нпц, чол, кентавр</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ba95d78a7c942571185308775a97a3a03178-uk">хан Джен</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c20a7ce2a627ba838cfbff082db351973180">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c20a7ce2a627ba838cfbff082db351973180-en">Uthek the Wise</term>
+            <descrip type="definition">нпц, жін, кентавр</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c20a7ce2a627ba838cfbff082db351973180-uk">Утек Розсудлива</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="8051a3c40561002834e59d566b7430cf3182">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="8051a3c40561002834e59d566b7430cf3182-en">Warug</term>
+            <descrip type="definition">нпц, чол, кентавр</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="8051a3c40561002834e59d566b7430cf3182-uk">Варуґ</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3eb414bf1c2a66a09c185d60553417b83184">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3eb414bf1c2a66a09c185d60553417b83184-en">Maraudos</term>
+            <descrip type="definition">нпц, чол, кентавр</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3eb414bf1c2a66a09c185d60553417b83184-uk">Маравдус</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3f4366aeb9c157cf9a30c90693eafc553186">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3f4366aeb9c157cf9a30c90693eafc553186-en">Zaetar</term>
+            <descrip type="definition">нпц, чол, хранитель гаю</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3f4366aeb9c157cf9a30c90693eafc553186-uk">Заєтар</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="8d30aa96e72440759f74bd2306c1fa3d3188">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="8d30aa96e72440759f74bd2306c1fa3d3188-en">Celebras</term>
+            <descrip type="definition">нпц, чол, хранитель гаю</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="8d30aa96e72440759f74bd2306c1fa3d3188-uk">Келебрас</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="07c4b1fdd1ef8da2d7e9393071204b713190">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="07c4b1fdd1ef8da2d7e9393071204b713190-en">Cavindra</term>
+            <descrip type="definition">нпц, жін, дріада</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="07c4b1fdd1ef8da2d7e9393071204b713190-uk">Кавіндра</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="766e428d1e232bbdd58664b41346196c3192">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="766e428d1e232bbdd58664b41346196c3192-en">Selendra</term>
+            <descrip type="definition">нпц, жін, дріада</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="766e428d1e232bbdd58664b41346196c3192-uk">Селендра</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="563ca5e068bc78b807910338bb4d42793194">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="563ca5e068bc78b807910338bb4d42793194-en">Princess Theradras</term>
+            <descrip type="definition">нпц, жін, елементаль, принцеса</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="563ca5e068bc78b807910338bb4d42793194-uk">принцеса Терадрас</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="6c4bb406b3e7cd5447f7a76fd70088063196">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="6c4bb406b3e7cd5447f7a76fd70088063196-en">Lord Vyletongue</term>
+            <descrip type="definition">нпц, чол, сатир</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="6c4bb406b3e7cd5447f7a76fd70088063196-uk">лорд Шолудивий Язик</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b08354f3688c4e4e8c52c207d7d5b8c33198">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b08354f3688c4e4e8c52c207d7d5b8c33198-en">Razorlash</term>
+            <descrip type="definition">нпц, елементаль</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b08354f3688c4e4e8c52c207d7d5b8c33198-uk">Бритвохляст</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="731ae30af8750c2d28720ea3c1f8c2b13200">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="731ae30af8750c2d28720ea3c1f8c2b13200-en">Noxxion</term>
+            <descrip type="definition">нпц, елементаль</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="731ae30af8750c2d28720ea3c1f8c2b13200-uk">Ноксіон</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="7486cef2522ee03547cfb970a404a8743202">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="7486cef2522ee03547cfb970a404a8743202-en">Iruxos</term>
+            <descrip type="definition">нпц, чол, вартовий приречення</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="7486cef2522ee03547cfb970a404a8743202-uk">Ірукзус</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="640258597cbc50037072712f964cf5d83204">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="640258597cbc50037072712f964cf5d83204-en">Lord Azrethoc</term>
+            <descrip type="definition">нпц, чол, вартовий приречення</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="640258597cbc50037072712f964cf5d83204-uk">лорд Азреток</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="211ed78fe91938b90f84a51944b08d5a3206">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="211ed78fe91938b90f84a51944b08d5a3206-en">Jugkar Grim'rod</term>
+            <descrip type="definition">нпц, чол, орк</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="211ed78fe91938b90f84a51944b08d5a3206-uk">Жуґар Ґрім'род</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="2ef248c04979d6b3a7b283ec3dc32cca3208">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="2ef248c04979d6b3a7b283ec3dc32cca3208-en">Willow</term>
+            <descrip type="definition">нпц, жін, невмерла</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="2ef248c04979d6b3a7b283ec3dc32cca3208-uk">Віллоу</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="731309c4bb223491a9f67eac5214fb2e3210">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="731309c4bb223491a9f67eac5214fb2e3210-en">Bibbly F'utzbuckle</term>
+            <descrip type="definition">нпц, чол, гоблін</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="731309c4bb223491a9f67eac5214fb2e3210-uk">Біблі Пряжкоклац</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="0aae0fede9a4d278e2f9a171e62fc76b3212">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="0aae0fede9a4d278e2f9a171e62fc76b3212-en">Smeed Scrabblescrew</term>
+            <descrip type="definition">нпц, чол, гоблін</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0aae0fede9a4d278e2f9a171e62fc76b3212-uk">Сміід Гвинтодряп</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="89d4402dc03d3b7318bbac10203034ab3214">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="89d4402dc03d3b7318bbac10203034ab3214-en">Brother Anton</term>
+            <descrip type="definition">нпц, чол, людина, ченець</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="89d4402dc03d3b7318bbac10203034ab3214-uk">брат Антон</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="133b3752e52bae42230364cb720f81f73216">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="133b3752e52bae42230364cb720f81f73216-en">Azore Aldamort</term>
+            <descrip type="definition">нпц, чол, людина</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="133b3752e52bae42230364cb720f81f73216-uk">Азор Альдаморт</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b0169350cd35566c47ba83c6ec1d6f823218">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b0169350cd35566c47ba83c6ec1d6f823218-en">Tyranis Malem</term>
+            <descrip type="definition">нпц, чол, нічний ельф</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b0169350cd35566c47ba83c6ec1d6f823218-uk">Тіраніс Малем</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="5812f92450ccaf17275500841c70924a3220">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="5812f92450ccaf17275500841c70924a3220-en">Dalinda Malem</term>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="5812f92450ccaf17275500841c70924a3220-uk">Далінда Малем</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="687fd5c7e0142dfb2da70e5083b3c6a73222">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="687fd5c7e0142dfb2da70e5083b3c6a73222-en">Melizza Brimbuzzle</term>
+            <descrip type="definition">нпц, жін, гоблін</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="687fd5c7e0142dfb2da70e5083b3c6a73222-uk">Мелізза Белькотало</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="0d352b4d3a317e3eae221199fdb496513224">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="0d352b4d3a317e3eae221199fdb496513224-en">Hornizz Brimbuzzle</term>
+            <descrip type="definition">нпц, чол, гоблін</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0d352b4d3a317e3eae221199fdb496513224-uk">Горнізз Белькотало</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="907edb0aa6986220dbffb79a788596ee3226">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="907edb0aa6986220dbffb79a788596ee3226-en">Nataka Longhorn</term>
+            <descrip type="definition">нпц, чол, таурен</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="907edb0aa6986220dbffb79a788596ee3226-uk">Натака Довгорогий</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="040a99f23e8960763e680041c601acab3228">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="040a99f23e8960763e680041c601acab3228-en">Maurin Bonesplitter</term>
+            <descrip type="definition">нпц, чол, невмерлий</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="040a99f23e8960763e680041c601acab3228-uk">Маврін Кісткощеп</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c12706a7c6e8d6476c3d2b6ae0042a823230">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c12706a7c6e8d6476c3d2b6ae0042a823230-en">Takata Steelblade</term>
+            <descrip type="definition">нпц, чол, орк</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c12706a7c6e8d6476c3d2b6ae0042a823230-uk">Таката Гостроклин</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="12e086066892a311b752673a28583d3f3232">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="12e086066892a311b752673a28583d3f3232-en">Felgur Twocuts</term>
+            <descrip type="definition">нпц, чол, орк</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="12e086066892a311b752673a28583d3f3232-uk">Фелґур Дворіз</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c5658c711ba9170700fc7d3ee3f63e403234">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c5658c711ba9170700fc7d3ee3f63e403234-en">Vark Battlescar</term>
+            <descrip type="definition">нпц, чол, таурен</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c5658c711ba9170700fc7d3ee3f63e403234-uk">Варк Битвошрам</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ddcb155487b88aaa80aed158006bdbdf3236">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ddcb155487b88aaa80aed158006bdbdf3236-en">Taiga Wisemane</term>
+            <descrip type="definition">нпц, чол, таурен</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ddcb155487b88aaa80aed158006bdbdf3236-uk">Тайга Мудра Грива</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="528aecdf9cf67e516dfd5eaa675ccfd93238">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="528aecdf9cf67e516dfd5eaa675ccfd93238-en">Roon Wildmane</term>
+            <descrip type="definition">нпц, чол, таурен</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="528aecdf9cf67e516dfd5eaa675ccfd93238-uk">Руун Дика Грива</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d15426b9c324676610fbb01360473ed83240">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d15426b9c324676610fbb01360473ed83240-en">Jinar'Zillen</term>
+            <descrip type="definition">нпц, чол, троль</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d15426b9c324676610fbb01360473ed83240-uk">Джінар'Зіллен</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="032dd17b77fab7d51a476c5ff2b5659c3242">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="032dd17b77fab7d51a476c5ff2b5659c3242-en">Mai'Lahii</term>
+            <descrip type="definition">нпц, жін, тролька</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="032dd17b77fab7d51a476c5ff2b5659c3242-uk">Май'Лагі</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="88e1ce84f9feef5a08d0df0334c534683244">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="88e1ce84f9feef5a08d0df0334c534683244-en">Bay of Storms</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="88e1ce84f9feef5a08d0df0334c534683244-uk">затока Штормів</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d309cd6396e744600c943fada20f686a3246">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d309cd6396e744600c943fada20f686a3246-en">Bear's Head</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d309cd6396e744600c943fada20f686a3246-uk">Ведмежа Голова</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c57abe86de4e516e12dfa386053fbfe23248">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c57abe86de4e516e12dfa386053fbfe23248-en">Bitter Reaches</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c57abe86de4e516e12dfa386053fbfe23248-uk">Кострубате безмежжя</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="326fb04c3abf030fe3f4e341f39b573f3250">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="326fb04c3abf030fe3f4e341f39b573f3250-en">Forlorn Ridge</term>
+            <descrip type="definition">локація, гора, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="326fb04c3abf030fe3f4e341f39b573f3250-uk">Самотній край</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1e3b21cb226c39b6aa4634f820b372f33252">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1e3b21cb226c39b6aa4634f820b372f33252-en">Haldarr Encampment</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1e3b21cb226c39b6aa4634f820b372f33252-uk">табір Гальдаррів</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="8deb8d1dd92840f975b6931ab3a3c61e3254">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="8deb8d1dd92840f975b6931ab3a3c61e3254-en">Hetaera's Clutch</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="8deb8d1dd92840f975b6931ab3a3c61e3254-uk">кубло Гетаєри</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="2131f8ecf18db66a758f718dc729e00e3256">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="2131f8ecf18db66a758f718dc729e00e3256-en">Jagged Reef</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="2131f8ecf18db66a758f718dc729e00e3256-uk">Зубчастий риф</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="485843481a7edacbfce101ecb1e4d2a83258">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="485843481a7edacbfce101ecb1e4d2a83258-en">Lake Mennar</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="485843481a7edacbfce101ecb1e4d2a83258-uk">озеро Меннар</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d54ce9de9df77c579775a7b6b1a4bdc03260">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d54ce9de9df77c579775a7b6b1a4bdc03260-en">Legash Encampment</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d54ce9de9df77c579775a7b6b1a4bdc03260-uk">табір Леґаш</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="8a50bae297807da9e97722a0b3fd8f273262">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="8a50bae297807da9e97722a0b3fd8f273262-en">Ravencrest Monument</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="8a50bae297807da9e97722a0b3fd8f273262-uk">пам'ятник Кронворон</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f0eaf559f89ca17022783964ebe9cdfd3264">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f0eaf559f89ca17022783964ebe9cdfd3264-en">Scalebeard's Cave</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f0eaf559f89ca17022783964ebe9cdfd3264-uk">печера Лускоборода</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ac73001b1d44f4925449ce09d9f5d5ca3266">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ac73001b1d44f4925449ce09d9f5d5ca3266-en">Shadowsong Shrine</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ac73001b1d44f4925449ce09d9f5d5ca3266-uk">вівтар Тінеспіву</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="a4d92e2cd541fca87e4620aba658316d3268">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="a4d92e2cd541fca87e4620aba658316d3268-en">Southridge Beach</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="a4d92e2cd541fca87e4620aba658316d3268-uk">Південний берег</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3f7bcd0b3ea822683bba8fc530f151bd3270">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3f7bcd0b3ea822683bba8fc530f151bd3270-en">Temple of Arkkoran</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3f7bcd0b3ea822683bba8fc530f151bd3270-uk">храм Арккоран</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="79514e888b8f2acacc68738d0cbb803e3272">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="79514e888b8f2acacc68738d0cbb803e3272-en">Temple of Zin-Malor</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="79514e888b8f2acacc68738d0cbb803e3272-uk">храм Зін-Малор</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="2b323d6eb28422cef49b266557dd31ad3274">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="2b323d6eb28422cef49b266557dd31ad3274-en">Thalassian Base Camp</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="2b323d6eb28422cef49b266557dd31ad3274-uk">Таласійський опорний табір</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b58ac8403eb9cf17fae1dcd16df71fde3276">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b58ac8403eb9cf17fae1dcd16df71fde3276-en">The Ruined Reaches</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b58ac8403eb9cf17fae1dcd16df71fde3276-uk">Зруйновані розлоги</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f507783927f2ec2737ba40afbd17efb53278">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f507783927f2ec2737ba40afbd17efb53278-en">The Shattered Strand</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f507783927f2ec2737ba40afbd17efb53278-uk">Розтрощене узбережжя</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="cc9657884708170e160c8372d92f35353280">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="cc9657884708170e160c8372d92f35353280-en">Tower of Eldara</term>
+            <descrip type="definition">локація, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="cc9657884708170e160c8372d92f35353280-uk">вежа Ельдари</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="a495eebbfa243b79c5b9b224c482d0c23282">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="a495eebbfa243b79c5b9b224c482d0c23282-en">Ursolan</term>
+            <descrip type="definition">локація, поселення, хутропузи, Азшара</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="a495eebbfa243b79c5b9b224c482d0c23282-uk">Урсолан</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c1d0f19c3f827daf0edd3e69c3b195a93284">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c1d0f19c3f827daf0edd3e69c3b195a93284-en">Spitelash</term>
+            <descrip type="definition">група, наги</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c1d0f19c3f827daf0edd3e69c3b195a93284-uk">Огидохльості</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="9ddb9dd5d8aee9a76bf217a2a3c548333286">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="9ddb9dd5d8aee9a76bf217a2a3c548333286-en">Haldarr</term>
+            <descrip type="definition">група, клан, сатири</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="9ddb9dd5d8aee9a76bf217a2a3c548333286-uk">Гальдарри</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b98249b38337c5088bbc660d8f872d6a3288">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b98249b38337c5088bbc660d8f872d6a3288-en">Legashi</term>
+            <descrip type="definition">група, секта, сатири</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b98249b38337c5088bbc660d8f872d6a3288-uk">Леґаші</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3a30be93eb45566a90f4e95ee72a089a3290">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3a30be93eb45566a90f4e95ee72a089a3290-en">Lord Arkkoroc</term>
+            <descrip type="definition">нпц, чол, морський велетень</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3a30be93eb45566a90f4e95ee72a089a3290-uk">лорд Арккорок</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="cfcce0621b49c983991ead4c3d4d3b6b3292">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="cfcce0621b49c983991ead4c3d4d3b6b3292-en">Hetaera</term>
+            <descrip type="definition">нпц, жін, гідра</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="cfcce0621b49c983991ead4c3d4d3b6b3292-uk">Гетаєра</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="7a430339c10c642c4b2251756fd1b4843294">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="7a430339c10c642c4b2251756fd1b4843294-en">Archmage Xylem</term>
+            <descrip type="definition">нпц, чол, людина</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="7a430339c10c642c4b2251756fd1b4843294-uk">архімаг Зілем</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="42cd63cb189c30ed03e42ce2c069566c3296">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="42cd63cb189c30ed03e42ce2c069566c3296-en">Scalebeard</term>
+            <descrip type="definition">нпц, чол, черепаха</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="42cd63cb189c30ed03e42ce2c069566c3296-uk">Лускобород</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="fa84632d742f2729dc32ce8cb5d497333298">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="fa84632d742f2729dc32ce8cb5d497333298-en">Shadowsong</term>
+            <descrip type="definition">родовід, нічні ельфи, сім'я</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="fa84632d742f2729dc32ce8cb5d497333298-uk">Тінеспів</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="63bfd6e8f26d1d3537f4c5038264ef363300">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="63bfd6e8f26d1d3537f4c5038264ef363300-en">Nessa Shadowsong</term>
+            <descrip type="definition">нпц, жін, нічна ельфа</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="63bfd6e8f26d1d3537f4c5038264ef363300-uk">Несса Тінеспів</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="6fab6e3aa34248ec1e34a4aeedecddc83302">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="6fab6e3aa34248ec1e34a4aeedecddc83302-en">Loramus Thalipedes</term>
+            <descrip type="definition">нпц, чол, нічний ельф</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="6fab6e3aa34248ec1e34a4aeedecddc83302-uk">Лорам Таліпедес</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="0e9d935f7e3f2b502450c049ddbc7c923304">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="0e9d935f7e3f2b502450c049ddbc7c923304-en">Rakh'likh</term>
+            <descrip type="definition">нпц, чол, натрезим</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0e9d935f7e3f2b502450c049ddbc7c923304-uk">Рах'ліх</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="16fc18d787294ad5171100e33d05d4e23306">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="16fc18d787294ad5171100e33d05d4e23306-en">Razelikh the Defiler</term>
+            <descrip type="definition">нпц, чол, натрезим, синонім, Рах'ліх</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="16fc18d787294ad5171100e33d05d4e23306-uk">Разеліх-Губитель</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c4b43ae017af4001c5193d310bf009423308">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c4b43ae017af4001c5193d310bf009423308-en">Warlord Krellian</term>
+            <descrip type="definition">нпц, чол, нага</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c4b43ae017af4001c5193d310bf009423308-uk">воєвода Крелліан</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="69386f6bb1dfed68692a24c8686939b93310">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="69386f6bb1dfed68692a24c8686939b93310-en">Magus Rimtori</term>
+            <descrip type="definition">нпц, жін, кривава ельфа</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="69386f6bb1dfed68692a24c8686939b93310-uk">чаклунка Рімторі</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="334467d41d5cf21e234465a1530ba6473312">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="334467d41d5cf21e234465a1530ba6473312-en">blood elf</term>
+            <descrip type="definition">істота, раса</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="334467d41d5cf21e234465a1530ba6473312-uk">кривавий ельф/кривава ельфа</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c46482dd5d39742f0bfd417b492d0e8e3314">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c46482dd5d39742f0bfd417b492d0e8e3314-en">magus</term>
+            <descrip type="definition">ранг</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c46482dd5d39742f0bfd417b492d0e8e3314-uk">чаклун/чаклунка</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="8ce5d989374d216a867cdc8871484b433316">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="8ce5d989374d216a867cdc8871484b433316-en">Apothecary Berard</term>
+            <descrip type="definition">нпц, чол, невмерлий</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="8ce5d989374d216a867cdc8871484b433316-uk">аптекар Берард</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="831b1ac54cc8db480e3babac5fa2256b3318">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="831b1ac54cc8db480e3babac5fa2256b3318-en">Lake Lordamere</term>
+            <descrip type="definition">локація, озеро</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="831b1ac54cc8db480e3babac5fa2256b3318-uk">озеро Лордамер</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="36ed197b3f31618fdbadb3df86f804bd3320">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="36ed197b3f31618fdbadb3df86f804bd3320-en">Moonrage</term>
+            <descrip type="definition">група, зграя, воргени</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="36ed197b3f31618fdbadb3df86f804bd3320-uk">Місяцесказ</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f7cfdde9db36af8e0d9a6d123d5c385e3322">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f7cfdde9db36af8e0d9a6d123d5c385e3322-en">Deathstalkers</term>
+            <descrip type="definition">група, відречені</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f7cfdde9db36af8e0d9a6d123d5c385e3322-uk">Смертолови</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3ce6d3c8830d27ec2e6a1936ecbaa5143324">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3ce6d3c8830d27ec2e6a1936ecbaa5143324-en">Darkstalkers</term>
+            <descrip type="definition">група, відречені</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3ce6d3c8830d27ec2e6a1936ecbaa5143324-uk">Темнолови</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="dba132f6ab6a3e3d17a8d59e82105f4c3326">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="dba132f6ab6a3e3d17a8d59e82105f4c3326-en">ley</term>
+            <descrip type="definition">словник, тип енергії</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="dba132f6ab6a3e3d17a8d59e82105f4c3326-uk">лей- (на першому місці словосполучення), лей (на другому місці)</term>
           </tig>
         </langSet>
       </termEntry>
