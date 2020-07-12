@@ -22891,6 +22891,11 @@
             <descrip type="definition">локація, ферма, Срібнохвойний праліс</descrip>
           </tig>
         </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0ae1dd3954ee840075de1395771b6c9c3560-uk">Мертві поля</term>
+          </tig>
+        </langSet>
       </termEntry>
       <termEntry id="ebf12cb74e96e67e63783d93c534ef273562">
         <langSet xml:lang="en">
