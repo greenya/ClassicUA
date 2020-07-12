@@ -36,6 +36,7 @@
 
 ## Посилання
 
+* [Словник термінів](https://greenya.github.io/ClassicUA/terms/)
 * [Проект на CurseForge](https://www.curseforge.com/wow/addons/classicua)
 * [Проект на Crowdin](https://crowdin.com/project/classicua)
 * [Проект на GitHub](https://github.com/greenya/ClassicUA)
