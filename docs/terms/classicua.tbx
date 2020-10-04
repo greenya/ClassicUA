@@ -1694,7 +1694,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="07cdfd23373b17c6b337251c22b7ea57278-en">Hana'zua</term>
-            <descrip type="definition">нпц, чол</descrip>
+            <descrip type="definition">нпц, чол, троль</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -24362,7 +24362,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="34306d99c63613fad5b2a140398c04203786-uk">Тельдарін Загублений</term>
+            <term id="34306d99c63613fad5b2a140398c04203786-uk">Тельдурін Загублений</term>
           </tig>
         </langSet>
       </termEntry>
@@ -25689,6 +25689,201 @@
         <langSet xml:lang="uk">
           <tig>
             <term id="7612936dcc85282c6fa4dd9d4ffe57f13990-uk">Смертехват</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="0de5d1a081a3095d62b416e44e055e7a3992">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="0de5d1a081a3095d62b416e44e055e7a3992-en">earthcaller</term>
+            <descrip type="definition">ранг</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0de5d1a081a3095d62b416e44e055e7a3992-uk">гукач землі</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="adf8d7f8c53c8688e63a02bfb30554973994">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="adf8d7f8c53c8688e63a02bfb30554973994-en">incendicite</term>
+            <descrip type="definition">матеріал, метал</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="adf8d7f8c53c8688e63a02bfb30554973994-uk">спалахіт</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="43e04dd08bb1305428b0c9c8d8a2660a3996">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="43e04dd08bb1305428b0c9c8d8a2660a3996-en">mining</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="43e04dd08bb1305428b0c9c8d8a2660a3996-uk">гірництво</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="74306eef5860833e2e47ff169a73b45b3998">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="74306eef5860833e2e47ff169a73b45b3998-en">herbalism</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="74306eef5860833e2e47ff169a73b45b3998-uk">травництво</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1bd69c7df3112fb9a584fbd9edfc6c904000">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1bd69c7df3112fb9a584fbd9edfc6c904000-en">skinning</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1bd69c7df3112fb9a584fbd9edfc6c904000-uk">шкуродерство</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="254ed7d2de3b23ab10936522dd547b784002">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="254ed7d2de3b23ab10936522dd547b784002-en">leatherworking</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="254ed7d2de3b23ab10936522dd547b784002-uk">шкірництво</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f8eb278a8bce873ef365b45e939da38a4004">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f8eb278a8bce873ef365b45e939da38a4004-en">enchanting</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f8eb278a8bce873ef365b45e939da38a4004-uk">зачаровування</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="671d8d05d795091118b1344f715307c44006">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="671d8d05d795091118b1344f715307c44006-en">alchemy</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="671d8d05d795091118b1344f715307c44006-uk">алхімія</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="21b5680d80f75a616096f2e791affac64008">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="21b5680d80f75a616096f2e791affac64008-en">blacksmithing</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="21b5680d80f75a616096f2e791affac64008-uk">ковальство</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="6693a7aacb8a2e74c6f5fe91bc39864b4010">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="6693a7aacb8a2e74c6f5fe91bc39864b4010-en">fishing</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="6693a7aacb8a2e74c6f5fe91bc39864b4010-uk">рибальство</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="bd3ef5c19067fe179f71c8b86ea4b39b4012">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="bd3ef5c19067fe179f71c8b86ea4b39b4012-en">cooking</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="bd3ef5c19067fe179f71c8b86ea4b39b4012-uk">куховарство</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1cdf14d1e3699d61d237cf76ce1c2dca4014">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1cdf14d1e3699d61d237cf76ce1c2dca4014-en">first aid</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1cdf14d1e3699d61d237cf76ce1c2dca4014-uk">перша допомога</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f04cd7399b2b0128970efb6d20b5c5514016">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f04cd7399b2b0128970efb6d20b5c5514016-en">tailoring</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f04cd7399b2b0128970efb6d20b5c5514016-uk">кравецтво</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="455cb2657aaa59e32fad80cb0b65b9dc4018">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="455cb2657aaa59e32fad80cb0b65b9dc4018-en">inscription</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="455cb2657aaa59e32fad80cb0b65b9dc4018-uk">писання</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1192265fb31ab52a6332c561ee6e52584020">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1192265fb31ab52a6332c561ee6e52584020-en">engineering</term>
+            <descrip type="definition">ремесло</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1192265fb31ab52a6332c561ee6e52584020-uk">інженерія</term>
           </tig>
         </langSet>
       </termEntry>
