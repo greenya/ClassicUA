@@ -378,7 +378,8 @@
                             .reduce((acc, cur) => {
                                 acc.push(...cur.split(',').map(e => e.trim()));
                                 return acc;
-                            }, []);
+                            }, [])
+                            .filter(e => !e.startsWith('#'));
 
                         labels.forEach((name, index) => {
                             if (map[name] === undefined) {
