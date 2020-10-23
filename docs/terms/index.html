@@ -331,9 +331,12 @@
             },
             computed: {
                 visibleTerms: function () {
-                    const re = this.filterText
-                        ? new RegExp(this.reEscape(this.filterText), 'i')
-                        : false;
+                    const text = this.filterText;
+                    if (text) {
+                        gtag('event', 'search', { 'search_term': text });
+                    }
+
+                    const re = text ? new RegExp(this.reEscape(text), 'i') : false;
                     const tags = this.filterTags;
                     return this.terms
                         .filter(term => !tags.length || this.termHasTags(term, tags))
@@ -412,6 +415,7 @@
                 addFilterTag: function (tag) {
                     const index = this.filterTags.indexOf(tag);
                     if (index == -1) {
+                        gtag('event', 'select_content', { 'content_type': tag.name });
                         this.filterTags.push(tag);
                     }
                 },
