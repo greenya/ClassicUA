@@ -310,7 +310,7 @@
             data: {
                 state: 'init',
                 stateErrorText: false,
-                infoDateUpdated: '04.10.2020',
+                infoDateUpdated: '24.10.2020',
                 terms: [],
                 tags: [],
                 filterText: '',
@@ -321,7 +321,7 @@
             },
             created: function () {
                 this.state = 'load';
-                this.load('classicua.tbx').then(xml => {
+                this.load('ClassicUA.tbx').then(xml => {
                     this.parse(xml);
                     this.state = 'ready';
                 }).catch(e => {
