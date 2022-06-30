@@ -611,7 +611,7 @@ local get_quest_frame = function ()
     end
 
     local width, height = QuestFrame:GetSize()
-    local frame = CreateFrame("frame", nil, QuestFrame)
+    local frame = CreateFrame("frame", nil, QuestFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
     frame:SetSize(width - 64, height - 160)
     frame:SetPoint("TOP", 0, -72)
@@ -719,7 +719,7 @@ local get_questlog_frame = function ()
     end
 
     local width, height = QuestLogFrame:GetSize()
-    local frame = CreateFrame("frame", nil, QuestLogFrame)
+    local frame = CreateFrame("frame", nil, QuestLogFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
     frame:SetSize(width - 64, height - 234)
     frame:SetPoint("TOP", 0, -166)
@@ -773,7 +773,7 @@ local get_book_frame = function ()
     end
 
     local width, height = ItemTextFrame:GetSize()
-    local frame = CreateFrame("frame", nil, ItemTextFrame)
+    local frame = CreateFrame("frame", nil, ItemTextFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
     frame:SetSize(width - 64, height - 160)
     frame:SetPoint("TOP", 0, -72)
