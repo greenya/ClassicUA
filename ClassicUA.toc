@@ -1,0 +1,7 @@
+# This file is needed only for CurseForge to accept the addon.
+# The correct TOC files are "ClassicUA-Classic.toc" and "ClassicUA-BCC.toc".
+# WOW Classic and WOW BCC clients are both recognize and load its own version.
+
+## Interface: 00000
+## Title: |cff1177eeClassic|r|cffffdd00UA|r |cFFFF0000(game client not supported)|r
+## Notes: ClassicUA only supports WOW Classic and WOW BCC.
