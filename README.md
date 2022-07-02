@@ -1,18 +1,6 @@
 # ClassicUA
 **World of Warcraft: Classic Ukrainization Addon**
 
-## Переклад
-
-Перекладені деякі квести та підказки (предмети, спели, нпц, об'єкти). Якщо ви бажаєте долучитися до перекладу -- заходьте на наш [Discord сервер](https://discord.gg/u4vjQ3u).
-
-## Встановлення
-
-* Завантажте архів з аддоном: https://github.com/greenya/ClassicUA/archive/master.zip (завжди остання версія).
-* Розпакуйте архів в `World of Warcraft\_classic_\Interface\AddOns` і переіменуйте `ClassicUA-master` на `ClassicUA`.
-* На екрані вибору персонажа, впевніться що аддон "ClassicUA" активовано.
-
-Також аддон можна встановити просто через Twitch.
-
 ## Причетні
 
 * Annakonda - переклад нпц і предметів, переклад квестів Ельвиннського лісу та Степів, переклад листів (книжок)
@@ -20,6 +8,7 @@
 * Danpar - ідея проекту, пошук перекладачів, організація перекладу квестів, переклад нпц і предметів, переклад квестів Дуротару, Мулґору, Альтерацької долини
 * Daria - переклад квестів прірви Лютого Полум'я, Безплідних країв, Заболоття
 * It_is_me1987 - шрифти
+* JeffyOLOLO - багфіксинг аддону
 * JohnTau - вичитування квестів
 * Jolgeirr - переклад квестів Срібнохвойного пралісу, Плачучих печер
 * MrRay - переклад квестів Місячної галявини
@@ -40,4 +29,3 @@
 * [Проект на CurseForge](https://www.curseforge.com/wow/addons/classicua)
 * [Проект на Crowdin](https://crowdin.com/project/classicua)
 * [Проект на GitHub](https://github.com/greenya/ClassicUA)
-* [Discord сервер](https://discord.gg/u4vjQ3u)
