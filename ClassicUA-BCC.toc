@@ -1,0 +1,22 @@
+## Interface: 20504
+
+## Title: |cff1177eeClassic|r|cffffdd00UA|r
+## Notes: Game localization to Ukrainian language.
+## Author: greenya
+## Version: 2.9
+
+entries\book.lua
+entries\class.lua
+entries\item.lua
+entries\npc.lua
+entries\object.lua
+entries\quest_a.lua
+entries\quest_h.lua
+entries\quest_n.lua
+entries\race.lua
+entries\spell.lua
+entries\text.lua
+entries\zone.lua
+
+talent_tree.lua
+main.lua
