@@ -948,7 +948,9 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
     elseif event == "PLAYER_LOGIN" then
         local name = UnitName("player")
         local guid = UnitGUID("player")
-        local _, class, _, race, sex = GetPlayerInfoByGUID(guid)
+        local _, class = UnitClass("player")
+        local _, race = UnitRace("player")
+        local sex = UnitSex("player")
         local faction = UnitFactionGroup("player")
 
         -- print("PLAYER_LOGIN", name, race, class, sex, faction)
