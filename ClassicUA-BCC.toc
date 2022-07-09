@@ -11,6 +11,7 @@ entries\item.lua
 entries\npc.lua
 entries\object.lua
 entries\quest_a.lua
+entries\quest_a_tbc.lua
 entries\quest_h.lua
 entries\quest_n.lua
 entries\race.lua
