@@ -17,6 +17,7 @@ entries\quest_n.lua
 entries\race.lua
 entries\race_tbc.lua
 entries\spell.lua
+entries\spell_tbc.lua
 entries\text.lua
 entries\zone.lua
 entries\zone_tbc.lua
