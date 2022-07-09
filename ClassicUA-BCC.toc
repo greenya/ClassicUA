@@ -22,5 +22,5 @@ entries\text.lua
 entries\zone.lua
 entries\zone_tbc.lua
 
-talent_tree.lua
+talent_tree_tbc.lua
 main.lua
