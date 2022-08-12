@@ -9,6 +9,7 @@ entries\book.lua
 entries\class.lua
 entries\item.lua
 entries\npc.lua
+entries\npc2.lua
 entries\object.lua
 entries\quest_a.lua
 entries\quest_a_tbc.lua
