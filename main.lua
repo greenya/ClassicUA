@@ -604,10 +604,10 @@ end
 local quest_title_font = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
 local quest_text_font = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
 
-local quest_frame = nil
-local get_quest_frame = function ()
-    if quest_frame then
-        return quest_frame
+local quest_frames = {}
+local get_quest_frame = function (name)
+    if quest_frames[name] then
+        return quest_frames[name]
     end
 
     local width, height = QuestFrame:GetSize()
@@ -628,8 +628,8 @@ local get_quest_frame = function ()
 
     frame:Show()
 
-    quest_frame = frame
-    return quest_frame
+    quest_frames[name] = frame
+    return quest_frames[name]
 end
 
 -- frame must have properties: title, text, more_title, more_text
@@ -665,7 +665,7 @@ local set_quest_content = function (frame, title, text, more_title, more_text)
 end
 
 QuestFrameDetailPanel:HookScript("OnShow", function (event)
-    local frame = get_quest_frame()
+    local frame = get_quest_frame("detail")
     local entry = get_entry("quest", GetQuestID())
     if entry then
         set_quest_content(frame, entry[1], entry[2], get_text("Quest Objectives"), entry[3])
@@ -676,12 +676,12 @@ QuestFrameDetailPanel:HookScript("OnShow", function (event)
 end)
 
 QuestFrameDetailPanel:HookScript("OnHide", function (event)
-    local frame = get_quest_frame()
+    local frame = get_quest_frame("detail")
     frame:Hide()
 end)
 
 QuestFrameProgressPanel:HookScript("OnShow", function (event)
-    local frame = get_quest_frame()
+    local frame = get_quest_frame("progress")
     local entry = get_entry("quest", GetQuestID())
     if entry then
         set_quest_content(frame, entry[1], entry[4])
@@ -692,12 +692,12 @@ QuestFrameProgressPanel:HookScript("OnShow", function (event)
 end)
 
 QuestFrameProgressPanel:HookScript("OnHide", function (event)
-    local frame = get_quest_frame()
+    local frame = get_quest_frame("progress")
     frame:Hide()
 end)
 
 QuestFrameRewardPanel:HookScript("OnShow", function (event)
-    local frame = get_quest_frame()
+    local frame = get_quest_frame("reward")
     local entry = get_entry("quest", GetQuestID())
     if entry then
         set_quest_content(frame, entry[1], entry[5])
@@ -708,7 +708,7 @@ QuestFrameRewardPanel:HookScript("OnShow", function (event)
 end)
 
 QuestFrameRewardPanel:HookScript("OnHide", function (event)
-    local frame = get_quest_frame()
+    local frame = get_quest_frame("reward")
     frame:Hide()
 end)
 
