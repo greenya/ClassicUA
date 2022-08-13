@@ -33,6 +33,7 @@ addonTable.zone = { -- [key] = text
 ["Arathi Highlands"] = "височина Араті",
 ["Argus"] = "Арґус",
 ["Ashenvale"] = "Ясенеділ",
+["Assembly of Explorers"] = "асамблея Дослідників",
 ["Astranaar"] = "Астранаар",
 ["Auberdine"] = "Аубердін",
 ["Azeroth"] = "Азерот",
