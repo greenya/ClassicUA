@@ -154,7 +154,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [667] = { "воїн Черепотрощителів" }, -- Skullsplitter Warrior
 [669] = { "мисливець Черепотрощителів" }, -- Skullsplitter Hunter
 [670] = { "знахар Черепотрощителів" }, -- Skullsplitter Witch Doctor
-[671] = { "мисливець за головами Черепотрощителів" }, -- Skullsplitter Headhunter
+[671] = { "мисливець за головами Кровоскальпих" }, -- Bloodscalp Headhunter
 [672] = { "ловець духів Черепотрощителів" }, -- Skullsplitter Spiritchaser
 [674] = { "гірняк ТзНБ \"Авантюра\"" }, -- Venture Co. Strip Miner
 [675] = { "десятник ТзНБ \"Авантюра\"" }, -- Venture Co. Foreman
@@ -247,7 +247,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [854] = { "молодий ловець джунглів" }, -- Young Jungle Stalker
 [855] = { "молодий тернистодільний раптор" }, -- Young Stranglethorn Raptor
 [856] = { "молодий хлястохвостий раптор" }, -- Young Lashtail Raptor
-[857] = { "ткач скорботи" }, -- Sorrow Spinner
+[858] = { "ткач скорботи" }, -- Sorrow Spinner
 [861] = { "камінардський розвідник" }, -- Stonard Scout
 [862] = { "камінардський дослідник" }, -- Stonard Explorer
 [863] = { "камінардський мисливець" }, -- Stonard Hunter
