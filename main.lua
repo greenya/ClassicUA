@@ -1,6 +1,8 @@
 local _, addonTable = ...
 
+-- ---------
 -- [ utils ]
+-- ---------
 
 local print_table = function (table, title)
     print(title .. " {")
@@ -48,7 +50,9 @@ local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-st
             :gsub('%?', '%%?')
 end
 
+-- -----------
 -- [ entries ]
+-- -----------
 
 local get_stats = function ()
     local stats = {}
@@ -357,7 +361,9 @@ local get_text = function (entry_key)
     end
 end
 
+-- ------------
 -- [ tooltips ]
+-- ------------
 
 local tooltip_entry_type = false
 local tooltip_entry_id = false
@@ -528,7 +534,9 @@ GameTooltip:HookScript("OnUpdate", function (self)
     end
 end)
 
+-- ----------
 -- [ frames ]
+-- ----------
 
 local setup_frame_background_and_border = function (frame)
     local texture = frame:CreateTexture(nil, "BACKGROUND")
@@ -599,7 +607,9 @@ local setup_frame_scrollbar_values = function (frame, height)
     frame.content:SetSize(frame.content:GetWidth(), height)
 end
 
--- [ quests ]
+-- ----------------
+-- [ quest frames ]
+-- ----------------
 
 local quest_title_font = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
 local quest_text_font = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
@@ -761,7 +771,9 @@ hooksecurefunc("SelectQuestLogEntry", function ()
     end
 end)
 
--- [[ books ]]
+-- --------------
+-- [ book frame ]
+-- --------------
 
 local book_item_id = false
 local book_text_font = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
@@ -819,7 +831,9 @@ local hide_book = function ()
     book_item_id = false
 end
 
--- [[ zone text and minimap ]]
+-- -------------------------
+-- [ zone text and minimap ]
+-- -------------------------
 
 local zone_text_lookup = {
     -- { FontString object, lookup function }
@@ -851,7 +865,9 @@ local prepare_zone_text = function ()
     update_zone_text()
 end
 
--- [[ world map ]]
+-- -------------
+-- [ world map ]
+-- -------------
 
 local world_map_original_set_map_id = WorldMapFrame.SetMapID
 local world_map_dds = { WorldMapContinentDropDown, WorldMapZoneDropDown }
@@ -918,12 +934,32 @@ local prepare_world_map = function ()
     end
 end
 
--- [[ events ]]
+-- ----------------
+-- [ target frame ]
+-- ----------------
+
+local update_target_frame_text = function ()
+    local guid = UnitGUID("target")
+    if guid then
+        local _, _, _, _, _, id, _ = strsplit("-", guid)
+        if id then
+            local entry = get_entry("npc", id)
+            if entry then
+                TargetFrame.name:SetText(capitalize(entry[1]))
+            end
+        end
+    end
+end
+
+-- ----------
+-- [ events ]
+-- ----------
 
 local event_frame = CreateFrame("frame")
 
 event_frame:RegisterEvent("ADDON_LOADED")
 event_frame:RegisterEvent("PLAYER_LOGIN")
+event_frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_READY")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
@@ -960,6 +996,8 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_zones()
         prepare_zone_text()
         prepare_world_map()
+    elseif event == "PLAYER_TARGET_CHANGED" then
+        update_target_frame_text()
     elseif event == "ITEM_TEXT_BEGIN" then
         if tooltip_entry_type == "item" then
             book_item_id = tooltip_entry_id
