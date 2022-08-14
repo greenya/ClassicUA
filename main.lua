@@ -465,8 +465,8 @@ local tooltip_set_unit = function (self)
     local _, unit = self:GetUnit()
     if unit then
         local guid = UnitGUID(unit)
-        local _, _, _, _, _, id, _ = strsplit("-", guid)
-        if id then
+        local kind, _, _, _, _, id, _ = strsplit("-", guid)
+        if kind == "Creature" and id then
             add_entry_to_tooltip(self, "npc", id)
         end
     end
@@ -941,8 +941,8 @@ end
 local update_target_frame_text = function ()
     local guid = UnitGUID("target")
     if guid then
-        local _, _, _, _, _, id, _ = strsplit("-", guid)
-        if id then
+        local kind, _, _, _, _, id, _ = strsplit("-", guid)
+        if kind == "Creature" and id then
             local entry = get_entry("npc", id)
             if entry then
                 TargetFrame.name:SetText(capitalize(entry[1]))
@@ -968,6 +968,7 @@ event_frame:RegisterEvent("ZONE_CHANGED_INDOORS")
 event_frame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
+    -- print(event, ...)
     if event == "ADDON_LOADED" then
         local s = get_stats()
         local v = GetAddOnMetadata("ClassicUA", "Version")
