@@ -951,6 +951,25 @@ local update_target_frame_text = function ()
     end
 end
 
+-- ---------------
+-- [ name plates ]
+-- ---------------
+
+hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
+    if ShouldShowName(self) then
+        local guid = UnitGUID(self.unit)
+        if guid then
+            local kind, _, _, _, _, id, _ = strsplit("-", guid)
+            if kind == "Creature" and id then
+                local entry = get_entry("npc", id)
+                if entry then
+                    self.name:SetText(capitalize(entry[1]))
+                end
+            end
+        end
+    end
+end)
+
 -- ----------
 -- [ events ]
 -- ----------
