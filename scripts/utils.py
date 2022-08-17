@@ -95,9 +95,9 @@ def write_lua_book_file(path, name, books):
         f.write('addonTable.book = { -- [id] = { page1, page2 (optional), page3 (optional), ... }\n')
 
         for id in books:
-            name, pages = books[id]
+            pages, hint = books[id]
 
-            f.write(f'[{id}] = ' + '{' + f' -- {name}\n')
+            f.write(f'[{id}] = ' + '{' + f' -- {hint}\n')
             for page in pages:
                 f.write(f'[===[{page}]===],\n')
             f.write('},\n')
