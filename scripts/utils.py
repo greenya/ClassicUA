@@ -78,18 +78,16 @@ def write_lua_zone_file(path, name, zones):
 def write_lua_npc_file(path, name, npcs):
     with open(f'{path}/{name}.lua', mode='w', encoding='utf-8', newline='\n') as f:
         f.write('local _, addonTable = ...\n')
-        f.write('local npc = { -- [id] = { title, description (optional) }\n')
+        f.write('addonTable.npc = { -- [id] = { title, description (optional) }\n')
 
         for id in npcs:
-            title, desc = npcs[id]
+            title, desc, hint = npcs[id]
             f.write('[' + str(id) + '] = { "' + title.replace('"', r'\"') + '"')
             if desc:
                 f.write(', "' + desc.replace('"', r'\"') + '"')
-            f.write(' },\n')
+            f.write(' },' + f' -- {hint}\n')
 
         f.write('}\n')
-        f.write('\n')
-        f.write('for k, v in pairs(npc) do addonTable.npc[k] = v end\n')
 
 def write_lua_book_file(path, name, books):
     with open(f'{path}/{name}.lua', mode='w', encoding='utf-8', newline='\n') as f:

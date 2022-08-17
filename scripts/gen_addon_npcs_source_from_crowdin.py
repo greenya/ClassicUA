@@ -17,10 +17,12 @@ for en_text, uk_text, tags in terms:
                 npc_text = npc_text.replace('_', ',')
 
                 npc_desc = False
+                npc_desc_original = False
 
                 for t in tags:
                     if t.startswith('<') and t.endswith('>'):
                         npc_desc = t[1:-1]
+                        npc_desc_original = npc_desc
                         break
 
                 if npc_desc:
@@ -36,16 +38,20 @@ for en_text, uk_text, tags in terms:
                             npc_desc = cases[1] if npc_is_female and len(cases) > 1 else cases[0]
                             break
 
-                npcs[npc_id] = (npc_text, npc_desc)
+                npcs[npc_id] = (
+                    npc_text,
+                    npc_desc,
+                    en_text + (f' <{npc_desc_original}>' if npc_desc_original != npc_desc else '')
+                )
 
 npcs = dict(sorted(npcs.items()))
 
 entries_path = 'translation_from_crowdin/entries'
 Path(entries_path).mkdir(parents=True, exist_ok=True)
-utils.write_lua_npc_file(entries_path, 'npc2', npcs)
+utils.write_lua_npc_file(entries_path, 'npc', npcs)
 
 for id in npcs:
-    name, desc = npcs[id]
+    name, desc, _ = npcs[id]
     print(id, '->', name, f'<{desc}>' if desc else '')
 
 print('-' * 40)
