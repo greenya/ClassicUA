@@ -90,3 +90,18 @@ def write_lua_npc_file(path, name, npcs):
         f.write('}\n')
         f.write('\n')
         f.write('for k, v in pairs(npc) do addonTable.npc[k] = v end\n')
+
+def write_lua_book_file(path, name, books):
+    with open(f'{path}/{name}.lua', mode='w', encoding='utf-8', newline='\n') as f:
+        f.write('local _, addonTable = ...\n')
+        f.write('addonTable.book = { -- [id] = { page1, page2 (optional), page3 (optional), ... }\n')
+
+        for id in books:
+            name, pages = books[id]
+
+            f.write(f'[{id}] = ' + '{' + f' -- {name}\n')
+            for page in pages:
+                f.write(f'[===[{page}]===],\n')
+            f.write('},\n')
+
+        f.write('}\n')
