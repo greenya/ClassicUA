@@ -368,8 +368,21 @@ end
 local tooltip_entry_type = false
 local tooltip_entry_id = false
 
--- content_index: default is 2 (description)
-local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, content_index)
+local add_line_to_tooltip = function (tooltip, content, template, r, g, b)
+    if not content then
+        return
+    end
+
+    local lines = type(content) == "table" and content or { content }
+    for i = 1, #lines do
+        local text = make_entry_text(lines[i], tooltip)
+        local text_cap = capitalize(text)
+        local result = template:gsub("TEXT", text_cap:gsub("%%", "%%%%"), 1)
+        tooltip:AddLine(result, r, g, b, true)
+    end
+end
+
+local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_buff_debuff_tooltip)
     if tooltip_entry_type then
         return
     end
@@ -384,9 +397,20 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, content_in
         tooltip:AddLine(" ")
         tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. capitalize(entry[1]), 1, 1, 1)
 
-        local content = make_entry_text(entry[content_index or 2], tooltip)
-        if content then
-            tooltip:AddLine(capitalize(content), 1, 1, 1, true)
+        if entry_type == "item" then
+            add_line_to_tooltip(tooltip, entry["desc"], "TEXT", 1, 1, 1)
+            add_line_to_tooltip(tooltip, entry["equip"], "При спорядженні: TEXT", 0.25, 1, 0.25)
+            add_line_to_tooltip(tooltip, entry["hit"], "Шанс при влучанні: TEXT", 0.25, 1, 0.25)
+            add_line_to_tooltip(tooltip, entry["use"], "Використання: TEXT", 0.25, 1, 0.25)
+            add_line_to_tooltip(tooltip, entry["flavor"], "\"TEXT\"", 1, 0.82, 0)
+        elseif entry_type == "spell" then
+            if is_buff_debuff_tooltip then
+                add_line_to_tooltip(tooltip, entry[3], "TEXT", 1, 1, 1)
+            else
+                add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 0.82, 0)
+            end
+        else
+            add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 1, 1)
         end
 
         if tooltip:IsShown() then
@@ -495,21 +519,21 @@ end)
 hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
     local id = select(10, UnitAura(unit, index, filter))
     if id then
-        add_entry_to_tooltip(self, "spell", id, 3)
+        add_entry_to_tooltip(self, "spell", id, true)
     end
 end)
 
 hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
     local id = select(10, UnitAura(unit, index, "HELPFUL"))
     if id then
-        add_entry_to_tooltip(self, "spell", id, 3)
+        add_entry_to_tooltip(self, "spell", id, true)
     end
 end)
 
 hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
     local id = select(10, UnitAura(unit, index, "HARMFUL"))
     if id then
-        add_entry_to_tooltip(self, "spell", id, 3)
+        add_entry_to_tooltip(self, "spell", id, true)
     end
 end)
 
