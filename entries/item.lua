@@ -539,7 +539,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [5416] = { "тотем очищення Дикої Гриви", use="Викликає духів Дикої Гриви для очищення." }, -- Wildmane Cleansing Totem, @use Invokes Wildmane spirits of cleansing.
 [5419] = { "дикі поручі" },
 [5420] = { "броня банші" },
-[5428] = { "екзотична кулінарна книга", flavor="Як приготувати людину" }, -- An Exotic Cookbook, @flavor How To Serve Man
+[5428] = { "екзотична кулінарна книга", flavor="Як готувати людина" }, -- An Exotic Cookbook, @flavor How To Serve Man
 [5441] = { "малий гаман для куль", equip="Збільшує швидкість атаки дальнього бою на 10%." },
 [5457] = { "відрізаний кіготь вуду" },
 [5458] = { "пояс з бруднодрева" }, -- Dirtwood Belt
