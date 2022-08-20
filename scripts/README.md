@@ -1,11 +1,12 @@
 # ClassicUA Generator Scripts
 
 The following files are generated from Crowdin via set of scripts:
+- book.lua
+- npc.lua
 - quests_a.lua
 - quests_h.lua
 - quests_n.lua
 - zones.lua
-- npc2.lua
 
 All other files are edited manually, e.g. via pull requests.
 
@@ -22,8 +23,9 @@ All other files are edited manually, e.g. via pull requests.
 
 3. Generate quests, zones and npcs:
     - Clean up folder "translation_from_crowdin"
-    - Copy "ClassicUA.tbx" and "quests" folder from ClassicUA.zip
+    - Copy ClassicUA.tbx and "uk" folder from ClassicUA.zip
     - Run: py gen_addon_quests_source_from_crowdin.py > translation_from_crowdin/quests_stats.txt
+    - Run: py gen_addon_books_source_from_crowdin.py > translation_from_crowdin/books_stats.txt
     - Run: py gen_addon_zones_source_from_crowdin.py > translation_from_crowdin/zones_stats.txt
     - Run: py gen_addon_npcs_source_from_crowdin.py > translation_from_crowdin/npc_stats.txt
 

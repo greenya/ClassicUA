@@ -5,7 +5,7 @@ import utils
 
 books = {}
 
-for dirpath, _, filenames in os.walk('translation_from_crowdin/books/'):
+for dirpath, _, filenames in os.walk('translation_from_crowdin/uk/books/'):
     for filename in filenames:
         tree = ElementTree.parse(os.path.join(dirpath, filename))
         root = tree.getroot()

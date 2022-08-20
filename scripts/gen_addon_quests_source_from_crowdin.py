@@ -17,7 +17,7 @@ quests_cat_total = {}
 
 for id in quest_ids:
     cat, side, title = conn.execute(f'SELECT cat, side, title FROM quests WHERE id={id}').fetchone()
-    path = f'translation_from_crowdin/quests/{cat}'
+    path = f'translation_from_crowdin/uk/quests/{cat}'
     filename = utils.get_quest_filename(id, title)
 
     tree = ElementTree.parse(f'{path}/{filename}.xml')
