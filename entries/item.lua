@@ -926,6 +926,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [15425] = { "незрівнянні наручі" }, -- Peerless Bracers
 [15702] = { "перстень хіміка" }, -- Chemist's Ring
 [15703] = { "роба хіміка" }, -- Chemist's Smock
+[15885] = { "підвіска Морського Лева" }, -- Pendant of the Sea Lion
 [16114] = { "кийок десятника", use="Будить обраного сплячого наймита." }, -- Foreman's Blackjack, @use Wakes up a targeted sleeping peon.
 [16209] = { "замовленея Подріґа" }, -- Podrig's Order
 [16210] = { "ящик Гордона" }, -- Gordon's Crate
