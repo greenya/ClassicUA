@@ -42,6 +42,7 @@ addonTable.object = { -- [key] = text
 -- quest
 ["Beached Sea Creature"] = "викинута на берег морська істота",
 ["Blue Raptor Nest"] = "гніздо блакитного раптора",
+["Bloodpetal Sprout"] = "паросток кровоцвіту",
 ["Damaged Crate"] = "пошкоджений ящик",
 ["Incendia Agave"] = "вогниста агава",
 ["Red Raptor Nest"] = "гніздо червоного раптора",
