@@ -26,13 +26,20 @@ for en_text, uk_text, tags in terms:
                         break
 
                 if npc_desc:
-                    npc_desc_lower = [
-                        npc_desc.lower(),
-                        npc_desc.lower().replace('&', 'and')
+                    npc_desc_lower = npc_desc.lower()
+
+                    npc_desc_lower_patterns = [
+                        npc_desc_lower,
+                        npc_desc_lower.replace('&', 'and'),
+                        npc_desc_lower.replace('weapons', 'weapon') # in "... weapon vendor"
                     ]
+
+                    if npc_desc_lower.startswith('the '):
+                        npc_desc_lower_patterns.append(npc_desc_lower[4:])
+
                     for en_text2, uk_text2, _ in terms:
                         en_text2_lower = en_text2.lower()
-                        if en_text2_lower in npc_desc_lower:
+                        if en_text2_lower in npc_desc_lower_patterns:
                             cases = uk_text2.split('/', maxsplit=1)
                             npc_is_female = 'жін' in tags
                             npc_desc = cases[1] if npc_is_female and len(cases) > 1 else cases[0]
