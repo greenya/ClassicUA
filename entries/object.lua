@@ -2,10 +2,12 @@ local _, addonTable = ...
 addonTable.object = { -- [key] = text
 
 -- common
-["Mailbox"] = "поштова скринька",
+
 ["Anvil"] = "ковадло",
+["Mailbox"] = "поштова скринька",
 
 -- herbs
+
 ["Arthas' Tears"] = "сльози Артаса",
 ["Black Lotus"] = "чорний лотос",
 ["Blindweed"] = "сліпниця",
@@ -40,10 +42,12 @@ addonTable.object = { -- [key] = text
 ["Wintersbite"] = "зимокус",
 
 -- quest
+
 ["Beached Sea Creature"] = "викинута на берег морська істота",
 ["Blue Raptor Nest"] = "гніздо блакитного раптора",
 ["Bloodpetal Sprout"] = "паросток кровоцвіту",
 ["Damaged Crate"] = "пошкоджений ящик",
+["Flame of Uzel"] = "полум'я Узела",
 ["Incendia Agave"] = "вогниста агава",
 ["Red Raptor Nest"] = "гніздо червоного раптора",
 ["Sealed Barrel"] = "запечатана бочка",
