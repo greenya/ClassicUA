@@ -4,6 +4,10 @@ local _, addonTable = ...
 -- [ utils ]
 -- ---------
 
+local is_classic = strbyte(GetBuildInfo(), 1) == 49
+local is_tbc = strbyte(GetBuildInfo(), 1) == 50
+local is_wotlk = strbyte(GetBuildInfo(), 1) == 51
+
 local print_table = function (table, title)
     print(title .. " {")
     for k, v in pairs(table) do print("[" .. k .. "]=" .. tostring(v)) end
@@ -755,9 +759,15 @@ local get_questlog_frame = function ()
     local width, height = QuestLogFrame:GetSize()
     local frame = CreateFrame("frame", nil, QuestLogFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
-    frame:SetSize(width - 64, height - 234)
-    frame:SetPoint("TOP", 0, -166)
-    frame:SetPoint("RIGHT", frame:GetWidth() - 41, 0)
+    if is_wotlk then
+        frame:SetSize(width/2 - 20, height - 96)
+        frame:SetPoint("TOP", 0, -66)
+        frame:SetPoint("RIGHT", frame:GetWidth() - 9, 0)
+    else
+        frame:SetSize(width - 64, height - 234)
+        frame:SetPoint("TOP", 0, -166)
+        frame:SetPoint("RIGHT", frame:GetWidth() - 41, 0)
+    end
 
     setup_frame_background_and_border(frame)
 
