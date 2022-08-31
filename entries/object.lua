@@ -46,12 +46,15 @@ addonTable.object = { -- [key] = text
 ["Beached Sea Creature"] = "викинута на берег морська істота",
 ["Blue Raptor Nest"] = "гніздо блакитного раптора",
 ["Bloodpetal Sprout"] = "паросток кровоцвіту",
+["Bolt Charged Bramble"] = "заряджена блискавкою тростина",
 ["Damaged Crate"] = "пошкоджений ящик",
+["Document Chest"] = "скриня для документів",
 ["Flame of Uzel"] = "полум'я Узела",
 ["Incendia Agave"] = "вогниста агава",
 ["Red Raptor Nest"] = "гніздо червоного раптора",
 ["Sealed Barrel"] = "запечатана бочка",
 ["Skeletal Sea Turtle"] = "кістяна морська черепаха",
+["Stone of Outer Binding"] = "камінь Зовнішнього Поневолення",
 ["Yellow Raptor Nest"] = "гніздо жовтого раптора",
 
 }
