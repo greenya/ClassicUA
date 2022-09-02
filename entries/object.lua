@@ -51,10 +51,12 @@ addonTable.object = { -- [key] = text
 ["Document Chest"] = "скриня для документів",
 ["Flame of Uzel"] = "полум'я Узела",
 ["Incendia Agave"] = "вогниста агава",
+["Musquash Root"] = "ондатровий корінь",
 ["Red Raptor Nest"] = "гніздо червоного раптора",
 ["Sealed Barrel"] = "запечатана бочка",
 ["Skeletal Sea Turtle"] = "кістяна морська черепаха",
 ["Stone of Outer Binding"] = "камінь Зовнішнього Поневолення",
+["Tear of Tilloa"] = "сльоза Тіллої",
 ["Yellow Raptor Nest"] = "гніздо жовтого раптора",
 
 }
