@@ -403,9 +403,9 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_buff_de
 
         if entry_type == "item" then
             add_line_to_tooltip(tooltip, entry["desc"], "TEXT", 1, 1, 1)
-            add_line_to_tooltip(tooltip, entry["equip"], "При спорядженні: TEXT", 0.25, 1, 0.25)
-            add_line_to_tooltip(tooltip, entry["hit"], "Шанс при влучанні: TEXT", 0.25, 1, 0.25)
-            add_line_to_tooltip(tooltip, entry["use"], "Використання: TEXT", 0.25, 1, 0.25)
+            add_line_to_tooltip(tooltip, entry["equip"], "При спорядженні: TEXT", 0, 1, 0)
+            add_line_to_tooltip(tooltip, entry["hit"], "Шанс при влучанні: TEXT", 0, 1, 0)
+            add_line_to_tooltip(tooltip, entry["use"], "Використання: TEXT", 0, 1, 0)
             add_line_to_tooltip(tooltip, entry["flavor"], "\"TEXT\"", 1, 0.82, 0)
         elseif entry_type == "spell" then
             if is_buff_debuff_tooltip then
