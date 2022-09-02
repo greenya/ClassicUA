@@ -121,9 +121,12 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [2571] = { "плетені онучі" },
 [2575] = { "червона лляна сорочка" },
 [2592] = { "вовняне полотно" },
+[2594] = { "кружка дворфійської медовухи", use="Міцний алкогольний напій." }, -- Flagon of Dwarven Honeymead, @use A strong alcoholic beverage.
 [2604] = { "червона фарба" },
 [2605] = { "зелена фарба" },
+[2625] = { "статуетка Менетіла" }, -- Menethil Statuette
 [2628] = { "звіт Сеніра" }, -- Senir's Report
+[2629] = { "ключ від сейфа на \"Відважному\"" }, -- Intrepid Strongbox Key
 [2636] = { "різьблений кам'яний ідол" }, -- Carved Stone Idol
 [2640] = { "шахтарське спорядження" }, -- Miners' Gear
 [2650] = { "кепські кольчужні чоботи" },
@@ -210,6 +213,8 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [2885] = { "документи Багряного Походу" }, -- Scarlet Crusade Documents
 [2901] = { "кайло", flavor="Гірникам потрібне кайло щоб копати." },
 [2934] = { "зіпсовані обрізки шкіри" },
+[2943] = { "Око Палета", equip="Збільшує зцілення заклятями і ефектами на 13." }, -- Eye of Paleth, @equip Increases healing done by spells and effects by up to 13.
+[2944] = { "прокляте Око Палета", equip="Збільшує пошкодження магією тіні заклять і ефектів на 10." }, -- Cursed Eye of Paleth, @equip Increases damage done by Shadow spells and effects by up to 10.
 [2999] = { "інструменти Сталешквара" }, -- Steelgrill's Tools
 [3016] = { "фоліант Ґюнтера" },
 [3017] = { "накази Севрена" }, -- Sevren's Orders
@@ -252,6 +257,8 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3300] = { "лапка кролика" },
 [3316] = { "голова Аларіка" },
 [3318] = { "останки Аларіка" },
+[3337] = { "бойове знамено Драконопащих" }, -- Dragonmaw War Banner
+[3339] = { "дворфійський трут" }, -- Dwarven Tinder
 [3340] = { "спалахітова руда" }, -- Incendicite Ore
 [3353] = { "покреслений рунами кулон" },
 [3354] = { "даларанський кулон" },
@@ -312,9 +319,11 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3577] = { "злиток золота" },
 [3601] = { "лист Синдикату" },
 [3618] = { "голова Жеруна" }, -- Gobbler's Head
+[3619] = { "табакерка Снелліґа" }, -- Snellig's Snuffbox
 [3621] = { "голова Айвара" },
 [3622] = { "сутність нічнохльостки" },
 [3623] = { "голова Тула" },
+[3625] = { "голова Нек'роша" }, -- Nek'rosh's Head
 [3626] = { "голова барона Вардуса" },
 [3627] = { "ікло Ваґаша" }, -- Fang of Vagash
 [3634] = { "голова Ґрімсона" }, -- Head of Grimson
