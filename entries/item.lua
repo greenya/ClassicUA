@@ -260,6 +260,9 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3337] = { "бойове знамено Драконопащих" }, -- Dragonmaw War Banner
 [3339] = { "дворфійський трут" }, -- Dwarven Tinder
 [3340] = { "спалахітова руда" }, -- Incendicite Ore
+[3347] = { "оберемок кроколіскових шкір" }, -- Bundle of Crocolisk Skins
+[3349] = { "сумка Сіди", flavor="Воно капає." }, -- Sida's Bag, @flavor It's dripping.
+[3352] = { "вкрита слизом сумка" }, -- Ooze-covered Bag
 [3353] = { "покреслений рунами кулон" },
 [3354] = { "даларанський кулон" },
 [3355] = { "дикий сталецвіт" },
