@@ -21,9 +21,9 @@ All other files are edited manually, e.g. via pull requests.
     - Update the date in /docs/terms/index.html
     - Commit "Update terms"
 
-3. Generate quests, zones and npcs:
+3. Generate quests, books, zones and npcs:
     - Clean up folder "translation_from_crowdin"
-    - Copy ClassicUA.tbx and "uk" folder from ClassicUA.zip
+    - Copy ClassicUA.tbx and ClassicUA.zip, extract zip
     - Run: py gen_addon_quests_source_from_crowdin.py > translation_from_crowdin/quests_stats.txt
     - Run: py gen_addon_books_source_from_crowdin.py > translation_from_crowdin/books_stats.txt
     - Run: py gen_addon_zones_source_from_crowdin.py > translation_from_crowdin/zones_stats.txt
@@ -31,9 +31,7 @@ All other files are edited manually, e.g. via pull requests.
 
 4. Update quests, zones and npcs in addon files:
     - Copy "translation_from_crowdin\entries" into "ClassicUA\entries"
-    - Commit "Update zones translation" if zone.lua updated
-    - Commit "Add translation for XXX NPCs" if npc2.lua updated
-    - Commit "Add translation for XXX quests" if any quest_*.lua updated
+    - Commit "Sync from Crowdin: quests, books, zones, npcs"
 
 5. Update and release new version
     - Commit "Bump version to X.X" with updated TOC files
