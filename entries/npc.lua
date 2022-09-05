@@ -714,6 +714,8 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1570] = { "каратель Аррен" }, -- Executor Arren
 [1572] = { "Торґрум Боррельсон", "приборкувач грифонів" }, -- Thorgrum Borrelson <Gryphon Master>
 [1573] = { "Ґріт Турден", "приборкувач грифонів" }, -- Gryth Thurden <Gryphon Master>
+[1646] = { "Барос Алекстон", "міський архітектор" }, -- Baros Alexton <City Architect>
+[1651] = { "Лі Браун", "рибалка" }, -- Lee Brown <Fishing Trainer>
 [1652] = { "смертостраж Бурґесс" }, -- Deathguard Burgess
 [1656] = { "Турман Аґаманд" }, -- Thurman Agamand
 [1657] = { "Девлін Аґаманд" }, -- Devlin Agamand
@@ -729,6 +731,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1694] = { "Лослор Рудж", "інженерні припаси" }, -- Loslor Rudge <Engineering Supplies>
 [1698] = { "Фраст Докнер", "учень зброяра" }, -- Frast Dokner <Apprentice Weaponsmith>
 [1702] = { "Бронк Шестерньоїд", "інженер-підмайстер" }, -- Bronk Guzzlegear <Journeyman Engineer>
+[1717] = { "Тендітний" }, -- Hamhock
 [1735] = { "смертостраж Авраам" }, -- Deathguard Abraham
 [1736] = { "смертостраж Рендольф" }, -- Deathguard Randolph
 [1737] = { "смертостраж Олівер" }, -- Deathguard Oliver
@@ -1574,6 +1577,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [3931] = { "оракул Тінезарості" }, -- Shadethicket Oracle
 [3933] = { "Хай'зан", "м'ясар" }, -- Hai'zan <Butcher>
 [3946] = { "Велінда Зорепісня" }, -- Velinde Starsong
+[3976] = { "Командир Могрейн з Алого Ордену" }, -- Scarlet Commander Mograine
 [3977] = { "верховна інквізиторка Білошкур" }, -- Sally Whitemane
 [3979] = { "бібліотекарка Мей Блідопила", "Ліга дослідників" }, -- Mae Paledust <Explorers' League>
 [3987] = { "Дал Кривавопазур" }, -- Dal Bloodclaw
@@ -1611,6 +1615,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [4273] = { "хранитель Ордан" }, -- Keeper Ordanus
 [4275] = { "архімаг Аруґал" }, -- Archmage Arugal
 [4277] = { "око Кілроґґа" }, -- Kilrogg Deadeye
+[4277] = { "Капелан з Алого Ордену" }, -- Scarlet Chaplain
 [4311] = { "Голґар Штормосокир" }, -- Holgar Stormaxe
 [4312] = { "Тарм", "приборкувач виверн" }, -- Tharm <Wind Rider Master>
 [4314] = { "Ґоркас", "приборкувач виверн" }, -- Gorkas <Wind Rider Master>
@@ -1639,6 +1644,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [4502] = { "Тарґ" }, -- Tharg
 [4503] = { "Мулоляп Брудноступ" }, -- Mudcrush Durtfeet
 [4504] = { "Кригопаща" }, -- Frostmaw
+[4538] = { "Лабіринтовий нетопір" }, -- Kraul Bat
 [4541] = { "кров Аґамаґґана" }, -- Blood of Agamaggan
 [4542] = { "верховний інквізитор Фербанкс" }, -- High Inquisitor Fairbanks
 [4551] = { "Майкл Ґаррет", "приборкувач кажанів" }, -- Michael Garrett <Bat Handler>
@@ -1710,6 +1716,8 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [5397] = { "Утек Розсудлива" }, -- Uthek the Wise
 [5398] = { "Варуґ" }, -- Warug
 [5402] = { "хан Грата" }, -- Khan Hratha
+[5403] = { "Білий жеребець" }, -- White Stallion
+[5406] = { "Ігреневий кінь" }, -- Palomino
 [5411] = { "Крінкл Файносталь", "ковальські припаси" }, -- Krinkle Goodsteel <Blacksmithing Supplies>
 [5413] = { "Фьюрен Довгобород" }, -- Furen Longbeard
 [5476] = { "наглядач Біґґс" }, -- Watcher Biggs
@@ -1718,6 +1726,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [5494] = { "Кетрін Ліланд", "рибальські принади" }, -- Catherine Leland <Fishing Supplier>
 [5505] = { "Терідран", "тренер друїдів" }, -- Theridran <Druid Trainer>
 [5516] = { "Ульфір Залізобородий", "тренер мисливців" }, -- Ulfir Ironbeard <Hunter Trainer>
+[5566] = { "Танніса", "тренерка травництва" }, -- Tannysa <Herbalism Trainer>
 [5591] = { "Дар" }, -- Dar
 [5592] = { "Ток'Кар" }, -- Tok'Kar
 [5593] = { "Катар" }, -- Katar
@@ -1786,6 +1795,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [5951] = { "заєць" }, -- Hare
 [5952] = { "бугай Лігва" }, -- Den Grunt
 [5953] = { "бугай Колючого Пагорба" }, -- Razor Hill Grunt
+[6015] = { "Торта" }, -- Torta
 [6019] = { "Горнізз Белькотало" }, -- Hornizz Brimbuzzle
 [6020] = { "намулошкура макрура" }, -- Slimeshell Makrura
 [6021] = { "дух кнура" }, -- Boar Spirit
@@ -1799,6 +1809,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [6145] = { "зграйка риб" }, -- School of Fish
 [6166] = { "Йорус Ячміновар" }, -- Yorus Barleybrew
 [6172] = { "Гензе Фок" }, -- Henze Faulk
+[6174] = { "Стефані Тернер" }, -- Stephanie Turner
 [6176] = { "Бат'рах-Вітрогляд" }, -- Bath'rah the Windwatcher
 [6177] = { "Нарм Фок" }, -- Narm Faulk
 [6181] = { "Джордан Стілвелл" }, -- Jordan Stilwell
@@ -1817,6 +1828,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [6736] = { "корчмар Кельдамір", "корчмар" }, -- Innkeeper Keldamyr <Innkeeper>
 [6746] = { "корчмарка Пала", "корчмарка" }, -- Innkeeper Pala <Innkeeper>
 [6747] = { "корчмар Каут", "корчмар" }, -- Innkeeper Kauth <Innkeeper>
+[6749] = { "Ірма", "доглядачка стайні" }, -- Erma <Stable Master>
 [6767] = { "Ґарона", "почесна майстриня Ліги вбивць" }, -- Garona
 [6768] = { "лорд Джорах Рейвехольдт", "лорд Ліги вбивць" }, -- Jorach Ravenholdt
 [6775] = { "Антур Переліг" }, -- Antur Fallow
@@ -2114,6 +2126,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [14386] = { "блукаюче око Кілроґґа" }, -- Kilrogg Deadeye
 [14396] = { "око Іммоль'тара" }, -- Immol'thar
 [14402] = { "вистежувач Кромвель" }, -- Seeker Cromwell
+[11423] = { "Офіцер Джексон" }, -- Officer Jaxon
 [14429] = { "Лихопаща" }, -- Grimmaw
 [14435] = { "принц Громаан", "Шукач вітру" }, -- Thunderaan
 [14469] = { "Нібі Всемогутній" }, -- Niby the Almighty
@@ -2214,4 +2227,6 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [17072] = { "емісар Ґормок" }, -- Emissary Gormok
 [17079] = { "генерал Кіріка" }, -- General Kirika
 [17080] = { "маршал Блакитномур" }, -- Marshal Bluewall
+[17119] = { "Ітанія" }, -- Ithania
+[28907] = { "Принц Валанар" }, -- Prince Valanar
 }
