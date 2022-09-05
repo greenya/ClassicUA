@@ -1615,7 +1615,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [4273] = { "хранитель Ордан" }, -- Keeper Ordanus
 [4275] = { "архімаг Аруґал" }, -- Archmage Arugal
 [4277] = { "око Кілроґґа" }, -- Kilrogg Deadeye
-[4277] = { "Капелан з Алого Ордену" }, -- Scarlet Chaplain
+[4299] = { "Капелан з Алого Ордену" }, -- Scarlet Chaplain
 [4311] = { "Голґар Штормосокир" }, -- Holgar Stormaxe
 [4312] = { "Тарм", "приборкувач виверн" }, -- Tharm <Wind Rider Master>
 [4314] = { "Ґоркас", "приборкувач виверн" }, -- Gorkas <Wind Rider Master>
