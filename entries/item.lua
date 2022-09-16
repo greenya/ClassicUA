@@ -731,9 +731,13 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6532] = { "райдужні блешні", use="Оснащення вашої вудки такою блешнею збільшує навички рибної ловлі на 75 протягом 10 хв." },
 [6634] = { "ритуальна мазь" }, -- Ritual Salve
 [6635] = { "сапта землі", use="Дозволяє шаману бачити духів елементів." }, -- Earth Sapta, @use Allows the shaman to see elemental spirits.
+[6636] = { "сапта вогню", use="Дозволяє шаману бачити духів елементів." }, -- Fire Sapta, @use Allows the shaman to see elemental spirits.
+[6637] = { "сапта води", use="Дозволяє шаману бачити духів елементів." }, -- Water Sapta, @use Allows the shaman to see elemental spirits.
+[6638] = { "сапта повітря", use="Дозволяє шаману бачити духів елементів." }, -- Air Sapta, @use Allows the shaman to see elemental spirits.
 [6640] = { "копито сквернолова" }, -- Felstalker Hoof
 [6652] = { "мішечок з реагентами" }, -- Reagent Pouch
 [6653] = { "смолоскип дрімаючого полум'я" }, -- Torch of the Dormant Flame
+[6654] = { "смолоскип вічного полум'я" }, -- Torch of the Eternal Flame
 [6655] = { "розжарена вуглинка" }, -- Glowing Ember
 [6656] = { "грубий кварц" }, -- Rough Quartz
 [6658] = { "ошийник-зразок" },
