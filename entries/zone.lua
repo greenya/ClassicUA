@@ -302,6 +302,7 @@ addonTable.zone = { -- [key] = text
 ["Helm's Bed Lake"] = "озеро Постеля Гельма",
 ["Heroes' Vigil"] = "Варта героїв",
 ["Hetaera's Clutch"] = "кубло Гетаєри",
+["Hidden Path"] = "Прихована стежка",
 ["Hidden Reach"] = "Скритий прохід",
 ["High Wilderness"] = "Безкрайня глушина",
 ["Highperch"] = "Високе Сідало",
