@@ -13,7 +13,7 @@ All other files are edited manually, e.g. via pull requests.
 ## The Steps
 
 1. Download all files from Crowdin:
-    - Export terms in TBX format -> ClassicUA.tbx
+    - Export terms in TBX (v2) format -> ClassicUA.tbx
     - Export quests via "Build & Download" -> ClassicUA.zip
 
 2. Update Terms app:
@@ -29,7 +29,7 @@ All other files are edited manually, e.g. via pull requests.
     - Run: py gen_addon_zones_source_from_crowdin.py > translation_from_crowdin/zones_stats.txt
     - Run: py gen_addon_npcs_source_from_crowdin.py > translation_from_crowdin/npc_stats.txt
 
-4. Update quests, zones and npcs in addon files:
+4. Update quests, books, zones and npcs in addon files:
     - Copy "translation_from_crowdin\entries" into "ClassicUA\entries"
     - Commit "Sync from Crowdin: quests, books, zones, npcs"
 
