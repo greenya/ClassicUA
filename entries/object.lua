@@ -43,17 +43,23 @@ addonTable.object = { -- [key] = text
 
 -- quest
 
+["Ancient Relic"] = "древня реліквія",
 ["Beached Sea Creature"] = "викинута на берег морська істота",
 ["Blue Raptor Nest"] = "гніздо блакитного раптора",
 ["Bloodpetal Sprout"] = "паросток кровоцвіту",
 ["Bolt Charged Bramble"] = "заряджена блискавкою тростина",
+["Cache of Explosives"] = "cховок з вибухівкою",
 ["Damaged Crate"] = "пошкоджений ящик",
 ["Document Chest"] = "скриня для документів",
 ["Dragonmaw Catapult"] = "катапульта Драконопащих",
+["Ebenezer Rustlocke's Corpse"] = "тіло Ебенезера Іржегака",
 ["Flame of Uzel"] = "полум'я Узела",
 ["Half-buried Barrel"] = "наполовину зарита бочка",
 ["Incendia Agave"] = "вогниста агава",
 ["Intrepid's Locked Strongbox"] = "замкнений сейф на \"Відважному\"",
+["Loose Soil"] = "пухкий ґрунт",
+["Matrix Punchograph 3005-A"] = "матричний перфограф 3005-A",
+["Matrix Punchograph 3005-B"] = "матричний перфограф 3005-B",
 ["Musquash Root"] = "ондатровий корінь",
 ["Red Raptor Nest"] = "гніздо червоного раптора",
 ["Sealed Barrel"] = "запечатана бочка",
