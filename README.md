@@ -2,6 +2,8 @@
 
 **World of Warcraft: Classic Ukrainization Addon**
 
+[![Crowdin](https://badges.crowdin.net/classicua/localized.svg)](https://crowdin.com/project/classicua)
+
 ## Причетні
 
 * Annakonda - переклад нпц і предметів, переклад квестів Ельвиннського лісу та Степів, переклад листів (книжок)
