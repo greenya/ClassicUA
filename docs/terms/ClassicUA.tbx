@@ -42930,19 +42930,6 @@
           </tig>
         </langSet>
       </termEntry>
-      <termEntry id="e42ad93f7491f2a38ba2ec1416ef6f556714">
-        <langSet xml:lang="en">
-          <tig>
-            <term id="e42ad93f7491f2a38ba2ec1416ef6f556714-en">Dark Iron Raider</term>
-            <descrip type="definition">нпц, мінорний, #2149</descrip>
-          </tig>
-        </langSet>
-        <langSet xml:lang="uk">
-          <tig>
-            <term id="e42ad93f7491f2a38ba2ec1416ef6f556714-uk">рейдер Темного Заліза</term>
-          </tig>
-        </langSet>
-      </termEntry>
       <termEntry id="9fc64354454711c97058db6110b3a3696716">
         <langSet xml:lang="en">
           <tig>
@@ -44630,32 +44617,6 @@
         <langSet xml:lang="uk">
           <tig>
             <term id="b11c3e3aaf3cfe496174ecc31a3c04d06974-uk">суховусий землекоп</term>
-          </tig>
-        </langSet>
-      </termEntry>
-      <termEntry id="64a4250dded75fcc7ac237f910e8a54e6976">
-        <langSet xml:lang="en">
-          <tig>
-            <term id="64a4250dded75fcc7ac237f910e8a54e6976-en">Dark Iron Supplier</term>
-            <descrip type="definition">нпц, мінорний, #2575</descrip>
-          </tig>
-        </langSet>
-        <langSet xml:lang="uk">
-          <tig>
-            <term id="64a4250dded75fcc7ac237f910e8a54e6976-uk">постачальник Темного Заліза</term>
-          </tig>
-        </langSet>
-      </termEntry>
-      <termEntry id="cc06a6150b92e17dd3076a0f0f9d2af46978">
-        <langSet xml:lang="en">
-          <tig>
-            <term id="cc06a6150b92e17dd3076a0f0f9d2af46978-en">Dark Iron Shadowcaster</term>
-            <descrip type="definition">нпц, мінорний, #2577</descrip>
-          </tig>
-        </langSet>
-        <langSet xml:lang="uk">
-          <tig>
-            <term id="cc06a6150b92e17dd3076a0f0f9d2af46978-uk">тіньомов Темного Заліза</term>
           </tig>
         </langSet>
       </termEntry>
@@ -51163,7 +51124,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="f2501c71a070a8bb42e898a80baee4017980-en">Dark Iron Kidnapper</term>
-            <descrip type="definition">нпц, мінорний, #1569</descrip>
+            <descrip type="definition">нпц, мінорний, #15692</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
