@@ -568,6 +568,14 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [952] = { "брат Нілс" }, -- Brother Neals
 [956] = { "Дорін Лезоспів", "броняр" }, -- Dorin Songblade <Armorer>
 [963] = { "заступник Райнер" }, -- Deputy Rainer
+[1007] = { "мохошкурий гнол" }, -- Mosshide Gnoll
+[1008] = { "мохошкура дворняга" }, -- Mosshide Mongrel
+[1009] = { "мохошкурий туманоткач" }, -- Mosshide Mistweaver
+[1010] = { "мохошкурий болотобіг" }, -- Mosshide Fenrunner
+[1011] = { "мохошкурий капканник" }, -- Mosshide Trapper
+[1012] = { "мохошкурий моцак" }, -- Mosshide Brute
+[1013] = { "мохошкурий містик" }, -- Mosshide Mystic
+[1014] = { "мохошкурий альфа" }, -- Mosshide Alpha
 [1024] = { "синьожабрий мурлок" }, -- Bluegill Murloc
 [1025] = { "синьожабрий калюжник" }, -- Bluegill Puddlejumper
 [1026] = { "синьожабрий здобувач" }, -- Bluegill Forager
@@ -582,6 +590,10 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1036] = { "центуріон Драконопащих" }, -- Dragonmaw Centurion
 [1037] = { "воєначальник Драконопащих" }, -- Dragonmaw Battlemaster
 [1038] = { "тінестраж Драконопащих" }, -- Dragonmaw Shadowwarder
+[1051] = { "дворф Темного Заліза" }, -- Dark Iron Dwarf
+[1052] = { "диверсант Темного Заліза" }, -- Dark Iron Saboteur
+[1053] = { "прохідник Темного Заліза" }, -- Dark Iron Tunneler
+[1054] = { "підривник Темного Заліза" }, -- Dark Iron Demolitionist
 [1057] = { "кісткостраж Драконопащих" }, -- Dragonmaw Bonewarder
 [1059] = { "Ана'тек Жорстокий", "вождь Черепотрощителів" }, -- Ana'thek the Cruel
 [1061] = { "Ґан'зула", "вождь Кровоскальпих" }, -- Gan'zulah
@@ -591,6 +603,8 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1071] = { "Довгокос Похмурий" }, -- Longbraid the Grim
 [1072] = { "Роґґо Гарлберроу" }, -- Roggo Harlbarrow
 [1073] = { "Ашлан Камнесміх" }, -- Ashlan Stonesmirk
+[1074] = { "Мотлі Гармаш" }, -- Motley Garmason
+[1075] = { "Раґ Гармаш" }, -- Rhag Garmason
 [1076] = { "Меррін Кам'яноткач", "Ліга дослідників" }, -- Merrin Rockweaver <Explorers' League>
 [1077] = { "розвідувач Вельґар", "Ліга дослідників" }, -- Prospector Whelgar <Explorers' League>
 [1078] = { "Ормер Залізов'яз" }, -- Ormer Ironbraid
@@ -609,6 +623,8 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1158] = { "проклятий морський піхотинець" }, -- Cursed Marine
 [1159] = { "перший помічник Снелліґ" }, -- First Mate Snellig
 [1160] = { "капітан Галиндор" }, -- Captain Halyndor
+[1169] = { "заколотник Темного Заліза" }, -- Dark Iron Insurgent
+[1171] = { "партизан Темного Заліза" }, -- Dark Iron Guerrilla
 [1172] = { "тунельний щур-шкідник" }, -- Tunnel Rat Vermin
 [1173] = { "тунельний щур-розвідник" }, -- Tunnel Rat Scout
 [1174] = { "тунельний щур-геомант" }, -- Tunnel Rat Geomancer
@@ -623,6 +639,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1210] = { "Чок'сул" }, -- Chok'sul
 [1212] = { "єпископ Фартинг" }, -- Bishop Farthing
 [1217] = { "Ґлорін Сталебров" }, -- Glorin Steelbrow
+[1222] = { "сапер Темного Заліза" }, -- Dark Iron Sapper
 [1225] = { "старий Чорниш" }, -- Ol' Sooty
 [1229] = { "Ґраніс Прудкоруб", "тренер воїнів" }, -- Granis Swiftaxe <Warrior Trainer>
 [1232] = { "Азар Дужомолот", "тренер паладинів" }, -- Azar Stronghammer <Paladin Trainer>
@@ -655,6 +672,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1316] = { "Адейр Гілрой", "бібліотекар" }, -- Adair Gilroy <Librarian>
 [1323] = { "Осрік Странґ", "продавець важкої броні" }, -- Osric Strang <Heavy Armor Merchant>
 [1340] = { "горянин Кедрел" }, -- Mountaineer Kadrell
+[1342] = { "горянин Рокґар" }, -- Mountaineer Rockgar
 [1343] = { "горянин Бурешпиль" }, -- Gringer Stormpike
 [1344] = { "розвідувач Залізоплет" }, -- Prospector Ironband
 [1345] = { "Маґмар Люторуб" }, -- Magmar Fellhew
@@ -672,6 +690,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1379] = { "Міран" }, -- Miran
 [1380] = { "Саян" }, -- Saean
 [1388] = { "Ваґаш" }, -- Vagash
+[1417] = { "молодий кроколіск Заболоття" }, -- Young Wetlands Crocolisk
 [1418] = { "синьожабрий рейдер" }, -- Bluegill Raider
 [1427] = { "Гарлан Баґлі" }, -- Harlan Bagley
 [1428] = { "Рема Шнайдер" }, -- Rema Schneider
@@ -727,6 +746,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1662] = { "капітан Перрін" }, -- Captain Perrine
 [1664] = { "капітан Вачон" }, -- Captain Vachon
 [1665] = { "капітан Мелрач" }, -- Captain Melrache
+[1666] = { "Кам Темнолют" }, -- Kam Deepfury
 [1667] = { "Мевен Корґал" }, -- Meven Korgal
 [1675] = { "гнилошкура дворняга" }, -- Rot Hide Mongrel
 [1678] = { "Вернон Дужий", "постачальник наживки та рибальських снастей" }, -- Vernon Hale
@@ -836,6 +856,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1976] = { "штормовійський патрульний" }, -- Stormwind City Patroller
 [1977] = { "сенатор Мегр Камнедар" }, -- Mehr Stonehallow
 [1978] = { "смертолов Ерланд" }, -- Deathstalker Erland
+[1981] = { "душитель Темного Заліза" }, -- Dark Iron Ambusher
 [1983] = { "Нічнохльостка" }, -- Nightlash
 [1986] = { "павутиннолісий павук" }, -- Webwood Spider
 [1988] = { "грел" }, -- Grell
@@ -1312,6 +1333,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [2993] = { "Бейн Криваве Копито" }, -- Baine Bloodhoof
 [2995] = { "Тал", "приборкувач виверн" }, -- Tal <Wind Rider Master>
 [3003] = { "Фір Мрякогін", "продавчиня хліба" }, -- Fyr Mistrunner <Bread Vendor>
+[3015] = { "Куна Громовий Ріг", "торговка луками та стрілами" }, -- Kuna Thunderhorn
 [3017] = { "Нан Мрякогін", "продавчиня фруктів" }, -- Nan Mistrunner <Fruit Vendor>
 [3025] = { "Каґа Мрякогін", "продавчиня м'яса" }, -- Kaga Mistrunner <Meat Vendor>
 [3026] = { "Аска Мрякогін", "тренерка куховарства" }, -- Aska Mistrunner <Cooking Trainer>
@@ -1323,6 +1345,9 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [3032] = { "Берам Небесний Мисливець", "тренер шаманів" }, -- Beram Skychaser <Shaman Trainer>
 [3033] = { "Турак Рунний Тотем", "тренер друїдів" }, -- Turak Runetotem <Druid Trainer>
 [3034] = { "Шеаль Рунний Тотем", "тренерка друїдів" }, -- Sheal Runetotem <Druid Trainer>
+[3038] = { "Кері Громовий Ріг", "тренерка мисливців" }, -- Kary Thunderhorn <Hunter Trainer>
+[3039] = { "Гольт Громовий Ріг", "тренер мисливців" }, -- Holt Thunderhorn <Hunter Trainer>
+[3040] = { "Урек Громовий Ріг", "тренер мисливців" }, -- Urek Thunderhorn <Hunter Trainer>
 [3051] = { "керівник Шуморакета" }, -- Supervisor Fizsprocket
 [3052] = { "Скорн Біла Хмара" }, -- Skorn Whitecloud
 [3054] = { "Зарлман Два-Місяці" }, -- Zarlman Two-Moons
@@ -1330,6 +1355,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [3056] = { "Примарний Вий" }, -- Ghost Howl
 [3057] = { "Керн Криваве Копито", "верховний ватаг" }, -- Cairne Bloodhoof
 [3058] = { "Арра'чі" }, -- Arra'chea
+[3059] = { "Гарутт Громовий Ріг", "тренер воїнів" }, -- Harutt Thunderhorn <Warrior Trainer>
 [3060] = { "Ґарт Мрякогін", "тренер друїдів" }, -- Gart Mistrunner <Druid Trainer>
 [3064] = { "Ґеннія Рунний Тотем", "тренерка друїдів" }, -- Gennia Runetotem <Druid Trainer>
 [3066] = { "Нарм Небесний Мисливець", "тренер шаманів" }, -- Narm Skychaser <Shaman Trainer>
@@ -1402,6 +1428,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [3174] = { "Двакк", "коваль-підмайстер" }, -- Dwukk <Journeyman Blacksmith>
 [3175] = { "Крунн", "шахтар" }, -- Krunn <Miner>
 [3177] = { "Турук Бурштинник", "дворфійський зброяр" }, -- Turuk Amberstill
+[3180] = { "крамар Темного Заліза", "особливі товари" }, -- Dark Iron Entrepreneur
 [3183] = { "Ярроґ Погибелетінь" }, -- Yarrog Baneshadow
 [3184] = { "Мяо'дзан", "алхімік-підмайстер" }, -- Miao'zan <Journeyman Alchemist>
 [3185] = { "Мішікі", "травниця" }, -- Mishiki <Herbalist>
@@ -1564,6 +1591,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [3521] = { "Ак'Зелот" }, -- Ak'Zeloth
 [3567] = { "Таллонкай Спритнокорінь" }, -- Tallonkai Swiftroot
 [3568] = { "Імла" }, -- Mist
+[3593] = { "Алійссія", "тренерка воїнів" }, -- Alyissia <Warrior Trainer>
 [3602] = { "Кел", "тренер друїдів" }, -- Kal <Druid Trainer>
 [3615] = { "Деврак", "приборкувач виверн" }, -- Devrak <Wind Rider Master>
 [3620] = { "Гаррук", "дресирувальник" }, -- Harruk <Pet Trainer>
@@ -1599,6 +1627,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [4046] = { "Магата Зловісний Тотем", "стара шкорба" }, -- Magatha Grimtotem
 [4053] = { "дочка Кенарія" }, -- Cenarius
 [4057] = { "син Кенарія" }, -- Cenarius
+[4062] = { "бомбардир Темного Заліза" }, -- Dark Iron Bombardier
 [4063] = { "Фібоз" }, -- Feeboz
 [4064] = { "розвідник Чорнокаменю" }, -- Blackrock Scout
 [4065] = { "караульний Чорнокаменю" }, -- Blackrock Sentry
@@ -1780,6 +1809,10 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [5822] = { "скверноткач Скорнн" }, -- Felweaver Scornn
 [5826] = { "геолорд Цятка" }, -- Geolord Mottle
 [5833] = { "Марґол Люта" }, -- Margol the Rager
+[5839] = { "геолог Темного Заліза" }, -- Dark Iron Geologist
+[5840] = { "паровий коваль Темного Заліза" }, -- Dark Iron Steamsmith
+[5844] = { "поневолювач Темного Заліза" }, -- Dark Iron Slaver
+[5846] = { "орудар Темного Заліза" }, -- Dark Iron Taskmaster
 [5848] = { "Малґін Ячміновар", "баєль'дунський офіцер підтримки рівня моралі" }, -- Malgin Barleybrew
 [5851] = { "капітан Ґероґґ Молотопалий", "баєль'дунський капітан вартових" }, -- Gerogg Hammertoe
 [5880] = { "Ун'Тува", "тренер магів" }, -- Un'Thuwa <Mage Trainer>
@@ -1795,6 +1828,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [5891] = { "менший прояв землі" }, -- Minor Manifestation of Earth
 [5892] = { "Палько Вогняний Вартовий" }, -- Searn Firewarder
 [5893] = { "менший прояв вогню" }, -- Minor Manifestation of Fire
+[5899] = { "Бріна" }, -- Brine
 [5900] = { "Телф Джуулам" }, -- Telf Joolam
 [5901] = { "Іслен Морська Провидиця" }, -- Islen Waterseer
 [5902] = { "менший прояв повітря" }, -- Minor Manifestation of Air
@@ -1817,6 +1851,8 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [6068] = { "тілоохоронець Варуґа" }, -- Warug
 [6072] = { "Діатор-Шукач" }, -- Diathorus the Seeker
 [6113] = { "Веджрік" }, -- Vejrek
+[6123] = { "шпигун Темного Заліза" }, -- Dark Iron Spy
+[6124] = { "капітан Белд", "капітан Темного Заліза" }, -- Captain Beld
 [6134] = { "лорд Арккорок" }, -- Lord Arkkoroc
 [6140] = { "Гетаєра" }, -- Hetaera
 [6145] = { "зграйка риб" }, -- School of Fish
@@ -1827,6 +1863,8 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [6177] = { "Нарм Фок" }, -- Narm Faulk
 [6181] = { "Джордан Стілвелл" }, -- Jordan Stilwell
 [6182] = { "Дафна Стілвелл" }, -- Daphne Stilwell
+[6212] = { "агент Темного Заліза" }, -- Dark Iron Agent
+[6228] = { "посол Темного Заліза" }, -- Dark Iron Ambassador
 [6294] = { "Кром Товсторук" }, -- Krom Stoutarm
 [6295] = { "Вільма Рентал", "тренерка здирання шкур" }, -- Wilma Ranthal <Skinning Trainer>
 [6376] = { "Врена Темноприск", "тренерка демонів" }, -- Wren Darkspring <Demon Trainer>
@@ -1834,6 +1872,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [6408] = { "Ула'елек" }, -- Ula'elek
 [6491] = { "зцілювач духу" }, -- Spirit Healer
 [6492] = { "породження з тріщини" }, -- Rift Spawn
+[6523] = { "стрілець Темного Заліза" }, -- Dark Iron Rifleman
 [6546] = { "Табета" }, -- Tabetha
 [6569] = { "Ґноарн" }, -- Gnoarn
 [6577] = { "Бінґлс Підривайченко" }, -- Bingles Blastenheimer
@@ -1905,6 +1944,8 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [8129] = { "Зморшка Файносталь", "досвідчений броняр" }, -- Wrinkle Goodsteel <Superior Armor Crafter>
 [8256] = { "куратор Торій" }, -- Thorius Stonetender
 [8284] = { "Дорій Каменеклопіт" }, -- Dorius Stonetender
+[8337] = { "сталеріз Темного Заліза" }, -- Dark Iron Steelshifter
+[8338] = { "снайпер Темного Заліза" }, -- Dark Iron Marksman
 [8359] = { "Агану", "продавець шкіряної броні" }, -- Ahanu <Leather Armor Merchant>
 [8363] = { "Шаді Мрякогін", "постачальниця товарів для ремесел" }, -- Shadi Mistrunner <Trade Goods Supplier>
 [8379] = { "архімаг Зілем" }, -- Archmage Xylem
@@ -1918,9 +1959,11 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [8440] = { "Тінь Гаккара" }, -- Hakkar
 [8443] = { "аватар Гаккара" }, -- Hakkar
 [8503] = { "Ґіблвільт" }, -- Gibblewilt
+[8504] = { "караульний Темного Заліза" }, -- Dark Iron Sentry
 [8506] = { "Еранік Прикутий" }, -- Eranikus
 [8518] = { "ключниця Ринтаріель" }, -- Rynthariel the Keymaster
 [8554] = { "вождь Гостроікло Колючкошкур" }, -- Sharptusk Thornmantle
+[8566] = { "спостерігач Темного Заліза" }, -- Dark Iron Lookout
 [8576] = { "Аґ'тор Кровокулак" }, -- Ag'tor Bloodfist
 [8578] = { "чаклунка Рімторі" }, -- Magus Rimtori
 [8580] = { "Атал'аларіон", "вартовий ідола" }, -- Atal'alarion
@@ -1929,6 +1972,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [8584] = { "Іверрон" }, -- Iverron
 [8588] = { "Умбранс Маромовець" }, -- Umbranse the Spiritspeaker
 [8617] = { "Залаші" }, -- Zalashji
+[8637] = { "вартовий Темного Заліза" }, -- Dark Iron Watchman
 [8929] = { "принцеса Мойра Бронзоборода", "принцеса Залізогарта" }, -- Moira Bronzebeard
 [8962] = { "Гіларі" }, -- Hilary
 [8963] = { "Ефсі" }, -- Effsee
@@ -1957,6 +2001,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [9796] = { "Ґалґар" }, -- Galgar
 [9987] = { "Шоджа'май", "доглядачка стайні" }, -- Shoja'my <Stable Master>
 [10061] = { "Кілліум Камнепалий", "доглядач стайні" }, -- Killium Bouldertoe <Stable Master>
+[10086] = { "Гісува Громовий Ріг", "дресирувальник" }, -- Hesuwa Thunderhorn <Pet Trainer>
 [10118] = { "Несса Тінеспів", "рибальські принади" }, -- Nessa Shadowsong <Fishing Supplies>
 [10136] = { "хімік Паливко" }, -- Chemist Fuely
 [10176] = { "Калтунк" }, -- Kaltunk
@@ -1973,6 +2018,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [10321] = { "Вуглечвар" }, -- Emberstrife
 [10339] = { "Ґіт", "їздовий дракон Ренда Чорнорукого" }, -- Gyth
 [10369] = { "Траексір", "продавець зброї" }, -- Trayexir <Weapon Merchant>
+[10378] = { "Омуса Громовий Ріг", "приборкувач виверн" }, -- Omusa Thunderhorn <Wind Rider Master>
 [10380] = { "Сануї Рунний Тотем", "продавець шкіряної броні" }, -- Sanuye Runetotem <Leather Armor Merchant>
 [10427] = { "Пао'ка Стрімка Гора" }, -- Pao'ka Swiftmountain
 [10428] = { "Мотеґа Вогняна Грива" }, -- Motega Firemane
@@ -2105,6 +2151,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [12756] = { "леді Оніксія" }, -- Onyxia
 [12757] = { "Каранґ Амаккар" }, -- Karang Amakkar
 [12776] = { "Грауґ", "тренер демонів" }, -- Hraug <Demon Trainer>
+[12782] = { "капітан О'Ніл", "забезпечення зброєю" }, -- Captain O'Neal <Weapons Quartermaster>
 [12818] = { "Руул Сніжне Копито" }, -- Ruul Snowhoof
 [12837] = { "Яма Сніжне Копито" }, -- Yama Snowhoof
 [12918] = { "вождь Мурґут" }, -- Chief Murgut
@@ -2142,6 +2189,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [14423] = { "офіцер Джаксон" }, -- Officer Jaxon
 [14429] = { "Лихопаща" }, -- Grimmaw
 [14435] = { "принц Громаан", "Шукач вітру" }, -- Thunderaan
+[14442] = { "мисливець Громовий Ріг" }, -- Hunter Thunderhorn
 [14469] = { "Нібі Всемогутній" }, -- Niby the Almighty
 [14505] = { "їздовий кінь (жахожеребець)" }, -- Riding Horse (Dreadsteed)
 [14522] = { "Ур'дан" }, -- Ur'dan
@@ -2150,11 +2198,14 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [14526] = { "Гастат Древній" }, -- Hastat the Ancient
 [14565] = { "їздовий кінь (громак)" }, -- Riding Horse (Charger)
 [14566] = { "древній кінний дух" }, -- Ancient Equine Spirit
+[14581] = { "сержант Громовий Ріг", "забезпечення зброєю" }, -- Sergeant Thunderhorn <Weapons Quartermaster>
+[14635] = { "сонний робітник Темного Заліза" }, -- Sleepy Dark Iron Worker
 [14738] = { "Отон Моджі'ко", "постачальник товарів для куховарства" }, -- Otho Moji'ko <Cooking Supplier>
 [14739] = { "містик Яйо'джін", "продавчиня реагентів" }, -- Mystic Yayo'jin <Reagent Vendor>
 [14741] = { "мисливець Маркгор", "доглядач стайні" }, -- Huntsman Markhor <Stable Master>
 [14753] = { "Ілліяна Місяцеблиск", "офіцер постачань Срібнокрилих" }, -- Illiyana Moonblaze
 [14834] = { "Гаккар" }, -- Hakkar
+[14845] = { "Гуп Громовий Ріг", "продавець їжі ярмарку Темного місяця" }, -- Stamp Thunderhorn
 [14981] = { "Ельфарран", "воєначальниця тіснини Боєпісні" }, -- Elfarran <Warsong Gulch Battlemaster>
 [15170] = { "Рутґар Гліфотвор" }, -- Rutgar Glyphshaper
 [15171] = { "Френкел Каменеміст" }, -- Frankal Stonebridge
@@ -2206,6 +2257,8 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [15553] = { "літаюча машина доктора Вейвіля" }, -- Doctor Weavil
 [15567] = { "старійшина Залізоплет" }, -- Elder Ironband
 [15572] = { "старійшина Рунний Тотем" }, -- Elder Runetotem
+[15577] = { "старійшина Небесна Мисливиця" }, -- Elder Skychaser
+[15583] = { "старійшина Громовий Ріг" }, -- Elder Thunderhorn
 [15589] = { "око К'Туна" }, -- C'Thun
 [15609] = { "кенарійський розвідник Лендіон" }, -- Cenarion Scout Landion
 [15610] = { "кенарійська розвідниця Азенель" }, -- Cenarion Scout Azenel
@@ -2218,6 +2271,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [15628] = { "Еранік Спокутий" }, -- Eranikus
 [15633] = { "Тіранда", "верховна жриця Елуни" }, -- Tyrande Whisperwind
 [15660] = { "Еранік Видозмінений" }, -- Eranikus
+[15692] = { "викрадач Темного Заліза" }, -- Dark Iron Kidnapper
 [15700] = { "воєвода Ґорчук", "командир військових постачань" }, -- Warlord Gorchuk <War Effort Commander>
 [15701] = { "польовий маршал Снігопад", "командир військових постачань" }, -- Field Marshal Snowfall <War Effort Commander>
 [15718] = { "скарабей Оуро" }, -- Ouro
