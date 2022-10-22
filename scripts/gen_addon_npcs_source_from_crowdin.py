@@ -3,6 +3,7 @@ import utils
 
 terms = utils.get_terms_from_tbx('translation_from_crowdin/ClassicUA.tbx')
 npcs = {}
+issues = []
 
 for en_text, uk_text, tags in terms:
     if 'нпц' in tags:
@@ -45,11 +46,16 @@ for en_text, uk_text, tags in terms:
                             npc_desc = cases[1] if npc_is_female and len(cases) > 1 else cases[0]
                             break
 
-                npcs[npc_id] = (
+                new_npc = (
                     npc_text,
                     npc_desc,
                     en_text + (f' <{npc_desc_original}>' if npc_desc_original != npc_desc else '')
                 )
+
+                if npc_id in npcs:
+                    issues.append(f'NPC #{npc_id} duplication! Probably terms has one of these NPCs with wrong ID.\nOLD NPC: {npcs[npc_id]}\nNEW NPC: {new_npc}')
+
+                npcs[npc_id] = new_npc
 
 npcs = dict(sorted(npcs.items()))
 
@@ -63,3 +69,9 @@ for id in npcs:
 
 print('-' * 40)
 print('total npcs:', len(npcs))
+
+if len(issues):
+    print('-' * 40)
+    print('ISSUES FOUND:')
+    for text in issues:
+        print(f'[!] {text}')
