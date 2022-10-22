@@ -50873,6 +50873,760 @@
           </tig>
         </langSet>
       </termEntry>
+      <termEntry id="e48a900a95c8e0a3db31da9fbad6866e7936">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e48a900a95c8e0a3db31da9fbad6866e7936-en">Brine</term>
+            <descrip type="definition">нпц, жін, орк, #5899</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e48a900a95c8e0a3db31da9fbad6866e7936-uk">Бріна</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b4892f808f9efbd561cecbfbec3ad20d7938">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b4892f808f9efbd561cecbfbec3ad20d7938-en">Mountaineer Rockgar</term>
+            <descrip type="definition">нпц, чол, дворф, #1342</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b4892f808f9efbd561cecbfbec3ad20d7938-uk">горянин Рокґар</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="30de9ece7cf3790c8c39ccff1a0442097940">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="30de9ece7cf3790c8c39ccff1a0442097940-en">Motley Garmason</term>
+            <descrip type="definition">нпц, чол, дворф, #1074</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="30de9ece7cf3790c8c39ccff1a0442097940-uk">Мотлі Гармаш</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="0f541eccc4dc49cc19da7ca4594fad277942">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="0f541eccc4dc49cc19da7ca4594fad277942-en">Rhag Garmason</term>
+            <descrip type="definition">нпц, чол, дворф, #1075</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0f541eccc4dc49cc19da7ca4594fad277942-uk">Раґ Гармаш</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="0aed23da2775d1ffec4e951b99f3cca87944">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="0aed23da2775d1ffec4e951b99f3cca87944-en">Dark Iron Demolitionist</term>
+            <descrip type="definition">нпц, мінорний, #1054</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0aed23da2775d1ffec4e951b99f3cca87944-uk">підривник Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="5d188b044333b4c62676e0d4f53dade77946">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="5d188b044333b4c62676e0d4f53dade77946-en">Dark Iron Dwarf</term>
+            <descrip type="definition">нпц, мінорний, #1051</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="5d188b044333b4c62676e0d4f53dade77946-uk">дворф Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="596059d266f32a63144d67628a53db897948">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="596059d266f32a63144d67628a53db897948-en">Dark Iron Entrepreneur</term>
+            <descrip type="definition">нпц, чол, дворф, #3180, &lt;особливі товари&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="596059d266f32a63144d67628a53db897948-uk">крамар Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="08808cfb5939be387af3c159b83c6b987950">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="08808cfb5939be387af3c159b83c6b987950-en">Dark Iron Insurgent</term>
+            <descrip type="definition">нпц, мінорний, #1169</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="08808cfb5939be387af3c159b83c6b987950-uk">заколотник Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f316e3fe33f1f754851712c760ab9d487952">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f316e3fe33f1f754851712c760ab9d487952-en">Dark Iron Rifleman</term>
+            <descrip type="definition">нпц, мінорний, #6523</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f316e3fe33f1f754851712c760ab9d487952-uk">стрілець Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="95c3f1a8b262ec7a929a8739e21142d77954">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="95c3f1a8b262ec7a929a8739e21142d77954-en">Dark Iron Tunneler</term>
+            <descrip type="definition">нпц, мінорний, #1053</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="95c3f1a8b262ec7a929a8739e21142d77954-uk">прохідник Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="7fd4db88d31ab524e0afe153c4f9465a7956">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="7fd4db88d31ab524e0afe153c4f9465a7956-en">Dark Iron Saboteur</term>
+            <descrip type="definition">нпц, мінорний, #1052</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="7fd4db88d31ab524e0afe153c4f9465a7956-uk">диверсант Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="55b34fd73727d9b19698835c7d5302ae7958">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="55b34fd73727d9b19698835c7d5302ae7958-en">Dark Iron Sapper</term>
+            <descrip type="definition">нпц, мінорний, #1222</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="55b34fd73727d9b19698835c7d5302ae7958-uk">сапер Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="df7ee89b6f8ec5827a19ecbaff5d4cd27960">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="df7ee89b6f8ec5827a19ecbaff5d4cd27960-en">Dark Iron Raider</term>
+            <descrip type="definition">нпц, мінорний, #2149</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="df7ee89b6f8ec5827a19ecbaff5d4cd27960-uk">рейдер Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ebb87faa733d9a04ebb40f422b135fb07962">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ebb87faa733d9a04ebb40f422b135fb07962-en">Dark Iron Ambusher</term>
+            <descrip type="definition">нпц, мінорний, #1981</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ebb87faa733d9a04ebb40f422b135fb07962-uk">душитель Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e0a0a422a9069a4cb2b91211a451da4b7964">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e0a0a422a9069a4cb2b91211a451da4b7964-en">Dark Iron Bombardier</term>
+            <descrip type="definition">нпц, мінорний, #4062</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e0a0a422a9069a4cb2b91211a451da4b7964-uk">бомбардир Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ab00b14a2da2e3cdcc44f06265db65747966">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ab00b14a2da2e3cdcc44f06265db65747966-en">Dark Iron Supplier</term>
+            <descrip type="definition">нпц, мінорний, #2575</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ab00b14a2da2e3cdcc44f06265db65747966-uk">постачальник Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="9dd30287dc5ffcfb4efb1e0521c3c8f87968">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="9dd30287dc5ffcfb4efb1e0521c3c8f87968-en">Dark Iron Shadowcaster</term>
+            <descrip type="definition">нпц, мінорний, #2577</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="9dd30287dc5ffcfb4efb1e0521c3c8f87968-uk">тіньомов Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ec1093fe1626f25b1845d04dd6f55dd27970">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ec1093fe1626f25b1845d04dd6f55dd27970-en">Dark Iron Guerrilla</term>
+            <descrip type="definition">нпц, мінорний, #1171</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ec1093fe1626f25b1845d04dd6f55dd27970-uk">партизан Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b5507f51b88a3ae4a99ba87e4877ab577972">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b5507f51b88a3ae4a99ba87e4877ab577972-en">Dark Iron Spy</term>
+            <descrip type="definition">нпц, мінорний, #6123</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b5507f51b88a3ae4a99ba87e4877ab577972-uk">шпигун Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="8207f8d79c224f5feef34fe2c2d6adfe7974">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="8207f8d79c224f5feef34fe2c2d6adfe7974-en">Captain Beld</term>
+            <descrip type="definition">нпц, чол, дворф, #6124, &lt;капітан Темного Заліза&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="8207f8d79c224f5feef34fe2c2d6adfe7974-uk">капітан Белд</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="13ece95531e87921222a0f9d932306917976">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="13ece95531e87921222a0f9d932306917976-en">Dark Iron Agent</term>
+            <descrip type="definition">нпц, мінорний, #6212</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="13ece95531e87921222a0f9d932306917976-uk">агент Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3e5190eeb51ebe6c5bbc54ee8950c5487978">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3e5190eeb51ebe6c5bbc54ee8950c5487978-en">Dark Iron Geologist</term>
+            <descrip type="definition">нпц, мінорний, #5839</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3e5190eeb51ebe6c5bbc54ee8950c5487978-uk">геолог Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f2501c71a070a8bb42e898a80baee4017980">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f2501c71a070a8bb42e898a80baee4017980-en">Dark Iron Kidnapper</term>
+            <descrip type="definition">нпц, мінорний, #1569</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f2501c71a070a8bb42e898a80baee4017980-uk">викрадач Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="4efa8b668ee1198289bb15965d9705b67982">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="4efa8b668ee1198289bb15965d9705b67982-en">Dark Iron Lookout</term>
+            <descrip type="definition">нпц, мінорний, #8566</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="4efa8b668ee1198289bb15965d9705b67982-uk">спостерігач Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="7070baed1f0e21d1234a4b00082a1bea7984">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="7070baed1f0e21d1234a4b00082a1bea7984-en">Dark Iron Marksman</term>
+            <descrip type="definition">нпц, мінорний, #8338</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="7070baed1f0e21d1234a4b00082a1bea7984-uk">снайпер Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="4158f6d19559955bae372bb00f6204e47986">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="4158f6d19559955bae372bb00f6204e47986-en">Dark Iron Sentry</term>
+            <descrip type="definition">нпц, мінорний, #8504</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="4158f6d19559955bae372bb00f6204e47986-uk">караульний Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c02d0450cdd75ce7595f5eaeb5f041a37988">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c02d0450cdd75ce7595f5eaeb5f041a37988-en">Dark Iron Slaver</term>
+            <descrip type="definition">нпц, мінорний, #5844</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c02d0450cdd75ce7595f5eaeb5f041a37988-uk">поневолювач Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1977b575ffa6d1708a5e3eb9ccd851cc7990">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1977b575ffa6d1708a5e3eb9ccd851cc7990-en">Dark Iron Steamsmith</term>
+            <descrip type="definition">нпц, мінорний, #5840</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1977b575ffa6d1708a5e3eb9ccd851cc7990-uk">паровий коваль Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e02af5824e1eb6ad58d6bc03ac9e827f7992">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e02af5824e1eb6ad58d6bc03ac9e827f7992-en">Dark Iron Steelshifter</term>
+            <descrip type="definition">нпц, мінорний, #8337</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e02af5824e1eb6ad58d6bc03ac9e827f7992-uk">сталеріз Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="a0b45d1bb84fe1bedbb8449764c4d5d57994">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="a0b45d1bb84fe1bedbb8449764c4d5d57994-en">Dark Iron Taskmaster</term>
+            <descrip type="definition">нпц, мінорний, #5846</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="a0b45d1bb84fe1bedbb8449764c4d5d57994-uk">орудар Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="2d5c4ea4c4aaf3aea8ac8dee1df8fbe87996">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="2d5c4ea4c4aaf3aea8ac8dee1df8fbe87996-en">Dark Iron Watchman</term>
+            <descrip type="definition">нпц, мінорний, #8637</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="2d5c4ea4c4aaf3aea8ac8dee1df8fbe87996-uk">вартовий Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="27ef345422b300b5bc84817e0f83ca8b7998">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="27ef345422b300b5bc84817e0f83ca8b7998-en">Sleepy Dark Iron Worker</term>
+            <descrip type="definition">нпц, мінорний, #14635</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="27ef345422b300b5bc84817e0f83ca8b7998-uk">сонний робітник Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="67ff32d40fb51f1a2fd2c4f1b10197858000">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="67ff32d40fb51f1a2fd2c4f1b10197858000-en">Dark Iron Ambassador</term>
+            <descrip type="definition">нпц, чол, дворф, #6228</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="67ff32d40fb51f1a2fd2c4f1b10197858000-uk">посол Темного Заліза</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d9fbed9da256e344c1fa46bb46c34c5f8002">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d9fbed9da256e344c1fa46bb46c34c5f8002-en">Ebenezer Rustlocke</term>
+            <descrip type="definition">нпц, чол, дворф</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d9fbed9da256e344c1fa46bb46c34c5f8002-uk">Ебенезер Іржегак</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e5abba84b1901e99f9c45845f488843e8004">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e5abba84b1901e99f9c45845f488843e8004-en">Kam Deepfury</term>
+            <descrip type="definition">нпц, чол, дворф, #1666</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e5abba84b1901e99f9c45845f488843e8004-uk">Кам Темнолют</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="00482b9bed15a272730fcb590ffebddd8006">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="00482b9bed15a272730fcb590ffebddd8006-en">Mosshide Gnoll</term>
+            <descrip type="definition">нпц, мінорний, #1007</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="00482b9bed15a272730fcb590ffebddd8006-uk">мохошкурий гнол</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="12f73080e04ce0d8e95defb577ebc3f48008">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="12f73080e04ce0d8e95defb577ebc3f48008-en">Mosshide Mongrel</term>
+            <descrip type="definition">нпц, мінорний, #1008</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="12f73080e04ce0d8e95defb577ebc3f48008-uk">мохошкура дворняга</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="bcff3f632fd16ff099a49c2f0932b47a8010">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="bcff3f632fd16ff099a49c2f0932b47a8010-en">Mosshide Brute</term>
+            <descrip type="definition">нпц, мінорний, #1012</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="bcff3f632fd16ff099a49c2f0932b47a8010-uk">мохошкурий моцак</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="8bcf57caa3ccb4c6c1a633674f4aaa848012">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="8bcf57caa3ccb4c6c1a633674f4aaa848012-en">Mosshide Trapper</term>
+            <descrip type="definition">нпц, мінорний, #1011</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="8bcf57caa3ccb4c6c1a633674f4aaa848012-uk">мохошкурий капканник</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d83de59e10227072a9c034ce10029c398014">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d83de59e10227072a9c034ce10029c398014-en">Mosshide Fenrunner</term>
+            <descrip type="definition">нпц, мінорний, #1010</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d83de59e10227072a9c034ce10029c398014-uk">мохошкурий болотобіг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="bf40d1cbb2ba9fdad19821fc140fa50c8016">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="bf40d1cbb2ba9fdad19821fc140fa50c8016-en">Mosshide Mistweaver</term>
+            <descrip type="definition">нпц, мінорний, #1009</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="bf40d1cbb2ba9fdad19821fc140fa50c8016-uk">мохошкурий туманоткач</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ba638ebf561da3b2313e5d7955c55ea98018">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ba638ebf561da3b2313e5d7955c55ea98018-en">Mosshide Mystic</term>
+            <descrip type="definition">нпц, мінорний, #1013</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ba638ebf561da3b2313e5d7955c55ea98018-uk">мохошкурий містик</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="07b1c04a30f798b5506c1ec5acfb90318020">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="07b1c04a30f798b5506c1ec5acfb90318020-en">Mosshide Alpha</term>
+            <descrip type="definition">нпц, мінорний, #1014</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="07b1c04a30f798b5506c1ec5acfb90318020-uk">мохошкурий альфа</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="60c97bef031ec312b512c08565c1868e8022">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="60c97bef031ec312b512c08565c1868e8022-en">Young Wetlands Crocolisk</term>
+            <descrip type="definition">нпц, мінорний, #1417</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="60c97bef031ec312b512c08565c1868e8022-uk">молодий кроколіск Заболоття</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="859555c74e9afd45ab771c615c1e49a68024">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="859555c74e9afd45ab771c615c1e49a68024-en">Alyissia</term>
+            <descrip type="definition">нпц, жін, нічний ельф, #3593, &lt;Warrior Trainer&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="859555c74e9afd45ab771c615c1e49a68024-uk">Алійссія</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e6872f5bbe75073f8c7cfb93de7f6f3a8026">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e6872f5bbe75073f8c7cfb93de7f6f3a8026-en">Weapons Quartermaster</term>
+            <descrip type="definition">ранг, професія</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e6872f5bbe75073f8c7cfb93de7f6f3a8026-uk">забезпечення зброєю</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f8e918489f1e0a81ff11312f4d0630c18028">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f8e918489f1e0a81ff11312f4d0630c18028-en">Holt Thunderhorn</term>
+            <descrip type="definition">нпц, чол, таурен, #3039, &lt;Hunter Trainer&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f8e918489f1e0a81ff11312f4d0630c18028-uk">Гольт Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b4d22bb574aed5fdd900a274930252f68030">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b4d22bb574aed5fdd900a274930252f68030-en">Kuna Thunderhorn</term>
+            <descrip type="definition">нпц, жін, таурен, #3015, &lt;торговка луками та стрілами&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b4d22bb574aed5fdd900a274930252f68030-uk">Куна Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="319be2a70dd4b557266c6ca2c20f6da78032">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="319be2a70dd4b557266c6ca2c20f6da78032-en">Sergeant Thunderhorn</term>
+            <descrip type="definition">нпц, чол, таурен, #14581, &lt;Weapons Quartermaster&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="319be2a70dd4b557266c6ca2c20f6da78032-uk">сержант Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="cc4af25fa9d2d5c953496579b75f6f6c8034">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="cc4af25fa9d2d5c953496579b75f6f6c8034-en">Captain O'Neal</term>
+            <descrip type="definition">нпц, чол, людина, #12782, &lt;Weapons Quartermaster&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="cc4af25fa9d2d5c953496579b75f6f6c8034-uk">капітан О'Ніл</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="750263dbb2fb8547bdd810ee11a08c7a8036">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="750263dbb2fb8547bdd810ee11a08c7a8036-en">Elder Thunderhorn</term>
+            <descrip type="definition">нпц, чол, таурен, #15583</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="750263dbb2fb8547bdd810ee11a08c7a8036-uk">старійшина Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e97986091ee430b881ba8fc9755a64a88038">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e97986091ee430b881ba8fc9755a64a88038-en">Harutt Thunderhorn</term>
+            <descrip type="definition">нпц, чол, таурен, #3059, &lt;Warrior Trainer&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e97986091ee430b881ba8fc9755a64a88038-uk">Гарутт Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="544defa9fddff50c53b71c43e0da72be8040">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="544defa9fddff50c53b71c43e0da72be8040-en">Hesuwa Thunderhorn</term>
+            <descrip type="definition">нпц, чол, таурен, #10086, &lt;Pet Trainer&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="544defa9fddff50c53b71c43e0da72be8040-uk">Гісува Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="6ebb69ffbebe9fd95d160ffc29e0fe5d8042">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="6ebb69ffbebe9fd95d160ffc29e0fe5d8042-en">Omusa Thunderhorn</term>
+            <descrip type="definition">нпц, чол, таурен, #10378, &lt;Wind Rider Master&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="6ebb69ffbebe9fd95d160ffc29e0fe5d8042-uk">Омуса Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="5588902a8054f6e22ed3484c140ffc628044">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="5588902a8054f6e22ed3484c140ffc628044-en">Urek Thunderhorn</term>
+            <descrip type="definition">нпц, чол, таурен, #3040, &lt;Hunter Trainer&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="5588902a8054f6e22ed3484c140ffc628044-uk">Урек Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="68a64c1e5639454c3185e7ea2db9fc488046">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="68a64c1e5639454c3185e7ea2db9fc488046-en">Stamp Thunderhorn</term>
+            <descrip type="definition">нпц, чол, таурен, #14845, &lt;продавець їжі ярмарку Темного місяця&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="68a64c1e5639454c3185e7ea2db9fc488046-uk">Гуп Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="48dfb0e62ef53dc160c26788433c2d1a8048">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="48dfb0e62ef53dc160c26788433c2d1a8048-en">Hunter Thunderhorn</term>
+            <descrip type="definition">нпц, чол, таурен, #14442</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="48dfb0e62ef53dc160c26788433c2d1a8048-uk">мисливець Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b0285cbf334be23be58e7ff353af1af28050">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b0285cbf334be23be58e7ff353af1af28050-en">Kary Thunderhorn</term>
+            <descrip type="definition">нпц, жін, таурен, #3038, &lt;Hunter Trainer&gt;</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b0285cbf334be23be58e7ff353af1af28050-uk">Кері Громовий Ріг</term>
+          </tig>
+        </langSet>
+      </termEntry>
     </body>
   </text>
 </martif>
