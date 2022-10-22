@@ -32443,12 +32443,12 @@
         <langSet xml:lang="en">
           <tig>
             <term id="98c56bce74669e2e4e7a9fc1caa8c3265090-en">Atal'ai Tribe</term>
-            <descrip type="definition">плем'я Атал'ай</descrip>
+            <descrip type="definition">група, плем'я, лісові тролі</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="98c56bce74669e2e4e7a9fc1caa8c3265090-uk">група, плем'я, лісові тролі</term>
+            <term id="98c56bce74669e2e4e7a9fc1caa8c3265090-uk">плем'я Атал'ай</term>
           </tig>
         </langSet>
       </termEntry>
@@ -50825,12 +50825,12 @@
         <langSet xml:lang="en">
           <tig>
             <term id="6c90885b28e58d1f44856d787da2078f7934-en">Elder Skychaser</term>
-            <descrip type="definition">старійшина Небесна Мисливиця</descrip>
+            <descrip type="definition">нпц, жін, таурен, #15577</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="6c90885b28e58d1f44856d787da2078f7934-uk">нпц, жін, таурен, #15577</term>
+            <term id="6c90885b28e58d1f44856d787da2078f7934-uk">старійшина Небесна Мисливиця</term>
           </tig>
         </langSet>
       </termEntry>
