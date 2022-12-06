@@ -733,8 +733,11 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6373] = { "еліксир вогнеміці", use="Збільшує пошкодження вогняними чарами на до 10 на 30 хв." }, -- Elixir of Firepower, @use Increases spell fire damage by up to 10 for 30 min.
 [6470] = { "незвичайна луска" },
 [6471] = { "бездоганна незвичайна луска" },
+[6486] = { "припалена луска" }, -- Singed Scale
+[6488] = { "проста скрижаль" }, -- Simple Tablet
 [6529] = { "блискуча блешня", use="Оснащення вашої вудки такою блешнею збільшує навички рибної ловлі на 25 протягом 10 хв." },
 [6532] = { "райдужні блешні", use="Оснащення вашої вудки такою блешнею збільшує навички рибної ловлі на 75 протягом 10 хв." },
+[6534] = { "бруски кованої сталі" }, -- Forged Steel Bars
 [6634] = { "ритуальна мазь" }, -- Ritual Salve
 [6635] = { "сапта землі", use="Дозволяє шаману бачити духів елементів." }, -- Earth Sapta, @use Allows the shaman to see elemental spirits.
 [6636] = { "сапта вогню", use="Дозволяє шаману бачити духів елементів." }, -- Fire Sapta, @use Allows the shaman to see elemental spirits.
@@ -754,8 +757,17 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6751] = { "дивне фруктове дерево" },
 [6752] = { "дивний мерехтливий паросток" },
 [6799] = { "голова Веджріка" }, -- Vejrek's Head
+[6800] = { "смеркова руда" }, -- Umbral Ore
+[6805] = { "ріг Ворла" }, -- Horn of Vorlus
+[6808] = { "елунітова руда" }, -- Elunite Ore
+[6809] = { "медальйон Елури" }, -- Elura's Medallion
+[6812] = { "ящик елуніту" }, -- Case of Elunite
 [6948] = { "камінь Вогнища", use="Повертає вас додому. Поговоріть з корчмарем в іншому місці щоб змінити домівку." }, -- Hearthstone, @use Returns you to <Hearthstone Location>. Speak to an Innkeeper in a different place to change your home location.
 [6952] = { "товста шкура ведмедя" }, -- Thick Bear Fur
+[6966] = { "елунітова сокира" }, -- Elunite Axe
+[6967] = { "елунітова меч" }, -- Elunite Sword
+[6968] = { "елунітова молот" }, -- Elunite Hammer
+[6969] = { "елунітова кинджал" }, -- Elunite Dagger
 [7005] = { "білувальний ніж" }, -- Skinning Knife
 [7068] = { "стихійний вогонь" }, -- Elemental Fire
 [7073] = { "зламаний пазур" }, -- Broken Fang
@@ -770,6 +782,10 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [7273] = { "тотемна палиця В'ялошкірих", use="Зберіть 10 тотемних палиць і використайте їх біля каменю Зовнішнього Поневолення." }, -- Witherbark Totem Stick, @use Gather 10 totem sticks, and use them at the Stone of Outer Binding.
 [7279] = { "малий шкіряний гаман для набоїв", equip="Збільшує швидкість атаки дальнього бою на 10%." },
 [7286] = { "луска чорного драконеняти" }, -- Black Whelp Scale
+[7326] = { "сокира Тун'Ґріма" }, -- Thun'grim's Axe
+[7327] = { "кинджал Тун'Ґріма" }, -- Thun'grim's Dagger
+[7328] = { "булава Тун'Ґріма" }, -- Thun'grim's Mace
+[7329] = { "меч Тун'Ґріма" }, -- Thun'grim's Sword
 [7343] = { "гайковий ключ Бінґлса" }, -- Bingles' Wrench
 [7345] = { "викрутка Бінґлса" }, -- Bingles' Screwdriver
 [7346] = { "молоток Бінґлса" }, -- Bingles' Hammer
@@ -875,6 +891,12 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [9421] = { "величезний камінь здоров'я", use="Миттєво відновлює 1200 здоров'я." },
 [9520] = { "мовчазний мисливець" }, -- Silent Hunter
 [9521] = { "черепоруб" },
+[9542] = { "простий лист" }, -- Simple Letter
+[9543] = { "проста руна" }, -- Simple Rune
+[9544] = { "проста директива" }, -- Simple Memorandum
+[9545] = { "простий сигіл" }, -- Simple Sigil
+[9546] = { "простий сувій" }, -- Simple Scroll
+[9547] = { "проста записка" }, -- Simple Note
 [9598] = { "нічні сукні" },
 [9599] = { "луб'яні поножі" },
 [9602] = { "чагарникове лезо" }, -- Brushwood Blade
@@ -945,6 +967,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [12365] = { "щільний камінь" },
 [12467] = { "чужоземне яйце", flavor="Всередині щось ворушиться" }, -- Alien Egg, @flavor Something seems to shake from within
 [12564] = { "план вбивства" }, -- Assassination Note
+[12635] = { "простий пергамент" }, -- Simple Parchment
 [12644] = { "щільний шліфувальний камінь" },
 [12655] = { "зачарований злиток торію" },
 [12724] = { "пакунок Дженіс" },
