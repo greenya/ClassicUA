@@ -1123,8 +1123,14 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [20012] = { "Рецепт: Глибший сон без сновидінь", use="Навчає вас створювати зілля глибшого сну без сновидінь." },
 [20013] = { "Рецепт: Зілля живої дії", use="Навчає вас створювати зілля живої дії." },
 [20014] = { "Рецепт: Величезне зілля крові троля", use="Навчає вас створювати величезне зілля крові троля." },
+[20130] = { "алмазна фляжка", use="Відновлює 9 здоров'я кожні 5 сек та збільшую вашу силу на 75. Діє 1 хв.", flavor="Подається на каміннях." }, -- Diamond Flask, @use Restores 9 health every 5 sec and increases your Strength by 75. Lasts 1 min., @flavor Served on the rocks.
 [20381] = { "снолуска" }, -- Dreamscale
+[20517] = { "наплічники бритвосталі", equip="Збільшує ваш шанс влучити на 1%." }, -- Razorsteel Shoulders, @equip Improves your chance to hit by 1%.
+[20521] = { "маска люті", equip={ "Збільшує ваш шанс критичного удару на 1%.", "Збільшує ваш шанс влучити на 1%." } }, -- Fury Visor, @equip Improves your chance to get a critical strike by 1%., @equip Improves your chance to hit by 1%.
 [20559] = { "знак честі низини Араті", flavor="Медаллю відзначають бої в низині Араті" }, -- Arathi Basin Mark of Honor, @flavor Medal awarded for fighting in Arathi Basin
+[20606] = { "бурштинове пір'я вуду" }, -- Amber Voodoo Feather
+[20607] = { "блакитне пір'я вуду" }, -- Blue Voodoo Feather
+[20608] = { "зелене пір'я вуду" }, -- Green Voodoo Feather
 [20761] = { "Рецепт: Трансмутація у стихійний вогонь", use="Навчає вас перетворювати серце вогню на три стихійні вогні." },
 [21139] = { "уламок зеленого скіпетра" }, -- Green Scepter Shard
 [21145] = { "есенція Зандівія" }, -- Essence of Xandivious
