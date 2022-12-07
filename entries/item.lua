@@ -762,12 +762,25 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6808] = { "елунітова руда" }, -- Elunite Ore
 [6809] = { "медальйон Елури" }, -- Elura's Medallion
 [6812] = { "ящик елуніту" }, -- Case of Elunite
+[6840] = { "гальванізований ріг" }, -- Galvanized Horn
+[6841] = { "фіал флогістону" }, -- Vial of Phlogiston
+[6843] = { "барильце пекучої бражки" }, -- Cask of Scalder
+[6844] = { "палаюча кров" }, -- Burning Blood
+[6845] = { "палаючий камінь" }, -- Burning Rock
+[6926] = { "записи Фьюрена", flavor="Цей лист запечатано" }, -- Furen's Notes, @flavor This letter is sealed
 [6948] = { "камінь Вогнища", use="Повертає вас додому. Поговоріть з корчмарем в іншому місці щоб змінити домівку." }, -- Hearthstone, @use Returns you to <Hearthstone Location>. Speak to an Innkeeper in a different place to change your home location.
 [6952] = { "товста шкура ведмедя" }, -- Thick Bear Fur
 [6966] = { "елунітова сокира" }, -- Elunite Axe
 [6967] = { "елунітова меч" }, -- Elunite Sword
 [6968] = { "елунітова молот" }, -- Elunite Hammer
 [6969] = { "елунітова кинджал" }, -- Elunite Dagger
+[6970] = { "послуга Фьюрена" }, -- Furen's Favor
+[6971] = { "загартований вогнем койф" }, -- Fire Hardened Coif
+[6972] = { "загартований вогнем гауберк", use="Збільшити лють на 30. (Відновленя 1 год)" }, -- Fire Hardened Hauberk, @use Increase Rage by 30. (1 Hour Cooldown)
+[6978] = { "смеркова сокира" }, -- Umbral Axe
+[6981] = { "смерковий кинджал" }, -- Umbral Dagger
+[6982] = { "смеркова булава" }, -- Umbral Mace
+[6984] = { "смерковий меч" }, -- Umbral Sword
 [7005] = { "білувальний ніж" }, -- Skinning Knife
 [7068] = { "стихійний вогонь" }, -- Elemental Fire
 [7073] = { "зламаний пазур" }, -- Broken Fang
@@ -777,6 +790,15 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [7080] = { "есенція води" },
 [7082] = { "есенція повітря" },
 [7097] = { "стегнове м'ясо", use="Відновлює 61 здоров'я протягом 18 с. Потрібно залишатися в сидячому положенні під час їжі." },
+[7119] = { "судомний вусик", flavor="Цей вусик не смикатиметься вічно" }, -- Twitching Antenna, @flavor This antenna won't twitch forever
+[7120] = { "оплот Руґи" }, -- Ruga's Bulwark
+[7126] = { "злиток димчастого заліза" }, -- Smoky Iron Ingot
+[7127] = { "молотий азурит" }, -- Powdered Azurite
+[7128] = { "нероздвоєне копито сатира" }, -- Uncloven Satyr Hoof
+[7129] = { "рукавиці жорстокості" }, -- Brutal Gauntlets
+[7130] = { "шолом жорстокості" }, -- Brutal Helm
+[7132] = { "набедреники жорстокості" }, -- Brutal Legguards
+[7133] = { "гауберк жорстокості", use="Збільшити лють на 30. (Відновленя 1 год)" }, -- Brutal Hauberk, @use Increase Rage by 30. (1 Hour Cooldown)
 [7266] = { "трактат Ура з тіньової магії" }, -- Ur's Treatise on Shadow Magic
 [7272] = { "заряджена блискавкою тростина" }, -- Bolt Charged Bramble
 [7273] = { "тотемна палиця В'ялошкірих", use="Зберіть 10 тотемних палиць і використайте їх біля каменю Зовнішнього Поневолення." }, -- Witherbark Totem Stick, @use Gather 10 totem sticks, and use them at the Stone of Outer Binding.
@@ -794,6 +816,11 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [7392] = { "луска зеленого драконеняти" }, -- Green Whelp Scale
 [7428] = { "шкура тінекота" }, -- Shadowcat Hide
 [7516] = { "інструкції Табети" }, -- Tabetha's Instructions
+[7566] = { "родовий меч Аґамандів" }, -- Agamand Family Sword
+[7567] = { "родова сокира Аґамандів" }, -- Agamand Family Axe
+[7568] = { "родовий кинджал Аґамандів" }, -- Agamand Family Dagger
+[7569] = { "родова булава Аґамандів" }, -- Agamand Family Mace
+[7587] = { "інструкції Тун'ґріма" }, -- Thun'grim's Instructions
 [7626] = { "зв'язка хутра" },
 [7627] = { "посилка у Доланаар" }, -- Dolanaar Delivery
 [7629] = { "ноша Укора" }, -- Ukor's Burden

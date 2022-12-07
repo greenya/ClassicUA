@@ -43,6 +43,7 @@ addonTable.object = { -- [key] = text
 
 -- quest
 
+["Agamand Weapon Rack"] = "стенд зі зброєю Аґамандів",
 ["Ancient Relic"] = "древня реліквія",
 ["Beached Sea Creature"] = "викинута на берег морська істота",
 ["Blue Raptor Nest"] = "гніздо блакитного раптора",
@@ -62,6 +63,8 @@ addonTable.object = { -- [key] = text
 ["Loose Soil"] = "пухкий ґрунт",
 ["Matrix Punchograph 3005-A"] = "матричний перфограф 3005-A",
 ["Matrix Punchograph 3005-B"] = "матричний перфограф 3005-B",
+["Mausoleum Seal"] = "печатка мавзолею",
+["Mausoleum Trigger"] = "перемикач мавзолею",
 ["Musquash Root"] = "ондатровий корінь",
 ["Red Raptor Nest"] = "гніздо червоного раптора",
 ["Sealed Barrel"] = "запечатана бочка",
