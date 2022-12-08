@@ -774,7 +774,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6967] = { "елунітова меч" }, -- Elunite Sword
 [6968] = { "елунітова молот" }, -- Elunite Hammer
 [6969] = { "елунітова кинджал" }, -- Elunite Dagger
-[6970] = { "послуга Фьюрена" }, -- Furen's Favor
+[6970] = { "борг Фьюрена" }, -- Furen's Favor
 [6971] = { "загартований вогнем койф" }, -- Fire Hardened Coif
 [6972] = { "загартований вогнем гауберк", use="Збільшити лють на 30. (Відновленя 1 год)" }, -- Fire Hardened Hauberk, @use Increase Rage by 30. (1 Hour Cooldown)
 [6978] = { "смеркова сокира" }, -- Umbral Axe
