@@ -401,6 +401,9 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [4469] = { "скіпетр порядку" },
 [4472] = { "сувій Мізраель", use="Викликає Мізраель з осколків Мізраель." }, -- Scroll of Myzrael, @use Summon Myzrael from the Shards of Myzrael.
 [4473] = { "містичні наручі" },
+[4479] = { "палаюча поваба", use="Позбувається буревійного вигнанця (Відновлення 10 сек)" }, -- Burning Charm, @use Banishes a Thundering Exile (10 Sec Cooldown)
+[4480] = { "буревійна поваба", use="Позбувається бурунистого вигнанця (Відновлення 10 сек)" }, -- Thundering Charm, @use Banishes a Cresting Exile (10 Sec Cooldown)
+[4481] = { "буруниста поваба", use="Позбувається палаючого вигнанця (Відновлення 10 сек)" }, -- Thundering Charm, @use Banishes a Burning Exile (10 Sec Cooldown)
 [4483] = { "палаючий ключ" },
 [4484] = { "прикрашений ключ" },
 [4485] = { "громовий ключ" },
@@ -756,18 +759,28 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6741] = { "орчий воєнний меч" },
 [6751] = { "дивне фруктове дерево" },
 [6752] = { "дивний мерехтливий паросток" },
+[6782] = { "значок маршала Знесилія" }, -- Marshal Haggard's Badge
+[6783] = { "ключ Мертвозуба" }, -- Dead-tooth's Key
 [6799] = { "голова Веджріка" }, -- Vejrek's Head
 [6800] = { "смеркова руда" }, -- Umbral Ore
 [6805] = { "ріг Ворла" }, -- Horn of Vorlus
 [6808] = { "елунітова руда" }, -- Elunite Ore
 [6809] = { "медальйон Елури" }, -- Elura's Medallion
 [6812] = { "ящик елуніту" }, -- Case of Elunite
+[6838] = { "обпалене павуче ікло" }, -- Scorched Spider Fang
+[6839] = { "обвуглений ріг ікло" }, -- Charred Horn
 [6840] = { "гальванізований ріг" }, -- Galvanized Horn
 [6841] = { "фіал флогістону" }, -- Vial of Phlogiston
+[6842] = { "інструкції Фьюрена" }, -- Furen's Instructions
 [6843] = { "барильце пекучої бражки" }, -- Cask of Scalder
 [6844] = { "палаюча кров" }, -- Burning Blood
 [6845] = { "палаючий камінь" }, -- Burning Rock
+[6848] = { "обпалюючий корал" }, -- Searing Coral
+[6849] = { "випалена сонцем шкаралупа" }, -- Sunscorched Shell
+[6851] = { "сутність вигнанця" }, -- Essence of the Exile
+[6894] = { "серце вихору" }, -- Whirlwind Heart
 [6926] = { "записи Фьюрена", flavor="Цей лист запечатано" }, -- Furen's Notes, @flavor This letter is sealed
+[6929] = { "пергамент Бат'раха" }, -- Bath'rah's Parchment
 [6948] = { "камінь Вогнища", use="Повертає вас додому. Поговоріть з корчмарем в іншому місці щоб змінити домівку." }, -- Hearthstone, @use Returns you to <Hearthstone Location>. Speak to an Innkeeper in a different place to change your home location.
 [6952] = { "товста шкура ведмедя" }, -- Thick Bear Fur
 [6966] = { "елунітова сокира" }, -- Elunite Axe
@@ -776,20 +789,41 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6969] = { "елунітова кинджал" }, -- Elunite Dagger
 [6970] = { "борг Фьюрена" }, -- Furen's Favor
 [6971] = { "загартований вогнем койф" }, -- Fire Hardened Coif
-[6972] = { "загартований вогнем гауберк", use="Збільшити лють на 30. (Відновленя 1 год)" }, -- Fire Hardened Hauberk, @use Increase Rage by 30. (1 Hour Cooldown)
+[6972] = { "загартований вогнем гауберк", use="Збільшити лють на 30. (Відновлення 1 год)" }, -- Fire Hardened Hauberk, @use Increase Rage by 30. (1 Hour Cooldown)
+[6973] = { "загартовані вогнем поножі" }, -- Fire Hardened Leggings
+[6974] = { "загартовані вогнем рукавиці" }, -- Fire Hardened Gauntlets
+[6975] = { "сокира вихору" }, -- Whirlwind Axe
+[6976] = { "молот вихору" }, -- Whirlwind Warhammer
+[6977] = { "меч вихору" }, -- Whirlwind Sword
 [6978] = { "смеркова сокира" }, -- Umbral Axe
+[6979] = { "сокира Знесилія" }, -- Haggard's Axe
+[6980] = { "кинджал Знесилія" }, -- Haggard's Dagger
 [6981] = { "смерковий кинджал" }, -- Umbral Dagger
 [6982] = { "смеркова булава" }, -- Umbral Mace
+[6983] = { "молот Знесилія" }, -- Haggard's Hammer
 [6984] = { "смерковий меч" }, -- Umbral Sword
+[6985] = { "меч Знесилія" }, -- Haggard's Sword
 [7005] = { "білувальний ніж" }, -- Skinning Knife
 [7068] = { "стихійний вогонь" }, -- Elemental Fire
+[7069] = { "стихійний вітер" }, -- Elemental Air
+[7070] = { "стихійна вода" }, -- Elemental Water
+[7071] = { "залізна пряжка" }, -- Iron Buckle
+[7072] = { "луска наги" }, -- Naga Scale
 [7073] = { "зламаний пазур" }, -- Broken Fang
 [7074] = { "надломлений кіготь" }, -- Chipped Claw
-[7076] = { "есенція землі" },
-[7078] = { "есенція вогню" },
-[7080] = { "есенція води" },
-[7082] = { "есенція повітря" },
+[7075] = { "ядро землі" }, -- Core of Earth
+[7076] = { "есенція землі" }, -- Essence of Earth
+[7077] = { "серце вогню" }, -- Heart of Fire
+[7078] = { "есенція вогню" }, -- Essence of Fire
+[7079] = { "куля води" }, -- Globe of Water
+[7080] = { "есенція води" }, -- Essence of Water
+[7081] = { "подих вітру" }, -- Breath of Wind
+[7082] = { "есенція повітря" }, -- Essence of Air
 [7097] = { "стегнове м'ясо", use="Відновлює 61 здоров'я протягом 18 с. Потрібно залишатися в сидячому положенні під час їжі." },
+[7115] = { "родова сокира" }, -- Heirloom Axe
+[7116] = { "родовий кинджал" }, -- Heirloom Dagger
+[7117] = { "родовий молот" }, -- Heirloom Hammer
+[7118] = { "родовий меч" }, -- Heirloom Sword
 [7119] = { "судомний вусик", flavor="Цей вусик не смикатиметься вічно" }, -- Twitching Antenna, @flavor This antenna won't twitch forever
 [7120] = { "оплот Руґи" }, -- Ruga's Bulwark
 [7126] = { "злиток димчастого заліза" }, -- Smoky Iron Ingot
@@ -797,8 +831,10 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [7128] = { "нероздвоєне копито сатира" }, -- Uncloven Satyr Hoof
 [7129] = { "рукавиці жорстокості" }, -- Brutal Gauntlets
 [7130] = { "шолом жорстокості" }, -- Brutal Helm
+[7131] = { "гомілкова кістка Драконопащих", use="Перевірити на міцність." }, -- Dragonmaw Shinbone, @use Right click to test its sturdiness.
 [7132] = { "набедреники жорстокості" }, -- Brutal Legguards
 [7133] = { "гауберк жорстокості", use="Збільшити лють на 30. (Відновленя 1 год)" }, -- Brutal Hauberk, @use Increase Rage by 30. (1 Hour Cooldown)
+[7134] = { "міцна гомілкова кістка Драконопащих" }, -- Sturdy Dragonmaw Shinbone
 [7266] = { "трактат Ура з тіньової магії" }, -- Ur's Treatise on Shadow Magic
 [7272] = { "заряджена блискавкою тростина" }, -- Bolt Charged Bramble
 [7273] = { "тотемна палиця В'ялошкірих", use="Зберіть 10 тотемних палиць і використайте їх біля каменю Зовнішнього Поневолення." }, -- Witherbark Totem Stick, @use Gather 10 totem sticks, and use them at the Stone of Outer Binding.

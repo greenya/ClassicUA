@@ -45,6 +45,7 @@ addonTable.object = { -- [key] = text
 
 ["Agamand Weapon Rack"] = "стенд зі зброєю Аґамандів",
 ["Ancient Relic"] = "древня реліквія",
+["Bath'rah's Cauldron"] = "котел Бат'раха",
 ["Beached Sea Creature"] = "викинута на берег морська істота",
 ["Blue Raptor Nest"] = "гніздо блакитного раптора",
 ["Bloodpetal Sprout"] = "паросток кровоцвіту",
@@ -52,6 +53,7 @@ addonTable.object = { -- [key] = text
 ["Cache of Explosives"] = "cховок з вибухівкою",
 ["Crate of Elunite"] = "ящик елуніту",
 ["Damaged Crate"] = "пошкоджений ящик",
+["Dead-tooth's Strongbox"] = "скриня Мертвозуба",
 ["Document Chest"] = "скриня для документів",
 ["Dragonmaw Catapult"] = "катапульта Драконопащих",
 ["Ebenezer Rustlocke's Corpse"] = "тіло Ебенезера Іржегака",
@@ -59,6 +61,7 @@ addonTable.object = { -- [key] = text
 ["Half-buried Barrel"] = "наполовину зарита бочка",
 ["Incendia Agave"] = "вогниста агава",
 ["Intrepid's Locked Strongbox"] = "замкнений сейф на \"Відважному\"",
+["Iron Coral"] = "залізний корал",
 ["Ironband's Strongbox"] = "скриня Залізоплета",
 ["Loose Soil"] = "пухкий ґрунт",
 ["Matrix Punchograph 3005-A"] = "матричний перфограф 3005-A",
@@ -71,6 +74,7 @@ addonTable.object = { -- [key] = text
 ["Skeletal Sea Turtle"] = "кістяна морська черепаха",
 ["Stolen Iron Chest"] = "поцуплена залізна скриня",
 ["Stone of Outer Binding"] = "камінь Зовнішнього Поневолення",
+["Sunscorched Shell"] = "випалена сонцем шкаралупа",
 ["Tear of Tilloa"] = "сльоза Тіллої",
 ["Yellow Raptor Nest"] = "гніздо жовтого раптора",
 
