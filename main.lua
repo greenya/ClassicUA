@@ -55,6 +55,27 @@ local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-st
 end
 
 -- -----------
+-- [ options ]
+-- -----------
+
+local options = nil
+local default_options = {
+    debug = false,
+    quest_text_size = 13,
+    book_text_size = 15
+}
+
+local prepare_options = function ()
+    ClassicUA_Options = ClassicUA_Options or copy_table({}, default_options)
+    options = ClassicUA_Options
+end
+
+local reset_options = function ()
+    ClassicUA_Options = copy_table({}, default_options)
+    options = ClassicUA_Options
+end
+
+-- -----------
 -- [ entries ]
 -- -----------
 
@@ -1023,6 +1044,8 @@ event_frame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 event_frame:SetScript("OnEvent", function (self, event, ...)
     -- print(event, ...)
     if event == "ADDON_LOADED" then
+        self:UnregisterEvent("ADDON_LOADED")
+        prepare_options()
         local s = get_stats()
         local v = GetAddOnMetadata("ClassicUA", "Version")
         print("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t ClassicUA v" .. v .. " loaded: "
@@ -1034,7 +1057,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
             .. s.object .. " objects, "
             .. s.zone .. " zones"
         )
-        self:UnregisterEvent("ADDON_LOADED")
+
     elseif event == "PLAYER_LOGIN" then
         local name = UnitName("player")
         local guid = UnitGUID("player")
@@ -1050,19 +1073,25 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_zones()
         prepare_zone_text()
         prepare_world_map()
+
     elseif event == "PLAYER_TARGET_CHANGED" then
         update_target_frame_text()
+
     elseif event == "ITEM_TEXT_BEGIN" then
         if tooltip_entry_type == "item" then
             book_item_id = tooltip_entry_id
         end
+
     elseif event == "ITEM_TEXT_READY" then
         show_book()
+
     elseif event == "ITEM_TEXT_CLOSED" then
         hide_book()
+
     elseif event == "ZONE_CHANGED"
         or event == "ZONE_CHANGED_INDOORS"
         or event == "ZONE_CHANGED_NEW_AREA" then
         update_zone_text()
+
     end
 end)

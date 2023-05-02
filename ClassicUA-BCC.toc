@@ -4,6 +4,7 @@
 ## Notes: Game localization to Ukrainian language.
 ## Author: greenya
 ## Version: 3.7
+## SavedVariables: ClassicUA_Options
 
 entries\book.lua
 entries\class.lua
