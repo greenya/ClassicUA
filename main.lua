@@ -414,7 +414,7 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_buff_de
 
     local entry = get_entry(entry_type, entry_id)
 
-    if not entry then -- todo: check if debug info should be shown
+    if not entry and options.debug then
         entry = { entry_type .. "|cff999999#|r" .. entry_id }
     end
 
@@ -678,11 +678,11 @@ local get_quest_frame = function (name)
 
     setup_frame_background_and_border(frame)
 
-    setup_frame_scrollbar_and_content(frame, { -- todo: take quest font sizes from config
-        title = { quest_title_font, 18 },
-        text = { quest_text_font, 13 },
-        more_title = { quest_title_font, 18 },
-        more_text = { quest_text_font, 13 }
+    setup_frame_scrollbar_and_content(frame, {
+        title = { quest_title_font, options.quest_text_size + 5 },
+        text = { quest_text_font, options.quest_text_size },
+        more_title = { quest_title_font, options.quest_text_size + 5 },
+        more_text = { quest_text_font, options.quest_text_size }
     })
 
     frame:Show()
@@ -792,11 +792,11 @@ local get_questlog_frame = function ()
 
     setup_frame_background_and_border(frame)
 
-    setup_frame_scrollbar_and_content(frame, { -- todo: take quest font sizes from config
-        title = { quest_title_font, 18 },
-        text = { quest_text_font, 13 },
-        more_title = { quest_title_font, 18 },
-        more_text = { quest_text_font, 13 }
+    setup_frame_scrollbar_and_content(frame, {
+        title = { quest_title_font, options.quest_text_size + 5 },
+        text = { quest_text_font, options.quest_text_size },
+        more_title = { quest_title_font, options.quest_text_size + 5 },
+        more_text = { quest_text_font, options.quest_text_size }
     })
 
     frame:Show()
@@ -848,8 +848,8 @@ local get_book_frame = function ()
 
     setup_frame_background_and_border(frame)
 
-    setup_frame_scrollbar_and_content(frame, { -- todo: take book font size from config
-        text = { book_text_font, 15 }
+    setup_frame_scrollbar_and_content(frame, {
+        text = { book_text_font, options.book_text_size }
     })
 
     frame:Show()
