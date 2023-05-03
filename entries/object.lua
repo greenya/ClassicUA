@@ -4,7 +4,13 @@ addonTable.object = { -- [key] = text
 -- common
 
 ["Anvil"] = "ковадло",
+["Bonfire"] = "багаття",
+["Elevator to Mulgor"] = "підйомник до Мулґора",
+["Fierce Blaze"] = "жорстоке полум'я",
 ["Mailbox"] = "поштова скринька",
+["Medium Brazier"] = "середня жаровня",
+["Scorching Fire"] = "пекучий вогонь",
+["Tall Brazier"] = "висока жаровня",
 
 -- herbs
 
@@ -50,6 +56,7 @@ addonTable.object = { -- [key] = text
 ["Blue Raptor Nest"] = "гніздо блакитного раптора",
 ["Bloodpetal Sprout"] = "паросток кровоцвіту",
 ["Bolt Charged Bramble"] = "заряджена блискавкою тростина",
+["Brazier of the Dormant Flame"] = "жаровня дрімаючого полум'я",
 ["Cache of Explosives"] = "cховок з вибухівкою",
 ["Crate of Elunite"] = "ящик елуніту",
 ["Damaged Crate"] = "пошкоджений ящик",
