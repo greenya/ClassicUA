@@ -291,10 +291,13 @@ local get_entry = function (entry_type, entry_id)
             if entry.ref and (entry_type == "spell" or entry_type == "item") then
                 local entry_ref = at[entry_type][entry.ref]
                 if entry_ref then
-                    -- todo: maybe add caching of the result table
                     return copy_table(copy_table({}, entry_ref), entry)
                 else
-                    return copy_table({ entry_type .. "|cff999999#|r" .. entry_id .. "|cff999999=>|r" .. entry.ref }, entry)
+                    if options.debug then
+                        return copy_table({ entry_type .. "|cff999999#|r" .. entry_id .. "|cff999999=>|r" .. entry.ref }, entry)
+                    else
+                        return false
+                    end
                 end
             end
 
@@ -449,7 +452,7 @@ end
 
 local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, rank, max_rank)
     local talent = addonTable.talent_tree[tab_index] and addonTable.talent_tree[tab_index][talent_index] or false
-    if not talent then -- this can never be true (as we have full Classic talent tree)
+    if not talent then
         return
     end
 
@@ -462,7 +465,11 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, 
 
     local entry = get_entry("spell", talent[rank_to_show])
     if not entry then
-        entry = { "spell|cff999999#|r" .. talent[rank_to_show] }
+        if options.debug then
+            entry = { "spell|cff999999#|r" .. talent[rank_to_show] }
+        else
+            return
+        end
     end
 
     tooltip:AddLine(" ")
