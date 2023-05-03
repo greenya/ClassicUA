@@ -639,8 +639,8 @@ local setup_frame_scrollbar_and_content = function (frame, areas)
     frame:EnableMouse(true)
     frame:EnableMouseWheel(true)
     frame:SetScript("OnMouseWheel", function(self, delta)
-        local v = scrollbar:GetValue()
-        scrollbar:SetValue(v - delta * self.scrollbar.scrollStep)
+        local v = self.scrollbar:GetValue()
+        self.scrollbar:SetValue(v - delta * self.scrollbar.scrollStep)
     end)
 end
 
@@ -1060,7 +1060,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
 
     elseif event == "PLAYER_LOGIN" then
         local name = UnitName("player")
-        local guid = UnitGUID("player")
         local _, class = UnitClass("player")
         local _, race = UnitRace("player")
         local sex = UnitSex("player")
