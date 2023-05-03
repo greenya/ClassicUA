@@ -476,7 +476,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, 
     tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. entry[1], 1, 1, 1)
 
     if entry[2] then
-        tooltip:AddLine(make_entry_text(entry[2], tooltip), 1, 1, 1, true)
+        tooltip:AddLine(make_entry_text(entry[2], tooltip), 1, 0.82, 0, true)
     end
 
     if rank_to_show ~= next_rank_to_show then
@@ -489,7 +489,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, 
 
         tooltip:AddLine(" ")
         tooltip:AddLine(get_text("Next rank") .. ":", 1, 1, 1)
-        tooltip:AddLine(next_rank_desc, 1, 1, 1, true)
+        tooltip:AddLine(next_rank_desc, 1, 0.82, 0, true)
     end
 
     if tooltip:IsShown() then
