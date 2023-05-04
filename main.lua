@@ -653,12 +653,11 @@ end
 
 local setup_frame_scrollbar_values = function (frame, height)
     local delta = height - frame:GetHeight() + 24
-    if delta > 0 then
-        frame.scrollbar:SetMinMaxValues(1, delta)
-    else
-        frame.scrollbar:SetMinMaxValues(1, 1)
+    if delta < 1 then
+        delta = 1
     end
 
+    frame.scrollbar:SetMinMaxValues(1, delta)
     frame.scrollbar:SetValue(1)
     frame.content:SetSize(frame.content:GetWidth(), height)
 end
