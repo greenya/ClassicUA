@@ -1245,16 +1245,10 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         self:UnregisterEvent("ADDON_LOADED")
         prepare_options()
         prepare_options_frame()
-        local s = get_stats()
-        local v = GetAddOnMetadata("ClassicUA", "Version")
-        print("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t ClassicUA v" .. v .. " loaded: "
-            .. s.quest_a + s.quest_h + s.quest_n .. " quests, "
-            .. s.book .. " books, "
-            .. s.item .. " items, "
-            .. s.spell .. " spells, "
-            .. s.npc .. " NPCs, "
-            .. s.object .. " objects, "
-            .. s.zone .. " zones"
+        print(
+            "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t"
+            .. " ClassicUA v" .. GetAddOnMetadata("ClassicUA", "Version")
+            .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
         )
 
     elseif event == "PLAYER_LOGIN" then
