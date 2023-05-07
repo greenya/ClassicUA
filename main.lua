@@ -608,14 +608,15 @@ local setup_frame_background_and_border = function (frame)
 end
 
 -- areas: { area1 = { font, size }, ... }
-local setup_frame_scrollbar_and_content = function (frame, areas)
+local setup_frame_scrollbar_and_content = function (frame, areas, scrollframe_width_override)
     local scrollframe = CreateFrame("ScrollFrame", nil, frame)
     scrollframe:SetPoint("TOPLEFT", 8, -9)
     scrollframe:SetPoint("BOTTOMRIGHT", -8, 9)
     frame.scrollframe = scrollframe
+    scrollframe_width = scrollframe_width_override or scrollframe:GetWidth()
 
     local content = CreateFrame("Frame", nil, scrollframe)
-    content:SetSize(scrollframe:GetWidth() - 60, 0)
+    content:SetSize(scrollframe_width - 60, 0)
     scrollframe:SetScrollChild(content)
     frame.content = content
 
@@ -722,8 +723,12 @@ local set_quest_content = function (frame, title, text, more_title, more_text)
         frame.more_text:SetText(more_text)
         h = h + frame.more_text:GetHeight() + 12
     else
-        frame.more_title:SetText("")
-        frame.more_text:SetText("")
+        if frame.more_title then
+            frame.more_title:SetText("")
+        end
+        if frame.more_text then
+            frame.more_text:SetText("")
+        end
     end
 
     setup_frame_scrollbar_values(frame, h)
@@ -1031,6 +1036,183 @@ hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
     end
 end)
 
+-- -----------------
+-- [ options frame ]
+-- -----------------
+
+local prepare_options_frame = function ()
+    local options_frame = CreateFrame("Frame")
+    local f = nil
+
+    -- title
+
+    f = options_frame:CreateFontString()
+    f:SetPoint("TOPLEFT", 22, -20)
+    f:SetFont("Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf", 20)
+    f:SetText("|cff1177eeClassic|r|cffffdd00UA|r")
+
+    -- version & stats
+
+    f = options_frame:CreateFontString()
+    f:SetPoint("TOPRIGHT", -20, -20)
+    f:SetFont("Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf", 12)
+    f:SetJustifyH("LEFT")
+    local stats = get_stats()
+    f:SetText(
+        "Версія: " .. GetAddOnMetadata("ClassicUA", "Version") .. "\n"
+        .. "— завдань: " .. stats.quest_a + stats.quest_h + stats.quest_n .. "\n"
+        .. "— книжок: " .. stats.book .. "\n"
+        .. "— локацій: " .. stats.zone .. "\n"
+        .. "— персонажів: " .. stats.npc .. "\n"
+        .. "— предметів: " .. stats.item .. "\n"
+        .. "— об'єктів: " .. stats.object .. "\n"
+        .. "— заклять: " .. stats.spell
+    )
+
+    -- reload button
+
+    f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
+    f:SetPoint("TOPRIGHT", -56, -128)
+    f:SetText("/reload")
+    f:SetSize(80, 20)
+    f:SetScript("OnClick", function()
+        ReloadUI()
+    end)
+    f:SetScript("OnEnter", function(self)
+        local memory_usage_text = ""
+        UpdateAddOnMemoryUsage()
+        for i = 1, GetNumAddOns() do
+            local name = GetAddOnInfo(i)
+            if name == "ClassicUA" then
+                local megabytes = GetAddOnMemoryUsage(i) / 1024
+                memory_usage_text = string.format("\n\nВикористання пам'яті: %.1f Мб", megabytes)
+            end
+        end
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText(
+            "Перезавантажити інтерфейс гри. Деякі зміни в налаштуваннях будуть помітні лише після такої операції."
+            .. memory_usage_text,
+            nil, nil, nil, nil, true
+        )
+    end)
+    f:SetScript("OnLeave", function()
+        GameTooltip:Hide()
+    end)
+
+    -- options.quest_text_size
+
+    f = CreateFrame("Slider", nil, options_frame, "OptionsSliderTemplate")
+    options_frame.quest_text_size_frame = f
+    f:SetPoint("TOPLEFT", 24, -80)
+    f:SetWidth(200)
+    f:SetHeight(20)
+    f.tooltipText = "Розмір шрифта в вікні завдання."
+    f:SetObeyStepOnDrag(true)
+    f:SetValueStep(1)
+    f:SetMinMaxValues(10, 20)
+    f.Low:SetText("10")
+    f.High:SetText("20")
+    f:SetScript("OnValueChanged", function (self, value)
+        self.Text:SetText("Розмір тексту завдання: " .. value)
+        options.quest_text_size = value
+    end)
+
+    -- options.book_text_size
+
+    f = CreateFrame("Slider", nil, options_frame, "OptionsSliderTemplate")
+    options_frame.book_text_size_frame = f
+    f:SetPoint("TOPLEFT", 24, -140)
+    f:SetWidth(200)
+    f:SetHeight(20)
+    f.tooltipText = "Розмір шрифта в вікні книжки."
+    f:SetObeyStepOnDrag(true)
+    f:SetValueStep(1)
+    f:SetMinMaxValues(10, 20)
+    f.Low:SetText("10")
+    f.High:SetText("20")
+    f:SetScript("OnValueChanged", function (self, value)
+        self.Text:SetText("Розмір тексту книжки: " .. value)
+        options.book_text_size = value
+    end)
+
+    -- options.debug
+
+    f = CreateFrame("CheckButton", nil, options_frame, "InterfaceOptionsCheckButtonTemplate")
+    options_frame.debug_frame = f
+    f:SetPoint("TOPLEFT", 280, -78)
+    f.Text:SetText("Режим розробки")
+    f.tooltipText = "В цьому режимі в підказках відображається ID, якщо переклад відсутній."
+    f:SetScript("OnClick", function (self)
+        options.debug = self:GetChecked()
+    end)
+
+    -- info tabs
+
+    f = CreateFrame("Frame", nil, options_frame, "BackdropTemplate")
+    options_frame.info_tab_frame = f
+    f:SetPoint("TOPLEFT", 24, -224)
+    f:SetSize(576, 320)
+    setup_frame_background_and_border(f)
+    setup_frame_scrollbar_and_content(f, {
+        title = { quest_title_font, options.quest_text_size + 5 },
+        text = { quest_text_font, options.quest_text_size }
+    }, f:GetWidth() - 16)
+
+    options_frame.info_tab_buttons = {}
+    for tab_index, tab_data in ipairs({
+        -- { tab title, tab content text key }
+        { "Оновлення", "addon_changelog" },
+        { "Причетні", "addon_contributors" },
+    }) do
+        f = CreateFrame("Button", nil, options_frame, "UIGoldBorderButtonTemplate")
+        table.insert(options_frame.info_tab_buttons, f)
+        f.tab_index = tab_index
+        f.tab_title = tab_data[1]
+        f.tab_text_key = tab_data[2]
+        f:SetHighlightTexture("Interface\\PaperDollInfoFrame\\UI-Character-Tab-Highlight", "ADD")
+        f:SetSize(100, 32)
+        f:SetPoint("TOPLEFT", 112 + tab_index * f:GetWidth(), -200)
+        f:SetText(f.tab_title)
+        f:SetScript("OnClick", function(self)
+            if self.tab_index == options_frame.info_tab_frame.current_tab_index then
+                return
+            end
+
+            for _, f in ipairs(options_frame.info_tab_buttons) do
+                if f.tab_index ~= self.tab_index then
+                    f:UnlockHighlight()
+                end
+            end
+
+            set_quest_content(options_frame.info_tab_frame, self.tab_title, get_text(self.tab_text_key))
+            options_frame.info_tab_frame.current_tab_index = self.tab_index
+            self:LockHighlight()
+        end)
+
+        -- preselect 1st tab
+        if tab_index == 1 then
+            set_quest_content(options_frame.info_tab_frame, f.tab_title, get_text(f.tab_text_key))
+            options_frame.info_tab_frame.current_tab_index = 1
+            f:LockHighlight()
+        end
+    end
+
+    -- add options frame to Interface Options -> AddOns
+
+    options_frame.name = "ClassicUA"
+    options_frame.default = reset_options
+    options_frame.refresh = function ()
+        local f = options_frame
+        f.quest_text_size_frame:SetValue(options.quest_text_size)
+        f.quest_text_size_frame.Text:SetText("Розмір тексту завдання: " .. options.quest_text_size)
+        f.book_text_size_frame:SetValue(options.book_text_size)
+        f.book_text_size_frame.Text:SetText("Розмір тексту книжки: " .. options.book_text_size)
+        f.debug_frame:SetChecked(options.debug)
+    end
+
+    InterfaceOptions_AddCategory(options_frame)
+end
+
 -- ----------
 -- [ events ]
 -- ----------
@@ -1052,6 +1234,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
         self:UnregisterEvent("ADDON_LOADED")
         prepare_options()
+        prepare_options_frame()
         local s = get_stats()
         local v = GetAddOnMetadata("ClassicUA", "Version")
         print("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t ClassicUA v" .. v .. " loaded: "
