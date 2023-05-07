@@ -1211,6 +1211,16 @@ local prepare_options_frame = function ()
     end
 
     InterfaceOptions_AddCategory(options_frame)
+
+    -- add slash command to open the options
+
+    _G.SLASH_CLASSICUA_SETTINGS1 = "/ua"
+    SlashCmdList.CLASSICUA_SETTINGS = function ()
+        -- we do double call here because when first loaded, single call only opens 1st tab;
+        -- seems like some old issue https://www.wowinterface.com/forums/showthread.php?t=56922
+        InterfaceOptionsFrame_OpenToCategory(options_frame)
+        InterfaceOptionsFrame_OpenToCategory(options_frame)
+    end
 end
 
 -- ----------
