@@ -11,20 +11,20 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 -- ----------------------------------------------------------------------------
 [60] = { "багатошаровий мундир" }, -- Layered Tunic
 [80] = { "м'які хутряні черевики" }, -- Soft Fur-lined Shoes
-[117] = { "жорстка солонина", use="Відновлює {1} здоров'я протягом {2} с. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2} sec" }, -- Tough Jerky, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
-[118] = { "крихітне зілля лікування", use="Відновлює від 70 до 90 здоров'я. (Відновлення 2 хв)" }, -- Minor Healing Potion, @use Restores 70 to 90 health. (2 Min Cooldown)
-[159] = { "освіжаюча джерельна вода", use="Відновлює 151.2 мани протягом 18 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Refreshing Spring Water, @use Restores 151.2 mana over 18 sec.  Must remain seated while drinking.
+[117] = { "жорстка солонина", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2} sec" }, -- Tough Jerky, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[118] = { "крихітне зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Minor Healing Potion, @use Restores 70 to 90 health. (2 Min Cooldown)
+[159] = { "освіжаюча джерельна вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Refreshing Spring Water, @use Restores 151.2 mana over 18 sec.  Must remain seated while drinking.
 [182] = { "голова Ґарріка" }, -- Garrick's Head
 [710] = { "наручі народного ополчення" }, -- Bracers of the People's Militia
 [723] = { "печінка іклоштрика" }, -- Goretusk Liver
-[724] = { "пиріг з печінки іклоштрика", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 4 на 15 хв." }, -- Goretusk Liver Pie, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 4 Stamina and Spirit for 15 min.
+[724] = { "пиріг з печінки іклоштрика", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 4 на 15 хв.#Restores {1} health over {2}" }, -- Goretusk Liver Pie, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 4 Stamina and Spirit for 15 min.
 [725] = { "лапа гнола" }, -- Gnoll Paw
 [728] = { "рецепт: Гуляш по-західнокрайськи", use="Навчає вас приготуванню гуляшу по-західнокрайськи." }, -- Recipe: Westfall Stew, @use Teaches you how to cook Westfall Stew.
 [729] = { "жилаве м'ясо грифа" }, -- Stringy Vulture Meat
 [730] = { "око мурлока" }, -- Murloc Eye
 [731] = { "рило іклоштрика" }, -- Goretusk Snout
 [732] = { "окра" }, -- Okra
-[733] = { "гуляш по-західнокрайськи", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Westfall Stew, @use Restores 552 health over 24 sec.  Must remain seated while eating.
+[733] = { "гуляш по-західнокрайськи", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Westfall Stew, @use Restores 552 health over 24 sec.  Must remain seated while eating.
 [735] = { "медальйони Рольфа і Малакая" }, -- Rolf and Malakai's Medallions
 [737] = { "вода святого джерела", use="Благословення зі святого джерела Тернистої долини. (Відновлення 5 хв)" }, -- Holy Spring Water, @use Blessing from the Holy Spring of Stranglethorn Vale. (5 Min Cooldown)
 [738] = { "мішок ячменю" }, -- Sack of Barley
@@ -50,7 +50,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [818] = { "тигрове око" }, -- Tigerseye
 [829] = { "червона шкіряна бандана" }, -- Red Leather Bandana
 [841] = { "кишеньковий годинник Хмуроброва" }, -- Furlbrow's Pocket Watch
-[858] = { "мале зілля лікування", use="Відновлює від 140 до 180 здоров'я. (Відновлення 2 хв)" }, -- Lesser Healing Potion, @use Restores 140 to 180 health. (2 Min Cooldown)
+[858] = { "мале зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Lesser Healing Potion, @use Restores 140 to 180 health. (2 Min Cooldown)
 [884] = { "ребро гуля" }, -- Ghoul Rib
 [889] = { "вкритий пилом невідправлений лист", flavor="Давній, вкритий пилом, так і не відправлений лист." }, -- A Dusty Unsent Letter, @flavor This dusty letter from long ago was never sent.
 [910] = { "недоставлений лист", flavor="Потертий і старий, цей лист так не доставили." }, -- An Undelivered Letter, @flavor Weathered and old, this letter was never delivered.
@@ -58,12 +58,12 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [916] = { "вирвана сторінка щоденника", flavor="Залишилася лише нижня половина сторінки щоденника." }, -- A Torn Journal Page, @flavor Only the bottom half of this journal page remains.
 [918] = { "сумка зі спотвореної шкіри" }, -- Deviate Hide Pack
 [921] = { "вицвіла сторінка щоденника", flavor="Хоча більша частина тексту давно вицвіла, деякі слова все ще можна прочитати." }, -- A Faded Journal Page, @flavor Although most of the text is long faded, some words can still be read.
-[929] = { "зілля лікування", use="Відновлює від 280 до 360 здоров'я. (Відновлення 2 хв)" }, -- Healing Potion, @use Restores 280 to 360 health. (2 Min Cooldown)
+[929] = { "зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Healing Potion, @use Restores 280 to 360 health. (2 Min Cooldown)
 [938] = { "брудні сторінки щоденника", flavor="Хоча сторінки вкриті брудом, деякі слова можна прочитати." }, -- Muddy Journal Pages, @flavor Although the pages are covered in mud, some words can be read.
 [939] = { "закривавлена сторінка щоденника", flavor="Крізь кров ще можна розгледіти кілька слів." }, -- A Bloodstained Journal Page, @flavor Through thick blood a few words still remain legible.
 [955] = { "сувій інтелекту", use="Збільшує інтелект цілі на 4 на 30 хв." }, -- Scroll of Intellect, @use Increases the target's Intellect by 4 for 30 min.
 [957] = { "пакунок від Вільяма", flavor="До нього прикріплена записка." }, -- William's Shipment, @flavor There is a note attached.
-[961] = { "цілюща трава", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Healing Herb, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[961] = { "цілюща трава", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Healing Herb, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [962] = { "рулет зі свинячої підчеревини" }, -- Pork Belly Pie
 [981] = { "намисто Берніс" }, -- Bernice's Necklace
 [983] = { "червоний лляний пояс" }, -- Red Linen Sash
@@ -71,15 +71,15 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [1008] = { "старий меч" }, -- Well-used Sword
 [1013] = { "залізна заклепка" }, -- Iron Rivet
 [1015] = { "пісний вовчий бік" }, -- Lean Wolf Flank
-[1017] = { "пряний кебаб з вовчатини", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Seasoned Wolf Kabob, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[1017] = { "пряний кебаб з вовчатини", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Seasoned Wolf Kabob, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
 [1019] = { "червона лляна бандана" }, -- Red Linen Bandana
 [1075] = { "підвіска Тіньошкурих" }, -- Shadowhide Pendant
 [1080] = { "жорстке м'ясо кондора" }, -- Tough Condor Meat
 [1081] = { "хрумке павуче м'ясо" }, -- Crisp Spider Meat
-[1082] = { "Багрянокрязький гуляш", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Redridge Goulash, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[1082] = { "Багрянокрязький гуляш", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Redridge Goulash, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
 [1083] = { "гліф Азори" }, -- Glyph of Azora
-[1113] = { "начаклована паляниця", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Conjured Bread, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
-[1114] = { "начаклована житня хлібина", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Conjured Rye, @use Restores 552 health over 24 sec.  Must remain seated while eating.
+[1113] = { "начаклована паляниця", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Conjured Bread, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
+[1114] = { "начаклована житня хлібина", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Conjured Rye, @use Restores 552 health over 24 sec.  Must remain seated while eating.
 [1116] = { "перстень з чистого срібла" }, -- Ring of Pure Silver
 [1127] = { "вибуховий пакет", use="Створює стовп вогню, що завдає всім ворогам в зоні дії від 55 до 71 шкоди від вогню та додатково 48 шкоди від вогню протягом 8 сек. (Відновлення 1 хв)" }, -- Flash Bundle, @use Calls down a pillar of fire, burning all enemies within the area for 55 to 71 Fire damage and an additional 48 Fire damage over 8 sec. (1 Min Cooldown)
 [1129] = { "ікло гуля" }, -- Ghoul Fang
@@ -94,12 +94,12 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [1173] = { "вицвілі черевики" }, -- Weather-worn Boots
 [1177] = { "масло Олафа", use="Підвищує показник броні на 50 на 1 год." }, -- Oil of Olaf, @use Increases armor by 50 for 1 hour.
 [1178] = { "вибухова ракета", use="Завдає від 28 до 32 шкоди вогнем у радіусі 3 м. (Відновлення 1 хв)" }, -- Explosive Rocket, @use Inflicts 28 to 32 Fire damage in a 3 yard radius. (1 Min Cooldown)
-[1179] = { "крижане молоко", use="Відновлює 436.8 мани протягом 21 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Ice Cold Milk, @use Restores 436.8 mana over 21 sec.  Must remain seated while drinking.
+[1179] = { "крижане молоко", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Ice Cold Milk, @use Restores 436.8 mana over 21 sec.  Must remain seated while drinking.
 [1180] = { "сувій витривалості", use="Збільшує витривалість цілі на 4 на 30 хв." }, -- Scroll of Stamina, @use Increases the target's Stamina by 4 for 30 min.
 [1182] = { "наручі з латунними вставками" }, -- Brass-studded Bracers
 [1183] = { "еластичні браслети" }, -- Elastic Wristguards
 [1191] = { "мішечок із кольоровими кульками", use="Знижує ймовірність влучання ціллю на 25% на 10 сек. (Відновлення 1 хв)" }, -- Bag of Marbles, @use Decreases target's chance to hit by 25% for 10 sec. (1 Min Cooldown)
-[1205] = { "динний сік", use="Відновлює 835.2 мани протягом 24 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Melon Juice, @use Restores 835.2 mana over 24 sec.  Must remain seated while drinking.
+[1205] = { "динний сік", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Melon Juice, @use Restores 835.2 mana over 24 sec.  Must remain seated while drinking.
 [1206] = { "моховий агат" }, -- Moss Agate
 [1208] = { "любовний лист Мейбелл" }, -- Maybell's Love Letter
 [1210] = { "тінекамінь" }, -- Shadowgem
@@ -131,7 +131,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [1319] = { "перстень залізної волі" }, -- Ring of Iron Will
 [1322] = { "риб'ячий жир", use="Збільшує швидкість вашої атаки на 10% на 30 сек. (Відновлення 2 хв)" }, -- Fishliver Oil, @use Increases your attack speed by 10% for 30 sec. (2 Min Cooldown)
 [1325] = { "букет нарцисів" }, -- Daffodil Bouquet
-[1326] = { "соте з сонцериби", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Sauteed Sunfish, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
+[1326] = { "соте з сонцериби", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Sauteed Sunfish, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [1327] = { "записка Вайлі", flavor="Записка, наспіх написана Вайлі Чорним для Ґріана Міцнокрива." }, -- Wiley's Note, @flavor A hastily written note written by Wiley the Black for Gryan Stoutmantle.
 [1349] = { "ящик Абекромбі", flavor="Цей великий ящик щільно закритий, але з нього тхне мертвечиною." }, -- Abercrombie's Crate, @flavor This large crate is sealed tight, but it reeks of dead things.
 [1353] = { "звіт Гича", flavor="Звіт Гича щодо гільдії Каменярів для Ґріана Міцнокрива." }, -- Shaw's Report, @flavor Shaw's report on the Stonemason Guild for Gryan Stoutmantle.
@@ -159,7 +159,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [1479] = { "кухонні рукавиці Сальми" }, -- Salma's Oven Mitts
 [1480] = { "кулак народного ополчення" }, -- Fist of the People's Militia
 [1482] = { "тінеікло", hit="Запускає у ворога заряд тіні, що завдає 30 шкоди від тіні." }, -- Shadowfang, @hit Sends a shadowy bolt at the enemy causing 30 Shadow damage.
-[1487] = { "начаклований цільнозерновий хліб", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Conjured Pumpernickel, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
+[1487] = { "начаклований цільнозерновий хліб", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Conjured Pumpernickel, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
 [1518] = { "гребінець з волоссям привида" }, -- Ghost Hair Comb
 [1528] = { "жменя вівса" }, -- Handful of Oats
 [1529] = { "нефрит" }, -- Jade
@@ -173,8 +173,8 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [1637] = { "лист до Елло" }, -- Letter to Ello
 [1656] = { "перекладений лист" }, -- Translated Letter
 [1705] = { "малий місячний камінь" }, -- Lesser Moonstone
-[1708] = { "солодкий нектар", use="Відновлює 1344.6 мани протягом 27 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Sweet Nectar, @use Restores 1344.6 mana over 27 sec.  Must remain seated while drinking.
-[1710] = { "велике зілля лікування", use="Відновлює від 455 до 585 здоров'я. (Відновлення 2 хв)" }, -- Greater Healing Potion, @use Restores 455 to 585 health. (2 Min Cooldown)
+[1708] = { "солодкий нектар", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Sweet Nectar, @use Restores 1344.6 mana over 27 sec.  Must remain seated while drinking.
+[1710] = { "велике зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Greater Healing Potion, @use Restores 455 to 585 health. (2 Min Cooldown)
 [1875] = { "значок Лютополоха", flavor="Десятник Лютополох — член Ліги дослідників" }, -- Thistlenettle's Badge, @flavor Foreman Thistlenettle - Member of the Explorers' League
 [1893] = { "помста шахтаря" }, -- Miner's Revenge
 [1894] = { "картка спілки шахтарів" }, -- Miners' Union Card
@@ -186,7 +186,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [1946] = { "дзеркальце Мері" }, -- Mary's Looking Glass
 [1956] = { "тьмяна підвіска Тіньошкурих", flavor="Заклинання, накладене на цю підвіску, вже розвіялося." }, -- Faded Shadowhide Pendant, @flavor The spell on this pendant has faded.
 [1968] = { "монокль огра" }, -- Ogre's Monocle
-[1970] = { "відновлюючий бальзам", use="Відновлює цілі 180 здоров'я за 12 сек. (Відновлення 2 хв)" }, -- Restoring Balm, @use Heals the target for 180 damage over 12 sec. (2 Min Cooldown)
+[1970] = { "відновлюючий бальзам", use="Відновлює цілі {1} здоров'я протягом {2} сек. (Відновлення 2 хв)#Heals the target for {1} damage over {2}" }, -- Restoring Balm, @use Heals the target for 180 damage over 12 sec. (2 Min Cooldown)
 [1971] = { "документ Хмуроброва" }, -- Furlbrow's Deed
 [2000] = { "Архей", hit="Підриває ціль, завдаючи їй 85 шкоди від аркани.", flavor="Меч Моргана Ладімора." }, -- Archeus, @hit Blasts a target for 85 Arcane damage., @flavor Morgan Ladimore's sword.
 [2004] = { "журнал Ґреліна Білоборода" }, -- Grelin Whitebeard's Journal
@@ -198,13 +198,13 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [2042] = { "посох західного краю" }, -- Staff of Westfall
 [2043] = { "перстень знедолених духів" }, -- Ring of Forlorn Spirits
 [2044] = { "півмісяць знедолених духів" }, -- Crescent of Forlorn Spirits
-[2070] = { "дарнаський блю", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Darnassian Bleu, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[2070] = { "дарнаський блю", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Darnassian Bleu, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [2074] = { "міцний клинок" }, -- Solid Shortblade
 [2082] = { "мішок Бацбаха" }, -- Wizbang's Gunnysack
 [2089] = { "різьблений кинджал" }, -- Scrimshaw Dagger
 [2102] = { "малий гаман для набоїв", equip="Збільшує швидкість атаки дальнього бою на 10%." }, -- Small Ammo Pouch, @equip Increases ranged attack speed by 10%.
 [2113] = { "записка Калора" }, -- Calor's Note
-[2136] = { "начаклована очищена вода", use="Відновлює 835.2 мани протягом 24 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Conjured Purified Water, @use Restores 835.2 mana over 24 sec.  Must remain seated while drinking.
+[2136] = { "начаклована очищена вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Purified Water, @use Restores 835.2 mana over 24 sec.  Must remain seated while drinking.
 [2137] = { "ніж для заточування" }, -- Whittling Knife
 [2154] = { "\"Історія Моргана Ладімора\"" }, -- The Story of Morgan Ladimore
 [2161] = { "книга з ферми Свена" }, -- Book from Sven's Farm
@@ -226,7 +226,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [2250] = { "темні крабові пиріжки" }, -- Dusky Crab Cakes
 [2251] = { "липка павуча лапка" }, -- Gooey Spider Leg
 [2263] = { "фітолезо", hit="Підриває ціль, завдаючи їй 35 шкоди від природи." }, -- Phytoblade, @hit Blasts a target for 35 Nature damage.
-[2288] = { "начаклована свіжа вода", use="Відновлює 436.8 мани протягом 21 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Conjured Fresh Water, @use Restores 436.8 mana over 21 sec.  Must remain seated while drinking.
+[2288] = { "начаклована свіжа вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Fresh Water, @use Restores 436.8 mana over 21 sec.  Must remain seated while drinking.
 [2296] = { "рило великого іклоштрика" }, -- Great Goretusk Snout
 [2313] = { "накладки з середньої шкіри", use="Укріплення предмета, який носять на тілі, ногах, руках чи ступнях, що назавжди збільшить показник його броні на 16." }, -- Medium Armor Kit, @use Permanently increase the armor value of an item worn on the chest, legs, hands or feet by 16.
 [2318] = { "легка шкіра" }, -- Light Leather
@@ -243,7 +243,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [2452] = { "прудкоп'ях" }, -- Swiftthistle
 [2453] = { "синцівка" }, -- Bruiseweed
 [2454] = { "еліксир сили лева", use="Збільшує силу на 4 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Lion's Strength, @use Increases Strength by 4 for 1 hour. (3 Sec Cooldown)
-[2455] = { "крихітне зілля мани", use="Відновлює від 140 до 180 мани. (Відновлення 2 хв)" }, -- Minor Mana Potion, @use Restores 140 to 180 mana. (2 Min Cooldown)
+[2455] = { "крихітне зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Minor Mana Potion, @use Restores 140 to 180 mana. (2 Min Cooldown)
 [2456] = { "крихітне зілля відживлення", use="Відновлює від 90 до 150 мани та від 90 до 150 здоров'я. (Відновлення 2 хв)" }, -- Minor Rejuvenation Potion, @use Restores 90 to 150 mana and 90 to 150 health. (2 Min Cooldown)
 [2457] = { "крихітний еліксир спритності", use="Збільшує спритність на 4 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Minor Agility, @use Increases Agility by 4 for 1 hour. (3 Sec Cooldown)
 [2458] = { "крихітний еліксир стійкості", use="Збільшує максимальне здоров'я на 27 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Minor Fortitude, @use Increases the player's maximum health by 27 for 1 hour. (3 Sec Cooldown)
@@ -298,7 +298,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [2671] = { "грива вендиго" }, -- Wendigo Mane
 [2676] = { "блискоквіт" }, -- Shimmerweed
 [2678] = { "лагідні спеції", flavor="Використовується для підсилення смаку деяких страв." }, -- Mild Spices, @flavor Used to enhance the flavor in cooking recipes.
-[2681] = { "смажене м'ясо кнура", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Roasted Boar Meat, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[2681] = { "смажене м'ясо кнура", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Roasted Boar Meat, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [2686] = { "громузвар", use="Досить слабкий алкогольний напій." }, -- Thunder Ale, @use A fairly weak alcoholic beverage.
 [2690] = { "пояс з пряжкою" }, -- Latched Belt
 [2691] = { "чоботи екіпірувальника" }, -- Outfitter Boots
@@ -446,7 +446,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3174] = { "лімфа павука" }, -- Spider Ichor
 [3183] = { "зчесаний кіготь" }, -- Mangy Claw
 [3218] = { "кайдани з Поховальних Вогнищ" }, -- Pyrewood Shackle
-[3220] = { "кров'янка", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 4 на 15 хв." }, -- Blood Sausage, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 4 Stamina and Spirit for 15 min.
+[3220] = { "кров'янка", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 4 на 15 хв.#Restores {1} health over {2}" }, -- Blood Sausage, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 4 Stamina and Spirit for 15 min.
 [3234] = { "перстень Делії" }, -- Deliah's Ring
 [3235] = { "кільце нехтування", flavor="Для Делії" }, -- Ring of Scorn, @flavor For Deliah
 [3236] = { "пасока Гнилошкурих" }, -- Rot Hide Ichor
@@ -504,7 +504,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3382] = { "слабке зілля крові троля", use="Відновлює 2 од. здоров'я кожні 5 сек протягом 1 години. (Відновлення 3 сек)" }, -- Weak Troll's Blood Potion, @use Regenerate 2 health every 5 sec for 1 hour. (3 Sec Cooldown)
 [3383] = { "еліксир мудрості", use="Збільшує інтелект на 6 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Wisdom, @use Increases Intellect by 6 for 1 hour. (3 Sec Cooldown)
 [3384] = { "крихітне зілля супротиву магії", use="Збільшує ваш супротив всім школам магії на 25 на 3 хв. (Відновлення 2 хв)" }, -- Minor Magic Resistance Potion, @use Increases your resistance to all schools of magic by 25 for 3 min. (2 Min Cooldown)
-[3385] = { "невелике зілля мани", use="Відновлює від 280 до 360 мани. (Відновлення 2 хв)" }, -- Lesser Mana Potion, @use Restores 280 to 360 mana. (2 Min Cooldown)
+[3385] = { "невелике зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Lesser Mana Potion, @use Restores 280 to 360 mana. (2 Min Cooldown)
 [3386] = { "еліксир супротиву отруті", use="Виліковує від чотирьох отрут до 60 рівня. (Відновлення 3 сек)" }, -- Elixir of Poison Resistance, @use Imbiber is cured of up to four poisons up to level 60. (3 Sec Cooldown)
 [3387] = { "зілля обмеженої невразливості", use="Надає невразливість до фізичних атак на 6 сек. (Відновлення 2 хв)" }, -- Limited Invulnerability Potion, @use Imbiber is immune to physical attacks for the next 6 sec. (2 Min Cooldown)
 [3388] = { "міцне зілля крові троля", use="Відновлює 6 од. здоров'я кожні 5 сек протягом 1 години. (Відновлення 3 сек)" }, -- Strong Troll's Blood Potion, @use Regenerate 6 health every 5 sec for 1 hour. (3 Sec Cooldown)
@@ -539,7 +539,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3445] = { "церемоніальний ніж" }, -- Ceremonial Knife
 [3446] = { "посох темнолісся" }, -- Darkwood Staff
 [3447] = { "чоботи склепоходця" }, -- Cryptwalker Boots
-[3448] = { "сенджиновий корінь", use="Відновлює 294 здоров'я та 294 мани протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Senggin Root, @use Restores 294 health and 294 mana over 21 sec. Must remain seated while eating.
+[3448] = { "сенджиновий корінь", use="Відновлює {1} здоров'я та {2} мани протягом {3} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health and {2} mana over {3}" }, -- Senggin Root, @use Restores 294 health and 294 mana over 21 sec. Must remain seated while eating.
 [3449] = { "містична шаль" }, -- Mystic Shawl
 [3450] = { "щит Фарлеї" }, -- Faerleia's Shield
 [3451] = { "ночесяйний настій" }, -- Nightglow Concoction
@@ -629,9 +629,9 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3658] = { "врятований том" }, -- Recovered Tome
 [3659] = { "потерта шкіряна книга", flavor="Рука Ґрі'лека" }, -- Worn Leather Book, @flavor Arm of Gri'lek
 [3660] = { "альтерацькі томи" }, -- Tomes of Alterac
-[3663] = { "суп з плавців мурлоків", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Murloc Fin Soup, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
-[3664] = { "рагу з кроколіска", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Crocolisk Gumbo, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
-[3666] = { "липкий павучий пиріг", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Gooey Spider Cake, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[3663] = { "суп з плавців мурлоків", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Murloc Fin Soup, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[3664] = { "рагу з кроколіска", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Crocolisk Gumbo, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[3666] = { "липкий павучий пиріг", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Gooey Spider Cake, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
 [3668] = { "контракт вбивці" }, -- Assassin's Contract
 [3672] = { "голова Наґаза" }, -- Head of Nagaz
 [3679] = { "рецепт: Кров'янка", use="Навчає вас приготуванню кров'янки." }, -- Recipe: Blood Sausage, @use Teaches you how to cook a Blood Sausage.
@@ -661,10 +661,10 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3719] = { "накидка жителя пагорбів" }, -- Hillman's Cloak
 [3720] = { "хутро єті" }, -- Yeti Fur
 [3721] = { "звіт Фаррена" }, -- Farren's Report
-[3726] = { "великий ведмежий стейк", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Big Bear Steak, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
-[3727] = { "гарячі відбивні з лева", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Hot Lion Chops, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
-[3728] = { "cмачний стейк з лева", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 8 на 15 хв." }, -- Tasty Lion Steak, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 8 Stamina and Spirit for 15 min.
-[3729] = { "ніжний черепаховий суп", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 8 на 15 хв." }, -- Soothing Turtle Bisque, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 8 Stamina and Spirit for 15 min.
+[3726] = { "великий ведмежий стейк", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Big Bear Steak, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[3727] = { "гарячі відбивні з лева", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Hot Lion Chops, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[3728] = { "cмачний стейк з лева", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 8 на 15 хв.#Restores {1} health over {2}" }, -- Tasty Lion Steak, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 8 Stamina and Spirit for 15 min.
+[3729] = { "ніжний черепаховий суп", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 8 на 15 хв.#Restores {1} health over {2}" }, -- Soothing Turtle Bisque, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 8 Stamina and Spirit for 15 min.
 [3730] = { "велике ведмеже м'ясо" }, -- Big Bear Meat
 [3731] = { "м'ясо лева" }, -- Lion Meat
 [3732] = { "широкий капюшон" }, -- Hooded Cowl
@@ -692,7 +692,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3763] = { "місячний баклер" }, -- Lunar Buckler
 [3764] = { "черевики богомола" }, -- Mantis Boots
 [3765] = { "розбійницьке напліччя" }, -- Brigand's Pauldrons
-[3772] = { "начаклована джерельна вода", use="Відновлює 1344.6 мани протягом 27 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Conjured Spring Water, @use Restores 1344.6 mana over 27 sec.  Must remain seated while drinking.
+[3772] = { "начаклована джерельна вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Spring Water, @use Restores 1344.6 mana over 27 sec.  Must remain seated while drinking.
 [3818] = { "бляклолист" }, -- Fadeleaf
 [3819] = { "зимокус" }, -- Wintersbite
 [3820] = { "душирість" }, -- Stranglekelp
@@ -702,7 +702,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3824] = { "тіньова олія", use="При нанесенні на зброю ближнього бою дає 15% ймовірності застосувати тіньову стрілу ІІІ на опонента при ударі. Триває 30 хвилин." }, -- Shadow Oil, @use When applied to a melee weapon it gives a 15% chance of casting Shadowbolt III at the opponent when it hits.  Lasts 30 minutes.
 [3825] = { "еліксир стійкості", use="Збільшує максимальне здоров'я на 120 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Fortitude, @use Increases the player's maximum health by 120 for 1 hour. (3 Sec Cooldown)
 [3826] = { "потужне зілля крові троля", use="Відновлює 12 од. здоров'я кожні 5 сек протягом 1 години. (Відновлення 3 сек)" }, -- Mighty Troll's Blood Potion, @use Regenerate 12 health every 5 sec for 1 hour. (3 Sec Cooldown)
-[3827] = { "зілля мани", use="Відновлює від 455 до 585 мани. (Відновлення 2 хв)" }, -- Mana Potion, @use Restores 455 to 585 mana. (2 Min Cooldown)
+[3827] = { "зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Mana Potion, @use Restores 455 to 585 mana. (2 Min Cooldown)
 [3828] = { "еліксир виявлення малої невидимості", use="Надає виявлення малої невидимості на 10 хв. (Відновлення 3 сек)" }, -- Elixir of Detect Lesser Invisibility, @use Grants detect lesser invisibility for 10 min. (3 Sec Cooldown)
 [3829] = { "крижана олія", use="При нанесенні на зброю ближнього бою дає 10% ймовірності застосувати крижану стрілу на опонента при ударі. Триває 30 хвилин." }, -- Frost Oil, @use When applied to a melee weapon it gives a 10% chance of casting Frostbolt at the opponent when it hits.  Lasts 30 minutes.
 [3830] = { "рецепт: Еліксир стійкості", use="Навчає вас створювати еліксир стійкості." }, -- Recipe: Elixir of Fortitude, @use Teaches you how to make an Elixir of Fortitude.
@@ -718,7 +718,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [3864] = { "цитрин" }, -- Citrine
 [3898] = { "бібліотечний сувій" }, -- Library Scrip
 [3899] = { "\"Легенди Ґурубаші, том 3\"", flavor="Камінь Припливів" }, -- Legends of the Gurubashi, Volume 3, @flavor Stone of the Tides
-[3928] = { "відмінне зілля лікування", use="Відновлює від 700 до 900 здоров'я. (Відновлення 2 хв)" }, -- Superior Healing Potion, @use Restores 700 to 900 health. (2 Min Cooldown)
+[3928] = { "відмінне зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Superior Healing Potion, @use Restores 700 to 900 health. (2 Min Cooldown)
 [4016] = { "суміш Занзіла" }, -- Zanzil's Mixture
 [4127] = { "шрапнельний самостріл" }, -- Shrapnel Blaster
 [4131] = { "пояс псування" }, -- Belt of Corruption
@@ -800,10 +800,10 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [4533] = { "запечатаний лист до архімага Маліна" }, -- Sealed Letter to Archmage Malin
 [4534] = { "наручі зі сталевими застібками" }, -- Steel-clasped Bracers
 [4535] = { "пам'ятний перстень Залізогарту" }, -- Ironforge Memorial Ring
-[4536] = { "соковите червоне яблуко", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Shiny Red Apple, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
-[4540] = { "кусень твердого хліба", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Tough Hunk of Bread, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
-[4541] = { "свіжоспечений хліб", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Freshly Baked Bread, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
-[4542] = { "вологий кукурудзяний хліб", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Moist Cornbread, @use Restores 552 health over 24 sec.  Must remain seated while eating.
+[4536] = { "соковите червоне яблуко", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Shiny Red Apple, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[4540] = { "кусень твердого хліба", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Tough Hunk of Bread, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[4541] = { "свіжоспечений хліб", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Freshly Baked Bread, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
+[4542] = { "вологий кукурудзяний хліб", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Moist Cornbread, @use Restores 552 health over 24 sec.  Must remain seated while eating.
 [4543] = { "каптур зі шкіри білого дракончика" }, -- White Drakeskin Cap
 [4545] = { "сяючі срібні наручі" }, -- Radiant Silver Bracers
 [4546] = { "клич раптора", use="Збільшує спритність на 12 на 30 хв." }, -- Call of the Raptor, @use Increases your Agility by 12 for 30 min.
@@ -813,10 +813,10 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [4550] = { "холодноводний перстень" }, -- Coldwater Ring
 [4551] = { "голова Ор'Калара" }, -- Or'Kalar's Head
 [4589] = { "довга елегантна пір'їна" }, -- Long Elegant Feather
-[4596] = { "безбарвне зілля лікування", use="Відновлює від 140 до 180 здоров'я. (Відновлення 2 хв)" }, -- Discolored Healing Potion, @use Restores 140 to 180 health. (2 Min Cooldown)
+[4596] = { "безбарвне зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Discolored Healing Potion, @use Restores 140 to 180 health. (2 Min Cooldown)
 [4597] = { "рецепт: Безбарвне зілля лікування", use="Навчає вас створювати безбарвне зілля лікування." }, -- Recipe: Discolored Healing Potion, @use Teaches you how to make a Discolored Healing Potion.
-[4604] = { "шапинка лісового гриба", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Forest Mushroom Cap, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
-[4605] = { "червоний крапчастий гриб", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Red-speckled Mushroom, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
+[4604] = { "шапинка лісового гриба", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Forest Mushroom Cap, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[4605] = { "червоний крапчастий гриб", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Red-speckled Mushroom, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [4610] = { "різьблена кам'яна урна" }, -- Carved Stone Urn
 [4614] = { "кулон Мізраель" }, -- Pendant of Myzrael
 [4623] = { "мале зілля кам'яного щита", use="Збільшує броню на 1000 на 1.5 хв. (Відновлення 2 хв)" }, -- Lesser Stoneshield Potion, @use Increases armor by 1000 for 1.50 min. (2 Min Cooldown)
@@ -830,7 +830,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [4646] = { "зірка Ксіл'єх" }, -- Star of Xil'yeh
 [4650] = { "записка Бел'дуґура" }, -- Bel'dugur's Note
 [4654] = { "таємнича скам'янілість" }, -- Mysterious Fossil
-[4656] = { "гарбузик", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Small Pumpkin, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[4656] = { "гарбузик", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Small Pumpkin, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [4702] = { "кайло розвідувача", use="Розтрощити кайло у кузні." }, -- Prospector's Pick, @use Right click near a forge to break.
 [4703] = { "зламані інструменти" }, -- Broken Tools
 [4739] = { "м'ясо рівнинобіга" }, -- Plainstrider Meat
@@ -974,7 +974,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [5050] = { "ключ запалювання" }, -- Ignition Key
 [5054] = { "самофланж" }, -- Samophlange
 [5055] = { "неушкоджений ріг раптора" }, -- Intact Raptor Horn
-[5057] = { "стиглий кавун", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Ripe Watermelon, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[5057] = { "стиглий кавун", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Ripe Watermelon, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [5058] = { "яйце сілітіда" }, -- Silithid Egg
 [5059] = { "рийний кіготь", use="Вирити яйця сілітіда." }, -- Digging Claw, @use Digs up silithid eggs.
 [5060] = { "інструменти зломника" }, -- Thieves' Tools
@@ -1091,8 +1091,8 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [5345] = { "камнедеревний молот" }, -- Stonewood Hammer
 [5346] = { "орчий бойовий лук" }, -- Orcish Battle Bow
 [5348] = { "потертий пергамент" }, -- Worn Parchment
-[5349] = { "начаклований кекс", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Conjured Muffin, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
-[5350] = { "начаклована вода", use="Відновлює 151.2 мани протягом 18 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Conjured Water, @use Restores 151.2 mana over 18 sec.  Must remain seated while drinking.
+[5349] = { "начаклований кекс", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Conjured Muffin, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[5350] = { "начаклована вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Water, @use Restores 151.2 mana over 18 sec.  Must remain seated while drinking.
 [5351] = { "каблучка мисливця за головами" }, -- Bounty Hunter's Ring
 [5352] = { "книга \"Сили підземні\"" }, -- Book: The Powers Below
 [5354] = { "лист до Дельґрена" }, -- Letter to Delgren
@@ -1290,7 +1290,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [5842] = { "неочищений зразок руди" }, -- Unrefined Ore Sample
 [5843] = { "кіготь Ґренки" }, -- Grenka's Claw
 [5844] = { "фрагменти Рок'аліма" }, -- Fragments of Rok'Alim
-[5845] = { "шмат м'яса", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Flank of Meat, @use Restores 552 health over 24 sec.  Must remain seated while eating.
+[5845] = { "шмат м'яса", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Flank of Meat, @use Restores 552 health over 24 sec.  Must remain seated while eating.
 [5846] = { "запечатана записка Коррана" }, -- Korran's Sealed Note
 [5848] = { "порожниста кістка стерв'ятника" }, -- Hollow Vulture Bone
 [5849] = { "ящик захисних шоломів" }, -- Crate of Crash Helmets
@@ -1367,7 +1367,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6094] = { "пронзаюча сокира" }, -- Piercing Axe
 [6095] = { "чоботи мандрів" }, -- Wandering Boots
 [6145] = { "кулон Клариси", flavor="Покладіть на могилу Юріва." }, -- Clarice's Pendant, @flavor Place upon Yuriv's grave.
-[6149] = { "велике зілля мани", use="Відновлює від 700 до 900 мани. (Відновлення 2 хв)" }, -- Greater Mana Potion, @use Restores 700 to 900 mana. (2 Min Cooldown)
+[6149] = { "велике зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Greater Mana Potion, @use Restores 700 to 900 mana. (2 Min Cooldown)
 [6168] = { "пазур пилкозубого кусача" }, -- Sawtooth Snapper Claw
 [6169] = { "необроблена вирізка пилкозуба" }, -- Unprepared Sawtooth Flank
 [6170] = { "реактиви чарівників" }, -- Wizards' Reagents
@@ -1396,7 +1396,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6373] = { "еліксир вогнеміці", use="Збільшує шкоду від вогняних заклинань на 10 на 30 хв. (Відновлення 3 сек)" }, -- Elixir of Firepower, @use Increases spell fire damage by up to 10 for 30 min. (3 Sec Cooldown)
 [6414] = { "печатка Сильвани" }, -- Seal of Sylvanas
 [6435] = { "наповнений палаючий самоцвіт" }, -- Infused Burning Gem
-[6436] = { "палаючий самоцвіт", use="Захоплює дух найближчого члена Палаючого Леза. Якщо ціль помирає під час дії закляття — заклинач отримує 1 наповнений палаючий самоцвіт." }, -- Burning Gem, @use Captures the spirit of the nearest Burning Blade member. If target dies while being drained, the caster gains 1 Infused Burning Gem.
+[6436] = { "палаючий самоцвіт", use="Захоплює дух найближчого члена Палаючого Леза. Якщо ціль помирає під час дії заклинання — заклинач отримує 1 наповнений палаючий самоцвіт." }, -- Burning Gem, @use Captures the spirit of the nearest Burning Blade member. If target dies while being drained, the caster gains 1 Infused Burning Gem.
 [6443] = { "спотворена шкура" }, -- Deviate Hide
 [6462] = { "запечатаний ящик" }, -- Secure Crate
 [6464] = { "плачуча сутність" }, -- Wailing Essence
@@ -1435,7 +1435,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6656] = { "грубий кварц" }, -- Rough Quartz
 [6658] = { "зразок ошийника" }, -- Example Collar
 [6659] = { "штани скарабея" }, -- Scarab Trousers
-[6662] = { "еліксир гігантського росту", use="Ваш розмір збільшено, а ваша сила зростає на до 8, відповідно до вашого нового розміру. Триває 2 хв. (Відновлення 3 сек)" }, -- Elixir of Giant Growth, @use Your size is increased and your Strength goes up by 8 to match your new size.  Lasts 2 min. (3 Sec Cooldown)
+[6662] = { "еліксир гігантського росту", use="Ваш розмір збільшено, а ваша сила зростає на 8, відповідно до вашого нового розміру. Триває 2 хв. (Відновлення 3 сек)" }, -- Elixir of Giant Growth, @use Your size is increased and your Strength goes up by 8 to match your new size.  Lasts 2 min. (3 Sec Cooldown)
 [6663] = { "рецепт: Еліксир гігантського росту", use="Навчає вас створювати еліксир гігантського росту." }, -- Recipe: Elixir of Giant Growth, @use Teaches you how to make an Elixir of Giant Growth.
 [6664] = { "напліччя вуду" }, -- Voodoo Mantle
 [6665] = { "наручі заклять" }, -- Hexed Bracers
@@ -1575,7 +1575,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [7081] = { "подих вітру" }, -- Breath of Wind
 [7082] = { "сутність повітря" }, -- Essence of Air
 [7083] = { "очищений самоцвіт Кора" }, -- Purified Kor Gem
-[7097] = { "стегенце", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Leg Meat, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[7097] = { "стегенце", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Leg Meat, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [7115] = { "родова сокира" }, -- Heirloom Axe
 [7116] = { "родовий кинджал" }, -- Heirloom Dagger
 [7117] = { "родовий молот" }, -- Heirloom Hammer
@@ -1734,11 +1734,11 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [8072] = { "ключ від вежі Силіксиза" }, -- Silixiz's Tower Key
 [8073] = { "запас зміненої суміші Занзіла" }, -- Cache of Zanzil's Altered Mixture
 [8074] = { "голова Ґаллівікса" }, -- Gallywix's Head
-[8075] = { "начаклована хлібина на заквасці", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Conjured Sourdough, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
-[8076] = { "начаклований солодкий рулет", use="Відновлює 2148 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Conjured Sweet Roll, @use Restores 2148 health over 30 sec.  Must remain seated while eating.
-[8077] = { "начаклована мінеральна вода", use="Відновлює 1992 мани протягом 30 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Conjured Mineral Water, @use Restores 1992 mana over 30 sec.  Must remain seated while drinking.
-[8078] = { "начаклована газована вода", use="Відновлює 2934 мани протягом 30 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Conjured Sparkling Water, @use Restores 2934 mana over 30 sec.  Must remain seated while drinking.
-[8079] = { "начаклована кристалічна вода", use="Відновлює 4200 мани протягом 30 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Conjured Crystal Water, @use Restores 4200 mana over 30 sec.  Must remain seated while drinking.
+[8075] = { "начаклована хлібина на заквасці", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Conjured Sourdough, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
+[8076] = { "начаклований солодкий рулет", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Conjured Sweet Roll, @use Restores 2148 health over 30 sec.  Must remain seated while eating.
+[8077] = { "начаклована мінеральна вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Mineral Water, @use Restores 1992 mana over 30 sec.  Must remain seated while drinking.
+[8078] = { "начаклована газована вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Sparkling Water, @use Restores 2934 mana over 30 sec.  Must remain seated while drinking.
+[8079] = { "начаклована кристалічна вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Crystal Water, @use Restores 4200 mana over 30 sec.  Must remain seated while drinking.
 [8087] = { "зразок зміненої суміші Занзіла" }, -- Sample of Zanzil's Altered Mixture
 [8095] = { "масло Гінотта", use="Ліки від дотику Занзіла." }, -- Hinott's Oil, @use Cure for the Touch of Zanzil.
 [8136] = { "велетенська пухлина" }, -- Gargantuan Tumor
@@ -1762,7 +1762,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [8525] = { "список покупок Зінґе" }, -- Zinge's Purchase Order
 [8527] = { "запечатаний набір для польових досліджень" }, -- Sealed Field Testing Kit
 [8629] = { "поводи смугастого ночезуба", use="Прикликає й відкликає верхового ночезуба. (Відновлення 3 сек)" }, -- Reins of the Striped Nightsaber, @use Summons and dismisses a rideable Sabre Cat. (3 Sec Cooldown)
-[8683] = { "свіже яблуко Клари", use="Відновлює 30 здоров'я за 15 сек. Потрібно залишатися в сидячому положенні під час їжі.", flavor="Свіжий смачний фрукт... що гарно підходить для маскування." }, -- Clara's Fresh Apple, @use Restores 30 health over 15 sec.  Must remain seated while eating., @flavor A fresh piece of fruit that's good to eat... and is apparently good for disguises also!
+[8683] = { "свіже яблуко Клари", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}", flavor="Свіжий смачний фрукт... що гарно підходить для маскування." }, -- Clara's Fresh Apple, @use Restores 30 health over 15 sec.  Must remain seated while eating., @flavor A fresh piece of fruit that's good to eat... and is apparently good for disguises also!
 [8684] = { "медова шипучка Внутрішніх земель" }, -- Hinterlands Honey Ripple
 [8685] = { "вантаж шипучки для Драна", flavor="В цій бочці знаходиться пакунок шипучки для Драна та кілька додаткових пляшок" }, -- Dran's Ripple Delivery, @flavor This barrel contains Dran's packaged ripple and his extra bottles.
 [8687] = { "запечатаний опис відвідувача Тредда" }, -- Sealed Description of Thredd's Visitor
@@ -2019,7 +2019,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [11502] = { "наплечі з мудрошкіри" }, -- Loreskin Shoulders
 [11512] = { "клапоть зараженої шкіри" }, -- Patch of Tainted Skin
 [11583] = { "кактусове яблуко" }, -- Cactus Apple
-[11584] = { "\"Пиріг-сюрприз\" з кактусовими яблуками", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 2 на 15 хв." }, -- Cactus Apple Surprise, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 2 Stamina and Spirit for 15 min.
+[11584] = { "\"Пиріг-сюрприз\" з кактусовими яблуками", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 2 на 15 хв.#Restores {1} health over {2}" }, -- Cactus Apple Surprise, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 2 Stamina and Spirit for 15 min.
 [11754] = { "чорний діамант" }, -- Black Diamond
 [11843] = { "банківська розписка" }, -- Bank Voucher
 [11845] = { "шкіряна сумка ручної роботи" }, -- Handmade Leather Bag
@@ -2066,7 +2066,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [12235] = { "зразок ун'ґорського слизу" }, -- Un'Goro Slime Sample
 [12236] = { "чистий ун'ґорський зразок" }, -- Pure Un'Goro Sample
 [12237] = { "чудове крабове м'ясо" }, -- Fine Crab Chunks
-[12238] = { "окунь Темнобережжя", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Darkshore Grouper, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
+[12238] = { "окунь Темнобережжя", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Darkshore Grouper, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [12242] = { "кістки морської істоти" }, -- Sea Creature Bones
 [12288] = { "запакований забруднений слизень", use="Випустити забрудненого сквернолісного слизня, щоб він міг провзаємодіяти з первісним слизнем в кратері Ун'Ґоро. (Відновлення 3 хв)" }, -- Encased Corrupt Ooze, @use Releases a captured Felwood ooze so it can interact with a primal ooze in Un'Goro Crater. (3 Min Cooldown)
 [12289] = { "рештки морської черепахи" }, -- Sea Turtle Remains
@@ -2131,10 +2131,10 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [13422] = { "камнелуский вугор" }, -- Stonescale Eel
 [13423] = { "олія камнелуского вугра" }, -- Stonescale Oil
 [13442] = { "потужне зілля люті", use="Збільшує лють на 45-75 та збільшує силу на 60 на 20 сек. (Відновлення 2 хв)" }, -- Mighty Rage Potion, @use Increases Rage by 45 to 75 and increases Strength by 60 for 20 sec. (2 Min Cooldown)
-[13443] = { "відмінне зілля мани", use="Відновлює від 900 до 1500 мани. (Відновлення 2 хв)" }, -- Superior Mana Potion, @use Restores 900 to 1500 mana. (2 Min Cooldown)
-[13444] = { "величезне зілля мани", use="Відновлює від 1350 до 2250 мани. (Відновлення 2 хв)" }, -- Major Mana Potion, @use Restores 1350 to 2250 mana. (2 Min Cooldown)
+[13443] = { "відмінне зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Superior Mana Potion, @use Restores 900 to 1500 mana. (2 Min Cooldown)
+[13444] = { "величезне зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Major Mana Potion, @use Restores 1350 to 2250 mana. (2 Min Cooldown)
 [13445] = { "еліксир відмінного захисту", use="Збільшує броню на 450 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Superior Defense, @use Increases armor by 450 for 1 hour. (3 Sec Cooldown)
-[13446] = { "величезне зілля лікування", use="Відновлює від 1050 до 1750 здоров'я. (Відновлення 2 хв)" }, -- Major Healing Potion, @use Restores 1050 to 1750 health. (2 Min Cooldown)
+[13446] = { "величезне зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Major Healing Potion, @use Restores 1050 to 1750 health. (2 Min Cooldown)
 [13447] = { "еліксир мудреців", use="Збільшує інтелект і дух на 18 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of the Sages, @use Increases Intellect and Spirit by 18 for 1 hour. (3 Sec Cooldown)
 [13452] = { "еліксир мангуста", use="Збільшує спритність на 25 та ймовірність нанесення критичного удару на 2% на 1 годину. (Відновлення 3 сек)" }, -- Elixir of the Mongoose, @use Increases Agility by 25 and chance to get a critical hit by 2% for 1 hour. (3 Sec Cooldown)
 [13453] = { "еліксир грубої сили", use="Збільшує силу та витривалість на 18 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Brute Force, @use Increases Strength and Stamina by 18 for 1 hour. (3 Sec Cooldown)
@@ -2183,11 +2183,11 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [13536] = { "ріг пробудження", use="Пробудити сплячого друїда. (Відновлення 30 сек)" }, -- Horn of Awakening, @use Awaken the sleeping druid. (30 Sec Cooldown)
 [13602] = { "великий камінь чарів", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%.", use="Усуває всі магічні ефекти з заклинача та поглине 650 магічної шкоди протягом 1 хв." }, -- Greater Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 650 magic damage for 1 min.
 [13603] = { "величезний камінь чарів", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%.", use="Усуває всі магічні ефекти з заклинача та поглине 900 магічної шкоди протягом 1 хв." }, -- Major Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 900 magic damage for 1 min.
-[13699] = { "камінь вогню", equip={ "Зачаровує зброю в основній руці вогнем, надаючи кожній атаці ймовірність завдати від 40 до 60 додаткової шкоди від вогню.", "Збільшує пошкодження від заклять і ефектів вогню на до 14." } }, -- Firestone, @equip Enchants the main hand weapon with fire, granting each attack a chance to deal 40 to 60 additional fire damage., @equip Increases damage done by Fire spells and effects by up to 14.
+[13699] = { "камінь вогню", equip={ "Зачаровує зброю в основній руці вогнем, надаючи кожній атаці ймовірність завдати від 40 до 60 додаткової шкоди від вогню.", "Збільшує шкоду від заклинань і ефектів вогню на 14." } }, -- Firestone, @equip Enchants the main hand weapon with fire, granting each attack a chance to deal 40 to 60 additional fire damage., @equip Increases damage done by Fire spells and effects by up to 14.
 [13700] = { "великий камінь вогню", equip={ "Зачаровує зброю в основній руці вогнем, надаючи кожній атаці ймовірність завдати від 60 до 90 додаткової шкоди від вогню.", "Збільшує шкоду від заклинань і ефектів вогню на 17." } }, -- Greater Firestone, @equip Enchants the main hand weapon with fire, granting each attack a chance to deal 60 to 90 additional fire damage., @equip Increases damage done by Fire spells and effects by up to 17.
 [13701] = { "величезний камінь вогню", equip={ "Зачаровує зброю в основній руці вогнем, надаючи кожній атаці ймовірність завдати від 80 до 120 додаткової шкоди від вогню.", "Збільшує шкоду від заклинань і ефектів вогню на 21." } }, -- Major Firestone, @equip Enchants the main hand weapon with fire, granting each attack a chance to deal 80 to 120 additional fire damage., @equip Increases damage done by Fire spells and effects by up to 21.
 [13702] = { "бур'ян приречення" }, -- Doom Weed
-[13724] = { "збагачене маною печиво", use="Відновлює 2148 здоров'я та 4410 мани протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Enriched Manna Biscuit, @use Restores 2148 health and 4410 mana over 30 sec.  Must remain seated while eating.
+[13724] = { "збагачене маною печиво", use="Відновлює {1} здоров'я та {2} мани протягом {3} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health and {2} mana over {3}" }, -- Enriched Manna Biscuit, @use Restores 2148 health and 4410 mana over 30 sec.  Must remain seated while eating.
 [13850] = { "набої Грімостріла" }, -- Rumbleshot's Ammo
 [13872] = { "зв'язка деревини" }, -- Bundle of Wood
 [13958] = { "кайдани Змійталака" }, -- Wyrmthalak's Shackles
@@ -2491,7 +2491,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [17057] = { "блискуча риб'яча луска" }, -- Shiny Fish Scales
 [17117] = { "флейта щуролова", use="Пограти на флейті, щоб зачарувати підземних щурів в депо Глибокобіжного трамвая." }, -- Rat Catcher's Flute, @use Use to lull the vermin infesting the Deeprun Tram into a state of raptured bliss.
 [17118] = { "коробка загадкового м'яса", flavor="Не трясти." }, -- Carton of Mystery Meat, @flavor Handle With Care.
-[17119] = { "шашлик з підземних щурів", use="Відновлює 243.6 здоров'я за 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Deeprun Rat Kabob, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
+[17119] = { "шашлик з підземних щурів", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Deeprun Rat Kabob, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [17124] = { "емблема Синдикату" }, -- Syndicate Emblem
 [17125] = { "печатка Рейвенхольдта" }, -- Seal of Ravenholdt
 [17203] = { "злиток сульфурону" }, -- Sulfuron Ingot
@@ -2566,8 +2566,8 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [18807] = { "шолом прихованої сили", equip={ "Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%.", "Збільшує шкоду і зцілення від магічних заклинань і ефектів на 14." } }, -- Helm of Latent Power, @equip Improves your chance to get a critical strike with spells by 1%., @equip Increases damage and healing done by magical spells and effects by up to 14.
 [18818] = { "вказівки Мор'зула" }, -- Mor'zul's Instructions
 [18819] = { "кадильниця екзорцизму Рогана" }, -- Rohan's Exorcism Censer
-[18839] = { "бойове зілля лікування", use="Відновлює від 700 до 900 здоров'я. (Відновлення 2 хв)" }, -- Combat Healing Potion, @use Restores 700 to 900 health. (2 Min Cooldown)
-[18841] = { "бойове зілля мани", use="Відновлює від 900 до 1500 мани. (Відновлення 2 хв)" }, -- Combat Mana Potion, @use Restores 900 to 1500 mana. (2 Min Cooldown)
+[18839] = { "бойове зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Combat Healing Potion, @use Restores 700 to 900 health. (2 Min Cooldown)
+[18841] = { "бойове зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Combat Mana Potion, @use Restores 900 to 1500 mana. (2 Min Cooldown)
 [18880] = { "голова Тінегубителя" }, -- Darkreaver's Head
 [18952] = { "голова Симони" }, -- Simone's Head
 [18953] = { "голова Клінфрана" }, -- Klinfran's Head
@@ -2803,7 +2803,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [22435] = { "жало Ґоріші" }, -- Gorishi Sting
 [22444] = { "гнила лоза" }, -- Putrid Vine
 [22458] = { "посох місячної тіні", equip={ "Збільшує шкоду і зцілення від магічних заклинань і ефектів на 18.", "Відновлює 7 мани кожні 5 сек.", "Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%." } }, -- Moonshadow Stave, @equip Increases damage and healing done by magical spells and effects by up to 18., @equip Restores 7 mana per 5 sec., @equip Improves your chance to get a critical strike with spells by 1%.
-[22895] = { "начаклована булочка з корицею", use="Відновлює 3180 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Conjured Cinnamon Roll, @use Restores 3180 health over 30 sec.  Must remain seated while eating.
+[22895] = { "начаклована булочка з корицею", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Conjured Cinnamon Roll, @use Restores 3180 health over 30 sec.  Must remain seated while eating.
 [22945] = { "потерта записка" }, -- A Careworn Note
 [22972] = { "потерта записка" }, -- A Careworn Note
 [23250] = { "призматична мушля" }, -- Prismatic Shell
@@ -2819,9 +2819,9 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [32450] = { "молоток гладіатора" },
 [32451] = { "порятунок гладіатора" },
 [32452] = { "відстрочка гладіатора" },
-[32453] = { "зоряні сльози", use="Відновлює 7200 мани протягом 30 с. Під час пиття необхідно сидіти.", flavor="Обережно видобуті для використання у військових цілях." },
+[32453] = { "зоряні сльози", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}", flavor="Обережно видобуті для використання у військових цілях." }, -- Star's Tears, @use Restores 7200 mana over 30 sec. Must remain seated while drinking., @flavor Carefully extracted for warfare use.
 [32454] = { "дослідження Арторн", flavor="Нотатки Арторн Пісні Вітрі з її вивчення книги Ворона." }, -- Arthorn's Research, @flavor Arthorn Windsong's notes from her studies of the Book of the Raven.
-[32455] = { "плач зірок", use="Відновлює 4200 мани протягом 30 с. Під час пиття необхідно сидіти.", flavor="Обережно видобуті для використання у військових цілях." },
+[32455] = { "плач зірок", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}", flavor="Обережно видобуті для використання у військових цілях." }, -- Star's Lament, @use Restores 4200 mana over 30 sec. Must remain seated while drinking., @flavor Carefully extracted for warfare use.
 [32456] = { "бомби-охоронці неба" }, -- Skyguard Bombs
 [32457] = { "фетиш араккоа" }, -- Arakkoa Fetish
 [32458] = { "попіл Ал'ара", use="Викликає та відпускає фенікса, на якому можна їздити. Це дуже швидкий транспорт. Цього верхового скакуна можна викликати лише в Закордоні.", flavor="І з попелу він відродився..." }, -- Ashes of Al'ar, @use Summons and dismisses a rideable phoenix. This is a very fast mount. This mount can only be summoned in Outland., @flavor And from the ashes it was reborn...
