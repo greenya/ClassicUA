@@ -1409,7 +1409,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [6481] = { "болотні рукавиці" }, -- Dagmire Gauntlets
 [6482] = { "черевики вогнехода" }, -- Firewalker Boots
 [6486] = { "припалена луска" }, -- Singed Scale
-[6487] = { "голова підлого фамільяра" }, -- Vile Familiar Head
+[6487] = { "голова паскудного фамільяра" }, -- Vile Familiar Head
 [6488] = { "проста скрижаль" }, -- Simple Tablet
 [6502] = { "броня з фіолетової луски" }, -- Violet Scale Armor
 [6503] = { "мантія арлекіна" }, -- Harlequin Robes
@@ -2537,7 +2537,7 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [18622] = { "бездоганна есенція скверни (Джеденар)" }, -- Flawless Fel Essence (Jaedenar)
 [18623] = { "бездоганна есенція скверни (Темний Портал)" }, -- Flawless Fel Essence (Dark Portal)
 [18624] = { "бездоганна есенція скверни (Азшара)" }, -- Flawless Fel Essence (Azshara)
-[18625] = { "ядро Крошіуса" }, -- Kroshius' Infernal Core
+[18625] = { "ядро Крошія" }, -- Kroshius' Infernal Core
 [18626] = { "вогонь скверни", use="Підпалити Крошіуса, щоб повернути переможеного пекельника до життя." }, -- Fel Fire, @use Ignites Kroshius, reanimating the fallen infernal.
 [18646] = { "Око Божественності", flavor="Ви помічаєте рух, коли вдивляєтеся в Око." }, -- The Eye of Divinity, @flavor You can see movement when you peer into the Eye.
 [18659] = { "уламок Нордрассіля", use="Утворює Благословення в поєднанні з Оком Тіні та Оком Божественності.", flavor="Крихітний фрагмент Світового Дерева" }, -- Splinter of Nordrassil, @use Forms Benediction when combined with the Eye of Shadow and the Eye of Divinity., @flavor A tiny fragment of the World Tree
