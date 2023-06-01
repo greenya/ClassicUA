@@ -475,7 +475,7 @@ addonTable.zone = { -- [key] = text
 ["Pool of Tears"] = "став Сліз",
 ["Pools of Arlithrien"] = "Арлітріенські стави",
 ["Pools of Vision"] = "Джерела Видіння",
-["Prison of Immol'thar"] = "в'язниця Іммоль'тара",
+["Prison of Immol'thar"] = "в'язниця Безсмер'тера",
 ["Purgation Isle"] = "острів Позбавлення",
 ["Pyrewood Village"] = "село Поховальні Вогнища",
 ["Quagmire"] = "Мочар",
