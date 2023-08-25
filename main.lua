@@ -450,8 +450,8 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_buff_de
     tooltip_entry_id = entry_id
 end
 
-local add_talent_entry_to_tooltip = function (tooltip, tab_index, talent_index, rank, max_rank)
-    local talent = addonTable.talent_tree[tab_index] and addonTable.talent_tree[tab_index][talent_index] or false
+local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, rank, max_rank)
+    local talent = addonTable.talent_tree[tab_index] and addonTable.talent_tree[tab_index][tier] and addonTable.talent_tree[tab_index][tier][column] or false
     if not talent then
         return
     end
@@ -541,10 +541,10 @@ for _, tt in pairs { GameTooltip, ItemRefTooltip } do
 end
 
 hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index)
-    local rank, max_rank, is_active = select(5, GetTalentInfo(tab_index, talent_index))
+    local tier, column, rank, max_rank, is_active = select(3, GetTalentInfo(tab_index, talent_index))
     if not is_active then -- skip active talent (they get shown as spell)
-        -- print("talent", tab_index, talent_index, "rank", rank, max_rank)
-        add_talent_entry_to_tooltip(self, tab_index, talent_index, rank, max_rank)
+        -- print("tab", tab_index, "tier/column", tier, column, "rank/max", rank, max_rank)
+        add_talent_entry_to_tooltip(self, tab_index, tier, column, rank, max_rank)
     end
 end)
 
