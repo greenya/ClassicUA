@@ -1174,12 +1174,11 @@ local prepare_options_frame = function ()
         { "Оновлення", "addon_changelog" },
         { "Причетні", "addon_contributors" },
     }) do
-        f = CreateFrame("Button", nil, options_frame, "UIGoldBorderButtonTemplate")
+        f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
         table.insert(options_frame.info_tab_buttons, f)
         f.tab_index = tab_index
         f.tab_title = tab_data[1]
         f.tab_text_key = tab_data[2]
-        f:SetHighlightTexture("Interface\\PaperDollInfoFrame\\UI-Character-Tab-Highlight", "ADD")
         f:SetSize(100, 32)
         f:SetPoint("TOPLEFT", 112 + tab_index * f:GetWidth(), -200)
         f:SetText(f.tab_title)
