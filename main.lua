@@ -1082,9 +1082,9 @@ local prepare_options_frame = function ()
     -- reload button
 
     f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
-    f:SetPoint("TOPRIGHT", -56, -128)
+    f:SetPoint("TOPRIGHT", -48, -128)
     f:SetText("/reload")
-    f:SetSize(80, 20)
+    f:SetSize(88, 20)
     f:SetScript("OnClick", function()
         ReloadUI()
     end)
@@ -1161,7 +1161,7 @@ local prepare_options_frame = function ()
     f = CreateFrame("Frame", nil, options_frame, "BackdropTemplate")
     options_frame.info_tab_frame = f
     f:SetPoint("TOPLEFT", 24, -224)
-    f:SetSize(576, 320)
+    f:SetSize(600, 340)
     setup_frame_background_and_border(f)
     setup_frame_scrollbar_and_content(f, {
         title = { quest_title_font, options.quest_text_size + 5 },
@@ -1180,7 +1180,7 @@ local prepare_options_frame = function ()
         f.tab_title = tab_data[1]
         f.tab_text_key = tab_data[2]
         f:SetSize(100, 32)
-        f:SetPoint("TOPLEFT", 112 + tab_index * f:GetWidth(), -200)
+        f:SetPoint("TOPLEFT", 124 + tab_index * f:GetWidth(), -200)
         f:SetText(f.tab_title)
         f:SetScript("OnClick", function(self)
             if self.tab_index == options_frame.info_tab_frame.current_tab_index then
