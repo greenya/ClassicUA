@@ -451,6 +451,10 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_buff_de
 end
 
 local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, rank, max_rank)
+    if tooltip_entry_type then
+        return
+    end
+
     local talent =
         addonTable.talent_tree and
         addonTable.talent_tree[tab_index] and
