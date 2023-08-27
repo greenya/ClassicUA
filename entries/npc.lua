@@ -297,7 +297,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [619] = { "заклинатель повстанців" }, -- Defias Conjurer
 [620] = { "курка" }, -- Chicken
 [622] = { "гоблін-інженер" }, -- Goblin Engineer
-[623] = { "скелетний шахтер" }, -- Skeletal Miner
+[623] = { "скелетний шахтар" }, -- Skeletal Miner
 [624] = { "невмерлий копач" }, -- Undead Excavator
 [625] = { "невмерлий підривник" }, -- Undead Dynamiter
 [626] = { "десятник Лютополох" }, -- Foreman Thistlenettle
@@ -351,7 +351,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [699] = { "володар звірів Кровоскальпих" }, -- Bloodscalp Beastmaster
 [700] = { "пантера Кровоскальпих" }, -- Bloodscalp Panther
 [701] = { "містик Кровоскальпих" }, -- Bloodscalp Mystic
-[702] = { "сміттяр Кровоскальпих" }, -- Bloodscalp Scavenger
+[702] = { "падальник Кровоскальпих" }, -- Bloodscalp Scavenger
 [703] = { "лейтенант Тельбухожбур" }, -- Lieutenant Fangore
 [704] = { "обдертий сірий вовк" }, -- Ragged Timber Wolf
 [705] = { "обдертий молодий вовк" }, -- Ragged Young Wolf
@@ -588,7 +588,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1000] = { "вартовий Бломберг", "Нічна варта" }, -- Watcher Blomberg <The Night Watch>
 [1001] = { "вартовий Гатчінс", "Нічна варта" }, -- Watcher Hutchins <The Night Watch>
 [1007] = { "мохошкурий гнол" }, -- Mosshide Gnoll
-[1008] = { "мохошкурий дворняга" }, -- Mosshide Mongrel
+[1008] = { "мохошкура дворняга" }, -- Mosshide Mongrel
 [1009] = { "мохошкурий туманоткач" }, -- Mosshide Mistweaver
 [1010] = { "мохошкурий болотобіг" }, -- Mosshide Fenrunner
 [1011] = { "мохошкурий капканник" }, -- Mosshide Trapper
@@ -738,7 +738,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [1416] = { "Ґріманд Елмор" }, -- Grimand Elmore
 [1417] = { "молодий кроколіск Заболоття" }, -- Young Wetlands Crocolisk
 [1418] = { "синьожабрий рейдер" }, -- Bluegill Raider
-[1426] = { "річколапий шахтер" }, -- Riverpaw Miner
+[1426] = { "річколапий шахтар" }, -- Riverpaw Miner
 [1427] = { "Гарлан Баґлі" }, -- Harlan Bagley
 [1428] = { "Рема Шнайдер" }, -- Rema Schneider
 [1429] = { "Турман Шнайдер" }, -- Thurman Schneider
@@ -1354,9 +1354,9 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [2580] = { "старий плоскогірний канюк" }, -- Elder Mesa Buzzard
 [2581] = { "ополченець хутору Дабірі" }, -- Dabyrie Militia
 [2582] = { "різнороб хутору Дабірі" }, -- Dabyrie Laborer
-[2583] = { "штромґардський мисливець на тролів" }, -- Stromgarde Troll Hunter
-[2584] = { "штромґардський захисник" }, -- Stromgarde Defender
-[2585] = { "штромґардський покровитель" }, -- Stromgarde Vindicator
+[2583] = { "стромґардський мисливець на тролів" }, -- Stromgarde Troll Hunter
+[2584] = { "стромґардський захисник" }, -- Stromgarde Defender
+[2585] = { "стромґардський покровитель" }, -- Stromgarde Vindicator
 [2586] = { "нальотчик Синдикату" }, -- Syndicate Highwayman
 [2587] = { "вистежувач Синдикату" }, -- Syndicate Pathstalker
 [2588] = { "скрадач Синдикату" }, -- Syndicate Prowler
@@ -1381,7 +1381,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [2623] = { "дух давнини" }, -- Spirit of Old
 [2624] = { "Ґазбан" }, -- Gazban
 [2625] = { "Візнік Золотомрій", "банкір" }, -- Viznik Goldgrubber <Banker>
-[2626] = { "дід Гемінґ", "рибалка" }, -- Old Man Heming <Fisherman>
+[2626] = { "старий Гемінґ", "рибалка" }, -- Old Man Heming <Fisherman>
 [2659] = { "гостродзьобий володар неба" }, -- Razorbeak Skylord
 [2670] = { "Зиск Добрострок", "кравецькі припаси" }, -- Xizk Goodstitch <Tailoring Supplies>
 [2695] = { "Сара Баллу" }, -- Sara Balloo
@@ -1437,7 +1437,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [2893] = { "каменесклепий кісткохруст" }, -- Stonevault Bonesnapper
 [2894] = { "каменесклепий шаман" }, -- Stonevault Shaman
 [2909] = { "Молотопалий Ґрез" }, -- Hammertoe Grez
-[2910] = { "розвідувач Райдол", "Ліга дослідників" }, -- Prospector Ryedol <Explorers' League>
+[2910] = { "розвідувач Житник", "Ліга дослідників" }, -- Prospector Ryedol <Explorers' League>
 [2911] = { "археолог Флягопуз", "Ліга дослідників" }, -- Archaeologist Flagongut <Explorers' League>
 [2912] = { "старший археолог Сіровус", "Ліга дослідників" }, -- Chief Archaeologist Greywhisker <Explorers' League>
 [2913] = { "археологиня Холлі", "Ліга дослідників" }, -- Archaeologist Hollee <Explorers' League>
@@ -2167,13 +2167,13 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [4651] = { "гукачка землі Ґелкіс" }, -- Gelkis Earthcaller
 [4652] = { "молотобій Ґелкіс" }, -- Gelkis Mauler
 [4653] = { "мародер Ґелкіс" }, -- Gelkis Marauder
-[4654] = { "маравдінський розвідник" }, -- Maraudine Scout
-[4655] = { "маравдінський чередник" }, -- Maraudine Wrangler
-[4656] = { "маравдінський молотобій" }, -- Maraudine Mauler
-[4657] = { "маравдінська вітроловка" }, -- Maraudine Windchaser
-[4658] = { "маравдінська буревійка" }, -- Maraudine Stormer
-[4659] = { "маравдінський мародер" }, -- Maraudine Marauder
-[4660] = { "маравдінський кістколап" }, -- Maraudine Bonepaw
+[4654] = { "мародінський розвідник" }, -- Maraudine Scout
+[4655] = { "мародінський чередник" }, -- Maraudine Wrangler
+[4656] = { "мародінський молотобій" }, -- Maraudine Mauler
+[4657] = { "мародінська вітроловка" }, -- Maraudine Windchaser
+[4658] = { "мародінська буревійка" }, -- Maraudine Stormer
+[4659] = { "мародінський мародер" }, -- Maraudine Marauder
+[4660] = { "мародінський кістколап" }, -- Maraudine Bonepaw
 [4663] = { "авгур Палаючого Леза" }, -- Burning Blade Augur
 [4664] = { "розоритель Палаючого Леза" }, -- Burning Blade Reaver
 [4665] = { "адепт Палаючого Леза" }, -- Burning Blade Adept
@@ -2213,7 +2213,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [4842] = { "гукач землі Ґалмґар" }, -- Earthcaller Halmgar
 [4854] = { "Ґрімлок", "ватажок Каменесклепих" }, -- Grimlok
 [4885] = { "Грегор Мак-Вінс", "розвідник коней" }, -- Gregor MacVince <Horse Breeder>
-[4944] = { "капітан Ґарран Вімс" }, -- Garran Vimes
+[4944] = { "капітан Ґарран Ваймс" }, -- Garran Vimes
 [4948] = { "ад'ютант Тесоран" }, -- Adjutant Tesoran
 [4949] = { "Тралл", "воєвождь" }, -- Thrall <Warchief>
 [4959] = { "Йорген" }, -- Jorgen
@@ -2227,7 +2227,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [4968] = { "леді Джайна Праудмур", "правителька Терамору" }, -- Jaina Proudmoore
 [4969] = { "бандит Старого Міста" }, -- Old Town Thug
 [4971] = { "друг Пронири" }, -- Slim's Friend
-[4980] = { "Павал Ріті" }, -- Paval Reethe
+[4980] = { "Павал Ріт" }, -- Paval Reethe
 [4982] = { "Томас", "вівтарник" }, -- Thomas
 [4984] = { "Арґос Нічношерех" }, -- Argos Nightwhisper
 [5046] = { "лейтенант Кальдвел" }, -- Lieutenant Caldwell
@@ -2247,7 +2247,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [5149] = { "Брандур Залізомолот", "тренер паладинів" }, -- Brandur Ironhammer <Paladin Trainer>
 [5153] = { "Йормунд Камнебров", "кравець-експерт" }, -- Jormund Stonebrow <Expert Tailor>
 [5155] = { "Інґріс Камнебров", "продавець тканинної броні" }, -- Ingrys Stonebrow <Cloth Armor Merchant>
-[5162] = { "Тенсі Бруднопіна", "рибальські принади" }, -- Tansy Puddlefizz <Fishing Supplier>
+[5162] = { "Тенсі Бруднопінна", "рибальські принади" }, -- Tansy Puddlefizz <Fishing Supplier>
 [5165] = { "Гульфдан Чорнобородий", "тренер розбійників" }, -- Hulfdan Blackbeard <Rogue Trainer>
 [5172] = { "Шипшилючка", "тренер чорнокнижників" }, -- Briarthorn <Warlock Trainer>
 [5204] = { "аптекарка Зінґе", "Королівське товариство аптекарів" }, -- Apothecary Zinge <Royal Apothecary Society>
@@ -2435,6 +2435,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [6089] = { "Гаррі Яроварт" }, -- Harry Burlguard
 [6090] = { "Бартлбі", "Пияка" }, -- Bartleby
 [6093] = { "Джек Мертвозуб" }, -- Dead-Tooth Jack
+[6109] = { "Азурегос" }, -- Azuregos
 [6113] = { "Веджрік" }, -- Vejrek
 [6114] = { "Мурен Бурешпиль" }, -- Muren Stormpike
 [6120] = { "Лаґо Чорноключ" }, -- Lago Blackwrench
@@ -2503,7 +2504,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [6382] = { "Джубал Трупогляд", "тренер демонів" }, -- Jubahl Corpseseeker <Demon Trainer>
 [6388] = { "скелет Занзіла" }, -- Zanzil the Outcast
 [6389] = { "смертостраж Подріґ" }, -- Deathguard Podrig
-[6390] = { "Улаґ Колун" }, -- Ulag the Cleaver
+[6390] = { "Улаґ-Колун" }, -- Ulag the Cleaver
 [6393] = { "Генен Тотем Люті" }, -- Henen Ragetotem
 [6394] = { "Руґа Тотем Люті" }, -- Ruga Ragetotem
 [6408] = { "Ула'елек" }, -- Ula'elek
@@ -2670,7 +2671,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [7800] = { "мехженер Термоштепсель" }, -- Sicco Thermaplugg
 [7801] = { "Ґілверадін Сонцеслід" }, -- Gilveradin Sunchaser
 [7825] = { "Орана Змієкрут" }, -- Oran Snakewrithe
-[7847] = { "Халіф Скорпідокіл" }, -- Caliph Scorpidsting
+[7847] = { "Халіф Скорпідожал" }, -- Caliph Scorpidsting
 [7850] = { "Кернобі" }, -- Kernobee
 [7853] = { "Скуті", "головний інженер" }, -- Scooty
 [7868] = { "Сара Кожум'яка", "елементальна шкірниця-майстриня" }, -- Sarah Tanner <Master Elemental Leatherworker>
@@ -2697,7 +2698,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [7977] = { "Ґаммеріта" }, -- Gammerita
 [7995] = { "підступна жриця Гекс" }, -- Vile Priestess Hexx
 [7999] = { "Тіранда Шелествітер", "верховна жриця Елуни" }, -- Tyrande Whisperwind
-[8021] = { "Орвін Ґіззмік" }, -- Orwin Gizzmick
+[8021] = { "Орвін Приладик" }, -- Orwin Gizzmick
 [8026] = { "Тін'тель Лезоткаля" }, -- Thyn'tel Bladeweaver
 [8075] = { "Едана Злопазур" }, -- Edana Hatetalon
 [8129] = { "Зморшка Файносталь", "досвідчений броняр" }, -- Wrinkle Goodsteel <Superior Armor Crafter>
@@ -2820,6 +2821,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [10321] = { "Вуглечвар" }, -- Emberstrife
 [10323] = { "Глибоморок" }, -- Murkdeep
 [10339] = { "Ґіт", "їздовий дракон Ренда Чорнорукого" }, -- Gyth
+[10340] = { "Велестраз Червоний" }, -- Vaelastrasz
 [10363] = { "генерал Драккісат" }, -- Drakkisath
 [10369] = { "Траексір", "продавець зброї" }, -- Trayexir <Weapon Merchant>
 [10373] = { "Ксабраксіс" }, -- Xabraxxis
@@ -2834,6 +2836,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [10440] = { "барон Рівендер" }, -- Baron Rivendare
 [10508] = { "Рас Кригошепт" }, -- Ras Frostwhisper
 [10537] = { "спостерігач скель Довгорогий" }, -- Cliffwatcher Longhorn
+[10538] = { "Велестраз" }, -- Vaelastrasz
 [10539] = { "Агар Блискавичне Копито" }, -- Hagar Lightninghoof
 [10540] = { "Вол'джин" }, -- Vol'jin
 [10556] = { "лінивий наймит" }, -- Lazy Peon
@@ -2915,7 +2918,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [11488] = { "Ілліанна Крукодуб" }, -- Illyanna Ravenoak
 [11489] = { "Тендріс Хибнодрев" }, -- Tendris Warpwood
 [11490] = { "Зеврім Обдерте Копито" }, -- Zevrim Thornhoof
-[11492] = { "Альззін Диковертень" }, -- Alzzin the Wildshaper
+[11492] = { "Альззін-Диковертень" }, -- Alzzin the Wildshaper
 [11496] = { "Безсмер'тер" }, -- Immol'thar
 [11501] = { "король Ґордок" }, -- King Gordok
 [11502] = { "Раґнарос" }, -- Ragnaros
@@ -2990,9 +2993,9 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [12204] = { "огидохльостий рейдер" }, -- Spitelash Raider
 [12205] = { "огидохльоста відьма" }, -- Spitelash Witch
 [12225] = { "Келебрас Окаянний" }, -- Celebras
-[12236] = { "лорд Шолудивий Язик" }, -- Lord Vyletongue
+[12236] = { "лорд Злоязикий" }, -- Lord Vyletongue
 [12238] = { "дух Заєтара" }, -- Zaetar
-[12242] = { "дух Маравдуса", "Четвертий Хан" }, -- Maraudos
+[12242] = { "дух Мародоса", "Четвертий Хан" }, -- Maraudos
 [12258] = { "Бритвохляст" }, -- Razorlash
 [12277] = { "Мелізза Белькотало" }, -- Melizza Brimbuzzle
 [12296] = { "хвора газель" }, -- Sickly Gazelle
@@ -3060,6 +3063,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [13017] = { "зачарований підземний щур" }, -- Enthralled Deeprun Rat
 [13018] = { "Ніпсі" }, -- Nipsy
 [13019] = { "провидець Палаючого Леза" }, -- Burning Blade Seer
+[13020] = { "Велестраз Порочний" }, -- Vaelastrasz
 [13082] = { "Мільтон Тумак", "роздавач тумаків" }, -- Milton Beats
 [13148] = { "полум'я Раґнароса" }, -- Ragnaros
 [13157] = { "Макасґар" }, -- Makasgar
@@ -3069,12 +3073,12 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [13280] = { "Гідроподоба" }, -- Hydrospawn
 [13282] = { "Ноксіон" }, -- Noxxion
 [13417] = { "Саґорн Хребтоступ", "тренер шаманів" }, -- Sagorne Creststrider <Shaman Trainer>
-[13656] = { "Віллоу", "Молот Сутінків" }, -- Willow <Twilight's Hammer>
+[13656] = { "Верба", "Молот Сутінків" }, -- Willow <Twilight's Hammer>
 [13697] = { "Кавіндра" }, -- Cavindra
 [13699] = { "Селендра" }, -- Selendra
 [13716] = { "Келебрас Спокутий" }, -- Celebras
 [13717] = { "кентавр Парія" }, -- Centaur Pariah
-[13739] = { "Маравдус", "Четвертий Хан" }, -- Maraudos
+[13739] = { "Мародос", "Четвертий Хан" }, -- Maraudos
 [13836] = { "кошмар Палаючого Леза" }, -- Burning Blade Nightmare
 [13896] = { "Лускобород" }, -- Scalebeard
 [14182] = { "мисливець за головами Коларк" }, -- Bounty Hunter Kolark
@@ -3209,6 +3213,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [15444] = { "арканіст Форсунопруж" }, -- Arcanist Nozzlespring
 [15458] = { "командир Дужомолот", "посол Альянса" }, -- Commander Stronghammer
 [15459] = { "шахтар Кромвель", "збирач мідних злитків" }, -- Miner Cromwell <Copper Bar Collector>
+[15481] = { "дух Азурегоса" }, -- Azuregos
 [15491] = { "Еранік, Тиран Сну" }, -- Eranikus
 [15498] = { "вітрозов Єссендра" }, -- Windcaller Yessendra
 [15502] = { "Андорґос", "рід Маліґоса" }, -- Andorgos
@@ -3241,7 +3246,7 @@ addonTable.npc = { -- [id] = { title, description (optional) }
 [15660] = { "Еранік Видозмінений" }, -- Eranikus
 [15692] = { "викрадач Темного Заліза" }, -- Dark Iron Kidnapper
 [15700] = { "воєвода Ґорчук", "командир військових постачань" }, -- Warlord Gorchuk <War Effort Commander>
-[15701] = { "польовий маршал Снігопад", "командир військових постачань" }, -- Field Marshal Snowfall <War Effort Commander>
+[15701] = { "фельдмаршал Снігопад", "командир військових постачань" }, -- Field Marshal Snowfall <War Effort Commander>
 [15718] = { "скарабей Оуро" }, -- Ouro
 [15727] = { "К'Тун" }, -- C'Thun
 [15760] = { "зимній гуляка" }, -- Winter Reveler
