@@ -69,7 +69,8 @@ print('-' * 40)
 print(f'total quests: {total}')
 
 print('-' * 20)
-for cat, count in quests_cat_count.items():
+for cat in sorted(quests_cat_count.keys()):
     total = quests_cat_total[cat]
+    count = quests_cat_count[cat]
     percent = (count * 100) // total
     print(f'{cat} - {count}/{total} - {percent}%')
