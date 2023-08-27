@@ -1,9 +1,9 @@
-## Interface: 30401
+## Interface: 30402
 
 ## Title: |cff1177eeClassic|r|cffffdd00UA|r
 ## Notes: Game localization to Ukrainian language.
 ## Author: greenya
-## Version: 3.9
+## Version: 4.0
 ## SavedVariables: ClassicUA_Options
 
 entries\book.lua
