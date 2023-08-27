@@ -354,6 +354,11 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
         return text[1]
     end
 
+    local tooltip_lines = {}
+    for j = 1, tooltip:NumLines() do
+        tooltip_lines[#tooltip_lines + 1] = getglobal(tooltip:GetName() .. "TextLeft" .. j):GetText()
+    end
+
     if not tooltip_matches_to_skip then
         tooltip_matches_to_skip = 0
     end
@@ -363,9 +368,8 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     for i = 2, #text do
         local p = esc(text[i]):gsub("{(%d+)}", function (a) return "(%d+)" end)
         local match_number = 0
-        for j = 1, tooltip:NumLines() do
-            local t = getglobal(tooltip:GetName() .. "TextLeft" .. j):GetText()
-            local v = { t:match(p) }
+        for j = 1, #tooltip_lines do
+            local v = { tooltip_lines[j]:match(p) }
             if #v > 0 then
                 match_number = match_number + 1
                 if match_number > tooltip_matches_to_skip then
