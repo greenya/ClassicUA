@@ -14,6 +14,7 @@ quests = {
 
 quests_cat_count = {}
 quests_cat_total = {}
+text_characters_used = {}
 
 for id in quest_ids:
     cat, side, title = conn.execute(f'SELECT cat, side, title FROM quests WHERE id={id}').fetchone()
@@ -36,6 +37,12 @@ for id in quest_ids:
         for s in strings:
             if s.text:
                 q[ s.attrib['name'].lower() ] = s.text
+
+                for c in s.text:
+                    code = ord(c)
+                    if code not in text_characters_used:
+                        text_characters_used[code] = 0
+                    text_characters_used[code] += 1
 
         if q['title']:
             print(f'{id} => {q["title"]}')
@@ -68,9 +75,14 @@ for x in [ 'alliance', 'horde', 'both' ]:
 print('-' * 40)
 print(f'total quests: {total}')
 
-print('-' * 20)
+print('-' * 40)
 for cat in sorted(quests_cat_count.keys()):
     total = quests_cat_total[cat]
     count = quests_cat_count[cat]
     percent = (count * 100) // total
     print(f'{cat} - {count}/{total} - {percent}%')
+
+print('-' * 40)
+print('text characters used (code, count, print):')
+for code in sorted(text_characters_used.keys()):
+    print(f'{code}\t{text_characters_used[code]}\t> {chr(code)} <')
