@@ -17,6 +17,7 @@ entries\quest_h.lua
 entries\quest_n.lua
 entries\race.lua
 entries\spell.lua
+entries\spell_mage.lua
 entries\spell_tbc.lua
 entries\talent_tree_tbc.lua
 entries\text.lua
