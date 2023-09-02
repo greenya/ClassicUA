@@ -1,14 +1,45 @@
 local _, addonTable = ...
-addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, flavor }
--- ----------------------------------------------------------------------------
--- desc     : description (white color)
--- equip    : text for "Equip: ..." (green color)
--- hit      : text for "Chance on hit: ..." (green color)
--- use      : text for "Use: ..." (green color)
--- flavor   : quoted text (golden color)
--- ----------------------------------------------------------------------------
--- note: any value can be string or table (multiple strings)
--- ----------------------------------------------------------------------------
+addonTable.item = {
+
+-- [id] = {
+--     [ref]    = ID (optional),
+--     [1]      = title (optional),
+--     [desc]   = description (optional),
+--     [equip]  = text for "Equip: ..." (green color)
+--     [hit]    = text for "Chance on hit: ..." (green color)
+--     [use]    = text for "Use: ..." (green color)
+--     [flavor] = quoted text (golden color)
+--     --------
+--     note: value can be string or table (multiple strings)
+-- }
+
+-- Scrolls
+[3012] = { "сувій спритності", use="Збільшує спритність цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Agility, @use Increases the target's Agility by 5 for 30 min.
+[1477] = { "сувій спритності II", ref=3012 }, -- Scroll of Agility II
+[4425] = { "сувій спритності III", ref=3012 }, -- Scroll of Agility III
+[10309] = { "сувій спритності IV", ref=3012 }, -- Scroll of Agility IV
+[955] = { "сувій інтелекту", use="Збільшує інтелект цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Intellect, @use Increases the target's Intellect by 4 for 30 min.
+[2290] = { "сувій інтелекту II", ref=955 }, -- Scroll of Intellect II
+[4419] = { "сувій інтелекту III", ref=955 }, -- Scroll of Intellect III
+[10308] = { "сувій інтелекту IV", ref=955 }, -- Scroll of Intellect IV
+[3013] = { "сувій захисту", use="Збільшує броню цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Protection, @use Increases the target's Armor by 60 for 30 min.
+[1478] = { "сувій захисту II", ref=3013 }, -- Scroll of Protection II
+[4421] = { "сувій захисту III", ref=3013 }, -- Scroll of Protection III
+[10305] = { "сувій захисту IV", ref=3013 }, -- Scroll of Protection IV
+[1181] = { "сувій духу", use="Збільшує броню цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Spirit, @use Increases the target's Spirit by 3 for 30 min.
+[1712] = { "сувій духу II", ref=1181 }, -- Scroll of Spirit II
+[4424] = { "сувій духу III", ref=1181 }, -- Scroll of Spirit III
+[10306] = { "сувій духу IV", ref=1181 }, -- Scroll of Spirit IV
+[1180] = { "сувій витривалості", use="Збільшує витривалість цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Stamina, @use Increases the target's Stamina by 4 for 30 min.
+[1711] = { "сувій витривалості II", ref=1180 }, -- Scroll of Stamina II
+[4422] = { "сувій витривалості III", ref=1180 }, -- Scroll of Stamina III
+[10307] = { "сувій витривалості IV", ref=1180 }, -- Scroll of Stamina IV
+[954] = { "сувій сили", use="Збільшує силу цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Strength, @use Increases the target's Strength by 5 for 30 min.
+[2289] = { "сувій сили II", ref=954 }, -- Scroll of Strength II
+[4426] = { "сувій сили III", ref=954 }, -- Scroll of Strength III
+[10310] = { "сувій сили IV", ref=954 }, -- Scroll of Strength IV
+
+-- Uncategorized
 [60] = { "багатошаровий мундир" }, -- Layered Tunic
 [80] = { "м'які хутряні черевики" }, -- Soft Fur-lined Shoes
 [117] = { "жорстка солонина", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2} sec" }, -- Tough Jerky, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
@@ -61,7 +92,6 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [929] = { "зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Healing Potion, @use Restores 280 to 360 health. (2 Min Cooldown)
 [938] = { "брудні сторінки щоденника", flavor="Хоча сторінки вкриті брудом, деякі слова можна прочитати." }, -- Muddy Journal Pages, @flavor Although the pages are covered in mud, some words can be read.
 [939] = { "закривавлена сторінка щоденника", flavor="Крізь кров ще можна розгледіти кілька слів." }, -- A Bloodstained Journal Page, @flavor Through thick blood a few words still remain legible.
-[955] = { "сувій інтелекту", use="Збільшує інтелект цілі на 4 на 30 хв." }, -- Scroll of Intellect, @use Increases the target's Intellect by 4 for 30 min.
 [957] = { "пакунок від Вільяма", flavor="До нього прикріплена записка." }, -- William's Shipment, @flavor There is a note attached.
 [961] = { "цілюща трава", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Healing Herb, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [962] = { "рулет зі свинячої підчеревини" }, -- Pork Belly Pie
@@ -95,7 +125,6 @@ addonTable.item = { -- [id] = { -- title, optional keys: desc, equip, hit, use, 
 [1177] = { "масло Олафа", use="Підвищує показник броні на 50 на 1 год." }, -- Oil of Olaf, @use Increases armor by 50 for 1 hour.
 [1178] = { "вибухова ракета", use="Завдає від 28 до 32 шкоди вогнем у радіусі 3 м. (Відновлення 1 хв)" }, -- Explosive Rocket, @use Inflicts 28 to 32 Fire damage in a 3 yard radius. (1 Min Cooldown)
 [1179] = { "крижане молоко", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Ice Cold Milk, @use Restores 436.8 mana over 21 sec.  Must remain seated while drinking.
-[1180] = { "сувій витривалості", use="Збільшує витривалість цілі на 4 на 30 хв." }, -- Scroll of Stamina, @use Increases the target's Stamina by 4 for 30 min.
 [1182] = { "наручі з латунними вставками" }, -- Brass-studded Bracers
 [1183] = { "еластичні браслети" }, -- Elastic Wristguards
 [1191] = { "мішечок із кольоровими кульками", use="Знижує ймовірність влучання ціллю на 25% на 10 сек. (Відновлення 1 хв)" }, -- Bag of Marbles, @use Decreases target's chance to hit by 25% for 10 sec. (1 Min Cooldown)
