@@ -13,33 +13,6 @@ addonTable.item = {
 --     note: value can be string or table (multiple strings)
 -- }
 
--- Scrolls
-[3012] = { "сувій спритності", use="Збільшує спритність цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Agility, @use Increases the target's Agility by 5 for 30 min.
-[1477] = { "сувій спритності II", ref=3012 }, -- Scroll of Agility II
-[4425] = { "сувій спритності III", ref=3012 }, -- Scroll of Agility III
-[10309] = { "сувій спритності IV", ref=3012 }, -- Scroll of Agility IV
-[955] = { "сувій інтелекту", use="Збільшує інтелект цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Intellect, @use Increases the target's Intellect by 4 for 30 min.
-[2290] = { "сувій інтелекту II", ref=955 }, -- Scroll of Intellect II
-[4419] = { "сувій інтелекту III", ref=955 }, -- Scroll of Intellect III
-[10308] = { "сувій інтелекту IV", ref=955 }, -- Scroll of Intellect IV
-[3013] = { "сувій захисту", use="Збільшує броню цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Protection, @use Increases the target's Armor by 60 for 30 min.
-[1478] = { "сувій захисту II", ref=3013 }, -- Scroll of Protection II
-[4421] = { "сувій захисту III", ref=3013 }, -- Scroll of Protection III
-[10305] = { "сувій захисту IV", ref=3013 }, -- Scroll of Protection IV
-[1181] = { "сувій духу", use="Збільшує броню цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Spirit, @use Increases the target's Spirit by 3 for 30 min.
-[1712] = { "сувій духу II", ref=1181 }, -- Scroll of Spirit II
-[4424] = { "сувій духу III", ref=1181 }, -- Scroll of Spirit III
-[10306] = { "сувій духу IV", ref=1181 }, -- Scroll of Spirit IV
-[1180] = { "сувій витривалості", use="Збільшує витривалість цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Stamina, @use Increases the target's Stamina by 4 for 30 min.
-[1711] = { "сувій витривалості II", ref=1180 }, -- Scroll of Stamina II
-[4422] = { "сувій витривалості III", ref=1180 }, -- Scroll of Stamina III
-[10307] = { "сувій витривалості IV", ref=1180 }, -- Scroll of Stamina IV
-[954] = { "сувій сили", use="Збільшує силу цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Strength, @use Increases the target's Strength by 5 for 30 min.
-[2289] = { "сувій сили II", ref=954 }, -- Scroll of Strength II
-[4426] = { "сувій сили III", ref=954 }, -- Scroll of Strength III
-[10310] = { "сувій сили IV", ref=954 }, -- Scroll of Strength IV
-
--- Uncategorized
 [60] = { "багатошаровий мундир" }, -- Layered Tunic
 [80] = { "м'які хутряні черевики" }, -- Soft Fur-lined Shoes
 [117] = { "жорстка солонина", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2} sec" }, -- Tough Jerky, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
@@ -81,7 +54,7 @@ addonTable.item = {
 [818] = { "тигрове око" }, -- Tigerseye
 [829] = { "червона шкіряна бандана" }, -- Red Leather Bandana
 [841] = { "кишеньковий годинник Хмуроброва" }, -- Furlbrow's Pocket Watch
-[858] = { "мале зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Lesser Healing Potion, @use Restores 140 to 180 health. (2 Min Cooldown)
+[858] = { "мале зілля лікування", ref=118 }, -- Lesser Healing Potion
 [884] = { "ребро гуля" }, -- Ghoul Rib
 [889] = { "вкритий пилом невідправлений лист", flavor="Давній, вкритий пилом, так і не відправлений лист." }, -- A Dusty Unsent Letter, @flavor This dusty letter from long ago was never sent.
 [910] = { "недоставлений лист", flavor="Потертий і старий, цей лист так не доставили." }, -- An Undelivered Letter, @flavor Weathered and old, this letter was never delivered.
@@ -89,9 +62,11 @@ addonTable.item = {
 [916] = { "вирвана сторінка щоденника", flavor="Залишилася лише нижня половина сторінки щоденника." }, -- A Torn Journal Page, @flavor Only the bottom half of this journal page remains.
 [918] = { "сумка зі спотвореної шкіри" }, -- Deviate Hide Pack
 [921] = { "вицвіла сторінка щоденника", flavor="Хоча більша частина тексту давно вицвіла, деякі слова все ще можна прочитати." }, -- A Faded Journal Page, @flavor Although most of the text is long faded, some words can still be read.
-[929] = { "зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Healing Potion, @use Restores 280 to 360 health. (2 Min Cooldown)
+[929] = { "зілля лікування", ref=118 }, -- Healing Potion
 [938] = { "брудні сторінки щоденника", flavor="Хоча сторінки вкриті брудом, деякі слова можна прочитати." }, -- Muddy Journal Pages, @flavor Although the pages are covered in mud, some words can be read.
 [939] = { "закривавлена сторінка щоденника", flavor="Крізь кров ще можна розгледіти кілька слів." }, -- A Bloodstained Journal Page, @flavor Through thick blood a few words still remain legible.
+[954] = { "сувій сили", use="Збільшує силу цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Strength, @use Increases the target's Strength by 5 for 30 min.
+[955] = { "сувій інтелекту", use="Збільшує інтелект цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Intellect, @use Increases the target's Intellect by 4 for 30 min.
 [957] = { "пакунок від Вільяма", flavor="До нього прикріплена записка." }, -- William's Shipment, @flavor There is a note attached.
 [961] = { "цілюща трава", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Healing Herb, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [962] = { "рулет зі свинячої підчеревини" }, -- Pork Belly Pie
@@ -125,6 +100,8 @@ addonTable.item = {
 [1177] = { "масло Олафа", use="Підвищує показник броні на 50 на 1 год." }, -- Oil of Olaf, @use Increases armor by 50 for 1 hour.
 [1178] = { "вибухова ракета", use="Завдає від 28 до 32 шкоди вогнем у радіусі 3 м. (Відновлення 1 хв)" }, -- Explosive Rocket, @use Inflicts 28 to 32 Fire damage in a 3 yard radius. (1 Min Cooldown)
 [1179] = { "крижане молоко", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Ice Cold Milk, @use Restores 436.8 mana over 21 sec.  Must remain seated while drinking.
+[1180] = { "сувій витривалості", use="Збільшує витривалість цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Stamina, @use Increases the target's Stamina by 4 for 30 min.
+[1181] = { "сувій духу", use="Збільшує дух цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Spirit, @use Increases the target's Spirit by 3 for 30 min.
 [1182] = { "наручі з латунними вставками" }, -- Brass-studded Bracers
 [1183] = { "еластичні браслети" }, -- Elastic Wristguards
 [1191] = { "мішечок із кольоровими кульками", use="Знижує ймовірність влучання ціллю на 25% на 10 сек. (Відновлення 1 хв)" }, -- Bag of Marbles, @use Decreases target's chance to hit by 25% for 10 sec. (1 Min Cooldown)
@@ -180,11 +157,14 @@ addonTable.item = {
 [1410] = { "відповідь Чорнобривого Соломону" }, -- Ebonlocke's Response to Solomon
 [1422] = { "ношені шкіряні рукавиці" }, -- Worn Leather Gloves
 [1434] = { "сяюча воскова паличка", use="Зменшує броню цілі на 50 на 30 сек. Поки діє ефект, ціль не може стати непомітною чи невидимою. (Відновлення 1 хв)" }, -- Glowing Wax Stick, @use Decrease the armor of the target by 50 for 30 sec.  While affected, the target cannot stealth or turn invisible. (1 Min Cooldown)
+[1450] = { "зілля палкості", use="Збільшує силу на {1} та завдає {2} пошкодження вам кожні {3} с протягом {4} хв.#by {1} and does {2} damage to you every {3} sec for {4} min" }, -- Potion of Fervor, @use Increases Strength by 14 and does 15 damage to you every 15 sec for 1 min. (2 Min Cooldown)
 [1451] = { "пляшка соку зомбі" }, -- Bottle of Zombie Juice
 [1453] = { "примарний гребінець" }, -- Spectral Comb
 [1467] = { "плямиста сонцериба" }, -- Spotted Sunfish
 [1468] = { "плавець мурлока" }, -- Murloc Fin
 [1476] = { "переламана лапка павука" }, -- Snapped Spider Limb
+[1477] = { "сувій спритності II", ref=3012 }, -- Scroll of Agility II
+[1478] = { "сувій захисту II", ref=3013 }, -- Scroll of Protection II
 [1479] = { "кухонні рукавиці Сальми" }, -- Salma's Oven Mitts
 [1480] = { "кулак народного ополчення" }, -- Fist of the People's Militia
 [1482] = { "тінеікло", hit="Запускає у ворога заряд тіні, що завдає 30 шкоди від тіні." }, -- Shadowfang, @hit Sends a shadowy bolt at the enemy causing 30 Shadow damage.
@@ -203,7 +183,9 @@ addonTable.item = {
 [1656] = { "перекладений лист" }, -- Translated Letter
 [1705] = { "малий місячний камінь" }, -- Lesser Moonstone
 [1708] = { "солодкий нектар", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Sweet Nectar, @use Restores 1344.6 mana over 27 sec.  Must remain seated while drinking.
-[1710] = { "велике зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Greater Healing Potion, @use Restores 455 to 585 health. (2 Min Cooldown)
+[1710] = { "велике зілля лікування", ref=118 }, -- Greater Healing Potion
+[1711] = { "сувій витривалості II", ref=1180 }, -- Scroll of Stamina II
+[1712] = { "сувій духу II", ref=1181 }, -- Scroll of Spirit II
 [1875] = { "значок Лютополоха", flavor="Десятник Лютополох — член Ліги дослідників" }, -- Thistlenettle's Badge, @flavor Foreman Thistlenettle - Member of the Explorers' League
 [1893] = { "помста шахтаря" }, -- Miner's Revenge
 [1894] = { "картка спілки шахтарів" }, -- Miners' Union Card
@@ -256,6 +238,8 @@ addonTable.item = {
 [2251] = { "липка павуча лапка" }, -- Gooey Spider Leg
 [2263] = { "фітолезо", hit="Підриває ціль, завдаючи їй 35 шкоди від природи." }, -- Phytoblade, @hit Blasts a target for 35 Nature damage.
 [2288] = { "начаклована свіжа вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Fresh Water, @use Restores 436.8 mana over 21 sec.  Must remain seated while drinking.
+[2289] = { "сувій сили II", ref=954 }, -- Scroll of Strength II
+[2290] = { "сувій інтелекту II", ref=955 }, -- Scroll of Intellect II
 [2296] = { "рило великого іклоштрика" }, -- Great Goretusk Snout
 [2313] = { "накладки з середньої шкіри", use="Укріплення предмета, який носять на тілі, ногах, руках чи ступнях, що назавжди збільшить показник його броні на 16." }, -- Medium Armor Kit, @use Permanently increase the armor value of an item worn on the chest, legs, hands or feet by 16.
 [2318] = { "легка шкіра" }, -- Light Leather
@@ -273,10 +257,10 @@ addonTable.item = {
 [2453] = { "синцівка" }, -- Bruiseweed
 [2454] = { "еліксир сили лева", use="Збільшує силу на 4 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Lion's Strength, @use Increases Strength by 4 for 1 hour. (3 Sec Cooldown)
 [2455] = { "крихітне зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Minor Mana Potion, @use Restores 140 to 180 mana. (2 Min Cooldown)
-[2456] = { "крихітне зілля відживлення", use="Відновлює від 90 до 150 мани та від 90 до 150 здоров'я. (Відновлення 2 хв)" }, -- Minor Rejuvenation Potion, @use Restores 90 to 150 mana and 90 to 150 health. (2 Min Cooldown)
+[2456] = { "крихітне зілля відживлення", use="Відновлює від {1} до {2} мани та від {3} до {4} здоров'я. (Відновлення 2 хв)#{1} to {2} mana and {3} to {4} health" }, -- Minor Rejuvenation Potion, @use Restores 90 to 150 mana and 90 to 150 health. (2 Min Cooldown)
 [2457] = { "крихітний еліксир спритності", use="Збільшує спритність на 4 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Minor Agility, @use Increases Agility by 4 for 1 hour. (3 Sec Cooldown)
 [2458] = { "крихітний еліксир стійкості", use="Збільшує максимальне здоров'я на 27 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Minor Fortitude, @use Increases the player's maximum health by 27 for 1 hour. (3 Sec Cooldown)
-[2459] = { "зілля прудкості", use="Збільшує швидкість бігу на 50% на 15 сек. (Відновлення 2 хв)" }, -- Swiftness Potion, @use Increases run speed by 50% for 15 sec. (2 Min Cooldown)
+[2459] = { "зілля прудкості", use="Збільшує швидкість бігу на {1}% на {2} с. (Відновлення 2 хв)#by {1}% for {2} sec" }, -- Swiftness Potion, @use Increases run speed by 50% for 15 sec. (2 Min Cooldown)
 [2476] = { "охолоджена гомілка василіска" }, -- Chilled Basilisk Haunch
 [2516] = { "легка куля", desc="Додає 1.5 пошкодження за секунду" }, -- Light Shot, @desc Adds 1.5 damage per second
 [2519] = { "важка куля", desc="Додає 3.5 пошкодження за секунду" }, -- Heavy Shot, @desc Adds 3.5 damage per second
@@ -395,6 +379,7 @@ addonTable.item = {
 [2805] = { "накидка з хутра єті" }, -- Yeti Fur Cloak
 [2806] = { "пакунок для Бурешпиля" }, -- Package for Stormpike
 [2818] = { "розтягнуті шкіряні штани" }, -- Stretched Leather Trousers
+[2820] = { "відмінний секундомір", use="Збільшує швидкість бігу на {1}% на {2} с. (Відновлення 30 хв)#by {1}% for {2} sec" }, -- Nifty Stopwatch, @use Increases run speed by 40% for 10 sec. (30 Min Cooldown)
 [2828] = { "рештки Нісси" }, -- Nissa's Remains
 [2829] = { "рештки Ґреґора" }, -- Gregor's Remains
 [2830] = { "рештки Турмана" }, -- Thurman's Remains
@@ -444,6 +429,8 @@ addonTable.item = {
 [2997] = { "рулон вовняної тканини" }, -- Bolt of Woolen Cloth
 [2998] = { "звичайний компас", flavor="Перший компас Бароса Алекстона." }, -- A Simple Compass, @flavor Baros Alexston's first compass.
 [2999] = { "інструменти Сталешквара" }, -- Steelgrill's Tools
+[3012] = { "сувій спритності", use="Збільшує спритність цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Agility, @use Increases the target's Agility by 5 for 30 min.
+[3013] = { "сувій захисту", use="Збільшує броню цілі на {1} на {2} хв.#by {1} for {2} min" }, -- Scroll of Protection, @use Increases the target's Armor by 60 for 30 min.
 [3014] = { "зношена сокира" }, -- Battleworn Axe
 [3016] = { "фоліант Ґюнтера" }, -- Gunther's Spellbook
 [3017] = { "накази Севрена" }, -- Sevren's Orders
@@ -459,7 +446,7 @@ addonTable.item = {
 [3083] = { "зубець рестабілізації" }, -- Restabilization Cog
 [3084] = { "гіромеханічна шестірня" }, -- Gyromechanic Gear
 [3085] = { "барильце \"Мерехтливого стаута\"" }, -- Barrel of Shimmer Stout
-[3087] = { "кружка \"Мерехтливого стаута\"", use="Відновлює від 140 до 180 мани. (Відновлення 2 хв)" }, -- Mug of Shimmer Stout, @use Restores 140 to 180 mana. (2 Min Cooldown)
+[3087] = { "кружка \"Мерехтливого стаута\"", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#{1} to {2} mana" }, -- Mug of Shimmer Stout, @use Restores 140 to 180 mana. (2 Min Cooldown)
 [3110] = { "вухо тунельного щура" }, -- Tunnel Rat Ear
 [3117] = { "щоденник Гілдельва" }, -- Hildelve's Journal
 [3155] = { "\"Засіб Аруґала\"", flavor="Цей старий сувій розписаний нерозбірливою мовою Кірін-Тору." }, -- Remedy of Arugal, @flavor This aging scroll is written in the indecipherable language of the Kirin Tor.
@@ -533,9 +520,9 @@ addonTable.item = {
 [3382] = { "слабке зілля крові троля", use="Відновлює 2 од. здоров'я кожні 5 сек протягом 1 години. (Відновлення 3 сек)" }, -- Weak Troll's Blood Potion, @use Regenerate 2 health every 5 sec for 1 hour. (3 Sec Cooldown)
 [3383] = { "еліксир мудрості", use="Збільшує інтелект на 6 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Wisdom, @use Increases Intellect by 6 for 1 hour. (3 Sec Cooldown)
 [3384] = { "крихітне зілля супротиву магії", use="Збільшує ваш супротив всім школам магії на 25 на 3 хв. (Відновлення 2 хв)" }, -- Minor Magic Resistance Potion, @use Increases your resistance to all schools of magic by 25 for 3 min. (2 Min Cooldown)
-[3385] = { "невелике зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Lesser Mana Potion, @use Restores 280 to 360 mana. (2 Min Cooldown)
-[3386] = { "еліксир супротиву отруті", use="Виліковує від чотирьох отрут до 60 рівня. (Відновлення 3 сек)" }, -- Elixir of Poison Resistance, @use Imbiber is cured of up to four poisons up to level 60. (3 Sec Cooldown)
-[3387] = { "зілля обмеженої невразливості", use="Надає невразливість до фізичних атак на 6 сек. (Відновлення 2 хв)" }, -- Limited Invulnerability Potion, @use Imbiber is immune to physical attacks for the next 6 sec. (2 Min Cooldown)
+[3385] = { "невелике зілля мани", ref=2455 }, -- Lesser Mana Potion
+[3386] = { "еліксир супротиву отруті", use="Виліковує до чотирьох отрут до 60 рівня. (Відновлення 3 сек)" }, -- Elixir of Poison Resistance, @use Imbiber is cured of up to four poisons up to level 60. (3 Sec Cooldown)
+[3387] = { "зілля обмеженої невразливості", use="Надає невразливість до фізичних атак на {1} с. (Відновлення 2 хв)#next {1} sec" }, -- Limited Invulnerability Potion, @use Imbiber is immune to physical attacks for the next 6 sec. (2 Min Cooldown)
 [3388] = { "міцне зілля крові троля", use="Відновлює 6 од. здоров'я кожні 5 сек протягом 1 години. (Відновлення 3 сек)" }, -- Strong Troll's Blood Potion, @use Regenerate 6 health every 5 sec for 1 hour. (3 Sec Cooldown)
 [3389] = { "еліксир захисту", use="Збільшує броню на 150 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Defense, @use Increases armor by 150 for 1 hour. (3 Sec Cooldown)
 [3390] = { "еліксир малої спритності", use="Збільшує спритність на 8 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Lesser Agility, @use Increases Agility by 8 for 1 hour. (3 Sec Cooldown)
@@ -727,11 +714,11 @@ addonTable.item = {
 [3820] = { "душирість" }, -- Stranglekelp
 [3821] = { "злотошпичка" }, -- Goldthorn
 [3822] = { "темний рунічний клинок", hit="Запускає у ворога заряд тіні, що завдає 35 шкоди від тіні." }, -- Runic Darkblade, @hit Sends a shadowy bolt at the enemy causing 35 Shadow damage.
-[3823] = { "зілля малої невидимості", use="Надає малу невидимість на 15 сек. (Відновлення 10 хв)" }, -- Lesser Invisibility Potion, @use Gives the imbiber lesser invisibility for 15 sec. (10 Min Cooldown)
+[3823] = { "зілля малої невидимості", use="Надає малу невидимість на {1} с. (Відновлення 10 хв)#for {1} sec" }, -- Lesser Invisibility Potion, @use Gives the imbiber lesser invisibility for 15 sec. (10 Min Cooldown)
 [3824] = { "тіньова олія", use="При нанесенні на зброю ближнього бою дає 15% ймовірності застосувати тіньову стрілу ІІІ на опонента при ударі. Триває 30 хвилин." }, -- Shadow Oil, @use When applied to a melee weapon it gives a 15% chance of casting Shadowbolt III at the opponent when it hits.  Lasts 30 minutes.
 [3825] = { "еліксир стійкості", use="Збільшує максимальне здоров'я на 120 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Fortitude, @use Increases the player's maximum health by 120 for 1 hour. (3 Sec Cooldown)
 [3826] = { "потужне зілля крові троля", use="Відновлює 12 од. здоров'я кожні 5 сек протягом 1 години. (Відновлення 3 сек)" }, -- Mighty Troll's Blood Potion, @use Regenerate 12 health every 5 sec for 1 hour. (3 Sec Cooldown)
-[3827] = { "зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Mana Potion, @use Restores 455 to 585 mana. (2 Min Cooldown)
+[3827] = { "зілля мани", ref=2455 }, -- Mana Potion
 [3828] = { "еліксир виявлення малої невидимості", use="Надає виявлення малої невидимості на 10 хв. (Відновлення 3 сек)" }, -- Elixir of Detect Lesser Invisibility, @use Grants detect lesser invisibility for 10 min. (3 Sec Cooldown)
 [3829] = { "крижана олія", use="При нанесенні на зброю ближнього бою дає 10% ймовірності застосувати крижану стрілу на опонента при ударі. Триває 30 хвилин." }, -- Frost Oil, @use When applied to a melee weapon it gives a 10% chance of casting Frostbolt at the opponent when it hits.  Lasts 30 minutes.
 [3830] = { "рецепт: Еліксир стійкості", use="Навчає вас створювати еліксир стійкості." }, -- Recipe: Elixir of Fortitude, @use Teaches you how to make an Elixir of Fortitude.
@@ -747,7 +734,7 @@ addonTable.item = {
 [3864] = { "цитрин" }, -- Citrine
 [3898] = { "бібліотечний сувій" }, -- Library Scrip
 [3899] = { "\"Легенди Ґурубаші, том 3\"", flavor="Камінь Припливів" }, -- Legends of the Gurubashi, Volume 3, @flavor Stone of the Tides
-[3928] = { "відмінне зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Superior Healing Potion, @use Restores 700 to 900 health. (2 Min Cooldown)
+[3928] = { "відмінне зілля лікування", ref=118 }, -- Superior Healing Potion
 [4016] = { "суміш Занзіла" }, -- Zanzil's Mixture
 [4127] = { "шрапнельний самостріл" }, -- Shrapnel Blaster
 [4131] = { "пояс псування" }, -- Belt of Corruption
@@ -768,6 +755,12 @@ addonTable.item = {
 [4369] = { "смертоносний мушкетон" }, -- Deadly Blunderbuss
 [4371] = { "бронзова трубка" }, -- Bronze Tube
 [4388] = { "промінь заплутаності", use="Перетворює ціль в лепрогнома, зменшуючи її шкоду від атак в ближньому бою та заклинань на 40, а швидкість пересування на 20% на 12 секунд. (Відновлення 1 хв)" }, -- Discombobulator Ray, @use Transforms the target into a Leper Gnome, reducing its melee and spell damage by 40 and its movement rate by 20% for 12 sec. (1 Min Cooldown)
+[4419] = { "сувій інтелекту III", ref=955 }, -- Scroll of Intellect III
+[4421] = { "сувій захисту III", ref=3013 }, -- Scroll of Protection III
+[4422] = { "сувій витривалості III", ref=1180 }, -- Scroll of Stamina III
+[4424] = { "сувій духу III", ref=1181 }, -- Scroll of Spirit III
+[4425] = { "сувій спритності III", ref=3012 }, -- Scroll of Agility III
+[4426] = { "сувій сили III", ref=954 }, -- Scroll of Strength III
 [4429] = { "накази Темнолюта" }, -- Deepfury's Orders
 [4430] = { "примарний талісман" }, -- Ethereal Talisman
 [4432] = { "лист Саллі Баллу", flavor="Моя люба Сара..." }, -- Sully Balloo's Letter, @flavor My dear Sara...
@@ -848,8 +841,8 @@ addonTable.item = {
 [4605] = { "червоний крапчастий гриб", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Red-speckled Mushroom, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [4610] = { "різьблена кам'яна урна" }, -- Carved Stone Urn
 [4614] = { "кулон Мізраель" }, -- Pendant of Myzrael
-[4623] = { "мале зілля кам'яного щита", use="Збільшує броню на 1000 на 1.5 хв. (Відновлення 2 хв)" }, -- Lesser Stoneshield Potion, @use Increases armor by 1000 for 1.50 min. (2 Min Cooldown)
-[4624] = { "рецепт: Мале зілля кам'яного щита", use="Навчає вас створювати мале зілля кам'яного щита." }, -- Recipe: Lesser Stoneshield Potion, @use Teaches you how to make a Lesser Stoneshield Potion.
+[4623] = { "мале зілля каменещита", use="Збільшує броню на {1} на 1.5 хв. (Відновлення 2 хв)#armor by {1}" }, -- Lesser Stoneshield Potion, @use Increases armor by 1000 for 1.50 min. (2 Min Cooldown)
+[4624] = { "рецепт: Мале зілля каменещита", use="Навчає вас створювати мале зілля каменещита." }, -- Recipe: Lesser Stoneshield Potion, @use Teaches you how to make a Lesser Stoneshield Potion.
 [4625] = { "вогнеквіт" }, -- Firebloom
 [4631] = { "скрижаль Р'юн'еха" }, -- Tablet of Ryun'eh
 [4635] = { "амулет Молотопалого" }, -- Hammertoe's Amulet
@@ -1236,9 +1229,9 @@ addonTable.item = {
 [5628] = { "записка Зами" }, -- Zamah's Note
 [5629] = { "рукавиці Молоторука" }, -- Hammerfist Gloves
 [5630] = { "вітрофетрові рукавиці" }, -- Windfelt Gloves
-[5631] = { "зілля люті", use="Збільшує лють на 20-40. (Відновлення 2 хв)" }, -- Rage Potion, @use Increases Rage by 20 to 40. (2 Min Cooldown)
-[5633] = { "велике зілля люті", use="Збільшує лють на 30-60. (Відновлення 2 хв)" }, -- Great Rage Potion, @use Increases Rage by 30 to 60. (2 Min Cooldown)
-[5634] = { "зілля вільної дії", use="Надає невразливість до оглушення та ефектів ускладнення руху на наступні 30 сек. Не знімає вже наявні ефекти. (Відновлення 2 хв)" }, -- Free Action Potion, @use Makes you immune to Stun and Movement Impairing effects for the next 30 sec.   Does not remove effects already on the imbiber. (2 Min Cooldown)
+[5631] = { "зілля люті", use="Збільшує лють на {1}-{2}. (Відновлення 2 хв)#by {1} to {2}" }, -- Rage Potion, @use Increases Rage by 20 to 40. (2 Min Cooldown)
+[5633] = { "велике зілля люті", use="Збільшує лють на {1}-{2}. (Відновлення 2 хв)#by {1} to {2}" }, -- Great Rage Potion, @use Increases Rage by 30 to 60. (2 Min Cooldown)
+[5634] = { "зілля вільної дії", use="Надає невразливість до приголомшення та ефектів ускладнення руху на наступні 30 сек. Не знімає вже наявні ефекти. (Відновлення 2 хв)" }, -- Free Action Potion, @use Makes you immune to Stun and Movement Impairing effects for the next 30 sec. Does not remove effects already on the imbiber. (2 Min Cooldown)
 [5637] = { "велике ікло" }, -- Large Fang
 [5638] = { "розсіювач токсичного туману", use="Розмістити біля повітряного порту ТзНБ \"Авантюра\"." }, -- Toxic Fogger, @use Place near the Venture Co. Airport
 [5639] = { "наповнений нефритовий фіал" }, -- Filled Jade Phial
@@ -1302,7 +1295,7 @@ addonTable.item = {
 [5813] = { "тавро Еміля" }, -- Emil's Brand
 [5814] = { "обладунок тріскоплину" }, -- Snapbrook Armor
 [5815] = { "крижаний камінь", hit="Підриває ціль, завдаючи їй 75 шкоди від криги." }, -- Glacial Stone, @hit Blasts a target for 75 Frost damage.
-[5816] = { "сяйво Елуни", use="Дає невразливість до шкоди та заклинань на 10 сек. (Відновлення 2 хв)" }, -- Light of Elune, @use Grants immunity from all damage and spells for 10 sec. (2 Min Cooldown)
+[5816] = { "сяйво Елуни", use="Дає невразливість до пошкодження та заклять на {1} с. (Відновлення 2 хв)#for {1} sec" }, -- Light of Elune, @use Grants immunity from all damage and spells for 10 sec. (2 Min Cooldown)
 [5817] = { "лук Лунаріса" }, -- Lunaris Bow
 [5818] = { "жезл місячного вогню" }, -- Moonbeam Wand
 [5820] = { "чарівне напліччя" }, -- Faerie Mantle
@@ -1360,11 +1353,11 @@ addonTable.item = {
 [5998] = { "замовлення Бурешпиля" }, -- Stormpike's Request
 [6016] = { "зразок вовчого серця" }, -- Wolf Heart Sample
 [6037] = { "злиток ясносрібла" }, -- Truesilver Bar
-[6048] = { "зілля тіньового захисту", use="Поглинає від 675 до 1125 шкоди від тіні. Триває 1 годину. (Відновлення 2 хв)" }, -- Shadow Protection Potion, @use Absorbs 675 to 1125 shadow damage.  Lasts 1 hour. (2 Min Cooldown)
-[6049] = { "зілля вогняного захисту", use="Поглинає від 975 до 1625 шкоди від вогню. Триває 1 годину. (Відновлення 2 хв)" }, -- Fire Protection Potion, @use Absorbs 975 to 1625 fire damage.  Lasts 1 hour. (2 Min Cooldown)
-[6050] = { "зілля крижаного захисту", use="Поглинає від 1350 до 2250 шкоди від холоду. Триває 1 годину. (Відновлення 2 хв)" }, -- Frost Protection Potion, @use Absorbs 1350 to 2250 frost damage.  Lasts 1 hour. (2 Min Cooldown)
-[6051] = { "зілля священного захисту", use="Поглинає від 300 до 500 шкоди від світлої магії. Триває 1 годину. (Відновлення 2 хв)" }, -- Holy Protection Potion, @use Absorbs 300 to 500 holy damage.  Lasts 1 hour. (2 Min Cooldown)
-[6052] = { "зілля природного захисту", use="Поглинає від 1350 до 2250 шкоди від сил природи. Триває 1 годину. (Відновлення 2 хв)" }, -- Nature Protection Potion, @use Absorbs 1350 to 2250 nature damage.  Lasts 1 hour. (2 Min Cooldown)
+[6048] = { "зілля тіньового захисту", use="Поглинає від {1} до {2} шкоди від тіні. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Shadow Protection Potion, @use Absorbs 675 to 1125 shadow damage. Lasts 1 hour. (2 Min Cooldown)
+[6049] = { "зілля вогняного захисту", use="Поглинає від {1} до {2} шкоди від вогню. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Fire Protection Potion, @use Absorbs 975 to 1625 fire damage. Lasts 1 hour. (2 Min Cooldown)
+[6050] = { "зілля крижаного захисту", use="Поглинає від {1} до {2} шкоди від холоду. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Frost Protection Potion, @use Absorbs 1350 to 2250 frost damage. Lasts 1 hour. (2 Min Cooldown)
+[6051] = { "зілля священного захисту", use="Поглинає від {1} до {2} шкоди від священності. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Holy Protection Potion, @use Absorbs 300 to 500 holy damage. Lasts 1 hour. (2 Min Cooldown)
+[6052] = { "зілля природного захисту", use="Поглинає від {1} до {2} шкоди від природи. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Nature Protection Potion, @use Absorbs 1350 to 2250 nature damage. Lasts 1 hour. (2 Min Cooldown)
 [6053] = { "рецепт: Зілля священного захисту", use="Навчає вас створювати зілля священного захисту." }, -- Recipe: Holy Protection Potion, @use Teaches you how to make a Holy Protection Potion.
 [6054] = { "рецепт: Зілля тіньового захисту", use="Навчає вас створювати зілля тіньового захисту." }, -- Recipe: Shadow Protection Potion, @use Teaches you how to make a Shadow Protection Potion.
 [6055] = { "рецепт: Зілля вогняного захисту", use="Навчає вас створювати зілля вогняного захисту." }, -- Recipe: Fire Protection Potion, @use Teaches you how to make a Fire Protection Potion.
@@ -1396,7 +1389,7 @@ addonTable.item = {
 [6094] = { "пронзаюча сокира" }, -- Piercing Axe
 [6095] = { "чоботи мандрів" }, -- Wandering Boots
 [6145] = { "кулон Клариси", flavor="Покладіть на могилу Юріва." }, -- Clarice's Pendant, @flavor Place upon Yuriv's grave.
-[6149] = { "велике зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Greater Mana Potion, @use Restores 700 to 900 mana. (2 Min Cooldown)
+[6149] = { "велике зілля мани", ref=2455 }, -- Greater Mana Potion
 [6168] = { "пазур пилкозубого кусача" }, -- Sawtooth Snapper Claw
 [6169] = { "необроблена вирізка пилкозуба" }, -- Unprepared Sawtooth Flank
 [6170] = { "реактиви чарівників" }, -- Wizards' Reagents
@@ -1421,7 +1414,7 @@ addonTable.item = {
 [6365] = { "міцна вудка", equip="Збільшує навичку риболовлі на 5." }, -- Strong Fishing Pole, @equip Increased Fishing +5.
 [6370] = { "олія чорноротика" }, -- Blackmouth Oil
 [6371] = { "вогняна олія" }, -- Fire Oil
-[6372] = { "зілля швидкого плавання", use="Збільшує швидкість плавання на 100% на 20 сек. (Відновлення 2 хв)" }, -- Swim Speed Potion, @use Increases swim speed by 100% for 20 sec. (2 Min Cooldown)
+[6372] = { "зілля швидкого плавання", use="Збільшує швидкість плавання на {1}% на {2} с. (Відновлення 2 хв)#by {1}% for {2} sec" }, -- Swim Speed Potion, @use Increases swim speed by 100% for 20 sec. (2 Min Cooldown)
 [6373] = { "еліксир вогнеміці", use="Збільшує шкоду від вогняних заклинань на 10 на 30 хв. (Відновлення 3 сек)" }, -- Elixir of Firepower, @use Increases spell fire damage by up to 10 for 30 min. (3 Sec Cooldown)
 [6414] = { "печатка Сильвани" }, -- Seal of Sylvanas
 [6435] = { "наповнений палаючий самоцвіт" }, -- Infused Burning Gem
@@ -1626,7 +1619,7 @@ addonTable.item = {
 [7227] = { "ротики Бальнірів" }, -- Balnir Snapdragons
 [7229] = { "жилет дослідникв" }, -- Explorer's Vest
 [7231] = { "рекомендаційний лист Астора" }, -- Astor's Letter of Introduction
-[7247] = { "ящик зі скринями стримування", use="Створити скриню для стримування оглушеного породження розлому (Відновлення 8 сек)" }, -- Chest of Containment Coffers, @use Create a containment coffer on a stunned Rift Spawn (8 Sec Cooldown)
+[7247] = { "ящик зі скринями стримування", use="Створити скриню для стримування приголомшеного породження розлому (Відновлення 8 сек)" }, -- Chest of Containment Coffers, @use Create a containment coffer on a stunned Rift Spawn (8 Sec Cooldown)
 [7249] = { "заряджений камінь розлому" }, -- Charged Rift Gem
 [7266] = { "трактат Ура про темну магію" }, -- Ur's Treatise on Shadow Magic
 [7267] = { "бездоганне павутиння" }, -- Pristine Spider Silk
@@ -1806,16 +1799,16 @@ addonTable.item = {
 [8951] = { "еліксир більшого захисту", use="Збільшує броню на 250 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Greater Defense, @use Increases armor by 250 for 1 hour. (3 Sec Cooldown)
 [8956] = { "олія жертвоприношення", use="Завдає 50 шкоди вогнем усім ворогам у радіусі 5 м кожні 3 секунди протягом 15 сек. (Відновлення 3 сек)" }, -- Oil of Immolation, @use Does 50 fire damage to any enemies within a 5 yard radius around the caster every 3 seconds for 15 sec (3 Sec Cooldown)
 [8973] = { "товста шкура єті" }, -- Thick Yeti Hide
-[9030] = { "відновлювальне зілля", use="Знімає один магічний ефект, прокляття, отруту або хворобу кожні 5 секунд протягом 30 секунд. (Відновлення 2 хв)" }, -- Restorative Potion, @use Removes 1 magic, curse, poison or disease effect on you every 5 seconds for 30 seconds. (2 Min Cooldown)
+[9030] = { "відновлювальне зілля", use="Знімає один магічний ефект, прокляття, отруту або хворобу кожні {1} с протягом {2} с. (Відновлення 2 хв)#every {1} seconds for {2} seconds" }, -- Restorative Potion, @use Removes 1 magic, curse, poison or disease effect on you every 5 seconds for 30 seconds. (2 Min Cooldown)
 [9036] = { "зілля супротиву магії", use="Збільшує ваш супротив всім школам магії на 50 на 3 хв. (Відновлення 2 хв)" }, -- Magic Resistance Potion, @use Increases your resistance to all schools of magic by 50 for 3 min. (2 Min Cooldown)
 [9061] = { "гоблінське ракетне паливо", flavor="Використовується гоблінськими інженерами для живлення своїх творінь" }, -- Goblin Rocket Fuel, @flavor Used by Goblin Engineers to power their creations
 [9088] = { "дар Артаса", use="Збільшує супротив тіні на 10. Кожен атакуючий буде уражений хворобою з імовірністю 30%, яка збільшить отриману ним шкоду на 8 на 3 хв. Триває 30 хв. (Відновлення 3 сек)" }, -- Gift of Arthas, @use Increases resistance to shadow by 10.  If an enemy strikes the imbiber, the attacker has a 30% chance of being inflicted with disease that increases their damage taken by 8 for 3 min.  Lasts for 30 min. (Proc chance: 30%) (3 Sec Cooldown)
-[9144] = { "зілля диколоззя", use="Відновлює від 1 до 1500 здоров'я та від 1 до 1500 мани. (Відновлення 2 хв)" }, -- Wildvine Potion, @use Restores 1 to 1500 health and 1 to 1500 mana. (2 Min Cooldown)
+[9144] = { "зілля диколоззя", use="Відновлює від {1} до {2} здоров'я та від {3} до {4} мани. (Відновлення 2 хв)#{1} to {2} health and {3} to {4} mana" }, -- Wildvine Potion, @use Restores 1 to 1500 health and 1 to 1500 mana. (2 Min Cooldown)
 [9149] = { "філософський камінь", flavor="Потрібен для алхімічної трансмутації." }, -- Philosopher's Stone, @flavor Required for Alchemical Transmutation.
 [9153] = { "креслення машини" }, -- Rig Blueprints
 [9154] = { "еліксир виявлення невмерлих", use="Відображає на мінімапі місцезнаходження найближчих невмерих протягом 1 години. (Відновлення 3 сек)" }, -- Elixir of Detect Undead, @use Shows the location of all nearby undead on the minimap for 1 hour. (3 Sec Cooldown)
 [9155] = { "арканічний еліксир", use="Збільшує шкоду від заклинань на 20 на 30 хв. (Відновлення 3 сек)" }, -- Arcane Elixir, @use Increases spell damage by up to 20 for 30 min. (3 Sec Cooldown)
-[9172] = { "зілля невидимості", use="Надає невидимість на 18 сек. (Відновлення 10 хв)" }, -- Invisibility Potion, @use Gives the imbiber invisibility for 18 sec. (10 Min Cooldown)
+[9172] = { "зілля невидимості", use="Надає невидимість на {1} с. (Відновлення 10 хв)#for {1} sec" }, -- Invisibility Potion, @use Gives the imbiber invisibility for 18 sec. (10 Min Cooldown)
 [9173] = { "гоблінський транспондер" }, -- Goblin Transponder
 [9179] = { "еліксир більшого інтелекту", use="Збільшує інтелект на 25 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Greater Intellect, @use Increases Intellect by 25 for 1 hour. (3 Sec Cooldown)
 [9187] = { "еліксир більшої спритності", use="Збільшує спритність на 25 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Greater Agility, @use Increases Agility by 25 for 1 hour. (3 Sec Cooldown)
@@ -1938,6 +1931,12 @@ addonTable.item = {
 [10283] = { "зразки вовчих сердець" }, -- Wolf Heart Samples
 [10298] = { "перстень Гномреґану" }, -- Gnomeregan Band
 [10299] = { "амулет Гномреґану" }, -- Gnomeregan Amulet
+[10305] = { "сувій захисту IV", ref=3013 }, -- Scroll of Protection IV
+[10306] = { "сувій духу IV", ref=1181 }, -- Scroll of Spirit IV
+[10307] = { "сувій витривалості IV", ref=1180 }, -- Scroll of Stamina IV
+[10308] = { "сувій інтелекту IV", ref=955 }, -- Scroll of Intellect IV
+[10309] = { "сувій спритності IV", ref=3012 }, -- Scroll of Agility IV
+[10310] = { "сувій сили IV", ref=954 }, -- Scroll of Strength IV
 [10327] = { "сурма Ечеякі", use="Засурмити біля лігва Ечеякі. (Відновлення 30 сек)" }, -- Horn of Echeyakee, @use Blow near Echeyakee's Lair. (30 Sec Cooldown)
 [10338] = { "свіжа туша жеври", use="Покласти біля мертвого дерева на північному заході від Брашпиля щоб приманити Ішамугала." }, -- Fresh Zhevra Carcass, @use Place near the Dead Tree northwest of Ratchet, to lure Ishamuhale.
 [10358] = { "дюрацинові браслети" }, -- Duracin Bracers
@@ -2085,7 +2084,7 @@ addonTable.item = {
 [12051] = { "латунні рукавиці" }, -- Brazen Gauntlets
 [12060] = { "лист від Шиндрел" }, -- Shindrell's Note
 [12102] = { "перстень аристократа" }, -- Ring of the Aristocrat
-[12190] = { "зілля сну без сновидінь", use="Занурює у сон без сновидінь на 12 сек. Протягом цього часу відновлює 1200 здоров'я та 1200 мани. (Відновлення 2 хв)" }, -- Dreamless Sleep Potion, @use Puts the imbiber in a dreamless sleep for 12 sec.  During that time the imbiber heals 1200 health and 1200 mana. (2 Min Cooldown)
+[12190] = { "зілля сну без сновидінь", use="Занурює у сон без сновидінь на {1} с. Протягом цього часу відновлює {2} здоров'я та {3} мани. (Відновлення 2 хв)#for {1} sec#{2} health and {3} mana" }, -- Dreamless Sleep Potion, @use Puts the imbiber in a dreamless sleep for 12 sec. During that time the imbiber heals 1200 health and 1200 mana. (2 Min Cooldown)
 [12191] = { "скринька \"Срібястого Світанку\"" }, -- Silver Dawning's Lockbox
 [12192] = { "скринька \"Туманного Серпанку\"" }, -- Mist Veil's Lockbox
 [12220] = { "неушкоджений браслет елементаля" }, -- Intact Elemental Bracer
@@ -2159,21 +2158,23 @@ addonTable.item = {
 [13180] = { "свята вода Стратхольму", use="Завдає від 438 до 562 шкоди нежиті в радіусі 10 метрів. (1 хв перезарядки)", flavor="Всього 1 кал." }, -- Stratholme Holy Water, @use Inflicts between 438 and 562 damage to Undead in a 10 yard radius. (1 Min Cooldown), @flavor Just 1 calorie.
 [13422] = { "камнелуский вугор" }, -- Stonescale Eel
 [13423] = { "олія камнелуского вугра" }, -- Stonescale Oil
-[13442] = { "потужне зілля люті", use="Збільшує лють на 45-75 та збільшує силу на 60 на 20 сек. (Відновлення 2 хв)" }, -- Mighty Rage Potion, @use Increases Rage by 45 to 75 and increases Strength by 60 for 20 sec. (2 Min Cooldown)
-[13443] = { "відмінне зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Superior Mana Potion, @use Restores 900 to 1500 mana. (2 Min Cooldown)
-[13444] = { "величезне зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Major Mana Potion, @use Restores 1350 to 2250 mana. (2 Min Cooldown)
+[13442] = { "потужне зілля люті", use="Збільшує лють на {1}-{2} та збільшує силу на {3} на {4} с. (Відновлення 2 хв)#Rage by {1} to {2}#Strength by {3} for {4} sec" }, -- Mighty Rage Potion, @use Increases Rage by 45 to 75 and increases Strength by 60 for 20 sec. (2 Min Cooldown)
+[13443] = { "відмінне зілля мани", ref=2455 }, -- Superior Mana Potion
+[13444] = { "величезне зілля мани", ref=2455 }, -- Major Mana Potion
 [13445] = { "еліксир відмінного захисту", use="Збільшує броню на 450 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Superior Defense, @use Increases armor by 450 for 1 hour. (3 Sec Cooldown)
-[13446] = { "величезне зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Major Healing Potion, @use Restores 1050 to 1750 health. (2 Min Cooldown)
+[13446] = { "величезне зілля лікування", ref=118 }, -- Major Healing Potion
 [13447] = { "еліксир мудреців", use="Збільшує інтелект і дух на 18 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of the Sages, @use Increases Intellect and Spirit by 18 for 1 hour. (3 Sec Cooldown)
 [13452] = { "еліксир мангуста", use="Збільшує спритність на 25 та ймовірність нанесення критичного удару на 2% на 1 годину. (Відновлення 3 сек)" }, -- Elixir of the Mongoose, @use Increases Agility by 25 and chance to get a critical hit by 2% for 1 hour. (3 Sec Cooldown)
 [13453] = { "еліксир грубої сили", use="Збільшує силу та витривалість на 18 на 1 годину. (Відновлення 3 сек)" }, -- Elixir of Brute Force, @use Increases Strength and Stamina by 18 for 1 hour. (3 Sec Cooldown)
 [13454] = { "великий арканічний еліксир", use="Збільшує шкоду від заклинань на 35 на 1 годину. (Відновлення 3 сек)" }, -- Greater Arcane Elixir, @use Increases spell damage by up to 35 for 1 hour. (3 Sec Cooldown)
-[13455] = { "велике зілля каменещита", use="Збільшує броню на 2000 на 2 хв. (Відновлення 2 хв)" }, -- Greater Stoneshield Potion, @use Increases armor by 2000 for 2 min. (2 Min Cooldown)
-[13456] = { "велике зілля крижаного захисту", use="Поглинає від 1950 до 3250 шкоди від криги. Триває 1 годину. (Відновлення 2 хв)" }, -- Greater Frost Protection Potion, @use Absorbs 1950 to 3250 frost damage.  Lasts 1 hour. (2 Min Cooldown)
-[13457] = { "велике зілля вогняного захисту", use="Поглинає від 1950 до 3250 шкоди від вогню. Триває 1 годину. (Відновлення 2 хв)" }, -- Greater Fire Protection Potion, @use Absorbs 1950 to 3250 fire damage.  Lasts 1 hour. (2 Min Cooldown)
-[13458] = { "велике зілля природного захисту", use="Поглинає від 1950 до 3250 шкоди від сил природи. Триває 1 годину. (Відновлення 2 хв)" }, -- Greater Nature Protection Potion, @use Absorbs 1950 to 3250 nature damage.  Lasts 1 hour. (2 Min Cooldown)
-[13459] = { "велике зілля тіньового захисту", use="Поглинає від 1950 до 3250 шкоди від тіні. Триває 1 годину. (Відновлення 2 хв)" }, -- Greater Shadow Protection Potion, @use Absorbs 1950 to 3250 shadow damage.  Lasts 1 hour. (2 Min Cooldown)
-[13461] = { "велике зілля арканічного захисту", use="Поглинає від 1950 до 3250 шкоди від аркани. Триває 1 годину. (Відновлення 2 хв)" }, -- Greater Arcane Protection Potion, @use Absorbs 1950 to 3250 arcane damage.  Lasts 1 hour. (2 Min Cooldown)
+[13455] = { "велике зілля каменещита", use="Збільшує броню на {1} на 2 хв. (Відновлення 2 хв)#armor by {1}" }, -- Greater Stoneshield Potion, @use Increases armor by 2000 for 2 min. (2 Min Cooldown)
+[13456] = { "велике зілля крижаного захисту", use="Поглинає від {1} до {2} шкоди від криги. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Greater Frost Protection Potion, @use Absorbs 1950 to 3250 frost damage. Lasts 1 hour. (2 Min Cooldown)
+[13457] = { "велике зілля вогняного захисту", use="Поглинає від {1} до {2} шкоди від вогню. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Greater Fire Protection Potion, @use Absorbs 1950 to 3250 fire damage. Lasts 1 hour. (2 Min Cooldown)
+[13458] = { "велике зілля природного захисту", use="Поглинає від {1} до {2} шкоди від природи. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Greater Nature Protection Potion, @use Absorbs 1950 to 3250 nature damage. Lasts 1 hour. (2 Min Cooldown)
+[13459] = { "велике зілля тіньового захисту", use="Поглинає від {1} до {2} шкоди від тіні. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Greater Shadow Protection Potion, @use Absorbs 1950 to 3250 shadow damage. Lasts 1 hour. (2 Min Cooldown)
+[13460] = { "велике зілля священного захисту", use="Поглинає від {1} до {2} шкоди від священності. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Greater Holy Protection Potion, @use Absorbs 1950 to 3250 holy damage. Lasts 1 hour. (2 Min Cooldown)
+[13461] = { "велике зілля арканічного захисту", use="Поглинає від {1} до {2} шкоди від аркани. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Greater Arcane Protection Potion, @use Absorbs 1950 to 3250 arcane damage. Lasts 1 hour. (2 Min Cooldown)
+[13462] = { "зілля очищення", use="Намагається зняти одне прокляття, одну хворобу та одну отруту." }, -- Purification Potion, @use Attempts to remove one Curse, one Disease and one Poison from the Imbiber. (2 Min Cooldown)
 [13463] = { "снолистя" }, -- Dreamfoil
 [13464] = { "золотий сансам" }, -- Golden Sansam
 [13465] = { "гірська срібномудриця" }, -- Mountain Silversage
@@ -2203,12 +2204,12 @@ addonTable.item = {
 [13497] = { "рецепт: Велике зілля арканічного захисту", use="Навчає вас створювати велике зілля арканічного захисту." }, -- Recipe: Greater Arcane Protection Potion, @use Teaches you how to make a Greater Arcane Protection Potion.
 [13499] = { "рецепт: Велике зілля тіньового захисту", use="Навчає вас створювати велике зілля тіньового захисту." }, -- Recipe: Greater Shadow Protection Potion, @use Teaches you how to make a Greater Shadow Protection Potion.
 [13501] = { "рецепт: Величезне зілля мани", use="Навчає вас створювати величезне зілля мани." }, -- Recipe: Major Mana Potion, @use Teaches you how to make a Major Mana Potion.
-[13506] = { "настій скам'яніння", use="Ви перетворюєтеся на камінь, що захищає вас від усіх фізичних атак і заклинань на 1 хв, але протягом цього часу ви не можете атакувати, рухатися або промовляти заклинання. Ви можете бути під ефектом лише однієї колби одночасно. (Відновлення 3 сек)" }, -- Flask of Petrification, @use You turn to stone, protecting you from all physical attacks and spells for 1 min, but during that time you cannot attack, move or cast spells.  You can only have the effect of one flask at a time. (3 Sec Cooldown)
+[13506] = { "настій скам'яніння", use="Ви перетворюєтеся на камінь, що захищає вас від усіх фізичних атак і заклинань на 1 хв, але протягом цього часу ви не можете атакувати, рухатися або промовляти заклинання. Ви можете бути під дією лише одного настою одночасно. (Відновлення 3 с)" }, -- Flask of Petrification, @use You turn to stone, protecting you from all physical attacks and spells for 1 min, but during that time you cannot attack, move or cast spells. You can only have the effect of one flask at a time. (3 Sec Cooldown)
 [13507] = { "звіт спостерігача скель Довгорогого" }, -- Cliffwatcher Longhorn Report
-[13510] = { "настій титанів", use="Збільшує максимальне здоров'я на 1200 на 2 год. Ви можете бути під ефектом лише однієї колби одночасно. Цей ефект зберігається після смерті. (Відновлення 3 сек)" }, -- Flask of the Titans, @use Increases the player's maximum health by 1200 for 2 hrs.  You can only have the effect of one flask at a time.  This effect persists through death. (3 Sec Cooldown)
-[13511] = { "настій дистильованої мудрості", use="Збільшує максимальну ману на 2000 на 2 год. Ви можете бути під ефектом лише однієї колби одночасно. Цей ефект зберігається після смерті. (Відновлення 3 сек)" }, -- Flask of Distilled Wisdom, @use Increases the player's maximum mana by 2000 for 2 hrs.  You can only have the effect of one flask at a time.  This effect persists through death. (3 Sec Cooldown)
-[13512] = { "настій великої сили", use="Збільшує шкоду від магічних заклинань і ефектів на 150 на 2 години. Ви можете бути під дією лише одного настою . Ефект зберігається після смерті. (Відновлення 3 сек)" }, -- Flask of Supreme Power, @use Increases damage done by magical spells and effects by up to 150 for 2 hrs.  You can only have the effect of one flask at a time.  This effect persists through death. (3 Sec Cooldown)
-[13513] = { "настій хроматичного супротиву", use="Збільшує ваш супротив всім школам магії на 25 на 2 год. Ви можете бути під ефектом лише однієї колби одночасно. Цей ефект зберігається після смерті та додається до всіх інших заклинань і предметів зі супротивом. (Відновлення 3 сек)" }, -- Flask of Chromatic Resistance, @use Increases your resistance to all schools of magic by 25 for 2 hrs.  You can only have the effect of one flask at a time.  This effect persists through death and stacks with all other resistance spells and items. (3 Sec Cooldown)
+[13510] = { "настій титанів", use="Збільшує максимальне здоров'я на 1200 на 2 год. Ви можете бути під дією лише одного настою одночасно. Цей ефект зберігається після смерті. (Відновлення 3 с)" }, -- Flask of the Titans, @use Increases the player's maximum health by 1200 for 2 hrs. You can only have the effect of one flask at a time. This effect persists through death. (3 Sec Cooldown)
+[13511] = { "настій дистильованої мудрості", use="Збільшує максимальну ману на 2000 на 2 год. Ви можете бути під дією лише одного настою одночасно. Цей ефект зберігається після смерті. (Відновлення 3 с)" }, -- Flask of Distilled Wisdom, @use Increases the player's maximum mana by 2000 for 2 hrs. You can only have the effect of one flask at a time. This effect persists through death. (3 Sec Cooldown)
+[13512] = { "настій великої сили", use="Збільшує шкоду від магічних заклинань і ефектів на 150 на 2 год. Ви можете бути під дією лише одного настою одночасно. Цей ефект зберігається після смерті. (Відновлення 3 с)" }, -- Flask of Supreme Power, @use Increases damage done by magical spells and effects by up to 150 for 2 hrs. You can only have the effect of one flask at a time. This effect persists through death. (3 Sec Cooldown)
+[13513] = { "настій хроматичного супротиву", use="Збільшує ваш супротив всім школам магії на 25 на 2 год. Ви можете бути під дією лише одного настою одночасно. Цей ефект зберігається після смерті та додається до всіх інших заклинань і предметів зі супротивом. (Відновлення 3 с)" }, -- Flask of Chromatic Resistance, @use Increases your resistance to all schools of magic by 25 for 2 hrs. You can only have the effect of one flask at a time. This effect persists through death and stacks with all other resistance spells and items. (3 Sec Cooldown)
 [13536] = { "ріг пробудження", use="Пробудити сплячого друїда. (Відновлення 30 сек)" }, -- Horn of Awakening, @use Awaken the sleeping druid. (30 Sec Cooldown)
 [13602] = { "великий камінь чарів", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%.", use="Усуває всі магічні ефекти з заклинача та поглине 650 магічної шкоди протягом 1 хв." }, -- Greater Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 650 magic damage for 1 min.
 [13603] = { "величезний камінь чарів", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%.", use="Усуває всі магічні ефекти з заклинача та поглине 900 магічної шкоди протягом 1 хв." }, -- Major Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 900 magic damage for 1 min.
@@ -2524,6 +2525,10 @@ addonTable.item = {
 [17124] = { "емблема Синдикату" }, -- Syndicate Emblem
 [17125] = { "печатка Рейвенхольдта" }, -- Seal of Ravenholdt
 [17203] = { "злиток сульфурону" }, -- Sulfuron Ingot
+[17348] = { "величезний ковток лікування", ref=17349 }, -- Major Healing Draught
+[17349] = { "відмінний ковток лікування", use="Відновлює від {1} до {2} здоров'я. Цей предмет можна використовувати лише на полях боїв (PvP).#Restores {1} to {2}" }, -- Superior Healing Draught, @use Restores 560 to 720 health. This item may only be used in PvP Battlegrounds. (5 Min Cooldown)
+[17351] = { "величезний ковток мани", ref=17352 }, -- Major Mana Draught
+[17352] = { "відмінний ковток мани", use="Відновлює від {1} до {2} мани. Цей предмет можна використовувати лише на полях боїв (PvP).#Restores {1} to {2}" }, -- Superior Mana Draught, @use Restores 560 to 720 mana. This item may only be used in PvP Battlegrounds. (5 Min Cooldown)
 [17355] = { "лист Рабіна" }, -- Rabine's Letter
 [17508] = { "баклер лютокаменю" }, -- Forcestone Buckler
 [17692] = { "роговий перстень" }, -- Horn Ring
@@ -2535,7 +2540,7 @@ addonTable.item = {
 [18151] = { "наповнений аметистовий фіал" }, -- Filled Amethyst Phial
 [18152] = { "аметистовий фіал", use="Наповнити аметистовий фіал водами місячного колодязя поляни Оракула." }, -- Amethyst Phial, @use Fill the Amethyst Phial at the Oracle Glade moonwell.
 [18160] = { "рецепт: Прудкоп'яховий чай", use="Навчає вас приготуванню прудкоп'яхового чаю." }, -- Recipe: Thistle Tea, @use Teaches you how to brew a Thistle Tea.
-[18253] = { "величезне зілля відживлення", use="Відновлює від 1440 до 1760 мани та здоров'я. (Відновлення 2 хв)" }, -- Major Rejuvenation Potion, @use Restores 1440 to 1760 mana and health. (2 Min Cooldown)
+[18253] = { "величезне зілля відживлення", use="Відновлює від {1} до {2} мани та здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Major Rejuvenation Potion, @use Restores 1440 to 1760 mana and health. (2 Min Cooldown)
 [18256] = { "зміцнений фіал" }, -- Imbued Vial
 [18257] = { "рецепт: Величезне зілля відживлення", use="Навчає вас створювати величезне зілля відживлення." }, -- Recipe: Major Rejuvenation Potion, @use Teaches you how to make a Major Rejuvenation Potion.
 [18294] = { "еліксир глибшого водного дихання", use="Дозволяє дихати водою протягом 1 години. (Відновлення 3 сек)" }, -- Elixir of Greater Water Breathing, @use Allows the Imbiber to breathe water for 1 hour. (3 Sec Cooldown)
@@ -2545,6 +2550,7 @@ addonTable.item = {
 [18403] = { "печатка драконоборця", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%." }, -- Dragonslayer's Signet, @equip Improves your chance to get a critical strike with spells by 1%.
 [18404] = { "підвіска зубу Оніксії", equip={ "Збільшує ваш шанс нанесення удару на 1%. ", "Збільшує ваш шанс нанесення критичного удару на 1%." } }, -- Onyxia Tooth Pendant, @equip Improves your chance to hit by 1%., @equip Improves your chance to get a critical strike by 1%.
 [18406] = { "талісман крові Оніксії", equip={ "Збільшує ваш шанс парирування атаки на 1%. ", "Збільшує рейтинг захисту на 8. ", "Відновлює 7 здоров'я кожні 5 сек." } }, -- Onyxia Blood Talisman, @equip Increases your chance to parry an attack by 1%., @equip Increased Defense +8., @equip Restores 7 health per 5 sec.
+[18410] = { "меч спринтера", hit="Збільшує швидкість бігу на {1}% на {2} с.#by {1}% for {2} sec" }, -- Sprinter's Sword, @hit Increases run speed by 30% for 10 sec.
 [18423] = { "голова Оніксії", flavor="Голова матері чорних драконів" }, -- Head of Onyxia, @flavor The head of the Black Dragonflight's Brood Mother
 [18501] = { "уламок Сквернолози" }, -- Felvine Shard
 [18535] = { "щит Міллі", equip="Відновлює 4 здоров'я кожні 5 сек." }, -- Milli's Shield, @equip Restores 4 health per 5 sec.
@@ -2640,11 +2646,11 @@ addonTable.item = {
 [19990] = { "благословенні молитовні намистини", use="Збільшує зцілення від заклинань і ефектів на 190 на 20 сек. (Відновлення 2 хв)", flavor="Пізнаються в біді." }, -- Blessed Prayer Beads, @use Increases healing done by spells and effects by up to 190 for 20 sec. (2 Min Cooldown), @flavor A friend in need is a friend without beads.
 [19991] = { "око дияволозавра", use="Збільшує вашу силу атаки на 150 і ваш шанс влучити на 2%. Ефект триває 20 сек. (Відновлення 2 хв)" }, -- Devilsaur Eye, @use Increases your attack power by 150 and your chance to hit by 2%.  Effect lasts for 20 sec. (2 Min Cooldown)
 [19992] = { "зуб дияволозавра", use="Наступна атака вашого супутника завдасть критичного удару, якщо ця атака має таку можливість. (Відновлення 2 хв)" }, -- Devilsaur Tooth, @use Your pet's next attack is guaranteed to critically strike if that attack is capable of striking critically. (2 Min Cooldown)
-[20002] = { "велике зілля сну без сновидінь", use="Занурює у сон без сновидінь на 12 сек. Протягом цього часу відновлює 2100 здоров'я та 2100 мани. (Відновлення 2 хв)" }, -- Greater Dreamless Sleep Potion, @use Puts the imbiber in a dreamless sleep for 12 sec.  During that time the imbiber heals 2100 health and 2100 mana. (2 Min Cooldown)
+[20002] = { "велике зілля сну без сновидінь", use="Занурює у сон без сновидінь на {1} с. Протягом цього часу відновлює {2} здоров'я та {3} мани. (Відновлення 2 хв)#for {1} sec#{2} health and {3} mana" }, -- Greater Dreamless Sleep Potion, @use Puts the imbiber in a dreamless sleep for 12 sec. During that time the imbiber heals 2100 health and 2100 mana. (2 Min Cooldown)
 [20004] = { "величезне зілля крові троля", use="Відновлює 20 од. здоров'я кожні 5 сек протягом 1 години. (Відновлення 3 сек)" }, -- Major Troll's Blood Potion, @use Regenerate 20 health every 5 sec for 1 hour. (3 Sec Cooldown)
 [20006] = { "перстень надії", equip="Збільшує шанс критичного ефекту ваших заклинань світла на 1%.", flavor="Викуваний з чистого світла." }, -- Circle of Hope, @equip Increases the critical effect chance of your Holy spells by 1%., @flavor Forged from pure light.
 [20007] = { "зілля магокрові", use="Відновлює 12 мани кожні 5 сек протягом 1 години. (Відновлення 3 сек)" }, -- Mageblood Potion, @use Regenerate 12 mana per 5 sec for 1 hour. (3 Sec Cooldown)
-[20008] = { "зілля живої дії", use="Надає невразливість до оглушення та ефектів ускладнення руху на наступні 5 сек. Також знімає вже наявні ефекти. (Відновлення 2 хв)" }, -- Living Action Potion, @use Makes you immune to Stun and Movement Impairing effects for the next 5 sec.  Also removes existing Stun and Movement Impairing effects. (2 Min Cooldown)
+[20008] = { "зілля живої дії", use="Надає невразливість до приголомшення та ефектів ускладнення руху на наступні {1} с. Також знімає вже наявні ефекти. (Відновлення 2 хв)#next {1} sec" }, -- Living Action Potion, @use Makes you immune to Stun and Movement Impairing effects for the next 5 sec. Also removes existing Stun and Movement Impairing effects. (2 Min Cooldown)
 [20011] = { "рецепт: Зілля магокрові", use="Навчає вас створювати зілля магокрові." }, -- Recipe: Mageblood Potion, @use Teaches you how to make a Mageblood Potion.
 [20012] = { "рецепт: Велике зілля сну без сновидінь", use="Навчає вас створювати велике зілля сну без сновидінь." }, -- Recipe: Greater Dreamless Sleep, @use Teaches you how to make a Greater Dreamless Sleep Potion.
 [20013] = { "рецепт: Зілля живої дії", use="Навчає вас створювати зілля живої дії." }, -- Recipe: Living Action Potion, @use Teaches you how to make a Living Action Potion.
@@ -2832,13 +2838,18 @@ addonTable.item = {
 [22435] = { "жало Ґоріші" }, -- Gorishi Sting
 [22444] = { "гнила лоза" }, -- Putrid Vine
 [22458] = { "посох місячної тіні", equip={ "Збільшує шкоду і зцілення від магічних заклинань і ефектів на 18.", "Відновлює 7 мани кожні 5 сек.", "Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%." } }, -- Moonshadow Stave, @equip Increases damage and healing done by magical spells and effects by up to 18., @equip Restores 7 mana per 5 sec., @equip Improves your chance to get a critical strike with spells by 1%.
+[22682] = { "заморожена руна", use="Поглинає від {1} до {2} шкоди від вогню. Триває 1 годину. (Відновлення 3 хв)#Absorbs {1} to {2}" }, -- Frozen Rune, @use Absorbs 1500 to 2500 fire damage. Lasts 1 hour. (3 Min Cooldown)
 [22895] = { "начаклована булочка з корицею", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Conjured Cinnamon Roll, @use Restores 3180 health over 30 sec.  Must remain seated while eating.
 [22945] = { "потерта записка" }, -- A Careworn Note
 [22972] = { "потерта записка" }, -- A Careworn Note
 [23250] = { "призматична мушля" }, -- Prismatic Shell
 [25470] = { "золотий грифон", use="Викликає та звільняє грифона, на якому можна їздити. Цього верхового скакуна можна викликати лише в Закордоні." },
-[27502] = { "сувій витривалості 5", use="Збільшує витривалість цілі на 20, діє 30 хв." },
-[27503] = { "сувій сили 5", use="Збільшує силу цілі на 20, діє 30 хв." },
+[27498] = { "сувій спритності V", ref=3012 }, -- Scroll of Agility V
+[27499] = { "сувій інтелекту V", ref=955 }, -- Scroll of Intellect V
+[27500] = { "сувій захисту V", ref=3013 }, -- Scroll of Protection V
+[27501] = { "сувій духу V", ref=1181 }, -- Scroll of Spirit V
+[27502] = { "сувій витривалості V", ref=1180 }, -- Scroll of Stamina V
+[27503] = { "сувій сили V", ref=954 }, -- Scroll of Strength V
 [27885] = { "жезл душі Алдора" },
 [28790] = { "перстень світлоохоронця Наару" }, -- Naaru Lightwarden's Band
 [28823] = { "око Ґруула" }, -- Eye of Gruul
