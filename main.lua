@@ -802,18 +802,12 @@ local get_questlog_frame = function ()
         return questlog_frame
     end
 
-    local width, height = QuestLogFrame:GetSize()
-    local frame = CreateFrame("frame", nil, QuestLogFrame, "BackdropTemplate")
+    local width, height = QuestLogDetailScrollFrame:GetSize()
+    local frame = CreateFrame("frame", nil, QuestLogDetailScrollFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
-    if is_wotlk then
-        frame:SetSize(width/2 - 20, height - 96)
-        frame:SetPoint("TOP", 0, -66)
-        frame:SetPoint("RIGHT", frame:GetWidth() - 9, 0)
-    else
-        frame:SetSize(width - 64, height - 234)
-        frame:SetPoint("TOP", 0, -166)
-        frame:SetPoint("RIGHT", frame:GetWidth() - 41, 0)
-    end
+    frame:SetSize(width + 18, height + 18)
+    frame:SetPoint("TOP", 0, 18/2)
+    frame:SetPoint("RIGHT", width + 23 + 18, 0)
 
     setup_frame_background_and_border(frame)
 
