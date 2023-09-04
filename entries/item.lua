@@ -1404,7 +1404,7 @@ addonTable.item = {
 [6093] = { "погибель орків" }, -- Orc Crusher
 [6094] = { "пронзаюча сокира" }, -- Piercing Axe
 [6095] = { "чоботи мандрів" }, -- Wandering Boots
-[6096] = { "підмайстринська сорочка" }, -- Apprentice's Shirt
+[6096] = { "сорочка підмайстра" }, -- Apprentice's Shirt
 [6145] = { "кулон Клариси", flavor="Покладіть на могилу Юріва." }, -- Clarice's Pendant, @flavor Place upon Yuriv's grave.
 [6149] = { "велике зілля мани", ref=2455 }, -- Greater Mana Potion
 [6168] = { "пазур пилкозубого кусача" }, -- Sawtooth Snapper Claw
