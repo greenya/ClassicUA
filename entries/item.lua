@@ -13,6 +13,7 @@ addonTable.item = {
 --     note: value can be string or table (multiple strings)
 -- }
 
+[56] = { "халат підмайстра" }, -- Apprentice's Robe
 [60] = { "багатошаровий мундир" }, -- Layered Tunic
 [80] = { "м'які хутряні черевики" }, -- Soft Fur-lined Shoes
 [117] = { "жорстка солонина", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2} sec" }, -- Tough Jerky, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
@@ -43,13 +44,16 @@ addonTable.item = {
 [752] = { "червона бандана з мішковини" }, -- Red Burlap Bandana
 [765] = { "срібнолист" }, -- Silverleaf
 [769] = { "шматок м'яса кнура" }, -- Chunk of Boar Meat
+[771] = { "відколотий бивень кнура" }, -- Chipped Boar Tusk
 [772] = { "велика свічка" }, -- Large Candle
 [773] = { "золотий пил" }, -- Gold Dust
 [774] = { "малахіт" }, -- Malachite
+[779] = { "блискуча мушля" }, -- Shiny Seashell
 [780] = { "порваний плавник мурлока" }, -- Torn Murloc Fin
 [782] = { "розфарбований браслет гнола" }, -- Painted Gnoll Armband
 [783] = { "легка шкура" }, -- Light Hide
 [785] = { "маговелич" }, -- Mageroyal
+[805] = { "маленький червоний мішечок" }, -- Small Red Pouch
 [814] = { "фляга з мастилом" }, -- Flask of Oil
 [818] = { "тигрове око" }, -- Tigerseye
 [829] = { "червона шкіряна бандана" }, -- Red Leather Bandana
@@ -155,7 +159,9 @@ addonTable.item = {
 [1408] = { "відповідь Міцнокрива Соломону" }, -- Stoutmantle's Response to Solomon
 [1409] = { "прохання Соломона до Темнодолу" }, -- Solomon's Plea to Darkshire
 [1410] = { "відповідь Чорнобривого Соломону" }, -- Ebonlocke's Response to Solomon
+[1413] = { "слабкий меч" }, -- Feeble Sword
 [1422] = { "ношені шкіряні рукавиці" }, -- Worn Leather Gloves
+[1429] = { "клаптевий плащ" }, -- Patchwork Cloak
 [1434] = { "сяюча воскова паличка", use="Зменшує броню цілі на 50 на 30 сек. Поки діє ефект, ціль не може стати непомітною чи невидимою. (Відновлення 1 хв)" }, -- Glowing Wax Stick, @use Decrease the armor of the target by 50 for 30 sec.  While affected, the target cannot stealth or turn invisible. (1 Min Cooldown)
 [1450] = { "зілля палкості", use="Збільшує силу на {1} та завдає {2} пошкодження вам кожні {3} с протягом {4} хв.#by {1} and does {2} damage to you every {3} sec for {4} min" }, -- Potion of Fervor, @use Increases Strength by 14 and does 15 damage to you every 15 sec for 1 min. (2 Min Cooldown)
 [1451] = { "пляшка соку зомбі" }, -- Bottle of Zombie Juice
@@ -217,6 +223,7 @@ addonTable.item = {
 [2113] = { "записка Калора" }, -- Calor's Note
 [2136] = { "начаклована очищена вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Purified Water, @use Restores 835.2 mana over 24 sec.  Must remain seated while drinking.
 [2137] = { "ніж для заточування" }, -- Whittling Knife
+[2138] = { "загострений відкривач листів" }, -- Sharpened Letter Opener
 [2154] = { "\"Історія Моргана Ладімора\"" }, -- The Story of Morgan Ladimore
 [2161] = { "книга з ферми Свена" }, -- Book from Sven's Farm
 [2162] = { "каблучка Сари", flavor="Каблучка Сари Ладімор." }, -- Sarah's Ring, @flavor Sarah Ladimore's ring.
@@ -273,6 +280,7 @@ addonTable.item = {
 [2561] = { "голова Чок'сула" }, -- Chok'sul's Head
 [2562] = { "букет червоних бегоній" }, -- Bouquet of Scarlet Begonias
 [2563] = { "порошок з дивним запахом" }, -- Strange Smelling Powder
+[2570] = { "лляний плащ" }, -- Linen Cloak
 [2571] = { "плетені онучі" }, -- Viny Wrappings
 [2575] = { "червона лляна сорочка" }, -- Red Linen Shirt
 [2589] = { "лляна тканина" }, -- Linen Cloth
@@ -299,7 +307,9 @@ addonTable.item = {
 [2637] = { "звіт Залізоплета" }, -- Ironband's Progress Report
 [2639] = { "записка Меррін" }, -- Merrin's Letter
 [2640] = { "шахтарське спорядження" }, -- Miners' Gear
+[2644] = { "незв'язаний кольчужний плащ" }, -- Loose Chain Cloak
 [2650] = { "кепські кольчужні чоботи" }, -- Flimsy Chain Boots
+[2652] = { "кепські кольчужний плащ" }, -- Flimsy Chain Cloak
 [2654] = { "кепські кольчужні штани" }, -- Flimsy Chain Pants
 [2658] = { "фрагмент Адос" }, -- Ados Fragment
 [2659] = { "фрагмент Модр" }, -- Modr Fragment
@@ -309,6 +319,7 @@ addonTable.item = {
 [2666] = { "барильце громузвару" }, -- Barrel of Thunder Ale
 [2667] = { "в'ялене м'ясо Мак-Ґранна" }, -- MacGrann's Dried Meats
 [2671] = { "грива вендиго" }, -- Wendigo Mane
+[2671] = { "жилаве м'ясо вовка" }, -- Stringy Wolf Meat
 [2676] = { "блискоквіт" }, -- Shimmerweed
 [2678] = { "лагідні спеції", flavor="Використовується для підсилення смаку деяких страв." }, -- Mild Spices, @flavor Used to enhance the flavor in cooking recipes.
 [2681] = { "смажене м'ясо кнура", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Roasted Boar Meat, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
@@ -426,6 +437,8 @@ addonTable.item = {
 [2953] = { "плащ начальника варти" }, -- Watch Master's Cloak
 [2954] = { "кюлоти Нічної варти" }, -- Night Watch Pantaloons
 [2956] = { "доповідь про Повстанське братство" }, -- Report on the Defias Brotherhood
+[2960] = { "підмастерські рукавички" }, -- Journeyman's Gloves
+[2996] = { "рулон лляної тканини" }, -- Bolt of Linen Cloth
 [2997] = { "рулон вовняної тканини" }, -- Bolt of Woolen Cloth
 [2998] = { "звичайний компас", flavor="Перший компас Бароса Алекстона." }, -- A Simple Compass, @flavor Baros Alexston's first compass.
 [2999] = { "інструменти Сталешквара" }, -- Steelgrill's Tools
@@ -456,6 +469,7 @@ addonTable.item = {
 [3163] = { "почорнілий череп" }, -- Blackened Skull
 [3164] = { "знебарвлене серце ворга" }, -- Discolored Worg Heart
 [3165] = { "Квіннове зілля" }, -- Quinn's Potion
+[3169] = { "відколотий зуб ведмедя" }, -- Chipped Bear Tooth
 [3171] = { "зламане ікло кабана" }, -- Broken Boar Tusk
 [3172] = { "кишки кнура" }, -- Boar Intestines
 [3173] = { "м'ясо ведмедя" }, -- Bear Meat
@@ -752,6 +766,7 @@ addonTable.item = {
 [4340] = { "сірий барвник" }, -- Gray Dye
 [4341] = { "жовтий барвник" }, -- Yellow Dye
 [4342] = { "пурпуровий барвник" }, -- Purple Dye
+[4344] = { "коричнева лляна сорочка" }, -- Brown Linen Shirt
 [4369] = { "смертоносний мушкетон" }, -- Deadly Blunderbuss
 [4371] = { "бронзова трубка" }, -- Bronze Tube
 [4388] = { "промінь заплутаності", use="Перетворює ціль в лепрогнома, зменшуючи її шкоду від атак в ближньому бою та заклинань на 40, а швидкість пересування на 20% на 12 секунд. (Відновлення 1 хв)" }, -- Discombobulator Ray, @use Transforms the target into a Leper Gnome, reducing its melee and spell damage by 40 and its movement rate by 20% for 12 sec. (1 Min Cooldown)
@@ -853,6 +868,7 @@ addonTable.item = {
 [4650] = { "записка Бел'дуґура" }, -- Bel'dugur's Note
 [4654] = { "таємнича скам'янілість" }, -- Mysterious Fossil
 [4656] = { "гарбузик", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Small Pumpkin, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[4666] = { "обпалений шкіряний ремінь" }, -- Burnt Leather Belt
 [4702] = { "кайло розвідувача", use="Розтрощити кайло у кузні." }, -- Prospector's Pick, @use Right click near a forge to break.
 [4703] = { "зламані інструменти" }, -- Broken Tools
 [4739] = { "м'ясо рівнинобіга" }, -- Plainstrider Meat
@@ -1388,6 +1404,7 @@ addonTable.item = {
 [6093] = { "погибель орків" }, -- Orc Crusher
 [6094] = { "пронзаюча сокира" }, -- Piercing Axe
 [6095] = { "чоботи мандрів" }, -- Wandering Boots
+[6096] = { "підмайстринська сорочка" }, -- Apprentice's Shirt
 [6145] = { "кулон Клариси", flavor="Покладіть на могилу Юріва." }, -- Clarice's Pendant, @flavor Place upon Yuriv's grave.
 [6149] = { "велике зілля мани", ref=2455 }, -- Greater Mana Potion
 [6168] = { "пазур пилкозубого кусача" }, -- Sawtooth Snapper Claw
@@ -1587,7 +1604,7 @@ addonTable.item = {
 [7071] = { "залізна пряжка" }, -- Iron Buckle
 [7072] = { "луска наги" }, -- Naga Scale
 [7073] = { "зламаний пазур" }, -- Broken Fang
-[7074] = { "надломлений кіготь" }, -- Chipped Claw
+[7074] = { "відколотий кіготь" }, -- Chipped Claw
 [7075] = { "ядро землі" }, -- Core of Earth
 [7076] = { "сутність землі" }, -- Essence of Earth
 [7077] = { "серце вогню" }, -- Heart of Fire
@@ -1928,6 +1945,7 @@ addonTable.item = {
 [10005] = { "гігантський ріг Марґол" }, -- Margol's Gigantic Horn
 [10022] = { "доказ правоти" }, -- Proof of Deed
 [10043] = { "благочестиві поножі" }, -- Pious Legwraps
+[10045] = { "прості лляні поножі" }, -- Simple Linen Pants
 [10283] = { "зразки вовчих сердець" }, -- Wolf Heart Samples
 [10298] = { "перстень Гномреґану" }, -- Gnomeregan Band
 [10299] = { "амулет Гномреґану" }, -- Gnomeregan Amulet
