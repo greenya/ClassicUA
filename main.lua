@@ -364,16 +364,17 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     end
 
     local values = {}
-
     for i = 2, #text do
-        local p = esc(text[i]):gsub("{(%d+)}", function (a) return "(%d+)" end)
+        local p = esc(text[i]):gsub("{(%d+)}", function (a) return "(%d*.?%d+)" end)
         local match_number = 0
         for j = 1, #tooltip_lines do
             local v = { tooltip_lines[j]:match(p) }
             if #v > 0 then
                 match_number = match_number + 1
                 if match_number > tooltip_matches_to_skip then
-                    for k = 1, #v do values[#values + 1] = v[k] end
+                    for k = 1, #v do
+                        values[#values + 1] = v[k]:gsub("%.", ",")
+                    end
                     break
                 end
             end

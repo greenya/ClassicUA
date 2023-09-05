@@ -246,16 +246,16 @@ local warrior_spells = {
 [12958] = { ref=12311 }, -- Improved Shield Bash (Rank 2)
 
 -- Improved Shield Block
-[12945] = { "Покращений блок щитом", "Дозволяє вашій здібності \"Блок щитом\" блокувати додаткову атаку і збільшує тривалість на {1},{2} с.#duration by {1}.{2} sec" }, -- Improved Shield Block (Rank 1)
-[12307] = { "Покращений блок щитом", "Дозволяє вашій здібності \"Блок щитом\" блокувати додаткову атаку і збільшує тривалість на {1} с.#duration by {1} sec" }, -- Improved Shield Block (Rank 2)
-[12944] = { ref=12307 }, -- Improved Shield Block (Rank 3)
+[12945] = { "Покращений блок щитом", "Дозволяє вашій здібності \"Блок щитом\" блокувати додаткову атаку і збільшує тривалість на {1} с.#by {1} sec" }, -- Improved Shield Block (Rank 1)
+[12307] = { ref=12945 }, -- Improved Shield Block (Rank 2)
+[12944] = { ref=12945 }, -- Improved Shield Block (Rank 3)
 
 -- Improved Shield Wall
 [12312] = { "Покращена стіна щитів", "Збільшує тривалість ефекту вашої здібності \"Стіна щитів\" на {1} с.#ability by {1} sec" }, -- Improved Shield Wall (Rank 1)
 [12803] = { ref=12312 }, -- Improved Shield Wall (Rank 2)
 
 -- Improved Slam
-[12862] = { "Покращене розтрощення", "Зменшує час вимови вашої здібності \"Розтрощення\" на {1},{2} с.#ability by {1}.{2}" }, -- Improved Slam (Rank 1)
+[12862] = { "Покращене розтрощення", "Зменшує час застосування вашої здібності \"Розтрощення\" на {1} с.#by {1} sec" }, -- Improved Slam (Rank 1)
 [12330] = { ref=12862 }, -- Improved Slam (Rank 2)
 [20497] = { ref=12862 }, -- Improved Slam (Rank 3)
 [20498] = { ref=12862 }, -- Improved Slam (Rank 4)

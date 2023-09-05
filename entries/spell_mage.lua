@@ -318,7 +318,7 @@ local mage_spells = {
 [16770] = { ref=11237 }, -- Improved Arcane Missiles (Rank 5)
 
 -- Improved Blizzard
-[11185] = { "Покращена метелиця", "Надає вашому закляттю \"Метелиця\" ефект \"Охолодження\", що знижує швидкість руху цілі на {1}% на {2},{3} с.#speed by {1}#Lasts {2}.{3} sec" }, -- Improved Blizzard (Rank 1)
+[11185] = { "Покращена метелиця", "Надає вашому закляттю \"Метелиця\" ефект \"Охолодження\", що знижує швидкість руху цілі на {1}% на {2} с.#speed by {1}#Lasts {2} sec" }, -- Improved Blizzard (Rank 1)
 [12487] = { ref=11185 }, -- Improved Blizzard (Rank 2)
 [12488] = { ref=11185 }, -- Improved Blizzard (Rank 3)
 [12484] = { "Охолодження", nil, "Рух сповільнено." }, -- Chilled (aura)
@@ -344,7 +344,7 @@ local mage_spells = {
 [13043] = { ref=11094 }, -- Improved Fire Ward (Rank 2)
 
 -- Improved Fireball
-[11069] = { "Покращена вогнекуля", "Зменшує час вимови вашого закляття \"Вогнекуля\" на {1},{2} с.#spell by {1}.{2} sec" }, -- Improved Fireball (Rank 1)
+[11069] = { "Покращена вогнекуля", "Зменшує час вимови вашого закляття \"Вогнекуля\" на {1} с.#spell by {1} sec" }, -- Improved Fireball (Rank 1)
 [12338] = { ref=11069 }, -- Improved Fireball (Rank 2)
 [12339] = { ref=11069 }, -- Improved Fireball (Rank 3)
 [12340] = { ref=11069 }, -- Improved Fireball (Rank 4)
@@ -360,7 +360,7 @@ local mage_spells = {
 [12475] = { ref=11165 }, -- Improved Frost Nova (Rank 2)
 
 -- Improved Frostbolt
-[11070] = { "Покращена крижана стріла", "Зменшує час вимови вами закляття \"Крижана стріла\" на {1},{2} с.#spell by {1}.{2} sec" }, -- Improved Frostbolt (Rank 1)
+[11070] = { "Покращена крижана стріла", "Зменшує час вимови вами закляття \"Крижана стріла\" на {1} с.#spell by {1} sec" }, -- Improved Frostbolt (Rank 1)
 [12473] = { ref=11070 }, -- Improved Frostbolt (Rank 2)
 [16763] = { ref=11070 }, -- Improved Frostbolt (Rank 3)
 [16765] = { ref=11070 }, -- Improved Frostbolt (Rank 4)
@@ -396,7 +396,7 @@ local mage_spells = {
 [12606] = { ref=11247 }, -- Magic Attunement (Rank 2)
 
 -- Mana Shield
-[1463] = { "Манощит", "Поглинає {1} фізичного пошкодження за рахунок мани. Висушує {2},{3} мани за кожну одиницю поглинутого пошкодження. Триває {4} хв.#Absorbs {1}#Drains {2}.{3}#Lasts {4} min", "Поглинає фізичне пошкодження за рахунок мани." }, -- Mana Shield (Rank 1)
+[1463] = { "Манощит", "Поглинає {1} фізичного пошкодження за рахунок мани. Висушує {2} мани за кожну одиницю поглинутого пошкодження. Триває {3} хв.#Absorbs {1}#Drains {2}#Lasts {3} min", "Поглинає фізичне пошкодження за рахунок мани." }, -- Mana Shield (Rank 1)
 [8494] = { ref=1463 }, -- Mana Shield (Rank 2)
 [8495] = { ref=1463 }, -- Mana Shield (Rank 3)
 [10191] = { ref=1463 }, -- Mana Shield (Rank 4)
