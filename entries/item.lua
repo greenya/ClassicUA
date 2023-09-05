@@ -59,6 +59,7 @@ addonTable.item = {
 [829] = { "червона шкіряна бандана" }, -- Red Leather Bandana
 [841] = { "кишеньковий годинник Хмуроброва" }, -- Furlbrow's Pocket Watch
 [858] = { "мале зілля лікування", ref=118 }, -- Lesser Healing Potion
+[873] = { "посох Джордана", equip="Збільшує шкоду і зцілення від магічних заклинань і ефектів на {1}.#by up to {1}" }, -- Staff of Jordan, @equip Increases damage and healing done by magical spells and effects by up to 26.
 [884] = { "ребро гуля" }, -- Ghoul Rib
 [889] = { "вкритий пилом невідправлений лист", flavor="Давній, вкритий пилом, так і не відправлений лист." }, -- A Dusty Unsent Letter, @flavor This dusty letter from long ago was never sent.
 [910] = { "недоставлений лист", flavor="Потертий і старий, цей лист так не доставили." }, -- An Undelivered Letter, @flavor Weathered and old, this letter was never delivered.
@@ -237,6 +238,7 @@ addonTable.item = {
 [2225] = { "гострий кухонний ніж" }, -- Sharp Kitchen Knife
 [2230] = { "рукавички м'язів" }, -- Gloves of Brawn
 [2231] = { "інфернальна мантія", equip="Збільшує шкоду від заклинань і ефектів вогню на 23." }, -- Inferno Robe, @equip Increases damage done by Fire spells and effects by up to 23.
+[2236] = { "чорнозуб" }, -- Blackfang
 [2237] = { "штопані штани" }, -- Patched Pants
 [2238] = { "штани шибеника" }, -- Urchin's Pants
 [2239] = { "перстень Збирача", flavor="Вигравірувано: 'За багаторічну службу: -ЕВК'" }, -- The Collector's Ring, @flavor Engraved with the words 'For years of service: -EVC.'
@@ -1791,6 +1793,7 @@ addonTable.item = {
 [8169] = { "товста шкура" }, -- Thick Hide
 [8170] = { "рапава шкіра" }, -- Rugged Leather
 [8171] = { "рапава шкура" }, -- Rugged Hide
+[8226] = { "м'ясар" }, -- The Butcher
 [8343] = { "міцна шовкова нитка" }, -- Heavy Silken Thread
 [8344] = { "сріблопавутинні залози" }, -- Silvery Spinnerets
 [8363] = { "шаманський оберіг вуду" }, -- Shaman Voodoo Charm
