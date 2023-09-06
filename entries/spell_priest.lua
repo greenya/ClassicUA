@@ -343,7 +343,7 @@ local priest_spells = {
 [10899] = { ref=17 }, -- Power Word: Shield (Rank 8)
 [10900] = { ref=17 }, -- Power Word: Shield (Rank 9)
 [10901] = { ref=17 }, -- Power Word: Shield (Rank 10)
-[6788] = { "Знесилена душа", nil, "Не може бути захищений \"Словом сили: Щит\"." }, -- Weakened Soul (aura)
+[6788] = { "Знесилена душа", nil, "Не може бути захищений \"Словом сили: Щит\" повторно." }, -- Weakened Soul (aura)
 
 -- Prayer of Fortitude
 [21562] = { "Молитва стійкості", "Сила наповнює членів групи цілі, збільшує їхню витривалість на {1} на {2} год.#by {1} for {2} h", "Збільшує Витривалість на {1}.#by {1}" }, -- Prayer of Fortitude (Rank 1)

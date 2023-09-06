@@ -150,6 +150,11 @@ local warrior_spells = {
 [12972] = { ref=12319 }, -- Flurry (Rank 3)
 [12973] = { ref=12319 }, -- Flurry (Rank 4)
 [12974] = { ref=12319 }, -- Flurry (Rank 5)
+[12966] = { "Шквал", nil, "Швидкість атаки підвищено на {1}%.#increased by {1}%" }, -- Flurry (aura)
+[12967] = { ref=12966 }, -- Flurry (aura)
+[12968] = { ref=12966 }, -- Flurry (aura)
+[12969] = { ref=12966 }, -- Flurry (aura)
+[12970] = { ref=12966 }, -- Flurry (aura)
 
 -- Hamstring
 [1715] = { "Нівечення", "Калічить ворога, завдаючи {1} пошкодження та сповільнюючи його рух на {2}% на {3} с.#causing {1} damage#movement by {2}% for {3} sec", "Рух сповільнено на {1}%.#slowed by {1}" }, -- Hamstring (Rank 1)
