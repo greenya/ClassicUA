@@ -918,6 +918,7 @@ addonTable.item = {
 [4869] = { "кіготь Фіззла" }, -- Fizzle's Claw
 [4870] = { "уривки полотна" }, -- Canvas Scraps
 [4871] = { "опаляючий нашийник" }, -- Searing Collar
+[4881] = { "старий конверт" }, -- Aged Envelope
 [4882] = { "ключ Бенедикта" }, -- Benedict's Key
 [4883] = { "накази адмірала Праудмура" }, -- Admiral Proudmoore's Orders
 [4886] = { "отруйна залоза отрутохвоста" }, -- Venomtail Poison Sac
