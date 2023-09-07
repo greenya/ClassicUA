@@ -18,6 +18,7 @@ entries\race.lua
 entries\spell.lua
 entries\spell_mage.lua
 entries\spell_priest.lua
+entries\spell_shaman.lua
 entries\spell_warrior.lua
 entries\talent_tree.lua
 entries\text.lua
