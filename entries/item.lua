@@ -56,6 +56,7 @@ addonTable.item = {
 [805] = { "маленький червоний мішечок" }, -- Small Red Pouch
 [814] = { "фляга з мастилом" }, -- Flask of Oil
 [818] = { "тигрове око" }, -- Tigerseye
+[828] = { "маленький синій мішечок" }, -- Small Blue Pouch
 [829] = { "червона шкіряна бандана" }, -- Red Leather Bandana
 [841] = { "кишеньковий годинник Хмуроброва" }, -- Furlbrow's Pocket Watch
 [858] = { "мале зілля лікування", ref=118 }, -- Lesser Healing Potion
@@ -557,7 +558,12 @@ addonTable.item = {
 [3411] = { "пір'їна сови" }, -- Strigid Owl Feather
 [3412] = { "павутиннолісий шовк" }, -- Webwood Spider Silk
 [3418] = { "осквернена шишка" }, -- Fel Cone
+[3419] = { "червона троянда" }, -- Red Rose
+[3420] = { "чорна троянда" }, -- Black Rose
 [3421] = { "прості польові квіти" }, -- Simple Wildflowers
+[3422] = { "красиві польові квіти" }, -- Beautiful Wildflowers
+[3423] = { "букет білих троянд" }, -- Bouquet of White Roses
+[3424] = { "букет чорних троянд" }, -- Bouquet of Black Roses
 [3425] = { "сплетений жезл" }, -- Woven Wand
 [3431] = { "укріплений кістками шкіряний жилет" }, -- Bone-studded Leather
 [3434] = { "пісок дрімоти", use="Присипляє ворожу ціль на час до 20 сек. Після будь-якої заподіяної шкоди ціль прокинеться. Одночасно можна приспати лише одну ціль. (Відновлення 1 хв)" }, -- Slumber Sand, @use Puts the enemy target to sleep for up to 20 sec.  Any damage caused will awaken the target.  Only one target can be asleep at a time. (1 Min Cooldown)
@@ -794,6 +800,8 @@ addonTable.item = {
 [4467] = { "сигіла Іґная" }, -- Sigil of Ignaeus
 [4468] = { "Трол'Калар в піхвах", flavor="Легендарний меч Іґная Тролебоя." }, -- Sheathed Trol'kalar, @flavor The legendary blade of Ignaeus Trollbane.
 [4469] = { "скіпетр порядку" }, -- Rod of Order
+[4470] = { "проста деревина" }, -- Simple Wood
+[4471] = { "кремінь і трут" }, -- Flint and Tinder
 [4472] = { "сувій Мізраель", use="Викликає Мізраель з осколків Мізраель." }, -- Scroll of Myzrael, @use Summon Myzrael from the Shards of Myzrael.
 [4473] = { "містичні наручі" }, -- Eldritch Shackles
 [4479] = { "палаюча поваба", use="Позбувається буревійного вигнанця (Відновлення 10 сек)" }, -- Burning Charm, @use Banishes a Thundering Exile (10 Sec Cooldown)
@@ -812,6 +820,9 @@ addonTable.item = {
 [4493] = { "ельфійські самоцвіти" }, -- Elven Gems
 [4494] = { "запечатаний лист Морського Рога" }, -- Seahorn's Sealed Letter
 [4495] = { "кривавокамінний амулет" }, -- Bloodstone Amulet
+[4496] = { "маленький коричневий мішечок" }, -- Small Brown Pouch
+[4497] = { "важка коричнева сумка" }, -- Heavy Brown Bag
+[4498] = { "коричневий шкіряний ранець" }, -- Brown Leather Satchel
 [4502] = { "зразок ельфійського самоцвіту" }, -- Sample Elven Gem
 [4503] = { "бивень В'ялошкірих" }, -- Witherbark Tusk
 [4506] = { "штромґардський значок" }, -- Stromgarde Badge
@@ -908,6 +919,7 @@ addonTable.item = {
 [4848] = { "рило бойового кнура" }, -- Battleboar Snout
 [4849] = { "вирізка бойового кнура" }, -- Battleboar Flank
 [4850] = { "плани нападу Щетиношкурих" }, -- Bristleback Attack Plans
+[4851] = { "замазана брудом мапа" }, -- Dirt-stained Map
 [4854] = { "пошматований демонами плащ" }, -- Demon Scarred Cloak
 [4859] = { "медальйон Палаючого Леза" }, -- Burning Blade Medallion
 [4862] = { "хвіст скорпіда-робітника" }, -- Scorpid Worker Tail
@@ -1209,6 +1221,8 @@ addonTable.item = {
 [5547] = { "відтворений жезл" }, -- Reconstructed Rod
 [5565] = { "пекельний камінь" }, -- Infernal Stone
 [5570] = { "яйце мохового павука" }, -- Deepmoss Egg
+[5571] = { "маленький чорний мішечок" }, -- Small Black Pouch
+[5572] = { "маленький зелений мішечок" }, -- Small Green Pouch
 [5579] = { "молот повстанців" }, -- Militia Warhammer
 [5580] = { "молоток повстанців" }, -- Militia Hammer
 [5582] = { "каміннопазуриста живиця" }, -- Stonetalon Sap
@@ -1421,6 +1435,7 @@ addonTable.item = {
 [6223] = { "щит Темнодолу" }, -- Crest of Darkshire
 [6256] = { "вудка" }, -- Fishing Pole
 [6260] = { "блакитний барвник" }, -- Blue Dye
+[6261] = { "помаранчевий барвник" }, -- Orange Dye
 [6265] = { "уламок душі" }, -- Soul Shard
 [6281] = { "череп брязкокісткового скелета" }, -- Rattlecage Skull
 [6282] = { "священні поховальні штани" }, -- Sacred Burial Trousers
@@ -1457,6 +1472,7 @@ addonTable.item = {
 [6503] = { "мантія арлекіна" }, -- Harlequin Robes
 [6504] = { "клинок-крило" }, -- Wingblade
 [6505] = { "посох півмісяця" }, -- Crescent Staff
+[6522] = { "видозмінена риба", use="З'їж мене. (Відновлення 10 сек)" }, -- Deviate Fish, @use Eat me. (10 Sec Cooldown)
 [6529] = { "блискуча блешня", use="Оснащення вашої вудки такою блешнею збільшує навичку риболовлі на 25 протягом 10 хв." }, -- Shiny Bauble, @use When applied to your fishing pole, increases Fishing by 25 for 10 min.
 [6532] = { "райдужні блешні", use="Оснащення вашої вудки такою блешнею збільшує навичку риболовлі на 75 протягом 10 хв." }, -- Bright Baubles, @use When applied to your fishing pole, increases Fishing by 75 for 10 minutes.
 [6534] = { "бруски кованої сталі" }, -- Forged Steel Bars
@@ -1475,8 +1491,10 @@ addonTable.item = {
 [6654] = { "смолоскип вічного полум'я" }, -- Torch of the Eternal Flame
 [6655] = { "розжарена вуглинка" }, -- Glowing Ember
 [6656] = { "грубий кварц" }, -- Rough Quartz
+[6657] = { "пікантна видозмінена пожива", use="З'їж мене. (Відновлення 10 сек)" }, -- Savory Deviate Delight, @use Eat me. (10 Sec Cooldown)
 [6658] = { "зразок ошийника" }, -- Example Collar
 [6659] = { "штани скарабея" }, -- Scarab Trousers
+[6661] = { "рецепт: пікантна видозмінена пожива", use="Навчає вас готувати пікантну видозмінену поживу." }, -- Savory Deviate Delight, @use Teaches you how to cook a Savory Deviate Delight.
 [6662] = { "еліксир велетенського росту", use="Ваш розмір збільшено, а ваша сила зростає на {1}, відповідно до вашого нового розміру. Триває {2} хв. (Відновлення 3 сек)#up by {1}#Lasts {2} min" }, -- Elixir of Giant Growth, @use Your size is increased and your Strength goes up by 8 to match your new size. Lasts 2 min. (3 Sec Cooldown)
 [6663] = { "рецепт: Еліксир велетенського росту", use="Навчає вас створювати еліксир велетенського росту." }, -- Recipe: Elixir of Giant Growth, @use Teaches you how to make an Elixir of Giant Growth.
 [6664] = { "напліччя вуду" }, -- Voodoo Mantle
@@ -1958,6 +1976,7 @@ addonTable.item = {
 [10043] = { "благочестиві поножі" }, -- Pious Legwraps
 [10045] = { "прості лляні поножі" }, -- Simple Linen Pants
 [10283] = { "зразки вовчих сердець" }, -- Wolf Heart Samples
+[10290] = { "рожевий барвник" }, -- Pink Dye
 [10298] = { "перстень Гномреґану" }, -- Gnomeregan Band
 [10299] = { "амулет Гномреґану" }, -- Gnomeregan Amulet
 [10305] = { "сувій захисту IV", ref=3013 }, -- Scroll of Protection IV
@@ -2263,6 +2282,7 @@ addonTable.item = {
 [14256] = { "сквернотканина" }, -- Felcloth
 [14338] = { "порожня посудина для води", use="Наповнити водою з місячного колодязя Аубердіну." }, -- Empty Water Tube, @use Fill with water from the Auberdine moonwell.
 [14339] = { "посудина з водою місячного колодязя" }, -- Moonwell Water Tube
+[14341] = { "рунічна нитка" }, -- Rune Thread
 [14342] = { "місячне полотно" }, -- Mooncloth
 [14344] = { "великий блискучий осколок" }, -- Large Brilliant Shard
 [14381] = { "сумка Зловісного Тотема" }, -- Grimtotem Satchel
@@ -2708,7 +2728,7 @@ addonTable.item = {
 [20255] = { "черевики шереху", equip="Збільшує ефективність непомітності на 1 рівень." }, -- Whisperwalk Boots, @equip Increases your effective stealth level by 1.
 [20369] = { "азуритові бойові рукавиці", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%." }, -- Azurite Fists, @equip Improves your chance to get a critical strike with spells by 1%.
 [20381] = { "снолуска" }, -- Dreamscale
-[20503] = { "закоханий водяний дух", use="Створення поруч із заклинателем тотема джерела мани з 5 од. здоров'я на 24 сек, який відновлює 27 мани кожні 2 сек членам групи в радіусі 20 м. (Відновлення 3 хв)" }, -- Enamored Water Spirit, @use Summons a Mana Spring Totem with 5 health at the feet of the caster for 24 sec that restores 27 mana every 2 seconds to group members within 20 yards. (3 Min Cooldown)
+[20503] = { "закоханий водяний дух", use="Викликає тотем джерела мани з {1} здоров'я біля заклинача на {2} с, який відновлює {3} мани кожні {4} с членам групи у радіусі {5} м. (Відновлення 3 хв)#with {1} health#for {2} sec#{3} mana every {4} sec#within {5} y" }, -- Enamored Water Spirit, @use Summons a Mana Spring Totem with 5 health at the feet of the caster for 24 sec that restores 27 mana every 2 seconds to group members within 20 yards. (3 Min Cooldown)
 [20504] = { "клинок зі світлосталі", equip="Збільшує шкоду від заклинань і ефектів світла на 16." }, -- Lightforged Blade, @equip Increases damage done by Holy spells and effects by up to 16.
 [20505] = { "лицарська печатка", equip="Збільшує зцілення від заклинань і ефектів на 15." }, -- Chivalrous Signet, @equip Increases healing done by spells and effects by up to 15.
 [20512] = { "освячена сфера", use="Збільшує шанс нанесення критичного удару заклинаннями та атаками ближнього бою на 3%.  Триває 25 сек. (Відновлення 3 хв)" }, -- Sanctified Orb, @use Increases your critical strike chance with spells and melee attacks by 3%.  Lasts 25 sec. (3 Min Cooldown)
