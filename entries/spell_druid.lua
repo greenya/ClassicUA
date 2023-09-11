@@ -545,27 +545,4 @@ local druid_spells = {
 
 }
 
--- for k, v in pairs(druid_spells) do addonTable.spell[k] = v end
-
--- !! DEBUG
-for k, v in pairs(druid_spells) do
-    if type(v[1]) == "string" then
-        v[1] = v[1] .. " // DRUID"
-    end
-    if v.ref then
-        if v.ref == k then
-            print("[!] SPELL #" .. k .. " REFERENCING ITSELF")
-        else
-            local r = druid_spells[v.ref] or addonTable.spell[v.ref]
-            if not r then
-                print("[!] SPELL #" .. k .. " REFERENCING UNKNOWN SPELL #" .. v.ref)
-            elseif r.ref then
-                print("[!] SPELL #" .. k .. " REFERENCING REF SPELL #" .. v.ref)
-            end
-        end
-    end
-    if addonTable.spell[k] then
-        print("[!] REPLACING SPELL #" .. k)
-    end
-    addonTable.spell[k] = v
-end
+for k, v in pairs(druid_spells) do addonTable.spell[k] = v end
