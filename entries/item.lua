@@ -1212,6 +1212,7 @@ addonTable.item = {
 [5520] = { "щоденник Велінди" }, -- Velinde's Journal
 [5521] = { "ключ Велінди" }, -- Velinde's Key
 [5522] = { "камінь чарів", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%.", use="Усуває всі магічні ефекти з заклинача та поглинає 400 магічної шкоди протягом 1 хв." }, -- Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 400 magic damage for 1 min.
+[5530] = { "сліпучий порошок" }, -- Blinding Powder
 [5533] = { "фоліант Ілкруда Маґтрулла" }, -- Ilkrud Magthrull's Tome
 [5535] = { "Компендіум полеглих" }, -- Compendium of the Fallen
 [5536] = { "Мітологія титанів" }, -- Mythology of the Titans
