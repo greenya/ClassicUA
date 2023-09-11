@@ -236,7 +236,7 @@ local shaman_spells = {
 [16234] = { ref=16181 }, -- Healing Focus (Rank 5)
 
 -- Healing Grace
-[29187] = { "Цілюще благовоління", "Зменшує загрозу, спричинену вашими закляттями зцілення, на {1}%.#by {1}" }, -- Healing Grace (Rank 1)
+[29187] = { "Цілюще благовоління", "Зменшує загрозу від ваших заклять зцілення на {1}%.#by {1}" }, -- Healing Grace (Rank 1)
 [29189] = { ref=29187 }, -- Healing Grace (Rank 2)
 [29191] = { ref=29187 }, -- Healing Grace (Rank 3)
 
