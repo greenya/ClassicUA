@@ -185,7 +185,7 @@ local warrior_spells = {
 [12861] = { ref=12318 }, -- Improved Battle Shout (Rank 5)
 
 -- Improved Berserker Rage
-[20500] = { "Покращена лють берсерка", "При використанні здібність \"Лють берсерка\" генерує {1} люті.#generate {1} rage" }, -- Improved Berserker Rage (Rank 1)
+[20500] = { "Покращена лють берсерка", "При активації, здібність \"Лють берсерка\" генерує {1} люті.#generate {1} rage" }, -- Improved Berserker Rage (Rank 1)
 [20501] = { ref=20500 }, -- Improved Berserker Rage (Rank 2)
 
 -- Improved Bloodrage
@@ -214,7 +214,7 @@ local warrior_spells = {
 [12807] = { ref=12313 }, -- Improved Disarm (Rank 3)
 
 -- Improved Execute
-[20502] = { "Покращена страта", "Зменшує витрати люті на здібність \"Страта\" на {1}.#ability by {1}" }, -- Improved Execute (Rank 1)
+[20502] = { "Покращена страта", "Зменшує витрати люті здібності \"Страта\" на {1}.#ability by {1}" }, -- Improved Execute (Rank 1)
 [20503] = { ref=20502 }, -- Improved Execute (Rank 2)
 
 -- Improved Hamstring
@@ -418,7 +418,7 @@ local warrior_spells = {
 [12292] = { "Розлогі удари", "Наступні ваші {1} атак ближнього бою вражають додаткового супротивника поблизу.#next {1} melee", "Наступні ваші {1} атак ближнього бою вражають додаткового супротивника поблизу.#next {1} melee" }, -- Sweeping Strikes
 
 -- Sword Specialization
-[12281] = { "Спеціалізація на мечах", "Надає {1}% імовірності провести додаткову атаку на ту ж ціль після нанесення пошкоджень мечем.#{1}% chance" }, -- Sword Specialization (Rank 1)
+[12281] = { "Спеціалізація на мечах", "Надає {1}% імовірності провести додаткову атаку по тій самій цілі після нанесення пошкодженя мечем.#{1}% chance" }, -- Sword Specialization (Rank 1)
 [12812] = { ref=12281 }, -- Sword Specialization (Rank 2)
 [12813] = { ref=12281 }, -- Sword Specialization (Rank 3)
 [12814] = { ref=12281 }, -- Sword Specialization (Rank 4)
