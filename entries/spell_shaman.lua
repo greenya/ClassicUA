@@ -350,7 +350,7 @@ local shaman_spells = {
 [10601] = { ref=10595 }, -- Nature Resistance Totem (Rank 3)
 
 -- Nature's Guidance
-[16180] = { "Сприяння природи", "Збільшує вашу ймовірність влучити в ближньому бою та закляттями на {1}%.#by {1}" }, -- Nature's Guidance (Rank 1)
+[16180] = { "Сприяння природи", "Збільшує вашу ймовірність поцілити в ближньому бою та закляттями на {1}%.#by {1}" }, -- Nature's Guidance (Rank 1)
 [16196] = { ref=16180 }, -- Nature's Guidance (Rank 2)
 [16198] = { ref=16180 }, -- Nature's Guidance (Rank 3)
 

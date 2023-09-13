@@ -124,7 +124,7 @@ local warrior_spells = {
 [676] = { "Роззброєння", "Роззброює ворога на {1} с.#for {1} sec", "Роззброєно!" }, -- Disarm
 
 -- Dual Wield Specialization
-[23584] = { "Спеціалізація на бою з двох рук", "Збільшує пошкодження, заподіяне вашою зброєю для іншої руки, на {1}%.#weapon by {1}" }, -- Dual Wield Specialization (Rank 1)
+[23584] = { "Спеціалізація на бою з двох рук", "Збільшує пошкодження, заподіяне вашою зброєю в іншій руці, на {1}%.#weapon by {1}" }, -- Dual Wield Specialization (Rank 1)
 [23585] = { ref=23584 }, -- Dual Wield Specialization (Rank 2)
 [23586] = { ref=23584 }, -- Dual Wield Specialization (Rank 3)
 [23587] = { ref=23584 }, -- Dual Wield Specialization (Rank 4)
