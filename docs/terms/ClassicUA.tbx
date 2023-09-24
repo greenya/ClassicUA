@@ -1842,7 +1842,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="5737c6ec2e0716f3d8a7a5c4e0de0d9a322-uk">Битва при горі Хіджал</term>
+            <term id="5737c6ec2e0716f3d8a7a5c4e0de0d9a322-uk">Битва при горі Гіджал</term>
           </tig>
         </langSet>
       </termEntry>
@@ -1850,7 +1850,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="f2fc990265c712c49d51a18a32b39f0c324-en">Nordrassil</term>
-            <descrip type="definition">локація, гора Хіджал</descrip>
+            <descrip type="definition">локація, гора Гіджал</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -4170,7 +4170,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="f79921bbae40a577928b76d2fc3edc2a688-uk">гора Хіджал</term>
+            <term id="f79921bbae40a577928b76d2fc3edc2a688-uk">гора Гіджал</term>
           </tig>
         </langSet>
       </termEntry>
@@ -8125,7 +8125,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="5caf41d62364d5b41a893adc1a9dd5d41304-uk">Кромі</term>
+            <term id="5caf41d62364d5b41a893adc1a9dd5d41304-uk">Хромі</term>
           </tig>
         </langSet>
       </termEntry>
@@ -8645,7 +8645,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="5ca3e9b122f61f8f06494c97b1afccf31384-uk">Північномостова лісопилка</term>
+            <term id="5ca3e9b122f61f8f06494c97b1afccf31384-uk">Північномостова лісопильня</term>
           </tig>
         </langSet>
       </termEntry>
@@ -9152,7 +9152,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="6d9cb7de5e8ac30bd5e8734bc96a35c11466-uk">оселя Квел'Даніл</term>
+            <term id="6d9cb7de5e8ac30bd5e8734bc96a35c11466-uk">оселя Кель'Даніл</term>
           </tig>
         </langSet>
       </termEntry>
@@ -9711,7 +9711,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="351b33587c5fdd93bd42ef7ac9995a281552-uk">ґромокров</term>
+            <term id="351b33587c5fdd93bd42ef7ac9995a281552-uk">кров Ґрома</term>
           </tig>
         </langSet>
       </termEntry>
@@ -12883,7 +12883,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="584b98aac2dddf59ee2cf19ca4ccb75e2052-uk">Лігво нічних ткачів</term>
+            <term id="584b98aac2dddf59ee2cf19ca4ccb75e2052-uk">Лігво нічних колопрядів</term>
           </tig>
         </langSet>
       </termEntry>
@@ -14417,7 +14417,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="c3614206a443012045cfd75d2600af2d2288-uk">хижина Кель'Лішен</term>
+            <term id="c3614206a443012045cfd75d2600af2d2288-uk">хижина Квел'Лішен</term>
           </tig>
         </langSet>
       </termEntry>
@@ -19084,7 +19084,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="22722a343513ed45f14905eb076216863010-uk">табір Апарає</term>
+            <term id="22722a343513ed45f14905eb076216863010-uk">табір Апарахе</term>
           </tig>
         </langSet>
       </termEntry>
@@ -24271,7 +24271,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="b994697479c5716eda77e8e9713e5f0f3818-uk">маршал Червоношлях</term>
+            <term id="b994697479c5716eda77e8e9713e5f0f3818-uk">маршал Редпат</term>
           </tig>
         </langSet>
       </termEntry>
@@ -35841,7 +35841,7 @@
         </langSet>
         <langSet xml:lang="uk">
           <tig>
-            <term id="b4681a619cf018eed690452faeb0e94f5622-uk">Голґар Штормосокир</term>
+            <term id="b4681a619cf018eed690452faeb0e94f5622-uk">Голґар Шторморуб</term>
           </tig>
         </langSet>
       </termEntry>
@@ -50760,7 +50760,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="cbf4d310ea68b3933521ba359d33ed5e7924-en">sapta</term>
-            <descrip type="definition">мова, напій для поєднання духа шамана з елементами</descrip>
+            <descrip type="definition">мова, напій для поєднання духа шамана зі стихіями</descrip>
           </tig>
         </langSet>
         <langSet xml:lang="uk">
@@ -55062,7 +55062,7 @@
       <termEntry id="586ee5cb5f17541372cdd7d54b6414d78589">
         <langSet xml:lang="uk">
           <tig>
-            <term id="586ee5cb5f17541372cdd7d54b6414d78589-uk">хворий грізлі</term>
+            <term id="586ee5cb5f17541372cdd7d54b6414d78589-uk">хворий гризлі</term>
           </tig>
         </langSet>
         <langSet xml:lang="en">
@@ -59846,7 +59846,7 @@
       <termEntry id="a7968b4339a1b85b7dbdb362dc44f9c49325">
         <langSet xml:lang="uk">
           <tig>
-            <term id="a7968b4339a1b85b7dbdb362dc44f9c49325-uk">вартовий Залізогарту</term>
+            <term id="a7968b4339a1b85b7dbdb362dc44f9c49325-uk">вартовий Залізогарта</term>
           </tig>
         </langSet>
         <langSet xml:lang="en">
@@ -64968,13 +64968,13 @@
       <termEntry id="e52ff15f1c6cff78c4e54fd19026256d10113">
         <langSet xml:lang="uk">
           <tig>
-            <term id="e52ff15f1c6cff78c4e54fd19026256d10113-uk">Азурегос</term>
+            <term id="e52ff15f1c6cff78c4e54fd19026256d10113-uk">Азуреґос</term>
           </tig>
         </langSet>
         <langSet xml:lang="en">
           <tig>
             <term id="e52ff15f1c6cff78c4e54fd19026256d10113-en">Azuregos</term>
-            <descrip type="definition">нпц, синій дракон, #6109, #15481 дух Азурегоса</descrip>
+            <descrip type="definition">нпц, синій дракон, #6109, #15481 дух Азуреґоса</descrip>
           </tig>
         </langSet>
       </termEntry>
@@ -65053,6 +65053,890 @@
           <tig>
             <term id="4d22136ec8f25b566fdd61bc0d5045b410125-en">Slag Pit</term>
             <descrip type="definition">локація, Випалена ущелина</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1b2bae9eed46f0f6d38fdf582952f3b110127">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1b2bae9eed46f0f6d38fdf582952f3b110127-uk">Чумний Шрам</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1b2bae9eed46f0f6d38fdf582952f3b110127-en">Infectis Scar</term>
+            <descrip type="definition">локація, Східні Зачумлені землі</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="771f8512d26b406d003adb901e3bfc6a10129">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="771f8512d26b406d003adb901e3bfc6a10129-uk">Підцарина</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="771f8512d26b406d003adb901e3bfc6a10129-en">Undercroft</term>
+            <descrip type="definition">локація, крипта, Східні Зачумлені землі</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="50d2e70cdf7dd05be85e1b8df3f8ced410131">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="50d2e70cdf7dd05be85e1b8df3f8ced410131-uk">Багряний бастіон</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="50d2e70cdf7dd05be85e1b8df3f8ced410131-en">Scarlet Bastion</term>
+            <descrip type="definition">локація, Стратгольм</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="51cdbd2611e844ece5d80878eb77043610133">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="51cdbd2611e844ece5d80878eb77043610133-uk">фортеця Марденгольд</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="51cdbd2611e844ece5d80878eb77043610133-en">Mardenholde Keep</term>
+            <descrip type="definition">локація, фортеця, Західні Зачумлені землі</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="36bedb6eb7152f39b16328448942822b10135">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="36bedb6eb7152f39b16328448942822b10135-uk">узбережжя Темного Списа</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="36bedb6eb7152f39b16328448942822b10135-en">Darkspear Strand</term>
+            <descrip type="definition">локація, Дуротар</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="715e8ba46f8bc29c24f3fbfdb8d96d7110137">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="715e8ba46f8bc29c24f3fbfdb8d96d7110137-uk">фортеця Ґроммаша</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="715e8ba46f8bc29c24f3fbfdb8d96d7110137-en">Grommash Hold</term>
+            <descrip type="definition">локація, Оргріммар</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="2b1d520ee7fa77e7ff90488dcd7b346710139">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="2b1d520ee7fa77e7ff90488dcd7b346710139-uk">ферма Тор'кренів</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="2b1d520ee7fa77e7ff90488dcd7b346710139-en">Tor'kren Farm</term>
+            <descrip type="definition">локація, Дуротар</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="5c12a4bcabe8958990462298b551089310141">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="5c12a4bcabe8958990462298b551089310141-uk">вівтар полеглого воїна</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="5c12a4bcabe8958990462298b551089310141-en">Shrine of the Fallen Warrior</term>
+            <descrip type="definition">локація, Степи</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="788b4ac1e172d8e520c2b9461c0a3d3510143">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="788b4ac1e172d8e520c2b9461c0a3d3510143-uk">південна Золота дорога</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="788b4ac1e172d8e520c2b9461c0a3d3510143-en">Southern Gold Road</term>
+            <descrip type="definition">локація, Степи</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="7520fa31d14f45add6d61e52df5a03ff10145">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="7520fa31d14f45add6d61e52df5a03ff10145-uk">Сходи Тідуса</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="7520fa31d14f45add6d61e52df5a03ff10145-en">The Tidus Stair</term>
+            <descrip type="definition">локація, Степи</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="f5c59267dae7d123f54b741a76f28f8410147">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="f5c59267dae7d123f54b741a76f28f8410147-uk">річка Чорного вовка</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="f5c59267dae7d123f54b741a76f28f8410147-en">Blackwolf River</term>
+            <descrip type="definition">локація, Каміннопазуристі гори</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="524265e8b942930fbbe8a5d979d2920510149">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="524265e8b942930fbbe8a5d979d2920510149-uk">Рада Припливів</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="524265e8b942930fbbe8a5d979d2920510149-en">Tribunal of the Tides</term>
+            <descrip type="definition">група</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="6375f34725de10852675ac6ee7dc9e4010151">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="6375f34725de10852675ac6ee7dc9e4010151-uk">Тінистий закуток</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="6375f34725de10852675ac6ee7dc9e4010151-en">The Shady Nook</term>
+            <descrip type="definition">локація, Ясенеділ</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="197e342c9fbad962dbe6d3322f723ca610153">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="197e342c9fbad962dbe6d3322f723ca610153-uk">Камінь духів</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="197e342c9fbad962dbe6d3322f723ca610153-en">Spirit Rock</term>
+            <descrip type="definition">локація, Дуротар</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="17737832ac17be5216f187a82c20936e10155">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="17737832ac17be5216f187a82c20936e10155-uk">тотем очищення отрут</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="17737832ac17be5216f187a82c20936e10155-en">Poison Cleansing Totem</term>
+            <descrip type="definition">нпц, мінорний, #5923</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="cadc4583c983c78f9cb03ec0a7ddaf1f10157">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="cadc4583c983c78f9cb03ec0a7ddaf1f10157-uk">тотем очищення хвороб</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="cadc4583c983c78f9cb03ec0a7ddaf1f10157-en">Disease Cleansing Totem</term>
+            <descrip type="definition">нпц, мінорний, #5924</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="4d410063822cd9be28f86701c0bc3a3110159">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="4d410063822cd9be28f86701c0bc3a3110159-uk">тотем затишшя</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="4d410063822cd9be28f86701c0bc3a3110159-en">Tranquil Air Totem</term>
+            <descrip type="definition">нпц, мінорний, #15803</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b569502f473b890f9fcfc45b8a227baa10161">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b569502f473b890f9fcfc45b8a227baa10161-uk">тотем заземлення</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b569502f473b890f9fcfc45b8a227baa10161-en">Grounding Totem</term>
+            <descrip type="definition">нпц, мінорний, #5925</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="33a854e247155d590883b93bca53848a10163">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="33a854e247155d590883b93bca53848a10163-uk">тотем земного зв'язування</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="33a854e247155d590883b93bca53848a10163-en">Earthbind Totem</term>
+            <descrip type="definition">нпц, мінорний, #2630</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e1a0d53a534014217b7961d1870ee76b10165">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e1a0d53a534014217b7961d1870ee76b10165-uk">тотем тремтіння</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e1a0d53a534014217b7961d1870ee76b10165-en">Tremor Totem</term>
+            <descrip type="definition">нпц, мінорний, #5913</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="dff70232bcd2396f4a6c7bb57dab3e8710167">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="dff70232bcd2396f4a6c7bb57dab3e8710167-uk">сторожовий тотем</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="dff70232bcd2396f4a6c7bb57dab3e8710167-en">Sentry Totem</term>
+            <descrip type="definition">нпц, мінорний, #3968</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ddd808772c035aed516d42ad3559be5f10169">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ddd808772c035aed516d42ad3559be5f10169-uk">тотем вогненного спалаху</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ddd808772c035aed516d42ad3559be5f10169-en">Fire Nova Totem</term>
+            <descrip type="definition">нпц, мінорний, #5879, #6110 тотем вогненного спалаху II, #6111 тотем вогненного спалаху III, #7844 тотем вогненного спалаху IV, #7845 тотем вогненного спалаху V</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="a6a71cb59c7579f7039912b62d92e2f110171">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="a6a71cb59c7579f7039912b62d92e2f110171-uk">тотем супротиву вогню</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="a6a71cb59c7579f7039912b62d92e2f110171-en">Fire Resistance Totem</term>
+            <descrip type="definition">нпц, мінорний, #5927, #7424 тотем супротиву вогню II, #7425 тотем супротиву вогню III</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="7866731eed67dc3be9693b33f50fdb4810173">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="7866731eed67dc3be9693b33f50fdb4810173-uk">тотем супротиву кризі</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="7866731eed67dc3be9693b33f50fdb4810173-en">Frost Resistance Totem</term>
+            <descrip type="definition">нпц, мінорний, #5926, #7412 тотем супротиву кризі II, #7413 тотем супротиву кризі III</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3f7c70f2a2831ebfb908d7d829f2e99d10175">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3f7c70f2a2831ebfb908d7d829f2e99d10175-uk">тотем супротиву природі</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3f7c70f2a2831ebfb908d7d829f2e99d10175-en">Nature Resistance Totem</term>
+            <descrip type="definition">нпц, мінорний, #7467, #7468 тотем супротиву природі II, #7469 тотем супротиву природі III</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="373f32fe149adc95e1dae88d8993a67810177">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="373f32fe149adc95e1dae88d8993a67810177-uk">тотем язика полум'я</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="373f32fe149adc95e1dae88d8993a67810177-en">Flametongue Totem</term>
+            <descrip type="definition">нпц, мінорний, #5950, #6012 тотем язика полум'я II, #7423 тотем язика полум'я III, #10557 тотем язика полум'я IV</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1fcee5e040cf2cb786883eb2afd6f47f10179">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1fcee5e040cf2cb786883eb2afd6f47f10179-uk">тотем магми</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1fcee5e040cf2cb786883eb2afd6f47f10179-en">Magma Totem</term>
+            <descrip type="definition">нпц, мінорний, #5929, #7464 тотем магми II, #7465 тотем магми III, #7466 тотем магми IV</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ac457ba972fb63b7994befc83f77474610181">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ac457ba972fb63b7994befc83f77474610181-uk">тотем обпалення</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ac457ba972fb63b7994befc83f77474610181-en">Searing Totem</term>
+            <descrip type="definition">нпц, мінорний, #2523, #3902 тотем обпалення II, #3903 тотем обпалення III, #3904 тотем обпалення IV, #7400 тотем обпалення V, #7402 тотем обпалення VI</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="85a4413ecea7122bcc399cf0a53bba2610183">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="85a4413ecea7122bcc399cf0a53bba2610183-uk">тотем поваби вітру</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="85a4413ecea7122bcc399cf0a53bba2610183-en">Grace of Air Totem</term>
+            <descrip type="definition">нпц, мінорний, #7486, #7487 тотем поваби вітру II, #15463 тотем поваби вітру III</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="00db544eb12c05386ea51a6bff8803e710185">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="00db544eb12c05386ea51a6bff8803e710185-uk">тотем сили землі</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="00db544eb12c05386ea51a6bff8803e710185-en">Strength of Earth Totem</term>
+            <descrip type="definition">нпц, мінорний, #5874, #5921 тотем сили землі II, #5922 тотем сили землі III, #7403 тотем сили землі IV, #15464 тотем сили землі V</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="18df51b97ccd68128e994804f3eccc8710187">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="18df51b97ccd68128e994804f3eccc8710187-uk">тотем кам'яного пазура</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="18df51b97ccd68128e994804f3eccc8710187-en">Stoneclaw Totem</term>
+            <descrip type="definition">нпц, мінорний, #3579, #3911 тотем кам'яного пазура II, #3912 тотем кам'яного пазура III, #3913 тотем кам'яного пазура IV, #7398 тотем кам'яного пазура V, #7399 тотем кам'яного пазура VI</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="6217b2f7e4634fa665d31d3b4df81b5610189">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="6217b2f7e4634fa665d31d3b4df81b5610189-uk">тотем кам'яної шкіри</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="6217b2f7e4634fa665d31d3b4df81b5610189-en">Stoneskin Totem</term>
+            <descrip type="definition">нпц, мінорний, #5873, #5919 тотем кам'яної шкіри II, #5920 тотем кам'яної шкіри III, #7366 тотем кам'яної шкіри IV, #7367 тотем кам'яної шкіри V, #7368 тотем кам'яної шкіри VI</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="6b8027f8d0ccac45349d84a80667a0bc10191">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="6b8027f8d0ccac45349d84a80667a0bc10191-uk">тотем цілющого потоку</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="6b8027f8d0ccac45349d84a80667a0bc10191-en">Healing Stream Totem</term>
+            <descrip type="definition">нпц, мінорний, #3527, #3906 тотем цілющого потоку II, #3907 тотем цілющого потоку III, #3908 тотем цілющого потоку IV, #3909 тотем цілющого потоку V</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ede862db5ba2829c43eed59705e9bcdb10193">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ede862db5ba2829c43eed59705e9bcdb10193-uk">тотем джерела мани</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ede862db5ba2829c43eed59705e9bcdb10193-en">Mana Spring Totem</term>
+            <descrip type="definition">нпц, мінорний, #3573, #7414 тотем джерела мани II, #7415 тотем джерела мани III, #7416 тотем джерела мани IV</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e7e4a06cffd978919b99f0b17b10ad7610195">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e7e4a06cffd978919b99f0b17b10ad7610195-uk">тотем припливу мани</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e7e4a06cffd978919b99f0b17b10ad7610195-en">Mana Tide Totem</term>
+            <descrip type="definition">нпц, мінорний, #10467, #11100 тотем припливу мани II, #11101 тотем припливу мани III</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="ea67d66c5b01e5aa93fd5407f041b53d10197">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="ea67d66c5b01e5aa93fd5407f041b53d10197-uk">тотем буревію</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="ea67d66c5b01e5aa93fd5407f041b53d10197-en">Windfury Totem</term>
+            <descrip type="definition">нпц, мінорний, #6112, #7483 тотем буревію II, #7484 тотем буревію III</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="0237a65a5396a6e4a6da6e1308ccc4e010199">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0237a65a5396a6e4a6da6e1308ccc4e010199-uk">тотем стіни вітру</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="0237a65a5396a6e4a6da6e1308ccc4e010199-en">Windwall Totem</term>
+            <descrip type="definition">нпц, мінорний, #9687, #9688 тотем стіни вітру II, #9689 тотем стіни вітру III</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="7fd3b80fb1884e2927df46a7139bb8bf10201">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="7fd3b80fb1884e2927df46a7139bb8bf10201-uk">тотем невидимості</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="7fd3b80fb1884e2927df46a7139bb8bf10201-en">Invisibility Totem</term>
+            <descrip type="definition">нпц, мінорний, #3580</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="9af1b63534609a9c0068fef43dfb87e910203">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="9af1b63534609a9c0068fef43dfb87e910203-uk">тотем стихійного захисту</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="9af1b63534609a9c0068fef43dfb87e910203-en">Elemental Protection Totem</term>
+            <descrip type="definition">нпц, мінорний, #6016</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="5d541464ac15bfb8f0a537b010d13fa110205">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="5d541464ac15bfb8f0a537b010d13fa110205-uk">тотем потоку лави</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="5d541464ac15bfb8f0a537b010d13fa110205-en">Lava Spout Totem</term>
+            <descrip type="definition">нпц, мінорний, #6017</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="8171ac2c5544a5cb54ac0f38bf477af410207">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="8171ac2c5544a5cb54ac0f38bf477af410207-uk">тотем землехвату</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="8171ac2c5544a5cb54ac0f38bf477af410207-en">Earthgrab Totem</term>
+            <descrip type="definition">нпц, мінорний, #6066</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="0f83556a305d789b1d71815e8ea4f4b010209">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0f83556a305d789b1d71815e8ea4f4b010209-uk">тотем Атал'ай</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="0f83556a305d789b1d71815e8ea4f4b010209-en">Atal'ai Totem</term>
+            <descrip type="definition">нпц, мінорний, #8510</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="115c51eb37365df2d4f4e2482b96482210211">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="115c51eb37365df2d4f4e2482b96482210211-uk">опікаючий тотем</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="115c51eb37365df2d4f4e2482b96482210211-en">Scorching Totem</term>
+            <descrip type="definition">нпц, мінорний, #9637</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="4c9c3070235a7af934be4e46215c0cbc10213">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="4c9c3070235a7af934be4e46215c0cbc10213-uk">тотем місячного зблиску</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="4c9c3070235a7af934be4e46215c0cbc10213-en">Moonflare Totem</term>
+            <descrip type="definition">нпц, мінорний, #10183</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1a09a1f048354ae7570bf137f30abd2110215">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1a09a1f048354ae7570bf137f30abd2110215-uk">тотем вогняного ляпасу</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1a09a1f048354ae7570bf137f30abd2110215-en">Flame Buffet Totem</term>
+            <descrip type="definition">нпц, мінорний, #10217</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="8bc56cf0bafb2650146f3e48cb85d25710217">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="8bc56cf0bafb2650146f3e48cb85d25710217-uk">тотем льоду</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="8bc56cf0bafb2650146f3e48cb85d25710217-en">Ice Totem</term>
+            <descrip type="definition">нпц, мінорний, #12141</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1531beb762df4029513ebf9295e0d34f10219">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1531beb762df4029513ebf9295e0d34f10219-uk">кришталевий тотем Грізного Молоту</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1531beb762df4029513ebf9295e0d34f10219-en">Dire Maul Crystal Totem</term>
+            <descrip type="definition">нпц, мінорний, #13916</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="a59afb1b7d82ec353921a55c579ee26d10221">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="a59afb1b7d82ec353921a55c579ee26d10221-uk">тотем промивки мізків</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="a59afb1b7d82ec353921a55c579ee26d10221-en">Brain Wash Totem</term>
+            <descrip type="definition">нпц, мінорний, #15112</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3b3dda5d26f6b954027854709b476c7510223">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3b3dda5d26f6b954027854709b476c7510223-uk">древній тотем джерела мани</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3b3dda5d26f6b954027854709b476c7510223-en">Ancient Mana Spring Totem</term>
+            <descrip type="definition">нпц, мінорний, #15304</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="dfb8e1450abdf50cc0f260e0e7a6229610225">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="dfb8e1450abdf50cc0f260e0e7a6229610225-uk">тотем духів</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="dfb8e1450abdf50cc0f260e0e7a6229610225-en">Spirit Totem</term>
+            <descrip type="definition">нпц, мінорний, #15363</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c0a0756dd0a93eb7c840fdeb3c65808e10227">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c0a0756dd0a93eb7c840fdeb3c65808e10227-uk">тотем блискавок</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c0a0756dd0a93eb7c840fdeb3c65808e10227-en">Lightning Totem</term>
+            <descrip type="definition">нпц, мінорний, #16385</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="70876df606415b050df59005c3cff23810229">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="70876df606415b050df59005c3cff23810229-uk">споганений тотем</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="70876df606415b050df59005c3cff23810229-en">Corrupted Totem</term>
+            <descrip type="definition">нпц, мінорний, #14667</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d36cad380b069785900bcfd258bdecea10231">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d36cad380b069785900bcfd258bdecea10231-uk">споганений тотем вогненного спалаху</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d36cad380b069785900bcfd258bdecea10231-en">Corrupted Fire Nova Totem</term>
+            <descrip type="definition">нпц, мінорний, #14662 споганений тотем вогненного спалаху V</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="edf959e1c2188ad869e9cf0294c53c8c10233">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="edf959e1c2188ad869e9cf0294c53c8c10233-uk">споганений тотем кам'яної шкіри</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="edf959e1c2188ad869e9cf0294c53c8c10233-en">Corrupted Stoneskin Totem</term>
+            <descrip type="definition">нпц, мінорний, #14663 споганений тотем кам'яної шкіри VI</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d87d3902e1c4efdc9d79e94c4921bb4010235">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d87d3902e1c4efdc9d79e94c4921bb4010235-uk">споганений тотем цілющого потоку</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d87d3902e1c4efdc9d79e94c4921bb4010235-en">Corrupted Healing Stream Totem</term>
+            <descrip type="definition">нпц, мінорний, #14664 споганений тотем цілющого потоку V</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="c589c3a8f99401b24b9380e86d93984210237">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="c589c3a8f99401b24b9380e86d93984210237-uk">споганений тотем буревію</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="c589c3a8f99401b24b9380e86d93984210237-en">Corrupted Windfury Totem</term>
+            <descrip type="definition">нпц, мінорний, #14666 споганений тотем буревію III</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="1e9491470749d5b0e361ce4f0b24d03710239">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="1e9491470749d5b0e361ce4f0b24d03710239-uk">видіння рівнин</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="1e9491470749d5b0e361ce4f0b24d03710239-en">The Plains Vision</term>
+            <descrip type="definition">нпц, мінорний, #2983</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="8944871f1c9865a77a3d9c92cadf124d10245">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="8944871f1c9865a77a3d9c92cadf124d10245-uk">Гніздів'я</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="8944871f1c9865a77a3d9c92cadf124d10245-en">Rookery</term>
+            <descrip type="definition">локація, Чорноскельний шпиль</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="bcd0049c35799cdf57d06eaf2eb3cff610247">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="bcd0049c35799cdf57d06eaf2eb3cff610247-uk">Каріель Вінталій</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="bcd0049c35799cdf57d06eaf2eb3cff610247-en">Kariel Winthalus</term>
+            <descrip type="definition">нпц, вищий ельф, чол, deprecated</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="28fda3e1d182e68d525267166df815af10249">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="28fda3e1d182e68d525267166df815af10249-uk">Смутна могила</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="28fda3e1d182e68d525267166df815af10249-en">Shadow Grave</term>
+            <descrip type="definition">локація, Тірісфальське перелісся</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="5802616ab4339506fd33d45bfde3884b10251">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="5802616ab4339506fd33d45bfde3884b10251-uk">Тельмій Снохочий</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="5802616ab4339506fd33d45bfde3884b10251-en">Telmius Dreamseeker</term>
+            <descrip type="definition">нпц, вищий ельф, чол</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="2737a91408afcc2526e348105892dd3a10253">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="2737a91408afcc2526e348105892dd3a10253-uk">печера Туманів</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="2737a91408afcc2526e348105892dd3a10253-en">Cavern of Mists</term>
+            <descrip type="definition">локація, Степи</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d093e56ef752adba41e5eaf26d1960a710255">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d093e56ef752adba41e5eaf26d1960a710255-uk">джерела Ґолакка</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d093e56ef752adba41e5eaf26d1960a710255-en">Golakka Springs Crater</term>
+            <descrip type="definition">локація, кратер Ун'Ґоро</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="9578a63fbe545bd82cc5bbe749636af110257">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="9578a63fbe545bd82cc5bbe749636af110257-uk">Кільце Закону</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="9578a63fbe545bd82cc5bbe749636af110257-en">Ring of the Law</term>
+            <descrip type="definition">локація, Чорноскельні надра</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e44cf9762b402f5d8b5bc36f60304a1510259">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e44cf9762b402f5d8b5bc36f60304a1510259-uk">Квел’Талас</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e44cf9762b402f5d8b5bc36f60304a1510259-en">Quel'Thalas</term>
+            <descrip type="definition">локація, королівство, частина Східних Королівств</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="784a9c5bcc529fa412b038c974aac41910261">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="784a9c5bcc529fa412b038c974aac41910261-uk">Срібномісяць</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="784a9c5bcc529fa412b038c974aac41910261-en">Silvermoon</term>
+            <descrip type="definition">локація, столиця кривавих ельфів, Східні Королівства</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="83f344600d15cbf1ed5cb005db32f99410263">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="83f344600d15cbf1ed5cb005db32f99410263-uk">ліс Вічноспіву</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="83f344600d15cbf1ed5cb005db32f99410263-en">Eversong Woods</term>
+            <descrip type="definition">локація, Східні Королівства</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="88591b4d3219675bdeb33584b755f68010265">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="88591b4d3219675bdeb33584b755f68010265-uk">Кель'тас Сонячний Блукач</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="88591b4d3219675bdeb33584b755f68010265-en">Kael’thas Sunstrider</term>
+            <descrip type="definition">нпц, чол, кривавий ельф</descrip>
           </tig>
         </langSet>
       </termEntry>
