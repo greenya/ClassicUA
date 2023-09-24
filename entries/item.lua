@@ -195,6 +195,7 @@ addonTable.item = {
 [1710] = { "велике зілля лікування", ref=118 }, -- Greater Healing Potion
 [1711] = { "сувій витривалості II", ref=1180 }, -- Scroll of Stamina II
 [1712] = { "сувій духу II", ref=1181 }, -- Scroll of Spirit II
+[1713] = { "анкх життя", use="Зцілює вашу ціль на значення від {1} до {2} здоров'я. (Відновлення 5 хв)#for {1} to {2}" }, -- Ankh of Life, @use Heal your target for 135 to 165. (5 Min Cooldown)
 [1875] = { "значок Лютополоха", flavor="Десятник Лютополох — член Ліги дослідників" }, -- Thistlenettle's Badge, @flavor Foreman Thistlenettle - Member of the Explorers' League
 [1893] = { "помста шахтаря" }, -- Miner's Revenge
 [1894] = { "картка спілки шахтарів" }, -- Miners' Union Card
@@ -1139,7 +1140,7 @@ addonTable.item = {
 [5320] = { "м'які пластинчасті чоботи" }, -- Padded Lamellar Boots
 [5321] = { "елегантний короткий меч" }, -- Elegant Shortsword
 [5322] = { "відбійний молот" }, -- Demolition Hammer
-[5323] = { "вічносяйний ліхтар", use="Відновити вашій цілі від 135 до 165 здоров'я. (Відновлення 30 хв)" }, -- Everglow Lantern, @use Heal your target for 135 to 165. (30 Min Cooldown)
+[5323] = { "вічносяйний ліхтар", use="Зцілює вашу ціль на значення від {1} до {2} здоров'я. (Відновлення 30 хв)#for {1} to {2}" }, -- Everglow Lantern, @use Heal your target for 135 to 165. (30 Min Cooldown)
 [5324] = { "молоток інженера" }, -- Engineer's Hammer
 [5325] = { "зварювальний щит" }, -- Welding Shield
 [5326] = { "спалахуючий жезл" }, -- Flaring Baton
