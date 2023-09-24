@@ -44,6 +44,12 @@ for id in quest_ids:
                         text_characters_used[code] = 0
                     text_characters_used[code] += 1
 
+        for bracer_pair in ['()', '[]', '{}', '<>']:
+            b1, b2 = bracer_pair[0], bracer_pair[1]
+            if ord(b1) in text_characters_used and ord(b2) in text_characters_used:
+                if text_characters_used[ord(b1)] != text_characters_used[ord(b2)]:
+                    print(f'[!] Bracers "{b1}" and "{b2}" don\'t match')
+
         if q['title']:
             print(f'{id} => {q["title"]}')
             quests[side].append(q)
