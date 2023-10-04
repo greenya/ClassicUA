@@ -34,6 +34,7 @@ All other files are edited manually, e.g. via pull requests.
     - Commit "Sync from Crowdin: quests, books, zones, npcs"
 
 5. Update and release new version
+    - Commit "Update changelog" with updated "addon_changelog" in text.lua
     - Commit "Bump version to X.X" with updated TOC files
     - Create new version archive "ClassicUA-vX.X.zip"
     - Upload the archive to CurseForge and wait until approved
