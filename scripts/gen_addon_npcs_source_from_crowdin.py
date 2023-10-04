@@ -5,6 +5,8 @@ terms = utils.get_terms_from_tbx('translation_from_crowdin/ClassicUA.tbx')
 npcs = {}
 issues = []
 
+is_str_and_has_only_ascii_chars = lambda s: isinstance(s, str) and s == s.encode(encoding='utf-8').decode('ascii', errors="ignore")
+
 for en_text, uk_text, tags in terms:
     if 'нпц' in tags:
         for tag in tags:
@@ -53,7 +55,11 @@ for en_text, uk_text, tags in terms:
                 )
 
                 if npc_id in npcs:
-                    issues.append(f'NPC #{npc_id} duplication! Probably terms has one of these NPCs with wrong ID.\nOLD NPC: {npcs[npc_id]}\nNEW NPC: {new_npc}')
+                    issues.append(f'[!] NPC #{npc_id} duplication! Probably terms has one of these NPCs with wrong ID.\n\t- old NPC: {npcs[npc_id]}\n\t- new NPC: {new_npc}')
+
+                if is_str_and_has_only_ascii_chars(npc_text) or is_str_and_has_only_ascii_chars(npc_desc):
+                    npc_desc_formatted_text = f'<{npc_desc}>' if npc_desc else ''
+                    issues.append(f'[?] NPC #{npc_id} has name/desc with only ASCII chars: {npc_text} {npc_desc_formatted_text}')
 
                 npcs[npc_id] = new_npc
 
@@ -74,4 +80,4 @@ if len(issues):
     print('-' * 40)
     print('ISSUES FOUND:')
     for text in issues:
-        print(f'[!] {text}')
+        print(text)
