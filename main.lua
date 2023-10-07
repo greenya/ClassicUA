@@ -1,5 +1,13 @@
 local _, addonTable = ...
 
+-- ----------
+-- [ assets ]
+-- ----------
+
+local asset_ua_code = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t"
+local asset_font1_path = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
+local asset_font2_path = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
+
 -- ---------
 -- [ utils ]
 -- ---------
@@ -415,7 +423,7 @@ local add_line_to_tooltip = function (tooltip, content, template, r, g, b)
     end
 end
 
-local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_buff_debuff_tooltip)
+local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
     if tooltip_entry_type then
         return
     end
@@ -428,7 +436,7 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_buff_de
 
     if entry then
         tooltip:AddLine(" ")
-        tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. capitalize(entry[1]), 1, 1, 1)
+        tooltip:AddLine(asset_ua_code .. " " .. capitalize(entry[1]), 1, 1, 1)
 
         if entry_type == "item" then
             add_line_to_tooltip(tooltip, entry["desc"], "TEXT", 1, 1, 1)
@@ -437,7 +445,7 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_buff_de
             add_line_to_tooltip(tooltip, entry["use"], "Використання: TEXT", 0, 1, 0)
             add_line_to_tooltip(tooltip, entry["flavor"], "\"TEXT\"", 1, 0.82, 0)
         elseif entry_type == "spell" then
-            if is_buff_debuff_tooltip then
+            if is_aura then
                 add_line_to_tooltip(tooltip, entry[3], "TEXT", 1, 1, 1)
             else
                 add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 0.82, 0)
@@ -488,7 +496,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, 
     end
 
     tooltip:AddLine(" ")
-    tooltip:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. entry[1], 1, 1, 1)
+    tooltip:AddLine(asset_ua_code .. " " .. entry[1], 1, 1, 1)
 
     if entry[2] then
         tooltip:AddLine(make_entry_text(entry[2], tooltip), 1, 0.82, 0, true)
@@ -592,7 +600,7 @@ GameTooltip:HookScript("OnUpdate", function (self)
             local entry = get_entry_text(text)
             if entry then
                 if self:NumLines() > 1 then self:AddLine(" ") end
-                self:AddLine("|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t " .. capitalize(entry), 1, 1, 1)
+                self:AddLine(asset_ua_code .. " " .. capitalize(entry), 1, 1, 1)
 
                 if self:IsShown() then
                     self:Show()
@@ -682,9 +690,6 @@ end
 -- [ quest frames ]
 -- ----------------
 
-local quest_title_font = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
-local quest_text_font = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
-
 local quest_frames = {}
 local get_quest_frame = function (name)
     if quest_frames[name] then
@@ -692,7 +697,7 @@ local get_quest_frame = function (name)
     end
 
     local width, height = QuestFrame:GetSize()
-    local frame = CreateFrame("frame", nil, QuestFrame, "BackdropTemplate")
+    local frame = CreateFrame("Frame", nil, QuestFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
     frame:SetSize(width - 64, height - 160)
     frame:SetPoint("TOP", 0, -72)
@@ -701,10 +706,10 @@ local get_quest_frame = function (name)
     setup_frame_background_and_border(frame)
 
     setup_frame_scrollbar_and_content(frame, {
-        title = { quest_title_font, options.quest_text_size + 5 },
-        text = { quest_text_font, options.quest_text_size },
-        more_title = { quest_title_font, options.quest_text_size + 5 },
-        more_text = { quest_text_font, options.quest_text_size }
+        title = { asset_font1_path, options.quest_text_size + 5 },
+        text = { asset_font2_path, options.quest_text_size },
+        more_title = { asset_font1_path, options.quest_text_size + 5 },
+        more_text = { asset_font2_path, options.quest_text_size }
     })
 
     frame:Show()
@@ -804,7 +809,7 @@ local get_questlog_frame = function ()
     end
 
     local width, height = QuestLogDetailScrollFrame:GetSize()
-    local frame = CreateFrame("frame", nil, QuestLogDetailScrollFrame, "BackdropTemplate")
+    local frame = CreateFrame("Frame", nil, QuestLogDetailScrollFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
     frame:SetSize(width + 18, height + 18)
     frame:SetPoint("TOP", 0, 18/2)
@@ -813,10 +818,10 @@ local get_questlog_frame = function ()
     setup_frame_background_and_border(frame)
 
     setup_frame_scrollbar_and_content(frame, {
-        title = { quest_title_font, options.quest_text_size + 5 },
-        text = { quest_text_font, options.quest_text_size },
-        more_title = { quest_title_font, options.quest_text_size + 5 },
-        more_text = { quest_text_font, options.quest_text_size }
+        title = { asset_font1_path, options.quest_text_size + 5 },
+        text = { asset_font2_path, options.quest_text_size },
+        more_title = { asset_font1_path, options.quest_text_size + 5 },
+        more_text = { asset_font2_path, options.quest_text_size }
     })
 
     frame:Show()
@@ -851,7 +856,6 @@ end)
 -- --------------
 
 local book_item_id = false
-local book_text_font = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
 
 local book_frame = nil
 local get_book_frame = function ()
@@ -860,7 +864,7 @@ local get_book_frame = function ()
     end
 
     local width, height = ItemTextScrollFrame:GetSize()
-    local frame = CreateFrame("frame", nil, ItemTextScrollFrame, "BackdropTemplate")
+    local frame = CreateFrame("Frame", nil, ItemTextScrollFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
     frame:SetSize(width + 18, height + 18)
     frame:SetPoint("TOP", 0, 18/2)
@@ -869,7 +873,7 @@ local get_book_frame = function ()
     setup_frame_background_and_border(frame)
 
     setup_frame_scrollbar_and_content(frame, {
-        text = { book_text_font, options.book_text_size }
+        text = { asset_font1_path, options.book_text_size }
     })
 
     frame:Show()
@@ -935,7 +939,7 @@ end
 local prepare_zone_text = function ()
     for _, lookup in ipairs(zone_text_lookup) do
         local _, size, style = lookup[1]:GetFont()
-        lookup[1]:SetFont("Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf", size, style)
+        lookup[1]:SetFont(asset_font2_path, size, style)
     end
     update_zone_text()
 end
@@ -1002,7 +1006,7 @@ local prepare_world_map = function ()
     for provider, _ in pairs(WorldMapFrame.dataProviders) do
         if provider.setAreaLabelCallback and provider.Label and provider.Label.Name then
             local _, size, style = provider.Label.Name:GetFont()
-            provider.Label.Name:SetFont("Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf", size, style)
+            provider.Label.Name:SetFont(asset_font2_path, size, style)
             provider.Label:HookScript("OnUpdate", world_map_area_label_update)
             break
         end
@@ -1057,14 +1061,14 @@ local prepare_options_frame = function ()
 
     f = options_frame:CreateFontString()
     f:SetPoint("TOPLEFT", 22, -20)
-    f:SetFont("Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf", 20)
+    f:SetFont(asset_font2_path, 20)
     f:SetText("|cff1177eeClassic|r|cffffdd00UA|r")
 
     -- version & stats
 
     f = options_frame:CreateFontString()
     f:SetPoint("TOPRIGHT", -20, -20)
-    f:SetFont("Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf", 12)
+    f:SetFont(asset_font2_path, 12)
     f:SetJustifyH("LEFT")
     local stats = get_stats()
     f:SetText(
@@ -1163,8 +1167,8 @@ local prepare_options_frame = function ()
     f:SetSize(600, 340)
     setup_frame_background_and_border(f)
     setup_frame_scrollbar_and_content(f, {
-        title = { quest_title_font, options.quest_text_size + 5 },
-        text = { quest_text_font, options.quest_text_size }
+        title = { asset_font1_path, options.quest_text_size + 5 },
+        text = { asset_font2_path, options.quest_text_size }
     }, f:GetWidth() - 16)
 
     options_frame.info_tab_buttons = {}
@@ -1232,7 +1236,7 @@ end
 -- [ events ]
 -- ----------
 
-local event_frame = CreateFrame("frame")
+local event_frame = CreateFrame("Frame")
 
 event_frame:RegisterEvent("ADDON_LOADED")
 event_frame:RegisterEvent("PLAYER_LOGIN")
@@ -1251,7 +1255,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_options()
         prepare_options_frame()
         print(
-            "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t"
+            asset_ua_code
             .. " ClassicUA v" .. GetAddOnMetadata("ClassicUA", "Version")
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
         )
