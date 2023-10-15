@@ -303,7 +303,7 @@ local mage_spells = {
 [12358] = { ref=11103 }, -- Impact (Rank 3)
 [12359] = { ref=11103 }, -- Impact (Rank 4)
 [12360] = { ref=11103 }, -- Impact (Rank 5)
-[12355] = { "Зіткнення", nil, "Приголомшено." }, -- Impact (aura)
+[12355] = { "Зіткнення", nil, "Приголомшений." }, -- Impact (aura)
 
 -- Improved Arcane Explosion
 [11242] = { "Покращений арканічний вибух", "Підвищує ймовірність критичного удару вашого закляття \"Арканічний вибух\" на додаткові {1}%.#by an additional {1}" }, -- Improved Arcane Explosion (Rank 1)
@@ -333,7 +333,7 @@ local mage_spells = {
 -- Improved Counterspell
 [11255] = { "Покращене протизакляття", "Надає вашому \"Протизакляттю\" {1}% імовірності обезмовити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Counterspell (Rank 1)
 [12598] = { ref=11255 }, -- Improved Counterspell (Rank 2)
-[18469] = { "Протизакляття - Безмовність", nil, "Безмовність." }, -- Counterspell - Silenced (aura)
+[18469] = { "Протизакляття - Безмовний", nil, "Безмовний." }, -- Counterspell - Silenced (aura)
 
 -- Improved Fire Blast
 [11078] = { "Покращений вогняний підрив", "Зменшує час поновлення вашого закляття \"Вогняний підрив\" на 0,5 с." }, -- Improved Fire Blast (Rank 1)

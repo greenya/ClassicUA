@@ -72,7 +72,7 @@ local warrior_spells = {
 [100] = { "Штурм", "Штурмує ворога, що збільшує лють на {1} і приголомшує його на {2} с. Не можна використовувати в бою.#generate {1} rage#for {2} sec" }, -- Charge (Rank 1)
 [6178] = { ref=100 }, -- Charge (Rank 2)
 [11578] = { ref=100 }, -- Charge (Rank 3)
-[7922] = { "Приголомшення від штурму", nil, "Приголомшено." }, -- Charge Stun (aura)
+[7922] = { "Приголомшення від штурму", nil, "Приголомшений." }, -- Charge Stun (aura)
 
 -- Cleave
 [845] = { "Розсічення", "Сягниста атака, що завдає пошкодження зброєю плюс {1} по цілі та по найближчому до неї спільнику.#damage plus {1}" }, -- Cleave (Rank 1)
@@ -82,7 +82,7 @@ local warrior_spells = {
 [20569] = { ref=845 }, -- Cleave (Rank 5)
 
 -- Concussion Blow
-[12809] = { "Здригаючий удар", "Приголомшує суперника на {1} с.#for {1} sec", "Приголомшено." }, -- Concussion Blow
+[12809] = { "Здригаючий удар", "Приголомшує суперника на {1} с.#for {1} sec", "Приголомшений." }, -- Concussion Blow
 
 -- Cruelty
 [12320] = { "Жорстокість", "Підвищує ймовірність завдати критичного удару зброєю ближнього бою на {1}%.#weapons by {1}" }, -- Cruelty (Rank 1)
@@ -121,10 +121,10 @@ local warrior_spells = {
 [11556] = { ref=1160 }, -- Demoralizing Shout (Rank 5)
 
 -- Disarm
-[676] = { "Роззброєння", "Роззброює ворога на {1} с.#for {1} sec", "Роззброєно!" }, -- Disarm
+[676] = { "Роззброєння", "Роззброює ворога на {1} с.#for {1} sec", "Роззброєний!" }, -- Disarm
 
 -- Dual Wield Specialization
-[23584] = { "Спеціалізація на бою з двох рук", "Збільшує пошкодження, заподіяне вашою зброєю в іншій руці, на {1}%.#weapon by {1}" }, -- Dual Wield Specialization (Rank 1)
+[23584] = { "Спеціалізація на бою з двох рук", "Збільшує пошкодження, заподіяне вашою зброєю в неосновній руці, на {1}%.#weapon by {1}" }, -- Dual Wield Specialization (Rank 1)
 [23585] = { ref=23584 }, -- Dual Wield Specialization (Rank 2)
 [23586] = { ref=23584 }, -- Dual Wield Specialization (Rank 3)
 [23587] = { ref=23584 }, -- Dual Wield Specialization (Rank 4)
@@ -225,7 +225,7 @@ local warrior_spells = {
 [12289] = { "Покращене нівечення", "Надає вашій здібності \"Нівечення\" {1}% імовірності знерухомити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Hamstring (Rank 1)
 [12668] = { ref=12289 }, -- Improved Hamstring (Rank 2)
 [23695] = { ref=12289 }, -- Improved Hamstring (Rank 3)
-[23694] = { "Покращене нівечення", nil, "Знерухомлено." }, -- Improved Hamstring (aura)
+[23694] = { "Покращене нівечення", nil, "Знерухомлений." }, -- Improved Hamstring (aura)
 
 -- Improved Heroic Strike
 [12282] = { "Покращений героїчний удар", "Зменшує витрати вашої здібності \"Героїчний удар\" на {1} люті.#by {1} rage" }, -- Improved Heroic Strike (Rank 1)
@@ -249,12 +249,12 @@ local warrior_spells = {
 [12797] = { "Покращена помста", "Надає вашій здібності \"Помста\" {1}% імовірності приголомшити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Revenge (Rank 1)
 [12799] = { ref=12797 }, -- Improved Revenge (Rank 2)
 [12800] = { ref=12797 }, -- Improved Revenge (Rank 3)
-[12798] = { "Приголомшуюча помста", nil, "Приголомшено." }, -- Revenge Stun (aura)
+[12798] = { "Приголомшуюча помста", nil, "Приголомшений." }, -- Revenge Stun (aura)
 
 -- Improved Shield Bash
 [12311] = { "Покращений удар щитом", "Надає вашій здібності \"Удар щитом\" {1}% імовірності обезмовити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Shield Bash (Rank 1)
 [12958] = { ref=12311 }, -- Improved Shield Bash (Rank 2)
-[18498] = { "Удар щитом - Безмовність", nil, "Безмовність." }, -- Shield Bash - Silenced (aura)
+[18498] = { "Удар щитом - Безмовний", nil, "Безмовний." }, -- Shield Bash - Silenced (aura)
 
 -- Improved Shield Block
 [12945] = { "Покращений блок щитом", "Дозволяє вашій здібності \"Блок щитом\" блокувати додаткову атаку і збільшує тривалість на {1} с.#by {1} sec" }, -- Improved Shield Block (Rank 1)
@@ -290,7 +290,7 @@ local warrior_spells = {
 [20252] = { "Перехоплення", "Штурмує ворога, завдаючи {1} пошокдження та приголомшуючи його на {2} с.#causing {1} damage#for {2} sec" }, -- Intercept (Rank 1)
 [20616] = { ref=20252 }, -- Intercept (Rank 2)
 [20617] = { ref=20252 }, -- Intercept (Rank 3)
-[20253] = { "Перехоплююче приголомшення", nil, "Приголомшено." }, -- Intercept Stun (aura)
+[20253] = { "Перехоплююче приголомшення", nil, "Приголомшений." }, -- Intercept Stun (aura)
 [20614] = { ref=20253 }, -- Intercept Stun (aura)
 [20615] = { ref=20253 }, -- Intercept Stun (aura)
 

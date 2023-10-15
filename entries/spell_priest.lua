@@ -18,7 +18,7 @@ local priest_spells = {
 [15324] = { ref=15268 }, -- Blackout (Rank 3)
 [15325] = { ref=15268 }, -- Blackout (Rank 4)
 [15326] = { ref=15268 }, -- Blackout (Rank 5)
-[15269] = { "Затьмарення", nil, "Приголомшено." }, -- Blackout (aura)
+[15269] = { "Затьмарення", nil, "Приголомшений." }, -- Blackout (aura)
 
 -- Blessed Recovery
 [27811] = { "Благословенне одужання", "Зцілює на {1}% від отриманого пошкодження протягом {2} с після завданого вам критичного удару ближнього або дальнього бою.#heal {1}#over {2} sec" }, -- Blessed Recovery (Rank 1)
@@ -424,6 +424,7 @@ local priest_spells = {
 [15332] = { ref=15257 }, -- Shadow Weaving (Rank 3)
 [15333] = { ref=15257 }, -- Shadow Weaving (Rank 4)
 [15334] = { ref=15257 }, -- Shadow Weaving (Rank 5)
+[15258] = { "Вразливість до тіні", nil, "Отримуване пошкодження тінню збільшено на {1}%.#by {1}" }, -- Shadow Vulnerability (aura)
 
 -- Shadow Word: Pain
 [589] = { "Слово тіні: Біль", "Слово темряви, що завдає {1} пошкодження тінню протягом {2} с.#causes {1}#over {2} sec", "{1} пошкодження тінню кожні {2} с.#{1} Shadow damage every {2} sec" }, -- Shadow Word: Pain (Rank 1)
