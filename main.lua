@@ -381,7 +381,12 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
                 match_number = match_number + 1
                 if match_number > tooltip_matches_to_skip then
                     for k = 1, #v do
-                        values[#values + 1] = v[k]:gsub("%.", ",")
+                        local value = v[k]:gsub("%.", ",")
+                        -- fix floating-point number wihtout leading "0", e.g. ",2"
+                        if #value > 1 and value:sub(1, 1) == "," then
+                            value = "0" .. value
+                        end
+                        values[#values + 1] = value
                     end
                     break
                 end
