@@ -254,7 +254,7 @@ local warrior_spells = {
 -- Improved Shield Bash
 [12311] = { "Покращений удар щитом", "Надає вашій здібності \"Удар щитом\" {1}% імовірності знемовити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Shield Bash (Rank 1)
 [12958] = { ref=12311 }, -- Improved Shield Bash (Rank 2)
-[18498] = { "Удар щитом - Безмовний", nil, "Безмовний." }, -- Shield Bash - Silenced (aura)
+[18498] = { "Удар щитом - Знемовлений", nil, "Знемовлений." }, -- Shield Bash - Silenced (aura)
 
 -- Improved Shield Block
 [12945] = { "Покращений блок щитом", "Дозволяє вашій здібності \"Блок щитом\" блокувати додаткову атаку і збільшує тривалість на {1} с.#by {1} sec" }, -- Improved Shield Block (Rank 1)

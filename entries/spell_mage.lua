@@ -333,7 +333,7 @@ local mage_spells = {
 -- Improved Counterspell
 [11255] = { "Покращене протизакляття", "Надає вашому \"Протизакляттю\" {1}% імовірності знемовити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Counterspell (Rank 1)
 [12598] = { ref=11255 }, -- Improved Counterspell (Rank 2)
-[18469] = { "Протизакляття - Безмовний", nil, "Безмовний." }, -- Counterspell - Silenced (aura)
+[18469] = { "Протизакляття - Знемовлений", nil, "Знемовлений." }, -- Counterspell - Silenced (aura)
 
 -- Improved Fire Blast
 [11078] = { "Покращений вогняний підрив", "Зменшує час поновлення вашого закляття \"Вогняний підрив\" на {1} с.#by {1}" }, -- Improved Fire Blast (Rank 1)
