@@ -331,7 +331,7 @@ local mage_spells = {
 [12490] = { ref=11190 }, -- Improved Cone of Cold (Rank 3)
 
 -- Improved Counterspell
-[11255] = { "Покращене протизакляття", "Надає вашому \"Протизакляттю\" {1}% імовірності обезмовити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Counterspell (Rank 1)
+[11255] = { "Покращене протизакляття", "Надає вашому \"Протизакляттю\" {1}% імовірності знемовити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Counterspell (Rank 1)
 [12598] = { ref=11255 }, -- Improved Counterspell (Rank 2)
 [18469] = { "Протизакляття - Безмовний", nil, "Безмовний." }, -- Counterspell - Silenced (aura)
 

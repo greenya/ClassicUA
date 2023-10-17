@@ -252,7 +252,7 @@ local warrior_spells = {
 [12798] = { "Приголомшуюча помста", nil, "Приголомшений." }, -- Revenge Stun (aura)
 
 -- Improved Shield Bash
-[12311] = { "Покращений удар щитом", "Надає вашій здібності \"Удар щитом\" {1}% імовірності обезмовити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Shield Bash (Rank 1)
+[12311] = { "Покращений удар щитом", "Надає вашій здібності \"Удар щитом\" {1}% імовірності знемовити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Shield Bash (Rank 1)
 [12958] = { ref=12311 }, -- Improved Shield Bash (Rank 2)
 [18498] = { "Удар щитом - Безмовний", nil, "Безмовний." }, -- Shield Bash - Silenced (aura)
 
