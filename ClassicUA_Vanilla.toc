@@ -22,6 +22,7 @@ entries\spell_paladin.lua
 entries\spell_priest.lua
 entries\spell_rogue.lua
 entries\spell_shaman.lua
+entries\spell_warlock.lua
 entries\spell_warrior.lua
 entries\talent_tree.lua
 entries\text.lua
