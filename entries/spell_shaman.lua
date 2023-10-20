@@ -454,7 +454,7 @@ local shaman_spells = {
 [8161] = { ref=8075 }, -- Strength of Earth Totem (Rank 3)
 [10442] = { ref=8075 }, -- Strength of Earth Totem (Rank 4)
 [25361] = { ref=8075 }, -- Strength of Earth Totem (Rank 5)
-[8076] = { "Сили землі", nil, "Збільшує силу на {1}.#by {1}" }, -- Strength of Earth (aura)
+[8076] = { "Сила землі", nil, "Збільшує силу на {1}.#by {1}" }, -- Strength of Earth (aura)
 [8162] = { ref=8076 }, -- Strength of Earth (aura)
 [8163] = { ref=8076 }, -- Strength of Earth (aura)
 [10441] = { ref=8076 }, -- Strength of Earth (aura)
