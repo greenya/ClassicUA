@@ -983,6 +983,9 @@ local world_map_dropdown_button_click = function (self)
                 texts[#texts + 1] = t
                 buttons[t] = button
                 button:SetText(t)
+            else
+                texts[#texts + 1] = text
+                buttons[text] = button
             end
         end
 
