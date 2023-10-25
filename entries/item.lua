@@ -120,7 +120,7 @@ addonTable.item = {
 [1221] = { "підчеревна луска дракончика" }, -- Underbelly Whelp Scale
 [1251] = { "лляний бинт", use="Відновлює 66 здоров'я за 6 сек." }, -- Linen Bandage, @use Heals 66 damage over 6 sec.
 [1252] = { "записка бабці Кам'янопільської" }, -- Gramma Stonefield's Note
-[1254] = { "менший камінь вогню", equip={ "Зачаровує зброю в основній руці вогнем, надаючи кожній атаці ймовірність завдати від 25 до 35 додаткової шкоди від вогню.", "Збільшує шкоду від заклинань і ефектів вогню на 10." } }, -- Lesser Firestone, @equip Enchants the main hand weapon with fire, granting each attack a chance to deal 25 to 35 additional fire damage., @equip Increases damage done by Fire spells and effects by up to 10.
+[1254] = { "менший камінь вогню", equip={ "Зачаровує зброю в основній руці вогнем, надаючи кожній атаці ймовірність завдати від {1} до {2} додаткового пошкодження вогнем.#deal {1} to {2}", "Збільшує пошкодження від заклять та ефектів вогню на {1}.#by up to {1}" } }, -- Lesser Firestone, @equip Enchants the main hand weapon with fire, granting each attack a chance to deal 25 to 35 additional fire damage., @equip Increases damage done by Fire spells and effects by up to 10.
 [1256] = { "стебло кришталевої водорості" }, -- Crystal Kelp Frond
 [1257] = { "відвар невидимості" }, -- Invisibility Liquor
 [1260] = { "голова Таріл'зуна" }, -- Tharil'zun's Head
@@ -416,6 +416,7 @@ addonTable.item = {
 [2806] = { "пакунок для Бурешпиля" }, -- Package for Stormpike
 [2818] = { "розтягнуті шкіряні штани" }, -- Stretched Leather Trousers
 [2820] = { "витончений секундомір", use="Збільшує швидкість бігу на {1}% на {2} с. (Відновлення 30 хв)#by {1}% for {2} sec" }, -- Nifty Stopwatch, @use Increases run speed by 40% for 10 sec. (30 Min Cooldown)
+[2825] = { "лук пекучих стріл", equip="Шанс вразити ціль пекучою стрілою та завдати від {1} до {2} пошкодження вогнем.#for {1} to {2}" }, -- Bow of Searing Arrows, @equip Chance to strike your ranged target with a Searing Arrow for 18 to 26 Fire damage.
 [2828] = { "рештки Нісси" }, -- Nissa's Remains
 [2829] = { "рештки Ґреґора" }, -- Gregor's Remains
 [2830] = { "рештки Турмана" }, -- Thurman's Remains
@@ -901,6 +902,7 @@ addonTable.item = {
 [4139] = { "сандалі джунглів" }, -- Junglewalker Sandals
 [4140] = { "пальмові наплечі" }, -- Palm Frond Mantle
 [4197] = { "берилові наплічники" }, -- Berylline Pads
+[4213] = { "гримуар приречення", use="Навчає закляттю \"Ритуал приречення\"." }, -- Grimoire of Doom, @use Teaches Ritual of Doom.
 [4232] = { "середня шкура" }, -- Medium Hide
 [4234] = { "важка шкіра" }, -- Heavy Leather
 [4235] = { "важка шкура" }, -- Heavy Hide
@@ -1313,7 +1315,7 @@ addonTable.item = {
 [5218] = { "очищене серце деревника", use="Викликати деревника, який захищатиме вас протягом 20 хв." }, -- Cleansed Timberling Heart, @use Summons a Timberling to protect you for 20 min.
 [5219] = { "вкрита написами кора" }, -- Inscribed Bark
 [5221] = { "голова Меленаса" }, -- Melenas' Head
-[5232] = { "крихітний камінь душі", use="Зберігає душу дружньої цілі. Якщо ціль, чия душа збережена, помирає, вона може оживити себе з 400 здоров'я та 700 мани. (Відновлення 30 хв)" }, -- Minor Soulstone, @use Stores the friendly target's soul.  If the target dies while his soul is stored, he will be able to resurrect with 400 health and 700 mana. (30 Min Cooldown)
+[5232] = { "крихітний камінь душі", use="Зберігає душу дружньої цілі. Якщо ціль, чия душа збережена, помирає, вона може оживити себе з {1} здоров'я та {2} мани.#{1} health and {2} mana" }, -- Minor Soulstone, @use Stores the friendly target's soul.  If the target dies while his soul is stored, he will be able to resurrect with 400 health and 700 mana. (30 Min Cooldown)
 [5233] = { "камінь Релу" }, -- Stone of Relu
 [5234] = { "скам'янілість Флягопуза" }, -- Flagongut's Fossil
 [5237] = { "задурлива отрута", use="Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, сповільнюючи вимову заклять на {3}% на {4} с. {5} зарядів.#lasts for {1} min#{2}% chance#by {3}% for {4} sec#{5} charges" }, -- Mind-numbing Poison, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 20% chance of poisoning the enemy, increasing their casting time by 40% for 10 sec.  50 charges. (Proc chance: 20%)
@@ -1445,7 +1447,7 @@ addonTable.item = {
 [5519] = { "залізне навершя" }, -- Iron Pommel
 [5520] = { "щоденник Велінди" }, -- Velinde's Journal
 [5521] = { "ключ Велінди" }, -- Velinde's Key
-[5522] = { "камінь чарів", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%.", use="Усуває всі магічні ефекти з заклинача та поглинає 400 магічної шкоди протягом 1 хв." }, -- Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 400 magic damage for 1 min.
+[5522] = { "камінь чарів", equip="Підвищує вашу ймовірність завдати критичного удару закляттями на {1}%.#spells by {1}", use="Усуває всі магічні ефекти з заклинача та поглинає {1} магічного пошкодження протягом {2} хв.#absorb {1}#for {2} min" }, -- Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 400 magic damage for 1 min.
 [5530] = { "сліпучий порошок" }, -- Blinding Powder
 [5533] = { "фоліант Ілкруда Маґтрулла" }, -- Ilkrud Magthrull's Tome
 [5535] = { "Компендіум полеглих" }, -- Compendium of the Fallen
@@ -2320,6 +2322,7 @@ addonTable.item = {
 [9197] = { "еліксир снобачення", use="Надає вам снобачення, що дозволяє досліджувати місцини, надто небезпечні для дослідження особисто. (Відновлення 3 сек)" }, -- Elixir of Dream Vision, @use Gives you a dream vision that lets you explore areas that are too dangerous to explore in person. (3 Sec Cooldown)
 [9206] = { "еліксир велетнів", ref=2454 }, -- Elixir of Giants, @use Increases your Strength by 25 for 1 hour. (3 Sec Cooldown)
 [9210] = { "примарний барвник" }, -- Ghost Dye
+[9214] = { "гримуар пекла", use="Навчає закляттю \"Пекло\"." }, -- Grimoire of Inferno, @use Teaches Inferno.
 [9224] = { "еліксир демонорізні", use="Збільшує силу атаки проти демонів на {1}. Триває 5 хв. (Відновлення 3 сек)#power by {1}#Lasts {2} min" }, -- Elixir of Demonslaying, @use Increases attack power by 265 against demons.  Lasts 5 min. (3 Sec Cooldown)
 [9233] = { "еліксир виявлення демона", use="Відображає на мінімапі місцезнаходження найближчих демонів протягом {1} год. (Відновлення 3 сек)#for {1} h" }, -- Elixir of Detect Demon, @use Shows the location of all nearby demons on the minimap for 1 hour. (3 Sec Cooldown)
 [9234] = { "тіара Глибин" }, -- Tiara of the Deep
@@ -3300,6 +3303,7 @@ addonTable.item = {
 [13501] = { "рецепт: Величезне зілля мани", use="Навчає вас створювати величезне зілля мани." }, -- Recipe: Major Mana Potion, @use Teaches you how to make a Major Mana Potion.
 [13506] = { "настій скам'яніння", use="Ви перетворюєтеся на камінь, що захищає вас від усіх фізичних атак і заклинань на 1 хв, але протягом цього часу ви не можете атакувати, рухатися або промовляти заклинання. Ви можете бути під дією лише одного настою одночасно. (Відновлення 3 с)" }, -- Flask of Petrification, @use You turn to stone, protecting you from all physical attacks and spells for 1 min, but during that time you cannot attack, move or cast spells.  You can only have the effect of one flask at a time. (3 Sec Cooldown)
 [13507] = { "звіт спостерігача скель Довгорогого" }, -- Cliffwatcher Longhorn Report
+[13508] = { "око Арахніди", use="Прикликає око Кілроґґа, яке заміняє ваш зір. Око швидко рухається, але є дуже кволим." }, -- Eye of Arachnida, @use Summons an Eye of Kilrogg and binds your vision to it.  The eye moves quickly but is very fragile. (1 Min Cooldown)
 [13510] = { "настій титанів", use="Збільшує максимальне здоров'я на 1200 на 2 год. Ви можете бути під дією лише одного настою одночасно. Цей ефект зберігається після смерті. (Відновлення 3 с)" }, -- Flask of the Titans, @use Increases the player's maximum health by 1200 for 2 hrs.  You can only have the effect of one flask at a time.  This effect persists through death. (3 Sec Cooldown)
 [13511] = { "настій дистильованої мудрості", use="Збільшує максимальну ману на 2000 на 2 год. Ви можете бути під дією лише одного настою одночасно. Цей ефект зберігається після смерті. (Відновлення 3 с)" }, -- Flask of Distilled Wisdom, @use Increases the player's maximum mana by 2000 for 2 hrs.  You can only have the effect of one flask at a time.  This effect persists through death. (3 Sec Cooldown)
 [13512] = { "настій великої сили", use="Збільшує шкоду від магічних заклинань і ефектів на 150 на 2 год. Ви можете бути під дією лише одного настою одночасно. Цей ефект зберігається після смерті. (Відновлення 3 с)" }, -- Flask of Supreme Power, @use Increases damage done by magical spells and effects by up to 150 for 2 hrs.  You can only have the effect of one flask at a time.  This effect persists through death. (3 Sec Cooldown)
@@ -3311,13 +3315,13 @@ addonTable.item = {
 [13546] = { "кровочеревка", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Bloodbelly Fish, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
 [13562] = { "останки Трея Світлогарта" }, -- Remains of Trey Lightforge
 [13585] = { "спогад про людяність", flavor="Всі сторінки вирвані." }, -- Keepsake of Remembrance, @flavor All of the pages are torn out.
-[13602] = { "великий камінь чарів", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%.", use="Усуває всі магічні ефекти з заклинача та поглине 650 магічної шкоди протягом 1 хв." }, -- Greater Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 650 magic damage for 1 min.
-[13603] = { "величезний камінь чарів", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%.", use="Усуває всі магічні ефекти з заклинача та поглине 900 магічної шкоди протягом 1 хв." }, -- Major Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 900 magic damage for 1 min.
+[13602] = { "великий камінь чарів", ref=5522 }, -- Greater Spellstone
+[13603] = { "величезний камінь чарів", ref=5522 }, -- Major Spellstone
 [13624] = { "спогад душі" }, -- Soulbound Keepsake
 [13626] = { "людська голова Раса Кригошепта" }, -- Human Head of Ras Frostwhisper
-[13699] = { "камінь вогню", equip={ "Зачаровує зброю в основній руці вогнем, надаючи кожній атаці ймовірність завдати від 40 до 60 додаткової шкоди від вогню.", "Збільшує шкоду від заклинань і ефектів вогню на 14." } }, -- Firestone, @equip Enchants the main hand weapon with fire, granting each attack a chance to deal 40 to 60 additional fire damage., @equip Increases damage done by Fire spells and effects by up to 14.
-[13700] = { "великий камінь вогню", equip={ "Зачаровує зброю в основній руці вогнем, надаючи кожній атаці ймовірність завдати від 60 до 90 додаткової шкоди від вогню.", "Збільшує шкоду від заклинань і ефектів вогню на 17." } }, -- Greater Firestone, @equip Enchants the main hand weapon with fire, granting each attack a chance to deal 60 to 90 additional fire damage., @equip Increases damage done by Fire spells and effects by up to 17.
-[13701] = { "величезний камінь вогню", equip={ "Зачаровує зброю в основній руці вогнем, надаючи кожній атаці ймовірність завдати від 80 до 120 додаткової шкоди від вогню.", "Збільшує шкоду від заклинань і ефектів вогню на 21." } }, -- Major Firestone, @equip Enchants the main hand weapon with fire, granting each attack a chance to deal 80 to 120 additional fire damage., @equip Increases damage done by Fire spells and effects by up to 21.
+[13699] = { "камінь вогню", ref=1254 }, -- Firestone
+[13700] = { "великий камінь вогню", ref=1254 }, -- Greater Firestone
+[13701] = { "величезний камінь вогню", ref=1254 }, -- Major Firestone
 [13702] = { "бур'ян приречення" }, -- Doom Weed
 [13703] = { "кістка кодо" }, -- Kodo Bone
 [13704] = { "скелетний ключ" }, -- Skeleton Key
@@ -3598,6 +3602,7 @@ addonTable.item = {
 [16263] = { "відповідь Лейрда" }, -- Laird's Response
 [16282] = { "оберемок шкур" }, -- Bundle of Hides
 [16283] = { "шкіргалантерея Агану" }, -- Ahanu's Leather Goods
+[16302] = { "гримуар вогняної стріли (Ранг {1})#(Rank {1})", use="Навчає бісеняти закляттю \"Вогняна стріла\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Firebolt (Rank 2), @use Teaches Imp Firebolt (Rank 2).
 [16303] = { "лапа Урсанґо" }, -- Ursangous's Paw
 [16304] = { "голова Шадумбри" }, -- Shadumbra's Head
 [16305] = { "кіготь Гостропазура" }, -- Sharptalon's Claw
@@ -3609,8 +3614,66 @@ addonTable.item = {
 [16312] = { "спалахтит" }, -- Incendrites
 [16313] = { "скриня Фелікса" }, -- Felix's Chest
 [16314] = { "відро з болтами Фелікса" }, -- Felix's Bucket of Bolts
+[16316] = { ref=16302 }, -- Grimoire of Firebolt (Rank 3)
+[16317] = { ref=16302 }, -- Grimoire of Firebolt (Rank 4)
+[16318] = { ref=16302 }, -- Grimoire of Firebolt (Rank 5)
+[16319] = { ref=16302 }, -- Grimoire of Firebolt (Rank 6)
+[16320] = { ref=16302 }, -- Grimoire of Firebolt (Rank 7)
+[16321] = { "гримуар кривавої угоди (Ранг {1})#(Rank {1})", use="Навчає бісеняти закляттю \"Кривава угода\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Blood Pact (Rank 1), @use Teaches Imp Blood Pact (Rank 1).
+[16322] = { ref=16321 }, -- Grimoire of Blood Pact (Rank 2)
+[16323] = { ref=16321 }, -- Grimoire of Blood Pact (Rank 3)
+[16324] = { ref=16321 }, -- Grimoire of Blood Pact (Rank 4)
+[16325] = { ref=16321 }, -- Grimoire of Blood Pact (Rank 5)
+[16326] = { "гримуар вогняного щита (Ранг {1})#(Rank {1})", use="Навчає бісеняти закляттю \"Вогняний щит\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Fire Shield (Rank 1), @use Teaches Imp Fire Shield (Rank 1).
+[16327] = { ref=16326 }, -- Grimoire of Fire Shield (Rank 2)
+[16328] = { ref=16326 }, -- Grimoire of Fire Shield (Rank 3)
+[16329] = { ref=16326 }, -- Grimoire of Fire Shield (Rank 4)
+[16330] = { ref=16326 }, -- Grimoire of Fire Shield (Rank 5)
+[16331] = { "гримуар фазування", use="Навчає бісеняти закляттю \"Фазування\"." }, -- Grimoire of Phase Shift, @use Teaches Imp Phase Shift.
 [16332] = { "кайло Тазз'ріла" }, -- Thazz'ril's Pick
 [16333] = { "рештки Семюеля", use="Захоронити на могилі Марли." }, -- Samuel's Remains, @use Bury at Marla's Grave.
+[16346] = { "гримуар муки (Ранг {1})#(Rank {1})", use="Навчає пустотника закляттю \"Мука\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Torment (Rank 2), @use Teaches Voidwalker Torment (Rank 2).
+[16347] = { ref=16346 }, -- Grimoire of Torment (Rank 3)
+[16348] = { ref=16346 }, -- Grimoire of Torment (Rank 4)
+[16349] = { ref=16346 }, -- Grimoire of Torment (Rank 5)
+[16350] = { ref=16346 }, -- Grimoire of Torment (Rank 6)
+[16351] = { "гримуар жертви (Ранг {1})#(Rank {1})", use="Навчає пустотника закляттю \"Жертва\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Sacrifice (Rank 1), @use Teaches Voidwalker Sacrifice (Rank 1).
+[16352] = { ref=16351 }, -- Grimoire of Sacrifice (Rank 2)
+[16353] = { ref=16351 }, -- Grimoire of Sacrifice (Rank 3)
+[16354] = { ref=16351 }, -- Grimoire of Sacrifice (Rank 4)
+[16355] = { ref=16351 }, -- Grimoire of Sacrifice (Rank 5)
+[16356] = { ref=16351 }, -- Grimoire of Sacrifice (Rank 6)
+[16357] = { "гримуар поглинання тіней (Ранг {1})#(Rank {1})", use="Навчає пустотника закляттю \"Поглинання тіней\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Consume Shadows (Rank 1), @use Teaches Voidwalker Consume Shadows (Rank 1).
+[16358] = { ref=16357 }, -- Grimoire of Consume Shadows (Rank 2)
+[16359] = { ref=16357 }, -- Grimoire of Consume Shadows (Rank 3)
+[16360] = { ref=16357 }, -- Grimoire of Consume Shadows (Rank 4)
+[16361] = { ref=16357 }, -- Grimoire of Consume Shadows (Rank 5)
+[16362] = { ref=16357 }, -- Grimoire of Consume Shadows (Rank 6)
+[16363] = { "гримуар страждання (Ранг {1})#(Rank {1})", use="Навчає пустотника закляттю \"Страждання\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Suffering (Rank 1), @use Teaches Voidwalker Suffering (Rank 1).
+[16364] = { ref=16363 }, -- Grimoire of Suffering (Rank 2)
+[16365] = { ref=16363 }, -- Grimoire of Suffering (Rank 3)
+[16366] = { ref=16363 }, -- Grimoire of Suffering (Rank 4)
+[16368] = { "гримуар батога болю (Ранг {1})#(Rank {1})", use="Навчає сукуба чи інкуба закляттю \"Батіг болю\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Lash of Pain (Rank 2), @use Teaches Succubus or Incubus Lash of Pain (Rank 2).
+[16371] = { ref=16368 }, -- Grimoire of Lash of Pain (Rank 3)
+[16372] = { ref=16368 }, -- Grimoire of Lash of Pain (Rank 4)
+[16373] = { ref=16368 }, -- Grimoire of Lash of Pain (Rank 5)
+[16374] = { ref=16368 }, -- Grimoire of Lash of Pain (Rank 6)
+[16375] = { "гримуар заспокійливого поцілунку (Ранг {1})#(Rank {1})", use="Навчає сукуба чи інкуба закляттю \"Заспокійливий поцілунок\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Soothing Kiss (Rank 1), @use Teaches Succubus or Incubus Soothing Kiss (Rank 1).
+[16376] = { ref=16375 }, -- Grimoire of Soothing Kiss (Rank 2)
+[16377] = { ref=16375 }, -- Grimoire of Soothing Kiss (Rank 3)
+[16378] = { ref=16375 }, -- Grimoire of Soothing Kiss (Rank 4)
+[16379] = { "гримуар зваблення", use="Навчає сукуба чи інкуба закляттю \"Зваблення\"." }, -- Grimoire of Seduction, @use Teaches Succubus or Incubus Seduction.
+[16380] = { "гримуар малої невидимості", use="Навчає сукуба чи інкуба закляттю \"Мала невидимість\"." }, -- Grimoire of Lesser Invisibility, @use Teaches Succubus or Incubus Lesser Invisibility.
+[16381] = { "гримуар пожирання магії (Ранг {1})#(Rank {1})", use="Навчає скверногончу закляттю \"Пожирання магії\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Devour Magic (Rank 2), @use Teaches Felhunter Devour Magic (Rank 2)
+[16382] = { ref=16381 }, -- Grimoire of Devour Magic (Rank 3)
+[16383] = { ref=16381 }, -- Grimoire of Devour Magic (Rank 4)
+[16384] = { "гримуар зараженої крові (Ранг {1})#(Rank {1})", use="Навчає скверногончу закляттю \"Заражена кров\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Tainted Blood (Rank 1), @use Teaches Felhunter Tainted Blood (Rank 1).
+[16385] = { ref=16384 }, -- Grimoire of Tainted Blood (Rank 2)
+[16386] = { ref=16384 }, -- Grimoire of Tainted Blood (Rank 3)
+[16387] = { ref=16384 }, -- Grimoire of Tainted Blood (Rank 4)
+[16388] = { "гримуар заборони чар (Ранг {1})#(Rank {1})", use="Навчає скверногончу закляттю \"Заборона чар\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Spell Lock (Rank 1), @use Teaches Felhunter Spell Lock (Rank 1).
+[16389] = { ref=16388 }, -- Grimoire of Spell Lock (Rank 2)
+[16390] = { "гримуар параної", use="Навчає скверногончу закляттю \"Параноя\"." }, -- Grimoire of Paranoia, @use Teaches Felhunter Paranoia.
 [16408] = { "забруднена водяна куля" }, -- Befouled Water Globe
 [16581] = { "кристал резоніту", flavor="Глибоко всередині кристалу вирує магія." }, -- Resonite Crystal, @flavor Magic stirs deep inside.
 [16583] = { "демонічна статуетка" }, -- Demonic Figurine
@@ -3750,11 +3813,11 @@ addonTable.item = {
 [16889] = { "полірована палиця" }, -- Polished Walking Staff
 [16890] = { "булатна шабля" }, -- Slatemetal Cutlass
 [16891] = { "аргілітовий короткий меч" }, -- Claystone Shortsword
-[16892] = { "менший камінь душі", use="Зберігає душу дружньої цілі. Якщо ціль, чия душа збережена, помирає, вона може оживити себе з 700 здоров'я та 1200 мани. (Відновлення 30 хв)" }, -- Lesser Soulstone, @use Stores the friendly target's soul.  If the target dies while his soul is stored, he will be able to resurrect with 750 health and 1200 mana. (30 Min Cooldown)
-[16893] = { "камінь душі", use="Зберігає душу дружньої цілі. Якщо ціль, чия душа збережена, помирає, вона може оживити себе з 1100 здоров'я та 1700 мани. (Відновлення 30 хв)" }, -- Soulstone, @use Stores the friendly target's soul.  If the target dies while his soul is stored, he will be able to resurrect with 1100 health and 1700 mana. (30 Min Cooldown)
+[16892] = { "менший камінь душі", ref=5232 }, -- Lesser Soulstone
+[16893] = { "камінь душі", ref=5232 }, -- Soulstone
 [16894] = { "кришталевий жезл" }, -- Clear Crystal Rod
-[16895] = { "великий камінь душі", use="Зберігає душу дружньої цілі. Якщо ціль, чия душа збережена, помирає, вона може оживити себе з 1600 здоров'я та 2200 мани. (Відновлення 30 хв)" }, -- Greater Soulstone, @use Stores the friendly target's soul.  If the target dies while his soul is stored, he will be able to resurrect with 1600 health and 2200 mana. (30 Min Cooldown)
-[16896] = { "величезний камінь душі", use="Зберігає душу дружньої цілі. Якщо ціль, чия душа збережена, помирає, вона може оживити себе з 2200 здоров'я та 2800 мани. (Відновлення 30 хв)" }, -- Major Soulstone, @use Stores the friendly target's soul.  If the target dies while his soul is stored, he will be able to resurrect with 2200 health and 2800 mana. (30 Min Cooldown)
+[16895] = { "великий камінь душі", ref=5232 }, -- Greater Soulstone
+[16896] = { "величезний камінь душі", ref=5232 }, -- Major Soulstone
 [16967] = { "фераласька ахі" }, -- Feralas Ahi
 [16968] = { "сар'теріський мілинник" }, -- Sar'theris Striker
 [16969] = { "синій вітрильник Дикого узбережжя" }, -- Savage Coast Blue Sailfin
@@ -4245,6 +4308,9 @@ addonTable.item = {
 [21155] = { "дар Деревопузих", flavor="Цей виріб з ясносрібла є символом миру хутропузів. До нього прикріплено запечатане повідомлення." }, -- Timbermaw Offering of Peace, @flavor This truesilver-wrought item is a furbolg symbol of peace.  A sealed message is attached to it.
 [21177] = { "знак королів" }, -- Symbol of Kings
 [21217] = { "делікатес з мудрориби", use="Відновлює 840.0 здоров'я та 1260 мани протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і відновлюватимете 6 мани кожні 5 сек протягом 15 хв." }, -- Sagefish Delight, @use Restores 840.0 health and 1260 mana over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Mana every 5 seconds for 15 min.
+[21281] = { "гримуар тіньової стріли X", use="Навчає закляттю \"Тіньова стріла\" (Ранг 10)." }, -- Grimoire of Shadow Bolt X, @use Teaches Shadow Bolt (Rank 10).
+[21282] = { "гримуар жертвоприношення VIII", use="Навчає закляттю \"Жертвоприношення\" (Ранг 8)." }, -- Grimoire of Immolate VIII, @use Teaches Immolate (Rank 8).
+[21283] = { "гримуар зараження VII", use="Навчає закляттю \"Зараження\" (Ранг 7)." }, -- Grimoire of Corruption VII, @use Teaches Corruption (Rank 7).
 [21311] = { "жилет стража землі", equip="Відновлює 6 мани кожні 5 сек." }, -- Earth Warder's Vest, @equip Restores 6 mana per 5 sec.
 [21312] = { "пояс наглядача лігва", equip="Збільшує силу атаки на 24." }, -- Belt of the Den Watcher, @equip +24 Attack Power.
 [21316] = { "поножі урси", equip="Збільшує ваш шанс нанесення критичного удару на 1%." }, -- Leggings of the Ursa, @equip Improves your chance to get a critical strike by 1%.
@@ -4446,6 +4512,7 @@ addonTable.item = {
 [22744] = { "чоботи Кривавого Вітрила" }, -- Bloodsail Boots
 [22745] = { "штани Кривавого Вітрила" }, -- Bloodsail Pants
 [22746] = { "піратська форма" }, -- Buccaneer's Uniform
+[22891] = { "гримуар охоронця від тіні IV", use="Навчає закляттю \"Охоронець від тіні\" (Ранг 4)." }, -- Grimoire of Shadow Ward IV, @use Teaches Shadow Ward (Rank 4).
 [22895] = { "начаклована булочка з корицею", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Conjured Cinnamon Roll, @use Restores 3180 health over 30 sec.  Must remain seated while eating.
 [22945] = { "потерта записка" }, -- A Careworn Note
 [22972] = { "потерта записка" }, -- A Careworn Note
