@@ -433,15 +433,15 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
         return
     end
 
+    local tooltip_updated = false
     local entry = get_entry(entry_type, entry_id)
 
-    if not entry and options.debug then
-        entry = { entry_type .. "|cff999999#|r" .. entry_id }
-    end
-
     if entry then
+        tooltip_updated = true
         tooltip:AddLine(" ")
-        tooltip:AddLine(asset_ua_code .. " " .. capitalize(entry[1]), 1, 1, 1)
+
+        local heading = make_entry_text(entry[1], tooltip)
+        tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
 
         if entry_type == "item" then
             add_line_to_tooltip(tooltip, entry["desc"], "TEXT", 1, 1, 1)
@@ -458,10 +458,14 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
         else
             add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 1, 1)
         end
+    elseif options.debug then
+        tooltip_updated = true
+        tooltip:AddLine(" ")
+        tooltip:AddLine(asset_ua_code .. " " .. entry_type .. "|cff999999#|r" .. entry_id, 1, 1, 1)
+    end
 
-        if tooltip:IsShown() then
-            tooltip:Show()
-        end
+    if tooltip_updated and tooltip:IsShown() then
+        tooltip:Show()
     end
 
     tooltip_entry_type = entry_type
