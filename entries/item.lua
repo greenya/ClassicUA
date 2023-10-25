@@ -3602,7 +3602,7 @@ addonTable.item = {
 [16263] = { "відповідь Лейрда" }, -- Laird's Response
 [16282] = { "оберемок шкур" }, -- Bundle of Hides
 [16283] = { "шкіргалантерея Агану" }, -- Ahanu's Leather Goods
-[16302] = { "гримуар вогняної стріли (Ранг {1})#(Rank {1})", use="Навчає бісеняти закляттю \"Вогняна стріла\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Firebolt (Rank 2), @use Teaches Imp Firebolt (Rank 2).
+[16302] = { "гримуар вогняної стріли (Ранг {1})#(Rank {1})", use="Навчає бісеня закляттю \"Вогняна стріла\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Firebolt (Rank 2), @use Teaches Imp Firebolt (Rank 2).
 [16303] = { "лапа Урсанґо" }, -- Ursangous's Paw
 [16304] = { "голова Шадумбри" }, -- Shadumbra's Head
 [16305] = { "кіготь Гостропазура" }, -- Sharptalon's Claw
@@ -3619,17 +3619,17 @@ addonTable.item = {
 [16318] = { ref=16302 }, -- Grimoire of Firebolt (Rank 5)
 [16319] = { ref=16302 }, -- Grimoire of Firebolt (Rank 6)
 [16320] = { ref=16302 }, -- Grimoire of Firebolt (Rank 7)
-[16321] = { "гримуар кривавої угоди (Ранг {1})#(Rank {1})", use="Навчає бісеняти закляттю \"Кривава угода\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Blood Pact (Rank 1), @use Teaches Imp Blood Pact (Rank 1).
+[16321] = { "гримуар кривавої угоди (Ранг {1})#(Rank {1})", use="Навчає бісеня закляттю \"Кривава угода\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Blood Pact (Rank 1), @use Teaches Imp Blood Pact (Rank 1).
 [16322] = { ref=16321 }, -- Grimoire of Blood Pact (Rank 2)
 [16323] = { ref=16321 }, -- Grimoire of Blood Pact (Rank 3)
 [16324] = { ref=16321 }, -- Grimoire of Blood Pact (Rank 4)
 [16325] = { ref=16321 }, -- Grimoire of Blood Pact (Rank 5)
-[16326] = { "гримуар вогняного щита (Ранг {1})#(Rank {1})", use="Навчає бісеняти закляттю \"Вогняний щит\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Fire Shield (Rank 1), @use Teaches Imp Fire Shield (Rank 1).
+[16326] = { "гримуар вогняного щита (Ранг {1})#(Rank {1})", use="Навчає бісеня закляттю \"Вогняний щит\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Fire Shield (Rank 1), @use Teaches Imp Fire Shield (Rank 1).
 [16327] = { ref=16326 }, -- Grimoire of Fire Shield (Rank 2)
 [16328] = { ref=16326 }, -- Grimoire of Fire Shield (Rank 3)
 [16329] = { ref=16326 }, -- Grimoire of Fire Shield (Rank 4)
 [16330] = { ref=16326 }, -- Grimoire of Fire Shield (Rank 5)
-[16331] = { "гримуар фазування", use="Навчає бісеняти закляттю \"Фазування\"." }, -- Grimoire of Phase Shift, @use Teaches Imp Phase Shift.
+[16331] = { "гримуар фазування", use="Навчає бісеня закляттю \"Фазування\"." }, -- Grimoire of Phase Shift, @use Teaches Imp Phase Shift.
 [16332] = { "кайло Тазз'ріла" }, -- Thazz'ril's Pick
 [16333] = { "рештки Семюеля", use="Захоронити на могилі Марли." }, -- Samuel's Remains, @use Bury at Marla's Grave.
 [16346] = { "гримуар муки (Ранг {1})#(Rank {1})", use="Навчає пустотника закляттю \"Мука\" (Ранг {1}).#(Rank {1})" }, -- Grimoire of Torment (Rank 2), @use Teaches Voidwalker Torment (Rank 2).
