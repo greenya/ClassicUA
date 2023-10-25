@@ -19,6 +19,7 @@ entries\spell.lua
 entries\spell_druid.lua
 entries\spell_mage.lua
 entries\spell_paladin.lua
+entries\spell_pet.lua
 entries\spell_priest.lua
 entries\spell_rogue.lua
 entries\spell_shaman.lua
