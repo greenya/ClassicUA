@@ -420,7 +420,7 @@ local shaman_spells = {
 [16301] = { ref=16253 }, -- Shield Specialization (Rank 5)
 
 -- Stoneclaw Totem
-[5730] = { "Тотем кам'яного пазура", "Викликає тотем кам'яного пазура з {1} здоров'я біля заклинача на {2} с, який змушує істот в радусі {3} м нападати на себе.#with {1} health#for {2} sec#within {3} y" }, -- Stoneclaw Totem (Rank 1)
+[5730] = { "Тотем кам'яного пазура", "Викликає тотем кам'яного пазура з {1} здоров'я біля заклинача на {2} с, який змушує істот у радіусі {3} м нападати на себе.#with {1} health#for {2} sec#within {3} y" }, -- Stoneclaw Totem (Rank 1)
 [6390] = { ref=5730 }, -- Stoneclaw Totem (Rank 2)
 [6391] = { ref=5730 }, -- Stoneclaw Totem (Rank 3)
 [6392] = { ref=5730 }, -- Stoneclaw Totem (Rank 4)
@@ -434,7 +434,7 @@ local shaman_spells = {
 [10406] = { ref=8071 }, -- Stoneskin Totem (Rank 4)
 [10407] = { ref=8071 }, -- Stoneskin Totem (Rank 5)
 [10408] = { ref=8071 }, -- Stoneskin Totem (Rank 6)
-[8072] = { "Кам'яна шкіра", nil, "Знижуює отримуване пошкодження в ближньому бою на {1}.#by {1}" }, -- Stoneskin (aura)
+[8072] = { "Кам'яна шкіра", nil, "Знижує отримуване пошкодження в ближньому бою на {1}.#by {1}" }, -- Stoneskin (aura)
 [8156] = { ref=8072 }, -- Stoneskin (aura)
 [8157] = { ref=8072 }, -- Stoneskin (aura)
 [10403] = { ref=8072 }, -- Stoneskin (aura)
@@ -461,7 +461,7 @@ local shaman_spells = {
 [25362] = { ref=8076 }, -- Strength of Earth (aura)
 
 -- Thundering Strikes
-[16255] = { "Громові удари", "Підвищує ймовірність завдати критичного удару вашими атами зброєю на {1}%.#by {1}" }, -- Thundering Strikes (Rank 1)
+[16255] = { "Громові удари", "Підвищує ймовірність завдати критичного удару вашою зброєю на {1}%.#by {1}" }, -- Thundering Strikes (Rank 1)
 [16302] = { ref=16255 }, -- Thundering Strikes (Rank 2)
 [16303] = { ref=16255 }, -- Thundering Strikes (Rank 3)
 [16304] = { ref=16255 }, -- Thundering Strikes (Rank 4)

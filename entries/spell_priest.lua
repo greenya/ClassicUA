@@ -105,7 +105,7 @@ local priest_spells = {
 [10917] = { ref=2061 }, -- Flash Heal (Rank 7)
 
 -- Force of Will
-[18544] = { "Сила волі", "Збільшує пошкодження вашими закляттямя на {1}% та ймовірність критичного удару вашими атакуючими закляттями на {2}%.#damage by {1}%#spells by {2}%" }, -- Force of Will (Rank 1)
+[18544] = { "Сила волі", "Збільшує пошкодження вашими закляттями на {1}% та ймовірність критичного удару вашими атакуючими закляттями на {2}%.#damage by {1}%#spells by {2}%" }, -- Force of Will (Rank 1)
 [18547] = { ref=18544 }, -- Force of Will (Rank 2)
 [18548] = { ref=18544 }, -- Force of Will (Rank 3)
 [18549] = { ref=18544 }, -- Force of Will (Rank 4)
@@ -170,7 +170,7 @@ local priest_spells = {
 [15311] = { ref=15274 }, -- Improved Fade (Rank 2)
 
 -- Improved Healing
-[14912] = { "Покращене зцілювання", "Знижує витрати мани ваших заклять \"Мале зцілення\", \"Зцілення\" та \"Велике зцілення\" на {1}%.#by {1}" }, -- Improved Healing (Rank 1)
+[14912] = { "Покращене зцілення", "Знижує витрати мани ваших заклять \"Мале зцілення\", \"Зцілення\" та \"Велике зцілення\" на {1}%.#by {1}" }, -- Improved Healing (Rank 1)
 [15013] = { ref=14912 }, -- Improved Healing (Rank 2)
 [15014] = { ref=14912 }, -- Improved Healing (Rank 3)
 
@@ -195,7 +195,7 @@ local priest_spells = {
 [14767] = { ref=14749 }, -- Improved Power Word: Fortitude (Rank 2)
 
 -- Improved Power Word: Shield
-[14748] = { "Покращене cлово cили: Щит", "Збільшує пошкодження, що поглинає ваше закляття \"Слово сили: Щит\", на {1}%.#by {1}" }, -- Improved Power Word: Shield (Rank 1)
+[14748] = { "Покращене слово сили: Щит", "Збільшує пошкодження, що поглинає ваше закляття \"Слово сили: Щит\", на {1}%.#by {1}" }, -- Improved Power Word: Shield (Rank 1)
 [14768] = { ref=14748 }, -- Improved Power Word: Shield (Rank 2)
 [14769] = { ref=14748 }, -- Improved Power Word: Shield (Rank 3)
 
