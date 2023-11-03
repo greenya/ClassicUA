@@ -191,7 +191,7 @@ local prepare_quests = function (is_alliance)
 end
 
 local prepare_codes = function (name, race, class, is_male)
-    -- print("preparing codes for: " .. name .. " / " .. race .. " / " .. class .. " / " .. (is_male and "male" or "famale"))
+    -- print("preparing codes for: " .. name .. " / " .. race .. " / " .. class .. " / " .. (is_male and "male" or "female"))
     local at = addonTable
     local sex = is_male and 1 or 2
     local cases = { "н", "р", "д", "з", "о", "м", "к" }
@@ -382,7 +382,7 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
                 if match_number > tooltip_matches_to_skip then
                     for k = 1, #v do
                         local value = v[k]:gsub("%.", ",")
-                        -- fix floating-point number wihtout leading "0", e.g. ",2"
+                        -- fix floating-point number without leading "0", e.g. ",2"
                         if #value > 1 and value:sub(1, 1) == "," then
                             value = "0" .. value
                         end
@@ -1131,7 +1131,7 @@ local prepare_options_frame = function ()
     f:SetPoint("TOPLEFT", 24, -80)
     f:SetWidth(200)
     f:SetHeight(20)
-    f.tooltipText = "Розмір шрифта в вікні завдання."
+    f.tooltipText = "Розмір шрифту в вікні завдання."
     f:SetObeyStepOnDrag(true)
     f:SetValueStep(1)
     f:SetMinMaxValues(10, 20)
@@ -1149,7 +1149,7 @@ local prepare_options_frame = function ()
     f:SetPoint("TOPLEFT", 24, -140)
     f:SetWidth(200)
     f:SetHeight(20)
-    f.tooltipText = "Розмір шрифта в вікні книжки."
+    f.tooltipText = "Розмір шрифту в вікні книжки."
     f:SetObeyStepOnDrag(true)
     f:SetValueStep(1)
     f:SetMinMaxValues(10, 20)
