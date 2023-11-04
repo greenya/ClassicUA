@@ -330,7 +330,7 @@ local priest_spells = {
 [1245] = { ref=1243 }, -- Power Word: Fortitude (Rank 3)
 [2791] = { ref=1243 }, -- Power Word: Fortitude (Rank 4)
 [10937] = { ref=1243 }, -- Power Word: Fortitude (Rank 5)
-[23948] = { ref=1243 }, -- Power Word: Fortitude (Rank 6)
+[10938] = { ref=1243 }, -- Power Word: Fortitude (Rank 6)
 
 -- Power Word: Shield
 [17] = { "Слово сили: Щит", "Створює з частинки душі члена групи щит, що поглинає {1} пошкодження. Триває {2} с. Поки щит тримається, вимову заклять не буде перервано. Повторно накласти щит можна тільки через {3} с.#absorbing {1}#Lasts {2} sec#again for {3} sec", "Поглинає пошкодження." }, -- Power Word: Shield (Rank 1)
