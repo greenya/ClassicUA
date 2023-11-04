@@ -414,17 +414,34 @@ end
 local tooltip_entry_type = false
 local tooltip_entry_id = false
 
-local add_line_to_tooltip = function (tooltip, content, template, r, g, b)
+local add_line_to_tooltip = function (tooltip, content, template, r, g, b, content_can_be_spell_id)
     if not content then
         return
     end
 
     local lines = type(content) == "table" and content or { content }
     for i = 1, #lines do
-        local text = make_entry_text(lines[i], tooltip)
-        local text_cap = capitalize(text)
-        local result = template:gsub("TEXT", text_cap:gsub("%%", "%%%%"), 1)
-        tooltip:AddLine(result, r, g, b, true)
+        local text = lines[i]
+
+        if content_can_be_spell_id and type(text) == "number" then
+            local spell_entry = get_entry("spell", text)
+            if spell_entry and spell_entry[2] then
+                text = make_entry_text(spell_entry[2], tooltip)
+                text = capitalize(text)
+            elseif options.debug then
+                text = "spell#" .. text
+            else
+                text = false
+            end
+        else
+            text = make_entry_text(text, tooltip)
+            text = capitalize(text)
+        end
+
+        if text then
+            local result = template:gsub("TEXT", text:gsub("%%", "%%%%"), 1)
+            tooltip:AddLine(result, r, g, b, true)
+        end
     end
 end
 
@@ -445,9 +462,9 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
 
         if entry_type == "item" then
             add_line_to_tooltip(tooltip, entry["desc"], "TEXT", 1, 1, 1)
-            add_line_to_tooltip(tooltip, entry["equip"], "При спорядженні: TEXT", 0, 1, 0)
-            add_line_to_tooltip(tooltip, entry["hit"], "Шанс при влучанні: TEXT", 0, 1, 0)
-            add_line_to_tooltip(tooltip, entry["use"], "Використання: TEXT", 0, 1, 0)
+            add_line_to_tooltip(tooltip, entry["equip"], "При спорядженні: TEXT", 0, 1, 0, true)
+            add_line_to_tooltip(tooltip, entry["hit"], "Шанс при влучанні: TEXT", 0, 1, 0, true)
+            add_line_to_tooltip(tooltip, entry["use"], "Використання: TEXT", 0, 1, 0, true)
             add_line_to_tooltip(tooltip, entry["flavor"], "\"TEXT\"", 1, 0.82, 0)
         elseif entry_type == "spell" then
             if is_aura then

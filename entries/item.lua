@@ -5,9 +5,9 @@ addonTable.item = {
 --     [ref]    = ID (optional),
 --     [1]      = title (optional),
 --     [desc]   = description (optional),
---     [equip]  = text for "Equip: ..." (green color)
---     [hit]    = text for "Chance on hit: ..." (green color)
---     [use]    = text for "Use: ..." (green color)
+--     [equip]  = text or number (spell id) for "Equip: ..." (green color)
+--     [hit]    = text or number (spell id) for "Chance on hit: ...", can be number as spell id (green color)
+--     [use]    = text or number (spell id) for "Use: ..." (green color)
 --     [flavor] = quoted text (golden color)
 --     --------
 --     note: value can be string or table (multiple strings)
@@ -1046,7 +1046,7 @@ addonTable.item = {
 [4597] = { "рецепт: Безбарвне зілля лікування", use="Навчає вас створювати безбарвне зілля лікування." }, -- Recipe: Discolored Healing Potion, @use Teaches you how to make a Discolored Healing Potion.
 [4598] = { "гоблінська вудка", use="Завдає від 128 до 172 шкоди вогнем в радіусі 5 м. (Відновлення 1 хв)" }, -- Goblin Fishing Pole, @use Inflicts 128 to 172 Fire damage in a 5 yard radius. (1 Min Cooldown)
 [4603] = { "сирий плямистий жовтохвіст", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Raw Spotted Yellowtail, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
-[4604] = { "шапинка лісового гриба", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Forest Mushroom Cap, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[4604] = { "шапинка лісового гриба", use=433 }, -- Forest Mushroom Cap
 [4605] = { "червоний крапчастий гриб", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Red-speckled Mushroom, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [4609] = { "рецепт: Смажене крило канюка", use="Навчає вас приготуванню смажених крилець канюка." }, -- Recipe: Barbecued Buzzard Wing, @use Teaches you how to cook a Barbecued Buzzard Wing.
 [4610] = { "різьблена кам'яна урна" }, -- Carved Stone Urn
