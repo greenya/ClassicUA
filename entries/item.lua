@@ -6,7 +6,7 @@ addonTable.item = {
 --     [1]      = title (optional),
 --     [desc]   = description (optional),
 --     [equip]  = text or number (spell id) for "Equip: ..." (green color)
---     [hit]    = text or number (spell id) for "Chance on hit: ...", can be number as spell id (green color)
+--     [hit]    = text or number (spell id) for "Chance on hit: ..." (green color)
 --     [use]    = text or number (spell id) for "Use: ..." (green color)
 --     [flavor] = quoted text (golden color)
 --     --------
