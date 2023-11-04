@@ -4,7 +4,7 @@ addonTable.object = { -- [key] = text
 -- Common
 ["Anvil"] = "ковадло",
 ["Bonfire"] = "багаття",
-["Elevator to Mulgor"] = "підйомник до Мулґора",
+["Elevator to Mulgor"] = "підйомник до Мулґора", -- TODO: check in-game if its "Mulgor" or "Mulgore"
 ["Fierce Blaze"] = "жорстоке полум'я",
 ["Mailbox"] = "поштова скринька",
 ["Medium Brazier"] = "середня жаровня",

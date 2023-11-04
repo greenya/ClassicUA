@@ -5,9 +5,9 @@ local item_tbc = {
 --     [ref]    = ID (optional),
 --     [1]      = title (optional),
 --     [desc]   = description (optional),
---     [equip]  = text for "Equip: ..." (green color)
---     [hit]    = text for "Chance on hit: ..." (green color)
---     [use]    = text for "Use: ..." (green color)
+--     [equip]  = text or number (spell id) for "Equip: ..." (green color)
+--     [hit]    = text or number (spell id) for "Chance on hit: ..." (green color)
+--     [use]    = text or number (spell id) for "Use: ..." (green color)
 --     [flavor] = quoted text (golden color)
 --     --------
 --     note: value can be string or table (multiple strings)
@@ -40,7 +40,7 @@ local item_tbc = {
 [32962] = { "дотик поразки безжального гладіатора" },
 [32963] = { "молоток нещадного гладіатора" },
 [32964] = { "порятунок безжального гладіатора" },
-}
 
+}
 
 for k, v in pairs(item_tbc) do addonTable.item[k] = v end

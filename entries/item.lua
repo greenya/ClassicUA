@@ -4271,19 +4271,15 @@ addonTable.item = {
 [18423] = { "голова Оніксії", flavor="Голова матері чорних драконів" }, -- Head of Onyxia, @flavor The head of the Black Dragonflight's Brood Mother
 [18424] = { "осокові чоботи" }, -- Sedge Boots
 [18426] = { "тенета Лестендріс" }, -- Lethtendris's Web
-[18465] = { "королівська печатка Ельдре'Таласа
-", equip="Збільшує ваш шанс нанесення удару на 2%.", flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip Improves your chance to hit by 2%., @flavor Blessed by the Shen'dralar Ancients.
+[18465] = { "королівська печатка Ельдре'Таласа", equip="Збільшує ваш шанс нанесення удару на 2%.", flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip Improves your chance to hit by 2%., @flavor Blessed by the Shen'dralar Ancients.
 [18466] = { "королівська печатка Ельдре'Таласа", equip="Збільшує броню на 200.", flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip +200 Armor., @flavor Blessed by the Shen'dralar Ancients.
 [18467] = { "королівська печатка Ельдре'Таласа", equip="Збільшує шкоду і зцілення від магічних заклинань і ефектів на 23.", flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip Increases damage and healing done by magical spells and effects by up to 23., @flavor Blessed by the Shen'dralar Ancients.
 [18468] = { "королівська печатка Ельдре'Таласа", equip="Відновлює 8 мани кожні 5 сек.", flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip Restores 8 mana per 5 sec., @flavor Blessed by the Shen'dralar Ancients.
-[18469] = { "королівська печатка Ельдре'Таласа
-", equip={ "Збільшує зцілення від заклинань і ефектів на 33.", "Відновлює 4 мани кожні 5 сек." }, flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip Increases healing done by spells and effects by up to 33., @equip Restores 4 mana per 5 sec., @flavor Blessed by the Shen'dralar Ancients.
-[18470] = { "королівська печатка Ельдре'Таласа
-", equip="Збільшує зцілення від заклинань і ефектів на 44.", flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip Increases healing done by spells and effects by up to 44., @flavor Blessed by the Shen'dralar Ancients.
+[18469] = { "королівська печатка Ельдре'Таласа", equip={ "Збільшує зцілення від заклинань і ефектів на 33.", "Відновлює 4 мани кожні 5 сек." }, flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip Increases healing done by spells and effects by up to 33., @equip Restores 4 mana per 5 sec., @flavor Blessed by the Shen'dralar Ancients.
+[18470] = { "королівська печатка Ельдре'Таласа", equip="Збільшує зцілення від заклинань і ефектів на 44.", flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip Increases healing done by spells and effects by up to 44., @flavor Blessed by the Shen'dralar Ancients.
 [18471] = { "королівська печатка Ельдре'Таласа", equip="Збільшує шкоду і зцілення від магічних заклинань і ефектів на 23.", flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip Increases damage and healing done by magical spells and effects by up to 23., @flavor Blessed by the Shen'dralar Ancients.
 [18472] = { "королівська печатка Ельдре'Таласа", equip={ "Збільшує броню на 150.", "Збільшує зцілення від заклинань і ефектів на 22." }, flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip +150 Armor., @equip Increases healing done by spells and effects by up to 22., @flavor Blessed by the Shen'dralar Ancients.
-[18473] = { "королівська печатка Ельдре'Таласа
-", equip="Збільшує силу атаки дальнього бою на 48.", flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip +48 ranged Attack Power., @flavor Blessed by the Shen'dralar Ancients.
+[18473] = { "королівська печатка Ельдре'Таласа", equip="Збільшує силу атаки дальнього бою на 48.", flavor="Благословенна старійшинами Шен'дралар." }, -- Royal Seal of Eldre'Thalas, @equip +48 ranged Attack Power., @flavor Blessed by the Shen'dralar Ancients.
 [18488] = { "нагрітий древній клинок", use="Встромити в серце матері драконів, щоб загартувати клинок." }, -- Heated Ancient Blade, @use Drive into the heart of the brood mother to temper the heated blade.
 [18489] = { "неопалений древній клинок", use="Підставити клинок під вогняний подих Оніксії." }, -- Unfired Ancient Blade, @use Place under the flaming breath of Onyxia.
 [18491] = { "прядка знань", equip="Відновлює 3 мани кожні 5 сек." }, -- Lorespinner, @equip Restores 3 mana per 5 sec.
@@ -5967,4 +5963,5 @@ addonTable.item = {
 [23327] = { "підсмажена на вогні булочка", use="Збільшує ваш шанс нанесення удару на 2% протягом 1 години." }, -- Fire-toasted Bun, @use Improves your chance to hit by 2% for 1 hour.
 [23379] = { "попелясті браслети", use="Викликати попелястого елементаля, що захищатиме вас протягом 10 хв. (Відновлення 10 хв)" }, -- Cinder Bracers, @use Summons a Cinder Elemental that will protect you for 10 min. (10 Min Cooldown)
 [23435] = { "бузиновий пиріг", use="Збільшує навичку захисту на 13 протягом 1 години." }, -- Elderberry Pie, @use Increases Defense by 13 for 1 hour.
+
 }
