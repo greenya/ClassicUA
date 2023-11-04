@@ -1624,16 +1624,16 @@ addonTable.item = {
 [5860] = { "Спадщина Аспектів" }, -- Legacy of the Aspects
 [5861] = { "Джерела загрози невмерлих" }, -- Beginnings of the Undead Threat
 [5862] = { "сифорієвий прискорювач" }, -- Seaforium Booster
-[5864] = { "сірий баран", use="Прикликає й відкликає верхового сірого барана. (Відновлення 3 сек)" }, -- Gray Ram, @use Summons and dismisses a rideable gray ram. (3 Sec Cooldown)
+[5864] = { "сірий баран", use="Викликає та відпускає верхового сірого барана. (Відновлення 3 сек)" }, -- Gray Ram, @use Summons and dismisses a rideable gray ram. (3 Sec Cooldown)
 [5865] = { "модифікований сифорієвий прискорювач" }, -- Modified Seaforium Booster
 [5866] = { "зразок індурієвої руди" }, -- Sample of Indurium Ore
 [5867] = { "гравійований фіал", use="Наповнити гравійований фіал у місячному колодязі Ясенедолу." }, -- Etched Phial, @use Fill the Etched Phial at the Ashenvale moonwell.
 [5868] = { "наповнений гравійований фіал" }, -- Filled Etched Phial
 [5869] = { "роздвоєне копито" }, -- Cloven Hoof
-[5872] = { "коричневий баран", use="Прикликає й відкликає верхового коричневого барана. (Відновлення 3 сек)" }, -- Brown Ram, @use Summons and dismisses a rideable brown ram. (3 Sec Cooldown)
-[5873] = { "білий баран", use="Прикликає й відкликає верхового білого барана. (Відновлення 3 сек)" }, -- White Ram, @use Summons and dismisses a rideable white ram. (3 Sec Cooldown)
-[5874] = { "упряж: чорний баран", use="Прикликає й відкликає верхового чорного барана. (Відновлення 3 сек)" }, -- Harness: Black Ram, @use Summons and dismisses a rideable black ram. (3 Sec Cooldown)
-[5875] = { "упряж: синій баран", use="Прикликає й відкликає верхового синього барана. (Відновлення 3 сек)" }, -- Harness: Blue Ram, @use Summons and dismisses a rideable blue ram. (3 Sec Cooldown)
+[5872] = { "коричневий баран", use="Викликає та відпускає верхового коричневого барана. (Відновлення 3 сек)" }, -- Brown Ram, @use Summons and dismisses a rideable brown ram. (3 Sec Cooldown)
+[5873] = { "білий баран", use="Викликає та відпускає верхового білого барана. (Відновлення 3 сек)" }, -- White Ram, @use Summons and dismisses a rideable white ram. (3 Sec Cooldown)
+[5874] = { "упряж: чорний баран", use="Викликає та відпускає верхового чорного барана. (Відновлення 3 сек)" }, -- Harness: Black Ram, @use Summons and dismisses a rideable black ram. (3 Sec Cooldown)
+[5875] = { "упряж: синій баран", use="Викликає та відпускає верхового синього барана. (Відновлення 3 сек)" }, -- Harness: Blue Ram, @use Summons and dismisses a rideable blue ram. (3 Sec Cooldown)
 [5876] = { "бульба синьолиста" }, -- Blueleaf Tuber
 [5877] = { "тріснутий панцир силітида" }, -- Cracked Silithid Carapace
 [5879] = { "сутінкова підвіска" }, -- Twilight Pendant
@@ -2289,20 +2289,20 @@ addonTable.item = {
 [8544] = { "маготканий бинт", use="Відновлює 800 здоров'я за 8 сек." }, -- Mageweave Bandage, @use Heals 800 damage over 8 sec.
 [8545] = { "щільний маготканий бинт", use="Відновлює 1104 здоров'я за 8 сек." }, -- Heavy Mageweave Bandage, @use Heals 1104 damage over 8 sec.
 [8548] = { "водоматичний стрижень" }, -- Divino-matic Rod
-[8563] = { "червоний механобіг", use="Прикликає й відкликає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Red Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
+[8563] = { "червоний механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Red Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
 [8564] = { "яйце гіпогрифа", flavor="Воно величезне!" }, -- Hippogryph Egg, @flavor It's huge!
 [8584] = { "невикористаний пристрій для пошуку води", use="Наповнити невикористаний пристрій для пошуку води біля водойми Варти Зажурених Пісків." }, -- Untapped Dowsing Widget, @use Fill the Untapped Dowsing Widget at the Sandsorrow Watch water hole.
 [8585] = { "використаний пристрій для пошуку води" }, -- Tapped Dowsing Widget
 [8587] = { "частини тіл комах Сентіпаар" }, -- Centipaar Insect Parts
 [8593] = { "землемірне спорядження Полотноміра" }, -- Scrimshank's Surveying Gear
 [8594] = { "звіт про дослідження комах" }, -- Insect Analysis Report
-[8595] = { "синій механобіг", use="Прикликає й відкликає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Blue Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
+[8595] = { "синій механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Blue Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
 [8603] = { "чортополохова роса" }, -- Thistleshrub Dew
 [8623] = { "аварійний маяк OOX-17/ТН" }, -- OOX-17/TN Distress Beacon
 [8624] = { "червоний бенгальський вогонь" }, -- Red Sparkler
 [8625] = { "білий бенгальський вогонь" }, -- White Sparkler
 [8626] = { "синій бенгальський вогонь" }, -- Blue Sparkler
-[8629] = { "поводи смугастого ночезуба", use="Прикликає й відкликає верхового ночезуба. (Відновлення 3 сек)" }, -- Reins of the Striped Nightsaber, @use Summons and dismisses a rideable Sabre Cat. (3 Sec Cooldown)
+[8629] = { "поводи смугастого ночезуба", use="Викликає та відпускає верхового ночезуба. (Відновлення 3 сек)" }, -- Reins of the Striped Nightsaber, @use Summons and dismisses a rideable Sabre Cat. (3 Sec Cooldown)
 [8643] = { "незвичайне яйце", flavor="У цьому яйці є щось особливе..." }, -- Extraordinary Egg, @flavor There's something very special about this egg...
 [8644] = { "чудове яйце" }, -- Fine Egg
 [8645] = { "звичайне яйце" }, -- Ordinary Egg
@@ -3158,8 +3158,8 @@ addonTable.item = {
 [12350] = { "порожня посудина для зразків" }, -- Empty Sampling Tube
 [12351] = { "ріг арктичного вовка", use="Викликає та відпускає арктичного вовка, на якому можна їздити верхи. Це дуже швидке створіння. (Відновлення 3 сек)" }, -- Horn of the Arctic Wolf, @use Summons and dismisses a rideable arctic wolf.  This is a very fast mount. (3 Sec Cooldown)
 [12352] = { "доленосна застібка" }, -- Doomrigger's Clasp
-[12353] = { "вуздечка білого жеребця", use="Прикликає й відкликає їздового білого жеребця. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- White Stallion Bridle, @use Summons and dismisses a rideable white stallion.  This is a very fast mount. (3 Sec Cooldown)
-[12354] = { "вуздечка солового коня", use="Прикликає й відкликає їздового солового коня. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Palomino Bridle, @use Summons and dismisses a rideable Palomino.  This is a very fast mount. (3 Sec Cooldown)
+[12353] = { "вуздечка білого жеребця", use="Викликає та відпускає їздового білого жеребця. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- White Stallion Bridle, @use Summons and dismisses a rideable white stallion.  This is a very fast mount. (3 Sec Cooldown)
+[12354] = { "вуздечка солового коня", use="Викликає та відпускає їздового солового коня. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Palomino Bridle, @use Summons and dismisses a rideable Palomino.  This is a very fast mount. (3 Sec Cooldown)
 [12355] = { "талісман порчі" }, -- Talisman of Corruption
 [12356] = { "яйце виверни з Високого Сідала" }, -- Highperch Wyvern Egg
 [12358] = { "скрижаль Темнокаменя" }, -- Darkstone Tablet
@@ -3396,15 +3396,15 @@ addonTable.item = {
 [13313] = { "священні писання високородних", flavor="Сторінки пошарпані та порвані..." }, -- Sacred Highborne Writings, @flavor The pages are tattered and worn...
 [13315] = { "заповіт надії", use="Відновлює 500 здоров'я. Можна використати лише при 10% здоров'я. (Відновлення 30 хв)" }, -- Testament of Hope, @use Restores 500 health. Can only be used at 10% health. (30 Min Cooldown)
 [13320] = { "арканічний прискорювач", flavor="Використовується як каталізатор для перетворення токсинів в котлах Скари." }, -- Arcane Quickener, @flavor This is used as a catalyst in transforming the toxins of the Scourge's cauldrons.
-[13321] = { "зелений механобіг", use="Прикликає й відкликає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Green Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
-[13322] = { "нефарбований механобіг", use="Прикликає й відкликає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Unpainted Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
-[13323] = { "пурпуровий механобіг", use="Прикликає й відкликає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Purple Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
-[13324] = { "червоно-синій механобіг", use="Прикликає й відкликає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Red & Blue Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
-[13325] = { "флуоресцентний зелений механобіг", use="Прикликає й відкликає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Fluorescent Green Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
-[13326] = { "білий механобіг, модель А", use="Прикликає й відкликає верхового механічного довгобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- White Mechanostrider Mod A, @use Summons and dismisses a rideable mechanical tallstrider.   This is a very fast mount. (3 Sec Cooldown)
-[13327] = { "крижано-блакитний механобіг, модель А", use="Прикликає й відкликає верхового механічного довгобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Icy Blue Mechanostrider Mod A, @use Summons and dismisses a rideable mechanical tallstrider.   This is a very fast mount. (3 Sec Cooldown)
-[13328] = { "чорний баран", use="Прикликає й відкликає верхового чорного барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Black Ram, @use Summons and dismisses a rideable black ram.  This is a very fast mount. (3 Sec Cooldown)
-[13329] = { "морозний баран", use="Прикликає й відкликає верхового морозного барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Frost Ram, @use Summons and dismisses a rideable frost ram.  This is a very fast mount. (3 Sec Cooldown)
+[13321] = { "зелений механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Green Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
+[13322] = { "нефарбований механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Unpainted Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
+[13323] = { "пурпуровий механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Purple Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
+[13324] = { "червоно-синій механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Red & Blue Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
+[13325] = { "флуоресцентний зелений механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Fluorescent Green Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
+[13326] = { "білий механобіг, модель А", use="Викликає та відпускає верхового механічного довгобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- White Mechanostrider Mod A, @use Summons and dismisses a rideable mechanical tallstrider.   This is a very fast mount. (3 Sec Cooldown)
+[13327] = { "крижано-блакитний механобіг, модель А", use="Викликає та відпускає верхового механічного довгобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Icy Blue Mechanostrider Mod A, @use Summons and dismisses a rideable mechanical tallstrider.   This is a very fast mount. (3 Sec Cooldown)
+[13328] = { "чорний баран", use="Викликає та відпускає верхового чорного барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Black Ram, @use Summons and dismisses a rideable black ram.  This is a very fast mount. (3 Sec Cooldown)
+[13329] = { "морозний баран", use="Викликає та відпускає верхового морозного барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Frost Ram, @use Summons and dismisses a rideable frost ram.  This is a very fast mount. (3 Sec Cooldown)
 [13347] = { "кристал Зін-Малора", equip="Завдає шкоди та випалює від 100 до 500 мани, якщо ви не гідні." }, -- Crystal of Zin-Malor, @equip Deals damage and drains 100 to 500 mana every second if you are not worthy.
 [13350] = { "знак Чорної Варти" }, -- Insignia of the Black Guard
 [13351] = { "фартух багряного коваля молотів" }, -- Crimson Hammersmith's Apron
@@ -4220,7 +4220,7 @@ addonTable.item = {
 [18207] = { "зуб орка" }, -- Orc Tooth
 [18229] = { "Посібник Нета Пеґла з екстремальної риболовлі", flavor="У цій книжці відсутні всі сторінки, окрім останньої." }, -- Nat Pagle's Guide to Extreme Anglin', @flavor This book is missing every page but the last.
 [18240] = { "огрська дубильна рідина" }, -- Ogre Tannin
-[18244] = { "чорний бойовий баран", use="Прикликає й відкликає верхового чорного бойового барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Black War Ram, @use Summons and dismisses a rideable black war ram.  This is a very fast mount. (3 Sec Cooldown)
+[18244] = { "чорний бойовий баран", use="Викликає та відпускає верхового чорного бойового барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Black War Ram, @use Summons and dismisses a rideable black war ram.  This is a very fast mount. (3 Sec Cooldown)
 [18250] = { "ключ від кайданів Ґордока", flavor="Використовується з кайданами Ґордока." }, -- Gordok Shackle Key, @flavor Used with Gordok ogre shackles.
 [18253] = { "величезне зілля відживлення", use="Відновлює від {1} до {2} мани та здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Major Rejuvenation Potion, @use Restores 1440 to 1760 mana and health. (2 Min Cooldown)
 [18256] = { "зміцнений фіал" }, -- Imbued Vial
@@ -4358,9 +4358,9 @@ addonTable.item = {
 [18769] = { "Зачаровані торієві обладунки", flavor="Том I" }, -- Enchanted Thorium Platemail, @flavor Volume I
 [18770] = { "Зачаровані торієві обладунки", flavor="Том II" }, -- Enchanted Thorium Platemail, @flavor Volume II
 [18771] = { "Зачаровані торієві обладунки", flavor="Том III" }, -- Enchanted Thorium Platemail, @flavor Volume III
-[18772] = { "стрімкий зелений механобіг", use="Прикликає й відкликає стрімкого зеленого механобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Swift Green Mechanostrider, @use Summons and dismisses a Swift Green Mechanostrider.   This is a very fast mount. (3 Sec Cooldown)
-[18773] = { "стрімкий білий механобіг", use="Прикликає й відкликає стрімкого білого механобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Swift White Mechanostrider, @use Summons and dismisses a Swift White Mechanostrider.   This is a very fast mount. (3 Sec Cooldown)
-[18774] = { "стрімкий жовтий механобіг", use="Прикликає й відкликає стрімкого жовтого механобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Swift Yellow Mechanostrider, @use Summons and dismisses a Swift Yellow Mechanostrider.   This is a very fast mount. (3 Sec Cooldown)
+[18772] = { "стрімкий зелений механобіг", use="Викликає та відпускає стрімкого зеленого механобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Swift Green Mechanostrider, @use Summons and dismisses a Swift Green Mechanostrider.   This is a very fast mount. (3 Sec Cooldown)
+[18773] = { "стрімкий білий механобіг", use="Викликає та відпускає стрімкого білого механобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Swift White Mechanostrider, @use Summons and dismisses a Swift White Mechanostrider.   This is a very fast mount. (3 Sec Cooldown)
+[18774] = { "стрімкий жовтий механобіг", use="Викликає та відпускає стрімкого жовтого механобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Swift Yellow Mechanostrider, @use Summons and dismisses a Swift Yellow Mechanostrider.   This is a very fast mount. (3 Sec Cooldown)
 [18775] = { "збагачений маною корм для коней", flavor="Овес та зерно змішане з наповненим маною печивом Сріблястого Світанку." }, -- Manna-Enriched Horse Feed, @flavor Oats and grains specially mixed with the Argent Dawn's enriched manna biscuits.
 [18779] = { "нижня частина книги з кування обладунків: том I", use="Об'єднати дві половини книги з кування обладунків: том I." }, -- Bottom Half of Advanced Armorsmithing: Volume I, @use Combines the Top and Bottom Half of Advanced Armorsmithing: Volume I.
 [18780] = { "верхня частина книги з кування обладунків: том I", use="Об'єднати дві половини книги з кування обладунків: том I." }, -- Top Half of Advanced Armorsmithing: Volume I, @use Combines the Top and Bottom Half of Advanced Armorsmithing: Volume I.
@@ -4368,9 +4368,9 @@ addonTable.item = {
 [18782] = { "верхня частина книги з кування обладунків: том II", use="Об'єднати дві половини книги з кування обладунків: том II." }, -- Top Half of Advanced Armorsmithing: Volume II, @use Combines the Top and Bottom Half of Advanced Armorsmithing: Volume II.
 [18783] = { "нижня частина книги з кування обладунків: том III", use="Об'єднати дві половини книги з кування обладунків: том III." }, -- Bottom Half of Advanced Armorsmithing: Volume III, @use Combines the Top and Bottom Half of Advanced Armorsmithing: Volume III.
 [18784] = { "верхня частина книги з кування обладунків: том III", use="Об'єднати дві половини книги з кування обладунків: том III." }, -- Top Half of Advanced Armorsmithing: Volume III, @use Combines the Top and Bottom Half of Advanced Armorsmithing: Volume III.
-[18785] = { "стрімкий білий баран", use="Прикликає й відкликає верхового стрімкого білого барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift White Ram, @use Summons and dismisses a rideable swift white ram.  This is a very fast mount. (3 Sec Cooldown)
-[18786] = { "стрімкий коричневий баран", use="Прикликає й відкликає верхового стрімкого коричневого барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Brown Ram, @use Summons and dismisses a rideable swift brown ram.  This is a very fast mount. (3 Sec Cooldown)
-[18787] = { "стрімкий сірий баран", use="Прикликає й відкликає верхового стрімкого сірого барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Gray Ram, @use Summons and dismisses a rideable swift gray ram.  This is a very fast mount. (3 Sec Cooldown)
+[18785] = { "стрімкий білий баран", use="Викликає та відпускає верхового стрімкого білого барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift White Ram, @use Summons and dismisses a rideable swift white ram.  This is a very fast mount. (3 Sec Cooldown)
+[18786] = { "стрімкий коричневий баран", use="Викликає та відпускає верхового стрімкого коричневого барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Brown Ram, @use Summons and dismisses a rideable swift brown ram.  This is a very fast mount. (3 Sec Cooldown)
+[18787] = { "стрімкий сірий баран", use="Викликає та відпускає верхового стрімкого сірого барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Gray Ram, @use Summons and dismisses a rideable swift gray ram.  This is a very fast mount. (3 Sec Cooldown)
 [18792] = { "благословенний арканітовий бард" }, -- Blessed Arcanite Barding
 [18799] = { "спасенна душа коня" }, -- Charger's Redeemed Soul
 [18802] = { "тіньове зілля", use="Наділяє вас духом тіні, унаслідок чого жителі Джеденара ставляться до вас дружелюбно. Діє 20 хвилин." }, -- Shadowy Potion, @use Infuses imbiber with a taint of shadow, making him/her friendly to the denizens of Jaedenar.  Lasts 20 minutes.
@@ -4574,7 +4574,7 @@ addonTable.item = {
 [19579] = { "тавро язичника" }, -- Heathen's Brand
 [19585] = { "тавро язичника" }, -- Heathen's Brand
 [19586] = { "тавро язичника" }, -- Heathen's Brand
-[19588] = { "тавро героя", equip="Збільшує тривалість здібності \"Молот справедливості\" на 0.5 сек." }, -- Hero's Brand, @equip Increases the duration of Hammer of Justice by 0.5 sec.
+[19588] = { "тавро героя", equip="Збільшує тривалість здібності \"Молот правосуддя\" на 0.5 сек." }, -- Hero's Brand, @equip Increases the duration of Hammer of Justice by 0.5 sec.
 [19591] = { "око Зулдазара" }, -- The Eye of Zuldazar
 [19592] = { "око Зулдазара", equip="Збільшує зцілення від заклинань і ефектів на 13." }, -- The Eye of Zuldazar, @equip Increases healing done by spells and effects by up to 13.
 [19593] = { "око Зулдазара", equip="Збільшує зцілення від заклинань і ефектів на 18." }, -- The Eye of Zuldazar, @equip Increases healing done by spells and effects by up to 18.
@@ -5352,7 +5352,7 @@ addonTable.item = {
 [21514] = { "план логістичного завдання XI" }, -- Logistics Task Briefing XI
 [21515] = { "знак Ремулоса" }, -- Mark of Remulos
 [21517] = { "гномський тюрбан екстрасенсорної сили", equip={ "Відновлює 9 мани кожні 5 сек.", "Збільшує супротив до ефектів знемовлення на 10%." } }, -- Gnomish Turban of Psychic Might, @equip Restores 9 mana per 5 sec., @equip Increases your resistance to silence effects by 10%.
-[21519] = { "омела", use="Подарувати друзям святкові вітання!" }, -- Mistletoe, @use Wish a friend some Season's Greetings!
+[21519] = { "омела", use="Подаруйте друзям святкові вітання!" }, -- Mistletoe, @use Wish a friend some Season's Greetings!
 [21520] = { "спадок Кронворона" }, -- Ravencrest's Legacy
 [21521] = { "рунічний меч червоних драконів", equip="Збільшує шкоду і зцілення від магічних заклинань і ефектів на 64." }, -- Runesword of the Red, @equip Increases damage and healing done by magical spells and effects by up to 64.
 [21522] = { "печаль Пісні Тіней" }, -- Shadowsong's Sorrow
@@ -5967,31 +5967,4 @@ addonTable.item = {
 [23327] = { "підсмажена на вогні булочка", use="Збільшує ваш шанс нанесення удару на 2% протягом 1 години." }, -- Fire-toasted Bun, @use Improves your chance to hit by 2% for 1 hour.
 [23379] = { "попелясті браслети", use="Викликати попелястого елементаля, що захищатиме вас протягом 10 хв. (Відновлення 10 хв)" }, -- Cinder Bracers, @use Summons a Cinder Elemental that will protect you for 10 min. (10 Min Cooldown)
 [23435] = { "бузиновий пиріг", use="Збільшує навичку захисту на 13 протягом 1 години." }, -- Elderberry Pie, @use Increases Defense by 13 for 1 hour.
-[25470] = { "золотий грифон", use="Викликає та звільняє грифона, на якому можна їздити. Цього верхового скакуна можна викликати лише в Закордоні." },
-[27498] = { "сувій спритності V", ref=3012 }, -- Scroll of Agility V
-[27499] = { "сувій інтелекту V", ref=955 }, -- Scroll of Intellect V
-[27500] = { "сувій захисту V", ref=3013 }, -- Scroll of Protection V
-[27501] = { "сувій духу V", ref=1181 }, -- Scroll of Spirit V
-[27502] = { "сувій витривалості V", ref=1180 }, -- Scroll of Stamina V
-[27503] = { "сувій сили V", ref=954 }, -- Scroll of Strength V
-[27885] = { "жезл душі Алдора" },
-[28790] = { "перстень світлоохоронця Наару" }, -- Naaru Lightwarden's Band
-[28823] = { "око Ґруула" }, -- Eye of Gruul
-[29434] = { "знак правосуддя" },
-[29736] = { "чарівна руна" },
-[30349] = { "медальйон Альянса" },
-[32450] = { "молоток гладіатора" },
-[32451] = { "порятунок гладіатора" },
-[32452] = { "відстрочка гладіатора" },
-[32453] = { "зоряні сльози", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}", flavor="Обережно видобуті для використання у військових цілях." }, -- Star's Tears, @use Restores 7200 mana over 30 sec. Must remain seated while drinking., @flavor Carefully extracted for warfare use.
-[32454] = { "дослідження Арторн", flavor="Нотатки Арторн Пісні Вітрі з її вивчення книги Ворона." }, -- Arthorn's Research, @flavor Arthorn Windsong's notes from her studies of the Book of the Raven.
-[32455] = { "плач зірок", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}", flavor="Обережно видобуті для використання у військових цілях." }, -- Star's Lament, @use Restores 4200 mana over 30 sec. Must remain seated while drinking., @flavor Carefully extracted for warfare use.
-[32456] = { "бомби-охоронці неба" }, -- Skyguard Bombs
-[32457] = { "фетиш араккоа" }, -- Arakkoa Fetish
-[32458] = { "попіл Ал'ара", use="Викликає та відпускає фенікса, на якому можна їздити. Це дуже швидкий транспорт. Цього верхового скакуна можна викликати лише в Закордоні.", flavor="І з попелу він відродився..." }, -- Ashes of Al'ar, @use Summons and dismisses a rideable phoenix. This is a very fast mount. This mount can only be summoned in Outland., @flavor And from the ashes it was reborn...
-[32459] = { "поетапна філактерія", flavor="Дивна темрява оточує цей артефакт." },
-[32961] = { "відстрочка нещадного гладіатора" },
-[32962] = { "дотик поразки безжального гладіатора" },
-[32963] = { "молоток нещадного гладіатора" },
-[32964] = { "порятунок безжального гладіатора" },
 }
