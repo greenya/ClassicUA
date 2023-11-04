@@ -411,7 +411,7 @@ addonTable.spell = {
 [17528] = { "Силу збільшено на {1}.#by {1}" }, -- Mighty Rage (aura, Mighty Rage Potion)
 [17535] = { "Еліксир мудреців", nil, "Інтелект і дух збільшено на {1}.#by {1}" }, -- Elixir of the Sages (aura, Elixir of the Sages)
 [17537] = { "Еліксир грубої сили", nil, "Силу та витривалість збільшено на {1}.#by {1}" }, -- Elixir of Brute Force (aura, Elixir of Brute Force)
-[17538] = { "Еліксир мангуста", nil, "Спритність збільшено на {1}, ймовірність нанесення критичного удару збільшено на {2}%.#Agility increased by {1}#chance increased by {2}%" }, -- Elixir of the Mongoose (aura, Elixir of the Mongoose)
+[17538] = { "Еліксир мангусти", nil, "Спритність збільшено на {1}, ймовірність нанесення критичного удару збільшено на {2}%.#Agility increased by {1}#chance increased by {2}%" }, -- Elixir of the Mongoose (aura, Elixir of the Mongoose)
 [17539] = { "Великий арканічний еліксир", nil, "Збільшено магічне пошкодження від заклять та здібностей на {1}.#by up to {1}" }, -- Greater Arcane Elixir (aura, Greater Arcane Elixir)
 [17540] = { "Великий каменещит", nil, "Броню збільшено." }, -- Greater Stoneshield (aura, Greater Stoneshield Potion)
 [17543] = { ref=7233 }, -- Fire Protection (aura, Greater Fire Protection Potion)

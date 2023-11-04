@@ -3255,7 +3255,7 @@ addonTable.item = {
 [13448] = { "документи на Тверджу Дарроу", flavor="Відмічено печаткою Барових." }, -- The Deed to Caer Darrow, @flavor Carries the Seal of Barov.
 [13450] = { "документи на Південнобережжя", flavor="Відмічено печаткою Барових." }, -- The Deed to Southshore, @flavor Carries the Seal of Barov.
 [13451] = { "документи на Тарренський Млин", flavor="Відмічено печаткою Барових." }, -- The Deed to Tarren Mill, @flavor Carries the Seal of Barov.
-[13452] = { "еліксир мангуста", use="Збільшує спритність на {1} та ймовірність нанесення критичного удару на {2}% на {3} год. (Відновлення 3 сек)#Agility by {1}#by {2}% for {3} h" }, -- Elixir of the Mongoose, @use Increases Agility by 25 and chance to get a critical hit by 2% for 1 hour. (3 Sec Cooldown)
+[13452] = { "еліксир мангусти", use="Збільшує спритність на {1} та ймовірність нанесення критичного удару на {2}% на {3} год. (Відновлення 3 сек)#Agility by {1}#by {2}% for {3} h" }, -- Elixir of the Mongoose, @use Increases Agility by 25 and chance to get a critical hit by 2% for 1 hour. (3 Sec Cooldown)
 [13453] = { "еліксир грубої сили", use="Збільшує силу та витривалість на {1} на {2} год. (Відновлення 3 сек)#by {1} for {2} h" }, -- Elixir of Brute Force, @use Increases Strength and Stamina by 18 for 1 hour. (3 Sec Cooldown)
 [13454] = { "великий арканічний еліксир", use="Збільшує шкоду від заклинань на {1} на {2} год. (Відновлення 3 сек)#by up to {1} for {2} h" }, -- Greater Arcane Elixir, @use Increases spell damage by up to 35 for 1 hour. (3 Sec Cooldown)
 [13455] = { "велике зілля каменещита", use="Збільшує броню на {1} на 2 хв. (Відновлення 2 хв)#armor by {1}" }, -- Greater Stoneshield Potion, @use Increases armor by 2000 for 2 min. (2 Min Cooldown)
@@ -3293,7 +3293,7 @@ addonTable.item = {
 [13488] = { "рецепт: Трансмутація життя у землю", use="Навчає вас перетворювати живу сутність на сутність землі." }, -- Recipe: Transmute Life to Earth, @use Teaches you how to transmute Living Essence into Essence of Earth.
 [13489] = { "рецепт: Трансмутація землі у життя", use="Навчає вас перетворювати сутність землі на живу сутність." }, -- Recipe: Transmute Earth to Life, @use Teaches you how to transmute Essence of Earth into Living Essence.
 [13490] = { "рецепт: Велике зілля каменещита", use="Навчає вас створювати велике зілля каменещита." }, -- Recipe: Greater Stoneshield Potion, @use Teaches you how to make a Greater Stoneshield Potion.
-[13491] = { "Рецепт: Еліксир мангуста", use="Навчає вас створювати еліксир мангуста." }, -- Recipe: Elixir of the Mongoose, @use Teaches you how to make an Elixir of the Mongoose.
+[13491] = { "Рецепт: Еліксир мангусти", use="Навчає вас створювати еліксир мангусти." }, -- Recipe: Elixir of the Mongoose, @use Teaches you how to make an Elixir of the Mongoose.
 [13493] = { "рецепт: Великий арканічний еліксир", use="Навчає вас створювати великий арканічний еліксир." }, -- Recipe: Greater Arcane Elixir, @use Teaches you how to make a Greater Arcane Elixir.
 [13494] = { "рецепт: Велике зілля вогняного захисту", use="Навчає вас створювати велике зілля вогняного захисту." }, -- Recipe: Greater Fire Protection Potion, @use Teaches you how to make a Greater Fire Protection Potion.
 [13495] = { "рецепт: Велике зілля крижаного захисту", use="Навчає вас створювати велике зілля крижаного захисту." }, -- Recipe: Greater Frost Protection Potion, @use Teaches you how to make a Greater Frost Protection Potion.
