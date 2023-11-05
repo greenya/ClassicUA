@@ -15,6 +15,7 @@ quests = {
 quests_cat_count = {}
 quests_cat_total = {}
 text_characters_used = {}
+issues = []
 
 for id in quest_ids:
     cat, side, title = conn.execute(f'SELECT cat, side, title FROM quests WHERE id={id}').fetchone()
@@ -34,21 +35,33 @@ for id in quest_ids:
             'completion': False,
         }
 
+        q_chars = {}
         for s in strings:
             if s.text:
                 q[ s.attrib['name'].lower() ] = s.text
 
                 for c in s.text:
                     code = ord(c)
+
+                    if code not in q_chars:
+                        q_chars[code] = 0
+                    q_chars[code] += 1
+
                     if code not in text_characters_used:
                         text_characters_used[code] = 0
                     text_characters_used[code] += 1
 
         for bracer_pair in ['()', '[]', '{}', '<>']:
             b1, b2 = bracer_pair[0], bracer_pair[1]
-            if ord(b1) in text_characters_used and ord(b2) in text_characters_used:
-                if text_characters_used[ord(b1)] != text_characters_used[ord(b2)]:
-                    print(f'[!] Bracers "{b1}" and "{b2}" don\'t match')
+            b1_code, b2_code = ord(b1), ord(b2)
+
+            if b1_code not in q_chars:
+                q_chars[b1_code] = 0
+            if b2_code not in q_chars:
+                q_chars[b2_code] = 0
+
+            if q_chars[ord(b1)] != q_chars[ord(b2)]:
+                issues.append((f'[!] Bracers "{b1}" and "{b2}" don\'t match', q))
 
         if q['title']:
             print(f'{id} => {q["title"]}')
@@ -92,3 +105,10 @@ print('-' * 40)
 print('text characters used (code, count, print):')
 for code in sorted(text_characters_used.keys()):
     print(f'{code}\t{text_characters_used[code]}\t> {chr(code)} <')
+
+if len(issues):
+    print('-' * 40)
+    print('ISSUES FOUND:')
+    for message, details in issues:
+        print(message)
+        print(details)
