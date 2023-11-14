@@ -89,7 +89,7 @@ end
 
 local get_stats = function ()
     local stats = {}
-    for _, v in ipairs({ "quest_a", "quest_h", "quest_n", "book", "item", "spell", "npc", "object", "zone" }) do
+    for _, v in ipairs({ "quest_alliance", "quest_horde", "quest_both", "book", "item", "spell", "npc", "object", "zone" }) do
         stats[v] = 0
         for _, _ in pairs(addonTable[v]) do stats[v] = stats[v] + 1 end
     end
@@ -185,9 +185,9 @@ end
 
 local prepare_quests = function (is_alliance)
     -- init faction quests reference
-    addonTable.quest_f = is_alliance and addonTable.quest_a or addonTable.quest_h
+    addonTable.quest_faction = is_alliance and addonTable.quest_alliance or addonTable.quest_horde
     -- drop opposite faction quests
-    addonTable[ is_alliance and "quest_h" or "quest_a" ] = nil
+    addonTable[ is_alliance and "quest_horde" or "quest_alliance" ] = nil
 end
 
 local prepare_codes = function (name, race, class, is_male)
@@ -275,10 +275,10 @@ local get_entry = function (entry_type, entry_id)
         if entry_type == "quest" then
             local quest = nil
 
-            if at.quest_f[entry_id] then
-                quest = at.quest_f[entry_id]
-            elseif at.quest_n[entry_id] then
-                quest = at.quest_n[entry_id]
+            if at.quest_faction[entry_id] then
+                quest = at.quest_faction[entry_id]
+            elseif at.quest_both[entry_id] then
+                quest = at.quest_both[entry_id]
             end
 
             if quest then
@@ -857,7 +857,7 @@ local get_questlog_frame = function ()
 end
 
 hooksecurefunc("SelectQuestLogEntry", function ()
-    if not addonTable.quest_f then -- need to test quest_f, as prepare_quests() might not be called just yet
+    if not addonTable.quest_faction then -- need to test quest_faction, as prepare_quests() might not be called just yet
         return
     end
 
@@ -1102,7 +1102,7 @@ local prepare_options_frame = function ()
     local stats = get_stats()
     f:SetText(
         "Версія: " .. GetAddOnMetadata("ClassicUA", "Version") .. "\n"
-        .. "— завдань: " .. stats.quest_a + stats.quest_h + stats.quest_n .. "\n"
+        .. "— завдань: " .. stats.quest_alliance + stats.quest_horde + stats.quest_both .. "\n"
         .. "— книжок: " .. stats.book .. "\n"
         .. "— локацій: " .. stats.zone .. "\n"
         .. "— персонажів: " .. stats.npc .. "\n"
