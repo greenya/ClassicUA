@@ -4839,3 +4839,4 @@ if addonTable.npc then
     for k, v in pairs(npc) do addonTable.npc[k] = v end
 else
     addonTable.npc = npc
+end

@@ -56,6 +56,7 @@ def write_lua_assign_or_copy_table_code(f, var):
     f.write(f'    for k, v in pairs({var}) do addonTable.{var}[k] = v end\n')
     f.write('else\n')
     f.write(f'    addonTable.{var} = {var}\n')
+    f.write('end\n')
 
 def write_lua_quest_file(path, filename, var, quests):
     with open(f'{path}/{filename}.lua', mode='w', encoding='utf-8', newline='\n') as f:

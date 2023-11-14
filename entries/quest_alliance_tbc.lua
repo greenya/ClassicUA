@@ -39,3 +39,4 @@ if addonTable.quest_alliance then
     for k, v in pairs(quest_alliance) do addonTable.quest_alliance[k] = v end
 else
     addonTable.quest_alliance = quest_alliance
+end

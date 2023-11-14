@@ -11,3 +11,4 @@ if addonTable.quest_both then
     for k, v in pairs(quest_both) do addonTable.quest_both[k] = v end
 else
     addonTable.quest_both = quest_both
+end
