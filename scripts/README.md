@@ -2,11 +2,9 @@
 
 The following files are generated from Crowdin via set of scripts:
 - book.lua
-- npc.lua
-- quests_a.lua
-- quests_h.lua
-- quests_n.lua
-- zones.lua
+- npc*.lua
+- quest*.lua
+- zone.lua
 
 All other files are edited manually, e.g. via pull requests.
 
