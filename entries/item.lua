@@ -53,7 +53,7 @@ addonTable.item = {
 [782] = { "розфарбований браслет гнола" }, -- Painted Gnoll Armband
 [783] = { "легка шкура" }, -- Light Hide
 [785] = { "маговелич" }, -- Mageroyal
-[787] = { "слизькошкіра скумбрія", ref=117 }, -- Slitherskin Mackerel, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[787] = { "слизькошкіра скумбрія", ref=117 }, -- Slitherskin Mackerel
 [805] = { "маленький червоний мішечок" }, -- Small Red Pouch
 [814] = { "фляга з мастилом" }, -- Flask of Oil
 [818] = { "тигрове око" }, -- Tigerseye
@@ -151,12 +151,12 @@ addonTable.item = {
 [1327] = { "записка Вайлі", flavor="Записка, наспіх написана Вайлі Чорним для Ґріана Міцнокрива." }, -- Wiley's Note, @flavor A hastily written note written by Wiley the Black for Gryan Stoutmantle.
 [1349] = { "ящик Абекромбі", flavor="Цей великий ящик щільно закритий, але з нього тхне мертвечиною." }, -- Abercrombie's Crate, @flavor This large crate is sealed tight, but it reeks of dead things.
 [1353] = { "звіт Гича", flavor="Звіт Гича щодо гільдії Каменярів для Ґріана Міцнокрива." }, -- Shaw's Report, @flavor Shaw's report on the Stonemason Guild for Gryan Stoutmantle.
-[1357] = { "карта скарбів капітана Сандера", flavor="Намоклий пергамент ось-ось розпадеться." }, -- Captain Sander's Treasure Map, @flavor The waterlogged parchment is about to disintegrate.
-[1358] = { "підказка до скарбів Сандера", flavor="Цей рваний шматок пергаменту вкритий каракулями." }, -- A Clue to Sander's Treasure, @flavor This torn piece of parchment contains scribbled writing.
+[1357] = { "карта скарбів капітана Сандерса", flavor="Намоклий пергамент ось-ось розпадеться." }, -- Captain Sander's Treasure Map, @flavor The waterlogged parchment is about to disintegrate.
+[1358] = { "підказка до скарбів Сандерса", flavor="Цей рваний шматок пергаменту вкритий каракулями." }, -- A Clue to Sander's Treasure, @flavor This torn piece of parchment contains scribbled writing.
 [1359] = { "рукавички з тисненням лева" }, -- Lion-stamped Gloves
 [1360] = { "кольчужні рукавиці Штормовію" }, -- Stormwind Chain Gloves
-[1361] = { "ще одна підказка до скарбів Сандера", flavor="Цей рваний шматок пергаменту вкритий каракулями." }, -- Another Clue to Sander's Treasure, @flavor This torn piece of parchment contains scribbled writing.
-[1362] = { "остання підказка до скарбів Сандера", flavor="Цей рваний шматок пергаменту вкритий каракулями." }, -- Final Clue to Sander's Treasure, @flavor This torn piece of parchment contains scribbled writing.
+[1361] = { "ще одна підказка до скарбів Сандерса", flavor="Цей рваний шматок пергаменту вкритий каракулями." }, -- Another Clue to Sander's Treasure, @flavor This torn piece of parchment contains scribbled writing.
+[1362] = { "остання підказка до скарбів Сандерса", flavor="Цей рваний шматок пергаменту вкритий каракулями." }, -- Final Clue to Sander's Treasure, @flavor This torn piece of parchment contains scribbled writing.
 [1381] = { "таємниче повідомлення", flavor="Ця вкрита кіптявою записка містить якийсь загадковий текст." }, -- A Mysterious Message, @flavor This soot-covered note contains some cryptic text.
 [1382] = { "кам'яна булава" }, -- Rock Mace
 [1383] = { "кам'яний томагавк" }, -- Stone Tomahawk
@@ -457,7 +457,7 @@ addonTable.item = {
 [2888] = { "реберця кнура в пиві", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 2 на 15 хв." }, -- Beer Basted Boar Ribs, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 2 Stamina and Spirit for 15 min.
 [2889] = { "рецепт: Реберця кнура в пиві", use="Навчає вас приготуванню реберець кнура в пиві." }, -- Recipe: Beer Basted Boar Ribs, @use Teaches you how to cook Beer Basted Boar Ribs.
 [2892] = { "смертельна отрута", use="Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, завдаючи {3} пошкодження природою протягом {4} с. Накладається до {5} разів на одній цілі. {6} зарядів.#lasts for {1} min#{2}% chance#for {3} Nature damage over {4} sec#{5} times#{6} charges" }, -- Deadly Poison, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy for 36 Nature damage over 12 sec.  Stacks up to 5 times on a single target.  60 charges. (Proc chance: 30%)
-[2893] = { "смертельна отрута II", ref=2892 }, -- Deadly Poison II, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy for 52 Nature damage over 12 sec.  Stacks up to 5 times on a single target.  75 charges. (Proc chance: 30%)
+[2893] = { "смертельна отрута II", ref=2892 }, -- Deadly Poison II
 [2894] = { "солод Рапсодія", use="Досить слабкий алкогольний напій." }, -- Rhapsody Malt, @use A fairly weak alcoholic beverage.
 [2901] = { "кайло", flavor="Гірникам потрібне кайло щоб копати." }, -- Mining Pick, @flavor Miners need a mining pick for digging.
 [2902] = { "плащ віри" }, -- Cloak of the Faith
@@ -564,9 +564,9 @@ addonTable.item = {
 [3337] = { "бойове знамено Драконопащих" }, -- Dragonmaw War Banner
 [3339] = { "дворфійський трут" }, -- Dwarven Tinder
 [3340] = { "спалахітова руда" }, -- Incendicite Ore
-[3342] = { "сорочка капітана Сандера" }, -- Captain Sander's Shirt
-[3343] = { "мішок для здобичі капітана Сандера" }, -- Captain Sander's Booty Bag
-[3344] = { "пояс капітана Сандера" }, -- Captain Sander's Sash
+[3342] = { "сорочка капітана Сандерса" }, -- Captain Sander's Shirt
+[3343] = { "грабіжний мішок капітана Сандерса" }, -- Captain Sander's Booty Bag
+[3344] = { "пояс капітана Сандерса" }, -- Captain Sander's Sash
 [3347] = { "оберемок кроколіскових шкір" }, -- Bundle of Crocolisk Skins
 [3348] = { "шкура гігантського кроколіска" }, -- Giant Crocolisk Skin
 [3349] = { "сумка Сіди", flavor="З неї крапає." }, -- Sida's Bag, @flavor It's dripping.
@@ -793,7 +793,7 @@ addonTable.item = {
 [3765] = { "розбійницьке напліччя" }, -- Brigand's Pauldrons
 [3772] = { "начаклована джерельна вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Spring Water, @use Restores 1344.6 mana over 27 sec.  Must remain seated while drinking.
 [3775] = { "травматична отрута", use="Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, сповільнюючи рух на {3}% на {4} с.#lasts for {1} min#{2}% chance#speed by {3}% for {4} sec" }, -- Crippling Poison, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy, slowing their movement speed by 50% for 12 sec. (Proc chance: 30%)
-[3776] = { "травматична отрута II", ref=3775 }, -- Crippling Poison II, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy, slowing their movement speed by 70% for 12 sec. (Proc chance: 30%)
+[3776] = { "травматична отрута II", ref=3775 }, -- Crippling Poison II
 [3818] = { "бляклолист" }, -- Fadeleaf
 [3819] = { "зимокус" }, -- Wintersbite
 [3820] = { "душирість" }, -- Stranglekelp
@@ -801,9 +801,9 @@ addonTable.item = {
 [3822] = { "темний рунічний клинок", hit="Запускає у ворога заряд тіні, що завдає 35 шкоди від тіні." }, -- Runic Darkblade, @hit Sends a shadowy bolt at the enemy causing 35 Shadow damage.
 [3823] = { "зілля малої невидимості", use="Надає малу невидимість на {1} с. (Відновлення 10 хв)#for {1} sec" }, -- Lesser Invisibility Potion, @use Gives the imbiber lesser invisibility for 15 sec. (10 Min Cooldown)
 [3824] = { "тіньова олія", use="При нанесенні на зброю ближнього бою дає 15% ймовірності застосувати тіньову стрілу ІІІ на опонента при ударі. Триває 30 хвилин." }, -- Shadow Oil, @use When applied to a melee weapon it gives a 15% chance of casting Shadowbolt III at the opponent when it hits.  Lasts 30 minutes.
-[3825] = { "еліксир стійкості", ref=2458 }, -- Elixir of Fortitude, @use Increases the player's maximum health by 120 for 1 hour. (3 Sec Cooldown)
-[3826] = { "потужне зілля крові троля", ref=3382 }, -- Mighty Troll's Blood Potion, @use Regenerate 12 health every 5 sec for 1 hour. (3 Sec Cooldown)
-[3827] = { "зілля мани", ref=2455 }, -- Mana Potion, @use Restores 455 to 585 mana. (2 Min Cooldown)
+[3825] = { "еліксир стійкості", ref=2458 }, -- Elixir of Fortitude
+[3826] = { "потужне зілля крові троля", ref=3382 }, -- Mighty Troll's Blood Potion
+[3827] = { "зілля мани", ref=2455 }, -- Mana Potion
 [3828] = { "еліксир виявлення малої невидимості", use="Надає виявлення малої невидимості на {1} хв. (Відновлення 3 сек)#for {1} min" }, -- Elixir of Detect Lesser Invisibility, @use Grants detect lesser invisibility for 10 min. (3 Sec Cooldown)
 [3829] = { "крижана олія", use="При нанесенні на зброю ближнього бою дає 10% ймовірності застосувати крижану стрілу на опонента при ударі. Триває 30 хвилин." }, -- Frost Oil, @use When applied to a melee weapon it gives a 10% chance of casting Frostbolt at the opponent when it hits.  Lasts 30 minutes.
 [3830] = { "рецепт: Еліксир стійкості", use="Навчає вас створювати еліксир стійкості." }, -- Recipe: Elixir of Fortitude, @use Teaches you how to make an Elixir of Fortitude.
@@ -959,12 +959,12 @@ addonTable.item = {
 [4409] = { "креслення: Малий сифорієвий заряд", use="Навчає вас створювати малий сифорієвий заряд." }, -- Schematic: Small Seaforium Charge, @use Teaches you how to make a Small Seaforium Charge.
 [4416] = { "креслення: Гоблінська міна", use="Навчає вас створювати гоблінську міну." }, -- Schematic: Goblin Land Mine, @use Teaches you how to make a Goblin Land Mine.
 [4417] = { "креслення: Великий сифорієвий заряд", use="Навчає вас створювати гоблінську міну." }, -- Schematic: Large Seaforium Charge, @use Teaches you how to make a Large Seaforium Charge.
-[4419] = { "сувій інтелекту III", ref=955 }, -- Scroll of Intellect III, @use Increases the target's Intellect by 12 for 30 min.
-[4421] = { "сувій захисту III", ref=3013 }, -- Scroll of Protection III, @use Increases the target's Armor by 180 for 30 min.
-[4422] = { "сувій витривалості III", ref=1180 }, -- Scroll of Stamina III, @use Increases the target's Stamina by 12 for 30 min.
-[4424] = { "сувій духу III", ref=1181 }, -- Scroll of Spirit III, @use Increases the target's Spirit by 11 for 30 min.
-[4425] = { "сувій спритності III", ref=3012 }, -- Scroll of Agility III, @use Increases the target's Agility by 13 for 30 min.
-[4426] = { "сувій сили III", ref=954 }, -- Scroll of Strength III, @use Increases the target's Strength by 13 for 30 min.
+[4419] = { "сувій інтелекту III", ref=955 }, -- Scroll of Intellect III
+[4421] = { "сувій захисту III", ref=3013 }, -- Scroll of Protection III
+[4422] = { "сувій витривалості III", ref=1180 }, -- Scroll of Stamina III
+[4424] = { "сувій духу III", ref=1181 }, -- Scroll of Spirit III
+[4425] = { "сувій спритності III", ref=3012 }, -- Scroll of Agility III
+[4426] = { "сувій сили III", ref=954 }, -- Scroll of Strength III
 [4429] = { "накази Темнолюта" }, -- Deepfury's Orders
 [4430] = { "примарний талісман" }, -- Ethereal Talisman
 [4432] = { "лист Саллі Баллу", flavor="Моя люба Саро..." }, -- Sully Balloo's Letter, @flavor My dear Sara...
@@ -1289,7 +1289,7 @@ addonTable.item = {
 [5092] = { "обгоріла паличка Бритвогривих" }, -- Charred Razormane Wand
 [5093] = { "стилет Бритвогривих" }, -- Razormane Backstabber
 [5094] = { "бойовий щит Бритвогривих" }, -- Razormane War Shield
-[5095] = { "веселковий тунець", ref=117 }, -- Rainbow Fin Albacore, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
+[5095] = { "веселковий тунець", ref=117 }, -- Rainbow Fin Albacore
 [5096] = { "пазурі скрадача" }, -- Prowler Claws
 [5097] = { "смарагд «Котяче око»" }, -- Cats Eye Emerald
 [5098] = { "панцир видозміненого тріскощелепа" }, -- Altered Snapjaw Shell
@@ -1718,7 +1718,7 @@ addonTable.item = {
 [6096] = { "сорочка підмайстра" }, -- Apprentice's Shirt
 [6145] = { "кулон Клариси", flavor="Покладіть на могилу Юріва." }, -- Clarice's Pendant, @flavor Place upon Yuriv's grave.
 [6146] = { "сухий плавник" }, -- Sundried Driftwood
-[6149] = { "велике зілля мани", ref=2455 }, -- Greater Mana Potion, @use Restores 700 to 900 mana. (2 Min Cooldown)
+[6149] = { "велике зілля мани", ref=2455 }, -- Greater Mana Potion
 [6166] = { "щелепа койота" }, -- Coyote Jawbone
 [6167] = { "доповідь Ніки" }, -- Neeka's Report
 [6168] = { "пазур пилкозубого кусача" }, -- Sawtooth Snapper Claw
@@ -1959,9 +1959,9 @@ addonTable.item = {
 [6931] = { "запліснявілий фоліант", use="Викликати скверногончу в колі виклику. (Відновлення 3 хв)", flavor="На обкладинці видніється тьмяний напис: 'Фоліант Змови'." }, -- Moldy Tome, @use Call forth a felhunter using the summoning circle. (3 Min Cooldown), @flavor Faint letters on the cover of the locked book read, 'Tome of the Cabal.'
 [6947] = { "миттєва отрута", use="Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, миттєво завдаючи від {3} до {4} пошкодження природою. {5} зарядів.#lasts for {1} min#{2}% chance#inflicts {3} to {4}#{5} charges" }, -- Instant Poison, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 20% chance of poisoning the enemy which instantly inflicts 19 to 25 Nature damage.  40 charges. (Proc chance: 20%)
 [6948] = { "камінь повернення", use="Повертає вас додому. Поговоріть з корчмарем в іншому місці, щоб змінити домівку." }, -- Hearthstone, @use Returns you to <Hearthstone Location>.  Speak to an Innkeeper in a different place to change your home location.
-[6949] = { "миттєва отрута II", ref=6947 }, -- Instant Poison II, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 20% chance of poisoning the enemy which instantly inflicts 30 to 38 Nature damage.  55 charges. (Proc chance: 20%)
-[6950] = { "миттєва отрута III", ref=6947 }, -- Instant Poison III, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 20% chance of poisoning the enemy which instantly inflicts 44 to 56 Nature damage.  70 charges. (Proc chance: 20%)
-[6951] = { "задурлива отрута II", ref=5237 }, -- Mind-numbing Poison II, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 20% chance of poisoning the enemy, increasing their casting time by 50% for 12 sec.  75 charges. (Proc chance: 20%)
+[6949] = { "миттєва отрута II", ref=6947 }, -- Instant Poison II
+[6950] = { "миттєва отрута III", ref=6947 }, -- Instant Poison III
+[6951] = { "задурлива отрута II", ref=5237 }, -- Mind-numbing Poison II
 [6952] = { "товста шкура ведмедя" }, -- Thick Bear Fur
 [6953] = { "кулак Веріґана" }, -- Verigan's Fist
 [6966] = { "елунітова сокира" }, -- Elunite Axe
@@ -2331,16 +2331,16 @@ addonTable.item = {
 [8923] = { "сутність агонії", flavor="Використовується пройдисвітами, щоб варити отруту." }, -- Essence of Agony, @flavor Used by rogues to brew poison.
 [8924] = { "пил псування", flavor="Використовується пройдисвітами, щоб варити отруту." }, -- Dust of Deterioration, @flavor Used by rogues to brew poison.
 [8925] = { "кришталевий фіал" }, -- Crystal Vial
-[8926] = { "миттєва отрута IV", ref=6947 }, -- Instant Poison IV, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 20% chance of poisoning the enemy which instantly inflicts 67 to 85 Nature damage.  85 charges. (Proc chance: 20%)
-[8927] = { "миттєва отрута V", ref=6947 }, -- Instant Poison V, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 20% chance of poisoning the enemy which instantly inflicts 92 to 118 Nature damage.  100 charges. (Proc chance: 20%)
-[8928] = { "миттєва отрута VI", ref=6947 }, -- Instant Poison VI, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 20% chance of poisoning the enemy which instantly inflicts 112 to 148 Nature damage.  115 charges. (Proc chance: 20%)
-[8932] = { "альтерацький сир", ref=117 }, -- Alterac Swiss, @use Restores 2148 health over 30 sec.  Must remain seated while eating.
-[8949] = { "еліксир спритності", ref=2457 }, -- Elixir of Agility, @use Increases Agility by 15 for 1 hour. (3 Sec Cooldown)
-[8951] = { "еліксир сильного захисту", ref=5997 }, -- Elixir of Greater Defense, @use Increases armor by 250 for 1 hour. (3 Sec Cooldown)
+[8926] = { "миттєва отрута IV", ref=6947 }, -- Instant Poison IV
+[8927] = { "миттєва отрута V", ref=6947 }, -- Instant Poison V
+[8928] = { "миттєва отрута VI", ref=6947 }, -- Instant Poison VI
+[8932] = { "альтерацький сир", ref=117 }, -- Alterac Swiss
+[8949] = { "еліксир спритності", ref=2457 }, -- Elixir of Agility
+[8951] = { "еліксир сильного захисту", ref=5997 }, -- Elixir of Greater Defense
 [8956] = { "олія жертвоприношення", use="Завдає 50 шкоди вогнем усім ворогам у радіусі 5 м кожні 3 секунди протягом 15 сек. (Відновлення 3 сек)" }, -- Oil of Immolation, @use Does 50 fire damage to any enemies within a 5 yard radius around the caster every 3 seconds for 15 sec (3 Sec Cooldown)
 [8973] = { "товста шкура єті" }, -- Thick Yeti Hide
-[8984] = { "смертельна отрута III", ref=2892 }, -- Deadly Poison III, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy for 80 Nature damage over 12 sec.  Stacks up to 5 times on a single target.  90 charges. (Proc chance: 30%)
-[8985] = { "смертельна отрута IV", ref=2892 }, -- Deadly Poison IV, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy for 108 Nature damage over 12 sec.  Stacks up to 5 times on a single target.  105 charges. (Proc chance: 30%)
+[8984] = { "смертельна отрута III", ref=2892 }, -- Deadly Poison III
+[8985] = { "смертельна отрута IV", ref=2892 }, -- Deadly Poison IV
 [9030] = { "відновлювальне зілля", use="Знімає один магічний ефект, прокляття, отруту або хворобу кожні {1} с протягом {2} с. (Відновлення 2 хв)#every {1} seconds for {2} seconds" }, -- Restorative Potion, @use Removes 1 magic, curse, poison or disease effect on you every 5 seconds for 30 seconds. (2 Min Cooldown)
 [9036] = { "зілля супротиву магії", use="Збільшує ваш супротив всім школам магії на 50 на 3 хв. (Відновлення 2 хв)" }, -- Magic Resistance Potion, @use Increases your resistance to all schools of magic by 50 for 3 min. (2 Min Cooldown)
 [9061] = { "гоблінське ракетне паливо", flavor="Використовується гоблінськими інженерами для живлення своїх творінь" }, -- Goblin Rocket Fuel, @flavor Used by Goblin Engineers to power their creations
@@ -2352,12 +2352,12 @@ addonTable.item = {
 [9155] = { "арканічний еліксир", use="Збільшує шкоду від заклинань на {1} на {2} хв. (Відновлення 3 сек)#to {1} for {2} min" }, -- Arcane Elixir, @use Increases spell damage by up to 20 for 30 min. (3 Sec Cooldown)
 [9172] = { "зілля невидимості", use="Надає невидимість на {1} с. (Відновлення 10 хв)#for {1} sec" }, -- Invisibility Potion, @use Gives the imbiber invisibility for 18 sec. (10 Min Cooldown)
 [9173] = { "гоблінський транспондер" }, -- Goblin Transponder
-[9179] = { "еліксир більшого інтелекту", ref=3383 }, -- Elixir of Greater Intellect, @use Increases Intellect by 25 for 1 hour. (3 Sec Cooldown)
-[9186] = { "задурлива отрута III", ref=5237 }, -- Mind-numbing Poison III, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 20% chance of poisoning the enemy, increasing their casting time by 60% for 14 sec.  100 charges. (Proc chance: 20%)
-[9187] = { "еліксир більшої спритності", ref=2457 }, -- Elixir of Greater Agility, @use Increases Agility by 25 for 1 hour. (3 Sec Cooldown)
+[9179] = { "еліксир більшого інтелекту", ref=3383 }, -- Elixir of Greater Intellect
+[9186] = { "задурлива отрута III", ref=5237 }, -- Mind-numbing Poison III
+[9187] = { "еліксир більшої спритності", ref=2457 }, -- Elixir of Greater Agility
 [9189] = { "дзвіночок Шей", use="Подзвоніть, щоб покликати Шей. (Відновлення 1 хв)" }, -- Shay's Bell, @use Ring to call Shay back to you. (1 Min Cooldown)
 [9197] = { "еліксир снобачення", use="Надає вам снобачення, що дозволяє досліджувати місцини, надто небезпечні для дослідження особисто. (Відновлення 3 сек)" }, -- Elixir of Dream Vision, @use Gives you a dream vision that lets you explore areas that are too dangerous to explore in person. (3 Sec Cooldown)
-[9206] = { "еліксир велетнів", ref=2454 }, -- Elixir of Giants, @use Increases your Strength by 25 for 1 hour. (3 Sec Cooldown)
+[9206] = { "еліксир велетнів", ref=2454 }, -- Elixir of Giants
 [9210] = { "примарний барвник" }, -- Ghost Dye
 [9214] = { "гримуар пекла", use="Навчає закляттю \"Пекло\"." }, -- Grimoire of Inferno, @use Teaches Inferno.
 [9224] = { "еліксир демонорізні", use="Збільшує силу атаки проти демонів на {1}. Триває 5 хв. (Відновлення 3 сек)#power by {1}#Lasts {2} min" }, -- Elixir of Demonslaying, @use Increases attack power by 265 against demons.  Lasts 5 min. (3 Sec Cooldown)
@@ -2627,12 +2627,12 @@ addonTable.item = {
 [10290] = { "рожевий барвник" }, -- Pink Dye
 [10298] = { "перстень Гномреґану" }, -- Gnomeregan Band
 [10299] = { "амулет Гномреґану" }, -- Gnomeregan Amulet
-[10305] = { "сувій захисту IV", ref=3013 }, -- Scroll of Protection IV, @use Increases the target's Armor by 240 for 30 min.
-[10306] = { "сувій духу IV", ref=1181 }, -- Scroll of Spirit IV, @use Increases the target's Spirit by 15 for 30 min.
-[10307] = { "сувій витривалості IV", ref=1180 }, -- Scroll of Stamina IV, @use Increases the target's Stamina by 16 for 30 min.
-[10308] = { "сувій інтелекту IV", ref=955 }, -- Scroll of Intellect IV, @use Increases the target's Intellect by 16 for 30 min.
-[10309] = { "сувій спритності IV", ref=3012 }, -- Scroll of Agility IV, @use Increases the target's Agility by 17 for 30 min.
-[10310] = { "сувій сили IV", ref=954 }, -- Scroll of Strength IV, @use Increases the target's Strength by 17 for 30 min.
+[10305] = { "сувій захисту IV", ref=3013 }, -- Scroll of Protection IV
+[10306] = { "сувій духу IV", ref=1181 }, -- Scroll of Spirit IV
+[10307] = { "сувій витривалості IV", ref=1180 }, -- Scroll of Stamina IV
+[10308] = { "сувій інтелекту IV", ref=955 }, -- Scroll of Intellect IV
+[10309] = { "сувій спритності IV", ref=3012 }, -- Scroll of Agility IV
+[10310] = { "сувій сили IV", ref=954 }, -- Scroll of Strength IV
 [10327] = { "сурма Ечеякі", use="Засурмити біля лігва Ечеякі. (Відновлення 30 сек)" }, -- Horn of Echeyakee, @use Blow near Echeyakee's Lair. (30 Sec Cooldown)
 [10338] = { "свіжа туша жеври", use="Покласти біля мертвого дерева на північному заході від Брашпиля щоб приманити Ішамугала." }, -- Fresh Zhevra Carcass, @use Place near the Dead Tree northwest of Ratchet, to lure Ishamuhale.
 [10358] = { "дюрацинові браслети" }, -- Duracin Bracers
@@ -2816,9 +2816,9 @@ addonTable.item = {
 [10840] = { "кристалічна записка", flavor="Записка в кристалі азшариту." }, -- Crystallized Note, @flavor A note encased in azsharite crystal.
 [10918] = { "агонічна отрута", use="Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, знижуючи ефективність будь-якого зцілення на {3} на {4} с. Накладається до {5} разів на одній цілі. {6} зарядів.#lasts for {1} min#{2}% chance#them by {3} for {4} sec#{5} times#{6} charges" }, -- Wound Poison, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy, reducing all healing effects used on them by 55 for 15 sec.  Stacks up to 5 times on a single target.  60 charges. (Proc chance: 30%)
 [10919] = { "аптекарські рукавички" }, -- Apothecary Gloves
-[10920] = { "агонічна отрута II", ref=10918 }, -- Wound Poison II, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy, reducing all healing effects used on them by 75 for 15 sec.  Stacks up to 5 times on a single target.  75 charges. (Proc chance: 30%)
-[10921] = { "агонічна отрута III", ref=10918 }, -- Wound Poison III, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy, reducing all healing effects used on them by 105 for 15 sec.  Stacks up to 5 times on a single target.  90 charges. (Proc chance: 30%)
-[10922] = { "агонічна отрута IV", ref=10918 }, -- Wound Poison IV, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy, reducing all healing effects used on them by 135 for 15 sec.  Stacks up to 5 times on a single target.  105 charges. (Proc chance: 30%)
+[10920] = { "агонічна отрута II", ref=10918 }, -- Wound Poison II
+[10921] = { "агонічна отрута III", ref=10918 }, -- Wound Poison III
+[10922] = { "агонічна отрута IV", ref=10918 }, -- Wound Poison IV
 [10958] = { "намисто Гіларі" }, -- Hilary's Necklace
 [10959] = { "мішок зі шкіри демона" }, -- Demon Hide Sack
 [10999] = { "Залізоскверн", flavor="На поверхні молотка викарбувані літери: Ф.Ф.Ф." }, -- Ironfel, @flavor Etched into the face of the hammer are the letters: F.F.F.
@@ -3415,10 +3415,10 @@ addonTable.item = {
 [13422] = { "камнелуский вугор" }, -- Stonescale Eel
 [13423] = { "олія камнелуского вугра" }, -- Stonescale Oil
 [13442] = { "потужне зілля люті", use="Збільшує лють на {1}-{2} та збільшує силу на {3} на {4} с. (Відновлення 2 хв)#Rage by {1} to {2}#Strength by {3} for {4} sec" }, -- Mighty Rage Potion, @use Increases Rage by 45 to 75 and increases Strength by 60 for 20 sec. (2 Min Cooldown)
-[13443] = { "відмінне зілля мани", ref=2455 }, -- Superior Mana Potion, @use Restores 900 to 1500 mana. (2 Min Cooldown)
-[13444] = { "величезне зілля мани", ref=2455 }, -- Major Mana Potion, @use Restores 1350 to 2250 mana. (2 Min Cooldown)
-[13445] = { "еліксир потужного захисту", ref=5997 }, -- Elixir of Superior Defense, @use Increases armor by 450 for 1 hour. (3 Sec Cooldown)
-[13446] = { "величезне зілля лікування", ref=118 }, -- Major Healing Potion, @use Restores 1050 to 1750 health. (2 Min Cooldown)
+[13443] = { "відмінне зілля мани", ref=2455 }, -- Superior Mana Potion
+[13444] = { "величезне зілля мани", ref=2455 }, -- Major Mana Potion
+[13445] = { "еліксир потужного захисту", ref=5997 }, -- Elixir of Superior Defense
+[13446] = { "величезне зілля лікування", ref=118 }, -- Major Healing Potion
 [13447] = { "еліксир мудреців", use="Збільшує інтелект і дух на {1} на {2} год. (Відновлення 3 сек)#by {1} for {2} h" }, -- Elixir of the Sages, @use Increases Intellect and Spirit by 18 for 1 hour. (3 Sec Cooldown)
 [13448] = { "документи на Тверджу Дарроу", flavor="Відмічено печаткою Барових." }, -- The Deed to Caer Darrow, @flavor Carries the Seal of Barov.
 [13450] = { "документи на Південнобережжя", flavor="Відмічено печаткою Барових." }, -- The Deed to Southshore, @flavor Carries the Seal of Barov.
@@ -3482,6 +3482,9 @@ addonTable.item = {
 [13544] = { "примарна сутність", flavor="Дозволяє спілкуватися з мерцями Тверджі Дарроу." }, -- Spectral Essence, @flavor Allows communication with the deceased of Caer Darrow.
 [13546] = { "кровочеревка", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Bloodbelly Fish, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
 [13562] = { "останки Трея Світлогарта" }, -- Remains of Trey Lightforge
+[13582] = { "повідець зерглінга", use="Клацніть правою кнопкою миші, щоб викликати і відпустити зерглінга." }, -- Zergling Leash, @use Right Click to summon and dismiss your zergling.
+[13583] = { "нашийник панди", use="Клацніть правою кнопкою миші, щоб викликати і відпустити дитинча панди." }, -- Panda Collar, @use Right Click to summon and dismiss your panda cub.
+[13584] = { "камінь Діабло", use="Клацніть правою кнопкою миші, щоб викликати і відпустити Діабло." }, -- Diablo Stone, @use Right Click to summon and dismiss Diablo.
 [13585] = { "спогад про людяність", flavor="Всі сторінки вирвані." }, -- Keepsake of Remembrance, @flavor All of the pages are torn out.
 [13602] = { "великий камінь чарів", ref=5522 }, -- Greater Spellstone
 [13603] = { "величезний камінь чарів", ref=5522 }, -- Major Spellstone
@@ -3566,6 +3569,12 @@ addonTable.item = {
 [14634] = { "рецепт: Крижана олія", use="Навчає вас створювати крижану олію." }, -- Recipe: Frost Oil, @use Teaches you how to make Frost Oil.
 [14644] = { "форма для скелетного ключа", use="Наповнити двома злитками торію та лавою з вершини Вогнеперої скелі, що в кратері Ун'Ґоро, щоб створити незавершений скелетний ключ." }, -- Skeleton Key Mold, @use Fill with lava from the top of Fire Plume RIdge in Un'Goro and two Thorium Bars to create an Unfinished Skeleton Key.
 [14645] = { "незавершений скелетний ключ", flavor="У цього ключа відсутня головка." }, -- Unfinished Skeleton Key, @flavor This key is missing its head.
+[14646] = { "подарунковий сертифікат Північнокраю" }, -- Northshire Gift Voucher
+[14647] = { "подарунковий сертифікат Морозної долини" }, -- Coldridge Valley Gift Voucher
+[14648] = { "подарунковий сертифікат Тінистої долини" }, -- Shadowglen Gift Voucher
+[14649] = { "подарунковий сертифікат долини Випробувань" }, -- Valley of Trials Gift Voucher
+[14650] = { "подарунковий сертифікат табору Нараче" }, -- Camp Narache Gift Voucher
+[14651] = { "подарунковий сертифікат Смертедзвону" }, -- Deathknell Gift Voucher
 [14679] = { "Сімейна любов", flavor="Від погляду на цю картину на вашому обличчі виникає посмішка." }, -- Of Love and Family, @flavor The picture brings a smile to your face.
 [14872] = { "подарунок Тіріона" }, -- Tirion's Gift
 [15002] = { "спис Німбої", use="Приєднати 20 черепів тролів Зів’ялої Кори, щоб створити спис Німбої з черепами." }, -- Nimboya's Pike, @use Attach 20 Witherbark Skulls to create Nimboya's Laden Pike.
@@ -4101,9 +4110,9 @@ addonTable.item = {
 [17332] = { "рука Шаззраха" }, -- Hand of Shazzrah
 [17344] = { "rарамельна тростина", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Candy Cane, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [17346] = { "вкрита хітином річ" }, -- Encrusted Silithid Object
-[17348] = { "величезний ковток лікування", ref=17349 }, -- Major Healing Draught, @use Restores 980 to 1260 health. This item may only be used in PvP Battlegrounds. (5 Min Cooldown)
+[17348] = { "величезний ковток лікування", ref=17349 }, -- Major Healing Draught
 [17349] = { "відмінний ковток лікування", use="Відновлює від {1} до {2} здоров'я. Цей предмет можна використовувати лише на полях боїв (PvP).#Restores {1} to {2}" }, -- Superior Healing Draught, @use Restores 560 to 720 health. This item may only be used in PvP Battlegrounds. (5 Min Cooldown)
-[17351] = { "величезний ковток мани", ref=17352 }, -- Major Mana Draught, @use Restores 980 to 1260 mana. This item may only be used in PvP Battlegrounds. (5 Min Cooldown)
+[17351] = { "величезний ковток мани", ref=17352 }, -- Major Mana Draught
 [17352] = { "відмінний ковток мани", use="Відновлює від {1} до {2} мани. Цей предмет можна використовувати лише на полях боїв (PvP).#Restores {1} to {2}" }, -- Superior Mana Draught, @use Restores 560 to 720 mana. This item may only be used in PvP Battlegrounds. (5 Min Cooldown)
 [17353] = { "наказ Бурешпиля про атаку" }, -- Stormpike Assault Orders
 [17354] = { "всевидяче око майстра Райсона" }, -- Master Ryson's All Seeing Eye
@@ -4770,7 +4779,7 @@ addonTable.item = {
 [19950] = { "геройський оберіг Зандаларів", use="Збільшує вашу шкоду від заклять на 204, а зцілення — на 408 протягом 20 сек. Щоразу, коли ви вимовляєте закляття, цей бонус зменшується на 17 для шкоди та 34 для зцілення. (Відновлення 2 хв)" }, -- Zandalarian Hero Charm, @use Increases your spell damage by up to 204 and your healing by up to 408 for 20 sec. Every time you cast a spell, the bonus is reduced by 17 spell damage and 34 healing. (2 Min Cooldown)
 [19951] = { "оберіг могутності Ґрі'лека", use="Збільшує вашу лють на 30. (Відновлення 3 хв)" }, -- Gri'lek's Charm of Might, @use Instantly increases your rage by 30. (3 Min Cooldown)
 [19952] = { "оберіг доблесті Ґрі'лека", use="Збільшує ймовірність нанесення критичного удару вашими закляттями світла на 10% протягом 15 сек. (Відновлення 3 хв)" }, -- Gri'lek's Charm of Valor, @use Increases the critical hit chance of Holy spells by 10% for 15 sec. (3 Min Cooldown)
-[19953] = { "оберіг звірів Ренатакі", use="Миттєво завершує відновлення ваших заклять \"Прицільний постріл\", \"Мультипостріл\", \"Град\" та \"Арканічний постріл\". (Відновлення 3 хв)" }, -- Renataki's Charm of Beasts, @use Instantly clears the cooldowns of Aimed Shot, Multishot, Volley, and Arcane Shot. (3 Min Cooldown)
+[19953] = { "оберіг звірів Ренатакі", use="Миттєво завершує відновлення ваших заклять \"Прицільний постріл\", \"Багатозарядний постріл\", \"Залп\" та \"Арканічний постріл\". (Відновлення 3 хв)" }, -- Renataki's Charm of Beasts, @use Instantly clears the cooldowns of Aimed Shot, Multishot, Volley, and Arcane Shot. (3 Min Cooldown)
 [19954] = { "оберіг хитрощів Ренатакі", use="Збільшує вашу енергію на 60. (Відновлення 3 хв)" }, -- Renataki's Charm of Trickery, @use Instantly increases your energy by 60. (3 Min Cooldown)
 [19955] = { "оберіг природи Вушулая", use="Зменшує час вимови вашого закляття \"Цілющий дотик\" на 40% та витрати мани на ваші закляття зцілення на 5% протягом 15 сек. (Відновлення 3 хв)" }, -- Wushoolay's Charm of Nature, @use Reduces the casting time of your Healing Touch spells by 40%, and reduces the mana cost of your healing spells by 5% for 15 sec. (3 Min Cooldown)
 [19956] = { "оберіг духів Вушулая", use="Збільшує шкоду від вашого закляття \"Щит блискавки\" на 100% протягом 20 сек. (Відновлення 3 хв)" }, -- Wushoolay's Charm of Spirits, @use Increases the damage dealt by your Lightning Shield spell by 100% for 20 sec. (3 Min Cooldown)
@@ -4800,7 +4809,7 @@ addonTable.item = {
 [19993] = { "мисливський лук худу" }, -- Hoodoo Hunting Bow
 [19998] = { "кровопаростні лінзи", equip={ "Збільшує ваш шанс нанесення критичного удару на 2%.", "Злегка збільшує вашу здатність виявляти непомітність." } }, -- Bloodvine Lens, @equip Improves your chance to get a critical strike by 2%., @equip Slightly increases your stealth detection.
 [20002] = { "велике зілля сну без сновидінь", use="Занурює у сон без сновидінь на {1} с. Протягом цього часу відновлює {2} здоров'я та {3} мани. (Відновлення 2 хв)#for {1} sec#{2} health and {3} mana" }, -- Greater Dreamless Sleep Potion, @use Puts the imbiber in a dreamless sleep for 12 sec.  During that time the imbiber heals 2100 health and 2100 mana. (2 Min Cooldown)
-[20004] = { "величезне зілля крові троля", ref=3382 }, -- Major Troll's Blood Potion, @use Regenerate 20 health every 5 sec for 1 hour. (3 Sec Cooldown)
+[20004] = { "величезне зілля крові троля", ref=3382 }, -- Major Troll's Blood Potion
 [20006] = { "перстень надії", equip="Збільшує шанс критичного ефекту ваших заклинань світла на 1%.", flavor="Викуваний з чистого світла." }, -- Circle of Hope, @equip Increases the critical effect chance of your Holy spells by 1%., @flavor Forged from pure light.
 [20007] = { "зілля магокрові", use="Відновлює {1} мани кожні {2} с протягом {3} год. (Відновлення 3 сек)#{1} mana per {2} sec for {3} h" }, -- Mageblood Potion, @use Regenerate 12 mana per 5 sec for 1 hour. (3 Sec Cooldown)
 [20008] = { "зілля живої дії", use="Надає невразливість до приголомшення та ефектів ускладнення руху на наступні {1} с. Також знімає вже наявні ефекти. (Відновлення 2 хв)#next {1} sec" }, -- Living Action Potion, @use Makes you immune to Stun and Movement Impairing effects for the next 5 sec.  Also removes existing Stun and Movement Impairing effects. (2 Min Cooldown)
@@ -5051,7 +5060,7 @@ addonTable.item = {
 [20808] = { "бойове завдання" }, -- Combat Assignment
 [20809] = { "тактичне завдання" }, -- Tactical Assignment
 [20810] = { "підписані документи про польову службу" }, -- Signed Field Duty Papers
-[20844] = { "смертельна отрута V", ref=2892 }, -- Deadly Poison V, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy for 136 Nature damage over 12 sec.  Stacks up to 5 times on a single target.  120 charges. (Proc chance: 30%)
+[20844] = { "смертельна отрута V", ref=2892 }, -- Deadly Poison V
 [20858] = { "кам'яний скарабей" }, -- Stone Scarab
 [20859] = { "золотий скарабей" }, -- Gold Scarab
 [20860] = { "срібний скарабей" }, -- Silver Scarab
@@ -5348,7 +5357,7 @@ addonTable.item = {
 [21514] = { "план логістичного завдання XI" }, -- Logistics Task Briefing XI
 [21515] = { "знак Ремулоса" }, -- Mark of Remulos
 [21517] = { "гномський тюрбан екстрасенсорної сили", equip={ "Відновлює 9 мани кожні 5 сек.", "Збільшує супротив до ефектів знемовлення на 10%." } }, -- Gnomish Turban of Psychic Might, @equip Restores 9 mana per 5 sec., @equip Increases your resistance to silence effects by 10%.
-[21519] = { "омела", use="Подаруйте друзям святкові вітання!" }, -- Mistletoe, @use Wish a friend some Season's Greetings!
+[21519] = { "омела", use="Подарувати друзям святкові вітання!" }, -- Mistletoe, @use Wish a friend some Season's Greetings!
 [21520] = { "спадок Кронворона" }, -- Ravencrest's Legacy
 [21521] = { "рунічний меч червоних драконів", equip="Збільшує шкоду і зцілення від магічних заклинань і ефектів на 64." }, -- Runesword of the Red, @equip Increases damage and healing done by magical spells and effects by up to 64.
 [21522] = { "печаль Пісні Тіней" }, -- Shadowsong's Sorrow
@@ -5375,7 +5384,7 @@ addonTable.item = {
 [21543] = { "бірюзовий святковий костюм" }, -- Festive Teal Pant Suit
 [21544] = { "синій святковий костюм" }, -- Festive Blue Pant Suit
 [21545] = { "припаси Димного Лісу", flavor="Використати до 2010" }, -- Smokywood Supplies, @flavor Use before 2010
-[21546] = { "еліксир більшої вогнеміці", ref=6373 }, -- Elixir of Greater Firepower, @use Increases spell fire damage by up to 40 for 30 min. (3 Sec Cooldown)
+[21546] = { "еліксир більшої вогнеміці", ref=6373 }, -- Elixir of Greater Firepower
 [21547] = { "рецепт: Еліксир більшої вогнеміці", use="Навчає вас створювати еліксир більшої вогнеміці." }, -- Recipe: Elixir of Greater Firepower, @use Teaches you how to make an Elixir of Greater Firepower.
 [21557] = { "маленька червона ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Small Red Rocket, @use Throw into a firework launcher!
 [21558] = { "маленька синя ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Small Blue Rocket, @use Throw into a firework launcher!
@@ -5963,5 +5972,11 @@ addonTable.item = {
 [23327] = { "підсмажена на вогні булочка", use="Збільшує ваш шанс нанесення удару на 2% протягом 1 години." }, -- Fire-toasted Bun, @use Improves your chance to hit by 2% for 1 hour.
 [23379] = { "попелясті браслети", use="Викликати попелястого елементаля, що захищатиме вас протягом 10 хв. (Відновлення 10 хв)" }, -- Cinder Bracers, @use Summons a Cinder Elemental that will protect you for 10 min. (10 Min Cooldown)
 [23435] = { "бузиновий пиріг", use="Збільшує навичку захисту на 13 протягом 1 години." }, -- Elderberry Pie, @use Increases Defense by 13 for 1 hour.
-
+[190179] = { "серце Авеліни" }, -- Avelina's Heart
+[190180] = { "серце Айзека" }, -- Isaac's Heart
+[190181] = { "серця закоханих", use="Викликати інкуба в колі виклику. (Відновлення 3 хв)" }, -- Lovers' Hearts, @use Call forth an incubus using the summoning circle. (3 Min Cooldown)
+[190186] = { "дерев'яна статуетка", use="Викликати інкуба в колі виклику. (Відновлення 3 хв)", flavor="На підставці є напис: Я вдома." }, -- Wooden Figurine, @use Call forth an incubus using the summoning circle. (3 Min Cooldown), @flavor An inscription on the base reads: I'm home.
+[190187] = { "вицвіла хустка", use="Викликати інкуба в колі виклику. (Відновлення 3 хв)", flavor="На тканині вишиті витончені візерунки, а також літери \"M+K\"." }, -- Withered Scarf, @use Call forth an incubus using the summoning circle. (3 Min Cooldown), @flavor Delicate patterns are embroidered into the cloth, along with the letters 'M+K'.
+[190232] = { "вицвіла хустка", flavor="На тканині вишиті витончені візерунки, а також літери \"M+K\"." }, -- Withered Scarf, @flavor Delicate patterns are embroidered into the cloth, along with the letters 'M+K'.
+[190309] = { "дерев'яна статуетка", flavor="На підставці є напис: Я вдома." }, -- Wooden Figurine, @flavor An inscription on the base reads: I'm home.
 }
