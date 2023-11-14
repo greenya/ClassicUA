@@ -17,5 +17,5 @@ utils.write_lua_zone_file(entries_path, 'zone', zones)
 for key in zones:
     print(key, '->', zones[key])
 
-print('-' * 40)
-print('total zones:', len(zones))
+print('-' * 80)
+print('Total zones:', len(zones))

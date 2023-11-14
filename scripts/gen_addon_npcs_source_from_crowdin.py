@@ -2,82 +2,94 @@ from pathlib import Path
 import utils
 
 terms = utils.get_terms_from_tbx('translation_from_crowdin/ClassicUA.tbx')
-npcs = {}
+npcs = { e: {} for e in utils.known_expansion_codes }
 issues = []
 
-is_str_and_has_only_ascii_chars = lambda s: isinstance(s, str) and s == s.encode(encoding='utf-8').decode('ascii', errors="ignore")
-
 for en_text, uk_text, tags in terms:
-    if 'нпц' in tags:
-        for tag in tags:
-            if tag.startswith('#'):
-                npc_id, npc_text = tag.split(' ', maxsplit=1) if ' ' in tag else (tag, False)
-                npc_id = int(npc_id[1:])
+    if not 'нпц' in tags:
+        continue
 
-                if not npc_text:
-                    npc_text = uk_text
+    for tag in tags:
+        if not tag.startswith('#'):
+            continue
 
-                npc_text = npc_text.replace('_', ',')
+        # tag format: #ID[:EXPANSION][ NPC NAME CAN INCLUDE SPACES]
 
-                npc_desc = False
-                npc_desc_original = False
+        npc_id, npc_name = tag.split(' ', maxsplit=1) if ' ' in tag else (tag, False)
+        npc_id, npc_expansion = npc_id.split(':', maxsplit=1) if ':' in npc_id else (npc_id, 'classic')
+        npc_id = int(npc_id[1:])
 
-                for t in tags:
-                    if t.startswith('<') and t.endswith('>'):
-                        npc_desc = t[1:-1]
-                        npc_desc_original = npc_desc
-                        break
+        if not npc_expansion in npcs:
+            issues.append(f'[!] Unexpected expansion code "{npc_expansion}".\n\t- term: {en_text}\n\t- tags: {tags}')
+            continue
 
-                if npc_desc:
-                    npc_desc_lower = npc_desc.lower()
+        if not npc_name:
+            npc_name = uk_text
 
-                    npc_desc_lower_patterns = [
-                        npc_desc_lower,
-                        npc_desc_lower.replace('&', 'and'),
-                        npc_desc_lower.replace('weapons', 'weapon') # in "... weapon vendor"
-                    ]
+        npc_name = npc_name.replace('_', ',')
 
-                    if npc_desc_lower.startswith('the '):
-                        npc_desc_lower_patterns.append(npc_desc_lower[4:])
+        npc_desc = False
+        npc_desc_original = False
 
-                    for en_text2, uk_text2, _ in terms:
-                        en_text2_lower = en_text2.lower()
-                        if en_text2_lower in npc_desc_lower_patterns:
-                            cases = uk_text2.split('/', maxsplit=1)
-                            npc_is_female = 'жін' in tags
-                            npc_desc = cases[1] if npc_is_female and len(cases) > 1 else cases[0]
-                            break
+        for t in tags:
+            if t.startswith('<') and t.endswith('>'):
+                npc_desc = t[1:-1]
+                npc_desc_original = npc_desc
+                break
 
-                new_npc = (
-                    npc_text,
-                    npc_desc,
-                    en_text + (f' <{npc_desc_original}>' if npc_desc_original != npc_desc else '')
-                )
+        if npc_desc:
+            npc_desc_lower = npc_desc.lower()
 
-                if npc_id in npcs:
-                    issues.append(f'[!] NPC #{npc_id} duplication! Probably terms has one of these NPCs with wrong ID.\n\t- old NPC: {npcs[npc_id]}\n\t- new NPC: {new_npc}')
+            npc_desc_lower_patterns = [
+                npc_desc_lower,
+                npc_desc_lower.replace('&', 'and'),
+                npc_desc_lower.replace('weapons', 'weapon') # in "... weapon vendor"
+            ]
 
-                if is_str_and_has_only_ascii_chars(npc_text) or is_str_and_has_only_ascii_chars(npc_desc):
-                    npc_desc_formatted_text = f'<{npc_desc}>' if npc_desc else ''
-                    issues.append(f'[?] NPC #{npc_id} has name/desc with only ASCII chars: {npc_text} {npc_desc_formatted_text}')
+            if npc_desc_lower.startswith('the '):
+                npc_desc_lower_patterns.append(npc_desc_lower[4:])
 
-                npcs[npc_id] = new_npc
+            for en_text2, uk_text2, _ in terms:
+                en_text2_lower = en_text2.lower()
+                if en_text2_lower in npc_desc_lower_patterns:
+                    cases = uk_text2.split('/', maxsplit=1)
+                    npc_is_female = 'жін' in tags
+                    npc_desc = cases[1] if npc_is_female and len(cases) > 1 else cases[0]
+                    break
 
-npcs = dict(sorted(npcs.items()))
+        new_npc = (
+            npc_name,
+            npc_desc,
+            en_text + (f' <{npc_desc_original}>' if npc_desc_original != npc_desc else '')
+        )
 
-entries_path = 'translation_from_crowdin/entries'
-Path(entries_path).mkdir(parents=True, exist_ok=True)
-utils.write_lua_npc_file(entries_path, 'npc', npcs)
+        if npc_id in npcs[npc_expansion]:
+            issues.append(f'[!] NPC #{npc_id} duplication! Probably terms has one of these NPCs with wrong ID.\n\t- old NPC: {npcs[npc_expansion][npc_id]}\n\t- new NPC: {new_npc}')
 
-for id in npcs:
-    name, desc, _ = npcs[id]
-    print(id, '->', name, f'<{desc}>' if desc else '')
+        if utils.is_str_and_has_only_ascii_chars(npc_name) or utils.is_str_and_has_only_ascii_chars(npc_desc):
+            npc_desc_formatted_text = f'<{npc_desc}>' if npc_desc else ''
+            issues.append(f'[?] NPC #{npc_id} has name/desc with only ASCII chars: {npc_name} {npc_desc_formatted_text}')
 
-print('-' * 40)
-print('total npcs:', len(npcs))
+        npcs[npc_expansion][npc_id] = new_npc
+
+for expansion in npcs:
+    npcs[expansion] = dict(sorted(npcs[expansion].items()))
+
+    entries_path = 'translation_from_crowdin/entries'
+    Path(entries_path).mkdir(parents=True, exist_ok=True)
+    filename = f'npc_{expansion}' if expansion != 'classic' else 'npc'
+    utils.write_lua_npc_file(entries_path, filename, npcs[expansion])
+
+for expansion in npcs:
+    for id in npcs[expansion]:
+        name, desc, _ = npcs[expansion][id]
+        print(f'{expansion} #{id} -> {name} {f"<{desc}>" if desc else ""}')
+
+print('-' * 80)
+print('Total npcs:', ', '.join([f'[{e}] {len(npcs[e])}' for e in npcs]))
 
 if len(issues):
-    print('-' * 40)
+    print('-' * 80)
     print('ISSUES FOUND:')
     for text in issues:
         print(text)
