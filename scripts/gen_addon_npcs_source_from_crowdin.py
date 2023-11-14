@@ -75,6 +75,7 @@ for en_text, uk_text, tags in terms:
 for expansion in npcs:
     npcs[expansion] = dict(sorted(npcs[expansion].items()))
 
+for expansion in npcs:
     entries_path = 'translation_from_crowdin/entries'
     Path(entries_path).mkdir(parents=True, exist_ok=True)
     filename = f'npc_{expansion}' if expansion != 'classic' else 'npc'

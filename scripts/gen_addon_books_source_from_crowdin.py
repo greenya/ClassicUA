@@ -5,6 +5,8 @@ import utils
 
 books = {}
 
+# TODO: add expansion support when we actually have books_[expansion] folders
+
 for dirpath, _, filenames in os.walk('translation_from_crowdin/uk/books/'):
     for filename in filenames:
         tree = ElementTree.parse(os.path.join(dirpath, filename))
@@ -15,12 +17,15 @@ for dirpath, _, filenames in os.walk('translation_from_crowdin/uk/books/'):
             if s.text:
                 pages.append(s.text.strip())
 
-        # todo: we don't check page number here (e.g. "PAGE_1", ...), that should be fine for now,
+        # TODO: we don't check page number here (e.g. "PAGE_1", ...), that should be fine for now,
         # until we have partially translated books, e.g. translated only page 2
 
         if pages:
             name, id = re.search('^([^_]+)_(\d+)\.xml$', filename).groups()
-            books[int(id)] = (pages, f'{name.strip()} ({len(pages)})')
+            books[int(id)] = (
+                pages,
+                f'{name.strip()} ({len(pages)} {"page" if len(pages) == 1 else "pages"})'
+            )
 
 books = dict(sorted(books.items()))
 
@@ -32,5 +37,5 @@ for id in books:
     _, hint = books[id]
     print(id, '->', hint)
 
-print('-' * 40)
-print(f'total books:', len(books))
+print('-' * 80)
+print(f'Total books:', len(books))
