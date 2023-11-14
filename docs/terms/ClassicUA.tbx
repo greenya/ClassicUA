@@ -84474,7 +84474,7 @@
         <langSet xml:lang="en">
           <tig>
             <term id="e17343fd137bd00f14b47f1ea35ec3ca13128-en">Captain Galvangar</term>
-            <descrip type="definition">нпц, чол, орк, #11947, &lt;капітан Морозних Вовків&gt;</descrip>
+            <descrip type="definition">нпц, чол, орк, #11947, &lt;Frostwolf Captain&gt;</descrip>
           </tig>
         </langSet>
       </termEntry>
@@ -85060,6 +85060,227 @@
           <tig>
             <term id="d44003cb6be8cff88c4f9ef9fd31b82013218-en">portal trainer</term>
             <descrip type="definition">ранг, професія</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="d0d80c2a8e1344d9026b2b1261a070f213220">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d0d80c2a8e1344d9026b2b1261a070f213220-uk">Око Бурі</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d0d80c2a8e1344d9026b2b1261a070f213220-en">Eye of the Storm</term>
+            <descrip type="definition">локація, поле битви</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="eb352bcf0192b4f307d42f403320825613222">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="eb352bcf0192b4f307d42f403320825613222-uk">син Гаккара</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="eb352bcf0192b4f307d42f403320825613222-en">Son of Hakkar</term>
+            <descrip type="definition">нпц, мінорний, #11357</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="bdd1b613ee6fcac7694cf648430358ce13224">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="bdd1b613ee6fcac7694cf648430358ce13224-uk">Авеліна Ліллі</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="bdd1b613ee6fcac7694cf648430358ce13224-en">Avelina Lilly</term>
+            <descrip type="definition">нпц, жін, людина, #185333</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b27c40f1f7fb35fcf65d89dc29748e2913226">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b27c40f1f7fb35fcf65d89dc29748e2913226-uk">Айзек Пірсон</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b27c40f1f7fb35fcf65d89dc29748e2913226-en">Isaac Pearson</term>
+            <descrip type="definition">нпц, чол, людина, #185334</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="2602fd311d93e2b8ccbbc9165e0ad65313228">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="2602fd311d93e2b8ccbbc9165e0ad65313228-uk">Маґар</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="2602fd311d93e2b8ccbbc9165e0ad65313228-en">Magar</term>
+            <descrip type="definition">нпц, чол, орк, #3363, &lt;Tailoring Trainer&gt;</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="089234f71dea0ae931a029e8a3a4550213230">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="089234f71dea0ae931a029e8a3a4550213230-uk">зерглінг</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="089234f71dea0ae931a029e8a3a4550213230-en">Zergling</term>
+            <descrip type="definition">нпц, мінорний, #11327</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="695553c0c5ba292284a3e1e64da6ed4713232">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="695553c0c5ba292284a3e1e64da6ed4713232-uk">дитинча панди</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="695553c0c5ba292284a3e1e64da6ed4713232-en">Panda Cub</term>
+            <descrip type="definition">нпц, мінорний, #11325</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="b0e864a6eccfc779c8119f5a4468797f13234">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="b0e864a6eccfc779c8119f5a4468797f13234-uk">міні-Діабло</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="b0e864a6eccfc779c8119f5a4468797f13234-en">Mini Diablo</term>
+            <descrip type="definition">нпц, мінорний, #11326, &lt;Lord of Terror&gt;</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="7507dafaedac784a18c852536bbd3c8813236">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="7507dafaedac784a18c852536bbd3c8813236-uk">Клер Вербна</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="7507dafaedac784a18c852536bbd3c8813236-en">Claire Willower</term>
+            <descrip type="definition">нпц, жін, невмерлий, #11945</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="0e762b65028402721e10bbc97ede52b713238">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="0e762b65028402721e10bbc97ede52b713238-uk">Ворн Небесний Провидець</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="0e762b65028402721e10bbc97ede52b713238-en">Vorn Skyseer</term>
+            <descrip type="definition">нпц, чол, таурен, #11944</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="23d6c2965508b167da9c4bdcef3a2aa313240">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="23d6c2965508b167da9c4bdcef3a2aa313240-uk">Орентіл Шелествітер</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="23d6c2965508b167da9c4bdcef3a2aa313240-en">Orenthil Whisperwind</term>
+            <descrip type="definition">нпц, чол, нічний ельф, #11942</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="3a78f1864ab77dbd239fbe33cae90bbb13242">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="3a78f1864ab77dbd239fbe33cae90bbb13242-uk">викликаний вартовий</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="3a78f1864ab77dbd239fbe33cae90bbb13242-en">Summoned Guardian</term>
+            <descrip type="definition">нпц, мінорний, #2794</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="08823e44200e4d4e71674e8104eff7dd13244">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="08823e44200e4d4e71674e8104eff7dd13244-uk">викликаний інкуб</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="08823e44200e4d4e71674e8104eff7dd13244-en">Summoned Incubus</term>
+            <descrip type="definition">нпц, мінорний, #185335</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="51cece00aed19468f18042ad0606a3d313246">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="51cece00aed19468f18042ad0606a3d313246-uk">викликаний елементаль води</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="51cece00aed19468f18042ad0606a3d313246-en">Summoned Water Elemental</term>
+            <descrip type="definition">нпц, мінорний, #10955</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="e7bf615d7da357e85843bafdfbc4571913248">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="e7bf615d7da357e85843bafdfbc4571913248-uk">викликаний зомбі</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="e7bf615d7da357e85843bafdfbc4571913248-en">Summoned Zombie</term>
+            <descrip type="definition">нпц, мінорний, #10698</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="975ae6d3ce8ae6e0711821a97a9f5fae13250">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="975ae6d3ce8ae6e0711821a97a9f5fae13250-uk">Меґелон</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="975ae6d3ce8ae6e0711821a97a9f5fae13250-en">Megelon</term>
+            <descrip type="definition">нпц, чол, дреней, #16475:tbc</descrip>
+          </tig>
+        </langSet>
+      </termEntry>
+      <termEntry id="31914689514c64a97d950a8d9eea3eeb13252">
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="31914689514c64a97d950a8d9eea3eeb13252-uk">Проенітус</term>
+          </tig>
+        </langSet>
+        <langSet xml:lang="en">
+          <tig>
+            <term id="31914689514c64a97d950a8d9eea3eeb13252-en">Proenitus</term>
+            <descrip type="definition">нпц, чол, дреней, #16477:tbc</descrip>
           </tig>
         </langSet>
       </termEntry>
