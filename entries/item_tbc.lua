@@ -23,6 +23,7 @@ local item_tbc = {
 [27885] = { "жезл душі Алдора" },
 [28790] = { "перстень світлоохоронця Наару" }, -- Naaru Lightwarden's Band
 [28823] = { "око Ґруула" }, -- Eye of Gruul
+[29024] = { "відзнака честі Ока Бурі", flavor="Медаль за битву в Оці Бурі." }, -- Eye of the Storm Mark of Honor, @flavor Medal awarded for fighting in the Eye of the Storm
 [29434] = { "знак правосуддя" },
 [29736] = { "чарівна руна" },
 [30349] = { "медальйон Альянса" },
