@@ -4,111 +4,118 @@ from xml.etree import ElementTree
 import utils
 
 conn = sqlite3.connect('database/classicua.db')
-quest_ids = [ r[0] for r in conn.execute('SELECT id FROM quests ORDER BY id') ]
+quest_expansion_and_id_pairs = [
+    r for r in conn.execute('SELECT expansion, id FROM quests ORDER BY id')
+]
 
-quests = {
-    'alliance': [],
-    'horde': [],
-    'both': [],
-}
-
-quests_cat_count = {}
-quests_cat_total = {}
-text_characters_used = {}
+quests = { e: { s: [] for s in utils.known_sides } for e in utils.known_expansions }
+quests_cat_count = { e: {} for e in utils.known_expansions }
+quests_cat_total = { e: {} for e in utils.known_expansions }
+text_chars_used = {}
 issues = []
 
-for id in quest_ids:
-    cat, side, title = conn.execute(f'SELECT cat, side, title FROM quests WHERE id={id}').fetchone()
-    path = f'translation_from_crowdin/uk/quests/{cat}'
-    filename = utils.get_quest_filename(id, title)
+for expansion, id in quest_expansion_and_id_pairs:
+    if not expansion in quests:
+        issues.append(f'[!] Unexpected expansion "{expansion}" for #{id}.')
+        continue
 
-    tree = ElementTree.parse(f'{path}/{filename}.xml')
+    cat, side, title = conn.execute(
+        f'SELECT cat, side, title FROM quests WHERE expansion="{expansion}" AND id={id}'
+    ).fetchone()
+
+    quests_folder_name = f'quests_{expansion}' if expansion != 'classic' else 'quests'
+    quest_path = f'translation_from_crowdin/uk/{quests_folder_name}/{cat}'
+    quest_filename = utils.get_quest_filename(id, title)
+    xml_path_filename = f'{quest_path}/{quest_filename}.xml'
+
+    try:
+        tree = ElementTree.parse(xml_path_filename)
+    except FileNotFoundError:
+        issues.append(f'[!] File not found {xml_path_filename}')
+        continue
+
     root = tree.getroot()
     strings = root.findall('./string')
-    if strings:
-        q = {
-            'id': id,
-            'title': False,
-            'objective': False,
-            'description': False,
-            'progress': False,
-            'completion': False,
-        }
 
-        q_chars = {}
-        for s in strings:
-            if s.text:
-                q[ s.attrib['name'].lower() ] = s.text
+    quests_cat_total[expansion][cat] =\
+        1 + quests_cat_total[expansion][cat] if cat in quests_cat_total[expansion] else 1
 
-                for c in s.text:
-                    code = ord(c)
+    if not strings:
+        continue
 
-                    if code not in q_chars:
-                        q_chars[code] = 0
-                    q_chars[code] += 1
+    new_quest = {
+        'id': id,
+        'title': False,
+        'objective': False,
+        'description': False,
+        'progress': False,
+        'completion': False,
+        'hint': title,
+    }
 
-                    if code not in text_characters_used:
-                        text_characters_used[code] = 0
-                    text_characters_used[code] += 1
+    new_quest_chars = {}
+    for s in strings:
+        if s.text:
+            new_quest[ s.attrib['name'].lower() ] = s.text
 
-        for bracer_pair in ['()', '[]', '{}', '<>']:
-            b1, b2 = bracer_pair[0], bracer_pair[1]
-            b1_code, b2_code = ord(b1), ord(b2)
+            for c in s.text:
+                code = ord(c)
+                new_quest_chars[code] = 1 + new_quest_chars[code] if code in new_quest_chars else 1
+                text_chars_used[code] = 1 + text_chars_used[code] if code in text_chars_used else 1
 
-            if b1_code not in q_chars:
-                q_chars[b1_code] = 0
-            if b2_code not in q_chars:
-                q_chars[b2_code] = 0
+    for b1, b2 in [ ('(', ')'), ('[', ']'), ('{', '}'), ('<', '>')]:
+        b1_code, b2_code = ord(b1), ord(b2)
 
-            if q_chars[ord(b1)] != q_chars[ord(b2)]:
-                issues.append((f'[!] Bracers "{b1}" and "{b2}" don\'t match', q))
+        b1_code_count = new_quest_chars[b1_code] if b1_code in new_quest_chars else 0
+        b2_code_count = new_quest_chars[b2_code] if b2_code in new_quest_chars else 0
 
-        if q['title']:
-            print(f'{id} => {q["title"]}')
-            quests[side].append(q)
-            if cat not in quests_cat_count:
-                quests_cat_count[cat] = 0
-            quests_cat_count[cat] += 1
+        if b1_code_count != b2_code_count:
+            issues.append(f'[?] Bracers "{b1}" and "{b2}" don\'t match\n\t- quest: {new_quest}')
 
-    if cat not in quests_cat_total:
-        quests_cat_total[cat] = 0
-    quests_cat_total[cat] += 1
-
-print('-' * 40)
-total = 0
-
-entries_name = {
-    'alliance': 'quest_a',
-    'horde': 'quest_h',
-    'both': 'quest_n',
-}
+    if new_quest['title']:
+        print(f'{expansion} #{id} -> {new_quest["title"]}')
+        quests[expansion][side].append(new_quest)
+        quests_cat_count[expansion][cat] =\
+            1 + quests_cat_count[expansion][cat] if cat in quests_cat_count[expansion] else 1
 
 entries_path = 'translation_from_crowdin/entries'
 Path(entries_path).mkdir(parents=True, exist_ok=True)
 
-for x in [ 'alliance', 'horde', 'both' ]:
-    total += len(quests[x])
-    print(f'{x} quests:', len(quests[x]))
-    utils.write_lua_quest_file(entries_path, entries_name[x], quests[x])
+for expansion in quests:
+    for side in quests[expansion]:
+        variable = f'quest_{side}'
+        filename = f'quest_{side}_{expansion}' if expansion != 'classic' else f'quest_{side}'
+        utils.write_lua_quest_file(entries_path, filename, variable, quests[expansion][side])
 
-print('-' * 40)
-print(f'total quests: {total}')
+print('-' * 80)
+total = 0
 
-print('-' * 40)
-for cat in sorted(quests_cat_count.keys()):
-    total = quests_cat_total[cat]
-    count = quests_cat_count[cat]
-    percent = (count * 100) // total
-    print(f'{cat} - {count}/{total} - {percent}%')
+for expansion in quests:
+    expansion_total = 0
+    for side in quests[expansion]:
+        expansion_side_total = len(quests[expansion][side])
+        expansion_total += expansion_side_total
+        total += expansion_side_total
+        print(f'[{expansion}] [{side}] quests: {expansion_side_total}')
+    print(f'[{expansion}] quests: {expansion_total}\n')
 
-print('-' * 40)
-print('text characters used (code, count, print):')
-for code in sorted(text_characters_used.keys()):
-    print(f'{code}\t{text_characters_used[code]}\t> {chr(code)} <')
+print(f'Total quests: {total}')
 
-if len(issues):
-    print('-' * 40)
+print('-' * 80)
+for expansion in quests_cat_count:
+    for cat in sorted(quests_cat_count[expansion].keys()):
+        total = quests_cat_total[expansion][cat]
+        count = quests_cat_count[expansion][cat]
+        percent = (count * 100) // total if total > 0 else 0
+        print(f'{expansion} {cat} - {count}/{total} - {percent}%')
+
+print('-' * 80)
+print('Text characters used (code, count, print):')
+for code in sorted(text_chars_used.keys()):
+    print(f'{code}\t{text_chars_used[code]}\t> {chr(code)} <')
+
+if issues:
+    print('-' * 80)
     print('ISSUES FOUND:')
-    for message, details in issues:
-        print(message)
-        print(details)
+    for text in issues:
+        print(text)

@@ -2,7 +2,7 @@ from pathlib import Path
 import utils
 
 terms = utils.get_terms_from_tbx('translation_from_crowdin/ClassicUA.tbx')
-npcs = { e: {} for e in utils.known_expansion_codes }
+npcs = { e: {} for e in utils.known_expansions }
 issues = []
 
 for en_text, uk_text, tags in terms:
@@ -20,7 +20,7 @@ for en_text, uk_text, tags in terms:
         npc_id = int(npc_id[1:])
 
         if not npc_expansion in npcs:
-            issues.append(f'[!] Unexpected expansion code "{npc_expansion}".\n\t- term: {en_text}\n\t- tags: {tags}')
+            issues.append(f'[!] Unexpected expansion "{npc_expansion}".\n\t- term: {en_text}\n\t- tags: {tags}')
             continue
 
         if not npc_name:
@@ -89,7 +89,7 @@ for expansion in npcs:
 print('-' * 80)
 print('Total npcs:', ', '.join([f'[{e}] {len(npcs[e])}' for e in npcs]))
 
-if len(issues):
+if issues:
     print('-' * 80)
     print('ISSUES FOUND:')
     for text in issues:
