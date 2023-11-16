@@ -101,6 +101,12 @@
             white-space: normal;
         }
 
+        .term-tag.is-large {
+            margin: .2em .4em .2em 0;
+            padding: .4em .8em;
+            font-size: 20px;
+        }
+
         .filter-bar,
         .filter-text {
             position: relative;
@@ -132,6 +138,13 @@
             margin: 3px 4px !important;
         }
 
+        .is-npc-subtitle:not(:empty)::before { content: '<'; }
+        .is-npc-subtitle:not(:empty)::after { content: '>'; }
+        .is-npc-subtitle:not(:empty) {
+            line-height: 1;
+            margin-bottom: .2em;
+        }
+
         @media (max-width: 767px) {
             .term-text {
                 font-size: 18px;
@@ -150,7 +163,16 @@
 
             .term-table,
             .term-table td {
+                padding: 0;
                 border: 0 !important;
+            }
+
+            .term-table td {
+                padding: .1rem .15rem;
+            }
+
+            .term-text {
+                font-size: 16px;
             }
         }
     </style>
@@ -278,6 +300,8 @@
                         <td class="term-text" v-html="emphasizeFilterText(term.en)"></td>
                         <td class="term-text" v-html="emphasizeFilterText(term.uk)"></td>
                         <td>
+                            <a class="term-tag badge badge-light float-right m-0 p-0 text-secondary" href="#"
+                                @click.prevent.stop="openTermDetails(term)"><i class="material-icons">tag</i></a>
                             <a v-for="tag in term.tags" :key="tag.name" class="term-tag badge" href="#"
                                 :class="{ 'badge-info': tag.main, 'badge-secondary': !tag.main }"
                                 @click.prevent.stop="addFilterTag(tag)">{{ tag.name }}</a>
@@ -286,11 +310,39 @@
                 </tbody>
             </table>
         </div>
+        <div v-if="state == 'ready'">
+            <div class="modal fade" id="term-details-modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div>
+                                <h4 class="modal-title font-weight-bold">{{ termDetails.title_en }}</h4>
+                                <h5 class="modal-title font-weight-bold is-npc-subtitle">{{ termDetails.subtitle_en }}</h5>
+                                <h4 class="modal-title font-weight-bold">{{ termDetails.title_uk }}</h4>
+                                <h5 class="modal-title font-weight-bold is-npc-subtitle">{{ termDetails.subtitle_uk }}</h5>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <a v-for="tag in termDetails.tags" :key="tag.name" class="term-tag is-large badge" href="#"
+                                :class="{ 'badge-info': tag.main, 'badge-secondary': !tag.main }"
+                                @click.prevent.stop="toggleFilterTag(tag)">{{ tag.name }}</a>
+                        </div>
+                        <div v-if="termDetails.links && termDetails.links.length > 0" class="modal-footer justify-content-start">
+                            <button v-for="link in termDetails.links" :key="link.name" type="button" class="btn btn-lg btn-warning font-weight-bold"
+                                @click.prevent.stop="openLink(link.href)">{{ link.text }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
 
         class Tag {
-            constructor(name, main = false) {
+            constructor (name, main = false) {
                 this.name = name;
                 this.main = main;
                 this.count = 0;
@@ -298,10 +350,29 @@
         }
 
         class Term {
-            constructor(en, uk, tags) {
+            constructor (en, uk, all_tags) {
                 this.en = en;
                 this.uk = uk;
-                this.tags = tags;
+
+                this.tags = []
+                this.id_tags = []
+                all_tags.forEach(e => {
+                    if (e.name.startsWith('#')) {
+                        e.name = e.name.replace('_', ',')
+                        this.id_tags.push(e)
+                    } else {
+                        this.tags.push(e)
+                    }
+                })
+            }
+
+            subtitle_text () {
+                const tag = this.tags.find(e => e.name.startsWith('<') && e.name.endsWith('>'))
+                return tag ? tag.name.substring(1, tag.name.length - 1) : ''
+            }
+
+            is_female () {
+                return !!this.tags.find(e => e.name == 'жін')
             }
         }
 
@@ -317,7 +388,8 @@
                 filterTags: [],
                 filterTagsMatchAll: true,
                 filterDropdownTagsSortAbc: false,
-                filterDropdownTagsText: ''
+                filterDropdownTagsText: '',
+                termDetails: {},
             },
             created: function () {
                 this.state = 'load';
@@ -367,6 +439,7 @@
                 parse: function (xml) {
                     const map = {};
                     const dom = (new DOMParser()).parseFromString(xml, 'text/xml');
+
                     dom.querySelectorAll('termEntry').forEach(entry => {
                         let en = entry.querySelector('langSet[*|lang="en"] tig term').textContent;
                         const uk = entry.querySelector('langSet[*|lang="uk"] tig term').textContent;
@@ -382,7 +455,6 @@
                                 acc.push(...cur.split(',').map(e => e.trim()));
                                 return acc;
                             }, [])
-                            .filter(e => !e.startsWith('#'));
 
                         labels.forEach((name, index) => {
                             if (map[name] === undefined) {
@@ -395,6 +467,8 @@
                         const tags = labels.map(name => this.tags.find(t => t.name == name));
                         this.terms.push(new Term(en, uk, tags));
                     });
+
+                    this.tags = this.tags.filter(e => !e.name.startsWith('#'))
                 },
                 emphasizeFilterText: function (text) {
                     if (this.filterText) {
@@ -448,6 +522,78 @@
                             }
                         }
                         return false;
+                    }
+                },
+                openTermDetails: function (term) {
+                    let subtitle_text_en = term.subtitle_text()
+                    let subtitle_text_uk = null
+
+                    if (subtitle_text_en) {
+                        const t = this.findTermByEn(subtitle_text_en)
+                        if (t) {
+                            cases = t.uk.split('/', 2)
+                            subtitle_text_uk = term.is_female() && cases.length > 1 ? cases[1] : cases[0]
+                        } else {
+                            subtitle_text_uk = subtitle_text_en
+                            subtitle_text_en = ''
+                        }
+                    }
+
+                    this.termDetails = {
+                        title_en:       term.en,
+                        subtitle_en:    subtitle_text_en,
+                        title_uk:       term.uk,
+                        subtitle_uk:    subtitle_text_uk,
+                        tags:           term.tags,
+                        links:          term.id_tags.map(t => ({
+                            text: t.name,
+                            href: this.getWhLinkByIdTagName(t.name)
+                        })),
+                    }
+
+                    $('#term-details-modal').modal('show')
+                },
+                findTermByEn: function (en) {
+                    const en_lower = en.toLowerCase()
+
+                    const en_lower_patters = [
+                        en_lower,
+                        en_lower.replace(' & ', ' and '),
+                        en_lower.replace('weapons', 'weapon'), // in "... weapon vendor"
+                    ]
+
+                    if (en_lower.startsWith('the ')) {
+                        const no_the = en_lower.substring(4)
+                        en_lower_patters.push(no_the)
+                        en_lower_patters.push(no_the + ' (the)')
+                    }
+
+                    return this.terms.find(e => en_lower_patters.includes(e.en.toLowerCase()))
+                },
+                getWhLinkByIdTagName: function (id_name) {
+                    let id = false
+                    let exp = false
+
+                    const matches_id_with_exp = Array.from(id_name.matchAll(/#(\d+):(\w+)/ig))
+                    if (matches_id_with_exp.length == 1) {
+                        id = matches_id_with_exp[0][1]
+                        exp = matches_id_with_exp[0][2]
+                    } else {
+                        const matches_id_only = Array.from(id_name.matchAll(/#(\d+)/ig))
+                        if (matches_id_only.length == 1) {
+                            id = matches_id_only[0][1]
+                            exp = 'classic'
+                        }
+                    }
+
+                    if (id && exp) {
+                        const wh_exp_map = { 'classic': 'classic', 'tbc': 'tbc', 'wrath': 'wotlk' }
+                        return `https://www.wowhead.com/${wh_exp_map[exp]}/npc=${id}`
+                    }
+                },
+                openLink: function (href) {
+                    if (href) {
+                        window.open(href, '_blank')
                     }
                 },
                 formatNumber: function (value) {
