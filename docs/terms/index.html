@@ -230,6 +230,11 @@
                                         <div class="input-group px-1">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-outline-secondary d-flex" type="button"
+                                                    @click.prevent.stop="filterDropdownTagsCountLimit = !filterDropdownTagsCountLimit"
+                                                    title="[1] Відображає всі теги, [2] Відображає теги з кількістю термінів не менше 2">
+                                                    <i class="material-icons">{{ filterDropdownTagsCountLimit ? 'filter_2' : 'filter_1' }}</i>
+                                                </button>
+                                                <button class="btn btn-outline-secondary d-flex" type="button"
                                                     :class="{ 'active': !filterDropdownTagsSortAbc }"
                                                     @click.prevent.stop="filterDropdownTagsSortAbc = !filterDropdownTagsSortAbc"
                                                     title="Сортувати за кількістю термінів">
@@ -388,6 +393,7 @@
                 filterTags: [],
                 filterTagsMatchAll: true,
                 filterDropdownTagsSortAbc: false,
+                filterDropdownTagsCountLimit: true,
                 filterDropdownTagsText: '',
                 termDetails: {},
             },
@@ -420,6 +426,7 @@
                         ? new RegExp(this.reEscape(this.filterDropdownTagsText), 'i')
                         : false;
                     return this.tags
+                        .filter(tag => !this.filterDropdownTagsCountLimit || tag.count > 1)
                         .filter(tag => !re || tag.name.search(re) >= 0)
                         .sort((tag1, tag2) => this.filterDropdownTagsSortAbc
                             ? tag1.name.localeCompare(tag2.name)
