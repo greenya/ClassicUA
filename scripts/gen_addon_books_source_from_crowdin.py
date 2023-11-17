@@ -15,7 +15,7 @@ for dirpath, _, filenames in os.walk('translation_from_crowdin/uk/books/'):
 
         for s in root.findall('./string'):
             if s.text:
-                pages.append(s.text.strip())
+                pages.append(utils.get_clean_text(s.text))
 
         # TODO: we don't check page number here (e.g. "PAGE_1", ...), that should be fine for now,
         # until we have partially translated books, e.g. translated only page 2

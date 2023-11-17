@@ -56,9 +56,11 @@ for expansion, id in quest_expansion_and_id_pairs:
     new_quest_chars = {}
     for s in strings:
         if s.text:
-            new_quest[ s.attrib['name'].lower() ] = s.text
+            string_attr = s.attrib['name'].lower()
+            string_text = utils.get_clean_text(s.text)
+            new_quest[string_attr] = string_text
 
-            for c in s.text:
+            for c in string_text:
                 code = ord(c)
                 new_quest_chars[code] = 1 + new_quest_chars[code] if code in new_quest_chars else 1
                 text_chars_used[code] = 1 + text_chars_used[code] if code in text_chars_used else 1
@@ -110,9 +112,11 @@ for expansion in quests_cat_count:
         print(f'{expansion} {cat} - {count}/{total} - {percent}%')
 
 print('-' * 80)
-print('Text characters used (code, count, print):')
+print('[Code]\t[Count]\t[Print]')
+untraceable_chars = { 0xa: 'new line', 0x20: 'space' }
 for code in sorted(text_chars_used.keys()):
-    print(f'{code}\t{text_chars_used[code]}\t> {chr(code)} <')
+    p = untraceable_chars[code] if code in untraceable_chars else chr(code)
+    print('\\u%04X\t%d\t> %s <' % (code, text_chars_used[code], p))
 
 if issues:
     print('-' * 80)

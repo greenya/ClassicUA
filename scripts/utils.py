@@ -10,6 +10,40 @@ def get_quest_filename(quest_id, quest_title):
     valid_chars = frozenset('-.() abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
     return ''.join(c for c in quest_title if c in valid_chars) + '_' + str(quest_id)
 
+def get_clean_text(text):
+    '''
+    Cleans up given text.
+
+    Examples:
+    ```
+    * 'ab c' -> (no changes)
+    * '\\nabc' -> (no changes)
+    * 'abc\\n\\n\\nabc' -> (no changes)
+    * ' ' -> ''
+    * ' abc ' -> ' abc'
+    * 'abc\\n' -> 'abc'
+    * 'abc \\n abc' -> 'abc\\n abc'
+    * 'ab\u2019c' -> "ab'c"
+    * 'a \u201Dbc\u201D' -> 'a "bc"'
+    * 'ab \u2013 c' -> 'ab \u2014 c'
+    ```
+    '''
+
+    lines = text.split('\n')
+
+    last_non_empty_line_idx = -1
+    for i in range(len(lines)):
+        lines[i] = lines[i]\
+            .rstrip()\
+            .replace('\u2019', "'")\
+            .replace('\u201D', '"')\
+            .replace('\u2013', '\u2014')
+
+        if lines[i]:
+            last_non_empty_line_idx = i
+
+    return '\n'.join(lines[:last_non_empty_line_idx + 1]) if last_non_empty_line_idx >= 0 else ''
+
 def write_xml_quest_file(filename, title, objective, description, progress, completion):
     with open(filename, mode='w', encoding='utf-8', newline='\n') as f:
         f.write('<?xml version="1.0" encoding="utf-8"?>\n')
@@ -33,13 +67,13 @@ def get_terms_from_tbx(filename):
 
     for entry in root.findall('.//termEntry', namespaces=namespace_map):
         en = entry.find('langSet[@xml:lang="en"]/tig/term', namespaces=namespace_map)
-        en_text = en.text
+        en_text = get_clean_text(en.text)
 
         uk = entry.find('langSet[@xml:lang="uk"]/tig/term', namespaces=namespace_map)
-        uk_text = uk.text
+        uk_text = get_clean_text(uk.text)
 
         desc = entry.find('langSet[@xml:lang="en"]/tig/descrip[@type="definition"]', namespaces=namespace_map)
-        tag_text = ', '.join(desc.text.split('\n'))
+        tag_text = get_clean_text(', '.join(desc.text.split('\n')))
         tags = list(map(str.strip, tag_text.split(',')))
 
         terms.append((en_text, uk_text, tags))
