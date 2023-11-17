@@ -89,10 +89,22 @@ end
 
 local get_stats = function ()
     local stats = {}
-    for _, v in ipairs({ "quest_alliance", "quest_horde", "quest_both", "book", "item", "spell", "npc", "object", "zone" }) do
+
+    for _, v in ipairs({
+        "quest_alliance",
+        "quest_horde",
+        "quest_both",
+        "book",
+        "item",
+        "spell",
+        "npc",
+        "object",
+        "zone"
+    }) do
         stats[v] = 0
         for _, _ in pairs(addonTable[v]) do stats[v] = stats[v] + 1 end
     end
+
     return stats
 end
 
@@ -102,14 +114,14 @@ local prepare_talent_tree = function (class)
 end
 
 local prepare_zones = function ()
-    local z = addonTable.zone
+    local at = addonTable
 
     -- known aliases
-    z["Crossroads"] = z["The Crossroads"]
-    z["Crusader's Outpost"] = z["Crusader Outpost"]
-    z["Dabyrie's Farmstead"] = z["Dabyrie Farmstead"]
-    z["Stormwind City"] = z["Stormwind"]
-    z["Stranglethorn"] = z["Stranglethorn Vale"]
+    at.zone["Crossroads"] = at.zone["The Crossroads"]
+    at.zone["Crusader's Outpost"] = at.zone["Crusader Outpost"]
+    at.zone["Dabyrie's Farmstead"] = at.zone["Dabyrie Farmstead"]
+    at.zone["Stormwind City"] = at.zone["Stormwind"]
+    at.zone["Stranglethorn"] = at.zone["Stranglethorn Vale"]
 
     -- known taxi points
     local known_taxi_points = {
@@ -174,8 +186,8 @@ local prepare_zones = function ()
         if loc and zone then
             loc = strtrim(loc)
             zone = strtrim(zone)
-            if z[loc] and z[zone] then
-                z[v] = z[loc] .. ", " .. z[zone]
+            if at.zone[loc] and at.zone[zone] then
+                at.zone[v] = at.zone[loc] .. ", " .. at.zone[zone]
             else
                 print("[!] ClassicUA: Failed to prepare taxi zone \"" .. v .. "\"")
             end
@@ -255,62 +267,64 @@ local make_text = function (text)
 end
 
 local make_text_array = function (array)
-    if array then
-        local result = {}
-        for i = 1, #array do
-            result[i] = make_text(array[i])
-        end
-        return result
-    else
+    if not array then
         return nil
     end
+
+    local result = {}
+    for i = 1, #array do
+        result[i] = make_text(array[i])
+    end
+
+    return result
 end
 
 local get_entry = function (entry_type, entry_id)
+    if not entry_type or not entry_id then
+        return false
+    end
+
     local at = addonTable
+    entry_id = tonumber(entry_id)
 
-    if entry_type and entry_id then
-        entry_id = tonumber(entry_id)
+    if entry_type == "quest" then
+        local quest = nil
 
-        if entry_type == "quest" then
-            local quest = nil
-
-            if at.quest_faction[entry_id] then
-                quest = at.quest_faction[entry_id]
-            elseif at.quest_both[entry_id] then
-                quest = at.quest_both[entry_id]
-            end
-
-            if quest then
-                return make_text_array(quest)
-            end
+        if at.quest_faction[entry_id] then
+            quest = at.quest_faction[entry_id]
+        elseif at.quest_both[entry_id] then
+            quest = at.quest_both[entry_id]
         end
 
-        if entry_type == "book" then
-            local book = at.book[entry_id]
-            if book then
-                return make_text_array(book)
-            end
+        if quest then
+            return make_text_array(quest)
         end
+    end
 
-        if at[entry_type] and at[entry_type][entry_id] then
-            local entry = at[entry_type][entry_id]
+    if entry_type == "book" then
+        local book = at.book[entry_id]
+        if book then
+            return make_text_array(book)
+        end
+    end
 
-            if entry.ref and (entry_type == "spell" or entry_type == "item") then
-                local entry_ref = at[entry_type][entry.ref]
-                if entry_ref then
-                    return copy_table(copy_table({}, entry_ref), entry)
+    if at[entry_type] and at[entry_type][entry_id] then
+        local entry = at[entry_type][entry_id]
+
+        if entry.ref and (entry_type == "spell" or entry_type == "item") then
+            local entry_ref = at[entry_type][entry.ref]
+            if entry_ref then
+                return copy_table(copy_table({}, entry_ref), entry)
+            else
+                if options.debug then
+                    return copy_table({ entry_type .. "|cff999999#|r" .. entry_id .. "|cff999999=>|r" .. entry.ref }, entry)
                 else
-                    if options.debug then
-                        return copy_table({ entry_type .. "|cff999999#|r" .. entry_id .. "|cff999999=>|r" .. entry.ref }, entry)
-                    else
-                        return false
-                    end
+                    return false
                 end
             end
-
-            return entry
         end
+
+        return entry
     end
 
     return false
@@ -318,34 +332,37 @@ end
 
 -- todo: add another loop to try different "'s", e.g. "XXX's" and "XXXs'" are considered to be equal
 local get_entry_text = function (entry_key)
+    if not entry_key then
+        return false
+    end
+
     local at = addonTable
 
-    if entry_key then
-        for i = 1, 2 do
-            if i == 2 then
-                -- if failed to find original entry_key, try one more time with/out starting "The "
-                if entry_key:find("^The ") then
-                    -- remove starting "The "
-                    if #entry_key > 5 then
-                        entry_key = entry_key:sub(5)
-                    else
-                        break
-                    end
+    -- check in object and zone entries
+    for i = 1, 2 do
+        if i == 2 then
+            -- if failed to find original entry_key, try one more time with/out starting "The "
+            if entry_key:find("^The ") then
+                -- remove starting "The "
+                if #entry_key > 5 then
+                    entry_key = entry_key:sub(5)
                 else
-                    -- add starting "The "
-                    entry_key = "The " .. entry_key
+                    break
                 end
+            else
+                -- add starting "The "
+                entry_key = "The " .. entry_key
             end
+        end
 
-            local object = at.object[entry_key]
-            if object then
-                return object
-            end
+        local object = at.object[entry_key]
+        if object then
+            return object
+        end
 
-            local zone = at.zone[entry_key]
-            if zone then
-                return zone
-            end
+        local zone = at.zone[entry_key]
+        if zone then
+            return zone
         end
     end
 
@@ -591,7 +608,7 @@ end
 
 hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index)
     local tier, column, rank, max_rank, is_active = select(3, GetTalentInfo(tab_index, talent_index))
-    if not is_active then -- skip active talent (they get shown as spell)
+    if not is_active then -- skip active talent (it gets shown as spell)
         -- print("tab", tab_index, "tier/column", tier, column, "rank/max", rank, max_rank)
         add_talent_entry_to_tooltip(self, tab_index, tier, column, rank, max_rank)
     end
