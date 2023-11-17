@@ -34,6 +34,5 @@ entries\spell_tbc.lua
 entries\talent_tree_tbc.lua
 entries\text.lua
 entries\zone.lua
-entries\zone_tbc.lua
 
 main.lua
