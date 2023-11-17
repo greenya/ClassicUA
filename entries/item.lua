@@ -527,7 +527,7 @@ addonTable.item = {
 [3235] = { "кільце нехтування", flavor="Для Делії" }, -- Ring of Scorn, @flavor For Deliah
 [3236] = { "пасока Гнилошкурих" }, -- Rot Hide Ichor
 [3237] = { "зразок пасоки" }, -- Sample Ichor
-[3238] = { "дослідження Йогаана", flavor="Запечатані дослідження аптекаря Йогана." }, -- Johaan's Findings, @flavor The sealed findings of Apothecary Johaan.
+[3238] = { "дослідження Йогаана", flavor="Запечатані дослідження аптекаря Йогаана." }, -- Johaan's Findings, @flavor The sealed findings of Apothecary Johaan.
 [3239] = { "грубе грузило", use="Збільшує шкоду дробильної зброї на 2 на 30 хвилин." }, -- Rough Weightstone, @use Increase the damage of a blunt weapon by 2 for 30 minutes.
 [3240] = { "шорстке грузило", use="Збільшує шкоду дробильної зброї на 3 на 30 хвилин." }, -- Coarse Weightstone, @use Increase the damage of a blunt weapon by 3 for 30 minutes.
 [3241] = { "важке грузило", use="Збільшує шкоду дробильної зброї на 4 на 30 хвилин." }, -- Heavy Weightstone, @use Increase the damage of a blunt weapon by 4 for 30 minutes.
@@ -761,7 +761,7 @@ addonTable.item = {
 [3721] = { "звіт Фаррена" }, -- Farren's Report
 [3726] = { "великий ведмежий стейк", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Big Bear Steak, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
 [3727] = { "гострі відбивні з лева", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Hot Lion Chops, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
-[3728] = { "cмачний стейк з лева", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 8 на 15 хв.#Restores {1} health over {2}" }, -- Tasty Lion Steak, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 8 Stamina and Spirit for 15 min.
+[3728] = { "смачний стейк з лева", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 8 на 15 хв.#Restores {1} health over {2}" }, -- Tasty Lion Steak, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 8 Stamina and Spirit for 15 min.
 [3729] = { "ніжний черепаховий суп", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 8 на 15 хв.#Restores {1} health over {2}" }, -- Soothing Turtle Bisque, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 8 Stamina and Spirit for 15 min.
 [3730] = { "велике ведмеже м'ясо" }, -- Big Bear Meat
 [3731] = { "м'ясо лева" }, -- Lion Meat
@@ -769,7 +769,7 @@ addonTable.item = {
 [3733] = { "орча бойова кольчуга" }, -- Orcish War Chain
 [3734] = { "рецепт: Великий ведмежий стейк", use="Навчає вас приготуванню великого ведмежого стейка." }, -- Recipe: Big Bear Steak, @use Teaches you how to cook a Big Bear Steak.
 [3735] = { "рецепт: Гострі відбивні з лева", use="Навчає вас приготуванню гострих відбивних з лева." }, -- Recipe: Hot Lion Chops, @use Teaches you how to cook up some Hot Lion Chops.
-[3736] = { "рецепт: Смачний стейк з лева", use="Навчає вас приготуванню cмачного стейка з лева." }, -- Recipe: Tasty Lion Steak, @use Teaches you how to cook a Tasty Lion Steak.
+[3736] = { "рецепт: Смачний стейк з лева", use="Навчає вас приготуванню смачного стейка з лева." }, -- Recipe: Tasty Lion Steak, @use Teaches you how to cook a Tasty Lion Steak.
 [3737] = { "рецепт: Ніжний черепаховий суп", use="Навчає вас приготуванню ніжного черепахового супу." }, -- Recipe: Soothing Turtle Bisque, @use Teaches you how to cook a Soothing Turtle Bisque.
 [3739] = { "перстень з черепом" }, -- Skull Ring
 [3741] = { "чоботи тупотіння" }, -- Stomping Boots
@@ -889,7 +889,7 @@ addonTable.item = {
 [4118] = { "носова сережка Пуби" }, -- Poobah's Nose Ring
 [4119] = { "мундир мисливця на рапторів" }, -- Raptor Hunter Tunic
 [4120] = { "мантія кришталевих вод" }, -- Robe of Crystal Waters
-[4121] = { "рукавички з самоцівітами" }, -- Gemmed Gloves
+[4121] = { "рукавички з самоцвітами" }, -- Gemmed Gloves
 [4122] = { "букмекерський скіпетр" }, -- Bookmaker's Scepter
 [4123] = { "наплечі крижаного металу" }, -- Frost Metal Pauldrons
 [4124] = { "шапка гармонії" }, -- Cap of Harmony
@@ -1034,7 +1034,7 @@ addonTable.item = {
 [4532] = { "червоний агат Трелейна" }, -- Trelane's Ember Agate
 [4533] = { "запечатаний лист до архімага Маліна" }, -- Sealed Letter to Archmage Malin
 [4534] = { "наручі зі сталевими застібками" }, -- Steel-clasped Bracers
-[4535] = { "пам'ятний перстень Залізогарту" }, -- Ironforge Memorial Ring
+[4535] = { "пам'ятний перстень Залізогарта" }, -- Ironforge Memorial Ring
 [4536] = { "соковите червоне яблуко", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Shiny Red Apple, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [4540] = { "кусень твердого хліба", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Tough Hunk of Bread, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [4541] = { "свіжоспечений хліб", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Freshly Baked Bread, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
@@ -1152,7 +1152,7 @@ addonTable.item = {
 [4866] = { "голова Залазейна" }, -- Zalazane's Head
 [4869] = { "кіготь Фіззла" }, -- Fizzle's Claw
 [4870] = { "уривки полотна" }, -- Canvas Scraps
-[4871] = { "опаляючий нашийник" }, -- Searing Collar
+[4871] = { "опалюючий нашийник" }, -- Searing Collar
 [4881] = { "старий конверт" }, -- Aged Envelope
 [4882] = { "ключ Бенедикта" }, -- Benedict's Key
 [4883] = { "накази адмірала Праудмура" }, -- Admiral Proudmoore's Orders
@@ -1349,7 +1349,7 @@ addonTable.item = {
 [5272] = { "божевільні письмена" }, -- Insane Scribbles
 [5273] = { "реліквія Матистри" }, -- Mathystra Relic
 [5274] = { "наплічник троянди" }, -- Rose Mantle
-[5275] = { "зтягуючий пояс" }, -- Binding Girdle
+[5275] = { "стягуючий пояс" }, -- Binding Girdle
 [5279] = { "гарпієвий кушнір" }, -- Harpy Skinner
 [5299] = { "рукавички місяця" }, -- Gloves of the Moon
 [5302] = { "кобальтовий баклер" }, -- Cobalt Buckler
@@ -1360,7 +1360,7 @@ addonTable.item = {
 [5314] = { "накидка мисливця на кнурів" }, -- Boar Hunter's Cape
 [5315] = { "нарукавники полісся" }, -- Timberland Armguards
 [5316] = { "жакет з облущеної кори" }, -- Barkshell Tunic
-[5317] = { "жакет з пересохшого моху" }, -- Dry Moss Tunic
+[5317] = { "жакет з пересохлого моху" }, -- Dry Moss Tunic
 [5318] = { "протигарпієва сокира" }, -- Zhovur Axe
 [5320] = { "м'які пластинчасті чоботи" }, -- Padded Lamellar Boots
 [5321] = { "елегантний короткий меч" }, -- Elegant Shortsword
@@ -1368,11 +1368,11 @@ addonTable.item = {
 [5323] = { "вічносяйний ліхтар", use="Зцілює вашу ціль на значення від {1} до {2} здоров'я. (Відновлення 30 хв)#for {1} to {2}" }, -- Everglow Lantern, @use Heal your target for 135 to 165. (30 Min Cooldown)
 [5324] = { "молоток інженера" }, -- Engineer's Hammer
 [5325] = { "зварювальний щит" }, -- Welding Shield
-[5326] = { "спалахуючий жезл" }, -- Flaring Baton
+[5326] = { "спалахкуючий жезл" }, -- Flaring Baton
 [5327] = { "заяложені штани майструвальника" }, -- Greasy Tinker's Pants
 [5328] = { "пояс із застібкою" }, -- Cinched Belt
 [5329] = { "фігурка кота" }, -- Cat Figurine
-[5332] = { "сяюча фігурка кота", use="Викликати примарного шаблезуба, який битиветься за вас протягом 10 хв. (Відновлення 10 хв)" }, -- Glowing Cat Figurine, @use Summons a Ghost Saber to fight for you for 10 min. (10 Min Cooldown)
+[5332] = { "сяюча фігурка кота", use="Викликати примарного шаблезуба, який битиметься за вас протягом 10 хв. (Відновлення 10 хв)" }, -- Glowing Cat Figurine, @use Summons a Ghost Saber to fight for you for 10 min. (10 Min Cooldown)
 [5334] = { "99-річний портвейн" }, -- 99-Year-Old Port
 [5335] = { "мішечок з монетами" }, -- A Sack of Coins
 [5336] = { "сережка грела" }, -- Grell Earring
@@ -1393,7 +1393,7 @@ addonTable.item = {
 [5352] = { "книга \"Сили підземні\"" }, -- Book: The Powers Below
 [5354] = { "лист до Дельґрена" }, -- Letter to Delgren
 [5355] = { "пояс володаря звірів" }, -- Beastmaster's Girdle
-[5356] = { "опаляючий жезл" }, -- Branding Rod
+[5356] = { "опалюючий жезл" }, -- Branding Rod
 [5357] = { "вартовий долини" }, -- Ward of the Vale
 [5359] = { "манускрипт Лорґаліса" }, -- Lorgalis Manuscript
 [5360] = { "реліквія високородних" }, -- Highborne Relic
@@ -1441,12 +1441,12 @@ addonTable.item = {
 [5464] = { "залізне руків'я" }, -- Iron Shaft
 [5465] = { "мала павуча лапка" }, -- Small Spider Leg
 [5469] = { "м'ясо бігуна" }, -- Strider Meat
-[5472] = { "калдорейський павучик шашлик", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 2 на 15 хв." }, -- Kaldorei Spider Kabob, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 2 Stamina and Spirit for 15 min.
+[5472] = { "калдорейський павучий шашлик", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 2 на 15 хв." }, -- Kaldorei Spider Kabob, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 2 Stamina and Spirit for 15 min.
 [5475] = { "дерев'яний ключ", use="Відкриває обдерту скриню." }, -- Wooden Key, @use Unlocks a worn chest.
 [5477] = { "гуляш з бігуна", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 4 на 15 хв." }, -- Strider Stew, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 4 Stamina and Spirit for 15 min.
 [5478] = { "рагу з печерних щурів", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Dig Rat Stew, @use Restores 552 health over 24 sec.  Must remain seated while eating.
 [5481] = { "роги сатира" }, -- Satyr Horns
-[5482] = { "рецепт: Калдорейський павучик шашлик", use="Навчає вас приготуванню калдорейського павучого шашлика." }, -- Recipe: Kaldorei Spider Kabob, @use Teaches you how to cook a Kaldorei Spider Kabob.
+[5482] = { "рецепт: Калдорейський павучий шашлик", use="Навчає вас приготуванню калдорейського павучого шашлику." }, -- Recipe: Kaldorei Spider Kabob, @use Teaches you how to cook a Kaldorei Spider Kabob.
 [5486] = { "рецепт: Гуляш з бігуна", use="Навчає вас приготуванню гуляшу з бігуна." }, -- Recipe: Strider Stew, @use Teaches you how to cook a Strider Stew.
 [5487] = { "рецепт: Рагу з печерних щурів", use="Навчає вас приготуванню рагу з печерних щурів." }, -- Recipe: Dig Rat Stew, @use Teaches you how to cook a disgusting Dig Rat Stew.
 [5490] = { "голова гнівохвостої наги" }, -- Wrathtail Head
