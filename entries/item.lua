@@ -1006,7 +1006,7 @@ addonTable.item = {
 [4497] = { "важка коричнева сумка" }, -- Heavy Brown Bag
 [4498] = { "коричневий шкіряний ранець" }, -- Brown Leather Satchel
 [4502] = { "зразок ельфійського самоцвіту" }, -- Sample Elven Gem
-[4503] = { "ікло троля Зів’ялої Кори" }, -- Witherbark Tusk
+[4503] = { "ікло троля Зів'ялої Кори" }, -- Witherbark Tusk
 [4506] = { "cтромґардський значок" }, -- Stromgarde Badge
 [4507] = { "щит бійця ями" }, -- Pit Fighter's Shield
 [4508] = { "кривавий обладунок" }, -- Blood-tinged Armor
@@ -1023,7 +1023,7 @@ addonTable.item = {
 [4519] = { "м'ятий фрагмент сувою" }, -- Crumpled Scroll Fragment
 [4520] = { "обпалений фрагмент сувою" }, -- Singed Scroll Fragment
 [4521] = { "альтерацький граніт" }, -- Alterac Granite
-[4522] = { "мішечок з травами Зів’ялої Кори" }, -- Witherbark Medicine Pouch
+[4522] = { "мішечок з травами Зів'ялої Кори" }, -- Witherbark Medicine Pouch
 [4525] = { "жезл Трелейна для виклику" }, -- Trelane's Wand of Invocation
 [4526] = { "амулет із пазура раптора" }, -- Raptor Talon Amulet
 [4527] = { "лазурний агат" }, -- Azure Agate
@@ -1581,7 +1581,7 @@ addonTable.item = {
 [5807] = { "звіт про \"Йолопиво\"" }, -- Fool's Stout Report
 [5808] = { "отруйна залоза гордокрила" }, -- Pridewing Venom Sac
 [5809] = { "отруйна залоза Високого Сідала" }, -- Highperch Venom Sac
-[5810] = { "свіжа туша", use="Покласти на полум'я Узела." }, -- Fresh Carcass, @use Place upon the Flame of Uzel.
+[5810] = { "свіжа туша", use="Покласти на полум'я Узеля." }, -- Fresh Carcass, @use Place upon the Flame of Uzel.
 [5811] = { "грива Кригопащі" }, -- Frostmaw's Mane
 [5812] = { "мантія античності" }, -- Robes of Antiquity
 [5813] = { "тавро Еміля" }, -- Emil's Brand
@@ -1656,11 +1656,11 @@ addonTable.item = {
 [5945] = { "зуб Сипуна" }, -- Deadmire's Tooth
 [5946] = { "запечатана записка для Еллінга" }, -- Sealed Note to Elling
 [5947] = { "документи повстанського братства" }, -- Defias Docket
-[5948] = { "лист до Йоргена" }, -- Letter to Jorgen
+[5948] = { "лист до Йорґена" }, -- Letter to Jorgen
 [5950] = { "жетон Ріта" }, -- Reethe's Badge
 [5951] = { "волога серветка", use="Знімає з вас 1 негативний ефект заклинання.  Очищає силою лимона." }, -- Moist Towelette, @use Removes 1 negative spell effect from user.  Cleans with the power of lemon.
 [5952] = { "заражений мозковий стовбур" }, -- Corrupted Brain Stem
-[5956] = { "ковальский молот" }, -- Blacksmith Hammer
+[5956] = { "ковальський молот" }, -- Blacksmith Hammer
 [5959] = { "їдка отруйна залоза" }, -- Acidic Venom Sac
 [5960] = { "запечатана записка для наглядача Бакуса" }, -- Sealed Note to Watcher Backus
 [5996] = { "еліксир водного дихання", use="Дозволяє дихати водою протягом {1} хв. (Відновлення 3 сек)#for {1} min" }, -- Elixir of Water Breathing, @use Allows the Imbiber to breathe water for 30 min. (3 Sec Cooldown)
@@ -1705,10 +1705,10 @@ addonTable.item = {
 [6081] = { "гриб повелителя болота" }, -- Mire Lord Fungus
 [6082] = { "пухлина глибокохода" }, -- Deepstrider Tumor
 [6083] = { "розбиті сльози" }, -- Broken Tears
-[6084] = { "поножі вартового Штормовію" }, -- Stormwind Guard Leggings
+[6084] = { "поножі вартового Штормовія" }, -- Stormwind Guard Leggings
 [6085] = { "мундир піхотинця" }, -- Footman Tunic
 [6086] = { "сироватка правди Фаустіна" }, -- Faustin's Truth Serum
-[6087] = { "шосси західного краю" }, -- Chausses of Westfall
+[6087] = { "шоси західного краю" }, -- Chausses of Westfall
 [6089] = { "вариво Зредуса" }, -- Zraedus's Brew
 [6091] = { "ящик з камінням сили" }, -- Crate of Power Stones
 [6092] = { "чоботи з чорного дракончика" }, -- Black Whelp Boots
@@ -1870,9 +1870,9 @@ addonTable.item = {
 [6726] = { "модифікований ремінь безпеки Раззеріка" }, -- Razzeric's Customized Seatbelt
 [6727] = { "перегонові рукавички Раззеріка" }, -- Razzeric's Racing Grips
 [6729] = { "блискавична запальничка Фіззла" }, -- Fizzle's Zippy Lighter
-[6731] = { "кіраса Залізогарту" }, -- Ironforge Breastplate
+[6731] = { "кіраса Залізогарта" }, -- Ironforge Breastplate
 [6732] = { "рукавички гнома-механіка" }, -- Gnomish Mechanic's Gloves
-[6735] = { "креслення: Кіраса Залізогарту", use="Навчає вас створювати кірасу Залізогарту." }, -- Plans: Ironforge Breastplate, @use Teaches you how to make an Ironforge Breastplate.
+[6735] = { "креслення: Кіраса Залізогарта", use="Навчає вас створювати кірасу Залізогарта." }, -- Plans: Ironforge Breastplate, @use Teaches you how to make an Ironforge Breastplate.
 [6737] = { "штани сухолисту" }, -- Dryleaf Pants
 [6738] = { "кривавий півмісяць", hit="Ранить ціль, спричиняючи 45 шкоди від кровотечі протягом 30 сек." }, -- Bleeding Crescent, @hit Wounds the target causing them to bleed for 45 damage over 30 sec.
 [6739] = { "лук Скелеступа" }, -- Cliffrunner's Aim
@@ -1893,7 +1893,7 @@ addonTable.item = {
 [6757] = { "перстень-печатка Джайни" }, -- Jaina's Signet Ring
 [6767] = { "кулон Тіраніса" }, -- Tyranis' Pendant
 [6773] = { "кольчуга мародера Ґелкісів" }, -- Gelkis Marauder Chain
-[6774] = { "палець Утеки" }, -- Uthek's Finger
+[6774] = { "палець Утек" }, -- Uthek's Finger
 [6775] = { "фоліант божественності" }, -- Tome of Divinity
 [6780] = { "бузковий поясок" }, -- Lilac Sash
 [6781] = { "кружка Бартлбі" }, -- Bartleby's Mug
@@ -2035,7 +2035,7 @@ addonTable.item = {
 [7226] = { "маг-тастичний гізмонітор" }, -- Mage-tastic Gizmonitor
 [7227] = { "ротики Бальнірів" }, -- Balnir Snapdragons
 [7228] = { "полуничне морозиво Тіґуля", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Tigule's Strawberry Ice Cream, @use Restores 552 health over 24 sec.  Must remain seated while eating.
-[7229] = { "жилет дослідникв" }, -- Explorer's Vest
+[7229] = { "жилет дослідників" }, -- Explorer's Vest
 [7231] = { "рекомендаційний лист Астора" }, -- Astor's Letter of Introduction
 [7247] = { "ящик зі скринями стримування", use="Створити скриню для стримування приголомшеного породження розлому (Відновлення 8 сек)" }, -- Chest of Containment Coffers, @use Create a containment coffer on a stunned Rift Spawn (8 Sec Cooldown)
 [7249] = { "заряджений камінь розлому" }, -- Charged Rift Gem
@@ -2044,7 +2044,7 @@ addonTable.item = {
 [7268] = { "зразок води Завіана" }, -- Xavian Water Sample
 [7269] = { "фляга Дейно", use="Наповнити водою біля підніжжя водоспаду Завіана." }, -- Deino's Flask, @use Use at the base of the Xavian waterfall.
 [7272] = { "заряджена блискавкою тростина" }, -- Bolt Charged Bramble
-[7273] = { "тотемна палиця Зів’ялої Кори", use="Зберіть 10 тотемних палиць і скористайтесь ними біля каменю Зовнішнього Поневолення." }, -- Witherbark Totem Stick, @use Gather 10 totem sticks, and use them at the Stone of Outer Binding.
+[7273] = { "тотемна палиця Зів'ялої Кори", use="Зберіть 10 тотемних палиць і скористайтесь ними біля каменю Зовнішнього Поневолення." }, -- Witherbark Totem Stick, @use Gather 10 totem sticks, and use them at the Stone of Outer Binding.
 [7274] = { "\"Ритуали сили\"", flavor="Автор: чаклун Тірт" }, -- Rituals of Power, @flavor By Magus Tirth
 [7279] = { "малий шкіряний гаман для набоїв", equip="Збільшує швидкість атаки дальнього бою на 10%." }, -- Small Leather Ammo Pouch, @equip Increases ranged attack speed by 10%.
 [7286] = { "луска чорного драконеняти" }, -- Black Whelp Scale
@@ -2221,7 +2221,7 @@ addonTable.item = {
 [8152] = { "фляга великого моджо" }, -- Flask of Big Mojo
 [8153] = { "диколоззя" }, -- Wildvine
 [8154] = { "луска скорпіда" }, -- Scorpid Scale
-[8155] = { "жертва Сатри", use="Залишти жертву біля фонтану в храмі Місяця." }, -- Sathrah's Sacrifice, @use Offer at the Temple of the Moon fountain.
+[8155] = { "жертва Сатри", use="Залишити жертву біля фонтану в храмі Місяця." }, -- Sathrah's Sacrifice, @use Offer at the Temple of the Moon fountain.
 [8165] = { "зношена драконяча луска" }, -- Worn Dragonscale
 [8167] = { "черепашача луска" }, -- Turtle Scale
 [8169] = { "товста шкура" }, -- Thick Hide
@@ -2344,11 +2344,11 @@ addonTable.item = {
 [9030] = { "відновлювальне зілля", use="Знімає один магічний ефект, прокляття, отруту або хворобу кожні {1} с протягом {2} с. (Відновлення 2 хв)#every {1} seconds for {2} seconds" }, -- Restorative Potion, @use Removes 1 magic, curse, poison or disease effect on you every 5 seconds for 30 seconds. (2 Min Cooldown)
 [9036] = { "зілля супротиву магії", use="Збільшує ваш супротив всім школам магії на 50 на 3 хв. (Відновлення 2 хв)" }, -- Magic Resistance Potion, @use Increases your resistance to all schools of magic by 50 for 3 min. (2 Min Cooldown)
 [9061] = { "гоблінське ракетне паливо", flavor="Використовується гоблінськими інженерами для живлення своїх творінь" }, -- Goblin Rocket Fuel, @flavor Used by Goblin Engineers to power their creations
-[9088] = { "дар Артаса", use="Збільшує супротив тіні на {1}. Кожен атакуючий буде уражений хворобою з імовірністю {2}%, яка збільшить отриману ним шкоду на {3} на {4} хв. Триває {5} хв. (Відновлення 3 сек)#shadow by {1}#{2}% chance#damage taken by {3} for {4} min#Lasts for {5} min" }, -- Gift of Arthas, @use Increases resistance to shadow by 10.  If an enemy strikes the imbiber, the attacker has a 30% chance of being inflicted with disease that increases their damage taken by 8 for 3 min.  Lasts for 30 min. (Proc chance: 30%) (3 Sec Cooldown)
+[9088] = { "дар Артаса", use="Збільшує супротив тіні на {1}. Кожен нападник буде уражений хворобою з імовірністю {2}%, яка збільшить отриману ним шкоду на {3} на {4} хв. Триває {5} хв. (Відновлення 3 сек)#shadow by {1}#{2}% chance#damage taken by {3} for {4} min#Lasts for {5} min" }, -- Gift of Arthas, @use Increases resistance to shadow by 10.  If an enemy strikes the imbiber, the attacker has a 30% chance of being inflicted with disease that increases their damage taken by 8 for 3 min.  Lasts for 30 min. (Proc chance: 30%) (3 Sec Cooldown)
 [9144] = { "зілля диколоззя", use="Відновлює від {1} до {2} здоров'я та від {3} до {4} мани. (Відновлення 2 хв)#{1} to {2} health and {3} to {4} mana" }, -- Wildvine Potion, @use Restores 1 to 1500 health and 1 to 1500 mana. (2 Min Cooldown)
 [9149] = { "філософський камінь", flavor="Потрібен для алхімічної трансмутації." }, -- Philosopher's Stone, @flavor Required for Alchemical Transmutation.
 [9153] = { "креслення машини" }, -- Rig Blueprints
-[9154] = { "еліксир виявлення невмерлих", use="Відображає на мінімапі місцезнаходження найближчих невмерих протягом {1} год. (Відновлення 3 сек)#for {1} h" }, -- Elixir of Detect Undead, @use Shows the location of all nearby undead on the minimap for 1 hour. (3 Sec Cooldown)
+[9154] = { "еліксир виявлення невмерлих", use="Відображає на мінімапі місцезнаходження найближчих невмерлих протягом {1} год. (Відновлення 3 сек)#for {1} h" }, -- Elixir of Detect Undead, @use Shows the location of all nearby undead on the minimap for 1 hour. (3 Sec Cooldown)
 [9155] = { "арканічний еліксир", use="Збільшує шкоду від заклинань на {1} на {2} хв. (Відновлення 3 сек)#to {1} for {2} min" }, -- Arcane Elixir, @use Increases spell damage by up to 20 for 30 min. (3 Sec Cooldown)
 [9172] = { "зілля невидимості", use="Надає невидимість на {1} с. (Відновлення 10 хв)#for {1} sec" }, -- Invisibility Potion, @use Gives the imbiber invisibility for 18 sec. (10 Min Cooldown)
 [9173] = { "гоблінський транспондер" }, -- Goblin Transponder
@@ -2414,7 +2414,7 @@ addonTable.item = {
 [9302] = { "рецепт: Примарний барвник", use="Навчає вас створювати примарний барвник." }, -- Recipe: Ghost Dye, @use Teaches you how to make Ghost Dye.
 [9303] = { "рецепт: Філософський камінь", use="Навчає вас створювати філософський камінь." }, -- Recipe: Philosopher's Stone, @use Teaches you how to make a Philosophers' Stone.
 [9304] = { "рецепт: Трансмутація заліза у золото", use="Навчає вас перетворювати залізо на золото." }, -- Recipe: Transmute Iron to Gold, @use Teaches you how to transmute Iron into Gold.
-[9305] = { "рецепт: Трансмутація мітрила у ясносрібло", use="Навчає вас перетворювати мітрил на ясносрібло." }, -- Recipe: Transmute Mithril to Truesilver, @use Teaches you how to transmute Mithril into Truesilver.
+[9305] = { "рецепт: Трансмутація мітрилу в ясносрібло", use="Навчає вас перетворювати мітрил на ясносрібло." }, -- Recipe: Transmute Mithril to Truesilver, @use Teaches you how to transmute Mithril into Truesilver.
 [9306] = { "посох рівнодення" }, -- Stave of Equinex
 [9307] = { "іскристий камінь" }, -- A Sparkling Stone
 [9308] = { "вкритий брудом предмет", flavor="Шар бруду приховує справжню сутність цього предмета." }, -- Grime-Encrusted Object, @flavor Caked grime obscures the true identity of this object.
@@ -2426,8 +2426,8 @@ addonTable.item = {
 [9316] = { "призматична перфокарта", flavor="Карта з даними" }, -- Prismatic Punch Card, @flavor Data card only
 [9317] = { "червоно-біло-синій феєрверк", use="Вистрілює в повітря феєрверк, який вибухає червоними, білими та синіми зірками." }, -- Red, White and Blue Firework, @use Shoots a firework into the air that bursts into red, white and blue stars.
 [9318] = { "червоний феєрверк", use="Вистрілює в повітря феєрверк, який вибухає тисячею червоних зірок." }, -- Red Firework, @use Shoots a firework into the air that bursts into a thousand red stars.
-[9319] = { "спис Німбої з черепами", use="Розмістити в селищі Зів’ялої Кори." }, -- Nimboya's Laden Pike, @use Place at a Witherbark village.
-[9320] = { "череп троля Зів’ялої Кори" }, -- Witherbark Skull
+[9319] = { "спис Німбої з черепами", use="Розмістити в селищі Зів'ялої Кори." }, -- Nimboya's Laden Pike, @use Place at a Witherbark village.
+[9320] = { "череп троля Зів'ялої Кори" }, -- Witherbark Skull
 [9321] = { "пляшка з отрутою" }, -- Venom Bottle
 [9322] = { "неушкоджена отруйна залоза" }, -- Undamaged Venom Sac
 [9323] = { "пергамент Ґадріна", use="Прочитати на вівтарі Шадра'Алор для виклику павучої богині." }, -- Gadrin's Parchment, @use Use at the Shadra'Alor Altar to summon the spider god.
@@ -2441,7 +2441,7 @@ addonTable.item = {
 [9356] = { "дерев'яна нога" }, -- A Wooden Leg
 [9357] = { "скелет папуги" }, -- A Parrot Skeleton
 [9358] = { "головна пов'язка" }, -- A Head Rag
-[9359] = { "ліхтак Південних морів" }, -- Southsea Lamp
+[9359] = { "ліхтар Південних морів" }, -- Southsea Lamp
 [9360] = { "Золото Куерґо", use="Міцний алкогольний напій." }, -- Cuergo's Gold, @use A strong alcoholic beverage.
 [9361] = { "Золото Куерґо з хробаком", use="Надзвичайно міцний алкогольний напій." }, -- Cuergo's Gold with Worm, @use An extremely potent alcoholic beverage.
 [9362] = { "блискучий золотий перстень" }, -- Brilliant Gold Ring
@@ -2550,12 +2550,12 @@ addonTable.item = {
 [9604] = { "трубомолот механіка" }, -- Mechanic's Pipehammer
 [9605] = { "накидка ремонтника" }, -- Repairman's Cape
 [9606] = { "посудина зменшення дереванів", use="Зменшити та захопити мертвого дереваня. (Відновлення 30 сек)" }, -- Treant Muisek Vessel, @use Shrink and Capture a Fallen Treant. (30 Sec Cooldown)
-[9608] = { "розброюючий інструмент Шоні", hit="Роззброєння цілі на 5 сек." }, -- Shoni's Disarming Tool, @hit Disarm target's weapon for 5 sec.
+[9608] = { "роззброюючий інструмент Шоні", hit="Роззброєння цілі на 5 сек." }, -- Shoni's Disarming Tool, @hit Disarm target's weapon for 5 sec.
 [9609] = { "рукавички нерішучості" }, -- Shilly Mitts
 [9618] = { "посудина зменшення совозвірів", use="Зменшити та захопити мертвого совозвіра. (Відновлення 30 сек)" }, -- Wildkin Muisek Vessel, @use Shrink and Capture a Fallen Wildkin. (30 Sec Cooldown)
 [9619] = { "посудина зменшення гіпогрифів", use="Зменшити та захопити мертвого гіпогрифа. (Відновлення 30 сек)" }, -- Hippogryph Muisek Vessel, @use Shrink and Capture a Fallen Hippogryph. (30 Sec Cooldown)
 [9620] = { "посудина зменшення чарівних дракончиків", use="Зменшити та захопити мертвого чарівного дракончика. (Відновлення 30 сек)" }, -- Faerie Dragon Muisek Vessel, @use Shrink and Capture a Fallen Faerie Dragon. (30 Sec Cooldown)
-[9621] = { "посудина зменшення гірських велетенів", use="Зменшити та захопити мертвого гірського велетня. (Відновлення 30 сек)" }, -- Mountain Giant Muisek Vessel, @use Shrink and Capture a Fallen Mountain Giant. (30 Sec Cooldown)
+[9621] = { "посудина зменшення гірських велетнів", use="Зменшити та захопити мертвого гірського велетня. (Відновлення 30 сек)" }, -- Mountain Giant Muisek Vessel, @use Shrink and Capture a Fallen Mountain Giant. (30 Sec Cooldown)
 [9622] = { "очеретяний перстень" }, -- Reedknot Ring
 [9623] = { "мантія Цивінада" }, -- Civinad Robes
 [9624] = { "штани бігуна" }, -- Triprunner Dungarees
@@ -2584,7 +2584,7 @@ addonTable.item = {
 [9650] = { "нагрудник почесної варти" }, -- Honorguard Chestpiece
 [9651] = { "буремолот приборкувача грифонів", hit="Підриває ціль, завдаючи їй від 91 до 125 шкоди від природи." }, -- Gryphon Rider's Stormhammer, @hit Blasts a target for 91 to 125 Nature damage.
 [9652] = { "поножі приборкувача грифонів" }, -- Gryphon Rider's Leggings
-[9654] = { "уламог курганного каменю" }, -- Cairnstone Sliver
+[9654] = { "уламок курганного каменю" }, -- Cairnstone Sliver
 [9655] = { "кільце сівби" }, -- Seedtime Hoop
 [9656] = { "гранітні рукавиці" }, -- Granite Grips
 [9657] = { "пояс виноградної лози" }, -- Vinehedge Cinch
@@ -3133,7 +3133,7 @@ addonTable.item = {
 [12287] = { "яйцезбиральний пристрій", use="Зібрати найближче яйце дранона. (Відновлення 6 сек)" }, -- Collectronic Module, @use Collect a nearby dragon egg. (6 Sec Cooldown)
 [12288] = { "запакований забруднений слизень", use="Випустити забрудненого сквернолісного слизня, щоб він міг провзаємодіяти з первісним слизнем в кратері Ун'Ґоро. (Відновлення 3 хв)" }, -- Encased Corrupt Ooze, @use Releases a captured Felwood ooze so it can interact with a primal ooze in Un'Goro Crater. (3 Min Cooldown)
 [12289] = { "рештки морської черепахи" }, -- Sea Turtle Remains
-[12291] = { "об’єднаний зразок слизу" }, -- Merged Ooze Sample
+[12291] = { "об'єднаний зразок слизу" }, -- Merged Ooze Sample
 [12293] = { "тонка золота нитка" }, -- Fine Gold Thread
 [12295] = { "поножі народного ополчення" }, -- Leggings of the People's Militia
 [12296] = { "іскра народного ополчення" }, -- Spark of the People's Militia
@@ -3577,7 +3577,7 @@ addonTable.item = {
 [14651] = { "подарунковий сертифікат Смертедзвону" }, -- Deathknell Gift Voucher
 [14679] = { "Сімейна любов", flavor="Від погляду на цю картину на вашому обличчі виникає посмішка." }, -- Of Love and Family, @flavor The picture brings a smile to your face.
 [14872] = { "подарунок Тіріона" }, -- Tirion's Gift
-[15002] = { "спис Німбої", use="Приєднати 20 черепів тролів Зів’ялої Кори, щоб створити спис Німбої з черепами." }, -- Nimboya's Pike, @use Attach 20 Witherbark Skulls to create Nimboya's Laden Pike.
+[15002] = { "спис Німбої", use="Приєднати 20 черепів тролів Зів'ялої Кори, щоб створити спис Німбої з черепами." }, -- Nimboya's Pike, @use Attach 20 Witherbark Skulls to create Nimboya's Laden Pike.
 [15042] = { "порожня банка для термітів", use="Зібрати термітів на термітниках Східних Зачумлених земель." }, -- Empty Termite Jar, @use Helps gather termites from a termite mound in Eastern Plaguelands.
 [15043] = { "терміти Зачумлених земель" }, -- Plagueland Termites
 [15044] = { "бочка з термітами Зачумлених земель" }, -- Barrel of Plagueland Termites
@@ -3715,7 +3715,7 @@ addonTable.item = {
 [15843] = { "наповнений флакон вершини Зловісного Туману" }, -- Filled Dreadmist Peak Sampler
 [15844] = { "пустий флакон Скельноджерельних водоспадів", use="Взяти пробу води біля входу в печеру за Скельноджерельним водоспадом." }, -- Empty Cliffspring Falls Sampler, @use Draw a sample of water from the waterfall at the mouth of the Cliffspring Falls cave .
 [15845] = { "наповнений флакон Скельноджерельних водоспадів" }, -- Filled Cliffspring Falls Sampler
-[15847] = { "реєстр Квел’Таласа", flavor="Книга випромінює слабке світіння." }, -- Quel'Thalas Registry, @flavor This book emits a faint glow.
+[15847] = { "реєстр Квел'Таласа", flavor="Книга випромінює слабке світіння." }, -- Quel'Thalas Registry, @flavor This book emits a faint glow.
 [15848] = { "ящик примарних магнітів", use="Розмістити між Мертвими Голіафами в долині Кісток. (Відновлення 30 сек)" }, -- Crate of Ghost Magnets, @use Place between the Dead Goliaths in the Valley of Bones. (30 Sec Cooldown)
 [15849] = { "ектоплазма" }, -- Ghost-o-plasm
 [15850] = { "жмут хутра Смеркокрила" }, -- Patch of Duskwing's Fur
@@ -4541,7 +4541,7 @@ addonTable.item = {
 [19287] = { "карта Темного місяця: героїзм", equip="Іноді зцілює носія на від 120 до 180 здоров'я при нанесенні шкоди ворогу в ближньому бою." }, -- Darkmoon Card: Heroism, @equip Sometimes heals bearer of 120 to 180 damage when damaging an enemy in melee.
 [19288] = { "карта Темного місяця: синій дракон", equip="Шанс при успішному вимовлянні закляття продовжити відновлення мани зі 100% швидкістю під час вимовляння заклять протягом 15 сек. (Імовірність: 2%)" }, -- Darkmoon Card: Blue Dragon, @equip 2% chance on successful spellcast to allow 100% of your Mana regeneration to continue while casting for 15 sec. (Proc chance: 2%)
 [19289] = { "карта Темного місяця: Водоверть", equip="Шанс вразити вашу ціль в ближньому бою блискавкою, завдавши від 200 до 300 шкоди від природи." }, -- Darkmoon Card: Maelstrom, @equip Chance to strike your melee target with lightning for 200 to 300 Nature damage.
-[19290] = { "карта Темного місяця: Підсвітня Крутоверть", equip="Дає власнику 10% шанс воскреснути з 20% здоров’я та мани." }, -- Darkmoon Card: Twisting Nether, @equip Gives the wearer a 10% chance of being able to resurrect with 20% health and mana.
+[19290] = { "карта Темного місяця: Підсвітня Крутоверть", equip="Дає власнику 10% шанс воскреснути з 20% здоров'я та мани." }, -- Darkmoon Card: Twisting Nether, @equip Gives the wearer a 10% chance of being able to resurrect with 20% health and mana.
 [19291] = { "скринька Темного місяця" }, -- Darkmoon Storage Box
 [19292] = { "баранина місячної витримки" }, -- Last Month's Mutton
 [19293] = { "баранина річної витримки" }, -- Last Year's Mutton
@@ -4613,7 +4613,7 @@ addonTable.item = {
 [19700] = { "монета Гаккарі", flavor="Один з менших взірців могутності імперії Ґурубаші." }, -- Hakkari Coin, @flavor One of the lesser Paragons of Power from the Gurubashi Empire.
 [19701] = { "монета Ґурубаші", flavor="Один з менших взірців могутності імперії Ґурубаші." }, -- Gurubashi Coin, @flavor One of the lesser Paragons of Power from the Gurubashi Empire.
 [19702] = { "монета Миршавого Гілля", flavor="Один з менших взірців могутності імперії Ґурубаші." }, -- Vilebranch Coin, @flavor One of the lesser Paragons of Power from the Gurubashi Empire.
-[19703] = { "монета Зів’ялої Кори", flavor="Один з менших взірців могутності імперії Ґурубаші." }, -- Witherbark Coin, @flavor One of the lesser Paragons of Power from the Gurubashi Empire.
+[19703] = { "монета Зів'ялої Кори", flavor="Один з менших взірців могутності імперії Ґурубаші." }, -- Witherbark Coin, @flavor One of the lesser Paragons of Power from the Gurubashi Empire.
 [19704] = { "монета Піщанолютих", flavor="Один з менших взірців могутності імперії Ґурубаші." }, -- Sandfury Coin, @flavor One of the lesser Paragons of Power from the Gurubashi Empire.
 [19705] = { "монета Черепотрощителів", flavor="Один з менших взірців могутності імперії Ґурубаші." }, -- Skullsplitter Coin, @flavor One of the lesser Paragons of Power from the Gurubashi Empire.
 [19706] = { "монета Кровоскальпих", flavor="Один з менших взірців могутності імперії Ґурубаші." }, -- Bloodscalp Coin, @flavor One of the lesser Paragons of Power from the Gurubashi Empire.
@@ -4965,7 +4965,7 @@ addonTable.item = {
 [20513] = { "талісман безодні" }, -- Abyssal Crest
 [20514] = { "перстень безодні" }, -- Abyssal Signet
 [20515] = { "скіпетр безодні" }, -- Abyssal Scepter
-[20516] = { "яблуко з басейна", use="Відновлює 2% здоров'я кожну секунду протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 15 хв.", flavor="Хрусткі, смачні та, можливо, без черв’яків" }, -- Bobbing Apple, @use Restores 2% of your health per second for 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain Stamina and Spirit for 15 min., @flavor Crisp, delicious and hopefully worm-free
+[20516] = { "яблуко з басейна", use="Відновлює 2% здоров'я кожну секунду протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 15 хв.", flavor="Хрусткі, смачні та, можливо, без черв'яків" }, -- Bobbing Apple, @use Restores 2% of your health per second for 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain Stamina and Spirit for 15 min., @flavor Crisp, delicious and hopefully worm-free
 [20517] = { "наплічники бритвосталі", equip="Збільшує ваш шанс нанесення удару на 1%." }, -- Razorsteel Shoulders, @equip Improves your chance to hit by 1%.
 [20519] = { "капелюх пірата Південних морів" }, -- Southsea Pirate Hat
 [20520] = { "темна руна", use="Відновлює від 900 до 1500 мани в обмін на від 600 до 1000 здоров'я. (Відновлення 2 хв)" }, -- Dark Rune, @use Restores 900 to 1500 mana at the cost of 600 to 1000 life. (2 Min Cooldown)
@@ -5495,7 +5495,7 @@ addonTable.item = {
 [22015] = { "рукавички володаря звірів", equip="Збільшує шанс нанесення критичного удару вашим супутником на 2%." }, -- Beastmaster's Gloves, @equip Increases your pet's critical strike chance by 2%.
 [22016] = { "нараменники володаря звірів" }, -- Beastmaster's Mantle
 [22017] = { "штани володаря звірів" }, -- Beastmaster's Pants
-[22046] = { "права частина амулета лорда Вальталака", use="Об'єднати ліву, праву та верхню частини амулету лорда Вальталака в одне ціле.", flavor="Ця частина амулета відчутно тремтить, жадаючи возз’єднатися з іншими." }, -- Right Piece of Lord Valthalak's Amulet, @use Recombines the left, right and top pieces of Lord Valthalak's Amulet into one whole., @flavor This section of the amulet vibrates with a palpable fervor to be rejoined with its sibling pieces.
+[22046] = { "права частина амулета лорда Вальталака", use="Об'єднати ліву, праву та верхню частини амулету лорда Вальталака в одне ціле.", flavor="Ця частина амулета відчутно тремтить, жадаючи возз'єднатися з іншими." }, -- Right Piece of Lord Valthalak's Amulet, @use Recombines the left, right and top pieces of Lord Valthalak's Amulet into one whole., @flavor This section of the amulet vibrates with a palpable fervor to be rejoined with its sibling pieces.
 [22047] = { "верхня частина амулету лорда Вальталака", use="Об'єднати ліву, праву та верхню частини амулету лорда Вальталака в одне ціле.", flavor="При дотику до цього предмету виникає неприємне відчуття, ніби ув'язнене в ньому зло прагне вирватися назовні." }, -- Top Piece of Lord Valthalak's Amulet, @use Recombines the left, right and top pieces of Lord Valthalak's Amulet into one whole., @flavor This object feels wrong to the touch, as if an evil within is trying to escape.
 [22048] = { "амулет лорда Вальталака", use="Направити на тіло лорда Вальталака, вливши в нього душу з амулету.", flavor="Зібраний воєдино, амулет пульсує від злого духу лорда Вальталака." }, -- Lord Valthalak's Amulet, @use Target Lord Valthalak's corpse to instill his spirit from the amulet., @flavor Reunited into its whole form, the amulet pulses strongly with the evil spirit of Lord Valthalak.
 [22049] = { "жаровня поклику", use="Викликати дух Мора Сивого Копита. (Відновлення 10 хв)" }, -- Brazier of Beckoning, @use Summon the spirit of Mor Grayhoof. (10 Min Cooldown)
