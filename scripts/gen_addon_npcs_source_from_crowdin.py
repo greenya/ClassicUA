@@ -35,9 +35,12 @@ def get_npc_from_id_tag(id_tag, term_en_text, term_uk_text, term_tags, all_terms
 
     for t in term_tags:
         if t.startswith('<') and t.endswith('>'):
-            npc_desc = t[1:-1]
-            npc_desc_original = npc_desc
-            break
+            npc_desc = t[1:-1].strip()
+            if npc_desc:
+                npc_desc_original = npc_desc
+                break
+            else:
+                issues.append(f'[!] Empty desc tag in term "{term_en_text}"')
 
     if npc_desc:
         npc_desc_lower = npc_desc.lower()
