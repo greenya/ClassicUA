@@ -12,8 +12,8 @@ addonTable.text = { -- [key] = text
 ["Alliance Territory"] = "Територія Альянсу",
 ["Horde Territory"] = "Територія Орди",
 ["Contested Territory"] = "Спірна територія",
-["(Sanctuary)"] = "(Прихисток)",
-["(Combat Zone)"] = "(Бойова зона)",
+["Sanctuary"] = "Прихисток",
+["Combat Zone"] = "Бойова зона",
 ["PvP Area"] = "PvP зона",
 
 -- addon info texts
