@@ -1,4 +1,4 @@
-## Interface: 11404
+## Interface: 11500
 
 ## Title: |cff1177eeClassic|r|cffffdd00UA|r
 ## Notes: Game localization to Ukrainian language.
