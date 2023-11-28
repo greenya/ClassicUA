@@ -317,7 +317,7 @@ local get_entry = function (entry_type, entry_id)
                 return copy_table(copy_table({}, entry_ref), entry)
             else
                 if options.debug then
-                    return copy_table({ entry_type .. "|cff999999#|r" .. entry_id .. "|cff999999=>|r" .. entry.ref }, entry)
+                    return copy_table({ entry_type .. "#" .. entry_id .. "=>#" .. entry.ref }, entry)
                 else
                     return false
                 end
@@ -330,7 +330,6 @@ local get_entry = function (entry_type, entry_id)
     return false
 end
 
--- todo: add another loop to try different "'s", e.g. "XXX's" and "XXXs'" are considered to be equal
 local get_entry_text = function (entry_key)
     if not entry_key then
         return false
@@ -339,6 +338,7 @@ local get_entry_text = function (entry_key)
     local at = addonTable
 
     -- check in object and zone entries
+    -- todo: add another loop to try different "'s", e.g. "XXX's" and "XXXs'" are considered to be equal
     for i = 1, 2 do
         if i == 2 then
             -- if failed to find original entry_key, try one more time with/out starting "The "
@@ -381,7 +381,7 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
 
     local tooltip_lines = {}
     for j = 1, tooltip:NumLines() do
-        tooltip_lines[#tooltip_lines + 1] = getglobal(tooltip:GetName() .. "TextLeft" .. j):GetText()
+        tooltip_lines[#tooltip_lines + 1] = _G[tooltip:GetName() .. "TextLeft" .. j]:GetText()
     end
 
     if not tooltip_matches_to_skip then
@@ -419,6 +419,17 @@ local get_text = function (entry_key)
 
     if entry_key and at.text[entry_key] then
         return at.text[entry_key]
+    end
+
+    return false
+end
+
+-- Returns original entry_key in case get_text() fails
+local get_text_maybe = function (entry_key)
+    local found = get_text(entry_key)
+
+    if found then
+        return found
     else
         return entry_key
     end
@@ -495,7 +506,7 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
     elseif options.debug then
         tooltip_updated = true
         tooltip:AddLine(" ")
-        tooltip:AddLine(asset_ua_code .. " " .. entry_type .. "|cff999999#|r" .. entry_id, 1, 1, 1)
+        tooltip:AddLine(asset_ua_code .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
     end
 
     if tooltip_updated and tooltip:IsShown() then
@@ -532,7 +543,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, 
     local entry = get_entry("spell", talent[rank_to_show])
     if not entry then
         if options.debug then
-            entry = { "spell|cff999999#|r" .. talent[rank_to_show] }
+            entry = { "spell#" .. talent[rank_to_show] }
         else
             return
         end
@@ -546,7 +557,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, 
     end
 
     if rank_to_show ~= next_rank_to_show then
-        local next_rank_desc = "spell|cff999999#|r" .. talent[next_rank_to_show]
+        local next_rank_desc = "spell#" .. talent[next_rank_to_show]
 
         local entry = get_entry("spell", talent[next_rank_to_show])
         if entry and entry[2] then
@@ -554,7 +565,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, 
         end
 
         tooltip:AddLine(" ")
-        tooltip:AddLine(get_text("Next rank") .. ":", 1, 1, 1)
+        tooltip:AddLine("Наступний ранг:", 1, 1, 1)
         tooltip:AddLine(next_rank_desc, 1, 0.82, 0, true)
     end
 
@@ -599,7 +610,8 @@ local tooltip_cleared = function (self)
     tooltip_entry_id = false
 end
 
-for _, tt in pairs { GameTooltip, ItemRefTooltip } do
+-- Note: WorldMapTooltip is deprecated in 8.1.5
+for _, tt in pairs { GameTooltip, ItemRefTooltip, WorldMapTooltip } do
     tt:HookScript("OnTooltipSetItem", tooltip_set_item)
     tt:HookScript("OnTooltipSetSpell", tooltip_set_spell)
     tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
@@ -635,26 +647,28 @@ hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
     end
 end)
 
-GameTooltip:HookScript("OnUpdate", function (self)
-    local name, unit = self:GetUnit()
-    if name == nil and unit == nil and not tooltip_entry_type then
-        local text = GameTooltipTextLeft1:GetText()
-        if text ~= tooltip_entry_id then
-            local entry = get_entry_text(text)
-            if entry then
-                if self:NumLines() > 1 then self:AddLine(" ") end
-                self:AddLine(asset_ua_code .. " " .. capitalize(entry), 1, 1, 1)
+for _, tt in pairs { GameTooltip, WorldMapTooltip } do
+    tt:HookScript("OnUpdate", function (self)
+        local name, unit = self:GetUnit()
+        if name == nil and unit == nil and not tooltip_entry_type then
+            local text = _G[self:GetName() .. "TextLeft1"]:GetText()
+            if text ~= tooltip_entry_id then
+                local entry = get_entry_text(text)
+                if entry then
+                    if self:NumLines() > 1 then self:AddLine(" ") end
+                    self:AddLine(asset_ua_code .. " " .. capitalize(entry), 1, 1, 1)
 
-                if self:IsShown() then
-                    self:Show()
+                    if self:IsShown() then
+                        self:Show()
+                    end
                 end
-            end
 
-            tooltip_entry_type = "text"
-            tooltip_entry_id = text
+                tooltip_entry_type = "text"
+                tooltip_entry_id = text
+            end
         end
-    end
-end)
+    end)
+end
 
 -- ----------
 -- [ frames ]
@@ -801,7 +815,7 @@ QuestFrameDetailPanel:HookScript("OnShow", function (event)
     local frame = get_quest_frame("detail")
     local entry = get_entry("quest", GetQuestID())
     if entry then
-        set_quest_content(frame, entry[1], entry[2], get_text("Quest Objectives"), entry[3])
+        set_quest_content(frame, entry[1], entry[2], "Доручення", entry[3])
         frame:Show()
     else
         frame:Hide()
@@ -884,7 +898,7 @@ hooksecurefunc("SelectQuestLogEntry", function ()
         local id = select(8, GetQuestLogTitle(selection))
         local entry = get_entry("quest", id)
         if entry then
-            set_quest_content(frame, entry[1], entry[3], get_text("Description"), entry[2])
+            set_quest_content(frame, entry[1], entry[3], "Опис", entry[2])
             frame:Show()
         else
             frame:Hide()
@@ -972,6 +986,15 @@ local update_zone_text = function ()
         text = lookup[1]:GetText()
         if text then
             local found = lookup[2](text)
+            if not found then
+                local text_in_bracers = string.gmatch(text, "%((.*)%)")()
+                if text_in_bracers then
+                    found = lookup[2](text_in_bracers)
+                    if found then
+                        found = "(" .. capitalize(found) .. ")"
+                    end
+                end
+            end
             if found then
                 lookup[1]:SetText(capitalize(found))
             end
@@ -1242,14 +1265,14 @@ local prepare_options_frame = function ()
                 end
             end
 
-            set_quest_content(options_frame.info_tab_frame, self.tab_title, get_text(self.tab_text_key))
+            set_quest_content(options_frame.info_tab_frame, self.tab_title, get_text_maybe(self.tab_text_key))
             options_frame.info_tab_frame.current_tab_index = self.tab_index
             self:LockHighlight()
         end)
 
         -- preselect 1st tab
         if tab_index == 1 then
-            set_quest_content(options_frame.info_tab_frame, f.tab_title, get_text(f.tab_text_key))
+            set_quest_content(options_frame.info_tab_frame, f.tab_title, get_text_maybe(f.tab_text_key))
             options_frame.info_tab_frame.current_tab_index = 1
             f:LockHighlight()
         end
