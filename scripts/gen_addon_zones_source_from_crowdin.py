@@ -15,13 +15,6 @@ def collect_zones():
         if 'локація' in tags:
             result[en_text] = uk_text
 
-            if en_text.startswith('The ') and len(en_text) > 8:
-                en_text_no_the = en_text[4:]
-                if en_text_no_the not in result:
-                    result[en_text_no_the] = uk_text
-                    alias_keys_used.append(en_text_no_the)
-                    alias_zone_count += 1
-
             for t in tags:
                 if t.startswith('~') and t.endswith('~'):
                     zone_alias = t[1:-1].strip()

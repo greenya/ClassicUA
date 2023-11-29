@@ -152,7 +152,7 @@ def write_lua_quest_file(path, filename, var, quests):
         f.write('local ' + var + ' = { -- [id] = { title, description, objective, progress, completion }\n')
 
         for q in quests:
-            id, title, objective, description, progress, completion, hint = q.values()
+            id, en, title, objective, description, progress, completion = q.values()
 
             title = f'[===[{title}]===]'
             objective = f'[===[{objective}]===]' if objective else 'nil'
@@ -160,7 +160,7 @@ def write_lua_quest_file(path, filename, var, quests):
             progress = f'[===[{progress}]===]' if progress else 'nil'
             completion = f'[===[{completion}]===]' if completion else 'nil'
 
-            f.write(f'[{id}] = ' + '{' + f' -- {hint}\n')
+            f.write(f'[{id}] = ' + '{ en="' + en.replace('"', r'\"') + '",\n')
             f.write(f'{title},\n')
             f.write(f'{description},\n')
             f.write(f'{objective},\n')
@@ -196,10 +196,15 @@ def write_lua_npc_file(path, filename, npcs):
         f.write('local npc = { -- [id] = { title, description (optional) }\n')
 
         for id in npcs:
-            title, desc, hint = npcs[id]
+            title, desc, en, hint = npcs[id]
             f.write('[' + str(id) + '] = { "' + title.replace('"', r'\"') + '"')
+
             if desc:
                 f.write(', "' + desc.replace('"', r'\"') + '"')
+
+            if en:
+                f.write(', en="' + en.replace('"', r'\"') + '"')
+
             f.write(' },' + f' -- {hint}\n')
 
         f.write('}\n\n')

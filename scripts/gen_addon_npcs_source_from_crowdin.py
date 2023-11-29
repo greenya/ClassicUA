@@ -3,15 +3,16 @@ import utils
 
 class Npc:
 
-    def __init__(self, id: int, expansion: str, name: str, desc: str, hint: str):
+    def __init__(self, id: int, en: str, expansion: str, name: str, desc: str, hint: str):
         self.id = id
+        self.en = en
         self.expansion = expansion
         self.name = name
         self.desc = desc
         self.hint = hint
 
-    def name_desc_hint_tuple(self):
-        return self.name, self.desc, self.hint
+    def name_desc_en_hint_tuple(self):
+        return self.name, self.desc, self.en, self.hint
 
 def get_npc_from_id_tag(id_tag, term_en_text, term_uk_text, term_tags, all_terms, issues):
     assert(id_tag.startswith('#'))
@@ -26,6 +27,7 @@ def get_npc_from_id_tag(id_tag, term_en_text, term_uk_text, term_tags, all_terms
         issues.append(f'[!] Unexpected expansion "{npc_expansion}".\n\t- term: {term_en_text}\n\t- tags: {term_tags}')
         return
 
+    npc_en = '' if npc_name else term_en_text
     if not npc_name:
         npc_name = term_uk_text
 
@@ -65,7 +67,7 @@ def get_npc_from_id_tag(id_tag, term_en_text, term_uk_text, term_tags, all_terms
 
     npc_hint = term_en_text + (f' <{npc_desc_original}>' if npc_desc_original != npc_desc else '')
 
-    return Npc(npc_id, npc_expansion, npc_name, npc_desc, npc_hint)
+    return Npc(npc_id, npc_en, npc_expansion, npc_name, npc_desc, npc_hint)
 
 def collect_npcs():
     tbx_file = 'translation_from_crowdin/ClassicUA.tbx'
@@ -89,14 +91,14 @@ def collect_npcs():
 
             if new_npc.id in npcs[new_npc.expansion]:
                 issue_npc_old = npcs[new_npc.expansion][new_npc.id]
-                issue_npc_new = new_npc.name_desc_hint_tuple()
+                issue_npc_new = new_npc.name_desc_en_hint_tuple()
                 issues.append(f'[!] NPC #{new_npc.id} duplication! Probably terms has one of these NPCs with wrong ID.\n\t- old NPC: {issue_npc_old}\n\t- new NPC: {issue_npc_new}')
 
             if utils.is_str_and_has_only_ascii_chars(new_npc.name) or utils.is_str_and_has_only_ascii_chars(new_npc.desc):
                 npc_desc_formatted_text = f'<{new_npc.desc}>' if new_npc.desc else ''
                 issues.append(f'[?] NPC #{new_npc.id} has name/desc with only ASCII chars: {new_npc.name} {npc_desc_formatted_text}')
 
-            npcs[new_npc.expansion][new_npc.id] = new_npc.name_desc_hint_tuple()
+            npcs[new_npc.expansion][new_npc.id] = new_npc.name_desc_en_hint_tuple()
 
     return npcs, issues
 
@@ -104,7 +106,7 @@ def print_report(npcs, issues):
     print('-' * 80)
     for expansion in npcs:
         for id in npcs[expansion]:
-            name, desc, _ = npcs[expansion][id]
+            name, desc, _, _ = npcs[expansion][id]
             if desc:
                 print(f'{expansion} npc #{id} -> {name} <{desc}>')
             else:

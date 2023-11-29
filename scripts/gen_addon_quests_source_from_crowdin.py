@@ -50,12 +50,12 @@ def collect_quests():
 
         new_quest = {
             'id': id,
+            'en': title,
             'title': False,
             'objective': False,
             'description': False,
             'progress': False,
             'completion': False,
-            'hint': title,
         }
 
         new_quest_chars = {}
