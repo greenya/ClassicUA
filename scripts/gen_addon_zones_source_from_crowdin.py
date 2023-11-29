@@ -1,3 +1,4 @@
+import sys
 import utils
 
 def collect_zones():
@@ -30,8 +31,7 @@ def print_report(zones, alias_zone_count, issues):
         print(key, '->', zones[key])
 
     print('-' * 80)
-    print('Total unique zones:', len(zones) - alias_zone_count)
-    print('Total alias zones:', alias_zone_count)
+    print('Total zones: %d (+%d aliases)' % ( len(zones) - alias_zone_count, alias_zone_count ))
 
     if issues:
         print('-' * 80)
@@ -40,9 +40,13 @@ def print_report(zones, alias_zone_count, issues):
             print(text)
 
 def main():
+    sys.stdout.reconfigure(encoding='utf-8')
+
     zones, alias_zone_count, issues = collect_zones()
     zones = dict(sorted(zones.items()))
+
     utils.write_lua_zone_file('translation_from_crowdin/entries', 'zone', zones)
+
     print_report(zones, alias_zone_count, issues)
 
 main()

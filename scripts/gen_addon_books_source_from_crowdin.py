@@ -1,4 +1,4 @@
-import os, re
+import sys, os, re
 from xml.etree import ElementTree
 import utils
 
@@ -41,9 +41,13 @@ def print_report(books):
     print(f'Total books:', len(books))
 
 def main():
+    sys.stdout.reconfigure(encoding='utf-8')
+
     books = collect_books()
     books = dict(sorted(books.items()))
+
     utils.write_lua_book_file('translation_from_crowdin/entries', 'book', books)
+
     print_report(books)
 
 main()

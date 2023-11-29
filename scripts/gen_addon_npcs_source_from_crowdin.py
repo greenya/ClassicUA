@@ -1,3 +1,4 @@
+import sys
 import utils
 
 class Npc:
@@ -104,7 +105,10 @@ def print_report(npcs, issues):
     for expansion in npcs:
         for id in npcs[expansion]:
             name, desc, _ = npcs[expansion][id]
-            print(f'{expansion} npc #{id} -> {name} {f"<{desc}>" if desc else ""}')
+            if desc:
+                print(f'{expansion} npc #{id} -> {name} <{desc}>')
+            else:
+                print(f'{expansion} npc #{id} -> {name}')
 
     print('-' * 80)
     print('Total npcs:', ', '.join([f'[{e}] {len(npcs[e])}' for e in npcs]))
@@ -116,6 +120,8 @@ def print_report(npcs, issues):
             print(text)
 
 def main():
+    sys.stdout.reconfigure(encoding='utf-8')
+
     npcs, issues = collect_npcs()
 
     for expansion in npcs:

@@ -22,10 +22,10 @@ All other files are edited manually, e.g. via pull requests.
 3. Generate quests, books, zones and npcs:
     - Clean up folder "translation_from_crowdin"
     - Copy ClassicUA.tbx and ClassicUA.zip, extract zip
-    - Run: py gen_addon_quests_source_from_crowdin.py > translation_from_crowdin/quests_stats.txt
-    - Run: py gen_addon_books_source_from_crowdin.py > translation_from_crowdin/books_stats.txt
-    - Run: py gen_addon_zones_source_from_crowdin.py > translation_from_crowdin/zones_stats.txt
-    - Run: py gen_addon_npcs_source_from_crowdin.py > translation_from_crowdin/npc_stats.txt
+    - Run python gen_addon_quests_source_from_crowdin.py > translation_from_crowdin/quests_stats.txt
+    - Run python gen_addon_books_source_from_crowdin.py > translation_from_crowdin/books_stats.txt
+    - Run python gen_addon_zones_source_from_crowdin.py > translation_from_crowdin/zones_stats.txt
+    - Run python gen_addon_npcs_source_from_crowdin.py > translation_from_crowdin/npcs_stats.txt
 
 4. Update quests, books, zones and npcs in addon files:
     - Copy "translation_from_crowdin\entries" into "ClassicUA\entries"

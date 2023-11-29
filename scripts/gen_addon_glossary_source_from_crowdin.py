@@ -1,4 +1,4 @@
-import re
+import sys, re
 import utils
 
 def collect_spells_and_items(glossary):
@@ -86,15 +86,22 @@ def collect_terms(glossary):
     print(f'Processing {tbx_file}')
 
     terms = utils.get_terms_from_tbx(tbx_file)
-    for en_text, uk_text, _ in terms:
+    for en_text, uk_text, tags in terms:
         glossary_key = en_text.lower()
         glossary_value = uk_text.split('/')[0] if '/' in uk_text else uk_text
         glossary[glossary_key] = glossary_value
 
-        if glossary_key.startswith('the '):
+        if glossary_key.startswith('the ') and len(glossary_key) > 8:
             glossary_key_no_the = glossary_key[4:]
             if glossary_key_no_the not in glossary:
                 glossary[glossary_key_no_the] = glossary_value
+
+        if 'локація' in tags:
+            for t in tags:
+                if t.startswith('~') and t.endswith('~'):
+                    glossary_key_alias = utils.get_clean_text(t[1:-1].lower().strip())
+                    if glossary_key_alias not in glossary:
+                        glossary[glossary_key_alias] = glossary_value
 
 def print_report(glossary):
     print('-' * 80)
@@ -105,6 +112,8 @@ def print_report(glossary):
     print('Total glossary items:', len(glossary))
 
 def main():
+    sys.stdout.reconfigure(encoding='utf-8')
+
     glossary = {}
 
     collect_spells_and_items(glossary)
@@ -113,6 +122,7 @@ def main():
     collect_terms(glossary)
 
     glossary = dict(sorted(glossary.items()))
+
     utils.write_lua_glossary_file('translation_from_crowdin/entries', 'glossary', glossary)
 
     print_report(glossary)

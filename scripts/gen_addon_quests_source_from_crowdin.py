@@ -1,3 +1,4 @@
+import sys
 import sqlite3
 from xml.etree import ElementTree
 import utils
@@ -5,6 +6,7 @@ import utils
 def collect_quests():
     database_path = 'database/classicua.db'
     print(f'Processing {database_path}')
+    print('-' * 80)
 
     conn = sqlite3.connect(database_path)
     quest_expansion_and_id_pairs = [
@@ -113,7 +115,7 @@ def print_report(quests, quests_cat_count, quests_cat_total, text_chars_used, is
     untraceable_chars = { 0xa: 'new line', 0x20: 'space' }
     for code in sorted(text_chars_used.keys()):
         p = untraceable_chars[code] if code in untraceable_chars else chr(code)
-        print('\\u%04X\t%d\t> %s <' % (code, text_chars_used[code], p))
+        print('\\u%04X\t%d\t> %s <' % ( code, text_chars_used[code], p ))
 
     if issues:
         print('-' * 80)
@@ -122,6 +124,8 @@ def print_report(quests, quests_cat_count, quests_cat_total, text_chars_used, is
             print(text)
 
 def main():
+    sys.stdout.reconfigure(encoding='utf-8')
+
     quests, quests_cat_count, quests_cat_total, text_chars_used, issues = collect_quests()
 
     for expansion in quests:
