@@ -8,18 +8,31 @@ def collect_zones():
     result = {}
     issues = []
     alias_zone_count = 0
+    alias_keys_used = []
 
     terms = utils.get_terms_from_tbx(tbx_file)
     for en_text, uk_text, tags in terms:
         if 'локація' in tags:
             result[en_text] = uk_text
 
+            if en_text.startswith('The ') and len(en_text) > 8:
+                en_text_no_the = en_text[4:]
+                if en_text_no_the not in result:
+                    result[en_text_no_the] = uk_text
+                    alias_keys_used.append(en_text_no_the)
+                    alias_zone_count += 1
+
             for t in tags:
                 if t.startswith('~') and t.endswith('~'):
                     zone_alias = t[1:-1].strip()
                     if zone_alias:
-                        result[zone_alias] = uk_text
-                        alias_zone_count += 1
+                        if zone_alias not in result:
+                            result[zone_alias] = uk_text
+                            alias_keys_used.append(zone_alias)
+                            alias_zone_count += 1
+                        else:
+                            if zone_alias not in alias_keys_used:
+                                issues.append(f'[!] Alias "{zone_alias}" in term "{en_text}" matches other unique term')
                     else:
                         issues.append(f'[!] Empty alias tag in term "{en_text}"')
 
@@ -45,7 +58,7 @@ def main():
     zones, alias_zone_count, issues = collect_zones()
     zones = dict(sorted(zones.items()))
 
-    utils.write_lua_zone_file('translation_from_crowdin/entries', 'zone', zones)
+    utils.write_lua_zone_file('translation_from_crowdin/entries', 'zone', zones, len(zones) - alias_zone_count)
 
     print_report(zones, alias_zone_count, issues)
 

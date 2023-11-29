@@ -88,6 +88,7 @@ end
 -- -----------
 
 local get_stats = function ()
+    local at = addonTable
     local stats = {}
 
     for _, v in ipairs({
@@ -101,8 +102,12 @@ local get_stats = function ()
         "object",
         "zone"
     }) do
-        stats[v] = 0
-        for _, _ in pairs(addonTable[v]) do stats[v] = stats[v] + 1 end
+        if at[v .. '_stats'] then
+            stats[v] = at[v .. '_stats'].count
+        else
+            stats[v] = 0
+            for _, _ in pairs(at[v]) do stats[v] = stats[v] + 1 end
+        end
     end
 
     return stats
