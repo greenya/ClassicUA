@@ -442,7 +442,7 @@ end
 local tooltip_entry_type = false
 local tooltip_entry_id = false
 
-local add_line_to_tooltip = function (tooltip, content, template, r, g, b, content_can_be_spell_id)
+local add_line_to_tooltip = function (tooltip, content, template, r, g, b, content_can_be_spell_id, content_is_rune)
     if not content then
         return
     end
@@ -452,14 +452,23 @@ local add_line_to_tooltip = function (tooltip, content, template, r, g, b, conte
         local text = lines[i]
 
         if content_can_be_spell_id and type(text) == "number" then
-            local spell_entry = get_entry("spell", text)
-            if spell_entry and spell_entry[2] then
-                text = make_entry_text(spell_entry[2], tooltip)
-                text = capitalize(text)
+            local spell_id = text
+            local spell_entry = get_entry("spell", spell_id)
+            text = false
+
+            if spell_entry then
+                local spell_name = make_entry_text(spell_entry[1], tooltip)
+                local spell_desc = make_entry_text(spell_entry[2], tooltip)
+                if content_is_rune then
+                    if spell_name and spell_desc then
+                        text = capitalize(spell_name .. ": " .. spell_desc)
+                    end
+                elseif spell_desc then
+                    text = make_entry_text(spell_desc, tooltip)
+                    text = capitalize(text)
+                end
             elseif options.debug then
-                text = "spell#" .. text
-            else
-                text = false
+                text = "spell#" .. spell_id
             end
         else
             text = make_entry_text(text, tooltip)
@@ -493,6 +502,7 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
             add_line_to_tooltip(tooltip, entry["equip"], "При спорядженні: TEXT", 0, 1, 0, true)
             add_line_to_tooltip(tooltip, entry["hit"], "Шанс при влучанні: TEXT", 0, 1, 0, true)
             add_line_to_tooltip(tooltip, entry["use"], "Використання: TEXT", 0, 1, 0, true)
+            add_line_to_tooltip(tooltip, entry["rune"], "TEXT", 0, 1, 0, true, true)
             add_line_to_tooltip(tooltip, entry["flavor"], "\"TEXT\"", 1, 0.82, 0)
         elseif entry_type == "spell" then
             if is_aura then

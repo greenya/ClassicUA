@@ -8,6 +8,7 @@ addonTable.item = {
 --     [equip]  = text or number (spell id) for "Equip: ..." (green color)
 --     [hit]    = text or number (spell id) for "Chance on hit: ..." (green color)
 --     [use]    = text or number (spell id) for "Use: ..." (green color)
+--     [rune]   = text or number (spell id) for "text" or "spell name: spell desc" (green color)
 --     [flavor] = quoted text (golden color)
 --     --------
 --     note: value can be string or table (multiple strings)
