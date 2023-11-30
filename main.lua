@@ -191,7 +191,6 @@ local prepare_glossary = function ()
 end
 
 local prepare_codes = function (name, race, class, is_male)
-    -- print("preparing codes for: " .. name .. " / " .. race .. " / " .. class .. " / " .. (is_male and "male" or "female"))
     local at = addonTable
     local sex = is_male and 1 or 2
     local cases = { "н", "р", "д", "з", "о", "м", "к" }
@@ -238,7 +237,6 @@ local prepare_codes = function (name, race, class, is_male)
     codes["{Стать:(.-):(.-)}"] = function (a, b) return is_male and a or b end
     codes["{СТАТЬ:(.-):(.-)}"] = function (a, b) return is_male and a or b end
 
-    -- print_table(codes, "codes")
     at.codes = codes
 end
 
@@ -415,8 +413,13 @@ end
 -- [ tooltips ]
 -- ------------
 
-local tooltip_entry_type = false
-local tooltip_entry_id = false
+local known_tooltips = {} -- Note: WorldMapTooltip is deprecated in 8.1.5
+for _, tt in pairs({ GameTooltip, ItemRefTooltip, WorldMapTooltip }) do
+    if tt then
+        known_tooltips[#known_tooltips + 1] = tt
+        tt.classicua = { entry_type = false, entry_id = false }
+    end
+end
 
 local add_line_to_tooltip = function (tooltip, content, template, r, g, b, content_can_be_spell_id, content_is_rune)
     if not content then
@@ -459,15 +462,15 @@ local add_line_to_tooltip = function (tooltip, content, template, r, g, b, conte
 end
 
 local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
-    if tooltip_entry_type then
+    if tooltip.classicua.entry_type then
         return
     end
 
-    local tooltip_updated = false
+    local updated = false
     local entry = get_entry(entry_type, entry_id)
 
     if entry then
-        tooltip_updated = true
+        updated = true
         tooltip:AddLine(" ")
 
         local heading = make_entry_text(entry[1], tooltip)
@@ -490,21 +493,21 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
             add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 1, 1)
         end
     elseif options.debug then
-        tooltip_updated = true
+        updated = true
         tooltip:AddLine(" ")
         tooltip:AddLine(asset_ua_code .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
     end
 
-    if tooltip_updated and tooltip:IsShown() then
+    if updated and tooltip:IsShown() then
         tooltip:Show()
     end
 
-    tooltip_entry_type = entry_type
-    tooltip_entry_id = entry_id
+    tooltip.classicua.entry_type = entry_type
+    tooltip.classicua.entry_id = entry_id
 end
 
 local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, rank, max_rank)
-    if tooltip_entry_type then
+    if tooltip.classicua.entry_type then
         return
     end
 
@@ -522,7 +525,8 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, 
     local rank_to_show = math.max(rank, 1)
     local next_rank_to_show = math.min(rank + 1, max_rank)
 
-    if not talent[rank_to_show] or not talent[next_rank_to_show] then -- this should never be true (otherwise, bug in talent_tree)
+    if not talent[rank_to_show] or not talent[next_rank_to_show] then
+        -- this should never be true (otherwise, bug in talent_tree)
         return
     end
 
@@ -559,8 +563,8 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, 
         tooltip:Show()
     end
 
-    tooltip_entry_type = "spell"
-    tooltip_entry_id = talent[rank_to_show]
+    tooltip.classicua.entry_type = "spell"
+    tooltip.classicua.entry_id = talent[rank_to_show]
 end
 
 local tooltip_set_item = function (self)
@@ -591,23 +595,56 @@ local tooltip_set_unit = function (self)
     end
 end
 
-local tooltip_cleared = function (self)
-    tooltip_entry_type = false
-    tooltip_entry_id = false
+local tooltip_updated = function (self)
+    local name, unit = self:GetUnit()
+    if not name and not unit and not self.classicua.entry_type then
+        local text = _G[self:GetName() .. "TextLeft1"]:GetText()
+        if text ~= self.classicua.entry_id then
+            self.classicua.entry_type = "text"
+            self.classicua.entry_id = text
+
+            local found = get_glossary_text(text)
+            if found then
+                if self:NumLines() > 1 then self:AddLine(" ") end
+                self:AddLine(asset_ua_code .. " " .. capitalize(found), 1, 1, 1)
+
+                if self:IsShown() then
+                    self:Show()
+                end
+            end
+        end
+    end
 end
 
--- Note: WorldMapTooltip is deprecated in 8.1.5
-for _, tt in pairs({ GameTooltip, ItemRefTooltip, WorldMapTooltip }) do
+local tooltip_cleared = function (self)
+    self.classicua.entry_type = false
+    self.classicua.entry_id = false
+end
+
+for _, tt in pairs(known_tooltips) do
     tt:HookScript("OnTooltipSetItem", tooltip_set_item)
     tt:HookScript("OnTooltipSetSpell", tooltip_set_spell)
     tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
+    tt:HookScript("OnUpdate", tooltip_updated)
     tt:HookScript("OnTooltipCleared", tooltip_cleared)
+
+    if tt == ItemRefTooltip then
+        -- ItemRefTooltip is "special" tooltip as it clears "OnUpdate" hook every time,
+        -- making it work only once, so we reset it back.
+        -- Some details here: https://github.com/arkayenro/arkinventory/issues/1337
+        -- TODO: find better solution, check other addons on how they handle ItemRefTooltip
+        tt:HookScript("OnShow", function (self)
+            tooltip_updated(tt)
+            if tt:GetScript("OnUpdate") ~= tooltip_updated then
+                tt:SetScript("OnUpdate", tooltip_updated)
+            end
+        end)
+    end
 end
 
 hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index)
     local tier, column, rank, max_rank, is_active = select(3, GetTalentInfo(tab_index, talent_index))
     if not is_active then -- skip active talent (it gets shown as spell)
-        -- print("tab", tab_index, "tier/column", tier, column, "rank/max", rank, max_rank)
         add_talent_entry_to_tooltip(self, tab_index, tier, column, rank, max_rank)
     end
 end)
@@ -632,29 +669,6 @@ hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
         add_entry_to_tooltip(self, "spell", id, true)
     end
 end)
-
-for _, tt in pairs({ GameTooltip, ItemRefTooltip, WorldMapTooltip }) do
-    tt:HookScript("OnUpdate", function (self)
-        local name, unit = self:GetUnit()
-        if name == nil and unit == nil and not tooltip_entry_type then
-            local text = _G[self:GetName() .. "TextLeft1"]:GetText()
-            if text ~= tooltip_entry_id then
-                local found = get_glossary_text(text)
-                if found then
-                    if self:NumLines() > 1 then self:AddLine(" ") end
-                    self:AddLine(asset_ua_code .. " " .. capitalize(found), 1, 1, 1)
-
-                    if self:IsShown() then
-                        self:Show()
-                    end
-                end
-
-                tooltip_entry_type = "text"
-                tooltip_entry_id = text
-            end
-        end
-    end)
-end
 
 -- ----------
 -- [ frames ]
@@ -1305,7 +1319,6 @@ event_frame:RegisterEvent("ZONE_CHANGED_INDOORS")
 event_frame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
-    -- print(event, ...)
     if event == "ADDON_LOADED" then
         self:UnregisterEvent("ADDON_LOADED")
         prepare_options()
@@ -1323,7 +1336,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         local sex = UnitSex("player")
         local faction = UnitFactionGroup("player")
 
-        -- print("PLAYER_LOGIN", name, race, class, sex, faction)
         prepare_talent_tree(class)
         prepare_quests(faction == "Alliance")
         prepare_glossary()
@@ -1335,8 +1347,8 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         update_target_frame_text()
 
     elseif event == "ITEM_TEXT_BEGIN" then
-        if tooltip_entry_type == "item" then
-            book_item_id = tooltip_entry_id
+        if known_tooltips[1].classicua.entry_type == "item" then
+            book_item_id = known_tooltips[1].classicua.entry_id
         end
 
     elseif event == "ITEM_TEXT_READY" then
