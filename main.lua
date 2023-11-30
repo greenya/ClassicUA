@@ -461,6 +461,49 @@ local add_line_to_tooltip = function (tooltip, content, template, r, g, b, conte
     end
 end
 
+local add_item_entry_to_tooltip -- do not assign directly, this needed for recursion to work
+add_item_entry_to_tooltip = function (tooltip, entry, is_sub_item)
+    local prefix = is_sub_item and "" or asset_ua_code .. " "
+    local heading = make_entry_text(entry[1], tooltip)
+    tooltip:AddLine(prefix .. capitalize(heading), 1, 1, 1)
+
+    add_line_to_tooltip(tooltip, entry.desc, "TEXT", 1, 1, 1)
+    add_line_to_tooltip(tooltip, entry.equip, "При спорядженні: TEXT", 0, 1, 0, true)
+    add_line_to_tooltip(tooltip, entry.hit, "Шанс при влучанні: TEXT", 0, 1, 0, true)
+    add_line_to_tooltip(tooltip, entry.use, "Використання: TEXT", 0, 1, 0, true)
+    add_line_to_tooltip(tooltip, entry.rune, "TEXT", 0, 1, 0, true, true)
+
+    if entry.recipe_result_item then
+        local rr_entry = get_entry("item", entry.recipe_result_item)
+        if rr_entry then
+            tooltip:AddLine(" ")
+            add_item_entry_to_tooltip(tooltip, rr_entry, true)
+        elseif options.debug then
+            tooltip:AddLine("recipe_result_item#" .. tostring(entry.recipe_result_item), 1, 1, 1)
+        end
+    end
+
+    add_line_to_tooltip(tooltip, entry.flavor, "\"TEXT\"", 1, 0.82, 0)
+end
+
+local add_spell_entry_to_tooltip = function (tooltip, entry, is_aura)
+    local heading = make_entry_text(entry[1], tooltip)
+    tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
+
+    if is_aura then
+        add_line_to_tooltip(tooltip, entry[3], "TEXT", 1, 1, 1)
+    else
+        add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 0.82, 0)
+    end
+end
+
+local add_general_entry_to_tooltip = function (tooltip, entry)
+    local heading = make_entry_text(entry[1], tooltip)
+    tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
+
+    add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 1, 1)
+end
+
 local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
     if tooltip.classicua.entry_type then
         return
@@ -473,24 +516,12 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
         updated = true
         tooltip:AddLine(" ")
 
-        local heading = make_entry_text(entry[1], tooltip)
-        tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
-
         if entry_type == "item" then
-            add_line_to_tooltip(tooltip, entry["desc"], "TEXT", 1, 1, 1)
-            add_line_to_tooltip(tooltip, entry["equip"], "При спорядженні: TEXT", 0, 1, 0, true)
-            add_line_to_tooltip(tooltip, entry["hit"], "Шанс при влучанні: TEXT", 0, 1, 0, true)
-            add_line_to_tooltip(tooltip, entry["use"], "Використання: TEXT", 0, 1, 0, true)
-            add_line_to_tooltip(tooltip, entry["rune"], "TEXT", 0, 1, 0, true, true)
-            add_line_to_tooltip(tooltip, entry["flavor"], "\"TEXT\"", 1, 0.82, 0)
+            add_item_entry_to_tooltip(tooltip, entry)
         elseif entry_type == "spell" then
-            if is_aura then
-                add_line_to_tooltip(tooltip, entry[3], "TEXT", 1, 1, 1)
-            else
-                add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 0.82, 0)
-            end
+            add_spell_entry_to_tooltip(tooltip, entry, is_aura)
         else
-            add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 1, 1)
+            add_general_entry_to_tooltip(tooltip, entry)
         end
     elseif options.debug then
         updated = true

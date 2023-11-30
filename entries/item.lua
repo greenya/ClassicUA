@@ -5,11 +5,12 @@ addonTable.item = {
 --     [ref]    = ID (optional),
 --     [1]      = title (optional),
 --     [desc]   = description (optional),
---     [equip]  = text or number (spell id) for "Equip: ..." (green color)
---     [hit]    = text or number (spell id) for "Chance on hit: ..." (green color)
---     [use]    = text or number (spell id) for "Use: ..." (green color)
---     [rune]   = text or number (spell id) for "text" or "spell name: spell desc" (green color)
---     [flavor] = quoted text (golden color)
+--     [equip]  = text or number (spell id) for "Equip: ..." (green color) (optional)
+--     [hit]    = text or number (spell id) for "Chance on hit: ..." (green color) (optional)
+--     [use]    = text or number (spell id) for "Use: ..." (green color) (optional)
+--     [rune]   = text or number (spell id) for "text" or "spell name: spell desc" (green color) (optional)
+--     [recipe_result_item] = number (item id) to show the item after the spell-recipe (optional)
+--     [flavor] = quoted text (golden color) (optional)
 --     --------
 --     note: value can be string or table (multiple strings)
 -- }
@@ -1056,7 +1057,7 @@ addonTable.item = {
 [4594] = { "камнелуска тріска", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Rockscale Cod, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
 [4595] = { "вино з джунглів", use="Міцний алкогольний напій." }, -- Junglevine Wine, @use A strong alcoholic beverage.
 [4596] = { "безбарвне зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Discolored Healing Potion, @use Restores 140 to 180 health. (2 Min Cooldown)
-[4597] = { "рецепт: Безбарвне зілля лікування", use="Навчає вас створювати безбарвне зілля лікування." }, -- Recipe: Discolored Healing Potion, @use Teaches you how to make a Discolored Healing Potion.
+[4597] = { "рецепт: Безбарвне зілля лікування", use="Навчає вас створювати безбарвне зілля лікування.", recipe_result_item=4596 }, -- Recipe: Discolored Healing Potion, @use Teaches you how to make a Discolored Healing Potion.
 [4598] = { "гоблінська вудка", use="Завдає від 128 до 172 шкоди вогнем в радіусі 5 м. (Відновлення 1 хв)" }, -- Goblin Fishing Pole, @use Inflicts 128 to 172 Fire damage in a 5 yard radius. (1 Min Cooldown)
 [4603] = { "сирий плямистий жовтохвіст", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Raw Spotted Yellowtail, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
 [4604] = { "шапинка лісового гриба", use=433 }, -- Forest Mushroom Cap
