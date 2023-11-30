@@ -797,7 +797,7 @@ local set_quest_content = function (frame, title, text, more_title, more_text)
     setup_frame_scrollbar_values(frame, h)
 end
 
-QuestFrameDetailPanel:HookScript("OnShow", function (event)
+QuestFrameDetailPanel:HookScript("OnShow", function (self)
     local frame = get_quest_frame("detail")
     local entry = get_entry("quest", GetQuestID())
     if entry then
@@ -808,12 +808,12 @@ QuestFrameDetailPanel:HookScript("OnShow", function (event)
     end
 end)
 
-QuestFrameDetailPanel:HookScript("OnHide", function (event)
+QuestFrameDetailPanel:HookScript("OnHide", function (self)
     local frame = get_quest_frame("detail")
     frame:Hide()
 end)
 
-QuestFrameProgressPanel:HookScript("OnShow", function (event)
+QuestFrameProgressPanel:HookScript("OnShow", function (self)
     local frame = get_quest_frame("progress")
     local entry = get_entry("quest", GetQuestID())
     if entry then
@@ -824,12 +824,12 @@ QuestFrameProgressPanel:HookScript("OnShow", function (event)
     end
 end)
 
-QuestFrameProgressPanel:HookScript("OnHide", function (event)
+QuestFrameProgressPanel:HookScript("OnHide", function (self)
     local frame = get_quest_frame("progress")
     frame:Hide()
 end)
 
-QuestFrameRewardPanel:HookScript("OnShow", function (event)
+QuestFrameRewardPanel:HookScript("OnShow", function (self)
     local frame = get_quest_frame("reward")
     local entry = get_entry("quest", GetQuestID())
     if entry then
@@ -840,7 +840,7 @@ QuestFrameRewardPanel:HookScript("OnShow", function (event)
     end
 end)
 
-QuestFrameRewardPanel:HookScript("OnHide", function (event)
+QuestFrameRewardPanel:HookScript("OnHide", function (self)
     local frame = get_quest_frame("reward")
     frame:Hide()
 end)
