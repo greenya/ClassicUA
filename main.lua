@@ -387,10 +387,18 @@ local get_glossary_text = function (entry_key)
     end
 
     -- check using Questie' quest format: [57+] Feathermoon Stronghold
-    local entry_key_q1 = string.gsub(entry_key, "%[.+%] ", "")
-    if entry_key_q1 ~= entry_key then
-        if at.glossary[entry_key_q1] then
-            return capitalize(at.glossary[entry_key_q1])
+    local key = string.gmatch(entry_key, "%[.+%] (.*)")()
+    if key then
+        if at.glossary[key] then
+            return capitalize(at.glossary[key])
+        end
+    end
+
+    -- check using Questie' quest format: [57+] Feathermoon Stronghold (12345)
+    local key = string.gmatch(entry_key, "%[.+%] (.*) %((.*)%)")()
+    if key then
+        if at.glossary[key] then
+            return capitalize(at.glossary[key])
         end
     end
 
