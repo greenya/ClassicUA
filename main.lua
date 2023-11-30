@@ -62,6 +62,28 @@ local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-st
             :gsub('%?', '%%?')
 end
 
+local function strip_color_codes(text)
+    if type(text) == "string" then
+        return text:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
+    else
+        return text
+    end
+end
+
+local first_line_only = function (text)
+    if type(text) == "string" then
+        local lines = { strsplit("\n\r", text) }
+        local esc_nl_pos = lines[1]:find("|n")
+        if esc_nl_pos then
+            return lines[1]:sub(1, esc_nl_pos - 1)
+        else
+            return lines[1]
+        end
+    else
+        return text
+    end
+end
+
 -- -----------
 -- [ options ]
 -- -----------
@@ -118,93 +140,54 @@ local prepare_talent_tree = function (class)
     addonTable.talent_tree = addonTable.talent_tree[class]
 end
 
-local prepare_zones = function ()
-    local at = addonTable
-
-    -- known aliases
-    at.zone["Crossroads"] = at.zone["The Crossroads"]
-    at.zone["Crusader's Outpost"] = at.zone["Crusader Outpost"]
-    at.zone["Dabyrie's Farmstead"] = at.zone["Dabyrie Farmstead"]
-    at.zone["Stormwind City"] = at.zone["Stormwind"]
-    at.zone["Stranglethorn"] = at.zone["Stranglethorn Vale"]
-
-    -- known taxi points
-    local known_taxi_points = {
-        "Aerie Peak, The Hinterlands",
-        "Astranaar, Ashenvale",
-        "Auberdine, Darkshore",
-        "Bloodvenom Post, Felwood",
-        "Booty Bay, Stranglethorn",
-        "Brackenwall Village, Dustwallow Marsh",
-        "Camp Mojache, Feralas",
-        "Camp Taurajo, The Barrens",
-        "Cenarion Hold, Silithus",
-        "Chillwind Camp, Western Plaguelands",
-        "Crossroads, The Barrens",
-        "Darkshire, Duskwood",
-        "Everlook, Winterspring",
-        "Feathermoon, Feralas",
-        "Flame Crest, Burning Steppes",
-        "Freewind Post, Thousand Needles",
-        "Gadgetzan, Tanaris",
-        "Grom'gol, Stranglethorn",
-        "Hammerfall, Arathi",
-        "Ironforge, Dun Morogh",
-        "Kargath, Badlands",
-        "Lakeshire, Redridge",
-        "Light's Hope Chapel, Eastern Plaguelands",
-        "Marshal's Refuge, Un'Goro Crater",
-        "Menethil Harbor, Wetlands",
-        "Moonglade",
-        "Morgan's Vigil, Burning Steppes",
-        "Nethergarde Keep, Blasted Lands",
-        "Nijel's Point, Desolace",
-        "Orgrimmar, Durotar",
-        "Ratchet, The Barrens",
-        "Refuge Pointe, Arathi",
-        "Revantusk Village, The Hinterlands",
-        "Rut'theran Village, Teldrassil",
-        "Sentinel Hill, Westfall",
-        "Shadowprey Village, Desolace",
-        "Southshore, Hillsbrad",
-        "Splintertree Post, Ashenvale",
-        "Stonard, Swamp of Sorrows",
-        "Stonetalon Peak, Stonetalon Mountains",
-        "Stormwind, Elwynn",
-        "Sun Rock Retreat, Stonetalon Mountains",
-        "Talonbranch Glade, Felwood",
-        "Talrendis Point, Azshara",
-        "Tarren Mill, Hillsbrad",
-        "Thalanaar, Feralas",
-        "The Sepulcher, Silverpine Forest",
-        "Thelsamar, Loch Modan",
-        "Theramore, Dustwallow Marsh",
-        "Thorium Point, Searing Gorge",
-        "Thunder Bluff, Mulgore",
-        "Undercity, Tirisfal",
-        "Valormok, Azshara",
-        "Zoram'gar Outpost, Ashenvale",
-    }
-
-    for _, v in ipairs(known_taxi_points) do
-        local loc, zone = strsplit(",", v)
-        if loc and zone then
-            loc = strtrim(loc)
-            zone = strtrim(zone)
-            if at.zone[loc] and at.zone[zone] then
-                at.zone[v] = at.zone[loc] .. ", " .. at.zone[zone]
-            else
-                print("[!] ClassicUA: Failed to prepare taxi zone \"" .. v .. "\"")
-            end
-        end
-    end
-end
-
 local prepare_quests = function (is_alliance)
     -- init faction quests reference
     addonTable.quest_faction = is_alliance and addonTable.quest_alliance or addonTable.quest_horde
     -- drop opposite faction quests
     addonTable[ is_alliance and "quest_horde" or "quest_alliance" ] = nil
+end
+
+local prepare_glossary = function ()
+    local at = addonTable
+    local glossary = {}
+
+    -- collect text-key entries: text, zone, object
+    for _, entry_type in pairs({ "text", "zone", "object" }) do
+        for entry_key, entry_value in pairs(at[entry_type]) do
+            local glossary_key = strtrim(entry_key:lower())
+            if not glossary[glossary_key] then
+                glossary[glossary_key] = entry_value
+            end
+
+            -- if key starts with "the " part, add key without it
+            if glossary_key:find("^the ") and #glossary_key > 8 then
+                local glossary_key_no_the = glossary_key:sub(5)
+                if not glossary[glossary_key_no_the] then
+                    glossary[glossary_key_no_the] = entry_value
+                end
+            else
+                -- if key doesn't start with "the ", add key that does
+                local glossary_key_with_the = "the " .. glossary_key
+                if not glossary[glossary_key_with_the] then
+                    glossary[glossary_key_with_the] = entry_value
+                end
+            end
+        end
+    end
+
+    -- collect id-key entries: quest, npc
+    for _, entry_type in pairs({ "quest_faction", "quest_both", "npc" }) do
+        for _, entry_value in pairs(at[entry_type]) do
+            if entry_value.en then
+                local glossary_key = strtrim(entry_value.en:lower())
+                if not glossary[glossary_key] then
+                    glossary[glossary_key] = entry_value[1]
+                end
+            end
+        end
+    end
+
+    at.glossary = glossary
 end
 
 local prepare_codes = function (name, race, class, is_male)
@@ -335,45 +318,6 @@ local get_entry = function (entry_type, entry_id)
     return false
 end
 
-local get_entry_text = function (entry_key)
-    if not entry_key then
-        return false
-    end
-
-    local at = addonTable
-
-    -- check in object and zone entries
-    -- todo: add another loop to try different "'s", e.g. "XXX's" and "XXXs'" are considered to be equal
-    for i = 1, 2 do
-        if i == 2 then
-            -- if failed to find original entry_key, try one more time with/out starting "The "
-            if entry_key:find("^The ") then
-                -- remove starting "The "
-                if #entry_key > 5 then
-                    entry_key = entry_key:sub(5)
-                else
-                    break
-                end
-            else
-                -- add starting "The "
-                entry_key = "The " .. entry_key
-            end
-        end
-
-        local object = at.object[entry_key]
-        if object then
-            return object
-        end
-
-        local zone = at.zone[entry_key]
-        if zone then
-            return zone
-        end
-    end
-
-    return false
-end
-
 local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     if not text then
         return nil
@@ -419,25 +363,52 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     return text[1]:gsub("{(%d+)}", function (a) return values[tonumber(a)] end)
 end
 
-local get_text = function (entry_key)
+local get_glossary_text = function (entry_key)
     local at = addonTable
 
-    if entry_key and at.text[entry_key] then
-        return at.text[entry_key]
+    if type(entry_key) ~= "string" or type(at.glossary) ~= "table" then
+        return false
+    end
+
+    -- prepare entry_key
+    entry_key = strip_color_codes(entry_key)
+    entry_key = first_line_only(entry_key)
+    entry_key = entry_key:lower()
+
+    -- check directly
+    if at.glossary[entry_key] then
+        return capitalize(at.glossary[entry_key])
+    end
+
+    -- check using Taxi Map destination format: Undercity, Tirisfal
+    local key1, key2 = string.gmatch(entry_key, "(.*), (.*)")()
+    if key1 and key2 then
+        if at.glossary[key1] and at.glossary[key2] then
+            return capitalize(at.glossary[key1]) .. ", " .. capitalize(at.glossary[key2])
+        end
+    end
+
+    -- check using Questie' quest format: [57+] Feathermoon Stronghold
+    local entry_key_q1 = string.gsub(entry_key, "%[.+%] ", "")
+    if entry_key_q1 ~= entry_key then
+        if at.glossary[entry_key_q1] then
+            return capitalize(at.glossary[entry_key_q1])
+        end
+    end
+
+    -- check using Questie' npc format: John Smith (Wind Rider Master)
+    local key1, key2 = string.gmatch(entry_key, "(.*) %((.*)%)")()
+    if key1 and key2 then
+        if at.glossary[key1] then
+            if at.glossary[key2] then
+                return capitalize(at.glossary[key1]) .. " (" .. capitalize(at.glossary[key2]) .. ")"
+            else
+                return capitalize(at.glossary[key1])
+            end
+        end
     end
 
     return false
-end
-
--- Returns original entry_key in case get_text() fails
-local get_text_maybe = function (entry_key)
-    local found = get_text(entry_key)
-
-    if found then
-        return found
-    else
-        return entry_key
-    end
 end
 
 -- ------------
@@ -626,7 +597,7 @@ local tooltip_cleared = function (self)
 end
 
 -- Note: WorldMapTooltip is deprecated in 8.1.5
-for _, tt in pairs { GameTooltip, ItemRefTooltip, WorldMapTooltip } do
+for _, tt in pairs({ GameTooltip, ItemRefTooltip, WorldMapTooltip }) do
     tt:HookScript("OnTooltipSetItem", tooltip_set_item)
     tt:HookScript("OnTooltipSetSpell", tooltip_set_spell)
     tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
@@ -662,16 +633,16 @@ hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
     end
 end)
 
-for _, tt in pairs { GameTooltip, WorldMapTooltip } do
+for _, tt in pairs({ GameTooltip, ItemRefTooltip, WorldMapTooltip }) do
     tt:HookScript("OnUpdate", function (self)
         local name, unit = self:GetUnit()
         if name == nil and unit == nil and not tooltip_entry_type then
             local text = _G[self:GetName() .. "TextLeft1"]:GetText()
             if text ~= tooltip_entry_id then
-                local entry = get_entry_text(text)
-                if entry then
+                local found = get_glossary_text(text)
+                if found then
                     if self:NumLines() > 1 then self:AddLine(" ") end
-                    self:AddLine(asset_ua_code .. " " .. capitalize(entry), 1, 1, 1)
+                    self:AddLine(asset_ua_code .. " " .. capitalize(found), 1, 1, 1)
 
                     if self:IsShown() then
                         self:Show()
@@ -988,11 +959,11 @@ end
 
 local zone_text_lookup = {
     -- { FontString object, lookup function }
-    { ZoneTextString, get_entry_text },
-    { SubZoneTextString, get_entry_text },
-    { MinimapZoneText, get_entry_text },
-    { PVPInfoTextString, get_text },
-    { PVPArenaTextString, get_text },
+    { ZoneTextString, get_glossary_text },
+    { SubZoneTextString, get_glossary_text },
+    { MinimapZoneText, get_glossary_text },
+    { PVPInfoTextString, get_glossary_text },
+    { PVPArenaTextString, get_glossary_text },
 }
 
 local update_zone_text = function ()
@@ -1037,7 +1008,7 @@ WorldMapFrame.SetMapID = function (self, mapID)
 
     for _, v in ipairs(world_map_dds) do
         local text = v.Text:GetText()
-        local found = get_entry_text(text)
+        local found = get_glossary_text(text)
         if found then
             v.Text:SetText(capitalize(found))
         end
@@ -1053,7 +1024,7 @@ local world_map_dropdown_button_click = function (self)
         for i = 1, dd.numButtons do
             local button = _G["DropDownList1Button" .. i]
             local text = button:GetText()
-            local found = get_entry_text(text)
+            local found = get_glossary_text(text)
             if found then
                 local t = capitalize(found)
                 texts[#texts + 1] = t
@@ -1079,7 +1050,7 @@ WorldMapZoneDropDownButton:HookScript("OnClick", world_map_dropdown_button_click
 local world_map_area_label_update = function (self)
     local text = self.Name:GetText()
     if text then
-        local found = get_entry_text(text)
+        local found = get_glossary_text(text)
         if found then
             self.Name:SetText(capitalize(found))
         end
@@ -1138,6 +1109,7 @@ end)
 -- -----------------
 
 local prepare_options_frame = function ()
+    local at_text = addonTable.text -- can not use glossary as its not prepared at this moment
     local options_frame = CreateFrame("Frame")
     local f = nil
 
@@ -1280,14 +1252,14 @@ local prepare_options_frame = function ()
                 end
             end
 
-            set_quest_content(options_frame.info_tab_frame, self.tab_title, get_text_maybe(self.tab_text_key))
+            set_quest_content(options_frame.info_tab_frame, self.tab_title, at_text[self.tab_text_key])
             options_frame.info_tab_frame.current_tab_index = self.tab_index
             self:LockHighlight()
         end)
 
         -- preselect 1st tab
         if tab_index == 1 then
-            set_quest_content(options_frame.info_tab_frame, f.tab_title, get_text_maybe(f.tab_text_key))
+            set_quest_content(options_frame.info_tab_frame, f.tab_title, at_text[f.tab_text_key])
             options_frame.info_tab_frame.current_tab_index = 1
             f:LockHighlight()
         end
@@ -1354,8 +1326,8 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         -- print("PLAYER_LOGIN", name, race, class, sex, faction)
         prepare_talent_tree(class)
         prepare_quests(faction == "Alliance")
+        prepare_glossary()
         prepare_codes(name, race, class, sex == 2) -- 2 for male
-        prepare_zones()
         prepare_zone_text()
         prepare_world_map()
 
