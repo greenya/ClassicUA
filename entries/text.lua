@@ -1,13 +1,16 @@
 local _, addonTable = ...
 addonTable.text = { -- [key] = text
 
--- zone text
 ["Alliance Territory"] = "Територія Альянсу",
-["Horde Territory"] = "Територія Орди",
-["Contested Territory"] = "Спірна територія",
-["Sanctuary"] = "Прихисток",
 ["Combat Zone"] = "Бойова зона",
+["Contested Territory"] = "Спірна територія",
+["Horde Territory"] = "Територія Орди",
+["Meeting Stone"] = "Камінь зустрічі",
 ["PvP Area"] = "PvP зона",
+["Sanctuary"] = "Прихисток",
+["Tracking"] = "Вистежування",
+["Zoom In"] = "Наблизити",
+["Zoom Out"] = "Віддалити",
 
 -- addon info texts
 

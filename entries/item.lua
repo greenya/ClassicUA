@@ -2255,6 +2255,7 @@ addonTable.item = {
 [8364] = { "мітрилоголова форель", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Mithril Head Trout, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
 [8365] = { "сира мітрилоголова форель", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Raw Mithril Head Trout, @use Restores 552 health over 24 sec.  Must remain seated while eating.
 [8368] = { "товста вовча шкура" }, -- Thick Wolfhide
+[8383] = { "простий лист" }, -- Plain Letter
 [8391] = { "щелепа хихотуна" }, -- Snickerfang Jowl
 [8392] = { "легеня пеклокнура" }, -- Blasted Boar Lung
 [8393] = { "клешня скорпока" }, -- Scorpok Pincer
