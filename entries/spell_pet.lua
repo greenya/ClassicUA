@@ -14,6 +14,10 @@ local pet_spells = {
 [24497] = { ref=24493 }, -- Arcane Resistance (Rank 2)
 [24500] = { ref=24493 }, -- Arcane Resistance (Rank 3)
 [24501] = { ref=24493 }, -- Arcane Resistance (Rank 4)
+[24495] = { ref=24493 }, -- Arcane Resistance (Rank 1) (Beast Training)
+[24508] = { ref=24493 }, -- Arcane Resistance (Rank 2) (Beast Training)
+[24509] = { ref=24493 }, -- Arcane Resistance (Rank 3) (Beast Training)
+[24510] = { ref=24493 }, -- Arcane Resistance (Rank 4) (Beast Training)
 
 -- Bite
 [17253] = { "Укус", "Кусає ворога, завдає від {1} до {2} пошкодження.#causing {1} to {2}" }, -- Bite (Rank 1)
@@ -91,6 +95,10 @@ local pet_spells = {
 [24439] = { ref=23992 }, -- Fire Resistance (Rank 2)
 [24444] = { ref=23992 }, -- Fire Resistance (Rank 3)
 [24445] = { ref=23992 }, -- Fire Resistance (Rank 4)
+[24440] = { ref=23992 }, -- Fire Resistance (Rank 1) (Beast Training)
+[24441] = { ref=23992 }, -- Fire Resistance (Rank 2) (Beast Training)
+[24463] = { ref=23992 }, -- Fire Resistance (Rank 3) (Beast Training)
+[24464] = { ref=23992 }, -- Fire Resistance (Rank 4) (Beast Training)
 
 -- Fire Shield
 [2947] = { "Вогняний щит", "Оточує ціль щитом з вогню. Кожен удар по цілі завдає {1} пошкодження вогнем нападнику. Триває {2} хв. Заклинач не можу накласти \"Вогняний щит\" на себе.#causes {1}#Lasts {2} min", "Завдає {1} пошкодження вогнем нападникові при ударі.#Does {1}" }, -- Fire Shield (Rank 1)
@@ -117,6 +125,10 @@ local pet_spells = {
 [24447] = { ref=24446 }, -- Frost Resistance (Rank 2)
 [24448] = { ref=24446 }, -- Frost Resistance (Rank 3)
 [24449] = { ref=24446 }, -- Frost Resistance (Rank 4)
+[24475] = { ref=24446 }, -- Frost Resistance (Rank 1) (Beast Training)
+[24476] = { ref=24446 }, -- Frost Resistance (Rank 3) (Beast Training)
+[24477] = { ref=24446 }, -- Frost Resistance (Rank 3) (Beast Training)
+[24478] = { ref=24446 }, -- Frost Resistance (Rank 4) (Beast Training)
 
 -- Furious Howl
 [24604] = { "Скажене виття", "Учасники групи в межах {1} м отримують додатково від {2} до {3} пошкодження до їхньої наступної фізичної атаки. Триває {4} с.#within {1}#{2} to {3} damage#Lasts {4} sec", "Додатково від {1} до {2} пошкодження до вашої наступної фізичної атаки.#{1} to {2} damage" }, -- Furious Howl (Rank 1)
@@ -135,6 +147,16 @@ local pet_spells = {
 [4194] = { ref=4187 }, -- Great Stamina (Rank 8)
 [5041] = { ref=4187 }, -- Great Stamina (Rank 9)
 [5042] = { ref=4187 }, -- Great Stamina (Rank 10)
+[4195] = { ref=4187 }, -- Great Stamina (Rank 1) (Beast Training)
+[4196] = { ref=4187 }, -- Great Stamina (Rank 2) (Beast Training)
+[4197] = { ref=4187 }, -- Great Stamina (Rank 3) (Beast Training)
+[4198] = { ref=4187 }, -- Great Stamina (Rank 4) (Beast Training)
+[4199] = { ref=4187 }, -- Great Stamina (Rank 5) (Beast Training)
+[4200] = { ref=4187 }, -- Great Stamina (Rank 6) (Beast Training)
+[4201] = { ref=4187 }, -- Great Stamina (Rank 7) (Beast Training)
+[4202] = { ref=4187 }, -- Great Stamina (Rank 8) (Beast Training)
+[5048] = { ref=4187 }, -- Great Stamina (Rank 9) (Beast Training)
+[5049] = { ref=4187 }, -- Great Stamina (Rank 10) (Beast Training)
 
 -- Growl
 [2649] = { "Рик", "Підбурює ціль, збільшуючи ймовірність того, що істота зосередить свої атаки на вас." }, -- Growl (Rank 1)
@@ -144,6 +166,13 @@ local pet_spells = {
 [14919] = { ref=2649 }, -- Growl (Rank 5)
 [14920] = { ref=2649 }, -- Growl (Rank 6)
 [14921] = { ref=2649 }, -- Growl (Rank 7)
+[1853] = { ref=2649 }, -- Growl (Rank 1) (Beast Training)
+[14922] = { ref=2649 }, -- Growl (Rank 2) (Beast Training)
+[14923] = { ref=2649 }, -- Growl (Rank 3) (Beast Training)
+[14924] = { ref=2649 }, -- Growl (Rank 4) (Beast Training)
+[14925] = { ref=2649 }, -- Growl (Rank 5) (Beast Training)
+[14926] = { ref=2649 }, -- Growl (Rank 6) (Beast Training)
+[14927] = { ref=2649 }, -- Growl (Rank 7) (Beast Training)
 
 -- Lash of Pain
 [7814] = { "Батіг болю", "Миттєва атака, що шмагає ціль, завдаючи {1} пошкодження тінню.#causing {1}" }, -- Lash of Pain (Rank 1)
@@ -175,12 +204,26 @@ local pet_spells = {
 [24555] = { ref=24545 }, -- Natural Armor (Rank 8)
 [24629] = { ref=24545 }, -- Natural Armor (Rank 9)
 [24630] = { ref=24545 }, -- Natural Armor (Rank 10)
+[24547] = { ref=24545 }, -- Natural Armor (Rank 1) (Beast Training)
+[24556] = { ref=24545 }, -- Natural Armor (Rank 2) (Beast Training)
+[24557] = { ref=24545 }, -- Natural Armor (Rank 3) (Beast Training)
+[24558] = { ref=24545 }, -- Natural Armor (Rank 4) (Beast Training)
+[24559] = { ref=24545 }, -- Natural Armor (Rank 5) (Beast Training)
+[24560] = { ref=24545 }, -- Natural Armor (Rank 6) (Beast Training)
+[24561] = { ref=24545 }, -- Natural Armor (Rank 7) (Beast Training)
+[24562] = { ref=24545 }, -- Natural Armor (Rank 8) (Beast Training)
+[24631] = { ref=24545 }, -- Natural Armor (Rank 9) (Beast Training)
+[24632] = { ref=24545 }, -- Natural Armor (Rank 10) (Beast Training)
 
 -- Nature Resistance
 [24492] = { "Супротив природі", "Збільшує супротив природі на {1}.#by {1}", "Збільшує супротив природі на {1}.#by {1}" }, -- Nature Resistance (Rank 1)
 [24502] = { ref=24492 }, -- Nature Resistance (Rank 2)
 [24503] = { ref=24492 }, -- Nature Resistance (Rank 3)
 [24504] = { ref=24492 }, -- Nature Resistance (Rank 4)
+[24494] = { ref=24492 }, -- Nature Resistance (Rank 1) (Beast Training)
+[24511] = { ref=24492 }, -- Nature Resistance (Rank 2) (Beast Training)
+[24512] = { ref=24492 }, -- Nature Resistance (Rank 3) (Beast Training)
+[24513] = { ref=24492 }, -- Nature Resistance (Rank 4) (Beast Training)
 
 -- Paranoia
 [19480] = { "Параноя", "Підсилює здатність виявлення непомітності всіх учасників групи в межах {1} м від скверногончої.#within {1} y", "Здатність виявлення непомітності підсилена." }, -- Paranoia
@@ -222,6 +265,10 @@ local pet_spells = {
 [24505] = { ref=24488 }, -- Shadow Resistance (Rank 2)
 [24506] = { ref=24488 }, -- Shadow Resistance (Rank 3)
 [24507] = { ref=24488 }, -- Shadow Resistance (Rank 4)
+[24490] = { ref=24488 }, -- Shadow Resistance (Rank 1) (Beast Training)
+[24514] = { ref=24488 }, -- Shadow Resistance (Rank 2) (Beast Training)
+[24515] = { ref=24488 }, -- Shadow Resistance (Rank 3) (Beast Training)
+[24516] = { ref=24488 }, -- Shadow Resistance (Rank 4) (Beast Training)
 
 -- Shell Shield
 [26064] = { "Панцирний щит", "Зменшує пошкодження отримуване вашим вихованцем на {1}%, але збільшує час між його атаками на {2}%. Триває {3} с.#takes by {1}#attacks by {2}#Lasts {3} sec", "Пошкодження зменшено на {1}% та час між атаками збільшено на {2}%.#reduced by {1}#increased by {2}" }, -- Shell Shield
