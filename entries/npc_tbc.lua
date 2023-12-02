@@ -5,8 +5,25 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
-[16475] = { "Меґелон" }, -- Megelon
-[16477] = { "Проенітус" }, -- Proenitus
+[16144] = { "лорд Салтеріл" }, -- Saltheril
+[16475] = { "Меґелон", en="Megelon" }, -- Megelon
+[16477] = { "Проеніт", en="Proenitus" }, -- Proenitus
+[17240] = { "адмірал Одессий", "військово-морське командування Альянсу", en="Admiral Odesyus" }, -- Admiral Odesyus
+[17318] = { "Ґізл", en="Geezle" }, -- Geezle
+[17359] = { "Тел'атіон Нечистий" }, -- Tel'athion
+[17649] = { "Кессел", "повелитель елекків", en="Kessel" }, -- Kessel
+[20112] = { "вітряний торговець Тулуман", "продавець зброї" }, -- Tuluman <Weapon Merchant>
+[20132] = { "Сокретар", en="Socrethar" }, -- Socrethar
+[20284] = { "Доктор Бум", en="Dr. Boom" }, -- Dr. Boom
+[21057] = { "принц сплетіння Разаан" }, -- Razaan
+[21691] = { "Тошлі", en="Toshley" }, -- Toshley
+[21699] = { "Маєв Пісня Тіней", en="Maiev Shadowsong" }, -- Maiev Shadowsong
+[23061] = { "Чорнодер", en="Rivendark" }, -- Rivendark
+[23230] = { "Шартуул", en="Shartuul" }, -- Shartuul
+[23261] = { "Лютокрила", en="Furywing" }, -- Furywing
+[23281] = { "Інсідій", en="Insidion" }, -- Insidion
+[23282] = { "Обсідія", en="Obsidia" }, -- Obsidia
+[23391] = { "Баш'ір", en="Bash'ir" }, -- Bash'ir
 }
 
 if addonTable.npc then
