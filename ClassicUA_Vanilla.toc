@@ -26,6 +26,14 @@ entries\spell_rogue.lua
 entries\spell_shaman.lua
 entries\spell_warlock.lua
 entries\spell_warrior.lua
+entries\spells_sod\spell_sod.lua
+entries\spells_sod\spell_druid_sod.lua
+entries\spells_sod\spell_hunter_sod.lua
+entries\spells_sod\spell_paladin_sod.lua
+entries\spells_sod\spell_priest_sod.lua
+entries\spells_sod\spell_rogue_sod.lua
+entries\spells_sod\spell_shaman_sod.lua
+entries\spells_sod\spell_warrior_sod.lua
 entries\talent_tree.lua
 entries\text.lua
 entries\zone.lua
