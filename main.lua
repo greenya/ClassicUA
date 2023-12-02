@@ -429,7 +429,7 @@ for _, tt in pairs({ GameTooltip, ItemRefTooltip, WorldMapTooltip }) do
     end
 end
 
-local add_line_to_tooltip = function (tooltip, content, template, r, g, b, content_can_be_spell_id, content_is_rune)
+local add_line_to_tooltip = function (tooltip, content, template, r, g, b, content_can_be_spell_id)
     if not content then
         return
     end
@@ -439,18 +439,12 @@ local add_line_to_tooltip = function (tooltip, content, template, r, g, b, conte
         local text = lines[i]
 
         if content_can_be_spell_id and type(text) == "number" then
+            text = false
             local spell_id = text
             local spell_entry = get_entry("spell", spell_id)
-            text = false
-
             if spell_entry then
-                local spell_name = make_entry_text(spell_entry[1], tooltip)
                 local spell_desc = make_entry_text(spell_entry[2], tooltip)
-                if content_is_rune then
-                    if spell_name and spell_desc then
-                        text = capitalize(spell_name .. ": " .. spell_desc)
-                    end
-                elseif spell_desc then
+                if spell_desc then
                     text = make_entry_text(spell_desc, tooltip)
                     text = capitalize(text)
                 end
@@ -479,7 +473,6 @@ add_item_entry_to_tooltip = function (tooltip, entry, is_sub_item)
     add_line_to_tooltip(tooltip, entry.equip, "При спорядженні: TEXT", 0, 1, 0, true)
     add_line_to_tooltip(tooltip, entry.hit, "Шанс при влучанні: TEXT", 0, 1, 0, true)
     add_line_to_tooltip(tooltip, entry.use, "Використання: TEXT", 0, 1, 0, true)
-    add_line_to_tooltip(tooltip, entry.rune, "TEXT", 0, 1, 0, true, true)
 
     if entry.recipe_result_item then
         local rr_entry = get_entry("item", entry.recipe_result_item)

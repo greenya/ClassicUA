@@ -8,7 +8,6 @@ addonTable.item = {
 --     [equip]  = text or number (spell id) for "Equip: ..." (green color) (optional)
 --     [hit]    = text or number (spell id) for "Chance on hit: ..." (green color) (optional)
 --     [use]    = text or number (spell id) for "Use: ..." (green color) (optional)
---     [rune]   = text or number (spell id) for "text" or "spell name: spell desc" (green color) (optional)
 --     [recipe_result_item] = number (item id) to show the item after the spell-recipe (optional)
 --     [flavor] = quoted text (golden color) (optional)
 --     --------
