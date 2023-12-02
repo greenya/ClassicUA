@@ -635,10 +635,24 @@ local tooltip_updated = function (self)
             self.classicua.entry_type = "text"
             self.classicua.entry_id = text
 
+            local result_text = false
             local found = get_glossary_text(text)
+
             if found then
-                if self:NumLines() > 1 then self:AddLine(" ") end
-                self:AddLine(asset_ua_code .. " " .. capitalize(found), 1, 1, 1)
+                result_text = capitalize(found)
+            elseif options.debug then
+                local owner = self:GetOwner()
+                if owner:GetName():find("^EngravingFrameScrollFrameButton") and owner.skillLineAbilityID then
+                    result_text = "engraving_ability#" .. owner.skillLineAbilityID
+                end
+            end
+
+            if result_text then
+                if self:NumLines() > 1 then
+                    self:AddLine(" ")
+                end
+
+                self:AddLine(asset_ua_code .. " " .. result_text, 1, 1, 1)
 
                 if self:IsShown() then
                     self:Show()
