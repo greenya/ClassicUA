@@ -594,7 +594,12 @@
                     }
 
                     if (id && exp) {
-                        const wh_exp_map = { 'classic': 'classic', 'tbc': 'tbc', 'wrath': 'wotlk' }
+                        const wh_exp_map = {
+                            'classic': 'classic',
+                            'sod': 'classic',
+                            'tbc': 'tbc',
+                            'wrath': 'wotlk',
+                        }
                         return `https://www.wowhead.com/${wh_exp_map[exp]}/npc=${id}`
                     }
                 },
