@@ -642,7 +642,8 @@ local tooltip_updated = function (self)
                 result_text = capitalize(found)
             elseif options.debug then
                 local owner = self:GetOwner()
-                if owner:GetName():find("^EngravingFrameScrollFrameButton") and owner.skillLineAbilityID then
+                local owner_name = owner:GetName()
+                if owner_name and owner_name:find("^EngravingFrameScrollFrameButton") and owner.skillLineAbilityID then
                     result_text = "engraving_ability#" .. owner.skillLineAbilityID
                 end
             end
