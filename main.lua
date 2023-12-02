@@ -421,8 +421,14 @@ end
 -- [ tooltips ]
 -- ------------
 
-local known_tooltips = {} -- Note: WorldMapTooltip is deprecated in 8.1.5
-for _, tt in pairs({ GameTooltip, ItemRefTooltip, WorldMapTooltip }) do
+local known_tooltips = {}
+for _, tt in pairs({
+    GameTooltip,
+    ShoppingTooltip1,
+    ShoppingTooltip2,
+    ItemRefTooltip,
+    WorldMapTooltip, -- Note: WorldMapTooltip is deprecated in 8.1.5
+}) do
     if tt then
         known_tooltips[#known_tooltips + 1] = tt
         tt.classicua = { entry_type = false, entry_id = false }
@@ -653,7 +659,7 @@ local tooltip_updated = function (self)
                     self:AddLine(" ")
                 end
 
-                self:AddLine(asset_ua_code .. " " .. result_text, 1, 1, 1)
+                self:AddLine(asset_ua_code .. " " .. result_text, 1, 1, 1, true)
 
                 if self:IsShown() then
                     self:Show()
