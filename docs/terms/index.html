@@ -330,6 +330,9 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+                        <div v-if="termDetails.alias_text" class="modal-body pb-0 font-weight-bold">
+                            Також: {{ termDetails.alias_text }}
+                        </div>
                         <div class="modal-body">
                             <a v-for="tag in termDetails.tags" :key="tag.name" class="term-tag is-large badge" href="#"
                                 :class="{ 'badge-info': tag.main, 'badge-secondary': !tag.main }"
@@ -361,8 +364,12 @@
 
                 this.tags = []
                 this.id_tags = []
+                this.alias_tags = []
                 all_tags.forEach(e => {
-                    if (e.name.startsWith('#')) {
+                    if (e.name.startsWith('~') && e.name.endsWith('~')) {
+                        e.name = e.name.replace('_', ',')
+                        this.alias_tags.push(e)
+                    } else if (e.name.startsWith('#')) {
                         e.name = e.name.replace('_', ',')
                         this.id_tags.push(e)
                     } else {
@@ -552,6 +559,7 @@
                         title_uk:       term.uk,
                         subtitle_uk:    subtitle_text_uk,
                         tags:           term.tags,
+                        alias_text:     term.alias_tags.map(t => t.name.substr(1, t.name.length - 2)).join(', '),
                         links:          term.id_tags.map(t => ({
                             text: t.name,
                             href: this.getWhLinkByIdTagName(t.name)
