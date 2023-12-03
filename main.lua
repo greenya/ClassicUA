@@ -481,10 +481,10 @@ add_item_entry_to_tooltip = function (tooltip, entry, is_sub_item)
     add_line_to_tooltip(tooltip, entry.use, "Використання: TEXT", 0, 1, 0, true)
 
     if entry.recipe_result_item then
-        local rr_entry = get_entry("item", entry.recipe_result_item)
-        if rr_entry then
+        local rr_item = get_entry("item", entry.recipe_result_item)
+        if rr_item then
             tooltip:AddLine(" ")
-            add_item_entry_to_tooltip(tooltip, rr_entry, true)
+            add_item_entry_to_tooltip(tooltip, rr_item, true)
         elseif options.debug then
             tooltip:AddLine("recipe_result_item#" .. tostring(entry.recipe_result_item), 1, 1, 1)
         end
@@ -501,6 +501,20 @@ local add_spell_entry_to_tooltip = function (tooltip, entry, is_aura)
         add_line_to_tooltip(tooltip, entry[3], "TEXT", 1, 1, 1)
     else
         add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 0.82, 0)
+
+        if entry.rune then
+            local rune_spells = type(entry.rune) == "table" and entry.rune or { entry.rune }
+            for _, rune_spell_id in pairs(rune_spells) do
+                tooltip:AddLine(" ")
+                local rune_spell = get_entry("spell", rune_spell_id)
+                if rune_spell and rune_spell[1] and rune_spell[2] then
+                    add_line_to_tooltip(tooltip, capitalize(make_entry_text(rune_spell[1])), "TEXT", 1, 1, 1)
+                    add_line_to_tooltip(tooltip, capitalize(make_entry_text(rune_spell[2])), "TEXT", 1, 0.82, 0)
+                elseif options.debug then
+                    tooltip:AddLine("rune_spell#" .. tostring(rune_spell_id), 1, 1, 1)
+                end
+            end
+        end
     end
 end
 
