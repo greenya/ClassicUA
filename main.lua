@@ -322,7 +322,7 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     end
 
     text = { strsplit("#", text) }
-    if #text == 1 then
+    if #text == 1 or not tooltip then
         return text[1]
     end
 
@@ -508,8 +508,8 @@ local add_spell_entry_to_tooltip = function (tooltip, entry, is_aura)
                 tooltip:AddLine(" ")
                 local rune_spell = get_entry("spell", rune_spell_id)
                 if rune_spell and rune_spell[1] and rune_spell[2] then
-                    add_line_to_tooltip(tooltip, capitalize(make_entry_text(rune_spell[1])), "TEXT", 1, 1, 1)
-                    add_line_to_tooltip(tooltip, capitalize(make_entry_text(rune_spell[2])), "TEXT", 1, 0.82, 0)
+                    add_line_to_tooltip(tooltip, capitalize(make_entry_text(rune_spell[1], tooltip)), "TEXT", 1, 1, 1)
+                    add_line_to_tooltip(tooltip, capitalize(make_entry_text(rune_spell[2], tooltip)), "TEXT", 1, 0.82, 0)
                 elseif options.debug then
                     tooltip:AddLine("rune_spell#" .. tostring(rune_spell_id), 1, 1, 1)
                 end
