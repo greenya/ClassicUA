@@ -4593,7 +4593,7 @@ addonTable.item = {
 [19602] = { "пошесть Кезана", equip="Збільшує шкоду і зцілення від магічних заклинань і ефектів на 12." }, -- Kezan's Taint, @equip Increases damage and healing done by magical spells and effects by up to 12.
 [19603] = { "пошесть Кезана", equip="Збільшує шкоду і зцілення від магічних заклинань і ефектів на 12." }, -- Kezan's Taint, @equip Increases damage and healing done by magical spells and effects by up to 12.
 [19604] = { "пошесть Кезана", equip="Збільшує шкоду і зцілення від магічних заклинань і ефектів на 14." }, -- Kezan's Taint, @equip Increases damage and healing done by magical spells and effects by up to 14.
-[19605] = { "нестримна пошесть Кезана", equip={ "Збільшує шкоду і зцілення від магічних заклинань і ефектів на 14.", "Збільшує радіус дії заклять \"Вогненний дощ\" та \"Пекельний вогонь\" на 1 м." } }, -- Kezan's Unstoppable Taint, @equip Increases damage and healing done by magical spells and effects by up to 14., @equip Increases the radius of Rain of Fire and Hellfire by 1 yard.
+[19605] = { "нестримна пошесть Кезана", equip={ "Збільшує шкоду і зцілення від магічних заклинань і ефектів на 14.", "Збільшує радіус дії заклять \"Вогняний дощ\" та \"Пекельний вогонь\" на 1 м." } }, -- Kezan's Unstoppable Taint, @equip Increases damage and healing done by magical spells and effects by up to 14., @equip Increases the radius of Rain of Fire and Hellfire by 1 yard.
 [19606] = { "видіння Вудрії" }, -- Vision of Voodress
 [19607] = { "видіння Вудрії" }, -- Vision of Voodress
 [19608] = { "видіння Вудрії" }, -- Vision of Voodress
