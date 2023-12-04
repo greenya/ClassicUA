@@ -15,6 +15,7 @@ entries\quest_alliance.lua
 entries\quest_horde.lua
 entries\quest_both.lua
 entries\race.lua
+entries\sod_engraving.lua
 entries\spell.lua
 entries\spell_druid.lua
 entries\spell_hunter.lua

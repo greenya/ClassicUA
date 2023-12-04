@@ -493,9 +493,11 @@ add_item_entry_to_tooltip = function (tooltip, entry, is_sub_item)
     add_line_to_tooltip(tooltip, entry.flavor, "\"TEXT\"", 1, 0.82, 0)
 end
 
-local add_spell_entry_to_tooltip = function (tooltip, entry, is_aura)
-    local heading = make_entry_text(entry[1], tooltip)
-    tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
+local add_spell_entry_to_tooltip = function (tooltip, entry, is_aura, skip_title)
+    if not skip_title then
+        local heading = make_entry_text(entry[1], tooltip)
+        tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
+    end
 
     if is_aura then
         add_line_to_tooltip(tooltip, entry[3], "TEXT", 1, 1, 1)
@@ -514,6 +516,20 @@ local add_spell_entry_to_tooltip = function (tooltip, entry, is_aura)
                     tooltip:AddLine("rune_spell#" .. tostring(rune_spell_id), 1, 1, 1)
                 end
             end
+        end
+    end
+end
+
+local add_sod_engraving_entry_to_tooltip = function (tooltip, entry)
+    local heading = make_entry_text(entry[1], tooltip)
+    tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
+
+    if entry.spell then
+        local spell = get_entry("spell", entry.spell)
+        if spell then
+            add_spell_entry_to_tooltip(tooltip, spell, false, true)
+        elseif options.debug then
+            tooltip:AddLine("engraving.spell#" .. entry.spell, 1, 1, 1)
         end
     end
 end
@@ -541,6 +557,8 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
             add_item_entry_to_tooltip(tooltip, entry)
         elseif entry_type == "spell" then
             add_spell_entry_to_tooltip(tooltip, entry, is_aura)
+        elseif entry_type == "sod_engraving" then
+            add_sod_engraving_entry_to_tooltip(tooltip, entry)
         else
             add_general_entry_to_tooltip(tooltip, entry)
         end
@@ -556,6 +574,30 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
 
     tooltip.classicua.entry_type = entry_type
     tooltip.classicua.entry_id = entry_id
+end
+
+local add_glossary_entry_to_tooltip = function (tooltip, glossary_key)
+    if tooltip.classicua.entry_type then
+        return
+    end
+
+    local found = get_glossary_text(glossary_key)
+    if found then
+        result_text = capitalize(found)
+
+        if tooltip:NumLines() > 1 then
+            tooltip:AddLine(" ")
+        end
+
+        tooltip:AddLine(asset_ua_code .. " " .. result_text, 1, 1, 1, true)
+
+        if tooltip:IsShown() then
+            tooltip:Show()
+        end
+    end
+
+    tooltip.classicua.entry_type = "glossary"
+    tooltip.classicua.entry_id = glossary_key
 end
 
 local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, rank, max_rank)
@@ -648,39 +690,30 @@ local tooltip_set_unit = function (self)
 end
 
 local tooltip_updated = function (self)
+    if self.classicua.entry_type then
+        return
+    end
+
     local name, unit = self:GetUnit()
-    if not name and not unit and not self.classicua.entry_type then
-        local text = _G[self:GetName() .. "TextLeft1"]:GetText()
-        if text ~= self.classicua.entry_id then
-            self.classicua.entry_type = "text"
-            self.classicua.entry_id = text
+    if name or unit then
+        return
+    end
 
-            local result_text = false
-            local found = get_glossary_text(text)
-
-            if found then
-                result_text = capitalize(found)
-            elseif options.debug then
-                local owner = self:GetOwner()
-                local owner_name = owner:GetName()
-                if owner_name and owner_name:find("^EngravingFrameScrollFrameButton") and owner.skillLineAbilityID then
-                    result_text = "engraving_ability#" .. owner.skillLineAbilityID
-                end
-            end
-
-            if result_text then
-                if self:NumLines() > 1 then
-                    self:AddLine(" ")
-                end
-
-                self:AddLine(asset_ua_code .. " " .. result_text, 1, 1, 1, true)
-
-                if self:IsShown() then
-                    self:Show()
-                end
-            end
+    if addonTable.sod_engraving then
+        local owner = self:GetOwner()
+        local owner_name = owner:GetName()
+        if owner_name and owner_name:find("^EngravingFrameScrollFrameButton") and owner.skillLineAbilityID then
+            add_entry_to_tooltip(self, "sod_engraving", owner.skillLineAbilityID)
+            return
         end
     end
+
+    local text = _G[self:GetName() .. "TextLeft1"]:GetText()
+    if text == self.classicua.entry_id then
+        return
+    end
+
+    add_glossary_entry_to_tooltip(self, text)
 end
 
 local tooltip_cleared = function (self)
