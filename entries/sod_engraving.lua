@@ -6,13 +6,6 @@ addonTable.sod_engraving = {
 --     [spell] = spell id (this spell should have "rune" key)
 -- }
 
--- FOUND BY NOT ASSIGNED YET
--- 48848 - Everlasting Affliction
--- 48850 - Demonic Tactics
--- 48885 - Incinerate
--- 49211 - Demonic Grace
--- 49212 - Demonic Pact
-
 -- Druid
 [48642] = { "Нівечення", spell=410025 }, -- Mangle
 [48644] = { "Гнів Лютошторма", spell=410061 }, -- Fury of Stormrage
@@ -113,7 +106,18 @@ addonTable.sod_engraving = {
 [49198] = { "Шаманська лють", spell=425343 }, -- Shamanistic Rage
 
 -- Warlock
--- ...
+[48848] = { "Вічна химородь", spell=416008 }, -- Everlasting Affliction
+[48850] = { "Демонічна тактика", spell=416009 }, -- Demonic Tactics
+[48885] = { "Спалення", spell=416015 }, -- Incinerate
+[49211] = { "Демонічна благодать", spell=425477 }, -- Demonic Grace
+[49212] = { "Угода з демоном", spell=425476 }, -- Demonic Pact
+-- [?] = { "Вогняне озеро", spell=403937 }, -- Lake of Fire
+-- [?] = { "Майстерність чаклування", spell=403932 }, -- Master Channeler
+-- [?] = { "Витягування душі", spell=403920 }, -- Soul Siphon
+-- [?] = { "Стріла Хаосу", spell=403925 }, -- Chaos Bolt
+-- [?] = { "Мара", spell=403919 }, -- Haunt
+-- [?] = { "Метаморфоза", spell=403938 }, -- Metamorphosis
+-- [?] = { "Залп тіньових стріл", spell=403936 }, -- Shadow Bolt Volley
 
 -- Warrior
 [48823] = { "Цілеспрямована лють", spell=425445 }, -- Single-Minded Fury
