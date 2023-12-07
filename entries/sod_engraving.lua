@@ -48,7 +48,17 @@ addonTable.sod_engraving = {
 
 -- Shaman
 [48671] = { "Настанови пращурів", spell=410099 }, -- Ancestral Guidance
+[48672] = { "Спеціалізація на бою з двох рук", spell=410096 }, -- Dual Wield Specialization
+[48674] = { "Майстерність володіння щитом", spell=410098 }, -- Shield Mastery
+[48675] = { "Щит води", spell=410097 }, -- Water Shield
+[48677] = { "Щит землі", spell=410101 }, -- Earth Shield
 [48679] = { "Перевантаження", spell=410094 }, -- Overload
+[48681] = { "Виверження лави", spell=410095 }, -- Lava Burst
+[48682] = { "Удар лавою", spell=410104 }, -- Lava Lash
+[48685] = { "Шлях Землі", spell=410107 }, -- Way of Earth
+[48840] = { "Цілющий дощ", spell=416057 }, -- Healing Rain
+[49197] = { "Вибух лави", spell=425344 }, -- Molten Blast
+[49198] = { "Шаманська лють", spell=425343 }, -- Shamanistic Rage
 
 -- Warlock
 -- ...
