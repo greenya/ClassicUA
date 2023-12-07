@@ -44,7 +44,19 @@ addonTable.sod_engraving = {
 -- ...
 
 -- Rogue
--- ...
+[49170] = { "Різанина з тіні", spell=424992 }, -- Slaughter from the Shadows
+[49171] = { "Удар шаблею", spell=424984 }, -- Saber Slash
+[49172] = { "Укол", spell=424988 }, -- Shiv
+[49173] = { "Удар лівицею", spell=424990 }, -- Main Gauche
+-- [?] = { "Смертельне вариво", spell=400080 }, -- Deadly Brew
+-- [?] = { "Всього лише подряпина", spell=400082 }, -- Just a Flesh Wound
+-- [?] = { "Швидкий постріл", spell=400095 }, -- Quick Draw
+-- [?] = { "Скалічити", spell=400094 }, -- Mutilate
+-- [?] = { "Тіньовий удар", spell=400105 }, -- Shadowstrike
+-- [?] = { "Поміж очей", spell=400081 }, -- Between the Eyes
+-- [?] = { "Танок клинків", spell=400099 }, -- Blade Dance
+-- [?] = { "Руна Різзака", spell=401488 }, -- Cutty's Rune
+-- [?] = { "Отруєння", spell=400102 }, -- Envenom
 
 -- Shaman
 [48671] = { "Настанови пращурів", spell=410099 }, -- Ancestral Guidance
