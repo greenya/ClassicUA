@@ -10,10 +10,18 @@ addonTable.sod_engraving = {
 -- ...
 
 -- Hunter
+[48656] = { "Аспект лева", spell=410115 }, -- Aspect of the Lion
 [48659] = { "Майстер-стрілець", spell=410113 }, -- Master Marksman
+[48661] = { "Влада над звірами", spell=410110 }, -- Beast Mastery
 [48666] = { "Постріл химери", spell=410121 }, -- Chimera Shot
 [48667] = { "Вибуховий постріл", spell=410123 }, -- Explosive Shot
+[48668] = { "Команда \"Вбити\"", spell=410111 }, -- Kill Command
+[48669] = { "Самотній вовк", spell=410122 }, -- Lone Wolf
+[48869] = { "Снайперська підготовка", spell=416091 }, -- Sniper Training
+[49216] = { "Розтинання", spell=425758 }, -- Carve
+[49217] = { "Зміїний розмах", spell=425760 }, -- Serpent Spread
 [49218] = { "Фланговий удар", spell=425762 }, -- Flanking Strike
+[49219] = { "Удари кобри", spell=425759 }, -- Cobra Strikes
 
 -- Mage
 -- ...
