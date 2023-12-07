@@ -41,7 +41,18 @@ addonTable.sod_engraving = {
 [49215] = { "Докір", spell=425621 }, -- Rebuke
 
 -- Priest
--- ...
+[48866] = { "Сила душі", spell=415997 }, -- Strength of Soul
+[48872] = { "Проникливість", spell=415995 }, -- Serendipity
+[48879] = { "Випалювання розуму", spell=415996 }, -- Mind Sear
+[49188] = { "Слово сили: Бар'єр", spell=425213 }, -- Power Word: Barrier
+[49189] = { "Чума Порожнечі", spell=425216 }, -- Void Plague
+[49190] = { "Викривлена віра", spell=425215 }, -- Twisted Faith
+-- [?] = { "Коло зцілення", spell=402859 }, -- Circle of Healing
+-- [?] = { "Сповідь", spell=402862 }, -- Penance
+-- [?] = { "Слово тіні: Смерть", spell=402849 }, -- Shadow Word - Death
+-- [?] = { "Гомункули", spell=402852 }, -- Homunculi
+-- [?] = { "Молитва відновлення", spell=402848 }, -- Prayer of Mending
+-- [?] = { "Спільний біль", spell=402854 }, -- Shared Pain
 
 -- Rogue
 [49170] = { "Різанина з тіні", spell=424992 }, -- Slaughter from the Shadows
