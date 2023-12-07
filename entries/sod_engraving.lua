@@ -35,18 +35,18 @@ addonTable.sod_engraving = {
 [49219] = { "Удари кобри", spell=425759 }, -- Cobra Strikes
 
 -- Mage
+[48189] = { "Живе полум'я", spell=401768 }, -- Living Flame
+[48190] = { "Регенерація", spell=401767 }, -- Regeneration
+[48191] = { "Крижані пальці", spell=401765 }, -- Fingers of Frost
+[48195] = { "Повернення у часі", spell=401761 }, -- Rewind Time
+[48196] = { "Крижаний спис", spell=401760 }, -- Ice Lance
+[48197] = { "Вигорання", spell=401759 }, -- Burnout
+[48198] = { "Арканічний спалах", spell=401757 }, -- Arcane Blast
 [48835] = { "Масова регенерація", spell=415939 }, -- Mass Regeneration
 [48837] = { "Жива бомба", spell=415936 }, -- Living Bomb
 [48893] = { "Просвітлення", spell=415942 }, -- Enlightenment
 [49185] = { "Арканічний сплеск", spell=425171 }, -- Arcane Surge
 [49186] = { "Крижана кров", spell=425170 }, -- Icy Veins
--- [?] = { "Вигорання", spell=401759 }, -- Burnout
--- [?] = { "Крижані пальці", spell=401765 }, -- Fingers of Frost
--- [?] = { "Регенерація", spell=401767 }, -- Regeneration
--- [?] = { "Арканічний спалах", spell=401757 }, -- Arcane Blast
--- [?] = { "Крижаний спис", spell=401760 }, -- Ice Lance
--- [?] = { "Повернення у часі", spell=401761 }, -- Rewind Time
--- [?] = { "Живе полум'я", spell=401768 }, -- Living Flame
 
 -- Paladin
 [48626] = { "Маяк світла", spell=409999 }, -- Beacon of Light
@@ -63,33 +63,32 @@ addonTable.sod_engraving = {
 [49215] = { "Докір", spell=425621 }, -- Rebuke
 
 -- Priest
+[48273] = { "Коло зцілення", spell=402859 }, -- Circle of Healing
+[48275] = { "Сповідь", spell=402862 }, -- Penance
+[48264] = { "Слово тіні: Смерть", spell=402849 }, -- Shadow Word - Death
+[48267] = { "Гомункули", spell=402852 }, -- Homunculi
+[48263] = { "Молитва відновлення", spell=402848 }, -- Prayer of Mending
+[48269] = { "Спільний біль", spell=402854 }, -- Shared Pain
 [48866] = { "Сила душі", spell=415997 }, -- Strength of Soul
 [48872] = { "Проникливість", spell=415995 }, -- Serendipity
 [48879] = { "Випалювання розуму", spell=415996 }, -- Mind Sear
 [49188] = { "Слово сили: Бар'єр", spell=425213 }, -- Power Word: Barrier
 [49189] = { "Чума Порожнечі", spell=425216 }, -- Void Plague
 [49190] = { "Викривлена віра", spell=425215 }, -- Twisted Faith
--- [?] = { "Коло зцілення", spell=402859 }, -- Circle of Healing
--- [?] = { "Сповідь", spell=402862 }, -- Penance
--- [?] = { "Слово тіні: Смерть", spell=402849 }, -- Shadow Word - Death
--- [?] = { "Гомункули", spell=402852 }, -- Homunculi
--- [?] = { "Молитва відновлення", spell=402848 }, -- Prayer of Mending
--- [?] = { "Спільний біль", spell=402854 }, -- Shared Pain
 
 -- Rogue
+[48141] = { "Смертельне вариво", spell=400080 }, -- Deadly Brew
+[48143] = { "Всього лише подряпина", spell=400082 }, -- Just a Flesh Wound
+[48148] = { "Швидкий постріл", spell=400095 }, -- Quick Draw
+[48160] = { "Скалічити", spell=400094 }, -- Mutilate
+[48165] = { "Тіньовий удар", spell=400105 }, -- Shadowstrike
+[48142] = { "Поміж очей", spell=400081 }, -- Between the Eyes
+[48161] = { "Танок клинків", spell=400099 }, -- Blade Dance
+[48163] = { "Отруєння", spell=400102 }, -- Envenom
 [49170] = { "Різанина з тіні", spell=424992 }, -- Slaughter from the Shadows
 [49171] = { "Удар шаблею", spell=424984 }, -- Saber Slash
 [49172] = { "Укол", spell=424988 }, -- Shiv
 [49173] = { "Удар лівицею", spell=424990 }, -- Main Gauche
--- [?] = { "Смертельне вариво", spell=400080 }, -- Deadly Brew
--- [?] = { "Всього лише подряпина", spell=400082 }, -- Just a Flesh Wound
--- [?] = { "Швидкий постріл", spell=400095 }, -- Quick Draw
--- [?] = { "Скалічити", spell=400094 }, -- Mutilate
--- [?] = { "Тіньовий удар", spell=400105 }, -- Shadowstrike
--- [?] = { "Поміж очей", spell=400081 }, -- Between the Eyes
--- [?] = { "Танок клинків", spell=400099 }, -- Blade Dance
--- [?] = { "Руна Різзака", spell=401488 }, -- Cutty's Rune
--- [?] = { "Отруєння", spell=400102 }, -- Envenom
 
 -- Shaman
 [48671] = { "Настанови пращурів", spell=410099 }, -- Ancestral Guidance
@@ -106,31 +105,31 @@ addonTable.sod_engraving = {
 [49198] = { "Шаманська лють", spell=425343 }, -- Shamanistic Rage
 
 -- Warlock
+[48343] = { "Метаморфоза", spell=403938 }, -- Metamorphosis
+[48344] = { "Вогняне озеро", spell=403937 }, -- Lake of Fire
+[48345] = { "Залп тіньових стріл", spell=403936 }, -- Shadow Bolt Volley
+[48347] = { "Майстерність чаклування", spell=403932 }, -- Master Channeler
+[48352] = { "Стріла Хаосу", spell=403925 }, -- Chaos Bolt
+[48355] = { "Витягування душі", spell=403920 }, -- Soul Siphon
+[48356] = { "Мара", spell=403919 }, -- Haunt
 [48848] = { "Вічна химородь", spell=416008 }, -- Everlasting Affliction
 [48850] = { "Демонічна тактика", spell=416009 }, -- Demonic Tactics
 [48885] = { "Спалення", spell=416015 }, -- Incinerate
 [49211] = { "Демонічна благодать", spell=425477 }, -- Demonic Grace
 [49212] = { "Угода з демоном", spell=425476 }, -- Demonic Pact
--- [?] = { "Вогняне озеро", spell=403937 }, -- Lake of Fire
--- [?] = { "Майстерність чаклування", spell=403932 }, -- Master Channeler
--- [?] = { "Витягування душі", spell=403920 }, -- Soul Siphon
--- [?] = { "Стріла Хаосу", spell=403925 }, -- Chaos Bolt
--- [?] = { "Мара", spell=403919 }, -- Haunt
--- [?] = { "Метаморфоза", spell=403938 }, -- Metamorphosis
--- [?] = { "Залп тіньових стріл", spell=403936 }, -- Shadow Bolt Volley
 
 -- Warrior
+[48332] = { "Криваве шаленство", spell=403474 }, -- Blood Frenzy
+[48326] = { "Бичування", spell=403475 }, -- Flagellation
+[48329] = { "Спустошення", spell=403489 }, -- Devastate
+[48325] = { "Нескінченна лють", spell=425443 }, -- Endless Rage
+[48323] = { "Переможний запал", spell=403470 }, -- Victory Rush
+[48330] = { "Несамовитий грім", spell=416003 }, -- Furious Thunder
 [48823] = { "Цілеспрямована лють", spell=425445 }, -- Single-Minded Fury
 [49200] = { "Швидкий удар", spell=425444 }, -- Quick Strike
 [49201] = { "Лютий удар", spell=403476 }, -- Raging Blow
 [49202] = { "Вісник війни", spell=403480 }, -- Warbringer
 [49203] = { "Неконтрольована лють", spell=425446 }, -- Consumed by Rage
 [49204] = { "Несамовитий натиск", spell=425447 }, -- Frenzied Assault
--- [?] = { "Криваве шаленство", spell=403474 }, -- Blood Frenzy
--- [?] = { "Бичування", spell=403475 }, -- Flagellation
--- [?] = { "Спустошення", spell=403489 }, -- Devastate
--- [?] = { "Нескінченна лють", spell=425443 }, -- Endless Rage
--- [?] = { "Переможний запал", spell=403470 }, -- Victory Rush
--- [?] = { "Несамовитий грім", spell=416003 }, -- Furious Thunder
 
 }
