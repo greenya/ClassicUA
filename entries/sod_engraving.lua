@@ -6,8 +6,30 @@ addonTable.sod_engraving = {
 --     [spell] = spell id (this spell should have "rune" key)
 -- }
 
+-- FOUND BY NOT ASSIGNED YET
+-- 48835 - Mass Regeneration
+-- 48837 - Living Bomb
+-- 48848 - Everlasting Affliction
+-- 48850 - Demonic Tactics
+-- 48885 - Incinerate
+-- 49185 - Arcane Surge
+-- 49186 - Icy Veins
+-- 49211 - Demonic Grace
+-- 49212 - Demonic Pact
+
 -- Druid
--- ...
+[48642] = { "Нівечення", spell=410025 }, -- Mangle
+[48644] = { "Гнів Лютошторма", spell=410061 }, -- Fury of Stormrage
+[48646] = { "Дикий рев", spell=410023 }, -- Savage Roar
+[48649] = { "Життєцвіт", spell=410033 }, -- Lifebloom
+[48651] = { "Дикі удари", spell=410021 }, -- Wild Strikes
+[48652] = { "Дикий ріст", spell=410028 }, -- Wild Growth
+[48820] = { "Виживає найсильніший", spell=416042 }, -- Survival of the Fittest
+[48821] = { "Сонячний вогонь", spell=416044 }, -- Sunfire
+[48870] = { "Лобова атака", spell=416046 }, -- Skull Bash
+[48881] = { "Зерно життя", spell=416050 }, -- Living Seed
+[48883] = { "Розірвати", spell=416049 }, -- Lacerate
+[49159] = { "Зоряний сплеск", spell=424718 }, -- Starsurge
 
 -- Hunter
 [48656] = { "Аспект лева", spell=410115 }, -- Aspect of the Lion
