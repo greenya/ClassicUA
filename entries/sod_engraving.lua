@@ -19,7 +19,18 @@ addonTable.sod_engraving = {
 -- ...
 
 -- Paladin
+[48626] = { "Маяк світла", spell=409999 }, -- Beacon of Light
 [48627] = { "Удар хрестоносця", spell=410002 }, -- Crusader Strike
+[48628] = { "Божественна жертва", spell=410010 }, -- Divine Sacrifice
+[48629] = { "Взірець натхнення", spell=410011 }, -- Inspiration Exemplar
+[48631] = { "Щит месника", spell=410008 }, -- Avenger's Shield
+[48633] = { "Печатка мучеництва", spell=410015 }, -- Seal of Martyrdom
+[48635] = { "Божественна буря", spell=410014 }, -- Divine Storm
+[48638] = { "Десниця відплати", spell=410001 }, -- Hand of Reckoning
+[48892] = { "Екзорцист", spell=416037 }, -- Exorcist
+[49213] = { "Ріг Лордерона", spell=425618 }, -- Horn of Lordaeron
+[49214] = { "Егіда", spell=425619 }, -- Aegis
+[49215] = { "Докір", spell=425621 }, -- Rebuke
 
 -- Priest
 -- ...
