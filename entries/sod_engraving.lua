@@ -64,6 +64,17 @@ addonTable.sod_engraving = {
 -- ...
 
 -- Warrior
--- ...
+[48823] = { "Цілеспрямована лють", spell=425445 }, -- Single-Minded Fury
+[49200] = { "Швидкий удар", spell=425444 }, -- Quick Strike
+[49201] = { "Лютий удар", spell=403476 }, -- Raging Blow
+[49202] = { "Вісник війни", spell=403480 }, -- Warbringer
+[49203] = { "Неконтрольована лють", spell=425446 }, -- Consumed by Rage
+[49204] = { "Несамовитий натиск", spell=425447 }, -- Frenzied Assault
+-- [?] = { "Криваве шаленство", spell=403474 }, -- Blood Frenzy
+-- [?] = { "Бичування", spell=403475 }, -- Flagellation
+-- [?] = { "Спустошення", spell=403489 }, -- Devastate
+-- [?] = { "Нескінченна лють", spell=425443 }, -- Endless Rage
+-- [?] = { "Переможний запал", spell=403470 }, -- Victory Rush
+-- [?] = { "Несамовитий грім", spell=416003 }, -- Furious Thunder
 
 }
