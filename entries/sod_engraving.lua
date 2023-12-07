@@ -7,13 +7,9 @@ addonTable.sod_engraving = {
 -- }
 
 -- FOUND BY NOT ASSIGNED YET
--- 48835 - Mass Regeneration
--- 48837 - Living Bomb
 -- 48848 - Everlasting Affliction
 -- 48850 - Demonic Tactics
 -- 48885 - Incinerate
--- 49185 - Arcane Surge
--- 49186 - Icy Veins
 -- 49211 - Demonic Grace
 -- 49212 - Demonic Pact
 
@@ -46,7 +42,18 @@ addonTable.sod_engraving = {
 [49219] = { "Удари кобри", spell=425759 }, -- Cobra Strikes
 
 -- Mage
--- ...
+[48835] = { "Масова регенерація", spell=415939 }, -- Mass Regeneration
+[48837] = { "Жива бомба", spell=415936 }, -- Living Bomb
+[48893] = { "Просвітлення", spell=415942 }, -- Enlightenment
+[49185] = { "Арканічний сплеск", spell=425171 }, -- Arcane Surge
+[49186] = { "Крижана кров", spell=425170 }, -- Icy Veins
+-- [?] = { "Вигорання", spell=401759 }, -- Burnout
+-- [?] = { "Крижані пальці", spell=401765 }, -- Fingers of Frost
+-- [?] = { "Регенерація", spell=401767 }, -- Regeneration
+-- [?] = { "Арканічний спалах", spell=401757 }, -- Arcane Blast
+-- [?] = { "Крижаний спис", spell=401760 }, -- Ice Lance
+-- [?] = { "Повернення у часі", spell=401761 }, -- Rewind Time
+-- [?] = { "Живе полум'я", spell=401768 }, -- Living Flame
 
 -- Paladin
 [48626] = { "Маяк світла", spell=409999 }, -- Beacon of Light
