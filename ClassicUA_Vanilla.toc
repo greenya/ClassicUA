@@ -6,29 +6,13 @@
 ## Version: 4.6
 ## SavedVariables: ClassicUA_Options
 
-entries\book.lua
 entries\class.lua
-entries\item.lua
-entries\npc.lua
 entries\object.lua
-entries\quest_alliance.lua
-entries\quest_horde.lua
-entries\quest_both.lua
 entries\race.lua
-entries\spell.lua
-entries\spell_druid.lua
-entries\spell_hunter.lua
-entries\spell_mage.lua
-entries\spell_paladin.lua
-entries\spell_pet.lua
-entries\spell_priest.lua
-entries\spell_rogue.lua
-entries\spell_shaman.lua
-entries\spell_warlock.lua
-entries\spell_warrior.lua
-entries\sod\sod.xml
-entries\talent_tree.lua
 entries\text.lua
 entries\zone.lua
+entries\classic\index.xml
+entries\sod\index.xml
+entries\classic\talent_tree.lua
 
 main.lua

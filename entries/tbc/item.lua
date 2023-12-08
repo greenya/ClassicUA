@@ -13,6 +13,7 @@ local item_tbc = {
 --     note: value can be string or table (multiple strings)
 -- }
 
+[14647] = { "подарунковий сертифікат Хараноса" }, -- Kharanos Gift Voucher
 [25470] = { "золотий грифон", use="Викликає та звільняє грифона, на якому можна їздити. Цього верхового скакуна можна викликати лише в Закордоні." }, -- Golden Gryphon, @use Summons and dismisses a rideable gryphon mount. This mount can only be summoned in Outland. (3 Sec Cooldown)
 [27498] = { "сувій спритності V", ref=3012 }, -- Scroll of Agility V
 [27499] = { "сувій інтелекту V", ref=955 }, -- Scroll of Intellect V

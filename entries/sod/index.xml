@@ -1,0 +1,18 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+    <Script file="engraving.lua"/>
+    <Script file="npc.lua"/>
+    <Script file="quest_alliance.lua"/>
+    <Script file="quest_both.lua"/>
+    <Script file="quest_horde.lua"/>
+    <Script file="engraving.lua"/>
+    <Script file="spell.lua"/>
+    <Script file="spell_druid.lua"/>
+    <Script file="spell_hunter.lua"/>
+    <Script file="spell_mage.lua"/>
+    <Script file="spell_paladin.lua"/>
+    <Script file="spell_priest.lua"/>
+    <Script file="spell_rogue.lua"/>
+    <Script file="spell_shaman.lua"/>
+    <Script file="spell_warlock.lua"/>
+    <Script file="spell_warrior.lua"/>
+</Ui>
