@@ -99,6 +99,8 @@ addonTable.item = {
 [1129] = { "ікло гуля" }, -- Ghoul Fang
 [1130] = { "флакон павучої отрути" }, -- Vial of Spider Venom
 [1131] = { "тотем шкоди", equip="Шанс завдати ворогу від 75 до 125 шкоди від тіні при отриманні удару в бою. (Імовірність: 1%)" }, -- Totem of Infliction, @equip When struck in combat has a 1% chance of inflicting 75 to 125 Shadow damage to the attacker. (Proc chance: 1%)
+[1132] = { "ріг лісового вовка", use="Викликає та відпускає верхового лісового вовка. (Відновлення 3 сек)" }, -- Horn of the Timber Wolf, @use Summons and dismisses a rideable Timber Wolf. (3 Sec Cooldown)
+[1134] = { "ріг сірого вовка", use="Викликає та відпускає верхового сірого вовка. (Відновлення 3 сек)" }, -- Horn of the Gray Wolf, @use Summons and dismisses a rideable gray wolf. (3 Sec Cooldown)
 [1154] = { "пояс народного ополчення" }, -- Belt of the People's Militia
 [1158] = { "міцна металева булава" }, -- Solid Metal Club
 [1159] = { "кийок повстанців" }, -- Militia Quarterstaff
@@ -196,7 +198,7 @@ addonTable.item = {
 [1561] = { "жнивальне вбрання" }, -- Harvester's Robe
 [1566] = { "лезо народного ополчення" }, -- Edge of the People's Militia
 [1596] = { "нитка з волосся привида" }, -- Ghost Hair Thread
-[1598] = { "квітка гнилі" }, -- Rot Blossom
+[1598] = { "гнилоцвіт" }, -- Rot Blossom
 [1608] = { "булава Череполама" }, -- Skullcrusher Mace
 [1637] = { "лист до Елло" }, -- Letter to Ello
 [1656] = { "перекладений лист" }, -- Translated Letter
@@ -281,6 +283,10 @@ addonTable.item = {
 [2325] = { "чорний барвник" }, -- Black Dye
 [2378] = { "палець скелета" }, -- Skeleton Finger
 [2382] = { "серце Бальзамувальника" }, -- The Embalmer's Heart
+[2411] = { "вузда вороного жеребця", use="Викликає та відпускає верхового вороного жеребця. (Відновлення 3 сек)" }, -- Black Stallion Bridle, @use Summons and dismisses a rideable black stallion. (3 Sec Cooldown)
+[2413] = { "соловий кінь", use="Викликає та відпускає верхового солового коня. (Відновлення 3 сек)" }, -- Palomino, @use Summons and dismisses a rideable palomino. (3 Sec Cooldown)
+[2414] = { "вузда рябого коня", use="Викликає та відпускає верхового рябого коня. (Відновлення 3 сек)" }, -- Pinto Bridle, @use Summons and dismisses a rideable pinto. (3 Sec Cooldown)
+[2415] = { "білий жеребець", use="Викликає та відпускає верхового білого жеребця. (Відновлення 3 сек)" }, -- White Stallion, @use Summons and dismisses a rideable white stallion. (3 Sec Cooldown)
 [2447] = { "мироквіт" }, -- Peacebloom
 [2449] = { "землекорінь" }, -- Earthroot
 [2450] = { "шипшилючка" }, -- Briarthorn
@@ -494,6 +500,7 @@ addonTable.item = {
 [3014] = { "зношена сокира" }, -- Battleworn Axe
 [3016] = { "фоліант Ґюнтера" }, -- Gunther's Spellbook
 [3017] = { "накази Севрена" }, -- Sevren's Orders
+[3018] = { "шкура Люпуса" }, -- Hide of Lupos
 [3033] = { "тверда куля", desc="Додає 7.5 пошкодження за секунду" }, -- Solid Shot, @desc Adds 7.5 damage per second
 [3035] = { "оброблений гарбуз" }, -- Laced Pumpkin
 [3041] = { "мушкетон \"В Яблучко\"" }, -- "Mage-Eye" Blunderbuss
@@ -666,6 +673,7 @@ addonTable.item = {
 [3511] = { "плащ народного ополчення" }, -- Cloak of the People's Militia
 [3514] = { "череп Мор'Ладіма" }, -- Mor'Ladim's Skull
 [3515] = { "посох Атеріка" }, -- Ataeric's Staff
+[3516] = { "голова Лесковара" }, -- Lescovar's Head
 [3517] = { "барильце \"Землекопського міцного\"" }, -- Keg of Shindigger Stout
 [3518] = { "розшифрований лист" }, -- Decrypted Letter
 [3520] = { "зіпсоване барильце" }, -- Tainted Keg
@@ -831,6 +839,8 @@ addonTable.item = {
 [3876] = { "ікло Баґ'тіри" }, -- Fang of Bhag'thera
 [3877] = { "кіготь Тетіса" }, -- Talon of Tethis
 [3879] = { "лапа Сін'Далла" }, -- Paw of Sin'Dall
+[3880] = { "голова Банґалаша" }, -- Head of Bangalash
+[3897] = { "око Запаморока" }, -- Dizzy's Eye
 [3898] = { "бібліотечний сувій" }, -- Library Scrip
 [3899] = { "\"Легенди Ґурубаші, том 3\"", flavor="Камінь Припливів" }, -- Legends of the Gurubashi, Volume 3, @flavor Stone of the Tides
 [3900] = { "портвейн \"Пупеллівербос\"" }, -- Pupellyverbos Port
@@ -873,6 +883,7 @@ addonTable.item = {
 [4085] = { "зламаний горщик Кронжека", flavor="Горщик вкритий манометрами та циферблатами." }, -- Krazek's Crock Pot, @flavor A cooking pot covered with gauges and dials.
 [4086] = { "світлова гвинтівка" }, -- Flash Rifle
 [4094] = { "уламок скрижалі" }, -- Tablet Shard
+[4098] = { "акуратно складена записка" }, -- Carefully Folded Note
 [4100] = { "зім'ята записка" }, -- Crumpled Note
 [4101] = { "подрана записка" }, -- Ripped Note
 [4102] = { "порвана записка" }, -- Torn Note
@@ -950,6 +961,7 @@ addonTable.item = {
 [4388] = { "промінь заплутаності", use="Перетворює ціль в лепрогнома, зменшуючи її шкоду від атак в ближньому бою та заклинань на 40, а швидкість пересування на 20% на 12 секунд. (Відновлення 1 хв)" }, -- Discombobulator Ray, @use Transforms the target into a Leper Gnome, reducing its melee and spell damage by 40 and its movement rate by 20% for 12 sec. (1 Min Cooldown)
 [4389] = { "гірохронатом" }, -- Gyrochronatom
 [4390] = { "залізна граната", use="Завдає від 132 до 218 шкоди вогнем та оглушує цілі в радіусі 3 м на 3 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Iron Grenade, @use Inflicts 132 to 218 Fire damage and stuns targets for 3 sec in a 3 yard radius.  Any damage will break the effect. (1 Min Cooldown)
+[4391] = { "портативний жнивальний збирач", use="Створити портативний жнивальний збирач, що битиветься за вас протягом 10 хв або доки його не буде знищено. (Відновлення 10 хв)" }, -- Compact Harvest Reaper Kit, @use Creates a Compact Harvest Reaper that will fight for you for 10 min or until it is destroyed. (10 Min Cooldown)
 [4392] = { "вдосконалений манекен-мішень", use="Встановлення на землі манекена, який притягуватиме до себе найближчих ворогів.  Існує 15 сек або до знищення. (Відновлення 2 хв)" }, -- Advanced Target Dummy, @use Drops a target dummy on the ground that attracts nearby monsters to attack it. Lasts for 15 seconds or until killed. (2 Min Cooldown)
 [4394] = { "велика залізна бомба", use="Завдає від 149 до 201 шкоди вогнем та оглушує цілі в радіусі 5 м на 3 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Big Iron Bomb, @use Inflicts 149 to 201 Fire damage and stuns targets in a 5 yard radius for 3 sec.  Any damage will break the effect. (1 Min Cooldown)
 [4395] = { "гоблінська міна", use="Розмістити на землі гоблінську міну, яка вибухне, завдавши від 394 до 506 вогняної шкоди коли поруч пройде ворог.  Міна існує 1 хв. (Відновлення 1 хв)" }, -- Goblin Land Mine, @use Places the Goblin Land Mine on the ground.  It will explode for 394 to 506 fire damage the next time a hostile creature passes near it.  The mine has a duration of 1 min. (1 Min Cooldown)
@@ -1260,7 +1272,7 @@ addonTable.item = {
 [5054] = { "самофланж" }, -- Samophlange
 [5055] = { "неушкоджений ріг раптора" }, -- Intact Raptor Horn
 [5056] = { "зразок кореня" }, -- Root Sample
-[5057] = { "стиглий кавун", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Ripe Watermelon, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[5057] = { "стиглий кавун", ref=117 }, -- Ripe Watermelon
 [5058] = { "яйце силітида" }, -- Silithid Egg
 [5059] = { "рийний кіготь", use="Вирити яйця силітидів." }, -- Digging Claw, @use Digs up silithid eggs.
 [5060] = { "інструменти зломника" }, -- Thieves' Tools
@@ -1269,6 +1281,7 @@ addonTable.item = {
 [5063] = { "ікло Крініга Рилоскала" }, -- Kreenig Snarlsnout's Tusk
 [5064] = { "кіготь чарокрилої" }, -- Witchwing Talon
 [5065] = { "лейтенантський перстень гарпії" }, -- Harpy Lieutenant Ring
+[5066] = { "розколинь", ref=117 }, -- Fissure Plant
 [5067] = { "голова Серени" }, -- Serena's Head
 [5068] = { "висохле насіння", use="Помістити зерна в розколину Застійного оазису." }, -- Dried Seeds, @use Plant these seeds in the Stagnant Oasis fissure.
 [5072] = { "череп Лока" }, -- Lok's Skull
@@ -1473,7 +1486,7 @@ addonTable.item = {
 [5537] = { "голова Сарілуса Гидкородного" }, -- Sarilus Foulborne's Head
 [5538] = { "обручка Воррела" }, -- Vorrel's Wedding Ring
 [5539] = { "рекомендаційний лист", flavor="Від брата Антона з Багряного Походу" }, -- Letter of Commendation, @flavor Sealed by Brother Anton of the Scarlet Crusade
-[5544] = { "череп Дала Кривавопазура" }, -- Dal Bloodclaw's Skull
+[5544] = { "череп Дала Кровопазура" }, -- Dal Bloodclaw's Skull
 [5547] = { "відтворений жезл" }, -- Reconstructed Rod
 [5565] = { "пекельний камінь" }, -- Infernal Stone
 [5570] = { "яйце мохового павука" }, -- Deepmoss Egg
@@ -1530,8 +1543,13 @@ addonTable.item = {
 [5643] = { "рецепт: Велике зілля люті", use="Навчає вас створювати велике зілля люті." }, -- Recipe: Great Rage Potion, @use Teaches you how to make a Great Rage Potion.
 [5645] = { "наповнений турмаліновий фіал" }, -- Filled Tourmaline Phial
 [5646] = { "флакон з благословенною водою" }, -- Vial of Blessed Water
+[5655] = { "вузда каштанової кобили", use="Викликає та відпускає верхову каштанову кобилу. (Відновлення 3 сек)" }, -- Chestnut Mare Bridle, @use Summons and dismisses a rideable Chestnut Mare. (3 Sec Cooldown)
+[5656] = { "вузда гнідого коня", use="Викликає та відпускає верхового гнідого коня. (Відновлення 3 сек)" }, -- Brown Horse Bridle, @use Summons and dismisses a rideable brown horse. (3 Sec Cooldown)
 [5659] = { "тліюча вуглинка" }, -- Smoldering Embers
+[5663] = { "ріг рудого вовка", use="Викликає та відпускає верхового рудого вовка. (Відновлення 3 сек)" }, -- Horn of the Red Wolf, @use Summons and dismisses a rideable red wolf. (3 Sec Cooldown)
 [5664] = { "іржава шрапнель" }, -- Corroded Shrapnel
+[5665] = { "ріг темного вовка", use="Викликає та відпускає верхового темного вовка. (Відновлення 3 сек)" }, -- Horn of the Dire Wolf, @use Summons and dismisses a rideable Dire Wolf. (3 Sec Cooldown)
+[5668] = { "ріг бурого вовка", use="Викликає та відпускає верхового бурого вовка. (Відновлення 3 сек)" }, -- Horn of the Brown Wolf, @use Summons and dismisses a rideable Brown Wolf. (3 Sec Cooldown)
 [5669] = { "уламки пилового дідька" }, -- Dust Devil Debris
 [5675] = { "кристалічна луска" }, -- Crystalized Scales
 [5686] = { "голова Ордана" }, -- Ordanus' Head
@@ -1576,6 +1594,7 @@ addonTable.item = {
 [5800] = { "запчастини Крейвела" }, -- Kravel's Parts
 [5801] = { "гуано краальського кажана" }, -- Kraul Guano
 [5802] = { "крихкі запчастини для машини" }, -- Delicate Car Parts
+[5803] = { "дрібка пудри блаженства" }, -- Speck of Dream Dust
 [5804] = { "гоблінські чутки" }, -- Goblin Rumors
 [5805] = { "ревнісне серце" }, -- Heart of Zeal
 [5806] = { "Йолопиво" }, -- Fool's Stout
@@ -1687,7 +1706,7 @@ addonTable.item = {
 [6062] = { "грубі в'язані наручі" }, -- Heavy Cord Bracers
 [6063] = { "підковані залізом рукавиці" }, -- Cold Steel Gauntlets
 [6064] = { "мініатюрні платинові диски" }, -- Miniature Platinum Discs
-[6065] = { "дослідження просторової конвергенції Хадґара", flavor="Ці папери запечатані магічними силами." }, -- Khadgar's Essays on Dimensional Convergence, @flavor These documents are sealed by a magical force.
+[6065] = { "дослідження просторової конвергенції Кадґара", flavor="Ці папери запечатані магічними силами." }, -- Khadgar's Essays on Dimensional Convergence, @flavor These documents are sealed by a magical force.
 [6066] = { "голова хана Дез'гепа" }, -- Khan Dez'hepah's Head
 [6067] = { "вухо кентавра" }, -- Centaur Ear
 [6068] = { "рецепт: Тіньова олія", use="Навчає вас створювати тіньову олію." }, -- Recipe: Shadow Oil, @use Teaches you how to make Shadow Oil.
@@ -1901,7 +1920,7 @@ addonTable.item = {
 [6782] = { "значок маршала Знесилія" }, -- Marshal Haggard's Badge
 [6783] = { "ключ Мертвозуба", use="Відкриває скриню Мертвозуба." }, -- Dead-tooth's Key, @use Opens Dead-tooth's Strongbox.
 [6784] = { "укріплені бойові рукавиці" }, -- Braced Handguards
-[6785] = { "Сили Порожнечі", flavor="За авторством Хадґара" }, -- Powers of the Void, @flavor By the hand of Khadgar
+[6785] = { "Сили Порожнечі", flavor="За авторством Кадґара" }, -- Powers of the Void, @flavor By the hand of Khadgar
 [6788] = { "пояс маґрамського мисливця" }, -- Magram Hunter's Belt
 [6789] = { "церемоніальна ковдра кентаврів" }, -- Ceremonial Centaur Blanket
 [6790] = { "перстень спокою" }, -- Ring of Calm
@@ -1988,6 +2007,7 @@ addonTable.item = {
 [6989] = { "флакон крові скаженолютого сатира" }, -- Vial of Hatefury Blood
 [6990] = { "камінь молодшого пекельника" }, -- Lesser Infernal Stone
 [6991] = { "жаристе вугілля" }, -- Smoldering Coal
+[6992] = { "партія руди Джордана" }, -- Jordan's Ore Shipment
 [6993] = { "партія очищеної руди Джордана" }, -- Jordan's Refined Ore Shipment
 [6994] = { "деревина білокам'яного дуба" }, -- Whitestone Oak Lumber
 [6995] = { "осквернений самоцвіт Кора" }, -- Corrupted Kor Gem
@@ -2031,6 +2051,8 @@ addonTable.item = {
 [7132] = { "набедреники жорстокості" }, -- Brutal Legguards
 [7133] = { "гауберк жорстокості", use="Збільшити лють на 30. (Відновлення 1 год)" }, -- Brutal Hauberk, @use Increase Rage by 30. (1 Hour Cooldown)
 [7134] = { "міцна гомілкова кістка Драконопащих" }, -- Sturdy Dragonmaw Shinbone
+[7206] = { "зразок води Дзеркального озера" }, -- Mirror Lake Water Sample
+[7207] = { "фляга Дженні" }, -- Jennea's Flask, @use Use at the base of the Mirror Lake waterfall.
 [7208] = { "ключ Тазана", use="Використовується для відкриття ранця Тазана." }, -- Tazan's Key, @use Used to open Tazan's satchel.
 [7209] = { "ранець Тазана" }, -- Tazan's Satchel
 [7226] = { "маг-тастичний гізмонітор" }, -- Mage-tastic Gizmonitor
@@ -2044,6 +2066,7 @@ addonTable.item = {
 [7267] = { "бездоганне павутиння" }, -- Pristine Spider Silk
 [7268] = { "зразок води Завіана" }, -- Xavian Water Sample
 [7269] = { "фляга Дейно", use="Наповнити водою біля підніжжя водоспаду Завіана." }, -- Deino's Flask, @use Use at the base of the Xavian waterfall.
+[7270] = { "волосина веселої сестри" }, -- Laughing Sister's Hair
 [7272] = { "заряджена блискавкою тростина" }, -- Bolt Charged Bramble
 [7273] = { "тотемна палиця Зів'ялої Кори", use="Зберіть 10 тотемних палиць і скористайтесь ними біля каменю Зовнішнього Поневолення." }, -- Witherbark Totem Stick, @use Gather 10 totem sticks, and use them at the Stone of Outer Binding.
 [7274] = { "\"Ритуали сили\"", flavor="Автор: чаклун Тірт" }, -- Rituals of Power, @flavor By Magus Tirth
@@ -2280,7 +2303,14 @@ addonTable.item = {
 [8463] = { "накази воєвождя", flavor="Печатка зламана." }, -- Warchief's Orders, @flavor The seal is broken.
 [8483] = { "бурдюк з водою Пустелебродів" }, -- Wastewander Water Pouch
 [8484] = { "польовий набір Пристробляхводоканалу", flavor="Модель 103-XB!" }, -- Gadgetzan Water Co. Care Package, @flavor Model 103-XB!
+[8485] = { "переноска для кішки (бомбейська кішка)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу кішку." }, -- Cat Carrier (Bombay), @use Right Click to summon and dismiss your cat.
+[8486] = { "переноска для кішки (корніш-рекс)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу кішку." }, -- Cat Carrier (Cornish Rex), @use Right Click to summon and dismiss your cat.
+[8487] = { "переноска для кішки (руда смугаста кішка)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу кішку." }, -- Cat Carrier (Orange Tabby), @use Right Click to summon and dismiss your cat.
+[8488] = { "переноска для кішки (срібляста смугаста кішка)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу кішку." }, -- Cat Carrier (Silver Tabby), @use Right Click to summon and dismiss your cat.
+[8489] = { "переноска для кішки (біле кошеня)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити ваше кошеня." }, -- Cat Carrier (White Kitten), @use Right Click to summon and dismiss your cat.
 [8497] = { "клітка з кроликом (снігоступ)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашого кролика." }, -- Rabbit Crate (Snowshoe), @use Right Click to summon and dismiss your rabbit.
+[8500] = { "велика рогата сова", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу сову." }, -- Great Horned Owl, @use Right Click to summon and dismiss your owl.
+[8501] = { "соколина сова", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу сову." }, -- Hawk Owl, @use Right Click to summon and dismiss your owl.
 [8523] = { "набір для польових досліджень" }, -- Field Testing Kit
 [8524] = { "джерело енергії моделі 4711-FTZ", flavor="Це джерело енергії може живити набір для польових досліджень." }, -- Model 4711-FTZ Power Source, @flavor Using this power source will activate the Field Testing Kit.
 [8525] = { "список покупок Зінґе" }, -- Zinge's Purchase Order
@@ -2293,9 +2323,14 @@ addonTable.item = {
 [8548] = { "водоматичний стрижень" }, -- Divino-matic Rod
 [8563] = { "червоний механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Red Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
 [8564] = { "яйце гіпогрифа", flavor="Воно величезне!" }, -- Hippogryph Egg, @flavor It's huge!
+[8583] = { "ріг верхового коня-скелета", use="Викликає та відпускає верхового коня-скелета. (Відновлення 3 сек)" }, -- Horn of the Skeletal Mount, @use Summons and dismisses a rideable skeletal horse. (3 Sec Cooldown)
 [8584] = { "невикористаний пристрій для пошуку води", use="Наповнити невикористаний пристрій для пошуку води біля водойми Варти Зажурених Пісків." }, -- Untapped Dowsing Widget, @use Fill the Untapped Dowsing Widget at the Sandsorrow Watch water hole.
 [8585] = { "використаний пристрій для пошуку води" }, -- Tapped Dowsing Widget
+[8586] = { "свисток строкатого червоного раптора", use="Викликає та відпускає верхового раптора. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Whistle of the Mottled Red Raptor, @use Summons and dismisses a rideable Raptor.  This is a very fast mount. (3 Sec Cooldown)
 [8587] = { "частини тіл комах Сентіпаар" }, -- Centipaar Insect Parts
+[8588] = { "свисток смарагдового раптора", use="Викликає та відпускає верхового раптора. (Відновлення 3 сек)" }, -- Whistle of the Emerald Raptor, @use Summons and dismisses a rideable Raptor. (3 Sec Cooldown)
+[8591] = { "свисток бірюзового раптора", use="Викликає та відпускає верхового раптора. (Відновлення 3 сек)" }, -- Whistle of the Turquoise Raptor, @use Summons and dismisses a rideable Raptor. (3 Sec Cooldown)
+[8592] = { "свисток лілового раптора", use="Викликає та відпускає верхового раптора. (Відновлення 3 сек)" }, -- Whistle of the Violet Raptor, @use Summons and dismisses a rideable Raptor. (3 Sec Cooldown)
 [8593] = { "землемірне спорядження Полотноміра" }, -- Scrimshank's Surveying Gear
 [8594] = { "звіт про дослідження комах" }, -- Insect Analysis Report
 [8595] = { "синій механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Blue Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
@@ -2304,7 +2339,9 @@ addonTable.item = {
 [8624] = { "червоний бенгальський вогонь" }, -- Red Sparkler
 [8625] = { "білий бенгальський вогонь" }, -- White Sparkler
 [8626] = { "синій бенгальський вогонь" }, -- Blue Sparkler
-[8629] = { "поводи смугастого ночезуба", use="Викликає та відпускає верхового ночезуба. (Відновлення 3 сек)" }, -- Reins of the Striped Nightsaber, @use Summons and dismisses a rideable Sabre Cat. (3 Sec Cooldown)
+[8629] = { "поводи смугастого ночезуба", use="Викликає та відпускає верхового шаблезуба. (Відновлення 3 сек)" }, -- Reins of the Striped Nightsaber, @use Summons and dismisses a rideable Sabre Cat. (3 Sec Cooldown)
+[8631] = { "поводи смугастого кригозуба", use="Викликає та відпускає верхового смугастого кригозуба. (Відновлення 3 сек)" }, -- Reins of the Striped Frostsaber, @use Summons and dismisses a rideable Striped Frostsaber. (3 Sec Cooldown)
+[8632] = { "поводи плямистого кригозуба", use="Викликає та відпускає верхового плямистого кригозуба. (Відновлення 3 сек)" }, -- Reins of the Spotted Frostsaber, @use Summons and dismisses a rideable Spotted Frostsaber (3 Sec Cooldown)
 [8643] = { "незвичайне яйце", flavor="У цьому яйці є щось особливе..." }, -- Extraordinary Egg, @flavor There's something very special about this egg...
 [8644] = { "чудове яйце" }, -- Fine Egg
 [8645] = { "звичайне яйце" }, -- Ordinary Egg
@@ -2639,6 +2676,7 @@ addonTable.item = {
 [10338] = { "свіжа туша жеври", use="Покласти біля мертвого дерева на північному заході від Брашпиля щоб приманити Ішамугала." }, -- Fresh Zhevra Carcass, @use Place near the Dead Tree northwest of Ratchet, to lure Ishamuhale.
 [10358] = { "дюрацинові браслети" }, -- Duracin Bracers
 [10359] = { "вічні чоботи" }, -- Everlast Boots
+[10394] = { "свисток лугової собачки", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу лугову собачку." }, -- Prairie Dog Whistle, @use Right Click to summon and dismiss your prairie dog.
 [10398] = { "механічне курча", use="Клацніть правою кнопкою миші, щоб викликати і відпустити курча." }, -- Mechanical Chicken, @use Right Click to summon and dismiss your chicken.
 [10414] = { "зразок панцира тріскощелепа" }, -- Sample Snapjaw Shell
 [10418] = { "блискуча мітрилова печатка", use="Збільшує броню на 50, супротив всім школам магії на 10 та надає імунітет до страху на 30 сек. (Відновлення 10 хв)", flavor="Мужність, честь і, найголовніше, — терпіння " }, -- Glimmering Mithril Insignia, @use Increases armor by 50, all resistances by 10 and grants immunity to Fear for 30 sec. (10 Min Cooldown), @flavor Courage, Honor, and above all, Patience
@@ -3108,7 +3146,7 @@ addonTable.item = {
 [12184] = { "плоть раптора" }, -- Raptor Flesh
 [12185] = { "капелюх адмірала Кривавого Вітрила", use="Викликати чи відпустити вашого птаха." }, -- Bloodsail Admiral's Hat, @use Right Click to summon and dismiss your bird.
 [12190] = { "зілля сну без сновидінь", use="Занурює у сон без сновидінь на {1} с. Протягом цього часу відновлює {2} здоров'я та {3} мани. (Відновлення 2 хв)#for {1} sec#{2} health and {3} mana" }, -- Dreamless Sleep Potion, @use Puts the imbiber in a dreamless sleep for 12 sec.  During that time the imbiber heals 1200 health and 1200 mana. (2 Min Cooldown)
-[12191] = { "скринька \"Срібястого Світанку\"" }, -- Silver Dawning's Lockbox
+[12191] = { "скринька \"Сріблястої Зорі\"" }, -- Silver Dawning's Lockbox
 [12192] = { "скринька \"Туманного Серпанку\"" }, -- Mist Veil's Lockbox
 [12207] = { "гігантське яйце" }, -- Giant Egg
 [12209] = { "пісний вовчий стейк", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Lean Wolf Steak, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
@@ -3142,8 +3180,11 @@ addonTable.item = {
 [12299] = { "сітчасті рукавички" }, -- Netted Gloves
 [12300] = { "сфера драконічної енергії", use="Керування розумом Вуглечвара, коли його сила волі ослабне." }, -- Orb of Draconic Energy, @use Controls Emberstrife's mind when his will falters.
 [12301] = { "ключ від бамбукової клітки" }, -- Bamboo Cage Key
+[12302] = { "поводи кригозуба", use="Викликає та відпускає верхового кригозуба. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Reins of the Frostsaber, @use Summons and dismisses a rideable Frostsaber.  This is a very fast mount. (3 Sec Cooldown)
+[12303] = { "поводи ночезуба", use="Викликає та відпускає верхового ночезуба. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Reins of the Nightsaber, @use Summons and dismisses a rideable Nightsaber.  This is a very fast mount. (3 Sec Cooldown)
 [12323] = { "некована печатка Вознесіння", use="Розмістити нековану печатку Вознесіння перед Вуглечваром." }, -- Unforged Seal of Ascension, @use Places the Unforged Seal of Ascension. Use in front of Emberstrife.
 [12324] = { "викувана печатка Вознесіння" }, -- Forged Seal of Ascension
+[12330] = { "ріг рудого вовка", use="Викликає та відпускає верхового рудого вовка. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Horn of the Red Wolf, @use Summons and dismisses a rideable red wolf.  This is a very fast mount. (3 Sec Cooldown)
 [12334] = { "уламки кригобоїв" }, -- Frostmaul Shards
 [12335] = { "самоцвіт Зотлілого Терену" }, -- Gemstone of Smolderthorn
 [12336] = { "самоцвіт Кам'яного Шпиля" }, -- Gemstone of Spirestone
@@ -3158,10 +3199,10 @@ addonTable.item = {
 [12347] = { "наповнена чаша очищення", use="Створити чашу з очищенною їжею, що сподобається хутропузам. Потрібні фрукти, горіхи та зерно з табору Чорнолісних." }, -- Filled Cleansing Bowl, @use Creates a bowl of purified food that the furbolg are sure to enjoy.  It requires fruit, grain, and nuts from the Blackwood camp.
 [12349] = { "зразок води зі Скельноджерельної річки" }, -- Cliffspring River Sample
 [12350] = { "порожня посудина для зразків" }, -- Empty Sampling Tube
-[12351] = { "ріг арктичного вовка", use="Викликає та відпускає арктичного вовка, на якому можна їздити верхи. Це дуже швидке створіння. (Відновлення 3 сек)" }, -- Horn of the Arctic Wolf, @use Summons and dismisses a rideable arctic wolf.  This is a very fast mount. (3 Sec Cooldown)
+[12351] = { "ріг арктичного вовка", use="Викликає та відпускає верхового арктичного вовка. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Horn of the Arctic Wolf, @use Summons and dismisses a rideable arctic wolf.  This is a very fast mount. (3 Sec Cooldown)
 [12352] = { "доленосна застібка" }, -- Doomrigger's Clasp
-[12353] = { "вуздечка білого жеребця", use="Викликає та відпускає їздового білого жеребця. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- White Stallion Bridle, @use Summons and dismisses a rideable white stallion.  This is a very fast mount. (3 Sec Cooldown)
-[12354] = { "вуздечка солового коня", use="Викликає та відпускає їздового солового коня. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Palomino Bridle, @use Summons and dismisses a rideable Palomino.  This is a very fast mount. (3 Sec Cooldown)
+[12353] = { "вузда білого жеребця", use="Викликає та відпускає верхового білого жеребця. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- White Stallion Bridle, @use Summons and dismisses a rideable white stallion.  This is a very fast mount. (3 Sec Cooldown)
+[12354] = { "вузда солового коня", use="Викликає та відпускає верхового солового коня. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Palomino Bridle, @use Summons and dismisses a rideable Palomino.  This is a very fast mount. (3 Sec Cooldown)
 [12355] = { "талісман порчі" }, -- Talisman of Corruption
 [12356] = { "яйце виверни з Високого Сідала" }, -- Highperch Wyvern Egg
 [12358] = { "скрижаль Темнокаменя" }, -- Darkstone Tablet
@@ -3348,6 +3389,7 @@ addonTable.item = {
 [12907] = { "заражена вода місячного колодязя" }, -- Corrupt Moonwell Water
 [12922] = { "порожня фляга", use="Наповнити водою з місячного колодязя Джеденара." }, -- Empty Canteen, @use This container should be filled with water from the corrupt moon well in Jaedenar.
 [12923] = { "луска Авбі" }, -- Awbee's Scale
+[12924] = { "ритуальна свічка", flavor="Ритуальна свічка з глибин Джеденара, нового дому Тіньової Ради." }, -- Ritual Candle, @flavor A ritual candle from the depths of Jaedenar, new home of the Shadow Council.
 [12925] = { "зміїна шкіра Арікари" }, -- Arikara Serpent Skin
 [12928] = { "механічний єті Умі", use="Виберіть друзів Умі та випустіть механічного єті. (Відновлення 30 сек)" }, -- Umi's Mechanical Yeti, @use Select Umi's friend and click to release the Mechanical Yeti. (30 Sec Cooldown)
 [12938] = { "кров героїв" }, -- Blood of Heroes
@@ -3397,6 +3439,7 @@ addonTable.item = {
 [13310] = { "креслення: Точний приціл", use="Навчає вас створювати точний приціл." }, -- Schematic: Accurate Scope, @use Teaches you how to make an Accurate Scope.
 [13313] = { "священні писання високородних", flavor="Сторінки пошарпані та порвані..." }, -- Sacred Highborne Writings, @flavor The pages are tattered and worn...
 [13315] = { "заповіт надії", use="Відновлює 500 здоров'я. Можна використати лише при 10% здоров'я. (Відновлення 30 хв)" }, -- Testament of Hope, @use Restores 500 health. Can only be used at 10% health. (30 Min Cooldown)
+[13317] = { "свисток кремового раптора", use="Викликає та відпускає верхового раптора. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Whistle of the Ivory Raptor, @use Summons and dismisses a rideable Raptor.  This is a very fast mount. (3 Sec Cooldown)
 [13320] = { "арканічний прискорювач", flavor="Використовується як каталізатор для перетворення токсинів в котлах Скари." }, -- Arcane Quickener, @flavor This is used as a catalyst in transforming the toxins of the Scourge's cauldrons.
 [13321] = { "зелений механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Green Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
 [13322] = { "нефарбований механобіг", use="Викликає та відпускає верхового механічного довгобіга. (Відновлення 3 сек)" }, -- Unpainted Mechanostrider, @use Summons and dismisses a rideable mechanical tallstrider. (3 Sec Cooldown)
@@ -3407,6 +3450,10 @@ addonTable.item = {
 [13327] = { "крижано-блакитний механобіг, модель А", use="Викликає та відпускає верхового механічного довгобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Icy Blue Mechanostrider Mod A, @use Summons and dismisses a rideable mechanical tallstrider.   This is a very fast mount. (3 Sec Cooldown)
 [13328] = { "чорний баран", use="Викликає та відпускає верхового чорного барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Black Ram, @use Summons and dismisses a rideable black ram.  This is a very fast mount. (3 Sec Cooldown)
 [13329] = { "морозний баран", use="Викликає та відпускає верхового морозного барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Frost Ram, @use Summons and dismisses a rideable frost ram.  This is a very fast mount. (3 Sec Cooldown)
+[13331] = { "червоний кінь-скелет", use="Викликає та відпускає верхового коня-скелета. (Відновлення 3 сек)" }, -- Red Skeletal Horse, @use Summons and dismisses a rideable skeletal horse. (3 Sec Cooldown)
+[13332] = { "блакитний кінь-скелет", use="Викликає та відпускає верхового коня-скелета. (Відновлення 3 сек)" }, -- Blue Skeletal Horse, @use Summons and dismisses a rideable skeletal horse. (3 Sec Cooldown)
+[13333] = { "коричневий кінь-скелет", use="Викликає та відпускає верхового коня-скелета. (Відновлення 3 сек)" }, -- Brown Skeletal Horse, @use Summons and dismisses a rideable skeletal horse. (3 Sec Cooldown)
+[13334] = { "зелений бойовий кінь-скелет", use="Викликає та відпускає верхового бойового коня-скелета. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Green Skeletal Warhorse, @use Summons and dismisses a rideable skeletal warhorse.  This is a very fast mount. (3 Sec Cooldown)
 [13347] = { "кристал Зін-Малора", equip="Завдає шкоди та випалює від 100 до 500 мани, якщо ви не гідні." }, -- Crystal of Zin-Malor, @equip Deals damage and drains 100 to 500 mana every second if you are not worthy.
 [13350] = { "знак Чорної Варти" }, -- Insignia of the Black Guard
 [13351] = { "фартух багряного коваля молотів" }, -- Crimson Hammersmith's Apron
@@ -3482,6 +3529,7 @@ addonTable.item = {
 [13536] = { "ріг пробудження", use="Розбудити сплячого друїда. (Відновлення 30 сек)" }, -- Horn of Awakening, @use Awaken the sleeping druid. (30 Sec Cooldown)
 [13542] = { "демонічна скриня" }, -- Demon Box
 [13544] = { "примарна сутність", flavor="Дозволяє спілкуватися з мерцями Тверджі Дарроу." }, -- Spectral Essence, @flavor Allows communication with the deceased of Caer Darrow.
+[13545] = { "молюск" }, -- Shellfish
 [13546] = { "кровочеревка", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Bloodbelly Fish, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
 [13562] = { "останки Трея Світлогарта" }, -- Remains of Trey Lightforge
 [13582] = { "повідець зерглінга", use="Клацніть правою кнопкою миші, щоб викликати і відпустити зерглінга." }, -- Zergling Leash, @use Right Click to summon and dismiss your zergling.
@@ -3599,6 +3647,11 @@ addonTable.item = {
 [15206] = { "нефритоперстний жезл" }, -- Jadefinger Baton
 [15207] = { "сталевий щит" }, -- Steelcap Shield
 [15208] = { "кенарійський місячний пил", use="Застосувати біля каменя місячного совуха, щоб викликати його захисника — Місяцекігтя." }, -- Cenarion Moondust, @use Apply near a Moonkin Stone to bring forth the stone's defender, Lunaclaw.
+[15209] = { "набір реліквій" }, -- Relic Bundle, @use Place in the Darrowshire Town Square.
+[15277] = { "сірий кодо", use="Викликає та відпускає верхового сірого кодо. (Відновлення 3 сек)" }, -- Gray Kodo, @use Summons and dismisses a rideable gray kodo. (3 Sec Cooldown)
+[15290] = { "бурий кодо", use="Викликає та відпускає верхового бурого кодо. (Відновлення 3 сек)" }, -- Brown Kodo, @use Summons and dismisses a rideable brown kodo. (3 Sec Cooldown)
+[15292] = { "зелений кодо", use="Викликає та відпускає верхового зеленого кодо. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Green Kodo, @use Summons and dismisses a rideable green kodo.  This is a very fast mount. (3 Sec Cooldown)
+[15293] = { "бірюзовий кодо", use="Викликає та відпускає верхового бірюзового кодо. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Teal Kodo, @use Summons and dismisses a rideable teal kodo.  This is a very fast mount. (3 Sec Cooldown)
 [15314] = { "набір реліквій" }, -- Bundle of Relics
 [15328] = { "ключ Джозефа" }, -- Joseph's Key
 [15335] = { "короткий меч з шипосталі" }, -- Briarsteel Shortsword
@@ -4006,6 +4059,7 @@ addonTable.item = {
 [16869] = { "череп Провидця" }, -- The Skull of Scryer
 [16870] = { "череп Сомнуса" }, -- The Skull of Somnus
 [16871] = { "череп Хроналіса" }, -- The Skull of Chronalis
+[16872] = { "череп Акстроза" }, -- The Skull of Axtroz
 [16873] = { "плетені хутряні рукавички" }, -- Braidfur Gloves
 [16885] = { "важка скринька" }, -- Heavy Junkbox
 [16886] = { "шабля беззаконника", equip="Збільшує силу атаки на 15." }, -- Outlaw Sabre, @equip +15 Attack Power.
@@ -4230,8 +4284,11 @@ addonTable.item = {
 [18182] = { "хроматичний покрив Світанку", use="Додати на наплічники чари, що збільшують супротив всім школам магії на 5." }, -- Chromatic Mantle of the Dawn, @use Permanently adds 5 resistance to all magic schools to a shoulder slot item.
 [18207] = { "зуб орка" }, -- Orc Tooth
 [18229] = { "Посібник Нета Пеґла з екстремальної риболовлі", flavor="У цій книжці відсутні всі сторінки, окрім останньої." }, -- Nat Pagle's Guide to Extreme Anglin', @flavor This book is missing every page but the last.
+[18232] = { "польовий ремонтний робот 74A", use="Розгорнути польового ремонтного робота, який може ремонтувати спорядження і купувати непотрібні товари. Через 10 хвилин його двигун виходить з ладу." }, -- Field Repair Bot 74A, @use Unfolds into a Field Repair Bot that can repair damaged items and purchase unwanted goods.  After 10 minutes its internal motor fails.
+[18235] = { "креслення: польовий ремонтний робот 74A", use="Навчає вас створювати польового ремонтного робота 74A, який відремонтує будь-яке спорядження за звичайну ціну." }, -- Schematic: Field Repair Bot 74A, @use Teaches you how to make a Field Repair Bot 74A that will repair any player's equipment for the normal cost.
 [18240] = { "огрська дубильна рідина" }, -- Ogre Tannin
 [18244] = { "чорний бойовий баран", use="Викликає та відпускає верхового чорного бойового барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Black War Ram, @use Summons and dismisses a rideable black war ram.  This is a very fast mount. (3 Sec Cooldown)
+[18248] = { "червоний бойовий кінь-скелет", use="Викликає та відпускає верхового бойового коня-скелета. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Red Skeletal Warhorse, @use Summons and dismisses a rideable red skeletal warhorse.  This is a very fast mount. (3 Sec Cooldown)
 [18250] = { "ключ від кайданів Ґордока", flavor="Використовується з кайданами Ґордока." }, -- Gordok Shackle Key, @flavor Used with Gordok ogre shackles.
 [18253] = { "величезне зілля відживлення", use="Відновлює від {1} до {2} мани та здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Major Rejuvenation Potion, @use Restores 1440 to 1760 mana and health. (2 Min Cooldown)
 [18256] = { "зміцнений фіал" }, -- Imbued Vial
@@ -4279,6 +4336,7 @@ addonTable.item = {
 [18412] = { "фрагмент ядра" }, -- Core Fragment
 [18420] = { "кістколом", equip="Збільшує ваш шанс нанесення критичного удару на 1%." }, -- Bonecrusher, @equip Improves your chance to get a critical strike by 1%.
 [18421] = { "шолом таємного лісу", equip="Збільшує ваш шанс нанесення критичного удару на 1%." }, -- Backwood Helm, @equip Improves your chance to get a critical strike by 1%.
+[18422] = { "голова Оніксії", flavor="Голова матері чорних драконів" }, -- Head of Onyxia, @flavor The head of the Black Dragonflight's Brood Mother
 [18423] = { "голова Оніксії", flavor="Голова матері чорних драконів" }, -- Head of Onyxia, @flavor The head of the Black Dragonflight's Brood Mother
 [18424] = { "осокові чоботи" }, -- Sedge Boots
 [18426] = { "тенета Лестендріс" }, -- Lethtendris's Web
@@ -4362,6 +4420,8 @@ addonTable.item = {
 [18752] = { "кадильниця екзорцизму", use="Виявлення духів, що населяють руїни Страходолу. (Відновлення 30 сек)" }, -- Exorcism Censer, @use Reveal the spirits that haunt the ruins of Terrordale. (30 Sec Cooldown)
 [18753] = { "арканітовий бард" }, -- Arcanite Barding
 [18762] = { "уламок зеленого полум'я", equip="Збільшує шкоду від заклинань і ефектів вогню на 16." }, -- Shard of the Green Flame, @equip Increases damage done by Fire spells and effects by up to 16.
+[18766] = { "поводи стрімкого кригозуба", use="Викликає та відпускає верхового стрімкого кригозуба. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Reins of the Swift Frostsaber, @use Summons and dismisses a rideable Swift Frostsaber.  This is a very fast mount. (3 Sec Cooldown)
+[18767] = { "поводи стрімкого імлозуба", use="Викликає та відпускає верхового стрімкого імлозуба. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Reins of the Swift Mistsaber, @use Summons and dismisses a rideable Swift Mistsaber.  This is a very fast mount. (3 Sec Cooldown)
 [18769] = { "Зачаровані торієві обладунки", flavor="Том I" }, -- Enchanted Thorium Platemail, @flavor Volume I
 [18770] = { "Зачаровані торієві обладунки", flavor="Том II" }, -- Enchanted Thorium Platemail, @flavor Volume II
 [18771] = { "Зачаровані торієві обладунки", flavor="Том III" }, -- Enchanted Thorium Platemail, @flavor Volume III
@@ -4369,6 +4429,9 @@ addonTable.item = {
 [18773] = { "стрімкий білий механобіг", use="Викликає та відпускає стрімкого білого механобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Swift White Mechanostrider, @use Summons and dismisses a Swift White Mechanostrider.   This is a very fast mount. (3 Sec Cooldown)
 [18774] = { "стрімкий жовтий механобіг", use="Викликає та відпускає стрімкого жовтого механобіга. Це дуже швидкий засіб пересування. (Відновлення 3 сек)" }, -- Swift Yellow Mechanostrider, @use Summons and dismisses a Swift Yellow Mechanostrider.   This is a very fast mount. (3 Sec Cooldown)
 [18775] = { "збагачений маною корм для коней", flavor="Овес та зерно змішане з наповненим маною печивом Сріблястого Світанку." }, -- Manna-Enriched Horse Feed, @flavor Oats and grains specially mixed with the Argent Dawn's enriched manna biscuits.
+[18776] = { "стрімкий соловий кінь", use="Викликає та відпускає верхового стрімкого солового коня. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Palomino, @use Summons and dismisses a rideable Swift Palomino.  This is a very fast mount. (3 Sec Cooldown)
+[18777] = { "стрімкий гнідий кінь", use="Викликає та відпускає верхового стрімкого гнідого коня. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Brown Steed, @use Summons and dismisses a rideable Swift Brown Steed.  This is a very fast mount. (3 Sec Cooldown)
+[18778] = { "стрімкий білий кінь", use="Викликає та відпускає верхового стрімкого білого коня. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift White Steed, @use Summons and dismisses a rideable Swift White Steed.  This is a very fast mount. (3 Sec Cooldown)
 [18779] = { "нижня частина книги з кування обладунків: том I", use="Об'єднати дві половини книги з кування обладунків: том I." }, -- Bottom Half of Advanced Armorsmithing: Volume I, @use Combines the Top and Bottom Half of Advanced Armorsmithing: Volume I.
 [18780] = { "верхня частина книги з кування обладунків: том I", use="Об'єднати дві половини книги з кування обладунків: том I." }, -- Top Half of Advanced Armorsmithing: Volume I, @use Combines the Top and Bottom Half of Advanced Armorsmithing: Volume I.
 [18781] = { "нижня частина книги з кування обладунків: том II", use="Об'єднати дві половини книги з кування обладунків: том II." }, -- Bottom Half of Advanced Armorsmithing: Volume II, @use Combines the Top and Bottom Half of Advanced Armorsmithing: Volume II.
@@ -4378,7 +4441,17 @@ addonTable.item = {
 [18785] = { "стрімкий білий баран", use="Викликає та відпускає верхового стрімкого білого барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift White Ram, @use Summons and dismisses a rideable swift white ram.  This is a very fast mount. (3 Sec Cooldown)
 [18786] = { "стрімкий коричневий баран", use="Викликає та відпускає верхового стрімкого коричневого барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Brown Ram, @use Summons and dismisses a rideable swift brown ram.  This is a very fast mount. (3 Sec Cooldown)
 [18787] = { "стрімкий сірий баран", use="Викликає та відпускає верхового стрімкого сірого барана. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Gray Ram, @use Summons and dismisses a rideable swift gray ram.  This is a very fast mount. (3 Sec Cooldown)
+[18788] = { "стрімкий блакитний раптор", use="Викликає та відпускає верхового раптора. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Blue Raptor, @use Summons and dismisses a rideable Raptor.  This is a very fast mount. (3 Sec Cooldown)
+[18789] = { "стрімкий оливковий раптор", use="Викликає та відпускає верхового раптора. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Olive Raptor, @use Summons and dismisses a rideable Raptor.  This is a very fast mount. (3 Sec Cooldown)
+[18790] = { "стрімкий помаранчевий раптор", use="Викликає та відпускає верхового раптора. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Swift Orange Raptor, @use Summons and dismisses a rideable Raptor.  This is a very fast mount. (3 Sec Cooldown)
+[18791] = { "ліловий бойовий кінь-скелет", use="Викликає та відпускає верхового бойового коня-скелета. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Purple Skeletal Warhorse, @use Summons and dismisses a rideable skeletal warhorse.  This is a very fast mount. (3 Sec Cooldown)
 [18792] = { "благословенний арканітовий бард" }, -- Blessed Arcanite Barding
+[18793] = { "великий білий кодо", use="Викликає та відпускає верхового кодо. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Great White Kodo, @use Summons and dismisses a rideable kodo.  This is a very fast mount. (3 Sec Cooldown)
+[18794] = { "великий бурий кодо", use="Викликає та відпускає верхового кодо. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Great Brown Kodo, @use Summons and dismisses a rideable kodo.  This is a very fast mount. (3 Sec Cooldown)
+[18795] = { "великий сірий кодо", use="Викликає та відпускає верхового кодо. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Great Gray Kodo, @use Summons and dismisses a rideable kodo.  This is a very fast mount. (3 Sec Cooldown)
+[18796] = { "ріг стрімкого бурого вовка", use="Викликає та відпускає верхового вовка. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Horn of the Swift Brown Wolf, @use Summons and dismisses a rideable wolf.  This is a very fast mount. (3 Sec Cooldown)
+[18797] = { "ріг стрімкого лісового вовка", use="Викликає та відпускає верхового вовка. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Horn of the Swift Timber Wolf, @use Summons and dismisses a rideable wolf.  This is a very fast mount. (3 Sec Cooldown)
+[18798] = { "ріг стрімкого сірого вовка", use="Викликає та відпускає верхового вовка. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Horn of the Swift Gray Wolf, @use Summons and dismisses a rideable wolf.  This is a very fast mount. (3 Sec Cooldown)
 [18799] = { "спасенна душа коня" }, -- Charger's Redeemed Soul
 [18802] = { "тіньове зілля", use="Наділяє вас духом тіні, унаслідок чого жителі Джеденара ставляться до вас дружелюбно. Діє 20 хвилин." }, -- Shadowy Potion, @use Infuses imbiber with a taint of shadow, making him/her friendly to the denizens of Jaedenar.  Lasts 20 minutes.
 [18804] = { "сумка лорда Тінелома", flavor="В сумці знаходиться кристал провидіння та благословенний арканітовий бард." }, -- Lord Grayson's Satchel, @flavor Your finished Divination Scryer and Blessed Arcanite Barding are inside the satchel.
@@ -4388,6 +4461,7 @@ addonTable.item = {
 [18839] = { "бойове зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Combat Healing Potion, @use Restores 700 to 900 health. (2 Min Cooldown)
 [18841] = { "бойове зілля мани", use="Відновлює від {1} до {2} мани. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Combat Mana Potion, @use Restores 900 to 1500 mana. (2 Min Cooldown)
 [18880] = { "голова Тінегубителя" }, -- Darkreaver's Head
+[18902] = { "поводи стрімкого штормозуба", use="Викликає та відпускає верхового стрімкого штормозуба. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Reins of the Swift Stormsaber, @use Summons and dismisses a rideable Swift Stormsaber.  This is a very fast mount. (3 Sec Cooldown)
 [18904] = { "ультразменшувач Зорбіна", use="Зменшити велетня Фераласа до менш небезпечної форми. (Відновлення 30 сек)" }, -- Zorbin's Ultra-Shrinker, @use Zap a Feralas giant into a more manageable form. (30 Sec Cooldown)
 [18922] = { "секретний рецепт: вогненний флюс", flavor="Тримати подалі від Торієвого братства." }, -- Secret Plans: Fiery Flux, @flavor Keep away from Thorium Brotherhood.
 [18942] = { "вогненний флюс" }, -- Fiery Flux
@@ -4412,6 +4486,7 @@ addonTable.item = {
 [18969] = { "бездоганна шкура єті" }, -- Pristine Yeti Hide
 [18972] = { "ідеальна шкура єті" }, -- Perfect Yeti Hide
 [18987] = { "наказ Чорнорука", flavor="Лист з наказом Ренда Чорнорука." }, -- Blackhand's Command, @flavor A letter of command from Rend Blackhand.
+[19002] = { "голова Нефаріана", flavor="Голова Нефаріана, сина Смертекрила." }, -- Head of Nefarian, @flavor The head of Nefarian: Brood of Deathwing.
 [19003] = { "голова Нефаріана", flavor="Голова Нефаріана, сина Смертекрила." }, -- Head of Nefarian, @flavor The head of Nefarian: Brood of Deathwing.
 [19004] = { "крихітний камінь здоров'я", use="Миттєво відновлює 110 здоров'я. (Відновлення 2 хв)" }, -- Minor Healthstone, @use Instantly restores 110 life. (2 Min Cooldown)
 [19005] = { "крихітний камінь здоров'я", use="Миттєво відновлює 120 здоров'я. (Відновлення 2 хв)" }, -- Minor Healthstone, @use Instantly restores 120 life. (2 Min Cooldown)
@@ -5388,30 +5463,38 @@ addonTable.item = {
 [21545] = { "припаси Димного Лісу", flavor="Використати до 2010" }, -- Smokywood Supplies, @flavor Use before 2010
 [21546] = { "еліксир більшої вогнеміці", ref=6373 }, -- Elixir of Greater Firepower
 [21547] = { "рецепт: Еліксир більшої вогнеміці", use="Навчає вас створювати еліксир більшої вогнеміці." }, -- Recipe: Elixir of Greater Firepower, @use Teaches you how to make an Elixir of Greater Firepower.
-[21557] = { "маленька червона ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Small Red Rocket, @use Throw into a firework launcher!
-[21558] = { "маленька синя ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Small Blue Rocket, @use Throw into a firework launcher!
-[21559] = { "маленька зелена ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Small Green Rocket, @use Throw into a firework launcher!
-[21561] = { "маленька біла ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Small White Rocket, @use Throw into a firework launcher!
-[21562] = { "маленька жовта ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Small Yellow Rocket, @use Throw into a firework launcher!
+[21557] = { "маленька червона ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Small Red Rocket, @use Throw into a firework launcher!
+[21558] = { "маленька синя ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Small Blue Rocket, @use Throw into a firework launcher!
+[21559] = { "маленька зелена ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Small Green Rocket, @use Throw into a firework launcher!
+[21560] = { "маленька фіолетова ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Small Purple Rocket, @use Throw into a firework launcher!
+[21561] = { "маленька біла ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Small White Rocket, @use Throw into a firework launcher!
+[21562] = { "маленька жовта ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Small Yellow Rocket, @use Throw into a firework launcher!
 [21569] = { "пускова установка для феєрверків", use="Розмістити на землі, щоб запускати феєрверки. Триває 30 хвилин." }, -- Firework Launcher, @use Place on the ground to launch firework rockets.  Lasts 30 minutes.
 [21570] = { "пускова установка для залпів феєрверків", use="Розмістити на землі, щоб запускати залпи феєрверків. Триває 30 хвилин." }, -- Cluster Launcher, @use Place on the ground to launch cluster rockets.  Lasts 30 minutes.
-[21571] = { "залп синіх ракет", use="Зарядіть нею пускову установку для залпів феєрверків!" }, -- Blue Rocket Cluster, @use Throw into a cluster launcher!
-[21574] = { "залп зелених ракет", use="Зарядіть нею пускову установку для залпів феєрверків!" }, -- Green Rocket Cluster, @use Throw into a cluster launcher!
-[21576] = { "залп червоних ракет", use="Зарядіть нею пускову установку для залпів феєрверків!" }, -- Red Rocket Cluster, @use Throw into a cluster launcher!
-[21589] = { "велика синя ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Large Blue Rocket, @use Throw into a firework launcher!
-[21590] = { "велика зелена ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Large Green Rocket, @use Throw into a firework launcher!
-[21592] = { "велика червона ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Large Red Rocket, @use Throw into a firework launcher!
-[21593] = { "велика біла ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Large White Rocket, @use Throw into a firework launcher!
-[21595] = { "велика жовта ракета", use="Зарядіть нею пускову установку для феєрверків!" }, -- Large Yellow Rocket, @use Throw into a firework launcher!
+[21571] = { "залп синіх ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Blue Rocket Cluster, @use Throw into a cluster launcher!
+[21574] = { "залп зелених ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Green Rocket Cluster, @use Throw into a cluster launcher!
+[21575] = { "залп фіолетових ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Purple Rocket Cluster, @use Throw into a cluster launcher!
+[21576] = { "залп червоних ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Red Rocket Cluster, @use Throw into a cluster launcher!
+[21577] = { "залп білих ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- White Rocket Cluster, @use Throw into a cluster launcher!
+[21578] = { "залп жовтих ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Yellow Rocket Cluster, @use Throw into a cluster launcher!
+[21589] = { "велика синя ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Large Blue Rocket, @use Throw into a firework launcher!
+[21590] = { "велика зелена ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Large Green Rocket, @use Throw into a firework launcher!
+[21591] = { "велика фіолетова ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Large Purple Rocket, @use Throw into a firework launcher!
+[21592] = { "велика червона ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Large Red Rocket, @use Throw into a firework launcher!
+[21593] = { "велика біла ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Large White Rocket, @use Throw into a firework launcher!
+[21595] = { "велика жовта ракета", use="Зарядіть пускову установку для феєрверків!" }, -- Large Yellow Rocket, @use Throw into a firework launcher!
 [21640] = { "набір феєрверків Місячного фестивалю", flavor="Наповнений феєрверками для стильного святкування Місячного фестивалю!" }, -- Lunar Festival Fireworks Pack, @flavor Filled with fireworks to celebrate the Lunar Festival in style!
 [21709] = { "перстень полеглого бога", equip={ "Збільшує шкоду і зцілення від магічних заклинань і ефектів на 37.", "Збільшує ваш шанс нанесення удару заклинаннями на 1%." } }, -- Ring of the Fallen God, @equip Increases damage and healing done by magical spells and effects by up to 37., @equip Improves your chance to hit with spells by 1%.
 [21710] = { "плащ полеглого бога" }, -- Cloak of the Fallen God
 [21711] = { "запрошення на Місячний фестиваль", use="Телепортує заклинача з великого місячного сяйва. (Відновлення 10 хв)" }, -- Lunar Festival Invitation, @use Teleports the caster from within Greater Moonlight. (10 Min Cooldown)
 [21712] = { "амулет полеглого бога", equip={ "Збільшує зцілення від заклинань і ефектів на 57.", "Відновлює 6 мани кожні 5 сек." } }, -- Amulet of the Fallen God, @equip Increases healing done by spells and effects by up to 57., @equip Restores 6 mana per 5 sec.
 [21713] = { "свічка Елуни", use="Вистрілити в ціль феєрверком. (Відновлення 3 сек)" }, -- Elune's Candle, @use Shoots a firework at target. (3 Sec Cooldown)
-[21714] = { "залп великих синіх ракет", use="Зарядіть нею пускову установку для залпів феєрверків!" }, -- Large Blue Rocket Cluster, @use Throw into a cluster launcher!
-[21716] = { "залп великих зелених ракет", use="Зарядіть нею пускову установку для залпів феєрверків!" }, -- Large Green Rocket Cluster, @use Throw into a cluster launcher!
-[21718] = { "залп великих червоних ракет", use="Зарядіть нею пускову установку для залпів феєрверків!" }, -- Large Red Rocket Cluster, @use Throw into a cluster launcher!
+[21714] = { "залп великих синіх ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Large Blue Rocket Cluster, @use Throw into a cluster launcher!
+[21716] = { "залп великих зелених ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Large Green Rocket Cluster, @use Throw into a cluster launcher!
+[21717] = { "залп великих фіолетових ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Large Purple Rocket Cluster, @use Throw into a cluster launcher!
+[21718] = { "залп великих червоних ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Large Red Rocket Cluster, @use Throw into a cluster launcher!
+[21719] = { "залп великих білих ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Large White Rocket Cluster, @use Throw into a cluster launcher!
+[21720] = { "залп великих жовтих ракет", use="Зарядіть пускову установку для залпів феєрверків!" }, -- Large Yellow Rocket Cluster, @use Throw into a cluster launcher!
 [21721] = { "місячне сяйво", use="Алкогольний напій, що дивно світиться." }, -- Moonglow, @use A strangely glowing alcoholic beverage.
 [21722] = { "викрійка: Святкова сукня", use="Навчає вас пошиттю святкової сукні." }, -- Pattern: Festival Dress, @use Teaches you how to sew a Festive Red Dress.
 [21723] = { "викрійка: Святковий костюм", use="Навчає вас пошиттю святкового костюма." }, -- Pattern: Festival Suit, @use Teaches you how to sew a Festival Suit.
@@ -5433,6 +5516,7 @@ addonTable.item = {
 [21741] = { "креслення залпів ракет" }, -- Cluster Rocket Recipes
 [21742] = { "креслення великих ракет" }, -- Large Rocket Recipes
 [21743] = { "креслення залпів великих ракет" }, -- Large Cluster Rocket Recipes
+[21744] = { "залп щасливих ракет", use="Вам пощастило! Зарядіть пускову установку для залпів феєрверків!" }, -- Lucky Rocket Cluster, @use You're in luck!  Throw into a cluster launcher!
 [21747] = { "святкова петарда", use="Кидайте на землю! (Відновлення 2 сек)" }, -- Festival Firecracker, @use Throw on the ground! (2 Sec Cooldown)
 [21749] = { "план бойового завдання I" }, -- Combat Task Briefing I
 [21750] = { "план бойового завдання II" }, -- Combat Task Briefing II
