@@ -13,6 +13,5 @@ entries\text.lua
 entries\zone.lua
 entries\classic\index.xml
 entries\sod\index.xml
-entries\classic\talent_tree.lua
 
 main.lua

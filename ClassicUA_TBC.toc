@@ -13,6 +13,5 @@ entries\text.lua
 entries\zone.lua
 entries\classic\index.xml
 entries\tbc\index.xml
-entries\tbc\talent_tree.lua
 
 main.lua
