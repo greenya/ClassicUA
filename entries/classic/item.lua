@@ -271,10 +271,12 @@ addonTable.item = {
 [2289] = { "сувій сили II", ref=954 }, -- Scroll of Strength II
 [2290] = { "сувій інтелекту II", ref=955 }, -- Scroll of Intellect II
 [2296] = { "рило великого іклоштрика" }, -- Great Goretusk Snout
+[2300] = { "тиснений шкіряний жилет" }, -- Embossed Leather Vest
 [2309] = { "тиснені шкіряні чоботи" }, -- Embossed Leather Boots
 [2310] = { "тиснений шкіряний плащ" }, -- Embossed Leather Cloak
 [2313] = { "накладки з середньої шкіри", use="Укріплення предмета, який носять на тілі, ногах, руках чи ступнях, що назавжди збільшить показник його броні на 16." }, -- Medium Armor Kit, @use Permanently increase the armor value of an item worn on the chest, legs, hands or feet by 16.
 [2314] = { "укріплений шкіряний обладунок" }, -- Toughened Leather Armor
+[2316] = { "темний шкіряний плащ" }, -- Dark Leather Cloak
 [2318] = { "легка шкіра" }, -- Light Leather
 [2319] = { "середня шкіра" }, -- Medium Leather
 [2320] = { "груба нитка" }, -- Coarse Thread
@@ -315,6 +317,7 @@ addonTable.item = {
 [2571] = { "плетені онучі" }, -- Viny Wrappings
 [2575] = { "червона лляна сорочка" }, -- Red Linen Shirt
 [2581] = { "щільний лляний бинт", use="Відновлює 114 здоров'я за 6 сек." }, -- Heavy Linen Bandage, @use Heals 114 damage over 6 sec.
+[2587] = { "сіра вовняна сорочка" }, -- Gray Woolen Shirt
 [2589] = { "лляна тканина" }, -- Linen Cloth
 [2592] = { "вовняне полотно" }, -- Wool Cloth
 [2594] = { "кружка дворфійської медовухи", use="Міцний алкогольний напій." }, -- Flagon of Dwarven Honeymead, @use A strong alcoholic beverage.
@@ -356,6 +359,7 @@ addonTable.item = {
 [2672] = { "жилаве м'ясо вовка" }, -- Stringy Wolf Meat
 [2676] = { "блискоквіт" }, -- Shimmerweed
 [2678] = { "лагідні спеції", flavor="Використовується для підсилення смаку деяких страв." }, -- Mild Spices, @flavor Used to enhance the flavor in cooking recipes.
+[2680] = { "вовчатина з прянощами", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 2 на 15 хв.#Restores {1} health over {2}" }, -- Spiced Wolf Meat, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 2 Stamina and Spirit for 15 min.
 [2681] = { "смажене м'ясо кнура", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Roasted Boar Meat, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [2686] = { "громузвар", use="Досить слабкий алкогольний напій." }, -- Thunder Ale, @use A fairly weak alcoholic beverage.
 [2690] = { "пояс з пряжкою" }, -- Latched Belt
@@ -653,6 +657,7 @@ addonTable.item = {
 [3468] = { "дані досліджень Ренферрела", flavor="Запечатані дані досліджень аптекаря Ренферрела." }, -- Renferrel's Findings, @flavor The sealed findings of Apothecary Renferrel.
 [3470] = { "грубий шліфувальний камінь" }, -- Rough Grinding Stone
 [3471] = { "мідний плетений жилет" }, -- Copper Chain Vest
+[3473] = { "рунічні мідні штани" }, -- Runed Copper Pants
 [3476] = { "язик сірого ведмедя" }, -- Gray Bear Tongue
 [3477] = { "пасока підкрадача" }, -- Creeper Ichor
 [3478] = { "шорсткий шліфувальний камінь" }, -- Coarse Grinding Stone
@@ -926,7 +931,9 @@ addonTable.item = {
 [4232] = { "середня шкура" }, -- Medium Hide
 [4234] = { "важка шкіра" }, -- Heavy Leather
 [4235] = { "важка шкура" }, -- Heavy Hide
+[4237] = { "шкіряний ремінь ручної роботи" }, -- Handstitched Leather Belt
 [4239] = { "тиснені шкіряні рукавички" }, -- Embossed Leather Gloves
+[4251] = { "наплечі жителя пагорбів" }, -- Hillman's Shoulders
 [4253] = { "укріплені шкіряні рукавиці" }, -- Toughened Leather Gloves
 [4265] = { "накладки з важкої шкіри", use="Укріплення предмета, який носять на тілі, ногах, руках чи ступнях, що назавжди збільшить показник його броні на 24. Можна використовувати лише на предметах 15-го рівня і вище." }, -- Heavy Armor Kit, @use Permanently increase the armor value of an item worn on the chest, legs, hands or feet by 24.  Only usable on items level 15 and above.
 [4278] = { "мала руда кривавого каменю" }, -- Lesser Bloodstone Ore
@@ -939,11 +946,13 @@ addonTable.item = {
 [4340] = { "сірий барвник" }, -- Gray Dye
 [4341] = { "жовтий барвник" }, -- Yellow Dye
 [4342] = { "пурпуровий барвник" }, -- Purple Dye
+[4343] = { "коричневі лляні штани" }, -- Brown Linen Pants
 [4344] = { "коричнева лляна сорочка" }, -- Brown Linen Shirt
 [4357] = { "грубий вибуховий порошок" }, -- Rough Blasting Powder
 [4358] = { "грубий динаміт", use="Завдає від 26 до 34 шкоди вогнем в радіусі 5 м. (Відновлення 1 хв)" }, -- Rough Dynamite, @use Inflicts 26 to 34 Fire damage in a 5 yard radius. (1 Min Cooldown)
 [4360] = { "груба мідна бомба", use="Завдає від 22 до 28 шкоди вогнем та оглушує цілі в радіусі 3 м на 1 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Rough Copper Bomb, @use Inflicts 22 to 28 Fire damage and stuns targets in a 3 yard radius for 1 sec.  Any damage will break the effect. (1 Min Cooldown)
 [4361] = { "мідна трубка" }, -- Copper Tube
+[4362] = { "грубий громостріл" }, -- Rough Boomstick
 [4363] = { "мідний модулятор" }, -- Copper Modulator
 [4364] = { "шорсткий вибуховий порошок" }, -- Coarse Blasting Powder
 [4365] = { "шорсткий динаміт", use="Завдає від 51 до 69 шкоди вогнем в радіусі 5 м. (Відновлення 1 хв)" }, -- Coarse Dynamite, @use Inflicts 51 to 69 Fire damage in a 5 yard radius. (1 Min Cooldown)
@@ -1468,6 +1477,7 @@ addonTable.item = {
 [5494] = { "жменя зорепилу" }, -- Handful of Stardust
 [5504] = { "гостре м'ясо молюска" }, -- Tangy Clam Meat
 [5505] = { "щоденник Тероніса", flavor="Щоденник підмочений, але загалом в хорошому стані." }, -- Teronis' Journal, @flavor The journal is waterlogged, but in otherwise good condition.
+[5507] = { "вишукана підзорна труба", use="Дозволяє поглянути в далечінь." }, -- Ornate Spyglass, @use Allows you to look far into the distance.
 [5508] = { "впалий місячний камінь" }, -- Fallen Moonstone
 [5509] = { "камінь здоров'я", use="Миттєво відновлює 500 здоров'я. (Відновлення 2 хв)" }, -- Healthstone, @use Instantly restores 500 life. (2 Min Cooldown)
 [5510] = { "великий камінь здоров'я", use="Миттєво відновлює 800 здоров'я. (Відновлення 2 хв)" }, -- Greater Healthstone, @use Instantly restores 800 life. (2 Min Cooldown)
@@ -1479,6 +1489,7 @@ addonTable.item = {
 [5520] = { "щоденник Велінди" }, -- Velinde's Journal
 [5521] = { "ключ Велінди" }, -- Velinde's Key
 [5522] = { "камінь чарів", equip="Підвищує вашу ймовірність завдати критичного удару закляттями на {1}%.#spells by {1}", use="Усуває всі магічні ефекти з заклинача та поглинає {1} магічного пошкодження протягом {2} хв.#absorb {1}#for {2} min" }, -- Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 400 magic damage for 1 min.
+[5527] = { "гоблінські фаршировані молюски", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Goblin Deviled Clams, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
 [5530] = { "сліпучий порошок" }, -- Blinding Powder
 [5533] = { "фоліант Ілкруда Маґтрулла" }, -- Ilkrud Magthrull's Tome
 [5535] = { "Компендіум полеглих" }, -- Compendium of the Fallen
@@ -1486,6 +1497,7 @@ addonTable.item = {
 [5537] = { "голова Сарілуса Гидкородного" }, -- Sarilus Foulborne's Head
 [5538] = { "обручка Воррела" }, -- Vorrel's Wedding Ring
 [5539] = { "рекомендаційний лист", flavor="Від брата Антона з Багряного Походу" }, -- Letter of Commendation, @flavor Sealed by Brother Anton of the Scarlet Crusade
+[5542] = { "оздоблений перлами плащ" }, -- Pearl-clasped Cloak
 [5544] = { "череп Дала Кровопазура" }, -- Dal Bloodclaw's Skull
 [5547] = { "відтворений жезл" }, -- Reconstructed Rod
 [5565] = { "пекельний камінь" }, -- Infernal Stone
@@ -1758,6 +1770,7 @@ addonTable.item = {
 [6215] = { "збалансований бойовий посох" }, -- Balanced Fighting Stick
 [6219] = { "дуговий гайковерт" }, -- Arclight Spanner
 [6223] = { "щит Темнодолу" }, -- Crest of Darkshire
+[6238] = { "коричнева лляна мантія" }, -- Brown Linen Robe
 [6245] = { "торба Карнітола" }, -- Karnitol's Satchel
 [6246] = { "кіготь скаженолютого сатира" }, -- Hatefury Claw
 [6247] = { "ріг скаженолютого сатира" }, -- Hatefury Horn
@@ -1796,6 +1809,8 @@ addonTable.item = {
 [6316] = { "делікатес з озерної навіженки", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Loch Frenzy Delight, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [6317] = { "сира озерна навіженка", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Raw Loch Frenzy, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [6335] = { "вицвілі чоботи" }, -- Grizzled Boots
+[6339] = { "рунічний срібний жезл" }, -- Runed Silver Rod
+[6350] = { "грубі бронзові чоботи" }, -- Rough Bronze Boots
 [6358] = { "маслянистий чорноротик" }, -- Oily Blackmouth
 [6359] = { "вогнеперий луціан" }, -- Firefin Snapper
 [6361] = { "сирий веселковий тунець", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Raw Rainbow Fin Albacore, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
@@ -1964,6 +1979,8 @@ addonTable.item = {
 [6851] = { "сутність вигнанця" }, -- Essence of the Exile
 [6866] = { "знак життя", use="Знак життя повертає персонажа, пов'язаного з ним, до життя." }, -- Symbol of Life, @use The Symbol of Life will bring the person attuned to it back to life.
 [6887] = { "плямистий жовтохвіст", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Spotted Yellowtail, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
+[6888] = { "запечене яйце з травами", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 2 на 15 хв.#Restores {1} health over {2}" }, -- Herb Baked Egg, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 2 Stamina and Spirit for 15 min.
+[6890] = { "копчена ведмежатина", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Smoked Bear Meat, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [6894] = { "серце вихору" }, -- Whirlwind Heart
 [6895] = { "ковальський молоток Джордана" }, -- Jordan's Smithing Hammer
 [6898] = { "сфера Соран'рука", equip={ "Збільшує шкоду від заклинань і ефектів вогню на 4.", "Збільшує шкоду від заклинань і ефектів тіні на 4." }, use="Відновлює 25 здоров'я кожні 3 сек протягом 30 сек. (Відновлення 30 хв)" }, -- Orb of Soran'ruk, @equip Increases damage done by Fire spells and effects by up to 4., @equip Increases damage done by Shadow spells and effects by up to 4., @use Restores 25 health every 3 sec for 30 sec. (30 Min Cooldown)
@@ -2944,6 +2961,7 @@ addonTable.item = {
 [11282] = { "підписана угода Оґлторпа" }, -- Oglethorpe's Signed Pledge
 [11283] = { "підписана угода Надспалаха" }, -- Overspark's Signed Pledge
 [11286] = { "торієві кайдани", use="Надягнути на Ґрарка у слушний момент.", flavor="Нерозривні пута." }, -- Thorium Shackles, @use Use on Grark when the time is right!, @flavor Unbreakable bindings.
+[11287] = { "малий чарівний жезл" }, -- Lesser Magic Wand
 [11309] = { "Серце гори" }, -- The Heart of the Mountain
 [11312] = { "втрачений рецепт Громоварів" }, -- Lost Thunderbrew Recipe
 [11313] = { "голова Рібблі" }, -- Ribbly's Head
@@ -3792,6 +3810,7 @@ addonTable.item = {
 [15866] = { "вкрита пилом медична сумка", use="Відновлює 50 мани кожні 3 сек протягом 15 сек. (Відновлення 30 хв)" }, -- Veildust Medicine Bag, @use Restores 50 mana every 3 sec for 15 sec. (30 Min Cooldown)
 [15867] = { "призматичний оберіг", use="Збільшує супротив всім школам магії на 20 протягом 30 сек. (Відновлення 30 хв)" }, -- Prismcharm, @use Increases all resistances by 20 for 30 sec. (30 Min Cooldown)
 [15868] = { "наказ верховного лицаря", flavor="Скріплено печаткою Багряного Походу." }, -- The Grand Crusader's Command, @flavor Bears the Seal of the Scarlet Crusade
+[15869] = { "срібний ключ-відмичка", use="Дозволяє відкривати прості замки. Одноразовий." }, -- Silver Skeleton Key, @use Allows opening of simple locks.  The skeleton key is consumed in the process.
 [15873] = { "бездонна кружка Джона Лахмітника", use="Збільшує витривалість на 10 і зменшує вхідну фізичну шкоду на 5 на 10 хв. Натомість знижує силу та спритність на 5 і збільшує вхідну магічну шкоду на 20. (Відновлення 30 хв)" }, -- Ragged John's Neverending Cup, @use Increases Stamina by 10 and reduces physical damage taken by 5 for 10 min. However, lowers Strength and Agility by 5 and increases magical damage taken by up to 20. (30 Min Cooldown)
 [15874] = { "м'якопанцирний молюск" }, -- Soft-shelled Clam
 [15875] = { "гниле яблуко", use="Використовуйте, щоб замаскуватися під члена Багряного Походу.", flavor="Черв'як — найкраща частина." }, -- Rotten Apple, @use Use to disguise yourself as a member of the Scarlet Crusade., @flavor The Worm is the Best Part.
@@ -5123,7 +5142,11 @@ addonTable.item = {
 [20737] = { "обпалений вулканічний камінь" }, -- Singed Corestone
 [20741] = { "ритуальний тотем Мертволісих", flavor="Тотем глибоко просякнутий скверною." }, -- Deadwood Ritual Totem, @flavor The totem is thick with the taint of corruption.
 [20742] = { "ритуальний тотем Зимокрайових", flavor="Тотем глибоко просякнутий скверною." }, -- Winterfall Ritual Totem, @flavor The totem is thick with the taint of corruption.
+[20744] = { "слабка чарівня олія", use="При нанесенні на зброю збільшує шкоду від магічних заклинань на 8. Триває 30 хвилин." }, -- Minor Wizard Oil, @use While applied to target weapon it increases spell damage by up to 8.  Lasts for 30 minutes.
+[20745] = { "слабка олія мани", use="При нанесенні на зброю відновлює 4 мани кожні 5 сек. Триває 30 хвилин." }, -- Minor Mana Oil, @use While applied to target weapon it restores 4 mana to the caster every 5 seconds.  Lasts for 30 minutes.
 [20746] = { "проста чарівна олія", use="При нанесенні на зброю збільшує шкоду від магічних заклинань на 16. Триває 30 хвилин." }, -- Lesser Wizard Oil, @use While applied to target weapon it increases spell damage by up to 16.  Lasts for 30 minutes.
+[20747] = { "проста олія мани", use="При нанесенні на зброю відновлює 8 мани кожні 5 сек. Триває 30 хвилин." }, -- Lesser Mana Oil, @use While applied to target weapon it restores 8 mana to the caster every 5 seconds.  Lasts for 30 minutes.
+[20748] = { "блискуча олія мани", use="При нанесенні на зброю відновлює 12 мани кожні 5 сек та збільшує зцілення від заклять на 25. Триває 30 хвилин." }, -- Brilliant Mana Oil, @use While applied to target weapon it restores 12 mana to the caster every 5 seconds and increases the effect of healing spells by up to 25.  Lasts for 30 minutes.
 [20749] = { "блискуча чарівна олія", use="При нанесенні на зброю збільшує шкоду від магічних заклинань на 36 та шанс нанесення критичного удару заклинаннями на 1%. Триває 30 хвилин." }, -- Brilliant Wizard Oil, @use While applied to target weapon it increases spell damage by up to 36 and increases Spell Critical chance by 1% .  Lasts for 30 minutes.
 [20750] = { "чарівна олія", use="При нанесенні на зброю збільшує шкоду від магічних заклинань на 24. Триває 30 хвилин." }, -- Wizard Oil, @use While applied to target weapon it increases spell damage by up to 24.  Lasts for 30 minutes.
 [20761] = { "рецепт: Трансмутація первородного вогню", use="Навчає вас перетворювати серце вогню на три первородні вогні." }, -- Recipe: Transmute Elemental Fire, @use Teaches you how to transmute a Heart of Fire into three Elemental Fires.
