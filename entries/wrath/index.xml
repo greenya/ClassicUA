@@ -4,4 +4,5 @@
     <Script file="quest_alliance.lua"/>
     <Script file="quest_both.lua"/>
     <Script file="quest_horde.lua"/>
+    <Script file="talent_tree.lua"/>
 </Ui>
