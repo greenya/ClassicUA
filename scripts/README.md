@@ -32,7 +32,7 @@ All other files are edited manually, e.g. via pull requests.
 
 4. Update quests, books, zones and npcs in addon files:
     - Copy "translation_from_crowdin\entries" into "ClassicUA\entries"
-    - Commit "Sync from Crowdin: quests, books, zones, npcs"
+    - Commit "Sync from Crowdin"
 
 5. Update and release new version
     - Commit "Update changelog" with updated "addon_changelog" in text.lua
