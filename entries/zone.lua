@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.zone_stats = { count=1712 }
+addonTable.zone_stats = { count=1711 }
 
 addonTable.zone = { -- [key] = text
 ["Abandoned Armory"] = "Покинута зброярня",
@@ -243,6 +243,7 @@ addonTable.zone = { -- [key] = text
 ["Circle of Outer Binding"] = "коло Зовнішнього Поневолення",
 ["Circle of West Binding"] = "коло Західного Поневолення",
 ["City"] = "місто",
+["City of Ironforge"] = "Залізогарт",
 ["Clan Watch"] = "Кланова Варта",
 ["Cleft of Shadow"] = "Розколина Тіні",
 ["Cliffspring Falls"] = "Скельноджерельні водоспади",
@@ -1328,7 +1329,6 @@ addonTable.zone = { -- [key] = text
 ["The Frozen Throne"] = "Зледенілий трон",
 ["The Fungal Vale"] = "Грибкова долина",
 ["The Gaping Chasm"] = "Зяюче провалля",
-["The Gates of Ironforge"] = "ворота Залізогарта",
 ["The Golden Plains"] = "Золоті рівнини",
 ["The Great Fissure"] = "Великий розлом",
 ["The Great Forge"] = "Велика Кузня",

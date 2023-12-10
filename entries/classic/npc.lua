@@ -5587,8 +5587,8 @@ local npc = { -- [id] = { title, description (optional) }
 [11834] = { "Маур Зловісний Тотем", en="Maur Grimtotem" }, -- Maur Grimtotem
 [11835] = { "Теодор Ґріффс", en="Theodore Griffs" }, -- Theodore Griffs
 [11836] = { "пійманий скажений татарний ведмідь", en="Captured Rabid Thistle Bear" }, -- Captured Rabid Thistle Bear
-[11856] = { "Кайя Плоске Копито", en="Kaya Flathoof" }, -- Kaya Flathoof
-[11857] = { "Макаба Плоске Копито", en="Makaba Flathoof" }, -- Makaba Flathoof
+[11856] = { "Кайя Пласке Копито", en="Kaya Flathoof" }, -- Kaya Flathoof
+[11857] = { "Макаба Пласке Копито", en="Makaba Flathoof" }, -- Makaba Flathoof
 [11858] = { "Ґрандіґ Темна Хмара", en="Grundig Darkcloud" }, -- Grundig Darkcloud
 [11859] = { "вартовий приречення", en="Doomguard" }, -- Doomguard
 [11860] = { "Маґґран Землев'яз", en="Maggran Earthbinder" }, -- Maggran Earthbinder
@@ -6751,10 +6751,14 @@ local npc = { -- [id] = { title, description (optional) }
 [166359] = { "зуліанський тигр", en="Zulian Tiger" }, -- Zulian Tiger
 [184157] = { "наглядач Феро", en="Watcher Fero" }, -- Watcher Fero
 [184169] = { "наглядач Морта", en="Watcher Morta" }, -- Watcher Morta
+[184383] = { "Сульфурон Провісник", en="Sulfuron Harbinger" }, -- Sulfuron Harbinger
+[185320] = { "нестабільний хроматичний дракон", en="Unstable Chromatic Drake" }, -- Unstable Chromatic Drake
+[185331] = { "проєкція Авеліни Ліллі" }, -- Avelina Lilly
+[185332] = { "проєкція Айзека Пірсона" }, -- Isaac Pearson
 [185333] = { "Авеліна Ліллі", en="Avelina Lilly" }, -- Avelina Lilly
 [185334] = { "Айзек Пірсон", en="Isaac Pearson" }, -- Isaac Pearson
 [185335] = { "викликаний інкуб", en="Summoned Incubus" }, -- Summoned Incubus
-[201854] = { "Різзак", en="Cutty" }, -- Cutty
+[185336] = { "інкуб Жезель" }, -- Jezelle Pruitt
 }
 
 if addonTable.npc then

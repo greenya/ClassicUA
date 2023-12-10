@@ -5,7 +5,26 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
+[201722] = { "Гаму-ра", en="Ghamoo-ra" }, -- Ghamoo-ra
+[201854] = { "Різзак", en="Cutty" }, -- Cutty
+[202699] = { "барон Акваніс", en="Baron Aquanis" }, -- Baron Aquanis
+[203139] = { "син Аруґала", en="Son of Arugal" }, -- Son of Arugal
+[204068] = { "леді Сарвесс", en="Lady Sarevess" }, -- Lady Sarevess
+[204921] = { "Ґеліхаст", en="Gelihast" }, -- Gelihast
+[207356] = { "Лорґус Джетт", en="Lorgus Jett" }, -- Lorgus Jett
+[207358] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
+[207359] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
+[207367] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
+[209678] = { "сутінковий лорд Келріс", en="Twilight Lord Kelris" }, -- Twilight Lord Kelris
 [209889] = { "Голокіст", "продавець PvP-спорядження", en="Barebones" }, -- Barebones
+[212159] = { "старий Серра'кіс <виїдений>" }, -- Old Serra'kis
+[213334] = { "Аку'май", en="Aku'mai" }, -- Aku'mai
+[213710] = { "вартовий скверни", en="felguard" }, -- felguard
+[214603] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
+[214612] = { "рибоїд Аку'май", en="Aku'mai Fisher" }, -- Aku'mai Fisher
+[215108] = { "тріскощелеп Аку'май", en="Aku'mai Snapjaw" }, -- Aku'mai Snapjaw
+[216661] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
+[216665] = { "гномреґанський біженець", en="Gnomeregan Evacuee" }, -- Gnomeregan Evacuee
 }
 
 if addonTable.npc then
