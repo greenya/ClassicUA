@@ -46,7 +46,7 @@ def main():
     books = collect_books()
     books = dict(sorted(books.items()))
 
-    utils.write_lua_book_file('translation_from_crowdin/entries', 'book', books)
+    utils.write_lua_book_file('translation_from_crowdin/entries/classic', 'book', books)
 
     print_report(books)
 

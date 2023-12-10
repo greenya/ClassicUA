@@ -130,8 +130,11 @@ def main():
         npcs[expansion] = dict(sorted(npcs[expansion].items()))
 
     for expansion in npcs:
-        filename = f'npc_{expansion}' if expansion != 'classic' else 'npc'
-        utils.write_lua_npc_file('translation_from_crowdin/entries', filename, npcs[expansion])
+        utils.write_lua_npc_file(
+            path    =f'translation_from_crowdin/entries/{expansion}',
+            filename='npc',
+            npcs    =npcs[expansion]
+        )
 
     print_report(npcs, issues)
 

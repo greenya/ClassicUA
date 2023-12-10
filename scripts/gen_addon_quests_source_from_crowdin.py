@@ -130,9 +130,12 @@ def main():
 
     for expansion in quests:
         for side in quests[expansion]:
-            variable = f'quest_{side}'
-            filename = f'quest_{side}_{expansion}' if expansion != 'classic' else f'quest_{side}'
-            utils.write_lua_quest_file('translation_from_crowdin/entries', filename, variable, quests[expansion][side])
+            utils.write_lua_quest_file(
+                path    =f'translation_from_crowdin/entries/{expansion}',
+                filename=f'quest_{side}',
+                var     =f'quest_{side}',
+                quests  =quests[expansion][side]
+            )
 
     print_report(quests, quests_cat_count, quests_cat_total, text_chars_used, issues)
 
