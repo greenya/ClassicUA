@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local priest_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Abolish Disease
 [552] = { "Усунення хвороби", "Намагається вилікувати 1 хворобу на цілі та ще 1 ефект хвороби кожні {1} с протягом {2} с.#every {1} sec#for {2} sec", "Намагається усунути 1 хворобу кожні {1} с.#every {1} sec" }, -- Abolish Disease

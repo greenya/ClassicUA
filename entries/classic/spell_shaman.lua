@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local shaman_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Ancestral Healing
 [16176] = { "Зцілення пращурів", "Збільшує броню вашої цілі на {1}% на {2} с після отримання критичного ефекту одного з ваших лікувальних заклять.#by {1}% for {2} sec" }, -- Ancestral Healing (Rank 1)

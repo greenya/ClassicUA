@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local mage_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Amplify Magic
 [1008] = { "Підсилення магії", "Підсилює використання магії на обраного члена групи, збільшуючи отримуване ним пошкодження від заклять до {1} та зцілення закляттями до {2}. Триває {3} хв.#by up to {1} and healing spells by up to {2}#Lasts {3} min", "Збільшує отримане пошкодження магією до {1} та зцілення до {2}.#by up to {1} and healing by up to {2}" }, -- Amplify Magic (Rank 1)

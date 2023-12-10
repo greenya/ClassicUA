@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local shaman_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Ancestral Guidance
 [409324] = { "Настанови пращурів", "Протягом наступних {1} с {2}% вашої шкоди перетворюється на зцілення {3} найближчих членів групи, а {4}% вашого зцілення перетворюється на шкоду останньої цілі вашого \"Вогняного шоку\".#next {1} sec, {2}% of#up to {3} nearby#and {4}% of", "Шкода перетворюється на зцілення найближчих членів групи, а зцілення - на шкоду останньої цілі \"Вогняного шоку\"." }, -- Ancestral Guidance

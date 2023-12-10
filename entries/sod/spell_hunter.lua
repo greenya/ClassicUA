@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local hunter_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Adder Pheromone
 [416861] = { "Феромон гадюки", "Ваша здібність \"Приручення звіра\" також діє на гадюк (як на улюбленців-компаньйонів)", "Ваша здібність \"Приручення звіра\" також діє на гадюк (як на улюбленців-компаньйонів)" }, -- Adder Pheromone

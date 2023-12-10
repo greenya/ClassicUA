@@ -1,12 +1,7 @@
 local _, addonTable = ...
 local tbc_spells = { -- [id] = { title, description (optional), aura (optional) }
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 [28875] = { "Різьба по каменю", "Навичка ювелірної справи підвищена на 5." },
 [28878] = { "Натхнена присутність", "Збільшення ймовірності ураження закляттями на 1% вам та всім учасникам групи в радіусі 30 м." },

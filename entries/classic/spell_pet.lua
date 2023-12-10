@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local pet_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Arcane Resistance
 [24493] = { "Супротив аркані", "Збільшує супротив аркані на {1}.#by {1}", "Збільшує супротив аркані на {1}.#by {1}" }, -- Arcane Resistance (Rank 1)

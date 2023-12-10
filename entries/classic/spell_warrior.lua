@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local warrior_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Anger Management
 [12296] = { "Контроль гніву", "Збільшує час, необхідний для зменшення вашої люті поза боєм, на {1}%.#combat by {1}" }, -- Anger Management

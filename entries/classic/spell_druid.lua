@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local druid_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Abolish Poison
 [2893] = { "Усунути отруєння", "Намагається вилікувати {1} ефект отруєння на цілі та ще {2} ефект отруєння кожні {3} с протягом {4} с.#cure {1}#and {2} more#every {3} seconds for {4} sec", "Намагається вилікувати {1} отруєння кожні {2} с.#cure {1}#every {2} sec" }, -- Abolish Poison

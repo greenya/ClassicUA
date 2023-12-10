@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local rogue_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Between the Eyes
 [400009] = { "Поміж очей", "Дистанційний завершальний рух, що завдає шкоду в залежності від довжини комбінації та сили атаки, а також приголомшує ціль:\n\n  1 прийом:   {1}-{2} шкоди, 1 с приголомшення\n  2 прийоми: {3}-{4} шкоди, 2 с приголомшення\n  3 прийоми: {5}-{6} шкоди, 3 с приголомшення\n  4 прийоми: {7}-{8} шкоди, 4 с приголомшення\n  5 прийомів: {9}-{10} шкоди, 5 с приголомшення\n\nМає спільний час відновлення з \"Ударом по нирках\".#1 point:   {1} to {2} damage#2 points: {3} to {4} damage#3 points: {5} to {6} damage#4 points: {7} to {8} damage#5 points: {9} to {10} damage", "Приголомшено." }, -- Between the Eyes

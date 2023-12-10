@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local paladin_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Aegis
 [425589] = { "Егіда", "Збільшує ваш показник блокування на 30%, а атаки ближнього і дальнього бою, що завдають вам шкоду, мають 10% шанс збільшити ваш шанс блокування на 30%. Триває 10 с або до 5 блоків. Не сумується з ефектом \"Твердині\".", nil }, -- Aegis

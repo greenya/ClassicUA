@@ -1,19 +1,7 @@
 local _, addonTable = ...
 addonTable.talent_tree = {
 
--- [class] = {
---     -- tab1 (spec)
---     {
---         -- row1 (tier)
---         { column1 (talent as array of spell ids of all ranks), column2, ... use "nil" to skip position }
---         -- row2
---         { ... }
---         ...
---     }
---     -- tab2
---     { ... }
---     ...
--- }
+-- See /entries/classic/talent_tree.lua for data format details.
 
 -- Note: each Wrath spec has exactly 11 rows
 

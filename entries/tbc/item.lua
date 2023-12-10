@@ -1,17 +1,7 @@
 local _, addonTable = ...
 local item_tbc = {
 
--- [id] = {
---     [ref]    = ID (optional),
---     [1]      = title (optional),
---     [desc]   = description (optional),
---     [equip]  = text or number (spell id) for "Equip: ..." (green color)
---     [hit]    = text or number (spell id) for "Chance on hit: ..." (green color)
---     [use]    = text or number (spell id) for "Use: ..." (green color)
---     [flavor] = quoted text (golden color)
---     --------
---     note: value can be string or table (multiple strings)
--- }
+-- See /entries/classic/item.lua for data format details.
 
 [14647] = { "подарунковий сертифікат Хараноса" }, -- Kharanos Gift Voucher
 [25470] = { "золотий грифон", use="Викликає та звільняє грифона, на якому можна їздити. Цього верхового скакуна можна викликати лише в Закордоні." }, -- Golden Gryphon, @use Summons and dismisses a rideable gryphon mount. This mount can only be summoned in Outland. (3 Sec Cooldown)

@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local priest_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Black
 [402368] = { "Чорне", nil, "Шкоду від заклять збільшено на 10%." }, -- Black

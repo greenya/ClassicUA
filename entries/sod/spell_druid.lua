@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local druid_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Efflorescence
 [417148] = { "Цвітіння", "Зцілює до {1} членів групи чи рейду в радіусі {2} м від цілі на {3}.#up to {1} friendly#{2} yards of the target for {3}", nil }, -- Efflorescence

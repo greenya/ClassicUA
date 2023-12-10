@@ -1,17 +1,7 @@
 local _, addonTable = ...
 local item_sod = {
 
--- [id] = {
---     [ref]    = ID (optional),
---     [1]      = title (optional),
---     [desc]   = description (optional),
---     [equip]  = text or number (spell id) for "Equip: ..." (green color)
---     [hit]    = text or number (spell id) for "Chance on hit: ..." (green color)
---     [use]    = text or number (spell id) for "Use: ..." (green color)
---     [flavor] = quoted text (golden color)
---     --------
---     note: value can be string or table (multiple strings)
--- }
+-- See /entries/classic/item.lua for data format details.
 
 [203745] = { "сувій закляття: Крижаний спис", use="Навчає вас новій здібності гравіювання." },
 [203746] = { "сувій закляття: Живе полум'я", use="Навчає вас новій здібності гравіювання." },

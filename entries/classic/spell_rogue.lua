@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local rogue_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Adrenaline Rush
 [13750] = { "Викид адреналіну", "Збільшує швидкість відновлення енергії на {1}% на {2} с.#by {1}% for {2} sec", "Швидкість відновлення енергії збільшено на {1}%.#by {1}" }, -- Adrenaline Rush

@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local paladin_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Anticipation
 [20096] = { "Передчуття", "Збільшує вашу захисну здібність на {1}.#by {1}" }, -- Anticipation (Rank 1)

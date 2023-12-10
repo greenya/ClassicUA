@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local warlock_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Aftermath
 [18119] = { "Наслідок", "Надає вашим закляттям спеціалізації \"Руйнація\" {1}% імовірності запаморочити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Aftermath (Rank 1)

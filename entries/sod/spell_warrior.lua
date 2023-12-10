@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local warrior_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Annihilation
 [409073] = { "Анігіляція", "Ваші атаки ближнього бою генерують {1} люті.#generate {1} Rage", nil }, -- Annihilation

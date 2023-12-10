@@ -2,12 +2,7 @@ local _, addonTable = ...
 
 local hunter_spells = {
 
--- [id] = {
---     [ref] = ID (optional),
---     [1] = title (optional),
---     [2] = description (optional),
---     [3] = aura (optional),
--- }
+-- See /entries/classic/spell.lua for data format details.
 
 -- Aimed Shot
 [19434] = { "Прицільний постріл", "Прицільний постріл зі збільшеним пошкодженням дальнього бою на {1}.#by {1}" }, -- Aimed Shot (Rank 1)
