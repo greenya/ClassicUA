@@ -1204,7 +1204,7 @@ end
 -- ---------------
 
 hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
-    if ShouldShowName(self) then
+    if ShouldShowName(self) and self.name and self.name.SetText then
         local guid = UnitGUID(self.unit)
         if guid then
             local kind, _, _, _, _, id, _ = strsplit("-", guid)
