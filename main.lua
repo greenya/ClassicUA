@@ -445,10 +445,10 @@ local add_line_to_tooltip = function (tooltip, content, template, r, g, b, conte
         local text = lines[i]
 
         if content_can_be_spell_id and type(text) == "number" then
-            text = false
             local spell_id = text
             local spell_entry = get_entry("spell", spell_id)
             if spell_entry then
+                text = false
                 local spell_desc = make_entry_text(spell_entry[2], tooltip)
                 if spell_desc then
                     text = make_entry_text(spell_desc, tooltip)
@@ -456,6 +456,8 @@ local add_line_to_tooltip = function (tooltip, content, template, r, g, b, conte
                 end
             elseif options.debug then
                 text = "spell#" .. spell_id
+            else
+                text = false
             end
         else
             text = make_entry_text(text, tooltip)
