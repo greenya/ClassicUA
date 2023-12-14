@@ -703,10 +703,12 @@ local tooltip_updated = function (self)
 
     if addonTable.sod_engraving then
         local owner = self:GetOwner()
-        local owner_name = owner:GetName()
-        if owner_name and owner_name:find("^EngravingFrameScrollFrameButton") and owner.skillLineAbilityID then
-            add_entry_to_tooltip(self, "sod_engraving", owner.skillLineAbilityID)
-            return
+        if owner then
+            local owner_name = owner:GetName()
+            if owner_name and owner_name:find("^EngravingFrameScrollFrameButton") and owner.skillLineAbilityID then
+                add_entry_to_tooltip(self, "sod_engraving", owner.skillLineAbilityID)
+                return
+            end
         end
     end
 
