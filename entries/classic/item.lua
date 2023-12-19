@@ -1475,6 +1475,7 @@ addonTable.item = {
 [5490] = { "голова гнівохвостої наги" }, -- Wrathtail Head
 [5493] = { "сльоза Елуни" }, -- Elune's Tear
 [5494] = { "жменя зорепилу" }, -- Handful of Stardust
+[5500] = { "райдужна перлина" }, -- Iridescent Pearl
 [5504] = { "гостре м'ясо молюска" }, -- Tangy Clam Meat
 [5505] = { "щоденник Тероніса", flavor="Щоденник підмочений, але загалом в хорошому стані." }, -- Teronis' Journal, @flavor The journal is waterlogged, but in otherwise good condition.
 [5507] = { "вишукана підзорна труба", use="Дозволяє поглянути в далечінь." }, -- Ornate Spyglass, @use Allows you to look far into the distance.
@@ -1809,6 +1810,7 @@ addonTable.item = {
 [6316] = { "делікатес з озерної навіженки", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Loch Frenzy Delight, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [6317] = { "сира озерна навіженка", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Raw Loch Frenzy, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [6335] = { "вицвілі чоботи" }, -- Grizzled Boots
+[6338] = { "срібний жезл", flavor="Потрібен чародіям." }, -- Silver Rod, @flavor Needed by Enchanters.
 [6339] = { "рунічний срібний жезл" }, -- Runed Silver Rod
 [6350] = { "грубі бронзові чоботи" }, -- Rough Bronze Boots
 [6358] = { "маслянистий чорноротик" }, -- Oily Blackmouth
@@ -2217,6 +2219,7 @@ addonTable.item = {
 [7966] = { "твердий шліфувальний камінь" }, -- Solid Grinding Stone
 [7968] = { "скарб Південних морів" }, -- Southsea Treasure
 [7970] = { "В.Х.М.К", use="Папуги люблять крекери!", flavor="Величезний хімічно змінений крекер" }, -- E.C.A.C., @use Parrots love crackers!, @flavor Enormous Chemically Altered Cracker
+[7971] = { "чорна перлина" }, -- Black Pearl
 [7972] = { "пасока невмерлих" }, -- Ichor of Undeath
 [7974] = { "пікантне м'ясо молюска" }, -- Zesty Clam Meat
 [7978] = { "креслення: Варварські залізні наплічники", use="Навчає вас створювати варварські залізні наплічники." }, -- Plans: Barbaric Iron Shoulders, @use Teaches you how to make Barbaric Iron Shoulders.
@@ -2876,8 +2879,13 @@ addonTable.item = {
 [10920] = { "агонічна отрута II", ref=10918 }, -- Wound Poison II
 [10921] = { "агонічна отрута III", ref=10918 }, -- Wound Poison III
 [10922] = { "агонічна отрута IV", ref=10918 }, -- Wound Poison IV
+[10938] = { "мала магічна субстанція", use="Перетворити три малі магічні субстанції на одну велику." }, -- Lesser Magic Essence, @use Turn three lesser magic essences into a greater one.
+[10939] = { "велика магічна субстанція", use="Перетворити велику магічну субстанцію на три малі." }, -- Greater Magic Essence, @use Turn a greater magic essence into three lesser ones.
+[10940] = { "дивний пил" }, -- Strange Dust
 [10958] = { "намисто Гіларі" }, -- Hilary's Necklace
 [10959] = { "мішок зі шкіри демона" }, -- Demon Hide Sack
+[10978] = { "малий мерехтливий осколок" }, -- Small Glimmering Shard
+[10998] = { "мала астральна субстанція", use="Перетворити три малі астральні субстанції на одну велику." }, -- Lesser Astral Essence, @use Turn three lesser astral essences into a greater one.
 [10999] = { "Залізоскверн", flavor="На поверхні молотка викарбувані літери: Ф.Ф.Ф." }, -- Ironfel, @flavor Etched into the face of the hammer are the letters: F.F.F.
 [11000] = { "ключ Тінегарта", flavor="Ключ від усіх замків у надрах, подарунок Ф.Ф.Ф." }, -- Shadowforge Key, @flavor Master Key to the Depths, Courtesy of F.F.F.
 [11018] = { "ґрунт Ун'Ґоро" }, -- Un'Goro Soil
@@ -2890,6 +2898,9 @@ addonTable.item = {
 [11058] = { "обручка Ша'ні" }, -- Sha'ni's Nose-Ring
 [11079] = { "відрубана голова Ґор'теша", use="Встромити в КУПУ ПУХКОЇ ЗЕМЛІ.", flavor="Відрубана голова Ґор'теша, настроплена на спис." }, -- Gor'tesh's Lopped Off Head, @use Place on a SOFT DIRT MOUND., @flavor Gor'tesh's severed head, propped up on a pike.
 [11080] = { "відрубана голова Ґор'теша", flavor="М'яка, смердюча і слизька" }, -- Gor'tesh's Lopped Off Head, @flavor Squishy, Smelly, Slimy
+[11082] = { "велика астральна субстанція", use="Перетворити велику астральну субстанцію на три малі." }, -- Greater Astral Essence, @use Turn a greater astral essence into three lesser ones.
+[11083] = { "пил душі" }, -- Soul Dust
+[11084] = { "великий мерехтливий осколок" }, -- Large Glimmering Shard
 [11099] = { "темнозалізна руда" }, -- Dark Iron Ore
 [11102] = { "невилуплене яйце райдужного хамелеона" }, -- Unhatched Sprite Darter Egg
 [11103] = { "розписка про видачу насіння", flavor="На двадцять пакетів насінин Тарлендріса." }, -- Seed Voucher, @flavor Good for twenty packs of Tharlendris seeds.
@@ -2916,10 +2927,17 @@ addonTable.item = {
 [11131] = { "зразок стіни вулика" }, -- Hive Wall Sample
 [11132] = { "невикористаний флакон для зразків", use="Зібрати зразок зі стіни інкубатора Ґоріші." }, -- Unused Scraping Vial, @use Scrape a sample of the hive wall from an area near a Gorishi hatchery.
 [11133] = { "тренувальний меч Лінкена" }, -- Linken's Training Sword
+[11134] = { "мала містична субстанція", use="Перетворити три малі містичні субстанції на одну велику." }, -- Lesser Mystic Essence, @use Turn three lesser mystic essences into a greater one.
+[11135] = { "велика містична субстанція", use="Перетворити велику містичну субстанцію на три малі." }, -- Greater Mystic Essence, @use Turn a greater mystic essence into three lesser ones.
 [11136] = { "загартований меч Лінкена" }, -- Linken's Tempered Sword
+[11137] = { "пил видіння" }, -- Vision Dust
+[11138] = { "малий сяючий осколок" }, -- Small Glowing Shard
+[11139] = { "великий сяючий осколок" }, -- Large Glowing Shard
 [11141] = { "приманка", use="Покласти поруч з Міблоном Хрипозубом." }, -- Bait, @use Place near Miblon Snarltooth.
 [11142] = { "зламаний самофланж" }, -- Broken Samophlange
 [11143] = { "заготовка для деталі" }, -- Nugget Slug
+[11144] = { "ясносрібний жезл", flavor="Потрібен чародіям." }, -- Truesilver Rod, @flavor Needed by Enchanters.
+[11145] = { "рунічний ясносрібний жезл" }, -- Runed Truesilver Rod
 [11146] = { "зламаний та пошарпаний самофланж" }, -- Broken and Battered Samophlange
 [11147] = { "обкладинка посібника з експлуатації самофланжу", use="З'єднати обкладинку та 5 сторінок, щоб створити посібник з експлуатації самофланжу." }, -- Samophlange Manual Cover, @use Join the cover and 5 pages to create the Samophlange Manual.
 [11148] = { "сторінка посібника з експлуатації самофланжу", use="З'єднати обкладинку та 5 сторінок, щоб створити посібник з експлуатації самофланжу." }, -- Samophlange Manual Page, @use Join the cover and 5 pages to create the Samophlange Manual.
@@ -2928,8 +2946,10 @@ addonTable.item = {
 [11169] = { "книга Аквора", use="Викликати Акваментаса. (Відновлення 5 хв)" }, -- Book of Aquor, @use Summons Aquementas. (5 Min Cooldown)
 [11172] = { "сріблясті пазурі" }, -- Silvery Claws
 [11173] = { "залізодеревне серце" }, -- Irontree Heart
-[11174] = { "менша підсвітня субстанція", use="Перетворити три менші підсвітні субстанції на одну велику." }, -- Lesser Nether Essence, @use Turn three lesser nether essences into a greater one.
-[11175] = { "велика підсвітня субстанція", use="Перетворити велику вічну субстанцію на три менші." }, -- Greater Nether Essence, @use Turn a greater nether essence into three lesser ones.
+[11174] = { "мала підсвітня субстанція", use="Перетворити три малі підсвітні субстанції на одну велику." }, -- Lesser Nether Essence, @use Turn three lesser nether essences into a greater one.
+[11175] = { "велика підсвітня субстанція", use="Перетворити велику підсвітню субстанцію на три малі." }, -- Greater Nether Essence, @use Turn a greater nether essence into three lesser ones.
+[11176] = { "пил мрій" }, -- Dream Dust
+[11177] = { "малий променистий осколок" }, -- Small Radiant Shard
 [11178] = { "великий променистий осколок" }, -- Large Radiant Shard
 [11179] = { "золоте полум'я" }, -- Golden Flame
 [11184] = { "синій кристал сили" }, -- Blue Power Crystal
@@ -2961,7 +2981,8 @@ addonTable.item = {
 [11282] = { "підписана угода Оґлторпа" }, -- Oglethorpe's Signed Pledge
 [11283] = { "підписана угода Надспалаха" }, -- Overspark's Signed Pledge
 [11286] = { "торієві кайдани", use="Надягнути на Ґрарка у слушний момент.", flavor="Нерозривні пута." }, -- Thorium Shackles, @use Use on Grark when the time is right!, @flavor Unbreakable bindings.
-[11287] = { "малий чарівний жезл" }, -- Lesser Magic Wand
+[11287] = { "мала чарівна паличка" }, -- Lesser Magic Wand
+[11288] = { "велика чарівна паличка" }, -- Greater Magic Wand
 [11309] = { "Серце гори" }, -- The Heart of the Mountain
 [11312] = { "втрачений рецепт Громоварів" }, -- Lost Thunderbrew Recipe
 [11313] = { "голова Рібблі" }, -- Ribbly's Head
@@ -3587,6 +3608,7 @@ addonTable.item = {
 [13890] = { "риба-броненосець" }, -- Plated Armorfish
 [13892] = { "комбобулятор кодо", use="Активувати поруч з древнім, старим або вмираючим кодо, щоб він пішов за вами (по одному за раз)." }, -- Kodo Kombobulator, @use Kodo Kombobulator on any Ancient, Aged, or Dying Kodo to lure the Kodo to follow (one at a time).
 [13920] = { "здорова луска дракона" }, -- Healthy Dragon Scale
+[13926] = { "золота перлина" }, -- Golden Pearl
 [13927] = { "смажена блискуча міць-риба", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваша витривалість збільшиться на 10 протягом 10 хв." }, -- Cooked Glossy Mightfish, @use Restores 874.8 health over 27 sec.   Must remain seated while eating.   Also increases your Stamina by 10 for 10 min.
 [13929] = { "гострий копчений окунь", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваш дух збільшиться на 10 протягом 10 хв." }, -- Hot Smoked Bass, @use Restores 874.8 health over 27 sec.   Must remain seated while eating.   Also increases your Spirit by 10 for 10 min.
 [13930] = { "філе червоноперки", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Filet of Redgill, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
@@ -3617,6 +3639,7 @@ addonTable.item = {
 [14339] = { "посудина з водою місячного колодязя" }, -- Moonwell Water Tube
 [14341] = { "рунічна нитка" }, -- Rune Thread
 [14342] = { "місячне полотно" }, -- Mooncloth
+[14343] = { "малий блискучий осколок" }, -- Small Brilliant Shard
 [14344] = { "великий блискучий осколок" }, -- Large Brilliant Shard
 [14381] = { "сумка Зловісного Тотема" }, -- Grimtotem Satchel
 [14395] = { "Закляття Темряви", flavor="Краще її не відкривати." }, -- Spells of Shadow, @flavor You know opening this would be a terrible idea.
@@ -3665,7 +3688,7 @@ addonTable.item = {
 [15206] = { "нефритоперстний жезл" }, -- Jadefinger Baton
 [15207] = { "сталевий щит" }, -- Steelcap Shield
 [15208] = { "кенарійський місячний пил", use="Застосувати біля каменя місячного совуха, щоб викликати його захисника — Місяцекігтя." }, -- Cenarion Moondust, @use Apply near a Moonkin Stone to bring forth the stone's defender, Lunaclaw.
-[15209] = { "набір реліквій" }, -- Relic Bundle, @use Place in the Darrowshire Town Square.
+[15209] = { "набір реліквій", use="Розмістити на площі Дарроушира." }, -- Relic Bundle, @use Place in the Darrowshire Town Square.
 [15277] = { "сірий кодо", use="Викликає та відпускає верхового сірого кодо. (Відновлення 3 сек)" }, -- Gray Kodo, @use Summons and dismisses a rideable gray kodo. (3 Sec Cooldown)
 [15290] = { "бурий кодо", use="Викликає та відпускає верхового бурого кодо. (Відновлення 3 сек)" }, -- Brown Kodo, @use Summons and dismisses a rideable brown kodo. (3 Sec Cooldown)
 [15292] = { "зелений кодо", use="Викликає та відпускає верхового зеленого кодо. Це дуже швидка верхова тварина. (Відновлення 3 сек)" }, -- Green Kodo, @use Summons and dismisses a rideable green kodo.  This is a very fast mount. (3 Sec Cooldown)
@@ -3864,7 +3887,9 @@ addonTable.item = {
 [16189] = { "лист Маґґрана" }, -- Maggran's Reserve Letter
 [16190] = { "рештки криваволютої різниці" }, -- Bloodfury Ripper's Remains
 [16192] = { "ікло Бесселет" }, -- Besseleth's Fang
-[16203] = { "велика вічна субстанція", use="Перетворити велику вічну субстанцію на три менші." }, -- Greater Eternal Essence, @use Turn a greater eternal essence into three lesser ones.
+[16202] = { "мала вічна субстанція", use="Перетворити три малі вічні субстанції на одну велику." }, -- Lesser Eternal Essence, @use Turn three lesser eternal essences into a greater one.
+[16203] = { "велика вічна субстанція", use="Перетворити велику вічну субстанцію на три малі." }, -- Greater Eternal Essence, @use Turn a greater eternal essence into three lesser ones.
+[16204] = { "пил ілюзій" }, -- Illusion Dust
 [16205] = { "насіння Ґеї" }, -- Gaea Seed
 [16208] = { "зачароване насіння Ґеї", use="Помістити насіння Ґеї в насип ґрунту Ґеї." }, -- Enchanted Gaea Seeds, @use Place the Gaea seed into the Gaea dirt mound.
 [16209] = { "замовлення Подріґа" }, -- Podrig's Order
@@ -4151,6 +4176,7 @@ addonTable.item = {
 [17047] = { "світний амікт" }, -- Luminescent Amice
 [17048] = { "ром Ромсі", use="Збільшує витривалість на 10 протягом 15 хвилин та люто п'янить!" }, -- Rumsey Rum, @use Increases Stamina by 10 for 15 min and gets you drunk to boot!
 [17057] = { "блискуча риб'яча луска" }, -- Shiny Fish Scales
+[17058] = { "риб'ячий жир" }, -- Fish Oil
 [17114] = { "уламок філактерії Аража" }, -- Araj's Phylactery Shard
 [17117] = { "флейта щуролова", use="Пограти на флейті, щоб зачарувати підземних щурів в депо Глибокобіжного трамвая." }, -- Rat Catcher's Flute, @use Use to lull the vermin infesting the Deeprun Tram into a state of raptured bliss.
 [17118] = { "коробка загадкового м'яса", flavor="Не трясти." }, -- Carton of Mystery Meat, @flavor Handle With Care.
@@ -4373,6 +4399,7 @@ addonTable.item = {
 [18491] = { "прядка знань", equip="Відновлює 3 мани кожні 5 сек." }, -- Lorespinner, @equip Restores 3 mana per 5 sec.
 [18492] = { "загартований древній клинок", flavor="Загартований в крові Оніксії." }, -- Treated Ancient Blade, @flavor Tempered in the blood of Onyxia.
 [18501] = { "уламок Сквернолози" }, -- Felvine Shard
+[18512] = { "личинкова кислота" }, -- Larval Acid
 [18513] = { "тупий і плаский ельфійський клинок" }, -- A Dull and Flat Elven Blade
 [18535] = { "щит Міллі", equip="Відновлює 4 здоров'я кожні 5 сек." }, -- Milli's Shield, @equip Restores 4 health per 5 sec.
 [18536] = { "словник Міллі", equip="Відновлює 6 мани кожні 5 сек." }, -- Milli's Lexicon, @equip Restores 6 mana per 5 sec.
@@ -6087,5 +6114,7 @@ addonTable.item = {
 [190186] = { "дерев'яна статуетка", use="Викликати інкуба в колі виклику. (Відновлення 3 хв)", flavor="На підставці є напис: Я вдома." }, -- Wooden Figurine, @use Call forth an incubus using the summoning circle. (3 Min Cooldown), @flavor An inscription on the base reads: I'm home.
 [190187] = { "вицвіла хустка", use="Викликати інкуба в колі виклику. (Відновлення 3 хв)", flavor="На тканині вишиті витончені візерунки, а також літери \"M+K\"." }, -- Withered Scarf, @use Call forth an incubus using the summoning circle. (3 Min Cooldown), @flavor Delicate patterns are embroidered into the cloth, along with the letters 'M+K'.
 [190232] = { "вицвіла хустка", flavor="На тканині вишиті витончені візерунки, а також літери \"M+K\"." }, -- Withered Scarf, @flavor Delicate patterns are embroidered into the cloth, along with the letters 'M+K'.
+[190307] = { "незапалений смолоскип", flavor="Знаєте, що б дуже пасувало цьому смолоскипу? Вогонь." }, -- Unlit Torch, @flavor You know what would look really good on this torch? Fire.
+[190308] = { "палаючий смолоскип", use="Кинути смолоскип у ціль, щоб підпалити її.", flavor="Стане в нагоді, щоб відволікти когось пожежею!" }, -- Burning Torch, @use Tosses a torch at the target location, starting a fire., @flavor Useful for fiery distractions!
 [190309] = { "дерев'яна статуетка", flavor="На підставці є напис: Я вдома." }, -- Wooden Figurine, @flavor An inscription on the base reads: I'm home.
 }
