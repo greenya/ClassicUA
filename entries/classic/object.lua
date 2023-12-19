@@ -1035,4 +1035,9 @@ addonTable.object = { -- [key] = text
 ["Portal to Stormwind"] = "портал в Штормовій",
 ["Portal to Thunder Bluff"] = "портал в Громовий Бескид",
 ["Portal to Undercity"] = "портал в Підмістя",
+
+-- Miscellaneous
+["Shredder"] = "подрібнювач",
+["PX-238 Winter Wondervolt"] = "PX-238 Зимовий Дивовольт",
+
 }

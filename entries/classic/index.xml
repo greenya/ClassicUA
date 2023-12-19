@@ -2,6 +2,7 @@
     <Script file="book.lua"/>
     <Script file="item.lua"/>
     <Script file="npc.lua"/>
+    <Script file="object.lua"/>
     <Script file="quest_alliance.lua"/>
     <Script file="quest_both.lua"/>
     <Script file="quest_horde.lua"/>
