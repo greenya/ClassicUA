@@ -7,7 +7,6 @@
 ## SavedVariables: ClassicUA_Options
 
 entries\class.lua
-entries\object.lua
 entries\race.lua
 entries\text.lua
 entries\zone.lua
