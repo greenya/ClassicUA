@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.zone_stats = { count=1711 }
+addonTable.zone_stats = { count=1712 }
 
 addonTable.zone = { -- [key] = text
 ["Abandoned Armory"] = "Покинута зброярня",
@@ -154,7 +154,7 @@ addonTable.zone = { -- [key] = text
 ["Blood Elf Tower"] = "вежа кривавих ельфів",
 ["Blood Watch"] = "Кривава застава",
 ["Bloodcurse Isle"] = "острів Проклятої Крові",
-["Bloodfen Burrow"] = "нора Криваворудих",
+["Bloodfen Burrow"] = "нора Кровоболотних",
 ["Bloodhoof Village"] = "селище Криваве Копито",
 ["Bloodmaul Camp"] = "табір Кривавого Молота",
 ["Bloodmaul Outpost"] = "застава Кривавого Молота",
@@ -168,7 +168,7 @@ addonTable.zone = { -- [key] = text
 ["Bloodvenom Post"] = "Кровотруйна застава",
 ["Bloodvenom River"] = "Кровотруйна ріка",
 ["Bluefen"] = "Понура драговина",
-["Bluegill Marsh"] = "Синьозяброве болото",
+["Bluegill Marsh"] = "Синьожаброве болото",
 ["Bogen's Ledge"] = "грот Боґена",
 ["Boha'mu Ruins"] = "руїни Бога'му",
 ["Bolgan's Hole"] = "нора Болґана",
@@ -252,6 +252,7 @@ addonTable.zone = { -- [key] = text
 ["Coilskar Cistern"] = "водосховище Кільчастих Шрамів",
 ["Coilskar Point"] = "табір Кільчастих Шрамів",
 ["Cold Hearth Manor"] = "садиба Холодне Вогнище",
+["Coldmine"] = "Холодна копальня",
 ["Coldridge Pass"] = "Морозний тунель",
 ["Coldridge Valley"] = "Морозна долина",
 ["Coldtooth Mine"] = "копальня Кригозубих",
@@ -422,6 +423,7 @@ addonTable.zone = { -- [key] = text
 ["Evergrove"] = "Вічнорост",
 ["Everlook"] = "Завшегляд",
 ["Eversong Woods"] = "ліс Вічноспіву",
+["Exodar"] = "Екзодар",
 ["Expedition Armory"] = "арсенал експедиції",
 ["Expedition Point"] = "табір експедиції",
 ["Eye of the Storm"] = "Око Бурі",
@@ -806,8 +808,8 @@ addonTable.zone = { -- [key] = text
 ["Nestlewood Hills"] = "Гніздолісі пагорби",
 ["Nestlewood Thicket"] = "Гніздолісі хащі",
 ["Nethander Stead"] = "маєток Нетандера",
-["Nethergarde Keep"] = "фортеця Незерґард",
-["Nethergarde Mines"] = "шахти Незерґард",
+["Nethergarde Keep"] = "фортеця Підсвітньої Варти",
+["Nethergarde Mines"] = "шахти Підсвітньої Варти",
 ["Netherstone"] = "Підсвітні скелі",
 ["Netherstorm"] = "Низошторм",
 ["Netherweb Ridge"] = "кряж Пустоплетів",
@@ -1311,7 +1313,6 @@ addonTable.zone = { -- [key] = text
 ["The Dustbowl"] = "Пиловий чан",
 ["The Dwarven District"] = "Дворфійський район",
 ["The Emerald Dream"] = "Смарагдовий Сон",
-["The Exodar"] = "Екзодар",
 ["The Eye"] = "Око",
 ["The Eye of Eternity"] = "Око Вічності",
 ["The Farstrider Lodge"] = "оселя Далекоходців",

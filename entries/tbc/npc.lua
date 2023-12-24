@@ -5,6 +5,8 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
+[715] = { "Гемет Ернінґвей-молодший", en="Hemet Nesingwary Jr." }, -- Hemet Nesingwary Jr.
+[10182] = { "Рокаро", "герой Орди", en="Rokaro" }, -- Rokaro
 [16144] = { "лорд Салтеріл" }, -- Saltheril
 [16475] = { "Меґелон", en="Megelon" }, -- Megelon
 [16477] = { "Проеніт", en="Proenitus" }, -- Proenitus
@@ -24,6 +26,9 @@ local npc = { -- [id] = { title, description (optional) }
 [23281] = { "Інсідій", en="Insidion" }, -- Insidion
 [23282] = { "Обсідія", en="Obsidia" }, -- Obsidia
 [23391] = { "Баш'ір", en="Bash'ir" }, -- Bash'ir
+[23841] = { "Гостроспин", en="Razorspine" }, -- Razorspine
+[23951] = { "лейтенант Аден", en="Lieutenant Aden" }, -- Lieutenant Aden
+[23979] = { "гігантська болотна жаба", en="Giant Marsh Frog" }, -- Giant Marsh Frog
 }
 
 if addonTable.npc then
