@@ -1,4 +1,4 @@
-import sys
+import sys, re
 import utils
 
 class Npc:
@@ -17,7 +17,7 @@ class Npc:
 def get_npc_from_id_tag(id_tag, term_en_text, term_uk_text, term_tags, all_terms, issues):
     assert(id_tag.startswith('#'))
 
-    # id_tag format: #ID[:EXPANSION][ NPC NAME CAN INCLUDE SPACES]
+    # id_tag format: #ID[:EXPANSION][ NPC NAME CAN INCLUDE SPACES][ <NPC DESC CAN INCLUDE SPACES>]
 
     npc_id, npc_name = id_tag.split(' ', maxsplit=1) if ' ' in id_tag else (id_tag, False)
     npc_id, npc_expansion = npc_id.split(':', maxsplit=1) if ':' in npc_id else (npc_id, 'classic')
@@ -36,14 +36,21 @@ def get_npc_from_id_tag(id_tag, term_en_text, term_uk_text, term_tags, all_terms
     npc_desc = False
     npc_desc_original = False
 
-    for t in term_tags:
-        if t.startswith('<') and t.endswith('>'):
-            npc_desc = t[1:-1].strip()
-            if npc_desc:
-                npc_desc_original = npc_desc
-                break
-            else:
-                issues.append(f'[!] Empty desc tag in term "{term_en_text}"')
+    match_name_with_desc = re.search('^(.*)<(.*)>$', npc_name)
+    if match_name_with_desc:
+        npc_name = match_name_with_desc[1].strip()
+        npc_desc = npc_desc_original = match_name_with_desc[2].strip()
+        if not npc_name or not npc_desc:
+            issues.append(f'[!] Empty name/desc in id_tag "{id_tag}" in term "{term_en_text}"')
+    else:
+        for t in term_tags:
+            if t.startswith('<') and t.endswith('>'):
+                npc_desc = t[1:-1].strip()
+                if npc_desc:
+                    npc_desc_original = npc_desc
+                    break
+                else:
+                    issues.append(f'[!] Empty desc tag in term "{term_en_text}"')
 
     if npc_desc:
         npc_desc_lower = npc_desc.lower()
