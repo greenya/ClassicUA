@@ -205,12 +205,20 @@ local prepare_codes = function (name, race, class, is_male)
     local at = addonTable
     local sex = is_male and 1 or 2
     local cases = { "н", "р", "д", "з", "о", "м", "к" }
+    local name_cases = character_options.name_cases
     local codes = {}
 
     -- name
 
     for _, c in ipairs(cases) do
-        local t = name -- TODO: should be something like: options.player_name_case[c], when player name will have grammatical cases
+        local t = name_cases[c] or ""
+        if t == "" then
+            t = name_cases["н"] or ""
+            if t == "" then
+                t = name
+            end
+        end
+
         codes["{ім'я:" .. c .. "}"] = t
         codes["{Ім'я:" .. c .. "}"] = capitalize(t)
         codes["{ІМ'Я:" .. c .. "}"] = string.upper(t)
