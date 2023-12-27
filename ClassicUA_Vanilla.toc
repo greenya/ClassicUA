@@ -5,6 +5,7 @@
 ## Author: greenya
 ## Version: 4.8.2
 ## SavedVariables: ClassicUA_Options
+## SavedVariablesPerCharacter: ClassicUA_Character_Options
 
 entries\class.lua
 entries\race.lua

@@ -95,14 +95,25 @@ local default_options = {
     book_text_size = 15
 }
 
+local character_options = nil
+local default_character_options = {
+    name_cases = {}
+}
+
 local prepare_options = function ()
     ClassicUA_Options = ClassicUA_Options or copy_table({}, default_options)
     options = ClassicUA_Options
+
+    ClassicUA_Character_Options = ClassicUA_Character_Options or copy_table({}, default_character_options)
+    character_options = ClassicUA_Character_Options
 end
 
 local reset_options = function ()
     ClassicUA_Options = copy_table({}, default_options)
     options = ClassicUA_Options
+
+    ClassicUA_Character_Options = copy_table({}, default_character_options)
+    character_options = ClassicUA_Character_Options
 end
 
 -- -----------
