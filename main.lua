@@ -1254,6 +1254,74 @@ end)
 -- [ options frame ]
 -- -----------------
 
+local setup_player_name_cases_frame = function (content_frame)
+    local root = CreateFrame("Frame", nil, content_frame)
+    root:SetPoint("BOTTOMLEFT", 0, 0)
+    root:SetSize(1, 1)
+
+    local cases = {
+        { "н", "Називний — (Є) Хто? Що?" },
+        { "р", "Родовий — (Немає) Кого? Чого?" },
+        { "д", "Давальний — (Даю) Кому? Чому?" },
+        { "з", "Знахідний — (Бачу) Кого? Що?" },
+        { "о", "Орудний — (Пишаюся) Ким? Чим?" },
+        { "м", "Місцевий — (Стою) На кому? На чому?" },
+        { "к", "Кличний — (Звертання)" }
+    }
+
+    local x = 42
+    local y = -8
+    local edit_box_width = 230
+    local prev_edit_box = nil
+
+    for i, c in ipairs(cases) do
+        local case_key = c[1]
+        local case_name = c[2]
+
+        local label = root:CreateFontString()
+        label:SetPoint("TOPLEFT", x, y - 0)
+        label:SetFont(asset_font2_path, 12)
+        label:SetTextColor(0, 0, 0)
+        label:SetText(case_name)
+
+        local edit_box = CreateFrame("EditBox", nil, root, "InputBoxTemplate")
+        edit_box:SetPoint("TOPLEFT", x, y - 4)
+        edit_box:SetSize(edit_box_width, 40)
+        edit_box:SetAutoFocus(false)
+        edit_box:SetMaxLetters(40)
+
+        edit_box:SetText(character_options.name_cases[case_key] or "")
+        edit_box:SetCursorPosition(0)
+        edit_box.case_key = case_key
+
+        edit_box:SetScript("OnTextChanged", function (self, is_user_input)
+            if is_user_input then
+                local new_text = strtrim(self:GetText() or "")
+                character_options.name_cases[self.case_key] = new_text
+            end
+        end)
+
+        edit_box:SetScript("OnTabPressed", function (self)
+            if edit_box.next_tab_focus then
+                edit_box.next_tab_focus:SetFocus()
+            end
+        end)
+
+        if prev_edit_box then
+            prev_edit_box.next_tab_focus = edit_box
+        end
+        prev_edit_box = edit_box
+
+        y = y - 40
+        if i == 4 then
+            y = -8
+            x = x + edit_box_width + 30
+        end
+    end
+
+    return root
+end
+
 local prepare_options_frame = function ()
     local at_text = addonTable.text -- can not use glossary as its not prepared at this moment
     local options_frame = CreateFrame("Frame")
@@ -1374,19 +1442,30 @@ local prepare_options_frame = function ()
     }, f:GetWidth() - 16)
 
     options_frame.info_tab_buttons = {}
+    options_frame.info_tab_child_frames = {}
     for tab_index, tab_data in ipairs({
-        -- { tab title, tab content text key }
-        { "Оновлення", "addon_changelog" },
-        { "Причетні", "addon_contributors" },
+        {
+            title                   ="Персонаж",
+            content_title           ="Персонаж: " .. UnitName("player"),
+            content_key             ="addon_char_desc",
+            child_frame_setup_func  =setup_player_name_cases_frame
+        }, {
+            title           ="Оновлення",
+            content_title   ="Оновлення",
+            content_key     ="addon_changelog"
+        }, {
+            title           ="Причетні",
+            content_title   ="Причетні",
+            content_key     ="addon_contributors"
+        }
     }) do
         f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
         table.insert(options_frame.info_tab_buttons, f)
         f.tab_index = tab_index
-        f.tab_title = tab_data[1]
-        f.tab_text_key = tab_data[2]
+        f.tab_data = tab_data
         f:SetSize(100, 32)
-        f:SetPoint("TOPLEFT", 124 + tab_index * f:GetWidth(), -200)
-        f:SetText(f.tab_title)
+        f:SetPoint("TOPLEFT", 78 + tab_index * f:GetWidth(), -200)
+        f:SetText(f.tab_data.title)
         f:SetScript("OnClick", function(self)
             if self.tab_index == options_frame.info_tab_frame.current_tab_index then
                 return
@@ -1398,16 +1477,36 @@ local prepare_options_frame = function ()
                 end
             end
 
-            set_quest_content(options_frame.info_tab_frame, self.tab_title, at_text[self.tab_text_key])
+            set_quest_content(options_frame.info_tab_frame, self.tab_data.content_title, at_text[self.tab_data.content_key])
             options_frame.info_tab_frame.current_tab_index = self.tab_index
             self:LockHighlight()
+
+            for child_frame_index, child_frame in ipairs(options_frame.info_tab_child_frames) do
+                if child_frame and child_frame_index ~= self.tab_index then
+                    child_frame:Hide()
+                end
+            end
+
+            if options_frame.info_tab_child_frames[self.tab_index] then
+                options_frame.info_tab_child_frames[self.tab_index]:Show()
+            end
         end)
+
+        options_frame.info_tab_child_frames[tab_index] = nil
+        if tab_data.child_frame_setup_func then
+            options_frame.info_tab_child_frames[tab_index] = tab_data.child_frame_setup_func(options_frame.info_tab_frame.content)
+            options_frame.info_tab_child_frames[tab_index]:Hide()
+        end
 
         -- preselect 1st tab
         if tab_index == 1 then
-            set_quest_content(options_frame.info_tab_frame, f.tab_title, at_text[f.tab_text_key])
+            set_quest_content(options_frame.info_tab_frame, f.tab_data.content_title, at_text[f.tab_data.content_key])
             options_frame.info_tab_frame.current_tab_index = 1
             f:LockHighlight()
+
+            if options_frame.info_tab_child_frames[1] then
+                options_frame.info_tab_child_frames[1]:Show()
+            end
         end
     end
 
