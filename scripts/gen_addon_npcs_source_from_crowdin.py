@@ -105,8 +105,11 @@ def collect_npcs():
                 npc_desc_formatted_text = f'<{new_npc.desc}>' if new_npc.desc else ''
                 issues.append(f'[?] NPC #{new_npc.id} has name/desc with only ASCII chars: {new_npc.name} {npc_desc_formatted_text}')
 
-            if new_npc.name.endswith(">"):
-                issues.append(f'[?] NPC #{new_npc.id} has name which ends with ">", probably mixed with desc: {new_npc.name}')
+            new_npc_name_has_issue_char = '<' in new_npc.name or '>' in new_npc.name
+            new_npc_desc_has_issue_char = isinstance(new_npc.desc, str) and ('<' in new_npc.desc or '>' in new_npc.desc)
+            if new_npc_name_has_issue_char or new_npc_desc_has_issue_char:
+                npc_desc_formatted_text = f'<{new_npc.desc}>' if new_npc.desc else ''
+                issues.append(f'[?] NPC #{new_npc.id} has name/desc with "<>" chars, probably name and desc are mixed up: {new_npc.name} {npc_desc_formatted_text}')
 
             npcs[new_npc.expansion][new_npc.id] = new_npc.name_desc_en_hint_tuple()
 
