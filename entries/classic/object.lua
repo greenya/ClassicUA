@@ -958,7 +958,7 @@ addonTable.object = { -- [key] = text
 ["Orman of Stromgarde"] = "Орман Стромґардський",
 ["Pteradon Skeleton"] = "скелет птерадона",
 ["Ranger Captain Alleria Windrunner"] = "капітан слідопитів Аллерія Вітрогін",
-["Rise of the Blood Elves"] = "Народження кривавих ельфів",
+["Rise of the Blood Elves"] = "Народження ельфів крові",
 ["Rise of the Horde"] = "Народження Орди",
 ["Roc Talon"] = "кіготь руха",
 ["Rock of Durotan"] = "камінь Дуротана",
