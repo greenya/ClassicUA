@@ -532,6 +532,7 @@ addonTable.item = {
 [3172] = { "кишки кнура" }, -- Boar Intestines
 [3173] = { "м'ясо ведмедя" }, -- Bear Meat
 [3174] = { "лімфа павука" }, -- Spider Ichor
+[3182] = { "павутинний шовк" }, -- Spider's Silk
 [3183] = { "зчесаний кіготь" }, -- Mangy Claw
 [3218] = { "кайдани з Поховальних Вогнищ" }, -- Pyrewood Shackle
 [3220] = { "кров'янка", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 4 на 15 хв.#Restores {1} health over {2}" }, -- Blood Sausage, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 4 Stamina and Spirit for 15 min.
@@ -941,6 +942,7 @@ addonTable.item = {
 [4291] = { "шовкова нитка" }, -- Silken Thread
 [4304] = { "товста шкіра" }, -- Thick Leather
 [4306] = { "шовкове полотно" }, -- Silk Cloth
+[4320] = { "чоботи з павутинного шовку" }, -- Spidersilk Boots
 [4330] = { "стильна червона сорочка" }, -- Stylish Red Shirt
 [4338] = { "маготкане полотно" }, -- Mageweave Cloth
 [4340] = { "сірий барвник" }, -- Gray Dye
@@ -1759,7 +1761,7 @@ addonTable.item = {
 [6170] = { "реактиви чарівників" }, -- Wizards' Reagents
 [6172] = { "втрачені припаси" }, -- Lost Supplies
 [6175] = { "артефакт Атал'ай" }, -- Atal'ai Artifact
-[6178] = { "вантаж до Незерґарду" }, -- Shipment to Nethergarde
+[6178] = { "вантаж для Підсвітньої Варти" }, -- Shipment to Nethergarde
 [6181] = { "фетиш Гаккара" }, -- Fetish of Hakkar
 [6184] = { "нога жахливого повзуна" }, -- Monstrous Crawler Leg
 [6190] = { "уламок дренетиста" }, -- Draenethyst Shard
@@ -1987,6 +1989,7 @@ addonTable.item = {
 [6895] = { "ковальський молоток Джордана" }, -- Jordan's Smithing Hammer
 [6898] = { "сфера Соран'рука", equip={ "Збільшує шкоду від заклинань і ефектів вогню на 4.", "Збільшує шкоду від заклинань і ефектів тіні на 4." }, use="Відновлює 25 здоров'я кожні 3 сек протягом 30 сек. (Відновлення 30 хв)" }, -- Orb of Soran'ruk, @equip Increases damage done by Fire spells and effects by up to 4., @equip Increases damage done by Shadow spells and effects by up to 4., @use Restores 25 health every 3 sec for 30 sec. (30 Min Cooldown)
 [6900] = { "зачарована золота кровомантія" }, -- Enchanted Gold Bloodrobe
+[6904] = { "укус Серра'кіса", hit="Отруює ціль, завдаючи 4 шкоди від природи кожні 2 с протягом 20 с." }, -- Bite of Serra'kis, @hit Poisons target for 4 Nature damage every 2 sec for 20 sec.
 [6912] = { "серцедерево" }, -- Heartswood
 [6913] = { "серцевина серцедерева", use="Викликати сукуба в колі виклику. (Відновлення 3 хв)" }, -- Heartswood Core, @use Call forth a succubus using the summoning circle. (3 Min Cooldown)
 [6914] = { "фрагмент Соран'рука" }, -- Soran'ruk Fragment
@@ -2328,6 +2331,10 @@ addonTable.item = {
 [8487] = { "переноска для кішки (руда смугаста кішка)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу кішку." }, -- Cat Carrier (Orange Tabby), @use Right Click to summon and dismiss your cat.
 [8488] = { "переноска для кішки (срібляста смугаста кішка)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу кішку." }, -- Cat Carrier (Silver Tabby), @use Right Click to summon and dismiss your cat.
 [8489] = { "переноска для кішки (біле кошеня)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити ваше кошеня." }, -- Cat Carrier (White Kitten), @use Right Click to summon and dismiss your cat.
+[8492] = { "клітка з папугою (зеленокрилий макао)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашого папугу." }, -- Parrot Cage (Green Wing Macaw), @use Right Click to summon and dismiss your bird.
+[8494] = { "клітка з папугою (гіацинтовий макао)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашого папугу." }, -- Parrot Cage (Hyacinth Macaw), @use Right Click to summon and dismiss your bird.
+[8495] = { "клітка з папугою (сенегальський)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашого папугу." }, -- Parrot Cage (Senegal), @use Right Click to summon and dismiss your bird.
+[8496] = { "клітка з папугою (корела)", use="Use: Клацніть правою кнопкою миші, щоб викликати і відпустити вашого папугу." }, -- Parrot Cage (Cockatiel), @use Right Click to summon and dismiss your bird.
 [8497] = { "клітка з кроликом (снігоступ)", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашого кролика." }, -- Rabbit Crate (Snowshoe), @use Right Click to summon and dismiss your rabbit.
 [8500] = { "велика рогата сова", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу сову." }, -- Great Horned Owl, @use Right Click to summon and dismiss your owl.
 [8501] = { "соколина сова", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашу сову." }, -- Hawk Owl, @use Right Click to summon and dismiss your owl.
@@ -2521,6 +2528,7 @@ addonTable.item = {
 [9440] = { "прийнятний зразок василіска" }, -- Acceptable Basilisk Sample
 [9441] = { "прийнятний зразок гієни" }, -- Acceptable Hyena Sample
 [9442] = { "неперевірений зразок скорпіда", use="Перевірити якість цього зразка за допомогою набору для польових досліджень." }, -- Untested Scorpid Sample, @use Test this sample for quality.  Requires Field Testing Kit.
+[9449] = { "ручний пробійник натовпу", use="Збільшує вашу швидкість атаки на 50% протягом 30 секунд." }, -- Manual Crowd Pummeler, @use Increases your attack speed by 50% for 30 sec.
 [9460] = { "ріг Зловісного Тотема" }, -- Grimtotem Horn
 [9462] = { "ящик з рогами Зловісного Тотема" }, -- Crate of Grimtotem Horns
 [9463] = { "кобальт Ґордунні" }, -- Gordunni Cobalt
@@ -3470,7 +3478,7 @@ addonTable.item = {
 [13216] = { "корона розкаяння", equip="Відновлює 6 мани кожні 5 сек." }, -- Crown of the Penitent, @equip Restores 6 mana per 5 sec.
 [13217] = { "перстень розкаяння", equip="Збільшує ваш шанс нанесення критичного удару на 1%." }, -- Band of the Penitent, @equip Improves your chance to get a critical strike by 1%.
 [13243] = { "cріблястий захисник", equip="Імовірнсть збільшити шанс блокування атак щитом на 50% протягом 10 сек при отриманні удару в бою. (Імовірність: 1%)" }, -- Argent Defender, @equip Has a 1% chance when struck in combat of increasing chance to block by 50% for 10 sec. (Proc chance: 1%)
-[13246] = { "cріблястий месник", hit="Збільшує силу атаки в бою з нежиттю на 200 протягом 10 сек." }, -- Argent Avenger, @hit Increases Attack Power against Undead by 200 for 10 sec.
+[13246] = { "cріблястий месник", hit="Збільшує силу атаки в бою з невмерлими на 200 протягом 10 сек." }, -- Argent Avenger, @hit Increases Attack Power against Undead by 200 for 10 sec.
 [13249] = { "cріблястий лицар" }, -- Argent Crusader
 [13250] = { "голова Бальназара" }, -- Head of Balnazzar
 [13251] = { "голова барона Рівендера" }, -- Head of Baron Rivendare
@@ -3838,7 +3846,7 @@ addonTable.item = {
 [15874] = { "м'якопанцирний молюск" }, -- Soft-shelled Clam
 [15875] = { "гниле яблуко", use="Використовуйте, щоб замаскуватися під члена Багряного Походу.", flavor="Черв'як — найкраща частина." }, -- Rotten Apple, @use Use to disguise yourself as a member of the Scarlet Crusade., @flavor The Worm is the Best Part.
 [15876] = { "скриня Натаноса" }, -- Nathanos' Chest
-[15877] = { "прикраса вівтаря", use="Покласти прикрасу на вівтар Ремулоса, завершивши випробування." }, -- Shrine Bauble, @use Complete the aquatic time trial at the Shrine of Remulos.
+[15877] = { "прикраса вівтаря", use="Покласти прикрасу на вівтар Ремула, завершивши випробування." }, -- Shrine Bauble, @use Complete the aquatic time trial at the Shrine of Remulos.
 [15878] = { "срібний ключ Ракмора" }, -- Rackmore's Silver Key
 [15879] = { "кіготь надправителя Рора" }, -- Overlord Ror's Claw
 [15880] = { "голова Рамштайна-Ненажери" }, -- Head of Ramstein the Gorger
@@ -4461,7 +4469,7 @@ addonTable.item = {
 [18719] = { "серце зрадника" }, -- The Traitor's Heart
 [18724] = { "зачароване сухожилля дорослого чорного дракона", flavor="Практично незруйновна тятива. Ідеально підійде до могутнього руків'я." }, -- Enchanted Black Dragon Sinew, @flavor An almost indestructible string. Perfect for a mighty bow stave.
 [18731] = { "викрійка: М'яч з важкої шкіри", use="Навчає вас створенню м'яча з важкої шкіри." }, -- Pattern: Heavy Leather Ball, @use Teaches you how to craft a Heavy Leather Ball.
-[18746] = { "кристал провидіння", use="Помістити кристал спасіння в глибинах підземель великого склепу." }, -- Divination Scryer, @use Plant the Divination Scryer in the heart of the Great Ossuary's basement.
+[18746] = { "кристал провидіння", use="Помістити кристал провидіння в глибинах підземель великого склепу." }, -- Divination Scryer, @use Plant the Divination Scryer in the heart of the Great Ossuary's basement.
 [18749] = { "згублена душа коня", use="Дарувати спасіння згубленій душі коня, провівши ритуал спокути." }, -- Charger's Lost Soul, @use Reclaim the lost soul of death knight's charger, judging it redeemed.
 [18752] = { "кадильниця екзорцизму", use="Виявлення духів, що населяють руїни Страходолу. (Відновлення 30 сек)" }, -- Exorcism Censer, @use Reveal the spirits that haunt the ruins of Terrordale. (30 Sec Cooldown)
 [18753] = { "арканітовий бард" }, -- Arcanite Barding
@@ -6108,6 +6116,8 @@ addonTable.item = {
 [23327] = { "підсмажена на вогні булочка", use="Збільшує ваш шанс нанесення удару на 2% протягом 1 години." }, -- Fire-toasted Bun, @use Improves your chance to hit by 2% for 1 hour.
 [23379] = { "попелясті браслети", use="Викликати попелястого елементаля, що захищатиме вас протягом 10 хв. (Відновлення 10 хв)" }, -- Cinder Bracers, @use Summons a Cinder Elemental that will protect you for 10 min. (10 Min Cooldown)
 [23435] = { "бузиновий пиріг", use="Збільшує навичку захисту на 13 протягом 1 години." }, -- Elderberry Pie, @use Increases Defense by 13 for 1 hour.
+[184937] = { "хронозаміщувач благословень", use="Змінює тканину часу, призупиняючи благословення драконоборця, Грізного Молоту, Зул'Ґуруба та Сквернолісся." }, -- Chronoboon Displacer
+[184938] = { "заряджений хронозаміщувач благословень", use="Відновити призупинені благословення." }, -- Supercharged Chronoboon Displacer
 [190179] = { "серце Авеліни" }, -- Avelina's Heart
 [190180] = { "серце Айзека" }, -- Isaac's Heart
 [190181] = { "серця закоханих", use="Викликати інкуба в колі виклику. (Відновлення 3 хв)" }, -- Lovers' Hearts, @use Call forth an incubus using the summoning circle. (3 Min Cooldown)
