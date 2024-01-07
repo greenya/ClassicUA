@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.book = { -- [id] = { page1, page2 (optional), page3 (optional), ... }
+local book = { -- [id] = { page1, page2 (optional), page3 (optional), ... }
 [203723] = { -- Cuttys Note (1 page)
 [===[Товар в мене. Я заникаюсь на річці, неподалік від Кришталевого озера, біля стіни. Як пошлеш когось зі своїх по мене, дивись, щоб вони не засвітились!
 

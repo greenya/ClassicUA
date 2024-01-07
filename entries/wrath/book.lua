@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.book = { -- [id] = { page1, page2 (optional), page3 (optional), ... }
+local book = { -- [id] = { page1, page2 (optional), page3 (optional), ... }
 }
 
 if addonTable.book then
