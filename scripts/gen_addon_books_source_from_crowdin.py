@@ -2,51 +2,58 @@ import sys, os, re
 from xml.etree import ElementTree
 import utils
 
-# TODO: add expansion support when we actually have books_[expansion] folders
-
 def collect_books():
-    books_path = 'translation_from_crowdin/uk/books/'
-    print(f'Processing {books_path}')
-
-    result = {}
+    books = { e: {} for e in utils.known_expansions }
     filename_pattern = re.compile(r'^([^_]+)_(\d+)\.xml$')
 
-    for dirpath, _, filenames in os.walk(books_path):
-        for filename in filenames:
-            tree = ElementTree.parse(os.path.join(dirpath, filename))
-            root = tree.getroot()
-            pages = []
+    for expansion in books:
+        books_folder_name = f'books_{expansion}' if expansion != 'classic' else 'books'
+        books_path = f'translation_from_crowdin/uk/{books_folder_name}/'
+        print(f'Processing {books_path}')
 
-            for s in root.findall('./string'):
-                if s.text:
-                    pages.append(utils.get_clean_text(s.text))
+        for dirpath, _, filenames in os.walk(books_path):
+            for filename in filenames:
+                tree = ElementTree.parse(os.path.join(dirpath, filename))
+                root = tree.getroot()
+                pages = []
 
-            # TODO: we don't check page number here (e.g. "PAGE_1", ...), that should be fine for now,
-            # until we have partially translated books, e.g. translated only page 2
+                for s in root.findall('./string'):
+                    if s.text:
+                        pages.append(utils.get_clean_text(s.text))
 
-            if pages:
-                name, id = re.search(filename_pattern, filename).groups()
-                pages_wording = 'page' if len(pages) == 1 else 'pages'
-                result[int(id)] = (pages, f'{name.strip()} ({len(pages)} {pages_wording})')
+                # TODO: we don't check page number here (e.g. "PAGE_1", ...), that should be fine for now,
+                # until we have partially translated books, e.g. translated only page 2
 
-    return result
+                if pages:
+                    name, id = re.search(filename_pattern, filename).groups()
+                    pages_wording = 'page' if len(pages) == 1 else 'pages'
+                    books[expansion][int(id)] = (pages, f'{name.strip()} ({len(pages)} {pages_wording})')
+
+        books[expansion] = dict(sorted(books[expansion].items()))
+
+    return books
 
 def print_report(books):
     print('-' * 80)
-    for id in books:
-        _, hint = books[id]
-        print(f'book #{id} -> {hint}')
+    for expansion in books:
+        for id in books[expansion]:
+            _, hint = books[expansion][id]
+            print(f'{expansion} book #{id} -> {hint}')
 
     print('-' * 80)
-    print(f'Total books:', len(books))
+    print('Total books:', ', '.join([f'[{e}] {len(books[e])}' for e in books]))
 
 def main():
     sys.stdout.reconfigure(encoding='utf-8')
 
     books = collect_books()
-    books = dict(sorted(books.items()))
 
-    utils.write_lua_book_file('translation_from_crowdin/entries/classic', 'book', books)
+    for expansion in books:
+        utils.write_lua_book_file(
+            path    =f'translation_from_crowdin/entries/{expansion}',
+            filename='book',
+            books   =books[expansion]
+        )
 
     print_report(books)
 

@@ -187,7 +187,8 @@ def write_lua_book_file(path, filename, books):
                 f.write(f'[===[{page}]===],\n')
             f.write('},\n')
 
-        f.write('}\n')
+        f.write('}\n\n')
+        write_lua_assign_or_copy_table_code(f, 'book')
 
 def write_lua_npc_file(path, filename, npcs):
     Path(path).mkdir(parents=True, exist_ok=True)
