@@ -90,12 +90,31 @@ local first_line_only = function (text)
     end
 end
 
--- [!] Any changes made to this func must be kept in sync with Python impl in utils.py
+-- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
+local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
+    {"night elf", "nightelf"},
+    {"blood elf", "bloodelf"},
+    {"death knight", "deathknight"},
+    {"demon hunter", "demonhunter"},
+    {"void elf", "voidelf"},
+    {"lightforged draenei", "lightforgeddraenei"},
+    {"dark iron dwarf", "darkirondwarf"},
+    {"kul tiran", "kultiran"},
+    {"highmountain tauren", "highmountaintauren"},
+    {"mag'har orc", "magharorc"},
+    {"zandalari troll", "zandalaritroll"},
+}
 local get_text_code = function (text)
-    -- text = 'Do not turn your back on the Light, warrior, it may be the one thing that saves you some day.'
+    -- text = "Do not turn your back on the Light, warrior, it may be the one thing that saves you some day."
     local result = { "_", "_", "_", "_", "_", "_", "_", "_", "_", "_" }
     local result_len = #result
     text = text:lower()
+    -- print("TEXT", text)
+
+    local seq_pairs = known_gossip_dynamic_seq_with_multiple_words_for_get_text_code
+    for i = 1, #seq_pairs do
+        text = text:gsub(seq_pairs[i][1], seq_pairs[i][2])
+    end
     -- print("TEXT", text)
 
     local result_fill_idx = 1

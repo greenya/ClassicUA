@@ -256,12 +256,29 @@ def write_lua_gossip_file(path, filename, gossip):
 
         f.write('}\n')
 
-# [!] Any changes made to this func must be kept in sync with Lua impl in main.lua
+# [!] Any changes made to get_text_code() func must be kept in sync with Lua impl in main.lua
+known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = (
+    ("night elf", "nightelf"),
+    ("blood elf", "bloodelf"),
+    ("death knight", "deathknight"),
+    ("demon hunter", "demonhunter"),
+    ("void elf", "voidelf"),
+    ("lightforged draenei", "lightforgeddraenei"),
+    ("dark iron dwarf", "darkirondwarf"),
+    ("kul tiran", "kultiran"),
+    ("highmountain tauren", "highmountaintauren"),
+    ("mag'har orc", "magharorc"),
+    ("zandalari troll", "zandalaritroll"),
+)
 def get_text_code(text):
     # text = 'Do not turn your back on the Light, warrior, it may be the one thing that saves you some day.'
     result = [ '_', '_', '_', '_', '_', '_', '_', '_', '_', '_' ]
     result_len = len(result)
     text = text.lower()
+    # print('TEXT', text)
+
+    for p in known_gossip_dynamic_seq_with_multiple_words_for_get_text_code:
+        text = text.replace(p[0], p[1])
     # print('TEXT', text)
 
     result_fill_idx = 0
