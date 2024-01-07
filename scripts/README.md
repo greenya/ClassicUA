@@ -1,12 +1,12 @@
 # ClassicUA Generator Scripts
 
 The following files are generated from Crowdin via set of scripts:
-- book.lua
-- [not used] glossary.lua
+- book*.lua
 - gossip.lua
 - npc*.lua
 - quest*.lua
 - zone.lua
+- [not used] glossary.lua
 
 All other files are edited manually, e.g. via pull requests.
 
@@ -24,11 +24,11 @@ All other files are edited manually, e.g. via pull requests.
 3. Generate lua files:
     - Clean up folder "translation_from_crowdin"
     - Copy ClassicUA.tbx and ClassicUA.zip, extract zip
-    - Run python gen_addon_quests_source_from_crowdin.py > translation_from_crowdin/quests_stats.txt
     - Run python gen_addon_books_source_from_crowdin.py > translation_from_crowdin/books_stats.txt
-    - Run python gen_addon_zones_source_from_crowdin.py > translation_from_crowdin/zones_stats.txt
-    - Run python gen_addon_npcs_source_from_crowdin.py > translation_from_crowdin/npcs_stats.txt
     - Run python gen_addon_gossip_source_from_crowdin.py > translation_from_crowdin/gossip_stats.txt
+    - Run python gen_addon_npcs_source_from_crowdin.py > translation_from_crowdin/npcs_stats.txt
+    - Run python gen_addon_quests_source_from_crowdin.py > translation_from_crowdin/quests_stats.txt
+    - Run python gen_addon_zones_source_from_crowdin.py > translation_from_crowdin/zones_stats.txt
     - [not used] Run python gen_addon_glossary_source_from_crowdin.py > translation_from_crowdin/glossary_stats.txt
         * Note: glossary generator must go last, as it uses previously generated lua files
 
