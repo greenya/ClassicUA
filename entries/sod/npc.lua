@@ -51,6 +51,7 @@ local npc = { -- [id] = { title, description (optional) }
 [207637] = { "Ватейя Дерев'яне Копито", "мисливиця на чудовиськ", en="Vateya Timberhoof" }, -- Vateya Timberhoof <Monster Hunter>
 [207743] = { "Неталі Гордий Вітер", "товари загального вжитку", en="Netali Proudwind" }, -- Netali Proudwind <General Goods>
 [207754] = { "Муарт", en="Mooart" }, -- Mooart
+[207795] = { "гальванічний символ", en="Galvanic Icon" }, -- Galvanic Icon
 [207957] = { "Вагі Кісткощеп", "мисливиця на чудовиськ", en="Vahi Bonesplitter" }, -- Vahi Bonesplitter <Monster Hunter>
 [208023] = { "Ґру'арк", en="Gru'ark" }, -- Gru'ark
 [208036] = { "Ба'со", en="Ba'so" }, -- Ba'so
@@ -110,7 +111,7 @@ local npc = { -- [id] = { title, description (optional) }
 [210482] = { "Пакснозз", en="Paxnozz" }, -- Paxnozz
 [210483] = { "агресивний чавлик", en="Aggressive Squashling" }, -- Aggressive Squashling
 [210487] = { "жах з глибин", en="Horror of the Deep" }, -- Horror of the Deep
-[210501] = { "порототип жнивального збирача", en="Harvest Reaper Prototype" }, -- Harvest Reaper Prototype
+[210501] = { "прототип жнивального збирача", en="Harvest Reaper Prototype" }, -- Harvest Reaper Prototype
 [210533] = { "Срібногін", en="Silverspur" }, -- Silverspur
 [210537] = { "невмирущий робітник", en="Undying Laborer" }, -- Undying Laborer
 [210549] = { "розвідник повстанців", en="Defias Scout" }, -- Defias Scout

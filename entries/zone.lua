@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.zone_stats = { count=1712 }
+addonTable.zone_stats = { count=1713 }
 
 addonTable.zone = { -- [key] = text
 ["Abandoned Armory"] = "Покинута зброярня",
@@ -150,8 +150,8 @@ addonTable.zone = { -- [key] = text
 ["Blasted Lands"] = "Спустошені землі",
 ["Bleeding Hollow Ruins"] = "руїни Кривавої Зіниці",
 ["Bleeding Sparrow"] = "Скривавлений горобець",
-["Bleeding Ziggurat"] = "Скривавлений зиккурат",
-["Blood Elf Tower"] = "вежа кривавих ельфів",
+["Bleeding Ziggurat"] = "Кривавий зиккурат",
+["Blood Elf Tower"] = "вежа ельфів крові",
 ["Blood Watch"] = "Кривава застава",
 ["Bloodcurse Isle"] = "острів Проклятої Крові",
 ["Bloodfen Burrow"] = "нора Кровоболотних",
@@ -275,6 +275,7 @@ addonTable.zone = { -- [key] = text
 ["Crushridge Hold"] = "поселення Скелеламів",
 ["Crystal Lake"] = "Кришталеве озеро",
 ["Crystal Spine"] = "кришталевий хребет",
+["Crystalbrook River"] = "Кришталева річка",
 ["Crystalsong Forest"] = "ліс Кришталевої пісні",
 ["Crystalvein Mine"] = "Кришталева копальня",
 ["Cursed Hollow"] = "Проклята лощина",
@@ -1066,7 +1067,7 @@ addonTable.zone = { -- [key] = text
 ["Shok'Thokar"] = "Шок'Токар",
 ["Sholazar Basin"] = "низина Шолазар",
 ["Shrine of Dath'Remar"] = "вівтар Дат'Ремара",
-["Shrine of Remulos"] = "вівтар Ремулоса",
+["Shrine of Remulos"] = "вівтар Ремула",
 ["Shrine of the Deceiver"] = "вівтар Підступника",
 ["Shrine of the Dormant Flame"] = "вівтар Дрімаючого полум'я",
 ["Shrine of the Fallen Warrior"] = "вівтар полеглого воїна",
@@ -1543,7 +1544,7 @@ addonTable.zone = { -- [key] = text
 ["Tower of Azora"] = "вежа Азори",
 ["Tower of Eldara"] = "вежа Ельдари",
 ["Tower of Ilgalar"] = "вежа Ілґалара",
-["Tower of the Damned"] = "вежа проклятих",
+["Tower of the Damned"] = "вежа Проклятих",
 ["Town Square"] = "Міська площа",
 ["Trade Quarter"] = "Торговий квартал",
 ["Traders' Tier"] = "торгівельний ряд",

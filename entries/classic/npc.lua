@@ -315,7 +315,7 @@ local npc = { -- [id] = { title, description (optional) }
 [642] = { "подрібнювач Сніда", "начальник лісозаготівлі", en="Sneed's Shredder" }, -- Sneed's Shredder
 [643] = { "Снід", "начальник лісозаготівлі", en="Sneed" }, -- Sneed
 [644] = { "Рак'Зор", "десятник", en="Rhahk'Zor" }, -- Rhahk'Zor <The Foreman>
-[645] = { "Печиво", "корабельний кок", en="Cookie" }, -- Cookie
+[645] = { "Кухарчик", "кок", en="Cookie" }, -- Cookie
 [646] = { "пан Бац", "перший корабельний помічник", en="Mr. Smite" }, -- Mr. Smite
 [647] = { "капітан Зеленошкір", en="Captain Greenskin" }, -- Captain Greenskin
 [656] = { "Вайлдер Лютополох", en="Wilder Thistlenettle" }, -- Wilder Thistlenettle
@@ -1914,7 +1914,7 @@ local npc = { -- [id] = { title, description (optional) }
 [2683] = { "Намдо Справошип", "інженерні припаси", en="Namdo Bizzfizzle" }, -- Namdo Bizzfizzle <Engineering Supplies>
 [2684] = { "Різз Незатяг", "інженерні припаси", en="Rizz Loosebolt" }, -- Rizz Loosebolt <Engineering Supplies>
 [2685] = { "Мазк Цілестріл", "інженерні припаси", en="Mazk Snipeshot" }, -- Mazk Snipeshot <Engineering Supplies>
-[2686] = { "виртовий виводка Зів'ялої Кори", en="Witherbark Broodguard" }, -- Witherbark Broodguard
+[2686] = { "вартовий виводка Зів'ялої Кори", en="Witherbark Broodguard" }, -- Witherbark Broodguard
 [2687] = { "Ґназ Грубопал", "інженерні припаси", en="Gnaz Blunderflame" }, -- Gnaz Blunderflame <Engineering Supplies>
 [2688] = { "Руппо Блискостіб", "інженерні припаси", en="Ruppo Zipcoil" }, -- Ruppo Zipcoil <Engineering Supplies>
 [2691] = { "високодільний вістовий", en="Highvale Outrunner" }, -- Highvale Outrunner
@@ -4509,8 +4509,8 @@ local npc = { -- [id] = { title, description (optional) }
 [6195] = { "огидохльоста сирена", en="Spitelash Siren" }, -- Spitelash Siren
 [6196] = { "огидохльостий мірмідон", en="Spitelash Myrmidon" }, -- Spitelash Myrmidon
 [6197] = { "огидохльоста чаклунка", en="Spitelash Sorceress" }, -- Spitelash Sorceress
-[6198] = { "кривавий ельф-землемір", en="Blood Elf Surveyor" }, -- Blood Elf Surveyor
-[6199] = { "кривавий ельф-відновник", en="Blood Elf Reclaimer" }, -- Blood Elf Reclaimer
+[6198] = { "ельф крові-землемір", en="Blood Elf Surveyor" }, -- Blood Elf Surveyor
+[6199] = { "ельф крові-відновник", en="Blood Elf Reclaimer" }, -- Blood Elf Reclaimer
 [6200] = { "сатир Леґаші", en="Legashi Satyr" }, -- Legashi Satyr
 [6201] = { "пройдисвіт Леґаші", en="Legashi Rogue" }, -- Legashi Rogue
 [6202] = { "пеклоклич Леґаші", en="Legashi Hellcaller" }, -- Legashi Hellcaller
@@ -5461,7 +5461,7 @@ local npc = { -- [id] = { title, description (optional) }
 [8578] = { "чаклунка Рімторі", en="Magus Rimtori" }, -- Magus Rimtori
 [8579] = { "Є'кінья", en="Yeh'kinya" }, -- Yeh'kinya
 [8580] = { "Атал'аларіон", "вартовий ідола", en="Atal'alarion" }, -- Atal'alarion
-[8581] = { "кривавий ельф-захисник", en="Blood Elf Defender" }, -- Blood Elf Defender
+[8581] = { "ельф крові-захисник", en="Blood Elf Defender" }, -- Blood Elf Defender
 [8582] = { "Кадрак", en="Kadrak" }, -- Kadrak
 [8583] = { "Діранья Срібносяй", en="Dirania Silvershine" }, -- Dirania Silvershine
 [8584] = { "Іверрон", en="Iverron" }, -- Iverron
@@ -6735,7 +6735,7 @@ local npc = { -- [id] = { title, description (optional) }
 [11829] = { "Фаграк", en="Fahrak" }, -- Fahrak
 [11830] = { "жрець Гаккарі", en="Hakkari Priest" }, -- Hakkari Priest
 [11831] = { "знахар Гаккарі", en="Hakkari Witch Doctor" }, -- Hakkari Witch Doctor
-[11832] = { "хранитель Ремулос", en="Keeper Remulos" }, -- Keeper Remulos
+[11832] = { "хранитель Ремул", en="Keeper Remulos" }, -- Keeper Remulos
 [11833] = { "Рахауро", "служитель Магати", en="Rahauro" }, -- Rahauro
 [11834] = { "Маур Зловісний Тотем", en="Maur Grimtotem" }, -- Maur Grimtotem
 [11835] = { "Теодор Ґріффс", en="Theodore Griffs" }, -- Theodore Griffs
@@ -8314,7 +8314,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16037] = { "чумний кажан", en="Plagued Bat" }, -- Plagued Bat
 [16042] = { "лорд Вальталак" }, -- Valthalak
 [16043] = { "повелитель магми Бокк", en="Magma Lord Bokk" }, -- Magma Lord Bokk
-[16049] = { "Лівиця", en="Lefty" }, -- Lefty
+[16049] = { "Лівша", en="Lefty" }, -- Lefty
 [16050] = { "Гнилоклик", en="Rotfang" }, -- Rotfang
 [16051] = { "Снох Чорноспинна", en="Snokh Blackspine" }, -- Snokh Blackspine
 [16052] = { "Мальґен Довгий Спис", en="Malgen Longspear" }, -- Malgen Longspear
@@ -8550,6 +8550,7 @@ local npc = { -- [id] = { title, description (optional) }
 [185334] = { "Айзек Пірсон", en="Isaac Pearson" }, -- Isaac Pearson
 [185335] = { "викликаний інкуб", en="Summoned Incubus" }, -- Summoned Incubus
 [185336] = { "інкуб Жезель" }, -- Jezelle Pruitt
+[210750] = { "М'ґррґл", en="M'grrgl" }, -- M'grrgl
 }
 
 if addonTable.npc then
