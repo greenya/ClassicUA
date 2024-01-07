@@ -14,17 +14,23 @@ local asset_font2_path = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
 
 local is_classic = strbyte(GetBuildInfo(), 1) == 49
 local is_tbc = strbyte(GetBuildInfo(), 1) == 50
-local is_wotlk = strbyte(GetBuildInfo(), 1) == 51
+local is_wrath = strbyte(GetBuildInfo(), 1) == 51
 
-local print_table = function (table, title)
-    print(title .. " {")
+local print_table = function (table)
+    print("---- {")
     for k, v in pairs(table) do print("[" .. k .. "]=" .. tostring(v)) end
-    print("} " .. title)
+    print("} ----")
 end
 
 local copy_table = function (target, source)
     for k, v in pairs(source) do target[k] = v end
     return target
+end
+
+local table_keys = function (table)
+    local result = {}
+    for k, _ in pairs(table) do result[#result + 1] = k end
+    return result
 end
 
 local capitalize = function (text)
@@ -82,6 +88,81 @@ local first_line_only = function (text)
     else
         return text
     end
+end
+
+-- [!] Any changes made to this func must be kept in sync with Python impl in utils.py
+local get_text_code = function (text)
+    -- text = 'Do not turn your back on the Light, warrior, it may be the one thing that saves you some day.'
+    local result = { "_", "_", "_", "_", "_", "_", "_", "_", "_", "_" }
+    local result_len = #result
+    text = text:lower()
+    -- print("TEXT", text)
+
+    local result_fill_idx = 1
+    for word in string.gmatch(text, "%w+") do
+        if #word > 0 then
+            if result_fill_idx > result_len then
+                break
+            end
+
+            for i = 1, #word do
+                result[result_fill_idx] = string.sub(word, i, i)
+                -- print(result_fill_idx, table.concat(result))
+                result_fill_idx = result_fill_idx + 1
+                if result_fill_idx > result_len then
+                    break
+                end
+            end
+        end
+    end
+
+    local result_idx = 1
+    local result_rewind = 1
+    for word in string.gmatch(text, "%w+") do
+        if #word > 0 then
+            result[result_idx] = string.sub(word, 1, 1)
+            -- print(result_idx, table.concat(result))
+            result_idx = result_idx + 1
+            if result_idx > result_len then
+                result_rewind = result_rewind < result_len and result_rewind + 1 or result_len - 3
+                result_idx = result_rewind
+            end
+        end
+    end
+
+    -- print("CODE", table.concat(result))
+    return table.concat(result)
+end
+
+local fuzzy_match_text_code = function (code, candidates, minimum_match_ratio)
+    if not minimum_match_ratio then
+        minimum_match_ratio = 0.5
+    end
+
+    local best_match = false
+    local best_match_ratio = 0.0
+
+    for i = 1, #candidates do
+        local matches = 0
+
+        if #code == #candidates[i] then
+            for j = 1, #candidates[i] do
+                if string.sub(code, j, j) == string.sub(candidates[i], j, j) then
+                    matches = matches + 1
+                end
+            end
+        end
+
+        local ratio = matches/#code
+        if ratio >= minimum_match_ratio and ratio > best_match_ratio then
+            best_match = candidates[i]
+            best_match_ratio = ratio
+        end
+
+        -- print(candidates[i], ratio)
+    end
+
+    return best_match
 end
 
 -- -----------
@@ -439,6 +520,27 @@ local get_glossary_text = function (entry_key)
             else
                 return capitalize(at.glossary[key1])
             end
+        end
+    end
+
+    return false
+end
+
+local get_gossip_text = function (npc_id, gossip_text)
+    local at = addonTable
+
+    if not npc_id or type(gossip_text) ~= "string" or #gossip_text < 1 or type(at.gossip) ~= "table" then
+        return false
+    end
+
+    npc_id = tonumber(npc_id)
+    local gossip_code = get_text_code(gossip_text)
+
+    if at.gossip[npc_id] then
+        local known_gossip_keys = table_keys(at.gossip[npc_id])
+        local gossip_fuzzy_key = fuzzy_match_text_code(gossip_code, known_gossip_keys)
+        if gossip_fuzzy_key then
+            return make_text(at.gossip[npc_id][gossip_fuzzy_key])
         end
     end
 
@@ -1040,6 +1142,68 @@ hooksecurefunc("SelectQuestLogEntry", function ()
     end
 end)
 
+-- ----------------
+-- [ gossip frame ]
+-- ----------------
+
+local gossip_frame = nil
+local get_gossip_frame = function ()
+    if gossip_frame then
+        return gossip_frame
+    end
+
+    local width, height = GossipFrame.GreetingPanel.ScrollBox:GetSize()
+    local frame = CreateFrame("Frame", nil, GossipFrame.GreetingPanel.ScrollBar, "BackdropTemplate")
+    frame:SetFrameStrata("HIGH")
+
+    if is_wrath then
+        frame:SetSize(width + 20, height - 51)
+        frame:SetPoint("TOP", 0, 5)
+        frame:SetPoint("RIGHT", width + 16, 0)
+    else
+        frame:SetSize(width + 20, height + 18)
+        frame:SetPoint("TOP", 0, 1)
+        frame:SetPoint("RIGHT", width + 16, 0)
+    end
+
+    setup_frame_background_and_border(frame)
+
+    setup_frame_scrollbar_and_content(frame, {
+        text = { asset_font2_path, options.quest_text_size }
+    })
+
+    frame:Show()
+
+    gossip_frame = frame
+    return gossip_frame
+end
+
+local set_gossip_content = function (text)
+    local f = get_gossip_frame()
+    local h = 16
+
+    f.text:SetPoint("TOPLEFT", f.content, 12, -h)
+    f.text:SetText(text)
+    h = h + f.text:GetHeight() + 12
+
+    setup_frame_scrollbar_values(f, h)
+end
+
+local show_gossip = function ()
+    local npc_guid = UnitGUID("target")
+    local _, _, _, _, _, npc_id, _ = strsplit("-", npc_guid)
+    local gossip_text_en = C_GossipInfo:GetText()
+    local gossip_text_ua = get_gossip_text(npc_id, gossip_text_en)
+    if gossip_text_ua then
+        set_gossip_content(gossip_text_ua)
+        get_gossip_frame():Show()
+    end
+end
+
+local hide_gossip = function ()
+    get_gossip_frame():Hide()
+end
+
 -- --------------
 -- [ book frame ]
 -- --------------
@@ -1542,6 +1706,8 @@ local event_frame = CreateFrame("Frame")
 event_frame:RegisterEvent("ADDON_LOADED")
 event_frame:RegisterEvent("PLAYER_LOGIN")
 event_frame:RegisterEvent("PLAYER_TARGET_CHANGED")
+event_frame:RegisterEvent("GOSSIP_SHOW")
+event_frame:RegisterEvent("GOSSIP_CLOSED")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_READY")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
@@ -1576,6 +1742,12 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
 
     elseif event == "PLAYER_TARGET_CHANGED" then
         update_target_frame_text()
+
+    elseif event == "GOSSIP_SHOW" then
+        show_gossip()
+
+    elseif event == "GOSSIP_CLOSED" then
+        hide_gossip()
 
     elseif event == "ITEM_TEXT_BEGIN" then
         if known_tooltips[1].classicua.entry_type == "item" then
