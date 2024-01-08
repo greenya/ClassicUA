@@ -5,13 +5,13 @@ addonTable.object = { -- [key] = text
 ["Anvil"] = "ковадло",
 ["Bonfire"] = "багаття",
 ["Brazier"] = "жаровня",
-["Elevator to Mulgore"] = "підйомник до Мулґора",
 ["Fierce Blaze"] = "жорстоке полум'я",
 ["Forge"] = "кузня",
 ["Mailbox"] = "поштова скринька",
 ["Medium Brazier"] = "середня жаровня",
 ["Scorching Fire"] = "пекучий вогонь",
 ["Tall Brazier"] = "висока жаровня",
+["Fishing Bobber"] = "поплавець",
 
 -- Fish
 ["Firefin Snapper School"] = "косяк вогнеперого луціана",
@@ -1024,6 +1024,10 @@ addonTable.object = { -- [key] = text
 ["Treasure Chest"] = "скриня зі скарбами",
 ["Venture Co. Strongbox"] = "сейф ТзНБ \"Авантюра\"",
 ["Waterlogged Footlocker"] = "промокла скринька",
+
+-- Signs and boards
+["Elevator to Mulgore"] = "підйомник до Мулґора",
+["Menethil"] = "Менетіли",
 
 -- Skills
 ["Ironforge"] = "Залізогарт", -- portal
