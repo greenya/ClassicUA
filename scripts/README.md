@@ -15,6 +15,7 @@ All other files are edited manually, e.g. via pull requests.
 1. Download all files from Crowdin:
     - Export terms in TBX (v2) format -> ClassicUA.tbx
     - Export quests via "Build & Download" -> ClassicUA.zip
+    - Download gossip source texts -> ClassicUA_en_gossip.zip
 
 2. Update Terms app:
     - Update file /docs/terms/ClassicUA.tbx
@@ -23,7 +24,11 @@ All other files are edited manually, e.g. via pull requests.
 
 3. Generate lua files:
     - Clean up folder "translation_from_crowdin"
-    - Copy ClassicUA.tbx and ClassicUA.zip, extract zip
+    - Copy ClassicUA.tbx, ClassicUA.zip and ClassicUA_en_gossip.zip, extract both zips
+    - Expected structure at this point:
+        * /uk/              <- from ClassicUA.zip
+        * /en/gossip/       <- from ClassicUA_en_gossip.zip
+        * /ClassicUA.tbx
     - Run python gen_addon_books_source_from_crowdin.py > translation_from_crowdin/books_stats.txt
     - Run python gen_addon_gossip_source_from_crowdin.py > translation_from_crowdin/gossip_stats.txt
     - Run python gen_addon_npcs_source_from_crowdin.py > translation_from_crowdin/npcs_stats.txt

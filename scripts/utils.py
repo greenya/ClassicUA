@@ -247,11 +247,20 @@ def write_lua_gossip_file(path, filename, gossip):
         f.write('addonTable.gossip = { -- [npc_id] = { [code1] = text1, [code2] = text2, ... }\n')
 
         for npc_id in gossip:
-            npc_texts = gossip[npc_id]
+            npc_name = gossip[npc_id]['name']
+            npc_strings = gossip[npc_id]['strings']
 
-            f.write(f'[{npc_id}] = ' + '{\n')
-            for text_code in npc_texts:
-                f.write(f'["{text_code}"] = [===[{npc_texts[text_code]}]===],\n')
+            f.write(f'[{npc_id}] = ' + '{' + f' -- {npc_name}\n')
+
+            for text_code in npc_strings:
+                text_en = npc_strings[text_code]['en']
+                text_ua = npc_strings[text_code]['ua']
+
+                for s in text_en.split('\n'):
+                    f.write(f'--{' ' + s if s else ''}\n')
+
+                f.write(f'["{text_code}"] = [===[{text_ua}]===],\n')
+
             f.write('},\n')
 
         f.write('}\n')
