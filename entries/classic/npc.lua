@@ -166,7 +166,7 @@ local npc = { -- [id] = { title, description (optional) }
 [381] = { "начальник доку Барен", en="Dockmaster Baren" }, -- Dockmaster Baren
 [382] = { "маршал Марріс", en="Marshal Marris" }, -- Marshal Marris
 [383] = { "Джейсон Матерс", "торговець рибою", en="Jason Mathers" }, -- Jason Mathers
-[384] = { "Каті Ловчиня", "розвідниця коней", en="Katie Hunter" }, -- Katie Hunter <Horse Breeder>
+[384] = { "Каті Ловчиня", "конярка", en="Katie Hunter" }, -- Katie Hunter <Horse Breeder>
 [385] = { "кінь", en="Horse" }, -- Horse
 [390] = { "свинячий супровід", en="Porcine Entourage" }, -- Porcine Entourage
 [391] = { "старий Мутноок", en="Old Murk-Eye" }, -- Old Murk-Eye
@@ -995,7 +995,7 @@ local npc = { -- [id] = { title, description (optional) }
 [1457] = { "Самор Святков", "сумнівний торговець", en="Samor Festivus" }, -- Samor Festivus <Shady Dealer>
 [1458] = { "Телурінон Місяцетінь", "тренер травництва", en="Telurinon Moonshadow" }, -- Telurinon Moonshadow <Herbalism Trainer>
 [1459] = { "Нейла Транс", "майстриня луків", en="Naela Trance" }, -- Naela Trance <Bowyer>
-[1460] = { "Унґер Статфорт", "розвідник коней", en="Unger Statforth" }, -- Unger Statforth <Horse Breeder>
+[1460] = { "Унґер Статфорт", "коняр", en="Unger Statforth" }, -- Unger Statforth <Horse Breeder>
 [1461] = { "Мурден Дерт", "вогнепальна зброя", en="Murndan Derth" }, -- Murndan Derth <Gunsmith>
 [1462] = { "Едвіна Монзор", "продавчиня стріл", en="Edwina Monzor" }, -- Edwina Monzor
 [1463] = { "Фалкан Руконій", "продавець реагентів", en="Falkan Armonis" }, -- Falkan Armonis <Reagent Vendor>
@@ -1623,7 +1623,7 @@ local npc = { -- [id] = { title, description (optional) }
 [2352] = { "корчмар Андерсон", "корчмар", en="Innkeeper Anderson" }, -- Innkeeper Anderson <Innkeeper>
 [2354] = { "злий сірий ведмідь", en="Vicious Gray Bear" }, -- Vicious Gray Bear
 [2356] = { "старий сірий ведмідь", en="Elder Gray Bear" }, -- Elder Gray Bear
-[2357] = { "Мерідет Карлсон", "розвідниця коней", en="Merideth Carlson" }, -- Merideth Carlson <Horse Breeder>
+[2357] = { "Мерідет Карлсон", "конярка", en="Merideth Carlson" }, -- Merideth Carlson <Horse Breeder>
 [2358] = { "даларанський закликач", en="Dalaran Summoner" }, -- Dalaran Summoner
 [2359] = { "елементаль-невільник", en="Elemental Slave" }, -- Elemental Slave
 [2360] = { "гіллзбрадський робітник", en="Hillsbrad Farmhand" }, -- Hillsbrad Farmhand
@@ -3002,7 +3002,7 @@ local npc = { -- [id] = { title, description (optional) }
 [3992] = { "інженер ТзНБ \"Авантюра\"", en="Venture Co. Engineer" }, -- Venture Co. Engineer
 [3993] = { "механік ТзНБ \"Авантюра\"", en="Venture Co. Machine Smith" }, -- Venture Co. Machine Smith
 [3994] = { "хранитель Альбаґорм" }, -- Albagorm
-[3995] = { "знахар Джин'Зіла" }, -- Jin'Zil
+[3995] = { "знахар Джин'Зіл" }, -- Jin'Zil
 [3996] = { "Фалдріс Ґет'Шаель", en="Faldreas Goeth'Shael" }, -- Faldreas Goeth'Shael
 [3998] = { "вітрокосий шкідник", en="Windshear Vermin" }, -- Windshear Vermin
 [3999] = { "вітрокосий землекоп", en="Windshear Digger" }, -- Windshear Digger
@@ -3256,7 +3256,7 @@ local npc = { -- [id] = { title, description (optional) }
 [4301] = { "центуріон Багряного Походу", en="Scarlet Centurion" }, -- Scarlet Centurion
 [4302] = { "чемпіон Багряного Походу", en="Scarlet Champion" }, -- Scarlet Champion
 [4303] = { "абат Багряного Походу", en="Scarlet Abbot" }, -- Scarlet Abbot
-[4304] = { "собака-шукач Багряного Походу", en="Scarlet Tracking Hound" }, -- Scarlet Tracking Hound
+[4304] = { "мисливський собака Багряного Походу", en="Scarlet Tracking Hound" }, -- Scarlet Tracking Hound
 [4305] = { "Кріґґон Талсон", "рибалка", en="Kriggon Talsone" }, -- Kriggon Talsone <Fisherman>
 [4306] = { "мучитель Багряного Походу", en="Scarlet Torturer" }, -- Scarlet Torturer
 [4307] = { "Гелдан Шквалоспів", "рибалка", en="Heldan Galesong" }, -- Heldan Galesong <Fisherman>
@@ -3683,7 +3683,7 @@ local npc = { -- [id] = { title, description (optional) }
 [4880] = { "\"Смердючка\" Іґнац", en="\"Stinky\" Ignatz" }, -- "Stinky" Ignatz
 [4883] = { "Крак", "броняр", en="Krak" }, -- Krak <Armorer>
 [4884] = { "Зулрґ", "зброяр", en="Zulrg" }, -- Zulrg <Weaponsmith>
-[4885] = { "Грегор Мак-Вінс", "розвідник коней", en="Gregor MacVince" }, -- Gregor MacVince <Horse Breeder>
+[4885] = { "Грегор Мак-Вінс", "коняр", en="Gregor MacVince" }, -- Gregor MacVince <Horse Breeder>
 [4886] = { "Ганс Вестон", "броня та щити", en="Hans Weston" }, -- Hans Weston <Armorer & Shieldsmith>
 [4887] = { "Гаму-ра", en="Ghamoo-ra" }, -- Ghamoo-ra
 [4888] = { "Марі Холдстон", "зброярка", en="Marie Holdston" }, -- Marie Holdston <Weaponsmith>
@@ -4753,6 +4753,7 @@ local npc = { -- [id] = { title, description (optional) }
 [6826] = { "Талваш дель Кіссель", en="Talvash del Kissel" }, -- Talvash del Kissel
 [6846] = { "начальник доку повстанців", en="Defias Dockmaster" }, -- Defias Dockmaster
 [6866] = { "тілоохоронець повстанців", en="Defias Bodyguard" }, -- Defias Bodyguard
+[6867] = { "мисливський собака", en="Tracking Hound" }, -- Tracking Hound
 [6868] = { "Джаркал Змішаний Мох", en="Jarkal Mossmeld" }, -- Jarkal Mossmeld
 [6886] = { "Онін Мак-Гаммар", en="Onin MacHammar" }, -- Onin MacHammar
 [6887] = { "Ялда", en="Yalda" }, -- Yalda
@@ -6161,6 +6162,7 @@ local npc = { -- [id] = { title, description (optional) }
 [10646] = { "Лакота Пісня Вітру", en="Lakota Windsong" }, -- Lakota Windsong
 [10647] = { "принц Щент", en="Prince Raze" }, -- Prince Raze
 [10648] = { "Заварік", en="Xavaric" }, -- Xavaric
+[10656] = { "скверногонча-вартова", en="Guardian Felhunter" }, -- Guardian Felhunter
 [10658] = { "кошеня Вінни" }, -- Winna Hazzard
 [10659] = { "кобальтове драконеня", en="Cobalt Whelp" }, -- Cobalt Whelp
 [10660] = { "кобальтова малеча", en="Cobalt Broodling" }, -- Cobalt Broodling
@@ -6881,7 +6883,7 @@ local npc = { -- [id] = { title, description (optional) }
 [12160] = { "стражниця Тінистої долини", en="Shadowglen Sentinel" }, -- Shadowglen Sentinel
 [12178] = { "закатований друїд", en="Tortured Druid" }, -- Tortured Druid
 [12179] = { "закатована вартова", en="Tortured Sentinel" }, -- Tortured Sentinel
-[12196] = { "корчмарк Кайліск", "корчмарка", en="Innkeeper Kaylisk" }, -- Innkeeper Kaylisk <Innkeeper>
+[12196] = { "корчмарка Кайліск", "корчмарка", en="Innkeeper Kaylisk" }, -- Innkeeper Kaylisk <Innkeeper>
 [12197] = { "Вдарослав Сталебородий", "воєначальник Альтерацької долини", en="Glordrum Steelbeard" }, -- Glordrum Steelbeard <Alterac Valley Battlemaster>
 [12198] = { "Мартін Ліндсі", "воєначальник низини Араті", en="Martin Lindsey" }, -- Martin Lindsey <Arathi Basin Battlemaster>
 [12199] = { "тінь Бурштинового Місяця", en="Shade of Ambermoon" }, -- Shade of Ambermoon
@@ -7350,7 +7352,7 @@ local npc = { -- [id] = { title, description (optional) }
 [13842] = { "посол Морозних Вовків Рохстром", en="Frostwolf Ambassador Rokhstrom" }, -- Frostwolf Ambassador Rokhstrom
 [13843] = { "лейтенант Ротімер", "вербувальник варти Бурешпиля", en="Lieutenant Rotimer" }, -- Lieutenant Rotimer
 [13896] = { "Лускобород", en="Scalebeard" }, -- Scalebeard
-[13916] = { "кришталевий тотем Грізного Молоту", en="Dire Maul Crystal Totem" }, -- Dire Maul Crystal Totem
+[13916] = { "кришталевий тотем Грізного Молота", en="Dire Maul Crystal Totem" }, -- Dire Maul Crystal Totem
 [13917] = { "Іззі Міднохват", "банкір", en="Izzy Coppergrab" }, -- Izzy Coppergrab <Banker>
 [13959] = { "альтерацький єті", en="Alterac Yeti" }, -- Alterac Yeti
 [13996] = { "технік Чорного Крила", en="Blackwing Technician" }, -- Blackwing Technician

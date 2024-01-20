@@ -10,7 +10,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16144] = { "лорд Салтеріл" }, -- Saltheril
 [16475] = { "Меґелон", en="Megelon" }, -- Megelon
 [16477] = { "Проеніт", en="Proenitus" }, -- Proenitus
-[17240] = { "адмірал Одессий", "військово-морське командування Альянсу", en="Admiral Odesyus" }, -- Admiral Odesyus
+[17240] = { "адмірал Одесій", "військово-морське командування Альянсу", en="Admiral Odesyus" }, -- Admiral Odesyus
 [17318] = { "Ґізл", en="Geezle" }, -- Geezle
 [17359] = { "Тел'атіон Нечистий" }, -- Tel'athion
 [17649] = { "Кессел", "повелитель елекків", en="Kessel" }, -- Kessel
