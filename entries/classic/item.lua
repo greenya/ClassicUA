@@ -1897,9 +1897,18 @@ addonTable.item = {
 [3559] = { "рукавиці Нічної варти" }, -- Night Watch Gauntlets
 [3560] = { "наплічник честі" }, -- Mantle of Honor
 [3561] = { "стійке пончо" }, -- Resilient Poncho
+[3562] = { "пояс поборника" }, -- Belt of Vindication
+[3563] = { "штани мореплавця" }, -- Seafarer's Pantaloons
 [3564] = { "партія заліза" }, -- Shipment of Iron
+[3565] = { "заляпані пивом рукавиці" }, -- Beerstained Gloves
+[3566] = { "броня грози рапторів", equip="Збільшує силу атаки на 30 в бою зі звірами." }, -- Raptorbane Armor, @equip +30 Attack Power when fighting Beasts.
 [3567] = { "дворфійська вудка", flavor="Витонченість — не найкраща риса дворфів." }, -- Dwarven Fishing Pole, @flavor Dwarves aren't known for their subtlety.
+[3569] = { "мантія вікарія" }, -- Vicar's Robe
 [3570] = { "кісткоміс" }, -- Bonegrinding Pestle
+[3571] = { "довбня трога" }, -- Trogg Beater
+[3572] = { "короткий меч Деріла" }, -- Daryl's Shortsword
+[3573] = { "мисливський сагайдак", equip="Збільшує швидкість атаки дальнього бою на 10%." }, -- Hunting Quiver, @equip Increases ranged attack speed by 10%.
+[3574] = { "мисливський гаман для набоїв", equip="Збільшує швидкість атаки дальнього бою на 10%." }, -- Hunting Ammo Sack, @equip Increases ranged attack speed by 10%.
 [3575] = { "злиток заліза" }, -- Iron Bar
 [3576] = { "злиток олова" }, -- Tin Bar
 [3577] = { "злиток золота" }, -- Gold Bar
@@ -1909,8 +1918,32 @@ addonTable.item = {
 [3583] = { "зношений пояс" }, -- Weathered Belt
 [3585] = { "камуфляжний мундир" }, -- Camouflaged Tunic
 [3586] = { "дроворуб" }, -- Logsplitter
+[3587] = { "вишитий пояс" }, -- Embroidered Belt
+[3588] = { "вишиті браслети" }, -- Embroidered Bracers
+[3589] = { "важкий плетений пояс" }, -- Heavy Weave Belt
+[3590] = { "важкі плетені браслети" }, -- Heavy Weave Bracers
+[3591] = { "м'який пояс" }, -- Padded Belt
+[3592] = { "м'які браслети" }, -- Padded Bracers
+[3593] = { "бурий пояс" }, -- Russet Belt
+[3594] = { "бурі браслети" }, -- Russet Bracers
+[3595] = { "пошарпаний тканий пояс" }, -- Tattered Cloth Belt
+[3596] = { "пошарпані ткані браслети" }, -- Tattered Cloth Bracers
+[3597] = { "товстий тканий пояс" }, -- Thick Cloth Belt
+[3598] = { "товсті ткані браслети" }, -- Thick Cloth Bracers
+[3599] = { "тонкий тканий пояс" }, -- Thin Cloth Belt
+[3600] = { "тонкі ткані браслети" }, -- Thin Cloth Bracers
 [3601] = { "послання Синдикату" }, -- Syndicate Missive
+[3602] = { "в'язаний пояс" }, -- Knitted Belt
+[3603] = { "в'язані браслети" }, -- Knitted Bracers
+[3604] = { "патронташ Нічної Варти", equip="Збільшує швидкість атаки дальнього бою на 11%." }, -- Bandolier of the Night Watch, @equip Increases ranged attack speed by 11%.
+[3605] = { "сагайдак Нічної Варти", equip="Збільшує швидкість атаки дальнього бою на 11%." }, -- Quiver of the Night Watch, @equip Increases ranged attack speed by 11%.
+[3606] = { "вовняний пояс" }, -- Woven Belt
+[3607] = { "вовняні браслети" }, -- Woven Bracers
+[3608] = { "креслення: Могутній залізний молот", use="Навчає вас створювати могутній залізний молот." }, -- Plans: Mighty Iron Hammer, @use Teaches you how to make a Mighty Iron Hammer.
 [3609] = { "креслення: Мідний плетений жилет", use="Навчає вас створювати мідний плетений жилет." }, -- Plans: Copper Chain Vest, @use Teaches you how to make a Copper Chain Vest.
+[3610] = { "креслення: Прикрашені самоцвітами мідні рукавиці", use="Навчає вас створювати прикрашені самоцвітами мідні рукавиці." }, -- Plans: Gemmed Copper Gauntlets, @use Teaches you how to make Gemmed Copper Gauntlets.
+[3611] = { "креслення: Зелені залізні чоботи", use="Навчає вас створювати зелені залізні чоботи." }, -- Plans: Green Iron Boots, @use Teaches you how to make Green Iron Boots.
+[3612] = { "креслення: Зелені залізні рукавиці", use="Навчає вас створювати зелені залізні рукавиці." }, -- Plans: Green Iron Gauntlets, @use Teaches you how to make Green Iron Gauntlets.
 [3613] = { "руки Валдреда" }, -- Valdred's Hands
 [3614] = { "лапа Скавчала" }, -- Yowler's Paw
 [3615] = { "голова Курцена" }, -- Kurzen's Head
@@ -1918,6 +1951,7 @@ addonTable.item = {
 [3617] = { "кулон тіні" }, -- Pendant of Shadow
 [3618] = { "голова Жеруна" }, -- Gobbler's Head
 [3619] = { "табакерка Снелліґа" }, -- Snellig's Snuffbox
+[3620] = { "рештки Лілліт" }, -- Lillith's Remains
 [3621] = { "голова Айвара" }, -- Ivar's Head
 [3622] = { "сутність Нічнохльостки" }, -- Essence of Nightlash
 [3623] = { "голова Тула" }, -- Thule's Head
@@ -1937,20 +1971,49 @@ addonTable.item = {
 [3638] = { "пазур Сарлозуба" }, -- Sarltooth's Talon
 [3639] = { "вухо Балґараса" }, -- Ear of Balgaras
 [3640] = { "голова Темнолюта" }, -- Head of Deepfury
+[3641] = { "браслети підмайстра" }, -- Journeyman's Bracers
+[3642] = { "браслети предків" }, -- Ancestral Bracers
+[3643] = { "браслети чароплета" }, -- Spellbinder Bracers
+[3644] = { "варварські ткані браслети" }, -- Barbaric Cloth Bracers
+[3645] = { "браслети провидця" }, -- Seer's Cuffs
+[3647] = { "яскраві браслети" }, -- Bright Bracers
+[3648] = { "баклер воїна" }, -- Warrior's Buckler
+[3649] = { "племінний баклер" }, -- Tribal Buckler
+[3650] = { "бойовий щит" }, -- Battle Shield
+[3651] = { "ветеранський щит" }, -- Veteran Shield
+[3652] = { "мисливський баклер" }, -- Hunting Buckler
+[3653] = { "церемоніальний баклер" }, -- Ceremonial Buckler
+[3654] = { "солончаковий щит" }, -- Brackwater Shield
+[3655] = { "полірований щит" }, -- Burnished Shield
+[3656] = { "блискучий лускатий щит" }, -- Lambent Scale Shield
 [3657] = { "реєстр Гіллзбраду" }, -- Hillsbrad Town Registry
 [3658] = { "врятований том" }, -- Recovered Tome
 [3659] = { "потерта шкіряна книга", flavor="Рука Ґрі'лека" }, -- Worn Leather Book, @flavor Arm of Gri'lek
 [3660] = { "альтерацькі томи" }, -- Tomes of Alterac
+[3661] = { "посох ручної роботи" }, -- Handcrafted Staff
+[3662] = { "стейк з кроколіска", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 4 на 15 хв." }, -- Crocolisk Steak, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 4 Stamina and Spirit for 15 min.
 [3663] = { "суп з плавців мурлоків", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Murloc Fin Soup, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
 [3664] = { "рагу з кроколіска", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Crocolisk Gumbo, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[3665] = { "дивовижно смачний омлет", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Curiously Tasty Omelet, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
 [3666] = { "липкий павучий пиріг", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Gooey Spider Cake, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[3667] = { "ніжне м'ясо кроколіска" }, -- Tender Crocolisk Meat
 [3668] = { "контракт вбивці" }, -- Assassin's Contract
+[3669] = { "драглистий слиз" }, -- Gelatinous Goo
+[3670] = { "велика слизька кістка" }, -- Large Slimy Bone
+[3671] = { "неживий череп" }, -- Lifeless Skull
 [3672] = { "голова Наґаза" }, -- Head of Nagaz
+[3673] = { "зламана стріла" }, -- Broken Arrow
+[3674] = { "прогнилий чобіт" }, -- Decomposed Boot
+[3675] = { "вигорілий смолоскип" }, -- Burnt Out Torch
+[3676] = { "слизька лімфа" }, -- Slimy Ichor
+[3678] = { "рецепт: Стейк з кроколіска", use="Навчає вас готувати стейк з кроколіска." }, -- Recipe: Crocolisk Steak, @use Teaches you how to cook a Crocolisk Steak.
 [3679] = { "рецепт: Кров'янка", use="Навчає вас приготуванню кров'янки." }, -- Recipe: Blood Sausage, @use Teaches you how to cook a Blood Sausage.
 [3680] = { "рецепт: Суп з плавців мурлоків", use="Навчає вас приготуванню супу з плавців мурлоків." }, -- Recipe: Murloc Fin Soup, @use Teaches you how to cook a Murloc Fin Soup.
 [3681] = { "рецепт: Рагу з кроколіска", use="Навчає вас приготуванню рагу з кроколіска." }, -- Recipe: Crocolisk Gumbo, @use Teaches you how to cook a Crocolisk Gumbo.
+[3682] = { "рецепт: Дивовижно смачний омлет", use="Навчає вас готувати стейк з дивовижно смачний омлет. Наіть не питайте, з чого він." }, -- Recipe: Curiously Tasty Omelet, @use Teaches you how to cook a Curiously Tasty Omelet.  Don't ask, you don't want to know.
 [3683] = { "рецепт: Липкий павучий пиріг", use="Навчає вас приготуванню липкого павучого пирога." }, -- Recipe: Gooey Spider Cake, @use Teaches you how to cook a Gooey Spider Cake.
 [3684] = { "тіара Перенольдів" }, -- Perenolde Tiara
+[3685] = { "яйце раптора" }, -- Raptor Egg
 [3688] = { "овал з кривавого каменю" }, -- Bloodstone Oval
 [3689] = { "кулька з кривавого каменю" }, -- Bloodstone Marble
 [3690] = { "осколок з кривавого каменю" }, -- Bloodstone Shard
@@ -1958,9 +2021,11 @@ addonTable.item = {
 [3692] = { "людський череп з Гіллзбраду" }, -- Hillsbrad Human Skull
 [3693] = { "меч Гумберта" }, -- Humbert's Sword
 [3701] = { "запечатана грамота Дарталії", flavor="Вручити особисто лорду Варіматрасу." }, -- Darthalia's Sealed Commendation, @flavor To be opened by Lord Varimathras.
+[3702] = { "ведмежий жовчний міхур" }, -- Bear Gall Bladder
 [3703] = { "південнобережне міцне", use="Звичайний алкогольний напій." }, -- Southshore Stout, @use A typical alcoholic beverage.
 [3704] = { "іржавий залізний ключ" }, -- Rusted Iron Key
 [3706] = { "зачаклований пергамент", flavor="Написи на ньому оповиті магією." }, -- Ensorcelled Parchment, @flavor Its letters are enshrouded in magic.
+[3707] = { "пергамент Наґаза" }, -- Nagaz Parchment
 [3708] = { "жезл Гелькулара" }, -- Helcular's Rod
 [3710] = { "жезл Гелькулара", use="Зарядити жезл Гелькулара на трьох церемоніальних вогнищах." }, -- Rod of Helcular, @use Charges the Rod of Helcular when used at the three ceremonial pyres.
 [3711] = { "журнал досліджень Беламур" }, -- Belamoore's Research Journal
@@ -1974,6 +2039,10 @@ addonTable.item = {
 [3719] = { "накидка жителя пагорбів" }, -- Hillman's Cloak
 [3720] = { "хутро єті" }, -- Yeti Fur
 [3721] = { "звіт Фаррена" }, -- Farren's Report
+[3722] = { "шкура фамільяра" }, -- Familiar Hide
+[3723] = { "ікло фамільяра" }, -- Familiar Fang
+[3724] = { "кіготь фамільяра" }, -- Familiar Claw
+[3725] = { "ріг фамільяра" }, -- Familiar Horn
 [3726] = { "великий ведмежий стейк", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Big Bear Steak, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
 [3727] = { "гострі відбивні з лева", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Hot Lion Chops, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
 [3728] = { "смачний стейк з лева", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 8 на 15 хв.#Restores {1} health over {2}" }, -- Tasty Lion Steak, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 8 Stamina and Spirit for 15 min.
@@ -1986,12 +2055,16 @@ addonTable.item = {
 [3735] = { "рецепт: Гострі відбивні з лева", use="Навчає вас приготуванню гострих відбивних з лева." }, -- Recipe: Hot Lion Chops, @use Teaches you how to cook up some Hot Lion Chops.
 [3736] = { "рецепт: Смачний стейк з лева", use="Навчає вас приготуванню смачного стейка з лева." }, -- Recipe: Tasty Lion Steak, @use Teaches you how to cook a Tasty Lion Steak.
 [3737] = { "рецепт: Ніжний черепаховий суп", use="Навчає вас приготуванню ніжного черепахового супу." }, -- Recipe: Soothing Turtle Bisque, @use Teaches you how to cook a Soothing Turtle Bisque.
+[3738] = { "броварський жезл" }, -- Brewing Rod
 [3739] = { "перстень з черепом" }, -- Skull Ring
+[3740] = { "обезголовлюючий меч" }, -- Decapitating Sword
 [3741] = { "чоботи тупотіння" }, -- Stomping Boots
 [3742] = { "лук грабежу" }, -- Bow of Plunder
 [3743] = { "баклер караульного" }, -- Sentry Buckler
 [3744] = { "кулон з кривавим каменем" }, -- Bloodstone Pendant, @flavor NYI - THIS ITEM WILL SPAWN A QUEST
+[3745] = { "руна відкриття", use="Відкриває певні сейфи навколо Даларана." }, -- Rune of Opening, @use Opens certain Dalaran-sealed containers.
 [3747] = { "пояс медитації" }, -- Meditative Sash
+[3748] = { "котяче напліччя" }, -- Feline Mantle
 [3749] = { "плащ верховного аптекаря" }, -- High Apothecary Cloak
 [3750] = { "ребристий нагрудник" }, -- Ribbed Breastplate
 [3751] = { "поножі найманця" }, -- Mercenary Leggings
@@ -2003,12 +2076,59 @@ addonTable.item = {
 [3759] = { "утеплені рукавички мудреця" }, -- Insulated Sage Gloves
 [3760] = { "перстень Підмістя" }, -- Band of the Undercity
 [3761] = { "щит мертвого черепа" }, -- Deadskull Shield
+[3762] = { "сумка бібліотекаря" }, -- Librarian's Satchel
 [3763] = { "місячний баклер" }, -- Lunar Buckler
 [3764] = { "черевики богомола" }, -- Mantis Boots
 [3765] = { "розбійницьке напліччя" }, -- Brigand's Pauldrons
+[3766] = { "перо грифона" }, -- Gryphon Feather Quill
+[3767] = { "тонкий пергамент" }, -- Fine Parchment
+[3769] = { "зламаний жезл" }, -- Broken Wand
+[3770] = { "відбивна з баранини", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Mutton Chop, @use Restores 552 health over 24 sec.  Must remain seated while eating.
+[3771] = { "рулька дикого кабана", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Wild Hog Shank, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
 [3772] = { "начаклована джерельна вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Spring Water, @use Restores 1344.6 mana over 27 sec.  Must remain seated while drinking.
 [3775] = { "травматична отрута", use="Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, сповільнюючи рух на {3}% на {4} с.#lasts for {1} min#{2}% chance#speed by {3}% for {4} sec" }, -- Crippling Poison, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 30% chance of poisoning the enemy, slowing their movement speed by 50% for 12 sec. (Proc chance: 30%)
 [3776] = { "травматична отрута II", ref=3775 }, -- Crippling Poison II
+[3777] = { "корінь млявості" }, -- Lethargy Root
+[3778] = { "тугий композитний лук" }, -- Taut Compound Bow
+[3779] = { "важка бойова сокира" }, -- Hefty War Axe
+[3780] = { "довгоствольний мушкет" }, -- Long-barreled Musket
+[3781] = { "широкий клеймор" }, -- Broad Claymore
+[3782] = { "велика бойова дубина" }, -- Large War Club
+[3783] = { "легкий ятаган" }, -- Light Scimitar
+[3784] = { "металевий посох" }, -- Metal Stave
+[3785] = { "гостра сокира" }, -- Keen Axe
+[3786] = { "блискучий кортик" }, -- Shiny Dirk
+[3787] = { "кам'яна дубина" }, -- Stone Club
+[3788] = { "реліктовий кристал душі" }, -- Soul Crystal Relic
+[3789] = { "реліктовий камінь благочестя" }, -- Relic Stone of Piety
+[3790] = { "освячений реліктовий пергамент" }, -- Consecrated Relic Parchment
+[3791] = { "реліквія Світла" }, -- Relic of the Light
+[3792] = { "переплетений пояс" }, -- Interlaced Belt
+[3793] = { "переплетені чоботи" }, -- Interlaced Boots
+[3794] = { "переплетені браслети" }, -- Interlaced Bracers
+[3795] = { "переплетений плащ" }, -- Interlaced Cloak
+[3796] = { "переплетені рукавички" }, -- Interlaced Gloves
+[3797] = { "переплетені штани" }, -- Interlaced Pants
+[3798] = { "переплетені наплічники" }, -- Interlaced Shoulderpads
+[3799] = { "переплетений жилет" }, -- Interlaced Vest
+[3800] = { "загрубілий шкіряний пояс" }, -- Hardened Leather Belt
+[3801] = { "загрубілі шкіряні чоботи" }, -- Hardened Leather Boots
+[3802] = { "загрубілі шкіряні браслети" }, -- Hardened Leather Bracers
+[3803] = { "загрубілий плащ" }, -- Hardened Cloak
+[3804] = { "загрубілі шкіряні рукавиці" }, -- Hardened Leather Gloves
+[3805] = { "загрубілі шкіряні штани" }, -- Hardened Leather Pants
+[3806] = { "загрубілі шкіряні наплічники" }, -- Hardened Leather Shoulderpads
+[3807] = { "загрубілий шкіряний мундир" }, -- Hardened Leather Tunic
+[3808] = { "подвійний кольчужний пояс" }, -- Double Mail Belt
+[3809] = { "подвійні кольчужні чоботи" }, -- Double Mail Boots
+[3810] = { "подвійні кольчужні браслети" }, -- Double Mail Bracers
+[3811] = { "двічі прошитий плащ" }, -- Double-stitched Cloak
+[3812] = { "подвійні кольчужні рукавиці" }, -- Double Mail Gloves
+[3813] = { "подвійні кольчужні штани" }, -- Double Mail Pants
+[3814] = { "подвійні кольчужні наплічники" }, -- Double Mail Shoulderpads
+[3815] = { "подвійний кольчужний жилет" }, -- Double Mail Vest
+[3816] = { "відбиваюча пластина" }, -- Reflective Heater
+[3817] = { "укріплений баклер" }, -- Reinforced Buckler
 [3818] = { "бляклолист" }, -- Fadeleaf
 [3819] = { "зимокус" }, -- Wintersbite
 [3820] = { "душирість" }, -- Stranglekelp
@@ -2028,12 +2148,26 @@ addonTable.item = {
 [3834] = { "міцні полотняні штани" }, -- Sturdy Cloth Trousers
 [3835] = { "зелені залізні браслети" }, -- Green Iron Bracers
 [3836] = { "зелений залізний шолом" }, -- Green Iron Helm
+[3837] = { "золотий лускатий койф" }, -- Golden Scale Coif
 [3838] = { "пазур тінепащої пантери" }, -- Shadowmaw Claw
 [3839] = { "бездоганне ікло тигриці" }, -- Pristine Tigress Fang
+[3840] = { "зелені залізні наплечі" }, -- Green Iron Shoulders
+[3841] = { "золоті лускаті наплечі" }, -- Golden Scale Shoulders
 [3842] = { "зелені залізні поножі" }, -- Green Iron Leggings
+[3843] = { "золоті лускаті поножі" }, -- Golden Scale Leggings
+[3844] = { "зелений залізний гауберк" }, -- Green Iron Hauberk
+[3845] = { "золота луската кіраса" }, -- Golden Scale Cuirass
+[3846] = { "поліровані сталеві чоботи" }, -- Polished Steel Boots
+[3847] = { "золоті лускаті чоботи" }, -- Golden Scale Boots
+[3848] = { "великий бронзовий ніж" }, -- Big Bronze Knife
+[3849] = { "загартований залічний короткий меч" }, -- Hardened Iron Shortsword
+[3850] = { "нефритовий зміїний клинок" }, -- Jade Serpentblade
 [3851] = { "міцний залізний молот" }, -- Solid Iron Maul
+[3852] = { "позолочений залізний руйнівник" }, -- Golden Iron Destroyer
 [3853] = { "палаш з місяцесталі" }, -- Moonsteel Broadsword
+[3854] = { "клинок крижаного тигра", equip="Збільшує ваш шанс нанесення критичного удару на 1%.", hit="Запускає у ворога крижану стрілу, що завдає від 20 до 30 шкоди від криги та зменшує його швидкість руху на 50% протягом 5 секунд." }, -- Frost Tiger Blade, @equip Improves your chance to get a critical strike by 1%., @hit Launches a bolt of frost at the enemy causing 20 to 30 Frost damage and slowing movement speed by 50% for 5 sec.
 [3855] = { "масивна залізна сокира" }, -- Massive Iron Axe
+[3856] = { "темна півмісячна сокира" }, -- Shadow Crescent Axe
 [3857] = { "вугілля" }, -- Coal
 [3858] = { "мітрилова руда" }, -- Mithril Ore
 [3859] = { "злиток сталі" }, -- Steel Bar
@@ -2042,15 +2176,33 @@ addonTable.item = {
 [3862] = { "сухожилля старої горили" }, -- Aged Gorilla Sinew
 [3863] = { "перо ловця джунглів" }, -- Jungle Stalker Feather
 [3864] = { "цитрин" }, -- Citrine
+[3866] = { "креслення: Нефритовий зміїний клинок", use="Навчає вас створювати нефритовий зміїний клинок." }, -- Plans: Jade Serpentblade, @use Teaches you how to make a Jade Serpentblade.
+[3867] = { "креслення: Позолочений залізний руйнівник", use="Навчає вас створювати позолочений залізний руйнівник." }, -- Plans: Golden Iron Destroyer, @use Teaches you how to make a Golden Iron Destroyer.
+[3868] = { "креслення: Клинок крижаного тигра", use="Навчає вас створювати клинок крижаного тигра." }, -- Plans: Frost Tiger Blade, @use Teaches you how to make a Frost Tiger Blade.
+[3869] = { "креслення: Темна півмісячна сокира", use="Навчає вас створювати темну півмісячну сокиру." }, -- Plans: Shadow Crescent Axe, @use Teaches you how to make a Shadow Crescent Axe.
+[3870] = { "креслення: Зелені залізні наплечі", use="Навчає вас створювати зелені залізні наплечі." }, -- Plans: Green Iron Shoulders, @use Teaches you how to make Green Iron Shoulders.
+[3871] = { "креслення: Золоті лускаті наплечі", use="Навчає вас створювати золоті лускаті наплечі." }, -- Plans: Golden Scale Shoulders, @use Teaches you how to make Golden Scale Shoulders.
+[3872] = { "креслення: Золоті лускаті поножі", use="Навчає вас створювати золоті лускаті поножі." }, -- Plans: Golden Scale Leggings, @use Teaches you how to make Golden Scale Leggings.
+[3873] = { "креслення: Золота луската кіраса", use="Навчає вас створювати золоту лускату кірасу." }, -- Plans: Golden Scale Cuirass, @use Teaches you how to make a Golden Scale Cuirass.
+[3874] = { "креслення: Поліровані сталеві чоботи", use="Навчає вас створювати поліровані сталеві чоботи." }, -- Plans: Polished Steel Boots, @use Teaches you how to make Polished Steel Boots.
+[3875] = { "креслення: Золоті лускаті чоботи", use="Навчає вас створювати золоті лускаті чоботи." }, -- Plans: Golden Scale Boots, @use Teaches you how to make Golden Scale Boots.
 [3876] = { "ікло Баґ'тіри" }, -- Fang of Bhag'thera
 [3877] = { "кіготь Тетіса" }, -- Talon of Tethis
 [3879] = { "лапа Сін'Далла" }, -- Paw of Sin'Dall
 [3880] = { "голова Банґалаша" }, -- Head of Bangalash
+[3882] = { "перо канюка" }, -- Buzzard Feather
+[3889] = { "бурий капелюх" }, -- Russet Hat
+[3890] = { "прикрашений капелюх" }, -- Studded Hat
+[3891] = { "підсилений кольчужний шолом" }, -- Augmented Chain Helm
+[3892] = { "вишитий капелюх" }, -- Embroidered Hat
+[3893] = { "укріплений шкіряний шолом" }, -- Reinforced Leather Cap
+[3894] = { "панцирний шолом" }, -- Brigandine Helm
 [3897] = { "око Запаморока" }, -- Dizzy's Eye
 [3898] = { "бібліотечний сувій" }, -- Library Scrip
 [3899] = { "\"Легенди Ґурубаші, том 3\"", flavor="Камінь Припливів" }, -- Legends of the Gurubashi, Volume 3, @flavor Stone of the Tides
 [3900] = { "портвейн \"Пупеллівербос\"" }, -- Pupellyverbos Port
 [3901] = { "ікло Кровоскальпого" }, -- Bloodscalp Tusk
+[3902] = { "посох вельможі" }, -- Staff of Nobles
 [3904] = { "голова Ґан'зули" }, -- Gan'zulah's Head
 [3905] = { "голова Неззліока" }, -- Nezzliok's Head
 [3906] = { "трофей з Баліа'ма" }, -- Balia'mah Trophy
@@ -2061,6 +2213,7 @@ addonTable.item = {
 [3911] = { "пульсуючий блакитний осколок" }, -- Pulsing Blue Shard
 [3912] = { "камінь душі", use="Звільнити душу Єнніку з ув'язнення. (Відновлення 2 хв)" }, -- Soul Gem, @use Will release Yenniku from his imprisonment (2 Min Cooldown)
 [3913] = { "наповнений камінь душі", flavor="Сяючий камінь, наповнений душею Єнніку." }, -- Filled Soul Gem, @flavor A glowing gem filled with the soul of Yenniku.
+[3914] = { "рюкзак підмайстра" }, -- Journeyman's Backpack
 [3915] = { "намисто з кривавих кісток" }, -- Bloody Bone Necklace
 [3916] = { "намисто з розщеплених кісток" }, -- Split Bone Necklace
 [3917] = { "співочий блакитний кристал" }, -- Singing Blue Crystal
@@ -2073,23 +2226,175 @@ addonTable.item = {
 [3924] = { "дерев'яна нога Морі", flavor="Всередині щось дзвенить." }, -- Maury's Clubbed Foot, @flavor It jingles when shaken.
 [3925] = { "золота підзорна труба Джон-Джона" }, -- Jon-Jon's Golden Spyglass
 [3926] = { "величезний перстень Чакі" }, -- Chucky's Huge Ring
+[3927] = { "витриманий чеддер", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Fine Aged Cheddar, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
 [3928] = { "відмінне зілля лікування" }, -- Superior Healing Potion, @use Restores 700 to 900 health. (2 Min Cooldown)
+[3929] = { "здобич Морі" }, -- Maury's Loot
 [3930] = { "ключ Морі" }, -- Maury's Key
+[3931] = { "отруйне павуче ікло" }, -- Poisoned Spider Fang
 [3932] = { "скриня Смоттса" }, -- Smotts' Chest
 [3935] = { "шабля Смоттса" }, -- Smotts' Cutlass
+[3936] = { "в'язаний пояс" }, -- Crochet Belt
+[3937] = { "в'язані чоботи" }, -- Crochet Boots
+[3938] = { "в'язані браслети" }, -- Crochet Bracers
+[3939] = { "в'язаний плащ" }, -- Crochet Cloak
+[3940] = { "в'язані рукавиці" }, -- Crochet Gloves
+[3941] = { "в'язані брюки" }, -- Crochet Pants
+[3942] = { "в'язані наплічники" }, -- Crochet Shoulderpads
+[3943] = { "в'язаний жилет" }, -- Crochet Vest
+[3944] = { "саржевий пояс" }, -- Twill Belt
+[3945] = { "саржеві чоботи" }, -- Twill Boots
+[3946] = { "саржеві браслети" }, -- Twill Bracers
+[3947] = { "саржевий плащ" }, -- Twill Cloak
+[3948] = { "саржеві рукавички" }, -- Twill Gloves
+[3949] = { "саржеві штани" }, -- Twill Pants
+[3950] = { "саржеві наплічники" }, -- Twill Shoulderpads
+[3951] = { "саржевий жилет" }, -- Twill Vest
+[3952] = { "сітчастий пояс" }, -- Mesh Belt
+[3953] = { "сітчасті чоботи" }, -- Mesh Boots
+[3954] = { "сітчасті браслети" }, -- Mesh Bracers
+[3955] = { "сітчастий пояс" }, -- Mesh Cloak
+[3956] = { "сітчасті рукавички" }, -- Mesh Gloves
+[3957] = { "сітчасті штани" }, -- Mesh Pants
+[3958] = { "сітчасте напліччя" }, -- Mesh Mantle
+[3959] = { "сітчастий обладунок" }, -- Mesh Armor
 [3960] = { "мішок з браслетами водяних елементалів" }, -- Bag of Water Elemental Bracers
+[3961] = { "товстий шкіряний пояс" }, -- Thick Leather Belt
+[3962] = { "товсті шкіряні чоботи" }, -- Thick Leather Boots
+[3963] = { "товсті шкіряні браслети" }, -- Thick Leather Bracers
+[3964] = { "товстий плащ" }, -- Thick Cloak
+[3965] = { "товсті шкіряні рукавиці" }, -- Thick Leather Gloves
+[3966] = { "товсті шкіряні штани" }, -- Thick Leather Pants
+[3967] = { "товсті шкіряні наплічники" }, -- Thick Leather Shoulderpads
+[3968] = { "товстий шкіряний мундир" }, -- Thick Leather Tunic
+[3969] = { "гладкий шкіряний пояс" }, -- Smooth Leather Belt
+[3970] = { "гладкі шкіряні чоботи" }, -- Smooth Leather Boots
+[3971] = { "гладкі шкіряні браслети" }, -- Smooth Leather Bracers
+[3972] = { "гладкий плащ" }, -- Smooth Cloak
+[3973] = { "гладкі шкіряні рукавиці" }, -- Smooth Leather Gloves
+[3974] = { "гладкі шкіряні штани" }, -- Smooth Leather Pants
+[3975] = { "гладкі шкіряні наплічники" }, -- Smooth Leather Shoulderpads
+[3976] = { "гладкий шкіряний обладунок" }, -- Smooth Leather Armor
+[3977] = { "ремінчастий пояс" }, -- Strapped Belt
+[3978] = { "ремінчасті чоботи" }, -- Strapped Boots
+[3979] = { "ремінчасті браслети" }, -- Strapped Bracers
+[3980] = { "ремінчастий плащ" }, -- Strapped Cloak
+[3981] = { "ремінчасті рукавиці" }, -- Strapped Gloves
+[3982] = { "ремінчасті штани" }, -- Strapped Pants
+[3983] = { "ремінчасті наплічники" }, -- Strapped Shoulderpads
+[3984] = { "ремінчастий обладунок" }, -- Strapped Armor
 [3985] = { "пояс з монограмою" }, -- Monogrammed Sash
+[3986] = { "павеза захисника" }, -- Protective Pavise
+[3987] = { "відбиваючий вежовий щит" }, -- Deflecting Tower
+[3988] = { "латний баштовий щит" }, -- Plate Wall Shield
+[3989] = { "блокуючий тарг" }, -- Blocking Targe
+[3990] = { "гребінчастий баклер" }, -- Crested Buckler
+[3991] = { "латний баклер" }, -- Plated Buckler
+[3992] = { "шаруватий лускатий пояс" }, -- Laminated Scale Belt
+[3993] = { "шаруваті лускаті чоботи" }, -- Laminated Scale Boots
+[3994] = { "шаруваті лускаті браслети" }, -- Laminated Scale Bracers
+[3995] = { "шаруватий лускатий плащ" }, -- Laminated Scale Cloak
+[3996] = { "шаруваті лускаті рукавиці" }, -- Laminated Scale Gloves
+[3997] = { "шаруваті лускаті штани" }, -- Laminated Scale Pants
+[3998] = { "шаруваті лускаті наплічники" }, -- Laminated Scale Shoulderpads
+[3999] = { "шаруватий лускатий обладунок" }, -- Laminated Scale Armor
+[4000] = { "переплетений кольчужний пояс" }, -- Overlinked Chain Belt
+[4001] = { "переплетені кольчужні чоботи" }, -- Overlinked Chain Boots
+[4002] = { "переплетені кольчужні браслети" }, -- Overlinked Chain Bracers
+[4003] = { "переплетений кольчужний плащ" }, -- Overlinked Chain Cloak
+[4004] = { "переплетені кольчужні рукавиці" }, -- Overlinked Chain Gloves
+[4005] = { "переплетені кольчужні штани" }, -- Overlinked Chain Pants
+[4006] = { "переплетені кольчужні наплічники" }, -- Overlinked Chain Shoulderpads
+[4007] = { "переплетений кольчужний обладунок" }, -- Overlinked Chain Armor
+[4008] = { "посріблений кольчужний пояс" }, -- Sterling Chain Belt
+[4009] = { "посріблені кольчужні чоботи" }, -- Sterling Chain Boots
+[4010] = { "посріблені кольчужні браслети" }, -- Sterling Chain Bracers
+[4011] = { "посріблений кольчужний плащ" }, -- Sterling Chain Cloak
+[4012] = { "посріблені кольчужні рукавиці" }, -- Sterling Chain Gloves
+[4013] = { "посріблені кольчужні штани" }, -- Sterling Chain Pants
+[4014] = { "посріблені кольчужні наплічники" }, -- Sterling Chain Shoulderpads
+[4015] = { "посріблений кольчужний обладунок" }, -- Sterling Chain Armor
 [4016] = { "суміш Занзіла" }, -- Zanzil's Mixture
+[4017] = { "гострий короткий меч" }, -- Sharp Shortsword
+[4018] = { "загострений клеймор" }, -- Whetted Claymore
+[4019] = { "важка крем'яна сокира" }, -- Heavy Flint Axe
+[4020] = { "бойовий колун" }, -- Splintering Battle Axe
+[4021] = { "дробильна булава" }, -- Blunting Mace
+[4022] = { "нищівна кувалда" }, -- Crushing Maul
+[4023] = { "тонкий загострений кинджал" }, -- Fine Pointed Dagger
+[4024] = { "важкий бойовий посох" }, -- Heavy War Staff
+[4025] = { "збалансований довгий лук" }, -- Balanced Long Bow
+[4026] = { "мушкет стражів" }, -- Sentinel Musket
 [4027] = { "кинджал Кателіни", use="Використати кинджал на вівтарі припливів." }, -- Catelyn's Blade, @use Use the blade on the Altar of the Tides.
 [4028] = { "в'язка стеблин акіріса", flavor="Для корсара Ґроя" }, -- Bundle of Akiris Reeds, @flavor To: Privateer Groy
 [4029] = { "стебло акіріс" }, -- Akiris Reed
+[4030] = { "священна реліктова вода" }, -- Holy Relic Water
+[4031] = { "освячений реліктовий оберіг" }, -- Hallowed Relic Charm
+[4032] = { "променистий реліктовий молот" }, -- Radiant Relic Hammer
+[4033] = { "сяйво світанку" }, -- Dawn's Glow
 [4034] = { "камінь припливів" }, -- Stone of the Tides
+[4035] = { "срібляста мантія" }, -- Silver-thread Robe
+[4036] = { "сріблясті манжети" }, -- Silver-thread Cuffs
+[4037] = { "сріблясті штани" }, -- Silver-thread Pants
+[4038] = { "мантія нічного неба" }, -- Nightsky Robe
+[4039] = { "капюшон нічного неба" }, -- Nightsky Cowl
+[4040] = { "рукавички нічного неба" }, -- Nightsky Gloves
+[4041] = { "капюшон зорі" }, -- Aurora Cowl
+[4042] = { "рукавички зорі" }, -- Aurora Gloves
+[4043] = { "браслети зорі" }, -- Aurora Bracers
+[4044] = { "штани зорі" }, -- Aurora Pants
+[4045] = { "імлисті браслети" }, -- Mistscape Bracers
+[4046] = { "імлисті штани" }, -- Mistscape Pants
+[4047] = { "імлисті чоботи" }, -- Mistscape Boots
+[4048] = { "гербовий капелюх" }, -- Emblazoned Hat
+[4049] = { "гербові браслети" }, -- Emblazoned Bracers
+[4050] = { "гербові поножі" }, -- Emblazoned Leggings
+[4051] = { "гербові чоботи" }, -- Emblazoned Boots
+[4052] = { "орденська шапка" }, -- Insignia Cap
 [4053] = { "велика шкура річкового кроколіска" }, -- Large River Crocolisk Skin
+[4054] = { "орденські поножі" }, -- Insignia Leggings
+[4055] = { "орденські чоботи" }, -- Insignia Boots
 [4056] = { "загадка Кортелло" }, -- Cortello's Riddle
+[4057] = { "орденський мундир" }, -- Insignia Chestguard
+[4058] = { "прикрашений гліфами мундир" }, -- Glyphed Breastplate
+[4059] = { "прикрашені гліфами браслети" }, -- Glyphed Bracers
+[4060] = { "прикрашені гліфами поножі" }, -- Glyphed Leggings
+[4061] = { "імперські шкіряні браслети" }, -- Imperial Leather Bracers
+[4062] = { "імперські шкіряні штани" }, -- Imperial Leather Pants
+[4063] = { "імперські шкіряні рукавиці" }, -- Imperial Leather Gloves
+[4064] = { "гербовий баклер" }, -- Emblazoned Buckler
+[4065] = { "бійцівський щит" }, -- Combat Shield
+[4066] = { "орденський баклер" }, -- Insignia Buckler
+[4067] = { "прикрашений гліфами баклер" }, -- Glyphed Buckler
+[4068] = { "щит старшого бригадира" }, -- Chief Brigadier Shield
+[4069] = { "баклер Чорної кузні" }, -- Blackforge Buckler
+[4070] = { "лицарський щит" }, -- Jouster's Crest
+[4071] = { "блискуча кольчужна кіраса" }, -- Glimmering Mail Breastplate
+[4072] = { "блискучі кольчужні рукавиці" }, -- Glimmering Mail Gauntlets
+[4073] = { "блискучі кольчужні наголінники" }, -- Glimmering Mail Greaves
+[4074] = { "кольчужний бойовий обладунок" }, -- Mail Combat Armor
+[4075] = { "кольчужні бойові рукавиці" }, -- Mail Combat Gauntlets
+[4076] = { "кольчужні бойові чоботи" }, -- Mail Combat Boots
+[4077] = { "кольчужний бойовий обруч" }, -- Mail Combat Headguard
+[4078] = { "койф старшого бригадира" }, -- Chief Brigadier Coif
+[4079] = { "поножі старшого бригадира" }, -- Chief Brigadier Leggings
+[4080] = { "капюшон Чорної кузні" }, -- Blackforge Cowl
+[4082] = { "кіраса Чорної кузні" }, -- Blackforge Breastplate
+[4083] = { "рукавиці Чорної кузні" }, -- Blackforge Gauntlets
+[4084] = { "поножі Чорної кузні" }, -- Blackforge Leggings
 [4085] = { "зламаний горщик Кронжека", flavor="Горщик вкритий манометрами та циферблатами." }, -- Krazek's Crock Pot, @flavor A cooking pot covered with gauges and dials.
 [4086] = { "світлова гвинтівка" }, -- Flash Rifle
+[4087] = { "міткострільний лук" }, -- Trueshot Bow
+[4088] = { "жахливий клинок" }, -- Dreadblade
+[4089] = { "рикошетний мушкетон" }, -- Ricochet Blunderbuss
+[4090] = { "кружка болю", hit="Сповільнює рух цілі на 50% протягом 10 с." }, -- Mug O' Hurt, @hit Slows the target's movement by 50% for 10 sec.
+[4091] = { "Вдовороб" }, -- Widowmaker
+[4092] = { "призматична луска василіска" }, -- Prismatic Basilisk Scale
+[4093] = { "великий хвіст василіска" }, -- Large Basilisk Tail
 [4094] = { "уламок скрижалі" }, -- Tablet Shard
+[4096] = { "груба шерсть горили" }, -- Coarse Gorilla Hair
+[4097] = { "надколений зуб горили" }, -- Chipped Gorilla Tooth
 [4098] = { "акуратно складена записка" }, -- Carefully Folded Note
+[4099] = { "пучок шерсті горили" }, -- Tuft of Gorilla Hair
 [4100] = { "зім'ята записка" }, -- Crumpled Note
 [4101] = { "подрана записка" }, -- Ripped Note
 [4102] = { "порвана записка" }, -- Torn Note
@@ -2100,9 +2405,13 @@ addonTable.item = {
 [4107] = { "рукавиці тигролова" }, -- Tiger Hunter Gloves
 [4108] = { "поножі мисливця на пантер" }, -- Panther Hunter Leggings
 [4109] = { "черевики \"Переможець\"" }, -- Excelsior Boots
+[4110] = { "лук мисливця-майстра" }, -- Master Hunter's Bow
+[4111] = { "рушниця мисливця-майстра" }, -- Master Hunter's Rifle
 [4112] = { "намисто верховного шамана" }, -- Choker of the High Shaman
 [4113] = { "зігрівальна ковдра" }, -- Medicine Blanket
 [4114] = { "плащ темного припливу" }, -- Darktide Cape
+[4115] = { "Ґром'ґолський баклер" }, -- Grom'gol Buckler
+[4116] = { "севар Олмана" }, -- Olmann Sewar
 [4117] = { "опікаючий пояс", equip="Збільшує шкоду від заклинань і ефектів вогню на 13." }, -- Scorching Sash, @equip Increases damage done by Fire spells and effects by up to 13.
 [4118] = { "носова сережка Пуби" }, -- Poobah's Nose Ring
 [4119] = { "мундир мисливця на рапторів" }, -- Raptor Hunter Tunic
@@ -2127,31 +2436,118 @@ addonTable.item = {
 [4138] = { "мундир Чорноводдя" }, -- Blackwater Tunic
 [4139] = { "сандалі джунглів" }, -- Junglewalker Sandals
 [4140] = { "пальмові наплечі" }, -- Palm Frond Mantle
+[4190] = { "пір'яний обладунок" }, -- Feathered Armor
+[4194] = { "пір'яні браслети" }, -- Feathered Bracers
+[4195] = { "пір'яні чоботи" }, -- Feathered Boots
+[4196] = { "пір'яне напліччя" }, -- Feathered Mantle
 [4197] = { "берилові наплічники" }, -- Berylline Pads
 [4213] = { "гримуар приречення", use="Навчає закляттю \"Ритуал приречення\"." }, -- Grimoire of Doom, @use Teaches Ritual of Doom.
+[4231] = { "оброблена легка шкура" }, -- Cured Light Hide
 [4232] = { "середня шкура" }, -- Medium Hide
+[4233] = { "оброблена середня шкура" }, -- Cured Medium Hide
 [4234] = { "важка шкіра" }, -- Heavy Leather
 [4235] = { "важка шкура" }, -- Heavy Hide
+[4236] = { "оброблена важка шкура" }, -- Cured Heavy Hide
 [4237] = { "шкіряний ремінь ручної роботи" }, -- Handstitched Leather Belt
+[4238] = { "лляна сумка" }, -- Linen Bag
 [4239] = { "тиснені шкіряні рукавички" }, -- Embossed Leather Gloves
+[4240] = { "вовняна сумка" }, -- Woolen Bag
+[4241] = { "зелена вовняна сумка" }, -- Green Woolen Bag
+[4242] = { "тиснені шкіряні штани" }, -- Embossed Leather Pants
+[4243] = { "тонкий шкіряний мундир" }, -- Fine Leather Tunic
+[4244] = { "жилет жителя пагорбів" }, -- Hillman's Leather Vest
+[4245] = { "маленька шовкова сумка" }, -- Small Silk Pack
+[4246] = { "тонкий шкіряний пояс" }, -- Fine Leather Belt
+[4247] = { "рукавиці жителя пагорбів" }, -- Hillman's Leather Gloves
+[4248] = { "темні шкіряні рукавиці", equip="Трохи збільшує вашу здібність зламу замків." }, -- Dark Leather Gloves, @equip Increases your lockpicking skill slightly.
+[4249] = { "темний шкіряний пояс" }, -- Dark Leather Belt
+[4250] = { "пояс жителя пагорбів" }, -- Hillman's Belt
 [4251] = { "наплечі жителя пагорбів" }, -- Hillman's Shoulders
+[4252] = { "темні шкіряні наплечі" }, -- Dark Leather Shoulders
 [4253] = { "укріплені шкіряні рукавиці" }, -- Toughened Leather Gloves
+[4254] = { "варварські рукавиці" }, -- Barbaric Gloves
+[4255] = { "зелений шкіряний обладунок" }, -- Green Leather Armor
+[4256] = { "обладунок вартового" }, -- Guardian Armor
+[4257] = { "зелений шкіряний пояс" }, -- Green Leather Belt
+[4258] = { "пояс вартового" }, -- Guardian Belt
+[4259] = { "зелені шкіряні браслети" }, -- Green Leather Bracers
+[4260] = { "шкіряні браслети вартового" }, -- Guardian Leather Bracers
+[4261] = { "брюки Соллідена" }, -- Solliden's Trousers
+[4262] = { "прикрашений самоцвітами шкіряний пояс", use="Зцілює вам від 225 до 375 здоров'я." }, -- Gem-studded Leather Belt, @use Heal yourself for 225 to 375. (1 Hour Cooldown)
+[4263] = { "стандартний щит" }, -- Standard Issue Shield
+[4264] = { "варварський пояс", use="Збільшити лють на 30." }, -- Barbaric Belt, @use Increase Rage by 30. (1 Hour Cooldown)
 [4265] = { "накладки з важкої шкіри", use="Укріплення предмета, який носять на тілі, ногах, руках чи ступнях, що назавжди збільшить показник його броні на 24. Можна використовувати лише на предметах 15-го рівня і вище." }, -- Heavy Armor Kit, @use Permanently increase the armor value of an item worn on the chest, legs, hands or feet by 24.  Only usable on items level 15 and above.
 [4278] = { "мала руда кривавого каменю" }, -- Lesser Bloodstone Ore
 [4289] = { "сіль" }, -- Salt
+[4290] = { "пиловий щит" }, -- Dust Bowl
 [4291] = { "шовкова нитка" }, -- Silken Thread
+[4292] = { "викрійка: Зелена вовняна сумка", use="Навчає вас створювати зелену вовняну сумку." }, -- Pattern: Green Woolen Bag, @use Teaches you how to sew a Green Woolen Bag.
+[4293] = { "викрійка: Жилет жителя пагорбів", use="Навчає вас створювати жилет жителя пагорбів." }, -- Pattern: Hillman's Leather Vest, @use Teaches you how to craft a Hillman's Leather Vest.
+[4294] = { "викрійка: Пояс жителя пагорбів", use="Навчає вас створювати пояс жителя пагорбів." }, -- Pattern: Hillman's Belt, @use Teaches you how to craft a Hillman's Belt.
+[4296] = { "викрійка: Темні шкіряні наплечі", use="Навчає вас створювати темні шкіряні наплечі." }, -- Pattern: Dark Leather Shoulders, @use Teaches you how to craft Dark Leather Shoulders.
+[4297] = { "викрійка: Варварські рукавиці", use="Навчає вас створювати варварські рукавиці." }, -- Pattern: Barbaric Gloves, @use Teaches you how to craft Barbaric Gloves.
+[4298] = { "викрійка: Пояс вартового", use="Навчає вас створювати пояс вартового." }, -- Pattern: Guardian Belt, @use Teaches you how to craft a Guardian Belt.
+[4299] = { "викрійка: Обладунок вартового", use="Навчає вас створювати обладунок вартового." }, -- Pattern: Guardian Armor, @use Teaches you how to craft Guardian Armor.
+[4300] = { "викрійка: Шкіряні браслети вартового", use="Навчає вас створювати шкіряні браслети вартового." }, -- Pattern: Guardian Leather Bracers, @use Teaches you how to craft Guardian Leather Bracers.
+[4301] = { "викрійка: Варварський пояс", use="Навчає вас створювати варварський пояс." }, -- Pattern: Barbaric Belt, @use Teaches you how to craft a Barbaric Belt.
+[4302] = { "маленький зелений кинджал" }, -- Small Green Dagger
+[4303] = { "череподробитель" }, -- Cranial Thumper
 [4304] = { "товста шкіра" }, -- Thick Leather
+[4305] = { "рулон шовкової тканини" }, -- Bolt of Silk Cloth
 [4306] = { "шовкове полотно" }, -- Silk Cloth
+[4307] = { "щільні лляні рукавички" }, -- Heavy Linen Gloves
+[4308] = { "зелені лляні браслети" }, -- Green Linen Bracers
+[4309] = { "лляні брюки ручної роботи" }, -- Handstitched Linen Britches
+[4310] = { "щільні вовняні рукавички" }, -- Heavy Woolen Gloves
+[4311] = { "щільний вовняний плащ" }, -- Heavy Woolen Cloak
+[4312] = { "лляні черевики на м'якій підошві" }, -- Soft-soled Linen Boots
+[4313] = { "червоні вовняні черевики" }, -- Red Woolen Boots
+[4314] = { "двічі прошиті вовняні наплечі" }, -- Double-stitched Woolen Shoulders
+[4315] = { "укріплені вовняні наплечі" }, -- Reinforced Woolen Shoulders
+[4316] = { "щільні вовняні штани" }, -- Heavy Woolen Pants
+[4317] = { "штани фенікса", equip="Збільшує шкоду від заклинань і ефектів вогню на 10." }, -- Phoenix Pants, @equip Increases damage done by Fire spells and effects by up to 10.
+[4318] = { "рукавички медитації" }, -- Gloves of Meditation
+[4319] = { "лазурові шовкові рукавички", equip="Збільшує шкоду від заклинань і ефектів криги на 10." }, -- Azure Silk Gloves, @equip Increases damage done by Frost spells and effects by up to 10.
 [4320] = { "чоботи з павутинного шовку" }, -- Spidersilk Boots
+[4321] = { "павутинні черевики" }, -- Spider Silk Slippers
+[4322] = { "капюшон чародія" }, -- Enchanter's Cowl
+[4323] = { "тіньовий капюшон", equip="Збільшує шкоду від заклинань і ефектів тіні на 7." }, -- Shadow Hood, @equip Increases damage done by Shadow spells and effects by up to 7.
+[4324] = { "лазуровий шовковий жилет", equip="Збільшує шкоду від заклинань і ефектів криги на 7." }, -- Azure Silk Vest, @equip Increases damage done by Frost spells and effects by up to 7.
+[4325] = { "черевики чародія" }, -- Boots of the Enchanter
+[4326] = { "довгий шовковий плащ" }, -- Long Silken Cloak
+[4327] = { "льодяний плащ" }, -- Icy Cloak
+[4328] = { "павучий пояс", use="Знімає наявні ефекти знерухомлення і дає невразливість до ефектів знерухомлення на 5 секунд." }, -- Spider Belt, @use Removes existing Immobilizing effects and makes you immune to Immobilizing effects for 5 sec. (30 Min Cooldown)
+[4329] = { "зоряний пояс", use="Збільшує шкоду і зцілення від магічних заклинань і ефектів на 13." }, -- Star Belt, @equip Increases damage and healing done by magical spells and effects by up to 13.
 [4330] = { "стильна червона сорочка" }, -- Stylish Red Shirt
+[4331] = { "рукавички фенікса", equip="Збільшує шкоду від заклинань і ефектів вогню на 9." }, -- Phoenix Gloves, @equip Increases damage done by Fire spells and effects by up to 9.
+[4332] = { "яскрава жовта сорочка" }, -- Bright Yellow Shirt
+[4333] = { "темна шовкова сорочка" }, -- Dark Silk Shirt
+[4334] = { "офіційна біла сорочка" }, -- Formal White Shirt
+[4335] = { "розкішна фіолетова шовкова сорочка" }, -- Rich Purple Silk Shirt
+[4336] = { "чорна сорочка шибайголови" }, -- Black Swashbuckler's Shirt
+[4337] = { "товстий павутинний шовк" }, -- Thick Spider's Silk
 [4338] = { "маготкане полотно" }, -- Mageweave Cloth
+[4339] = { "рулон маготканої тканини" }, -- Bolt of Mageweave
 [4340] = { "сірий барвник" }, -- Gray Dye
 [4341] = { "жовтий барвник" }, -- Yellow Dye
 [4342] = { "пурпуровий барвник" }, -- Purple Dye
 [4343] = { "коричневі лляні штани" }, -- Brown Linen Pants
 [4344] = { "коричнева лляна сорочка" }, -- Brown Linen Shirt
+[4345] = { "викрійка: Червоні вовняні черевики", use="Навчає вас створювати червоні вовняні черевики." }, -- Pattern: Red Woolen Boots, @use Teaches you how to sew Red Woolen Boots.
+[4346] = { "викрійка: Щільний вовняний плащ", use="Навчає вас створювати щільний вовняний плащ." }, -- Pattern: Heavy Woolen Cloak, @use Teaches you how to sew a Heavy Woolen Cloak.
+[4347] = { "викрійка: Укріплені вовняні наплечі", use="Навчає вас створювати укріплені вовняні наплечі." }, -- Pattern: Reinforced Woolen Shoulders, @use Teaches you how to sew Reinforced Woolen Shoulders.
+[4348] = { "викрійка: Рукавички фенікса", use="Навчає вас створювати рукавички фенікса." }, -- Pattern: Phoenix Gloves, @use Teaches you how to sew Phoenix Gloves.
+[4349] = { "викрійка: Штани фенікса", use="Навчає вас створювати штани фенікса." }, -- Pattern: Phoenix Pants, @use Teaches you how to sew Phoenix Pants.
+[4350] = { "викрійка: Павутинні черевики", use="Навчає вас створювати павутинні черевики." }, -- Pattern: Spider Silk Slippers, @use Teaches you how to sew Spider Silk Slippers.
+[4351] = { "викрійка: Тіньовий капюшон", use="Навчає вас створювати тіньовий капюшон." }, -- Pattern: Shadow Hood, @use Teaches you how to sew a Shadow Hood.
+[4352] = { "викрійка: Черевики чародія", use="Навчає вас створювати черевики чародія." }, -- Pattern: Boots of the Enchanter, @use Teaches you how to sew Boots of the Enchanter.
+[4353] = { "викрійка: Павучий пояс", use="Навчає вас створювати павучий пояс." }, -- Pattern: Spider Belt, @use Teaches you how to sew a Spider Belt.
+[4354] = { "викрійка: Розкішна фіолетова шовкова сорочка", use="Навчає вас створювати розкішну фіолетову шовкову сорочку." }, -- Pattern: Rich Purple Silk Shirt, @use Teaches you how to sew a Rich Purple Silk Shirt.
+[4355] = { "викрійка: Льодяний плащ", use="Навчає вас створювати льодяний плащ." }, -- Pattern: Icy Cloak, @use Teaches you how to sew an Icy Cloak.
+[4356] = { "викрійка: Зоряний пояс", use="Навчає вас створювати зоряний пояс." }, -- Pattern: Star Belt, @use Teaches you how to sew a Star Belt.
 [4357] = { "грубий вибуховий порошок" }, -- Rough Blasting Powder
 [4358] = { "грубий динаміт", use="Завдає від 26 до 34 шкоди вогнем в радіусі 5 м. (Відновлення 1 хв)" }, -- Rough Dynamite, @use Inflicts 26 to 34 Fire damage in a 5 yard radius. (1 Min Cooldown)
+[4359] = { "жменя мідних болтів" }, -- Handful of Copper Bolts
 [4360] = { "груба мідна бомба", use="Завдає від 22 до 28 шкоди вогнем та оглушує цілі в радіусі 3 м на 1 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Rough Copper Bomb, @use Inflicts 22 to 28 Fire damage and stuns targets in a 3 yard radius for 1 sec.  Any damage will break the effect. (1 Min Cooldown)
 [4361] = { "мідна трубка" }, -- Copper Tube
 [4362] = { "грубий громостріл" }, -- Rough Boomstick
@@ -2160,27 +2556,54 @@ addonTable.item = {
 [4365] = { "шорсткий динаміт", use="Завдає від 51 до 69 шкоди вогнем в радіусі 5 м. (Відновлення 1 хв)" }, -- Coarse Dynamite, @use Inflicts 51 to 69 Fire damage in a 5 yard radius. (1 Min Cooldown)
 [4366] = { "манекен-мішень", use="Встановлення на землі манекена, який притягуватиме до себе найближчих ворогів.  Існує 15 сек або до знищення. (Відновлення 2 хв)" }, -- Target Dummy, @use Drops a target dummy on the ground that attracts nearby monsters to attack it.  Lasts for 15 seconds or until killed. (2 Min Cooldown)
 [4367] = { "малий сифорієвий заряд", use="Підриває прості замки." }, -- Small Seaforium Charge, @use Blasts open simple locked doors.
+[4368] = { "окуляри літаючого тигра" }, -- Flying Tiger Goggles
 [4369] = { "смертоносний мушкетон" }, -- Deadly Blunderbuss
 [4370] = { "велика мідна бомба", use="Завдає від 43 до 57 шкоди вогнем та оглушує цілі в радіусі 5 м на 1 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Large Copper Bomb, @use Inflicts 43 to 57 Fire damage and stuns targets in a 5 yard radius for 1 sec.  Any damage will break the effect. (1 Min Cooldown)
 [4371] = { "бронзова трубка" }, -- Bronze Tube
+[4372] = { "створений з любов'ю громостріл" }, -- Lovingly Crafted Boomstick
+[4373] = { "тіньові окуляри" }, -- Shadow Goggles
 [4374] = { "мала бронзова бомба", use="Завдає від 73 до 97 шкоди вогнем та оглушує цілі в радіусі 3 м на 2 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Small Bronze Bomb, @use Inflicts 73 to 97 Fire damage and stuns targets in a 3 yard radius for 2 sec.  Any damage will break the effect. (1 Min Cooldown)
 [4375] = { "бронзова тріщалка" }, -- Whirring Bronze Gizmo
+[4376] = { "відбивач полум'я", use="Поглинає 500 шкоди від вогню. Триває 1 хвилину." }, -- Flame Deflector, @use Absorbs 500 fire damage.  Lasts 1 min. (15 Min Cooldown)
 [4377] = { "важкий вибуховий порошок" }, -- Heavy Blasting Powder
 [4378] = { "важкий динаміт", use="Завдає від 128 до 172 шкоди вогнем в радіусі 5 м. (Відновлення 1 хв)" }, -- Heavy Dynamite, @use Inflicts 128 to 172 Fire damage in a 5 yard radius. (1 Min Cooldown)
+[4379] = { "посріблений дробовик" }, -- Silver-plated Shotgun
 [4380] = { "велика бронзова бомба", use="Завдає від 85 до 115 шкоди вогнем та оглушує цілі в радіусі 5 м на 2 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Big Bronze Bomb, @use Inflicts 85 to 115 Fire damage and stuns targets in a 5 yard radius for 2 sec.  Any damage will break the effect. (1 Min Cooldown)
+[4381] = { "малий рекомбобулятор", use="Розсіює ефекти поліморфії з дружньої цілі. Також відновлює від 150 до 250 здоров'я та мани." }, -- Minor Recombobulator, @use Dispels Polymorph effects on a friendly target.  Also restores 150 to 250 health and mana. (5 Min Cooldown)
+[4382] = { "бронзовий каркас" }, -- Bronze Framework
+[4383] = { "місячна гвинтівка" }, -- Moonsight Rifle
 [4384] = { "вибухова вівця", use="Викликати вибухову вівцю, яка кидається на найближчого ворога та вибухає, завдаючи від 135 до 165 шкоди.  Існує 3 хвилини або поки не вибухне. (Відновлення 1 хв)" }, -- Explosive Sheep, @use Summons an Explosive Sheep which will charge at a nearby enemy and explode for 135 to 165 damage.  Lasts for 3 min or until it explodes. (1 Min Cooldown)
+[4385] = { "зелені тоновані окуляри" }, -- Green Tinted Goggles
+[4386] = { "відбивач криги", use="Поглинає 600 шкоди від криги. Триває 1 хвилину." }, -- Ice Deflector, @use Absorbs 600 frost damage.  Lasts 1 min. (15 Min Cooldown)
+[4387] = { "залізна стійка" }, -- Iron Strut
 [4388] = { "промінь заплутаності", use="Перетворює ціль в лепрогнома, зменшуючи її шкоду від атак в ближньому бою та заклинань на 40, а швидкість пересування на 20% на 12 секунд. (Відновлення 1 хв)" }, -- Discombobulator Ray, @use Transforms the target into a Leper Gnome, reducing its melee and spell damage by 40 and its movement rate by 20% for 12 sec. (1 Min Cooldown)
 [4389] = { "гірохронатом" }, -- Gyrochronatom
 [4390] = { "залізна граната", use="Завдає від 132 до 218 шкоди вогнем та оглушує цілі в радіусі 3 м на 3 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Iron Grenade, @use Inflicts 132 to 218 Fire damage and stuns targets for 3 sec in a 3 yard radius.  Any damage will break the effect. (1 Min Cooldown)
 [4391] = { "портативний жнивальний збирач", use="Створити портативний жнивальний збирач, що битиветься за вас протягом 10 хв або доки його не буде знищено. (Відновлення 10 хв)" }, -- Compact Harvest Reaper Kit, @use Creates a Compact Harvest Reaper that will fight for you for 10 min or until it is destroyed. (10 Min Cooldown)
 [4392] = { "вдосконалений манекен-мішень", use="Встановлення на землі манекена, який притягуватиме до себе найближчих ворогів.  Існує 15 сек або до знищення. (Відновлення 2 хв)" }, -- Advanced Target Dummy, @use Drops a target dummy on the ground that attracts nearby monsters to attack it. Lasts for 15 seconds or until killed. (2 Min Cooldown)
+[4393] = { "монокль ремісника" }, -- Craftsman's Monocle
 [4394] = { "велика залізна бомба", use="Завдає від 149 до 201 шкоди вогнем та оглушує цілі в радіусі 5 м на 3 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Big Iron Bomb, @use Inflicts 149 to 201 Fire damage and stuns targets in a 5 yard radius for 3 sec.  Any damage will break the effect. (1 Min Cooldown)
 [4395] = { "гоблінська міна", use="Розмістити на землі гоблінську міну, яка вибухне, завдавши від 394 до 506 вогняної шкоди коли поруч пройде ворог.  Міна існує 1 хв. (Відновлення 1 хв)" }, -- Goblin Land Mine, @use Places the Goblin Land Mine on the ground.  It will explode for 394 to 506 fire damage the next time a hostile creature passes near it.  The mine has a duration of 1 min. (1 Min Cooldown)
+[4396] = { "механічне драконеня", use="Активувати ваше механічне драконеня, що битиметься за вас протягом 1 хвилини. Перш ніж його можна буде використати знову, йому потрібно відновитись протягом години." }, -- Mechanical Dragonling, @use Activates your Mechanical Dragonling to fight for you for 1 min.  It requires an hour to cool down before it can be used again. (1 Hour Cooldown)
+[4397] = { "гномський маскувальний пристрій", use="Дає невидимість на 10 секунд. Можна використовувати лише раз в 60 хвилин." }, -- Gnomish Cloaking Device, @use Gives invisibility for 10 sec.  It can only be used every 60 minutes. (1 Hour Cooldown)
 [4398] = { "великий сифорієвий заряд", use="Підриває складні замки." }, -- Large Seaforium Charge, @use Blasts open difficult locked doors.
+[4399] = { "дерев'яний приклад" }, -- Wooden Stock
+[4400] = { "важкий приклад" }, -- Heavy Stock
+[4401] = { "коробка з механічною білкою", use="Створює механічну білку, яка слідує за вами. Клацніть правою кнопкою миші, щоб викликати і відпустити білку." }, -- Mechanical Squirrel Box, @use Creates a Mechanical Squirrel that follows you around.  Right Click to summon and dismiss your Squirrel.
+[4402] = { "мала полум'яна залоза" }, -- Small Flame Sac
+[4403] = { "портативна бронзова мортира", use="Завдає від 85 до 115 шкоди вогнем та оглушує цілі в радіусі 5 м на 2 сек.  Будь-яка шкода припиняє дію." }, -- Portable Bronze Mortar, @use Inflicts 85 to 115 Fire damage and stuns targets in a 5 yard radius for 2 sec.  Any damage will break the effect. (1 Min Cooldown)
+[4404] = { "срібний контакт" }, -- Silver Contact
 [4405] = { "кустарний приціл", use="Оснащення лука або вогнепальної зброї прицілом, що збільшує шкоду на 1." }, -- Crude Scope, @use Attaches a permanent scope to a bow or gun that increases its damage by 1.
 [4406] = { "звичайний приціл", use="Оснащення лука або вогнепальної зброї прицілом, що збільшує шкоду на 2." }, -- Standard Scope, @use Attaches a permanent scope to a bow or gun that increases its damage by 2.
 [4407] = { "точний приціл", use="Оснащення лука або вогнепальної зброї прицілом, що збільшує шкоду на 3." }, -- Accurate Scope, @use Attaches a permanent scope to a bow or gun that increases its damage by 3.
+[4408] = { "креслення: Коробка з механічною білкою", use="Навчає вас створювати коробку з механічною білкою." }, -- Schematic: Mechanical Squirrel, @use Teaches you how to make a Mechanical Squirrel.
 [4409] = { "креслення: Малий сифорієвий заряд", use="Навчає вас створювати малий сифорієвий заряд." }, -- Schematic: Small Seaforium Charge, @use Teaches you how to make a Small Seaforium Charge.
+[4410] = { "креслення: Тіньові окуляри", use="Навчає вас створювати тіньові окуляри." }, -- Schematic: Shadow Goggles, @use Teaches you how to make Shadow Goggles.
+[4411] = { "креслення: Відбивач полум'я", use="Навчає вас створювати відбивач полум'я." }, -- Schematic: Flame Deflector, @use Teaches you how to make a Flame Deflector.
+[4412] = { "креслення: Місячна гвинтівка", use="Навчає вас створювати місячну гвинтівку." }, -- Schematic: Moonsight Rifle, @use Teaches you how to make a Moonsight Rifle.
+[4413] = { "креслення: Промінь заплутаності", use="Навчає вас створювати промінь заплутаності." }, -- Schematic: Discombobulator Ray, @use Teaches you how to make a Discombobulator Ray.
+[4414] = { "креслення: Портативна бронзова мортира", use="Навчає вас створювати портативну бронзову мортиру." }, -- Schematic: Portable Bronze Mortar, @use Teaches you how to make a Portable Bronze Mortar.
+[4415] = { "креслення: Монокль ремісника", use="Навчає вас створювати монокль ремісника." }, -- Schematic: Craftsman's Monocle, @use Teaches you how to make a Craftman's Monocle.
 [4416] = { "креслення: Гоблінська міна", use="Навчає вас створювати гоблінську міну." }, -- Schematic: Goblin Land Mine, @use Teaches you how to make a Goblin Land Mine.
 [4417] = { "креслення: Великий сифорієвий заряд", use="Навчає вас створювати гоблінську міну." }, -- Schematic: Large Seaforium Charge, @use Teaches you how to make a Large Seaforium Charge.
 [4419] = { "сувій інтелекту III", ref=955 }, -- Scroll of Intellect III
@@ -2189,19 +2612,40 @@ addonTable.item = {
 [4424] = { "сувій духу III", ref=1181 }, -- Scroll of Spirit III
 [4425] = { "сувій спритності III", ref=3012 }, -- Scroll of Agility III
 [4426] = { "сувій сили III", ref=954 }, -- Scroll of Strength III
+[4428] = { "павуча лапка" }, -- Spider Palp
 [4429] = { "накази Темнолюта" }, -- Deepfury's Orders
 [4430] = { "примарний талісман" }, -- Ethereal Talisman
 [4432] = { "лист Саллі Баллу", flavor="Моя люба Саро..." }, -- Sully Balloo's Letter, @flavor My dear Sara...
 [4433] = { "промоклий конверт" }, -- Waterlogged Envelope
+[4434] = { "штани опудала" }, -- Scarecrow Trousers
 [4435] = { "порошинка Мізраель" }, -- Mote of Myzrael
+[4436] = { "інкрустований самоцвітами пояс" }, -- Jewel-encrusted Sash
+[4437] = { "посох чаклуна" }, -- Channeler's Staff
+[4438] = { "браслети борця" }, -- Pugilist Bracers
+[4439] = { "дубина забіяки" }, -- Bruiser Club
 [4440] = { "сигіла Строма" }, -- Sigil of Strom
 [4441] = { "самогон Мак-Кріла" }, -- MacKreel's Moonshine
 [4443] = { "зловісні наплічники" }, -- Grim Pauldrons
+[4444] = { "щит чорного панцира", use="Намагається зняти один ефект отрути з цілі, та ще один ефект отрути кожні 2 с протягом 8 с." }, -- Black Husk Shield, @use Attempts to cure 1 poison effect on the target, and 1 more poison effect every 2 seconds for 8 sec. (5 Min Cooldown)
+[4445] = { "різьбяр плоті" }, -- Flesh Carver
+[4446] = { "клинок чорної отрути", hit="Отруює ціль, завдаючи 5 шкоди від природи кожні 3 с протягом 15 с." }, -- Blackvenom Blade, @hit Poisons target for 5 Nature damage every 3 sec for 15 sec.
+[4447] = { "покров ночі" }, -- Cloak of Night
+[4448] = { "панцир Нараксіса" }, -- Husk of Naraxis
+[4449] = { "ікло Нараксіса", hit="Отруює ціль, завдаючи 6 шкоди від природи кожні 3 с протягом 15 с." }, -- Naraxis' Fang, @hit Poisons target for 6 Nature damage every 3 sec for 15 sec.
 [4450] = { "фрагмент сигіли" }, -- Sigil Fragment
 [4453] = { "сигіла Торадіна" }, -- Sigil of Thoradin
+[4454] = { "кіготь Коструба" }, -- Talon of Vultros
+[4455] = { "портупея зі шкури раптора" }, -- Raptor Hide Harness
+[4456] = { "ремінь зі шкури раптора" }, -- Raptor Hide Belt
 [4457] = { "смажене крильце канюка", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 8 на 15 хв." }, -- Barbecued Buzzard Wing, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 8 Stamina and Spirit for 15 min.
 [4458] = { "сигіла Аратора" }, -- Sigil of Arathor
+[4459] = { "крихка кістка дракона" }, -- Brittle Dragon Bone
+[4460] = { "рвана перетинка крила" }, -- Ripped Wing Webbing
 [4461] = { "шкура раптора" }, -- Raptor Hide
+[4462] = { "плащ гнилі" }, -- Cloak of Rot
+[4463] = { "бісерний нашийник раптора" }, -- Beaded Raptor Collar
+[4464] = { "чоботи для побиття" }, -- Trouncing Boots
+[4465] = { "рукавиці кістяного кулака" }, -- Bonefist Gauntlets
 [4466] = { "сигіла Тролебоя" }, -- Sigil of Trollbane
 [4467] = { "сигіла Іґная" }, -- Sigil of Ignaeus
 [4468] = { "Трол'Калар в піхвах", flavor="Легендарний меч Іґная Тролебоя." }, -- Sheathed Trol'kalar, @flavor The legendary blade of Ignaeus Trollbane.
@@ -2210,6 +2654,10 @@ addonTable.item = {
 [4471] = { "кремінь і трут" }, -- Flint and Tinder
 [4472] = { "сувій Мізраель", use="Викликає Мізраель з осколків Мізраель." }, -- Scroll of Myzrael, @use Summon Myzrael from the Shards of Myzrael.
 [4473] = { "таємничі кайдани" }, -- Eldritch Shackles
+[4474] = { "лук воронячого лісу" }, -- Ravenwood Bow
+[4476] = { "мантія звіровода" }, -- Beastwalker Robe
+[4477] = { "мерзенний баклер" }, -- Nefarious Buckler
+[4478] = { "райдужні лускаті поножі" }, -- Iridescent Scale Leggings
 [4479] = { "палаючий оберіг", use="Позбувається буревійного вигнанця (Відновлення 10 сек)" }, -- Burning Charm, @use Banishes a Thundering Exile (10 Sec Cooldown)
 [4480] = { "буревійний оберіг", use="Позбувається бурунистого вигнанця (Відновлення 10 сек)" }, -- Thundering Charm, @use Banishes a Cresting Exile (10 Sec Cooldown)
 [4481] = { "бурунистий оберіг", use="Позбувається палаючого вигнанця (Відновлення 10 сек)" }, -- Cresting Charm, @use Banishes a Burning Exile (10 Sec Cooldown)
@@ -2229,8 +2677,12 @@ addonTable.item = {
 [4496] = { "маленький коричневий мішечок" }, -- Small Brown Pouch
 [4497] = { "важка коричнева сумка" }, -- Heavy Brown Bag
 [4498] = { "коричневий шкіряний ранець" }, -- Brown Leather Satchel
+[4499] = { "величезний коричневий мішок" }, -- Huge Brown Sack
+[4500] = { "рюкзак мандрівника" }, -- Traveler's Backpack
 [4502] = { "зразок ельфійського самоцвіту" }, -- Sample Elven Gem
 [4503] = { "ікло троля Зів'ялої Кори" }, -- Witherbark Tusk
+[4504] = { "плащ дворфійської варти" }, -- Dwarven Guard Cloak
+[4505] = { "болотні брюки" }, -- Swampland Trousers
 [4506] = { "cтромґардський значок" }, -- Stromgarde Badge
 [4507] = { "щит бійця ями" }, -- Pit Fighter's Shield
 [4508] = { "кривавий обладунок" }, -- Blood-tinged Armor
@@ -2248,6 +2700,7 @@ addonTable.item = {
 [4520] = { "обпалений фрагмент сувою" }, -- Singed Scroll Fragment
 [4521] = { "альтерацький граніт" }, -- Alterac Granite
 [4522] = { "мішечок з травами Зів'ялої Кори" }, -- Witherbark Medicine Pouch
+[4524] = { "пам'ятник Баллу" }, -- Balloo's Memorial
 [4525] = { "жезл Трелейна для виклику" }, -- Trelane's Wand of Invocation
 [4526] = { "амулет із пазура раптора" }, -- Raptor Talon Amulet
 [4527] = { "лазурний агат" }, -- Azure Agate
@@ -2260,10 +2713,14 @@ addonTable.item = {
 [4534] = { "наручі зі сталевими застібками" }, -- Steel-clasped Bracers
 [4535] = { "пам'ятний перстень Залізогарта" }, -- Ironforge Memorial Ring
 [4536] = { "соковите червоне яблуко", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Shiny Red Apple, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[4537] = { "Тел'абімський банан", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Tel'Abim Banana, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
+[4538] = { "дикий кавун", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Snapvine Watermelon, @use Restores 552 health over 24 sec.  Must remain seated while eating.
+[4539] = { "золотисте яблуко", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Goldenbark Apple, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
 [4540] = { "кусень твердого хліба", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Tough Hunk of Bread, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [4541] = { "свіжоспечений хліб", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Freshly Baked Bread, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [4542] = { "вологий кукурудзяний хліб", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Moist Cornbread, @use Restores 552 health over 24 sec.  Must remain seated while eating.
 [4543] = { "каптур зі шкіри білого дракончика" }, -- White Drakeskin Cap
+[4544] = { "мулгорський хліб із прянощами", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Mulgore Spice Bread, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
 [4545] = { "сяючі срібні наручі" }, -- Radiant Silver Bracers
 [4546] = { "клич раптора", use="Збільшує спритність на 12 на 30 хв." }, -- Call of the Raptor, @use Increases your Agility by 12 for 30 min.
 [4547] = { "гном'ячий шокер" }, -- Gnomish Zapper
@@ -2271,9 +2728,40 @@ addonTable.item = {
 [4549] = { "перстень морського вогню" }, -- Seafire Band
 [4550] = { "холодноводний перстень" }, -- Coldwater Ring
 [4551] = { "голова Ор'Калара" }, -- Or'Kalar's Head
+[4552] = { "гладкий уламок каменю" }, -- Smooth Stone Chip
+[4553] = { "зазубрений шматок каменю" }, -- Jagged Piece of Stone
+[4554] = { "блискучий полірований камінь" }, -- Shiny Polished Stone
+[4555] = { "товстий лускатий хвіст" }, -- Thick Scaly Tail
+[4556] = { "фрагмент плямистого панцира" }, -- Speckled Shell Fragment
+[4557] = { "вогняна залоза" }, -- Fiery Gland
 [4558] = { "порожня діжка" }, -- Empty Barrel
+[4560] = { "тонкий ятаган" }, -- Fine Scimitar
+[4561] = { "скальпуючий томагавк" }, -- Scalping Tomahawk
+[4562] = { "сікуча сокира" }, -- Severing Axe
+[4563] = { "дубина бугая" }, -- Billy Club
+[4564] = { "шипаста дубина" }, -- Spiked Club
+[4565] = { "простий кинджал" }, -- Simple Dagger
+[4566] = { "міцний кийок" }, -- Sturdy Quarterstaff
+[4567] = { "меч найманця" }, -- Merc Sword
+[4568] = { "сокира бугая" }, -- Grunt Axe
+[4569] = { "незломний молоток" }, -- Staunch Hammer
+[4570] = { "березовий молот" }, -- Birchwood Maul
+[4571] = { "бойовий ніж" }, -- War Knife
+[4575] = { "медичний посох" }, -- Medicine Staff
+[4576] = { "легкий лук" }, -- Light Bow
+[4577] = { "компактний дробовик" }, -- Compact Shotgun
+[4580] = { "ікло шаблезуба" }, -- Sabertooth Fang
+[4581] = { "клаптик тонкого хутра" }, -- Patch of Fine Fur
 [4582] = { "м'який пухнастий хвіст" }, -- Soft Bushy Tail
+[4583] = { "густа пухнаста грива" }, -- Thick Furry Mane
+[4584] = { "велика трофейна лапа" }, -- Large Trophy Paw
+[4585] = { "мокре жвало павука" }, -- Dripping Spider Mandible
+[4586] = { "гладка шкіра раптора" }, -- Smooth Raptor Skin
+[4587] = { "пір'я племінного раптора" }, -- Tribal Raptor Feathers
+[4588] = { "бездоганний череп раптора" }, -- Pristine Raptor Skull
 [4589] = { "довге елегантне перо" }, -- Long Elegant Feather
+[4590] = { "загнутий жовтий дзьоб" }, -- Curved Yellow Bill
+[4591] = { "орлине око" }, -- Eagle Eye
 [4592] = { "муловий луціан", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Longjaw Mud Snapper, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
 [4593] = { "щетиновусий сом", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Bristle Whisker Catfish, @use Restores 552 health over 24 sec.  Must remain seated while eating.
 [4594] = { "камнелуска тріска", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Rockscale Cod, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
@@ -2281,9 +2769,16 @@ addonTable.item = {
 [4596] = { "безбарвне зілля лікування", use="Відновлює від {1} до {2} здоров'я. (Відновлення 2 хв)#Restores {1} to {2}" }, -- Discolored Healing Potion, @use Restores 140 to 180 health. (2 Min Cooldown)
 [4597] = { "рецепт: Безбарвне зілля лікування", use="Навчає вас створювати безбарвне зілля лікування.", recipe_result_item=4596 }, -- Recipe: Discolored Healing Potion, @use Teaches you how to make a Discolored Healing Potion.
 [4598] = { "гоблінська вудка", use="Завдає від 128 до 172 шкоди вогнем в радіусі 5 м. (Відновлення 1 хв)" }, -- Goblin Fishing Pole, @use Inflicts 128 to 172 Fire damage in a 5 yard radius. (1 Min Cooldown)
+[4599] = { "шмат в'яленої шинки", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Cured Ham Steak, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
+[4600] = { "вишневий грог", use="Міцний алкогольний напій." }, -- Cherry Grog, @use A strong alcoholic beverage.
+[4601] = { "м'який банановий хліб", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Soft Banana Bread, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
+[4602] = { "гарбуз місячного врожаю", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Moon Harvest Pumpkin, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
 [4603] = { "сирий плямистий жовтохвіст", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Raw Spotted Yellowtail, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
 [4604] = { "шапинка лісового гриба", use=433 }, -- Forest Mushroom Cap, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [4605] = { "червоний крапчастий гриб", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Red-speckled Mushroom, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.
+[4606] = { "губчастий зморшок", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Spongy Morel, @use Restores 552 health over 24 sec.  Must remain seated while eating.
+[4607] = { "смачна печерна пліснява", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Delicious Cave Mold, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.
+[4608] = { "сирий чорний трюфель", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Raw Black Truffle, @use Restores 1392 health over 30 sec.  Must remain seated while eating.
 [4609] = { "рецепт: Смажене крило канюка", use="Навчає вас приготуванню смажених крилець канюка." }, -- Recipe: Barbecued Buzzard Wing, @use Teaches you how to cook a Barbecued Buzzard Wing.
 [4610] = { "різьблена кам'яна урна" }, -- Carved Stone Urn
 [4611] = { "синя перлина" }, -- Blue Pearl
@@ -2303,7 +2798,13 @@ addonTable.item = {
 [4629] = { "ящик з припасами" }, -- Supply Crate
 [4630] = { "брухт" }, -- Scrap Metal
 [4631] = { "скрижаль Р'юн'еха" }, -- Tablet of Ryun'eh
+[4632] = { "вишукана бронзова скринька" }, -- Ornate Bronze Lockbox
+[4633] = { "важка бронзова скринька" }, -- Heavy Bronze Lockbox
+[4634] = { "залізна скринька" }, -- Iron Lockbox
 [4635] = { "амулет Молотопалого" }, -- Hammertoe's Amulet
+[4636] = { "міцна залізна скринька" }, -- Strong Iron Lockbox
+[4637] = { "сталева скринька" }, -- Steel Lockbox
+[4638] = { "укріплена сталева скринька" }, -- Reinforced Steel Lockbox
 [4639] = { "зачаровані морські водорості", use="Покладіть на сточений морем вівтар, якщо наважитеся..." }, -- Enchanted Sea Kelp, @use Place upon the Seaworn Altar, if you dare...
 [4640] = { "знак Землі" }, -- Sign of the Earth
 [4641] = { "рука Даґуна" }, -- Hand of Dagun
@@ -2320,9 +2821,76 @@ addonTable.item = {
 [4654] = { "таємнича скам'янілість" }, -- Mysterious Fossil
 [4655] = { "м'ясо гігантського молюска" }, -- Giant Clam Meat
 [4656] = { "гарбузик", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Small Pumpkin, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
+[4658] = { "плащ воїна" }, -- Warrior's Cloak
+[4659] = { "пасок воїна" }, -- Warrior's Girdle
+[4660] = { "черевики для прогулянок" }, -- Walking Boots
+[4661] = { "яскраве напліччя" }, -- Bright Mantle
+[4662] = { "плащ підмайстра" }, -- Journeyman's Cloak
+[4663] = { "пояс підмайстра" }, -- Journeyman's Belt
+[4665] = { "обгорілий плащ" }, -- Burnt Cloak
 [4666] = { "обпалений шкіряний ремінь" }, -- Burnt Leather Belt
+[4668] = { "бойовий кольчужний плащ" }, -- Battle Chain Cloak
+[4669] = { "бойовий кольчужний пасок" }, -- Battle Chain Girdle
+[4671] = { "плащ предків" }, -- Ancestral Cloak
+[4672] = { "пояс предків" }, -- Ancestral Belt
+[4674] = { "племінний плащ" }, -- Tribal Cloak
+[4675] = { "племінний пояс" }, -- Tribal Belt
+[4676] = { "скелетні рукавиці" }, -- Skeletal Gauntlets
+[4677] = { "ветеранський плащ" }, -- Veteran Cloak
+[4678] = { "ветеранський пояс" }, -- Veteran Girdle
+[4680] = { "солончаковий плащ" }, -- Brackwater Cloak
+[4681] = { "солончаковий пасок" }, -- Brackwater Girdle
+[4683] = { "плащ чароплета" }, -- Spellbinder Cloak
+[4684] = { "пояс чароплета" }, -- Spellbinder Belt
+[4686] = { "варварський тканий плащ" }, -- Barbaric Cloth Cloak
+[4687] = { "варварський тканий пояс" }, -- Barbaric Cloth Belt
+[4689] = { "мисливський плащ" }, -- Hunting Cloak
+[4690] = { "мисливський пояс" }, -- Hunting Belt
+[4692] = { "церемоніальний плащ" }, -- Ceremonial Cloak
+[4693] = { "церемоніальний шкіряний пояс" }, -- Ceremonial Leather Belt
+[4694] = { "поліроване напліччя" }, -- Burnished Pauldrons
+[4695] = { "полірований плащ" }, -- Burnished Cloak
+[4696] = { "лапідісова чаша морехльоба", use="Відновлює 1992 мани протягом 30 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Lapidis Tankard of Tidesippe, @use Restores 1992 mana over 30 sec.  Must remain seated while drinking. (10 Min Cooldown)
+[4697] = { "полірований пасок" }, -- Burnished Girdle
+[4698] = { "напліччя провидця" }, -- Seer's Mantle
+[4699] = { "пояс провидця" }, -- Seer's Belt
+[4700] = { "гравійовані шкіряні наплічники" }, -- Inscribed Leather Spaulders
+[4701] = { "гравійований плащ" }, -- Inscribed Cloak
 [4702] = { "кайло розвідувача", use="Розтрощити кайло у кузні." }, -- Prospector's Pick, @use Right click near a forge to break.
 [4703] = { "зламані інструменти" }, -- Broken Tools
+[4705] = { "блискуче лускате напліччя" }, -- Lambent Scale Pauldrons
+[4706] = { "блискучий лускатий плащ" }, -- Lambent Scale Cloak
+[4707] = { "блискучий лускатий пасок" }, -- Lambent Scale Girdle
+[4708] = { "яскравий пояс" }, -- Bright Belt
+[4709] = { "лісове шкіряне напліччя" }, -- Forest Leather Mantle
+[4710] = { "лісовий плащ" }, -- Forest Cloak
+[4711] = { "блискучий плащ" }, -- Glimmering Cloak
+[4712] = { "блискучий кольчужний пасок" }, -- Glimmering Mail Girdle
+[4713] = { "сріблястий плащ" }, -- Silver-thread Cloak
+[4714] = { "сріблястий пояс" }, -- Silver-thread Sash
+[4715] = { "гербовий плащ" }, -- Emblazoned Cloak
+[4716] = { "бойовий плащ" }, -- Combat Cloak
+[4717] = { "кольчужний бойовий пояс" }, -- Mail Combat Belt
+[4718] = { "напліччя нічного неба" }, -- Nightsky Mantle
+[4719] = { "плащ нічного неба" }, -- Nightsky Cloak
+[4720] = { "пояс нічного неба" }, -- Nightsky Sash
+[4721] = { "орденське напліччя" }, -- Insignia Mantle
+[4722] = { "орденський плащ" }, -- Insignia Cloak
+[4723] = { "штани Гумберта" }, -- Humbert's Pants
+[4724] = { "шолом Гумберта" }, -- Humbert's Helm
+[4725] = { "напліччя старшого бригадира" }, -- Chief Brigadier Pauldrons
+[4726] = { "плащ старшого бригадира" }, -- Chief Brigadier Cloak
+[4727] = { "пасок старшого бригадира" }, -- Chief Brigadier Girdle
+[4728] = { "наплечі Твена" }, -- Twain's Shoulder
+[4729] = { "напліччя зорі" }, -- Aurora Mantle
+[4731] = { "прикрашені гліфами еполети" }, -- Glyphed Epaulets
+[4732] = { "прикрашений гліфами плащ" }, -- Glyphed Cloak
+[4733] = { "напліччя Чорної кузні" }, -- Blackforge Pauldrons
+[4734] = { "імлисте напліччя" }, -- Mistscape Mantle
+[4735] = { "імлистий плащ" }, -- Mistscape Cloak
+[4736] = { "імлистий пояс" }, -- Mistscape Sash
+[4737] = { "імперські шкіряні наплічники" }, -- Imperial Leather Spaulders
+[4738] = { "імперський шкіряний ремінь" }, -- Imperial Leather Belt
 [4739] = { "м'ясо рівнинобіга" }, -- Plainstrider Meat
 [4740] = { "пір'я рівнинобіга" }, -- Plainstrider Feather
 [4741] = { "cтромґардські кавалерійські штани" }, -- Stromgarde Cavalry Leggings
@@ -2335,13 +2903,45 @@ addonTable.item = {
 [4752] = { "лазурова пір'їна" }, -- Azure Feather
 [4753] = { "бронзова пір'їна" }, -- Bronze Feather
 [4755] = { "глечик води" }, -- Water Pitcher
+[4756] = { "зіпсована котяча шкура" }, -- Ruined Cat Pelt
 [4757] = { "тріснута яєчна шкаралупа" }, -- Cracked Egg Shells
 [4758] = { "лапа степового вовка" }, -- Prairie Wolf Paw
 [4759] = { "кіготь рівнинобіга" }, -- Plainstrider Talon
+[4763] = { "вигнутий лук Чорного лісу" }, -- Blackwood Recurve Bow
+[4765] = { "емальований палаш" }, -- Enamelled Broadsword
+[4766] = { "дикий клинок" }, -- Feral Blade
+[4767] = { "рукавички з мідної тканини" }, -- Coppercloth Gloves
+[4768] = { "рукавички адепта" }, -- Adept's Gloves
 [4769] = { "трофейна пір'їна хапуна" }, -- Trophy Swoop Quill
 [4770] = { "пояс Щетиношкурих" }, -- Bristleback Belt
+[4771] = { "плащ жнив" }, -- Harvest Cloak
+[4772] = { "теплий плащ" }, -- Warm Cloak
+[4775] = { "тріснутий дзьоб" }, -- Cracked Bill
+[4776] = { "скуйовджене перо" }, -- Ruffled Feather
 [4777] = { "кувалда залізного дерева" }, -- Ironwood Maul
+[4778] = { "важка шипаста булава" }, -- Heavy Spiked Mace
+[4779] = { "тупий зуб кодо" }, -- Dull Kodo Tooth
+[4780] = { "фрагмент рогу кодо" }, -- Kodo Horn Fragment
+[4781] = { "жилет шепоту" }, -- Whispering Vest
+[4782] = { "мантія сонцестояння" }, -- Solstice Robe
 [4783] = { "тотем Соколиного Вітру" }, -- Totem of Hawkwind
+[4784] = { "неживий камінь" }, -- Lifeless Stone
+[4785] = { "сірчаний пояс" }, -- Brimstone Belt
+[4786] = { "пояс мудреця" }, -- Wise Man's Belt
+[4787] = { "палаюча смола" }, -- Burning Pitch
+[4788] = { "черевики спритності" }, -- Agile Boots
+[4789] = { "витривалі черевики" }, -- Stable Boots
+[4790] = { "інфернальний плащ" }, -- Inferno Cloak
+[4791] = { "зачарована вода", use="Відновлює 1344.6 мани протягом 27 сек. Потрібно залишатися в сидячому положенні під час пиття." }, -- Enchanted Water, @use Restores 1344.6 mana over 27 sec.  Must remain seated while drinking.
+[4792] = { "плащ духу" }, -- Spirit Cloak
+[4793] = { "лісовий плащ" }, -- Sylvan Cloak
+[4794] = { "вовчі браслети" }, -- Wolf Bracers
+[4795] = { "ведмежі браслети" }, -- Bear Bracers
+[4796] = { "совині браслети" }, -- Owl Bracers
+[4797] = { "вогняний плащ" }, -- Fiery Cloak
+[4798] = { "важкий рунічний плащ" }, -- Heavy Runed Cloak
+[4799] = { "антикварний плащ" }, -- Antiquated Cloak
+[4800] = { "міцні кольчужні штани" }, -- Mighty Chain Pants
 [4801] = { "пазурі ловця" }, -- Stalker Claws
 [4802] = { "пазурі пуми" }, -- Cougar Claws
 [4803] = { "зуб степового альфи" }, -- Prairie Alpha Tooth
@@ -2351,10 +2951,32 @@ addonTable.item = {
 [4807] = { "шлунок хапуна" }, -- Swoop Gizzard
 [4808] = { "колодязний камінь" }, -- Well Stone
 [4809] = { "бурштинова насінина" }, -- Ambercorn
+[4810] = { "наплічники валуна" }, -- Boulder Pads
+[4813] = { "маленький шкіряний нашийник" }, -- Small Leather Collar
+[4814] = { "знебарвлене ікло" }, -- Discolored Fang
+[4816] = { "поножі легіонера" }, -- Legionnaire's Leggings
+[4817] = { "благословенний клеймор" }, -- Blessed Claymore
+[4818] = { "меч ката" }, -- Executioner's Sword
 [4819] = { "записник Шуморакети" }, -- Fizsprocket's Clipboard
+[4820] = { "баклер вартового" }, -- Guardian Buckler
+[4821] = { "ведмежий баклер" }, -- Bear Buckler
+[4822] = { "совиний диск" }, -- Owl's Disk
 [4823] = { "вода провидців", use="Викликає видіння." }, -- Water of the Seers, @use Induces a Vision.
+[4824] = { "забруднена сокира" }, -- Blurred Axe
+[4825] = { "загрубіла сокира", equip="Збільшує силу атаки на 8." }, -- Callous Axe, @equip +8 Attack Power.
+[4826] = { "сокира мародера" }, -- Marauder Axe
+[4827] = { "пояс чарівника" }, -- Wizard's Belt
 [4828] = { "пояс Ночевітра" }, -- Nightwind Belt
+[4829] = { "пояс сновиди" }, -- Dreamer's Belt
+[4830] = { "шабельні поножі" }, -- Saber Leggings
+[4831] = { "штани ловця" }, -- Stalking Pants
+[4832] = { "містичний сарунг" }, -- Mystic Sarong
+[4833] = { "славетні наплечі" }, -- Glorious Shoulders
 [4834] = { "документи ТзНБ \"Авантюра\"" }, -- Venture Co. Documents
+[4835] = { "елітні наплечі" }, -- Elite Shoulders
+[4836] = { "вогнетривка куля" }, -- Fireproof Orb
+[4837] = { "сила волі" }, -- Strength of Will
+[4838] = { "куля могутності" }, -- Orb of Power
 [4840] = { "довгий багнет" }, -- Long Bayonet
 [4841] = { "ріг Арра'чі" }, -- Horn of Arra'chea
 [4843] = { "аметистовий рунічний камінь" }, -- Amethyst Runestone
@@ -2369,14 +2991,26 @@ addonTable.item = {
 [4852] = { "світлова бомба", use="Змушує всіх звірів у радіусі 5 метрів тікати 10 сек. (Відновлення 1 хв)" }, -- Flash Bomb, @use Causes all Beasts in a 5 yard radius to run away for 10 sec. (1 Min Cooldown)
 [4854] = { "пошматований демонами плащ" }, -- Demon Scarred Cloak
 [4859] = { "медальйон Палаючого Леза" }, -- Burning Blade Medallion
+[4860] = { "блискуча луска навіженки" }, -- Glistening Frenzy Scale
+[4861] = { "прикрашений пір'ям лискучий мундир" }, -- Sleek Feathered Tunic
 [4862] = { "хвіст скорпіда-робітника" }, -- Scorpid Worker Tail
 [4863] = { "інструменти гномів" }, -- Gnomish Tools
 [4864] = { "череп Міншини" }, -- Minshina's Skull
 [4865] = { "зіпсована шкура" }, -- Ruined Pelt
 [4866] = { "голова Залазейна" }, -- Zalazane's Head
+[4867] = { "зламана лапа скорпіда" }, -- Broken Scorpid Leg
 [4869] = { "кіготь Фіззла" }, -- Fizzle's Claw
 [4870] = { "уривки полотна" }, -- Canvas Scraps
 [4871] = { "опалюючий нашийник" }, -- Searing Collar
+[4872] = { "сухе око скорпіда" }, -- Dry Scorpid Eye
+[4873] = { "сухий затверділий молюск" }, -- Dry Hardened Barnacle
+[4874] = { "чисті рибні кістки" }, -- Clean Fishbones
+[4875] = { "слизька кістка" }, -- Slimy Bone
+[4876] = { "кривавий шкіряний черевик" }, -- Bloody Leather Boot
+[4877] = { "кам'яний наконечник стріли" }, -- Stone Arrowhead
+[4878] = { "зламаний закривавлений лук" }, -- Broken Bloodstained Bow
+[4879] = { "роздавлена тушка кролика" }, -- Squashed Rabbit Carcass
+[4880] = { "зламаний спис" }, -- Broken Spear
 [4881] = { "старий конверт" }, -- Aged Envelope
 [4882] = { "ключ Бенедикта" }, -- Benedict's Key
 [4883] = { "накази адмірала Праудмура" }, -- Admiral Proudmoore's Orders
@@ -2417,6 +3051,7 @@ addonTable.item = {
 [4926] = { "порожня діжка Ченя" }, -- Chen's Empty Keg
 [4928] = { "наручі піскобіга" }, -- Sandrunner Wristguards
 [4929] = { "легка скорпідна броня" }, -- Light Scorpid Armor
+[4930] = { "шкіряна сумка ручної роботи" }, -- Handmade Leather Bag
 [4931] = { "короткий лук з гікорі" }, -- Hickory Shortbow
 [4932] = { "гарпієвий крилоріз" }, -- Harpy Wing Clipper
 [4933] = { "плащ загартованого бійця" }, -- Seasoned Fighter's Cloak
@@ -2433,15 +3068,21 @@ addonTable.item = {
 [4946] = { "легкі черевики" }, -- Lightweight Boots
 [4947] = { "зазубрений кинджал" }, -- Jagged Dagger
 [4948] = { "жаляча булава" }, -- Stinging Mace
+[4949] = { "оркський сікач" }, -- Orcish Cleaver
+[4951] = { "пояс Верескуна" }, -- Squealer's Belt
 [4952] = { "бурехміль", use="Міцний ель, що збільшує вашу силу на 4 та зменшує ваш інтелект на 5 на 5 хв." }, -- Stormstout, @use A powerful brew that increases your strength by 4 and decreases your intellect by 5 for 5 min.
 [4953] = { "трозька брага", use="Збільшує ваше здоров'я від 23 до 38, але зменшує дух на 4 на 5 хв." }, -- Trogg Brew, @use Increases your health by 23 to 37, but decreases your spirit by 4 for 5 min.
 [4954] = { "пояс кочівника" }, -- Nomadic Belt
+[4957] = { "старий гаманець" }, -- Old Moneybag
 [4958] = { "вицвілий плащ" }, -- Sun-beaten Cloak
+[4959] = { "метальний томагавк" }, -- Throwing Tomahawk
 [4960] = { "легкий дріб", desc="Додає 2 пошкодження за секунду" }, -- Flash Pellet, @desc Adds 2 damage per second
 [4961] = { "посох вартового снів" }, -- Dreamwatcher Staff
 [4962] = { "двошарові рукавички" }, -- Double-layered Gloves
 [4963] = { "плащ громового рога" }, -- Thunderhorn Cloak
 [4964] = { "убивач гоблінів" }, -- Goblin Smasher
+[4965] = { "сокира Кривавого Копита" }, -- Bloodhoof Hand Axe
+[4966] = { "голова Маззраначе" }, -- Mazzranache's Head
 [4967] = { "щит воїна племені" }, -- Tribal Warrior's Shield
 [4968] = { "зв'язана портупея" }, -- Bound Harness
 [4969] = { "укріплені наручі" }, -- Fortified Bindings
@@ -2456,30 +3097,59 @@ addonTable.item = {
 [4978] = { "молот Житника" }, -- Ryedol's Hammer
 [4979] = { "зачаровані камнеткані поручі" }, -- Enchanted Stonecloth Bracers
 [4980] = { "рукавиці розвідувача" }, -- Prospector Gloves
+[4981] = { "поясна сумка Аґмонда" }, -- Agmond's Belt Pouch
 [4982] = { "порваний пояс розвідувача" }, -- Ripped Prospector Belt
 [4983] = { "трощитель каменю", equip="Збільшує силу атаки на 34." }, -- Rock Pulverizer, @equip +34 Attack Power.
 [4984] = { "череп неминучої загибелі", use="Збільшує вашу швидкість бігу на 60% на 10 сек, але завдає від 100 до 500 шкоди та витягує від 100 до 500 мани кожні 2 сек. (Відновлення 5 хв)" }, -- Skull of Impending Doom, @use Increase your run speed by 60% for 10 sec, but deals 100 to 500 damage and drains 100 to 500 mana every 2 seconds. (5 Min Cooldown)
 [4986] = { "тріснутий камінь сили", use="Помістити на жертовник вогню" }, -- Flawed Power Stone, @use Place upon the Altar of Fire
 [4987] = { "меч дворфійського капітана" }, -- Dwarf Captain's Sword
+[4988] = { "палаючий обсидіановий перстень" }, -- Burning Obsidian Band
+[4989] = { "мантія мага-дракона" }, -- Mage Dragon Robe
+[4990] = { "обпалені пов'язки" }, -- Scorched Bands
 [4992] = { "вербувальний лист", flavor="Непідписаний вербувальний лист." }, -- Recruitment Letter, @flavor An unsigned recruitment letter.
 [4995] = { "підписаний вербувальний лист" }, -- Signed Recruitment Letter
+[4998] = { "перстень крові" }, -- Blood Ring
+[4999] = { "воля Азори" }, -- Azora's Will
+[5000] = { "кораловий перстень" }, -- Coral Band
+[5001] = { "перстень серця" }, -- Heart Ring
+[5002] = { "сяючий зелений талісман" }, -- Glowing Green Talisman
+[5003] = { "кришталевий медальйон зоряного вогню" }, -- Crystal Starfire Medallion
+[5004] = { "знак Кірін-Тора" }, -- Mark of the Kirin Tor
+[5005] = { "кулон іскристого жару" }, -- Emberspark Pendant
 [5006] = { "журнал Хазґорма" }, -- Khazgorm's Journal
+[5007] = { "кільце шипів" }, -- Band of Thorns
+[5008] = { "перстень ртуті" }, -- Quicksilver Ring
+[5009] = { "перстень покорителя розуму" }, -- Mindbender Loop
+[5010] = { "гравійований золотий перстень" }, -- Inscribed Gold Ring
+[5011] = { "перстень в'янення" }, -- Welken Ring
 [5012] = { "спори грибів" }, -- Fungal Spores
+[5013] = { "проросла цибулина", use="Завдає від 47 до 53 шкоди від природи в радіусі 10 м." }, -- Fertile Bulb, @use Inflicts 47 to 53 Nature damage in a 10 yard radius. (1 Min Cooldown)
 [5016] = { "штани ремісника" }, -- Artisan's Trousers
 [5017] = { "нітрогліцерин" }, -- Nitroglycerin
 [5018] = { "целюлоза" }, -- Wood Pulp
 [5019] = { "нітрат натрію" }, -- Sodium Nitrate
+[5020] = { "ключ від скрині зі здобиччю Колкарів", use="Відчиняє скриню зі здобиччю Колкарів." }, -- Kolkar Booty Key, @use Opens the Kolkar Booty chest.
 [5021] = { "вибухова палиця Ґанна", use="Чудово підходить для знищення літальних апаратів." }, -- Explosive Stick of Gann, @use Perfect for destroying flying machines.
 [5022] = { "голова Барака" }, -- Kodobane's Head
 [5023] = { "голова Вероґа" }, -- Verog's Head
+[5024] = { "крижаний фіал" }, -- Frost Vial
 [5025] = { "голова Герзула" }, -- Hezrul's Head
 [5026] = { "вогняна смола" }, -- Fire Tar
 [5027] = { "оброблені спори" }, -- Rendered Spores
+[5028] = { "скіпетр повелителя Сакрасіса" }, -- Lord Sakrasis' Scepter
+[5029] = { "скіпетр повелителя наг" }, -- Talisman of the Naga Lord
 [5030] = { "наручі кентаврів" }, -- Centaur Bracers
 [5038] = { "Сльоза Місяця" }, -- Tear of the Moons
 [5040] = { "ніж темного мисливця" }, -- Shadow Hunter Knife
+[5042] = { "обгортковий папір з червоною стрічкою" }, -- Red Ribboned Wrapping Paper
+[5043] = { "подарунок з червоною стрічкою" }, -- Red Ribboned Gift
+[5044] = { "подарунок з блакитною стрічкою" }, -- Blue Ribboned Gift
+[5045] = { "подарунок з черепом" }, -- Skull Gift
+[5046] = { "замкнений подарунок" }, -- Locked Gift
+[5048] = { "обгортковий папір з блакитною стрічкою" }, -- Blue Ribboned Wrapping Paper
 [5050] = { "ключ запалювання" }, -- Ignition Key
 [5051] = { "печерний щур" }, -- Dig Rat
+[5052] = { "непритомний печерний щур", use="Цей печерний щур все ще живий, чому б вам не відпустити його?" }, -- Unconscious Dig Rat, @use This dig rat is still struggling, why don't you let it go?
 [5054] = { "самофланж" }, -- Samophlange
 [5055] = { "неушкоджений ріг раптора" }, -- Intact Raptor Horn
 [5056] = { "зразок кореня" }, -- Root Sample
@@ -2495,6 +3165,8 @@ addonTable.item = {
 [5066] = { "розколинь", ref=117 }, -- Fissure Plant
 [5067] = { "голова Серени" }, -- Serena's Head
 [5068] = { "висохле насіння", use="Помістити зерна в розколину Застійного оазису." }, -- Dried Seeds, @use Plant these seeds in the Stagnant Oasis fissure.
+[5069] = { "вогняний жезл" }, -- Fire Wand
+[5071] = { "жезл тіні" }, -- Shadow Wand
 [5072] = { "череп Лока" }, -- Lok's Skull
 [5073] = { "череп Нака" }, -- Nak's Skull
 [5074] = { "череп Каза" }, -- Kuz's Skull
@@ -2502,7 +3174,9 @@ addonTable.item = {
 [5076] = { "партія черевиків" }, -- Shipment of Boots
 [5077] = { "лінза для телескопа" }, -- Telescopic Lens
 [5078] = { "медаль Терамору" }, -- Theramore Medal
+[5079] = { "холодне око василіска", use="Збільшує час між атаками цілі на 5% протягом 15 с." }, -- Cold Basilisk Eye, @use Increases time between target's attacks by 5% for 15 sec. (5 Min Cooldown)
 [5080] = { "гросбух Ґазлоу" }, -- Gazlowe's Ledger
+[5081] = { "сумка зі шкури кодо" }, -- Kodo Hide Bag
 [5082] = { "тонка шкіра кодо", flavor="'Тонка' - поняття відносне..." }, -- Thin Kodo Leather, @flavor 'Thin' is a relative term....
 [5083] = { "викрійка: Сумка зі шкіри кодо", use="Навчає вас створенню сумки зі шкіри кодо." }, -- Pattern: Kodo Hide Bag, @use Teaches you how to craft a Kodo Hide Bag.
 [5084] = { "голова барона Довгоберега" }, -- Baron Longshore's Head
@@ -2524,8 +3198,32 @@ addonTable.item = {
 [5102] = { "хвостовий шип Оватанки" }, -- Owatanka's Tailspike
 [5103] = { "перо Ваште Пауні" }, -- Washte Pawne's Feather
 [5104] = { "серце Іши Авака" }, -- Heart of Isha Awak
+[5105] = { "вибуховий снаряд" }, -- Explosive Shell
+[5107] = { "сорочка матроса" }, -- Deckhand's Shirt
+[5108] = { "шкіряний обладунок Темного Заліза" }, -- Dark Iron Leather
+[5109] = { "лахміття Каменедробів" }, -- Stonesplinter Rags
+[5110] = { "мантія даларанського чарівника" }, -- Dalaran Wizard's Robe
+[5111] = { "накидка Раторіана" }, -- Rathorian's Cape
+[5112] = { "ритуальний клинок" }, -- Ritual Blade
+[5113] = { "знак Синдикату" }, -- Mark of the Syndicate
+[5114] = { "відрубаний кіготь" }, -- Severed Talon
+[5115] = { "зламаний хребець" }, -- Broken Wishbone
+[5116] = { "довге хвостове перо" }, -- Long Tail Feather
 [5117] = { "яскраве перо" }, -- Vibrant Plume
+[5118] = { "великий плаский зуб" }, -- Large Flat Tooth
+[5119] = { "тонка полиняла шерсть" }, -- Fine Loose Hair
+[5120] = { "довга хвостова шерсть" }, -- Long Tail Hair
+[5121] = { "брудна луска кодо" }, -- Dirty Kodo Scale
+[5122] = { "товста шерсть кодо" }, -- Thick Kodo Hair
+[5123] = { "сталевий наконечник стріли" }, -- Steel Arrowhead
+[5124] = { "маленький зуб раптора" }, -- Small Raptor Tooth
+[5125] = { "заряджена луска" }, -- Charged Scale
+[5128] = { "полиняла шкіра ящірки" }, -- Shed Lizard Skin
+[5133] = { "мокрі тельбухи" }, -- Seeping Gizzard
 [5134] = { "маленька пухнаста лапка" }, -- Small Furry Paw
+[5135] = { "тонкий чорний кіготь" }, -- Thin Black Claw
+[5136] = { "відірване пухнасте вухо" }, -- Torn Furry Ear
+[5137] = { "блискуче око" }, -- Bright Eyeball
 [5138] = { "голова женця" }, -- Harvester's Head
 [5140] = { "пломенистий порошок" }, -- Flash Powder
 [5143] = { "кров громоящера" }, -- Thunder Lizard Blood
@@ -2536,32 +3234,74 @@ addonTable.item = {
 [5168] = { "насіння деревника" }, -- Timberling Seed
 [5169] = { "паросток деревника" }, -- Timberling Sprout
 [5170] = { "вкрита мохом пухлина" }, -- Mossy Tumor
+[5172] = { "капсула смерті" }, -- Death Capsule
 [5173] = { "смертоквіт", flavor="Нести дуже-дуже обережно." }, -- Deathweed, @flavor It must be carried very, very carefully.
+[5174] = { "записка від Нііру" }, -- Note from Neeru
 [5175] = { "тотем землі" }, -- Earth Totem
 [5176] = { "тотем вогню" }, -- Fire Totem
 [5177] = { "тотем води" }, -- Water Totem
 [5178] = { "тотем повітря" }, -- Air Totem
 [5179] = { "вкрите мохом серце" }, -- Moss-twined Heart
+[5180] = { "намисто гармонії" }, -- Necklace of Harmony
+[5181] = { "яскрава шовкова накидка" }, -- Vibrant Silk Cape
+[5182] = { "тремтливий клинок", hit="Завдає цілі 150 шкоди від криги." }, -- Shiver Blade, @hit Blasts a target for 35 Frost damage.
+[5183] = { "пульсуюче серце гідри", equip="Збільшує шкоду від заклинань і ефектів вогню на 7." }, -- Pulsating Hydra Heart, @equip Increases damage done by Fire spells and effects by up to 7.
 [5184] = { "наповнений кришталевий фіал" }, -- Filled Crystal Phial
 [5185] = { "кришталевий фіал", use="Наповнити кришталевий фіал водами місячного колодязя Тінистої долини." }, -- Crystal Phial, @use Right-click to fill the Crystal Phial at the Shadowglen moonwell.
 [5186] = { "частково наповнена ємність" }, -- Partially Filled Vessel
+[5187] = { "молот Рак'Зора" }, -- Rhahk'Zor's Hammer
 [5188] = { "наповнений флакон" }, -- Filled Vessel
 [5189] = { "сяючий плід" }, -- Glowing Fruit
 [5190] = { "мерехтливий паросток" }, -- Shimmering Frond
+[5191] = { "шабля жорстокості", equip="Збільшує силу атаки на 12." }, -- Cruel Barb, @equip +12 Attack Power.
+[5192] = { "клинок злодія" }, -- Thief's Blade
+[5193] = { "накидка братства" }, -- Cape of the Brotherhood
+[5194] = { "сокира орударя" }, -- Taskmaster Axe
+[5195] = { "рукавички з золотистими вкрапленнями" }, -- Gold-flecked Gloves
+[5196] = { "розоритель Баца" }, -- Smite's Reaver
+[5197] = { "качалка Кухарчика" }, -- Cookie's Tenderizer
+[5198] = { "мішалка Кухарчика" }, -- Cookie's Stirring Rod
+[5199] = { "штани плавильника" }, -- Smelting Pants
+[5200] = { "пронизуючий гарпун" }, -- Impaling Harpoon
+[5201] = { "вуглекамінний посох" }, -- Emberstone Staff
+[5202] = { "сорочка корсара" }, -- Corsair's Overshirt
 [5203] = { "пазур рівнинного скрадача" }, -- Flatland Prowler Claw
 [5204] = { "пояс Кривавоперих" }, -- Bloodfeather Belt
 [5205] = { "пророслий паросток", use="Відновити вашій цілі від 76 до 91 здоров'я. (Відновлення 2 хв)" }, -- Sprouted Frond, @use Heal your target for 76 to 91. (2 Min Cooldown)
+[5206] = { "корінь болотянчика", use="Збільшує фізичну шкоду на 1 протягом 10 хв." }, -- Bogling Root, @use Increases physical damage by 1 for 10 min.
+[5207] = { "мутний жезл" }, -- Opaque Wand
+[5208] = { "тліючий жезл" }, -- Smoldering Wand
+[5209] = { "жезл мороку" }, -- Gloom Wand
+[5210] = { "палаючий жезл" }, -- Burning Wand
+[5211] = { "жезл сутінків" }, -- Dusk Wand
+[5212] = { "палючий жезл" }, -- Blazing Wand
+[5213] = { "опікаючий жезл" }, -- Scorching Wand
+[5214] = { "жезл повечір'я" }, -- Wand of Eventide
+[5215] = { "бурштиновий жезл" }, -- Ember Wand
+[5216] = { "смерковий жезл" }, -- Umbral Wand
 [5217] = { "заражене серце" }, -- Tainted Heart
 [5218] = { "очищене серце деревника", use="Викликати деревника, який захищатиме вас протягом 20 хв." }, -- Cleansed Timberling Heart, @use Summons a Timberling to protect you for 20 min.
 [5219] = { "вкрита написами кора" }, -- Inscribed Bark
+[5220] = { "ікло хутропуза Кривої Сосни" }, -- Gnarlpine Fang
 [5221] = { "голова Меленаса" }, -- Melenas' Head
+[5223] = { "порожній самоцвіт мани" }, -- Empty Mana Gem
+[5227] = { "порожній самоцвіт мани" }, -- Empty Mana Jewel
+[5229] = { "порожній великий кривавий камінь" }, -- Empty Greater Bloodstone
 [5232] = { "крихітний камінь душі", use="Зберігає душу дружньої цілі. Якщо ціль, чия душа збережена, помирає, вона може оживити себе з {1} здоров'я та {2} мани.#{1} health and {2} mana" }, -- Minor Soulstone, @use Stores the friendly target's soul.  If the target dies while his soul is stored, he will be able to resurrect with 400 health and 700 mana. (30 Min Cooldown)
 [5233] = { "камінь Релу" }, -- Stone of Relu
 [5234] = { "скам'янілість Флягопуза" }, -- Flagongut's Fossil
+[5235] = { "жезл алхіміка" }, -- Alchemist's Wand
+[5236] = { "горючий жезл" }, -- Combustible Wand
 [5237] = { "задурлива отрута", use="Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, сповільнюючи вимову заклять на {3}% на {4} с. {5} зарядів.#lasts for {1} min#{2}% chance#by {3}% for {4} sec#{5} charges" }, -- Mind-numbing Poison, @use Coats a weapon with poison that lasts for 30 minutes.Each strike has a 20% chance of poisoning the enemy, increasing their casting time by 40% for 10 sec.  50 charges. (Proc chance: 20%)
+[5238] = { "смоляний жезл" }, -- Pitchwood Wand
+[5239] = { "чорнокістяний жезл" }, -- Blackbone Wand
 [5240] = { "смолоскипний жезл" }, -- Torchlight Wand
+[5241] = { "дворфійська вогняна паличка" }, -- Dwarven Flamestick
 [5242] = { "тліючий жезл" }, -- Cinder Wand
+[5243] = { "вогнеплюй" }, -- Firebelcher
 [5244] = { "освячена паличка" }, -- Consecrated Wand
+[5245] = { "жезл закликача" }, -- Summoner's Wand
+[5246] = { "жезл розкопок" }, -- Excavation Rod
 [5247] = { "скіпетр скорботи" }, -- Rod of Sorrow
 [5248] = { "світловий жезл" }, -- Flash Wand
 [5249] = { "палаюча тріска" }, -- Burning Sliver
@@ -2569,6 +3309,17 @@ addonTable.item = {
 [5251] = { "фіал провидіння", use="Створити чашу провидіння. (Відновлення 2 хв)" }, -- Phial of Scrying, @use Creates a bowl of scrying. (2 Min Cooldown)
 [5252] = { "жезл розкладання" }, -- Wand of Decay
 [5253] = { "гоблінський запальник" }, -- Goblin Igniter
+[5254] = { "потерті наплічники" }, -- Rugged Spaulders
+[5255] = { "томагавк свинобраза" }, -- Quilboar Tomahawk
+[5256] = { "брязкальце Коворка" }, -- Kovork's Rattle
+[5257] = { "накидка з темним капюшоном" }, -- Dark Hooded Cape
+[5263] = { "кишеньковий ворс" }, -- Pocket Lint
+[5264] = { "жетон на безкоштовне пиво" }, -- Complimentary Beer Token
+[5265] = { "розбавлене пиво", use="Це слабке пиво збільшує ваш дух на 1 і зменшує витривалість на 1 протягом 10 хвилин." }, -- Watered-down Beer, @use This weak beer increases your Spirit by 1 and decreases your Stamina by 1 for 10 min.
+[5266] = { "око Адеґуса" }, -- Eye of Adaegus
+[5267] = { "багряний кріс" }, -- Scarlet Kris
+[5268] = { "тріснутий панцир силітида" }, -- Cracked Silithid Shell
+[5269] = { "лімфа силітида" }, -- Silithid Ichor
 [5270] = { "мертвошляпка" }, -- Death Cap
 [5271] = { "лусконіжка" }, -- Scaber Stalk
 [5272] = { "божевільні письмена" }, -- Insane Scribbles
@@ -2579,6 +3330,8 @@ addonTable.item = {
 [5299] = { "рукавички місяця" }, -- Gloves of the Moon
 [5302] = { "кобальтовий баклер" }, -- Cobalt Buckler
 [5306] = { "посох вершника вітру" }, -- Wind Rider Staff
+[5309] = { "мушкет корсара" }, -- Privateer Musket
+[5310] = { "бриджі морського пса" }, -- Sea Dog Britches
 [5311] = { "черевики з пряжками" }, -- Buckled Boots
 [5312] = { "клепані рукавиці" }, -- Riveted Gauntlets
 [5313] = { "тотемна племінна каблучка" }, -- Totemic Clan Ring
@@ -2587,6 +3340,7 @@ addonTable.item = {
 [5316] = { "жакет з облущеної кори" }, -- Barkshell Tunic
 [5317] = { "жакет з пересохлого моху" }, -- Dry Moss Tunic
 [5318] = { "протигарпієва сокира" }, -- Zhovur Axe
+[5319] = { "приголомшливі напліччя" }, -- Bashing Pauldrons
 [5320] = { "м'які пластинчасті чоботи" }, -- Padded Lamellar Boots
 [5321] = { "елегантний короткий меч" }, -- Elegant Shortsword
 [5322] = { "відбійний молот" }, -- Demolition Hammer
@@ -2597,6 +3351,7 @@ addonTable.item = {
 [5327] = { "заяложені штани майструвальника" }, -- Greasy Tinker's Pants
 [5328] = { "пояс із застібкою" }, -- Cinched Belt
 [5329] = { "фігурка кота" }, -- Cat Figurine
+[5330] = { "реліктова ельфійська чаша" }, -- Elven Cup Relic
 [5332] = { "сяюча фігурка кота", use="Викликати примарного шаблезуба, який битиметься за вас протягом 10 хв. (Відновлення 10 хв)" }, -- Glowing Cat Figurine, @use Summons a Ghost Saber to fight for you for 10 min. (10 Min Cooldown)
 [5334] = { "99-річний портвейн" }, -- 99-Year-Old Port
 [5335] = { "мішечок з монетами" }, -- A Sack of Coins
@@ -2611,33 +3366,61 @@ addonTable.item = {
 [5344] = { "загострена сокира" }, -- Pointed Axe
 [5345] = { "камнедеревний молот" }, -- Stonewood Hammer
 [5346] = { "орчий бойовий лук" }, -- Orcish Battle Bow
+[5347] = { "згубний жезл" }, -- Pestilent Wand
 [5348] = { "потертий пергамент" }, -- Worn Parchment
 [5349] = { "начаклований кекс", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}" }, -- Conjured Muffin, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.
 [5350] = { "начаклована вода", use="Відновлює {1} мани протягом {2} сек. Потрібно залишатися в сидячому положенні під час пиття.#Restores {1} mana over {2}" }, -- Conjured Water, @use Restores 151.2 mana over 18 sec.  Must remain seated while drinking.
 [5351] = { "каблучка мисливця за головами" }, -- Bounty Hunter's Ring
 [5352] = { "книга \"Сили підземні\"" }, -- Book: The Powers Below
+[5353] = { "повідомлення для Елісси Зоребриз" }, -- Message for Elissa Starbreeze
 [5354] = { "лист до Дельґрена" }, -- Letter to Delgren
 [5355] = { "пояс володаря звірів" }, -- Beastmaster's Girdle
 [5356] = { "опалюючий жезл" }, -- Branding Rod
 [5357] = { "вартовий долини" }, -- Ward of the Vale
 [5359] = { "манускрипт Лорґаліса" }, -- Lorgalis Manuscript
 [5360] = { "реліквія високородних" }, -- Highborne Relic
+[5361] = { "зубочистка з риб'ячої кістки" }, -- Fishbone Toothpick
+[5362] = { "жувальна іграшка" }, -- Chew Toy
+[5363] = { "складена хустинка" }, -- Folded Handkerchief
+[5364] = { "кам'яна сіль" }, -- Dry Salt Lick
 [5366] = { "сяючий камінь душі" }, -- Glowing Soul Gem
+[5367] = { "примітивний кам'яний інструмент" }, -- Primitive Rock Tool
+[5368] = { "порожній гаманець" }, -- Empty Wallet
+[5369] = { "обгризена кістка" }, -- Gnawed Bone
+[5370] = { "зігнута ложка" }, -- Bent Spoon
+[5371] = { "шматочок корала" }, -- Piece of Coral
+[5373] = { "щасливий талісман" }, -- Lucky Charm
+[5374] = { "кишеньковий годинник" }, -- Small Pocket Watch
+[5375] = { "палиця-чесалка" }, -- Scratching Stick
+[5376] = { "розбите дзеркало" }, -- Broken Mirror
+[5377] = { "мушля гребінця" }, -- Scallop Shell
+[5379] = { "захалявний ніж" }, -- Boot Knife
+[5380] = { "запечатаний лист до Елісси", flavor="Запечатаний лист для Елісси Зоребриз з Аубердіна." }, -- Sealed Letter to Elissa, @flavor A sealed letter for Elissa Starbreeze in Auberdine.
+[5381] = { "запечатаний лист до Балтула", flavor="Запечатаний лист для Балтула Тіневдара." }, -- Sealed Letter to Balthule, @flavor A sealed letter for Balthule Shadowstrike.
 [5382] = { "кулон Анайї" }, -- Anaya's Pendant
 [5383] = { "голова Атріка Нарассіна" }, -- Athrikus Narassin's Head
 [5385] = { "нога повзуна" }, -- Crawler Leg
 [5386] = { "чудова шкура місяцескрада" }, -- Fine Moonstalker Pelt
 [5387] = { "зачарований плащ місяцескрада", use="Перетворитися на місяцескрада та отримати невидимість на 5 хв." }, -- Enchanted Moonstalker Cloak, @use Transform into a Moonstalker and become invisible for 5 min.
 [5388] = { "череп Рана Кривавозубого" }, -- Ran Bloodtooth's Skull
+[5389] = { "осквернений тотем хутропузів" }, -- Corrupted Furbolg Totem
 [5390] = { "повідомлення Фендрала" }, -- Fandral's Message
 [5391] = { "рідкісна земля" }, -- Rare Earth
 [5392] = { "кинджал шиподерева" }, -- Thistlewood Dagger
 [5393] = { "посох шиподерева" }, -- Thistlewood Staff
 [5394] = { "тренувальні рукавиці лучника" }, -- Archery Training Gloves
 [5395] = { "щит діброви" }, -- Woodland Shield
+[5396] = { "ключ від Випаленої ущелини" }, -- Key to Searing Gorge
+[5397] = { "порох повстанців" }, -- Defias Gunpowder
 [5398] = { "широкі поножі" }, -- Canopy Leggings
 [5399] = { "чоботи вистежування" }, -- Tracking Boots
+[5400] = { "кров Кобрана" }, -- Blood of Cobrahn
+[5401] = { "кров Анакондри" }, -- Blood of Pythas
+[5402] = { "кров Пітонаса" }, -- Blood of Anacondra
+[5403] = { "кров Серпентіса" }, -- Blood of Serpentis
+[5404] = { "зміїні наплечі" }, -- Serpent's Shoulders
 [5405] = { "вовняний плащ" }, -- Draped Cloak
+[5406] = { "порожній малий кривавий камінь" }, -- Empty Minor Bloodstone
 [5411] = { "тотем очищення Зимового Копита", use="Викликає духів Зимового Копита для очищення." }, -- Winterhoof Cleansing Totem, @use Invokes Winterhoof spirits of cleansing.
 [5412] = { "око молотника" }, -- Thresher Eye
 [5413] = { "ікло місяцескрада" }, -- Moonstalker Fang
@@ -2647,13 +3430,31 @@ addonTable.item = {
 [5419] = { "дикі наручі" }, -- Feral Bracers
 [5420] = { "броня банші" }, -- Banshee Armor
 [5421] = { "зачарування вогняного спалаху", use="Зачарування зброї чарами, що дозволяють з 15% шансом нанести від 9 до 13 шкоди від вогню всім ворогам в радіусі 3 м." }, -- Fiery Blaze Enchantment, @use Enchants a weapon to have a 15% chance to inflict 9 to 13 Fire damage to all enemies within 3 yards.
+[5422] = { "ожинові поножі" }, -- Brambleweed Leggings
+[5423] = { "ікло Боана" }, -- Boahn's Fang
 [5424] = { "стародавня статуетка" }, -- Ancient Statuette
+[5425] = { "пояс з рунічної луски" }, -- Runescale Girdle
+[5426] = { "поцілунок змії", hit="Отруює ціль, завдаючи 7 шкоди від природи кожні 3 с протягом 15 с." }, -- Serpent's Kiss, @hit Poisons target for 7 Nature damage every 3 sec for 15 sec.
+[5427] = { "примітивний кишеньковий годинник" }, -- Crude Pocket Watch
 [5428] = { "екзотична кулінарна книга", flavor="Як готувати людина" }, -- An Exotic Cookbook, @flavor How To Serve Man
+[5429] = { "красивий камінчик" }, -- A Pretty Rock
+[5430] = { "хитромудра дрібничка" }, -- Intricate Bauble
+[5431] = { "порожня фляга" }, -- Empty Hip Flask
+[5432] = { "дерев'яна люлька" }, -- Hickory Pipe
+[5433] = { "лялька-мотанка" }, -- Rag Doll
+[5435] = { "блискуча виделка" }, -- Shiny Dinglehopper
 [5437] = { "батранове волосся" }, -- Bathran's Hair
+[5439] = { "малий сагайдак", equip="Збільшує швидкість атаки дальнього бою на 10%." }, -- Small Quiver, @equip Increases ranged attack speed by 10%.
 [5440] = { "пляшка пошесті" }, -- Bottle of Disease
 [5441] = { "малий гаман для куль", equip="Збільшує швидкість атаки дальнього бою на 10%." }, -- Small Shot Pouch, @equip Increases ranged attack speed by 10%.
 [5442] = { "голова Аруґала" }, -- Head of Arugal
+[5443] = { "позолочений баклер" }, -- Gold-plated Buckler
+[5444] = { "шахтарська накидка" }, -- Miner's Cape
 [5445] = { "зорамський перстень" }, -- Ring of Zoram
+[5446] = { "зламаний браслет елементаля" }, -- Broken Elemental Bracer
+[5447] = { "пошкоджений браслет елементаля" }, -- Damaged Elemental Bracer
+[5448] = { "розколотий браслет елементаля" }, -- Fractured Elemental Bracer
+[5451] = { "розбитий браслет елементаля" }, -- Crushed Elemental Bracer
 [5455] = { "сувій з провіщенням", flavor=" Цей сувій вкритий сяючими рунами." }, -- Divined Scroll, @flavor This paper is covered in glowing runes.
 [5456] = { "сувій провіщення", flavor="Сувій чистий, за винятком кількох рун. Для його використання вам знадобляться браслети елементалів." }, -- Divining Scroll, @flavor The paper is blank save for a few runes. You'll need bracers from the elementals to use it.
 [5457] = { "відрізаний кіготь вуду", use="Зменшити фізичну шкоду цілі на 5 на 2 хв. (Відновлення 1 хв)" }, -- Severed Voodoo Claw, @use Physical damage caused by the target is reduced by 5 for 2 min. (1 Min Cooldown)
@@ -2665,21 +3466,39 @@ addonTable.item = {
 [5463] = { "сяючий самоцвіт" }, -- Glowing Gem
 [5464] = { "залізне руків'я" }, -- Iron Shaft
 [5465] = { "мала павуча лапка" }, -- Small Spider Leg
+[5466] = { "жало скорпіда" }, -- Scorpid Stinger
+[5467] = { "м'ясо кодо" }, -- Kodo Meat
+[5468] = { "м'яке м'ясо навіженка" }, -- Soft Frenzy Flesh
 [5469] = { "м'ясо бігуна" }, -- Strider Meat
+[5470] = { "хвіст громоящіра" }, -- Thunder Lizard Tail
+[5471] = { "м'ясо оленя" }, -- Stag Meat
 [5472] = { "калдорейський павучий шашлик", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 2 на 15 хв." }, -- Kaldorei Spider Kabob, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 2 Stamina and Spirit for 15 min.
+[5473] = { "скорпідовий сюрприз", use="Відновлює 294 здоров'я протягом 21 сек, якщо вам, звісно, не трапиться отруйна залоза." }, -- Scorpid Surprise, @use Heals 294 damage over 21 sec, assuming you don't bite down on a poison sac.
+[5474] = { "смажене м'ясо кодо", use="Відновлює 61.2 здоров'я протягом 18 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 2 на 15 хв." }, -- Roasted Kodo Meat, @use Restores 61.2 health over 18 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 2 Stamina and Spirit for 15 min.
 [5475] = { "дерев'яний ключ", use="Відкриває обдерту скриню." }, -- Wooden Key, @use Unlocks a worn chest.
+[5476] = { "філе навіженки", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 4 на 15 хв." }, -- Fillet of Frenzy, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 4 Stamina and Spirit for 15 min.
 [5477] = { "гуляш з бігуна", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 4 на 15 хв." }, -- Strider Stew, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 4 Stamina and Spirit for 15 min.
 [5478] = { "рагу з печерних щурів", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Dig Rat Stew, @use Restores 552 health over 24 sec.  Must remain seated while eating.
+[5479] = { "хрусткий хвіст ящірки", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Crispy Lizard Tail, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[5480] = { "пісна оленина", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв." }, -- Lean Venison, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
 [5481] = { "роги сатира" }, -- Satyr Horns
 [5482] = { "рецепт: Калдорейський павучий шашлик", use="Навчає вас приготуванню калдорейського павучого шашлику." }, -- Recipe: Kaldorei Spider Kabob, @use Teaches you how to cook a Kaldorei Spider Kabob.
+[5483] = { "рецепт: Скорпідовий сюрприз", use="Навчає вас готувати скорпідовий сюрприз." }, -- Recipe: Scorpid Surprise, @use Teaches you how to cook a Scorpid Surprise.
+[5484] = { "рецепт: Смажене м'ясо кодо", use="Навчає вас готувати смажене м'ясо кодо." }, -- Recipe: Roasted Kodo Meat, @use Teaches you how to cook Roasted Kodo Meat.
+[5485] = { "рецепт: Філе навіженки", use="Навчає вас готувати філе навіженки." }, -- Recipe: Fillet of Frenzy, @use Teaches you how to cook a Fillet of Frenzy.
 [5486] = { "рецепт: Гуляш з бігуна", use="Навчає вас приготуванню гуляшу з бігуна." }, -- Recipe: Strider Stew, @use Teaches you how to cook a Strider Stew.
-[5487] = { "рецепт: Рагу з печерних щурів", use="Навчає вас приготуванню рагу з печерних щурів." }, -- Recipe: Dig Rat Stew, @use Teaches you how to cook a disgusting Dig Rat Stew.
+[5487] = { "рецепт: Рагу з печерних щурів", use="Навчає вас приготуванню огидного рагу з печерних щурів." }, -- Recipe: Dig Rat Stew, @use Teaches you how to cook a disgusting Dig Rat Stew.
+[5488] = { "рецепт: Хрусткий хвіст ящірки", use="Навчає вас готувати хрусткий хвіст ящірки." }, -- Recipe: Crispy Lizard Tail, @use Teaches you how to cook up a Crispy Lizard Tail.
+[5489] = { "рецепт: Пісна оленина", use="Навчає вас готувати пісну оленину." }, -- Recipe: Lean Venison, @use Teaches you how to cook Lean Venison.
 [5490] = { "голова гнівохвостої наги" }, -- Wrathtail Head
 [5493] = { "сльоза Елуни" }, -- Elune's Tear
 [5494] = { "жменя зорепилу" }, -- Handful of Stardust
+[5498] = { "маленька блискуча перлина" }, -- Small Lustrous Pearl
 [5500] = { "райдужна перлина" }, -- Iridescent Pearl
+[5503] = { "м'ясо молюска" }, -- Clam Meat
 [5504] = { "гостре м'ясо молюска" }, -- Tangy Clam Meat
 [5505] = { "щоденник Тероніса", flavor="Щоденник підмочений, але загалом в хорошому стані." }, -- Teronis' Journal, @flavor The journal is waterlogged, but in otherwise good condition.
+[5506] = { "око повзуна" }, -- Beady Eye Stalk
 [5507] = { "вишукана підзорна труба", use="Дозволяє поглянути в далечінь." }, -- Ornate Spyglass, @use Allows you to look far into the distance.
 [5508] = { "впалий місячний камінь" }, -- Fallen Moonstone
 [5509] = { "камінь здоров'я", use="Миттєво відновлює 500 здоров'я. (Відновлення 2 хв)" }, -- Healthstone, @use Instantly restores 500 life. (2 Min Cooldown)
@@ -2688,27 +3507,49 @@ addonTable.item = {
 [5512] = { "крихітний камінь здоров'я", use="Миттєво відновлює 100 здоров'я. (Відновлення 2 хв)" }, -- Minor Healthstone, @use Instantly restores 100 life. (2 Min Cooldown)
 [5513] = { "нефрит мани", use="Відновлює від 550 до 650 мани. (Відновлення 2 хв)" }, -- Mana Jade, @use Restores 550 to 650 mana. (2 Min Cooldown)
 [5514] = { "агат мани", use="Відновлює від 375 до 425 мани. (Відновлення 2 хв)" }, -- Mana Agate, @use Restores 375 to 425 mana. (2 Min Cooldown)
+[5516] = { "ікло молотника" }, -- Threshadon Fang
 [5519] = { "залізне навершя" }, -- Iron Pommel
 [5520] = { "щоденник Велінди" }, -- Velinde's Journal
 [5521] = { "ключ Велінди" }, -- Velinde's Key
 [5522] = { "камінь чарів", equip="Підвищує вашу ймовірність завдати критичного удару закляттями на {1}%.#spells by {1}", use="Усуває всі магічні ефекти з заклинача та поглинає {1} магічного пошкодження протягом {2} хв.#absorb {1}#for {2} min" }, -- Spellstone, @equip Improves your chance to get a critical strike with spells by 1%., @use Removes all magic effects from the caster and will absorb 400 magic damage for 1 min.
+[5523] = { "маленький вусатий молюск" }, -- Small Barnacled Clam
+[5524] = { "товстостінний молюск" }, -- Thick-shelled Clam
+[5525] = { "варені молюски", use="Відновлює 243.6 здоров'я протягом 21 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 4 на 15 хв." }, -- Boiled Clams, @use Restores 243.6 health over 21 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 4 Stamina and Spirit for 15 min.
+[5526] = { "суп з молюсків", use="Відновлює 552 здоров'я протягом 24 сек. Потрібно залишатися в сидячому положенні під час їжі." }, -- Clam Chowder, @use Restores 552 health over 24 sec.  Must remain seated while eating.
 [5527] = { "гоблінські фаршировані молюски", use="Відновлює {1} здоров'я протягом {2} сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 6 на 15 хв.#Restores {1} health over {2}" }, -- Goblin Deviled Clams, @use Restores 552 health over 24 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 6 Stamina and Spirit for 15 min.
+[5528] = { "рецепт: Суп з молюсків", use="Навчає вас готувати суп з молюсків." }, -- Recipe: Clam Chowder, @use Teaches you how to cook a delicious Clam Chowder.
+[5529] = { "могильний пил" }, -- Tomb Dust
 [5530] = { "сліпучий порошок" }, -- Blinding Powder
 [5533] = { "фоліант Ілкруда Маґтрулла" }, -- Ilkrud Magthrull's Tome
+[5534] = { "обід Паркера" }, -- Parker's Lunch
 [5535] = { "Компендіум полеглих" }, -- Compendium of the Fallen
 [5536] = { "Мітологія титанів" }, -- Mythology of the Titans
 [5537] = { "голова Сарілуса Гидкородного" }, -- Sarilus Foulborne's Head
 [5538] = { "обручка Воррела" }, -- Vorrel's Wedding Ring
 [5539] = { "рекомендаційний лист", flavor="Від брата Антона з Багряного Походу" }, -- Letter of Commendation, @flavor Sealed by Brother Anton of the Scarlet Crusade
+[5540] = { "прикрашений перлами кинджал" }, -- Pearl-handled Dagger
+[5541] = { "райдужний молот" }, -- Iridescent Hammer
 [5542] = { "оздоблений перлами плащ" }, -- Pearl-clasped Cloak
+[5543] = { "креслення: Райдужний молот", use="Навчає вас створювати райдужний молот." }, -- Plans: Iridescent Hammer, @use Teaches you how to make an Iridescent Hammer.
 [5544] = { "череп Дала Кровопазура" }, -- Dal Bloodclaw's Skull
 [5547] = { "відтворений жезл" }, -- Reconstructed Rod
 [5565] = { "пекельний камінь" }, -- Infernal Stone
+[5566] = { "зламаний ріг" }, -- Broken Antler
+[5567] = { "срібний гачок" }, -- Silver Hook
+[5568] = { "гладка галька" }, -- Smooth Pebble, @desc Adds 4 damage per second
+[5569] = { "водорості" }, -- Seaweed
 [5570] = { "яйце мохового павука" }, -- Deepmoss Egg
 [5571] = { "маленький чорний мішечок" }, -- Small Black Pouch
 [5572] = { "маленький зелений мішечок" }, -- Small Green Pouch
+[5573] = { "зелена шкіряна сумка" }, -- Green Leather Bag
+[5574] = { "біла шкіряна сумка" }, -- White Leather Bag
+[5575] = { "великий зелений мішок" }, -- Large Green Sack
+[5576] = { "великий коричневий мішок" }, -- Large Brown Sack
+[5577] = { "креслення: Грубі бронзові браслети", use="Навчає вас створювати грубі бронзові браслети." }, -- Plans: Rough Bronze Bracers, @use Teaches you how to make Rough Bronze Bracers.
+[5578] = { "креслення: Посріблений бронзовий нагрудник", use="Навчає вас створювати посріблений бронзовий нагрудник." }, -- Plans: Silvered Bronze Breastplate, @use Teaches you how to make a Silvered Bronze Breastplate.
 [5579] = { "молот повстанців" }, -- Militia Warhammer
 [5580] = { "молоток повстанців" }, -- Militia Hammer
+[5581] = { "гладка тростина" }, -- Smooth Walking Staff
 [5582] = { "каміннопазуриста живиця" }, -- Stonetalon Sap
 [5583] = { "луска чародракончика" }, -- Fey Dragon Scale
 [5584] = { "сутінковий вус" }, -- Twilight Whisker
@@ -2724,9 +3565,13 @@ addonTable.item = {
 [5594] = { "лист для Джин'Зіла" }, -- Letter to Jin'Zil
 [5595] = { "молот хащів" }, -- Thicket Hammer
 [5596] = { "ясеневий лук" }, -- Ashwood Bow
+[5601] = { "вилуплене яйце" }, -- Hatched Egg Sac
+[5602] = { "липка павутина" }, -- Sticky Spider Webbing
+[5603] = { "мішок Бацбаха" }, -- Wizbang's Gunnysack
 [5604] = { "ельфійський жезл" }, -- Elven Wand
 [5605] = { "ніж для кронування" }, -- Pruning Knife
 [5606] = { "садові рукавички" }, -- Gardening Gloves
+[5608] = { "капюшон життя" }, -- Living Cowl
 [5609] = { "пояс непохитності" }, -- Steadfast Cinch
 [5610] = { "лісошквальний плащ" }, -- Gustweald Cloak
 [5611] = { "сльоза горя" }, -- Tear of Grief
@@ -2734,6 +3579,7 @@ addonTable.item = {
 [5613] = { "посох Очистителя", use="Очищає дружню ціль, усуваючи 1 ефект хвороби та 1 ефект отрути. (Відновлення 5 хв)" }, -- Staff of the Purifier, @use Purifies the friendly target, removing 1 disease effect and 1 poison effect. (5 Min Cooldown)
 [5614] = { "удар серафима" }, -- Seraph's Strike
 [5615] = { "меч лісника" }, -- Woodsman Sword
+[5616] = { "кишковерт", hit="Ранить ціль, спричиняючи 80 шкоди від кровотечі протягом 30 сек." }, -- Gutwrencher, @hit Wounds the target causing them to bleed for 80 damage over 30 sec.
 [5617] = { "поножі волоцюги" }, -- Vagabond Leggings
 [5618] = { "плащ розвідника" }, -- Scout's Cloak
 [5619] = { "нефритовий фіал", use="Наповнити нефритовий фіал водами місячного колодязя Зоряного Бризу." }, -- Jade Phial, @use Fill the Jade Phial at the Starbreeze moonwell.
@@ -2741,15 +3587,18 @@ addonTable.item = {
 [5621] = { "турмаліновий фіал", use="Наповнити турмаліновий фіал водами місячного колодязя Арлітріенських ставів." }, -- Tourmaline Phial, @use Fill the Tourmaline Phial at the Pools of Arlithrien moonwell.
 [5622] = { "перстень духовенства" }, -- Clergy Ring
 [5623] = { "аметистовий фіал", use="Наповнити аметистовий фіал водами місячного колодязя поляни Оракула." }, -- Amethyst Phial, @use Fill the Amethyst Phial at the Oracle Glade moonwell.
+[5624] = { "обруч порядку" }, -- Circlet of the Order
 [5626] = { "черепотес" }, -- Skullchipper
 [5627] = { "клинок-реліквія" }, -- Relic Blade
 [5628] = { "записка Зами" }, -- Zamah's Note
 [5629] = { "рукавиці Молоторука" }, -- Hammerfist Gloves
 [5630] = { "вітрофетрові рукавиці" }, -- Windfelt Gloves
 [5631] = { "зілля люті", use="Збільшує лють на {1}-{2}. (Відновлення 2 хв)#by {1} to {2}" }, -- Rage Potion, @use Increases Rage by 20 to 40. (2 Min Cooldown)
+[5632] = { "зілля боягузливої втечі", use="Ви в страху тікаєте від найближчого ворога у випадковому напрямку.  Якщо поблизу немає ворогів, ви завмираєте від страху." }, -- Cowardly Flight Potion, @use You run in fear at a high speed from a nearby enemy in a random direction.   If there are no enemies nearby you stand frozen in fear. (2 Min Cooldown)
 [5633] = { "велике зілля люті", use="Збільшує лють на {1}-{2}. (Відновлення 2 хв)#by {1} to {2}" }, -- Great Rage Potion, @use Increases Rage by 30 to 60. (2 Min Cooldown)
 [5634] = { "зілля вільної дії", use="Надає невразливість до приголомшення та ефектів ускладнення руху на наступні 30 сек. Не знімає вже наявні ефекти. (Відновлення 2 хв)" }, -- Free Action Potion, @use Makes you immune to Stun and Movement Impairing effects for the next 30 sec.   Does not remove effects already on the imbiber. (2 Min Cooldown)
 [5635] = { "гострий кіготь" }, -- Sharp Claw
+[5636] = { "вишукане перо" }, -- Delicate Feather
 [5637] = { "велике ікло" }, -- Large Fang
 [5638] = { "розсіювач токсичного туману", use="Розмістити біля повітряного порту ТзНБ \"Авантюра\"." }, -- Toxic Fogger, @use Place near the Venture Co. Airport
 [5639] = { "наповнений нефритовий фіал" }, -- Filled Jade Phial
@@ -2758,8 +3607,10 @@ addonTable.item = {
 [5643] = { "рецепт: Велике зілля люті", use="Навчає вас створювати велике зілля люті." }, -- Recipe: Great Rage Potion, @use Teaches you how to make a Great Rage Potion.
 [5645] = { "наповнений турмаліновий фіал" }, -- Filled Tourmaline Phial
 [5646] = { "флакон з благословенною водою" }, -- Vial of Blessed Water
+[5654] = { "миттєвий токсин", use="Вкрити меч або кинджал отрутою на {1} хв. Кожен удар має шанс отруїти ворога, миттєво завдаючи від {2} до {3} шкоди від природи.#lasts for {1} min#inflicts {2}-{3}" }, -- Instant Toxin, @use Coats a sword or dagger with poison that lasts for 30 minutes.Each strike has a chance of poisoning the enemy which instantly inflicts 10-30 damage.
 [5655] = { "вузда каштанової кобили", use="Викликає та відпускає верхову каштанову кобилу. (Відновлення 3 сек)" }, -- Chestnut Mare Bridle, @use Summons and dismisses a rideable Chestnut Mare. (3 Sec Cooldown)
 [5656] = { "вузда гнідого коня", use="Викликає та відпускає верхового гнідого коня. (Відновлення 3 сек)" }, -- Brown Horse Bridle, @use Summons and dismisses a rideable brown horse. (3 Sec Cooldown)
+[5657] = { "рецепт: Миттєвий токсин", use="Навчає вас створювати миттєвий токсин." }, -- Recipe: Instant Toxin, @use Teaches you how to make an Instant Toxin.
 [5659] = { "тліюча вуглинка" }, -- Smoldering Embers
 [5663] = { "ріг рудого вовка", use="Викликає та відпускає верхового рудого вовка. (Відновлення 3 сек)" }, -- Horn of the Red Wolf, @use Summons and dismisses a rideable red wolf. (3 Sec Cooldown)
 [5664] = { "іржава шрапнель" }, -- Corroded Shrapnel
@@ -2767,6 +3618,7 @@ addonTable.item = {
 [5668] = { "ріг бурого вовка", use="Викликає та відпускає верхового бурого вовка. (Відновлення 3 сек)" }, -- Horn of the Brown Wolf, @use Summons and dismisses a rideable Brown Wolf. (3 Sec Cooldown)
 [5669] = { "уламки пилового дідька" }, -- Dust Devil Debris
 [5675] = { "кристалічна луска" }, -- Crystalized Scales
+[5681] = { "ідкий сік" }, -- Corrosive Sap
 [5686] = { "голова Ордана" }, -- Ordanus' Head
 [5687] = { "ключ хранителя воріт" }, -- Gatekeeper's Key
 [5689] = { "ключ сплячих" }, -- Sleepers' Key
@@ -2788,14 +3640,52 @@ addonTable.item = {
 [5738] = { "речі для таємної операції" }, -- Covert Ops Pack
 [5739] = { "варварська портупея" }, -- Barbaric Harness
 [5740] = { "червона ракета", use="Вистрілює в повітря феєрверк, який вибухає тисячею червоних зірок." }, -- Red Fireworks Rocket, @use Shoots a firework into the air that bursts into a thousand red stars.
+[5741] = { "уламок каменю" }, -- Rock Chip
+[5742] = { "дорогоцінний кинджал" }, -- Gemstone Dagger
+[5743] = { "призматичний перстень" }, -- Prismstone Ring
+[5744] = { "блідий шкуродер" }, -- Pale Skinner
+[5748] = { "довгий лук кентавра" }, -- Centaur Longbow
+[5749] = { "сокира-коса" }, -- Scythe Axe
+[5750] = { "пасок вождя" }, -- Warchief's Girdle
+[5751] = { "павутинокрилий плащ" }, -- Webwing Cloak
+[5752] = { "хвостовий шип виверни", hit="Отруює ціль, завдаючи 6 шкоди від природи кожні 3 с протягом 15 с." }, -- Wyvern Tailspike, @hit Poisons target for 6 Nature damage every 3 sec for 15 sec.
+[5753] = { "шолом зі скуйовдженим пір'ям" }, -- Ruffled Chaplet
+[5754] = { "медальйон вовчої зграї" }, -- Wolfpack Medallion
+[5755] = { "оніксова пластина подрібнювача" }, -- Onyx Shredder Plate
+[5756] = { "клинок-різак", hit="Завдає цілі 45 шкоди від криги." }, -- Sliverblade, @hit Blasts a target for 45 Frost damage.
 [5757] = { "дубова палиця" }, -- Hardwood Cudgel
+[5758] = { "мітрилова скринька" }, -- Mithril Lockbox
+[5759] = { "торієва скринька" }, -- Thorium Lockbox
+[5760] = { "етернієва скринька" }, -- Eternium Lockbox
+[5761] = { "ковмарська кувалда" }, -- Anvilmar Sledge
+[5762] = { "червона лляна сумка" }, -- Red Linen Bag
+[5763] = { "червона вовняна сумка" }, -- Red Woolen Bag
+[5764] = { "зелена шовкова сумка" }, -- Green Silk Pack
+[5765] = { "чорна шовкова сумка" }, -- Black Silk Pack
+[5766] = { "мантія молодшого чарівника" }, -- Lesser Wizard's Robe
+[5767] = { "фіолетова мантія" }, -- Violet Robes
+[5768] = { "квиток на перегони гномів" }, -- Gnome Race Ticket
+[5769] = { "квиток на перегони гоблінів" }, -- Goblin Race Ticket
 [5770] = { "мантія аркани" }, -- Robes of Arcana
+[5771] = { "викрійка: Червона лляна сумка", use="Навчає вас створювати червону лляну сумку." }, -- Pattern: Red Linen Bag, @use Teaches you how to sew a Red Linen Bag.
+[5772] = { "викрійка: Червона вовняна сумка", use="Навчає вас створювати червону вовняну сумку." }, -- Pattern: Red Woolen Bag, @use Teaches you how to sew a Red Woolen Bag.
+[5773] = { "викрійка: Мантія аркани", use="Навчає вас створювати мантію аркани." }, -- Pattern: Robes of Arcana, @use Teaches you how to sew Robes of Arcana.
+[5774] = { "викрійка: Зелена шовкова сумка", use="Навчає вас створювати зелену шовкову сумку." }, -- Pattern: Green Silk Pack, @use Teaches you how to sew a Green Silk Pack.
+[5775] = { "викрійка: Чорна шовкова сумка", use="Навчає вас створювати чорну шовкову сумку." }, -- Pattern: Black Silk Pack, @use Teaches you how to sew a Black Silk Pack.
 [5776] = { "кийок старійшини" }, -- Elder's Cane
 [5777] = { "сокира сміливця" }, -- Brave's Axe
 [5778] = { "груба тростина" }, -- Primitive Walking Stick
 [5779] = { "півтораручний меч відречених" }, -- Forsaken Bastard Sword
+[5780] = { "пояс з луски мурлока" }, -- Murloc Scale Belt
+[5781] = { "кіраса з луски мурлока" }, -- Murloc Scale Breastplate
+[5782] = { "обладунок з луски мурлока" }, -- Thick Murloc Armor
+[5783] = { "браслети з луски мурлока" }, -- Murloc Scale Bracers
 [5784] = { "слизотна луска мурлока" }, -- Slimy Murloc Scale
 [5785] = { "товста луска мурлока" }, -- Thick Murloc Scale
+[5786] = { "викрійка: Пояс з луски мурлока", use="Навчає вас створювати пояс з луски мурлока." }, -- Pattern: Murloc Scale Belt, @use Teaches you how to craft a Murloc Scale Belt.
+[5787] = { "викрійка: Кіраса з луски мурлока", use="Навчає вас створювати кірасу з луски мурлока." }, -- Pattern: Murloc Scale Breastplate, @use Teaches you how to craft a Murloc Scale Breastplate.
+[5788] = { "викрійка: Обладунок з луски мурлока", use="Навчає вас створювати обладунок з луски мурлока." }, -- Pattern: Thick Murloc Armor, @use Teaches you how to craft Thick Murloc Armor.
+[5789] = { "викрійка: Браслети з луски мурлока", use="Навчає вас створювати браслети з луски мурлока." }, -- Pattern: Murloc Scale Bracers, @use Teaches you how to craft Murloc Scale Bracers.
 [5790] = { "щоденник Однобрового" }, -- Lonebrow's Journal
 [5791] = { "щоденник Генріґа Однобрового" }, -- Henrig Lonebrow's Journal
 [5792] = { "медальйон Бритвобокої" }, -- Razorflank's Medallion
@@ -2825,11 +3715,16 @@ addonTable.item = {
 [5816] = { "сяйво Елуни", use="Дає невразливість до пошкодження та заклять на {1} с. (Відновлення 2 хв)#for {1} sec" }, -- Light of Elune, @use Grants immunity from all damage and spells for 10 sec. (2 Min Cooldown)
 [5817] = { "лук Лунаріса" }, -- Lunaris Bow
 [5818] = { "жезл місячного вогню" }, -- Moonbeam Wand
+[5819] = { "койф сонячного жару" }, -- Sunblaze Coif
 [5820] = { "чарівне напліччя" }, -- Faerie Mantle
+[5821] = { "чоботи темноловів" }, -- Darkstalker Boots
+[5822] = { "рукавиці з живоплоту" }, -- Hedgeseed Gauntlets
+[5823] = { "отруйний гриб", use="Не їж мене." }, -- Poisonous Mushroom, @use Don't eat me.
 [5824] = { "скрижаль волі" }, -- Tablet of Will
 [5825] = { "кулон Трешали" }, -- Treshala's Pendant
 [5826] = { "план Крейвела" }, -- Kravel's Scheme
 [5827] = { "лист Фіззла Латуноболта" }, -- Fizzle Brassbolts' Letter
+[5829] = { "гострий дзьоб" }, -- Razor-sharp Beak
 [5830] = { "голова Кенати" }, -- Kenata's Head
 [5831] = { "голова Фардела" }, -- Fardel's Head
 [5832] = { "голова Марселя" }, -- Marcel's Head
@@ -2856,21 +3751,25 @@ addonTable.item = {
 [5853] = { "цілий панцир силітида" }, -- Intact Silithid Carapace
 [5854] = { "кіготь силітида" }, -- Silithid Talon
 [5855] = { "серце силітида" }, -- Silithid Heart
+[5859] = { "святкова граната", use="Найкраща річ для вечірки!" }, -- Party Grenade, @use The ultimate party favor!
 [5860] = { "Спадщина Аспектів" }, -- Legacy of the Aspects
 [5861] = { "Джерела загрози невмерлих" }, -- Beginnings of the Undead Threat
 [5862] = { "сифорієвий прискорювач" }, -- Seaforium Booster
+[5863] = { "хартія гільдії" }, -- Guild Charter
 [5864] = { "сірий баран", use="Викликає та відпускає верхового сірого барана. (Відновлення 3 сек)" }, -- Gray Ram, @use Summons and dismisses a rideable gray ram. (3 Sec Cooldown)
 [5865] = { "модифікований сифорієвий прискорювач" }, -- Modified Seaforium Booster
 [5866] = { "зразок індурієвої руди" }, -- Sample of Indurium Ore
 [5867] = { "гравійований фіал", use="Наповнити гравійований фіал у місячному колодязі Ясенедолу." }, -- Etched Phial, @use Fill the Etched Phial at the Ashenvale moonwell.
 [5868] = { "наповнений гравійований фіал" }, -- Filled Etched Phial
 [5869] = { "роздвоєне копито" }, -- Cloven Hoof
+[5871] = { "велике копито" }, -- Large Hoof
 [5872] = { "коричневий баран", use="Викликає та відпускає верхового коричневого барана. (Відновлення 3 сек)" }, -- Brown Ram, @use Summons and dismisses a rideable brown ram. (3 Sec Cooldown)
 [5873] = { "білий баран", use="Викликає та відпускає верхового білого барана. (Відновлення 3 сек)" }, -- White Ram, @use Summons and dismisses a rideable white ram. (3 Sec Cooldown)
 [5874] = { "упряж: чорний баран", use="Викликає та відпускає верхового чорного барана. (Відновлення 3 сек)" }, -- Harness: Black Ram, @use Summons and dismisses a rideable black ram. (3 Sec Cooldown)
 [5875] = { "упряж: синій баран", use="Викликає та відпускає верхового синього барана. (Відновлення 3 сек)" }, -- Harness: Blue Ram, @use Summons and dismisses a rideable blue ram. (3 Sec Cooldown)
 [5876] = { "бульба синьолиста" }, -- Blueleaf Tuber
 [5877] = { "тріснутий панцир силітида" }, -- Cracked Silithid Carapace
+[5878] = { "супер понюшка", use="Змушує вас чхати!" }, -- Super Snuff, @use Makes you sneeze!
 [5879] = { "сутінкова підвіска" }, -- Twilight Pendant
 [5880] = { "ящик з отворами", use="Випустити шморгоноса біля закопаних булб синьолиста в краалі Бритвоболотих. (Відновлення 30 сек)" }, -- Crate With Holes, @use Use in Razorfen Kraul near buried tubers to summon a Snufflenose Gopher. (30 Sec Cooldown)
 [5881] = { "голова Келріса" }, -- Head of Kelris
@@ -2887,23 +3786,52 @@ addonTable.item = {
 [5940] = { "кістяний баклер" }, -- Bone Buckler
 [5941] = { "латунні лускаті штани" }, -- Brass Scale Pants
 [5942] = { "кулон з самоцвітами" }, -- Jeweled Pendant
+[5943] = { "браслети розлому" }, -- Rift Bracers
 [5944] = { "наголінники народного ополчення" }, -- Greaves of the People's Militia
 [5945] = { "зуб Сипуна" }, -- Deadmire's Tooth
 [5946] = { "запечатана записка для Еллінга" }, -- Sealed Note to Elling
 [5947] = { "документи повстанського братства" }, -- Defias Docket
 [5948] = { "лист до Йорґена" }, -- Letter to Jorgen
+[5949] = { "клаптик паперу" }, -- Scrap of Paper
 [5950] = { "жетон Ріта" }, -- Reethe's Badge
 [5951] = { "волога серветка", use="Знімає з вас 1 негативний ефект заклинання.  Очищає силою лимона." }, -- Moist Towelette, @use Removes 1 negative spell effect from user.  Cleans with the power of lemon.
 [5952] = { "заражений мозковий стовбур" }, -- Corrupted Brain Stem
 [5956] = { "ковальський молот" }, -- Blacksmith Hammer
+[5957] = { "шкіряний жилет ручної роботи" }, -- Handstitched Leather Vest
+[5958] = { "тонкі шкіряні штани" }, -- Fine Leather Pants
 [5959] = { "їдка отруйна залоза" }, -- Acidic Venom Sac
 [5960] = { "запечатана записка для наглядача Бакуса" }, -- Sealed Note to Watcher Backus
+[5961] = { "темні шкіряні штани" }, -- Dark Leather Pants
+[5962] = { "штани вартового" }, -- Guardian Pants
+[5963] = { "варварські поножі" }, -- Barbaric Leggings
+[5964] = { "варварські наплечі" }, -- Barbaric Shoulders
+[5965] = { "плащ вартового" }, -- Guardian Cloak
+[5966] = { "рукавиці вартового" }, -- Guardian Gloves
+[5967] = { "дворянський пояс" }, -- Girdle of Nobility
+[5968] = { "потерті чоботи" }, -- Rugged Boots
+[5969] = { "потертий плащ" }, -- Regent's Cloak
+[5970] = { "зміїні рукавиці" }, -- Serpent Gloves
+[5971] = { "пір'яна накидка" }, -- Feathered Cape
+[5972] = { "викрійка: Тонкі шкіряні штани", use="Навчає вас створювати тонкі шкіряні штани." }, -- Pattern: Fine Leather Pants, @use Teaches you how to craft Fine Leather Pants.
+[5973] = { "викрійка: Варварські поножі", use="Навчає вас створювати варварські поножі." }, -- Pattern: Barbaric Leggings, @use Teaches you how to craft Barbaric Leggings.
+[5974] = { "викрійка: Плащ вартового", use="Навчає вас створювати плащ вартового." }, -- Pattern: Guardian Cloak, @use Teaches you how to craft a Guardian Cloak.
+[5975] = { "пояс розбійника" }, -- Ruffian Belt
+[5976] = { "гільдійська гербова накидка" }, -- Guild Tabard
 [5996] = { "еліксир водного дихання", use="Дозволяє дихати водою протягом {1} хв. (Відновлення 3 сек)#for {1} min" }, -- Elixir of Water Breathing, @use Allows the Imbiber to breathe water for 30 min. (3 Sec Cooldown)
 [5997] = { "еліксир слабкого захисту", use="Збільшує броню на {1} на {2} год. (Відновлення 3 сек)#by {1} for {2} h" }, -- Elixir of Minor Defense, @use Increases armor by 50 for 1 hour. (3 Sec Cooldown)
 [5998] = { "замовлення Бурешпиля" }, -- Stormpike's Request
 [6016] = { "зразок вовчого серця" }, -- Wolf Heart Sample
 [6037] = { "злиток ясносрібла" }, -- Truesilver Bar
+[6038] = { "смажений гігантський молюск", use="Відновлює 874.8 здоров'я протягом 27 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 8 на 15 хв." }, -- Giant Clam Scorcho, @use Restores 874.8 health over 27 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 8 Stamina and Spirit for 15 min.
+[6039] = { "рецепт: Смажений гігантський молюск", use="Навчає вас готувати суп смаженого гігантського молюска." }, -- Recipe: Giant Clam Scorcho, @use Teaches you how to cook a delicious Giant Clam Scorcho.
 [6040] = { "золоті лускаті браслети" }, -- Golden Scale Bracers
+[6041] = { "сталевий ланцюг для зброї", use="Припити до зброї ланцюг, що не дозволяє вас роззброїти." }, -- Steel Weapon Chain, @use Attaches a chain to your weapon, making it impossible to disarm.
+[6042] = { "залізний шип для щита", use="Припити до вашого щита залізний шип, що завдає шкоди щоразу, коли ви блокуєте." }, -- Iron Shield Spike, @use Attaches an Iron Spike to your shield that deals damage every time you block with it.
+[6043] = { "залізна противага", use="Припити до вашого дворучного меча, булави, сокири або держакової зброї противагу, що збільшує її швидкість на 3%." }, -- Iron Counterweight, @use Attaches a counterweight to a two-handed sword, mace, axe or polearm making it 3% faster.
+[6044] = { "креслення: Залізний шип для щита", use="Навчає вас створювати залізний шип для щита." }, -- Plans: Iron Shield Spike, @use Teaches you how to make an Iron Shield Spike.
+[6045] = { "креслення: Залізна противага", use="Навчає вас створювати залізну противагу." }, -- Plans: Iron Counterweight, @use Teaches you how to make an Iron Counterweight to help balance a two-handed weapon.
+[6046] = { "креслення: Сталевий ланцюг для зброї", use="Навчає вас створювати сталевий ланцюг для зброї." }, -- Plans: Steel Weapon Chain, @use Teaches you how to make a Steel Weapon Chain to prevent you from being disarmed.
+[6047] = { "креслення: Золотий лускатий койф", use="Навчає вас створювати золотий лускатий койф." }, -- Plans: Golden Scale Coif, @use Teaches you how to make a Golden Scale Coif.
 [6048] = { "зілля тіньового захисту", use="Поглинає від {1} до {2} шкоди від тіні. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Shadow Protection Potion, @use Absorbs 675 to 1125 shadow damage.  Lasts 1 hour. (2 Min Cooldown)
 [6049] = { "зілля вогняного захисту", use="Поглинає від {1} до {2} шкоди від вогню. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Fire Protection Potion, @use Absorbs 975 to 1625 fire damage.  Lasts 1 hour. (2 Min Cooldown)
 [6050] = { "зілля крижаного захисту", use="Поглинає від {1} до {2} шкоди від криги. Триває 1 годину. (Відновлення 2 хв)#Absorbs {1} to {2}" }, -- Frost Protection Potion, @use Absorbs 1350 to 2250 frost damage.  Lasts 1 hour. (2 Min Cooldown)
@@ -2951,29 +3879,94 @@ addonTable.item = {
 [6094] = { "пронзаюча сокира" }, -- Piercing Axe
 [6095] = { "чоботи мандрів" }, -- Wandering Boots
 [6096] = { "сорочка підмайстра" }, -- Apprentice's Shirt
+[6097] = { "сорочка послушника" }, -- Acolyte's Shirt
+[6098] = { "мантія неофіта" }, -- Neophyte's Robe
+[6116] = { "мантія учня" }, -- Apprentice's Robe
+[6117] = { "сорочка зброєносця" }, -- Squire's Shirt
+[6118] = { "штани зброєносця" }, -- Squire's Pants
+[6119] = { "мантія неофіта" }, -- Neophyte's Robe
+[6120] = { "сорочка рекрута" }, -- Recruit's Shirt
+[6121] = { "штани рекрута" }, -- Recruit's Pants
+[6122] = { "чоботи рекрута" }, -- Recruit's Boots
+[6123] = { "мантія новобранця" }, -- Novice's Robe
+[6124] = { "штани новобранця" }, -- Novice's Pants
+[6125] = { "портупея забіяки" }, -- Brawler's Harness
+[6126] = { "штани капканника" }, -- Trapper's Pants
+[6127] = { "чоботи капканника" }, -- Trapper's Boots
+[6129] = { "мантія послушника" }, -- Acolyte's Robe
+[6130] = { "сорочка капканника" }, -- Trapper's Shirt
+[6131] = { "штани капканника" }, -- Trapper's Pants
+[6134] = { "проста накидка" }, -- Primitive Mantle
+[6135] = { "простий кілт" }, -- Primitive Kilt
+[6136] = { "сорочка бандита" }, -- Thug Shirt
+[6137] = { "штани бандита" }, -- Thug Pants
+[6138] = { "чоботи бандита" }, -- Thug Boots
+[6139] = { "мантія новобранця" }, -- Novice's Robe
+[6140] = { "мантія учня" }, -- Apprentice's Robe
+[6144] = { "мантія неофіта" }, -- Neophyte's Robe
 [6145] = { "кулон Клариси", flavor="Покладіть на могилу Юріва." }, -- Clarice's Pendant, @flavor Place upon Yuriv's grave.
 [6146] = { "сухий плавник" }, -- Sundried Driftwood
+[6147] = { "обшарпаний старий пояс" }, -- Ratty Old Belt
+[6148] = { "вкриті павутинням чоботи" }, -- Web-covered Boots
 [6149] = { "велике зілля мани", ref=2455 }, -- Greater Mana Potion
+[6150] = { "потертий вузол" }, -- A Frayed Knot
 [6166] = { "щелепа койота" }, -- Coyote Jawbone
 [6167] = { "доповідь Ніки" }, -- Neeka's Report
 [6168] = { "пазур пилкозубого кусача" }, -- Sawtooth Snapper Claw
 [6169] = { "сира вирізка пилкозуба" }, -- Unprepared Sawtooth Flank
 [6170] = { "реактиви чарівників" }, -- Wizards' Reagents
+[6171] = { "рукавиці мисливця на вовків" }, -- Wolf Handler Gloves
 [6172] = { "втрачені припаси" }, -- Lost Supplies
+[6173] = { "снігові чоботи" }, -- Snow Boots
 [6175] = { "артефакт Атал'ай" }, -- Atal'ai Artifact
+[6176] = { "дворфійський краплеподібний щит" }, -- Dwarven Kite Shield
+[6177] = { "залізні ковані браслети" }, -- Ironwrought Bracers
 [6178] = { "вантаж для Підсвітньої Варти" }, -- Shipment to Nethergarde
+[6179] = { "накидка корсара" }, -- Privateer's Cape
+[6180] = { "шкіра Сларка" }, -- Slarkskin
 [6181] = { "фетиш Гаккара" }, -- Fetish of Hakkar
+[6182] = { "тьмяний смолоскип", equip="Збільшує дух членів групи поблизу на 4." }, -- Dim Torch, @equip Increase the Spirit of nearby party members by 4.
+[6183] = { "незапалений поганий смолоскип" }, -- Unlit Poor Torch
 [6184] = { "нога жахливого повзуна" }, -- Monstrous Crawler Leg
+[6185] = { "ведмежа накидка" }, -- Bear Shawl
+[6186] = { "трозький тесак" }, -- Trogg Slicer
+[6187] = { "дворфійський захисник" }, -- Dwarven Defender
+[6188] = { "болотоступи" }, -- Mud Stompers
+[6189] = { "міцні кольчужні наплечі" }, -- Durable Chain Shoulders
 [6190] = { "уламок дренетиста" }, -- Draenethyst Shard
+[6191] = { "чоботи Кімбри" }, -- Kimbra Boots
+[6192] = { "голова хана Грати" }, -- Khan Hratha's Head
 [6193] = { "пакунок з артефактами Атал'ай" }, -- Bundle of Atal'ai Artifacts
+[6194] = { "бочкоруб" }, -- Barreling Reaper
+[6195] = { "навощений обладунок" }, -- Wax-polished Armor
 [6196] = { "дубина Нобору" }, -- Noboru's Cudgel
+[6197] = { "жилет зі шкури кроколіска" }, -- Loch Croc Hide Vest
+[6198] = { "доісторичні наручі" }, -- Jurassic Wristguards
+[6199] = { "перстень чорної вдови" }, -- Black Widow Band
+[6200] = { "бойовий пояс Ґарнеґа" }, -- Garneg's War Belt
+[6201] = { "гнучкі чоботи" }, -- Lithe Boots
+[6202] = { "рукавички без пальців" }, -- Fingerless Gloves
+[6203] = { "бандитський щит" }, -- Thuggish Shield
+[6204] = { "племінний шолом ворга" }, -- Tribal Worg Helm
+[6205] = { "землерийна лопата" }, -- Burrowing Shovel
+[6206] = { "камнедробарка" }, -- Rock Chipper
 [6211] = { "рецепт: Еліксир сили огра", use="Навчає вас створювати еліксир сили огра." }, -- Recipe: Elixir of Ogre's Strength, @use Teaches you how to make an Elixir of Ogre's Strength.
 [6212] = { "голова Джаммал'ана" }, -- Head of Jammal'an
 [6214] = { "важкий мідний молот" }, -- Heavy Copper Maul
 [6215] = { "збалансований бойовий посох" }, -- Balanced Fighting Stick
+[6216] = { "загадковий порошок", flavor="Використовується чародіями для накладання чарів." }, -- Mystical Powder, @flavor Used by Enchanters to enchant items.
+[6217] = { "мідний жезл", flavor="Використовується чародіями для створення рунічного мідного жезла." }, -- Copper Rod, @flavor Needed by an Enchanter to make a runed copper rod.
+[6218] = { "рунічний мідний жезл" }, -- Runed Copper Rod
 [6219] = { "дуговий гайковерт" }, -- Arclight Spanner
+[6220] = { "осколок метеорита", hit="Завдає цілі 35 шкоди від вогню." }, -- Meteor Shard, @hit Blasts a target for 35 Fire damage.
 [6223] = { "щит Темнодолу" }, -- Crest of Darkshire
+[6226] = { "кривавий фартух" }, -- Bloody Apron
 [6238] = { "коричнева лляна мантія" }, -- Brown Linen Robe
+[6239] = { "червоний лляний жилет" }, -- Red Linen Vest
+[6240] = { "синій лляний жилет" }, -- Blue Linen Vest
+[6241] = { "біла лляна мантія" }, -- White Linen Robe
+[6242] = { "блакитна лляна мантія" }, -- Blue Linen Robe
+[6243] = { "зелена вовняна мантія" }, -- Green Woolen Robe
 [6245] = { "торба Карнітола" }, -- Karnitol's Satchel
 [6246] = { "кіготь скаженолютого сатира" }, -- Hatefury Claw
 [6247] = { "ріг скаженолютого сатира" }, -- Hatefury Horn
@@ -2989,7 +3982,14 @@ addonTable.item = {
 [6259] = { "печінка гроддокської мавпи" }, -- Groddoc Liver
 [6260] = { "блакитний барвник" }, -- Blue Dye
 [6261] = { "помаранчевий барвник" }, -- Orange Dye
+[6262] = { "щоденник Ґалена" }, -- Galen's Journal
+[6263] = { "синій комбінезон" }, -- Blue Overalls
+[6264] = { "мантія старшого адепта" }, -- Greater Adept's Robe
 [6265] = { "уламок душі" }, -- Soul Shard
+[6266] = { "жилет послідовника" }, -- Disciple's Vest
+[6267] = { "штани послідовника" }, -- Disciple's Pants
+[6268] = { "мундир першопроходця" }, -- Pioneer Tunic
+[6269] = { "штани першопроходця" }, -- Pioneer Trousers
 [6281] = { "череп брязкокісткового скелета" }, -- Rattlecage Skull
 [6282] = { "священні поховальні штани" }, -- Sacred Burial Trousers
 [6283] = { "книга Ура" }, -- The Book of Ur
@@ -4607,7 +5607,7 @@ addonTable.item = {
 [12827] = { "креслення: Безтурботність", use="Навчає вас створювати Безтурботність." }, -- Plans: Serenity, @use Teaches you how to make Serenity.
 [12829] = { "ящик Зимокрайових" }, -- Winterfall Crate
 [12830] = { "креслення: Порча", use="Навчає вас створювати Порчу." }, -- Plans: Corruption, @use Teaches you how to make Corruption.
-[12840] = { "камінь поспаки Скари" }, -- Minion's Scourgestone
+[12840] = { "камінь посіпаки Скари" }, -- Minion's Scourgestone
 [12841] = { "камінь загарбника Скари" }, -- Invader's Scourgestone
 [12842] = { "грубо написаний журнал" }, -- Crudely-written Log
 [12843] = { "камінь осквернителя Скари" }, -- Corruptor's Scourgestone
@@ -4948,7 +5948,7 @@ addonTable.item = {
 [15454] = { "ступка та товкач", use="Помістити 7 частин живої гнилі в ступку та подрібнити товкачем. Залиште настоюватись для згущення." }, -- Mortar and Pestle, @use Combine 7 pieces of Living Rot inside the mortar and grind away with the pestle. Leave standing to allow coagulation.
 [15455] = { "вкрита пилом мантія" }, -- Dustfall Robes
 [15456] = { "поножі легкої ходи" }, -- Lightstep Leggings
-[15457] = { "налечі пустелі" }, -- Desert Shoulders
+[15457] = { "наплечі пустелі" }, -- Desert Shoulders
 [15458] = { "тундрові чоботи" }, -- Tundra Boots
 [15459] = { "наручі зловісності" }, -- Grimtoll Wristguards
 [15464] = { "молот моцака" }, -- Brute Hammer
@@ -6226,6 +7226,7 @@ addonTable.item = {
 [20266] = { "поножі миротворця", equip={ "Збільшує зцілення від заклинань і ефектів на 37.", "Відновлює 7 мани кожні 5 сек." } }, -- Peacekeeper Leggings, @equip Increases healing done by spells and effects by up to 37., @equip Restores 7 mana per 5 sec.
 [20310] = { "обдерта шкіра демона" }, -- Flayed Demon Skin
 [20369] = { "азуритові бойові рукавиці", equip="Збільшує ваш шанс нанесення критичного удару заклинаннями на 1%." }, -- Azurite Fists, @equip Improves your chance to get a critical strike with spells by 1%.
+[20371] = { "яйце синього мурлока", use="Клацніть правою кнопкою миші, щоб викликати і відпустити вашого Муррлика." }, -- Blue Murloc Egg, @use Right Click to summon and dismiss your Murky.
 [20373] = { "жало камнехвостого скорпіда" }, -- Stonelash Scorpid Stinger
 [20374] = { "жало камнехвостого щипача" }, -- Stonelash Pincer Stinger
 [20375] = { "жало камнехвостого потрошителя" }, -- Stonelash Flayer Stinger
@@ -6691,7 +7692,7 @@ addonTable.item = {
 [21508] = { "знак Кенарія" }, -- Mark of Cenarius
 [21512] = { "припаси війни в Ан'Кіражі" }, -- Ahn'Qiraj War Effort Supplies
 [21514] = { "план логістичного завдання XI" }, -- Logistics Task Briefing XI
-[21515] = { "знак Ремулоса" }, -- Mark of Remulos
+[21515] = { "знак Ремула" }, -- Mark of Remulos
 [21517] = { "гномський тюрбан екстрасенсорної сили", equip={ "Відновлює 9 мани кожні 5 сек.", "Збільшує супротив до ефектів знемовлення на 10%." } }, -- Gnomish Turban of Psychic Might, @equip Restores 9 mana per 5 sec., @equip Increases your resistance to silence effects by 10%.
 [21519] = { "омела", use="Подарувати друзям святкові вітання!" }, -- Mistletoe, @use Wish a friend some Season's Greetings!
 [21520] = { "спадок Кронворона" }, -- Ravencrest's Legacy
@@ -7317,6 +8318,7 @@ addonTable.item = {
 [23327] = { "підсмажена на вогні булочка", use="Збільшує ваш шанс нанесення удару на 2% протягом 1 години." }, -- Fire-toasted Bun, @use Improves your chance to hit by 2% for 1 hour.
 [23379] = { "попелясті браслети", use="Викликати попелястого елементаля, що захищатиме вас протягом 10 хв. (Відновлення 10 хв)" }, -- Cinder Bracers, @use Summons a Cinder Elemental that will protect you for 10 min. (10 Min Cooldown)
 [23435] = { "бузиновий пиріг", use="Збільшує навичку захисту на 13 протягом 1 години." }, -- Elderberry Pie, @use Increases Defense by 13 for 1 hour.
+[23705] = { "гербова накидка полум'я" }, -- Tabard of Flame
 [184937] = { "хронозаміщувач благословень", use="Змінює тканину часу, призупиняючи благословення драконоборця, Грізного Молота, Зул'Ґуруба та Сквернолісся." }, -- Chronoboon Displacer, @use Alters the fabric of time, suspending beneficial world effects from dragonslaying, Dire Maul, Zul'Gurub, and Felwood. (1 Hour Cooldown)
 [184938] = { "заряджений хронозаміщувач благословень", use="Відновити призупинені благословення." }, -- Supercharged Chronoboon Displacer, @use Restores your suspended world effects.
 [190179] = { "серце Авеліни" }, -- Avelina's Heart
