@@ -1210,12 +1210,14 @@ end
 
 local show_gossip = function ()
     local npc_guid = UnitGUID("target")
-    local _, _, _, _, _, npc_id, _ = strsplit("-", npc_guid)
-    local gossip_text_en = C_GossipInfo:GetText()
-    local gossip_text_ua = get_gossip_text(npc_id, gossip_text_en)
-    if gossip_text_ua then
-        set_gossip_content(gossip_text_ua)
-        get_gossip_frame():Show()
+    if npc_guid then
+        local _, _, _, _, _, npc_id, _ = strsplit("-", npc_guid)
+        local gossip_text_en = C_GossipInfo:GetText()
+        local gossip_text_ua = get_gossip_text(npc_id, gossip_text_en)
+        if gossip_text_ua then
+            set_gossip_content(gossip_text_ua)
+            get_gossip_frame():Show()
+        end
     end
 end
 
