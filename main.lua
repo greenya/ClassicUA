@@ -621,8 +621,16 @@ local add_line_to_tooltip = function (tooltip, content, template, r, g, b, conte
 end
 
 local add_item_entry_to_tooltip -- do not assign directly, this needed for recursion to work
-add_item_entry_to_tooltip = function (tooltip, entry, is_sub_item)
-    local prefix = is_sub_item and "" or asset_ua_code .. " "
+add_item_entry_to_tooltip = function (tooltip, entry, entry_id, sub_item_depth)
+    sub_item_depth = sub_item_depth or 1
+    if sub_item_depth > 4 then
+        if options.debug then
+            tooltip:AddLine("BUG: sub_item_depth is too high", 1, 1, .25)
+        end
+        return
+    end
+
+    local prefix = sub_item_depth == 1 and asset_ua_code .. " " or ""
     local heading = make_entry_text(entry[1], tooltip)
     tooltip:AddLine(prefix .. capitalize(heading), 1, 1, 1)
 
@@ -632,12 +640,19 @@ add_item_entry_to_tooltip = function (tooltip, entry, is_sub_item)
     add_line_to_tooltip(tooltip, entry.use, "Використання: TEXT", 0, 1, 0, true)
 
     if entry.recipe_result_item then
-        local rr_item = get_entry("item", entry.recipe_result_item)
-        if rr_item then
-            tooltip:AddLine(" ")
-            add_item_entry_to_tooltip(tooltip, rr_item, true)
-        elseif options.debug then
-            tooltip:AddLine("recipe_result_item#" .. tostring(entry.recipe_result_item), 1, 1, 1)
+        if tonumber(entry_id) ~= tonumber(entry.recipe_result_item) then
+            local rr_item = get_entry("item", entry.recipe_result_item)
+            if rr_item then
+                tooltip:AddLine(" ")
+                add_item_entry_to_tooltip(tooltip, rr_item, entry.recipe_result_item, sub_item_depth + 1)
+            elseif options.debug then
+                tooltip:AddLine("recipe_result_item#" .. tostring(entry.recipe_result_item), 1, 1, 1)
+            end
+        else
+            if options.debug then
+                tooltip:AddLine("recipe_result_item#" .. tostring(entry_id), 1, 1, 1)
+                tooltip:AddLine("BUG: recipe_result_item is same as entry_id", 1, 1, .25)
+            end
         end
     end
 
@@ -705,7 +720,7 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
         tooltip:AddLine(" ")
 
         if entry_type == "item" then
-            add_item_entry_to_tooltip(tooltip, entry)
+            add_item_entry_to_tooltip(tooltip, entry, entry_id)
         elseif entry_type == "spell" then
             add_spell_entry_to_tooltip(tooltip, entry, is_aura)
         elseif entry_type == "sod_engraving" then
@@ -1609,7 +1624,7 @@ local prepare_options_frame = function ()
     options_frame.debug_frame = f
     f:SetPoint("TOPLEFT", 280, -78)
     f.Text:SetText("Режим розробки")
-    f.tooltipText = "В цьому режимі в підказках відображається ID, якщо переклад відсутній."
+    f.tooltipText = "В цьому режимі в підказках відображається ID, якщо переклад відсутній. Також відображаються помилки в базі перекладів, якщо ви їх бачите, будь-ласка повідомте про це."
     f:SetScript("OnClick", function (self)
         options.debug = self:GetChecked()
     end)
