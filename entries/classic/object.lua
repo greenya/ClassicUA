@@ -965,7 +965,7 @@ addonTable.object = { -- [key] = text
 ["Sargeras and the Betrayal"] = "Сарґерас і зрада",
 ["Saurial Egg"] = "яйце завра",
 ["Sorrow of the Earthmother"] = "Скорбота Матері-Землі",
-["Sunwell - The Fall of Quel'Thalas"] = "Сонячний Колодязь - падіння Квел’Талас",
+["Sunwell - The Fall of Quel'Thalas"] = "Сонячний Колодязь - падіння Квел'Таласа",
 ["The Alliance of Lordaeron"] = "Альянс Лордерону",
 ["The Armor of Mannoroth"] = "броня Маннорота",
 ["The Battle of Grim Batol"] = "Битва за Ґрім-Батол",
