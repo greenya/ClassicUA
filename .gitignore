@@ -3,3 +3,4 @@
 .directory
 __pycache__
 translation_from_crowdin
+.idea
