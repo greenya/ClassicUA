@@ -178,7 +178,7 @@ local druid_spells = {
 [17402] = { ref=16914 }, -- Hurricane (Rank 3)
 
 -- Improved Enrage
-[17079] = { "Покращена несамовитість", "Тепер здібність \"Несамовитість\" миттєво надає {1} люті.#generates {1}" }, -- Improved Enrage (Rank 1)
+[17079] = { "Покращена несамовитість", "Тепер здібність \"Несамовитість\" миттєво надає {1} люті.#{1} Rage" }, -- Improved Enrage (Rank 1)
 [17082] = { ref=17079 }, -- Improved Enrage (Rank 2)
 
 -- Improved Entangling Roots

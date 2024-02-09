@@ -450,7 +450,7 @@ addonTable.item = {
 [1450] = { "зілля палкості", use="Збільшує силу на {1} та завдає {2} пошкодження вам кожні {3} с протягом {4} хв.#by {1} and does {2} damage to you every {3} sec for {4} min" }, -- Potion of Fervor, @use Increases Strength by 14 and does 15 damage to you every 15 sec for 1 min. (2 Min Cooldown)
 [1451] = { "пляшка соку зомбі" }, -- Bottle of Zombie Juice
 [1453] = { "примарний гребінець" }, -- Spectral Comb
-[1454] = { "сокира громила" }, -- Axe of the Enforcer
+[1454] = { "сокира громили" }, -- Axe of the Enforcer
 [1455] = { "сокира чемпіона Чорнокаменю" }, -- Blackrock Champion's Axe
 [1457] = { "булава Тінешкурих" }, -- Shadowhide Mace
 [1458] = { "молот Тінешкурих" }, -- Shadowhide Maul
@@ -1744,7 +1744,7 @@ addonTable.item = {
 [3355] = { "дикий сталецвіт" }, -- Wild Steelbloom
 [3356] = { "королекров" }, -- Kingsblood
 [3357] = { "життєкорінь" }, -- Liferoot
-[3358] = { "Хадґарів вус" }, -- Khadgar's Whisker
+[3358] = { "Кадґарів вус" }, -- Khadgar's Whisker
 [3360] = { "стегно Стібка" }, -- Stitches' Femur
 [3363] = { "потертий пояс" }, -- Frayed Belt
 [3365] = { "потерті браслети" }, -- Frayed Bracers
@@ -2579,7 +2579,7 @@ addonTable.item = {
 [4388] = { "промінь заплутаності", use="Перетворює ціль в лепрогнома, зменшуючи її шкоду від атак в ближньому бою та заклинань на 40, а швидкість пересування на 20% на 12 секунд. (Відновлення 1 хв)" }, -- Discombobulator Ray, @use Transforms the target into a Leper Gnome, reducing its melee and spell damage by 40 and its movement rate by 20% for 12 sec. (1 Min Cooldown)
 [4389] = { "гірохронатом" }, -- Gyrochronatom
 [4390] = { "залізна граната", use="Завдає від 132 до 218 шкоди вогнем та оглушує цілі в радіусі 3 м на 3 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Iron Grenade, @use Inflicts 132 to 218 Fire damage and stuns targets for 3 sec in a 3 yard radius.  Any damage will break the effect. (1 Min Cooldown)
-[4391] = { "портативний жнивальний збирач", use="Створити портативний жнивальний збирач, що битиветься за вас протягом 10 хв або доки його не буде знищено. (Відновлення 10 хв)" }, -- Compact Harvest Reaper Kit, @use Creates a Compact Harvest Reaper that will fight for you for 10 min or until it is destroyed. (10 Min Cooldown)
+[4391] = { "портативний жнивальний збирач", use="Створити портативний жнивальний збирач, що битиметься за вас протягом 10 хв або доки його не буде знищено. (Відновлення 10 хв)" }, -- Compact Harvest Reaper Kit, @use Creates a Compact Harvest Reaper that will fight for you for 10 min or until it is destroyed. (10 Min Cooldown)
 [4392] = { "вдосконалений манекен-мішень", use="Встановлення на землі манекена, який притягуватиме до себе найближчих ворогів.  Існує 15 сек або до знищення. (Відновлення 2 хв)" }, -- Advanced Target Dummy, @use Drops a target dummy on the ground that attracts nearby monsters to attack it. Lasts for 15 seconds or until killed. (2 Min Cooldown)
 [4393] = { "монокль ремісника" }, -- Craftsman's Monocle
 [4394] = { "велика залізна бомба", use="Завдає від 149 до 201 шкоди вогнем та оглушує цілі в радіусі 5 м на 3 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Big Iron Bomb, @use Inflicts 149 to 201 Fire damage and stuns targets in a 5 yard radius for 3 sec.  Any damage will break the effect. (1 Min Cooldown)
@@ -3129,7 +3129,7 @@ addonTable.item = {
 [5018] = { "целюлоза" }, -- Wood Pulp
 [5019] = { "нітрат натрію" }, -- Sodium Nitrate
 [5020] = { "ключ від скрині зі здобиччю Колкарів", use="Відчиняє скриню зі здобиччю Колкарів." }, -- Kolkar Booty Key, @use Opens the Kolkar Booty chest.
-[5021] = { "вибухова палиця Ґанна", use="Чудово підходить для знищення літальних апаратів." }, -- Explosive Stick of Gann, @use Perfect for destroying flying machines.
+[5021] = { "вибухівка Ґанна", use="Чудово підходить для знищення літальних апаратів." }, -- Explosive Stick of Gann, @use Perfect for destroying flying machines.
 [5022] = { "голова Барака" }, -- Kodobane's Head
 [5023] = { "голова Вероґа" }, -- Verog's Head
 [5024] = { "крижаний фіал" }, -- Frost Vial
@@ -4240,6 +4240,7 @@ addonTable.item = {
 [7002] = { "арктичний баклер" }, -- Arctic Buckler
 [7005] = { "білувальний ніж" }, -- Skinning Knife
 [7006] = { "відновлений фоліант" }, -- Reconstructed Tome
+[7062] = { "багряні шовкові штани" }, -- Crimson Silk Pantaloons
 [7067] = { "первородна земля" }, -- Elemental Earth
 [7068] = { "первородний вогонь" }, -- Elemental Fire
 [7069] = { "первородне повітря" }, -- Elemental Air
@@ -4320,6 +4321,7 @@ addonTable.item = {
 [7365] = { "гномський шпрековерт" }, -- Gnoam Sprecklesprocket
 [7372] = { "важкий шкіряний гаман для набоїв", equip="Збільшує швидкість атаки дальнього бою на 12%." }, -- Heavy Leather Ammo Pouch, @equip Increases ranged attack speed by 12%.
 [7376] = { "болтозрив Бінґлса" }, -- Bingles' Blastencapper
+[7377] = { "морозний шкіряний плащ" }, -- Frost Leather Cloak
 [7392] = { "луска зеленого драконеняти" }, -- Green Whelp Scale
 [7428] = { "шкура тінекота" }, -- Shadowcat Hide
 [7442] = { "ключ Гірощогла" }, -- Gyromast's Key
@@ -4400,6 +4402,7 @@ addonTable.item = {
 [7915] = { "варварський залізний шолом" }, -- Barbaric Iron Helm
 [7916] = { "варварські залізні чоботи" }, -- Barbaric Iron Boots
 [7917] = { "варварські залізні рукавиці" }, -- Barbaric Iron Gloves
+[7919] = { "важкі мітрилові рукавиці" }, -- Heavy Mithril Gauntlet
 [7922] = { "сталевий шолом" }, -- Steel Plate Helm
 [7923] = { "ключ від вежі повстанців" }, -- Defias Tower Key
 [7926] = { "вишукані мітрилові штани", equip="Збільшує ваш шанс ухилитися від атаки на 1%." }, -- Ornate Mithril Pants, @equip Increases your chance to dodge an attack by 1%.
@@ -4674,7 +4677,7 @@ addonTable.item = {
 [9296] = { "рецепт: Дар Артаса", use="Навчає вас створювати дар Артаса." }, -- Recipe: Gift of Arthas, @use Teaches you how to make a Gift of Arthas.
 [9297] = { "рецепт: Еліксир снобачення", use="Навчає вас створювати еліксир снобачення." }, -- Recipe: Elixir of Dream Vision, @use Teaches you how to make an Elixir of Dream Vision.
 [9298] = { "рецепт: Еліксир велетнів", use="Навчає вас створювати еліксир велетнів." }, -- Recipe: Elixir of Giants, @use Teaches you how to make an Elixir of Giants.
-[9299] = { "код від сейфу Термоштепселя" }, -- Thermaplugg's Safe Combination
+[9299] = { "код від сейфа Термоштепселя" }, -- Thermaplugg's Safe Combination
 [9300] = { "рецепт: Еліксир демонорізні", use="Навчає вас створювати еліксир демонорізні." }, -- Recipe: Elixir of Demonslaying, @use Teaches you how to make an Elixir of Demonslaying.
 [9301] = { "рецепт: Еліксир сили тіні", use="Навчає вас створювати еліксир сили тіні." }, -- Recipe: Elixir of Shadow Power, @use Teaches you how to make an Elixir of Shadow Power.
 [9302] = { "рецепт: Примарний барвник", use="Навчає вас створювати примарний барвник." }, -- Recipe: Ghost Dye, @use Teaches you how to make Ghost Dye.
@@ -4885,6 +4888,7 @@ addonTable.item = {
 [9978] = { "ґаз'ридіанський детектор", equip="На мінімапі відображаються найближчі предмети з ґаз'ридіану." }, -- Gahz'ridian Detector, @equip Nearby Gahz'ridian appears on the minimap.
 [10000] = { "ріг Марґол" }, -- Margol's Horn
 [10005] = { "гігантський ріг Марґол" }, -- Margol's Gigantic Horn
+[10008] = { "біла бандитська маска" }, -- White Bandit Mask
 [10022] = { "доказ правоти" }, -- Proof of Deed
 [10025] = { "тінеткана маска", equip="Збільшує шкоду від заклинань і ефектів тіні на 24." }, -- Shadoweave Mask, @equip Increases damage done by Shadow spells and effects by up to 24.
 [10043] = { "благочестиві поножі" }, -- Pious Legwraps
@@ -4935,6 +4939,7 @@ addonTable.item = {
 [10501] = { "ультраокуляри котячого ока", equip="Збільшує вашу здатність виявляти непомітність." }, -- Catseye Ultra Goggles, @equip Increases your stealth detection.
 [10505] = { "твердий вибуховий порошок" }, -- Solid Blasting Powder
 [10507] = { "твердий динаміт", use="Завдає від 213 до 287 шкоди вогнем в радіусі 5 м. (Відновлення 1 хв)" }, -- Solid Dynamite, @use Inflicts 213 to 287 Fire damage in a 5 yard radius. (1 Min Cooldown)
+[10508] = { "мітриловий мушкетон" }, -- Mithril Blunderbuss
 [10509] = { "серце полум'я", flavor="Його вогонь палає вічно" }, -- Heart of Flame, @flavor The flame burns eternally
 [10511] = { "мастило голема", flavor="The oil is encased in stone" }, -- Golem Oil, @flavor The oil is encased in stone
 [10514] = { "мітрилова осколкова бомба", use="Завдає від 149 до 201 шкоди вогнем та оглушує цілі в радіусі 8 м на 2 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Mithril Frag Bomb, @use Inflicts 149 to 201 Fire damage and stuns targets in a 8 yard radius for 2 sec.  Any damage will break the effect. (1 Min Cooldown)
@@ -5035,7 +5040,7 @@ addonTable.item = {
 [10717] = { "компас Кім'джаєля" }, -- Kim'Jael's Compass
 [10718] = { "відцентровий розтягувач Кім'джаєля" }, -- Kim'Jael's Wizzlegoober
 [10722] = { "плюшеве курча Кім'джаєля" }, -- Kim'Jael's Stuffed Chicken
-[10725] = { "гномське бойове курча", use="Створює бойове курча, яке битиветься за вас протягом 1.5 хв або доки його не буде знищено. (Відновлення 30 хв)" }, -- Gnomish Battle Chicken, @use Creates a Battle Chicken that will fight for you for 1.50 min or until it is destroyed. (30 Min Cooldown)
+[10725] = { "гномське бойове курча", use="Створює бойове курча, яке битиметься за вас протягом 1.5 хв або доки його не буде знищено. (Відновлення 30 хв)" }, -- Gnomish Battle Chicken, @use Creates a Battle Chicken that will fight for you for 1.50 min or until it is destroyed. (30 Min Cooldown)
 [10738] = { "вантаж для Гальвана", flavor="Масивна коробка напрочуд легка." }, -- Shipment to Galvan, @flavor The massive box is surprisingly light.
 [10739] = { "перстень стійкості" }, -- Ring of Fortitude
 [10740] = { "поножі сотника" }, -- Centurion Legplates
@@ -6404,6 +6409,7 @@ addonTable.item = {
 [17202] = { "сніжка", use="Кинь мене!" }, -- Snowball, @use Throw me!
 [17203] = { "злиток сульфурону" }, -- Sulfuron Ingot
 [17204] = { "око Сульфураса", use="Око Сульфураса можна поєднати з сульфуроновим молотом, щоб створити Сульфурас, легендарний молот Раґнароса." }, -- Eye of Sulfuras, @use The Eye of Sulfuras can be combined with the Sulfuron Hammer to create Sulfuras, legendary hammer of Ragnaros.
+[17222] = { "павуча сосиска", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 12 протягом 15 хв." }, -- Spider Sausage, @use Use: Restores 1392 health over 30 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 12 Stamina and Spirit for 15 min.
 [17303] = { "блакитний обгортковий папір зі стрічкою" }, -- Blue Ribboned Wrapping Paper
 [17304] = { "зелений обгортковий папір зі стрічкою" }, -- Green Ribboned Wrapping Paper
 [17306] = { "кров солдата Бурешпиля" }, -- Stormpike Soldier's Blood
@@ -6651,6 +6657,7 @@ addonTable.item = {
 [18650] = { "креслення: Динаміт \"Простокид II\"", use="Навчає вас створювати Динаміт \"Простокид II\"." }, -- Schematic: EZ-Thro Dynamite II, @use Teaches you how to make EZ-Thro Dynamite II.
 [18656] = { "креслення: Потужний сифорієвий заряд", use="Навчає вас створювати потужний сифорієвий заряд." }, -- Schematic: Powerful Seaforium Charge, @use Teaches you how to make a Powerful Seaforium Charge.
 [18659] = { "уламок Нордрассіля", use="Утворює Благословення в поєднанні з Оком Тіні та Оком Божественності.", flavor="Крихітний фрагмент Світового Дерева" }, -- Splinter of Nordrassil, @use Forms Benediction when combined with the Eye of Shadow and the Eye of Divinity., @flavor A tiny fragment of the World Tree
+[18660] = { "збільшувач світу", use="Збільшує весь світ навколо вас на 5 хвилин або поки ви не атакуєте.", flavor="Лише технології гномів можуть впливати на весь світ!" }, -- World Enlarger, @use Enlarges the entire world for 5 min or until you attack., @flavor Only Gnomish Technology could invent a device that affects the entire world!
 [18662] = { "м'яч з важкої шкіри", use="Киньте м'яч дружнім гравцям. Якщо у них є вільне місце у сумці, вони його спіймають!" }, -- Heavy Leather Ball, @use Throw the ball to a friendly player.   If they have free room in their pack they will catch it!
 [18663] = { "банка з Дж'іві", use="Випустити демона Дж'іві в центрі підніжжя в'язниці Безсмер'тера в Грізному Молоті." }, -- J'eevee's Jar, @use Release the imp J'eevee in the center of the Pedestal of Immol'thar in Dire Maul.
 [18664] = { "Трактат про військові звання" }, -- A Treatise on Military Ranks
