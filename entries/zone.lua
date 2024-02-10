@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.zone_stats = { count=1713 }
+addonTable.zone_stats = { count=1715 }
 
 addonTable.zone = { -- [key] = text
 ["Abandoned Armory"] = "Покинута зброярня",
@@ -31,6 +31,7 @@ addonTable.zone = { -- [key] = text
 ["Allerian Stronghold"] = "бастіон Аллерії",
 ["Alliance Base"] = "база Альянсу",
 ["Alliance Entrance"] = "вхід Альянса",
+["Alonsus Chapel"] = "каплиця Алонсія",
 ["Altar of Hir'eek"] = "вівтар Гір'іка",
 ["Altar of Sha'tar"] = "вівтар Ша'тар",
 ["Altar of Storms"] = "Олтар Бур",
@@ -652,7 +653,7 @@ addonTable.zone = { -- [key] = text
 ["Isle of Conquest"] = "острів Завоювань",
 ["Isle of Dread"] = "острів Страховищ",
 ["Isle of Quel'Danas"] = "острів Квел'Данас",
-["Isle of Tribulations"] = "острів нещасть",
+["Isle of Tribulations"] = "острів Нещасть",
 ["Itharius's Cave"] = "печера Ітарія",
 ["Jadefire Glen"] = "лощина Нефритожарих",
 ["Jadefire Run"] = "хащі Нефритожарих",
@@ -795,6 +796,7 @@ addonTable.zone = { -- [key] = text
 ["Mudsprocket"] = "Вертимуть",
 ["Mugamba"] = "Муґамба",
 ["Mulgore"] = "Мулґор",
+["Murder Row"] = "алея Вбивць",
 ["Mystral Lake"] = "озеро Містраль",
 ["Mystwood"] = "Млистий гай",
 ["Nagrand"] = "Наґранд",
@@ -1547,7 +1549,7 @@ addonTable.zone = { -- [key] = text
 ["Tower of the Damned"] = "вежа Проклятих",
 ["Town Square"] = "Міська площа",
 ["Trade Quarter"] = "Торговий квартал",
-["Traders' Tier"] = "торгівельний ряд",
+["Traders' Tier"] = "торговельний ряд",
 ["Tradesmen's Terrace"] = "тераса Торговців",
 ["Traitor's Cove"] = "бухта Зрадника",
 ["Tranquil Gardens Cemetery"] = "цвинтар при Затишних садах",
@@ -1618,7 +1620,7 @@ addonTable.zone = { -- [key] = text
 ["Venture Co. Base Camp"] = "опорний табір ТзНБ \"Авантюра\"",
 ["Venture Co. Operations Center"] = "операційний центр ТзНБ \"Авантюра\"",
 ["Verdantis River"] = "Буйна річка",
-["Veridian Point"] = "Веридіанова вершина",
+["Veridian Point"] = "Малахітова вершина",
 ["Vim'gol's Circle"] = "коло Вім'ґола",
 ["Vindicator's Rest"] = "привал Поборника",
 ["Violet Hold"] = "Лілова фортеця",
@@ -1673,8 +1675,8 @@ addonTable.zone = { -- [key] = text
 ["Wildpaw Cavern"] = "печера Диколапих",
 ["Wildpaw Ridge"] = "кряж Диколапих",
 ["Wildwind Lake"] = "озеро Невгамовного вітру",
-["Wildwind Path"] = "шлях Невгамовного вітру",
-["Wildwind Peak"] = "пік Невгамовного вітру",
+["Wildwind Path"] = "стежка Невгамовного вітру",
+["Wildwind Peak"] = "вершина Невгамовного вітру",
 ["Windbreak Canyon"] = "Вітроломний каньйон",
 ["Windfury Ridge"] = "кряж Вітролютих",
 ["Windrunner Spire"] = "шпилі Вітрогонів",

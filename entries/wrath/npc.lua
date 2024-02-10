@@ -5,6 +5,7 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
+[36517] = { "Алерік Хокінс", "Смертолови", en="Aleric Hawkins" }, -- Aleric Hawkins
 }
 
 if addonTable.npc then
