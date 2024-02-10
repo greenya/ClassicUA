@@ -4321,7 +4321,7 @@ addonTable.item = {
 [7365] = { "гномський шпрековерт" }, -- Gnoam Sprecklesprocket
 [7372] = { "важкий шкіряний гаман для набоїв", equip="Збільшує швидкість атаки дальнього бою на 12%." }, -- Heavy Leather Ammo Pouch, @equip Increases ranged attack speed by 12%.
 [7376] = { "болтозрив Бінґлса" }, -- Bingles' Blastencapper
-[7377] = { "морозний шкіряний плащ" }, -- Frost Leather Cloak
+[7377] = { "морозний шкіряний плащ" }, -- Frost Leather Cloak, @equip Increases damage done by Frost spells and effects by up to 11.
 [7392] = { "луска зеленого драконеняти" }, -- Green Whelp Scale
 [7428] = { "шкура тінекота" }, -- Shadowcat Hide
 [7442] = { "ключ Гірощогла" }, -- Gyromast's Key
@@ -4361,7 +4361,17 @@ addonTable.item = {
 [7674] = { "пакунок для Матіаса", flavor="Запечатано" }, -- Delivery to Mathias, @flavor Sealed
 [7675] = { "розклад постачань повстанців" }, -- Defias Shipping Schedule
 [7676] = { "прудкоп'яховий чай", use="Миттєво відновлює 100 енергії. (Відновлення 5 хв)" }, -- Thistle Tea, @use Instantly restores 100 energy. (5 Min Cooldown)
+[7691] = { "набальзамований капюшон" }, -- Embalmed Shroud
+[7708] = { "некротичний жезл" }, -- Necrotic Wand
+[7711] = { "мантія Доана" }, -- Robe of Doan
+[7712] = { "напліччя Доана" }, -- Mantle of Doan
+[7713] = { "ілюзорна палиця" }, -- Illusionary Rod
+[7714] = { "гіпнотичний клинок", equip="Збільшує шкоду і зцілення від магічних заклинань і ефектів на 9." }, -- Hypnotic Blade, @equip Increases damage and healing done by magical spells and effects by up to 9.
 [7715] = { "звіт Оніна" }, -- Onin's Report
+[7720] = { "капелюх Білошкур" }, -- Whitemane's Chapeau
+[7722] = { "триєдиний амулет" }, -- Triune Amulet
+[7723] = { "міць Моґрейна" }, -- Mograine's Might
+[7731] = { "талісман з примарного каменю" }, -- Ghostshard Talisman
 [7735] = { "троянда Яннока" }, -- Jannok's Rose
 [7737] = { "щоденник Сетіра", flavor="Написано невідомою вам мовою." }, -- Sethir's Journal, @flavor Written in a language you cannot decipher.
 [7738] = { "вічнозелені рукавички" }, -- Evergreen Gloves
@@ -4481,6 +4491,7 @@ addonTable.item = {
 [8173] = { "накладки з товстої шкіри", use="Укріплення предмета, який носять на тілі, ногах, руках чи ступнях, що назавжди збільшить показник його броні на 32. Можна використовувати лише на предметах 25-го рівня і вище." }, -- Thick Armor Kit, @use Permanently increase the armor value of an item worn on the chest, legs, hands or feet by 32.  Only usable on items level 25 and above.
 [8175] = { "мундир нічного краєвиду" }, -- Nightscape Tunic
 [8176] = { "пов'язка нічного краєвиду" }, -- Nightscape Headband
+[8183] = { "точний лук" }, -- Precision Bow
 [8185] = { "поножі з черепашачої луски" }, -- Turtle Scale Leggings
 [8187] = { "рукавиці з черепашачої луски" }, -- Turtle Scale Gloves
 [8189] = { "кіраса з черепашачої луски" }, -- Turtle Scale Breastplate
@@ -4723,6 +4734,12 @@ addonTable.item = {
 [9369] = { "переливчасте крило райдужного хамелеона" }, -- Iridescent Sprite Darter Wing
 [9370] = { "сувій Ґордунні" }, -- Gordunni Scroll
 [9371] = { "сфера Ґордунні" }, -- Gordunni Orb
+[9387] = { "чоботи Ревелоша" }, -- Revelosh's Boots
+[9388] = { "нарукавники Ревелоша" }, -- Revelosh's Armguards
+[9389] = { "наплічники Ревелоша" }, -- Revelosh's Spaulders
+[9390] = { "рукавиці Ревелоша" }, -- Revelosh's Gloves
+[9407] = { "поножі камнеплета" }, -- Stoneweaver Leggings
+[9408] = { "залізний кийок" }, -- Ironshod Bludgeon
 [9421] = { "величезний камінь здоров'я", use="Миттєво відновлює 1200 здоров'я. (Відновлення 2 хв)" }, -- Major Healthstone, @use Instantly restores 1200 life. (2 Min Cooldown)
 [9436] = { "пакунок Фаранелла" }, -- Faranell's Parcel
 [9437] = { "неперевірений зразок василіска", use="Перевірити якість цього зразка за допомогою набору для польових досліджень." }, -- Untested Basilisk Sample, @use Test this sample for quality.  Requires Field Testing Kit.
@@ -5061,7 +5078,13 @@ addonTable.item = {
 [10755] = { "амулет Аллістаржа", flavor="Єдине, що залишилося від колись могутнього чаклуна." }, -- Amulet of Allistarj, @flavor The only thing that remains from a once powerful sorcerer.
 [10757] = { "оберіг Губителя", use="Використати на вівтарі Губителя, щоб викликати Разеліха-Губителя.", flavor="Відновлений амулет Рах'ліха." }, -- Ward of the Defiler, @use Use at the Altar of the Defiler to summon Razelikh the Defiler., @flavor The completed amulet of Rakh'likh.
 [10759] = { "відрубаний ріг Губителя", flavor="Відрубаний і закривавлений ріг Разеліха-Губителя." }, -- Severed Horn of the Defiler, @flavor A severed and bloody horn of Razelikh the Defiler.
+[10762] = { "мантія ліча" }, -- Robes of the Lich
+[10764] = { "броня холоду смерті" }, -- Deathchill Armor
+[10769] = { "сяюче око Мордреша" }, -- Glowing Eye of Mordresh
+[10770] = { "неживий череп Мордреша" }, -- Mordresh's Lifeless Skull
+[10771] = { "пояс смертемага" }, -- Deathmage Sash
 [10773] = { "урна Гаккарі" }, -- Hakkari Urn
+[10776] = { "накидка з павучого шовку" }, -- Silky Spider Cape
 [10778] = { "намисто святині" }, -- Necklace of Sanctuary
 [10779] = { "кров демона", equip="Збільшує навичку захисту на 3, супротив тіні — на 10 та регенерацію здоров'я — на 3." }, -- Demon's Blood, @equip Increases Defense by 3, Shadow resistance by 10 and your normal health regeneration by 3.
 [10780] = { "знак Гаккара" }, -- Mark of Hakkar
@@ -5196,6 +5219,7 @@ addonTable.item = {
 [11286] = { "торієві кайдани", use="Надягнути на Ґрарка у слушний момент.", flavor="Нерозривні пута." }, -- Thorium Shackles, @use Use on Grark when the time is right!, @flavor Unbreakable bindings.
 [11287] = { "мала чарівна паличка" }, -- Lesser Magic Wand
 [11288] = { "велика чарівна паличка" }, -- Greater Magic Wand
+[11290] = { "великий містичний жезл" }, -- Greater Mystic Wand
 [11309] = { "Серце гори" }, -- The Heart of the Mountain
 [11312] = { "втрачений рецепт Громоварів" }, -- Lost Thunderbrew Recipe
 [11313] = { "голова Рібблі" }, -- Ribbly's Head
@@ -6409,7 +6433,7 @@ addonTable.item = {
 [17202] = { "сніжка", use="Кинь мене!" }, -- Snowball, @use Throw me!
 [17203] = { "злиток сульфурону" }, -- Sulfuron Ingot
 [17204] = { "око Сульфураса", use="Око Сульфураса можна поєднати з сульфуроновим молотом, щоб створити Сульфурас, легендарний молот Раґнароса." }, -- Eye of Sulfuras, @use The Eye of Sulfuras can be combined with the Sulfuron Hammer to create Sulfuras, legendary hammer of Ragnaros.
-[17222] = { "павуча сосиска", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 12 протягом 15 хв." }, -- Spider Sausage, @use Use: Restores 1392 health over 30 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 12 Stamina and Spirit for 15 min.
+[17222] = { "павуча сосиска", use="Відновлює 1392 здоров'я протягом 30 сек. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на 12 протягом 15 хв." }, -- Spider Sausage, @use Restores 1392 health over 30 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 12 Stamina and Spirit for 15 min.
 [17303] = { "блакитний обгортковий папір зі стрічкою" }, -- Blue Ribboned Wrapping Paper
 [17304] = { "зелений обгортковий папір зі стрічкою" }, -- Green Ribboned Wrapping Paper
 [17306] = { "кров солдата Бурешпиля" }, -- Stormpike Soldier's Blood
@@ -6657,7 +6681,7 @@ addonTable.item = {
 [18650] = { "креслення: Динаміт \"Простокид II\"", use="Навчає вас створювати Динаміт \"Простокид II\"." }, -- Schematic: EZ-Thro Dynamite II, @use Teaches you how to make EZ-Thro Dynamite II.
 [18656] = { "креслення: Потужний сифорієвий заряд", use="Навчає вас створювати потужний сифорієвий заряд." }, -- Schematic: Powerful Seaforium Charge, @use Teaches you how to make a Powerful Seaforium Charge.
 [18659] = { "уламок Нордрассіля", use="Утворює Благословення в поєднанні з Оком Тіні та Оком Божественності.", flavor="Крихітний фрагмент Світового Дерева" }, -- Splinter of Nordrassil, @use Forms Benediction when combined with the Eye of Shadow and the Eye of Divinity., @flavor A tiny fragment of the World Tree
-[18660] = { "збільшувач світу", use="Збільшує весь світ навколо вас на 5 хвилин або поки ви не атакуєте.", flavor="Лише технології гномів можуть впливати на весь світ!" }, -- World Enlarger, @use Enlarges the entire world for 5 min or until you attack., @flavor Only Gnomish Technology could invent a device that affects the entire world!
+[18660] = { "збільшувач світу", use="Збільшує весь світ навколо вас на 5 хвилин або поки ви не атакуєте.", flavor="Лише технології гномів можуть впливати на весь світ!" }, -- World Enlarger, @use Enlarges the entire world for 5 min or until you attack. (1 Hour Cooldown), @flavor Only Gnomish Technology could invent a device that affects the entire world!
 [18662] = { "м'яч з важкої шкіри", use="Киньте м'яч дружнім гравцям. Якщо у них є вільне місце у сумці, вони його спіймають!" }, -- Heavy Leather Ball, @use Throw the ball to a friendly player.   If they have free room in their pack they will catch it!
 [18663] = { "банка з Дж'іві", use="Випустити демона Дж'іві в центрі підніжжя в'язниці Безсмер'тера в Грізному Молоті." }, -- J'eevee's Jar, @use Release the imp J'eevee in the center of the Pedestal of Immol'thar in Dire Maul.
 [18664] = { "Трактат про військові звання" }, -- A Treatise on Military Ranks
