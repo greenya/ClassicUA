@@ -7,28 +7,40 @@ addonTable.sod_engraving = {
 -- }
 
 -- Druid
+[48641] = { "Підживлення", spell=410059 }, -- Nourish
 [48642] = { "Нівечення", spell=410025 }, -- Mangle
 [48644] = { "Гнів Лютошторма", spell=410061 }, -- Fury of Stormrage
+[48645] = { "Входження в сон", spell=410060 }, -- Dreamstate
 [48646] = { "Дикий рев", spell=410023 }, -- Savage Roar
 [48649] = { "Життєцвіт", spell=410033 }, -- Lifebloom
 [48651] = { "Дикі удари", spell=410021 }, -- Wild Strikes
 [48652] = { "Дикий ріст", spell=410028 }, -- Wild Growth
+[48653] = { "Інстинкти виживання", spell=410027 }, -- Survival Instincts
+[48655] = { "Затемнення", spell=410029 }, -- Eclipse
 [48820] = { "Виживає найсильніший", spell=416042 }, -- Survival of the Fittest
 [48821] = { "Сонячний вогонь", spell=416044 }, -- Sunfire
 [48870] = { "Лобова атака", spell=416046 }, -- Skull Bash
 [48881] = { "Зерно життя", spell=416050 }, -- Living Seed
 [48883] = { "Розірвати", spell=416049 }, -- Lacerate
 [49159] = { "Зоряний сплеск", spell=424718 }, -- Starsurge
+[49160] = { "Король джунглів", spell=424765 }, -- King of the Jungle
+[49161] = { "Берсерк", spell=424760 }, -- Berserk
 
 -- Hunter
 [48656] = { "Аспект лева", spell=410115 }, -- Aspect of the Lion
+[48657] = { "Спеціалізація на бою з двох рук", spell=410116 }, -- Dual Wield Specialization
+[48658] = { "Виявлення слабких місць", spell=410114 }, -- Expose Weakness
 [48659] = { "Майстер-стрілець", spell=410113 }, -- Master Marksman
+[48660] = { "Впевнений постріл", spell=410109 }, -- Steady Shot
 [48661] = { "Влада над звірами", spell=410110 }, -- Beast Mastery
+[48665] = { "Кидання пасток", spell=410118 }, -- Trap Launcher
 [48666] = { "Постріл химери", spell=410121 }, -- Chimera Shot
 [48667] = { "Вибуховий постріл", spell=410123 }, -- Explosive Shot
 [48668] = { "Команда \"Вбити\"", spell=410111 }, -- Kill Command
 [48669] = { "Самотній вовк", spell=410122 }, -- Lone Wolf
+[48833] = { "Фахівець з ближнього бою", spell=416086 }, -- Melee Specialist
 [48869] = { "Снайперська підготовка", spell=416091 }, -- Sniper Training
+[48884] = { "Збадьорення", spell=416089 }, -- Invigoration
 [49216] = { "Розтинання", spell=425758 }, -- Carve
 [49217] = { "Зміїний розмах", spell=425760 }, -- Serpent Spread
 [49218] = { "Фланговий удар", spell=425762 }, -- Flanking Strike
@@ -38,15 +50,22 @@ addonTable.sod_engraving = {
 [48189] = { "Живе полум'я", spell=401768 }, -- Living Flame
 [48190] = { "Регенерація", spell=401767 }, -- Regeneration
 [48191] = { "Крижані пальці", spell=401765 }, -- Fingers of Frost
+[48193] = { "Обстріл снарядами", spell=401763 }, -- Missile Barrage
+[48194] = { "Стріла крижаного полум'я", spell=401762 }, -- Frostfire Bolt
 [48195] = { "Повернення у часі", spell=401761 }, -- Rewind Time
 [48196] = { "Крижаний спис", spell=401760 }, -- Ice Lance
 [48197] = { "Вигорання", spell=401759 }, -- Burnout
 [48198] = { "Арканічний спалах", spell=401757 }, -- Arcane Blast
+[48201] = { "Замороження мозку", spell=401752 }, -- Brain Freeze
+[48202] = { "Полум'яна вдача", spell=401749 }, -- Hot Streak
+[48822] = { "Сила заклинань", spell=415934 }, -- Spell Power
 [48835] = { "Масова регенерація", spell=415939 }, -- Mass Regeneration
 [48837] = { "Жива бомба", spell=415936 }, -- Living Bomb
+[48867] = { "Чарокрижана стріла", spell=415948 }, -- Spellfrost Bolt
 [48893] = { "Просвітлення", spell=415942 }, -- Enlightenment
 [49185] = { "Арканічний сплеск", spell=425171 }, -- Arcane Surge
 [49186] = { "Крижана кров", spell=425170 }, -- Icy Veins
+[49187] = { "Хроностатичне збереження", spell=425189 }, -- Chronostatic Preservation
 
 -- Paladin
 [48626] = { "Маяк світла", spell=409999 }, -- Beacon of Light
@@ -57,12 +76,19 @@ addonTable.sod_engraving = {
 [48633] = { "Печатка мучеництва", spell=410015 }, -- Seal of Martyrdom
 [48635] = { "Божественна буря", spell=410014 }, -- Divine Storm
 [48638] = { "Десниця відплати", spell=410001 }, -- Hand of Reckoning
+[48825] = { "Священний щит", spell=416028 }, -- Sacred Shield
+[48860] = { "Мистецтво війни", spell=416031 }, -- The Art of War
+[48888] = { "Під захистом Світла", spell=416035 }, -- Guarded by the Light
 [48892] = { "Екзорцист", spell=416037 }, -- Exorcist
 [49213] = { "Ріг Лордерона", spell=425618 }, -- Horn of Lordaeron
 [49214] = { "Егіда", spell=425619 }, -- Aegis
 [49215] = { "Докір", spell=425621 }, -- Rebuke
+[49234] = { "Просвітлений присуд", spell=426175 }, -- Enlightened Judgements
+[49235] = { "Покрив Світла", spell=426178 }, -- Sheath of Light
+[49236] = { "Вливання Cвітла", spell=426180 }, -- Infusion of Light
 
 -- Priest
+[48270] = { "Приглушення болю", spell=402855 }, -- Pain Suppression
 [48273] = { "Коло зцілення", spell=402859 }, -- Circle of Healing
 [48275] = { "Сповідь", spell=402862 }, -- Penance
 [48264] = { "Слово тіні: Смерть", spell=402849 }, -- Shadow Word - Death
@@ -75,34 +101,53 @@ addonTable.sod_engraving = {
 [49188] = { "Слово сили: Бар'єр", spell=425213 }, -- Power Word: Barrier
 [49189] = { "Чума Порожнечі", spell=425216 }, -- Void Plague
 [49190] = { "Викривлена віра", spell=425215 }, -- Twisted Faith
+[49192] = { "Підсилене відновлення", spell=425309 }, -- Empowered Renew
+[49193] = { "Відроджена надія", spell=425310 }, -- Renewed Hope
+[49194] = { "Дух спокутника", spell=425312 }, -- Spirit of the Redeemer
+[49195] = { "Злиття з тінню", spell=425314 }, -- Dispersion
+[49666] = { "Пронизування розуму", spell=431663 }, -- Mind Spike
 
 -- Rogue
 [48141] = { "Смертельне вариво", spell=400080 }, -- Deadly Brew
 [48143] = { "Всього лише подряпина", spell=400082 }, -- Just a Flesh Wound
+[48147] = { "Удар за ударом", spell=400093 }, -- Rolling with the Punches
 [48148] = { "Швидкий постріл", spell=400095 }, -- Quick Draw
 [48160] = { "Скалічити", spell=400094 }, -- Mutilate
+[48162] = { "Крок через тінь", spell=400101 }, -- Shadowstep
+[48164] = { "Крок через тінь", spell=400101 }, -- Shadowstep
 [48165] = { "Тіньовий удар", spell=400105 }, -- Shadowstrike
 [48142] = { "Поміж очей", spell=400081 }, -- Between the Eyes
 [48161] = { "Танок клинків", spell=400099 }, -- Blade Dance
 [48163] = { "Отруєння", spell=400102 }, -- Envenom
+[48166] = { "Кидок сюрікена", spell=400096 }, -- Shuriken Toss
+[48862] = { "Раптові удари", spell=415926 }, -- Waylay
 [49170] = { "Різанина з тіні", spell=424992 }, -- Slaughter from the Shadows
 [49171] = { "Удар шаблею", spell=424984 }, -- Saber Slash
 [49172] = { "Укол", spell=424988 }, -- Shiv
 [49173] = { "Удар лівицею", spell=424990 }, -- Main Gauche
+[49174] = { "Майстер непомітності", spell=425103 }, -- Master of Subtlety
+[49175] = { "Отруєний ніж", spell=425102 }, -- Poisoned Knife
 
 -- Shaman
 [48671] = { "Настанови пращурів", spell=410099 }, -- Ancestral Guidance
 [48672] = { "Спеціалізація на бою з двох рук", spell=410096 }, -- Dual Wield Specialization
+[48673] = { "Вогненний спалах", spell=410093 }, -- Fire Nova
 [48674] = { "Майстерність володіння щитом", spell=410098 }, -- Shield Mastery
 [48675] = { "Щит води", spell=410097 }, -- Water Shield
 [48677] = { "Щит землі", spell=410101 }, -- Earth Shield
+[48678] = { "Зброя Водоверті", spell=410100 }, -- Maelstrom Weapon
 [48679] = { "Перевантаження", spell=410094 }, -- Overload
+[48680] = { "Дух альфа-вовка", spell=410103 }, -- Spirit of the Alpha
 [48681] = { "Виверження лави", spell=410095 }, -- Lava Burst
 [48682] = { "Удар лавою", spell=410104 }, -- Lava Lash
 [48685] = { "Шлях Землі", spell=410107 }, -- Way of Earth
+[48829] = { "Сплеск сили", spell=416054 }, -- Power Surge
 [48840] = { "Цілющий дощ", spell=416057 }, -- Healing Rain
 [49197] = { "Вибух лави", spell=425344 }, -- Molten Blast
 [49198] = { "Шаманська лють", spell=425343 }, -- Shamanistic Rage
+[49221] = { "Пробудження пращурів", spell=425883 }, -- Ancestral Awakening
+[49222] = { "Тотем-приманка", spell=425882 }, -- Decoy Totem
+[49855] = { "Майстерність володіння дворучною зброєю", spell=436368 }, -- Two-Handed Mastery
 
 -- Warlock
 [48343] = { "Метаморфоза", spell=403938 }, -- Metamorphosis
@@ -115,21 +160,33 @@ addonTable.sod_engraving = {
 [48848] = { "Вічна химородь", spell=416008 }, -- Everlasting Affliction
 [48850] = { "Демонічна тактика", spell=416009 }, -- Demonic Tactics
 [48885] = { "Спалення", spell=416015 }, -- Incinerate
+[48898] = { "Демонічні знання", spell=416014 }, -- Demonic Knowledge
+[48899] = { "Танець нечестивців", spell=416017 }, -- Dance of the Wicked
 [49211] = { "Демонічна благодать", spell=425477 }, -- Demonic Grace
 [49212] = { "Угода з демоном", spell=425476 }, -- Demonic Pact
+[49245] = { "Закляття", spell=426443 }, -- Invocation
+[49246] = { "Гримуар синергії", spell=426445 }, -- Grimoire of Synergy
+[49247] = { "Тінь і полум'я", spell=426452 }, -- Shadow and Flame
+[49248] = { "Тіньове полум'я", spell=426467 }, -- Shadowflame
 
 -- Warrior
 [48332] = { "Криваве шаленство", spell=403474 }, -- Blood Frenzy
+[48335] = { "Несамовите відновлення", spell=403467 }, -- Enraged Regeneration
+[48336] = { "Втручання", spell=403472 }, -- Intervene
 [48326] = { "Бичування", spell=403480 }, -- Flagellation
 [48329] = { "Спустошення", spell=403475 }, -- Devastate
 [48325] = { "Нескінченна лють", spell=403489 }, -- Endless Rage
 [48323] = { "Переможний запал", spell=403470 }, -- Victory Rush
 [48330] = { "Несамовитий грім", spell=403476 }, -- Furious Thunder
+[48593] = { "Зосереджена лють", spell=409163 }, -- Focused Rage
 [48823] = { "Цілеспрямована лють", spell=416003 }, -- Single-Minded Fury
+[48877] = { "Точний розрахунок", spell=416005 }, -- Precise Timing
+[48904] = { "Приплив крові", spell=416004 }, -- Blood Surge
 [49200] = { "Швидкий удар", spell=425443 }, -- Quick Strike
 [49201] = { "Лютий удар", spell=425444 }, -- Raging Blow
 [49202] = { "Вісник війни", spell=425445 }, -- Warbringer
 [49203] = { "Неконтрольована лють", spell=425446 }, -- Consumed by Rage
 [49204] = { "Несамовитий натиск", spell=425447 }, -- Frenzied Assault
+[49250] = { "Підбадьорливий клич", spell=426491 }, -- Rallying Cry
 
 }
