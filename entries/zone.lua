@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.zone_stats = { count=1715 }
+addonTable.zone_stats = { count=1716 }
 
 addonTable.zone = { -- [key] = text
 ["Abandoned Armory"] = "Покинута зброярня",
@@ -820,7 +820,7 @@ addonTable.zone = { -- [key] = text
 ["Netherwing Ledge"] = "кряж Підсвітніх Крил",
 ["Netherwing Mines"] = "шахти Підсвітніх Крил",
 ["Netherwing Pass"] = "перевал Підсвітніх Крил",
-["New Tinkertown"] = "Нова Механівка",
+["New Tinkertown"] = "Нова Штукарівка",
 ["Night Elf Village"] = "селище нічних ельфів",
 ["Night Run"] = "Ночеплин",
 ["Night Web's Hollow"] = "Лігво нічних колопрядів",
@@ -1530,8 +1530,8 @@ addonTable.zone = { -- [key] = text
 ["Tides' Hollow"] = "кітлина Приливів",
 ["Timbermaw Hold"] = "оплот Деревопузих",
 ["Timbermaw Post"] = "застава Деревопузих",
-["Tinker Town"] = "Механівка",
-["Tinkertown"] = "Механівка",
+["Tinker Town"] = "Штукарівка",
+["Tinkertown"] = "Штукарівка",
 ["Tiragarde Keep"] = "Тіраґардська твердиня",
 ["Tirisfal"] = "Тірісфаль",
 ["Tirisfal Glades"] = "Тірісфальське перелісся",
@@ -1728,4 +1728,5 @@ addonTable.zone = { -- [key] = text
 ["Zuldazar"] = "Зулдазар",
 ["Zun'watha"] = "Зун'вата",
 ["Zuuldaia Ruins"] = "руїни Зуулдая",
+["crypt"] = "склеп",
 }

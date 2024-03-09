@@ -33,6 +33,6 @@ addonTable.gossip = { -- [npc_id] = { [code1] = text1, [code2] = text2, ... }
 },
 [925] = { -- Brother Sammuel
 -- May the Light protect you this day.
-["mtlpytdigh"] = [===[Нехай Світло береже тебе сьогодні.]===],
+["mtlpytdigh"] = [===[Нехай Світло береже тебе.]===],
 },
 }

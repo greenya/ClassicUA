@@ -5,9 +5,11 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
+[185320] = { "нестабільний хроматичний дракон", en="Unstable Chromatic Drake" }, -- Unstable Chromatic Drake
 [201722] = { "Гаму-ра", en="Ghamoo-ra" }, -- Ghamoo-ra
 [201854] = { "Різзак", en="Cutty" }, -- Cutty
 [202060] = { "заморожений мурлок", en="Frozen Murloc" }, -- Frozen Murloc
+[202079] = { "тіньовий марник", en="Shadowfiend" }, -- Shadowfiend
 [202093] = { "споліморфлений учень", en="Polymorphed Apprentice" }, -- Polymorphed Apprentice
 [202116] = { "головоріз-грабіжник", en="Cut-throat Mugger" }, -- Cut-throat Mugger
 [202699] = { "барон Акваніс", en="Baron Aquanis" }, -- Baron Aquanis
@@ -15,6 +17,7 @@ local npc = { -- [id] = { title, description (optional) }
 [202839] = { "елементаль бистрини", en="Riptide Elemental" }, -- Riptide Elemental
 [202840] = { "елементаль потоку", en="Torrent Elemental" }, -- Torrent Elemental
 [203079] = { "мандрівний мечник", en="Wandering Swordsman" }, -- Wandering Swordsman
+[203138] = { "розпорядник Лютого Ковадла", en="Anvilrage Overseer" }, -- Anvilrage Overseer
 [203139] = { "син Аруґала", en="Son of Arugal" }, -- Son of Arugal
 [203226] = { "Вікторія Вудс", "мисливиця на чудовиськ", en="Viktoria Woods" }, -- Viktoria Woods <Monster Hunter>
 [203475] = { "Лів Бредфорд", "барменка", en="Liv Bradford" }, -- Liv Bradford <Bartender>
@@ -89,6 +92,7 @@ local npc = { -- [id] = { title, description (optional) }
 [209214] = { "мурлок Чорноводдя", en="Blackfathom Murloc" }, -- Blackfathom Murloc
 [209511] = { "дитинча оазисного тріскощелепа", en="Oasis Snapjaw Hatchling" }, -- Oasis Snapjaw Hatchling
 [209524] = { "дозорний гепард", en="Patrolling Cheetah" }, -- Patrolling Cheetah
+[209548] = { "таємний агент", en="Secret Agent" }, -- Secret Agent
 [209607] = { "лейтенант Камневар", en="Lieutenant Stonebrew" }, -- Lieutenant Stonebrew
 [209608] = { "Дельвіна", "мисливиця на чудовиськ", en="Delwynna" }, -- Delwynna <Monster Hunter>
 [209678] = { "сутінковий лорд Келріс", en="Twilight Lord Kelris" }, -- Twilight Lord Kelris
@@ -124,6 +128,7 @@ local npc = { -- [id] = { title, description (optional) }
 [211033] = { "Ґаріон Венделл", "бібліотекар", en="Garion Wendell" }, -- Garion Wendell <Librarian>
 [211042] = { "дитинча зеленого дракона", en="Green Dragon Whelp" }, -- Green Dragon Whelp
 [211146] = { "загублена шукачка пригод", en="Lost Adventurer" }, -- Lost Adventurer
+[211183] = { "таємний агент", en="Secret Agent" }, -- Secret Agent
 [211188] = { "Метра Вуглесерда", en="Maethra Slagheart" }, -- Maethra Slagheart
 [211200] = { "Аґон", en="Agon" }, -- Agon
 [211225] = { "Баж'ура", en="Baj'ura" }, -- Baj'ura
@@ -195,6 +200,7 @@ local npc = { -- [id] = { title, description (optional) }
 [214530] = { "Ардель Дральта", en="Ardelle Dralta" }, -- Ardelle Dralta
 [214603] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
 [214612] = { "рибоїд Аку'май", en="Aku'mai Fisher" }, -- Aku'mai Fisher
+[214695] = { "наймит", en="peon" }, -- peon
 [214876] = { "Давій Пустосяй", en="Davius Voidstar" }, -- Davius Voidstar
 [214954] = { "Рікс Ксіззікс", "бюро знахідок", en="Rix Xizzix" }, -- Rix Xizzix
 [215062] = { "молільник", en="Supplicant" }, -- Supplicant
@@ -204,13 +210,53 @@ local npc = { -- [id] = { title, description (optional) }
 [215096] = { "молільник", en="Supplicant" }, -- Supplicant
 [215098] = { "молільник", en="Supplicant" }, -- Supplicant
 [215108] = { "тріскощелеп Аку'май", en="Aku'mai Snapjaw" }, -- Aku'mai Snapjaw
+[215728] = { "пробійник натовпу 9-60", en="Crowd Pummeler 9-60" }, -- Crowd Pummeler 9-60
+[215849] = { "Доан Карган", en="Doan Karhan" }, -- Doan Karhan
+[215850] = { "Рашель Андер", en="Raszel Ander" }, -- Raszel Ander
+[216437] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
+[216445] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
+[216448] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
+[216451] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
 [216659] = { "сатир Гнилого Кореня", en="Fallenroot Satyr" }, -- Fallenroot Satyr
 [216660] = { "пройдисвіт Гнилого Кореня", en="Fallenroot Rogue" }, -- Fallenroot Rogue
 [216661] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
 [216662] = { "оракул Чорноводдя", en="Blackfathom Oracle" }, -- Blackfathom Oracle
+[216664] = { "Спрок", "загублена команда", en="Sprok" }, -- Sprok
 [216665] = { "гномреґанський біженець", en="Gnomeregan Evacuee" }, -- Gnomeregan Evacuee
+[216666] = { "Техбот", en="Techbot" }, -- Techbot
+[216667] = { "божевільний лепрогном", en="Addled Leper" }, -- Addled Leper
+[216668] = { "опромінений загарбник", en="Irradiated Invader" }, -- Irradiated Invader
+[216669] = { "печерний грабіжник", en="Caverndeep Pillager" }, -- Caverndeep Pillager
+[216670] = { "печерний здобичник", en="Caverndeep Looter" }, -- Caverndeep Looter
+[216671] = { "печерний загарбник", en="Caverndeep Invader" }, -- Caverndeep Invader
+[216672] = { "Намдо Справошип", "інженерні припаси", en="Namdo Bizzfizzle" }, -- Namdo Bizzfizzle <Engineering Supplies>
+[216902] = { "Хотайн Злотодзвін", "Пасовища Димного Лісу", en="Wulmort Jinglepocket" }, -- Wulmort Jinglepocket <Smokywood Pastures>
+[216915] = { "дивний сніговик", en="Strange Snowman" }, -- Strange Snowman
+[216924] = { "Якоб Хапмідяк", "Пасовища Димного Лісу", en="Kaymard Copperpinch" }, -- Kaymard Copperpinch <Smokywood Pastures>
+[216931] = { "Мерзенний Ґрінч", en="The Abominable Greench" }, -- The Abominable Greench
 [216937] = { "Джубей", "майстер клинка", en="Jubei" }, -- Jubei <Blademaster>
 [217049] = { "дзеркальне відображення", "майстер клинка", en="Mirror Image" }, -- Mirror Image <Blademaster>
+[217280] = { "Бубонник", en="Grubbis" }, -- Grubbis
+[217582] = { "печерний душитель", en="Caverndeep Ambusher" }, -- Caverndeep Ambusher
+[217706] = { "Казраґор", "провидець", en="Kazragore" }, -- Kazragore
+[217707] = { "Фелора Місячне Проміння", "жриця місяця", en="Felore Moonray" }, -- Felore Moonray
+[217733] = { "печерний грабіжник", en="Caverndeep Pillager" }, -- Caverndeep Pillager
+[217956] = { "Чавкун", en="Chomper" }, -- Chomper
+[217969] = { "підривниця Емі Куций Запал", en="Blastmaster Emi Shortfuse" }, -- Blastmaster Emi Shortfuse
+[217996] = { "Еонас", "колишній паладин Сріблястої Десниці", en="Aeonas" }, -- Aeonas
+[218019] = { "бойовий манекен", en="Combat Dummy" }, -- Combat Dummy
+[218020] = { "бойовий манекен", en="Combat Dummy" }, -- Combat Dummy
+[218021] = { "бойовий манекен", en="Combat Dummy" }, -- Combat Dummy
+[218160] = { "Еонас Виправданий", "колишній паладин Сріблястої Десниці" }, -- Aeonas
+[218241] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
+[218249] = { "слизькоріза жриця припливу", en="Slitherblade Tide Priestess" }, -- Slitherblade Tide Priestess
+[218273] = { "мандрівний мечник", en="Wandering Swordsman" }, -- Wandering Swordsman
+[218349] = { "ходяча бомба", en="Walking Bomb" }, -- Walking Bomb
+[218537] = { "мекженер Термоштепсель" }, -- Sicco Thermaplugg
+[218870] = { "мертвоголова некромантка", en="Death's Head Necromancer" }, -- Death's Head Necromancer
+[219822] = { "прикутий дух", en="Chained Spirit" }, -- Chained Spirit
+[220007] = { "в'язкі відходи", en="Viscous Fallout" }, -- Viscous Fallout
+[220072] = { "Електрошокер 6000", en="Electrocutioner 6000" }, -- Electrocutioner 6000
 }
 
 if addonTable.npc then

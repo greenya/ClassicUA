@@ -29,7 +29,7 @@ local npc = { -- [id] = { title, description (optional) }
 [15397] = { "Марніель Бурштиносяйна", "корчмарка", en="Marniel Amberlight" }, -- Marniel Amberlight <Innkeeper>
 [15398] = { "Ларіанна Річковий Вітер", en="Larianna Riverwind" }, -- Larianna Riverwind
 [15399] = { "лейтенант Вісниця Світанку", "Далекоходці", en="Lieutenant Dawnrunner" }, -- Lieutenant Dawnrunner
-[15400] = { "Аратель Кузня Сонця", "Blacksmithing Trainer", en="Arathel Sunforge" }, -- Arathel Sunforge
+[15400] = { "Аратель Кузня Сонця", "тренерка ковальства", en="Arathel Sunforge" }, -- Arathel Sunforge <Blacksmithing Trainer>
 [15401] = { "лей-хранителька Веланія", en="Ley-Keeper Velania" }, -- Ley-Keeper Velania
 [15402] = { "учениця Мірведа", en="Apprentice Mirveda" }, -- Apprentice Mirveda
 [15403] = { "Елдон Сонячне Тавро", "капітан Кривавих Яструбів", en="Aeldon Sunbrand" }, -- Aeldon Sunbrand
@@ -120,7 +120,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16250] = { "Мірдоран Полеглий", en="Mirdoran the Fallen" }, -- Mirdoran the Fallen
 [16251] = { "смертолов Малтендіс", en="Deathstalker Maltendis" }, -- Deathstalker Maltendis
 [16252] = { "верховний каратель Маврен", en="High Executor Mavren" }, -- High Executor Mavren
-[16253] = { "шеф-кухар Запікарій", "Cooking Trainer & Supplies", en="Master Chef Mouldier" }, -- Master Chef Mouldier
+[16253] = { "шеф-кухар Запікарій", "тренер та продавець товарів для куховарства", en="Master Chef Mouldier" }, -- Master Chef Mouldier <Cooking Trainer & Supplies>
 [16268] = { "Ералан", "продавчиня отрут", en="Eralan" }, -- Eralan <Poison Supplies>
 [16275] = { "Ноеллена", "тренерка паладинів", en="Noellene" }, -- Noellene <Paladin Trainer>
 [16276] = { "Понаріс", "тренер жерців", en="Ponaris" }, -- Ponaris <Priest Trainer>
@@ -207,10 +207,10 @@ local npc = { -- [id] = { title, description (optional) }
 [16554] = { "Еун", en="Aeun" }, -- Aeun
 [16585] = { "Кухар Одноок", "їжа та напої", en="Cookie One-Eye" }, -- Cookie One-Eye <Food & Drink>
 [16601] = { "помираючий ельф крові", en="Dying Blood Elf" }, -- Dying Blood Elf
-[16611] = { "Залле", "Reagents", en="Zalle" }, -- Zalle
+[16611] = { "Залле", "реагенти", en="Zalle" }, -- Zalle <Reagents>
 [16647] = { "Таліонія", "тренерка чорнокнижників", en="Talionia" }, -- Talionia <Warlock Trainer>
 [16658] = { "Альдре", "тренер жерців", en="Aldrae" }, -- Aldrae <Priest Trainer>
-[16669] = { "Бемаррін", "Blacksmithing Trainer", en="Bemarrin" }, -- Bemarrin
+[16669] = { "Бемаррін", "тренер ковальства", en="Bemarrin" }, -- Bemarrin <Blacksmithing Trainer>
 [16675] = { "Галтеніс", "дресирувальник", en="Halthenis" }, -- Halthenis <Pet Trainer>
 [16681] = { "чемпіон Бакі", "тренер паладинів", en="Champion Bachi" }, -- Champion Bachi <Paladin Trainer>
 [16683] = { "Дарлія", "продавчиня отрут", en="Darlia" }, -- Darlia <Poison Supplies>
@@ -225,7 +225,7 @@ local npc = { -- [id] = { title, description (optional) }
 [17087] = { "дух долини", en="Spirit of the Vale" }, -- Spirit of the Vale
 [17089] = { "Фірманваар", "тренер шаманів", en="Firmanvaar" }, -- Firmanvaar <Shaman Trainer>
 [17099] = { "Меглар Світанковий Клинок", en="Mehlar Dawnblade" }, -- Mehlar Dawnblade
-[17101] = { "Діктинна", "Fishing Trainer & Supplies", en="Diktynna" }, -- Diktynna
+[17101] = { "Діктинна", "тренерка та продавчиня товарів для рибальства", en="Diktynna" }, -- Diktynna <Fishing Trainer & Supplies>
 [17102] = { "розлючений мурлок", en="Angry Murloc" }, -- Angry Murloc
 [17110] = { "Актеон", "тренер мисливців", en="Acteon" }, -- Acteon <Hunter Trainer>
 [17114] = { "Аруґу Тихохвой", en="Arugoo of the Stillpine" }, -- Arugoo of the Stillpine
@@ -259,7 +259,7 @@ local npc = { -- [id] = { title, description (optional) }
 [17210] = { "лідерка стражниць", en="Sentinel Leader" }, -- Sentinel Leader
 [17212] = { "Тулуун", "тренер шаманів", en="Tuluun" }, -- Tuluun <Shaman Trainer>
 [17214] = { "анахоретка Фатіма", "тренерка першої допомоги", en="Anchorite Fateema" }, -- Anchorite Fateema <First Aid Trainer>
-[17215] = { "Дедал", "Alchemy Trainer", en="Daedal" }, -- Daedal
+[17215] = { "Дедал", "тренер алхімії", en="Daedal" }, -- Daedal <Alchemy Trainer>
 [17216] = { "дріботливий повзун", en="Skittering Crawler" }, -- Skittering Crawler
 [17217] = { "колючий повзун", en="Barbed Crawler" }, -- Barbed Crawler
 [17219] = { "Сулаа", "тренерка шаманів", en="Sulaa" }, -- Sulaa <Shaman Trainer>
@@ -270,7 +270,7 @@ local npc = { -- [id] = { title, description (optional) }
 [17241] = { "жриця Кайлін Іл'дінар", en="Priestess Kyleen Il'dinare" }, -- Priestess Kyleen Il'dinare
 [17242] = { "археолог Адамант Залізосерд", "Ліга дослідників", en="Archaeologist Adamant Ironheart" }, -- Archaeologist Adamant Ironheart <Explorers' League>
 [17243] = { "інженер \"Іскра\" Перемельник", "посланець Меґґабура", en="Engineer \"Spark\" Overgrind" }, -- Engineer "Spark" Overgrind
-[17246] = { "\"Кухарчик\" Недосоленко", "Cooking Trainer & Supplies", en="\"Cookie\" McWeaksauce" }, -- "Cookie" McWeaksauce
+[17246] = { "\"Кухарчик\" Недосоленко", "тренер та продавець товарів для куховарства", en="\"Cookie\" McWeaksauce" }, -- "Cookie" McWeaksauce <Cooking Trainer & Supplies>
 [17275] = { "Водяниця", en="Aqueous" }, -- Aqueous
 [17298] = { "воєвода Срісс'тіз", en="Warlord Sriss'tiz" }, -- Warlord Sriss'tiz
 [17311] = { "Коулен", en="Cowlen" }, -- Cowlen
@@ -315,7 +315,7 @@ local npc = { -- [id] = { title, description (optional) }
 [17435] = { "Шептій", en="Susurrus" }, -- Susurrus
 [17440] = { "верховний вождь Тихохвоїв", en="High Chief Stillpine" }, -- High Chief Stillpine
 [17441] = { "Ґурф", "тренер здирання шкур", en="Gurf" }, -- Gurf <Skinning Trainer>
-[17442] = { "Мурдо", "Leatherworking Trainer", en="Moordo" }, -- Moordo
+[17442] = { "Мурдо", "тренер шкірництва", en="Moordo" }, -- Moordo <Leatherworking Trainer>
 [17443] = { "Курц-Одкровитель", en="Kurz the Revelator" }, -- Kurz the Revelator
 [17444] = { "Маґтор Сліпий Сторож", en="Magtor the Blind Watcher" }, -- Magtor the Blind Watcher
 [17445] = { "Тихохвой Молодший", en="Stillpine the Younger" }, -- Stillpine the Younger
