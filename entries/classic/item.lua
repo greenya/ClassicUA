@@ -6104,9 +6104,9 @@ addonTable.item = {
 [15997] = { "торієві патрони", desc="Додає 17,5 пошкодження за секунду" }, -- Thorium Shells, @desc Adds 17.5 damage per second
 [15998] = { "записка Льюїса" }, -- Lewis' Note
 [16000] = { "торієва трубка" }, -- Thorium Tube
-[16001] = { "жетон ШБУ (Фредо)" }, -- SI:7 Insignia (Fredo)
-[16002] = { "жетон ШБУ (Тур'єн)" }, -- SI:7 Insignia (Turyen)
-[16003] = { "жетон ШБУ (Рутґер)" }, -- SI:7 Insignia (Rutger)
+[16001] = { "жетон ШУР (Фредо)" }, -- SI:7 Insignia (Fredo)
+[16002] = { "жетон ШУР (Тур'єн)" }, -- SI:7 Insignia (Turyen)
+[16003] = { "жетон ШУР (Рутґер)" }, -- SI:7 Insignia (Rutger)
 [16005] = { "бомба з темного заліза", use="Завдає від 225 до 675 шкоди вогнем та оглушує цілі в радіусі 5 м на 4 сек.  Будь-яка шкода припиняє дію. (Відновлення 1 хв)" }, -- Dark Iron Bomb, @use Inflicts 225 to 675 Fire damage and stuns targets in a 5 yard radius for 4 sec.  Any damage will break the effect. (1 Min Cooldown)
 [16006] = { "чутливий арканітовий перетворювач" }, -- Delicate Arcanite Converter
 [16023] = { "майстерний манекен-мішень", use="Встановлення на землі манекена, який притягуватиме до себе найближчих ворогів.  Існує 15 сек або до знищення. (Відновлення 2 хв)" }, -- Masterwork Target Dummy, @use Drops a target dummy on the ground that attracts nearby monsters to attack it. Lasts for 15 seconds or until killed. (2 Min Cooldown)
