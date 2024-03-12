@@ -996,7 +996,7 @@ addonTable.zone = { -- [key] = text
 ["Runestone Shan'dor"] = "рунічний камінь Шан'дор",
 ["Rut'theran Village"] = "селище Рут'Теран",
 ["Ruuan Weald"] = "галявина Рууан",
-["SI:7"] = "ШБУ",
+["SI:7"] = "ШУР",
 ["Saldean's Farm"] = "ферма Салденів",
 ["Saltheril's Haven"] = "притулок Салтеріла",
 ["Saltspray Glen"] = "лощина Солекрапель",

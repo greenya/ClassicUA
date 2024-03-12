@@ -1019,7 +1019,7 @@ addonTable.object = { -- [key] = text
 ["Mithril Bound Chest"] = "окована мітрилом скриня",
 ["Mossy Footlocker"] = "вкрита мохом скринька",
 ["Practice Lockbox"] = "навчальний сейф",
-["SI:7 Lockbox"] = "сейф ШБУ",
+["SI:7 Lockbox"] = "сейф ШУР",
 ["Scarlet Footlocker"] = "скринька Багряного Походу",
 ["Tattered Chest"] = "пошарпана скриня",
 ["Treasure Chest"] = "скриня зі скарбами",
