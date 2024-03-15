@@ -4,6 +4,7 @@ local item_tbc = {
 -- See /entries/classic/item.lua for data format details.
 
 [6082] = { "кров зеленого драконеняти" }, -- Green Whelp Blood
+[13506] = { "настій скам'яніння", use="Ви перетворюєтеся на камінь, що захищає вас від усіх фізичних атак і заклинань на 1 хв, але протягом цього часу ви не можете атакувати, рухатися або промовляти заклинання. Вважається водночас і бойовим, і захисним еліксиром." }, -- Flask of Petrification, @use You turn to stone, protecting you from all physical attacks and spells for 1 min, but during that time you cannot attack, move or cast spells. Counts as both a Battle and Guardian elixir.
 [14646] = { "подарунковий сертифікат Злотохрестя" }, -- Goldshire Gift Voucher
 [14647] = { "подарунковий сертифікат Хараноса" }, -- Kharanos Gift Voucher
 [14648] = { "подарунковий сертифікат Доланаара" }, -- Dolanaar Gift Voucher
