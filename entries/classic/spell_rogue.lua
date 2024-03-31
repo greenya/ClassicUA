@@ -77,6 +77,11 @@ local rogue_spells = {
 [11357] = { "Смертельна отрута III", ref=2835 }, -- Deadly Poison III (Rank 3)
 [11358] = { "Смертельна отрута IV", ref=2835 }, -- Deadly Poison IV (Rank 4)
 [25347] = { "Смертельна отрута V", ref=2835 }, -- Deadly Poison V (Rank 5)
+[2818] = { "Смертельна отрута", nil, "Отримує {1} шкоди від природи кожні {2} с.#takes {1} Nature#every {2} sec" }, -- Deadly Poison I (Rank 1)
+[2819] = { "Смертельна отрута II", ref=2818 }, -- Deadly Poison II (Rank 2)
+[11353] = { "Смертельна отрута III", ref=2818 }, -- Deadly Poison III (Rank 3)
+[11354] = { "Смертельна отрута IV", ref=2818 }, -- Deadly Poison IV (Rank 4)
+[25349] = { "Смертельна отрута V", ref=2818 }, -- Deadly Poison V (Rank 5)
 
 -- Deflection
 [13713] = { "Відбиття", "Збільшує вашу ймовірність парирувати на {1}%.#chance by {1}" }, -- Deflection (Rank 1)
