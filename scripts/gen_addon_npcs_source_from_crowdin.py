@@ -40,6 +40,10 @@ def get_npc_from_id_tag(id_tag, term_en_text, term_uk_text, term_tags, all_terms
     if match_name_with_desc:
         npc_name = match_name_with_desc[1].strip()
         npc_desc = npc_desc_original = match_name_with_desc[2].strip()
+
+        if not npc_name:
+            npc_name = term_uk_text.replace('_', ',')
+
         if not npc_name or not npc_desc:
             issues.append(f'[!] Empty name/desc in id_tag "{id_tag}" in term "{term_en_text}"')
     else:
