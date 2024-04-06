@@ -588,6 +588,7 @@ addonTable.object = { -- [key] = text
 ["Northridge Lumber Mill Crate"] = "ящик Північномостової лісопильні",
 ["Ogre Coup Summoning Circle"] = "огрське коло виклику",
 ["Ogre Tannin Basket"] = "чан з огрською дубильною рідиною",
+["Old Chest"] = "стара скриня",
 ["Old Footlocker"] = "стара скринька",
 ["Old Jug"] = "старий глечик",
 ["Old Lion Statue"] = "стара статуя лева",
