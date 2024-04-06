@@ -5,6 +5,7 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
+[184383] = { "Сульфурон Провісник", en="Sulfuron Harbinger" }, -- Sulfuron Harbinger
 [185320] = { "нестабільний хроматичний дракон", en="Unstable Chromatic Drake" }, -- Unstable Chromatic Drake
 [201722] = { "Гаму-ра", en="Ghamoo-ra" }, -- Ghamoo-ra
 [201854] = { "Різзак", en="Cutty" }, -- Cutty
@@ -120,6 +121,7 @@ local npc = { -- [id] = { title, description (optional) }
 [210537] = { "невмирущий робітник", en="Undying Laborer" }, -- Undying Laborer
 [210549] = { "розвідник повстанців", en="Defias Scout" }, -- Defias Scout
 [210697] = { "капітан Нам'єр", en="Captain Namier" }, -- Captain Namier
+[210750] = { "М'ґррґл", en="M'grrgl" }, -- M'grrgl
 [210802] = { "оплутана жертва", en="Webbed Victim" }, -- Webbed Victim
 [210845] = { "Джиксо Ракетосхиб", "шибайголова-любитель", en="Jixo Madrocket" }, -- Jixo Madrocket
 [210887] = { "довірливий гордокрил", en="Unsuspecting Pridewing" }, -- Unsuspecting Pridewing
@@ -185,6 +187,7 @@ local npc = { -- [id] = { title, description (optional) }
 [213709] = { "бичувальниця Маннорока", en="Mannoroc Lasher" }, -- Mannoroc Lasher
 [213710] = { "вартовий скверни", en="felguard" }, -- felguard
 [213711] = { "опаляючий пекельник", en="Searing Infernal" }, -- Searing Infernal
+[213795] = { "Ґаррік", en="Gharrik" }, -- Gharrik
 [213994] = { "їдка крапля", en="Corrosive Droplet" }, -- Corrosive Droplet
 [214070] = { "Джорна", "офіцерка постачань", en="Jornah" }, -- Jornah <Supply Officer>
 [214096] = { "Докімі", "офіцерка постачань", en="Dokimi" }, -- Dokimi <Supply Officer>
@@ -210,13 +213,19 @@ local npc = { -- [id] = { title, description (optional) }
 [215096] = { "молільник", en="Supplicant" }, -- Supplicant
 [215098] = { "молільник", en="Supplicant" }, -- Supplicant
 [215108] = { "тріскощелеп Аку'май", en="Aku'mai Snapjaw" }, -- Aku'mai Snapjaw
+[215643] = { "Токал", en="Tokal" }, -- Tokal
+[215655] = { "Ілларі Сутінкове Перо", en="Illari Duskfeather" }, -- Illari Duskfeather
 [215728] = { "пробійник натовпу 9-60", en="Crowd Pummeler 9-60" }, -- Crowd Pummeler 9-60
 [215849] = { "Доан Карган", en="Doan Karhan" }, -- Doan Karhan
 [215850] = { "Рашель Андер", en="Raszel Ander" }, -- Raszel Ander
+[215974] = { "Дес'Алтек", en="Des'Altek" }, -- Des'Altek
+[216289] = { "Орокай", en="Orokai" }, -- Orokai
+[216310] = { "гнилий древній", en="Rotting Ancient" }, -- Rotting Ancient
 [216437] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
 [216445] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
 [216448] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
 [216451] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
+[216474] = { "руйнівна буря", en="Ravaging Tempest" }, -- Ravaging Tempest
 [216659] = { "сатир Гнилого Кореня", en="Fallenroot Satyr" }, -- Fallenroot Satyr
 [216660] = { "пройдисвіт Гнилого Кореня", en="Fallenroot Rogue" }, -- Fallenroot Rogue
 [216661] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
@@ -230,6 +239,8 @@ local npc = { -- [id] = { title, description (optional) }
 [216670] = { "печерний здобичник", en="Caverndeep Looter" }, -- Caverndeep Looter
 [216671] = { "печерний загарбник", en="Caverndeep Invader" }, -- Caverndeep Invader
 [216672] = { "Намдо Справошип", "інженерні припаси", en="Namdo Bizzfizzle" }, -- Namdo Bizzfizzle <Engineering Supplies>
+[216810] = { "всохлий викид", en="Desiccated Fallout" }, -- Desiccated Fallout
+[216854] = { "виверна Розкутого Вітру", en="Freewind Post Wyvern" }, -- Freewind Post Wyvern
 [216902] = { "Хотайн Злотодзвін", "Пасовища Димного Лісу", en="Wulmort Jinglepocket" }, -- Wulmort Jinglepocket <Smokywood Pastures>
 [216915] = { "дивний сніговик", en="Strange Snowman" }, -- Strange Snowman
 [216924] = { "Якоб Хапмідяк", "Пасовища Димного Лісу", en="Kaymard Copperpinch" }, -- Kaymard Copperpinch <Smokywood Pastures>
@@ -237,26 +248,322 @@ local npc = { -- [id] = { title, description (optional) }
 [216937] = { "Джубей", "майстер клинка", en="Jubei" }, -- Jubei <Blademaster>
 [217049] = { "дзеркальне відображення", "майстер клинка", en="Mirror Image" }, -- Mirror Image <Blademaster>
 [217280] = { "Бубонник", en="Grubbis" }, -- Grubbis
+[217290] = { "огрський блискавковідвід", en="Ogre Lightning Rod" }, -- Ogre Lightning Rod
+[217300] = { "Товкач", "кухар-аматор", en="Skonk" }, -- Skonk
+[217302] = { "Там'кар", en="Tam'kar" }, -- Tam'kar
+[217305] = { "древній вогняний елементаль", en="Ancient Fire Elemental" }, -- Ancient Fire Elemental
+[217308] = { "радіоактивний слиз", en="Irradiated Goo" }, -- Irradiated Goo
+[217387] = { "брат Аттик", en="Brother Atticus" }, -- Brother Atticus
+[217392] = { "вогнегляд Дубелен", en="Flameseer Dubelen" }, -- Flameseer Dubelen
+[217412] = { "Амаріліс Вебб", en="Amaryllis Webb" }, -- Amaryllis Webb
+[217418] = { "Зай'енкі", en="Zai'enki" }, -- Zai'enki
+[217580] = { "спокусниця Кейна", "володарка бажань", en="Seductress Ceeyna" }, -- Seductress Ceeyna
 [217582] = { "печерний душитель", en="Caverndeep Ambusher" }, -- Caverndeep Ambusher
+[217588] = { "деревний тарантул", en="Arbor Tarantula" }, -- Arbor Tarantula
+[217589] = { "сінний довгоносик", en="Hay Weevil" }, -- Hay Weevil
+[217590] = { "плотокус", en="Flesh Picker" }, -- Flesh Picker
+[217605] = { "шукач Порожнечі", en="Void Seeker" }, -- Void Seeker
+[217620] = { "безрозсудний чорнокнижник", en="Reckless Warlock" }, -- Reckless Warlock
+[217669] = { "обпалена крикнява пройдисвітка", en="Scorched Screeching Roguefeather" }, -- Scorched Screeching Roguefeather
+[217689] = { "Зірі \"Мутра\" Дрібноверт", "Техноманка", en="Ziri \"The Wrench\" Littlesprocket" }, -- Ziri "The Wrench" Littlesprocket
+[217703] = { "обпалений консорт Високого Сідала", en="Singed Highperch Consort" }, -- Singed Highperch Consort
 [217706] = { "Казраґор", "провидець", en="Kazragore" }, -- Kazragore
 [217707] = { "Фелора Місячне Проміння", "жриця місяця", en="Felore Moonray" }, -- Felore Moonray
+[217711] = { "обпалена шипова пума", en="Seared Needles Cougar" }, -- Seared Needles Cougar
 [217733] = { "печерний грабіжник", en="Caverndeep Pillager" }, -- Caverndeep Pillager
+[217783] = { "партизан Кровоскальпих", en="Bloodscalp Guerrilla" }, -- Bloodscalp Guerrilla
+[217836] = { "Шипозуб", en="Needletooth" }, -- Needletooth
+[217908] = { "добровільна жертва", en="Willing Sacrifice" }, -- Willing Sacrifice
+[217945] = { "одомашнена бойова курка", en="Domesticated Attack Chicken" }, -- Domesticated Attack Chicken
 [217956] = { "Чавкун", en="Chomper" }, -- Chomper
+[217957] = { "вбитий член Багряного Походу", en="Slain Scarlet Crusader" }, -- Slain Scarlet Crusader
 [217969] = { "підривниця Емі Куций Запал", en="Blastmaster Emi Shortfuse" }, -- Blastmaster Emi Shortfuse
 [217996] = { "Еонас", "колишній паладин Сріблястої Десниці", en="Aeonas" }, -- Aeonas
 [218019] = { "бойовий манекен", en="Combat Dummy" }, -- Combat Dummy
 [218020] = { "бойовий манекен", en="Combat Dummy" }, -- Combat Dummy
 [218021] = { "бойовий манекен", en="Combat Dummy" }, -- Combat Dummy
+[218029] = { "чемпіон Зів'ялої Кори", en="Witherbark Champion" }, -- Witherbark Champion
+[218032] = { "голіаф Зів'ялої Кори", en="Witherbark Goliath" }, -- Witherbark Goliath
+[218115] = { "Май'зін", "торговець кров'ю з племені Ґурубаші", en="Mai'zin" }, -- Mai'zin
 [218160] = { "Еонас Виправданий", "колишній паладин Сріблястої Десниці" }, -- Aeonas
+[218229] = { "капітан Аранзас", en="Captain Aransas" }, -- Captain Aransas
+[218230] = { "Вендель Матерс", en="Wendel Mathers" }, -- Wendel Mathers
+[218237] = { "Вірдал Дивоверт", "біженці Гномреґана", en="Wirdal Wondergear" }, -- Wirdal Wondergear
+[218240] = { "автоматичний захисний механізм", en="Tower Defense Automaton" }, -- Tower Defense Automaton
 [218241] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
+[218242] = { "СТХ-04/ЧД", en="STX-04/BD" }, -- STX-04/BD
+[218243] = { "СТХ-13/БН", en="STX-13/LL" }, -- STX-13/LL
+[218244] = { "СТХ-25/БК", en="STX-25/NB" }, -- STX-25/NB
+[218245] = { "СТХ-37/КК", en="STX-37/CN" }, -- STX-37/CN
 [218249] = { "слизькоріза жриця припливу", en="Slitherblade Tide Priestess" }, -- Slitherblade Tide Priestess
 [218273] = { "мандрівний мечник", en="Wandering Swordsman" }, -- Wandering Swordsman
+[218344] = { "вибухове яйце", en="Explosive Egg" }, -- Explosive Egg
 [218349] = { "ходяча бомба", en="Walking Bomb" }, -- Walking Bomb
 [218537] = { "мекженер Термоштепсель" }, -- Sicco Thermaplugg
+[218538] = { "СТХ-96/ВГ", en="STX-96/FR" }, -- STX-96/FR
+[218690] = { "Ха'даму", "обранець лоа крові", en="Kha'damu" }, -- Kha'damu
 [218870] = { "мертвоголова некромантка", en="Death's Head Necromancer" }, -- Death's Head Necromancer
+[218908] = { "вбивця Багряного Походу", en="Scarlet Crusade Assassin" }, -- Scarlet Crusade Assassin
+[218920] = { "даларанський агент", "Лілове око", en="Dalaran Agent" }, -- Dalaran Agent
+[218931] = { "темний вершник", en="Dark Rider" }, -- Dark Rider
+[218970] = { "СТХ-97/КГ", en="STX-97/IC" }, -- STX-97/IC
+[218972] = { "СТХ-98/РА", en="STX-98/PO" }, -- STX-98/PO
+[218974] = { "СТХ-99/УМ", en="STX-99/XD" }, -- STX-99/XD
+[219110] = { "вогняна бомба", en="Incendiary Bomb" }, -- Incendiary Bomb
+[219111] = { "крижана бомба", en="Frost Bomb" }, -- Frost Bomb
+[219112] = { "радіоактивна бомба", en="Radioactive Bomb" }, -- Radioactive Bomb
 [219822] = { "прикутий дух", en="Chained Spirit" }, -- Chained Spirit
+[219986] = { "дух вовка", en="Spirit Wolf" }, -- Spirit Wolf
 [220007] = { "в'язкі відходи", en="Viscous Fallout" }, -- Viscous Fallout
 [220072] = { "Електрошокер 6000", en="Electrocutioner 6000" }, -- Electrocutioner 6000
+[220076] = { "знахар Зум'ра", en="Witch Doctor Zum'rah" }, -- Witch Doctor Zum'rah
+[220142] = { "Титанзілла", en="Titanzilla" }, -- Titanzilla
+[220170] = { "король Кулак", en="King Knuckles" }, -- King Knuckles
+[220174] = { "Гамма-Ра", en="Gamma-Ra" }, -- Gamma-Ra
+[220178] = { "Птеродан", en="Pterodan" }, -- Pterodan
+[220179] = { "Мекатрон", en="Mekatron" }, -- Mekatron
+[220396] = { "варевний ловець Зул'Фаррака", en="Zul'Farrak Concoction Stalker" }, -- Zul'Farrak Concoction Stalker
+[220833] = { "Жнець Сну", en="Dreamscythe" }, -- Dreamscythe
+[220864] = { "Ткач", en="Weaver" }, -- Weaver
+[220930] = { "Фрікс Ксіззікс", en="Frix Xizzix" }, -- Frix Xizzix
+[220942] = { "кошмар", en="Nightmare" }, -- Nightmare
+[220984] = { "Фіцбуц Мітрил", en="Fizbuz Mithril" }, -- Fizbuz Mithril
+[221165] = { "канатолаз", en="Rope Climber" }, -- Rope Climber
+[221168] = { "зловісний вовк-альфа", en="Dire Wolf Alpha" }, -- Dire Wolf Alpha
+[221169] = { "чорна вдова-мати виводка", en="Black Widow Broodmother" }, -- Black Widow Broodmother
+[221170] = { "викорчований морокодрев", en="Uprooted Gloomwood" }, -- Uprooted Gloomwood
+[221171] = { "бігун кошмару", en="Nightmare Runner" }, -- Nightmare Runner
+[221172] = { "ткач кошмару", en="Nightmare Weaver" }, -- Nightmare Weaver
+[221173] = { "зшитий патрульний", "черговий подарунок від Бальзамувальника", en="Stitched Patroller" }, -- Stitched Patroller
+[221174] = { "навіжений огр", en="Deranged Ogre" }, -- Deranged Ogre
+[221175] = { "божевільний вогнеткач", en="Demented Fire Weaver" }, -- Demented Fire Weaver
+[221176] = { "дракончик нічного жаху", en="Nightterror Whelp" }, -- Nightterror Whelp
+[221200] = { "драконіда-жахоступ", en="Wyrmkin Terrorwalker" }, -- Wyrmkin Terrorwalker
+[221201] = { "канатолаз", en="Rope Climber" }, -- Rope Climber
+[221204] = { "Ілантрій", en="Ylanthrius" }, -- Ylanthrius
+[221206] = { "Вварк'Зул", "король лісу", en="Vvarc' Zul" }, -- Vvarc' Zul
+[221207] = { "Амокарок", "вожак зграї", en="Amokarok" }, -- Amokarok
+[221210] = { "Кролл Тінь Гори", "друїд Пазура", en="Kroll Mountainshade" }, -- Kroll Mountainshade <Druid of the Claw>
+[221215] = { "Алара Цілителька Рощі", "друїд Пазура", en="Alara Grovemender" }, -- Alara Grovemender <Druid of the Claw>
+[221216] = { "Еленора Болотоступ", "друїд Пазура", en="Elenora Marshwalker" }, -- Elenora Marshwalker <Druid of the Claw>
+[221220] = { "вартова сну Амалія", en="Dreamwarden Amalia" }, -- Dreamwarden Amalia
+[221221] = { "вартовий сну Дорілар", en="Dreamwarden Dorilar" }, -- Dreamwarden Dorilar
+[221222] = { "вартовий сну Талінар", en="Dreamwarden Thalinar" }, -- Dreamwarden Thalinar
+[221223] = { "смеркоклин-тінелов", en="Duskblaze Shadowstalker" }, -- Duskblaze Shadowstalker
+[221226] = { "біс-палій", en="Firestarter Imp" }, -- Firestarter Imp
+[221227] = { "гончак кошмару", en="Nightmare Hound" }, -- Nightmare Hound
+[221230] = { "гризлі кошмару", en="Nightmare Grizzly" }, -- Nightmare Grizzly
+[221257] = { "олень-смерторіг", en="Deathhorn Stag" }, -- Deathhorn Stag
+[221258] = { "шиполов сну", en="Dreamthorn Stalker" }, -- Dreamthorn Stalker
+[221259] = { "драконіда-ночелов", en="Wyrmkin Nightstalker" }, -- Wyrmkin Nightstalker
+[221260] = { "дракончик жаху", en="Terror Whelp" }, -- Terror Whelp
+[221261] = { "зрадник Полум'яного Сну", en="Dreamfire Betrayer" }, -- Dreamfire Betrayer
+[221262] = { "пеклоклик Полум'яного Сну", en="Dreamfire Hellcaller" }, -- Dreamfire Hellcaller
+[221263] = { "мстивий древній", en="Vengeful Ancient" }, -- Vengeful Ancient
+[221264] = { "жнець сну", en="Dreamharvester" }, -- Dreamharvester
+[221265] = { "Ларсера", en="Larsera" }, -- Larsera
+[221266] = { "Залій", "старійшина Полум'яного Сну", en="Zalius" }, -- Zalius
+[221267] = { "Подрібнювач 9000", en="Shredder 9000" }, -- Shredder 9000
+[221268] = { "Доран Гілка Сну", "друїд Пазура", en="Doran Dreambough" }, -- Doran Dreambough <Druid of the Claw>
+[221269] = { "Масеара Осінній Місяць", "друїд Пазура", en="Maseara Autumnmoon" }, -- Maseara Autumnmoon <Druid of the Claw>
+[221270] = { "Аліссіан Вітрозов", "друїд Пазура", en="Alyssian Windcaller" }, -- Alyssian Windcaller <Druid of the Claw>
+[221271] = { "вартовий сну Еллодар", en="Dreamwarden Ellodar" }, -- Dreamwarden Ellodar
+[221272] = { "вартовий сну Мандоран", en="Dreamwarden Mandoran" }, -- Dreamwarden Mandoran
+[221273] = { "вартова сну Ланарія", en="Dreamwarden Lanaria" }, -- Dreamwarden Lanaria
+[221282] = { "сноклят Іскристого Жару", en="Emberspark Dreamsworn" }, -- Emberspark Dreamsworn
+[221283] = { "біг Вогнища Сну", en="Dreampyre Imp" }, -- Dreampyre Imp
+[221292] = { "гончак-мисливець Сну", en="Dreamhunter Hound" }, -- Dreamhunter Hound
+[221312] = { "жахоперий гіпогриф", en="Dreadfeather Hippogryph" }, -- Dreadfeather Hippogryph
+[221315] = { "нестабільний світлик", en="Unstable Wisp" }, -- Unstable Wisp
+[221324] = { "розбитий горем грифон", en="Grief-Crazed Gryphon" }, -- Grief-Crazed Gryphon
+[221325] = { "драконіда-зоряна мисливиця", en="Wyrmkin Starhunter" }, -- Wyrmkin Starhunter
+[221326] = { "дракончик гніву", en="Wrath Whelp" }, -- Wrath Whelp
+[221328] = { "міцнохват Водяного Сну", en="Dreamwater Visejaw" }, -- Dreamwater Visejaw
+[221329] = { "гідра-мисливиця Сну", en="Dreamhunter Hydra" }, -- Dreamhunter Hydra
+[221330] = { "полеглий місячний совух", en="Fallen Moonkin" }, -- Fallen Moonkin
+[221331] = { "Флорій", en="Florius" }, -- Florius
+[221333] = { "згубний совух", en="Doomkin" }, -- Doomkin
+[221334] = { "Гаму-Раджа", en="Ghamoo-Raja" }, -- Ghamoo-Raja
+[221335] = { "Еліанар Тінепивця", "друїд Пазура", en="Elianar Shadowdrinker" }, -- Elianar Shadowdrinker <Druid of the Claw>
+[221336] = { "Серліна Яскрава Зоря", "друїд Пазура", en="Serlina Starbright" }, -- Serlina Starbright <Druid of the Claw>
+[221337] = { "Веанна Захмарний Сон", "друїд Пазура", en="Veanna Cloudsleeper" }, -- Veanna Cloudsleeper <Druid of the Claw>
+[221351] = { "вартова сну Валорі", en="Dreamwarden Valori" }, -- Dreamwarden Valori
+[221352] = { "вартова сну Санатель", en="Dreamwarden Sanathel" }, -- Dreamwarden Sanathel
+[221353] = { "вартовий сну Ланінар", en="Dreamwarden Laninar" }, -- Dreamwarden Laninar
+[221356] = { "зореклят Згубної Іскри", en="Doomspark Starsworn" }, -- Doomspark Starsworn
+[221357] = { "біс Зорепилу", en="Stardust Imp" }, -- Stardust Imp
+[221360] = { "гончак-зоряний вбивця", en="Starkiller Hound" }, -- Starkiller Hound
+[221361] = { "божевільний райдужний дракончик", en="Mad Sprite" }, -- Mad Sprite
+[221364] = { "несамовита химера", en="Rampaging Chimaera" }, -- Rampaging Chimaera
+[221365] = { "хляскун Смертельної Пелюстки", en="Deathpetal Lasher" }, -- Deathpetal Lasher
+[221367] = { "драконід-берсерк", en="Wyrmkin Berserker" }, -- Wyrmkin Berserker
+[221369] = { "несамовитий дракончик", en="Frenzied Whelp" }, -- Frenzied Whelp
+[221370] = { "оперена пройдисвітка Джерельного Сну", en="Dreamspring Roguefeather" }, -- Dreamspring Roguefeather
+[221371] = { "бурезовка Джерельного Сну", en="Dreamspring Stormcaller" }, -- Dreamspring Stormcaller
+[221373] = { "розлючений гірський велетень", en="Enraged Mountain Giant" }, -- Enraged Mountain Giant
+[221375] = { "загублена донька", en="Lost Daughter" }, -- Lost Daughter
+[221377] = { "мстивий син", en="Vengeful Son" }, -- Vengeful Son
+[221389] = { "Алондрій", "хранитель кошмару", en="Alondrius" }, -- Alondrius
+[221391] = { "Слірена", "королева гарпій", en="Slirena" }, -- Slirena
+[221393] = { "Тиранікус", en="Tyrannikus" }, -- Tyrannikus
+[221394] = { "аватар Гаккара" }, -- Hakkar
+[221395] = { "Мелліас Землеглад", "друїд Пазура", en="Mellias Earthtender" }, -- Mellias Earthtender <Druid of the Claw>
+[221396] = { "хранитель крові Гаккарі", en="Hakkari Bloodkeeper" }, -- Hakkari Bloodkeeper
+[221398] = { "Нерен Піснеплин", "друїд Пазура", en="Nerene Brooksinger" }, -- Nerene Brooksinger <Druid of the Claw>
+[221399] = { "Жамнісс Цілителька Дерев", "друїд Пазура", en="Jamniss Treemender" }, -- Jamniss Treemender <Druid of the Claw>
+[221400] = { "Каджинд", en="Kajind" }, -- Kajind
+[221401] = { "вартовий сну Шелдрін", en="Dreamwarden Sheldryn" }, -- Dreamwarden Sheldryn
+[221402] = { "вартовий сну Ґорлас", en="Dreamwarden Gorlas" }, -- Dreamwarden Gorlas
+[221404] = { "вартова сну Анадель", en="Dreamwarden Anadelle" }, -- Dreamwarden Anadelle
+[221406] = { "місяцеступ-зрадник", en="Moonwalker Betrayer" }, -- Moonwalker Betrayer
+[221407] = { "біс Тіньового Сну", en="Dreamshadow Imp" }, -- Dreamshadow Imp
+[221408] = { "нічний мисливець", en="Night Hunter" }, -- Night Hunter
+[221426] = { "ритуаліст Атал'ай", en="Atal'ai Ritualist" }, -- Atal'ai Ritualist
+[221471] = { "польовий командир Паландар", en="Field Captain Palandar" }, -- Field Captain Palandar
+[221472] = { "розвідниця Чарла", en="Scout Charla" }, -- Scout Charla
+[221477] = { "польовий командир Ганнала", en="Field Captain Hannalah" }, -- Field Captain Hannalah
+[221479] = { "польовий командир Корліан", en="Field Captain Korlian" }, -- Field Captain Korlian
+[221480] = { "польовий командир Аруннель", en="Field Captain Arunnel" }, -- Field Captain Arunnel
+[221482] = { "розвідник Ґемерон", en="Scout Gemeron" }, -- Scout Gemeron
+[221483] = { "розвідниця Фаллія", en="Scout Fallia" }, -- Scout Fallia
+[221484] = { "розвідник Тандрос", en="Scout Thandros" }, -- Scout Thandros
+[221575] = { "Елрік", en="Elrick" }, -- Elrick
+[221587] = { "Еонас Виправданий", "колишній паладин Сріблястої Десниці" }, -- Aeonas
+[221636] = { "Грегорі", "Правдоносець", en="Gregory" }, -- Gregory
+[221637] = { "Ґешер", en="Gasher" }, -- Gasher
+[221638] = { "Лоро", en="Loro" }, -- Loro
+[221639] = { "Золо", en="Zolo" }, -- Zolo
+[221640] = { "Зул'Лор", en="Zul'Lor" }, -- Zul'Lor
+[221651] = { "Керулеос", en="Ceruleos" }, -- Ceruleos
+[221656] = { "суворий завсідник", en="Stern-faced Bar Patron" }, -- Stern-faced Bar Patron
+[221740] = { "Калефактус Вивільнений", en="Calefactus the Unleashed" }, -- Calefactus the Unleashed
+[221759] = { "Ґешер", en="Gasher" }, -- Gasher
+[221761] = { "Гаккар", en="Hakkar" }, -- Hakkar
+[221762] = { "Гаккар", en="Hakkar" }, -- Hakkar
+[221827] = { "магістр Фалат", "емісар оселі Квел'Даніл", en="Magister Falath" }, -- Magister Falath
+[221828] = { "мстивий дух", en="Vengeful Spirit" }, -- Vengeful Spirit
+[221829] = { "Каджинд", "чемпіон арени" }, -- Kajind
+[221830] = { "мандрівний мечник", en="Wandering Swordsman" }, -- Wandering Swordsman
+[221831] = { "Ґос Мастилоляп", en="Gos Greasebasher" }, -- Gos Greasebasher
+[221832] = { "скакун Сріблястої Десниці", en="Silver Hand Charger" }, -- Silver Hand Charger
+[221833] = { "Гукку", en="Hukku" }, -- Hukku
+[221834] = { "Лоро", en="Loro" }, -- Loro
+[221835] = { "Міджан", en="Mijan" }, -- Mijan
+[221836] = { "Золо", en="Zolo" }, -- Zolo
+[221837] = { "Зул'Лор", en="Zul'Lor" }, -- Zul'Lor
+[221924] = { "Казказ Нечистий", en="Kazkaz the Unholy" }, -- Kazkaz the Unholy
+[221928] = { "аватар гіпогрифа", en="Hippogryph Avatar" }, -- Hippogryph Avatar
+[221933] = { "аватар місячного совуха", en="Moonkin Avatar" }, -- Moonkin Avatar
+[221935] = { "аватар дереваня", en="Treant Avatar" }, -- Treant Avatar
+[221942] = { "Морфаз", en="Morphaz" }, -- Morphaz
+[221943] = { "Хаззас", en="Hazzas" }, -- Hazzas
+[221985] = { "Тирісій", en="Tyrisius" }, -- Tyrisius
+[222004] = { "осквернений помірний прояв води", en="Corrupt Moderate Manifestation of Water" }, -- Corrupt Moderate Manifestation of Water
+[222005] = { "помірний прояв води", en="Moderate Manifestation of Water" }, -- Moderate Manifestation of Water
+[222008] = { "канатолаз", en="Rope Climber" }, -- Rope Climber
+[222044] = { "сутінковий темний шаман", en="Twilight Dark Shaman" }, -- Twilight Dark Shaman
+[222052] = { "біс-дослідник", en="Explorer Imp" }, -- Explorer Imp
+[222088] = { "дракончик кошмару", en="Nightmare Whelpling" }, -- Nightmare Whelpling
+[222089] = { "лускоклят кошмару", en="Nightmare Scalebane" }, -- Nightmare Scalebane
+[222188] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
+[222192] = { "лоза кошмару", en="Nightmare Vine" }, -- Nightmare Vine
+[222198] = { "злиття кошмару", en="Nightmare Amalgamation" }, -- Nightmare Amalgamation
+[222232] = { "осквернений помірний прояв повітря", en="Corrupt Moderate Manifestation of Air" }, -- Corrupt Moderate Manifestation of Air
+[222233] = { "Охк'зі", en="Ohk'zi" }, -- Ohk'zi
+[222243] = { "Зопілот", en="Zopilote" }, -- Zopilote
+[222261] = { "Максиміліан \"Мастильник\"", en="Maximillian \"The Greaser\"" }, -- Maximillian "The Greaser"
+[222286] = { "Наміда Зловісний Тотем", en="Namida Grimtotem" }, -- Namida Grimtotem
+[222289] = { "помірний прояв повітря", en="Moderate Manifestation of Air" }, -- Moderate Manifestation of Air
+[222290] = { "безталанний шукач пригод", en="Unfortunate Adventurer" }, -- Unfortunate Adventurer
+[222367] = { "дитинча гроддокської мавпи", en="Groddoc Infant" }, -- Groddoc Infant
+[222376] = { "дитинча гроддокської мавпи", en="Groddoc Infant" }, -- Groddoc Infant
+[222405] = { "скупчення лей-лінії", en="Leyline Conflux" }, -- Leyline Conflux
+[222406] = { "гроддокський матріарх", en="Groddoc Matriarch" }, -- Groddoc Matriarch
+[222407] = { "розлючений прояв лей-лінії", en="Enraged Leywalker" }, -- Enraged Leywalker
+[222408] = { "емісар Тінезубих", en="Shadowtooth Emissary" }, -- Shadowtooth Emissary
+[222409] = { "Бос \"Ґобб\" Злотник", "здобич і знахідки зі Сну", en="Boss \"Gobb\" Goldnick" }, -- Boss "Gobb" Goldnick
+[222410] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
+[222416] = { "скелетний вітряний змій", en="Skeletal Wind Serpent" }, -- Skeletal Wind Serpent
+[222418] = { "верховий кажан", en="Riding Bat" }, -- Riding Bat
+[222444] = { "поранений гном", "відомий лицар", en="Injured Gnome" }, -- Injured Gnome
+[222451] = { "мурлок-лускотун", en="Itty Bitty Murloc" }, -- Itty Bitty Murloc
+[222478] = { "стражниця Келдара Сонцеклин", en="Sentinel Keldara Sunblade" }, -- Sentinel Keldara Sunblade
+[222513] = { "дикий росток", en="Wild Growth" }, -- Wild Growth
+[222514] = { "кошмарний гриб", en="Nightmare Mushroom" }, -- Nightmare Mushroom
+[222516] = { "туман Сну", en="Dream Fog" }, -- Dream Fog
+[222519] = { "неврівноважений друїд", en="Unbalanced Druid" }, -- Unbalanced Druid
+[222521] = { "камінь Сну", en="Dreamstone" }, -- Dreamstone
+[222522] = { "дух Аґамаґґана" }, -- Agamaggan
+[222525] = { "патрульний Лютого Ковадла", en="Anvilrage Patrol" }, -- Anvilrage Patrol
+[222530] = { "подертий мандрівник", en="Rugged Traveler" }, -- Rugged Traveler
+[222531] = { "подертий мандрівник", en="Ragged Traveler" }, -- Ragged Traveler
+[222542] = { "барабан Атал'ай", en="Atal'ai Drum" }, -- Atal'ai Drum
+[222543] = { "табличка Атал'ай", en="Atal'ai Slab" }, -- Atal'ai Slab
+[222544] = { "маска Атал'ай", en="Atal'ai Mask" }, -- Atal'ai Mask
+[222545] = { "свічка Атал'ай", en="Atal'ai Candle" }, -- Atal'ai Candle
+[222546] = { "Йодакс-Руйнівник", en="Iodax the Obliterator" }, -- Iodax the Obliterator
+[222551] = { "Ґрендаґ Яскравобородий", "талановитий дворф", en="Grendag Brightbeard" }, -- Grendag Brightbeard
+[222553] = { "мумія Атал'ай", en="Atal'ai Mummy" }, -- Atal'ai Mummy
+[222573] = { "несамовитий древній", en="Delirious Ancient" }, -- Delirious Ancient
+[222580] = { "дитя Апа'ро", en="Child of Apa'ro" }, -- Child of Apa'ro
+[222617] = { "помірний прояв вогню", en="Moderate Manifestation of Fire" }, -- Moderate Manifestation of Fire
+[222620] = { "осквернений помірний прояв вогню", en="Corrupt Moderate Manifestation of Fire" }, -- Corrupt Moderate Manifestation of Fire
+[222623] = { "помірний прояв землі", en="Moderate Manifestation of Earth" }, -- Moderate Manifestation of Earth
+[222625] = { "осквернений помірний прояв землі", en="Corrupt Moderate Manifestation of Earth" }, -- Corrupt Moderate Manifestation of Earth
+[222636] = { "древня святиня", en="Ancient Shrine" }, -- Ancient Shrine
+[222647] = { "древній дух", en="Ancient Spirit" }, -- Ancient Spirit
+[222648] = { "дика святиня", en="Wild Shrine" }, -- Wild Shrine
+[222649] = { "дикий дух", en="Wild Spirit" }, -- Wild Spirit
+[222650] = { "вітряна святиня", en="Windswept Shrine" }, -- Windswept Shrine
+[222651] = { "вітряний дух", en="Windswept Spirit" }, -- Windswept Spirit
+[222656] = { "нічне лезо повстанців", en="Defias Night Blade" }, -- Defias Night Blade
+[222684] = { "квартирмейстер Фалінар", en="Quartermaster Falinar" }, -- Quartermaster Falinar
+[222685] = { "квартирмейстерка Кайлін", en="Quartermaster Kyleen" }, -- Quartermaster Kyleen
+[222686] = { "квартирмейстерка Аландра", en="Quartermaster Alandra" }, -- Quartermaster Alandra
+[222687] = { "квартирмейстер Валдейн", en="Quartermaster Valdane" }, -- Quartermaster Valdane
+[222689] = { "кровожерливий дух", en="Blood-crazed Spirit" }, -- Blood-crazed Spirit
+[222695] = { "маска Миршавого Гілля", en="Vilebranch Mask" }, -- Vilebranch Mask
+[222696] = { "тріщина Скверни", en="Fel Crack" }, -- Fel Crack
+[222697] = { "розрив Скверни", en="Fel Tear" }, -- Fel Tear
+[222698] = { "шрам Скверни", en="Fel Scar" }, -- Fel Scar
+[222699] = { "розлючений буревісник", en="Enraged Stormcrow" }, -- Enraged Stormcrow
+[222701] = { "купа кісток", en="Pile of Bones" }, -- Pile of Bones
+[222702] = { "загублений вбивця", en="Murderous Lost One" }, -- Murderous Lost One
+[222703] = { "Шелест Крила", "захисник Азшари", en="Whisperwing" }, -- Whisperwing
+[222704] = { "Мудре Перо", "захисник Внутрішніх земель", en="Sagefeather" }, -- Sagefeather
+[222705] = { "Трутовик", "захисник Фераласа", en="Blightbark" }, -- Blightbark
+[222726] = { "тиран вулика", en="Tyrant of the Hive" }, -- Tyrant of the Hive
+[222763] = { "міксмайстер Блікс", "майстер міксології", en="Mixmaster Blix" }, -- Mixmaster Blix
+[222765] = { "Жадан", "майстер темноплетіння", en="Desirous" }, -- Desirous
+[222768] = { "Лізабет Ла'Моналісьє", "майстриня фазоплетіння", en="Lisabeth La'monalissier" }, -- Lisabeth La'monalissier
+[222772] = { "Кримеон Лаклин", "майстер трансмутації", en="Crimeon Lablade" }, -- Crimeon Lablade
+[222789] = { "Гігант", en="The Giant" }, -- The Giant
+[222799] = { "кипучий елементаль", en="Simmering Elemental" }, -- Simmering Elemental
+[222856] = { "дивний тотем", en="Odd Totem" }, -- Odd Totem
+[222857] = { "дивний тотем", en="Odd Totem" }, -- Odd Totem
+[222897] = { "розлючений пустотник", en="Enraged Voidwalker" }, -- Enraged Voidwalker
+[222919] = { "вихровий буревійник", en="Whirling Tempest" }, -- Whirling Tempest
+[222968] = { "Летлас", en="Lethlas" }, -- Lethlas
+[222977] = { "Фантім", en="Phantim" }, -- Phantim
+[222978] = { "зелений шлам", en="Green Sludge" }, -- Green Sludge
+[223061] = { "заряджений тотем", en="Charged Totem" }, -- Charged Totem
+[223068] = { "громоголовий гіпогриф", en="Thunderhead Hippogryph" }, -- Thunderhead Hippogryph
+[223123] = { "хворий лісовий деревань", en="Diseased Forest Walker" }, -- Diseased Forest Walker
+[223127] = { "мертвий хворий шаман Зловісного Тотема", en="Dead Diseased Grimtotem Shaman" }, -- Dead Diseased Grimtotem Shaman
+[223128] = { "мертвий хворий дереволапий містик", en="Dead Diseased Woodpaw Mystic" }, -- Dead Diseased Woodpaw Mystic
+[223130] = { "викорчований морокодрев", en="Uprooted Gloomwood" }, -- Uprooted Gloomwood
+[223264] = { "несамовитий древній", en="Delirious Ancient" }, -- Delirious Ancient
+[223265] = { "несамовитий древній", en="Delirious Ancient" }, -- Delirious Ancient
+[223287] = { "вогняний елементаль", en="Fire Elemental" }, -- Fire Elemental
+[223340] = { "загарбник Скверни", en="Fel Interloper" }, -- Fel Interloper
+[223542] = { "загарбник Скверни", en="Fel Interloper" }, -- Fel Interloper
+[223543] = { "загарбник Скверни", en="Fel Interloper" }, -- Fel Interloper
+[223544] = { "загарбник Скверни", en="Fel Interloper" }, -- Fel Interloper
+[223586] = { "Гукку", en="Hukku" }, -- Hukku
+[223587] = { "Міджан", en="Mijan" }, -- Mijan
+[223588] = { "Ґешер", en="Gasher" }, -- Gasher
+[223590] = { "вівтар вартового", en="Shrine of the Watcher" }, -- Shrine of the Watcher
+[223591] = { "ехо загубленої душі", en="Echo of a Lost Soul" }, -- Echo of a Lost Soul
 }
 
 if addonTable.npc then

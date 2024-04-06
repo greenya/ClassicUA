@@ -5,7 +5,13 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
+[69] = { "хворий сірий вовк", en="Diseased Timber Wolf" }, -- Diseased Timber Wolf
+[299] = { "хворий молодий вовк", en="Diseased Young Wolf" }, -- Diseased Young Wolf
+[1502] = { "жалюгідний гуль", en="Wretched Ghoul" }, -- Wretched Ghoul
+[36208] = { "Зераш Вогняне Лезо", en="Xerash Fireblade" }, -- Xerash Fireblade
+[36273] = { "Браґор Кровокулак", "капітан кор'крона", en="Bragor Bloodfist" }, -- Bragor Bloodfist
 [36517] = { "Алерік Хокінс", "Смертолови", en="Aleric Hawkins" }, -- Aleric Hawkins
+[36644] = { "Агмо Громовий Ріг", en="Ahmo Thunderhorn" }, -- Ahmo Thunderhorn
 }
 
 if addonTable.npc then
