@@ -324,12 +324,12 @@ addonTable.spell = {
 [431] = { "Напій", nil, "Відновлює 20 мани щосекунди." },
 [432] = { "Напій", nil, "Відновлює 34 мани щосекунди." },
 [433] = { "Їжа", "Відновлює {1} здоров'я протягом {2} с. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}", "Відновлює {1} здоров'я щосекунди.#Restores {1}" }, -- Food, @desc Restores 61.2 health over 18 sec. Must remain seated while eating., @aura Restores 3.4 health per second.
-[434] = { "Їжа", nil, "Відновлює 11 здоров'я щосекунди." },
-[435] = { "Їжа", nil, "Відновлює 23 здоров'я щосекунди." },
+[434] = { "Їжа", ref=433 },
+[435] = { "Їжа", ref=433 },
 [673] = { "Мале підвищення броні", ref=3220 }, -- Lesser Armor (aura, Elixir of Minor Defense)
 [806] = { "Палкість", nil, "Силу збільшено. Отримання пошкодження." }, -- Fervor (aura, Potion of Fervor)
 [818] = { "Звичайне вогнище", "Розпалювання вогнища, яке дозволяє готувати їжу та підвищує дух персонажів, які знаходяться поряд, на 4 од." },
-[1127] = { "Їжа", nil, "Відновлює 32 здоров'я щосекунди." },
+[1127] = { "Їжа", ref=433 },
 [1133] = { "Напій", nil, "Відновлює 49 мани щосекунди." },
 [1604] = { "Запаморочення", nil, "Швидкість руху знижено на 50%." },
 [2367] = { "Мале підвищення сили", ref=3163 }, -- Lesser Strength (aura, Elixir of Lion's Strength)
@@ -436,7 +436,7 @@ addonTable.spell = {
 [11396] = { "Великий інтелект", ref=3166 }, -- Greater Intellect (aura, Elixir of Greater Intellect)
 [11403] = { "Снобачення", nil, "Уві сні." }, -- Dream Vision (aura, Elixir of Dream Vision)
 [11405] = { "Еліксир велетнів", ref=3163 }, -- Elixir of the Giants (aura, Elixir of Giants)
-[11406] = { "Еліксир демонорізні", nil, "Збільшено силу атаки проти демонів на {1}.#by {1}" }, -- Elixir of Demonslaying (aura, Elixir of Demonslaying)
+[11406] = { "Еліксир винищення демонів", nil, "Збільшено силу атаки проти демонів на {1}.#by {1}" }, -- Elixir of Demonslaying (aura, Elixir of Demonslaying)
 [11407] = { "Виявлення демона", nil, "Виявлення демонів." }, -- Detect Demon (aura, Elixir of Detect Demon)
 [11474] = { "Сила тіні", nil, "Збільшено пошкодження тінню від заклять та здібностей на {1}.#by up to {1}" }, -- Shadow Power (aura, Elixir of Shadow Power)
 [12187] = { "Хвороблива хмара" },
