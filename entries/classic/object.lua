@@ -652,6 +652,7 @@ addonTable.object = { -- [key] = text
 ["Roughshod Pike"] = "грубий спис",
 ["Ruined Lifeboat"] = "розбита рятувальна шлюпка",
 ["Rune of Beth'Amara"] = "руна Бет'Амара",
+["Rune of the Defiler"] = "руна Морителя",
 ["Rune of Jin'yael"] = "руна Джин'яель",
 ["Rune of Markri"] = "руна Маркрі",
 ["Rune of Sael'hai"] = "руна Сель'гай",
@@ -1043,7 +1044,9 @@ addonTable.object = { -- [key] = text
 ["Portal to Undercity"] = "портал в Підмістя",
 
 -- Miscellaneous
-["Shredder"] = "подрібнювач",
+["Alliance Banner"] = "стяг Альянсу",
+["Horde Banner"] = "стяг Орди",
 ["PX-238 Winter Wondervolt"] = "PX-238 Зимовий Дивовольт",
+["Shredder"] = "подрібнювач",
 
 }
