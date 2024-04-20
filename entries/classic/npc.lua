@@ -3035,6 +3035,7 @@ local npc = { -- [id] = { title, description (optional) }
 [4027] = { "криваволюта штормовідьма", en="Bloodfury Storm Witch" }, -- Bloodfury Storm Witch
 [4028] = { "обвуглений древній", en="Charred Ancient" }, -- Charred Ancient
 [4029] = { "почорнілий древній", en="Blackened Ancient" }, -- Blackened Ancient
+[4030] = { "мстивий древній", en="Vengeful Ancient" }, -- Vengeful Ancient
 [4031] = { "дитинча химери", en="Fledgling Chimaera" }, -- Fledgling Chimaera
 [4032] = { "молода химера", en="Young Chimaera" }, -- Young Chimaera
 [4034] = { "розлючений кам'яний дух", en="Enraged Stone Spirit" }, -- Enraged Stone Spirit
@@ -3908,9 +3909,10 @@ local npc = { -- [id] = { title, description (optional) }
 [5273] = { "верховний жрець Атал'ай", en="Atal'ai High Priest" }, -- Atal'ai High Priest
 [5274] = { "залізохутрий патріарх", en="Ironfur Patriarch" }, -- Ironfur Patriarch
 [5276] = { "райдужний дракончик", en="Sprite Dragon" }, -- Sprite Dragon
+[5277] = { "лускоклят кошмару", en="Nightmare Scalebane" }, -- Nightmare Scalebane
 [5278] = { "райдужний хамелеон", en="Sprite Darter" }, -- Sprite Darter
-[5280] = { "кошмарна драконіда", en="Nightmare Wyrmkin" }, -- Nightmare Wyrmkin
-[5283] = { "кошмарний блукач", en="Nightmare Wanderer" }, -- Nightmare Wanderer
+[5280] = { "драконіда кошмару", en="Nightmare Wyrmkin" }, -- Nightmare Wyrmkin
+[5283] = { "блукач кошмару", en="Nightmare Wanderer" }, -- Nightmare Wanderer
 [5286] = { "довгозуб-бігун", en="Longtooth Runner" }, -- Longtooth Runner
 [5287] = { "довгозуб-ревун", en="Longtooth Howler" }, -- Longtooth Howler
 [5288] = { "скажений довгозуб", en="Rabid Longtooth" }, -- Rabid Longtooth
@@ -4194,11 +4196,11 @@ local npc = { -- [id] = { title, description (optional) }
 [5723] = { "манекен-мішень Варуґа", en="Warug's Target Dummy" }, -- Warug's Target Dummy
 [5724] = { "Аґерон Карґал", en="Ageron Kargal" }, -- Ageron Kargal
 [5725] = { "смертестраж Лундмарк", en="Deathguard Lundmark" }, -- Deathguard Lundmark
-[5726] = { "скверногонча Жезель", en="Jezelle's Felhunter" }, -- Jezelle's Felhunter
-[5727] = { "скверножеребець Жезель", en="Jezelle's Felsteed" }, -- Jezelle's Felsteed
-[5728] = { "сукуб Жезель", en="Jezelle's Succubus" }, -- Jezelle's Succubus
-[5729] = { "пустотник Жезель", en="Jezelle's Voidwalker" }, -- Jezelle's Voidwalker
-[5730] = { "біс Жезель", en="Jezelle's Imp" }, -- Jezelle's Imp
+[5726] = { "скверногонча Жезель" }, -- Jezelle Pruitt
+[5727] = { "скверножеребець Жезель" }, -- Jezelle Pruitt
+[5728] = { "сукуб Жезель" }, -- Jezelle Pruitt
+[5729] = { "пустотник Жезель" }, -- Jezelle Pruitt
+[5730] = { "біс Жезель" }, -- Jezelle Pruitt
 [5731] = { "аптекарка Валія", "Королівське товариство аптекарів", en="Apothecary Vallia" }, -- Apothecary Vallia <Royal Apothecary Society>
 [5732] = { "аптекарка Катріна", "Королівське товариство аптекарів", en="Apothecary Katrina" }, -- Apothecary Katrina <Royal Apothecary Society>
 [5733] = { "аптекар Лікан", "Королівське товариство аптекарів", en="Apothecary Lycanus" }, -- Apothecary Lycanus <Royal Apothecary Society>
@@ -4962,6 +4964,8 @@ local npc = { -- [id] = { title, description (optional) }
 [7366] = { "тотем кам'яної шкіри IV" }, -- Stoneskin Totem
 [7367] = { "тотем кам'яної шкіри V" }, -- Stoneskin Totem
 [7368] = { "тотем кам'яної шкіри VI" }, -- Stoneskin Totem
+[7369] = { "моцак Мертвого Вітру", en="Deadwind Brute" }, -- Deadwind Brute
+[7370] = { "неупокоєна тінь", en="Restless Shade" }, -- Restless Shade
 [7381] = { "срібляста смугаста кішка", en="Silver Tabby" }, -- Silver Tabby
 [7382] = { "руда смугаста кішка", en="Orange Tabby" }, -- Orange Tabby
 [7384] = { "корніш-рекс", en="Cornish Rex" }, -- Cornish Rex
@@ -5343,7 +5347,7 @@ local npc = { -- [id] = { title, description (optional) }
 [8311] = { "слизовий черв", en="Slime Maggot" }, -- Slime Maggot
 [8317] = { "дух смертеступа Атал'ай", en="Atal'ai Deathwalker's Spirit" }, -- Atal'ai Deathwalker's Spirit
 [8318] = { "раб Атал'ай", en="Atal'ai Slave" }, -- Atal'ai Slave
-[8319] = { "кошмарне драконеня", en="Nightmare Whelp" }, -- Nightmare Whelp
+[8319] = { "дракончик кошмару", en="Nightmare Whelp" }, -- Nightmare Whelp
 [8320] = { "Спрок", "загублена команда", en="Sprok" }, -- Sprok
 [8324] = { "скелет Атал'ай", en="Atal'ai Skeleton" }, -- Atal'ai Skeleton
 [8336] = { "живичник Гаккарі", en="Hakkari Sapper" }, -- Hakkari Sapper
@@ -5485,7 +5489,7 @@ local npc = { -- [id] = { title, description (optional) }
 [8608] = { "розлючений пекельник", en="Angered Infernal" }, -- Angered Infernal
 [8609] = { "Олександра Константін", "приборкувачка грифонів", en="Alexandra Constantine" }, -- Alexandra Constantine <Gryphon Master>
 [8610] = { "Кроум", "приборкувач виверн", en="Kroum" }, -- Kroum <Wind Rider Master>
-[8612] = { "душа верескуна", en="Screecher Spirit" }, -- Screecher Spirit
+[8612] = { "дух верескуна", en="Screecher Spirit" }, -- Screecher Spirit
 [8616] = { "пекельник-слуга", en="Infernal Servant" }, -- Infernal Servant
 [8617] = { "Залаші", en="Zalashji" }, -- Zalashji
 [8636] = { "Мортаґ'я-Хранителька", en="Morta'gya the Keeper" }, -- Morta'gya the Keeper
@@ -5829,7 +5833,7 @@ local npc = { -- [id] = { title, description (optional) }
 [9677] = { "Ограбісі", en="Ograbisi" }, -- Ograbisi
 [9678] = { "Шилл Дінгер", en="Shill Dinger" }, -- Shill Dinger
 [9679] = { "Тобіас Січер", en="Tobias Seecher" }, -- Tobias Seecher
-[9680] = { "Гребнь Вбивця", en="Crest Killer" }, -- Crest Killer
+[9680] = { "Гребінь Вбивця", en="Crest Killer" }, -- Crest Killer
 [9681] = { "Джез", en="Jaz" }, -- Jaz
 [9682] = { "маршал Реджинальд Віндзор" }, -- Reginald Windsor
 [9683] = { "самка Лар'корві", en="Lar'korwi Mate" }, -- Lar'korwi Mate
@@ -6616,6 +6620,8 @@ local npc = { -- [id] = { title, description (optional) }
 [11675] = { "сніговійна вітрозовка", en="Snowblind Windcaller" }, -- Snowblind Windcaller
 [11677] = { "орудар Пирх", en="Taskmaster Snivvle" }, -- Taskmaster Snivvle
 [11678] = { "сніговійна душителька", en="Snowblind Ambusher" }, -- Snowblind Ambusher
+[11680] = { "розвідник Орди", en="Horde Scout" }, -- Horde Scout
+[11681] = { "лісозаготівельник Орди", en="Horde Deforester" }, -- Horde Deforester
 [11682] = { "бугай Орди", en="Horde Grunt" }, -- Horde Grunt
 [11683] = { "шаман Орди", en="Horde Shaman" }, -- Horde Shaman
 [11684] = { "подрібнювач Боєпісні", en="Warsong Shredder" }, -- Warsong Shredder
@@ -7648,7 +7654,7 @@ local npc = { -- [id] = { title, description (optional) }
 [14686] = { "леді Фальтер'есс", en="Lady Falther'ess" }, -- Lady Falther'ess
 [14690] = { "Реваншіон", en="Revanchion" }, -- Revanchion
 [14693] = { "Зневаг", en="Scorn" }, -- Scorn
-[14695] = { "лорд Чорноліс", en="Lord Blackwood" }, -- Lord Blackwood
+[14695] = { "лорд Чорнолісий", en="Lord Blackwood" }, -- Lord Blackwood
 [14697] = { "неповоротке страховище", en="Lumbering Horror" }, -- Lumbering Horror
 [14715] = { "гвардієць Срібнокрилих", en="Silverwing Elite" }, -- Silverwing Elite
 [14717] = { "ординський гвардієць", en="Horde Elite" }, -- Horde Elite
@@ -7998,7 +8004,7 @@ local npc = { -- [id] = { title, description (optional) }
 [15462] = { "скарабей-їдкоплюй", en="Spitting Scarab" }, -- Spitting Scarab
 [15463] = { "тотем поваби вітру III" }, -- Grace of Air Totem
 [15464] = { "тотем сили землі V" }, -- Strength of Earth Totem
-[15466] = { "прислужник Омена", en="Minion of Omen" }, -- Minion of Omen
+[15466] = { "прислужник Омена" }, -- Omen
 [15467] = { "Омен", en="Omen" }, -- Omen
 [15469] = { "старша сержантка Т'кела", "збирач злитків мітрилу", en="Senior Sergeant T'kelah" }, -- Senior Sergeant T'kelah
 [15471] = { "генерал-лейтенант Андоров", en="Lieutenant General Andorov" }, -- Lieutenant General Andorov

@@ -20,6 +20,7 @@ local npc = { -- [id] = { title, description (optional) }
 [203079] = { "мандрівний мечник", en="Wandering Swordsman" }, -- Wandering Swordsman
 [203138] = { "розпорядник Лютого Ковадла", en="Anvilrage Overseer" }, -- Anvilrage Overseer
 [203139] = { "син Аруґала", en="Son of Arugal" }, -- Son of Arugal
+[203218] = { "величезний вир", en="Giant Whirlpool" }, -- Giant Whirlpool
 [203226] = { "Вікторія Вудс", "мисливиця на чудовиськ", en="Viktoria Woods" }, -- Viktoria Woods <Monster Hunter>
 [203475] = { "Лів Бредфорд", "барменка", en="Liv Bradford" }, -- Liv Bradford <Bartender>
 [203478] = { "Стюарт", en="Stuart" }, -- Stuart
@@ -213,11 +214,15 @@ local npc = { -- [id] = { title, description (optional) }
 [215096] = { "молільник", en="Supplicant" }, -- Supplicant
 [215098] = { "молільник", en="Supplicant" }, -- Supplicant
 [215108] = { "тріскощелеп Аку'май", en="Aku'mai Snapjaw" }, -- Aku'mai Snapjaw
+[215367] = { "світанковий вартовий Селґорм", "Сріблястий Світанок", en="Dawnwatcher Selgorm" }, -- Dawnwatcher Selgorm <The Argent Dawn>
+[215369] = { "Башана Рунний Тотем", en="Bashana Runetotem" }, -- Bashana Runetotem
 [215643] = { "Токал", en="Tokal" }, -- Tokal
 [215655] = { "Ілларі Сутінкове Перо", en="Illari Duskfeather" }, -- Illari Duskfeather
 [215728] = { "пробійник натовпу 9-60", en="Crowd Pummeler 9-60" }, -- Crowd Pummeler 9-60
 [215849] = { "Доан Карган", en="Doan Karhan" }, -- Doan Karhan
 [215850] = { "Рашель Андер", en="Raszel Ander" }, -- Raszel Ander
+[215854] = { "тінев'яз-послушник", en="Shadowbinder Acolyte" }, -- Shadowbinder Acolyte
+[215855] = { "тінев'яз-послушник", en="Shadowbinder Acolyte" }, -- Shadowbinder Acolyte
 [215974] = { "Дес'Алтек", en="Des'Altek" }, -- Des'Altek
 [216289] = { "Орокай", en="Orokai" }, -- Orokai
 [216310] = { "гнилий древній", en="Rotting Ancient" }, -- Rotting Ancient
@@ -225,6 +230,7 @@ local npc = { -- [id] = { title, description (optional) }
 [216445] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
 [216448] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
 [216451] = { "саджанець древня", en="Ancient Sapling" }, -- Ancient Sapling
+[216463] = { "Айлґра Розколотий Бивень", "матір штормів" }, -- Ailgrha Splittusk
 [216474] = { "руйнівна буря", en="Ravaging Tempest" }, -- Ravaging Tempest
 [216659] = { "сатир Гнилого Кореня", en="Fallenroot Satyr" }, -- Fallenroot Satyr
 [216660] = { "пройдисвіт Гнилого Кореня", en="Fallenroot Rogue" }, -- Fallenroot Rogue
@@ -295,16 +301,29 @@ local npc = { -- [id] = { title, description (optional) }
 [218243] = { "СТХ-13/БН", en="STX-13/LL" }, -- STX-13/LL
 [218244] = { "СТХ-25/БК", en="STX-25/NB" }, -- STX-25/NB
 [218245] = { "СТХ-37/КК", en="STX-37/CN" }, -- STX-37/CN
+[218246] = { "Ґурґток", en="Gurgthock" }, -- Gurgthock
 [218249] = { "слизькоріза жриця припливу", en="Slitherblade Tide Priestess" }, -- Slitherblade Tide Priestess
 [218273] = { "мандрівний мечник", en="Wandering Swordsman" }, -- Wandering Swordsman
 [218344] = { "вибухове яйце", en="Explosive Egg" }, -- Explosive Egg
 [218349] = { "ходяча бомба", en="Walking Bomb" }, -- Walking Bomb
 [218537] = { "мекженер Термоштепсель" }, -- Sicco Thermaplugg
 [218538] = { "СТХ-96/ВГ", en="STX-96/FR" }, -- STX-96/FR
+[218571] = { "Тінь Ераніка" }, -- Eranikus
+[218606] = { "неповороткий сновидець", en="Lumbering Dreamwalker" }, -- Lumbering Dreamwalker
+[218624] = { "Атал'аларіон", "вартовий ідола", en="Atal'alarion" }, -- Atal'alarion
 [218690] = { "Ха'даму", "обранець лоа крові", en="Kha'damu" }, -- Kha'damu
+[218718] = { "Оґом Злиденний", en="Ogom the Wretched" }, -- Ogom the Wretched
+[218721] = { "Джаммал'ан-Пророк", en="Jammal'an the Prophet" }, -- Jammal'an the Prophet
+[218819] = { "гнійний гнилеслиз", en="Festering Rotslime" }, -- Festering Rotslime
+[218868] = { "Міджан", en="Mijan" }, -- Mijan
+[218869] = { "мертвоголова геомантка", en="Death's Head Geomancer" }, -- Death's Head Geomancer
 [218870] = { "мертвоголова некромантка", en="Death's Head Necromancer" }, -- Death's Head Necromancer
+[218871] = { "мертвоголова культистка", en="Death's Head Cultist" }, -- Death's Head Cultist
+[218873] = { "мертвоголовий воїн", en="Death's Head Warrior" }, -- Death's Head Warrior
+[218891] = { "скелетний слуга", en="Skeletal Servant" }, -- Skeletal Servant
 [218908] = { "вбивця Багряного Походу", en="Scarlet Crusade Assassin" }, -- Scarlet Crusade Assassin
 [218920] = { "даларанський агент", "Лілове око", en="Dalaran Agent" }, -- Dalaran Agent
+[218922] = { "Гукку", en="Hukku" }, -- Hukku
 [218931] = { "темний вершник", en="Dark Rider" }, -- Dark Rider
 [218970] = { "СТХ-97/КГ", en="STX-97/IC" }, -- STX-97/IC
 [218972] = { "СТХ-98/РА", en="STX-98/PO" }, -- STX-98/PO
@@ -312,6 +331,10 @@ local npc = { -- [id] = { title, description (optional) }
 [219110] = { "вогняна бомба", en="Incendiary Bomb" }, -- Incendiary Bomb
 [219111] = { "крижана бомба", en="Frost Bomb" }, -- Frost Bomb
 [219112] = { "радіоактивна бомба", en="Radioactive Bomb" }, -- Radioactive Bomb
+[219177] = { "Омен", en="Omen" }, -- Omen
+[219199] = { "прислужник Омена" }, -- Omen
+[219659] = { "Верховний штукар Меккакруть", "король гномів" }, -- Gelbin Mekkatorque
+[219663] = { "Ноґґ", "інженер-експерт", en="Nogg" }, -- Nogg <Expert Engineer>
 [219822] = { "прикутий дух", en="Chained Spirit" }, -- Chained Spirit
 [219986] = { "дух вовка", en="Spirit Wolf" }, -- Spirit Wolf
 [220007] = { "в'язкі відходи", en="Viscous Fallout" }, -- Viscous Fallout
@@ -341,7 +364,7 @@ local npc = { -- [id] = { title, description (optional) }
 [221200] = { "драконіда-жахоступ", en="Wyrmkin Terrorwalker" }, -- Wyrmkin Terrorwalker
 [221201] = { "канатолаз", en="Rope Climber" }, -- Rope Climber
 [221204] = { "Ілантрій", en="Ylanthrius" }, -- Ylanthrius
-[221206] = { "Вварк'Зул", "король лісу", en="Vvarc' Zul" }, -- Vvarc' Zul
+[221206] = { "Вварк'Зул", "король лісу", en="Vvarc'Zul" }, -- Vvarc'Zul
 [221207] = { "Амокарок", "вожак зграї", en="Amokarok" }, -- Amokarok
 [221210] = { "Кролл Тінь Гори", "друїд Пазура", en="Kroll Mountainshade" }, -- Kroll Mountainshade <Druid of the Claw>
 [221215] = { "Алара Цілителька Рощі", "друїд Пазура", en="Alara Grovemender" }, -- Alara Grovemender <Druid of the Claw>
@@ -371,7 +394,7 @@ local npc = { -- [id] = { title, description (optional) }
 [221272] = { "вартовий сну Мандоран", en="Dreamwarden Mandoran" }, -- Dreamwarden Mandoran
 [221273] = { "вартова сну Ланарія", en="Dreamwarden Lanaria" }, -- Dreamwarden Lanaria
 [221282] = { "сноклят Іскристого Жару", en="Emberspark Dreamsworn" }, -- Emberspark Dreamsworn
-[221283] = { "біг Вогнища Сну", en="Dreampyre Imp" }, -- Dreampyre Imp
+[221283] = { "біс Вогнища Сну", en="Dreampyre Imp" }, -- Dreampyre Imp
 [221292] = { "гончак-мисливець Сну", en="Dreamhunter Hound" }, -- Dreamhunter Hound
 [221312] = { "жахоперий гіпогриф", en="Dreadfeather Hippogryph" }, -- Dreadfeather Hippogryph
 [221315] = { "нестабільний світлик", en="Unstable Wisp" }, -- Unstable Wisp
@@ -463,18 +486,21 @@ local npc = { -- [id] = { title, description (optional) }
 [222008] = { "канатолаз", en="Rope Climber" }, -- Rope Climber
 [222044] = { "сутінковий темний шаман", en="Twilight Dark Shaman" }, -- Twilight Dark Shaman
 [222052] = { "біс-дослідник", en="Explorer Imp" }, -- Explorer Imp
-[222088] = { "дракончик кошмару", en="Nightmare Whelpling" }, -- Nightmare Whelpling
+[222088] = { "драконеня кошмару", en="Nightmare Whelpling" }, -- Nightmare Whelpling
 [222089] = { "лускоклят кошмару", en="Nightmare Scalebane" }, -- Nightmare Scalebane
 [222188] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
 [222192] = { "лоза кошмару", en="Nightmare Vine" }, -- Nightmare Vine
 [222198] = { "злиття кошмару", en="Nightmare Amalgamation" }, -- Nightmare Amalgamation
+[222228] = { "щілина Скверни", en="Fel Sliver" }, -- Fel Sliver
 [222232] = { "осквернений помірний прояв повітря", en="Corrupt Moderate Manifestation of Air" }, -- Corrupt Moderate Manifestation of Air
 [222233] = { "Охк'зі", en="Ohk'zi" }, -- Ohk'zi
 [222243] = { "Зопілот", en="Zopilote" }, -- Zopilote
 [222261] = { "Максиміліан \"Мастильник\"", en="Maximillian \"The Greaser\"" }, -- Maximillian "The Greaser"
 [222286] = { "Наміда Зловісний Тотем", en="Namida Grimtotem" }, -- Namida Grimtotem
+[222288] = { "розлом Скверни", en="Fel Rift" }, -- Fel Rift
 [222289] = { "помірний прояв повітря", en="Moderate Manifestation of Air" }, -- Moderate Manifestation of Air
 [222290] = { "безталанний шукач пригод", en="Unfortunate Adventurer" }, -- Unfortunate Adventurer
+[222316] = { "Шипоскок Мідномот", en="Fizzbizz Coppercoil" }, -- Fizzbizz Coppercoil
 [222367] = { "дитинча гроддокської мавпи", en="Groddoc Infant" }, -- Groddoc Infant
 [222376] = { "дитинча гроддокської мавпи", en="Groddoc Infant" }, -- Groddoc Infant
 [222405] = { "скупчення лей-лінії", en="Leyline Conflux" }, -- Leyline Conflux
@@ -483,6 +509,7 @@ local npc = { -- [id] = { title, description (optional) }
 [222408] = { "емісар Тінезубих", en="Shadowtooth Emissary" }, -- Shadowtooth Emissary
 [222409] = { "Бос \"Ґобб\" Злотник", "здобич і знахідки зі Сну", en="Boss \"Gobb\" Goldnick" }, -- Boss "Gobb" Goldnick
 [222410] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
+[222413] = { "дослідник Залґо", "постачальник загублених речей", en="Zalgo the Explorer" }, -- Zalgo the Explorer
 [222416] = { "скелетний вітряний змій", en="Skeletal Wind Serpent" }, -- Skeletal Wind Serpent
 [222418] = { "верховий кажан", en="Riding Bat" }, -- Riding Bat
 [222444] = { "поранений гном", "відомий лицар", en="Injured Gnome" }, -- Injured Gnome
@@ -504,6 +531,7 @@ local npc = { -- [id] = { title, description (optional) }
 [222546] = { "Йодакс-Руйнівник", en="Iodax the Obliterator" }, -- Iodax the Obliterator
 [222551] = { "Ґрендаґ Яскравобородий", "талановитий дворф", en="Grendag Brightbeard" }, -- Grendag Brightbeard
 [222553] = { "мумія Атал'ай", en="Atal'ai Mummy" }, -- Atal'ai Mummy
+[222566] = { "живе полум'я", en="Animated Flame" }, -- Animated Flame
 [222573] = { "несамовитий древній", en="Delirious Ancient" }, -- Delirious Ancient
 [222580] = { "дитя Апа'ро", en="Child of Apa'ro" }, -- Child of Apa'ro
 [222617] = { "помірний прояв вогню", en="Moderate Manifestation of Fire" }, -- Moderate Manifestation of Fire
@@ -562,8 +590,26 @@ local npc = { -- [id] = { title, description (optional) }
 [223586] = { "Гукку", en="Hukku" }, -- Hukku
 [223587] = { "Міджан", en="Mijan" }, -- Mijan
 [223588] = { "Ґешер", en="Gasher" }, -- Gasher
-[223590] = { "вівтар вартового", en="Shrine of the Watcher" }, -- Shrine of the Watcher
+[223590] = { "вівтар спостерігача", en="Shrine of the Watcher" }, -- Shrine of the Watcher
 [223591] = { "ехо загубленої душі", en="Echo of a Lost Soul" }, -- Echo of a Lost Soul
+[224242] = { "просяклий слизень", en="Saturated Ooze" }, -- Saturated Ooze
+[224243] = { "глибинний маскун", en="Deep Lurker" }, -- Deep Lurker
+[224244] = { "слизовий черв", en="Slime Maggot" }, -- Slime Maggot
+[224245] = { "слизнюк", en="Oozeling" }, -- Oozeling
+[224250] = { "воїн Атал'ай", en="Atal'ai Warrior" }, -- Atal'ai Warrior
+[224253] = { "блукач кошмару", en="Nightmare Wanderer" }, -- Nightmare Wanderer
+[224254] = { "драконіда кошмару", en="Nightmare Wyrmkin" }, -- Nightmare Wyrmkin
+[224255] = { "лускоклят кошмару", en="Nightmare Scalebane" }, -- Nightmare Scalebane
+[224256] = { "дракончик кошмару", en="Nightmare Whelp" }, -- Nightmare Whelp
+[224257] = { "раб Атал'ай", en="Atal'ai Slave" }, -- Atal'ai Slave
+[224258] = { "верховний жрець Атал'ай", en="Atal'ai High Priest" }, -- Atal'ai High Priest
+[224259] = { "смертеступ Атал'ай", en="Atal'ai Deathwalker" }, -- Atal'ai Deathwalker
+[224260] = { "трупоїд Атал'ай", en="Atal'ai Corpse Eater" }, -- Atal'ai Corpse Eater
+[224262] = { "неживий троль Атал'ай", en="Unliving Atal'ai" }, -- Unliving Atal'ai
+[224263] = { "знахар Атал'ай", en="Atal'ai Witch Doctor" }, -- Atal'ai Witch Doctor
+[224328] = { "дослідник Залґо", "постачальник загублених речей", en="Zalgo the Explorer" }, -- Zalgo the Explorer
+[224386] = { "вогнестраж-винищувач", en="Fireguard Destroyer" }, -- Fireguard Destroyer
+[224743] = { "смарагдовий вартовий", en="Emerald Warden" }, -- Emerald Warden
 }
 
 if addonTable.npc then

@@ -9,8 +9,6 @@ local npc = { -- [id] = { title, description (optional) }
 [5086] = { "капітан Ваймор", en="Captain Wymor" }, -- Captain Wymor
 [6115] = { "мандрівний вартовий скверни", en="Roaming Felguard" }, -- Roaming Felguard
 [10182] = { "Рокаро", "герой Орди", en="Rokaro" }, -- Rokaro
-[11680] = { "розвідник Орди", en="Horde Scout" }, -- Horde Scout
-[11681] = { "лісозаготівельник Орди", en="Horde Deforester" }, -- Horde Deforester
 [15271] = { "деревун", en="Tender" }, -- Tender
 [15273] = { "арканічний привид", en="Arcane Wraith" }, -- Arcane Wraith
 [15274] = { "маназмій", en="Mana Wyrm" }, -- Mana Wyrm
