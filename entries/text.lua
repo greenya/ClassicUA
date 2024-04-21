@@ -8,6 +8,7 @@ addonTable.text = { -- [key] = text
 ["Horde Territory"] = "Територія Орди",
 ["Meeting Stone"] = "Камінь зустрічі",
 ["Need"] = "Потрібно",
+["Pass"] = "Відмовляюсь",
 ["PvP Area"] = "PvP зона",
 ["Sanctuary"] = "Прихисток",
 ["Tracking"] = "Вистежування",
