@@ -1,8 +1,10 @@
 local _, addonTable = ...
-local tbc_spells = { -- [id] = { title, description (optional), aura (optional) }
+local tbc_spells = {
 
 -- See /entries/classic/spell.lua for data format details.
 
+[22734] = { ref=430 }, -- Drink
+[27089] = { ref=430 }, -- Drink
 [28875] = { "Різьба по каменю", "Навичка ювелірної справи підвищена на 5." },
 [28878] = { "Натхнена присутність", "Збільшення ймовірності ураження закляттями на 1% вам та всім учасникам групи в радіусі 30 м." },
 [28880] = { "Дар Наару", "Поповнення {1} од. здоров'я цілі впродовж 15 с.#of {1} damage" },
@@ -24,8 +26,13 @@ local tbc_spells = { -- [id] = { title, description (optional), aura (optional) 
 [31587] = { ref=31584 },
 [31588] = { ref=31584 },
 [31589] = { "Сповільнення", "Знижує швидкість пересування цілі на 50%, збільшує інтервал між її атаками у дальньому бою на 50% та час застосування заклять на 50%. Час дії – 15 с. Одночасно діє лише на одну ціль." },
+[33077] = { ref=8115 }, -- Agility (aura, Scroll of Agility V)
 [33359] = { ref = 18260 },
-
+[33078] = { ref=8096 }, -- Intellect (aura, Scroll of Intellect V)
+[33079] = { ref=8091 }, -- Armor (aura, Scroll of Protection V)
+[33080] = { ref=8112 }, -- Spirit (aura, Scroll of Spirit V)
+[33081] = { ref=8099 }, -- Stamina (aura, Scroll of Stamina V)
+[33082] = { ref=8118 }, -- Strength (aura, Scroll of Strength V)
 }
 
 for k, v in pairs(tbc_spells) do addonTable.spell[k] = v end
