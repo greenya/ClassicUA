@@ -210,27 +210,27 @@ addonTable.spell = {
 [20585] = { "Дух світлика", "Перетворює вас на світлика після смерті, збільшуючи швидкість руху на {1}%.#speed by {1}" }, -- Wisp Spirit
 
 -- Scrolls
-[8115] = { "Спритність", nil, "Спритність збільшено на {1}.#by {1}" }, -- Agility (aura, Scroll of Agility)
+[8115] = { "Спритність", "Збільшує спритність цілі на {1} протягом {2} хв.#by {1} for {2} min", "Спритність збільшено на {1}.#by {1}" }, -- Agility (aura, Scroll of Agility)
 [8116] = { ref=8115 }, -- Agility (aura, Scroll of Agility II)
 [8117] = { ref=8115 }, -- Agility (aura, Scroll of Agility III)
 [12174] = { ref=8115 }, -- Agility (aura, Scroll of Agility IV)
-[8096] = { "Інтелект", nil, "Інтелект збільшено на {1}.#by {1}" }, -- Intellect (aura, Scroll of Intellect)
+[8096] = { "Інтелект", "Збільшує інтелект цілі на {1} протягом {2} хв.#by {1} for {2} min", "Інтелект збільшено на {1}.#by {1}" }, -- Intellect (aura, Scroll of Intellect)
 [8097] = { ref=8096 }, -- Intellect (aura, Scroll of Intellect II)
 [8098] = { ref=8096 }, -- Intellect (aura, Scroll of Intellect III)
 [12176] = { ref=8096 }, -- Intellect (aura, Scroll of Intellect IV)
-[8091] = { "Броня", nil, "Броню збільшено на {1}.#by {1}" }, -- Armor (aura, Scroll of Protection)
+[8091] = { "Броня", "Збільшує броню цілі на {1} протягом {2} хв.#by {1} for {2} min", "Броню збільшено на {1}.#by {1}" }, -- Armor (aura, Scroll of Protection)
 [8094] = { ref=8091 }, -- Armor (aura, Scroll of Protection II)
 [8095] = { ref=8091 }, -- Armor (aura, Scroll of Protection III)
 [12175] = { ref=8091 }, -- Armor (aura, Scroll of Protection IV)
-[8112] = { "Дух", nil, "Дух збільшено на {1}.#by {1}" }, -- Spirit (aura, Scroll of Spirit)
+[8112] = { "Дух", "Збільшує дух цілі на {1} протягом {2} хв.#by {1} for {2} min", "Дух збільшено на {1}.#by {1}" }, -- Spirit (aura, Scroll of Spirit)
 [8113] = { ref=8112 }, -- Spirit (aura, Scroll of Spirit II)
 [8114] = { ref=8112 }, -- Spirit (aura, Scroll of Spirit III)
 [12177] = { ref=8112 }, -- Spirit (aura, Scroll of Spirit IV)
-[8099] = { "Витривалість", nil, "Витривалість збільшено на {1}.#by {1}" }, -- Stamina (aura, Scroll of Stamina)
+[8099] = { "Витривалість", "Збільшує витривалість цілі на {1} протягом {2} хв.#by {1} for {2} min", "Витривалість збільшено на {1}.#by {1}" }, -- Stamina (aura, Scroll of Stamina)
 [8100] = { ref=8099 }, -- Stamina (aura, Scroll of Stamina II)
 [8101] = { ref=8099 }, -- Stamina (aura, Scroll of Stamina III)
 [12178] = { ref=8099 }, -- Stamina (aura, Scroll of Stamina IV)
-[8118] = { "Сила", nil, "Силу збільшено на {1}.#by {1}" }, -- Strength (aura, Scroll of Strength)
+[8118] = { "Сила", "Збільшує силу цілі на {1} протягом {2} хв.#by {1} for {2} min", "Силу збільшено на {1}.#by {1}" }, -- Strength (aura, Scroll of Strength)
 [8119] = { ref=8118 }, -- Strength (aura, Scroll of Strength II)
 [8120] = { ref=8118 }, -- Strength (aura, Scroll of Strength III)
 [12179] = { ref=8118 }, -- Strength (aura, Scroll of Strength IV)
@@ -320,80 +320,92 @@ addonTable.spell = {
 [89] = { "Каліцтво", "Калічить ціль, що знижує швидкість її переміщення на 40%, збільшує проміжок між атаками ближнього бою на 45% і атаками дальнього бою на 45%. Триває 20 с.", "Швидкість пересування зменшено на 40%. Час між атаками ближнього бою збільшено на 45%. Час між атаками дальнього бою збільшено на 45%." },
 [96] = { "Розчленування", "Збільшує пошкодження від вашого наступного удару ближнього бою на 100 та спричиняє кровотечу.", "Кровоточить на 1248 пошкодження кожні 2 секунди." },
 [113] = { "Льодяні ланцюги", "Створює навколо ворога льодяні ланцюги, приковуючи його на місці на 15 с.", "Прикований на місці." },
-[430] = { "Напій", nil, "Відновлює 8 мани щосекунди." },
-[431] = { "Напій", nil, "Відновлює 20 мани щосекунди." },
-[432] = { "Напій", nil, "Відновлює 34 мани щосекунди." },
-[433] = { "Їжа", "Відновлює {1} здоров'я протягом {2} с. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2}", "Відновлює {1} здоров'я щосекунди.#Restores {1}" }, -- Food, @desc Restores 61.2 health over 18 sec. Must remain seated while eating., @aura Restores 3.4 health per second.
-[434] = { "Їжа", ref=433 },
-[435] = { "Їжа", ref=433 },
-[673] = { "Мале підвищення броні", ref=3220 }, -- Lesser Armor (aura, Elixir of Minor Defense)
-[806] = { "Палкість", nil, "Силу збільшено. Отримання пошкодження." }, -- Fervor (aura, Potion of Fervor)
+[128] = { "Камінь чарів", "Усуває всі магічні ефекти з заклинача та поглинає {1} магічної шкоди протягом {2} хв.#absorb {1} magic damage for {2} min", "Поглинає магічну шкоду." },
+[430] = { "Напій", "Відновлює {1} мани протягом {2} с. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} mana over {2} sec", "Відновлює {1} мани щосекунди.#Restores {1} mana" }, -- Drink
+[431] = { ref=430 }, -- Drink
+[432] = { ref=430 }, -- Drink
+[433] = { "Їжа", "Відновлює {1} здоров'я протягом {2} с. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health over {2} sec", "Відновлює {1} здоров'я щосекунди.#Restores {1} health" }, -- Food, @desc Restores 61.2 health over 18 sec. Must remain seated while eating., @aura Restores 3.4 health per second.
+[434] = { ref=433 }, -- Food
+[435] = { ref=433 }, -- Food
+[673] = { "Мале підвищення броні", "Збільшує броню на {1} протягом {2} год.#by {1} for {2} h", "Броню збільшено на {1}.#by {1}" }, -- Lesser Armor (aura, Elixir of Minor Defense)
+[806] = { "Палкість", "Збільшує силу на {1} та завдає вам {2} шкоди кожні {3} с протягом {4} хв.#by {1} and does {2} damage to you every {3} sec for {4} min", "Силу збільшено. Отримання шкоди." }, -- Fervor (aura, Potion of Fervor)
 [818] = { "Звичайне вогнище", "Розпалювання вогнища, яке дозволяє готувати їжу та підвищує дух персонажів, які знаходяться поряд, на 4 од." },
-[1127] = { "Їжа", ref=433 },
-[1133] = { "Напій", nil, "Відновлює 49 мани щосекунди." },
+[1127] = { ref=433 }, -- Food
+[1129] = { ref=433 }, -- Food
+[1131] = { ref=433 }, -- Food
+[1133] = { ref=430 }, -- Drink
+[1135] = { ref=430 }, -- Drink
+[1137] = { ref=430 }, -- Drink
 [1604] = { "Запаморочення", nil, "Швидкість руху знижено на 50%." },
-[2367] = { "Мале підвищення сили", ref=3163 }, -- Lesser Strength (aura, Elixir of Lion's Strength)
+[2367] = { "Мале підвищення сили", "Збільшує силу на {1} протягом {2} год.#by {1} for {2} h", "Силу збільшено на {1}.#by {1}" }, -- Lesser Strength (aura, Elixir of Lion's Strength)
 [2374] = { "Мале підвищення спритності", ref=3159 }, -- Lesser Agility (aura, Elixir of Minor Agility)
-[2378] = { "Здоров'я", nil, "Здоров'я збільшено на {1}.#by {1}" }, -- Health (aura, Elixir of Minor Fortitude)
-[2379] = { "Швидкість", nil, "Швидкість бігу збільшено на {1}%.#by {1}" }, -- Speed (aura, Swiftness Potion)
+[2378] = { "Здоров'я", "Збільшує запас здоров'я на {1} протягом {2} год.#by {1} for {2} h", "Запас здоров'я збільшено на {1}.#by {1}" }, -- Health (aura, Elixir of Minor Fortitude)
+[2379] = { "Швидкість", "Збільшує швидкість бігу на {1}% протягом {2} с.#by {1}% for {2} sec", "Швидкість бігу збільшено на {1}%.#by {1}%" }, -- Speed (aura, Swiftness Potion)
 [2479] = { "Безславна ціль", nil, "Наразі ви не варті жодних очок честі для ворога." }, -- Honorless Target (aura)
+[2639] = { "Їжа", "Відновлює {1} здоров'я та {2} мани протягом {3} с. Потрібно залишатися в сидячому положенні під час їжі.#Restores {1} health and {2} mana over {3} sec", "Відновлює {1} здоров'я та {2} мани щосекунди.#Restores {1} health and {2} mana" }, -- Food, @desc Restores 61.2 health over 18 sec. Must remain seated while eating., @aura Restores 3.4 health per second.
 [3137] = { "Ефект знищення отруєння" },
-[3159] = { "Спритність", nil, "Спритність збільшено на {1}.#by {1}" }, -- Agility (aura)
+[3159] = { "Спритність", "Збільшує спритність на {1} протягом {2} год.#by {1} for {2} h", "Спритність збільшено на {1}.#by {1}" }, -- Agility (aura)
 [3160] = { ref=3159 }, -- Agility (aura, Elixir of Lesser Agility)
-[3161] = { "Мале підвищення сили", ref=3163 }, -- Lesser Strength (aura)
-[3162] = { "Мале підвищення сили", ref=3163 }, -- Lesser Strength (aura)
-[3163] = { "Сила", nil, "Силу збільшено на {1}.#by {1}" }, -- Strength (aura)
+[3161] = { ref=2367 }, -- Lesser Strength (aura)
+[3162] = { ref=2367 }, -- Lesser Strength (aura)
+[3163] = { "Сила", ref=2367 }, -- Strength (aura)
 [3164] = { ref=3163 }, -- Strength (aura, Elixir of Ogre's Strength)
-[3166] = { "Мале підвищення інтелекту", nil, "Інтелект збільшено на {1}.#by {1}" }, -- Lesser Intellect (aura, Elixir of Wisdom)
-[3169] = { "Невразливість", nil, "Невразливість до фізичних атак." }, -- Invulnerability (aura, Limited Invulnerability Potion)
-[3219] = { "Регенерація", nil, "Відновлює {1} здоров'я кожні {2} с.#{1} health every {2} sec" }, -- Regeneration (aura, Weak Troll's Blood Potion)
-[3220] = { "Броня", nil, "Броню збільшено на {1}.#by {1}" }, -- Armor (aura, Elixir of Defense)
+[3166] = { "Мале підвищення інтелекту", "Збільшує інтелект на {1} протягом {2} год.#by {1} for {2} h", "Інтелект збільшено на {1}.#by {1}" }, -- Lesser Intellect (aura, Elixir of Wisdom)
+[3169] = { "Невразливість", "Надає невразливість до фізичних атак протягом {1} с.#next {1} sec", "Невразливість до фізичних атак." }, -- Invulnerability (aura, Limited Invulnerability Potion)
+[3219] = { "Регенерація", "Відновлює {1} здоров'я кожні {2} с протягом {3} год. (Відновлення 3 сек)#{1} health every {2} sec for {3} h", "Відновлює {1} здоров'я кожні {2} с.#{1} health every {2} sec" }, -- Regeneration (aura, Weak Troll's Blood Potion)
+[3220] = { "Броня", ref=673 }, -- Armor (aura, Elixir of Defense)
 [3222] = { ref=3219 }, -- Regeneration (aura, Strong Troll's Blood Potion)
 [3223] = { ref=3219 }, -- Regeneration (aura, Mighty Troll's Blood Potion)
 [3593] = { "Здоров'я II", ref=2378 }, -- Health II (aura, Elixir of Fortitude)
-[3680] = { "Мала невидимість", nil, "Мала невидимість." }, -- Lesser Invisibility (aura, Lesser Invisibility Potion)
+[3680] = { "Мала невидимість", "Надає малу невидимість на {1} с.#for {1} sec", "Мала невидимість." }, -- Lesser Invisibility (aura, Lesser Invisibility Potion)
 [3908] = { "Швацька справа", "Дозволяє створювати прості обладунки з тканини до максимального потенційного рівня навички 75. Для виготовлення потрібна тканина, яка видобувається у гуманоїдів." },
-[4941] = { "Каменещит", nil, "Броню збільшено." }, -- Stoneshield (aura, Lesser Stoneshield Potion)
+[4941] = { "Каменещит", "Збільшує броню на {1} протягом {2} хв.#armor by {1} for {2} min", "Броню збільшено." }, -- Stoneshield (aura, Lesser Stoneshield Potion)
+[5004] = { "Їжа", "Відновлює {1} здоров'я протягом {2} секунд. Потрібно залишатися в сидячому положенні під час їжі. Через 10 сек ви насититесь і ваші витривалість та дух збільшаться на {3} протягом {4} хв.#Restores {1} health over {2} sec#gain {3} Stamina and Spirit fpr {4} min", "Відновлює {1} здоров'я щосекунди.#Restores {1} health" },
+[5005] = { ref=5004 }, -- Food
+[5006] = { ref=5004 }, -- Food
+[5007] = { ref=5004 }, -- Food
 [5320] = { "Грація Ічіякі" },
 [5321] = { "Лють Ішамухала", "Збільшує Витривалість цілі на 2 на 30 хв." },
 [5530] = { "Приголомшення булавою", "Приголомшує ціль на 3 с." },
 [5857] = { "Ефект пекельного вогню" },
-[6512] = { "Виявлення малої невидимості", nil, "Виявлення малої невидимості." }, -- Detect Lesser Invisibility (aura, Elixir of Detect Lesser Invisibility)
+[6512] = { "Виявлення малої невидимості", "Надає виявлення малої невидимості протягом {1} хв.#for {1} min", "Виявлення малої невидимості." }, -- Detect Lesser Invisibility (aura, Elixir of Detect Lesser Invisibility)
 [6603] = { "Атакувати" },
-[6615] = { "Вільна дія", nil, "Вільна дія." }, -- Free Action (aura, Free Action Potion)
-[6724] = { "Сяйво Елуни", nil, "Невразливість до пошкодження та заклять." }, -- Light of Elune (aura, Light of Elune)
-[7178] = { "Водне дихання", nil, "Водне дихання." }, -- Water Breathing (aura, Elixir of Water Breathing)
-[7230] = { ref=7233 }, -- Fire Protection (aura)
-[7231] = { ref=7233 }, -- Fire Protection (aura)
-[7232] = { ref=7233 }, -- Fire Protection (aura)
-[7233] = { "Вогняний захист", nil, "Поглинає від {1} до {2} шкоди від вогню.#Absorbs {1} to {2}" }, -- Fire Protection (aura, Fire Protection Potion)
-[7234] = { ref=7233 }, -- Fire Protection (aura)
-[7235] = { ref=7242 }, -- Shadow Protection (aura)
-[7236] = { ref=7239 }, -- Frost Protection (aura)
-[7237] = { ref=7239 }, -- Frost Protection (aura)
-[7238] = { ref=7239 }, -- Frost Protection (aura)
-[7239] = { "Крижаний захист", nil, "Поглинає від {1} до {2} шкоди від криги.#Absorbs {1} to {2}" }, -- Frost Protection (aura, Frost Protection Potion)
-[7240] = { ref=7239 }, -- Frost Protection (aura)
-[7241] = { ref=7242 }, -- Shadow Protection (aura)
-[7242] = { "Тіньовий захист", nil, "Поглинає від {1} до {2} шкоди від тіні.#Absorbs {1} to {2}" }, -- Shadow Protection (aura, Shadow Protection Potion)
-[7243] = { ref=7242 }, -- Shadow Protection (aura)
-[7244] = { ref=7242 }, -- Shadow Protection (aura)
-[7245] = { "Священний захист", nil, "Поглинає від {1} до {2} шкоди від священності.#Absorbs {1} to {2}" }, -- Holy Protection (aura, Holy Protection Potion)
+[6615] = { "Невпинність", "Надає невразливість до приголомшення та ефектів обмеження руху на наступні {1} с. Не знімає вже наявні ефекти.#next {1} sec", "Невпинність." }, -- Free Action (aura, Free Action Potion)
+[6724] = { "Сяйво Елуни", "Дає невразливість до шкоди та заклять протягом {1} с.#for {1} sec", "Невразливість до шкоди та заклять." }, -- Light of Elune (aura, Light of Elune)
+[7178] = { "Водне дихання", "Дозволяє дихати водою протягом {1} хв.#for {1} min", "Водне дихання." }, -- Water Breathing (aura, Elixir of Water Breathing)
+[7230] = { "Вогняний захист", "Поглинає від {1} до {2} шкоди від вогню. Триває {3} год.#Absorbs {1} to {2}#Lasts {3} h", "Поглинає від {1} до {2} шкоди від вогню.#Absorbs {1} to {2}" }, -- Fire Protection (aura)
+[7231] = { ref=7230 }, -- Fire Protection (aura)
+[7232] = { ref=7230 }, -- Fire Protection (aura)
+[7233] = { ref=7230 }, -- Fire Protection (aura, Fire Protection Potion)
+[7234] = { ref=7230 }, -- Fire Protection (aura)
+[7235] = { "Тіньовий захист", "Поглинає від {1} до {2} шкоди від тіні. Триває {3} год.#Absorbs {1} to {2}#Lasts {3} h", "Поглинає від {1} до {2} шкоди від тіні.#Absorbs {1} to {2}" }, -- Shadow Protection (aura)
+[7236] = { "Крижаний захист", "Поглинає від {1} до {2} шкоди від криги. Триває {3} год.#Absorbs {1} to {2}#Lasts {3} h", "Поглинає від {1} до {2} шкоди від криги.#Absorbs {1} to {2}" }, -- Frost Protection (aura)
+[7237] = { ref=7236 }, -- Frost Protection (aura)
+[7238] = { ref=7236 }, -- Frost Protection (aura)
+[7239] = { ref=7236 }, -- Frost Protection (aura, Frost Protection Potion)
+[7240] = { ref=7236 }, -- Frost Protection (aura)
+[7241] = { ref=7235 }, -- Shadow Protection (aura)
+[7242] = { ref=7235 }, -- Shadow Protection (aura, Shadow Protection Potion)
+[7243] = { ref=7235 }, -- Shadow Protection (aura)
+[7244] = { ref=7235 }, -- Shadow Protection (aura)
+[7245] = { "Священний захист", "Поглинає від {1} до {2} шкоди від святості. Триває {3} год.#Absorbs {1} to {2}#Lasts {3} h", "Поглинає від {1} до {2} шкоди від святості.#Absorbs {1} to {2}" }, -- Holy Protection (aura, Holy Protection Potion)
 [7246] = { ref=7245 }, -- Holy Protection (aura)
 [7247] = { ref=7245 }, -- Holy Protection (aura)
 [7248] = { ref=7245 }, -- Holy Protection (aura)
 [7249] = { ref=7245 }, -- Holy Protection (aura)
-[7250] = { ref=7254 }, -- Nature Protection (aura)
-[7251] = { ref=7254 }, -- Nature Protection (aura)
-[7252] = { ref=7254 }, -- Nature Protection (aura)
-[7253] = { ref=7254 }, -- Nature Protection (aura)
-[7254] = { "Природний захист", nil, "Поглинає від {1} до {2} шкоди від природи.#Absorbs {1} to {2}" }, -- Nature Protection (aura, Nature Protection Potion)
+[7250] = { "Природний захист", "Поглинає від {1} до {2} шкоди від природи. Триває {3} год.#Absorbs {1} to {2}#Lasts {3} h", "Поглинає від {1} до {2} шкоди від природи.#Absorbs {1} to {2}" }, -- Nature Protection (aura)
+[7251] = { ref=7250 }, -- Nature Protection (aura)
+[7252] = { ref=7250 }, -- Nature Protection (aura)
+[7253] = { ref=7250 }, -- Nature Protection (aura)
+[7254] = { ref=7250 }, -- Nature Protection (aura, Nature Protection Potion)
 [7412] = { "Накладання чар", "Дозволяє застосовувати чари до зброї та обладунків до максимального потенційного рівня навички 150." },
+[7737] = { ref=433 }, -- Food
 [7764] = { "Мудрість Аґамаґґана", nil, "Збільшує інтелект на {1}.#by {1}" }, -- Wisdom of Agamaggan (aura)
-[7840] = { "Швидке плавання", nil, "Швидкість плавання збільшено на {1}%.#by {1}" }, -- Swim Speed (aura, Swim Speed Potion)
-[7844] = { "Вогняна міць", nil, "Збільшено пошкодження вогнем від заклять та здібностей на {1}.#by up to {1}" }, -- Fire Power (aura, Elixir of Firepower)
+[7840] = { "Швидке плавання", "Збільшує швидкість плавання на {1}% протягом {2} с.#by {1}% for {2} sec", "Швидкість плавання збільшено на {1}%.#by {1}%" }, -- Swim Speed (aura, Swim Speed Potion)
+[7844] = { "Вогнеміць", "Збільшує шкоду від вогняних заклинань на {1} протягом {2} хв.#by up to {1} for {2} min", "Шкоду вогнем від заклинань та здібностей збільшено на {1}.#by up to {1}" }, -- Fire Power (aura, Elixir of Firepower)
+[8070] = { "Відживлення", "Відновлює цілі {1} здоров'я протягом {2} секунд.#for {1} damage over {2} sec", "Зцілює {1} здоров'я кожні {2} с.#{1} damage every {2}" }, -- Rejuvenation
 [8202] = { "Зір сапти", nil, "Здатність бачити духів стихій." }, -- Sapta Sight (aura, Earth Sapta)
-[8212] = { "Збільшення", nil, "Збільшує силу на {1}, а також збільшує ваш розмір.#by {1}" }, -- Enlarge (aura, Elixir of Giant Growth)
+[8212] = { "Збільшення", "Ваш розмір збільшується, а ваша сила зростає на {1}, відповідно до вашого нового розміру. Триває {2} хв.#up by {1}#Lasts {2} min", "Силу збільшено на {1}, а також збільшено розмір.#by {1}" }, -- Enlarge (aura, Elixir of Giant Growth)
 [8219] = { "Підміна", nil, "Видозмінено." }, -- Flip Out (aura, Savory Deviate Delight)
 [8220] = { ref=8219 }, -- Flip Out (aura, Savory Deviate Delight)
 [8221] = { "Яааарррр", nil, "Видозмінено." }, -- Yaaarrrr (aura, Savory Deviate Delight)
@@ -404,9 +416,13 @@ addonTable.spell = {
 [8226] = { "Імітація смерті", nil, "Вдає мертвого." }, -- Fake Death (aura, Savory Deviate Delight)
 [8326] = { "Привид", nil, "Рухайтеся до місця вашого тіла або поговоріть з цілителем духу щоб повернутися до життя." }, -- Ghost (aura)
 [8377] = { "Землехват", nil, "Знерухомлено." }, -- Earthgrab (aura, Earthgrab Totem)
+[9175] = { "Швидкість бігу", ref=2379 }, -- Running Speed
 [9574] = { "Вогняний ляпас", nil, "Збільшено отримуване пошкодження вогнем на {1}.#by {1}" }, -- Flame Buffet (aura)
 [9658] = { ref=9574 }, -- Flame Buffet (aura)
 [9991] = { "Дотик Занзіла", "Від дотику Занзіла по ваших венах тече отрута. Знайдіть ліки!", "Від дотику Занзіла по ваших венах тече отрута. Знайдіть ліки!" }, -- Touch of Zanzil
+[10250] = { ref=430 }, -- Drink
+[10256] = { ref=5004 }, -- Food
+[10257] = { ref=5004 }, -- Food
 [10452] = { ref=9574 }, -- Flame Buffet (aura)
 [10667] = { "Віковічна лють", nil, "Збільшує силу на {1}.#by {1}" }, -- Rage of Ages (aura, R.O.I.D.S.)
 [10668] = { "Дух кнура", nil, "Збільшує витривалість на {1}.#by {1}" }, -- Spirit of Boar (aura, Lung Juice Cocktail)
@@ -420,31 +436,31 @@ addonTable.spell = {
 [10693] = { "Духовне панування", nil, "Збільшує дух на {1}.#by {1}" }, -- Spiritual Domination (aura, Gizzard Gum)
 [10767] = { "Піднесення духу", "Збільшує дух на {1}.#by {1}", "Збільшує дух на {1}.#by {1}" }, -- Rising Spirit (aura)
 [11196] = { "Нещодавно перев'язаний", nil, "Не можна перев'язати знову." }, -- Recently Bandaged (aura)
-[11319] = { "Ходіння по воді", nil, "Дозволяє ходити по воді та водоподібних поверхнях." }, -- Water Walking (aura, Elixir of Water Walking)
+[11319] = { "Ходіння по воді", "Дозволяє вам ходити по воді протягом {1} хв.#for {1} min", "Дозволяє ходити по воді та водоподібних поверхнях." }, -- Water Walking (aura, Elixir of Water Walking)
 [11328] = { ref=3159 }, -- Agility (aura, Elixir of Agility)
 [11330] = { ref=3159 }, -- Agility (aura)
 [11331] = { ref=3163 }, -- Strength (aura)
 [11334] = { "Велика спритність", ref=3159 }, -- Greater Agility (aura, Elixir of Greater Agility)
-[11348] = { "Велика броня", ref=3220 }, -- Greater Armor (aura, Elixir of Superior Defense)
+[11348] = { "Велика броня", ref=673 }, -- Greater Armor (aura, Elixir of Superior Defense)
 [11349] = { ref=3220 }, -- Armor (aura, Elixir of Greater Defense)
-[11359] = { "Відновлювання", nil, "Знімає один магічний ефект, прокляття, отруту або хворобу кожні {1} с протягом {2} с.#every {1} seconds for {2} seconds" }, -- Restoration (aura, Restorative Potion)
-[11371] = { "Дар Артаса", nil, "Збільшує супротив тіні на {1} та може уразити хворобою атакуючих.#resist by {1}" }, -- Gift of Arthas (aura, Gift of Arthas)
-[11374] = { "Дар Артаса", nil, "Збільшує отримуване фізичне пошкодження на {1}.#taken by {1}" }, -- Gift of Arthas (aura, Gift of Arthas)
-[11389] = { "Виявлення невмерлих", nil, "Виявлення невмерлих." }, -- Detect Undead (aura, Elixir of Detect Undead)
-[11390] = { "Арканічний еліксир", nil, "Збільшено пошкодження від заклять і здібностей на {1}.#by up to {1}" }, -- Arcane Elixir (aura, Arcane Elixir)
-[11392] = { "Невидимість", nil, "Невидимість." }, -- Invisibility (aura, Invisibility Potion)
+[11359] = { "Відновлення", "Знімає один магічний ефект, прокляття, отруту або хворобу кожні {1} с протягом {2} с.#every {1} seconds for {2} sec", "Знімає один магічний ефект, прокляття, отруту або хворобу кожні {1} с протягом {2} с.#every {1} seconds for {2} sec" }, -- Restoration (aura, Restorative Potion)
+[11371] = { "Дар Артаса", "Збільшує супротив тіні на {1}. Кожного нападника з ймовірністю {2}% буде уражено хворобою, яка збільшить отриману ним шкоду на {3} протягом {4} хв. Триває {5} хв.#shadow by {1}#a {2}% chance#damage taken by {3} for {4} min#Lasts for {5} min", "Збільшує супротив тіні на {1} та може уразити хворобою нападників.#resist by {1}" }, -- Gift of Arthas (aura, Gift of Arthas)
+[11374] = { "Дар Артаса", nil, "Отриману фізичну шкоду збільшено на {1}.#taken by {1}" }, -- Gift of Arthas (aura, Gift of Arthas)
+[11389] = { "Виявлення невмерлих", "Відображає на мінімапі місцезнаходження найближчих невмерлих протягом {1} год.#for {1} h", "Виявлення невмерлих." }, -- Detect Undead (aura, Elixir of Detect Undead)
+[11390] = { "Арканічний еліксир", "Збільшує шкоду від заклинань на {1} протягом {2} хв.#to {1} for {2} min", "Магічну шкоду від заклинань і здібностей збільшено на {1}.#by up to {1}" }, -- Arcane Elixir (aura, Arcane Elixir)
+[11392] = { "Невидимість", "Надає невидимість на {1} с.#for {1} sec", "Невидимість." }, -- Invisibility (aura, Invisibility Potion)
 [11396] = { "Великий інтелект", ref=3166 }, -- Greater Intellect (aura, Elixir of Greater Intellect)
 [11403] = { "Снобачення", nil, "Уві сні." }, -- Dream Vision (aura, Elixir of Dream Vision)
-[11405] = { "Еліксир велетнів", ref=3163 }, -- Elixir of the Giants (aura, Elixir of Giants)
-[11406] = { "Еліксир винищення демонів", nil, "Збільшено силу атаки проти демонів на {1}.#by {1}" }, -- Elixir of Demonslaying (aura, Elixir of Demonslaying)
-[11407] = { "Виявлення демона", nil, "Виявлення демонів." }, -- Detect Demon (aura, Elixir of Detect Demon)
-[11474] = { "Сила тіні", nil, "Збільшено пошкодження тінню від заклять та здібностей на {1}.#by up to {1}" }, -- Shadow Power (aura, Elixir of Shadow Power)
+[11405] = { "Еліксир велетнів", ref=2367 }, -- Elixir of the Giants (aura, Elixir of Giants)
+[11406] = { "Еліксир винищення демонів", "Збільшує силу атаки в бою з демонами на {1}. Триває 5 хв.#power by {1}#Lasts {2} min", "Силу атаки в бою з демонами збільшено на {1}.#by {1}" }, -- Elixir of Demonslaying (aura, Elixir of Demonslaying)
+[11407] = { "Виявлення демона", "Відображає на мінімапі місцезнаходження найближчих демонів протягом {1} год.#for {1} h", "Виявлення демонів." }, -- Detect Demon (aura, Elixir of Detect Demon)
+[11474] = { "Сила тіні", "Збільшує шкоду від заклинань тіні на {1} протягом {2} хв.#to {1} for {2} min", "Шкоду тінню від заклять та здібностей збільшено на {1}.#by up to {1}" }, -- Shadow Power (aura, Elixir of Shadow Power)
 [12187] = { "Хвороблива хмара" },
 [12418] = { "Виявлення непомітності", nil, "Збільшена здатність виявляти непомітність." }, -- Stealth Detection (aura, Catseye Ultra Goggles)
 [12561] = { ref=7233 }, -- Fire Protection (aura, Goblin Construction Helmet)
-[12608] = { "Виявлення непомітності", nil, "Злегка збільшена здатність виявляти непомітність." }, -- Stealth Detection (aura, Catseye Elixir)
+[12608] = { "Виявлення непомітності", "Злегка збільшує вашу здатність виявляти непомітність протягом {1} хв.#for {1} min", "Здатність виявляти непомітність злегка збільшено." }, -- Stealth Detection (aura, Catseye Elixir)
 [14530] = { ref=2379 }, -- Speed (aura, Nifty Stopwatch)
-[15822] = { "Сон без сновидінь", nil, "Сон без сновидінь." }, -- Dreamless Sleep (aura, Dreamless Sleep Potion)
+[15822] = { "Сон без сновидінь", "Занурює у сон без сновидінь на {1} с. Протягом цього часу відновлює {2} здоров'я та {3} мани.#for {1} sec#{2} health and {3} mana", "Сон без сновидінь." }, -- Dreamless Sleep (aura, Dreamless Sleep Potion)
 [16168] = { "Вогняний ляпас", nil, "Збільшено отримуване пошкодження вогнем." }, -- Flame Buffet (aura)
 [16490] = { ref=16488 },
 [16491] = { ref=16488 },
@@ -457,38 +473,44 @@ addonTable.spell = {
 [16618] = { "Дух вітру", "Збільшує швидкість руху.", "Збільшує швидкість руху." },
 [16884] = { "Здоров'я II", ref=2378 }, -- Health II (aura)
 [16894] = { ref=7233 }, -- Fire Protection (aura)
-[16895] = { ref=7239 }, -- Frost Protection (aura)
 [17013] = { "Спритність Аґамаґґана", nil, "Збільшує спритність на {1}.#by {1}" }, -- Agamaggan's Agility (aura)
 [17038] = { "Огневиця Зимокрайових", nil, "Збільшено розмір та силу атаки ближнього бою на {1}.#by {1}" }, -- Winterfall Firewater (aura, Winterfall Firewater)
 [17498] = { ref=2379 }, -- Speed (aura, The Postmaster)
-[17528] = { "Потужне зілля люті", nil, "Силу збільшено на {1}.#by {1}" }, -- Mighty Rage (aura, Mighty Rage Potion)
-[17535] = { "Еліксир мудреців", nil, "Інтелект і дух збільшено на {1}.#by {1}" }, -- Elixir of the Sages (aura, Elixir of the Sages)
-[17537] = { "Еліксир грубої сили", nil, "Силу та витривалість збільшено на {1}.#by {1}" }, -- Elixir of Brute Force (aura, Elixir of Brute Force)
-[17538] = { "Еліксир мангусти", nil, "Спритність збільшено на {1}, ймовірність нанесення критичного удару збільшено на {2}%.#Agility increased by {1}#chance increased by {2}%" }, -- Elixir of the Mongoose (aura, Elixir of the Mongoose)
-[17539] = { "Великий арканічний еліксир", nil, "Збільшено магічне пошкодження від заклять та здібностей на {1}.#by up to {1}" }, -- Greater Arcane Elixir (aura, Greater Arcane Elixir)
-[17540] = { "Великий каменещит", nil, "Броню збільшено." }, -- Greater Stoneshield (aura, Greater Stoneshield Potion)
-[17543] = { ref=7233 }, -- Fire Protection (aura, Greater Fire Protection Potion)
-[17544] = { ref=7239 }, -- Frost Protection (aura, Greater Frost Protection Potion)
+[17528] = { "Потужне зілля люті", "Збільшує лють на {1}-{2} та збільшує силу на {3} протягом {4} с.#Rage by {1} to {2}#Strength by {3} for {4} sec", "Силу збільшено на {1}.#by {1}" }, -- Mighty Rage (aura, Mighty Rage Potion)
+[17535] = { "Еліксир мудреців", "Збільшує інтелект та дух на {1} протягом {2} год.#by {1} for {2} h", "Інтелект і дух збільшено на {1}.#by {1}" }, -- Elixir of the Sages (aura, Elixir of the Sages)
+[17537] = { "Еліксир грубої сили", "Збільшує силу та витривалість на {1} протягом {2} год.#by {1} for {2} h", "Силу та витривалість збільшено на {1}.#by {1}" }, -- Elixir of Brute Force (aura, Elixir of Brute Force)
+[17538] = { "Еліксир мангусти", "Збільшує спритність на {1} та ймовірність завдання критичного удару на {2}% протягом {3} год.#Agility by {1}#by {2}% for {3} h", "Спритність збільшено на {1}, ймовірність завдання критичного удару збільшено на {2}%.#Agility increased by {1}#chance increased by {2}%" }, -- Elixir of the Mongoose (aura, Elixir of the Mongoose)
+[17539] = { "Великий арканічний еліксир", "Збільшує шкоду від заклинань на {1} протягом {2} год.#by up to {1} for {2} h", "Магічну шкоду від заклинань та здібностей збільшено на {1}.#by up to {1}" }, -- Greater Arcane Elixir (aura, Greater Arcane Elixir)
+[17540] = { "Великий каменещит", ref=4941 }, -- Greater Stoneshield (aura, Greater Stoneshield Potion)
+[17543] = { ref=7230 }, -- Fire Protection (aura, Greater Fire Protection Potion)
+[17544] = { ref=7236 }, -- Frost Protection (aura, Greater Frost Protection Potion)
 [17545] = { ref=7245 }, -- Holy Protection (aura, Greater Holy Protection Potion)
-[17546] = { ref=7254 }, -- Nature Protection (aura, Greater Nature Protection Potion)
-[17548] = { ref=7242 }, -- Shadow Protection (aura, Greater Shadow Protection Potion)
-[17549] = { "Арканічний захист", nil, "Поглинає від {1} до {2} шкоди від аркани.#Absorbs {1} to {2}" }, -- Arcane Protection (aura, Greater Arcane Protection Potion)
+[17546] = { ref=7250 }, -- Nature Protection (aura, Greater Nature Protection Potion)
+[17548] = { ref=7235 }, -- Shadow Protection (aura, Greater Shadow Protection Potion)
+[17549] = { "Арканічний захист", "Поглинає від {1} до {2} шкоди від аркани. Триває {3} год.#Absorbs {1} to {2}#Lasts {3} h", "Поглинає від {1} до {2} шкоди від аркани.#Absorbs {1} to {2}" }, -- Arcane Protection (aura, Greater Arcane Protection Potion)
 [17624] = { "Скам'яніння", nil, "Невразливість до всіх атак та заклять. Не може атакувати, рухатися або застосовувати закляття." }, -- Petrification (aura, Flask of Petrification)
 [17626] = { "Настій титанів", nil, "Здоров'я збільшено на {1}.#increased by {1}" }, -- Flask of the Titans (aura, Flask of the Titans)
 [17627] = { "Дистильована мудрість", nil, "Ману збільшено на {1}.#increased by {1}" }, -- Distilled Wisdom (aura, Flask of Distilled Wisdom)
 [17628] = { "Велика сила", nil, "Пошкодження закляттями збільшено на {1}.#increased by up to {1}" }, -- Supreme Power (aura, Flask of Supreme Power)
 [17629] = { "Хроматичний супротив", nil, "Супротив всім школам магії збільшено на {1}.#increased by {1}" }, -- Chromatic Resistance (aura, Flask of Chromatic Resistance)
-[18942] = { ref=7233 }, -- Fire Protection (aura)
+[18071] = { "Збагачене маною печиво", ref=2639 }, -- Enriched Manna Biscuit
+[18942] = { ref=7230 }, -- Fire Protection (aura)
 [18977] = { "Іній", nil, "Збільшено час між атаками та сповільнено рух." }, -- Frost (aura, Ice Totem)
 [20584] = { ref=8326 }, -- Ghost (aura)
+[20707] = { "Воскресіння каменем душі", "Зберігає душу дружньої цілі. Якщо ціль, чия душа збережена, помирає, вона може оживити себе з {1} здоров'я та {2} мани.#{1} health and {2} mana", "Душу збережено." }, -- Soulstone Resurrection
+[20762] = { ref=20707 }, -- Soulstone Resurrection
+[20763] = { ref=20707 }, -- Soulstone Resurrection
+[20764] = { ref=20707 }, -- Soulstone Resurrection
+[20765] = { ref=20707 }, -- Soulstone Resurrection
 [21892] = { "Арканічний захист", nil, "Невразливість до всіх атак і заклять." }, -- Arcane Protection (aura)
-[21920] = { "Крижана міць", nil, "Збільшено пошкодження кригою від заклять та здібностей на {1}.#by up to {1}" }, -- Frost Power (aura, Elixir of Frost Power)
+[21920] = { "Крижана міць", "Збільшує шкоду від заклинань криги на {1} протягом {2} хв.#to {1} for {2} min", "Шкоду кригою від заклинань та здібностей збільшено на {1}.#by up to {1}" }, -- Frost Power (aura, Elixir of Frost Power)
 [22430] = { "Витончена луска Оніксії", "Перетворює Луску Оніксії на Витончену Луску Оніксії." },
 [22433] = { ref=9574 }, -- Flame Buffet (aura)
 [22539] = { "Тіньове полум'я", "Завдає від {1} до {2} ворогам, що знаходяться в конусі перед заклинателем.#Inflicts {1} to {2}" }, -- Shadow Flame
 [22682] = { "Тіньове полум'я", nil, "Від {1} до {2} шкоди щосекунди.#{1} to {2} damage" }, -- Shadow Flame (aura)
 [22713] = { ref=9574 }, -- Flame Buffet (aura)
-[22807] = { "Глибше водне дихання", ref=7178 }, -- Greater Water Breathing (aura, Elixir of Greater Water Breathing)
+[22734] = { ref=430 }, -- Drink
+[22807] = { "Глибше водне дихання", "Дозволяє дихати водою протягом {1} год.#for {1} h", "Водне дихання." }, -- Greater Water Breathing (aura, Elixir of Greater Water Breathing)
 [22863] = { ref=2379 }, -- Speed (aura, Sprinter's Sword)
 [22993] = { "Тіньове полум'я" }, -- Shadow Flame
 [23028] = { "Арканічна геніальність", "Надихає групу цілі геніальністю, збільшуючи Інтелект усіх членів на 31 на 1 годину.", "Збільшує Інтелект на 31." },
@@ -506,10 +528,10 @@ addonTable.spell = {
 [23769] = { "Темне пророцтво Вщуна - супротив", nil, "Збільшує супротив всім школам магії на 25." }, -- Sayge's Dark Fortune of Resistance
 [23978] = { ref=23451 }, -- Speed (aura)
 [24261] = { "Промивка мізків", nil, "Причарований." }, -- Brain Wash (aura, Brain Wash Totem)
-[24360] = { "Великий сон без сновидінь", nil, "Сон без сновидінь." }, -- Greater Dreamless Sleep (aura)
+[24360] = { "Великий сон без сновидінь", ref=15822 }, -- Greater Dreamless Sleep (aura)
 [24361] = { ref=3219 }, -- Regeneration (aura, Major Troll's Blood Potion)
-[24363] = { "Регенерація мани", nil, "Відновлення {1} мани кожні {2} с.#{1} mana per {2} sec" }, -- Mana Regeneration (aura, Mageblood Potion)
-[24364] = { "Жива вільна дія", nil, "Вільна дія." }, -- Living Free Action (aura, Living Action Potion)
+[24363] = { "Регенерація мани", "Відновлює {1} мани кожні {2} с протягом {3} год.#{1} mana per {2} sec for {3} h", "Відновлення {1} мани кожні {2} с.#{1} mana per {2} sec" }, -- Mana Regeneration (aura, Mageblood Potion)
+[24364] = { "Нестримність", "Надає невразливість до приголомшення та ефектів обмеження руху на наступні {1} с. Також знімає вже наявні ефекти.#next {1} sec", "Нестримність." }, -- Living Free Action (aura, Living Action Potion)
 [24742] = { "Магічні крила", nil, "Уповільнює швидкість падіння. Клацніть правою кнопкою миші, щоб прибрати у потрібний момент." }, -- Magic Wings
 [24755] = { "Цукерка або життя", nil, "Ви нещодавно випрошували солодощі." }, -- Tricked or Treated
 [24924] = { "Цукерка Повечір'я святих", nil, "Ви збільшуєтесь... і помаранчевієте..." }, -- Hallow's End Candy
@@ -522,22 +544,28 @@ addonTable.spell = {
 [25668] = { ref=9574 }, -- Flame Buffet (aura)
 [25678] = { "Пісня сирени" }, -- Siren's Song
 [25688] = { "Нараін!", "Змінює ваш зовнішній вигляд так, щоб ви були схожі на Нараіна Тихомрія.", "Ви Нараін! Тільки тсс!" }, -- Narain! (aura)
+[25700] = { ref=433 }, -- Food
+[25886] = { ref=433 }, -- Food
 [26004] = { "Омела", "Подаруйте друзям святкові вітання!", "Святкові вітання! Збільшує дух на {1}.#by {1}" }, -- Mistletoe
-[26276] = { "Велика вогнеміць", ref=7844 }, -- Greater Firepower (aura, Elixir of Greater Firepower)
+[26276] = { "Велика вогнеміць", "Збільшує шкоду від вогняних заклинань на {1} протягом {2} год.#by up to {1} for {2} h", "Шкоду вогнем від заклинань та здібностей збільшено на {1}.#by up to {1}" }, -- Greater Firepower (aura, Elixir of Greater Firepower)
 [26393] = { "Благословення Елуни", nil, "Вас благословила Елуна. Всі характеристики збільшено на 10%." }, -- Elune's Blessing
 [26664] = { "Сила дружби", nil, "Відчуваєте?" }, -- The Power of Friendship
 [26680] = { "Обожнювання", nil, "Ви отримали дар обожнювання!" }, -- Adored
 [28006] = { "Арканічний покрив" }, -- Arcane Cloaking
+[28616] = { ref=433 }, -- Food
 [28270] = { "Поліморфія: Корова", "Перетворює ворога на корову, змушуючи його блукати на до 50 с. Протягом блуканини корова не здатна атакувати або вимовляти закляття, але дуже швидко відновлюватиме здоров'я. Будь-яке пошкодження поверне ціль до нормального стану. Одночасно лише одна ціль може бути під ефектом \"Поліморфії\". Діє лише на Звірів, Гуманоїдів і Звіряток.", "Не може атакувати або вимовляти закляття. Збільшене відновлення здоров'я." },
 [28681] = { "Відродження душі", nil, "Збільшує всю вашу шкоду на 10%." }, -- Soul Revival
 [28754] = { "Арканічна витримка", "Збільшує вашу Броню на 50% від вашого Інтелекту." },
 [26898] = { "Розбите серце", nil, "Вам відмовили і ви більше не можете отримувати знаки кохання!" }, -- Heartbroken
 [27746] = { "Азотне прискорення", "10 мани щосекунди. Збільшує швидкість руху на 50%.", "Швидкість руху збільшена на 50%." }, -- Nitrous Boost
 [27759] = { "Генератор щита", "Захищає вас щитом мани, який може поглинути до {1} одиниць шкоди. За кожну одиницю отриманої шкоди витрачається дві одиниці мани.#up to {1} damage" }, -- Shield Generator
+[29007] = { ref=430 }, -- Drink
+[29008] = { ref=433 }, -- Food
+[29073] = { ref=433 }, -- Food
 [29175] = { "Танець зі стрічками", "Збільшує супротив вогню на {1}.#by {1}", "Збільшує супротив вогню на {1}.#by {1}" }, -- Ribbon Dance
 [29235] = { "Стійкість вогняного фестивалю", "Збільшує витривалість на {1} протягом 1 год.#by {1}", "Збільшує витривалість на {1}.#by {1}" }, -- Fire Festival Fortitude
 [29338] = { "Лють вогняного фестивалю", nil, "Збільшує ймовірність нанесення критичного удару фізичними атаками та закляттями на 3%." }, -- Fire Festival Fury
-[29432] = { ref=7233 }, -- Fire Protection (aura, Frozen Rune)
+[29432] = { ref=7230 }, -- Fire Protection (aura, Frozen Rune)
 [29846] = { "Лють вогняного фестивалю", nil, "Збільшує ймовірність нанесення критичного удару фізичними атаками та закляттями на 3%." }, -- Fire Festival Fury
 [364001] = { "Залізна душа" }, -- Soul of Iron
 
