@@ -47,33 +47,6 @@ def get_clean_text(text):
 
     return '\n'.join(lines[:last_non_empty_line_idx + 1]) if last_non_empty_line_idx >= 0 else ''
 
-# TODO: improve get_terms_from_tbx() so it does:
-# - returns ready-to-use special tags (e.g. id_tags, desc_tags, alias_tags etc.)
-# - returns resolved desc_tags when needed (e.g. "<Banker>" => "<банкір>" etc.)
-# - returns important tags as flags (e.g. is_female, is_npc, is_location etc.)
-# ? maybe move all terms related stuff to separate module, and impl it with classes for intellisense (npc gen script should be simple)
-
-def get_terms_from_tbx(filename):
-    tree = ElementTree.parse(filename)
-    root = tree.getroot()
-    namespace_map = { 'xml': 'http://www.w3.org/XML/1998/namespace' }
-    terms = []
-
-    for entry in root.findall('.//termEntry', namespaces=namespace_map):
-        en = entry.find('langSet[@xml:lang="en"]/tig/term', namespaces=namespace_map)
-        en_text = get_clean_text(en.text)
-
-        uk = entry.find('langSet[@xml:lang="uk"]/tig/term', namespaces=namespace_map)
-        uk_text = get_clean_text(uk.text)
-
-        desc = entry.find('langSet[@xml:lang="en"]/tig/descrip[@type="definition"]', namespaces=namespace_map)
-        tag_text = get_clean_text(', '.join(desc.text.split('\n')))
-        tags = list(map(str.strip, tag_text.split(',')))
-
-        terms.append((en_text, uk_text, tags))
-
-    return terms
-
 def get_lua_table_from_ast_node(node: astnodes.Table):
     result = []
 

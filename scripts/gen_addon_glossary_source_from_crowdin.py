@@ -85,23 +85,24 @@ def collect_terms(glossary):
     tbx_file = 'translation_from_crowdin/ClassicUA.tbx'
     print(f'Processing {tbx_file}')
 
-    terms = utils.get_terms_from_tbx(tbx_file)
-    for en_text, uk_text, tags in terms:
-        glossary_key = en_text.lower()
-        glossary_value = uk_text.split('/')[0] if '/' in uk_text else uk_text
-        glossary[glossary_key] = glossary_value
+    assert False, "FIXME"
+    # terms = utils.get_terms_from_tbx(tbx_file)
+    # for en_text, uk_text, tags in terms:
+    #     glossary_key = en_text.lower()
+    #     glossary_value = uk_text.split('/')[0] if '/' in uk_text else uk_text
+    #     glossary[glossary_key] = glossary_value
 
-        if glossary_key.startswith('the ') and len(glossary_key) > 8:
-            glossary_key_no_the = glossary_key[4:]
-            if glossary_key_no_the not in glossary:
-                glossary[glossary_key_no_the] = glossary_value
+    #     if glossary_key.startswith('the ') and len(glossary_key) > 8:
+    #         glossary_key_no_the = glossary_key[4:]
+    #         if glossary_key_no_the not in glossary:
+    #             glossary[glossary_key_no_the] = glossary_value
 
-        if 'локація' in tags:
-            for t in tags:
-                if t.startswith('~') and t.endswith('~'):
-                    glossary_key_alias = utils.get_clean_text(t[1:-1].lower().strip())
-                    if glossary_key_alias not in glossary:
-                        glossary[glossary_key_alias] = glossary_value
+    #     if 'локація' in tags:
+    #         for t in tags:
+    #             if t.startswith('~') and t.endswith('~'):
+    #                 glossary_key_alias = utils.get_clean_text(t[1:-1].lower().strip())
+    #                 if glossary_key_alias not in glossary:
+    #                     glossary[glossary_key_alias] = glossary_value
 
 def print_report(glossary):
     print('-' * 80)
