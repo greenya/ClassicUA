@@ -631,7 +631,7 @@ addonTable.object = { -- [key] = text
 ["Red Soulgem"] = "червоний камінь душі",
 ["Redpath's Shield"] = "щит Редпата",
 ["Regulator Valve"] = "регуляторний клапан",
-["Relic Coffer"] = "скриня з реліквіями",
+["Relic Coffer"] = "скарбниця",
 ["Remains of Eva Sarkhoff"] = "останки Єви Сархової",
 ["Remains of Lucien Sarkhoff"] = "останки Люсьєна Сархова",
 ["Renataki, of the Thousand Blades"] = "Ренатакі з Тисячі Клинків",
