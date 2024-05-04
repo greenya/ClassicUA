@@ -1,6 +1,8 @@
 local _, addonTable = ...
 addonTable.class = { -- [id] = { [н/р/д/з/о/м/к] = { male, female } }
 
+-- id: classFile column from https://warcraft.wiki.gg/wiki/ClassId
+
 ["WARRIOR"] = {
     ["н"] = { "воїн", "воїтелька" },
     ["р"] = { "воїна", "воїтельки" },

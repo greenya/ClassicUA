@@ -1,6 +1,8 @@
 local _, addonTable = ...
 addonTable.race = { -- [id] = { [н/р/д/з/о/м/к] = { male, female } }
 
+-- id: .clientFileString column from https://warcraft.wiki.gg/wiki/RaceId
+
 ["Human"] = {
     ["н"] = { "чоловік", "жінка" },
     ["р"] = { "чоловіка", "жінки" },
