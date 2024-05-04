@@ -15,5 +15,6 @@ entries\zone.lua
 entries\classic\index.xml
 entries\tbc\index.xml
 entries\wrath\index.xml
+entries\cata\index.xml
 
 main.lua
