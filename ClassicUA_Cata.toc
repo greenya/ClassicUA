@@ -1,0 +1,19 @@
+## Interface: 40400
+
+## Title: |cff1177eeClassic|r|cffffdd00UA|r
+## Notes: Game localization to Ukrainian language.
+## Author: greenya
+## Version: 5.5.1
+## SavedVariables: ClassicUA_Options
+## SavedVariablesPerCharacter: ClassicUA_Character_Options
+
+entries\class.lua
+entries\race.lua
+entries\text.lua
+entries\zone.lua
+
+entries\classic\index.xml
+entries\tbc\index.xml
+entries\wrath\index.xml
+
+main.lua
