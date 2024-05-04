@@ -3,7 +3,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 from luaparser import ast, astnodes
 
-known_expansions = ('classic', 'sod', 'tbc', 'wrath')
+known_expansions = ('classic', 'sod', 'tbc', 'wrath', 'cata')
 known_sides = ('alliance', 'horde', 'both')
 
 is_str_and_has_only_ascii_chars =\
