@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_alliance = {
+local quest_alliance = { -- [id] = { title, description, objective, progress, completion }
 }
 
 if addonTable.quest_alliance then

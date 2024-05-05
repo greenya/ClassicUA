@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local npc = {
+local npc = { -- [id] = { title, description (optional) }
 }
 
 if addonTable.npc then
