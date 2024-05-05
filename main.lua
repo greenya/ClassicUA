@@ -15,6 +15,7 @@ local asset_font2_path = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
 local is_classic = strbyte(GetBuildInfo(), 1) == 49
 local is_tbc = strbyte(GetBuildInfo(), 1) == 50
 local is_wrath = strbyte(GetBuildInfo(), 1) == 51
+local is_cata = strbyte(GetBuildInfo(), 1) == 52
 
 local print_table = function (table)
     print("---- {")
@@ -331,6 +332,11 @@ local prepare_codes = function (name, race, class, is_male)
 
     -- race
 
+    if not at.race[race] then
+        -- use some default value in case race is unknown/unsupported
+        race = "Human"
+    end
+
     for _, c in ipairs(cases) do
         local t = at.race[race][c][sex]
         codes["{раса:" .. c .. "}"] = t
@@ -344,6 +350,11 @@ local prepare_codes = function (name, race, class, is_male)
     end
 
     -- class
+
+    if not at.class[class] then
+        -- use some default value in case class is unknown/unsupported
+        class = "WARRIOR"
+    end
 
     for _, c in ipairs(cases) do
         local t = at.class[class][c][sex]
