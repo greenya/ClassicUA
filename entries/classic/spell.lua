@@ -351,7 +351,7 @@ addonTable.spell = {
 [3164] = { ref=3163 }, -- Strength (aura, Elixir of Ogre's Strength)
 [3166] = { "Мале підвищення інтелекту", "Збільшує інтелект на {1} протягом {2} год.#by {1} for {2} h", "Інтелект збільшено на {1}.#by {1}" }, -- Lesser Intellect (aura, Elixir of Wisdom)
 [3169] = { "Невразливість", "Надає невразливість до фізичних атак протягом {1} с.#next {1} sec", "Невразливість до фізичних атак." }, -- Invulnerability (aura, Limited Invulnerability Potion)
-[3219] = { "Регенерація", "Відновлює {1} здоров'я кожні {2} с протягом {3} год. (Відновлення 3 сек)#{1} health every {2} sec for {3} h", "Відновлює {1} здоров'я кожні {2} с.#{1} health every {2} sec" }, -- Regeneration (aura, Weak Troll's Blood Potion)
+[3219] = { "Регенерація", "Відновлює {1} здоров'я кожні {2} с протягом {3} год.#{1} health every {2} sec for {3} h", "Відновлює {1} здоров'я кожні {2} с.#{1} health every {2} sec" }, -- Regeneration (aura, Weak Troll's Blood Potion)
 [3220] = { "Броня", ref=673 }, -- Armor (aura, Elixir of Defense)
 [3222] = { ref=3219 }, -- Regeneration (aura, Strong Troll's Blood Potion)
 [3223] = { ref=3219 }, -- Regeneration (aura, Mighty Troll's Blood Potion)
