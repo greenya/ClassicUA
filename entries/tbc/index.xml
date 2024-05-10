@@ -7,5 +7,6 @@
     <Script file="quest_both.lua"/>
     <Script file="quest_horde.lua"/>
     <Script file="spell.lua"/>
+    <Script file="spell_mage.lua"/>
     <Script file="talent_tree.lua"/>
 </Ui>
