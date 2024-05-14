@@ -390,7 +390,7 @@ local priest_spells = {
 [10933] = { ref=585 }, -- Smite (Rank 7)
 [10934] = { ref=585 }, -- Smite (Rank 8)
 -- Spell Warding
-[27900] = { "Охорона від чар", "Зменшує все отримане пошкодження чарами на {1}%.#by {1}" }, -- Spell Warding (Rank 1)
+[27900] = { "Охорона від чар", "Зменшує всю отриману шкоду від заклять на {1}%.#by {1}%" }, -- Spell Warding (Rank 1)
 [27901] = { ref=27900 }, -- Spell Warding (Rank 2)
 [27902] = { ref=27900 }, -- Spell Warding (Rank 3)
 [27903] = { ref=27900 }, -- Spell Warding (Rank 4)
