@@ -13,14 +13,31 @@ local asset_font2_path = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
 -- ---------
 
 local is_classic = strbyte(GetBuildInfo(), 1) == 49
+local is_classic_sod = is_classic and C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
 local is_tbc = strbyte(GetBuildInfo(), 1) == 50
 local is_wrath = strbyte(GetBuildInfo(), 1) == 51
 local is_cata = strbyte(GetBuildInfo(), 1) == 52
 
-local print_table = function (table)
-    print("---- {")
-    for k, v in pairs(table) do print("[" .. k .. "]=" .. tostring(v)) end
-    print("} ----")
+local game_expansion_key = function ()
+    if is_classic then
+        return is_classic_sod and "sod" or "classic"
+    elseif is_tbc then
+        return "tbc"
+    elseif is_wrath then
+        return "wrath"
+    elseif is_cata then
+        return "cata"
+    end
+
+    return "???"
+end
+
+local dump = function (value)
+    if type(DevTools_Dump) == "function" then
+        DevTools_Dump(value)
+    else
+        print("[dump]", value)
+    end
 end
 
 local copy_table = function (target, source)
@@ -32,6 +49,12 @@ local table_keys = function (table)
     local result = {}
     for k, _ in pairs(table) do result[#result + 1] = k end
     return result
+end
+
+local table_keys_count = function (table)
+    local count = 0
+    for _ in pairs(table) do count = count + 1 end
+    return count
 end
 
 local capitalize = function (text)
@@ -71,10 +94,12 @@ end
 
 local function strip_color_codes(text)
     if type(text) == "string" then
-        return text:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
-    else
-        return text
+        text = text:gsub("|c%x%x%x%x%x%x%x%x", "")
+        text = text:gsub("|c%x%x%x%x%x%x %x", "")
+        text = text:gsub("|r", "")
     end
+
+    return text
 end
 
 local first_line_only = function (text)
@@ -91,6 +116,31 @@ local first_line_only = function (text)
     end
 end
 
+local tooltip_lines = function (tooltip, is_right)
+    local lines = {}
+    for j = 1, tooltip:NumLines() do
+        local k = tooltip:GetName() .. (is_right and "TextRight" or "TextLeft") .. j
+        lines[#lines + 1] = _G[k]:GetText()
+    end
+    return lines
+end
+
+local tooltip_title_line = function (tooltip)
+    local num_lines = tooltip:NumLines()
+    if num_lines == 0 then
+        return ""
+    end
+
+    local text = _G[tooltip:GetName() .. "TextLeft1"]:GetText()
+
+    -- check special case for item tooltip when showing currently equipped
+    if text == "Currently Equipped" and num_lines > 1 then
+        text = _G[tooltip:GetName() .. "TextLeft2"]:GetText()
+    end
+
+    return text
+end
+
 -- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
 local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"night elf", "nightelf"},
@@ -105,18 +155,16 @@ local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"mag'har orc", "magharorc"},
     {"zandalari troll", "zandalaritroll"},
 }
+
 local get_text_code = function (text)
-    -- text = "Do not turn your back on the Light, warrior, it may be the one thing that saves you some day."
     local result = { "_", "_", "_", "_", "_", "_", "_", "_", "_", "_" }
     local result_len = #result
     text = text:lower()
-    -- print("TEXT", text)
 
     local seq_pairs = known_gossip_dynamic_seq_with_multiple_words_for_get_text_code
     for i = 1, #seq_pairs do
         text = text:gsub(seq_pairs[i][1], seq_pairs[i][2])
     end
-    -- print("TEXT", text)
 
     local result_fill_idx = 1
     for word in string.gmatch(text, "%w+") do
@@ -127,7 +175,6 @@ local get_text_code = function (text)
 
             for i = 1, #word do
                 result[result_fill_idx] = string.sub(word, i, i)
-                -- print(result_fill_idx, table.concat(result))
                 result_fill_idx = result_fill_idx + 1
                 if result_fill_idx > result_len then
                     break
@@ -141,7 +188,6 @@ local get_text_code = function (text)
     for word in string.gmatch(text, "%w+") do
         if #word > 0 then
             result[result_idx] = string.sub(word, 1, 1)
-            -- print(result_idx, table.concat(result))
             result_idx = result_idx + 1
             if result_idx > result_len then
                 result_rewind = result_rewind < result_len and result_rewind + 1 or result_len - 3
@@ -150,7 +196,6 @@ local get_text_code = function (text)
         end
     end
 
-    -- print("CODE", table.concat(result))
     return table.concat(result)
 end
 
@@ -178,11 +223,187 @@ local fuzzy_match_text_code = function (code, candidates, minimum_match_ratio)
             best_match = candidates[i]
             best_match_ratio = ratio
         end
-
-        -- print(candidates[i], ratio)
     end
 
     return best_match
+end
+
+-- -----------
+-- [ dev log ]
+-- -----------
+
+-- TODO: add missing quests tracking, ideally save content of each step (description, progress etc.)
+
+local dev_log = nil
+local default_dev_log = {
+    addon_version = "???",
+    game_version = "???",
+    game_expansion = "???",
+    missing_npcs = {},
+    missing_items = {},
+    missing_spells = {},
+    missing_books = {},
+    missing_gossips = {},
+    missing_zones = {},
+    missing_objects = {},
+    missing_sod_engraving = {},
+    issues = {}
+}
+
+local dev_log_print = function (text)
+    DEFAULT_CHAT_FRAME:AddMessage(asset_ua_code .. " |cff4488aa[Розробка] " .. text .. "|r")
+end
+
+local dev_log_init = function ()
+    dev_log.addon_version = GetAddOnMetadata("ClassicUA", "Version")
+    dev_log.game_version = GetBuildInfo()
+    dev_log.game_expansion = game_expansion_key()
+
+    if not dev_log.missing_npcs             then dev_log.missing_npcs = {} end
+    if not dev_log.missing_items            then dev_log.missing_items = {} end
+    if not dev_log.missing_spells           then dev_log.missing_spells = {} end
+    if not dev_log.missing_books            then dev_log.missing_books = {} end
+    if not dev_log.missing_gossips          then dev_log.missing_gossips = {} end
+    if not dev_log.missing_zones            then dev_log.missing_zones = {} end
+    if not dev_log.missing_objects          then dev_log.missing_objects = {} end
+    if not dev_log.missing_sod_engravings   then dev_log.missing_sod_engravings = {} end
+    if not dev_log.issues                   then dev_log.issues = {} end
+end
+
+local dev_log_print_stats = function ()
+    dev_log_print("-------- Статистика накопичених даних --------")
+    dev_log_print("Відсутні персонажі: "    .. table_keys_count(dev_log.missing_npcs))
+    dev_log_print("Відсутні предмети: "     .. table_keys_count(dev_log.missing_items))
+    dev_log_print("Відсутні закляття: "     .. table_keys_count(dev_log.missing_spells))
+    dev_log_print("Відсутні книжки: "       .. table_keys_count(dev_log.missing_books))
+    dev_log_print("Відсутні плітки: "       .. table_keys_count(dev_log.missing_gossips))
+    dev_log_print("Відсутні зони: "         .. table_keys_count(dev_log.missing_zones))
+    dev_log_print("Відсутні об'єкти: "      .. table_keys_count(dev_log.missing_objects))
+    if is_classic_sod then
+        dev_log_print("Відсутні SOD гравіювання: " .. table_keys_count(dev_log.missing_sod_engravings))
+    end
+    dev_log_print("Помилки: "               .. table_keys_count(dev_log.issues))
+    dev_log_print("----------------------------------------------")
+end
+
+local dev_log_reset = function ()
+    ClassicUA_DevLog = copy_table({}, default_dev_log)
+    dev_log = ClassicUA_DevLog
+    dev_log_init()
+    dev_log_print("Всі накопичені дані скинуто.")
+end
+
+local dev_log_issue = function (key, data)
+    if dev_log.issues[key] then
+        return
+    end
+
+    dev_log_print("Помилка: " .. key)
+    dev_log.issues[key] = data and data or true
+end
+
+local dev_log_issue_entry = function (entry_type, entry_id, key, data)
+    dev_log_issue(entry_type .. "#" .. tostring(entry_id) .. ": " .. key, data)
+end
+
+local dev_log_missing_npc = function (npc_id, npc_name)
+    npc_id = tonumber(npc_id)
+
+    if dev_log.missing_npcs[npc_id] then
+        return
+    end
+
+    dev_log_print("Відсутній персонаж #" .. tostring(npc_id) .. " " .. npc_name)
+    dev_log.missing_npcs[npc_id] = npc_name
+end
+
+local dev_log_missing_item = function (item_id, item_name)
+    item_id = tonumber(item_id)
+
+    if dev_log.missing_items[item_id] then
+        return
+    end
+
+    dev_log_print("Відсутній предмет #" .. tostring(item_id) .. " " .. item_name)
+    dev_log.missing_items[item_id] = item_name
+end
+
+local dev_log_missing_spell = function (spell_id, spell_name)
+    spell_id = tonumber(spell_id)
+
+    if dev_log.missing_spells[spell_id] then
+        return
+    end
+
+    dev_log_print("Відсутнє закляття #" .. tostring(spell_id) .. " " .. spell_name)
+    dev_log.missing_spells[spell_id] = spell_name
+end
+
+local dev_log_missing_sod_engraving = function (sod_engraving_id, sod_engraving_name)
+    sod_engraving_id = tonumber(sod_engraving_id)
+
+    if dev_log.missing_sod_engravings[sod_engraving_id] then
+        return
+    end
+
+    dev_log_print("Відсутнє SOD гравіювання #" .. tostring(sod_engraving_id) .. " " .. sod_engraving_name)
+    dev_log.missing_sod_engravings[sod_engraving_id] = sod_engraving_name
+end
+
+local dev_log_missing_book_page = function (book_item_id, page_number, page_text)
+    book_item_id = tonumber(book_item_id)
+
+    if not dev_log.missing_books[book_item_id] then
+        dev_log.missing_books[book_item_id] = {}
+    end
+
+    page_number_text = tostring(page_number)
+    local page_key = "page_" .. page_number_text
+
+    if dev_log.missing_books[book_item_id][page_key] then
+        return
+    end
+
+    dev_log_print("Відсутня сторінка " .. page_number_text .. " книги #" .. book_item_id)
+    dev_log.missing_books[book_item_id][page_key] = page_text
+end
+
+local dev_log_missing_gossip = function (npc_id, gossip_code, gossip_text_en)
+    npc_id = tonumber(npc_id)
+
+    if not dev_log.missing_gossips[npc_id] then
+        dev_log.missing_gossips[npc_id] = {}
+    end
+
+    if dev_log.missing_gossips[npc_id][gossip_code] then
+        return
+    end
+
+    dev_log_print("Відсутня плітка \"" .. gossip_code .. "\" для персонажа #" .. npc_id)
+    dev_log.missing_gossips[npc_id][gossip_code] = gossip_text_en
+end
+
+local dev_log_missing_zone = function (zone_name)
+    if not string.match(zone_name, "%w") then
+        -- skip non-English zone name
+        return
+    end
+
+    if dev_log.missing_zones[zone_name] then
+        return
+    end
+
+    dev_log_print("Відсутня зона \"" .. zone_name .. "\"")
+    dev_log.missing_zones[zone_name] = true
+end
+
+local dev_log_missing_object = function (object_name)
+    if dev_log.missing_objects[object_name] then
+        return
+    end
+
+    dev_log_print("Відсутній об'єкт \"" .. object_name .. "\"")
+    dev_log.missing_objects[object_name] = true
 end
 
 -- -----------
@@ -191,7 +412,7 @@ end
 
 local options = nil
 local default_options = {
-    debug = false,
+    dev_mode = false,
     quest_text_size = 13,
     book_text_size = 15
 }
@@ -207,6 +428,23 @@ local prepare_options = function ()
 
     ClassicUA_Character_Options = ClassicUA_Character_Options or copy_table({}, default_character_options)
     character_options = ClassicUA_Character_Options
+
+    ClassicUA_DevLog = ClassicUA_DevLog or copy_table({}, default_dev_log)
+    dev_log = ClassicUA_DevLog
+    dev_log_init()
+
+    -- clean up unknown/deprecated keys
+    for _, v in pairs({
+        { options, default_options },
+        { character_options, default_character_options },
+        { dev_log, default_dev_log },
+    }) do
+        for k, _ in pairs(v[1]) do
+            if v[2][k] == nil then
+                v[1][k] = nil
+            end
+        end
+    end
 end
 
 local reset_options = function ()
@@ -440,12 +678,11 @@ local get_entry = function (entry_type, entry_id)
             local entry_ref = at[entry_type][entry.ref]
             if entry_ref then
                 return copy_table(copy_table({}, entry_ref), entry)
+            elseif options.dev_mode then
+                dev_log_issue_entry(entry_type, entry_id, "невірне значення ref " .. entry_ref)
+                return copy_table({ entry_type .. "#" .. entry_id .. "=>#" .. entry.ref }, entry)
             else
-                if options.debug then
-                    return copy_table({ entry_type .. "#" .. entry_id .. "=>#" .. entry.ref }, entry)
-                else
-                    return false
-                end
+                return false
             end
         end
 
@@ -465,10 +702,7 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
         return text[1]
     end
 
-    local tooltip_lines = {}
-    for j = 1, tooltip:NumLines() do
-        tooltip_lines[#tooltip_lines + 1] = _G[tooltip:GetName() .. "TextLeft" .. j]:GetText()
-    end
+    local tt_lines = tooltip_lines(tooltip)
 
     if not tooltip_matches_to_skip then
         tooltip_matches_to_skip = 0
@@ -478,8 +712,8 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     for i = 2, #text do
         local p = esc(text[i]:lower()):gsub("{(%d+)}", function (a) return "(%d*.?%d+)" end)
         local match_number = 0
-        for j = 1, #tooltip_lines do
-            local v = { tooltip_lines[j]:lower():match(p) }
+        for j = 1, #tt_lines do
+            local v = { tt_lines[j]:lower():match(p) }
             if #v > 0 then
                 match_number = match_number + 1
                 if match_number > tooltip_matches_to_skip then
@@ -570,11 +804,11 @@ local get_gossip_text = function (npc_id, gossip_text)
         local known_gossip_keys = table_keys(at.gossip[npc_id])
         local gossip_fuzzy_key = fuzzy_match_text_code(gossip_code, known_gossip_keys)
         if gossip_fuzzy_key then
-            return make_text(at.gossip[npc_id][gossip_fuzzy_key])
+            return make_text(at.gossip[npc_id][gossip_fuzzy_key]), gossip_code
         end
     end
 
-    return false
+    return false, gossip_code
 end
 
 -- ------------
@@ -595,7 +829,7 @@ for _, tt in pairs({
     end
 end
 
-local add_line_to_tooltip = function (tooltip, content, template, r, g, b, content_can_be_spell_id)
+local add_line_to_tooltip = function (tooltip, content, template, r, g, b, content_can_be_spell_id, parent_item_id)
     if not content then
         return
     end
@@ -614,8 +848,9 @@ local add_line_to_tooltip = function (tooltip, content, template, r, g, b, conte
                     text = make_entry_text(spell_desc, tooltip)
                     text = capitalize(text)
                 end
-            elseif options.debug then
-                text = "spell#" .. spell_id
+            elseif options.dev_mode and parent_item_id then
+                dev_log_issue_entry("item", parent_item_id, "невірне id закляття " .. tostring(spell_id))
+                text = "spell#" .. tostring(spell_id)
             else
                 text = false
             end
@@ -635,7 +870,8 @@ local add_item_entry_to_tooltip -- do not assign directly, this needed for recur
 add_item_entry_to_tooltip = function (tooltip, entry, entry_id, sub_item_depth)
     sub_item_depth = sub_item_depth or 1
     if sub_item_depth > 4 then
-        if options.debug then
+        if options.dev_mode then
+            dev_log_issue_entry("item", entry_id, "переповнення sub_item_depth")
             tooltip:AddLine("BUG: sub_item_depth is too high", 1, 1, .25)
         end
         return
@@ -646,9 +882,9 @@ add_item_entry_to_tooltip = function (tooltip, entry, entry_id, sub_item_depth)
     tooltip:AddLine(prefix .. capitalize(heading), 1, 1, 1)
 
     add_line_to_tooltip(tooltip, entry.desc, "TEXT", 1, 1, 1)
-    add_line_to_tooltip(tooltip, entry.equip, "При спорядженні: TEXT", 0, 1, 0, true)
-    add_line_to_tooltip(tooltip, entry.hit, "Шанс при влучанні: TEXT", 0, 1, 0, true)
-    add_line_to_tooltip(tooltip, entry.use, "Використання: TEXT", 0, 1, 0, true)
+    add_line_to_tooltip(tooltip, entry.equip, "При спорядженні: TEXT", 0, 1, 0, true, entry_id)
+    add_line_to_tooltip(tooltip, entry.hit, "Шанс при влучанні: TEXT", 0, 1, 0, true, entry_id)
+    add_line_to_tooltip(tooltip, entry.use, "Використання: TEXT", 0, 1, 0, true, entry_id)
 
     if entry.recipe_result_item then
         if tonumber(entry_id) ~= tonumber(entry.recipe_result_item) then
@@ -656,21 +892,21 @@ add_item_entry_to_tooltip = function (tooltip, entry, entry_id, sub_item_depth)
             if rr_item then
                 tooltip:AddLine(" ")
                 add_item_entry_to_tooltip(tooltip, rr_item, entry.recipe_result_item, sub_item_depth + 1)
-            elseif options.debug then
+            elseif options.dev_mode then
+                dev_log_issue_entry("item", entry_id, "невірне значення recipe_result_item " .. tostring(entry.recipe_result_item))
                 tooltip:AddLine("recipe_result_item#" .. tostring(entry.recipe_result_item), 1, 1, 1)
             end
-        else
-            if options.debug then
-                tooltip:AddLine("recipe_result_item#" .. tostring(entry_id), 1, 1, 1)
-                tooltip:AddLine("BUG: recipe_result_item is same as entry_id", 1, 1, .25)
-            end
+        elseif options.dev_mode then
+            dev_log_issue_entry("item", entry_id, "значення recipe_result_item ідентичне entry_id")
+            tooltip:AddLine("recipe_result_item#" .. tostring(entry_id), 1, 1, 1)
+            tooltip:AddLine("BUG: recipe_result_item is same as entry_id", 1, 1, .25)
         end
     end
 
     add_line_to_tooltip(tooltip, entry.flavor, "\"TEXT\"", 1, 0.82, 0)
 end
 
-local add_spell_entry_to_tooltip = function (tooltip, entry, is_aura, skip_title)
+local add_spell_entry_to_tooltip = function (tooltip, entry, spell_id, is_aura, skip_title)
     if not skip_title then
         local heading = make_entry_text(entry[1], tooltip)
         tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
@@ -689,7 +925,8 @@ local add_spell_entry_to_tooltip = function (tooltip, entry, is_aura, skip_title
                 if rune_spell and rune_spell[1] and rune_spell[2] then
                     add_line_to_tooltip(tooltip, capitalize(make_entry_text(rune_spell[1], tooltip)), "TEXT", 1, 1, 1)
                     add_line_to_tooltip(tooltip, capitalize(make_entry_text(rune_spell[2], tooltip)), "TEXT", 1, 0.82, 0)
-                elseif options.debug then
+                elseif options.dev_mode then
+                    dev_log_issue_entry("spell", spell_id, "невірне значення rune, невірне id закляття " .. tostring(rune_spell_id))
                     tooltip:AddLine("rune_spell#" .. tostring(rune_spell_id), 1, 1, 1)
                 end
             end
@@ -697,16 +934,17 @@ local add_spell_entry_to_tooltip = function (tooltip, entry, is_aura, skip_title
     end
 end
 
-local add_sod_engraving_entry_to_tooltip = function (tooltip, entry)
+local add_sod_engraving_entry_to_tooltip = function (tooltip, entry, sod_engraving_id)
     local heading = make_entry_text(entry[1], tooltip)
     tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
 
     if entry.spell then
         local spell = get_entry("spell", entry.spell)
         if spell then
-            add_spell_entry_to_tooltip(tooltip, spell, false, true)
-        elseif options.debug then
-            tooltip:AddLine("engraving.spell#" .. entry.spell, 1, 1, 1)
+            add_spell_entry_to_tooltip(tooltip, spell, entry.spell, false, true)
+        elseif options.dev_mode then
+            dev_log_issue_entry("sod_engraving", sod_engraving_id, "невірне значення spell " .. tostring(entry.spell))
+            tooltip:AddLine("engraving.spell#" .. tostring(entry.spell), 1, 1, 1)
         end
     end
 end
@@ -733,16 +971,26 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
         if entry_type == "item" then
             add_item_entry_to_tooltip(tooltip, entry, entry_id)
         elseif entry_type == "spell" then
-            add_spell_entry_to_tooltip(tooltip, entry, is_aura)
+            add_spell_entry_to_tooltip(tooltip, entry, entry_id, is_aura, false)
         elseif entry_type == "sod_engraving" then
-            add_sod_engraving_entry_to_tooltip(tooltip, entry)
+            add_sod_engraving_entry_to_tooltip(tooltip, entry, entry_id)
         else
             add_general_entry_to_tooltip(tooltip, entry)
         end
-    elseif options.debug then
+    elseif options.dev_mode then
         updated = true
         tooltip:AddLine(" ")
         tooltip:AddLine(asset_ua_code .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
+
+        if entry_type == "npc" then
+            dev_log_missing_npc(entry_id, tooltip_title_line(tooltip))
+        elseif entry_type == "item" then
+            dev_log_missing_item(entry_id, tooltip_title_line(tooltip))
+        elseif entry_type == "spell" then
+            dev_log_missing_spell(entry_id, tooltip_title_line(tooltip))
+        elseif entry_type == "sod_engraving" then
+            dev_log_missing_sod_engraving(entry_id, tooltip_title_line(tooltip))
+        end
     end
 
     if updated and tooltip:IsShown() then
@@ -758,6 +1006,7 @@ local add_glossary_entry_to_tooltip = function (tooltip, glossary_key)
         return
     end
 
+    glossary_key = strip_color_codes(glossary_key)
     local found = get_glossary_text(glossary_key)
     if found then
         result_text = capitalize(found)
@@ -771,6 +1020,8 @@ local add_glossary_entry_to_tooltip = function (tooltip, glossary_key)
         if tooltip:IsShown() then
             tooltip:Show()
         end
+    elseif options.dev_mode and GetMouseFocus() == WorldFrame then
+        dev_log_missing_object(glossary_key)
     end
 
     tooltip.classicua.entry_type = "glossary"
@@ -803,7 +1054,8 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, 
 
     local entry = get_entry("spell", talent[rank_to_show])
     if not entry then
-        if options.debug then
+        if options.dev_mode then
+            dev_log_missing_spell(talent[rank_to_show], tooltip_title_line(tooltip))
             entry = { "spell#" .. talent[rank_to_show] }
         else
             return
@@ -1239,10 +1491,12 @@ local show_gossip = function ()
     if npc_guid then
         local _, _, _, _, _, npc_id, _ = strsplit("-", npc_guid)
         local gossip_text_en = C_GossipInfo:GetText()
-        local gossip_text_ua = get_gossip_text(npc_id, gossip_text_en)
+        local gossip_text_ua, gossip_code = get_gossip_text(npc_id, gossip_text_en)
         if gossip_text_ua then
             set_gossip_content(gossip_text_ua)
             get_gossip_frame():Show()
+        elseif options.dev_mode and gossip_code then
+            dev_log_missing_gossip(npc_id, gossip_code, gossip_text_en)
         end
     end
 end
@@ -1302,6 +1556,8 @@ local show_book = function (text)
         end
         set_book_content(book[page])
         get_book_frame():Show()
+    elseif options.dev_mode and book_item_id then
+        dev_log_missing_book_page(book_item_id, ItemTextGetPage(), ItemTextGetText())
     end
 end
 
@@ -1328,18 +1584,22 @@ local update_zone_text = function ()
     for _, lookup in ipairs(zone_text_lookup) do
         text = lookup[1]:GetText()
         if text then
+            text = strip_color_codes(text)
             local found = lookup[2](text)
-            if not found then
+            if found then
+                lookup[1]:SetText(capitalize(found))
+            else
                 local text_in_bracers = string.gmatch(text, "%((.*)%)")()
                 if text_in_bracers then
                     found = lookup[2](text_in_bracers)
                     if found then
                         found = "(" .. capitalize(found) .. ")"
+                    else
+                        dev_log_missing_zone(text_in_bracers)
                     end
+                else
+                    dev_log_missing_zone(text)
                 end
-            end
-            if found then
-                lookup[1]:SetText(capitalize(found))
             end
         end
     end
@@ -1365,9 +1625,14 @@ WorldMapFrame.SetMapID = function (self, mapID)
 
     for _, v in ipairs(world_map_dds) do
         local text = v.Text:GetText()
-        local found = get_glossary_text(text)
-        if found then
-            v.Text:SetText(capitalize(found))
+        if text then
+            text = strip_color_codes(text)
+            local found = get_glossary_text(text)
+            if found then
+                v.Text:SetText(capitalize(found))
+            elseif options.dev_mode then
+                dev_log_missing_zone(text)
+            end
         end
     end
 end
@@ -1381,15 +1646,21 @@ local world_map_dropdown_button_click = function (self)
         for i = 1, dd.numButtons do
             local button = _G["DropDownList1Button" .. i]
             local text = button:GetText()
-            local found = get_glossary_text(text)
-            if found then
-                local t = capitalize(found)
-                texts[#texts + 1] = t
-                buttons[t] = button
-                button:SetText(t)
-            else
-                texts[#texts + 1] = text
-                buttons[text] = button
+            if text then
+                text = strip_color_codes(text)
+                local found = get_glossary_text(text)
+                if found then
+                    local t = capitalize(found)
+                    texts[#texts + 1] = t
+                    buttons[t] = button
+                    button:SetText(t)
+                else
+                    texts[#texts + 1] = text
+                    buttons[text] = button
+                    if options.dev_mode then
+                        dev_log_missing_zone(text)
+                    end
+                end
             end
         end
 
@@ -1407,9 +1678,12 @@ WorldMapZoneDropDownButton:HookScript("OnClick", world_map_dropdown_button_click
 local world_map_area_label_update = function (self)
     local text = self.Name:GetText()
     if text then
+        text = strip_color_codes(text)
         local found = get_glossary_text(text)
         if found then
             self.Name:SetText(capitalize(found))
+        elseif options.dev_mode then
+            dev_log_missing_zone(text)
         end
     end
 end
@@ -1437,6 +1711,8 @@ local update_target_frame_text = function ()
             local entry = get_entry("npc", id)
             if entry then
                 TargetFrame.name:SetText(capitalize(entry[1]))
+            elseif options.dev_mode then
+                dev_log_missing_npc(id, UnitName("target"))
             end
         end
     end
@@ -1455,6 +1731,8 @@ hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
                 local entry = get_entry("npc", id)
                 if entry then
                     self.name:SetText(capitalize(entry[1]))
+                elseif options.dev_mode then
+                    dev_log_missing_npc(id, UnitName(self.unit))
                 end
             end
         end
@@ -1529,6 +1807,48 @@ local setup_player_name_cases_frame = function (content_frame)
             x = x + edit_box_width + 30
         end
     end
+
+    return root
+end
+
+StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
+    text = "Дійсно скинути всі накопичені дані?",
+    button1 = "Так",
+    button2 = "Ні",
+    OnAccept = dev_log_reset,
+    timeout = 0,
+    whileDead = true,
+    hideOnEscape = true
+}
+
+local setup_dev_mode_frame = function (content_frame)
+    local root = CreateFrame("Frame", nil, content_frame)
+    root:SetPoint("BOTTOMLEFT", 0, 0)
+    root:SetSize(1, 1)
+
+    local dev_mode_check = CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
+    dev_mode_check:SetPoint("TOPLEFT", 24, 0)
+    dev_mode_check.Text:SetText("Режим розробки")
+    dev_mode_check:SetChecked(options.dev_mode)
+    dev_mode_check:SetScript("OnClick", function (self)
+        options.dev_mode = self:GetChecked()
+    end)
+
+    local stats_btn = CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
+    stats_btn:SetPoint("TOPLEFT", 24, -32)
+    stats_btn:SetText("Статистика")
+    stats_btn:SetSize(140, 28)
+    stats_btn:SetScript("OnClick", function()
+        dev_log_print_stats()
+    end)
+
+    local reset_btn = CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
+    reset_btn:SetPoint("TOPLEFT", 24, -64)
+    reset_btn:SetText("Скинути")
+    reset_btn:SetSize(140, 28)
+    reset_btn:SetScript("OnClick", function()
+        StaticPopup_Show("CLASSICUA_CONFIRM_DEV_LOG_RESET")
+    end)
 
     return root
 end
@@ -1629,17 +1949,6 @@ local prepare_options_frame = function ()
         options.book_text_size = value
     end)
 
-    -- options.debug
-
-    f = CreateFrame("CheckButton", nil, options_frame, "InterfaceOptionsCheckButtonTemplate")
-    options_frame.debug_frame = f
-    f:SetPoint("TOPLEFT", 280, -78)
-    f.Text:SetText("Режим розробки")
-    f.tooltipText = "В цьому режимі в підказках відображається ID, якщо переклад відсутній. Також відображаються помилки в базі перекладів, якщо ви їх бачите, будь-ласка повідомте про це."
-    f:SetScript("OnClick", function (self)
-        options.debug = self:GetChecked()
-    end)
-
     -- info tabs
 
     f = CreateFrame("Frame", nil, options_frame, "BackdropTemplate")
@@ -1656,18 +1965,23 @@ local prepare_options_frame = function ()
     options_frame.info_tab_child_frames = {}
     for tab_index, tab_data in ipairs({
         {
-            title                   ="Персонаж",
-            content_title           ="Персонаж: " .. UnitName("player"),
-            content_key             ="addon_char_desc",
-            child_frame_setup_func  =setup_player_name_cases_frame
+            title                   = "Персонаж",
+            content_title           = "Персонаж: " .. UnitName("player"),
+            content_text            = at_text["addon_player_character_desc"],
+            child_frame_setup_func  = setup_player_name_cases_frame
         }, {
-            title           ="Оновлення",
-            content_title   ="Оновлення",
-            content_key     ="addon_changelog"
+            title                   = "Розробка",
+            content_title           = "Розробка",
+            content_text            = at_text["addon_dev_mode_desc"]:gsub("@GAME_SUB_DIR", is_classic and "_classic_era_" or "_classic_"),
+            child_frame_setup_func  = setup_dev_mode_frame
         }, {
-            title           ="Причетні",
-            content_title   ="Причетні",
-            content_key     ="addon_contributors"
+            title           = "Оновлення",
+            content_title   = "Оновлення",
+            content_text    = at_text["addon_changelog"]
+        }, {
+            title           = "Причетні",
+            content_title   = "Причетні",
+            content_text    = at_text["addon_contributors"]
         }
     }) do
         f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
@@ -1675,7 +1989,7 @@ local prepare_options_frame = function ()
         f.tab_index = tab_index
         f.tab_data = tab_data
         f:SetSize(100, 32)
-        f:SetPoint("TOPLEFT", 78 + tab_index * f:GetWidth(), -200)
+        f:SetPoint("TOPLEFT", 24 + tab_index * f:GetWidth(), -200)
         f:SetText(f.tab_data.title)
         f:SetScript("OnClick", function(self)
             if self.tab_index == options_frame.info_tab_frame.current_tab_index then
@@ -1688,7 +2002,7 @@ local prepare_options_frame = function ()
                 end
             end
 
-            set_quest_content(options_frame.info_tab_frame, self.tab_data.content_title, at_text[self.tab_data.content_key])
+            set_quest_content(options_frame.info_tab_frame, self.tab_data.content_title, self.tab_data.content_text)
             options_frame.info_tab_frame.current_tab_index = self.tab_index
             self:LockHighlight()
 
@@ -1711,7 +2025,7 @@ local prepare_options_frame = function ()
 
         -- preselect 1st tab
         if tab_index == 1 then
-            set_quest_content(options_frame.info_tab_frame, f.tab_data.content_title, at_text[f.tab_data.content_key])
+            set_quest_content(options_frame.info_tab_frame, f.tab_data.content_title, f.tab_data.content_text)
             options_frame.info_tab_frame.current_tab_index = 1
             f:LockHighlight()
 
@@ -1731,7 +2045,6 @@ local prepare_options_frame = function ()
         f.quest_text_size_frame.Text:SetText("Розмір тексту завдання: " .. options.quest_text_size)
         f.book_text_size_frame:SetValue(options.book_text_size)
         f.book_text_size_frame.Text:SetText("Розмір тексту книжки: " .. options.book_text_size)
-        f.debug_frame:SetChecked(options.debug)
     end
 
     InterfaceOptions_AddCategory(options_frame)
@@ -1765,12 +2078,15 @@ event_frame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
         self:UnregisterEvent("ADDON_LOADED")
+
         prepare_options()
         prepare_options_frame()
-        print(
+
+        DEFAULT_CHAT_FRAME:AddMessage(
             asset_ua_code
             .. " ClassicUA v" .. GetAddOnMetadata("ClassicUA", "Version")
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
+            .. (options.dev_mode and " — Режим розробки" or "")
         )
 
     elseif event == "PLAYER_LOGIN" then
