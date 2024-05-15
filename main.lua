@@ -1,5 +1,7 @@
 local _, addonTable = ...
 
+local options = nil
+
 -- ----------
 -- [ assets ]
 -- ----------
@@ -298,7 +300,10 @@ local dev_log_issue = function (key, data)
         return
     end
 
-    dev_log_print("Помилка: " .. key)
+    if options.dev_mode_notify_activity then
+        dev_log_print("Помилка: " .. key)
+    end
+
     dev_log.issues[key] = data and data or true
 end
 
@@ -313,7 +318,10 @@ local dev_log_missing_npc = function (npc_id, npc_name)
         return
     end
 
-    dev_log_print("Відсутній персонаж #" .. tostring(npc_id) .. " " .. npc_name)
+    if options.dev_mode_notify_activity then
+        dev_log_print("Відсутній персонаж #" .. tostring(npc_id) .. " " .. npc_name)
+    end
+
     dev_log.missing_npcs[npc_id] = npc_name
 end
 
@@ -324,7 +332,10 @@ local dev_log_missing_item = function (item_id, item_name)
         return
     end
 
-    dev_log_print("Відсутній предмет #" .. tostring(item_id) .. " " .. item_name)
+    if options.dev_mode_notify_activity then
+        dev_log_print("Відсутній предмет #" .. tostring(item_id) .. " " .. item_name)
+    end
+
     dev_log.missing_items[item_id] = item_name
 end
 
@@ -335,7 +346,10 @@ local dev_log_missing_spell = function (spell_id, spell_name)
         return
     end
 
-    dev_log_print("Відсутнє закляття #" .. tostring(spell_id) .. " " .. spell_name)
+    if options.dev_mode_notify_activity then
+        dev_log_print("Відсутнє закляття #" .. tostring(spell_id) .. " " .. spell_name)
+    end
+
     dev_log.missing_spells[spell_id] = spell_name
 end
 
@@ -346,7 +360,10 @@ local dev_log_missing_sod_engraving = function (sod_engraving_id, sod_engraving_
         return
     end
 
-    dev_log_print("Відсутнє SOD гравіювання #" .. tostring(sod_engraving_id) .. " " .. sod_engraving_name)
+    if options.dev_mode_notify_activity then
+        dev_log_print("Відсутнє SOD гравіювання #" .. tostring(sod_engraving_id) .. " " .. sod_engraving_name)
+    end
+
     dev_log.missing_sod_engravings[sod_engraving_id] = sod_engraving_name
 end
 
@@ -364,7 +381,10 @@ local dev_log_missing_book_page = function (book_item_id, page_number, page_text
         return
     end
 
-    dev_log_print("Відсутня сторінка " .. page_number_text .. " книги #" .. book_item_id)
+    if options.dev_mode_notify_activity then
+        dev_log_print("Відсутня сторінка " .. page_number_text .. " книги #" .. book_item_id)
+    end
+
     dev_log.missing_books[book_item_id][page_key] = page_text
 end
 
@@ -379,7 +399,10 @@ local dev_log_missing_gossip = function (npc_id, gossip_code, gossip_text_en)
         return
     end
 
-    dev_log_print("Відсутня плітка \"" .. gossip_code .. "\" для персонажа #" .. npc_id)
+    if options.dev_mode_notify_activity then
+        dev_log_print("Відсутня плітка \"" .. gossip_code .. "\" для персонажа #" .. npc_id)
+    end
+
     dev_log.missing_gossips[npc_id][gossip_code] = gossip_text_en
 end
 
@@ -393,7 +416,10 @@ local dev_log_missing_zone = function (zone_name)
         return
     end
 
-    dev_log_print("Відсутня зона \"" .. zone_name .. "\"")
+    if options.dev_mode_notify_activity then
+        dev_log_print("Відсутня зона \"" .. zone_name .. "\"")
+    end
+
     dev_log.missing_zones[zone_name] = true
 end
 
@@ -402,7 +428,10 @@ local dev_log_missing_object = function (object_name)
         return
     end
 
-    dev_log_print("Відсутній об'єкт \"" .. object_name .. "\"")
+    if options.dev_mode_notify_activity then
+        dev_log_print("Відсутній об'єкт \"" .. object_name .. "\"")
+    end
+
     dev_log.missing_objects[object_name] = true
 end
 
@@ -410,9 +439,9 @@ end
 -- [ options ]
 -- -----------
 
-local options = nil
 local default_options = {
     dev_mode = false,
+    dev_mode_notify_activity = false,
     quest_text_size = 13,
     book_text_size = 15
 }
@@ -1826,16 +1855,31 @@ local setup_dev_mode_frame = function (content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
     root:SetSize(1, 1)
 
-    local dev_mode_check = CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
-    dev_mode_check:SetPoint("TOPLEFT", 24, 0)
-    dev_mode_check.Text:SetText("Режим розробки")
-    dev_mode_check:SetChecked(options.dev_mode)
-    dev_mode_check:SetScript("OnClick", function (self)
+    local dm_check = CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
+    dm_check:SetPoint("TOPLEFT", 24, 0)
+    dm_check.Text:SetText("Режим розробки")
+    dm_check:SetChecked(options.dev_mode)
+    dm_check:SetScript("OnClick", function (self)
         options.dev_mode = self:GetChecked()
     end)
 
+    local dm_na_check = CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
+    dm_na_check:SetPoint("TOPLEFT", 24, -28)
+    dm_na_check.Text:SetText("Сповіщення активності")
+    dm_na_check:SetChecked(options.dev_mode_notify_activity)
+    dm_na_check:SetScript("OnClick", function (self)
+        options.dev_mode_notify_activity = self:GetChecked()
+    end)
+    dm_na_check:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText("Сповіщати в чат кожен раз при знаходженні нового відсутнього запису.", nil, nil, nil, nil, true)
+    end)
+    dm_na_check:SetScript("OnLeave", function()
+        GameTooltip:Hide()
+    end)
+
     local stats_btn = CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
-    stats_btn:SetPoint("TOPLEFT", 24, -32)
+    stats_btn:SetPoint("TOPLEFT", 24, -64)
     stats_btn:SetText("Статистика")
     stats_btn:SetSize(140, 28)
     stats_btn:SetScript("OnClick", function()
@@ -1843,7 +1887,7 @@ local setup_dev_mode_frame = function (content_frame)
     end)
 
     local reset_btn = CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
-    reset_btn:SetPoint("TOPLEFT", 24, -64)
+    reset_btn:SetPoint("TOPLEFT", 24 + 160, -64)
     reset_btn:SetText("Скинути")
     reset_btn:SetSize(140, 28)
     reset_btn:SetScript("OnClick", function()
