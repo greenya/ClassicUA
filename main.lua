@@ -261,7 +261,7 @@ local default_dev_log = {
     missing_gossips = {},
     missing_zones = {},
     missing_objects = {},
-    missing_sod_engraving = {},
+    missing_sod_engravings = {},
     issues = {}
 }
 
