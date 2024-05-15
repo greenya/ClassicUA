@@ -1214,9 +1214,9 @@ for _, tt in pairs(known_tooltips) do
     end
 end
 
-hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index)
-    local tier, column, rank, max_rank, is_active = select(3, GetTalentInfo(tab_index, talent_index))
-    if not is_active then -- skip active talent (it gets shown as spell)
+hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index, _, is_pet)
+    if not is_pet then
+        local _, _, tier, column, rank, max_rank = GetTalentInfo(tab_index, talent_index)
         add_talent_entry_to_tooltip(self, tab_index, tier, column, rank, max_rank)
     end
 end)
