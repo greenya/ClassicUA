@@ -143,6 +143,19 @@ local tooltip_title_line = function (tooltip)
     return text
 end
 
+-- unit_id is one of https://warcraft.wiki.gg/wiki/UnitId
+local npc_id_from_unit_id = function (unit_id)
+    if type(unit_id) == "string" then
+        local guid = UnitGUID(unit_id)
+        if guid then
+            local kind, _, _, _, _, id, _ = strsplit("-", guid)
+            if id and (kind == "Creature" or kind == "Vehicle") then
+                return tonumber(id)
+            end
+        end
+    end
+end
+
 -- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
 local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"night elf", "nightelf"},
@@ -1139,10 +1152,9 @@ end
 local tooltip_set_unit = function (self)
     local _, unit = self:GetUnit()
     if unit then
-        local guid = UnitGUID(unit)
-        local kind, _, _, _, _, id, _ = strsplit("-", guid)
-        if kind == "Creature" and id then
-            add_entry_to_tooltip(self, "npc", id)
+        local npc_id = npc_id_from_unit_id(unit)
+        if npc_id then
+            add_entry_to_tooltip(self, "npc", npc_id)
         end
     end
 end
@@ -1516,9 +1528,8 @@ local set_gossip_content = function (text)
 end
 
 local show_gossip = function ()
-    local npc_guid = UnitGUID("target")
-    if npc_guid then
-        local _, _, _, _, _, npc_id, _ = strsplit("-", npc_guid)
+    local npc_id = npc_id_from_unit_id("target")
+    if npc_id then
         local gossip_text_en = C_GossipInfo:GetText()
         local gossip_text_ua, gossip_code = get_gossip_text(npc_id, gossip_text_en)
         if gossip_text_ua then
@@ -1733,16 +1744,13 @@ end
 -- ----------------
 
 local update_target_frame_text = function ()
-    local guid = UnitGUID("target")
-    if guid then
-        local kind, _, _, _, _, id, _ = strsplit("-", guid)
-        if kind == "Creature" and id then
-            local entry = get_entry("npc", id)
-            if entry then
-                TargetFrame.name:SetText(capitalize(entry[1]))
-            elseif options.dev_mode then
-                dev_log_missing_npc(id, UnitName("target"))
-            end
+    local npc_id = npc_id_from_unit_id("target")
+    if npc_id then
+        local entry = get_entry("npc", npc_id)
+        if entry then
+            TargetFrame.name:SetText(capitalize(entry[1]))
+        elseif options.dev_mode then
+            dev_log_missing_npc(npc_id, UnitName("target"))
         end
     end
 end
@@ -1753,16 +1761,13 @@ end
 
 hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
     if ShouldShowName(self) and not self:IsForbidden() then
-        local guid = UnitGUID(self.unit)
-        if guid then
-            local kind, _, _, _, _, id, _ = strsplit("-", guid)
-            if kind == "Creature" and id then
-                local entry = get_entry("npc", id)
-                if entry then
-                    self.name:SetText(capitalize(entry[1]))
-                elseif options.dev_mode then
-                    dev_log_missing_npc(id, UnitName(self.unit))
-                end
+        local npc_id = npc_id_from_unit_id(self.unit)
+        if npc_id then
+            local entry = get_entry("npc", npc_id)
+            if entry then
+                self.name:SetText(capitalize(entry[1]))
+            elseif options.dev_mode then
+                dev_log_missing_npc(npc_id, UnitName(self.unit))
             end
         end
     end
