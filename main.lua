@@ -1528,7 +1528,7 @@ local set_gossip_content = function (text)
 end
 
 local show_gossip = function ()
-    local npc_id = npc_id_from_unit_id("target")
+    local npc_id = npc_id_from_unit_id("npc")
     if npc_id then
         local gossip_text_en = C_GossipInfo:GetText()
         local gossip_text_ua, gossip_code = get_gossip_text(npc_id, gossip_text_en)
