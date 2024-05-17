@@ -227,12 +227,12 @@ def write_lua_gossip_file(path, filename, gossip):
 
             for text_code in npc_strings:
                 text_en = npc_strings[text_code]['en']
-                text_ua = npc_strings[text_code]['ua']
+                text_uk = npc_strings[text_code]['uk']
 
                 for s in text_en.split('\n'):
                     f.write(f'--{' ' + s if s else ''}\n')
 
-                f.write(f'["{text_code}"] = [===[{text_ua}]===],\n')
+                f.write(f'["{text_code}"] = [===[{text_uk}]===],\n')
 
             f.write('},\n')
 
