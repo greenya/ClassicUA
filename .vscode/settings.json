@@ -133,6 +133,7 @@
         "Caer",
         "Cairnstone",
         "Cantation",
+        "Cata",
         "Catelyn's",
         "Catseye",
         "Cenarion",
@@ -1568,8 +1569,8 @@
         "Лютополоха",
         "Лютошторма",
         "м'якопанцирний",
-        "м'ясар",
         "М'якоступа",
+        "м'ясар",
         "магівське",
         "Магівський",
         "маговелич",
@@ -2160,5 +2161,8 @@
         "Ясносрібла",
         "Ясносрібло",
         "ясносрібна"
-    ]
+    ],
+    "todo-tree.tree.disableCompactFolders": false,
+    "todo-tree.tree.showBadges": true,
+    "todo-tree.tree.showCountsInTree": false
 }
