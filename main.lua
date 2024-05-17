@@ -47,9 +47,13 @@ local copy_table = function (target, source)
     return target
 end
 
-local table_keys = function (table)
+local table_string_keys = function (table)
     local result = {}
-    for k, _ in pairs(table) do result[#result + 1] = k end
+    for k, _ in pairs(table) do
+        if type(k) == "string" then
+            result[#result + 1] = k
+        end
+    end
     return result
 end
 
@@ -259,6 +263,7 @@ local default_dev_log = {
     missing_spells = {},
     missing_books = {},
     missing_gossips = {},
+    missing_chats = {},
     missing_zones = {},
     missing_objects = {},
     missing_sod_engravings = {},
@@ -279,6 +284,7 @@ local dev_log_init = function ()
     if not dev_log.missing_spells           then dev_log.missing_spells = {} end
     if not dev_log.missing_books            then dev_log.missing_books = {} end
     if not dev_log.missing_gossips          then dev_log.missing_gossips = {} end
+    if not dev_log.missing_chats            then dev_log.missing_chats = {} end
     if not dev_log.missing_zones            then dev_log.missing_zones = {} end
     if not dev_log.missing_objects          then dev_log.missing_objects = {} end
     if not dev_log.missing_sod_engravings   then dev_log.missing_sod_engravings = {} end
@@ -292,6 +298,7 @@ local dev_log_print_stats = function ()
     dev_log_print("Відсутні закляття: "     .. table_keys_count(dev_log.missing_spells))
     dev_log_print("Відсутні книжки: "       .. table_keys_count(dev_log.missing_books))
     dev_log_print("Відсутні плітки: "       .. table_keys_count(dev_log.missing_gossips))
+    dev_log_print("Відсутні чати: "         .. table_keys_count(dev_log.missing_chats))
     dev_log_print("Відсутні зони: "         .. table_keys_count(dev_log.missing_zones))
     dev_log_print("Відсутні об'єкти: "      .. table_keys_count(dev_log.missing_objects))
     if is_classic_sod then
@@ -417,6 +424,22 @@ local dev_log_missing_gossip = function (npc_id, gossip_code, gossip_text_en)
     end
 
     dev_log.missing_gossips[npc_id][gossip_code] = gossip_text_en
+end
+
+local dev_log_missing_chat_text = function (npc_name, chat_text_code, chat_text_en)
+    if not dev_log.missing_chats[npc_name] then
+        dev_log.missing_chats[npc_name] = {}
+    end
+
+    if dev_log.missing_chats[npc_name][chat_text_code] then
+        return
+    end
+
+    if options.dev_mode_notify_activity then
+        dev_log_print("Відсутній чат \"" .. chat_text_code .. "\" для " .. npc_name)
+    end
+
+    dev_log.missing_chats[npc_name][chat_text_code] = chat_text_en
 end
 
 local dev_log_missing_zone = function (zone_name)
@@ -843,7 +866,7 @@ local get_gossip_text = function (npc_id, gossip_text)
     local gossip_code = get_text_code(gossip_text)
 
     if at.gossip[npc_id] then
-        local known_gossip_keys = table_keys(at.gossip[npc_id])
+        local known_gossip_keys = table_string_keys(at.gossip[npc_id])
         local gossip_fuzzy_key = fuzzy_match_text_code(gossip_code, known_gossip_keys)
         if gossip_fuzzy_key then
             return make_text(at.gossip[npc_id][gossip_fuzzy_key]), gossip_code
@@ -851,6 +874,36 @@ local get_gossip_text = function (npc_id, gossip_text)
     end
 
     return false, gossip_code
+end
+
+local get_chat_text = function (npc_name, chat_text)
+    local at = addonTable
+
+    if not npc_name or not chat_text or type(at.chat) ~= "table" then
+        return
+    end
+
+    local text_code = get_text_code(chat_text)
+    if at.chat[npc_name] then
+        local known_text_keys = table_string_keys(at.chat[npc_name])
+        local text_fuzzy_key = fuzzy_match_text_code(text_code, known_text_keys)
+        if text_fuzzy_key then
+            local npc_name_uk = at.chat[npc_name][1]
+            if not npc_name_uk then
+                npc_name_uk = get_glossary_text(npc_name)
+                if not npc_name_uk then
+                    npc_name_uk = npc_name
+                end
+            end
+
+            return
+                capitalize(npc_name_uk),
+                make_text(at.chat[npc_name][text_fuzzy_key]),
+                text_code
+        end
+    end
+
+    return false, false, text_code
 end
 
 -- ------------
@@ -1772,6 +1825,61 @@ hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
         end
     end
 end)
+
+-- --------
+-- [ chat ]
+-- --------
+
+local known_chat_msg_events = {
+    CHAT_MSG_MONSTER_EMOTE      = { info=ChatTypeInfo.MONSTER_EMOTE,        verb=false },
+    CHAT_MSG_MONSTER_PARTY      = { info=ChatTypeInfo.MONSTER_PARTY,        verb="говорить" },
+    CHAT_MSG_MONSTER_SAY        = { info=ChatTypeInfo.MONSTER_SAY,          verb="говорить" },
+    CHAT_MSG_MONSTER_WHISPER    = { info=ChatTypeInfo.MONSTER_WHISPER,      verb="шепоче" },
+    CHAT_MSG_MONSTER_YELL       = { info=ChatTypeInfo.MONSTER_YELL,         verb="вигукує" },
+    CHAT_MSG_RAID_BOSS_EMOTE    = { info=ChatTypeInfo.RAID_BOSS_EMOTE,      verb=false },
+    CHAT_MSG_RAID_BOSS_WHISPER  = { info=ChatTypeInfo.RAID_BOSS_WHISPER,    verb="шепоче" },
+}
+
+local filter_chat_msg = function (self, event, chat_text, npc_name, ...)
+    local known_event = known_chat_msg_events[event]
+    if not known_event then
+        return false, chat_text, npc_name, ...
+    end
+
+    local npc_name_uk, chat_text_uk, chat_text_code = get_chat_text(npc_name, chat_text)
+    if not npc_name_uk or not chat_text_uk then
+        dev_log_missing_chat_text(npc_name, chat_text_code, chat_text)
+        return false, chat_text, npc_name, ...
+    end
+
+    if chat_text_uk:match("%%s") then
+        chat_text_uk = string.format(chat_text_uk, npc_name_uk)
+    end
+
+    local chat_message = nil
+
+    if known_event.verb then
+        -- format: say, yell, whisper or party
+        chat_message = string.format("%s %s: %s", npc_name_uk, known_event.verb, chat_text_uk)
+        -- TODO: update chat bubble
+    else
+        -- format: emote
+        chat_message = chat_text_uk
+    end
+
+    self:AddMessage(
+        asset_ua_code .. " " .. chat_message,
+        known_event.info.r,
+        known_event.info.g,
+        known_event.info.b
+    )
+
+    return true
+end
+
+for event_name, _ in pairs(known_chat_msg_events) do
+    ChatFrame_AddMessageEventFilter(event_name, filter_chat_msg)
+end
 
 -- -----------------
 -- [ options frame ]
