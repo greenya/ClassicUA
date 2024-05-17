@@ -23,29 +23,29 @@ class Terms(list['Term']):
         result = Terms()
 
         for entry in root.findall('.//termEntry', namespaces=namespace_map):
-            en_term_elem = entry.find('langSet[@xml:lang="en"]/tig/term', namespaces=namespace_map)
-            en_text = utils.get_clean_text(en_term_elem.text)
+            term_elem_en = entry.find('langSet[@xml:lang="en"]/tig/term', namespaces=namespace_map)
+            text_en = utils.get_clean_text(term_elem_en.text)
 
-            en_descrip_elem = entry.find('langSet[@xml:lang="en"]/tig/descrip[@type="definition"]', namespaces=namespace_map)
-            en_desc = utils.get_clean_text(', '.join(en_descrip_elem.text.split('\n')))
+            descrip_elem_en = entry.find('langSet[@xml:lang="en"]/tig/descrip[@type="definition"]', namespaces=namespace_map)
+            desc_en = utils.get_clean_text(', '.join(descrip_elem_en.text.split('\n')))
 
-            uk_term_elem = entry.find('langSet[@xml:lang="uk"]/tig/term', namespaces=namespace_map)
-            uk_text = utils.get_clean_text(uk_term_elem.text)
+            term_elem_uk = entry.find('langSet[@xml:lang="uk"]/tig/term', namespaces=namespace_map)
+            text_uk = utils.get_clean_text(term_elem_uk.text)
 
-            term = Term(en_text, en_desc, uk_text)
+            term = Term(text_en, desc_en, text_uk)
             result.append(term)
 
         return result
 
 class Term:
 
-    def __init__(self, en_text: str, en_desc: str, uk_text: str) -> None:
-        self.en_text = en_text
-        self.uk_text = uk_text
-        self.tags = list(x.replace('_', ',') for x in map(str.strip, en_desc.split(',')))
+    def __init__(self, text_en: str, desc_en: str, text_uk: str) -> None:
+        self.text_en = text_en
+        self.text_uk = text_uk
+        self.tags = list(x.replace('_', ',') for x in map(str.strip, desc_en.split(',')))
 
     def __repr__(self) -> str:
-        return f'@term {self.en_text} -> {self.uk_text}'
+        return f'@term {self.text_en} -> {self.text_uk}'
 
     def is_npc(self) -> bool:
         return 'нпц' in self.tags
@@ -64,7 +64,7 @@ class Term:
 
         return ''
 
-    def npc_id_tags(self, known_terms: Terms) -> list['NpcIdTag']:
+    def npc_id_tags(self, known_terms: Terms = []) -> list['NpcIdTag']:
         assert self.is_npc()
 
         result = []
@@ -97,9 +97,9 @@ class Term:
         npc_id = int(npc_id[1:])
         npc_desc_orig = self.desc()
 
-        npc_en_name = '' if npc_name else self.en_text
+        npc_name_en = '' if npc_name else self.text_en
         if not npc_name:
-            npc_name = self.uk_text
+            npc_name = self.text_uk
 
         match_name_with_desc = re.search('^(.*)<(.*)>$', npc_name)
         if match_name_with_desc:
@@ -107,13 +107,13 @@ class Term:
             npc_desc_orig = match_name_with_desc[2].strip()
 
             if not npc_name:
-                npc_name = self.uk_text
+                npc_name = self.text_uk
 
         npc_desc = self._resolve_desc(npc_desc_orig, known_terms)
         if npc_desc == npc_desc_orig:
             npc_desc_orig = ''
 
-        return NpcIdTag(npc_id, npc_exp, npc_name, npc_desc, npc_en_name, npc_desc_orig)
+        return NpcIdTag(npc_id, npc_exp, npc_name, npc_desc, npc_name_en, npc_desc_orig)
 
     def _resolve_desc(self, desc: str, known_terms: Terms) -> str:
         desc_lower = desc.lower()
@@ -128,26 +128,26 @@ class Term:
             desc_lower_patterns.append(desc_lower[4:])
 
         for term in known_terms:
-            if term.en_text.lower() in desc_lower_patterns:
-                cases = term.uk_text.split('/', maxsplit=1)
+            if term.text_en.lower() in desc_lower_patterns:
+                cases = term.text_uk.split('/', maxsplit=1)
                 return cases[1] if self.is_female() and len(cases) > 1 else cases[0]
 
         return desc
 
 class NpcIdTag:
 
-    def __init__(self, id: int, exp: str, name: str, desc: str = '', en_name: str = '', en_desc: str = '') -> None:
+    def __init__(self, id: int, exp: str, name: str, desc: str = '', name_en: str = '', desc_en: str = '') -> None:
         self.id = id
         self.exp = exp
         self.name = name
         self.desc = desc
-        self.en_name = en_name
-        self.en_desc = en_desc
+        self.name_en = name_en
+        self.desc_en = desc_en
 
     def __repr__(self) -> str:
         return str.strip(' '.join(filter(None, [
             f'@npc_id_tag #{self.id}:{self.exp} {self.name}',
             f'<{self.desc}>' if self.desc else '',
-            f'en_name={self.en_name}' if self.en_name else '',
-            f'en_desc={self.en_desc}' if self.en_desc else '',
+            f'name_en={self.name_en}' if self.name_en else '',
+            f'desc_en={self.desc_en}' if self.desc_en else '',
         ])))

@@ -26,8 +26,8 @@ def collect_npcs():
             npcs[npc.exp][npc.id] = (
                 npc.name,
                 npc.desc,
-                npc.en_name,
-                term.en_text + (f' <{npc.en_desc}>' if npc.en_desc else '')
+                npc.name_en,
+                term.text_en + (f' <{npc.desc_en}>' if npc.desc_en else '')
             )
 
     return npcs, issues

@@ -12,15 +12,15 @@ def collect_zones():
     terms = Terms.from_tbx(tbx_file)
 
     for term in terms.locations():
-        result[term.en_text] = term.uk_text
+        result[term.text_en] = term.text_uk
 
         for alias in term.location_aliases():
             if alias not in result:
-                result[alias] = term.uk_text
+                result[alias] = term.text_uk
                 aliases.append(alias)
             else:
                 if alias not in aliases:
-                    issues.append(f'[!] Alias "{alias}" in term "{term.en_text}" matches other unique term')
+                    issues.append(f'[!] Alias "{alias}" in term "{term.text_en}" matches other unique term')
 
     return result, len(aliases), issues
 

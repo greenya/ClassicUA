@@ -4,16 +4,6 @@ import utils
 
 # TODO: add expansion support when we actually have gossip_[expansion] folders
 
-def get_all_strings_from_xml_file(filename):
-    result = []
-
-    for s in ElementTree.parse(filename).getroot().findall('./string'):
-        if s.text:
-            t = utils.get_clean_text(s.text)
-            result.append(t)
-
-    return result
-
 def collect_gossip():
     source_path         = 'translation_from_crowdin/en/gossip/'
     translation_path    = 'translation_from_crowdin/uk/gossip/'
@@ -33,42 +23,22 @@ def collect_gossip():
             npc_name, npc_id = re.search(filename_pattern, filename).groups()
 
             if npc_id in result:
-                issues.append(f'[!] Duplicated npc id #{npc_id} via {filename}. File skipped.')
+                issues.append(f'[!] Duplicated npc #{npc_id} via {filename}. File skipped.')
                 continue
 
-            uk_strings = get_all_strings_from_xml_file(os.path.join(dirpath, filename))
-
-            if not uk_strings:
+            strings_uk = utils.get_all_strings_from_xml_file(os.path.join(dirpath, filename))
+            if not strings_uk:
                 continue
 
             filename_sub_path = f'{dirpath}/{filename}'.replace(translation_path, '').replace(filename, '')
-            en_strings = get_all_strings_from_xml_file(os.path.join(source_path, filename_sub_path, filename))
+            strings_en = utils.get_all_strings_from_xml_file(os.path.join(source_path, filename_sub_path, filename))
 
-            # print(f'=========== #{npc_id} {npc_name} ============')
-            # print(uk_strings)
-            # print(en_strings)
-
-            if len(uk_strings) != len(en_strings):
+            if len(strings_uk) != len(strings_en):
                 issues.append(f'[!] Different number of en->uk strings for {filename}. File skipped.')
                 continue
 
-            npc_gossip = {}
-
-            for i in range(len(uk_strings)):
-                text_uk = uk_strings[i]
-                text_en = en_strings[i]
-
-                if text_uk == text_en:
-                    continue
-
-                text_code = utils.get_text_code(text_en)
-                text_data = (text_uk, text_en)
-
-                if text_code in npc_gossip:
-                    issues.append(f'[!] Text code "{text_code}" collision in {filename} -- New data skipped\n\tOld: {npc_gossip[text_code]}\n\tNew: {text_data}')
-                    continue
-
-                npc_gossip[text_code] = { 'en': text_en, 'uk': text_uk }
+            npc_gossip, npc_gossip_issues = utils.build_text_codes_map(strings_en, strings_uk)
+            issues.extend(npc_gossip_issues)
 
             if not npc_gossip:
                 continue

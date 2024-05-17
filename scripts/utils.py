@@ -47,6 +47,38 @@ def get_clean_text(text):
 
     return '\n'.join(lines[:last_non_empty_line_idx + 1]) if last_non_empty_line_idx >= 0 else ''
 
+def get_all_strings_from_xml_file(filename) -> list:
+    result = []
+
+    for s in ElementTree.parse(filename).getroot().findall('./string'):
+        if s.text:
+            t = get_clean_text(s.text)
+            result.append(t)
+
+    return result
+
+def build_text_codes_map(strings_en, strings_uk) -> tuple:
+    result = {}
+    issues = []
+
+    for i in range(len(strings_uk)):
+        text_uk = strings_uk[i]
+        text_en = strings_en[i]
+
+        if text_uk == text_en:
+            continue
+
+        text_code = get_text_code(text_en)
+        text_data = { 'en': text_en, 'uk': text_uk }
+
+        if text_code in result:
+            issues.append(f'[!] Text code "{text_code}" collision -- New data skipped\n\tOld: {result[text_code]}\n\tNew: {text_data}')
+            continue
+
+        result[text_code] = text_data
+
+    return result, issues
+
 def get_lua_table_from_ast_node(node: astnodes.Table):
     result = []
 
