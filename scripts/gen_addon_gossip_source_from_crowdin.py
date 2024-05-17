@@ -1,5 +1,4 @@
 import sys, os, re
-from xml.etree import ElementTree
 import utils
 
 # TODO: add expansion support when we actually have gossip_[expansion] folders
