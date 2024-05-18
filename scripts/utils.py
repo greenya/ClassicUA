@@ -152,7 +152,7 @@ def write_lua_assign_or_copy_table_code(f, var):
 
 def write_lua_assign_or_merge_table_one_level_code(f, var):
     f.write(f'if addonTable.{var} then\n')
-    f.write(f'    for k, v in pairs({var})\n')
+    f.write(f'    for k, v in pairs({var}) do\n')
     f.write(f'        if type(addonTable.{var}[k]) == "table" and type(v) == "table" then\n')
     f.write(f'            for vk, vv in pairs(v) do\n')
     f.write(f'                addonTable.{var}[k][vk] = vv\n')
@@ -366,10 +366,3 @@ def get_text_code(text):
 
     # print('CODE', ''.join(result))
     return ''.join(result)
-
-def pack_gossip_string_name(npc_id, en_gossip_text):
-    return f'GOSSIP_{npc_id}_{get_text_code(en_gossip_text)}'
-
-def unpack_gossip_string_name(gossip_string_name):
-    _, npc_id, text_code = gossip_string_name.split('_', maxsplit=2)
-    return int(npc_id), text_code
