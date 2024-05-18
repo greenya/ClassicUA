@@ -796,7 +796,13 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
         end
     end
 
-    return text[1]:gsub("{(%d+)}", function (a) return values[tonumber(a)] end)
+    local result = text[1]:gsub("{(%d+)}", function (a) return values[tonumber(a)] end)
+
+    if result:match("{%d}") and options.dev_mode and #tt_lines > 0 then
+        dev_log_issue("незаповнені значення шаблону [" .. tt_lines[1] .. "] " .. text[1])
+    end
+
+    return result
 end
 
 local get_glossary_text = function (entry_key)
