@@ -1080,6 +1080,11 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
         return
     end
 
+    local tt_title_line = tooltip_title_line(tooltip)
+    if tt_title_line == "Unknown" or tt_title_line == "Retrieving item information" then
+        return
+    end
+
     local updated = false
     local entry = get_entry(entry_type, entry_id)
 
@@ -1102,13 +1107,13 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
         tooltip:AddLine(asset_ua_code .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
 
         if entry_type == "npc" then
-            dev_log_missing_npc(entry_id, tooltip_title_line(tooltip))
+            dev_log_missing_npc(entry_id, tt_title_line)
         elseif entry_type == "item" then
-            dev_log_missing_item(entry_id, tooltip_title_line(tooltip))
+            dev_log_missing_item(entry_id, tt_title_line)
         elseif entry_type == "spell" then
-            dev_log_missing_spell(entry_id, tooltip_title_line(tooltip))
+            dev_log_missing_spell(entry_id, tt_title_line)
         elseif entry_type == "sod_engraving" then
-            dev_log_missing_sod_engraving(entry_id, tooltip_title_line(tooltip))
+            dev_log_missing_sod_engraving(entry_id, tt_title_line)
         end
     end
 
@@ -1673,7 +1678,7 @@ local show_book = function (text)
         end
         set_book_content(book[page])
         get_book_frame():Show()
-    elseif options.dev_mode and book_item_id then
+    elseif options.dev_mode and book_item_id and book_item_id ~= 8383 then -- #8383 is a saved letter inventory item
         dev_log_missing_book_page(book_item_id, ItemTextGetPage(), ItemTextGetText())
     end
 end
@@ -2302,7 +2307,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
 
     elseif event == "ITEM_TEXT_BEGIN" then
         if known_tooltips[1].classicua.entry_type == "item" then
-            book_item_id = known_tooltips[1].classicua.entry_id
+            book_item_id = tonumber(known_tooltips[1].classicua.entry_id)
         end
 
     elseif event == "ITEM_TEXT_READY" then
