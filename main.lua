@@ -160,6 +160,21 @@ local npc_id_from_unit_id = function (unit_id)
     end
 end
 
+chat_bubble_font_string_with_text = function (text)
+    local bubbles = C_ChatBubbles:GetAllChatBubbles()
+    for _, bubble in pairs(bubbles) do
+        if not bubble:IsForbidden() then
+            local frame = select(1, bubble:GetChildren())
+            for i = 1, frame:GetNumRegions() do
+                local region = select(i, frame:GetRegions())
+                if region:GetObjectType() == "FontString" and region:GetText() == text then
+                    return region
+                end
+            end
+        end
+    end
+end
+
 -- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
 local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"night elf", "nightelf"},
@@ -1870,7 +1885,14 @@ local filter_chat_msg = function (self, event, chat_text, npc_name, ...)
     if known_event.verb then
         -- format: say, yell, whisper or party
         chat_message = string.format("%s %s: %s", npc_name_uk, known_event.verb, chat_text_uk)
-        -- TODO: update chat bubble
+
+        -- chat bubble is not spawned just yet, so we wait a moment
+        C_Timer.After(0.01, function ()
+            local font_string = chat_bubble_font_string_with_text(chat_text)
+            if font_string then
+                font_string:SetText(chat_text_uk)
+            end
+        end)
     else
         -- format: emote
         chat_message = chat_text_uk
