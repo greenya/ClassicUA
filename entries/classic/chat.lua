@@ -5,15 +5,7 @@
 local _, addonTable = ...
 
 local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text1, [code2] = text2, ... }
-["Dustwind Harpy"] = { "пиловійна гарпія",
--- %s attempts to run away in fear!
-["satraiftst"] = [===[%s налякано тікає геть!]===],
-},
-["Dustwind Pillager"] = { "пиловійна грабіжниця",
--- %s attempts to run away in fear!
-["satraiftst"] = [===[%s налякано тікає геть!]===],
-},
-["Dustwind Savage"] = { "пиловійна дикунка",
+["!common"] = {
 -- %s attempts to run away in fear!
 ["satraiftst"] = [===[%s налякано тікає геть!]===],
 },

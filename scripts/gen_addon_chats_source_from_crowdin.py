@@ -28,20 +28,31 @@ def collect_chats():
         chats_path_en = f'translation_from_crowdin/en/{chats_folder_name}/'
         chats_path_uk = f'translation_from_crowdin/uk/{chats_folder_name}/'
 
-        print(f'Processing      : {chats_path_uk}')
-        print(f'Using source    : {chats_path_en}')
+        print(f'Processing {chats_path_uk}')
 
         for dirpath, _, filenames in os.walk(chats_path_uk):
             for filename in filenames:
                 if not filename.lower().endswith('.xml'):
                     continue
 
-                npc_name_from_filename, npc_id = re.search(filename_pattern, filename).groups()
-                npc_id = int(npc_id)
-                npc_name_en, npc_name_uk = resolve_npc_name_pair(expansion, npc_id, db_npcs_rows)
+                print(f'- {filename}')
 
-                if not npc_name_en:
-                    npc_name_en = npc_name_from_filename
+                npc_name_en, npc_name_uk = None, None
+
+                if filename == 'common.xml':
+                    npc_name_en = '!common'
+                else:
+                    re_search_result = re.search(filename_pattern, filename)
+                    if not re_search_result:
+                        issues.append(f'[!] Bad filename format for [{expansion}] "{filename}". File skipped.')
+                        continue
+
+                    npc_name_from_filename, npc_id = re_search_result.groups()
+                    npc_id = int(npc_id)
+                    npc_name_en, npc_name_uk = resolve_npc_name_pair(expansion, npc_id, db_npcs_rows)
+
+                    if not npc_name_en:
+                        npc_name_en = npc_name_from_filename
 
                 if npc_name_en in chats[expansion]:
                     issues.append(f'[!] Duplicated npc name \"{npc_name_en}\" via {filename}. File skipped.')
@@ -52,6 +63,7 @@ def collect_chats():
                     continue
 
                 filename_sub_path = f'{dirpath}/{filename}'.replace(chats_path_uk, '').replace(filename, '')
+                filename_sub_path = '' if filename_sub_path == '/' else filename_sub_path
                 strings_en = utils.get_all_strings_from_xml_file(os.path.join(chats_path_en, filename_sub_path, filename))
 
                 if len(strings_uk) != len(strings_en):
@@ -64,7 +76,7 @@ def collect_chats():
                 if not npc_chats:
                     continue
 
-                if not npc_name_uk:
+                if not npc_name_uk and npc_name_en != '!common':
                     issues.append(f'[?] Missing translation for [{expansion}] {npc_name_en}')
 
                 chats[expansion][npc_name_en] = {
@@ -83,7 +95,7 @@ def print_report(chats, issues):
     for expansion in chats:
         for npc_name in chats[expansion]:
             npc_strings = chats[expansion][npc_name]['strings']
-            print(f'npc \"{npc_name}\": {", ".join(npc_strings.keys())}')
+            print(f'npc [{expansion}] \"{npc_name}\": {", ".join(npc_strings.keys())}')
             total_texts += len(npc_strings)
 
     print('-' * 80)

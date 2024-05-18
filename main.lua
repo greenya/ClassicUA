@@ -884,22 +884,25 @@ local get_chat_text = function (npc_name, chat_text)
     end
 
     local text_code = get_text_code(chat_text)
-    if at.chat[npc_name] then
-        local known_text_keys = table_string_keys(at.chat[npc_name])
-        local text_fuzzy_key = fuzzy_match_text_code(text_code, known_text_keys)
-        if text_fuzzy_key then
-            local npc_name_uk = at.chat[npc_name][1]
-            if not npc_name_uk then
-                npc_name_uk = get_glossary_text(npc_name)
-                if not npc_name_uk then
-                    npc_name_uk = npc_name
-                end
-            end
 
-            return
-                capitalize(npc_name_uk),
-                make_text(at.chat[npc_name][text_fuzzy_key]),
-                text_code
+    for _, chat_key in ipairs({ npc_name, '!common' }) do
+        if at.chat[chat_key] then
+            local known_text_keys = table_string_keys(at.chat[chat_key])
+            local text_fuzzy_key = fuzzy_match_text_code(text_code, known_text_keys)
+            if text_fuzzy_key then
+                local npc_name_uk = at.chat[chat_key][1]
+                if not npc_name_uk then
+                    npc_name_uk = get_glossary_text(npc_name)
+                    if not npc_name_uk then
+                        npc_name_uk = npc_name
+                    end
+                end
+
+                return
+                    capitalize(npc_name_uk),
+                    make_text(at.chat[chat_key][text_fuzzy_key]),
+                    text_code
+            end
         end
     end
 
@@ -1847,7 +1850,7 @@ local filter_chat_msg = function (self, event, chat_text, npc_name, ...)
     end
 
     local npc_name_uk, chat_text_uk, chat_text_code = get_chat_text(npc_name, chat_text)
-    if not npc_name_uk or not chat_text_uk then
+    if (not npc_name_uk or not chat_text_uk) and chat_text_code then
         dev_log_missing_chat_text(npc_name, chat_text_code, chat_text)
         return false, chat_text, npc_name, ...
     end
