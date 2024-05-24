@@ -368,7 +368,7 @@ local warrior_spells = {
 [11580] = { ref=6343 }, -- Thunder Clap (Rank 5)
 [11581] = { ref=6343 }, -- Thunder Clap (Rank 6)
 -- Toughness
-[12299] = { "Міцність", "Збільшує вашу броню з предметів на {1}%.#items by {1}" }, -- Toughness (Rank 1)
+[12299] = { "Міць", "Збільшує вашу броню з предметів на {1}%.#items by {1}%" }, -- Toughness (Rank 1)
 [12761] = { ref=12299 }, -- Toughness (Rank 2)
 [12762] = { ref=12299 }, -- Toughness (Rank 3)
 [12763] = { ref=12299 }, -- Toughness (Rank 4)

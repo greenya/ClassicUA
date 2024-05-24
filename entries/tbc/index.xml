@@ -11,5 +11,6 @@
     <Script file="spell_druid.lua"/>
     <Script file="spell_hunter.lua"/>
     <Script file="spell_mage.lua"/>
+    <Script file="spell_paladin.lua"/>
     <Script file="talent_tree.lua"/>
 </Ui>

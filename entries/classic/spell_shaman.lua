@@ -414,7 +414,7 @@ local shaman_spells = {
 -- Totemic Mastery
 [16189] = { "Опанування тотемів", "Радіус дії ваших тотемів, які діють на дружні цілі, збільшено до {1} м.#increased to {1}" }, -- Totemic Mastery
 -- Toughness
-[16252] = { "Міць", "Збільшує броню з предметів на {1}%.#items by {1}" }, -- Toughness (Rank 1)
+[16252] = { "Міць", "Збільшує броню з предметів на {1}%.#items by {1}%" }, -- Toughness (Rank 1)
 [16306] = { ref=16252 }, -- Toughness (Rank 2)
 [16307] = { ref=16252 }, -- Toughness (Rank 3)
 [16308] = { ref=16252 }, -- Toughness (Rank 4)
