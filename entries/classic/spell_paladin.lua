@@ -174,7 +174,7 @@ local paladin_spells = {
 [10329] = { ref=635 }, -- Holy Light (Rank 8)
 [25292] = { ref=635 }, -- Holy Light (Rank 9)
 -- Holy Power
-[5923] = { "Священна міць", "Збільшує критичний ефект ваших заклять священності на {1}%.#by {1}" }, -- Holy Power (Rank 1)
+[5923] = { "Священна міць", "Збільшує ймовірність критичного ефекту ваших заклять святості на {1}%.#by {1}%" }, -- Holy Power (Rank 1)
 [5924] = { ref=5923 }, -- Holy Power (Rank 2)
 [5925] = { ref=5923 }, -- Holy Power (Rank 3)
 [5926] = { ref=5923 }, -- Holy Power (Rank 4)
