@@ -86,7 +86,7 @@ local warrior_spells = {
 [12791] = { ref=12303 }, -- Defiance (Rank 4)
 [12792] = { ref=12303 }, -- Defiance (Rank 5)
 -- Deflection
-[16462] = { "Відбиття", "Збільшує вашу ймовірність парирувати на {1}%.#chance by {1}" }, -- Deflection (Rank 1)
+[16462] = { "Відбиття", "Збільшує вашу ймовірність парирування на {1}%.#by {1}%" }, -- Deflection (Rank 1)
 [16463] = { ref=16462 }, -- Deflection (Rank 2)
 [16464] = { ref=16462 }, -- Deflection (Rank 3)
 [16465] = { ref=16462 }, -- Deflection (Rank 4)
@@ -98,7 +98,7 @@ local warrior_spells = {
 [11555] = { ref=1160 }, -- Demoralizing Shout (Rank 4)
 [11556] = { ref=1160 }, -- Demoralizing Shout (Rank 5)
 -- Disarm
-[676] = { "Роззброєння", "Роззброює ворога на {1} с.#for {1} sec", "Роззброєний!" }, -- Disarm
+[676] = { "Роззброєння", "Роззброює ворога на {1} с.#for {1} sec", "Роззброєно!" }, -- Disarm
 -- Dual Wield Specialization
 [23584] = { "Спеціалізація на бою з двох рук", "Збільшує пошкодження, заподіяне вашою зброєю в неосновній руці, на {1}%.#weapon by {1}" }, -- Dual Wield Specialization (Rank 1)
 [23585] = { ref=23584 }, -- Dual Wield Specialization (Rank 2)
