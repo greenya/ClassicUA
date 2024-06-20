@@ -70,7 +70,7 @@ local hunter_spells = {
 -- Dazed
 [15571] = { "Запаморочений", nil, "Запаморочений." }, -- Dazed
 -- Deflection
-[19295] = { "Відбиття", "Збільшує вашу ймовірність парирувати на {1}%.#chance by {1}" }, -- Deflection (Rank 1)
+[19295] = { "Відбиття", "Збільшує вашу ймовірність парирування на {1}%.#by {1}%" }, -- Deflection (Rank 1)
 [19297] = { ref=19295 }, -- Deflection (Rank 2)
 [19298] = { ref=19295 }, -- Deflection (Rank 3)
 [19300] = { ref=19295 }, -- Deflection (Rank 5)
