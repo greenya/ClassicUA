@@ -321,7 +321,7 @@ local druid_spells = {
 [9866] = { ref=6785 }, -- Ravage (Rank 3)
 [9867] = { ref=6785 }, -- Ravage (Rank 4)
 -- Rebirth
-[20484] = { "Відродження", "Повертає дух до тіла, відроджуючи ціль із {1} здоров'я і {2} мани.#{1} health and {2} mana" }, -- Rebirth (Rank 1)
+[20484] = { "Переродження", "Повертає дух до тіла, відроджуючи ціль із {1} здоров'я і {2} мани.#{1} health and {2} mana" }, -- Rebirth (Rank 1)
 [20739] = { ref=20484 }, -- Rebirth (Rank 2)
 [20742] = { ref=20484 }, -- Rebirth (Rank 3)
 [20747] = { ref=20484 }, -- Rebirth (Rank 4)
