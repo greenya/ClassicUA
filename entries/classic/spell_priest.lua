@@ -316,7 +316,7 @@ local priest_spells = {
 [10929] = { ref=139 }, -- Renew (Rank 9)
 [25315] = { ref=139 }, -- Renew (Rank 10)
 -- Resurrection
-[2006] = { "Воскресіння", "Повертає мертвого гравця до життя із {1} здоров'я та {2} мани. Не може бути накладене в бою.#{1} health and {2} mana" }, -- Resurrection (Rank 1)
+[2006] = { "Воскресіння", "Повертає мертвого гравця до життя із {1} здоров'я та {2} мани. Не можна використовувати в бою.#{1} health and {2} mana" }, -- Resurrection (Rank 1)
 [2010] = { ref=2006 }, -- Resurrection (Rank 2)
 [10880] = { ref=2006 }, -- Resurrection (Rank 3)
 [10881] = { ref=2006 }, -- Resurrection (Rank 4)

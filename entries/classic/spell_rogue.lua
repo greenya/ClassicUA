@@ -90,7 +90,7 @@ local rogue_spells = {
 -- Distract
 [1725] = { "Відволікання", "Метнути принаду, що відволіче увагу всіх монстрів поблизу на {1} с. Не порушує непомітності.#for {1} sec" }, -- Distract
 -- Dual Wield Specialization
-[13715] = { "Спеціалізація на бою з двох рук", "Збільшує пошкодження, заподіяне вашою зброєю в неосновній руці, на {1}%.#weapon by {1}" }, -- Dual Wield Specialization (Rank 1)
+[13715] = { "Спеціалізація на бою з двох рук", "Збільшує пошкодження, заподіяне вашою зброєю в лівій руці, на {1}%.#weapon by {1}" }, -- Dual Wield Specialization (Rank 1)
 [13848] = { ref=13715 }, -- Dual Wield Specialization (Rank 2)
 [13849] = { ref=13715 }, -- Dual Wield Specialization (Rank 3)
 [13851] = { ref=13715 }, -- Dual Wield Specialization (Rank 4)

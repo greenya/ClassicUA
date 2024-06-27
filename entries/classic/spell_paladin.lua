@@ -292,7 +292,7 @@ local paladin_spells = {
 [20181] = { ref=20177 }, -- Reckoning (Rank 3)
 [20182] = { ref=20177 }, -- Reckoning (Rank 5)
 -- Redemption
-[7328] = { "Спокута", "Повертає мертвого гравця до життя з {1} здоров'я та {2} мани. Не можна застосувати в бою.#{1} health and {2} mana" }, -- Redemption (Rank 1)
+[7328] = { "Спокута", "Повертає мертвого гравця до життя з {1} здоров'я та {2} мани. Не можна використовувати в бою.#{1} health and {2} mana" }, -- Redemption (Rank 1)
 [10322] = { ref=7328 }, -- Redemption (Rank 2)
 [10324] = { ref=7328 }, -- Redemption (Rank 3)
 [20772] = { ref=7328 }, -- Redemption (Rank 4)
