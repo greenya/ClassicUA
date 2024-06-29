@@ -21,7 +21,7 @@ local mage_spells = {
 -- Cold Snap
 [11958] = { "Холодний зрив", "При активації, завершує відновлення всіх ваших заклять криги." }, -- Cold Snap
 -- Empowered Arcane Missiles
-[31579] = { "Підсилені Арканічні Снаряди", "\"Арканічні Снаряди\" отримують ще {1}% бонусів до пошкоджень від заклять, але їх вартість підвищується на {2}%.#additional {1}% of your bonus spell damage effects, but mana cost is increased by {2}%." }, -- Empowered Arcane Missiles (Rank 1)
+[31579] = { "Підсилені арканічні снаряди", "\"Арканічні снаряди\" отримують додатково {1}% від збільшення шкоди заклять, але їх вирати мани збільшуються на {2}%.#additional {1}% of your bonus spell damage effects, but mana cost is increased by {2}%." }, -- Empowered Arcane Missiles (Rank 1)
 [31582] = { ref=31579 }, -- Empowered Arcane Missiles (Rank 2)
 [31583] = { ref=31579 }, -- Empowered Arcane Missiles (Rank 3)
 -- Ice Block
@@ -30,7 +30,7 @@ local mage_spells = {
 [31569] = { "Покращений блим", "Знижує ймовірність влучення по вас атак та заклять на {1}% протягом 4 с. після застосування \"Блима\".#is reduced by {1}%." }, -- Improved Blink (Rank 1)
 [31570] = { ref=31569 }, -- Improved Blink (Rank 2)
 -- Mind Mastery
-[31584] = { "Володар розуму", "Підвищення пошкоджень від заклять на {1}% від сумарного інтелекту.#damage by up to {1}%" }, -- Mind Mastery (Rank 1)
+[31584] = { "Володар розуму", "Збільшує шкоду заклять на {1}% від сумарного інтелекту.#damage by up to {1}%" }, -- Mind Mastery (Rank 1)
 [31585] = { ref=31584 }, -- Mind Mastery (Rank 2)
 [31586] = { ref=31584 }, -- Mind Mastery (Rank 3)
 [31587] = { ref=31584 }, -- Mind Mastery (Rank 4)
@@ -39,12 +39,12 @@ local mage_spells = {
 [31679] = { "Розпечена лють", "Збільшує шкоду всіх заклять проти цілей, що мають менше {1}% здоров'я, на {2}%.#than {1}% health by {2}%" }, -- Molten Fury (Rank 1)
 [31680] = { ref=31679 }, -- Molten Fury (Rank 2)
 -- Prismatic Cloak
-[31574] = { "Призматичний плащ", "Пошкодження зменшено на {1}%.#taken by {1}%." }, -- Prismatic Cloak (Rank 1)
+[31574] = { "Призматичний плащ", "Отриману шкоду зменшено на {1}%.#taken by {1}%." }, -- Prismatic Cloak (Rank 1)
 [31575] = { ref=31574 }, -- Prismatic Cloak (Rank 2)
 -- Slow
 [31589] = { "Сповільнення", "Зменшує швидкість руху цілі на {1}%, збільшує інтервал між її атаками дальнього бою на {2}% та час вимови заклять на {3}%. Триває {4} секунд. Одночасно діє лише на одну ціль.#speed by {1}%#attacks by {2}%#time by {3}%#Lasts {4} sec", "Швидкість руху зменшено на {1}%. Інтервал між атаками дальнього бою зібльшено на {2}%. Час вимови заклять збільшено на {3}%.#reduced by {1}%#attacks increased by {2}%#time increased by {3}%" }, -- Slow
 -- Spell Power
-[35578] = { "Сила заклинань", "Збільшує бонус шкоди від критичного удару для всіх заклинань на {1}%.#spells by {1}%" }, -- Spell Power (Rank 1)
+[35578] = { "Сила заклинань", "Збільшує додаткову шкоду від критичних ударів всіх заклять на {1}%.#spells by {1}%" }, -- Spell Power (Rank 1)
 [35581] = { ref=35578 }, -- Spell Power (Rank 2)
 -- Spellsteal
 [30449] = { "Викрадення чарів", "Викрадає сприятливий магічний ефект у цілі. Цей ефект діятиме до {1} хв.#of {1} min" }, -- Spellsteal
