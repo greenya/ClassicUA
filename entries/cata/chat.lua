@@ -5,6 +5,10 @@
 local _, addonTable = ...
 
 local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text1, [code2] = text2, ... }
+["!player"] = {
+-- Excellent!
+["excellent_"] = [===[Блискуче!]===],
+},
 ["Assistant Greely"] = {
 -- Greely coughs.
 ["gceelycoug"] = [===[Грілі кашляє.]===],

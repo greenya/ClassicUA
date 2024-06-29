@@ -1875,6 +1875,10 @@ local filter_chat_msg = function (self, event, chat_text, npc_name, ...)
         return false, chat_text, npc_name, ...
     end
 
+    if npc_name == UnitName("player") then
+        npc_name = "!player"
+    end
+
     local npc_name_uk, chat_text_uk, chat_text_code = get_chat_text(npc_name, chat_text)
     if (not npc_name_uk or not chat_text_uk) and chat_text_code then
         dev_log_missing_chat_text(npc_name, chat_text_code, chat_text)

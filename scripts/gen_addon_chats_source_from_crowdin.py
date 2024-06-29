@@ -41,6 +41,8 @@ def collect_chats():
 
                 if filename == 'common.xml':
                     npc_name_en = '!common'
+                elif filename == 'player.xml':
+                    npc_name_en = '!player'
                 else:
                     re_search_result = re.search(filename_pattern, filename)
                     if not re_search_result:
@@ -76,7 +78,7 @@ def collect_chats():
                 if not npc_chats:
                     continue
 
-                if not npc_name_uk and npc_name_en != '!common':
+                if not npc_name_uk and npc_name_en not in [ '!common', '!player' ]:
                     issues.append(f'[?] Missing translation for [{expansion}] {npc_name_en}')
 
                 chats[expansion][npc_name_en] = {
