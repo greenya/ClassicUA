@@ -5,7 +5,7 @@ local paladin_spells = {
 -- See /entries/classic/spell.lua for data format details.
 
 -- Blood Corruption
-[356110] = { "Освернення крові", nil, "{1} шкоди святістю кожні {2} с.#{1} Holy damage every {2} sec" }, -- Blood Corruption (Rank 1)
+[356110] = { "Осквернення крові", nil, "{1} шкоди святістю кожні {2} с.#{1} Holy damage every {2} sec" }, -- Blood Corruption (Rank 1)
 -- Judgement of Corruption
 [356112] = { "Присуд осквернення" }, -- Judgement of Corruption (Rank 1)
 -- Righteous Defense
