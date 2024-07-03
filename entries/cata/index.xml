@@ -12,5 +12,8 @@
     <Script file="spell_mage.lua"/>
     <Script file="spell_paladin.lua"/>
     <Script file="spell_priest.lua"/>
+    <Script file="spell_rogue.lua"/>
+    <Script file="spell_shaman.lua"/>
+    <Script file="spell_warlock.lua"/>
     <Script file="talent_tree.lua"/>
 </Ui>
