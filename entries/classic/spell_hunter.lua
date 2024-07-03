@@ -68,7 +68,7 @@ local hunter_spells = {
 [20909] = { ref=19306 }, -- Counterattack (Rank 2)
 [20910] = { ref=19306 }, -- Counterattack (Rank 3)
 -- Dazed
-[15571] = { "Запаморочений", nil, "Запаморочений." }, -- Dazed
+[15571] = { "Запаморочений", nil, "Запаморочення." }, -- Dazed
 -- Deflection
 [19295] = { "Відбиття", "Збільшує вашу ймовірність парирування на {1}%.#by {1}%" }, -- Deflection (Rank 1)
 [19297] = { ref=19295 }, -- Deflection (Rank 2)
@@ -198,7 +198,7 @@ local hunter_spells = {
 [24387] = { ref=19549 }, -- Improved Aspect of the Monkey (Rank 5)
 -- Improved Concussive Shot
 [19407] = { "Покращений запаморочливий постріл", "Надає вашому \"Запаморочливому пострілу\" {1}% імовірності приголомшити ціль на {2} с.#{1}% chance#for {2} sec" }, -- Improved Concussive Shot (Rank 1)
-[19410] = { "Покращений запаморочливий постріл", nil, "Приголомшений." }, -- Improved Concussive Shot
+[19410] = { "Покращений запаморочливий постріл", nil, "Приголомшено." }, -- Improved Concussive Shot
 [19412] = { ref=19407 }, -- Improved Concussive Shot (Rank 2)
 [19413] = { ref=19407 }, -- Improved Concussive Shot (Rank 3)
 [19414] = { ref=19407 }, -- Improved Concussive Shot (Rank 4)
@@ -240,7 +240,7 @@ local hunter_spells = {
 [19235] = { ref=19228 }, -- Improved Wing Clip (Rank 5)
 -- Intimidation
 [19577] = { "Залякування", "Наказати вашому вихованцю залякати ціль із наступною успішною атакою ближнього бою, спричиняючи високий рівень загрози та приголомшуючи ціль на {1} с.#for {1} sec", "Лячний." }, -- Intimidation
-[24394] = { "Залякування", nil, "Приголомшений." }, -- Intimidation
+[24394] = { "Залякування", nil, "Приголомшено." }, -- Intimidation
 -- Killer Instinct
 [19370] = { "Інстинкт вбивці", "Збільшує ймовірність завдати критичного удару всіма видами атак на {1}%.#by {1}" }, -- Killer Instinct (Rank 1)
 [19371] = { ref=19370 }, -- Killer Instinct (Rank 2)
@@ -342,7 +342,7 @@ local hunter_spells = {
 [20895] = { ref=19578 }, -- Spirit Bond (Rank 2)
 [24529] = { ref=19579 }, -- Spirit Bond (Rank 2)
 -- Surefooted
-[19290] = { "Впевнені кроки", "Збільшує ймовірність поцілити на {1}% та ймовірність протидіяти ефектам перешкоди руху на додаткові {2}%.#hit chance by {1}#resisted by an additional {2}" }, -- Surefooted (Rank 1)
+[19290] = { "Впевнені кроки", "Збільшує ймовірність поцілити на {1}% та ймовірність протидіяти ефектам обмеження руху на додаткові {2}%.#hit chance by {1}#resisted by an additional {2}" }, -- Surefooted (Rank 1)
 [19294] = { ref=19290 }, -- Surefooted (Rank 2)
 [24283] = { ref=19290 }, -- Surefooted (Rank 3)
 -- Survivalist
