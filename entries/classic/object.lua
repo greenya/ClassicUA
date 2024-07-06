@@ -141,7 +141,7 @@ addonTable.object = { -- [key] = text
 ["Augustus' Receipt Book"] = "чекова книжка Августа",
 ["Aurora's Book"] = "книга Аврори",
 ["Azsharite Formation"] = "відкладення азшариту",
-["Bael Modan Flying Machine"] = "літальна машина Баєль Модану",
+["Bael Modan Flying Machine"] = "літальна машина Бель-Модана",
 ["Baelog's Chest"] = "скриня Бейлоґа",
 ["Bailor's Ore"] = "руда Байлора",
 ["Bale of Hay"] = "тюк сіна",
