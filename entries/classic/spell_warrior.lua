@@ -319,7 +319,7 @@ local warrior_spells = {
 [1671] = { ref=72 }, -- Shield Bash (Rank 2)
 [1672] = { ref=72 }, -- Shield Bash (Rank 3)
 -- Shield Bash - Silenced
-[18498] = { "Удар щитом - Знемовлений", nil, "Знемовлений." }, -- Shield Bash - Silenced
+[18498] = { "Удар щитом - Знемовлений", nil, "Знемовлено." }, -- Shield Bash - Silenced
 -- Shield Block
 [2565] = { "Блок щитом", "Збільшую ймовірність блокувати щитом на {1}% на {2} с, але блокує лише 1 атаку.#block by {1}% for {2} sec", "Блокування підвищено на {1}% для наступної атаки.#increased by {1}" }, -- Shield Block
 -- Shield Slam

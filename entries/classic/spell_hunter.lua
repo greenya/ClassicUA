@@ -140,7 +140,7 @@ local hunter_spells = {
 [14310] = { ref=1499 }, -- Freezing Trap (Rank 2)
 [14311] = { ref=1499 }, -- Freezing Trap (Rank 3)
 -- Freezing Trap Effect
-[3355] = { "Ефект заморожувальної пастки", nil, "Заморожений." }, -- Freezing Trap Effect (Rank 1)
+[3355] = { "Ефект заморожувальної пастки", nil, "Заморожено." }, -- Freezing Trap Effect (Rank 1)
 [14308] = { ref=3355 }, -- Freezing Trap Effect (Rank 2)
 [14309] = { ref=3355 }, -- Freezing Trap Effect (Rank 3)
 -- Frenzy

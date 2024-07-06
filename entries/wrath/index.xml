@@ -7,6 +7,7 @@
     <Script file="quest_both.lua"/>
     <Script file="quest_horde.lua"/>
     <Script file="spell.lua"/>
+    <Script file="spell_deathknight.lua"/>
     <Script file="spell_druid.lua"/>
     <Script file="spell_hunter.lua"/>
     <Script file="spell_mage.lua"/>
