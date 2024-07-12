@@ -5,7 +5,7 @@ local paladin_spells = {
 -- See /entries/classic/spell.lua for data format details.
 
 -- Anticipation
-[20096] = { "Передчуття", "Збільшує вашу захисну здібність на {1}.#by {1}" }, -- Anticipation (Rank 1)
+[20096] = { "Передчуття", "Збільшує вашу навичку захисту на {1}.#by {1}" }, -- Anticipation (Rank 1)
 [20097] = { ref=20096 }, -- Anticipation (Rank 2)
 [20098] = { ref=20096 }, -- Anticipation (Rank 3)
 [20099] = { ref=20096 }, -- Anticipation (Rank 4)
