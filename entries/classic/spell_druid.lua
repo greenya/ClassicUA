@@ -65,9 +65,9 @@ local druid_spells = {
 [9907] = { ref=770 }, -- Faerie Fire (Rank 4)
 -- Faerie Fire (Feral)
 [16857] = { "Чарівний вогонь (звір)", ref=770 }, -- Faerie Fire (Feral) (Rank 1)
-[17390] = { ref=16857 }, -- Faerie Fire (Feral) (Rank 2)
-[17391] = { ref=16857 }, -- Faerie Fire (Feral) (Rank 3)
-[17392] = { ref=16857 }, -- Faerie Fire (Feral) (Rank 4)
+[17390] = { "Чарівний вогонь (звір)", ref=770 }, -- Faerie Fire (Feral) (Rank 2)
+[17391] = { "Чарівний вогонь (звір)", ref=770 }, -- Faerie Fire (Feral) (Rank 3)
+[17392] = { "Чарівний вогонь (звір)", ref=770 }, -- Faerie Fire (Feral) (Rank 4)
 -- Feline Grace
 [20719] = { "Котяча грація", "Зменшує шкоду від падіння." }, -- Feline Grace (Passive)
 -- Feline Swiftness
