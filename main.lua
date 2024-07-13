@@ -1131,21 +1131,23 @@ local add_glossary_entry_to_tooltip = function (tooltip, glossary_key)
     end
 
     glossary_key = strip_color_codes(glossary_key)
-    local found = get_glossary_text(glossary_key)
-    if found then
-        result_text = capitalize(found)
+    if glossary_key then
+        local found = get_glossary_text(glossary_key)
+        if found then
+            result_text = capitalize(found)
 
-        if tooltip:NumLines() > 1 then
-            tooltip:AddLine(" ")
+            if tooltip:NumLines() > 1 then
+                tooltip:AddLine(" ")
+            end
+
+            tooltip:AddLine(asset_ua_code .. " " .. result_text, 1, 1, 1, true)
+
+            if tooltip:IsShown() then
+                tooltip:Show()
+            end
+        elseif options.dev_mode and GetMouseFocus() == WorldFrame then
+            dev_log_missing_object(glossary_key)
         end
-
-        tooltip:AddLine(asset_ua_code .. " " .. result_text, 1, 1, 1, true)
-
-        if tooltip:IsShown() then
-            tooltip:Show()
-        end
-    elseif options.dev_mode and GetMouseFocus() == WorldFrame then
-        dev_log_missing_object(glossary_key)
     end
 
     tooltip.classicua.entry_type = "glossary"
