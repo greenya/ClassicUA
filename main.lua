@@ -722,12 +722,14 @@ local make_text_array = function (array)
     return result
 end
 
-local resolve_entry_with_possible_ref = function (entry_type, entry_id, depth)
+local resolve_entry_with_possible_ref -- do not assign directly, this needed for recursion to work
+resolve_entry_with_possible_ref = function (entry_type, entry_id, depth)
     depth = depth or 1
     if depth > 4 then
         if options.dev_mode then
-            dev_log_issue_entry(entry_type, entry_id, "переповнення глибини пошуку ref")
-            tooltip:AddLine("BUG: ref depth is too high", 1, 1, .25)
+            local msg = "переповнення глибини пошуку ref"
+            dev_log_issue_entry(entry_type, entry_id, msg)
+            tooltip:AddLine("ПОМИЛКА: " .. msg, 1, 1, .25)
         end
         return false
     end
@@ -1014,8 +1016,9 @@ add_item_entry_to_tooltip = function (tooltip, entry, entry_id, sub_item_depth)
     sub_item_depth = sub_item_depth or 1
     if sub_item_depth > 4 then
         if options.dev_mode then
-            dev_log_issue_entry("item", entry_id, "переповнення sub_item_depth")
-            tooltip:AddLine("BUG: sub_item_depth is too high", 1, 1, .25)
+            local msg = "переповнення sub_item_depth"
+            dev_log_issue_entry("item", entry_id, msg)
+            tooltip:AddLine("ПОМИЛКА: " .. msg, 1, 1, .25)
         end
         return
     end
@@ -1040,9 +1043,10 @@ add_item_entry_to_tooltip = function (tooltip, entry, entry_id, sub_item_depth)
                 tooltip:AddLine("recipe_result_item#" .. tostring(entry.recipe_result_item), 1, 1, 1)
             end
         elseif options.dev_mode then
-            dev_log_issue_entry("item", entry_id, "значення recipe_result_item ідентичне entry_id")
+            local msg = "значення recipe_result_item ідентичне entry_id"
+            dev_log_issue_entry("item", entry_id, msg)
             tooltip:AddLine("recipe_result_item#" .. tostring(entry_id), 1, 1, 1)
-            tooltip:AddLine("BUG: recipe_result_item is same as entry_id", 1, 1, .25)
+            tooltip:AddLine("ПОМИЛКА: " .. msg, 1, 1, .25)
         end
     end
 
