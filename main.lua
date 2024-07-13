@@ -722,6 +722,48 @@ local make_text_array = function (array)
     return result
 end
 
+local resolve_entry_with_possible_ref = function (entry_type, entry_id, depth)
+    depth = depth or 1
+    if depth > 4 then
+        if options.dev_mode then
+            dev_log_issue_entry(entry_type, entry_id, "переповнення глибини пошуку ref")
+            tooltip:AddLine("BUG: ref depth is too high", 1, 1, .25)
+        end
+        return false
+    end
+
+    if not entry_type or not entry_id then
+        return false
+    end
+
+    local at = addonTable
+
+    if not at[entry_type] then
+        if options.dev_mode then
+            dev_log_issue_entry(entry_type, entry_id, "невірний тип запису \"" .. entry_type .. "\"")
+        end
+        return false
+    end
+
+    local entry = at[entry_type][entry_id]
+
+    if entry.ref then
+        if entry_type == "spell" or entry_type == "item" then
+            local entry_ref = resolve_entry_with_possible_ref(entry_type, entry.ref, depth + 1)
+            if entry_ref then
+                return copy_table(copy_table({}, entry_ref), entry)
+            elseif options.dev_mode then
+                dev_log_issue_entry(entry_type, entry_id, "невірне значення ref " .. entry_ref)
+                return copy_table({ entry_type .. "#" .. entry_id .. "=>#" .. entry.ref }, entry)
+            end
+        elseif options.dev_mode then
+            dev_log_issue_entry(entry_type, entry_id, "невірне використання ref; дозволено лише для типів запису spell та item")
+        end
+    end
+
+    return entry
+end
+
 local get_entry = function (entry_type, entry_id)
     if not entry_type or not entry_id then
         return false
@@ -751,25 +793,7 @@ local get_entry = function (entry_type, entry_id)
         end
     end
 
-    if at[entry_type] and at[entry_type][entry_id] then
-        local entry = at[entry_type][entry_id]
-
-        if entry.ref and (entry_type == "spell" or entry_type == "item") then
-            local entry_ref = at[entry_type][entry.ref]
-            if entry_ref then
-                return copy_table(copy_table({}, entry_ref), entry)
-            elseif options.dev_mode then
-                dev_log_issue_entry(entry_type, entry_id, "невірне значення ref " .. entry_ref)
-                return copy_table({ entry_type .. "#" .. entry_id .. "=>#" .. entry.ref }, entry)
-            else
-                return false
-            end
-        end
-
-        return entry
-    end
-
-    return false
+    return resolve_entry_with_possible_ref(entry_type, entry_id)
 end
 
 local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
