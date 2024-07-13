@@ -749,7 +749,7 @@ resolve_entry_with_possible_ref = function (entry_type, entry_id, depth)
 
     local entry = at[entry_type][entry_id]
 
-    if entry.ref then
+    if entry and entry.ref then
         if entry_type == "spell" or entry_type == "item" then
             local entry_ref = resolve_entry_with_possible_ref(entry_type, entry.ref, depth + 1)
             if entry_ref then
