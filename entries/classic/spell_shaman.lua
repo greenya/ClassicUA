@@ -170,7 +170,7 @@ local shaman_spells = {
 [10472] = { ref=8056 }, -- Frost Shock (Rank 3)
 [10473] = { ref=8056 }, -- Frost Shock (Rank 4)
 -- Frostbrand Weapon
-[8033] = { "Зброя крижаного тавра", "Підсилює зброю шамана кригою. Кожен удар може завдати цілі додатково {1} шкоди кригою та сповільнити її рух на {2}% на {3} с. Триває {4} хв.#causing {1}#by {2}% for {3} sec#Lasts for {4} min" }, -- Frostbrand Weapon (Rank 1)
+[8033] = { "Зброя крижаного тавра", "Підсилює зброю шамана кригою. Кожен удар може завдати цілі додатково {1} шкоди кригою та сповільнити її рух на {2}% протягом {3} с. Триває {4} хв.#causing {1}#by {2}% for {3} sec#Lasts for {4} min" }, -- Frostbrand Weapon (Rank 1)
 [8038] = { ref=8033 }, -- Frostbrand Weapon (Rank 2)
 [10456] = { ref=8033 }, -- Frostbrand Weapon (Rank 3)
 [16355] = { ref=8033 }, -- Frostbrand Weapon (Rank 4)
@@ -329,7 +329,7 @@ local shaman_spells = {
 [16115] = { ref=16040 }, -- Reverberation (Rank 4)
 [16116] = { ref=16040 }, -- Reverberation (Rank 5)
 -- Rockbiter Weapon
-[8017] = { "Зброя каменолома", "Підсилює зброю шамана, збільшує силу атаки ближнього бою на {1} і дозволяє таким атакам викликати додаткову загрозу під час використання цієї зброї. Триває {2} хв.#power by {1}#for {2} min" }, -- Rockbiter Weapon (Rank 1)
+[8017] = { "Зброя каменолома", "Підсилює зброю шамана, внаслідок чого сила атаки ближнього бою збільшується на {1}, а атаки ближнього бою цією зброєю спричиняють додаткову загрозу. Триває {2} хв.#power by {1} and#for {2} min" }, -- Rockbiter Weapon (Rank 1)
 [8018] = { ref=8017 }, -- Rockbiter Weapon (Rank 2)
 [8019] = { ref=8017 }, -- Rockbiter Weapon (Rank 3)
 [10399] = { ref=8017 }, -- Rockbiter Weapon (Rank 4)
