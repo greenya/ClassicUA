@@ -11,7 +11,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 },
 ["Myra Tyrngaarde"] = { "Міра Тірнґаард",
 -- Come get yer fresh bread!
-["cgyfbetyer"] = [===[Підходьте за свіжим хлібом!]===],
+["cgyfbetyer"] = [===[Підходьте по свіжий хліб!]===],
 -- Fresh bread, baked this very morning.
 ["fbbtvmread"] = [===[Свіжий хліб, спечений цього ранку.]===],
 -- Fresh bread for sale!

@@ -5,6 +5,11 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
+[39281] = { "Фентон Стомосхиб", en="Fenton Frazzlecraz" }, -- Fenton Frazzlecraz
+[42195] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
+[42640] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
+[46785] = { "лорд Розпал", en="Lord Cannon" }, -- Lord Cannon
+[48993] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
 }
 
 if addonTable.npc then

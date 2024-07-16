@@ -4,3 +4,4 @@
 __pycache__
 translation_from_crowdin
 .idea
+.vscode/tasks.json

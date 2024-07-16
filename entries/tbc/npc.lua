@@ -261,7 +261,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16870] = { "капітан Розтрощеної Руки", en="Shattered Hand Captain" }, -- Shattered Hand Captain
 [16871] = { "бугай Кривавої Зіниці", en="Bleeding Hollow Grunt" }, -- Bleeding Hollow Grunt
 [16873] = { "темний шаман Кривавої Зіниці", en="Bleeding Hollow Dark Shaman" }, -- Bleeding Hollow Dark Shaman
-[16876] = { "мутант з клану Кісткожувів", en="Bonechewer Mutant" }, -- Bonechewer Mutant
+[16876] = { "мутант з клану Кісткогризів", en="Bonechewer Mutant" }, -- Bonechewer Mutant
 [16878] = { "берсерк Розтрощеної Руки", en="Shattered Hand Berserker" }, -- Shattered Hand Berserker
 [16880] = { "масивний пеклокнур", en="Hulking Helboar" }, -- Hulking Helboar
 [16888] = { "Магурам Міцне Копито", en="Mahuram Stouthoof" }, -- Mahuram Stouthoof
@@ -272,7 +272,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16907] = { "наймит Кривавої Зіниці", en="Bleeding Hollow Peon" }, -- Bleeding Hollow Peon
 [16915] = { "десятник Разелкраз", en="Foreman Razelcraz" }, -- Foreman Razelcraz
 [16924] = { "сержант Кан'рен", en="Sergeant Kan'ren" }, -- Sergeant Kan'ren
-[16925] = { "рейдер з клану Кісткожувів", en="Bonechewer Raider" }, -- Bonechewer Raider
+[16925] = { "рейдер з клану Кісткогризів", en="Bonechewer Raider" }, -- Bonechewer Raider
 [16927] = { "дитинча каменеруба", en="Stonescythe Whelp" }, -- Stonescythe Whelp
 [16929] = { "каменеруб-альфа", en="Stonescythe Alpha" }, -- Stonescythe Alpha
 [16934] = { "пероіклий спустошник", en="Quillfang Ravager" }, -- Quillfang Ravager
@@ -441,7 +441,7 @@ local npc = { -- [id] = { title, description (optional) }
 [17434] = { "Морая", "тренерка травництва", en="Morae" }, -- Morae <Herbalism Trainer>
 [17435] = { "Шептій", en="Susurrus" }, -- Susurrus
 [17440] = { "верховний вождь Тихохвоїв", en="High Chief Stillpine" }, -- High Chief Stillpine
-[17441] = { "Ґурф", "тренер здирання шкур", en="Gurf" }, -- Gurf <Skinning Trainer>
+[17441] = { "Ґурф", "тренер шкуродерства", en="Gurf" }, -- Gurf <Skinning Trainer>
 [17442] = { "Мурдо", "тренер шкірництва", en="Moordo" }, -- Moordo <Leatherworking Trainer>
 [17443] = { "Курц-Одкровитель", en="Kurz the Revelator" }, -- Kurz the Revelator
 [17444] = { "Маґтор Сліпий Сторож", en="Magtor the Blind Watcher" }, -- Magtor the Blind Watcher
@@ -566,7 +566,7 @@ local npc = { -- [id] = { title, description (optional) }
 [18827] = { "ґан'арґ-сапер", en="Gan'arg Sapper" }, -- Gan'arg Sapper
 [18930] = { "Влаґґа Вільнопера", "приборкувачка виверн", en="Vlagga Freyfeather" }, -- Vlagga Freyfeather <Wind Rider Master>
 [18931] = { "Аміш Дикий Молот", "приборкувач грифонів", en="Amish Wildhammer" }, -- Amish Wildhammer <Gryphon Master>
-[18952] = { "падальник з клану Кісткожувів", en="Bonechewer Scavenger" }, -- Bonechewer Scavenger
+[18952] = { "падальник з клану Кісткогризів", en="Bonechewer Scavenger" }, -- Bonechewer Scavenger
 [18974] = { "З'крал", en="Z'kral" }, -- Z'kral
 [18975] = { "гнівостраж", en="Wrathguard" }, -- Wrathguard
 [18976] = { "Урґа'зз", en="Urga'zz" }, -- Urga'zz
@@ -626,7 +626,7 @@ local npc = { -- [id] = { title, description (optional) }
 [19527] = { "нестійкий пустозов", en="Vacillating Voidcaller" }, -- Vacillating Voidcaller
 [19682] = { "емісар Мардіба", en="Emissary Mordiba" }, -- Emissary Mordiba
 [19683] = { "Оґат Божевільний", en="Ogath the Mad" }, -- Ogath the Mad
-[19701] = { "пробудитель з клану Кісткожувів", en="Bonechewer Evoker" }, -- Bonechewer Evoker
+[19701] = { "пробудитель з клану Кісткогризів", en="Bonechewer Evoker" }, -- Bonechewer Evoker
 [19736] = { "Альтен Історик", en="Althen the Historian" }, -- Althen the Historian
 [19763] = { "Манні", en="Manni" }, -- Manni
 [19764] = { "Мог", en="Moh" }, -- Moh
@@ -655,7 +655,7 @@ local npc = { -- [id] = { title, description (optional) }
 [20798] = { "Гостропил", en="Razorsaw" }, -- Razorsaw
 [21057] = { "принц сплетіння Разаан" }, -- Razaan
 [21133] = { "капрал Залізокряж", en="Corporal Ironridge" }, -- Corporal Ironridge
-[21161] = { "орк з клану Кісткожувів", en="Bonechewer Orc" }, -- Bonechewer Orc
+[21161] = { "орк з клану Кісткогризів", en="Bonechewer Orc" }, -- Bonechewer Orc
 [21175] = { "магістр Кривавий Яструб", en="Magister Bloodhawk" }, -- Magister Bloodhawk
 [21209] = { "Дамфрі", "майстер-тренер ковальства", en="Dumphry" }, -- Dumphry <Master Blacksmithing Trainer>
 [21256] = { "Варток Сокиролам", en="Vurtok Axebreaker" }, -- Vurtok Axebreaker

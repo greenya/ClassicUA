@@ -152,7 +152,7 @@ local npc = { -- [id] = { title, description (optional) }
 [212186] = { "Ґрюґімдерн", en="Grugimdern" }, -- Grugimdern
 [212209] = { "Водяник", en="Vodyanoi" }, -- Vodyanoi
 [212261] = { "пробуджений ліч", en="Awakened Lich" }, -- Awakened Lich
-[212334] = { "мертвий культист Молота Сутінків", en="Dead Twilight Cultist" }, -- Dead Twilight Cultist
+[212334] = { "мертвий культист Сутінкового Молота", en="Dead Twilight Cultist" }, -- Dead Twilight Cultist
 [212458] = { "примарний панцирник", en="Phantasmal Crustacean" }, -- Phantasmal Crustacean
 [212461] = { "примарний слуга", en="Phantasmal Servant" }, -- Phantasmal Servant
 [212462] = { "примарний панцирошкур", en="Phantasmal Softshell" }, -- Phantasmal Softshell
@@ -164,9 +164,9 @@ local npc = { -- [id] = { title, description (optional) }
 [212703] = { "дріада Срібнокрилих", en="Silverwing Dryad" }, -- Silverwing Dryad
 [212706] = { "друїд Срібнокрилих", en="Silverwing Druid" }, -- Silverwing Druid
 [212707] = { "Лародар", "хранитель гаю", en="Larodar" }, -- Larodar <Keeper of the Grove>
-[212727] = { "бугай Боєпісні", en="Warsong Grunt" }, -- Warsong Grunt
-[212728] = { "рейдер Боєпісні", en="Warsong Raider" }, -- Warsong Raider
-[212729] = { "шаман Боєпісні", en="Warsong Shaman" }, -- Warsong Shaman
+[212727] = { "бугай Пісні Війни", en="Warsong Grunt" }, -- Warsong Grunt
+[212728] = { "рейдер Пісні Війни", en="Warsong Raider" }, -- Warsong Raider
+[212729] = { "шаман Пісні Війни", en="Warsong Shaman" }, -- Warsong Shaman
 [212730] = { "Тояра", "майстриня клинка", en="Tojara" }, -- Tojara <Blademaster>
 [212753] = { "закатована душа", en="Tortured Soul" }, -- Tortured Soul
 [212763] = { "садистський марник", en="Sadistic Fiend" }, -- Sadistic Fiend
@@ -401,7 +401,7 @@ local npc = { -- [id] = { title, description (optional) }
 [221324] = { "розбитий горем грифон", en="Grief-Crazed Gryphon" }, -- Grief-Crazed Gryphon
 [221325] = { "драконіда-зоряна мисливиця", en="Wyrmkin Starhunter" }, -- Wyrmkin Starhunter
 [221326] = { "дракончик гніву", en="Wrath Whelp" }, -- Wrath Whelp
-[221328] = { "міцнохват Водяного Сну", en="Dreamwater Visejaw" }, -- Dreamwater Visejaw
+[221328] = { "міцнохват Водяного Сну", en="Dreamwater Vicejaw" }, -- Dreamwater Vicejaw
 [221329] = { "гідра-мисливиця Сну", en="Dreamhunter Hydra" }, -- Dreamhunter Hydra
 [221330] = { "полеглий місячний совух", en="Fallen Moonkin" }, -- Fallen Moonkin
 [221331] = { "Флорій", en="Florius" }, -- Florius
