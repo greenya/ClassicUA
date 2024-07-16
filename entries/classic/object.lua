@@ -778,7 +778,6 @@ addonTable.object = { -- [key] = text
 ["Tallonkai's Dresser"] = "шафа Таллонкая",
 ["Talon Den Hoard"] = "скарб лігва Кігтя",
 ["Talvash's Scrying Bowl"] = "чаша провидіння Талваша",
-["Tattered Chest"] = "пошарпана скриня",
 ["Tear of Theradras"] = "сльоза Терадрас",
 ["Tear of Tilloa"] = "сльоза Тіллої",
 ["Termite Barrel"] = "бочка з термітами",
@@ -821,7 +820,6 @@ addonTable.object = { -- [key] = text
 ["Torn Scroll"] = "порваний сувій",
 ["Tower Banner"] = "стяг вежі",
 ["Translocation Portal"] = "портал транслокації",
-["Treasure Chest"] = "скриня зі скарбами",
 ["Treasure of the Shen'dralar"] = "скарб Шен'дралар",
 ["Trelane's Chest"] = "скриня Трелейна",
 ["Trelane's Footlocker"] = "скринька Трелейна",
@@ -1001,7 +999,6 @@ addonTable.object = { -- [key] = text
 ["War of the Three Hammers"] = "Війна Трьох Молотів",
 ["Wrath of Soulflayer"] = "Гнів Здирача Душ",
 ["Yana Bloodspear"] = "Яна Кровоспис",
-["Yuriv's Tombstone"] = "надгробок Юріва",
 
 -- Chests
 ["Alliance Strongbox"] = "скриня Альянсу",
