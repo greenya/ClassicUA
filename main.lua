@@ -334,14 +334,13 @@ end
 -- [ dev log ]
 -- -----------
 
--- TODO: add missing quests tracking, ideally save content of each step (description, progress etc.)
-
 ---@class dev_log_class
 local dev_log = nil
 local default_dev_log = {
     addon_version = "???",
     game_version = "???",
     game_expansion = "???",
+    missing_quests = {},
     missing_npcs = {},
     missing_items = {},
     missing_spells = {},
@@ -363,6 +362,7 @@ local function dev_log_init()
     dev_log.game_version = build_info
     dev_log.game_expansion = game_expansion_key()
 
+    if not dev_log.missing_quests           then dev_log.missing_quests = {} end
     if not dev_log.missing_npcs             then dev_log.missing_npcs = {} end
     if not dev_log.missing_items            then dev_log.missing_items = {} end
     if not dev_log.missing_spells           then dev_log.missing_spells = {} end
@@ -377,6 +377,7 @@ end
 
 local function dev_log_print_stats()
     dev_log_print("-------- Статистика накопичених даних --------")
+    dev_log_print("Відсутні завдання: "     .. table_keys_count(dev_log.missing_quests))
     dev_log_print("Відсутні персонажі: "    .. table_keys_count(dev_log.missing_npcs))
     dev_log_print("Відсутні предмети: "     .. table_keys_count(dev_log.missing_items))
     dev_log_print("Відсутні закляття: "     .. table_keys_count(dev_log.missing_spells))
@@ -413,6 +414,23 @@ end
 
 local function dev_log_issue_entry(entry_type, entry_id, key, data)
     dev_log_issue(entry_type .. "#" .. tostring(entry_id) .. ": " .. key, data)
+end
+
+local function dev_log_missing_quest(quest_id)
+    quest_id = tonumber(quest_id)
+    if not quest_id then
+        return
+    end
+
+    if dev_log.missing_quests[quest_id] then
+        return
+    end
+
+    if options.dev_mode_notify_activity then
+        dev_log_print("Відсутнє завдання #" .. tostring(quest_id))
+    end
+
+    dev_log.missing_quests[quest_id] = true
 end
 
 local function dev_log_missing_npc(npc_id, npc_name)
@@ -816,11 +834,11 @@ local function resolve_entry_with_possible_ref(entry_type, entry_id, depth)
         if options.dev_mode then
             dev_log_issue_entry(entry_type, entry_id, "переповнення глибини пошуку ref")
         end
-        return false
+        return
     end
 
     if not entry_type or not entry_id then
-        return false
+        return
     end
 
     local at = addonTable
@@ -829,7 +847,7 @@ local function resolve_entry_with_possible_ref(entry_type, entry_id, depth)
         if options.dev_mode then
             dev_log_issue_entry(entry_type, entry_id, "невірний тип запису \"" .. entry_type .. "\"")
         end
-        return false
+        return
     end
 
     local entry = at[entry_type][entry_id]
@@ -853,7 +871,7 @@ end
 
 local function get_entry(entry_type, entry_id)
     if not entry_type or not entry_id then
-        return false
+        return
     end
 
     local at = addonTable
@@ -870,14 +888,23 @@ local function get_entry(entry_type, entry_id)
 
         if quest then
             return make_text_array(quest)
+        elseif options.dev_mode then
+            dev_log_missing_quest(entry_id)
         end
+
+        return
     end
 
     if entry_type == "book" then
         local book = at.book[entry_id]
+
         if book then
             return make_text_array(book)
+        elseif options.dev_mode and entry_id ~= 8383 then -- #8383 is a saved letter inventory item
+            dev_log_missing_book_page(entry_id, ItemTextGetPage(), ItemTextGetText())
         end
+
+        return
     end
 
     return resolve_entry_with_possible_ref(entry_type, entry_id)
@@ -885,7 +912,7 @@ end
 
 local function make_entry_text(text, tooltip, tooltip_matches_to_skip)
     if not text then
-        return nil
+        return
     end
 
     text = { strsplit("#", text) }
@@ -935,7 +962,7 @@ local function get_glossary_text(entry_key)
     local at = addonTable
 
     if type(entry_key) ~= "string" or type(at.glossary) ~= "table" then
-        return false
+        return
     end
 
     -- prepare entry_key
@@ -985,15 +1012,13 @@ local function get_glossary_text(entry_key)
             end
         end
     end
-
-    return false
 end
 
 local function get_gossip_text(npc_id, gossip_text)
     local at = addonTable
 
     if not npc_id or type(gossip_text) ~= "string" or #gossip_text < 1 or type(at.gossip) ~= "table" then
-        return false
+        return
     end
 
     npc_id = tonumber(npc_id)
@@ -1007,7 +1032,7 @@ local function get_gossip_text(npc_id, gossip_text)
         end
     end
 
-    return false, gossip_code
+    return nil, gossip_code
 end
 
 local function get_chat_text(npc_name, chat_text)
@@ -1040,7 +1065,7 @@ local function get_chat_text(npc_name, chat_text)
         end
     end
 
-    return false, false, text_code
+    return nil, nil, text_code
 end
 
 -- ------------
@@ -1795,8 +1820,6 @@ local function show_book()
         end
         set_book_content(book[page])
         get_book_frame():Show()
-    elseif options.dev_mode and book_item_id and book_item_id ~= 8383 then -- #8383 is a saved letter inventory item
-        dev_log_missing_book_page(book_item_id, ItemTextGetPage(), ItemTextGetText())
     end
 end
 
@@ -1989,7 +2012,7 @@ local known_chat_msg_events = {
 local function filter_chat_msg(self, event, chat_text, npc_name, ...)
     local known_event = known_chat_msg_events[event]
     if not known_event then
-        return false, chat_text, npc_name, ...
+        return nil, chat_text, npc_name, ...
     end
 
     if npc_name == UnitName("player") then
@@ -1999,7 +2022,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, ...)
     local npc_name_uk, chat_text_uk, chat_text_code = get_chat_text(npc_name, chat_text)
     if (not npc_name_uk or not chat_text_uk) and chat_text_code then
         dev_log_missing_chat_text(npc_name, chat_text_code, chat_text)
-        return false, chat_text, npc_name, ...
+        return nil, chat_text, npc_name, ...
     end
 
     if type(chat_text_uk) == 'string' and chat_text_uk:match("%%s") then
