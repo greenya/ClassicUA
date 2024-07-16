@@ -1,4 +1,3 @@
----@diagnostic disable: inject-field, need-check-nil
 local _, addonTable = ...
 
 -- -----------
@@ -82,6 +81,7 @@ local asset_ua_code = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t"
 local asset_font1_path = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
 local asset_font2_path = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
 
+---@class options_class
 local options = nil
 
 -- ---------
@@ -336,6 +336,7 @@ end
 
 -- TODO: add missing quests tracking, ideally save content of each step (description, progress etc.)
 
+---@class dev_log_class
 local dev_log = nil
 local default_dev_log = {
     addon_version = "???",
@@ -416,6 +417,9 @@ end
 
 local function dev_log_missing_npc(npc_id, npc_name)
     npc_id = tonumber(npc_id)
+    if not npc_id then
+        return
+    end
 
     if dev_log.missing_npcs[npc_id] then
         return
@@ -430,6 +434,9 @@ end
 
 local function dev_log_missing_item(item_id, item_name)
     item_id = tonumber(item_id)
+    if not item_id then
+        return
+    end
 
     if dev_log.missing_items[item_id] then
         return
@@ -444,6 +451,9 @@ end
 
 local function dev_log_missing_spell(spell_id, spell_name)
     spell_id = tonumber(spell_id)
+    if not spell_id then
+        return
+    end
 
     if dev_log.missing_spells[spell_id] then
         return
@@ -458,6 +468,9 @@ end
 
 local function dev_log_missing_sod_engraving(sod_engraving_id, sod_engraving_name)
     sod_engraving_id = tonumber(sod_engraving_id)
+    if not sod_engraving_id then
+        return
+    end
 
     if dev_log.missing_sod_engravings[sod_engraving_id] then
         return
@@ -470,29 +483,35 @@ local function dev_log_missing_sod_engraving(sod_engraving_id, sod_engraving_nam
     dev_log.missing_sod_engravings[sod_engraving_id] = sod_engraving_name
 end
 
-local function dev_log_missing_book_page(book_item_id, page_number, page_text)
-    book_item_id = tonumber(book_item_id)
+local function dev_log_missing_book_page(book_id, page_number, page_text)
+    book_id = tonumber(book_id)
+    if not book_id then
+        return
+    end
 
-    if not dev_log.missing_books[book_item_id] then
-        dev_log.missing_books[book_item_id] = {}
+    if not dev_log.missing_books[book_id] then
+        dev_log.missing_books[book_id] = {}
     end
 
     local page_number_text = tostring(page_number)
     local page_key = "page_" .. page_number_text
 
-    if dev_log.missing_books[book_item_id][page_key] then
+    if dev_log.missing_books[book_id][page_key] then
         return
     end
 
     if options.dev_mode_notify_activity then
-        dev_log_print("Відсутня сторінка " .. page_number_text .. " книги #" .. book_item_id)
+        dev_log_print("Відсутня сторінка " .. page_number_text .. " книги #" .. book_id)
     end
 
-    dev_log.missing_books[book_item_id][page_key] = page_text
+    dev_log.missing_books[book_id][page_key] = page_text
 end
 
 local function dev_log_missing_gossip(npc_id, gossip_code, gossip_text_en)
     npc_id = tonumber(npc_id)
+    if not npc_id then
+        return
+    end
 
     if not dev_log.missing_gossips[npc_id] then
         dev_log.missing_gossips[npc_id] = {}
@@ -565,6 +584,7 @@ local default_options = {
     book_text_size = 15
 }
 
+---@class character_options_class
 local character_options = nil
 local default_character_options = {
     name_cases = {}
@@ -1727,7 +1747,8 @@ end
 -- [ book frame ]
 -- --------------
 
-local book_item_id = false
+---@type integer?
+local book_item_id = nil
 
 local book_frame = nil
 local function get_book_frame()
@@ -1781,7 +1802,7 @@ end
 
 local function hide_book()
     get_book_frame():Hide()
-    book_item_id = false
+    book_item_id = nil
 end
 
 -- -------------------------
