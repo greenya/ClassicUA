@@ -1,26 +1,94 @@
+---@diagnostic disable: inject-field, need-check-nil
 local _, addonTable = ...
 
-local options = nil
+-- -----------
+-- [ globals ]
+-- -----------
 
--- ----------
--- [ assets ]
--- ----------
+local hooksecurefunc    = _G['hooksecurefunc']
+local sort              = _G['sort']
+local strbyte           = _G['strbyte']
+local strsplit          = _G['strsplit']
+local strtrim           = _G['strtrim']
+
+local C_ChatBubbles             = _G['C_ChatBubbles']
+local C_GossipInfo              = _G['C_GossipInfo']
+local C_Seasons                 = _G['C_Seasons']
+local C_Timer                   = _G['C_Timer']
+local ChatFrame_AddMessageEventFilter = _G['ChatFrame_AddMessageEventFilter']
+local ChatTypeInfo              = _G['ChatTypeInfo']
+local CreateFrame               = _G['CreateFrame']
+local DEFAULT_CHAT_FRAME        = _G['DEFAULT_CHAT_FRAME']
+local DevTools_Dump             = _G['DevTools_Dump']
+local Enum                      = _G['Enum']
+local GameTooltip               = _G['GameTooltip']
+local GetAddOnInfo              = _G['GetAddOnInfo']
+local GetAddOnMemoryUsage       = _G['GetAddOnMemoryUsage']
+local GetAddOnMetadata          = _G['GetAddOnMetadata']
+local GetBuildInfo              = _G['GetBuildInfo']
+local GetMouseFocus             = _G['GetMouseFocus']
+local GetNumAddOns              = _G['GetNumAddOns']
+local GetQuestID                = _G['GetQuestID']
+local GetQuestLogSelection      = _G['GetQuestLogSelection']
+local GetQuestLogTitle          = _G['GetQuestLogTitle']
+local GetTalentInfo             = _G['GetTalentInfo']
+local GossipFrame               = _G['GossipFrame']
+local InterfaceOptions_AddCategory = _G['InterfaceOptions_AddCategory']
+local InterfaceOptionsFrame_OpenToCategory = _G['InterfaceOptionsFrame_OpenToCategory']
+local ItemRefTooltip            = _G['ItemRefTooltip']
+local ItemTextGetPage           = _G['ItemTextGetPage']
+local ItemTextGetText           = _G['ItemTextGetText']
+local ItemTextScrollFrame       = _G['ItemTextScrollFrame']
+local MinimapZoneText           = _G['MinimapZoneText']
+local PVPArenaTextString        = _G['PVPArenaTextString']
+local PVPInfoTextString         = _G['PVPInfoTextString']
+local QuestFrame                = _G['QuestFrame']
+local QuestFrameDetailPanel     = _G['QuestFrameDetailPanel']
+local QuestFrameProgressPanel   = _G['QuestFrameProgressPanel']
+local QuestFrameRewardPanel     = _G['QuestFrameRewardPanel']
+local QuestLogDetailScrollFrame = _G['QuestLogDetailScrollFrame']
+local TargetFrame               = _G['TargetFrame']
+local UnitAura                  = _G['UnitAura']
+local UnitClass                 = _G['UnitClass']
+local UnitFactionGroup          = _G['UnitFactionGroup']
+local UnitGUID                  = _G['UnitGUID']
+local UnitName                  = _G['UnitName']
+local UnitRace                  = _G['UnitRace']
+local UnitSex                   = _G['UnitSex']
+local UpdateAddOnMemoryUsage    = _G['UpdateAddOnMemoryUsage']
+local ReloadUI                  = _G['ReloadUI']
+local ShoppingTooltip1          = _G['ShoppingTooltip1']
+local ShoppingTooltip2          = _G['ShoppingTooltip2']
+local ShouldShowName            = _G['ShouldShowName']
+local SlashCmdList              = _G['SlashCmdList']
+local StaticPopup_Show          = _G['StaticPopup_Show']
+local StaticPopupDialogs        = _G['StaticPopupDialogs']
+local SubZoneTextString         = _G['SubZoneTextString']
+local WorldMapTooltip           = _G['WorldMapTooltip']
+local WorldFrame                = _G['WorldFrame']
+local WorldMapContinentDropDown = _G['WorldMapContinentDropDown']
+local WorldMapFrame             = _G['WorldMapFrame']
+local WorldMapZoneDropDown      = _G['WorldMapZoneDropDown']
+local ZoneTextString            = _G['ZoneTextString']
+
+local build_info = GetBuildInfo()
+local is_classic = strbyte(build_info, 1) == 49
+local is_classic_sod = is_classic and C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
+local is_tbc = strbyte(build_info, 1) == 50
+local is_wrath = strbyte(build_info, 1) == 51
+local is_cata = strbyte(build_info, 1) == 52
 
 local asset_ua_code = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t"
 local asset_font1_path = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
 local asset_font2_path = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
 
+local options = nil
+
 -- ---------
 -- [ utils ]
 -- ---------
 
-local is_classic = strbyte(GetBuildInfo(), 1) == 49
-local is_classic_sod = is_classic and C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
-local is_tbc = strbyte(GetBuildInfo(), 1) == 50
-local is_wrath = strbyte(GetBuildInfo(), 1) == 51
-local is_cata = strbyte(GetBuildInfo(), 1) == 52
-
-local game_expansion_key = function ()
+local function game_expansion_key()
     if is_classic then
         return is_classic_sod and "sod" or "classic"
     elseif is_tbc then
@@ -29,12 +97,12 @@ local game_expansion_key = function ()
         return "wrath"
     elseif is_cata then
         return "cata"
+    else
+        return "???"
     end
-
-    return "???"
 end
 
-local dump = function (value)
+local function dump(value)
     if type(DevTools_Dump) == "function" then
         DevTools_Dump(value)
     else
@@ -42,12 +110,12 @@ local dump = function (value)
     end
 end
 
-local copy_table = function (target, source)
+local function copy_table(target, source)
     for k, v in pairs(source) do target[k] = v end
     return target
 end
 
-local table_string_keys = function (table)
+local function table_string_keys(table)
     local result = {}
     for k, _ in pairs(table) do
         if type(k) == "string" then
@@ -57,13 +125,13 @@ local table_string_keys = function (table)
     return result
 end
 
-local table_keys_count = function (table)
+local function table_keys_count(table)
     local count = 0
     for _ in pairs(table) do count = count + 1 end
     return count
 end
 
-local capitalize = function (text)
+local function capitalize(text)
     local b1 = strbyte(text, 1)
     if b1 >= 208 and b1 <= 210 then -- this is utf8 character, 2 bytes long
         local b2 = strbyte(text, 2)
@@ -108,7 +176,7 @@ local function strip_color_codes(text)
     return text
 end
 
-local first_line_only = function (text)
+local function first_line_only(text)
     if type(text) == "string" then
         local lines = { strsplit("\n\r", text) }
         local esc_nl_pos = lines[1]:find("|n")
@@ -122,7 +190,7 @@ local first_line_only = function (text)
     end
 end
 
-local tooltip_lines = function (tooltip, is_right)
+local function tooltip_lines(tooltip, is_right)
     local lines = {}
     for j = 1, tooltip:NumLines() do
         local k = tooltip:GetName() .. (is_right and "TextRight" or "TextLeft") .. j
@@ -131,7 +199,7 @@ local tooltip_lines = function (tooltip, is_right)
     return lines
 end
 
-local tooltip_title_line = function (tooltip)
+local function tooltip_title_line(tooltip)
     local num_lines = tooltip:NumLines()
     if num_lines == 0 then
         return ""
@@ -148,7 +216,7 @@ local tooltip_title_line = function (tooltip)
 end
 
 -- unit_id is one of https://warcraft.wiki.gg/wiki/UnitId
-local npc_id_from_unit_id = function (unit_id)
+local function npc_id_from_unit_id(unit_id)
     if type(unit_id) == "string" then
         local guid = UnitGUID(unit_id)
         if guid then
@@ -160,7 +228,7 @@ local npc_id_from_unit_id = function (unit_id)
     end
 end
 
-chat_bubble_font_string_with_text = function (text)
+local function chat_bubble_font_string_with_text(text)
     local bubbles = C_ChatBubbles:GetAllChatBubbles()
     for _, bubble in pairs(bubbles) do
         if not bubble:IsForbidden() then
@@ -190,7 +258,7 @@ local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"zandalari troll", "zandalaritroll"},
 }
 
-local get_text_code = function (text)
+local function get_text_code(text)
     local result = { "_", "_", "_", "_", "_", "_", "_", "_", "_", "_" }
     local result_len = #result
     text = text:lower()
@@ -233,7 +301,7 @@ local get_text_code = function (text)
     return table.concat(result)
 end
 
-local fuzzy_match_text_code = function (code, candidates, minimum_match_ratio)
+local function fuzzy_match_text_code(code, candidates, minimum_match_ratio)
     if not minimum_match_ratio then
         minimum_match_ratio = 0.5
     end
@@ -285,13 +353,13 @@ local default_dev_log = {
     issues = {}
 }
 
-local dev_log_print = function (text)
+local function dev_log_print(text)
     DEFAULT_CHAT_FRAME:AddMessage(asset_ua_code .. " |cff4488aa[Розробка] " .. text .. "|r")
 end
 
-local dev_log_init = function ()
+local function dev_log_init()
     dev_log.addon_version = GetAddOnMetadata("ClassicUA", "Version")
-    dev_log.game_version = GetBuildInfo()
+    dev_log.game_version = build_info
     dev_log.game_expansion = game_expansion_key()
 
     if not dev_log.missing_npcs             then dev_log.missing_npcs = {} end
@@ -306,7 +374,7 @@ local dev_log_init = function ()
     if not dev_log.issues                   then dev_log.issues = {} end
 end
 
-local dev_log_print_stats = function ()
+local function dev_log_print_stats()
     dev_log_print("-------- Статистика накопичених даних --------")
     dev_log_print("Відсутні персонажі: "    .. table_keys_count(dev_log.missing_npcs))
     dev_log_print("Відсутні предмети: "     .. table_keys_count(dev_log.missing_items))
@@ -323,14 +391,14 @@ local dev_log_print_stats = function ()
     dev_log_print("----------------------------------------------")
 end
 
-local dev_log_reset = function ()
+local function dev_log_reset()
     ClassicUA_DevLog = copy_table({}, default_dev_log)
     dev_log = ClassicUA_DevLog
     dev_log_init()
     dev_log_print("Всі накопичені дані скинуто.")
 end
 
-local dev_log_issue = function (key, data)
+local function dev_log_issue(key, data)
     if dev_log.issues[key] then
         return
     end
@@ -342,11 +410,11 @@ local dev_log_issue = function (key, data)
     dev_log.issues[key] = data and data or true
 end
 
-local dev_log_issue_entry = function (entry_type, entry_id, key, data)
+local function dev_log_issue_entry(entry_type, entry_id, key, data)
     dev_log_issue(entry_type .. "#" .. tostring(entry_id) .. ": " .. key, data)
 end
 
-local dev_log_missing_npc = function (npc_id, npc_name)
+local function dev_log_missing_npc(npc_id, npc_name)
     npc_id = tonumber(npc_id)
 
     if dev_log.missing_npcs[npc_id] then
@@ -360,7 +428,7 @@ local dev_log_missing_npc = function (npc_id, npc_name)
     dev_log.missing_npcs[npc_id] = npc_name
 end
 
-local dev_log_missing_item = function (item_id, item_name)
+local function dev_log_missing_item(item_id, item_name)
     item_id = tonumber(item_id)
 
     if dev_log.missing_items[item_id] then
@@ -374,7 +442,7 @@ local dev_log_missing_item = function (item_id, item_name)
     dev_log.missing_items[item_id] = item_name
 end
 
-local dev_log_missing_spell = function (spell_id, spell_name)
+local function dev_log_missing_spell(spell_id, spell_name)
     spell_id = tonumber(spell_id)
 
     if dev_log.missing_spells[spell_id] then
@@ -388,7 +456,7 @@ local dev_log_missing_spell = function (spell_id, spell_name)
     dev_log.missing_spells[spell_id] = spell_name
 end
 
-local dev_log_missing_sod_engraving = function (sod_engraving_id, sod_engraving_name)
+local function dev_log_missing_sod_engraving(sod_engraving_id, sod_engraving_name)
     sod_engraving_id = tonumber(sod_engraving_id)
 
     if dev_log.missing_sod_engravings[sod_engraving_id] then
@@ -402,14 +470,14 @@ local dev_log_missing_sod_engraving = function (sod_engraving_id, sod_engraving_
     dev_log.missing_sod_engravings[sod_engraving_id] = sod_engraving_name
 end
 
-local dev_log_missing_book_page = function (book_item_id, page_number, page_text)
+local function dev_log_missing_book_page(book_item_id, page_number, page_text)
     book_item_id = tonumber(book_item_id)
 
     if not dev_log.missing_books[book_item_id] then
         dev_log.missing_books[book_item_id] = {}
     end
 
-    page_number_text = tostring(page_number)
+    local page_number_text = tostring(page_number)
     local page_key = "page_" .. page_number_text
 
     if dev_log.missing_books[book_item_id][page_key] then
@@ -423,7 +491,7 @@ local dev_log_missing_book_page = function (book_item_id, page_number, page_text
     dev_log.missing_books[book_item_id][page_key] = page_text
 end
 
-local dev_log_missing_gossip = function (npc_id, gossip_code, gossip_text_en)
+local function dev_log_missing_gossip(npc_id, gossip_code, gossip_text_en)
     npc_id = tonumber(npc_id)
 
     if not dev_log.missing_gossips[npc_id] then
@@ -441,7 +509,7 @@ local dev_log_missing_gossip = function (npc_id, gossip_code, gossip_text_en)
     dev_log.missing_gossips[npc_id][gossip_code] = gossip_text_en
 end
 
-local dev_log_missing_chat_text = function (npc_name, chat_text_code, chat_text_en)
+local function dev_log_missing_chat_text(npc_name, chat_text_code, chat_text_en)
     if not dev_log.missing_chats[npc_name] then
         dev_log.missing_chats[npc_name] = {}
     end
@@ -457,7 +525,7 @@ local dev_log_missing_chat_text = function (npc_name, chat_text_code, chat_text_
     dev_log.missing_chats[npc_name][chat_text_code] = chat_text_en
 end
 
-local dev_log_missing_zone = function (zone_name)
+local function dev_log_missing_zone(zone_name)
     if not string.match(zone_name, "%w") then
         -- skip non-English zone name
         return
@@ -474,7 +542,7 @@ local dev_log_missing_zone = function (zone_name)
     dev_log.missing_zones[zone_name] = true
 end
 
-local dev_log_missing_object = function (object_name)
+local function dev_log_missing_object(object_name)
     if dev_log.missing_objects[object_name] then
         return
     end
@@ -502,7 +570,7 @@ local default_character_options = {
     name_cases = {}
 }
 
-local prepare_options = function ()
+local function prepare_options()
     ClassicUA_Options = ClassicUA_Options or copy_table({}, default_options)
     options = ClassicUA_Options
 
@@ -527,7 +595,7 @@ local prepare_options = function ()
     end
 end
 
-local reset_options = function ()
+local function reset_options()
     ClassicUA_Options = copy_table({}, default_options)
     options = ClassicUA_Options
 
@@ -539,7 +607,7 @@ end
 -- [ entries ]
 -- -----------
 
-local get_stats = function ()
+local function get_stats()
     local at = addonTable
     local stats = {}
 
@@ -565,19 +633,19 @@ local get_stats = function ()
     return stats
 end
 
-local prepare_talent_tree = function (class)
+local function prepare_talent_tree(class)
     -- keep only player class tree
     addonTable.talent_tree = addonTable.talent_tree[class]
 end
 
-local prepare_quests = function (is_alliance)
+local function prepare_quests(is_alliance)
     -- init faction quests reference
     addonTable.quest_faction = is_alliance and addonTable.quest_alliance or addonTable.quest_horde
     -- drop opposite faction quests
     addonTable[ is_alliance and "quest_horde" or "quest_alliance" ] = nil
 end
 
-local prepare_glossary = function ()
+local function prepare_glossary()
     local at = addonTable
     local glossary = {}
 
@@ -620,7 +688,7 @@ local prepare_glossary = function ()
     at.glossary = glossary
 end
 
-local prepare_codes = function (name, race, class, is_male)
+local function prepare_codes(name, race, class, is_male)
     local at = addonTable
     local sex = is_male and 1 or 2
     local cases = { "н", "р", "д", "з", "о", "м", "к" }
@@ -697,7 +765,7 @@ local prepare_codes = function (name, race, class, is_male)
     at.codes = codes
 end
 
-local make_text = function (text)
+local function make_text(text)
     if not text then
         return nil
     end
@@ -709,7 +777,7 @@ local make_text = function (text)
     return text
 end
 
-local make_text_array = function (array)
+local function make_text_array(array)
     if not array then
         return nil
     end
@@ -722,14 +790,11 @@ local make_text_array = function (array)
     return result
 end
 
-local resolve_entry_with_possible_ref -- do not assign directly, this needed for recursion to work
-resolve_entry_with_possible_ref = function (entry_type, entry_id, depth)
+local function resolve_entry_with_possible_ref(entry_type, entry_id, depth)
     depth = depth or 1
     if depth > 4 then
         if options.dev_mode then
-            local msg = "переповнення глибини пошуку ref"
-            dev_log_issue_entry(entry_type, entry_id, msg)
-            tooltip:AddLine("ПОМИЛКА: " .. msg, 1, 1, .25)
+            dev_log_issue_entry(entry_type, entry_id, "переповнення глибини пошуку ref")
         end
         return false
     end
@@ -766,7 +831,7 @@ resolve_entry_with_possible_ref = function (entry_type, entry_id, depth)
     return entry
 end
 
-local get_entry = function (entry_type, entry_id)
+local function get_entry(entry_type, entry_id)
     if not entry_type or not entry_id then
         return false
     end
@@ -798,7 +863,7 @@ local get_entry = function (entry_type, entry_id)
     return resolve_entry_with_possible_ref(entry_type, entry_id)
 end
 
-local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
+local function make_entry_text(text, tooltip, tooltip_matches_to_skip)
     if not text then
         return nil
     end
@@ -846,7 +911,7 @@ local make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     return result
 end
 
-local get_glossary_text = function (entry_key)
+local function get_glossary_text(entry_key)
     local at = addonTable
 
     if type(entry_key) ~= "string" or type(at.glossary) ~= "table" then
@@ -863,8 +928,10 @@ local get_glossary_text = function (entry_key)
         return capitalize(at.glossary[entry_key])
     end
 
+    local key, key1, key2
+
     -- check using Taxi Map destination format: Undercity, Tirisfal
-    local key1, key2 = string.gmatch(entry_key, "(.*), (.*)")()
+    key1, key2 = string.gmatch(entry_key, "(.*), (.*)")()
     if key1 and key2 then
         if at.glossary[key1] and at.glossary[key2] then
             return capitalize(at.glossary[key1]) .. ", " .. capitalize(at.glossary[key2])
@@ -872,7 +939,7 @@ local get_glossary_text = function (entry_key)
     end
 
     -- check using Questie' quest format: [57+] Feathermoon Stronghold
-    local key = string.gmatch(entry_key, "%[.+%] (.*)")()
+    key = string.gmatch(entry_key, "%[.+%] (.*)")()
     if key then
         if at.glossary[key] then
             return capitalize(at.glossary[key])
@@ -880,7 +947,7 @@ local get_glossary_text = function (entry_key)
     end
 
     -- check using Questie' quest format: [57+] Feathermoon Stronghold (12345)
-    local key = string.gmatch(entry_key, "%[.+%] (.*) %((.*)%)")()
+    key = string.gmatch(entry_key, "%[.+%] (.*) %((.*)%)")()
     if key then
         if at.glossary[key] then
             return capitalize(at.glossary[key])
@@ -888,7 +955,7 @@ local get_glossary_text = function (entry_key)
     end
 
     -- check using Questie' npc format: John Smith (Wind Rider Master)
-    local key1, key2 = string.gmatch(entry_key, "(.*) %((.*)%)")()
+    key1, key2 = string.gmatch(entry_key, "(.*) %((.*)%)")()
     if key1 and key2 then
         if at.glossary[key1] then
             if at.glossary[key2] then
@@ -902,7 +969,7 @@ local get_glossary_text = function (entry_key)
     return false
 end
 
-local get_gossip_text = function (npc_id, gossip_text)
+local function get_gossip_text(npc_id, gossip_text)
     local at = addonTable
 
     if not npc_id or type(gossip_text) ~= "string" or #gossip_text < 1 or type(at.gossip) ~= "table" then
@@ -923,7 +990,7 @@ local get_gossip_text = function (npc_id, gossip_text)
     return false, gossip_code
 end
 
-local get_chat_text = function (npc_name, chat_text)
+local function get_chat_text(npc_name, chat_text)
     local at = addonTable
 
     if not npc_name or not chat_text or type(at.chat) ~= "table" then
@@ -974,7 +1041,7 @@ for _, tt in pairs({
     end
 end
 
-local add_line_to_tooltip = function (tooltip, content, template, r, g, b, content_can_be_spell_id, parent_item_id)
+local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_can_be_spell_id, parent_item_id)
     if not content then
         return
     end
@@ -1011,8 +1078,7 @@ local add_line_to_tooltip = function (tooltip, content, template, r, g, b, conte
     end
 end
 
-local add_item_entry_to_tooltip -- do not assign directly, this needed for recursion to work
-add_item_entry_to_tooltip = function (tooltip, entry, entry_id, sub_item_depth)
+local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_depth)
     sub_item_depth = sub_item_depth or 1
     if sub_item_depth > 4 then
         if options.dev_mode then
@@ -1053,7 +1119,7 @@ add_item_entry_to_tooltip = function (tooltip, entry, entry_id, sub_item_depth)
     add_line_to_tooltip(tooltip, entry.flavor, "\"TEXT\"", 1, 0.82, 0)
 end
 
-local add_spell_entry_to_tooltip = function (tooltip, entry, spell_id, is_aura, skip_title)
+local function add_spell_entry_to_tooltip(tooltip, entry, spell_id, is_aura, skip_title)
     if not skip_title then
         local heading = make_entry_text(entry[1], tooltip)
         tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
@@ -1081,7 +1147,7 @@ local add_spell_entry_to_tooltip = function (tooltip, entry, spell_id, is_aura, 
     end
 end
 
-local add_sod_engraving_entry_to_tooltip = function (tooltip, entry, sod_engraving_id)
+local function add_sod_engraving_entry_to_tooltip(tooltip, entry, sod_engraving_id)
     local heading = make_entry_text(entry[1], tooltip)
     tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
 
@@ -1096,14 +1162,14 @@ local add_sod_engraving_entry_to_tooltip = function (tooltip, entry, sod_engravi
     end
 end
 
-local add_general_entry_to_tooltip = function (tooltip, entry)
+local function add_general_entry_to_tooltip(tooltip, entry)
     local heading = make_entry_text(entry[1], tooltip)
     tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
 
     add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 1, 1)
 end
 
-local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
+local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura)
     if tooltip.classicua.entry_type then
         return
     end
@@ -1153,7 +1219,7 @@ local add_entry_to_tooltip = function (tooltip, entry_type, entry_id, is_aura)
     tooltip.classicua.entry_id = entry_id
 end
 
-local add_glossary_entry_to_tooltip = function (tooltip, glossary_key)
+local function add_glossary_entry_to_tooltip(tooltip, glossary_key)
     if tooltip.classicua.entry_type then
         return
     end
@@ -1162,7 +1228,7 @@ local add_glossary_entry_to_tooltip = function (tooltip, glossary_key)
     if glossary_key then
         local found = get_glossary_text(glossary_key)
         if found then
-            result_text = capitalize(found)
+            local result_text = capitalize(found)
 
             if tooltip:NumLines() > 1 then
                 tooltip:AddLine(" ")
@@ -1182,7 +1248,7 @@ local add_glossary_entry_to_tooltip = function (tooltip, glossary_key)
     tooltip.classicua.entry_id = glossary_key
 end
 
-local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, rank, max_rank)
+local function add_talent_entry_to_tooltip(tooltip, tab_index, tier, column, rank, max_rank)
     if tooltip.classicua.entry_type then
         return
     end
@@ -1226,9 +1292,9 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, 
     if rank_to_show ~= next_rank_to_show then
         local next_rank_desc = "spell#" .. talent[next_rank_to_show]
 
-        local entry = get_entry("spell", talent[next_rank_to_show])
-        if entry and entry[2] then
-            next_rank_desc = make_entry_text(entry[2], tooltip, 1)
+        local entry_next = get_entry("spell", talent[next_rank_to_show])
+        if entry_next and entry_next[2] then
+            next_rank_desc = make_entry_text(entry_next[2], tooltip, 1)
         end
 
         tooltip:AddLine(" ")
@@ -1244,7 +1310,7 @@ local add_talent_entry_to_tooltip = function (tooltip, tab_index, tier, column, 
     tooltip.classicua.entry_id = talent[rank_to_show]
 end
 
-local tooltip_set_item = function (self)
+local function tooltip_set_item(self)
     local _, link = self:GetItem()
     if link then
         local _, _, id = link:find("Hitem:(%d+):")
@@ -1254,14 +1320,14 @@ local tooltip_set_item = function (self)
     end
 end
 
-local tooltip_set_spell = function (self)
+local function tooltip_set_spell(self)
     local _, id = self:GetSpell()
     if id then
         add_entry_to_tooltip(self, "spell", id)
     end
 end
 
-local tooltip_set_unit = function (self)
+local function tooltip_set_unit(self)
     local _, unit = self:GetUnit()
     if unit then
         local npc_id = npc_id_from_unit_id(unit)
@@ -1271,7 +1337,7 @@ local tooltip_set_unit = function (self)
     end
 end
 
-local tooltip_updated = function (self)
+local function tooltip_updated(self)
     if self.classicua.entry_type then
         return
     end
@@ -1300,7 +1366,7 @@ local tooltip_updated = function (self)
     add_glossary_entry_to_tooltip(self, text)
 end
 
-local tooltip_cleared = function (self)
+local function tooltip_cleared(self)
     self.classicua.entry_type = false
     self.classicua.entry_id = false
 end
@@ -1358,7 +1424,7 @@ end)
 -- [ frames ]
 -- ----------
 
-local setup_frame_background_and_border = function (frame)
+local function setup_frame_background_and_border(frame)
     local texture = frame:CreateTexture(nil, "BACKGROUND")
     texture:SetTexture("Interface\\QuestFrame\\QuestBG")
     texture:SetTexCoord(0.0, 0.58, 0.0, 0.65)
@@ -1372,12 +1438,12 @@ local setup_frame_background_and_border = function (frame)
 end
 
 -- areas: { area1 = { font, size }, ... }
-local setup_frame_scrollbar_and_content = function (frame, areas, scrollframe_width_override)
+local function setup_frame_scrollbar_and_content(frame, areas, scrollframe_width_override)
     local scrollframe = CreateFrame("ScrollFrame", nil, frame)
     scrollframe:SetPoint("TOPLEFT", 8, -9)
     scrollframe:SetPoint("BOTTOMRIGHT", -8, 9)
     frame.scrollframe = scrollframe
-    scrollframe_width = scrollframe_width_override or scrollframe:GetWidth()
+    local scrollframe_width = scrollframe_width_override or scrollframe:GetWidth()
 
     local content = CreateFrame("Frame", nil, scrollframe)
     content:SetSize(scrollframe_width - 60, 0)
@@ -1416,7 +1482,7 @@ local setup_frame_scrollbar_and_content = function (frame, areas, scrollframe_wi
     end)
 end
 
-local setup_frame_scrollbar_values = function (frame, height)
+local function setup_frame_scrollbar_values(frame, height)
     local delta = height - frame:GetHeight() + 24
     if delta < 1 then
         delta = 1
@@ -1432,7 +1498,7 @@ end
 -- ----------------
 
 local quest_frames = {}
-local get_quest_frame = function (name)
+local function get_quest_frame(name)
     if quest_frames[name] then
         return quest_frames[name]
     end
@@ -1460,7 +1526,7 @@ local get_quest_frame = function (name)
 end
 
 -- frame must have properties: title, text, more_title, more_text
-local set_quest_content = function (frame, title, text, more_title, more_text)
+local function set_quest_content(frame, title, text, more_title, more_text)
     local h = 16
 
     frame.title:SetPoint("TOPLEFT", frame.content, 12, -h)
@@ -1544,7 +1610,7 @@ QuestFrameRewardPanel:HookScript("OnHide", function (self)
 end)
 
 local questlog_frame = nil
-local get_questlog_frame = function ()
+local function get_questlog_frame()
     if questlog_frame then
         return questlog_frame
     end
@@ -1597,7 +1663,7 @@ end)
 -- ----------------
 
 local gossip_frame = nil
-local get_gossip_frame = function ()
+local function get_gossip_frame()
     if gossip_frame then
         return gossip_frame
     end
@@ -1628,7 +1694,7 @@ local get_gossip_frame = function ()
     return gossip_frame
 end
 
-local set_gossip_content = function (text)
+local function set_gossip_content(text)
     local f = get_gossip_frame()
     local h = 16
 
@@ -1639,7 +1705,7 @@ local set_gossip_content = function (text)
     setup_frame_scrollbar_values(f, h)
 end
 
-local show_gossip = function ()
+local function show_gossip()
     local npc_id = npc_id_from_unit_id("npc")
     if npc_id then
         local gossip_text_en = C_GossipInfo:GetText()
@@ -1653,7 +1719,7 @@ local show_gossip = function ()
     end
 end
 
-local hide_gossip = function ()
+local function hide_gossip()
     get_gossip_frame():Hide()
 end
 
@@ -1664,7 +1730,7 @@ end
 local book_item_id = false
 
 local book_frame = nil
-local get_book_frame = function ()
+local function get_book_frame()
     if book_frame then
         return book_frame
     end
@@ -1688,7 +1754,7 @@ local get_book_frame = function ()
     return book_frame
 end
 
-local set_book_content = function (text)
+local function set_book_content(text)
     local f = get_book_frame()
     local h = 16
 
@@ -1699,7 +1765,7 @@ local set_book_content = function (text)
     setup_frame_scrollbar_values(f, h)
 end
 
-local show_book = function (text)
+local function show_book()
     local book = get_entry("book", book_item_id)
     if book then
         local page = ItemTextGetPage()
@@ -1713,7 +1779,7 @@ local show_book = function (text)
     end
 end
 
-local hide_book = function ()
+local function hide_book()
     get_book_frame():Hide()
     book_item_id = false
 end
@@ -1731,7 +1797,7 @@ local zone_text_lookup = {
     { PVPArenaTextString, get_glossary_text },
 }
 
-local update_zone_text = function ()
+local function update_zone_text()
     local text, found
     for _, lookup in ipairs(zone_text_lookup) do
         text = lookup[1]:GetText()
@@ -1757,7 +1823,7 @@ local update_zone_text = function ()
     end
 end
 
-local prepare_zone_text = function ()
+local function prepare_zone_text()
     for _, lookup in ipairs(zone_text_lookup) do
         local _, size, style = lookup[1]:GetFont()
         lookup[1]:SetFont(asset_font2_path, size, style)
@@ -1789,8 +1855,8 @@ WorldMapFrame.SetMapID = function (self, mapID)
     end
 end
 
-local world_map_dropdown_button_click = function (self)
-    local dd = DropDownList1
+local function world_map_dropdown_button_click(self)
+    local dd = _G['DropDownList1']
     if dd:IsShown() then
         local texts = {}
         local buttons = {}
@@ -1817,17 +1883,17 @@ local world_map_dropdown_button_click = function (self)
         end
 
         sort(texts)
-        local h = DropDownList1Button1:GetHeight()
+        local h = _G['DropDownList1Button1']:GetHeight()
         for i = 1, #texts do
             buttons[texts[i]]:SetPoint("TOPLEFT", 16, - i * h)
         end
     end
 end
 
-WorldMapContinentDropDownButton:HookScript("OnClick", world_map_dropdown_button_click)
-WorldMapZoneDropDownButton:HookScript("OnClick", world_map_dropdown_button_click)
+_G['WorldMapContinentDropDownButton']:HookScript("OnClick", world_map_dropdown_button_click)
+_G['WorldMapZoneDropDownButton']:HookScript("OnClick", world_map_dropdown_button_click)
 
-local world_map_area_label_update = function (self)
+local function world_map_area_label_update(self)
     local text = self.Name:GetText()
     if text then
         text = strip_color_codes(text)
@@ -1840,7 +1906,7 @@ local world_map_area_label_update = function (self)
     end
 end
 
-local prepare_world_map = function ()
+local function prepare_world_map()
     for provider, _ in pairs(WorldMapFrame.dataProviders) do
         if provider.setAreaLabelCallback and provider.Label and provider.Label.Name then
             local _, size, style = provider.Label.Name:GetFont()
@@ -1855,7 +1921,7 @@ end
 -- [ target frame ]
 -- ----------------
 
-local update_target_frame_text = function ()
+local function update_target_frame_text()
     local npc_id = npc_id_from_unit_id("target")
     if npc_id then
         local entry = get_entry("npc", npc_id)
@@ -1899,7 +1965,7 @@ local known_chat_msg_events = {
     CHAT_MSG_RAID_BOSS_WHISPER  = { info=ChatTypeInfo.RAID_BOSS_WHISPER,    verb="шепоче" },
 }
 
-local filter_chat_msg = function (self, event, chat_text, npc_name, ...)
+local function filter_chat_msg(self, event, chat_text, npc_name, ...)
     local known_event = known_chat_msg_events[event]
     if not known_event then
         return false, chat_text, npc_name, ...
@@ -1915,7 +1981,7 @@ local filter_chat_msg = function (self, event, chat_text, npc_name, ...)
         return false, chat_text, npc_name, ...
     end
 
-    if chat_text_uk:match("%%s") then
+    if type(chat_text_uk) == 'string' and chat_text_uk:match("%%s") then
         chat_text_uk = string.format(chat_text_uk, npc_name_uk)
     end
 
@@ -1955,7 +2021,7 @@ end
 -- [ options frame ]
 -- -----------------
 
-local setup_player_name_cases_frame = function (content_frame)
+local function setup_player_name_cases_frame(content_frame)
     local root = CreateFrame("Frame", nil, content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
     root:SetSize(1, 1)
@@ -2033,7 +2099,7 @@ StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
     hideOnEscape = true
 }
 
-local setup_dev_mode_frame = function (content_frame)
+local function setup_dev_mode_frame(content_frame)
     local root = CreateFrame("Frame", nil, content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
     root:SetSize(1, 1)
@@ -2080,7 +2146,7 @@ local setup_dev_mode_frame = function (content_frame)
     return root
 end
 
-local prepare_options_frame = function ()
+local function prepare_options_frame()
     local at_text = addonTable.text -- can not use glossary as its not prepared at this moment
     local options_frame = CreateFrame("Frame")
     local f = nil
@@ -2223,9 +2289,9 @@ local prepare_options_frame = function ()
                 return
             end
 
-            for _, f in ipairs(options_frame.info_tab_buttons) do
-                if f.tab_index ~= self.tab_index then
-                    f:UnlockHighlight()
+            for _, btn_frame in ipairs(options_frame.info_tab_buttons) do
+                if btn_frame.tab_index ~= self.tab_index then
+                    btn_frame:UnlockHighlight()
                 end
             end
 
@@ -2267,11 +2333,11 @@ local prepare_options_frame = function ()
     options_frame.name = "ClassicUA"
     options_frame.default = reset_options
     options_frame.refresh = function ()
-        local f = options_frame
-        f.quest_text_size_frame:SetValue(options.quest_text_size)
-        f.quest_text_size_frame.Text:SetText("Розмір тексту завдання: " .. options.quest_text_size)
-        f.book_text_size_frame:SetValue(options.book_text_size)
-        f.book_text_size_frame.Text:SetText("Розмір тексту книжки: " .. options.book_text_size)
+        local of = options_frame
+        of.quest_text_size_frame:SetValue(options.quest_text_size)
+        of.quest_text_size_frame.Text:SetText("Розмір тексту завдання: " .. options.quest_text_size)
+        of.book_text_size_frame:SetValue(options.book_text_size)
+        of.book_text_size_frame.Text:SetText("Розмір тексту книжки: " .. options.book_text_size)
     end
 
     InterfaceOptions_AddCategory(options_frame)
