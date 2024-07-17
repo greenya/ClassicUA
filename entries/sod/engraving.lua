@@ -9,7 +9,7 @@ addonTable.sod_engraving = {
 -- Druid
 [48641] = { "Підживлення", spell=410059 }, -- Nourish
 [48642] = { "Нівечення", spell=410025 }, -- Mangle
-[48644] = { "Гнів Лютошторма", spell=410061 }, -- Fury of Stormrage
+[48644] = { "Лють Шаленства Бурі", spell=410061 }, -- Fury of Stormrage
 [48645] = { "Входження в сон", spell=410060 }, -- Dreamstate
 [48646] = { "Дикий рев", spell=410023 }, -- Savage Roar
 [48649] = { "Життєцвіт", spell=410033 }, -- Lifebloom
