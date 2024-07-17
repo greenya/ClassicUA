@@ -603,6 +603,7 @@ local default_options = {
 }
 
 ---@class character_options_class
+---@field name_cases table
 local character_options = nil
 local default_character_options = {
     name_cases = {}
