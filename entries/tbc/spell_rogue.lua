@@ -8,6 +8,14 @@ local rogue_spells = {
 [18427] = { "Агресивність", "Збільшує шкоду здібностей \"Підступний удар\", \"Удар у спину\" та \"Потрошіння\" на {1}%.#by {1}%" }, -- Aggression (Rank 1)
 [18428] = { ref=18427 }, -- Aggression (Rank 2)
 [18429] = { ref=18427 }, -- Aggression (Rank 3)
+-- Crippling Poison
+[3408] = { "Травматична отрута", "Покриває зброю отрутою на {1} год. Кожен удар з ймовірністю {2}% отруює ворога, сповільнюючи рух на {3}% протягом {4} с.#lasts for {1} hour#{2}% chance#speed by {3}% for {4} sec" }, -- Crippling Poison (Rank 1)
+[3420] = { ref=3408 }, -- Crippling Poison (Rank 1)
+[11202] = { ref=3408 }, -- Crippling Poison (Rank 2)
+[30981] = { ref=3409 }, -- Crippling Poison
+[44289] = { ref=3409 }, -- Crippling Poison
+-- Crippling Poison II
+[3421] = { "Травматична отрута II", ref=3408 }, -- Crippling Poison II (Rank 2)
 -- Dirty Deeds
 [14082] = { "Брудні справи", "Зменшує витрати енергії на ваші здібності \"Брудний прийом\" та \"Гарота\" на {1}. Окрім того, ваші здібності завдають на {2}% більше шкоди цілям, що мають менше {3}% здоров'я.#abilities by {1}#cause {2}% more#below {3}%" }, -- Dirty Deeds (Rank 1)
 [14083] = { ref=14082 }, -- Dirty Deeds (Rank 2)

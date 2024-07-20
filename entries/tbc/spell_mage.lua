@@ -13,7 +13,7 @@ local mage_spells = {
 [12502] = { ref=11232 }, -- Arcane Mind (Rank 4)
 [12503] = { ref=11232 }, -- Arcane Mind (Rank 5)
 -- Arcane Potency
-[31571] = { "Арканічний потенціал", "Збільшення на {1}% шансу завдати критичного удару будь-яким закляттям, що накладається у стані \"Ясномови\".#Clearcasting by {1}%." }, -- Arcane Potency (Rank 1)
+[31571] = { "Арканічна могутність", "Збільшення на {1}% шансу завдати критичного удару будь-яким закляттям, що накладається у стані \"Ясномови\".#Clearcasting by {1}%." }, -- Arcane Potency (Rank 1)
 [31572] = { ref=31571 }, -- Arcane Potency (Rank 2)
 [31573] = { ref=31571 }, -- Arcane Potency (Rank 3)
 -- Cold Snap
