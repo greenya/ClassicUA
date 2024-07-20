@@ -12,6 +12,16 @@ local rogue_spells = {
 [31380] = { "Відмерлі нерви", "Зменшує отриману шкоду на {1}%.#by {1}%" }, -- Deadened Nerves (Rank 1)
 [31382] = { ref=31380 }, -- Deadened Nerves (Rank 2)
 [31383] = { ref=31380 }, -- Deadened Nerves (Rank 3)
+-- Deadly Poison
+[2823] = { "Смертельна отрута", "Покриває зброю отрутою на {1} хв.\nКожен удар з ймовірністю {2}% отруює ворога, завдаючи {3} шкоди від природи протягом {4} с. Ефект накопичується до {5} разів на одній цілі. Після {6} накопичень, кожне спрацювання смертельної отрути викликає спрацювання отрути зі зброї в іншій руці.#lasts for {1} min#a {2}% chance#for {3} Nature damage over {4} sec#up to {5} times#stacked to {6} times" }, -- Deadly Poison (Rank 1)
+-- Deadly Poison II
+[2824] = { "Смертельна отрута II", ref=2823 }, -- Deadly Poison II (Rank 2)
+-- Deadly Poison III
+[11355] = { "Смертельна отрута III", ref=2823 }, -- Deadly Poison III (Rank 3)
+-- Deadly Poison IV
+[11356] = { "Смертельна отрута IV", ref=2823 }, -- Deadly Poison IV (Rank 4)
+-- Deadly Poison V
+[25351] = { "Смертельна отрута V", ref=2823 }, -- Deadly Poison V (Rank 5)
 -- Disarm Trap
 [1842] = { "Знешкодження пасток", "Знешкодити ворожу пастку." }, -- Disarm Trap
 -- Dismantle

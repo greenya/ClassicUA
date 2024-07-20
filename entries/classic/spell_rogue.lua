@@ -44,9 +44,14 @@ local rogue_spells = {
 -- Cold Blood
 [14177] = { "Стигла кров", "При активації, збільшує ймовірність критичного удару вашої наступної здібності \"Підступний удар\", \"Удар у спину\", \"Засідка\" чи \"Потрошіння\" на {1}%.#by {1}", "Ймовірність критичного удару вашої наступної здібності \"Підступний удар\", \"Удар у спину\", \"Засідка\" чи \"Потрошіння\" збільшено на {1}%.#by {1}" }, -- Cold Blood
 -- Crippling Poison
-[3420] = { "Травматична отрута", "Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, сповільнюючи рух на {3}% на {4} с.#lasts for {1} min#{2}% chance#speed by {3}% for {4} sec" }, -- Crippling Poison (Rank 1)
+[3408] = { "Травматична отрута", "Покриває зброю отрутою на {1} хв. Кожен удар з ймовірністю {2}% отруює ворога, сповільнюючи рух на {3}% протягом {4} с.#lasts for {1} min#{2}% chance#speed by {3}% for {4} sec" }, -- Crippling Poison (Rank 1)
+[3409] = { "Травматична отрута", nil, "Швидкість руху зменшено на {1}%.#by {1}%" }, -- Crippling Poison (Rank 1)
+[3420] = { ref=3408 }, -- Crippling Poison (Rank 1)
+[11201] = { ref=3409 }, -- Crippling Poison (Rank 2)
+[11202] = { ref=3408 }, -- Crippling Poison (Rank 2)
+[25809] = { ref=3409 }, -- Crippling Poison (Rank 1)
 -- Crippling Poison II
-[3421] = { "Травматична отрута II", ref=3420 }, -- Crippling Poison II (Rank 2)
+[3421] = { "Травматична отрута II", ref=3408 }, -- Crippling Poison II (Rank 2)
 -- Dagger Specialization
 [13706] = { "Спеціалізація на кинджалах", "Підвищує ймовірність завдати критичного удару кинджалами на {1}%.#by {1}" }, -- Dagger Specialization (Rank 1)
 [13804] = { ref=13706 }, -- Dagger Specialization (Rank 2)
@@ -61,19 +66,24 @@ local rogue_spells = {
 [30906] = { ref=30902 }, -- Deadliness (Rank 5)
 -- Deadly Poison
 [2818] = { "Смертельна отрута", nil, "Отримує {1} шкоди від природи кожні {2} с.#takes {1} Nature#every {2} sec" }, -- Deadly Poison (Rank 1)
-[2835] = { "Смертельна отрута", "Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, завдаючи {3} шкоди від природи протягом {4} с. Ефект накопичується до {5} разів на одній цілі. {6} зарядів.#lasts for {1} min#{2}% chance#for {3} Nature damage over {4} sec#{5} times#{6} charges" }, -- Deadly Poison (Rank 1)
+[2835] = { "Смертельна отрута", "Покриває зброю отрутою на {1} хв. Кожен удар з ймовірністю {2}% отруює ворога, завдаючи {3} шкоди від природи протягом {4} с. Ефект накопичується до {5} разів на одній цілі. {6} зарядів.#lasts for {1} min#{2}% chance#for {3} Nature damage over {4} sec#{5} times#{6} charges" }, -- Deadly Poison (Rank 1)
+[2823] = { "Смертельна отрута", "Покриває зброю отрутою на {1} хв.\nКожен удар з ймовірністю {2}% отруює ворога, завдаючи {3} шкоди від природи протягом {4} с. Ефект накопичується до {5} разів на одній цілі. {6} зарядів.#lasts for {1} min#a {2}% chance#for {3} Nature damage over {4} sec#up to {5} times#{6} charges" }, -- Deadly Poison (Rank 1)
 -- Deadly Poison II
 [2819] = { "Смертельна отрута II", ref=2818 }, -- Deadly Poison II (Rank 2)
 [2837] = { "Смертельна отрута II", ref=2835 }, -- Deadly Poison II (Rank 2)
+[2824] = { "Смертельна отрута II", ref=2823 }, -- Deadly Poison II (Rank 2)
 -- Deadly Poison III
 [11353] = { "Смертельна отрута III", ref=2818 }, -- Deadly Poison III (Rank 3)
 [11357] = { "Смертельна отрута III", ref=2835 }, -- Deadly Poison III (Rank 3)
+[11355] = { "Смертельна отрута III", ref=2823 }, -- Deadly Poison III (Rank 3)
 -- Deadly Poison IV
 [11354] = { "Смертельна отрута IV", ref=2818 }, -- Deadly Poison IV (Rank 4)
 [11358] = { "Смертельна отрута IV", ref=2835 }, -- Deadly Poison IV (Rank 4)
+[11356] = { "Смертельна отрута IV", ref=2823 }, -- Deadly Poison IV (Rank 4)
 -- Deadly Poison V
 [25347] = { "Смертельна отрута V", ref=2835 }, -- Deadly Poison V (Rank 5)
 [25349] = { "Смертельна отрута V", ref=2818 }, -- Deadly Poison V (Rank 5)
+[25351] = { "Смертельна отрута V", ref=2823 }, -- Deadly Poison V (Rank 5)
 -- Deflection
 [13713] = { "Відбиття", "Збільшує вашу ймовірність парирування на {1}%.#by {1}%" }, -- Deflection (Rank 1)
 [13853] = { ref=13713 }, -- Deflection (Rank 2)
@@ -139,7 +149,7 @@ local rogue_spells = {
 [11289] = { ref=703 }, -- Garrote (Rank 5)
 [11290] = { ref=703 }, -- Garrote (Rank 6)
 -- Ghostly Strike
-[14278] = { "Примарний удар", "Удар, що завдає {1}% шкоди зброєю та збільшує вашу ймовірність ухилитися на {2}% на {3} с. Збільшує довжину комбінації на {4} прийом.#{1}% weapon#by {2}% for {3} sec#{4} combo", "Імовірність ухилитися збільшена на {1}%.#by {1}" }, -- Ghostly Strike
+[14278] = { "Примарний удар", "Удар, що завдає {1}% шкоди зброєю та збільшує вашу ймовірність ухилення на {2}% на {3} с. Збільшує довжину комбінації на {4} прийом.#{1}% weapon#by {2}% for {3} sec#{4} combo", "Шанс ухилення збільшено на {1}%.#by {1}%" }, -- Ghostly Strike
 -- Gouge
 [1776] = { "Ошелешити", "Завдає {1} шкоди, робить ворога недієздатним на {2} с. та зупиняє вашу атаку. Ціль має бути повернута до вас. Будь-яка шкода перериває дію ефекту на цілі. Збільшує довжину комбінації на {3} прийом.#Causes {1}#for {2} sec#{3} combo", "Недієздатність." }, -- Gouge (Rank 1)
 [1777] = { ref=1776 }, -- Gouge (Rank 2)
@@ -203,17 +213,23 @@ local rogue_spells = {
 [13979] = { ref=13976 }, -- Initiative (Rank 2)
 [13980] = { ref=13976 }, -- Initiative (Rank 3)
 -- Instant Poison
-[8681] = { "Миттєва отрута", "Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, миттєво завдаючи від {3} до {4} шкоди від природи. {5} зарядів.#lasts for {1} min#{2}% chance#inflicts {3} to {4}#{5} charges" }, -- Instant Poison (Rank 1)
+[8681] = { "Миттєва отрута", "Покриває зброю отрутою на {1} хв. Кожен удар з ймовірністю {2}% отруює ворога, миттєво завдаючи від {3} до {4} шкоди від природи. {5} зарядів.#lasts for {1} min#{2}% chance#inflicts {3} to {4}#{5} charges" }, -- Instant Poison (Rank 1)
+[8679] = { "Миттєва отрута", "Покриває зброю отрутою на {1} хв.\nКожен удар з ймовірністю {2}% отруює ворога, миттєво завдаючи від {3} до {4} шкоди від природи. {5} зарядів.#lasts for {1} min#has a {2}% chance#inflicts {3} to {4} Nature#{5} charges" }, -- Instant Poison (Rank 1)
 -- Instant Poison II
 [8687] = { "Миттєва отрута II", ref=8681 }, -- Instant Poison II (Rank 2)
+[8686] = { "Миттєва отрута II", ref=8679 }, -- Instant Poison II (Rank 2)
 -- Instant Poison III
 [8691] = { "Миттєва отрута III", ref=8681 }, -- Instant Poison III (Rank 3)
+[8688] = { "Миттєва отрута III", ref=8679 }, -- Instant Poison III (Rank 3)
 -- Instant Poison IV
 [11341] = { "Миттєва отрута IV", ref=8681 }, -- Instant Poison IV (Rank 4)
+[11338] = { "Миттєва отрута IV", ref=8679 }, -- Instant Poison IV (Rank 4)
 -- Instant Poison V
 [11342] = { "Миттєва отрута V", ref=8681 }, -- Instant Poison V (Rank 5)
+[11339] = { "Миттєва отрута V", ref=8679 }, -- Instant Poison V (Rank 5)
 -- Instant Poison VI
 [11343] = { "Миттєва отрута VI", ref=8681 }, -- Instant Poison VI (Rank 6)
+[11340] = { "Миттєва отрута VI", ref=8679 }, -- Instant Poison VI (Rank 6)
 -- Kick
 [1766] = { "Копняк", "Швидкий удар ногою, що завдає {1} шкоди. Також перериває вимову закляття та унеможливлює вимову заклять тієї ж школи протягом {2} с.#for {1} damage#for {2} sec" }, -- Kick (Rank 1)
 [1767] = { ref=1766 }, -- Kick (Rank 2)
@@ -255,11 +271,18 @@ local rogue_spells = {
 [13972] = { ref=13970 }, -- Master of Deception (Rank 4)
 [13973] = { ref=13970 }, -- Master of Deception (Rank 5)
 -- Mind-numbing Poison
-[5763] = { "Задурлива отрута", "Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, сповільнюючи вимову заклять на {3}% на {4} с. {5} зарядів.#lasts for {1} min#{2}% chance#by {3}% for {4} sec#{5} charges" }, -- Mind-numbing Poison (Rank 1)
+[5761] = { "Задурлива отрута", "Покриває зброю отрутою на {1} хв. Кожен удар з ймовірністю {2}% отруює ворога, сповільнюючи вимову заклять на {3}% протягом {4} с. {5} зарядів.#lasts for {1} min#{2}% chance#by {3}% for {4} sec#{5} charges" }, -- Mind-numbing Poison (Rank 1)
+[5763] = { "Задурлива отрута", ref=5761 }, -- Mind-numbing Poison (Rank 1)
+[5760] = { "Задурлива отрута", nil, "Вимову заклять сповільнено на {1}%.#by {1}%" }, -- Mind-numbing Poison (Rank 1)
+[25810] = { ref=5760 }, -- Mind-numbing Poison
 -- Mind-numbing Poison II
-[8694] = { "Задурлива отрута II", ref=5763 }, -- Mind-numbing Poison II (Rank 2)
+[8693] = { "Задурлива отрута II", ref=5761 }, -- Mind-numbing Poison II (Rank 2)
+[8694] = { "Задурлива отрута II", ref=5761 }, -- Mind-numbing Poison II (Rank 2)
+[8692] = { "Задурлива отрута II", ref=5760 }, -- Mind-numbing Poison II (Rank 2)
 -- Mind-numbing Poison III
-[11400] = { "Задурлива отрута III", ref=5763 }, -- Mind-numbing Poison III (Rank 3)
+[11399] = { "Задурлива отрута III", ref=5761 }, -- Mind-numbing Poison III (Rank 3)
+[11400] = { "Задурлива отрута III", ref=5761 }, -- Mind-numbing Poison III (Rank 3)
+[11398] = { "Задурлива отрута III", ref=5760 }, -- Mind-numbing Poison III (Rank 3)
 -- Murder
 [14158] = { "Вбивство", "Збільшує всю завдан шкоду гуманоїдам, велетням, звірам та драконам на {1}%.#by {1}" }, -- Murder (Rank 1)
 [14159] = { ref=14158 }, -- Murder (Rank 2)
@@ -286,7 +309,7 @@ local rogue_spells = {
 -- Preparation
 [14185] = { "Підготовка", "При активації, миттєво завершує відновлення інших здібностей пройдисвіта." }, -- Preparation
 -- Relentless Strikes
-[14179] = { "Невідступні удари", "Ваші завершальні рухи з імовірністю {1}% на кожен прийом комбінації відновлять {2} енергії.#{1}% chance#restore {2}" }, -- Relentless Strikes
+[14179] = { "Невідступні удари", "Ваші завершальні рухи з ймовірністю {1}% за кожен прийом комбінації відновлюють {2} енергії.#a {1}% chance#restore {2}" }, -- Relentless Strikes
 -- Remorseless
 [14143] = { "Безжалісність", nil, "Імовірність критичного удару вашої наступної здібності \"Підступний удар\", \"Удар у спину\", \"Засідка\" або \"Примарний удар\" збільшено на {1}%.#by {1}" }, -- Remorseless (Rank 1)
 [14149] = { ref=14143 }, -- Remorseless (Rank 2)
@@ -373,13 +396,24 @@ local rogue_spells = {
 [30919] = { "Вправність володіння зброєю", "Збільшує ваші навички володіння мечами, кулачною зброєю та кинджалами на {1}.#by {1}" }, -- Weapon Expertise (Rank 1)
 [30920] = { ref=30919 }, -- Weapon Expertise (Rank 2)
 -- Wound Poison
-[13220] = { "Агонічна отрута", "Вкриває зброю отрутою на {1} хв. Кожен удар має {2}% імовірності отруїти ворога, знижуючи ефективність будь-якого зцілення на {3} на {4} с.#lasts for {1} min#{2}% chance#them by {3} for {4} sec" }, -- Wound Poison (Rank 1)
+[13220] = { "Агонічна отрута", "Покриває зброю отрутою на {1} хв. Кожен удар з ймовірністю {2}% отруює ворога, зменшуючи ефективність будь-якого зцілення на {3} протягом {4} с.#lasts for {1} min#{2}% chance#them by {3} for {4} sec" }, -- Wound Poison (Rank 1)
+[13219] = { "Агонічна отрута", "Покриває зброю отрутою на {1} хв.\nКожен удар з ймовірністю {2}% отруює ворога, зменшуючи ефективність будь-якого зцілення на {3} протягом {4} с. Ефект накопичується до {5} разів на одній цілі. {6} зарядів.#lasts for {1} min#a {2}% chance#them by {3} for {4} sec#up to {5} times#{6} charges" }, -- Wound Poison (Rank 1)
+[13225] = { ref=13219 }, -- Wound Poison (Rank 2)
+[13226] = { ref=13219 }, -- Wound Poison (Rank 3)
+[13227] = { ref=13219 }, -- Wound Poison (Rank 4)
+[13222] = { "Агонічна отрута", nil, "Всі ефекти зцілення зменшено на {1}.#reduced by {1}" }, -- Wound Poison (Rank 2)
+[13223] = { ref=13218 }, -- Wound Poison (Rank 3)
+[13224] = { ref=13218 }, -- Wound Poison (Rank 4)
 -- Wound Poison II
 [13228] = { "Агонічна отрута II", ref=13220 }, -- Wound Poison II (Rank 2)
 -- Wound Poison III
 [13229] = { "Агонічна отрута III", ref=13220 }, -- Wound Poison III (Rank 3)
 -- Wound Poison IV
 [13230] = { "Агонічна отрута IV", ref=13220 }, -- Wound Poison IV (Rank 4)
+
+-- Item effects
+[23049] = { "Збільшення тривалості Спринту", "Збільшує тривалість здібності \"Спринт\" на {1} с.#ability by {1} sec" }, -- Sprint Duration Increase
+[23726] = { "Отруйний тотем", "Збільшує ймовірність спрацювання отрут на {1}% протягом {2} с.#target by {1}% for {2} sec", "Ймовірність спрацювання отрут збільшено на {1}%.#by {1}%" }, -- Venomous Totem
 
 }
 

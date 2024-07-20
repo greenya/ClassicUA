@@ -296,7 +296,7 @@ local warrior_spells = {
 -- Recklessness
 [1719] = { "Навіженість", "Воїн буде завдавати критичних ударів більшістю своїх атак та отримає невразливість до ефектів страху протягом {1} с, але отримана ним шкода збільшиться на {2}%.#next {1} sec#increased by {2}", "Невразливість до ефектів страху, більшість атак завдають критичних ударів, але отриману шкоду збільшено на {1}%.#increased by {1}" }, -- Recklessness
 -- Rend
-[772] = { "Розрив", "Ранить ціль, змушуючи її стікати кров'ю на {1} шкоди протягом {2} с.#for {1} damage over {2} sec", "Стікає кров'ю на {1} шкоди кожні {2} с.#for {1} damage every {2} seconds" }, -- Rend (Rank 1)
+[772] = { "Розрив", "Ранить ціль, спричиняючи {1} шкоди від кровотечі протягом {2} с.#for {1} damage over {2} sec", "{1} шкоди від кровотечі кожні {2} с.#for {1} damage every {2} sec" }, -- Rend (Rank 1)
 [6546] = { ref=772 }, -- Rend (Rank 2)
 [6547] = { ref=772 }, -- Rend (Rank 3)
 [6548] = { ref=772 }, -- Rend (Rank 4)
@@ -328,7 +328,7 @@ local warrior_spells = {
 [23924] = { ref=23922 }, -- Shield Slam (Rank 3)
 [23925] = { ref=23922 }, -- Shield Slam (Rank 4)
 -- Shield Specialization
-[12298] = { "Спеціалізація на щитах", "Підвищує ймовірність блокувати атаки щитом на {1}% і ймовірність {2}% генерувати {3} люті при блокуванні.#shield by {1}% and has a {2}% chance to generate {3} rage" }, -- Shield Specialization (Rank 1)
+[12298] = { "Спеціалізація на щитах", "Збільшує ймовірність блокуваня атак щитом на {1}% і з ймовірністю {2}% генерує {3} люті при блокуванні.#shield by {1}% and has a {2}% chance to generate {3} rage" }, -- Shield Specialization (Rank 1)
 [12724] = { ref=12298 }, -- Shield Specialization (Rank 2)
 [12725] = { ref=12298 }, -- Shield Specialization (Rank 3)
 [12726] = { ref=12298 }, -- Shield Specialization (Rank 4)
@@ -365,12 +365,13 @@ local warrior_spells = {
 -- Taunt
 [355] = { "Провокація", "Підбурює ціль атакувати вас, але не діє, якщо ціль вже атакує вас." }, -- Taunt
 -- Thunder Clap
-[6343] = { "Громовий удар", "Вражає ворогів поруч, збільшуючи час між їхніми атаками на {1}% на {2} с та завдаючи їм {3} шкоди. Подіє не більше ніж на {4} цілі.#attacks by {1}% for {2} sec and doing {3} damage#up to {4} targets", "Час між атаками збільшено на {1}%.#increased by {1}" }, -- Thunder Clap (Rank 1)
+[6343] = { "Громовий удар", "Вражає ворогів неподалік, збільшуючи час між їхніми атаками на {1}% на {2} с та завдаючи їм {3} шкоди. Подіє не більше ніж на {4} цілі.#attacks by {1}% for {2} sec and doing {3} damage#up to {4} targets", "Час між атаками збільшено на {1}%.#increased by {1}" }, -- Thunder Clap (Rank 1)
 [8198] = { ref=6343 }, -- Thunder Clap (Rank 2)
 [8204] = { ref=6343 }, -- Thunder Clap (Rank 3)
 [8205] = { ref=6343 }, -- Thunder Clap (Rank 4)
 [11580] = { ref=6343 }, -- Thunder Clap (Rank 5)
 [11581] = { ref=6343 }, -- Thunder Clap (Rank 6)
+[13532] = { nil, "Вражає ворогів поруч громом, збільшуючи час між їхніми атаками на {1}% на {2} с та завдаючи їм {3} шкоди від природи. Подіє не більше ніж на {4} цілі.#attacks by {1}% for {2} sec and doing {3} Nature damage#up to {4} targets", ref=6343 }, -- Thunder Clap (Rank 1)
 -- Toughness
 [12299] = { "Міць", "Збільшує вашу броню з предметів на {1}%.#items by {1}%" }, -- Toughness (Rank 1)
 [12761] = { ref=12299 }, -- Toughness (Rank 2)
@@ -391,6 +392,10 @@ local warrior_spells = {
 [13002] = { ref=12322 }, -- Unbridled Wrath (Rank 5)
 -- Whirlwind
 [1680] = { "Вихор", "У сталевому вихорі ви атакуєте до {1} ворогів в межах {2} м, завдаючи шкоди зброєю кожному ворогу.#up to {1} enemies within {2} yards" }, -- Whirlwind
+
+-- Item effects
+[23725] = { "Дар життя", "Зцілює вам {1}% від максимального запасу здоров'я та збільшує максимальний запас здоров'я на {2}% протягом {3} с.#yourself for {1}% of#health by {2}% for {3} sec", "Максимальний запас здоров'я збільшено на {1}%.#by {1}%" }, -- Gift of Life
+[22778] = { "Зменшення витрат Нівечення", "Зменшує витрати люті на здібність \"Нівечення\" на {1}.#reduced by {1}" }, -- Hamstring Rage Reduction (Rank 1)
 
 -- Stances
 [2457] = { "Бойова стійка", "Збалансована бойова стійка." }, -- Battle Stance
