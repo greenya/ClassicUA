@@ -25,15 +25,15 @@ local GetAddOnInfo              = _G['GetAddOnInfo']
 local GetAddOnMemoryUsage       = _G['GetAddOnMemoryUsage']
 local GetAddOnMetadata          = _G['GetAddOnMetadata']
 local GetBuildInfo              = _G['GetBuildInfo']
-local GetMouseFocus             = _G['GetMouseFocus']
+-- local GetMouseFocus             = _G['GetMouseFocus']
 local GetNumAddOns              = _G['GetNumAddOns']
 local GetQuestID                = _G['GetQuestID']
 local GetQuestLogSelection      = _G['GetQuestLogSelection']
 local GetQuestLogTitle          = _G['GetQuestLogTitle']
 local GetTalentInfo             = _G['GetTalentInfo']
 local GossipFrame               = _G['GossipFrame']
-local InterfaceOptions_AddCategory = _G['InterfaceOptions_AddCategory']
-local InterfaceOptionsFrame_OpenToCategory = _G['InterfaceOptionsFrame_OpenToCategory']
+-- local InterfaceOptions_AddCategory = _G['InterfaceOptions_AddCategory']
+-- local InterfaceOptionsFrame_OpenToCategory = _G['InterfaceOptionsFrame_OpenToCategory']
 local ItemRefTooltip            = _G['ItemRefTooltip']
 local ItemTextGetPage           = _G['ItemTextGetPage']
 local ItemTextGetText           = _G['ItemTextGetText']
@@ -65,9 +65,9 @@ local StaticPopupDialogs        = _G['StaticPopupDialogs']
 local SubZoneTextString         = _G['SubZoneTextString']
 local WorldMapTooltip           = _G['WorldMapTooltip']
 local WorldFrame                = _G['WorldFrame']
-local WorldMapContinentDropDown = _G['WorldMapContinentDropDown']
+-- local WorldMapContinentDropDown = _G['WorldMapContinentDropDown']
 local WorldMapFrame             = _G['WorldMapFrame']
-local WorldMapZoneDropDown      = _G['WorldMapZoneDropDown']
+-- local WorldMapZoneDropDown      = _G['WorldMapZoneDropDown']
 local ZoneTextString            = _G['ZoneTextString']
 
 local build_info = GetBuildInfo()
@@ -1285,8 +1285,8 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key)
             if tooltip:IsShown() then
                 tooltip:Show()
             end
-        elseif options.dev_mode and GetMouseFocus() == WorldFrame then
-            dev_log_missing_object(glossary_key)
+        -- elseif options.dev_mode and GetMouseFocus() == WorldFrame then -- FIXME [1.15.4] GetMouseFocus is undefined
+        --     dev_log_missing_object(glossary_key)
         end
     end
 
@@ -1843,7 +1843,7 @@ local zone_text_lookup = {
 }
 
 local function update_zone_text()
-    local text, found
+    local text
     for _, lookup in ipairs(zone_text_lookup) do
         text = lookup[1]:GetText()
         if text then
@@ -1880,63 +1880,71 @@ end
 -- [ world map ]
 -- -------------
 
-local world_map_original_set_map_id = WorldMapFrame.SetMapID
-local world_map_dds = { WorldMapContinentDropDown, WorldMapZoneDropDown }
+-- FIXME [1.15.4] world map dropdowns don't work as some globals became unavailable:
+-- ? WorldMapContinentDropDown
+-- ? WorldMapContinentDropDownButton
+-- ? WorldMapZoneDropDown
+-- ? WorldMapZoneDropDownButton
+-- ? DropDownList1
+-- ? DropDownList1Button1..N (numButtons)
 
-WorldMapFrame.SetMapID = function (self, mapID)
-    world_map_original_set_map_id(self, mapID)
+-- local world_map_original_set_map_id = WorldMapFrame.SetMapID
+-- local world_map_dds = { WorldMapContinentDropDown, WorldMapZoneDropDown }
 
-    for _, v in ipairs(world_map_dds) do
-        local text = v.Text:GetText()
-        if text then
-            text = strip_color_codes(text)
-            local found = get_glossary_text(text)
-            if found then
-                v.Text:SetText(capitalize(found))
-            elseif options.dev_mode then
-                dev_log_missing_zone(text)
-            end
-        end
-    end
-end
+-- WorldMapFrame.SetMapID = function (self, mapID)
+--     world_map_original_set_map_id(self, mapID)
 
-local function world_map_dropdown_button_click(self)
-    local dd = _G['DropDownList1']
-    if dd:IsShown() then
-        local texts = {}
-        local buttons = {}
+--     for _, v in ipairs(world_map_dds) do
+--         local text = v.Text:GetText()
+--         if text then
+--             text = strip_color_codes(text)
+--             local found = get_glossary_text(text)
+--             if found then
+--                 v.Text:SetText(capitalize(found))
+--             elseif options.dev_mode then
+--                 dev_log_missing_zone(text)
+--             end
+--         end
+--     end
+-- end
 
-        for i = 1, dd.numButtons do
-            local button = _G["DropDownList1Button" .. i]
-            local text = button:GetText()
-            if text then
-                text = strip_color_codes(text)
-                local found = get_glossary_text(text)
-                if found then
-                    local t = capitalize(found)
-                    texts[#texts + 1] = t
-                    buttons[t] = button
-                    button:SetText(t)
-                else
-                    texts[#texts + 1] = text
-                    buttons[text] = button
-                    if options.dev_mode then
-                        dev_log_missing_zone(text)
-                    end
-                end
-            end
-        end
+-- local function world_map_dropdown_button_click(self)
+--     local dd = _G['DropDownList1']
+--     if dd:IsShown() then
+--         local texts = {}
+--         local buttons = {}
 
-        sort(texts)
-        local h = _G['DropDownList1Button1']:GetHeight()
-        for i = 1, #texts do
-            buttons[texts[i]]:SetPoint("TOPLEFT", 16, - i * h)
-        end
-    end
-end
+--         for i = 1, dd.numButtons do
+--             local button = _G["DropDownList1Button" .. i]
+--             local text = button:GetText()
+--             if text then
+--                 text = strip_color_codes(text)
+--                 local found = get_glossary_text(text)
+--                 if found then
+--                     local t = capitalize(found)
+--                     texts[#texts + 1] = t
+--                     buttons[t] = button
+--                     button:SetText(t)
+--                 else
+--                     texts[#texts + 1] = text
+--                     buttons[text] = button
+--                     if options.dev_mode then
+--                         dev_log_missing_zone(text)
+--                     end
+--                 end
+--             end
+--         end
 
-_G['WorldMapContinentDropDownButton']:HookScript("OnClick", world_map_dropdown_button_click)
-_G['WorldMapZoneDropDownButton']:HookScript("OnClick", world_map_dropdown_button_click)
+--         sort(texts)
+--         local h = _G['DropDownList1Button1']:GetHeight()
+--         for i = 1, #texts do
+--             buttons[texts[i]]:SetPoint("TOPLEFT", 16, - i * h)
+--         end
+--     end
+-- end
+
+-- _G['WorldMapContinentDropDownButton']:HookScript("OnClick", world_map_dropdown_button_click)
+-- _G['WorldMapZoneDropDownButton']:HookScript("OnClick", world_map_dropdown_button_click)
 
 local function world_map_area_label_update(self)
     local text = self.Name:GetText()
@@ -2262,8 +2270,8 @@ local function prepare_options_frame()
     f:SetObeyStepOnDrag(true)
     f:SetValueStep(1)
     f:SetMinMaxValues(10, 20)
-    f.Low:SetText("10")
-    f.High:SetText("20")
+    -- f.Low:SetText("10") -- FIXME [1.15.4] Slider.Low is undefined
+    -- f.High:SetText("20") -- FIXME [1.15.4] Slider.High is undefined
     f:SetScript("OnValueChanged", function (self, value)
         self.Text:SetText("Розмір тексту завдання: " .. value)
         options.quest_text_size = value
@@ -2280,8 +2288,8 @@ local function prepare_options_frame()
     f:SetObeyStepOnDrag(true)
     f:SetValueStep(1)
     f:SetMinMaxValues(10, 20)
-    f.Low:SetText("10")
-    f.High:SetText("20")
+    -- f.Low:SetText("10") -- FIXME [1.15.4] Slider.Low is undefined
+    -- f.High:SetText("20") -- FIXME [1.15.4] Slider.High is undefined
     f:SetScript("OnValueChanged", function (self, value)
         self.Text:SetText("Розмір тексту книжки: " .. value)
         options.book_text_size = value
@@ -2385,13 +2393,13 @@ local function prepare_options_frame()
         of.book_text_size_frame.Text:SetText("Розмір тексту книжки: " .. options.book_text_size)
     end
 
-    InterfaceOptions_AddCategory(options_frame)
+    -- InterfaceOptions_AddCategory(options_frame) -- FIXME [1.15.4] InterfaceOptions_AddCategory is undefined
 
     -- add slash command to open the options
 
     _G.SLASH_CLASSICUA_SETTINGS1 = "/ua"
     SlashCmdList.CLASSICUA_SETTINGS = function ()
-        InterfaceOptionsFrame_OpenToCategory(options_frame)
+        -- InterfaceOptionsFrame_OpenToCategory(options_frame) -- FIXME [1.15.4] InterfaceOptionsFrame_OpenToCategory is undefined
     end
 end
 
@@ -2418,12 +2426,12 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         self:UnregisterEvent("ADDON_LOADED")
 
         prepare_options()
-        prepare_options_frame()
+        -- prepare_options_frame() -- FIXME [1.15.4] disabled until fixed options frame
 
         DEFAULT_CHAT_FRAME:AddMessage(
             asset_ua_code
             .. " ClassicUA v" .. GetAddOnMetadata("ClassicUA", "Version")
-            .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
+            -- .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r" -- FIXME [1.15.4] SLASH_CLASSICUA_SETTINGS1 is not available as we disabled options frame
             .. (options.dev_mode and " — Режим розробки" or "")
         )
 
