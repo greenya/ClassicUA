@@ -32,8 +32,9 @@ local GetQuestLogSelection      = _G['GetQuestLogSelection']
 local GetQuestLogTitle          = _G['GetQuestLogTitle']
 local GetTalentInfo             = _G['GetTalentInfo']
 local GossipFrame               = _G['GossipFrame']
--- local InterfaceOptions_AddCategory = _G['InterfaceOptions_AddCategory']
--- local InterfaceOptionsFrame_OpenToCategory = _G['InterfaceOptionsFrame_OpenToCategory']
+local InterfaceAddOnsList_Update = _G['InterfaceAddOnsList_Update']
+local InterfaceOptions_AddCategory = _G['InterfaceOptions_AddCategory']
+local InterfaceOptionsFrame_OpenToCategory = _G['InterfaceOptionsFrame_OpenToCategory']
 local ItemRefTooltip            = _G['ItemRefTooltip']
 local ItemTextGetPage           = _G['ItemTextGetPage']
 local ItemTextGetText           = _G['ItemTextGetText']
@@ -56,6 +57,7 @@ local UnitRace                  = _G['UnitRace']
 local UnitSex                   = _G['UnitSex']
 local UpdateAddOnMemoryUsage    = _G['UpdateAddOnMemoryUsage']
 local ReloadUI                  = _G['ReloadUI']
+local Settings                  = _G['Settings']
 local ShoppingTooltip1          = _G['ShoppingTooltip1']
 local ShoppingTooltip2          = _G['ShoppingTooltip2']
 local ShouldShowName            = _G['ShouldShowName']
@@ -83,6 +85,9 @@ local asset_font2_path = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
 
 ---@class options_class
 local options = nil
+
+---@class Frame
+local options_frame = nil
 
 -- ---------
 -- [ utils ]
@@ -401,7 +406,7 @@ local function dev_log_reset()
 end
 
 local function dev_log_issue(key, data)
-    if dev_log.issues[key] then
+    if not options.dev_mode or dev_log.issues[key] then
         return
     end
 
@@ -640,6 +645,10 @@ local function reset_options()
 
     ClassicUA_Character_Options = copy_table({}, default_character_options)
     character_options = ClassicUA_Character_Options
+
+    if options_frame then
+        options_frame.refresh()
+    end
 end
 
 -- -----------
@@ -2196,12 +2205,45 @@ local function setup_dev_mode_frame(content_frame)
         StaticPopup_Show("CLASSICUA_CONFIRM_DEV_LOG_RESET")
     end)
 
+    options_frame.dev_mode_checkbox = dm_check
+    options_frame.dev_mode_notify_activity_checkbox = dm_na_check
+
+    return root
+end
+
+local function create_slider_frame(parent, point, x, y, width, height, min, max, step, tooltip_text, on_value_changed)
+    local root = CreateFrame("Slider", nil, parent, "ClassicUA_UISliderTemplateWithLabels")
+
+    root:SetPoint(point, x, y)
+    root:SetWidth(width)
+    root:SetHeight(height)
+    root:SetObeyStepOnDrag(true)
+    root:SetValueStep(step)
+    root:SetMinMaxValues(min, max)
+    root.Low:SetText(tostring(min))
+    root.High:SetText(tostring(max))
+
+    if tooltip_text then
+        root.tooltip_text = tooltip_text
+        root:SetScript("OnEnter", function(self)
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+            GameTooltip:SetText(self.tooltip_text, nil, nil, nil, nil, true)
+        end)
+        root:SetScript("OnLeave", function()
+            GameTooltip:Hide()
+        end)
+    end
+
+    if on_value_changed then
+        root:SetScript("OnValueChanged", on_value_changed)
+    end
+
     return root
 end
 
 local function prepare_options_frame()
     local at_text = addonTable.text -- can not use glossary as its not prepared at this moment
-    local options_frame = CreateFrame("Frame")
+    options_frame = CreateFrame("Frame")
     local f = nil
 
     -- title
@@ -2234,7 +2276,7 @@ local function prepare_options_frame()
     f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
     f:SetPoint("TOPRIGHT", -48, -128)
     f:SetText("/reload")
-    f:SetSize(88, 20)
+    f:SetSize(88, 24)
     f:SetScript("OnClick", function()
         ReloadUI()
     end)
@@ -2261,39 +2303,25 @@ local function prepare_options_frame()
 
     -- options.quest_text_size
 
-    f = CreateFrame("Slider", nil, options_frame, "OptionsSliderTemplate")
-    options_frame.quest_text_size_frame = f
-    f:SetPoint("TOPLEFT", 24, -80)
-    f:SetWidth(200)
-    f:SetHeight(20)
-    f.tooltipText = "Розмір шрифту в вікні завдання."
-    f:SetObeyStepOnDrag(true)
-    f:SetValueStep(1)
-    f:SetMinMaxValues(10, 20)
-    -- f.Low:SetText("10") -- FIXME [1.15.4] Slider.Low is undefined
-    -- f.High:SetText("20") -- FIXME [1.15.4] Slider.High is undefined
-    f:SetScript("OnValueChanged", function (self, value)
-        self.Text:SetText("Розмір тексту завдання: " .. value)
-        options.quest_text_size = value
-    end)
+    options_frame.quest_text_size_slider = create_slider_frame(
+        options_frame, "TOPLEFT", 24, -80, 200, 20, 10, 20, 1,
+        "Розмір шрифту в вікні завдання.",
+        function (self, value)
+            self.Text:SetText("Розмір тексту завдання: " .. value)
+            options.quest_text_size = value
+        end
+    )
 
     -- options.book_text_size
 
-    f = CreateFrame("Slider", nil, options_frame, "OptionsSliderTemplate")
-    options_frame.book_text_size_frame = f
-    f:SetPoint("TOPLEFT", 24, -140)
-    f:SetWidth(200)
-    f:SetHeight(20)
-    f.tooltipText = "Розмір шрифту в вікні книжки."
-    f:SetObeyStepOnDrag(true)
-    f:SetValueStep(1)
-    f:SetMinMaxValues(10, 20)
-    -- f.Low:SetText("10") -- FIXME [1.15.4] Slider.Low is undefined
-    -- f.High:SetText("20") -- FIXME [1.15.4] Slider.High is undefined
-    f:SetScript("OnValueChanged", function (self, value)
-        self.Text:SetText("Розмір тексту книжки: " .. value)
-        options.book_text_size = value
-    end)
+    options_frame.book_text_size_slider = create_slider_frame(
+        options_frame, "TOPLEFT", 24, -140, 200, 20, 10, 20, 1,
+        "Розмір шрифту в вікні книжки.",
+        function (self, value)
+            self.Text:SetText("Розмір тексту книжки: " .. value)
+            options.book_text_size = value
+        end
+    )
 
     -- info tabs
 
@@ -2381,25 +2409,48 @@ local function prepare_options_frame()
         end
     end
 
-    -- add options frame to Interface Options -> AddOns
+    -- setup options frame details
 
     options_frame.name = "ClassicUA"
     options_frame.default = reset_options
     options_frame.refresh = function ()
-        local of = options_frame
-        of.quest_text_size_frame:SetValue(options.quest_text_size)
-        of.quest_text_size_frame.Text:SetText("Розмір тексту завдання: " .. options.quest_text_size)
-        of.book_text_size_frame:SetValue(options.book_text_size)
-        of.book_text_size_frame.Text:SetText("Розмір тексту книжки: " .. options.book_text_size)
+        local f = options_frame
+        f.quest_text_size_slider:SetValue(options.quest_text_size)
+        f.book_text_size_slider:SetValue(options.book_text_size)
+        f.dev_mode_checkbox:SetChecked(options.dev_mode)
+        f.dev_mode_notify_activity_checkbox:SetChecked(options.dev_mode_notify_activity)
     end
 
-    -- InterfaceOptions_AddCategory(options_frame) -- FIXME [1.15.4] InterfaceOptions_AddCategory is undefined
+    options_frame:SetScript("OnShow", function (self) self.refresh() end)
 
-    -- add slash command to open the options
+    -- add options frame to Options -> AddOns
 
+    if Settings and Settings.RegisterCanvasLayoutCategory and Settings.RegisterAddOnCategory then
+        local category = Settings.RegisterCanvasLayoutCategory(options_frame, options_frame.name)
+        Settings.RegisterAddOnCategory(category)
+        options_frame.category_id = category:GetID()
+    elseif InterfaceOptions_AddCategory then
+        InterfaceOptions_AddCategory(options_frame)
+    else
+        dev_log_issue("невизначено способу додати вікно налаштувань аддону")
+    end
+end
+
+local function open_options()
+    if Settings and Settings.OpenToCategory then
+        Settings.OpenToCategory(options_frame.category_id)
+    elseif InterfaceAddOnsList_Update and InterfaceOptionsFrame_OpenToCategory then
+        InterfaceAddOnsList_Update()
+        InterfaceOptionsFrame_OpenToCategory(options_frame)
+    else
+        dev_log_issue("невизначено способу відкрити вікно налаштувань аддону")
+    end
+end
+
+local function prepare_slash_command()
     _G.SLASH_CLASSICUA_SETTINGS1 = "/ua"
     SlashCmdList.CLASSICUA_SETTINGS = function ()
-        -- InterfaceOptionsFrame_OpenToCategory(options_frame) -- FIXME [1.15.4] InterfaceOptionsFrame_OpenToCategory is undefined
+        open_options()
     end
 end
 
@@ -2426,12 +2477,13 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         self:UnregisterEvent("ADDON_LOADED")
 
         prepare_options()
-        -- prepare_options_frame() -- FIXME [1.15.4] disabled until fixed options frame
+        prepare_options_frame()
+        prepare_slash_command()
 
         DEFAULT_CHAT_FRAME:AddMessage(
             asset_ua_code
             .. " ClassicUA v" .. GetAddOnMetadata("ClassicUA", "Version")
-            -- .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r" -- FIXME [1.15.4] SLASH_CLASSICUA_SETTINGS1 is not available as we disabled options frame
+            .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
             .. (options.dev_mode and " — Режим розробки" or "")
         )
 
