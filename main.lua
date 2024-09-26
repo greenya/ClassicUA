@@ -2161,6 +2161,16 @@ StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
     hideOnEscape = true
 }
 
+StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
+    text = "Дійсно скинути всі налаштування за замовчуванням?",
+    button1 = "Так",
+    button2 = "Ні",
+    OnAccept = reset_options,
+    timeout = 0,
+    whileDead = true,
+    hideOnEscape = true
+}
+
 local function setup_dev_mode_frame(content_frame)
     local root = CreateFrame("Frame", nil, content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
@@ -2294,6 +2304,26 @@ local function prepare_options_frame()
         GameTooltip:SetText(
             "Перезавантажити інтерфейс гри. Деякі зміни в налаштуваннях будуть помітні лише після такої операції."
             .. memory_usage_text,
+            nil, nil, nil, nil, true
+        )
+    end)
+    f:SetScript("OnLeave", function()
+        GameTooltip:Hide()
+    end)
+
+    -- reset button
+
+    f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
+    f:SetPoint("TOPRIGHT", -48, -160)
+    f:SetText("Скинути")
+    f:SetSize(88, 24)
+    f:SetScript("OnClick", function()
+        StaticPopup_Show("CLASSICUA_CONFIRM_SETTINGS_RESET")
+    end)
+    f:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText(
+            "Скинути всі налаштування за замовчуванням. Деякі зміни будуть помітні лише після перезавантаження інтерфейсу гри.",
             nil, nil, nil, nil, true
         )
     end)
