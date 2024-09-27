@@ -643,9 +643,6 @@ local function reset_options()
     ClassicUA_Options = copy_table({}, default_options)
     options = ClassicUA_Options
 
-    ClassicUA_Character_Options = copy_table({}, default_character_options)
-    character_options = ClassicUA_Character_Options
-
     if options_frame then
         options_frame.refresh()
     end
@@ -2162,7 +2159,7 @@ StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
 }
 
 StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
-    text = "Дійсно скинути всі налаштування за замовчуванням?",
+    text = "Дійсно скинути всі налаштування за замовчуванням?\n\n(Відмінювання імен персонажів скинуто не буде.)",
     button1 = "Так",
     button2 = "Ні",
     OnAccept = reset_options,
