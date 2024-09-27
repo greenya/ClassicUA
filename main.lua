@@ -68,9 +68,7 @@ local StaticPopupDialogs        = _G['StaticPopupDialogs']
 local SubZoneTextString         = _G['SubZoneTextString']
 local WorldMapTooltip           = _G['WorldMapTooltip']
 local WorldFrame                = _G['WorldFrame']
--- local WorldMapContinentDropDown = _G['WorldMapContinentDropDown']
 local WorldMapFrame             = _G['WorldMapFrame']
--- local WorldMapZoneDropDown      = _G['WorldMapZoneDropDown']
 local ZoneTextString            = _G['ZoneTextString']
 
 local build_info = GetBuildInfo()
@@ -1895,71 +1893,76 @@ end
 -- [ world map ]
 -- -------------
 
--- FIXME [1.15.4] world map dropdowns don't work as some globals became unavailable:
--- ? WorldMapContinentDropDown
--- ? WorldMapContinentDropDownButton
--- ? WorldMapZoneDropDown
--- ? WorldMapZoneDropDownButton
--- ? DropDownList1
--- ? DropDownList1Button1..N (numButtons)
+-- Stopped working in SOD 1.15.4, still works in Cata 4.4.0, maybe will not work soon.
+-- Lets keep it until it stops working. At the moment, the new way to translate
+-- the dropdowns is yet to be found.
+local is_world_map_dropdowns_translation_old_ways_supported =
+    WorldMapContinentDropDown and
+    WorldMapContinentDropDownButton and
+    WorldMapZoneDropDown and
+    WorldMapZoneDropDownButton and
+    DropDownList1 and
+    DropDownList1Button1
 
--- local world_map_original_set_map_id = WorldMapFrame.SetMapID
--- local world_map_dds = { WorldMapContinentDropDown, WorldMapZoneDropDown }
+if is_world_map_dropdowns_translation_old_ways_supported then
+    local world_map_original_set_map_id = WorldMapFrame.SetMapID
+    local world_map_dds = { WorldMapContinentDropDown, WorldMapZoneDropDown }
 
--- WorldMapFrame.SetMapID = function (self, mapID)
---     world_map_original_set_map_id(self, mapID)
+    WorldMapFrame.SetMapID = function (self, mapID)
+        world_map_original_set_map_id(self, mapID)
 
---     for _, v in ipairs(world_map_dds) do
---         local text = v.Text:GetText()
---         if text then
---             text = strip_color_codes(text)
---             local found = get_glossary_text(text)
---             if found then
---                 v.Text:SetText(capitalize(found))
---             elseif options.dev_mode then
---                 dev_log_missing_zone(text)
---             end
---         end
---     end
--- end
+        for _, v in ipairs(world_map_dds) do
+            local text = v.Text:GetText()
+            if text then
+                text = strip_color_codes(text)
+                local found = get_glossary_text(text)
+                if found then
+                    v.Text:SetText(capitalize(found))
+                elseif options.dev_mode then
+                    dev_log_missing_zone(text)
+                end
+            end
+        end
+    end
 
--- local function world_map_dropdown_button_click(self)
---     local dd = _G['DropDownList1']
---     if dd:IsShown() then
---         local texts = {}
---         local buttons = {}
+    local function world_map_dropdown_button_click(self)
+        local dd = DropDownList1
+        if dd:IsShown() then
+            local texts = {}
+            local buttons = {}
 
---         for i = 1, dd.numButtons do
---             local button = _G["DropDownList1Button" .. i]
---             local text = button:GetText()
---             if text then
---                 text = strip_color_codes(text)
---                 local found = get_glossary_text(text)
---                 if found then
---                     local t = capitalize(found)
---                     texts[#texts + 1] = t
---                     buttons[t] = button
---                     button:SetText(t)
---                 else
---                     texts[#texts + 1] = text
---                     buttons[text] = button
---                     if options.dev_mode then
---                         dev_log_missing_zone(text)
---                     end
---                 end
---             end
---         end
+            for i = 1, dd.numButtons do
+                local button = _G["DropDownList1Button" .. i]
+                local text = button:GetText()
+                if text then
+                    text = strip_color_codes(text)
+                    local found = get_glossary_text(text)
+                    if found then
+                        local t = capitalize(found)
+                        texts[#texts + 1] = t
+                        buttons[t] = button
+                        button:SetText(t)
+                    else
+                        texts[#texts + 1] = text
+                        buttons[text] = button
+                        if options.dev_mode then
+                            dev_log_missing_zone(text)
+                        end
+                    end
+                end
+            end
 
---         sort(texts)
---         local h = _G['DropDownList1Button1']:GetHeight()
---         for i = 1, #texts do
---             buttons[texts[i]]:SetPoint("TOPLEFT", 16, - i * h)
---         end
---     end
--- end
+            sort(texts)
+            local h = DropDownList1Button1:GetHeight()
+            for i = 1, #texts do
+                buttons[texts[i]]:SetPoint("TOPLEFT", 16, - i * h)
+            end
+        end
+    end
 
--- _G['WorldMapContinentDropDownButton']:HookScript("OnClick", world_map_dropdown_button_click)
--- _G['WorldMapZoneDropDownButton']:HookScript("OnClick", world_map_dropdown_button_click)
+    WorldMapContinentDropDownButton:HookScript("OnClick", world_map_dropdown_button_click)
+    WorldMapZoneDropDownButton:HookScript("OnClick", world_map_dropdown_button_click)
+end -- if is_world_map_dropdowns_translation_old_ways_supported
 
 local function world_map_area_label_update(self)
     local text = self.Name:GetText()
