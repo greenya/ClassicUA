@@ -25,7 +25,8 @@ local GetAddOnInfo              = _G['GetAddOnInfo']
 local GetAddOnMemoryUsage       = _G['GetAddOnMemoryUsage']
 local GetAddOnMetadata          = _G['GetAddOnMetadata']
 local GetBuildInfo              = _G['GetBuildInfo']
--- local GetMouseFocus             = _G['GetMouseFocus']
+local GetMouseFoci              = _G['GetMouseFoci']
+local GetMouseFocus             = _G['GetMouseFocus']
 local GetNumAddOns              = _G['GetNumAddOns']
 local GetQuestID                = _G['GetQuestID']
 local GetQuestLogSelection      = _G['GetQuestLogSelection']
@@ -245,6 +246,14 @@ local function chat_bubble_font_string_with_text(text)
                 end
             end
         end
+    end
+end
+
+local function mouse_hover_frame()
+    if GetMouseFocus then
+        return GetMouseFocus()
+    elseif GetMouseFoci then
+        return GetMouseFoci()[1]
     end
 end
 
@@ -1291,8 +1300,8 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key)
             if tooltip:IsShown() then
                 tooltip:Show()
             end
-        -- elseif options.dev_mode and GetMouseFocus() == WorldFrame then -- FIXME [1.15.4] GetMouseFocus is undefined
-        --     dev_log_missing_object(glossary_key)
+        elseif options.dev_mode and mouse_hover_frame() == WorldFrame then
+            dev_log_missing_object(glossary_key)
         end
     end
 
