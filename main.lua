@@ -2471,7 +2471,7 @@ local function prepare_options_frame()
     elseif InterfaceOptions_AddCategory then
         InterfaceOptions_AddCategory(options_frame)
     else
-        dev_log_issue("невизначено способу додати вікно налаштувань аддону")
+        dev_log_issue("не визначено способу додати вікно налаштувань аддону")
     end
 end
 
@@ -2482,7 +2482,7 @@ local function open_options()
         InterfaceAddOnsList_Update()
         InterfaceOptionsFrame_OpenToCategory(options_frame)
     else
-        dev_log_issue("невизначено способу відкрити вікно налаштувань аддону")
+        dev_log_issue("не визначено способу відкрити вікно налаштувань аддону")
     end
 end
 
