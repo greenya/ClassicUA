@@ -2,9 +2,11 @@ local _, addonTable = ...
 addonTable.object = { -- [key] = text
 
 -- Common
+["Alchemy Lab"] = "алхімічна лабораторія",
 ["Anvil"] = "ковадло",
 ["Bonfire"] = "багаття",
 ["Brazier"] = "жаровня",
+["Chest"] = "скриня",
 ["Fierce Blaze"] = "жорстоке полум'я",
 ["Forge"] = "кузня",
 ["Mailbox"] = "поштова скринька",
@@ -292,7 +294,7 @@ addonTable.object = { -- [key] = text
 ["Doan's Strongbox"] = "сейф Доана",
 ["Document Chest"] = "скриня з паперами",
 ["Doomrigger's Coffer"] = "доленосна скриня",
-["Doomsday Candle"] = "свічка судного дня",
+["Doomsday Candle"] = "свічка Судного дня",
 ["Draconic for Dummies"] = "Мова драконів для початківців",
 ["Draenethyst Crystals"] = "кристал дренетисту",
 ["Dragonmaw Catapult"] = "катапульта Драконової Пащі",
@@ -875,7 +877,7 @@ addonTable.object = { -- [key] = text
 ["Weegli's Barrel"] = "діжка Віґлі",
 ["Well Stone"] = "колодязний камінь",
 ["Western Crystal Pylon"] = "західний кришталевий пілон",
-["Wheel of the Black March"] = "колесо чорного походу",
+["Wheel of the Black March"] = "колесо Чорного Походу",
 ["Whipweed"] = "кнутопля",
 ["Wickerman Ember"] = "попіл Плетеного чоловічка",
 ["Wickerman Guardian Ember"] = "попіл вартового Плетеного чоловічка",
@@ -1026,11 +1028,12 @@ addonTable.object = { -- [key] = text
 ["Waterlogged Footlocker"] = "промокла скринька",
 
 -- Signs and boards
+["Crusaders' Square"] = "площа Лицарів",
+["Elders' Square"] = "площа Старійшин",
 ["Elevator to Mulgore"] = "підйомник до Мулґора",
 ["Menethil"] = "Менетіли",
 
 -- Skills
-["Ironforge"] = "Залізогарт", -- portal
 ["Lightwell"] = "колодязь світла",
 ["Portal to Darnassus"] = "портал в Дарнас",
 ["Portal to Ironforge"] = "портал в Залізогарт",
@@ -1042,8 +1045,37 @@ addonTable.object = { -- [key] = text
 
 -- Miscellaneous
 ["Alliance Banner"] = "стяг Альянсу",
+["Blacksmith's Anvil"] = "ковальське ковадло",
+["Crusaders' Square Gate"] = "ворота площі Лицарів",
+["Crusaders' Square Postbox"] = "поштова скринька на площі Лицарів",
+["Elders' Square Postbox"] = "поштова скринька на площі Старійшин",
+["Elders' Square Service Entrance"] = "службовий вхід на площу Старійшин",
+["Ezra Grimm's Postbox"] = "поштова скринька Езри Ґрімма",
+["Ezra Grimm's Premium Tobacco"] = "преміальний тютюн Езри Ґрімма",
+["Festival Lane"] = "Фестивальний провулок",
+["Festival Lane Gate"] = "ворота Фестивального провулку",
+["Festival Lane Postbox"] = "поштова скринька на Фестивальному провулку",
+["Foundry Anvil"] = "ковадло ливарні",
+["Globe of Scrying"] = "сфера видіння",
+["Goblin Smelting Pot"] = "гоблінський плавильний котел",
+["Gordok Courtyard Door"] = "двері до двору Ґордоків",
+["Gordok Inner Door"] = "внутрішні двері Ґордоків",
+["Grimand's Anvil"] = "ковадло Ґріманда",
+["Heated Forge"] = "розігріта кузня",
 ["Horde Banner"] = "стяг Орди",
+["Icebellow Anvil"] = "ковадло Кригорева",
+["Icebellow Furnace"] = "горнило Кригорева",
+["King's Square"] = "Королівська площа",
+["King's Square Gate"] = "ворота Королівської площі",
+["King's Square Postbox"] = "поштова скринька на Королівській площі",
+["Market Row"] = "площа Ринок",
+["Market Row Gate"] = "ворота площі Ринок",
+["Market Row Postbox"] = "поштова скринька на площі Ринок",
 ["PX-238 Winter Wondervolt"] = "PX-238 Зимовий Дивовольт",
+["Ryson's All Seeing Eye"] = "всевидяче око Райсона",
+["Ryson's Beacon"] = "маяк Райсона",
 ["Shredder"] = "подрібнювач",
+["The Great Anvil"] = "Велике Ковадло",
+["Viewing Room Door"] = "двері оглядової кімнати",
 
 }
