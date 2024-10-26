@@ -6,8 +6,58 @@ local _, addonTable = ...
 
 local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text1, [code2] = text2, ... }
 ["!common"] = {
+-- Alright I'm going! Stop yelling!
+["aimgsytimg"] = [===[Гаразд, йду я! Не кричи!]===],
+-- For the Horde!
+["fththehord"] = [===[За Орду!]===],
+-- I'll crush you!
+["ilcyrushyo"] = [===[Я тебе розчавлю!]===],
+-- Just release me already! I've had enough!
+["jrmaivheas"] = [===[Та відпусти вже мене! З мене досить!]===],
+-- Me smash! You die!
+["msydashyou"] = [===[Я бити! Ти вмирати!]===],
+-- Make yourself useful and help me out here!
+["myuahmohse"] = [===[Зроби хоч щось корисне і допоможи мені!]===],
 -- %s attempts to run away in fear!
 ["satraiftst"] = [===[%s налякано тікає геть!]===],
+-- %s becomes enraged!
+["sbecomesen"] = [===[%s лютує!]===],
+-- %s calls for help!
+["scfhlsforh"] = [===[%s кличе на допомогу!]===],
+-- %s charges!
+["scharges__"] = [===[%s стрімко атакує!]===],
+-- %s dies.
+["sdies_____"] = [===[%s вмирає.]===],
+-- %s laughs.
+["slaughs___"] = [===[%s сміється.]===],
+-- %s sighs.
+["ssighs____"] = [===[%s зітхає.]===],
+-- This better be the last one!
+["tbbtlotter"] = [===[Сподіваюсь, це останній!]===],
+-- What? You mean you can't kill this one by yourself?
+["wymyctktob"] = [===[Що? Хочеш сказати, що не зможеш вбити його самостійно?]===],
+-- You better back me up on this one!
+["ybbmuotorb"] = [===[Краще допоможи мені!]===],
+},
+["Majordomo Executus"] = { "мажордом Екзекутус",
+-- Ashes to ashes!
+["ataestoash"] = [===[Прах до праху.]===],
+-- Brashly, you have come to wrest the secrets of the Living Flame! You will soon regret the recklessness of your quest.
+["blyqwsrtro"] = [===[Ви прийшли, щоб зухвало викрасти таємниці Живого Полум'я! Незабаром ви пошкодуєте про свою необачність.]===],
+-- Behold Ragnaros - the Firelord! He who was ancient when this world was young! Bow before him, mortals! Bow before your ending!
+["bwyebbhmbb"] = [===[Готуйтесь зустрітися з Раґнаросом - Повелителем Вогню! Тим, хто був древнім, ще в часи юності цього світу! Схиліться перед ним, смертні! Схиліться перед своєю загибеллю!]===],
+-- I go now to summon the lord whose house this is. Should you seek an audience with him, your paltry lives will surely be forfeit! Nevertheless, seek out his lair, if you dare!
+["iipohliyds"] = [===[А тепер я покличу володаря цієї обителі. Аудієнція з ним, безсумнівно, буде останньою у вашому житті! Що ж, ходіть до його лігва, якщо наважитеся!]===],
+-- Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!\r\n
+["isntmsrnod"] = [===[Нахабні виродки! Ви кинулися стрімголов назустріч власній смерті! Готуйтесь, бо володар прокинувся!]===],
+-- Impossible! Stay your attack, mortals... I submit! I submit!
+["isyamisise"] = [===[Це неможливо! Зупиніться, смертні... Я здаюсь! Здаюсь!]===],
+-- Reckless mortals! None may challenge the Sons of the Living flame!
+["rfnmctsotl"] = [===[Безрозсудні смертні! Ніхто не сміє кидати виклик Синам Живого Полум'я!]===],
+-- These mortal infidels, my lord! They have invaded your sanctum and seek to steal your secrets!
+["tastsysiys"] = [===[Ці невірні смертні, мій повелителю! Вони вдерлися в твою обитель і прагнуть викрасти твої таємниці!]===],
+-- The runes of warding have been destroyed! Hunt down the infidels, my brethren!
+["timbhbdhdt"] = [===[Захисні руни знищено! Вбийте невірних, брати мої!]===],
 },
 ["Myra Tyrngaarde"] = { "Міра Тірнґаард",
 -- Come get yer fresh bread!
@@ -16,6 +66,32 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 ["fbbtvmread"] = [===[Свіжий хліб, спечений цього ранку.]===],
 -- Fresh bread for sale!
 ["fbfshbread"] = [===[Продається свіжий хліб!]===],
+},
+["Ragnaros"] = { "Раґнарос",
+-- BY FIRE BE PURGED!
+["bfbprebepu"] = [===[ВОГОНЬ ОЧИСТИТЬ ВАС!]===],
+-- COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!
+["cfmsdymthm"] = [===[СЮДИ, МОЇ СЛУГИ! ЗАХИСТІТЬ СВОГО ПОВЕЛИТЕЛЯ!]===],
+-- DIE, INSECT!
+["dieinsect_"] = [===[ЗДОХНИ, КОМАХО!]===],
+-- FOOL! YOU ALLOWED THESE INSECTS TO RUN RAMPANT THROUGH THE HALLOWED CORE? AND NOW YOU LEAD THEM TO MY VERY LAIR? YOU HAVE FAILED ME, EXECUTUS! JUSTICE SHALL BE MET, INDEED!
+["fhvsbmimej"] = [===[ДУРЕНЬ! ТИ ДОЗВОЛИВ ЦИМ КОМАХАМ РОЗГУЛЮВАТИ ПО СВЯЩЕННОМУ ЯДРУ? І ТЕПЕР ТИ ПРИВІВ ЇХ ДО МОГО ЛІГВА? ТИ ПІДВІВ МЕНЕ, ЕКЗЕКУТУС! І ТИ ОТРИМАЄШ СПРАВЕДЛИВЕ ПОКАРАННЯ!]===],
+-- NOW FOR YOU, INSECTS! BOLDLY, YOU SOUGHT THE POWER OF RAGNAROS. NOW YOU SHALL SEE IT FIRSTHAND!\r\n
+["nrnyssifrn"] = [===[А ВИ, КОМАХИ! ВИ ПРАГНУЛИ СИЛИ РАГНАРОСА. ТЕПЕР ВИ ВІДЧУЄТЕ ЇЇ НА ВЛАСНІЙ ШКУРІ!]===],
+-- Ragnaros has withdrawn to the elemental plane.
+["rhwttepsha"] = [===[Рагнарос відійшов у вимір стихій.]===],
+-- TOO SOON! YOU HAVE AWAKENED ME TOO SOON, EXECUTUS! WHAT IS THE MEANING OF THIS INTRUSION???
+["titmotisew"] = [===[ЗАНАДТО РАНО! ТИ РОЗБУДИВ МЕНЕ ЗАНАДТО РАНО, ЕКЗЕКУТУС! ЩО ВСЕ ЦЕ ОЗНАЧАЄ?]===],
+-- TASTE THE FLAMES OF SULFURON!
+["ttfosthefl"] = [===[СКУШТУЙТЕ ПОЛУМ'Я СУЛЬФУРОНА!]===],
+-- YOU CANNOT DEFEAT THE LIVING FLAME!
+["ycdtlfnotd"] = [===[ВАМ НЕ ЗДОЛАТИ ЖИВЕ ПОЛУМ'Я!]===],
+},
+["Thrall"] = { "Тралл",
+-- Be bathed in my power! Drink in my might! Battle for the glory of the Horde!
+["bftgothmmb"] = [===[Купайтеся в моїй силі! Сповнюйтесь моєю могутністю! Бийтеся за славу Орди!]===],
+-- Honor your heroes! On this day, they have dealt a great blow against one of our most hated enemies! The false Warchief, Rend Blackhand, has fallen!
+["hgtfwrbhfe"] = [===[Шануймо наших героїв! Цього дня вони завдали нищівного удару одному з наших найненависніших ворогів! Фальшивий вождь, Ренд Чорнорук, нарешті мертвий!]===],
 },
 }
 

@@ -4,7 +4,11 @@
 
 local _, addonTable = ...
 
-addonTable.gossip = { -- [npc_id] = { [code1] = text1, [code2] = text2, ... }
+local gossip = { -- [npc_id] = { [code1] = text1, [code2] = text2, ... }
+["!common"] = {
+-- Where would you like to fly to?
+["wwyltftuld"] = [===[Куди бажаєш полетіти?]===],
+},
 [197] = { -- Marshal McBride
 -- Hey, citizen!  You look like a stout one.  We guards are spread a little thin out here, and I could use your help...
 ["hacuyhohai"] = [===[Гей, {стать:громадянине:громадянко}! Виглядаєте {стать:міцним:міцною}. Нас, охоронців, тут небагато, і мені потрібна ваша допомога...]===],
@@ -36,3 +40,17 @@ addonTable.gossip = { -- [npc_id] = { [code1] = text1, [code2] = text2, ... }
 ["mtlpytdigh"] = [===[Нехай Світло береже тебе.]===],
 },
 }
+
+if addonTable.gossip then
+    for k, v in pairs(gossip) do
+        if type(addonTable.gossip[k]) == "table" and type(v) == "table" then
+            for vk, vv in pairs(v) do
+                addonTable.gossip[k][vk] = vv
+            end
+        else
+            addonTable.gossip[k] = v
+        end
+    end
+else
+    addonTable.gossip = gossip
+end

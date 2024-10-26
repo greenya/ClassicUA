@@ -6,6 +6,7 @@ local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
 [715] = { "Гемет Ернінґвей-молодший", en="Hemet Nesingwary Jr." }, -- Hemet Nesingwary Jr.
+[3363] = { "Маґар", "тренер кравецтва" }, -- Magar <Tailoring Trainer>
 [5086] = { "капітан Ваймор", en="Captain Wymor" }, -- Captain Wymor
 [6115] = { "мандрівний вартовий скверни", en="Roaming Felguard" }, -- Roaming Felguard
 [10182] = { "Рокаро", "герой Орди", en="Rokaro" }, -- Rokaro
@@ -47,7 +48,7 @@ local npc = { -- [id] = { title, description (optional) }
 [15420] = { "розвідувач Ковадлогляд", en="Prospector Anvilward" }, -- Prospector Anvilward
 [15433] = { "корчмарка Деланіель", "корчмарка", en="Innkeeper Delaniel" }, -- Innkeeper Delaniel <Innkeeper>
 [15493] = { "Марсілла Світанкова Зоря", en="Marsilla Dawnstar" }, -- Marsilla Dawnstar
-[15513] = { "слідопит Салліна", en="Ranger Sallina" }, -- Ranger Sallina
+[15513] = { "слідопит Салліна", "тренерка мисливців", en="Ranger Sallina" }, -- Ranger Sallina <Hunter Trainer>
 [15636] = { "зелений хранитель Вічноспіву", en="Eversong Green Keeper" }, -- Eversong Green Keeper
 [15637] = { "зів'ялий зелений хранитель", en="Withered Green Keeper" }, -- Withered Green Keeper
 [15638] = { "арканічний патрульний", en="Arcane Patroller" }, -- Arcane Patroller
@@ -255,6 +256,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16847] = { "виснажений бугай Маґ'харів", en="Debilitated Mag'har Grunt" }, -- Debilitated Mag'har Grunt
 [16850] = { "Ґремні Довгобородий", en="Gremni Longbeard" }, -- Gremni Longbeard
 [16851] = { "Міррен Довгобородий", en="Mirren Longbeard" }, -- Mirren Longbeard
+[16852] = { "труп Седая" }, -- Vindicator Sedai
 [16857] = { "шалений землекоп", en="Marauding Crust Burster" }, -- Marauding Crust Burster
 [16858] = { "Ґрелаґ", en="Grelag" }, -- Grelag
 [16867] = { "бугай Розтрощеної Руки", en="Shattered Hand Grunt" }, -- Shattered Hand Grunt
@@ -264,6 +266,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16876] = { "мутант з клану Кісткогризів", en="Bonechewer Mutant" }, -- Bonechewer Mutant
 [16878] = { "берсерк Розтрощеної Руки", en="Shattered Hand Berserker" }, -- Shattered Hand Berserker
 [16880] = { "масивний пеклокнур", en="Hulking Helboar" }, -- Hulking Helboar
+[16885] = { "Амітіель Серпанкова Мандрівниця", en="Amythiel Mistwalker" }, -- Amythiel Mistwalker
 [16888] = { "Магурам Міцне Копито", en="Mahuram Stouthoof" }, -- Mahuram Stouthoof
 [16901] = { "пухирчаста гнильниця", en="Blistering Rot" }, -- Blistering Rot
 [16904] = { "непохитний піхотинець", en="Unyielding Footman" }, -- Unyielding Footman
@@ -533,6 +536,8 @@ local npc = { -- [id] = { title, description (optional) }
 [17825] = { "допитувачка Елісія", en="Interrogator Elysia" }, -- Interrogator Elysia
 [17830] = { "Зелемар Гнівний", en="Zelemar the Wrathful" }, -- Zelemar the Wrathful
 [17832] = { "лицар крові Світанкова Зоря", en="Blood Knight Dawnstar" }, -- Blood Knight Dawnstar
+[17834] = { "Летин Місяцежар", en="Lethyn Moonfire" }, -- Lethyn Moonfire
+[17841] = { "Ісіель Пісня Вітру", "лідерка експедиції", en="Ysiel Windsinger" }, -- Ysiel Windsinger
 [17843] = { "поборник Курос", "тріумвірат Десниці", en="Vindicator Kuros" }, -- Vindicator Kuros
 [17844] = { "поборник Есом", "тріумвірат Десниці", en="Vindicator Aesom" }, -- Vindicator Aesom
 [17845] = { "ельф крові-магістр", en="Blood Elf Magister" }, -- Blood Elf Magister
@@ -541,13 +546,20 @@ local npc = { -- [id] = { title, description (optional) }
 [17858] = { "вартовий Гамут", en="Warden Hamoot" }, -- Warden Hamoot
 [17878] = { "облоговий інженер Скари", en="Scourge Siege Engineer" }, -- Scourge Siege Engineer
 [17887] = { "створіння Порожнечі", en="Void Critter" }, -- Void Critter
+[17900] = { "Ашіен", "древній знань", en="Ashyen" }, -- Ashyen <Ancient of Lore>
+[17901] = { "Келет", "древній війни", en="Keleth" }, -- Keleth <Ancient of War>
+[17909] = { "Лоранна Тар'велл", "каталогізаторка експедиції", en="Lauranna Thar'well" }, -- Lauranna Thar'well
 [17910] = { "Ґреґор-Юстиціар", "орден Сріблястої Десниці", en="Gregor the Justiciar" }, -- Gregor the Justiciar <Order of the Silver Hand>
 [17911] = { "Катела-Шукачка", "орден Сріблястої Десниці", en="Cathela the Seeker" }, -- Cathela the Seeker <Order of the Silver Hand>
 [17912] = { "Немас-Арбітр", "орден Сріблястої Десниці", en="Nemas the Arbiter" }, -- Nemas the Arbiter <Order of the Silver Hand>
 [17913] = { "Аельмар-Завойовник", "орден Сріблястої Десниці", en="Aelmar the Vanquisher" }, -- Aelmar the Vanquisher <Order of the Silver Hand>
 [17914] = { "Вікарій Ієронім", "орден Сріблястої Десниці", en="Vicar Hieronymus" }, -- Vicar Hieronymus <Order of the Silver Hand>
+[17923] = { "Фагссн", "Спореґґар", en="Fahssn" }, -- Fahssn <Sporeggar>
+[17924] = { "Мсші'фн", "староста Спореґґара", en="Msshi'fn" }, -- Msshi'fn
 [17926] = { "розвідниця Лорай", en="Scout Loryi" }, -- Scout Loryi
 [17927] = { "розвідниця Джорлі", en="Scout Jorli" }, -- Scout Jorli
+[17956] = { "Ікейен", en="Ikeyen" }, -- Ikeyen
+[17969] = { "Кайра Довгогрива", en="Kayra Longmane" }, -- Kayra Longmane
 [17982] = { "підривник Леґосо", en="Demolitionist Legoso" }, -- Demolitionist Legoso
 [17986] = { "поборниця Корін", en="Vindicator Corin" }, -- Vindicator Corin
 [18011] = { "Зурай", "торговець", en="Zurai" }, -- Zurai
@@ -555,11 +567,19 @@ local npc = { -- [id] = { title, description (optional) }
 [18024] = { "захисниця Сорлі", "Десниця Арґуса", en="Defender Sorli" }, -- Defender Sorli
 [18044] = { "Раджіс Фьяше", en="Rajis Fyashe" }, -- Rajis Fyashe
 [18046] = { "Раджа Хаґазед", en="Rajah Haghazed" }, -- Rajah Haghazed
+[18070] = { "вітрозов Чорне Копито", en="Windcaller Blackhoof" }, -- Windcaller Blackhoof
+[18077] = { "оракул Тінетвані", en="Umbrafen Oracle" }, -- Umbrafen Oracle
+[18079] = { "провидець Тінетвані", en="Umbrafen Seer" }, -- Umbrafen Seer
+[18080] = { "Катару", en="Kataru" }, -- Kataru
 [18103] = { "арканічний вартовий", en="Arcane Guardian" }, -- Arcane Guardian
+[18136] = { "болотяний маскун", en="Marsh Lurker" }, -- Marsh Lurker
+[18137] = { "болотяний землекоп", en="Marsh Dredger" }, -- Marsh Dredger
 [18205] = { "копитень", en="Clefthoof" }, -- Clefthoof
 [18221] = { "Голаару", en="Holaaru" }, -- Holaaru
 [18266] = { "прапорщик Трейсі Праудвелл", en="Warrant Officer Tracy Proudwell" }, -- Warrant Officer Tracy Proudwell
 [18267] = { "боєзовка Чорноока", en="Battlecryer Blackeye" }, -- Battlecryer Blackeye
+[18281] = { "Трясохляст", en="Boglash" }, -- Boglash
+[18282] = { "лорд Клак", en="Lord Klaq" }, -- Lord Klaq
 [18381] = { "підсвітній дракончик", en="Netherwhelp" }, -- Netherwhelp
 [18803] = { "посол Тихохвоїв Олорґ", "посланець Тихохвоїв", en="Stillpine Ambassador Olorg" }, -- Stillpine Ambassador Olorg
 [18804] = { "розвідувач Начлан", "Ліга дослідників", en="Prospector Nachlan" }, -- Prospector Nachlan <Explorers' League>
@@ -570,7 +590,7 @@ local npc = { -- [id] = { title, description (optional) }
 [18974] = { "З'крал", en="Z'kral" }, -- Z'kral
 [18975] = { "гнівостраж", en="Wrathguard" }, -- Wrathguard
 [18976] = { "Урґа'зз", en="Urga'zz" }, -- Urga'zz
-[19136] = { "біс-вогнеступ", en="Flamewaker Imp" }, -- Flamewaker Imp
+[19136] = { "біс-пробуджувач полум'я", en="Flamewaker Imp" }, -- Flamewaker Imp
 [19188] = { "лютий колос", en="Raging Colossus" }, -- Raging Colossus
 [19190] = { "приборкувач Скверни", en="Fel Handler" }, -- Fel Handler
 [19191] = { "Араззій Жорстокий", en="Arazzius the Cruel" }, -- Arazzius the Cruel
@@ -636,6 +656,7 @@ local npc = { -- [id] = { title, description (optional) }
 [19942] = { "агент Праудвелл", "Сріблястий Світанок", en="Agent Proudwell" }, -- Agent Proudwell <The Argent Dawn>
 [20030] = { "талассійський скакун", en="Thalassian Charger" }, -- Thalassian Charger
 [20112] = { "вітряний торговець Тулуман", "продавець зброї" }, -- Tuluman <Weapon Merchant>
+[20115] = { "знахар Тінетвані", en="Umbrafen Witchdoctor" }, -- Umbrafen Witchdoctor
 [20132] = { "Сокретар", en="Socrethar" }, -- Socrethar
 [20145] = { "нестабільний пустотник", en="Unstable Voidwalker" }, -- Unstable Voidwalker
 [20159] = { "магістр Аледіс", en="Magister Aledis" }, -- Magister Aledis
