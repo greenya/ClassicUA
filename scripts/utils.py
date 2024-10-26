@@ -270,7 +270,10 @@ def write_lua_gossip_file(path, filename, gossip):
             npc_name = gossip[npc_id]['name']
             npc_strings = gossip[npc_id]['strings']
 
-            f.write(f'[{npc_id}] = ' + '{' + f' -- {npc_name}\n')
+            if npc_name:
+                f.write(f'[{npc_id}] = ' + '{' + f' -- {npc_name}\n')
+            else:
+                f.write(f'["{npc_id}"] = ' + '{\n')
 
             for text_code in npc_strings:
                 text_en = npc_strings[text_code]['en']

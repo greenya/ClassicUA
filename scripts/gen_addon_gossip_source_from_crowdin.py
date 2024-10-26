@@ -24,7 +24,6 @@ def collect_gossip():
                 npc_name, npc_id = None, None
 
                 if filename == 'common.xml':
-                    npc_name = '!common'
                     npc_id = '!common'
                 else:
                     re_search_result = re.search(filename_pattern, filename)
