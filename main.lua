@@ -1038,11 +1038,13 @@ local function get_gossip_text(npc_id, gossip_text)
     npc_id = tonumber(npc_id)
     local gossip_code = get_text_code(gossip_text)
 
-    if at.gossip[npc_id] then
-        local known_gossip_keys = table_string_keys(at.gossip[npc_id])
-        local gossip_fuzzy_key = fuzzy_match_text_code(gossip_code, known_gossip_keys)
-        if gossip_fuzzy_key then
-            return make_text(at.gossip[npc_id][gossip_fuzzy_key]), gossip_code
+    for _, gossip_key in ipairs({ npc_id, '!common' }) do
+        if at.gossip[gossip_key] then
+            local known_gossip_keys = table_string_keys(at.gossip[gossip_key])
+            local gossip_fuzzy_key = fuzzy_match_text_code(gossip_code, known_gossip_keys)
+            if gossip_fuzzy_key then
+                return make_text(at.gossip[gossip_key][gossip_fuzzy_key]), gossip_code
+            end
         end
     end
 
