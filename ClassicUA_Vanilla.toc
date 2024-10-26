@@ -3,7 +3,7 @@
 ## Title: |cff1177eeClassic|r|cffffdd00UA|r
 ## Notes: Game localization to Ukrainian language.
 ## Author: greenya
-## Version: 5.6.1
+## Version: 5.7
 ## SavedVariables: ClassicUA_Options, ClassicUA_DevLog
 ## SavedVariablesPerCharacter: ClassicUA_Character_Options
 
