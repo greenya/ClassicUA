@@ -255,29 +255,37 @@ local function mouse_hover_frame()
     end
 end
 
--- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
-local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
-    {"night elf", "nightelf"},
-    {"blood elf", "bloodelf"},
-    {"death knight", "deathknight"},
-    {"demon hunter", "demonhunter"},
-    {"void elf", "voidelf"},
-    {"lightforged draenei", "lightforgeddraenei"},
-    {"dark iron dwarf", "darkirondwarf"},
-    {"kul tiran", "kultiran"},
-    {"highmountain tauren", "highmountaintauren"},
-    {"mag'har orc", "magharorc"},
-    {"zandalari troll", "zandalaritroll"},
-}
+local get_text_code_replace_seq = {}
 
+local function prepare_get_text_code_replace_seq(player_name)
+    local at = addonTable
+    local rs = get_text_code_replace_seq
+
+    -- player races
+    rs[#rs + 1] = "<race>"
+    for _, w in ipairs(table_string_keys(at.race)) do
+        rs[#rs + 1] = w:lower()
+    end
+
+    -- player classes
+    rs[#rs + 1] = "<class>"
+    for _, w in ipairs(table_string_keys(at.class)) do
+        rs[#rs + 1] = w:lower()
+    end
+
+    -- player name
+    rs[#rs + 1] = "<name>"
+    rs[#rs + 1] = player_name:lower()
+end
+
+-- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
 local function get_text_code(text)
-    local result = { "_", "_", "_", "_", "_", "_", "_", "_", "_", "_" }
+    local result = { "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_" }
     local result_len = #result
     text = text:lower()
 
-    local seq_pairs = known_gossip_dynamic_seq_with_multiple_words_for_get_text_code
-    for i = 1, #seq_pairs do
-        text = text:gsub(seq_pairs[i][1], seq_pairs[i][2])
+    for _, w in ipairs(get_text_code_replace_seq) do
+        text = text:gsub(w, "")
     end
 
     local result_fill_idx = 1
@@ -2539,6 +2547,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_quests(faction == "Alliance")
         prepare_glossary()
         prepare_codes(name, race, class, sex == 2) -- 2 for male
+        prepare_get_text_code_replace_seq(name)
         prepare_zone_text()
         prepare_world_map()
 

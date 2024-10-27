@@ -7,37 +7,37 @@ local _, addonTable = ...
 local gossip = { -- [npc_id] = { [code1] = text1, [code2] = text2, ... }
 ["!common"] = {
 -- Where would you like to fly to?
-["wwyltftuld"] = [===[Куди бажаєш полетіти?]===],
+["wwyltftuldyo"] = [===[Куди бажаєш полетіти?]===],
 },
 [197] = { -- Marshal McBride
 -- Hey, citizen!  You look like a stout one.  We guards are spread a little thin out here, and I could use your help...
-["hacuyhohai"] = [===[Гей, {стать:громадянине:громадянко}! Виглядаєте {стать:міцним:міцною}. Нас, охоронців, тут небагато, і мені потрібна ваша допомога...]===],
+["haltohaicuyh"] = [===[Гей, {стать:громадянине:громадянко}! Виглядаєте {стать:міцним:міцною}. Нас, охоронців, тут небагато, і мені потрібна ваша допомога...]===],
 },
 [198] = { -- Khelden Bremen
 -- Greetings <class>.  Shall I provide you with further insight into the world of magic?
-["gtwomywfii"] = [===[Вітаю, {клас:к}. Чи варто мені глибше розповісти тобі про світ магії?]===],
+["gmipywfiitwo"] = [===[Вітаю, {клас:к}. Чи варто мені глибше розповісти тобі про світ магії?]===],
 -- Well met, <class>.  My advice to you is this: as you travel the world, be wary of magic for it will burn the untrained.
-["wyiwbtuomf"] = [===[Вітаю, {клас:к}. Моя порада тобі: подорожуючи світом, остерігайся магії, бо вона спалить непідготовленого.]===],
+["wwbwomfiwbtu"] = [===[Вітаю, {клас:к}. Моя порада тобі: подорожуючи світом, остерігайся магії, бо вона спалить непідготовленого.]===],
 },
 [375] = { -- Priestess Anetta
 -- Do not turn your back on the Light, <class>, it may be the one thing that saves you some day.
-["dmdtottsys"] = [===[Не повертайся спиною до світла, {клас:к}, можливо це єдине, що колись тебе врятує.]===],
+["dottsysdimbt"] = [===[Не повертайся спиною до світла, {клас:к}, можливо це єдине, що колись тебе врятує.]===],
 -- I trust the Light is with you, <name>. Is there something that I can I help you with?
-["isticihywt"] = [===[Я вірю, що Світло з тобою, {ім'я:к}. Чи можу я чимось тобі допомогти?]===],
+["icihywyitsti"] = [===[Я вірю, що Світло з тобою, {ім'я:к}. Чи можу я чимось тобі допомогти?]===],
 },
 [911] = { -- Llane Beshere
 -- I can tell just by the way you're standing that you're no warrior.
 --
 -- Why don't you go do something safe, like read a book.
-["itgdsslrab"] = [===[Я бачу, що ти не {стать:воїн:воїтелька}, просто по тому як ти стоїш.
+["irrabtygdssl"] = [===[Я бачу, що ти не {стать:воїн:воїтелька}, просто по тому як ти стоїш.
 
 Чому б тобі не зайнятися чимось безпечним, наприклад почитати книжку.]===],
 -- Stormwind is the pillar of the human race, maintained through strength of will and the edge of the sturdy blade.
-["ssbwateots"] = [===[Штормовій — опора людської раси, яка підтримується силою волі та вістрям міцного клинка.]===],
+["sateotsbtsow"] = [===[Штормовій — опора людської раси, яка підтримується силою волі та вістрям міцного клинка.]===],
 },
 [925] = { -- Brother Sammuel
 -- May the Light protect you this day.
-["mtlpytdigh"] = [===[Нехай Світло береже тебе.]===],
+["mtlpytdightp"] = [===[Нехай Світло береже тебе.]===],
 },
 }
 
