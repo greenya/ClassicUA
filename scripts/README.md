@@ -20,7 +20,7 @@ All other files are edited manually, e.g. via pull requests.
     - Export quests via "Build & Download" -> ClassicUA.zip
     - Download source for following folders:
         - chats, chats_*
-        - gossip
+        - gossip, gossip_*
         Note: select multiple folders, right click and choose "Download sources" -> ClassicUA_en.zip
 
 2. Update Terms app:
@@ -35,7 +35,7 @@ All other files are edited manually, e.g. via pull requests.
         * /uk                   <- from ClassicUA.zip
         * /en                   <- from ClassicUA_en.zip
         *   /chats, /chats_*
-        *   /gossip
+        *   /gossip, gossip_*
         * /ClassicUA.tbx
 
     - Run python gen_addon_books_source_from_crowdin.py > translation_from_crowdin/books_stats.txt
