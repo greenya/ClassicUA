@@ -57,7 +57,7 @@ def get_all_strings_from_xml_file(filename) -> list:
 
     return result
 
-def build_text_codes_map(strings_en, strings_uk) -> tuple:
+def build_text_codes_map(strings_en, strings_uk, code_function) -> tuple:
     result = {}
     issues = []
 
@@ -68,8 +68,8 @@ def build_text_codes_map(strings_en, strings_uk) -> tuple:
         if text_uk == text_en:
             continue
 
-        text_code = get_text_code(text_en)
-        text_data = { 'en': text_en, 'uk': text_uk }
+        text_code = code_function(text_en)
+        text_data = {'en': text_en, 'uk': text_uk}
 
         if text_code in result:
             issues.append(f'[!] Text code "{text_code}" collision -- New data skipped\n\tOld: {result[text_code]}\n\tNew: {text_data}')
@@ -393,6 +393,55 @@ def get_text_code(text):
             if result_idx >= result_len:
                 result_rewind = result_rewind + 1 if result_rewind < result_len - 1 else result_len - 4
                 result_idx = result_rewind
+
+    # print('CODE', ''.join(result))
+    return ''.join(result)
+
+known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = (
+    ("night elf", "nightelf"),
+    ("blood elf", "bloodelf"),
+    ("death knight", "deathknight"),
+    ("demon hunter", "demonhunter"),
+    ("void elf", "voidelf"),
+    ("lightforged draenei", "lightforgeddraenei"),
+    ("dark iron dwarf", "darkirondwarf"),
+    ("kul tiran", "kultiran"),
+    ("highmountain tauren", "highmountaintauren"),
+    ("mag'har orc", "magharorc"),
+    ("zandalari troll", "zandalaritroll"),
+)
+
+def get_chat_code(text):
+    # print('TEXT1', text)
+    text = text.lower()
+    # print('TEXT2', text)
+
+    for p in known_gossip_dynamic_seq_with_multiple_words_for_get_text_code:
+        text = text.replace(p[0], p[1])
+    # print('TEXT3', text)
+
+    words = re.findall(r'([\w/]+)', text)  # TODO: case "<boss/boss-lady>", "ma'am" (NPC Sister Goldskimmer)
+    result = list()
+    for word in words:
+        if len(word) > 0:
+
+            if word in ('class', 'race'):
+                result.append('..')
+            elif word in ('name', 'target'):
+                result.append('.-')
+            elif '/' in word:
+                male_word, female_word = word.split('/')
+                if male_word[0] == female_word[0]:
+                    result.append(male_word[0])
+                else:
+                    result.append('.')
+                if male_word[-1] == female_word[-1]:
+                    result.append(male_word[-1])
+                else:
+                    result.append('.')
+            else:
+                result.append(word[0])
+                result.append(word[-1])
 
     # print('CODE', ''.join(result))
     return ''.join(result)

@@ -155,6 +155,15 @@ local function capitalize(text)
     end
 end
 
+local function upper(str)
+    return str:upper():gsub("ї", "Ї"):gsub("є", "Є"):gsub("і", "І"):gsub("ґ", "Ґ")
+end
+
+local function lower(str)
+    return str:lower():gsub("Ї", "ї"):gsub("Є", "є"):gsub("І", "і"):gsub("Ґ", "ґ")
+end
+
+
 local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-strings-for-gsub
     return x:gsub('%%', '%%%%')
             :gsub('^%^', '%%^')
@@ -321,6 +330,37 @@ local function get_text_code(text)
     return table.concat(result)
 end
 
+local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
+    {"night elf", "nightelf"},
+    {"blood elf", "bloodelf"},
+    {"death knight", "deathknight"},
+    {"demon hunter", "demonhunter"},
+    {"void elf", "voidelf"},
+    {"lightforged draenei", "lightforgeddraenei"},
+    {"dark iron dwarf", "darkirondwarf"},
+    {"kul tiran", "kultiran"},
+    {"highmountain tauren", "highmountaintauren"},
+    {"mag'har orc", "magharorc"},
+    {"zandalari troll", "zandalaritroll"},
+}
+-- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
+local function get_text_code_for_chat(text)
+    local text_low_case = text:lower()
+    local seq_pairs = known_gossip_dynamic_seq_with_multiple_words_for_get_text_code
+    for i = 1, #seq_pairs do
+        text_low_case = text_low_case:gsub(seq_pairs[i][1], seq_pairs[i][2])
+    end
+    local result = {}
+    for word in string.gmatch(text_low_case, "%w+") do
+        if #word > 0 then
+            result[#result+1] = word:sub(1, 1)
+            result[#result+1] = word:sub(-1)
+        end
+    end
+
+    return table.concat(result)
+end
+
 local function fuzzy_match_text_code(code, candidates, minimum_match_ratio)
     if not minimum_match_ratio then
         minimum_match_ratio = 0.5
@@ -348,6 +388,15 @@ local function fuzzy_match_text_code(code, candidates, minimum_match_ratio)
     end
 
     return best_match
+end
+
+local function match_text_code(code, candidates)
+    for _, candidate in ipairs(candidates) do
+        if code:match('^'..candidate..'$') then
+            return candidate
+        end
+    end
+    return false
 end
 
 -- -----------
@@ -754,6 +803,7 @@ local function prepare_codes(name, race, class, is_male)
     local cases = { "н", "р", "д", "з", "о", "м", "к" }
     local name_cases = character_options.name_cases
     local codes = {}
+    local race_lower = race:lower()
 
     -- name
 
@@ -778,13 +828,13 @@ local function prepare_codes(name, race, class, is_male)
 
     -- race
 
-    if not at.race[race] then
+    if not at.race[race_lower] then
         -- use some default value in case race is unknown/unsupported
         race = "Human"
     end
 
     for _, c in ipairs(cases) do
-        local t = at.race[race][c][sex]
+        local t = at.race[race_lower][c][sex]
         codes["{раса:" .. c .. "}"] = t
         codes["{Раса:" .. c .. "}"] = capitalize(t)
         codes["{РАСА:" .. c .. "}"] = string.upper(t)
@@ -848,6 +898,123 @@ local function make_text_array(array)
     end
 
     return result
+end
+
+local function make_chat_text(original, translation)
+    local known_templates = { ["name"] = true, ["race"] = true, ["class"] = true, ["target"] = true }
+    local at = addonTable
+    local sex = UnitSex("player") == 2 and 1 or 2  -- UnitSex("player") == 2 - male
+
+    if not translation then
+        return nil
+    end
+
+    local translation_split = { strsplit("#", translation) }
+    if #translation_split == 1 then
+        return translation_split[1]
+    end
+
+    translation = translation_split[1]
+    local text_templates = {}
+    for i = 2, #translation_split do
+        local template = translation_split[i]
+        -- TODO: Instead of one-placeholder-per-template remember placeholders types, allowing to have few placeholders in one template
+        local template_type = template:match("<(.+)>")
+        if known_templates[template_type] then
+            text_templates[template_type] = template
+        elseif template_type:match("/") then
+            local match_male, match_female = template_type:match("^(%w+)/(%w+)$")
+            if original:match(template:gsub("<"..template_type..">", match_male)) then
+                sex = 1
+            elseif original:match(template:gsub("<"..template_type..">", match_female)) then
+                sex = 2
+            else
+                error("Error. Unknown sex.")
+            end
+        else
+            error("Error. Unknown template type: " .. tostring(template_type))
+        end
+    end
+
+    local template_matches = {}
+    for template_type, template in pairs(text_templates) do
+        local template_expression = esc(template):gsub("<" .. template_type .. ">", "(.-)")
+        local match = original:match(template_expression)
+        template_matches[template_type] = match
+    end
+
+    for pattern_uk in translation:gmatch("{(.-)}") do
+        local pattern_uk_split = { strsplit(":", pattern_uk) }
+        local pattern_uk_type = pattern_uk_split[1]
+        local case = pattern_uk_split[2] or "н"
+        pattern_uk = "{" .. pattern_uk .. "}"
+
+        if lower(pattern_uk_type) == "ім'я" then
+            local name_en = template_matches["name"]
+            local name_uk
+            if name_en == UnitName("player") then
+                name_uk = character_options.name_cases and character_options.name_cases[case] or name_en
+            else
+                name_uk = name_en
+            end
+            name_uk = name_uk and pattern_uk_type == "Ім'я" and capitalize(name_uk) or name_uk  -- TODO: check these operators and maybe optimize their usage
+            name_uk = name_uk and pattern_uk_type == "ІМ'Я" and upper(name_uk) or name_uk
+            translation = translation:gsub(pattern_uk, name_uk)
+        end
+
+        if pattern_uk_type:lower() == "раса" then
+            local race_en = template_matches["race"]
+            local race_key = race_en:lower():gsub(" ", "")
+            local race_uk = at.race[race_key] and at.race[race_key][case][sex]
+            race_uk = race_uk and pattern_uk_type == "Раса" and capitalize(race_uk) or race_uk
+            race_uk = race_uk and pattern_uk_type == "РАСА" and upper(race_uk) or race_uk
+            translation = translation:gsub(pattern_uk, race_uk or race_en)
+        end
+
+        if pattern_uk_type:lower() == "клас" then
+            local class_en = template_matches["class"]
+            local class_key = class_en:upper():gsub(" ", "")
+            local class_uk = at.class[class_key] and at.class[class_key][case][sex]
+            class_uk = class_uk and pattern_uk_type == "Клас" and capitalize(class_uk) or class_uk
+            class_uk = class_uk and pattern_uk_type == "КЛАС" and upper(class_uk) or class_uk
+            translation = translation:gsub(pattern_uk, class_uk or class_en)
+        end
+
+        if lower(pattern_uk_type) == "ціль" then
+            local target_en = template_matches["target"]
+            local target_uk
+            if target_en == UnitName("player") then
+                target_uk = character_options.name_cases and character_options.name_cases[case]
+            elseif at.class[target_en:upper():gsub(" ", "")] then
+                target_uk = at.class[target_en:upper():gsub(" ", "")][case][sex]
+            elseif at.race[target_en:lower():gsub(" ", "")] then
+                target_uk = at.race[target_en:lower():gsub(" ", "")][case][sex]
+            elseif at.glossary[target_en:lower()] then
+                target_uk = at.glossary[target_en:lower()]
+            end
+            target_uk = target_uk and pattern_uk_type == "Ціль" and capitalize(target_uk) or target_uk
+            target_uk = target_uk and pattern_uk_type == "ЦІЛЬ" and upper(target_uk) or target_uk
+            translation = translation:gsub(pattern_uk, target_uk or target_en)
+        end
+
+        if pattern_uk_type:lower() == "стать" then
+            translation = translation:gsub(pattern_uk, pattern_uk_split[sex+1])
+        end
+
+    end
+
+    return translation
+end
+
+local function safe_make_chat_text(original, translation)
+    local success, result = pcall(make_chat_text, original, translation)
+
+    if success then
+        return result
+    else
+        dev_log_issue("Помилка перекладу чату \"" .. tostring(original) .. "\"", tostring(result))
+        return original
+    end
 end
 
 local function resolve_entry_with_possible_ref(entry_type, entry_id, depth)
@@ -1066,30 +1233,32 @@ local function get_chat_text(npc_name, chat_text)
         return
     end
 
-    local text_code = get_text_code(chat_text)
+    local chat_code = get_text_code_for_chat(chat_text)
 
-    for _, chat_key in ipairs({ npc_name, '!common' }) do
-        if at.chat[chat_key] then
-            local known_text_keys = table_string_keys(at.chat[chat_key])
-            local text_fuzzy_key = fuzzy_match_text_code(text_code, known_text_keys)
-            if text_fuzzy_key then
-                local npc_name_uk = at.chat[chat_key][1]
-                if not npc_name_uk then
-                    npc_name_uk = get_glossary_text(npc_name)
+    if chat_code and #chat_code > 0 then
+        for _, char_key in ipairs({ npc_name, '!common' }) do
+            if at.chat[char_key] then
+                local known_chat_keys = table_string_keys(at.chat[char_key])
+                local chat_key = match_text_code(chat_code, known_chat_keys)
+                if chat_key then
+                    local npc_name_uk = at.chat[char_key][1]
                     if not npc_name_uk then
-                        npc_name_uk = npc_name
+                        npc_name_uk = get_glossary_text(npc_name)
+                        if not npc_name_uk then
+                            npc_name_uk = npc_name
+                        end
                     end
-                end
 
-                return
+                    return
                     capitalize(npc_name_uk),
-                    make_text(at.chat[chat_key][text_fuzzy_key]),
-                    text_code
+                    safe_make_chat_text(chat_text, at.chat[char_key][chat_key]),
+                    chat_code
+                end
             end
         end
     end
 
-    return nil, nil, text_code
+    return nil, nil, chat_code
 end
 
 -- ------------
