@@ -72,7 +72,7 @@ def collect_chats():
                     issues.append(f'[!] Different number of en->uk strings for {filename}. File skipped.')
                     continue
 
-                npc_chats, npc_chats_issues = utils.build_text_codes_map(strings_en, strings_uk)
+                npc_chats, npc_chats_issues = utils.build_text_codes_map(strings_en, strings_uk, utils.get_chat_code)
                 issues.extend(npc_chats_issues)
 
                 if not npc_chats:

@@ -49,7 +49,7 @@ def collect_gossip():
                     issues.append(f'[!] Different number of en->uk strings for {filename}. File skipped.')
                     continue
 
-                npc_gossip, npc_gossip_issues = utils.build_text_codes_map(strings_en, strings_uk)
+                npc_gossip, npc_gossip_issues = utils.build_text_codes_map(strings_en, strings_uk, utils.get_text_code)
                 issues.extend(npc_gossip_issues)
 
                 if not npc_gossip:
