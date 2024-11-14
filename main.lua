@@ -1047,7 +1047,7 @@ local function resolve_entry_with_possible_ref(entry_type, entry_id, depth)
             if entry_ref then
                 return copy_table(copy_table({}, entry_ref), entry)
             elseif options.dev_mode then
-                dev_log_issue_entry(entry_type, entry_id, "невірне значення ref " .. entry_ref)
+                dev_log_issue_entry(entry_type, entry_id, "невірне значення ref для " .. entry_type .. '#' .. tostring(entry_ref))
                 return copy_table({ entry_type .. "#" .. entry_id .. "=>#" .. entry.ref }, entry)
             end
         elseif options.dev_mode then
