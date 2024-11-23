@@ -110,8 +110,8 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 ["heyudnttmdteeafebsly"] = [===[Сподіваюся, ви не проти додаткової стійкості, {стать:пане-бос:пані-бос}.]===],
 -- I really should charge you for that.
 ["iirysdceyufrtt"] = [===[Мені вже час брати з вас гроші.]===],
--- I was wondering when I'd see you again, Tarilka.
-["iiwswgwniiddseyuanta"] = [===[Мені було цікаво, коли ж знову побачу вас, {ім'я}.]===],
+-- I was wondering when I'd see you again, <name>.
+["iiwswgwniiddseyuan.-"] = [===[Мені все було цікаво, коли ж я побачу вас знову, {ім'я:к}.#again, <name>.]===],
 -- It's not much, but it just might keep your green hide intact.
 ["itssntmhbtitjtmtkpyrgnheit"] = [===[Це небагато, але може вберегти вашу зелену шкуру неушкодженою.]===],
 -- Just wanted to let you know that we're all counting on you!

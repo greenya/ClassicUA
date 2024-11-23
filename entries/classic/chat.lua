@@ -6,16 +6,30 @@ local _, addonTable = ...
 
 local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text1, [code2] = text2, ... }
 ["!common"] = {
+-- A fine trophy your head will make, <race>.
+["aafetyyrhdwlme.."] = [===[С твоєї голови буде гарний трофей, {раса:к}.will make, <race>.]===],
+-- A foul trogg if ever I saw one.  Die!
+["aafltgiferiiswoede"] = [===[Ще не бачив таких бридких трогів. Здохни!]===],
 -- Ah, a chance to use this freshly sharpened blade.
 ["ahaacetouetsfysdbe"] = [===[О, а я саме лезо наточив.]===],
+-- Aaaaahhh! So close to escaping.
+["ahsocetoeg"] = [===[Ааааааа! Я майже втік.]===],
 -- Alright I'm going! Stop yelling!
 ["atiimmggspyg"] = [===[Гаразд, йду я! Не кричи!]===],
+-- Aku'mai demands more sacrifices, now you must die!
+["aumidsmessnwyumtde"] = [===[Аку'май вимагає нових жертв, ти маєш померти!]===],
 -- Crush!
 ["ch"] = [===[Трощити!]===],
 -- Destroy!
 ["dy"] = [===[Нищити!]===],
+-- Feel da big bad voodoo!
+["fldabgbdvo"] = [===[Відчуй вуду!]===],
+-- Feel the power of the Brotherhood!
+["flteproftebd"] = [===[Відчуй силу Братства!]===],
 -- Feel the power of the Blackrock Orcs!
 ["flteproftebkos"] = [===[Відчуй силу орків Чорнокаменю!]===],
+-- Feel the power of the Dark Iron Dwarves!
+["flteproftedkinds"] = [===[Відчуй силу дворфів Темного Заліза!]===],
 -- For the Horde!
 ["frtehe"] = [===[За Орду!]===],
 -- Grrrr... fresh meat!
@@ -24,6 +38,8 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 ["iigameyuiomo"] = [===[Я з тебе моджо зроблю!]===],
 -- I'll crush you!
 ["iillchyu"] = [===[Я тебе розчавлю!]===],
+-- Intruders!  The Hammer shall fall upon you.
+["istehrslflunyu"] = [===[Чужинці! Молот покарає вас.]===],
 -- Just release me already! I've had enough!
 ["jtremeayiivehdeh"] = [===[Та відпусти вже мене! З мене досить!]===],
 -- Killing you be easy.
@@ -38,8 +54,14 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 ["meshyude"] = [===[Я бити! Ти вмирати!]===],
 -- Make yourself useful and help me out here!
 ["meyfuladhpmeothe"] = [===[Зроби хоч щось корисне і допоможи мені!]===],
+-- My talons will shred your puny body, <race>.
+["mytswlsdyrpyby.."] = [===[Мої пазурі розірвуть твоє нікчемне тіло, {раса:к}.puny body, <race>.]===],
 -- My weapon be thirsty!
 ["mywnbety"] = [===[Моя зброя хоче крові!]===],
+-- No gnome will be left behind.
+["nogewlbeltbd"] = [===[Не лишим жодного гнома в біді.]===],
+-- Never cross a Dark Iron, <class>.
+["nrcsaadkin.."] = [===[Ніколи не переходь дорогу Темному Залізу, {клас:к}.#Iron, <class>]===],
 -- Raaaaaaaaaaaaaaaaaaaaaaaaaaaaaar!!! Me smash <target>!
 ["rrmesh.-"] = [===[Рррааааааааааааааааааааааааррррр!!! Моя бити {ціль}!#Me smash <target>!]===],
 -- %s attempts to run away in fear!
@@ -58,20 +80,46 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 ["ssss"] = [===[%s зітхає.]===],
 -- The Brotherhood will not tolerate your actions.
 ["tebdwlntteyras"] = [===[Братство не потерпить таких вчинків.]===],
+-- There is no escape for you.  The Crusade shall destroy all who carry the scourge's taint.
+["teisnoeefryutecesldyalwocytesesstt"] = [===[Вам немає спасіння. Похід знищить усіх, хто заплямований Скарою.]===],
+-- The light condemns all who harbor evil.  Now you will die!
+["teltcsalwohrelnwyuwlde"] = [===[Світло засуджує всіх, хто носить у собі зло. Тепер ти помреш!]===],
+-- The Old Gods will be restored.  You will not be allowed to interfere!
+["teodgswlberdyuwlntbeadtoie"] = [===[Старі Боги повернуться. Ви цьому не завадите!]===],
+-- The Scarlet Crusade shall smite the wicked and drive evil from these lands!
+["testceslsetewdaddeelfmtels"] = [===[Багряний Похід покарає нечестивих і вижене зло з цих земель!]===],
+-- Time to die, <class>.
+["tetode.."] = [===[Час вмирати, {клас:к}.#die, <class>]===],
+-- The troggs...they never stop coming.  Die trogg!  Die!
+["tetstynrspcgdetgde"] = [===[Троги... вони все лізуть й лізуть. Здохни, тварюко! Здохни!]===],
+-- Troll mojo da strongest mojo!
+["tlmodastmo"] = [===[Трольське моджо — хороша штука!]===],
 -- This better be the last one!
 ["tsbrbeteltoe"] = [===[Сподіваюсь, це останній!]===],
+-- This sickness clouds my vision, but I know you must be a trogg.  Die foul invader!
+["tssscsmyvnbtiikwyumtbeaatgdeflir"] = [===[Ця хвороба затьмарює мій зір, але я знаю, що ти трог. Здохни, брудний загарбник!]===],
 -- What? You mean you can't kill this one by yourself?
 ["wtyumnyucnttkltsoebyyf"] = [===[Що? Хочеш сказати, що не зможеш вбити його самостійно?]===],
 -- Yiieeeee! Me run!
 ["yemern"] = [===[Їііііі! Я бігти!]===],
 -- Yip! Me kill!
 ["ypmekl"] = [===[Йой! Я вбивати!]===],
+-- Your blood shall be the catalyst for the Old Gods' return!
+["yrbdslbetectfrteodgsrn"] = [===[Твоя кров прискорить повернення Старих Богів!]===],
+-- Your skull gonna decorate our ritual altars!
+["yrslgadeorrlas"] = [===[Твій череп прикрасить наші ритуальні вівтарі!]===],
 -- You are no match for the Blackrock Orcs!
 ["yuaenomhfrtebkos"] = [===[Ти не рівня оркам Чорнокаменю!]===],
+-- You be dead soon!
+["yubeddsn"] = [===[Ти скоро здохнеш!]===],
 -- You better back me up on this one!
 ["yubrbkmeupontsoe"] = [===[Краще допоможи мені!]===],
+-- You carry the taint of the scourge.  Prepare to enter the twisting nether.
+["yucytettoftesepetoertetgnr"] = [===[Ви заплямовані Скарою. Приготуйтесь відправитись в Підсвітню Крутоверть.]===],
 -- You no take candle!
 ["yunotece"] = [===[Не рухай свічу!]===],
+-- You will be easy prey, <class>.
+["yuwlbeeypy.."] = [===[Ти будеш легкою здобиччю, {клас:к}.prey, <class>.]===],
 },
 ["High Overlord Saurfang"] = { "верховний надповелитель Саурфанґ",
 -- Be lifted by <name>'s accomplishment! Revel in <his/her> rallying cry!
@@ -83,21 +131,25 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 -- Ashes to ashes!
 ["astoas"] = [===[Прах до праху.]===],
 -- Behold Ragnaros - the Firelord! He who was ancient when this world was young! Bow before him, mortals! Bow before your ending!
-["bdrstefdhewowsatwntswdwsygbwbehmmsbwbeyreg"] = [===[Готуйтесь зустрітися з Раґнаросом - Повелителем Вогню! Тим, хто був древнім, ще в часи юності цього світу! Схиліться перед ним, смертні! Схиліться перед своєю загибеллю!]===],
+["bdrstefdhewowsatwntswdwsygbwbehmmsbwbeyreg"] = [===[Готуйтесь зустрітися з Раґнаросом - Повелителем Вогню! Тим, хто був древнім ще в часи юності цього світу! Схиліться перед ним, смертні! Схиліться перед своєю загибеллю!]===],
 -- Brashly, you have come to wrest the secrets of the Living Flame! You will soon regret the recklessness of your quest.
 ["byyuhecetowttessoftelgfeyuwlsnrttersofyrqt"] = [===[Ви прийшли, щоб зухвало викрасти таємниці Живого Полум'я! Незабаром ви пошкодуєте про свою необачність.]===],
 -- Impossible! Stay your attack, mortals... I submit! I submit!
 ["iesyyrakmsiistiist"] = [===[Це неможливо! Зупиніться, смертні... Я здаюсь! Здаюсь!]===],
 -- I go now to summon the lord whose house this is. Should you seek an audience with him, your paltry lives will surely be forfeit! Nevertheless, seek out his lair, if you dare!
 ["iigonwtosnteldwehetsissdyuskanaewhhmyrpylswlsybeftnsskothslrifyude"] = [===[А тепер я покличу володаря цієї обителі. Аудієнція з ним, безсумнівно, буде останньою у вашому житті! Що ж, ходіть до його лігва, якщо наважитеся!]===],
--- Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!\r\n
-["itwsyuverdhgtoyrondssenwtemrssrrnn"] = [===[Нахабні виродки! Ви кинулися стрімголов назустріч власній смерті! Готуйтесь, бо володар прокинувся!]===],
+-- Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!
+["itwsyuverdhgtoyrondssenwtemrss"] = [===[Нахабні виродки! Ви кинулися стрімголов назустріч власній смерті! Готуйтесь, бо володар прокинувся!]===],
 -- Reckless mortals! None may challenge the Sons of the Living flame!
 ["rsmsnemycetessoftelgfe"] = [===[Безрозсудні смертні! Ніхто не сміє кидати виклик Синам Живого Полум'я!]===],
 -- These mortal infidels, my lord! They have invaded your sanctum and seek to steal your secrets!
 ["temlismyldtyheidyrsmadsktoslyrss"] = [===[Ці невірні смертні, мій повелителю! Вони вдерлися в твою обитель і прагнуть викрасти твої таємниці!]===],
 -- The runes of warding have been destroyed! Hunt down the infidels, my brethren!
 ["tersofwghebnddhtdnteismybn"] = [===[Захисні руни знищено! Вбийте невірних, брати мої!]===],
+-- Very well, <name>.
+["vywl.-"] = [===[Добре, {ім'я:к}.#well, <name>.]===],
+-- You think you've won already? Perhaps you'll need another lesson in pain!
+["yutkyuvewnaypsyullndarlninpn"] = [===[Думаєте, ви вже перемогли? Можливо, вам варто засвоїти ще один урок болю!]===],
 },
 ["Myra Tyrngaarde"] = { "Міра Тірнґаард",
 -- Come get yer fresh bread!
@@ -126,8 +178,8 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 ["deit"] = [===[ЗДОХНИ, КОМАХО!]===],
 -- FOOL! YOU ALLOWED THESE INSECTS TO RUN RAMPANT THROUGH THE HALLOWED CORE? AND NOW YOU LEAD THEM TO MY VERY LAIR? YOU HAVE FAILED ME, EXECUTUS! JUSTICE SHALL BE MET, INDEED!
 ["flyuadteistornrtthtehdceadnwyuldtmtomyvylryuhefdmeesjeslbemtid"] = [===[ДУРЕНЬ! ТИ ДОЗВОЛИВ ЦИМ КОМАХАМ РОЗГУЛЮВАТИ ПО СВЯЩЕННОМУ ЯДРУ? І ТЕПЕР ТИ ПРИВІВ ЇХ ДО МОГО ЛІГВА? ТИ ПІДВІВ МЕНЕ, ЕКЗЕКУТУС! І ТИ ОТРИМАЄШ СПРАВЕДЛИВЕ ПОКАРАННЯ!]===],
--- NOW FOR YOU, INSECTS! BOLDLY, YOU SOUGHT THE POWER OF RAGNAROS. NOW YOU SHALL SEE IT FIRSTHAND!\r\n
-["nwfryuisbyyustteprofrsnwyuslseitfdrrnn"] = [===[А ВИ, КОМАХИ! ВИ ПРАГНУЛИ СИЛИ РАГНАРОСА. ТЕПЕР ВИ ВІДЧУЄТЕ ЇЇ НА ВЛАСНІЙ ШКУРІ!]===],
+-- NOW FOR YOU, INSECTS! BOLDLY, YOU SOUGHT THE POWER OF RAGNAROS. NOW YOU SHALL SEE IT FIRSTHAND!
+["nwfryuisbyyustteprofrsnwyuslseitfd"] = [===[А ВИ, КОМАХИ! ВИ ПРАГНУЛИ СИЛИ РАГНАРОСА. ТЕПЕР ВИ ВІДЧУЄТЕ ЇЇ НА ВЛАСНІЙ ШКУРІ!]===],
 -- Ragnaros has withdrawn to the elemental plane.
 ["rshswntoteelpe"] = [===[Рагнарос відійшов у вимір стихій.]===],
 -- TASTE THE FLAMES OF SULFURON!

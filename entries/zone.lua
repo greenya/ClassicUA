@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.zone_stats = { count=3140 }
+addonTable.zone_stats = { count=3142 }
 
 addonTable.zone = { -- [key] = text
 ["7th Legion Base Camp"] = "опорний табір 7го Легіону",
@@ -803,6 +803,7 @@ addonTable.zone = { -- [key] = text
 ["Elrendar Crossing"] = "перехрестя Елрендар",
 ["Elrendar Falls"] = "водоспад Елрендар",
 ["Elrendar River"] = "річка Елрендар",
+["Elsewhen"] = "Коли-небудь",
 ["Elwynn"] = "Ельвинн",
 ["Elwynn Forest"] = "Ельвиннський ліс",
 ["Ember Clutch"] = "Обвуглене Кубло",
@@ -1198,7 +1199,7 @@ addonTable.zone = { -- [key] = text
 ["Helm's Bed Lake"] = "озеро Постеля Гельма",
 ["Heroes' Vigil"] = "Варта героїв",
 ["Hetaera's Clutch"] = "кубло Гетаєри",
-["Hewn Bog"] = "Болоний поруб",
+["Hewn Bog"] = "Болотний поруб",
 ["Hibernal Cavern"] = "печера Сплячки",
 ["Hidden Clutch"] = "Потаємне кубло",
 ["Hidden Hollow"] = "Прихований провал",
@@ -1511,7 +1512,7 @@ addonTable.zone = { -- [key] = text
 ["Market Row"] = "площа Ринок",
 ["Marshal's Refuge"] = "прихисток Маршала",
 ["Marshal's Stand"] = "стоянка Маршала",
-["Marshlight Lake"] = "озеро Болотних Вогників",
+["Marshlight Lake"] = "Болотосяйне озеро",
 ["Marshtide Watch"] = "варта Болотної Хвилі",
 ["Maruadon - The Wicked Grotto Entrance"] = "Мародон - вхід в Осквернений грот",
 ["Masonary"] = "Каменярня",
@@ -2111,6 +2112,7 @@ addonTable.zone = { -- [key] = text
 ["Shatterspear Pass"] = "перевал Розтрощеного Списа",
 ["Shatterspear Vale"] = "долина Розтрощеного Списа",
 ["Shatterspear War Camp"] = "бойовий табір Розтрощеного Списа",
+["Shattrath"] = "Шаттрат",
 ["Shattrath City"] = "Шаттрат",
 ["Shell Beach"] = "Мушельний пляж",
 ["Shield Hill"] = "пагорб Щита",
@@ -2130,6 +2132,7 @@ addonTable.zone = { -- [key] = text
 ["Shrine of Remulos"] = "вівтар Ремула",
 ["Shrine of Scales"] = "Вівтар Луски",
 ["Shrine of Thaurissan"] = "Святилище Тауріссана",
+["Shrine of Unending Light"] = "Святилище Незгасного Світла",
 ["Shrine of the Deceiver"] = "вівтар Підступника",
 ["Shrine of the Dormant Flame"] = "вівтар Дрімаючого полум'я",
 ["Shrine of the Elements"] = "святилище стихій",
