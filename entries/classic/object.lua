@@ -217,7 +217,7 @@ addonTable.object = { -- [key] = text
 ["Buzzbox 525"] = "Дзижчатор 525",
 ["Buzzbox 827"] = "Дзижчатор 827",
 ["Cache of Explosives"] = "сховок з вибухівкою",
-["Cache of the Firelord"] = "сховок Повелителя вогню",
+["Cache of the Firelord"] = "сховок Володара вогню",
 ["Cactus Apple"] = "кактусове яблуко",
 ["Cage"] = "клітка",
 ["Calcified Elven Gem"] = "звапнілий ельфійський самоцвіт",
