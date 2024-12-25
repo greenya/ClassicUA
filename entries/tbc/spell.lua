@@ -51,6 +51,7 @@ local spells = {
 [32703] = { "Регенерація здоров'я", ref=20885 }, -- Health Regeneration
 [32705] = { ref=18378 }, -- Increased Mana Regen
 [33035] = { ref=24694 }, -- Attack Power - Feral (+0046)
+[33124] = { ref=7675 }, -- Increase Healing 61
 [33253] = { ref=5004 }, -- Food
 [33488] = { ref=25901 }, -- Weapon Damage
 [33780] = { ref=18378 }, -- Increased Mana Regen
