@@ -289,6 +289,8 @@ addonTable.sod_engraving = {
 [51243] = { "Спеціалізація на тіні", spell=453700 }, -- Shadow Specialization
 [51244] = { "Спеціалізація на святості", spell=453702 }, -- Holy Specialization
 [51245] = { "Спеціалізація на дикості", spell=453703 }, -- Feral Combat Specialization
-
+[51330] = { "Спеціалізація на захисті", spell=459313 }, -- Defense Specialization
+[51509] = { "Спеціалізація на медитації", spell=468763 }, -- Meditation Specialization
+[51510] = { "Спеціалізація на зціленні", spell=468761 }, -- Healing Specialization
 
 }
