@@ -1117,7 +1117,7 @@ local function make_entry_text(text, tooltip, tooltip_matches_to_skip)
 
     local values = {}
     for i = 2, #text do
-        local p = esc(text[i]:lower()):gsub("{(%d+)}", function (a) return "(%d*.?%d+)" end)
+        local p = esc(text[i]:lower()):gsub("{(%d+)}", function (a) return "(%d*%.?%d+)" end)
         local match_number = 0
         for j = 1, #tt_lines do
             local v = { tt_lines[j]:lower():match(p) }
