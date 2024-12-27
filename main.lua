@@ -1117,20 +1117,24 @@ local function make_entry_text(text, tooltip, tooltip_matches_to_skip)
 
     local values = {}
     for i = 2, #text do
-        local p = esc(text[i]:lower()):gsub("{(%d+)}", function (a) return "(%d*%.?%d+)" end)
+        local pattern = esc(text[i]:lower()):gsub("{(%d+)}", function (a) return "(%d*%.?%d+)" end)
+        local pattern_numbers = {}
+        for pattern_number in text[i]:lower():gmatch("{(%d+)}") do
+            table.insert(pattern_numbers, tonumber(pattern_number))
+        end
         local match_number = 0
         for j = 1, #tt_lines do
-            local v = { tt_lines[j]:lower():match(p) }
-            if #v > 0 then
+            local matches = { tt_lines[j]:lower():match(pattern) }
+            if #matches > 0 and #matches == #pattern_numbers then
                 match_number = match_number + 1
                 if match_number > tooltip_matches_to_skip then
-                    for k = 1, #v do
-                        local value = v[k]:gsub("%.", ",")
+                    for k = 1, #matches do
+                        local value = matches[k]:gsub("%.", ",")
                         -- fix floating-point number without leading "0", e.g. ",2"
                         if #value > 1 and value:sub(1, 1) == "," then
                             value = "0" .. value
                         end
-                        values[#values + 1] = value
+                        values[pattern_numbers[k]] = value
                     end
                     break
                 end
