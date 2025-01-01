@@ -1110,11 +1110,11 @@ end
 
 local function resolve_optional_entry_text(text, tt_lines, tooltip_matches_to_skip)
     return text:gsub("%[(.-)#(.-)%]", function(translation, condition)
-        local pattern = esc(condition:lower()):gsub("{(%d+)}", function (a) return "(%d*%.?%d+)" end)
+        local pattern = esc(condition):gsub("{(%d+)}", function () return "(%d*%.?%d+)" end)
         local match_number = 0
         local values = {}
         for j = 1, #tt_lines do
-            local matches = { tt_lines[j]:lower():match(pattern) }
+            local matches = { tt_lines[j]:match(pattern) }
             if #matches > 0 then
                 match_number = match_number + 1
                 if match_number > tooltip_matches_to_skip then
@@ -1152,7 +1152,7 @@ local function make_entry_text(text, tooltip, tooltip_matches_to_skip)
 
     local values = {}
     for i = 2, #text do
-        local pattern = esc(text[i]:lower()):gsub("{(%d+)}", function (a) return "(%d*%.?%d+)" end)
+        local pattern = esc(text[i]:lower()):gsub("{(%d+)}", function () return "(%d*%.?%d+)" end)
         local pattern_numbers = {}
         for pattern_number in text[i]:lower():gmatch("{(%d+)}") do
             table.insert(pattern_numbers, tonumber(pattern_number))
