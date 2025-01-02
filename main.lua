@@ -180,7 +180,7 @@ local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-st
 end
 
 local function fix_float_number(value)
-    local result = value:gsub("%.", ",")
+    local result = value:gsub(",", ""):gsub("%.", ",")
     -- fix floating-point number without leading "0", e.g. ",2"
     if #result > 1 and result:sub(1, 1) == "," then
         result = "0" .. result
@@ -1110,7 +1110,7 @@ end
 
 local function resolve_optional_entry_text(text, tt_lines, tooltip_matches_to_skip)
     return text:gsub("%[(.-)#(.-)%]", function(translation, condition)
-        local pattern = esc(condition):gsub("{(%d+)}", function () return "(%d*%.?%d+)" end)
+        local pattern = esc(condition):gsub("{(%d+)}", function () return "([%d,\.]*%d)" end)
         local match_number = 0
         local values = {}
         for j = 1, #tt_lines do
@@ -1152,7 +1152,7 @@ local function make_entry_text(text, tooltip, tooltip_matches_to_skip)
 
     local values = {}
     for i = 2, #text do
-        local pattern = esc(text[i]:lower()):gsub("{(%d+)}", function () return "(%d*%.?%d+)" end)
+        local pattern = esc(text[i]:lower()):gsub("{(%d+)}", function () return "([%d,\.]*%d)" end)
         local pattern_numbers = {}
         for pattern_number in text[i]:lower():gmatch("{(%d+)}") do
             table.insert(pattern_numbers, tonumber(pattern_number))
