@@ -180,7 +180,7 @@ local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-st
 end
 
 local function fix_float_number(value)
-    local result = value:gsub(",", ""):gsub("%.", ",")
+    local result = value:gsub(",", "")
     -- fix floating-point number without leading "0", e.g. ",2"
     if #result > 1 and result:sub(1, 1) == "," then
         result = "0" .. result
