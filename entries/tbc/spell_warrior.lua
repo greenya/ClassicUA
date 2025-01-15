@@ -5,7 +5,7 @@ local warrior_spells = {
 -- See /entries/classic/spell.lua for data format details.
 
 -- Challenging Shout
-[1161] = { "Провокуючий клич", "Змушує всіх ворогів в межах {1} м зосередити атаки на вас протягом {2} с.#within {1} y#for {2} sec", "Підбурено." }, -- Challenging Shout
+[1161] = { "Провокуючий клич", "Змушує всіх ворогів в межах {1} м зосередити атаки на вас протягом {2} с.#within {1} y#for {2} sec", "Спровоковано." }, -- Challenging Shout
 -- Piercing Howl
 [12323] = { "Пронизливе виття", "Викликає запаморочення у ворогів в межах {1} м, що зменшує швидкість руху на {2}% протягом {3} с.#within {1} y#by {2}% for {3} sec", "Запаморочення." }, -- Piercing Howl
 -- Rend

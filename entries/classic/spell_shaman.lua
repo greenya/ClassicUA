@@ -65,6 +65,8 @@ local shaman_spells = {
 [16110] = { ref=16039 }, -- Convection (Rank 3)
 [16111] = { ref=16039 }, -- Convection (Rank 4)
 [16112] = { ref=16039 }, -- Convection (Rank 5)
+-- Corrupted Totems
+[23425] = { "Осквернені тотеми", nil, "Ви викликаєте осквернені тотеми." }, -- Corrupted Totems
 -- Cure Disease
 [2870] = { "Лікування хвороби", "Виліковує {1} хворобу з цілі.#Cures {1}" }, -- Cure Disease
 -- Cure Poison
@@ -85,7 +87,7 @@ local shaman_spells = {
 [16043] = { "Хватка землі", "Збільшує здоров'я вашого тотема кам'яного пазура на {1}%, а радіус дії тотема земного зв'язування на {2}%.#Stoneclaw Totem by {1}%#Earthbind Totem by {2}%" }, -- Earth's Grasp (Rank 1)
 [16130] = { ref=16043 }, -- Earth's Grasp (Rank 2)
 -- Earthbind
-[3600] = { "Земне зв'язування", nil, "Рух сповільнено на {1}%.#by {1}%" }, -- Earthbind
+[3600] = { "Земне зв'язування", nil, "Швидкість руху зменшено на {1}%.#by {1}%" }, -- Earthbind
 -- Earthbind Totem
 [2484] = { "Тотем земного зв'язування", "Викликає тотем земного зв'язування з {1} здоров'я біля заклинача на {2} с. Тотем сповільнює рух ворогів в межах {3} м.#with {1} health#for {2} sec#within {3} y" }, -- Earthbind Totem
 -- Elemental Devastation
@@ -124,6 +126,10 @@ local shaman_spells = {
 [8499] = { ref=1535 }, -- Fire Nova Totem (Rank 3)
 [11314] = { ref=1535 }, -- Fire Nova Totem (Rank 4)
 [11315] = { ref=1535 }, -- Fire Nova Totem (Rank 5)
+-- Fire Resistance
+[8185] = { "Опір вогню", nil, "Опір вогню збільшено на {1}#by {1}" }, -- Fire Resistance (Rank 1)
+[10534] = { ref=8185 }, -- Fire Resistance (Rank 2)
+[10535] = { ref=8185 }, -- Fire Resistance (Rank 3)
 -- Fire Resistance Totem
 [8184] = { "Тотем опору вогню", "Викликає тотем опору вогню з {1} здоров'я біля заклинача на {2} хв, який збільшує опір вогню учасників групи в межах {3} м на {4}.#with {1} health#for {2} min#within {3} yards by {4}" }, -- Fire Resistance Totem (Rank 1)
 [10537] = { ref=8184 }, -- Fire Resistance Totem (Rank 2)
@@ -160,6 +166,10 @@ local shaman_spells = {
 [16284] = { ref=16256 }, -- Flurry (Rank 5)
 -- Focused Casting
 [29063] = { "Зосереджена вимова", "Ви не зазнаєте затримки вимови заклять при отриманні шкоди. Діє {1} секунд.#Lasts {1} sec", "Не зазнає затримки вимови заклять при отриманні шкоди." }, -- Focused Casting
+-- Frost Resistance
+[8182] = { "Опір кризі", nil, "Опір кризі збільшено на {1}#by {1}" }, -- Frost Resistance (Rank 1)
+[10476] = { ref=8182 }, -- Frost Resistance (Rank 2)
+[10477] = { ref=8182 }, -- Frost Resistance (Rank 3)
 -- Frost Resistance Totem
 [8181] = { "Тотем опору кризі", "Викликає тотем опору кризі з {1} здоров'я біля заклинача на {2} хв, який збільшує опір кризі учасників групи в межах {4} м на {3}.#with {1} health#for {2} min#resistance by {3}#within {4} y" }, -- Frost Resistance Totem (Rank 1)
 [10478] = { ref=8181 }, -- Frost Resistance Totem (Rank 2)
@@ -202,6 +212,12 @@ local shaman_spells = {
 [29187] = { "Цілюще благовоління", "Зменшує загрозу від ваших заклять зцілення на {1}%.#by {1}%" }, -- Healing Grace (Rank 1)
 [29189] = { ref=29187 }, -- Healing Grace (Rank 2)
 [29191] = { ref=29187 }, -- Healing Grace (Rank 3)
+-- Healing Stream
+[5672] = { "Цілющий потік", nil, "Зцілює {1} здоров'я кожні {2} с.#Heals {1} every {2} sec" }, -- Healing Stream (Rank 1)
+[6371] = { ref=5672 }, -- Healing Stream (Rank 2)
+[6372] = { ref=5672 }, -- Healing Stream (Rank 3)
+[10460] = { ref=5672 }, -- Healing Stream (Rank 4)
+[10461] = { ref=5672 }, -- Healing Stream (Rank 5)
 -- Healing Stream Totem
 [5394] = { "Тотем цілющого потоку", "Викликає тотем цілющого потоку з {1} здоров'я біля заклинача на {2} хв. Тотем зцілює учасникам групи в межах {3} м {4} здоров'я кожні {5} с.#with {1} health#for {2} min#within {3} yards for {4} every {5} sec" }, -- Healing Stream Totem (Rank 1)
 [6375] = { ref=5394 }, -- Healing Stream Totem (Rank 2)
@@ -223,6 +239,7 @@ local shaman_spells = {
 [29202] = { ref=29206 }, -- Healing Way (Rank 3)
 [29205] = { ref=29206 }, -- Healing Way (Rank 2)
 [29206] = { "Шлях зцілення", "Закляття \"Хвиля зцілення\" з імовірністю {1}% підсилить повторні ефекти цього закляття на ту саму ціль на {2}% протягом {3} с. Ефект накопичується до {4} разів.#a {1}% chance#by {2}% for {3} sec#up to {4} times" }, -- Healing Way (Rank 1)
+[29203] = { "Шлях зцілення", nil, "Підсилює ефект \"Хвилі зцілення\" на {1}%.#by up to {1}%" }, -- Healing Way
 -- Improved Fire Totems
 [16086] = { "Покращені тотеми вогню", "Зменшує час активації вашого тотема вогненного спалаху на {1} с, а рівень загрози від тотема магми на {2}%.#activates by {1} sec#Magma Totem by {2}%" }, -- Improved Fire Totems (Rank 1)
 [16544] = { ref=16086 }, -- Improved Fire Totems (Rank 2)
@@ -238,8 +255,9 @@ local shaman_spells = {
 -- Improved Lightning Shield
 [16261] = { "Покращений блискавковий щит", "Збільшує шкоду від зарядів \"Блискавкового щита\" на {1}%.#by {1}%" }, -- Improved Lightning Shield (Rank 1)
 [16290] = { ref=16261 }, -- Improved Lightning Shield (Rank 2)
+[16291] = { ref=16261 }, -- Improved Lightning Shield (Rank 3)
 -- Improved Reincarnation
-[16184] = { "Покращена реінкарнація", "Зменшує час відновлення вашої здібності \"Реінкарнація\" на {1} хв та збільшує об'єм здоров'я і мани, з яким ви повертаєтеся до життя, на {2}%.#by {1} min#additional {2}%" }, -- Improved Reincarnation (Rank 1)
+[16184] = { "Покращена реінкарнація", "Зменшує час відновлення вашої здібності \"Реінкарнація\" на {1} хв та збільшує обсяг здоров'я і мани, з яким ви повертаєтеся до життя, на {2}%.#by {1} min#additional {2}%" }, -- Improved Reincarnation (Rank 1)
 [16209] = { ref=16184 }, -- Improved Reincarnation (Rank 2)
 -- Improved Weapon Totems
 [29192] = { "Покращені тотеми зброї", "Збільшує бонус до сили атаки ближнього бою від вашого тотему буревію на {1}%, а шкоду вашого тотема язика полум'я на {2}%.#Windfury Totem by {1}%#Flametongue Totem by {2}%" }, -- Improved Weapon Totems (Rank 1)
@@ -288,15 +306,29 @@ local shaman_spells = {
 [10585] = { ref=8190 }, -- Magma Totem (Rank 2)
 [10586] = { ref=8190 }, -- Magma Totem (Rank 3)
 [10587] = { ref=8190 }, -- Magma Totem (Rank 4)
+-- Mana Spring
+[5677] = { "Джерело мани", nil, "Відновлює {1} мани кожні {2} с.#Gain {1} mana every {2} sec" }, -- Mana Spring (Rank 1)
+[10491] = { ref=5677 }, -- Mana Spring (Rank 2)
+[10493] = { ref=5677 }, -- Mana Spring (Rank 3)
+[10494] = { ref=5677 }, -- Mana Spring (Rank 4)
+[24853] = { ref=5677 }, -- Mana Spring
 -- Mana Spring Totem
 [5675] = { "Тотем джерела мани", "Викликає тотем джерела мани з {1} здоров'я біля заклинача на {2} хв. Тотем відновлює {3} мани кожні {4} с учасникам групи в межах {5} м.#with {1} health#for {2} min#{3} mana every {4} sec#within {5} y" }, -- Mana Spring Totem (Rank 1)
 [10495] = { ref=5675 }, -- Mana Spring Totem (Rank 2)
 [10496] = { ref=5675 }, -- Mana Spring Totem (Rank 3)
 [10497] = { ref=5675 }, -- Mana Spring Totem (Rank 4)
+-- Mana Tide
+[16191] = { "Приплив мани", nil, "Відновлює {1} мани кожні {2} с.#Gain {1} mana every {2} sec" }, -- Mana Tide (Rank 1)
+[17355] = { ref=16191 }, -- Mana Tide (Rank 2)
+[17360] = { ref=16191 }, -- Mana Tide (Rank 3)
 -- Mana Tide Totem
 [16190] = { "Тотем припливу мани", "Викликає тотем припливу мани з {1} здоров'я біля заклинача на {2} с. Тотем відновлює {3} мани кожні {4} с учасникам групи в межах {5} м.#with {1} health#for {2} sec#{3} mana every {4} sec#within {5} y" }, -- Mana Tide Totem (Rank 1)
 [17354] = { ref=16190 }, -- Mana Tide Totem (Rank 2)
 [17359] = { ref=16190 }, -- Mana Tide Totem (Rank 3)
+-- Nature Resistance
+[10596] = { "Опір природі", nil, "Опір природі збільшено на {1}#by {1}" }, -- Nature Resistance (Rank 1)
+[10598] = { ref=10596 }, -- Nature Resistance (Rank 2)
+[10599] = { ref=10596 }, -- Nature Resistance (Rank 3)
 -- Nature Resistance Totem
 [10595] = { "Тотем опору природі", "Викликає тотем опору природі з {1} здоров'я біля заклинача на {2} хв, який збільшує опір природі учасників групи в межах {3} м на {4}.#with {1} health#for {2} min#within {3} yards by {4}" }, -- Nature Resistance Totem (Rank 1)
 [10600] = { ref=10595 }, -- Nature Resistance Totem (Rank 2)
@@ -353,13 +385,13 @@ local shaman_spells = {
 -- Sentry Totem
 [6495] = { "Сторожовий тотем", "Викликає нерухомий сторожовий тотем зі {1} здоров'я біля вас на {2} хв. Тотем дозволяє спостерігати за територією навколо нього та попереджає про ворогів, що атакують його. Натисніть правою кнопкою миші на іконку ефекту, щоб перемикатися між зором шамана та зором тотема.#with {1} health#for {2} min", "Дозволяє бачити крізь сторожовий тотем. Натисніть правою кнопкою миші на іконку ефекту, щоб перемикатися між зором шамана та зором тотема." }, -- Sentry Totem
 -- Shield Specialization
-[16253] = { "Спеціалізація на щитах", "Збільшує ймовірність блокування атаки щитом на {1}% та збільшує об'єм заблокованої шкоди на {2}%.#shield by {1}%#blocked by {2}%" }, -- Shield Specialization (Rank 1)
+[16253] = { "Спеціалізація на щитах", "Збільшує ймовірність блокування атаки щитом на {1}% та збільшує обсяг заблокованої шкоди на {2}%.#shield by {1}%#blocked by {2}%" }, -- Shield Specialization (Rank 1)
 [16298] = { ref=16253 }, -- Shield Specialization (Rank 2)
 [16299] = { ref=16253 }, -- Shield Specialization (Rank 3)
 [16300] = { ref=16253 }, -- Shield Specialization (Rank 4)
 [16301] = { ref=16253 }, -- Shield Specialization (Rank 5)
 -- Stoneclaw Totem
-[5730] = { "Тотем кам'яного пазура", "Викликає тотем кам'яного пазура з {1} здоров'я біля заклинача на {2} с. Тотем підбурює істот в межах {3} м атакувати його.#with {1} health#for {2} sec#within {3} y" }, -- Stoneclaw Totem (Rank 1)
+[5730] = { "Тотем кам'яного пазура", "Викликає тотем кам'яного пазура з {1} здоров'я біля заклинача на {2} с. Тотем провокує істот в межах {3} м атакувати його.#with {1} health#for {2} sec#within {3} y" }, -- Stoneclaw Totem (Rank 1)
 [6390] = { ref=5730 }, -- Stoneclaw Totem (Rank 2)
 [6391] = { ref=5730 }, -- Stoneclaw Totem (Rank 3)
 [6392] = { ref=5730 }, -- Stoneclaw Totem (Rank 4)
@@ -428,6 +460,8 @@ local shaman_spells = {
 [16307] = { ref=16252 }, -- Toughness (Rank 3)
 [16308] = { ref=16252 }, -- Toughness (Rank 4)
 [16309] = { ref=16252 }, -- Toughness (Rank 5)
+-- Tranquil Air
+[25909] = { "Затишшя", nil, "Зменшує загрозу на {1}%.#by {1}%" }, -- Tranquil Air (Rank 1)
 -- Tranquil Air Totem
 [25908] = { "Тотем затишшя", "Викликає тотем затишшя з {1} здоров'я біля заклинача. Тотем зменшує загрозу всіх учасників групи в межах {2} м на {3}%. Триває {4} хв.#with {1} health#within {2} yards by {3}#Lasts {4} min" }, -- Tranquil Air Totem
 -- Tremor Totem
@@ -453,10 +487,17 @@ local shaman_spells = {
 [8235] = { ref=8232 }, -- Windfury Weapon (Rank 2)
 [10486] = { ref=8232 }, -- Windfury Weapon (Rank 3)
 [16362] = { ref=8232 }, -- Windfury Weapon (Rank 4)
+-- Windwall
+[15108] = { "Стіна вітру", nil, "Зменшує отриману шкоду в дальньому бою на {1}.#taken by {1}" }, -- Windwall (Rank 1)
+[15109] = { ref=15108 }, -- Windwall (Rank 2)
+[15110] = { ref=15108 }, -- Windwall (Rank 3)
 -- Windwall Totem
 [15107] = { "Тотем стіни вітру", "Викликає тотем стіни вітру з {1} здоров'я біля заклинача. Тотем захищає учасників групи в межах {2} м, зменшуючи отриману шкоду в дальньому бою на {3}. Триває {4} хв.#with {1} health#within {2} y#taken by {3}#Lasts {4} min" }, -- Windwall Totem (Rank 1)
 [15111] = { ref=15107 }, -- Windwall Totem (Rank 2)
 [15112] = { ref=15107 }, -- Windwall Totem (Rank 3)
+[15113] = { "Тотем стіни вітру" }, -- Windwall Totem (Rank 1)
+[15115] = { ref=15113 }, -- Windwall Totem (Rank 2)
+[15116] = { ref=15113 }, -- Windwall Totem (Rank 3)
 
 -- Item effects
 [22801] = { "Швидкість примарного вовка", "Збільшує швидкість \"Примарного вовка\" на {1}%.#ability by {1}%" }, -- Ghost Wolf Speed (Rank 1)

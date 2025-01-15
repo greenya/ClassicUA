@@ -230,7 +230,7 @@ addonTable.sod_engraving = {
 [48899] = { "Танець нечестивців", spell=416017 }, -- Dance of the Wicked
 [49211] = { "Демонічна благодать", spell=425477 }, -- Demonic Grace
 [49212] = { "Угода з демоном", spell=425476 }, -- Demonic Pact
-[49245] = { "Закляття", spell=426443 }, -- Invocation
+[49245] = { "Клятьба", spell=426443 }, -- Invocation
 [49246] = { "Гримуар синергії", spell=426445 }, -- Grimoire of Synergy
 [49247] = { "Тінь і полум'я", spell=426452 }, -- Shadow and Flame
 [49248] = { "Тіньове полум'я", spell=426467 }, -- Shadowflame
