@@ -9,7 +9,7 @@ local npc = { -- [id] = { title, description (optional) }
 [3363] = { "Маґар", "тренер кравецтва" }, -- Magar <Tailoring Trainer>
 [5086] = { "капітан Ваймор", en="Captain Wymor" }, -- Captain Wymor
 [6115] = { "мандрівний вартовий скверни", en="Roaming Felguard" }, -- Roaming Felguard
-[10182] = { "Рокаро", "герой Орди", en="Rokaro" }, -- Rokaro
+[10182] = { "Рокаро", "чемпіон Орди", en="Rokaro" }, -- Rokaro
 [15271] = { "деревун", en="Tender" }, -- Tender
 [15273] = { "арканічний привид", en="Arcane Wraith" }, -- Arcane Wraith
 [15274] = { "маназмій", en="Mana Wyrm" }, -- Mana Wyrm
@@ -64,9 +64,11 @@ local npc = { -- [id] = { title, description (optional) }
 [15654] = { "чумнокістяний грабіжник", en="Plaguebone Pillager" }, -- Plaguebone Pillager
 [15657] = { "темна примара", en="Darkwraith" }, -- Darkwraith
 [15658] = { "гнилий мародер", en="Rotlimb Marauder" }, -- Rotlimb Marauder
+[15666] = { "синій кіразький бойовий танк" }, -- Qiraji Battle Tank
 [15668] = { "хмуролуский мурлок", en="Grimscale Murloc" }, -- Grimscale Murloc
 [15669] = { "хмуролуский оракул", en="Grimscale Oracle" }, -- Grimscale Oracle
 [15670] = { "хмуролуский здобувач", en="Grimscale Forager" }, -- Grimscale Forager
+[15711] = { "чорний кіразький бойовий танк" }, -- Qiraji Battle Tank
 [15920] = { "Гатвеліон Сонцегляд", en="Hathvelion Sungaze" }, -- Hathvelion Sungaze
 [15921] = { "капітан Келісендра", en="Captain Kelisendra" }, -- Captain Kelisendra
 [15924] = { "учениця Лоралталіс", en="Apprentice Loralthalis" }, -- Apprentice Loralthalis
@@ -574,11 +576,11 @@ local npc = { -- [id] = { title, description (optional) }
 [18003] = { "анахорет Агуурн", en="Anchorite Ahuurn" }, -- Anchorite Ahuurn
 [18004] = { "поборник Ідаар", en="Vindicator Idaar" }, -- Vindicator Idaar
 [18005] = { "Хаалрун", "алхімічні припаси", en="Haalrun" }, -- Haalrun <Alchemy Supplies>
-[18006] = { "Нораані", "Reagent Merchant", en="Noraani" }, -- Noraani
+[18006] = { "Нораані", "продавчиня реагентів", en="Noraani" }, -- Noraani <Reagent Merchant>
 [18007] = { "Руам", en="Ruam" }, -- Ruam
 [18008] = { "Ікуті", "Куренай", en="Ikuti" }, -- Ikuti <Kurenai>
 [18009] = { "Пулуу", en="Puluu" }, -- Puluu
-[18010] = { "Макту", "Armor Merchant", en="Maktu" }, -- Maktu
+[18010] = { "Макту", "продавець обладунків", en="Maktu" }, -- Maktu <Armor Merchant>
 [18011] = { "Зурай", "торговець", en="Zurai" }, -- Zurai
 [18012] = { "Ревідж", en="Reavij" }, -- Reavij
 [18013] = { "темний мисливець Денжай", en="Shadow Hunter Denjai" }, -- Shadow Hunter Denjai
@@ -643,7 +645,7 @@ local npc = { -- [id] = { title, description (optional) }
 [18266] = { "прапорщик Трейсі Праудвелл", en="Warrant Officer Tracy Proudwell" }, -- Warrant Officer Tracy Proudwell
 [18267] = { "боєзовка Чорноока", en="Battlecryer Blackeye" }, -- Battlecryer Blackeye
 [18280] = { "Спорокрил", en="Sporewing" }, -- Sporewing
-[18281] = { "болотохляст", en="Boglash" }, -- Boglash
+[18281] = { "Трясохляст", en="Boglash" }, -- Boglash
 [18282] = { "лорд Клак", en="Lord Klaq" }, -- Lord Klaq
 [18283] = { "Чорножал", en="Blacksting" }, -- Blacksting
 [18285] = { "\"Граф\" Унґула", en="\"Count\" Ungula" }, -- "Count" Ungula
@@ -877,6 +879,7 @@ local npc = { -- [id] = { title, description (optional) }
 [25246] = { "леді Ліадрін", "матріарх Лицарів крові", en="Lady Liadrin" }, -- Lady Liadrin
 [25741] = { "М'уру", en="M'uru" }, -- M'uru
 [26247] = { "леді Ліадрін", "матріарх Лицарів крові", en="Lady Liadrin" }, -- Lady Liadrin
+[176490] = { "пророк Скерам", en="The Prophet Skeram" }, -- The Prophet Skeram
 }
 
 if addonTable.npc then
