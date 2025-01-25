@@ -12,6 +12,9 @@ local npc = { -- [id] = { title, description (optional) }
 [46785] = { "лорд Розпал", en="Lord Cannon" }, -- Lord Cannon
 [46955] = { "Рея", en="Rhea" }, -- Rhea
 [48993] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
+[51152] = { "ультрамариновий кіразький бойовий танк" }, -- Qiraji Battle Tank
+[51394] = { "гігантське пазуристе щупальце", en="Giant Claw Tentacle" }, -- Giant Claw Tentacle
+[51428] = { "пазуристе щупальце", en="Claw Tentacle" }, -- Claw Tentacle
 }
 
 if addonTable.npc then
