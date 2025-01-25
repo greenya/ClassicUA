@@ -974,6 +974,10 @@ local function make_chat_text(original, translation)
         if pattern_uk_type:lower() == "раса" then
             local race_en = template_matches["race"]
             local race_key = race_en:lower():gsub(" ", "")
+            if race_key == "scourge" then
+                -- Player's race called "scourge", but NPCs call them "undead"
+                race_key = "undead"
+            end
             local race_uk = at.race[race_key] and at.race[race_key][case][sex]
             race_uk = race_uk and pattern_uk_type == "Раса" and capitalize(race_uk) or race_uk
             race_uk = race_uk and pattern_uk_type == "РАСА" and upper(race_uk) or race_uk
@@ -997,7 +1001,11 @@ local function make_chat_text(original, translation)
             elseif at.class[target_en:upper():gsub(" ", "")] then
                 target_uk = at.class[target_en:upper():gsub(" ", "")][case][sex]
             elseif at.race[target_en:lower():gsub(" ", "")] then
-                target_uk = at.race[target_en:lower():gsub(" ", "")][case][sex]
+                local race_key = target_en:lower():gsub(" ", "")
+                if race_key == "scourge" then
+                    race_key = "undead"
+                end
+                target_uk = at.race[race_key][case][sex]
             elseif at.glossary[target_en:lower()] then
                 target_uk = at.glossary[target_en:lower()]
             end
