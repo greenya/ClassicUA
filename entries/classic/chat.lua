@@ -7,7 +7,7 @@ local _, addonTable = ...
 local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text1, [code2] = text2, ... }
 ["!common"] = {
 -- A fine trophy your head will make, <race>.
-["aafetyyrhdwlme.."] = [===[С твоєї голови буде гарний трофей, {раса:к}.will make, <race>.]===],
+["aafetyyrhdwlme.."] = [===[З твоєї голови буде гарний трофей, {раса:к}.#will make, <race>.]===],
 -- A foul trogg if ever I saw one.  Die!
 ["aafltgiferiiswoede"] = [===[Ще не бачив таких бридких трогів. Здохни!]===],
 -- Ah, a chance to use this freshly sharpened blade.
@@ -55,7 +55,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 -- Make yourself useful and help me out here!
 ["meyfuladhpmeothe"] = [===[Зроби хоч щось корисне і допоможи мені!]===],
 -- My talons will shred your puny body, <race>.
-["mytswlsdyrpyby.."] = [===[Мої пазурі розірвуть твоє нікчемне тіло, {раса:к}.puny body, <race>.]===],
+["mytswlsdyrpyby.."] = [===[Мої пазурі розірвуть твоє нікчемне тіло, {раса:к}.#puny body, <race>.]===],
 -- My weapon be thirsty!
 ["mywnbety"] = [===[Моя зброя хоче крові!]===],
 -- No gnome will be left behind.
@@ -119,7 +119,13 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 -- You no take candle!
 ["yunotece"] = [===[Не рухай свічу!]===],
 -- You will be easy prey, <class>.
-["yuwlbeeypy.."] = [===[Ти будеш легкою здобиччю, {клас:к}.prey, <class>.]===],
+["yuwlbeeypy.."] = [===[Ти будеш легкою здобиччю, {клас:к}.#prey, <class>.]===],
+},
+["Herald of Thrall"] = { "вісник Тралла",
+-- Be bathed in the power of the Warchief! Drink in his might! Battle for the glory of the Horde!
+["bebdinteproftewfdkinhsmtbefrtegyoftehe"] = [===[Купайтеся в силі вождя! Сповнюйтесь його могутністю! Бийтеся за славу Орди!]===],
+-- Honor your heroes! On this day, they have dealt a great blow against one of our most hated enemies! The false Warchief, Rend Blackhand, has fallen!
+["hryrhsontsdytyhedtaagtbwatoeoformthdestefewfrdbdhsfn"] = [===[Шануймо наших героїв! Цього дня вони завдали нищівного удару одному з наших найненависніших ворогів! Фальшивий вождь, Ренд Чорнорук, нарешті мертвий!]===],
 },
 ["High Overlord Saurfang"] = { "верховний надповелитель Саурфанґ",
 -- Be lifted by <name>'s accomplishment! Revel in <his/her> rallying cry!
@@ -131,7 +137,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 -- Ashes to ashes!
 ["astoas"] = [===[Прах до праху.]===],
 -- Behold Ragnaros - the Firelord! He who was ancient when this world was young! Bow before him, mortals! Bow before your ending!
-["bdrstefdhewowsatwntswdwsygbwbehmmsbwbeyreg"] = [===[Готуйтесь зустрітися з Раґнаросом - Повелителем Вогню! Тим, хто був древнім ще в часи юності цього світу! Схиліться перед ним, смертні! Схиліться перед своєю загибеллю!]===],
+["bdrstefdhewowsatwntswdwsygbwbehmmsbwbeyreg"] = [===[Готуйтесь зустрітися з Раґнаросом — Володарем Вогню! Тим, хто був древнім ще в часи юності цього світу! Схиліться перед ним, смертні! Схиліться перед своєю загибеллю!]===],
 -- Brashly, you have come to wrest the secrets of the Living Flame! You will soon regret the recklessness of your quest.
 ["byyuhecetowttessoftelgfeyuwlsnrttersofyrqt"] = [===[Ви прийшли, щоб зухвало викрасти таємниці Живого Полум'я! Незабаром ви пошкодуєте про свою необачність.]===],
 -- Impossible! Stay your attack, mortals... I submit! I submit!
@@ -159,7 +165,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 -- Fresh bread for sale!
 ["fhbdfrse"] = [===[Продається свіжий хліб!]===],
 },
-["Nefarian's Troops"] = {
+["Nefarian's Troops"] = { "війська Нефаріана",
 -- %s flee as the controlling power of the orb is drained.
 ["ssfeastecgprofteobisdd"] = [===[%s втікають, коли сила сфери домінування вичерпується.]===],
 },

@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.zone_stats = { count=3142 }
+addonTable.zone_stats = { count=3144 }
 
 addonTable.zone = { -- [key] = text
 ["7th Legion Base Camp"] = "опорний табір 7го Легіону",
@@ -378,6 +378,7 @@ addonTable.zone = { -- [key] = text
 ["Burning Blade Coven"] = "печера Палаючого Леза",
 ["Burning Blade Ruins"] = "руїни Палаючого Леза",
 ["Burning Steppes"] = "Палаючий степ",
+["Burning of Andorhal"] = "Спалення Андорала",
 ["Cache of Madness"] = "схованка божевілля",
 ["Caer Darrow"] = "Тверджа Дарроу",
 ["Caldemere Lake"] = "озеро Калдемер",
@@ -891,6 +892,7 @@ addonTable.zone = { -- [key] = text
 ["Firebeard Cemetery"] = "кладовище Вогнебородих",
 ["Firebeard's Patrol"] = "варта Вогнебородих",
 ["Firegut Furnace"] = "кузня Вогнечеревих",
+["Firelands"] = "Вогнезем'я",
 ["Fireplume Peak"] = "Вогнеперий пік",
 ["Firestone Point"] = "Кременевий табір",
 ["Firewatch Ridge"] = "Кряж Вогневарти",
@@ -1777,8 +1779,8 @@ addonTable.zone = { -- [key] = text
 ["Plaguelands"] = "Зачумлені землі",
 ["Plaguelands: The Scarlet Enclave"] = "Зачумлені землі: анклав Багряного Походу",
 ["Plaguemist Ravine"] = "яр Чумної Імли",
-["Plaguewood"] = "Чумоліс",
-["Plaguewood Tower"] = "вежа Чумолісу",
+["Plaguewood"] = "Чумолісся",
+["Plaguewood Tower"] = "вежа Чумолісся",
 ["Plain of Echoes"] = "долина Відлуння",
 ["Plain of Shards"] = "долина Осколків",
 ["Plains of Nasam"] = "рівнини Назама",
