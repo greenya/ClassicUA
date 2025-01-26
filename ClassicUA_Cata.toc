@@ -1,4 +1,4 @@
-## Interface: 40401
+## Interface: 40401, 40402
 
 ## Title: |cff1177eeClassic|r|cffffdd00UA|r
 ## Notes: Game localization to Ukrainian language.
