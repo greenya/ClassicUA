@@ -298,7 +298,11 @@
                         <th scope="col">
                             <div class="d-flex align-items-center justify-content-between">
                                 <span>Мітки</span>
-                                <span class="badge badge-warning" title="Кількість результатів пошуку">
+                                <span :class="[ 'badge', visibleTerms.length == maxVisibleTerms ? 'badge-danger' : 'badge-warning' ]"
+                                    :title="`Кількість результатів пошуку.\nМаксимально: ${formatNumber(maxVisibleTerms)}.${
+                                        visibleTerms.length == maxVisibleTerms ? '\nДеталізуйте фільтр, щоб побачити інші результати.' : ''
+                                    }`"
+                                >
                                     {{ formatNumber(visibleTerms.length) }}
                                 </span>
                             </div>
@@ -408,6 +412,7 @@
                 filterDropdownTagsCountLimit: true,
                 filterDropdownTagsText: '',
                 termDetails: {},
+                maxVisibleTerms: 1000,
             },
             created: function () {
                 this.state = 'load';
@@ -431,7 +436,8 @@
                     return this.terms
                         .filter(term => !tags.length || this.termHasTags(term, tags))
                         .filter(term => !re || term.en.search(re) >= 0 || term.uk.search(re) >= 0)
-                        .sort((term1, term2) => term1.en.localeCompare(term2.en));
+                        .sort((term1, term2) => term1.en.localeCompare(term2.en))
+                        .splice(0, this.maxVisibleTerms);
                 },
                 visibleDropdownTags: function () {
                     const re = this.filterDropdownTagsText
