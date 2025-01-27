@@ -217,7 +217,12 @@
                                 type="text" placeholder="Шукати...">
                             <div class="filter-term-bar input-group-append">
                                 <button v-for="tag in filterTags" :key="tag.name" type="button" class="btn active-tag"
-                                    :class="{ 'btn-info': tag.main && filterTagsMatchAll, 'btn-outline-info': tag.main && !filterTagsMatchAll, 'btn-secondary': !tag.main && filterTagsMatchAll, 'btn-outline-secondary': !tag.main && !filterTagsMatchAll }"
+                                    :class="{
+                                        'btn-info'              : tag.main && filterTagsMatchAll,
+                                        'btn-outline-info'      : tag.main && !filterTagsMatchAll,
+                                        'btn-secondary'         : !tag.main && filterTagsMatchAll,
+                                        'btn-outline-secondary' : !tag.main && !filterTagsMatchAll,
+                                    }"
                                     @click.prevent.stop="removeFilterTag(tag)">{{ tag.name }}</button>
                                 <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
                                     type="button" data-toggle="dropdown" data-display="static" aria-haspopup="true"
@@ -607,6 +612,7 @@
                             'sod': 'classic',
                             'tbc': 'tbc',
                             'wrath': 'wotlk',
+                            'cata': 'cata',
                         }
                         return `https://www.wowhead.com/${wh_exp_map[exp]}/npc=${id}`
                     }
