@@ -2391,6 +2391,16 @@ StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
     hideOnEscape = true
 }
 
+StaticPopupDialogs["CLASSICUA_CONFIRM_RELOAD_UI"] = {
+    text = "Дійсно перезавантажити інтерфейс гри?",
+    button1 = "Так",
+    button2 = "Ні",
+    OnAccept = ReloadUI,
+    timeout = 0,
+    whileDead = true,
+    hideOnEscape = true
+}
+
 StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
     text = "Дійсно скинути всі налаштування за замовчуванням?\n\n(Відмінювання імен персонажів скинуто не буде.)",
     button1 = "Так",
@@ -2518,7 +2528,7 @@ local function prepare_options_frame()
     f:SetText("/reload")
     f:SetSize(88, 24)
     f:SetScript("OnClick", function()
-        ReloadUI()
+        StaticPopup_Show("CLASSICUA_CONFIRM_RELOAD_UI")
     end)
     f:SetScript("OnEnter", function(self)
         local memory_usage_text = ""
