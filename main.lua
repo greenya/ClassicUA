@@ -2313,10 +2313,39 @@ end
 -- [ options frame ]
 -- -----------------
 
+StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
+    text = "Дійсно скинути всі накопичені дані?",
+    button1 = "Так",
+    button2 = "Ні",
+    OnAccept = dev_log_reset,
+    timeout = 0,
+    whileDead = true,
+    hideOnEscape = true
+}
+
+StaticPopupDialogs["CLASSICUA_CONFIRM_RELOAD_UI"] = {
+    text = "Дійсно перезавантажити інтерфейс гри?",
+    button1 = "Так",
+    button2 = "Ні",
+    OnAccept = ReloadUI,
+    timeout = 0,
+    whileDead = true,
+    hideOnEscape = true
+}
+
+StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
+    text = "Дійсно скинути всі налаштування за замовчуванням?\n\n(Відмінювання імен персонажів скинуто не буде.)",
+    button1 = "Так",
+    button2 = "Ні",
+    OnAccept = reset_options,
+    timeout = 0,
+    whileDead = true,
+    hideOnEscape = true
+}
+
 local function setup_player_name_cases_frame(content_frame)
     local root = CreateFrame("Frame", nil, content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
-    root:SetSize(1, 1)
 
     local cases = {
         { "н", "Називний — (Є) Хто? Що?" },
@@ -2378,43 +2407,13 @@ local function setup_player_name_cases_frame(content_frame)
         end
     end
 
+    root:SetSize(16, 16 + 4 * 40)
     return root
 end
-
-StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
-    text = "Дійсно скинути всі накопичені дані?",
-    button1 = "Так",
-    button2 = "Ні",
-    OnAccept = dev_log_reset,
-    timeout = 0,
-    whileDead = true,
-    hideOnEscape = true
-}
-
-StaticPopupDialogs["CLASSICUA_CONFIRM_RELOAD_UI"] = {
-    text = "Дійсно перезавантажити інтерфейс гри?",
-    button1 = "Так",
-    button2 = "Ні",
-    OnAccept = ReloadUI,
-    timeout = 0,
-    whileDead = true,
-    hideOnEscape = true
-}
-
-StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
-    text = "Дійсно скинути всі налаштування за замовчуванням?\n\n(Відмінювання імен персонажів скинуто не буде.)",
-    button1 = "Так",
-    button2 = "Ні",
-    OnAccept = reset_options,
-    timeout = 0,
-    whileDead = true,
-    hideOnEscape = true
-}
 
 local function setup_dev_mode_frame(content_frame)
     local root = CreateFrame("Frame", nil, content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
-    root:SetSize(1, 1)
 
     local dm_check = CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
     dm_check:SetPoint("TOPLEFT", 24, 0)
@@ -2458,6 +2457,7 @@ local function setup_dev_mode_frame(content_frame)
     options_frame.dev_mode_checkbox = dm_check
     options_frame.dev_mode_notify_activity_checkbox = dm_na_check
 
+    root:SetSize(16, 16 + 64 + 28)
     return root
 end
 
@@ -2619,13 +2619,13 @@ local function prepare_options_frame()
             content_text            = at_text["addon_dev_mode_desc"]:gsub("@GAME_SUB_DIR", is_classic and "_classic_era_" or "_classic_"),
             child_frame_setup_func  = setup_dev_mode_frame
         }, {
-            title           = "Оновлення",
-            content_title   = "Оновлення",
-            content_text    = at_text["addon_changelog"]
+            title                   = "Оновлення",
+            content_title           = "Оновлення",
+            content_text            = at_text["addon_changelog"]
         }, {
-            title           = "Причетні",
-            content_title   = "Причетні",
-            content_text    = at_text["addon_contributors"]
+            title                   = "Причетні",
+            content_title           = "Причетні",
+            content_text            = at_text["addon_contributors"]
         }
     }) do
         f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
@@ -2635,30 +2635,8 @@ local function prepare_options_frame()
         f:SetSize(100, 32)
         f:SetPoint("TOPLEFT", 24 + tab_index * f:GetWidth(), -200)
         f:SetText(f.tab_data.title)
-        f:SetScript("OnClick", function(self)
-            if self.tab_index == options_frame.info_tab_frame.current_tab_index then
-                return
-            end
-
-            for _, btn_frame in ipairs(options_frame.info_tab_buttons) do
-                if btn_frame.tab_index ~= self.tab_index then
-                    btn_frame:UnlockHighlight()
-                end
-            end
-
-            set_quest_content(options_frame.info_tab_frame, self.tab_data.content_title, self.tab_data.content_text)
-            options_frame.info_tab_frame.current_tab_index = self.tab_index
-            self:LockHighlight()
-
-            for child_frame_index, child_frame in ipairs(options_frame.info_tab_child_frames) do
-                if child_frame and child_frame_index ~= self.tab_index then
-                    child_frame:Hide()
-                end
-            end
-
-            if options_frame.info_tab_child_frames[self.tab_index] then
-                options_frame.info_tab_child_frames[self.tab_index]:Show()
-            end
+        f:SetScript("OnClick", function (self)
+            options_frame.select_tab(self.tab_index)
         end)
 
         options_frame.info_tab_child_frames[tab_index] = nil
@@ -2666,18 +2644,43 @@ local function prepare_options_frame()
             options_frame.info_tab_child_frames[tab_index] = tab_data.child_frame_setup_func(options_frame.info_tab_frame.content)
             options_frame.info_tab_child_frames[tab_index]:Hide()
         end
+    end
 
-        -- preselect 1st tab
-        if tab_index == 1 then
-            set_quest_content(options_frame.info_tab_frame, f.tab_data.content_title, f.tab_data.content_text)
-            options_frame.info_tab_frame.current_tab_index = 1
-            f:LockHighlight()
+    options_frame.select_tab = function (tab_index)
+        if tab_index == options_frame.info_tab_frame.current_tab_index then
+            return
+        end
 
-            if options_frame.info_tab_child_frames[1] then
-                options_frame.info_tab_child_frames[1]:Show()
+        local tab_button = options_frame.info_tab_buttons[tab_index]
+
+        for _, btn_frame in ipairs(options_frame.info_tab_buttons) do
+            if btn_frame.tab_index ~= tab_button.tab_index then
+                btn_frame:UnlockHighlight()
             end
         end
+
+        set_quest_content(options_frame.info_tab_frame, tab_button.tab_data.content_title, tab_button.tab_data.content_text)
+        options_frame.info_tab_frame.current_tab_index = tab_button.tab_index
+        tab_button:LockHighlight()
+
+        for child_frame_index in pairs(options_frame.info_tab_child_frames) do
+            child_frame = options_frame.info_tab_child_frames[child_frame_index]
+            if child_frame and child_frame_index ~= tab_button.tab_index then
+                child_frame:Hide()
+            end
+        end
+
+        local child_frame = options_frame.info_tab_child_frames[tab_button.tab_index]
+        if child_frame then
+            child_frame:Show()
+            local h = options_frame.info_tab_frame.content:GetHeight() + child_frame:GetHeight()
+            options_frame.info_tab_frame.content:SetHeight(h)
+            setup_frame_scrollbar_values(options_frame.info_tab_frame, h)
+        end
     end
+
+    options_frame.info_tab_frame.current_tab_index = -1
+    options_frame.select_tab(1)
 
     -- setup options frame details
 
