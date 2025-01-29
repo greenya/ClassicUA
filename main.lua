@@ -1762,14 +1762,19 @@ local function setup_frame_scrollbar_and_content(frame, areas, scrollframe_width
     end)
 end
 
-local function setup_frame_scrollbar_values(frame, height)
+local function setup_frame_scrollbar_values(frame, height, preserve_current_scroll_pos)
+    preserve_current_scroll_pos = preserve_current_scroll_pos or false
+
     local delta = height - frame:GetHeight() + 24
     if delta < 1 then
         delta = 1
     end
 
     frame.scrollbar:SetMinMaxValues(1, delta)
-    frame.scrollbar:SetValue(1)
+    if not preserve_current_scroll_pos then
+        frame.scrollbar:SetValue(1)
+    end
+
     frame.content:SetSize(frame.content:GetWidth(), height)
 end
 
@@ -2344,7 +2349,7 @@ StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
 }
 
 local function setup_player_name_cases_frame(content_frame)
-    local root = CreateFrame("Frame", nil, content_frame)
+    local root = CreateFrame("Frame", "ClassicUA_Player_Options", content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
 
     local cases = {
@@ -2407,12 +2412,12 @@ local function setup_player_name_cases_frame(content_frame)
         end
     end
 
-    root:SetSize(16, 16 + 4 * 40)
+    root:SetSize(content_frame:GetWidth(), 16 + 4 * 40)
     return root
 end
 
 local function setup_dev_mode_frame(content_frame)
-    local root = CreateFrame("Frame", nil, content_frame)
+    local root = CreateFrame("Frame", "ClassicUA_Dev_Mode_Options", content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
 
     local dm_check = CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
@@ -2457,7 +2462,7 @@ local function setup_dev_mode_frame(content_frame)
     options_frame.dev_mode_checkbox = dm_check
     options_frame.dev_mode_notify_activity_checkbox = dm_na_check
 
-    root:SetSize(16, 16 + 64 + 28)
+    root:SetSize(content_frame:GetWidth(), 16 + 64 + 28)
     return root
 end
 
@@ -2493,7 +2498,7 @@ end
 
 local function prepare_options_frame()
     local at_text = addonTable.text -- can not use glossary as its not prepared at this moment
-    options_frame = CreateFrame("Frame")
+    options_frame = CreateFrame("Frame", "ClassicUA_Options")
     local f = nil
 
     -- title
@@ -2523,7 +2528,7 @@ local function prepare_options_frame()
 
     -- reload button
 
-    f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
+    f = CreateFrame("Button", "$parent.Reload", options_frame, "UIPanelButtonTemplate")
     f:SetPoint("TOPRIGHT", -48, -128)
     f:SetText("/reload")
     f:SetSize(88, 24)
@@ -2553,7 +2558,7 @@ local function prepare_options_frame()
 
     -- reset button
 
-    f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
+    f = CreateFrame("Button", "$parent.Reset", options_frame, "UIPanelButtonTemplate")
     f:SetPoint("TOPRIGHT", -48, -160)
     f:SetText("Скинути")
     f:SetSize(88, 24)
@@ -2593,10 +2598,10 @@ local function prepare_options_frame()
         end
     )
 
-    -- info tabs
+    -- tabs
 
-    f = CreateFrame("Frame", nil, options_frame, "BackdropTemplate")
-    options_frame.info_tab_frame = f
+    f = CreateFrame("Frame", "$parent.Current_Tab", options_frame, "BackdropTemplate")
+    options_frame.current_tab = f
     f:SetPoint("TOPLEFT", 24, -224)
     f:SetSize(600, 340)
     setup_frame_background_and_border(f)
@@ -2605,8 +2610,10 @@ local function prepare_options_frame()
         text = { asset_font2_path, options.quest_text_size }
     }, f:GetWidth() - 16)
 
-    options_frame.info_tab_buttons = {}
-    options_frame.info_tab_child_frames = {}
+    options_frame.current_tab.selected_tab_index = -1
+    options_frame.tab_buttons = {}
+    options_frame.tab_child_frames = {}
+
     for tab_index, tab_data in ipairs({
         {
             title                   = "Персонаж",
@@ -2628,8 +2635,8 @@ local function prepare_options_frame()
             content_text            = at_text["addon_contributors"]
         }
     }) do
-        f = CreateFrame("Button", nil, options_frame, "UIPanelButtonTemplate")
-        table.insert(options_frame.info_tab_buttons, f)
+        f = CreateFrame("Button", "$parent.Tab_Button_" .. tab_index, options_frame, "UIPanelButtonTemplate")
+        table.insert(options_frame.tab_buttons, f)
         f.tab_index = tab_index
         f.tab_data = tab_data
         f:SetSize(100, 32)
@@ -2639,47 +2646,58 @@ local function prepare_options_frame()
             options_frame.select_tab(self.tab_index)
         end)
 
-        options_frame.info_tab_child_frames[tab_index] = nil
+        options_frame.tab_child_frames[tab_index] = nil
         if tab_data.child_frame_setup_func then
-            options_frame.info_tab_child_frames[tab_index] = tab_data.child_frame_setup_func(options_frame.info_tab_frame.content)
-            options_frame.info_tab_child_frames[tab_index]:Hide()
+            options_frame.tab_child_frames[tab_index] = tab_data.child_frame_setup_func(options_frame.current_tab.content)
+            options_frame.tab_child_frames[tab_index]:Hide()
+        end
+    end
+
+    options_frame.update_tab_scrollbar = function ()
+        local selected_tab_index = options_frame.current_tab.selected_tab_index
+        if selected_tab_index == -1 then
+            return
+        end
+
+        local child_frame = options_frame.tab_child_frames[selected_tab_index]
+        if child_frame then
+            local h = options_frame.current_tab.content_tab_base_height + child_frame:GetHeight()
+            setup_frame_scrollbar_values(options_frame.current_tab, h, true)
         end
     end
 
     options_frame.select_tab = function (tab_index)
-        if tab_index == options_frame.info_tab_frame.current_tab_index then
+        if tab_index == options_frame.current_tab.selected_tab_index then
             return
         end
 
-        local tab_button = options_frame.info_tab_buttons[tab_index]
+        local tab_button = options_frame.tab_buttons[tab_index]
 
-        for _, btn_frame in ipairs(options_frame.info_tab_buttons) do
+        for _, btn_frame in ipairs(options_frame.tab_buttons) do
             if btn_frame.tab_index ~= tab_button.tab_index then
                 btn_frame:UnlockHighlight()
             end
         end
 
-        set_quest_content(options_frame.info_tab_frame, tab_button.tab_data.content_title, tab_button.tab_data.content_text)
-        options_frame.info_tab_frame.current_tab_index = tab_button.tab_index
+        set_quest_content(options_frame.current_tab, tab_button.tab_data.content_title, tab_button.tab_data.content_text)
+        options_frame.current_tab.content_tab_base_height = options_frame.current_tab.content:GetHeight()
+        options_frame.current_tab.selected_tab_index = tab_button.tab_index
         tab_button:LockHighlight()
 
-        for child_frame_index in pairs(options_frame.info_tab_child_frames) do
-            child_frame = options_frame.info_tab_child_frames[child_frame_index]
+        for child_frame_index in pairs(options_frame.tab_child_frames) do
+            child_frame = options_frame.tab_child_frames[child_frame_index]
             if child_frame and child_frame_index ~= tab_button.tab_index then
                 child_frame:Hide()
             end
         end
 
-        local child_frame = options_frame.info_tab_child_frames[tab_button.tab_index]
+        local child_frame = options_frame.tab_child_frames[tab_button.tab_index]
         if child_frame then
             child_frame:Show()
-            local h = options_frame.info_tab_frame.content:GetHeight() + child_frame:GetHeight()
-            options_frame.info_tab_frame.content:SetHeight(h)
-            setup_frame_scrollbar_values(options_frame.info_tab_frame, h)
+            options_frame.update_tab_scrollbar()
         end
     end
 
-    options_frame.info_tab_frame.current_tab_index = -1
     options_frame.select_tab(1)
 
     -- setup options frame details
