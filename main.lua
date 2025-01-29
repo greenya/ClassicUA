@@ -4,79 +4,76 @@ local _, addonTable = ...
 -- [ globals ]
 -- -----------
 
-local hooksecurefunc    = _G['hooksecurefunc']
-local sort              = _G['sort']
-local strbyte           = _G['strbyte']
-local strsplit          = _G['strsplit']
-local strtrim           = _G['strtrim']
+local wow = {
+    C_ChatBubbles               = _G['C_ChatBubbles'],
+    C_GossipInfo                = _G['C_GossipInfo'],
+    C_Seasons                   = _G['C_Seasons'],
+    C_Timer                     = _G['C_Timer'],
+    ChatFrame_AddMessageEventFilter = _G['ChatFrame_AddMessageEventFilter'],
+    ChatTypeInfo                = _G['ChatTypeInfo'],
+    CreateFrame                 = _G['CreateFrame'],
+    DEFAULT_CHAT_FRAME          = _G['DEFAULT_CHAT_FRAME'],
+    DevTools_Dump               = _G['DevTools_Dump'],
+    Enum                        = _G['Enum'],
+    GameTooltip                 = _G['GameTooltip'],
+    GetAddOnInfo                = _G['GetAddOnInfo'],
+    GetAddOnMemoryUsage         = _G['GetAddOnMemoryUsage'],
+    GetAddOnMetadata            = _G['GetAddOnMetadata'],
+    GetBuildInfo                = _G['GetBuildInfo'],
+    GetMouseFoci                = _G['GetMouseFoci'],
+    GetMouseFocus               = _G['GetMouseFocus'],
+    GetNumAddOns                = _G['GetNumAddOns'],
+    GetQuestID                  = _G['GetQuestID'],
+    GetQuestLogSelection        = _G['GetQuestLogSelection'],
+    GetQuestLogTitle            = _G['GetQuestLogTitle'],
+    GetTalentInfo               = _G['GetTalentInfo'],
+    GossipFrame                 = _G['GossipFrame'],
+    hooksecurefunc              = _G['hooksecurefunc'],
+    InterfaceAddOnsList_Update  = _G['InterfaceAddOnsList_Update'],
+    InterfaceOptions_AddCategory = _G['InterfaceOptions_AddCategory'],
+    InterfaceOptionsFrame_OpenToCategory = _G['InterfaceOptionsFrame_OpenToCategory'],
+    ItemRefTooltip              = _G['ItemRefTooltip'],
+    ItemTextGetPage             = _G['ItemTextGetPage'],
+    ItemTextGetText             = _G['ItemTextGetText'],
+    ItemTextScrollFrame         = _G['ItemTextScrollFrame'],
+    MinimapZoneText             = _G['MinimapZoneText'],
+    PVPArenaTextString          = _G['PVPArenaTextString'],
+    PVPInfoTextString           = _G['PVPInfoTextString'],
+    QuestFrame                  = _G['QuestFrame'],
+    QuestFrameDetailPanel       = _G['QuestFrameDetailPanel'],
+    QuestFrameProgressPanel     = _G['QuestFrameProgressPanel'],
+    QuestFrameRewardPanel       = _G['QuestFrameRewardPanel'],
+    QuestLogDetailScrollFrame   = _G['QuestLogDetailScrollFrame'],
+    TargetFrame                 = _G['TargetFrame'],
+    UnitAura                    = _G['UnitAura'],
+    UnitClass                   = _G['UnitClass'],
+    UnitFactionGroup            = _G['UnitFactionGroup'],
+    UnitGUID                    = _G['UnitGUID'],
+    UnitName                    = _G['UnitName'],
+    UnitRace                    = _G['UnitRace'],
+    UnitSex                     = _G['UnitSex'],
+    UpdateAddOnMemoryUsage      = _G['UpdateAddOnMemoryUsage'],
+    ReloadUI                    = _G['ReloadUI'],
+    Settings                    = _G['Settings'],
+    ShoppingTooltip1            = _G['ShoppingTooltip1'],
+    ShoppingTooltip2            = _G['ShoppingTooltip2'],
+    ShouldShowName              = _G['ShouldShowName'],
+    SlashCmdList                = _G['SlashCmdList'],
+    StaticPopup_Show            = _G['StaticPopup_Show'],
+    StaticPopupDialogs          = _G['StaticPopupDialogs'],
+    SubZoneTextString           = _G['SubZoneTextString'],
+    WorldMapTooltip             = _G['WorldMapTooltip'],
+    WorldFrame                  = _G['WorldFrame'],
+    WorldMapFrame               = _G['WorldMapFrame'],
+    ZoneTextString              = _G['ZoneTextString'],
+}
 
-local C_ChatBubbles             = _G['C_ChatBubbles']
-local C_GossipInfo              = _G['C_GossipInfo']
-local C_Seasons                 = _G['C_Seasons']
-local C_Timer                   = _G['C_Timer']
-local ChatFrame_AddMessageEventFilter = _G['ChatFrame_AddMessageEventFilter']
-local ChatTypeInfo              = _G['ChatTypeInfo']
-local CreateFrame               = _G['CreateFrame']
-local DEFAULT_CHAT_FRAME        = _G['DEFAULT_CHAT_FRAME']
-local DevTools_Dump             = _G['DevTools_Dump']
-local Enum                      = _G['Enum']
-local GameTooltip               = _G['GameTooltip']
-local GetAddOnInfo              = _G['GetAddOnInfo']
-local GetAddOnMemoryUsage       = _G['GetAddOnMemoryUsage']
-local GetAddOnMetadata          = _G['GetAddOnMetadata']
-local GetBuildInfo              = _G['GetBuildInfo']
-local GetMouseFoci              = _G['GetMouseFoci']
-local GetMouseFocus             = _G['GetMouseFocus']
-local GetNumAddOns              = _G['GetNumAddOns']
-local GetQuestID                = _G['GetQuestID']
-local GetQuestLogSelection      = _G['GetQuestLogSelection']
-local GetQuestLogTitle          = _G['GetQuestLogTitle']
-local GetTalentInfo             = _G['GetTalentInfo']
-local GossipFrame               = _G['GossipFrame']
-local InterfaceAddOnsList_Update = _G['InterfaceAddOnsList_Update']
-local InterfaceOptions_AddCategory = _G['InterfaceOptions_AddCategory']
-local InterfaceOptionsFrame_OpenToCategory = _G['InterfaceOptionsFrame_OpenToCategory']
-local ItemRefTooltip            = _G['ItemRefTooltip']
-local ItemTextGetPage           = _G['ItemTextGetPage']
-local ItemTextGetText           = _G['ItemTextGetText']
-local ItemTextScrollFrame       = _G['ItemTextScrollFrame']
-local MinimapZoneText           = _G['MinimapZoneText']
-local PVPArenaTextString        = _G['PVPArenaTextString']
-local PVPInfoTextString         = _G['PVPInfoTextString']
-local QuestFrame                = _G['QuestFrame']
-local QuestFrameDetailPanel     = _G['QuestFrameDetailPanel']
-local QuestFrameProgressPanel   = _G['QuestFrameProgressPanel']
-local QuestFrameRewardPanel     = _G['QuestFrameRewardPanel']
-local QuestLogDetailScrollFrame = _G['QuestLogDetailScrollFrame']
-local TargetFrame               = _G['TargetFrame']
-local UnitAura                  = _G['UnitAura']
-local UnitClass                 = _G['UnitClass']
-local UnitFactionGroup          = _G['UnitFactionGroup']
-local UnitGUID                  = _G['UnitGUID']
-local UnitName                  = _G['UnitName']
-local UnitRace                  = _G['UnitRace']
-local UnitSex                   = _G['UnitSex']
-local UpdateAddOnMemoryUsage    = _G['UpdateAddOnMemoryUsage']
-local ReloadUI                  = _G['ReloadUI']
-local Settings                  = _G['Settings']
-local ShoppingTooltip1          = _G['ShoppingTooltip1']
-local ShoppingTooltip2          = _G['ShoppingTooltip2']
-local ShouldShowName            = _G['ShouldShowName']
-local SlashCmdList              = _G['SlashCmdList']
-local StaticPopup_Show          = _G['StaticPopup_Show']
-local StaticPopupDialogs        = _G['StaticPopupDialogs']
-local SubZoneTextString         = _G['SubZoneTextString']
-local WorldMapTooltip           = _G['WorldMapTooltip']
-local WorldFrame                = _G['WorldFrame']
-local WorldMapFrame             = _G['WorldMapFrame']
-local ZoneTextString            = _G['ZoneTextString']
-
-local build_info = GetBuildInfo()
-local is_classic = strbyte(build_info, 1) == 49
-local is_classic_sod = is_classic and C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
-local is_tbc = strbyte(build_info, 1) == 50
-local is_wrath = strbyte(build_info, 1) == 51
-local is_cata = strbyte(build_info, 1) == 52
+local build_info = wow.GetBuildInfo()
+local is_classic = string.byte(build_info, 1) == string.byte("1")
+local is_classic_sod = is_classic and wow.C_Seasons and wow.C_Seasons.HasActiveSeason() and wow.C_Seasons.GetActiveSeason() == wow.Enum.SeasonID.SeasonOfDiscovery
+local is_tbc = string.byte(build_info, 1) == string.byte("2")
+local is_wrath = string.byte(build_info, 1) == string.byte("3")
+local is_cata = string.byte(build_info, 1) == string.byte("4")
 
 local asset_ua_code = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t"
 local asset_font1_path = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
@@ -107,8 +104,8 @@ local function game_expansion_key()
 end
 
 local function dump(value)
-    if type(DevTools_Dump) == "function" then
-        DevTools_Dump(value)
+    if type(wow.DevTools_Dump) == "function" then
+        wow.DevTools_Dump(value)
     else
         print("[dump]", value)
     end
@@ -136,9 +133,9 @@ local function table_keys_count(table)
 end
 
 local function capitalize(text)
-    local b1 = strbyte(text, 1)
+    local b1 = string.byte(text, 1)
     if b1 >= 208 and b1 <= 210 then -- this is utf8 character, 2 bytes long
-        local b2 = strbyte(text, 2)
+        local b2 = string.byte(text, 2)
         if b1 == 209 and b2 == 148 then
             return 'Є' .. text:sub(3)
         elseif b1 == 209 and b2 == 150 then
@@ -200,7 +197,7 @@ end
 
 local function first_line_only(text)
     if type(text) == "string" then
-        local lines = { strsplit("\n\r", text) }
+        local lines = { string.split("\n\r", text) }
         local esc_nl_pos = lines[1]:find("|n")
         if esc_nl_pos then
             return lines[1]:sub(1, esc_nl_pos - 1)
@@ -240,9 +237,9 @@ end
 -- unit_id is one of https://warcraft.wiki.gg/wiki/UnitId
 local function npc_id_from_unit_id(unit_id)
     if type(unit_id) == "string" then
-        local guid = UnitGUID(unit_id)
+        local guid = wow.UnitGUID(unit_id)
         if guid then
-            local kind, _, _, _, _, id, _ = strsplit("-", guid)
+            local kind, _, _, _, _, id, _ = string.split("-", guid)
             if id and (kind == "Creature" or kind == "Vehicle") then
                 return tonumber(id)
             end
@@ -251,7 +248,7 @@ local function npc_id_from_unit_id(unit_id)
 end
 
 local function chat_bubble_font_string_with_text(text)
-    local bubbles = C_ChatBubbles:GetAllChatBubbles()
+    local bubbles = wow.C_ChatBubbles:GetAllChatBubbles()
     for _, bubble in pairs(bubbles) do
         if not bubble:IsForbidden() then
             local frame = select(1, bubble:GetChildren())
@@ -266,10 +263,10 @@ local function chat_bubble_font_string_with_text(text)
 end
 
 local function mouse_hover_frame()
-    if GetMouseFocus then
-        return GetMouseFocus()
-    elseif GetMouseFoci then
-        return GetMouseFoci()[1]
+    if wow.GetMouseFocus then
+        return wow.GetMouseFocus()
+    elseif wow.GetMouseFoci then
+        return wow.GetMouseFoci()[1]
     end
 end
 
@@ -432,11 +429,11 @@ local default_dev_log = {
 }
 
 local function dev_log_print(text)
-    DEFAULT_CHAT_FRAME:AddMessage(asset_ua_code .. " |cff4488aa[Розробка] " .. text .. "|r")
+    wow.DEFAULT_CHAT_FRAME:AddMessage(asset_ua_code .. " |cff4488aa[Розробка] " .. text .. "|r")
 end
 
 local function dev_log_init()
-    dev_log.addon_version = GetAddOnMetadata("ClassicUA", "Version")
+    dev_log.addon_version = wow.GetAddOnMetadata("ClassicUA", "Version")
     dev_log.game_version = build_info
     dev_log.game_expansion = game_expansion_key()
 
@@ -770,7 +767,7 @@ local function prepare_glossary()
     -- collect text-key entries: text, zone, object
     for _, entry_type in pairs({ "text", "zone", "object" }) do
         for entry_key, entry_value in pairs(at[entry_type]) do
-            local glossary_key = strtrim(entry_key:lower())
+            local glossary_key = string.trim(entry_key:lower())
             if not glossary[glossary_key] then
                 glossary[glossary_key] = entry_value
             end
@@ -795,7 +792,7 @@ local function prepare_glossary()
     for _, entry_type in pairs({ "quest_faction", "quest_both", "npc" }) do
         for _, entry_value in pairs(at[entry_type]) do
             if entry_value.en then
-                local glossary_key = strtrim(entry_value.en:lower())
+                local glossary_key = string.trim(entry_value.en:lower())
                 if not glossary[glossary_key] then
                     glossary[glossary_key] = entry_value[1]
                 end
@@ -912,13 +909,13 @@ end
 local function make_chat_text(original, translation)
     local known_templates = { ["name"] = true, ["race"] = true, ["class"] = true, ["target"] = true }
     local at = addonTable
-    local sex = UnitSex("player") == 2 and 1 or 2  -- UnitSex("player") == 2 - male
+    local sex = wow.UnitSex("player") == 2 and 1 or 2  -- UnitSex("player") == 2 - male
 
     if not translation then
         return nil
     end
 
-    local translation_split = { strsplit("#", translation) }
+    local translation_split = { string.split("#", translation) }
     if #translation_split == 1 then
         return translation_split[1]
     end
@@ -953,7 +950,7 @@ local function make_chat_text(original, translation)
     end
 
     for pattern_uk in translation:gmatch("{(.-)}") do
-        local pattern_uk_split = { strsplit(":", pattern_uk) }
+        local pattern_uk_split = { string.split(":", pattern_uk) }
         local pattern_uk_type = pattern_uk_split[1]
         local case = pattern_uk_split[2] or "н"
         pattern_uk = "{" .. pattern_uk .. "}"
@@ -961,7 +958,7 @@ local function make_chat_text(original, translation)
         if lower(pattern_uk_type) == "ім'я" then
             local name_en = template_matches["name"]
             local name_uk
-            if name_en == UnitName("player") then
+            if name_en == wow.UnitName("player") then
                 name_uk = character_options.name_cases and character_options.name_cases[case] or name_en
             else
                 name_uk = name_en
@@ -996,7 +993,7 @@ local function make_chat_text(original, translation)
         if lower(pattern_uk_type) == "ціль" then
             local target_en = template_matches["target"]
             local target_uk
-            if target_en == UnitName("player") then
+            if target_en == wow.UnitName("player") then
                 target_uk = character_options.name_cases and character_options.name_cases[case]
             elseif at.class[target_en:upper():gsub(" ", "")] then
                 target_uk = at.class[target_en:upper():gsub(" ", "")][case][sex]
@@ -1107,7 +1104,7 @@ local function get_entry(entry_type, entry_id)
         if book then
             return make_text_array(book)
         elseif options.dev_mode and entry_id ~= 8383 then -- #8383 is a saved letter inventory item
-            dev_log_missing_book_page(entry_id, ItemTextGetPage(), ItemTextGetText())
+            dev_log_missing_book_page(entry_id, wow.ItemTextGetPage(), wow.ItemTextGetText())
         end
 
         return
@@ -1156,7 +1153,7 @@ local function make_entry_text(text, tooltip, tooltip_matches_to_skip)
     local tt_lines = tooltip_lines(tooltip)
 
     text = resolve_optional_entry_text(text, tt_lines, tooltip_matches_to_skip)
-    text = { strsplit("#", text) }
+    text = { string.split("#", text) }
 
     local values = {}
     for i = 2, #text do
@@ -1309,11 +1306,11 @@ end
 
 local known_tooltips = {}
 for _, tt in pairs({
-    GameTooltip,
-    ShoppingTooltip1,
-    ShoppingTooltip2,
-    ItemRefTooltip,
-    WorldMapTooltip, -- Note: WorldMapTooltip is deprecated in 8.1.5
+    wow.GameTooltip,
+    wow.ShoppingTooltip1,
+    wow.ShoppingTooltip2,
+    wow.ItemRefTooltip,
+    wow.WorldMapTooltip, -- Note: WorldMapTooltip is deprecated in 8.1.5
 }) do
     if tt then
         known_tooltips[#known_tooltips + 1] = tt
@@ -1519,7 +1516,7 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key)
             if tooltip:IsShown() then
                 tooltip:Show()
             end
-        elseif options.dev_mode and mouse_hover_frame() == WorldFrame then
+        elseif options.dev_mode and mouse_hover_frame() == wow.WorldFrame then
             dev_log_missing_object(glossary_key)
         end
     end
@@ -1658,7 +1655,7 @@ for _, tt in pairs(known_tooltips) do
     tt:HookScript("OnUpdate", tooltip_updated)
     tt:HookScript("OnTooltipCleared", tooltip_cleared)
 
-    if tt == ItemRefTooltip then
+    if tt == wow.ItemRefTooltip then
         -- ItemRefTooltip is "special" tooltip as it clears "OnUpdate" hook every time,
         -- making it work only once, so we reset it back.
         -- Some details here: https://github.com/arkayenro/arkinventory/issues/1337
@@ -1672,29 +1669,29 @@ for _, tt in pairs(known_tooltips) do
     end
 end
 
-hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index, _, is_pet)
+wow.hooksecurefunc(wow.GameTooltip, "SetTalent", function (self, tab_index, talent_index, _, is_pet)
     if not is_pet then
-        local _, _, tier, column, rank, max_rank = GetTalentInfo(tab_index, talent_index)
+        local _, _, tier, column, rank, max_rank = wow.GetTalentInfo(tab_index, talent_index)
         add_talent_entry_to_tooltip(self, tab_index, tier, column, rank, max_rank)
     end
 end)
 
-hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
-    local id = select(10, UnitAura(unit, index, filter))
+wow.hooksecurefunc(wow.GameTooltip, "SetUnitAura", function (self, unit, index, filter)
+    local id = select(10, wow.UnitAura(unit, index, filter))
     if id then
         add_entry_to_tooltip(self, "spell", id, true)
     end
 end)
 
-hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
-    local id = select(10, UnitAura(unit, index, "HELPFUL"))
+wow.hooksecurefunc(wow.GameTooltip, "SetUnitBuff", function (self, unit, index)
+    local id = select(10, wow.UnitAura(unit, index, "HELPFUL"))
     if id then
         add_entry_to_tooltip(self, "spell", id, true)
     end
 end)
 
-hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
-    local id = select(10, UnitAura(unit, index, "HARMFUL"))
+wow.hooksecurefunc(wow.GameTooltip, "SetUnitDebuff", function (self, unit, index)
+    local id = select(10, wow.UnitAura(unit, index, "HARMFUL"))
     if id then
         add_entry_to_tooltip(self, "spell", id, true)
     end
@@ -1719,13 +1716,13 @@ end
 
 -- areas: { area1 = { font, size }, ... }
 local function setup_frame_scrollbar_and_content(frame, areas, scrollframe_width_override)
-    local scrollframe = CreateFrame("ScrollFrame", nil, frame)
+    local scrollframe = wow.CreateFrame("ScrollFrame", nil, frame)
     scrollframe:SetPoint("TOPLEFT", 8, -9)
     scrollframe:SetPoint("BOTTOMRIGHT", -8, 9)
     frame.scrollframe = scrollframe
     local scrollframe_width = scrollframe_width_override or scrollframe:GetWidth()
 
-    local content = CreateFrame("Frame", nil, scrollframe)
+    local content = wow.CreateFrame("Frame", nil, scrollframe)
     content:SetSize(scrollframe_width - 60, 0)
     scrollframe:SetScrollChild(content)
     frame.content = content
@@ -1742,7 +1739,7 @@ local function setup_frame_scrollbar_and_content(frame, areas, scrollframe_width
         frame[k] = a
     end
 
-    local scrollbar = CreateFrame("Slider", nil, scrollframe, "UIPanelScrollBarTemplate")
+    local scrollbar = wow.CreateFrame("Slider", nil, scrollframe, "UIPanelScrollBarTemplate")
     scrollbar:SetPoint("TOPLEFT", frame, "TOPRIGHT", -26, -27)
     scrollbar:SetPoint("BOTTOMLEFT", frame, "BOTTOMRIGHT", 0, 26)
     scrollbar:SetValueStep(40)
@@ -1788,8 +1785,8 @@ local function get_quest_frame(name)
         return quest_frames[name]
     end
 
-    local width, height = QuestFrame:GetSize()
-    local frame = CreateFrame("Frame", nil, QuestFrame, "BackdropTemplate")
+    local width, height = wow.QuestFrame:GetSize()
+    local frame = wow.CreateFrame("Frame", nil, wow.QuestFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
     frame:SetSize(width - 64, height - 160)
     frame:SetPoint("TOP", 0, -72)
@@ -1846,9 +1843,9 @@ local function set_quest_content(frame, title, text, more_title, more_text)
     setup_frame_scrollbar_values(frame, h)
 end
 
-QuestFrameDetailPanel:HookScript("OnShow", function (self)
+wow.QuestFrameDetailPanel:HookScript("OnShow", function (self)
     local frame = get_quest_frame("detail")
-    local entry = get_entry("quest", GetQuestID())
+    local entry = get_entry("quest", wow.GetQuestID())
     if entry then
         set_quest_content(frame, entry[1], entry[2], "Доручення", entry[3])
         frame:Show()
@@ -1857,14 +1854,14 @@ QuestFrameDetailPanel:HookScript("OnShow", function (self)
     end
 end)
 
-QuestFrameDetailPanel:HookScript("OnHide", function (self)
+wow.QuestFrameDetailPanel:HookScript("OnHide", function (self)
     local frame = get_quest_frame("detail")
     frame:Hide()
 end)
 
-QuestFrameProgressPanel:HookScript("OnShow", function (self)
+wow.QuestFrameProgressPanel:HookScript("OnShow", function (self)
     local frame = get_quest_frame("progress")
-    local entry = get_entry("quest", GetQuestID())
+    local entry = get_entry("quest", wow.GetQuestID())
     if entry then
         set_quest_content(frame, entry[1], entry[4])
         frame:Show()
@@ -1873,14 +1870,14 @@ QuestFrameProgressPanel:HookScript("OnShow", function (self)
     end
 end)
 
-QuestFrameProgressPanel:HookScript("OnHide", function (self)
+wow.QuestFrameProgressPanel:HookScript("OnHide", function (self)
     local frame = get_quest_frame("progress")
     frame:Hide()
 end)
 
-QuestFrameRewardPanel:HookScript("OnShow", function (self)
+wow.QuestFrameRewardPanel:HookScript("OnShow", function (self)
     local frame = get_quest_frame("reward")
-    local entry = get_entry("quest", GetQuestID())
+    local entry = get_entry("quest", wow.GetQuestID())
     if entry then
         set_quest_content(frame, entry[1], entry[5])
         frame:Show()
@@ -1889,7 +1886,7 @@ QuestFrameRewardPanel:HookScript("OnShow", function (self)
     end
 end)
 
-QuestFrameRewardPanel:HookScript("OnHide", function (self)
+wow.QuestFrameRewardPanel:HookScript("OnHide", function (self)
     local frame = get_quest_frame("reward")
     frame:Hide()
 end)
@@ -1900,8 +1897,8 @@ local function get_questlog_frame()
         return questlog_frame
     end
 
-    local width, height = QuestLogDetailScrollFrame:GetSize()
-    local frame = CreateFrame("Frame", nil, QuestLogDetailScrollFrame, "BackdropTemplate")
+    local width, height = wow.QuestLogDetailScrollFrame:GetSize()
+    local frame = wow.CreateFrame("Frame", nil, wow.QuestLogDetailScrollFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
     frame:SetSize(width + 18, height + 18)
     frame:SetPoint("TOP", 0, 18/2)
@@ -1922,15 +1919,15 @@ local function get_questlog_frame()
     return questlog_frame
 end
 
-hooksecurefunc("SelectQuestLogEntry", function ()
+wow.hooksecurefunc("SelectQuestLogEntry", function ()
     if not addonTable.quest_faction then -- need to test quest_faction, as prepare_quests() might not be called just yet
         return
     end
 
     local frame = get_questlog_frame()
-    local selection = GetQuestLogSelection()
+    local selection = wow.GetQuestLogSelection()
     if selection > 0 then
-        local id = select(8, GetQuestLogTitle(selection))
+        local id = select(8, wow.GetQuestLogTitle(selection))
         local entry = get_entry("quest", id)
         if entry then
             set_quest_content(frame, entry[1], entry[3], "Опис", entry[2])
@@ -1953,8 +1950,8 @@ local function get_gossip_frame()
         return gossip_frame
     end
 
-    local width, height = GossipFrame.GreetingPanel.ScrollBox:GetSize()
-    local frame = CreateFrame("Frame", nil, GossipFrame.GreetingPanel.ScrollBar, "BackdropTemplate")
+    local width, height = wow.GossipFrame.GreetingPanel.ScrollBox:GetSize()
+    local frame = wow.CreateFrame("Frame", nil, wow.GossipFrame.GreetingPanel.ScrollBar, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
 
     if is_wrath then
@@ -1993,7 +1990,7 @@ end
 local function show_gossip()
     local npc_id = npc_id_from_unit_id("npc")
     if npc_id then
-        local gossip_text_en = C_GossipInfo:GetText()
+        local gossip_text_en = wow.C_GossipInfo:GetText()
         local gossip_text_ua, gossip_code = get_gossip_text(npc_id, gossip_text_en)
         if gossip_text_ua then
             set_gossip_content(gossip_text_ua)
@@ -2021,8 +2018,8 @@ local function get_book_frame()
         return book_frame
     end
 
-    local width, height = ItemTextScrollFrame:GetSize()
-    local frame = CreateFrame("Frame", nil, ItemTextScrollFrame, "BackdropTemplate")
+    local width, height = wow.ItemTextScrollFrame:GetSize()
+    local frame = wow.CreateFrame("Frame", nil, wow.ItemTextScrollFrame, "BackdropTemplate")
     frame:SetFrameStrata("HIGH")
     frame:SetSize(width + 18, height + 18)
     frame:SetPoint("TOP", 0, 18/2)
@@ -2054,7 +2051,7 @@ end
 local function show_book()
     local book = get_entry("book", book_item_id)
     if book then
-        local page = ItemTextGetPage()
+        local page = wow.ItemTextGetPage()
         if not book[page] and book[1] then
             book[page] = book[1]
         end
@@ -2074,11 +2071,11 @@ end
 
 local zone_text_lookup = {
     -- { FontString object, lookup function }
-    { ZoneTextString, get_glossary_text },
-    { SubZoneTextString, get_glossary_text },
-    { MinimapZoneText, get_glossary_text },
-    { PVPInfoTextString, get_glossary_text },
-    { PVPArenaTextString, get_glossary_text },
+    { wow.ZoneTextString, get_glossary_text },
+    { wow.SubZoneTextString, get_glossary_text },
+    { wow.MinimapZoneText, get_glossary_text },
+    { wow.PVPInfoTextString, get_glossary_text },
+    { wow.PVPArenaTextString, get_glossary_text },
 }
 
 local function update_zone_text()
@@ -2131,10 +2128,10 @@ local is_world_map_dropdowns_translation_old_ways_supported =
     DropDownList1Button1
 
 if is_world_map_dropdowns_translation_old_ways_supported then
-    local world_map_original_set_map_id = WorldMapFrame.SetMapID
+    local world_map_original_set_map_id = wow.WorldMapFrame.SetMapID
     local world_map_dds = { WorldMapContinentDropDown, WorldMapZoneDropDown }
 
-    WorldMapFrame.SetMapID = function (self, mapID)
+    wow.WorldMapFrame.SetMapID = function (self, mapID)
         world_map_original_set_map_id(self, mapID)
 
         for _, v in ipairs(world_map_dds) do
@@ -2178,7 +2175,7 @@ if is_world_map_dropdowns_translation_old_ways_supported then
                 end
             end
 
-            sort(texts)
+            table.sort(texts)
             local h = DropDownList1Button1:GetHeight()
             for i = 1, #texts do
                 buttons[texts[i]]:SetPoint("TOPLEFT", 16, - i * h)
@@ -2204,7 +2201,7 @@ local function world_map_area_label_update(self)
 end
 
 local function prepare_world_map()
-    for provider, _ in pairs(WorldMapFrame.dataProviders) do
+    for provider, _ in pairs(wow.WorldMapFrame.dataProviders) do
         if provider.setAreaLabelCallback and provider.Label and provider.Label.Name then
             local _, size, style = provider.Label.Name:GetFont()
             provider.Label.Name:SetFont(asset_font2_path, size, style)
@@ -2223,9 +2220,9 @@ local function update_target_frame_text()
     if npc_id then
         local entry = get_entry("npc", npc_id)
         if entry then
-            TargetFrame.name:SetText(capitalize(entry[1]))
+            wow.TargetFrame.name:SetText(capitalize(entry[1]))
         elseif options.dev_mode then
-            dev_log_missing_npc(npc_id, UnitName("target"))
+            dev_log_missing_npc(npc_id, wow.UnitName("target"))
         end
     end
 end
@@ -2234,15 +2231,15 @@ end
 -- [ name plates ]
 -- ---------------
 
-hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
-    if ShouldShowName(self) and not self:IsForbidden() then
+wow.hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
+    if wow.ShouldShowName(self) and not self:IsForbidden() then
         local npc_id = npc_id_from_unit_id(self.unit)
         if npc_id then
             local entry = get_entry("npc", npc_id)
             if entry then
                 self.name:SetText(capitalize(entry[1]))
             elseif options.dev_mode then
-                dev_log_missing_npc(npc_id, UnitName(self.unit))
+                dev_log_missing_npc(npc_id, wow.UnitName(self.unit))
             end
         end
     end
@@ -2253,13 +2250,13 @@ end)
 -- --------
 
 local known_chat_msg_events = {
-    CHAT_MSG_MONSTER_EMOTE      = { info=ChatTypeInfo.MONSTER_EMOTE,        verb=false },
-    CHAT_MSG_MONSTER_PARTY      = { info=ChatTypeInfo.MONSTER_PARTY,        verb="говорить" },
-    CHAT_MSG_MONSTER_SAY        = { info=ChatTypeInfo.MONSTER_SAY,          verb="говорить" },
-    CHAT_MSG_MONSTER_WHISPER    = { info=ChatTypeInfo.MONSTER_WHISPER,      verb="шепоче" },
-    CHAT_MSG_MONSTER_YELL       = { info=ChatTypeInfo.MONSTER_YELL,         verb="вигукує" },
-    CHAT_MSG_RAID_BOSS_EMOTE    = { info=ChatTypeInfo.RAID_BOSS_EMOTE,      verb=false },
-    CHAT_MSG_RAID_BOSS_WHISPER  = { info=ChatTypeInfo.RAID_BOSS_WHISPER,    verb="шепоче" },
+    CHAT_MSG_MONSTER_EMOTE      = { info=wow.ChatTypeInfo.MONSTER_EMOTE,        verb=false },
+    CHAT_MSG_MONSTER_PARTY      = { info=wow.ChatTypeInfo.MONSTER_PARTY,        verb="говорить" },
+    CHAT_MSG_MONSTER_SAY        = { info=wow.ChatTypeInfo.MONSTER_SAY,          verb="говорить" },
+    CHAT_MSG_MONSTER_WHISPER    = { info=wow.ChatTypeInfo.MONSTER_WHISPER,      verb="шепоче" },
+    CHAT_MSG_MONSTER_YELL       = { info=wow.ChatTypeInfo.MONSTER_YELL,         verb="вигукує" },
+    CHAT_MSG_RAID_BOSS_EMOTE    = { info=wow.ChatTypeInfo.RAID_BOSS_EMOTE,      verb=false },
+    CHAT_MSG_RAID_BOSS_WHISPER  = { info=wow.ChatTypeInfo.RAID_BOSS_WHISPER,    verb="шепоче" },
 }
 
 local function filter_chat_msg(self, event, chat_text, npc_name, ...)
@@ -2268,7 +2265,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, ...)
         return nil, chat_text, npc_name, ...
     end
 
-    if npc_name == UnitName("player") then
+    if npc_name == wow.UnitName("player") then
         npc_name = "!player"
     end
 
@@ -2289,7 +2286,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, ...)
         chat_message = string.format("%s %s: %s", npc_name_uk, known_event.verb, chat_text_uk)
 
         -- chat bubble is not spawned just yet, so we wait a moment
-        C_Timer.After(0.01, function ()
+        wow.C_Timer.After(0.01, function ()
             local font_string = chat_bubble_font_string_with_text(chat_text)
             if font_string then
                 font_string:SetText(chat_text_uk)
@@ -2311,14 +2308,14 @@ local function filter_chat_msg(self, event, chat_text, npc_name, ...)
 end
 
 for event_name, _ in pairs(known_chat_msg_events) do
-    ChatFrame_AddMessageEventFilter(event_name, filter_chat_msg)
+    wow.ChatFrame_AddMessageEventFilter(event_name, filter_chat_msg)
 end
 
 -- -----------------
 -- [ options frame ]
 -- -----------------
 
-StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
+wow.StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
     text = "Дійсно скинути всі накопичені дані?",
     button1 = "Так",
     button2 = "Ні",
@@ -2328,17 +2325,17 @@ StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
     hideOnEscape = true
 }
 
-StaticPopupDialogs["CLASSICUA_CONFIRM_RELOAD_UI"] = {
+wow.StaticPopupDialogs["CLASSICUA_CONFIRM_RELOAD_UI"] = {
     text = "Дійсно перезавантажити інтерфейс гри?",
     button1 = "Так",
     button2 = "Ні",
-    OnAccept = ReloadUI,
+    OnAccept = wow.ReloadUI,
     timeout = 0,
     whileDead = true,
     hideOnEscape = true
 }
 
-StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
+wow.StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
     text = "Дійсно скинути всі налаштування за замовчуванням?\n\n(Відмінювання імен персонажів скинуто не буде.)",
     button1 = "Так",
     button2 = "Ні",
@@ -2349,7 +2346,7 @@ StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
 }
 
 local function setup_player_name_cases_frame(content_frame)
-    local root = CreateFrame("Frame", "ClassicUA_Player_Options", content_frame)
+    local root = wow.CreateFrame("Frame", "ClassicUA_Player_Options", content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
 
     local cases = {
@@ -2377,7 +2374,7 @@ local function setup_player_name_cases_frame(content_frame)
         label:SetTextColor(0, 0, 0)
         label:SetText(case_name)
 
-        local edit_box = CreateFrame("EditBox", nil, root, "InputBoxTemplate")
+        local edit_box = wow.CreateFrame("EditBox", nil, root, "InputBoxTemplate")
         edit_box:SetPoint("TOPLEFT", x, y - 4)
         edit_box:SetSize(edit_box_width, 40)
         edit_box:SetAutoFocus(false)
@@ -2389,7 +2386,7 @@ local function setup_player_name_cases_frame(content_frame)
 
         edit_box:SetScript("OnTextChanged", function (self, is_user_input)
             if is_user_input then
-                local new_text = strtrim(self:GetText() or "")
+                local new_text = string.trim(self:GetText() or "")
                 character_options.name_cases[self.case_key] = new_text
             end
         end)
@@ -2417,10 +2414,10 @@ local function setup_player_name_cases_frame(content_frame)
 end
 
 local function setup_dev_mode_frame(content_frame)
-    local root = CreateFrame("Frame", "ClassicUA_Dev_Mode_Options", content_frame)
+    local root = wow.CreateFrame("Frame", "ClassicUA_Dev_Mode_Options", content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
 
-    local dm_check = CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
+    local dm_check = wow.CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
     dm_check:SetPoint("TOPLEFT", 24, 0)
     dm_check.Text:SetText("Режим розробки")
     dm_check:SetChecked(options.dev_mode)
@@ -2428,7 +2425,7 @@ local function setup_dev_mode_frame(content_frame)
         options.dev_mode = self:GetChecked()
     end)
 
-    local dm_na_check = CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
+    local dm_na_check = wow.CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
     dm_na_check:SetPoint("TOPLEFT", 24, -28)
     dm_na_check.Text:SetText("Сповіщення активності")
     dm_na_check:SetChecked(options.dev_mode_notify_activity)
@@ -2436,14 +2433,14 @@ local function setup_dev_mode_frame(content_frame)
         options.dev_mode_notify_activity = self:GetChecked()
     end)
     dm_na_check:SetScript("OnEnter", function(self)
-        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        GameTooltip:SetText("Сповіщати в чат кожен раз при знаходженні нового відсутнього запису.", nil, nil, nil, nil, true)
+        wow.GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        wow.GameTooltip:SetText("Сповіщати в чат кожен раз при знаходженні нового відсутнього запису.", nil, nil, nil, nil, true)
     end)
     dm_na_check:SetScript("OnLeave", function()
-        GameTooltip:Hide()
+        wow.GameTooltip:Hide()
     end)
 
-    local stats_btn = CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
+    local stats_btn = wow.CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
     stats_btn:SetPoint("TOPLEFT", 24, -64)
     stats_btn:SetText("Статистика")
     stats_btn:SetSize(140, 28)
@@ -2451,12 +2448,12 @@ local function setup_dev_mode_frame(content_frame)
         dev_log_print_stats()
     end)
 
-    local reset_btn = CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
+    local reset_btn = wow.CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
     reset_btn:SetPoint("TOPLEFT", 24 + 160, -64)
     reset_btn:SetText("Скинути")
     reset_btn:SetSize(140, 28)
     reset_btn:SetScript("OnClick", function()
-        StaticPopup_Show("CLASSICUA_CONFIRM_DEV_LOG_RESET")
+        wow.StaticPopup_Show("CLASSICUA_CONFIRM_DEV_LOG_RESET")
     end)
 
     options_frame.dev_mode_checkbox = dm_check
@@ -2467,7 +2464,7 @@ local function setup_dev_mode_frame(content_frame)
 end
 
 local function create_slider_frame(parent, point, x, y, width, height, min, max, step, tooltip_text, on_value_changed)
-    local root = CreateFrame("Slider", nil, parent, "ClassicUA_UISliderTemplateWithLabels")
+    local root = wow.CreateFrame("Slider", nil, parent, "ClassicUA_UISliderTemplateWithLabels")
 
     root:SetPoint(point, x, y)
     root:SetWidth(width)
@@ -2481,11 +2478,11 @@ local function create_slider_frame(parent, point, x, y, width, height, min, max,
     if tooltip_text then
         root.tooltip_text = tooltip_text
         root:SetScript("OnEnter", function(self)
-            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-            GameTooltip:SetText(self.tooltip_text, nil, nil, nil, nil, true)
+            wow.GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+            wow.GameTooltip:SetText(self.tooltip_text, nil, nil, nil, nil, true)
         end)
         root:SetScript("OnLeave", function()
-            GameTooltip:Hide()
+            wow.GameTooltip:Hide()
         end)
     end
 
@@ -2498,7 +2495,7 @@ end
 
 local function prepare_options_frame()
     local at_text = addonTable.text -- can not use glossary as its not prepared at this moment
-    options_frame = CreateFrame("Frame", "ClassicUA_Options")
+    options_frame = wow.CreateFrame("Frame", "ClassicUA_Options")
     local f = nil
 
     -- title
@@ -2516,7 +2513,7 @@ local function prepare_options_frame()
     f:SetJustifyH("LEFT")
     local stats = get_stats()
     f:SetText(
-        "Версія: " .. GetAddOnMetadata("ClassicUA", "Version") .. "\n"
+        "Версія: " .. wow.GetAddOnMetadata("ClassicUA", "Version") .. "\n"
         .. "— завдань: " .. stats.quest_alliance + stats.quest_horde + stats.quest_both .. "\n"
         .. "— книжок: " .. stats.book .. "\n"
         .. "— локацій: " .. stats.zone .. "\n"
@@ -2528,52 +2525,52 @@ local function prepare_options_frame()
 
     -- reload button
 
-    f = CreateFrame("Button", "$parent.Reload", options_frame, "UIPanelButtonTemplate")
+    f = wow.CreateFrame("Button", "$parent.Reload", options_frame, "UIPanelButtonTemplate")
     f:SetPoint("TOPRIGHT", -48, -128)
     f:SetText("/reload")
     f:SetSize(88, 24)
     f:SetScript("OnClick", function()
-        StaticPopup_Show("CLASSICUA_CONFIRM_RELOAD_UI")
+        wow.StaticPopup_Show("CLASSICUA_CONFIRM_RELOAD_UI")
     end)
     f:SetScript("OnEnter", function(self)
         local memory_usage_text = ""
-        UpdateAddOnMemoryUsage()
-        for i = 1, GetNumAddOns() do
-            local name = GetAddOnInfo(i)
+        wow.UpdateAddOnMemoryUsage()
+        for i = 1, wow.GetNumAddOns() do
+            local name = wow.GetAddOnInfo(i)
             if name == "ClassicUA" then
-                local megabytes = GetAddOnMemoryUsage(i) / 1024
+                local megabytes = wow.GetAddOnMemoryUsage(i) / 1024
                 memory_usage_text = string.format("\n\nВикористання пам'яті: %.1f Мб", megabytes)
             end
         end
-        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        GameTooltip:SetText(
+        wow.GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        wow.GameTooltip:SetText(
             "Перезавантажити інтерфейс гри. Деякі зміни в налаштуваннях будуть помітні лише після такої операції."
             .. memory_usage_text,
             nil, nil, nil, nil, true
         )
     end)
     f:SetScript("OnLeave", function()
-        GameTooltip:Hide()
+        wow.GameTooltip:Hide()
     end)
 
     -- reset button
 
-    f = CreateFrame("Button", "$parent.Reset", options_frame, "UIPanelButtonTemplate")
+    f = wow.CreateFrame("Button", "$parent.Reset", options_frame, "UIPanelButtonTemplate")
     f:SetPoint("TOPRIGHT", -48, -160)
     f:SetText("Скинути")
     f:SetSize(88, 24)
     f:SetScript("OnClick", function()
-        StaticPopup_Show("CLASSICUA_CONFIRM_SETTINGS_RESET")
+        wow.StaticPopup_Show("CLASSICUA_CONFIRM_SETTINGS_RESET")
     end)
     f:SetScript("OnEnter", function(self)
-        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        GameTooltip:SetText(
+        wow.GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        wow.GameTooltip:SetText(
             "Скинути всі налаштування за замовчуванням. Деякі зміни будуть помітні лише після перезавантаження інтерфейсу гри.",
             nil, nil, nil, nil, true
         )
     end)
     f:SetScript("OnLeave", function()
-        GameTooltip:Hide()
+        wow.GameTooltip:Hide()
     end)
 
     -- options.quest_text_size
@@ -2600,7 +2597,7 @@ local function prepare_options_frame()
 
     -- tabs
 
-    f = CreateFrame("Frame", "$parent.Current_Tab", options_frame, "BackdropTemplate")
+    f = wow.CreateFrame("Frame", "$parent.Current_Tab", options_frame, "BackdropTemplate")
     options_frame.current_tab = f
     f:SetPoint("TOPLEFT", 24, -224)
     f:SetSize(600, 340)
@@ -2617,7 +2614,7 @@ local function prepare_options_frame()
     for tab_index, tab_data in ipairs({
         {
             title                   = "Персонаж",
-            content_title           = "Персонаж: " .. UnitName("player"),
+            content_title           = "Персонаж: " .. wow.UnitName("player"),
             content_text            = at_text["addon_player_character_desc"],
             child_frame_setup_func  = setup_player_name_cases_frame
         }, {
@@ -2635,7 +2632,7 @@ local function prepare_options_frame()
             content_text            = at_text["addon_contributors"]
         }
     }) do
-        f = CreateFrame("Button", "$parent.Tab_Button_" .. tab_index, options_frame, "UIPanelButtonTemplate")
+        f = wow.CreateFrame("Button", "$parent.Tab_Button_" .. tab_index, options_frame, "UIPanelButtonTemplate")
         table.insert(options_frame.tab_buttons, f)
         f.tab_index = tab_index
         f.tab_data = tab_data
@@ -2716,23 +2713,23 @@ local function prepare_options_frame()
 
     -- add options frame to Options -> AddOns
 
-    if Settings and Settings.RegisterCanvasLayoutCategory and Settings.RegisterAddOnCategory then
-        local category = Settings.RegisterCanvasLayoutCategory(options_frame, options_frame.name)
-        Settings.RegisterAddOnCategory(category)
+    if wow.Settings and wow.Settings.RegisterCanvasLayoutCategory and wow.Settings.RegisterAddOnCategory then
+        local category = wow.Settings.RegisterCanvasLayoutCategory(options_frame, options_frame.name)
+        wow.Settings.RegisterAddOnCategory(category)
         options_frame.category_id = category:GetID()
-    elseif InterfaceOptions_AddCategory then
-        InterfaceOptions_AddCategory(options_frame)
+    elseif wow.InterfaceOptions_AddCategory then
+        wow.InterfaceOptions_AddCategory(options_frame)
     else
         dev_log_issue("не визначено способу додати вікно налаштувань аддону")
     end
 end
 
 local function open_options()
-    if Settings and Settings.OpenToCategory then
-        Settings.OpenToCategory(options_frame.category_id)
-    elseif InterfaceAddOnsList_Update and InterfaceOptionsFrame_OpenToCategory then
-        InterfaceAddOnsList_Update()
-        InterfaceOptionsFrame_OpenToCategory(options_frame)
+    if wow.Settings and wow.Settings.OpenToCategory then
+        wow.Settings.OpenToCategory(options_frame.category_id)
+    elseif wow.InterfaceAddOnsList_Update and wow.InterfaceOptionsFrame_OpenToCategory then
+        wow.InterfaceAddOnsList_Update()
+        wow.InterfaceOptionsFrame_OpenToCategory(options_frame)
     else
         dev_log_issue("не визначено способу відкрити вікно налаштувань аддону")
     end
@@ -2740,7 +2737,7 @@ end
 
 local function prepare_slash_command()
     _G.SLASH_CLASSICUA_SETTINGS1 = "/ua"
-    SlashCmdList.CLASSICUA_SETTINGS = function ()
+    wow.SlashCmdList.CLASSICUA_SETTINGS = function ()
         open_options()
     end
 end
@@ -2749,7 +2746,7 @@ end
 -- [ events ]
 -- ----------
 
-local event_frame = CreateFrame("Frame")
+local event_frame = wow.CreateFrame("Frame")
 
 event_frame:RegisterEvent("ADDON_LOADED")
 event_frame:RegisterEvent("PLAYER_LOGIN")
@@ -2771,19 +2768,19 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_options_frame()
         prepare_slash_command()
 
-        DEFAULT_CHAT_FRAME:AddMessage(
+        wow.DEFAULT_CHAT_FRAME:AddMessage(
             asset_ua_code
-            .. " ClassicUA v" .. GetAddOnMetadata("ClassicUA", "Version")
+            .. " ClassicUA v" .. wow.GetAddOnMetadata("ClassicUA", "Version")
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
             .. (options.dev_mode and " — Режим розробки" or "")
         )
 
     elseif event == "PLAYER_LOGIN" then
-        local name = UnitName("player")
-        local _, class = UnitClass("player")
-        local _, race = UnitRace("player")
-        local sex = UnitSex("player")
-        local faction = UnitFactionGroup("player")
+        local name = wow.UnitName("player")
+        local _, class = wow.UnitClass("player")
+        local _, race = wow.UnitRace("player")
+        local sex = wow.UnitSex("player")
+        local faction = wow.UnitFactionGroup("player")
 
         prepare_talent_tree(class)
         prepare_quests(faction == "Alliance")
