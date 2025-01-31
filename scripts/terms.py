@@ -6,15 +6,6 @@ import utils
 
 class Terms(list['Term']):
 
-    def __repr__(self) -> str:
-        return f'@terms len={len(self)}'
-
-    def npcs(self) -> 'Terms':
-        return filter(lambda t: t.is_npc(), self)
-
-    def locations(self) -> 'Terms':
-        return filter(lambda t: t.is_location(), self)
-
     @staticmethod
     def from_tbx(filename: str) -> 'Terms':
         tree = ElementTree.parse(filename)
@@ -36,6 +27,39 @@ class Terms(list['Term']):
             result.append(term)
 
         return result
+
+    def __repr__(self) -> str:
+        return f'@terms len={len(self)}'
+
+    def npcs(self) -> 'Terms':
+        return filter(lambda t: t.is_npc(), self)
+
+    def locations(self) -> 'Terms':
+        return filter(lambda t: t.is_location(), self)
+
+    def translate(self, text_en: str, fallback=None, is_female=False) -> str:
+        text_en_lower = text_en.lower()
+
+        text_en_lower_patterns = [
+            text_en_lower,
+            text_en_lower.replace('&', 'and'),
+            text_en_lower.replace('weapons', 'weapon'), # in "... weapon vendor"
+        ]
+
+        if text_en_lower.startswith('the '):
+            text_en_lower_patterns.append(text_en_lower[4:])
+
+        for term in self:
+            if term.text_en.lower() in text_en_lower_patterns:
+                cases = term.text_uk.split('/', maxsplit=1)
+                return cases[1] if is_female and len(cases) > 1 else cases[0]
+
+            if term.is_location():
+                for alias in term.location_aliases():
+                    if alias.lower() in text_en_lower_patterns:
+                        return term.text_uk
+
+        return fallback
 
 class Term:
 
@@ -60,7 +84,7 @@ class Term:
         for tag in self.tags:
             if tag.startswith('<') and tag.endswith('>'):
                 desc = tag[1:-1].strip()
-                return self._resolve_desc(desc, known_terms) if known_terms else desc
+                return known_terms.translate(desc, fallback=desc, is_female=self.is_female()) if known_terms else desc
 
         return ''
 
@@ -109,30 +133,11 @@ class Term:
             if not npc_name:
                 npc_name = self.text_uk
 
-        npc_desc = self._resolve_desc(npc_desc_orig, known_terms)
+        npc_desc = known_terms.translate(npc_desc_orig, fallback=npc_desc_orig, is_female=self.is_female())
         if npc_desc == npc_desc_orig:
             npc_desc_orig = ''
 
         return NpcIdTag(npc_id, npc_exp, npc_name, npc_desc, npc_name_en, npc_desc_orig)
-
-    def _resolve_desc(self, desc: str, known_terms: Terms) -> str:
-        desc_lower = desc.lower()
-
-        desc_lower_patterns = [
-            desc_lower,
-            desc_lower.replace('&', 'and'),
-            desc_lower.replace('weapons', 'weapon'), # in "... weapon vendor"
-        ]
-
-        if desc_lower.startswith('the '):
-            desc_lower_patterns.append(desc_lower[4:])
-
-        for term in known_terms:
-            if term.text_en.lower() in desc_lower_patterns:
-                cases = term.text_uk.split('/', maxsplit=1)
-                return cases[1] if self.is_female() and len(cases) > 1 else cases[0]
-
-        return desc
 
 class NpcIdTag:
 
