@@ -476,6 +476,8 @@ local function dev_log_reset()
 end
 
 local function dev_log_issue(key, data)
+    key = string.trim(key or "???")
+
     if not options.dev_mode or dev_log.issues[key] then
         return
     end
@@ -638,6 +640,8 @@ local function dev_log_missing_chat_text(npc_name, chat_text_code, chat_text_en)
 end
 
 local function dev_log_missing_zone(zone_name)
+    zone_name = string.trim(zone_name or "???")
+
     if not string.match(zone_name, "%w") then
         -- skip non-English zone name
         return
@@ -655,6 +659,8 @@ local function dev_log_missing_zone(zone_name)
 end
 
 local function dev_log_missing_object(object_name)
+    object_name = string.trim(object_name or "???")
+
     if dev_log.missing_objects[object_name] then
         return
     end
