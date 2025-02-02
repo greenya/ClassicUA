@@ -1202,6 +1202,7 @@ local function get_glossary_text(entry_key)
     -- prepare entry_key
     entry_key = strip_color_codes(entry_key)
     entry_key = first_line_only(entry_key)
+    entry_key = string.trim(entry_key)
     entry_key = entry_key:lower()
 
     -- check directly
