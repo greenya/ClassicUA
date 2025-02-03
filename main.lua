@@ -37,6 +37,8 @@ local wow = {
     ItemTextGetPage             = _G['ItemTextGetPage'],
     ItemTextGetText             = _G['ItemTextGetText'],
     ItemTextScrollFrame         = _G['ItemTextScrollFrame'],
+    Menu                        = _G['Menu'],
+    MenuUtil                    = _G['MenuUtil'],
     MinimapZoneText             = _G['MinimapZoneText'],
     PVPArenaTextString          = _G['PVPArenaTextString'],
     PVPInfoTextString           = _G['PVPInfoTextString'],
@@ -117,9 +119,9 @@ local function copy_table(target, source)
     return target
 end
 
-local function table_string_keys(table)
+local function table_string_keys(tbl)
     local result = {}
-    for k, _ in pairs(table) do
+    for k, _ in pairs(tbl) do
         if type(k) == "string" then
             result[#result + 1] = k
         end
@@ -127,9 +129,9 @@ local function table_string_keys(table)
     return result
 end
 
-local function table_keys_count(table)
+local function table_keys_count(tbl)
     local count = 0
-    for _ in pairs(table) do count = count + 1 end
+    for _ in pairs(tbl) do count = count + 1 end
     return count
 end
 
@@ -2125,77 +2127,6 @@ end
 -- [ world map ]
 -- -------------
 
--- Stopped working in SOD 1.15.4, still works in Cata 4.4.0, maybe will not work soon.
--- Lets keep it until it stops working. At the moment, the new way to translate
--- the dropdowns is yet to be found.
-local is_world_map_dropdowns_translation_old_ways_supported =
-    WorldMapContinentDropDown and
-    WorldMapContinentDropDownButton and
-    WorldMapZoneDropDown and
-    WorldMapZoneDropDownButton and
-    DropDownList1 and
-    DropDownList1Button1
-
-if is_world_map_dropdowns_translation_old_ways_supported then
-    local world_map_original_set_map_id = wow.WorldMapFrame.SetMapID
-    local world_map_dds = { WorldMapContinentDropDown, WorldMapZoneDropDown }
-
-    wow.WorldMapFrame.SetMapID = function (self, mapID)
-        world_map_original_set_map_id(self, mapID)
-
-        for _, v in ipairs(world_map_dds) do
-            local text = v.Text:GetText()
-            if text then
-                text = strip_color_codes(text)
-                local found = get_glossary_text(text)
-                if found then
-                    v.Text:SetText(capitalize(found))
-                elseif options.dev_mode then
-                    dev_log_missing_zone(text)
-                end
-            end
-        end
-    end
-
-    local function world_map_dropdown_button_click(self)
-        local dd = DropDownList1
-        if dd:IsShown() then
-            local texts = {}
-            local buttons = {}
-
-            for i = 1, dd.numButtons do
-                local button = _G["DropDownList1Button" .. i]
-                local text = button:GetText()
-                if text then
-                    text = strip_color_codes(text)
-                    local found = get_glossary_text(text)
-                    if found then
-                        local t = capitalize(found)
-                        texts[#texts + 1] = t
-                        buttons[t] = button
-                        button:SetText(t)
-                    else
-                        texts[#texts + 1] = text
-                        buttons[text] = button
-                        if options.dev_mode then
-                            dev_log_missing_zone(text)
-                        end
-                    end
-                end
-            end
-
-            table.sort(texts)
-            local h = DropDownList1Button1:GetHeight()
-            for i = 1, #texts do
-                buttons[texts[i]]:SetPoint("TOPLEFT", 16, - i * h)
-            end
-        end
-    end
-
-    WorldMapContinentDropDownButton:HookScript("OnClick", world_map_dropdown_button_click)
-    WorldMapZoneDropDownButton:HookScript("OnClick", world_map_dropdown_button_click)
-end -- if is_world_map_dropdowns_translation_old_ways_supported
-
 local function world_map_area_label_update(self)
     local text = self.Name:GetText()
     if text then
@@ -2217,6 +2148,22 @@ local function prepare_world_map()
             provider.Label:HookScript("OnUpdate", world_map_area_label_update)
             break
         end
+    end
+
+    -- TODO: figure out how to sort localized dropdown menu items
+    for _, menu_tag in ipairs({ "MENU_WORLD_MAP_CONTINENT", "MENU_WORLD_MAP_ZONE" }) do
+        wow.Menu.ModifyMenu(menu_tag, function (owner, root_desc, context_data)
+            wow.MenuUtil.TraverseMenu(root_desc, function (elem_desc)
+                local text = wow.MenuUtil.GetElementText(elem_desc)
+                local text_translated = get_glossary_text(text)
+                if text_translated then
+                    wow.MenuUtil.SetElementText(elem_desc, text_translated)
+                    if elem_desc.data then
+                        elem_desc.data.name = text_translated
+                    end
+                end
+            end)
+        end)
     end
 end
 
