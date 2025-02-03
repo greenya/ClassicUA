@@ -16,6 +16,7 @@ local wow = {
     DevTools_Dump               = _G['DevTools_Dump'],
     Enum                        = _G['Enum'],
     GameTooltip                 = _G['GameTooltip'],
+    GameTooltipStatusBar        = _G['GameTooltipStatusBar'],
     GetAddOnInfo                = _G['GetAddOnInfo'],
     GetAddOnMemoryUsage         = _G['GetAddOnMemoryUsage'],
     GetAddOnMetadata            = _G['GetAddOnMetadata'],
@@ -1627,7 +1628,8 @@ local function tooltip_updated(self)
     end
 
     local name, unit = self:GetUnit()
-    if name or unit then
+    local has_status_bar = wow.GameTooltipStatusBar and wow.GameTooltipStatusBar:IsShown()
+    if name or unit or has_status_bar then
         return
     end
 
