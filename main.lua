@@ -5,70 +5,67 @@ local _, addonTable = ...
 -- -----------
 
 local wow = {
-    C_ChatBubbles               = _G['C_ChatBubbles'],
-    C_GossipInfo                = _G['C_GossipInfo'],
-    C_Seasons                   = _G['C_Seasons'],
-    C_Timer                     = _G['C_Timer'],
-    ChatFrame_AddMessageEventFilter = _G['ChatFrame_AddMessageEventFilter'],
-    ChatTypeInfo                = _G['ChatTypeInfo'],
-    CreateFrame                 = _G['CreateFrame'],
-    DEFAULT_CHAT_FRAME          = _G['DEFAULT_CHAT_FRAME'],
-    DevTools_Dump               = _G['DevTools_Dump'],
-    Enum                        = _G['Enum'],
-    GameTooltip                 = _G['GameTooltip'],
-    GameTooltipStatusBar        = _G['GameTooltipStatusBar'],
-    GetAddOnInfo                = _G['GetAddOnInfo'],
-    GetAddOnMemoryUsage         = _G['GetAddOnMemoryUsage'],
-    GetAddOnMetadata            = _G['GetAddOnMetadata'],
-    GetBuildInfo                = _G['GetBuildInfo'],
-    GetMouseFoci                = _G['GetMouseFoci'],
-    GetMouseFocus               = _G['GetMouseFocus'],
-    GetNumAddOns                = _G['GetNumAddOns'],
-    GetQuestID                  = _G['GetQuestID'],
-    GetQuestLogSelection        = _G['GetQuestLogSelection'],
-    GetQuestLogTitle            = _G['GetQuestLogTitle'],
-    GetTalentInfo               = _G['GetTalentInfo'],
-    GossipFrame                 = _G['GossipFrame'],
-    hooksecurefunc              = _G['hooksecurefunc'],
-    InterfaceAddOnsList_Update  = _G['InterfaceAddOnsList_Update'],
-    InterfaceOptions_AddCategory = _G['InterfaceOptions_AddCategory'],
-    InterfaceOptionsFrame_OpenToCategory = _G['InterfaceOptionsFrame_OpenToCategory'],
-    ItemRefTooltip              = _G['ItemRefTooltip'],
-    ItemTextGetPage             = _G['ItemTextGetPage'],
-    ItemTextGetText             = _G['ItemTextGetText'],
-    ItemTextScrollFrame         = _G['ItemTextScrollFrame'],
-    Menu                        = _G['Menu'],
-    MenuUtil                    = _G['MenuUtil'],
-    MinimapZoneText             = _G['MinimapZoneText'],
-    PVPArenaTextString          = _G['PVPArenaTextString'],
-    PVPInfoTextString           = _G['PVPInfoTextString'],
-    QuestFrame                  = _G['QuestFrame'],
-    QuestFrameDetailPanel       = _G['QuestFrameDetailPanel'],
-    QuestFrameProgressPanel     = _G['QuestFrameProgressPanel'],
-    QuestFrameRewardPanel       = _G['QuestFrameRewardPanel'],
-    QuestLogDetailScrollFrame   = _G['QuestLogDetailScrollFrame'],
-    TargetFrame                 = _G['TargetFrame'],
-    UnitAura                    = _G['UnitAura'],
-    UnitClass                   = _G['UnitClass'],
-    UnitFactionGroup            = _G['UnitFactionGroup'],
-    UnitGUID                    = _G['UnitGUID'],
-    UnitName                    = _G['UnitName'],
-    UnitRace                    = _G['UnitRace'],
-    UnitSex                     = _G['UnitSex'],
-    UpdateAddOnMemoryUsage      = _G['UpdateAddOnMemoryUsage'],
-    ReloadUI                    = _G['ReloadUI'],
-    Settings                    = _G['Settings'],
-    ShoppingTooltip1            = _G['ShoppingTooltip1'],
-    ShoppingTooltip2            = _G['ShoppingTooltip2'],
-    ShouldShowName              = _G['ShouldShowName'],
-    SlashCmdList                = _G['SlashCmdList'],
-    StaticPopup_Show            = _G['StaticPopup_Show'],
-    StaticPopupDialogs          = _G['StaticPopupDialogs'],
-    SubZoneTextString           = _G['SubZoneTextString'],
-    WorldMapTooltip             = _G['WorldMapTooltip'],
-    WorldFrame                  = _G['WorldFrame'],
-    WorldMapFrame               = _G['WorldMapFrame'],
-    ZoneTextString              = _G['ZoneTextString'],
+    C_ChatBubbles               = _G.C_ChatBubbles,
+    C_GossipInfo                = _G.C_GossipInfo,
+    C_Map                       = _G.C_Map,
+    C_PvP                       = _G.C_PvP,
+    C_Seasons                   = _G.C_Seasons,
+    C_Timer                     = _G.C_Timer,
+    ChatFrame_AddMessageEventFilter = _G.ChatFrame_AddMessageEventFilter,
+    ChatTypeInfo                = _G.ChatTypeInfo,
+    CreateFrame                 = _G.CreateFrame,
+    DEFAULT_CHAT_FRAME          = _G.DEFAULT_CHAT_FRAME,
+    DevTools_Dump               = _G.DevTools_Dump,
+    Enum                        = _G.Enum,
+    GameTooltip                 = _G.GameTooltip,
+    GameTooltipStatusBar        = _G.GameTooltipStatusBar,
+    GetAddOnInfo                = _G.GetAddOnInfo,
+    GetAddOnMemoryUsage         = _G.GetAddOnMemoryUsage,
+    GetAddOnMetadata            = _G.GetAddOnMetadata,
+    GetBuildInfo                = _G.GetBuildInfo,
+    GetMouseFoci                = _G.GetMouseFoci,
+    GetMouseFocus               = _G.GetMouseFocus,
+    GetNumAddOns                = _G.GetNumAddOns,
+    GetQuestID                  = _G.GetQuestID,
+    GetQuestLogSelection        = _G.GetQuestLogSelection,
+    GetQuestLogTitle            = _G.GetQuestLogTitle,
+    GetTalentInfo               = _G.GetTalentInfo,
+    GossipFrame                 = _G.GossipFrame,
+    hooksecurefunc              = _G.hooksecurefunc,
+    InterfaceAddOnsList_Update  = _G.InterfaceAddOnsList_Update,
+    InterfaceOptions_AddCategory = _G.InterfaceOptions_AddCategory,
+    InterfaceOptionsFrame_OpenToCategory = _G.InterfaceOptionsFrame_OpenToCategory,
+    ItemRefTooltip              = _G.ItemRefTooltip,
+    ItemTextGetPage             = _G.ItemTextGetPage,
+    ItemTextGetText             = _G.ItemTextGetText,
+    ItemTextScrollFrame         = _G.ItemTextScrollFrame,
+    Menu                        = _G.Menu,
+    MenuUtil                    = _G.MenuUtil,
+    Minimap_Update              = _G.Minimap_Update,
+    QuestFrame                  = _G.QuestFrame,
+    QuestFrameDetailPanel       = _G.QuestFrameDetailPanel,
+    QuestFrameProgressPanel     = _G.QuestFrameProgressPanel,
+    QuestFrameRewardPanel       = _G.QuestFrameRewardPanel,
+    QuestLogDetailScrollFrame   = _G.QuestLogDetailScrollFrame,
+    TargetFrame                 = _G.TargetFrame,
+    UnitAura                    = _G.UnitAura,
+    UnitClass                   = _G.UnitClass,
+    UnitFactionGroup            = _G.UnitFactionGroup,
+    UnitGUID                    = _G.UnitGUID,
+    UnitName                    = _G.UnitName,
+    UnitRace                    = _G.UnitRace,
+    UnitSex                     = _G.UnitSex,
+    UpdateAddOnMemoryUsage      = _G.UpdateAddOnMemoryUsage,
+    ReloadUI                    = _G.ReloadUI,
+    Settings                    = _G.Settings,
+    ShoppingTooltip1            = _G.ShoppingTooltip1,
+    ShoppingTooltip2            = _G.ShoppingTooltip2,
+    ShouldShowName              = _G.ShouldShowName,
+    SlashCmdList                = _G.SlashCmdList,
+    StaticPopup_Show            = _G.StaticPopup_Show,
+    StaticPopupDialogs          = _G.StaticPopupDialogs,
+    WorldMapTooltip             = _G.WorldMapTooltip,
+    WorldFrame                  = _G.WorldFrame,
 }
 
 local build_info = wow.GetBuildInfo()
@@ -186,6 +183,40 @@ local function fix_float_number(value)
         result = "0" .. result
     end
     return result
+end
+
+local function parse_quest_single_objective_string(text)
+    if type(text) ~= "string" then
+        return { name="" }
+    end
+
+    -- trying to parse input text like:
+    -- "XXX slain: Y/Z (Complete)"  => { name="XXX", has_slain=true, progress="Y/Z", has_complete=true }
+    -- "XXX: Y/Z (Complete)"        => { name="XXX", progress="Y/Z", has_complete=true }
+    -- "XXX: Y/Z"                   => { name="XXX", progress="Y/Z" }
+    -- "Any custom text"            => { name="Any custom text" }
+
+    local name, part2 = string.match(text, "^(.-):%s*(.*)$")
+    if not name then
+        name = text
+        part2 = nil
+    end
+
+    local name_only = string.match(name, "^(.-)%s+slain$")
+    local has_slain = name_only ~= nil
+    if has_slain then
+        name = name_only
+    end
+
+    local progress = part2 and string.match(part2, "(%d+/%d+)") or nil
+    local has_complete = part2 and string.find(part2, "%(Complete%)") ~= nil
+
+    return {
+        name            = string.trim(name),
+        has_slain       = has_slain,
+        progress        = progress,
+        has_complete    = has_complete,
+    }
 end
 
 local function strip_color_codes(text)
@@ -1088,6 +1119,9 @@ local function get_entry(entry_type, entry_id)
 
     local at = addonTable
     entry_id = tonumber(entry_id)
+    if entry_id == 0 then
+        return
+    end
 
     if entry_type == "quest" then
         local quest = nil
@@ -1854,149 +1888,132 @@ local function set_quest_content(frame, title, text, more_title, more_text)
     setup_frame_scrollbar_values(frame, h)
 end
 
-wow.QuestFrameDetailPanel:HookScript("OnShow", function (self)
-    local frame = get_quest_frame("detail")
-    local entry = get_entry("quest", wow.GetQuestID())
-    if entry then
-        set_quest_content(frame, entry[1], entry[2], "Доручення", entry[3])
-        frame:Show()
-    else
-        frame:Hide()
-    end
-end)
+local quest_frames_vars
 
-wow.QuestFrameDetailPanel:HookScript("OnHide", function (self)
-    local frame = get_quest_frame("detail")
-    frame:Hide()
-end)
-
-wow.QuestFrameProgressPanel:HookScript("OnShow", function (self)
-    local frame = get_quest_frame("progress")
-    local entry = get_entry("quest", wow.GetQuestID())
-    if entry then
-        set_quest_content(frame, entry[1], entry[4])
-        frame:Show()
-    else
-        frame:Hide()
-    end
-end)
-
-wow.QuestFrameProgressPanel:HookScript("OnHide", function (self)
-    local frame = get_quest_frame("progress")
-    frame:Hide()
-end)
-
-wow.QuestFrameRewardPanel:HookScript("OnShow", function (self)
-    local frame = get_quest_frame("reward")
-    local entry = get_entry("quest", wow.GetQuestID())
-    if entry then
-        set_quest_content(frame, entry[1], entry[5])
-        frame:Show()
-    else
-        frame:Hide()
-    end
-end)
-
-wow.QuestFrameRewardPanel:HookScript("OnHide", function (self)
-    local frame = get_quest_frame("reward")
-    frame:Hide()
-end)
-
-local questlog_frame = nil
-local function get_questlog_frame()
-    if questlog_frame then
-        return questlog_frame
-    end
-
-    local width, height = wow.QuestLogDetailScrollFrame:GetSize()
-    local frame = wow.CreateFrame("Frame", nil, wow.QuestLogDetailScrollFrame, "BackdropTemplate")
-    frame:SetFrameStrata("HIGH")
-    frame:SetSize(width + 18, height + 18)
-    frame:SetPoint("TOP", 0, 18/2)
-    frame:SetPoint("RIGHT", width + 23 + 18, 0)
-
-    setup_frame_background_and_border(frame)
-
-    setup_frame_scrollbar_and_content(frame, {
-        title = { asset_font1_path, options.quest_text_size + 5 },
-        text = { asset_font2_path, options.quest_text_size },
-        more_title = { asset_font1_path, options.quest_text_size + 5 },
-        more_text = { asset_font2_path, options.quest_text_size }
-    })
-
-    frame:Show()
-
-    questlog_frame = frame
-    return questlog_frame
-end
-
-wow.hooksecurefunc("SelectQuestLogEntry", function ()
-    if not addonTable.quest_faction then -- need to test quest_faction, as prepare_quests() might not be called just yet
-        return
-    end
-
-    local frame = get_questlog_frame()
+local function on_quest_log_entry_selected()
+    local qfv = quest_frames_vars
+    qfv.questlog_selected_quest_entry = nil
     local selection = wow.GetQuestLogSelection()
     if selection > 0 then
         local id = select(8, wow.GetQuestLogTitle(selection))
         local entry = get_entry("quest", id)
         if entry then
-            set_quest_content(frame, entry[1], entry[3], "Опис", entry[2])
-            frame:Show()
-        else
-            frame:Hide()
+            qfv.questlog_selected_quest_entry = entry
         end
-    else
-        frame:Hide()
     end
-end)
+end
+
+local function on_quest_frames_set_text(self, text)
+    local qfv = quest_frames_vars
+    if not qfv.set_text_hook_allowed then
+        return
+    end
+
+    local new_text
+
+    -- quest entry indices: [1] title, [2] description, [3] objective, [4] progress, [5] completion
+    local quest_entry = get_entry("quest", wow.GetQuestID()) or qfv.questlog_selected_quest_entry
+    if quest_entry then
+        if self == QuestLogQuestTitle       then new_text = quest_entry[1] end
+        if self == QuestInfoTitleHeader     then new_text = quest_entry[1] end
+        if self == QuestProgressTitleText   then new_text = quest_entry[1] end
+        if self == QuestLogQuestDescription then new_text = quest_entry[2] end
+        if self == QuestInfoDescriptionText then new_text = quest_entry[2] end
+        if self == QuestLogObjectivesText   then new_text = quest_entry[3] end
+        if self == QuestInfoObjectivesText  then new_text = quest_entry[3] end
+        if self == QuestProgressText        then new_text = quest_entry[4] end
+        if self == QuestInfoRewardText      then new_text = quest_entry[5] end
+    end
+
+    if not new_text and 1 == string.find(self:GetName() or "", "QuestLogObjective") then
+        local obj = parse_quest_single_objective_string(text)
+        local obj_text = get_glossary_text(obj.name) or obj.name
+        if obj.progress     then obj_text = obj_text .. ": " .. obj.progress end
+        if obj.has_slain    then obj_text = obj_text .. " вбито" end
+        if obj.has_complete then obj_text = obj_text .. " (Завершено)" end
+        new_text = obj_text
+    end
+
+    if not new_text then
+        new_text = get_glossary_text(text)
+    end
+
+    if new_text then
+        qfv.set_text_hook_allowed = false
+        self:SetText(new_text)
+        qfv.set_text_hook_allowed = true
+    end
+end
+
+local function prepare_quest_frames()
+    quest_frames_vars = {
+        questlog_selected_quest_entry = nil,
+        set_text_hook_allowed = true,
+        font_title = { asset_font1_path, options.quest_text_size + 5 },
+        font_content = { asset_font2_path, options.quest_text_size },
+    }
+
+    local qfv = quest_frames_vars
+
+    wow.hooksecurefunc("SelectQuestLogEntry", on_quest_log_entry_selected)
+
+    for _, info in ipairs({
+        -- greetings dialog (talking to npc)
+        { frame=CurrentQuestsText, font=qfv.font_title }, -- "Current Quests"
+        { frame=AvailableQuestsText, font=qfv.font_title }, -- "Available Quests"
+        -- quest details step + rewards step (talking to npc); QuestInfoXXX is used as quest log parts in WOTLK and QuestLogXXX is removed
+        { frame=QuestInfoTitleHeader, font=qfv.font_title }, -- quest title
+        { frame=QuestInfoDescriptionHeader, font=qfv.font_title }, -- "Description"
+        { frame=QuestInfoDescriptionText, font=qfv.font_content }, -- quest description
+        { frame=QuestInfoObjectivesHeader, font=qfv.font_title }, -- "Quest Objectives"
+        { frame=QuestInfoObjectivesText, font=qfv.font_content }, -- quest objectives
+        { frame=QuestInfoRewardText, font=qfv.font_content }, -- quest completion
+        { frame=QuestInfoRewardsFrame.Header, font=qfv.font_title }, -- "Rewards"
+        { frame=QuestInfoRewardsFrame.ItemChooseText, font=qfv.font_content }, -- "You will be able to choose one of these rewards:"
+        { frame=QuestInfoRewardsFrame.ItemReceiveText, font=qfv.font_content }, -- "You will receive:"
+        { frame=QuestInfoRewardsFrame.PlayerTitleText, font=qfv.font_content }, -- "You shall be granted the title:"
+        { frame=QuestInfoXPFrame.ReceiveText, font=qfv.font_content }, -- "Experience:"
+        -- quest progress step (talking to npc)
+        { frame=QuestProgressTitleText, font=qfv.font_title }, -- quest title
+        { frame=QuestProgressText, font=qfv.font_content }, -- quest progress
+        { frame=QuestProgressRequiredItemsText, font=qfv.font_title }, -- "Required items:"
+        { frame=QuestProgressRequiredMoneyText, font=qfv.font_title }, -- "Required Money:"
+        -- questlog details (browsing player personal quest log); QuestLogXXX is removed from WOTLK and QuestInfoXXX is used instead
+        { frame=QuestLogQuestTitle, font=qfv.font_title }, -- quest title
+        { frame=QuestLogObjectivesText, font=qfv.font_content }, -- quest objectives
+        { frame=QuestLogObjective1, font=qfv.font_content }, -- quest objective line 1
+        { frame=QuestLogObjective2, font=qfv.font_content }, -- quest objective line 2
+        { frame=QuestLogObjective3, font=qfv.font_content }, -- quest objective line 3
+        { frame=QuestLogObjective4, font=qfv.font_content }, -- quest objective line 4
+        { frame=QuestLogObjective5, font=qfv.font_content }, -- quest objective line 5
+        { frame=QuestLogObjective6, font=qfv.font_content }, -- quest objective line 6
+        { frame=QuestLogObjective7, font=qfv.font_content }, -- quest objective line 7
+        { frame=QuestLogObjective8, font=qfv.font_content }, -- quest objective line 8
+        { frame=QuestLogObjective9, font=qfv.font_content }, -- quest objective line 9
+        { frame=QuestLogObjective10, font=qfv.font_content }, -- quest objective line 10
+        { frame=QuestLogDescriptionTitle, font=qfv.font_title }, -- "Description"
+        { frame=QuestLogQuestDescription, font=qfv.font_content }, -- quest description
+        { frame=QuestLogRewardTitleText, font=qfv.font_title }, -- "Rewards"
+        { frame=QuestLogItemChooseText, font=qfv.font_content }, -- "You will be able to choose one of these rewards:"
+        { frame=QuestLogItemReceiveText, font=qfv.font_content }, -- "You will receive:", "You will also receive:"
+    }) do
+        if info.frame then
+            if info.font then
+                info.frame:SetFont(info.font[1], info.font[2])
+            end
+
+            wow.hooksecurefunc(info.frame, "SetText", on_quest_frames_set_text)
+
+            -- force update (trigger hook above), because some static texts never gets updated
+            local text = info.frame:GetText()
+            if text then info.frame:SetText(text) end
+        end
+    end
+end
 
 -- ----------------
 -- [ gossip frame ]
 -- ----------------
-
-local gossip_frame = nil
-local function get_gossip_frame()
-    if gossip_frame then
-        return gossip_frame
-    end
-
-    local width, height = wow.GossipFrame.GreetingPanel.ScrollBox:GetSize()
-    local frame = wow.CreateFrame("Frame", nil, wow.GossipFrame.GreetingPanel.ScrollBar, "BackdropTemplate")
-    frame:SetFrameStrata("HIGH")
-
-    if is_wrath then
-        frame:SetSize(width + 20, height - 51)
-        frame:SetPoint("TOP", 0, 5)
-        frame:SetPoint("RIGHT", width + 16, 0)
-    else
-        frame:SetSize(width + 20, height + 18)
-        frame:SetPoint("TOP", 0, 1)
-        frame:SetPoint("RIGHT", width + 16, 0)
-    end
-
-    setup_frame_background_and_border(frame)
-
-    setup_frame_scrollbar_and_content(frame, {
-        text = { asset_font2_path, options.quest_text_size }
-    })
-
-    frame:Show()
-
-    gossip_frame = frame
-    return gossip_frame
-end
-
-local function set_gossip_content(text)
-    local f = get_gossip_frame()
-    local h = 16
-
-    f.text:SetPoint("TOPLEFT", f.content, 12, -h)
-    f.text:SetText(text)
-    h = h + f.text:GetHeight() + 12
-
-    setup_frame_scrollbar_values(f, h)
-end
 
 local function show_gossip()
     local npc_id = npc_id_from_unit_id("npc")
@@ -2004,16 +2021,36 @@ local function show_gossip()
         local gossip_text_en = wow.C_GossipInfo:GetText()
         local gossip_text_ua, gossip_code = get_gossip_text(npc_id, gossip_text_en)
         if gossip_text_ua then
-            set_gossip_content(gossip_text_ua)
-            get_gossip_frame():Show()
+            local gf = wow.GossipFrame
+            if gf and gf.GreetingPanel and gf.GreetingPanel.ScrollBox then
+                for _, child in ipairs({ gf.GreetingPanel.ScrollBox.ScrollTarget:GetChildren() }) do
+                    if child.GreetingText then
+                        child.GreetingText:SetText(gossip_text_ua)
+                        break
+                    end
+                end
+            end
         elseif options.dev_mode and gossip_code then
             dev_log_missing_gossip(npc_id, gossip_code, gossip_text_en)
         end
     end
 end
 
-local function hide_gossip()
-    get_gossip_frame():Hide()
+-- ------------------
+-- [ greeting frame ]
+---------------------
+
+local function show_greeting()
+    local npc_id = npc_id_from_unit_id("npc")
+    if npc_id then
+        local greet_text_en = GreetingText:GetText()
+        local greet_text_ua, greet_code = get_gossip_text(npc_id, greet_text_en)
+        if greet_text_ua then
+            GreetingText:SetText(greet_text_ua)
+        elseif options.dev_mode and greet_code then
+            dev_log_missing_gossip(npc_id, greet_code, greet_text_en)
+        end
+    end
 end
 
 -- --------------
@@ -2076,95 +2113,124 @@ local function hide_book()
     book_item_id = nil
 end
 
--- -------------------------
--- [ zone text and minimap ]
--- -------------------------
+-- --------------
+-- [ zone names ]
+-- --------------
 
-local zone_text_lookup = {
-    -- { FontString object, lookup function }
-    { wow.ZoneTextString, get_glossary_text },
-    { wow.SubZoneTextString, get_glossary_text },
-    { wow.MinimapZoneText, get_glossary_text },
-    { wow.PVPInfoTextString, get_glossary_text },
-    { wow.PVPArenaTextString, get_glossary_text },
-}
+local function prepare_zone_names()
+    local translate_zone_name = function (name)
+        local found = get_glossary_text(name)
+        if found then
+            name = capitalize(found)
+        elseif options.dev_mode then
+            dev_log_missing_zone(name)
+        end
+        return name
+    end
 
-local function update_zone_text()
-    local text
-    for _, lookup in ipairs(zone_text_lookup) do
-        text = lookup[1]:GetText()
-        if text then
-            text = strip_color_codes(text)
-            local found = lookup[2](text)
-            if found then
-                lookup[1]:SetText(capitalize(found))
-            else
-                local text_in_bracers = string.gmatch(text, "%((.*)%)")()
-                if text_in_bracers then
-                    found = lookup[2](text_in_bracers)
-                    if found then
-                        found = "(" .. capitalize(found) .. ")"
-                    else
-                        dev_log_missing_zone(text_in_bracers)
-                    end
-                else
-                    dev_log_missing_zone(text)
-                end
+    local original_c_map_get_map_info = wow.C_Map.GetMapInfo
+    wow.C_Map.GetMapInfo = function (...)
+        local info = original_c_map_get_map_info(...)
+        if info and info.name then
+            info.name = translate_zone_name(info.name)
+        end
+        return info
+    end
+
+    local original_c_map_get_map_children_info = wow.C_Map.GetMapChildrenInfo
+    wow.C_Map.GetMapChildrenInfo = function (...)
+        local infos = original_c_map_get_map_children_info(...)
+        for _, info in ipairs(infos) do
+            if info and info.name then
+                info.name = translate_zone_name(info.name)
             end
         end
+        return infos
     end
-end
 
-local function prepare_zone_text()
-    for _, lookup in ipairs(zone_text_lookup) do
-        local _, size, style = lookup[1]:GetFont()
-        lookup[1]:SetFont(asset_font2_path, size, style)
-    end
-    update_zone_text()
-end
-
--- -------------
--- [ world map ]
--- -------------
-
-local function world_map_area_label_update(self)
-    local text = self.Name:GetText()
-    if text then
-        text = strip_color_codes(text)
-        local found = get_glossary_text(text)
-        if found then
-            self.Name:SetText(capitalize(found))
-        elseif options.dev_mode then
-            dev_log_missing_zone(text)
+    local original_c_map_get_area_info = wow.C_Map.GetAreaInfo
+    wow.C_Map.GetAreaInfo = function (...)
+        local info = original_c_map_get_area_info(...)
+        if type(info) == "string" then
+            info = translate_zone_name(info)
         end
+        return info
     end
-end
 
-local function prepare_world_map()
-    for provider, _ in pairs(wow.WorldMapFrame.dataProviders) do
-        if provider.setAreaLabelCallback and provider.Label and provider.Label.Name then
-            local _, size, style = provider.Label.Name:GetFont()
-            provider.Label.Name:SetFont(asset_font2_path, size, style)
-            provider.Label:HookScript("OnUpdate", world_map_area_label_update)
-            break
+    local original_c_map_get_map_info_at_position = wow.C_Map.GetMapInfoAtPosition
+    wow.C_Map.GetMapInfoAtPosition = function (...)
+        local info = original_c_map_get_map_info_at_position(...)
+        if info and info.name then
+            info.name = translate_zone_name(info.name)
         end
+        return info
     end
 
-    -- TODO: figure out how to sort localized dropdown menu items
-    for _, menu_tag in ipairs({ "MENU_WORLD_MAP_CONTINENT", "MENU_WORLD_MAP_ZONE" }) do
-        wow.Menu.ModifyMenu(menu_tag, function (owner, root_desc, context_data)
-            wow.MenuUtil.TraverseMenu(root_desc, function (elem_desc)
-                local text = wow.MenuUtil.GetElementText(elem_desc)
-                local text_translated = get_glossary_text(text)
-                if text_translated then
-                    wow.MenuUtil.SetElementText(elem_desc, text_translated)
-                    if elem_desc.data then
-                        elem_desc.data.name = text_translated
-                    end
-                end
-            end)
-        end)
+    local original_c_pvp_get_zone_pvp_info = wow.C_PvP.GetZonePVPInfo
+    wow.C_PvP.GetZonePVPInfo = function (...)
+        local info = { original_c_pvp_get_zone_pvp_info(...) }
+        if info and info[3] then
+            info[3] = get_glossary_text(info[3]) or info[3]
+        end
+        return unpack(info)
     end
+
+    local original_get_instance_info = _G.GetInstanceInfo
+    _G.GetInstanceInfo = function (...)
+        local info = { original_get_instance_info(...) }
+        if info and info[1] then
+            info[1] = translate_zone_name(info[1])
+        end
+        return unpack(info)
+    end
+
+    local original_get_zone_text = _G.GetZoneText
+    _G.GetZoneText = function (...)
+        local text = original_get_zone_text(...)
+        if type(text) == "string" then
+            text = translate_zone_name(text)
+        end
+        return text
+    end
+
+    local original_get_real_zone_text = _G.GetRealZoneText
+    _G.GetRealZoneText = function (...)
+        local text = original_get_real_zone_text(...)
+        if type(text) == "string" then
+            text = translate_zone_name(text)
+        end
+        return text
+    end
+
+    local original_get_sub_zone_text = _G.GetSubZoneText
+    _G.GetSubZoneText = function (...)
+        local text = original_get_sub_zone_text(...)
+        if type(text) == "string" then
+            text = translate_zone_name(text)
+        end
+        return text
+    end
+
+    local original_get_area_text = _G.GetAreaText
+    _G.GetAreaText = function (...)
+        local text = original_get_area_text(...)
+        if type(text) == "string" then
+            text = translate_zone_name(text)
+        end
+        return text
+    end
+
+    local original_get_minimap_zone_text = _G.GetMinimapZoneText
+    _G.GetMinimapZoneText = function (...)
+        local text = original_get_minimap_zone_text(...)
+        if type(text) == "string" then
+            text = translate_zone_name(text)
+        end
+        return text
+    end
+
+    -- force minimap update, otherwise it will show original zone name until player changes zone
+    wow.Minimap_Update()
 end
 
 -- ----------------
@@ -2708,13 +2774,10 @@ event_frame:RegisterEvent("ADDON_LOADED")
 event_frame:RegisterEvent("PLAYER_LOGIN")
 event_frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 event_frame:RegisterEvent("GOSSIP_SHOW")
-event_frame:RegisterEvent("GOSSIP_CLOSED")
+event_frame:RegisterEvent("QUEST_GREETING")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_READY")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
-event_frame:RegisterEvent("ZONE_CHANGED")
-event_frame:RegisterEvent("ZONE_CHANGED_INDOORS")
-event_frame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
@@ -2743,8 +2806,8 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_glossary()
         prepare_codes(name, race, class, sex == 2) -- 2 for male
         prepare_get_text_code_replace_seq(name)
-        prepare_zone_text()
-        prepare_world_map()
+        prepare_quest_frames()
+        prepare_zone_names()
 
     elseif event == "PLAYER_TARGET_CHANGED" then
         update_target_frame_text()
@@ -2752,8 +2815,8 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
     elseif event == "GOSSIP_SHOW" then
         show_gossip()
 
-    elseif event == "GOSSIP_CLOSED" then
-        hide_gossip()
+    elseif event == "QUEST_GREETING" then
+        show_greeting()
 
     elseif event == "ITEM_TEXT_BEGIN" then
         if known_tooltips[1].classicua.entry_type == "item" then
@@ -2765,11 +2828,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
 
     elseif event == "ITEM_TEXT_CLOSED" then
         hide_book()
-
-    elseif event == "ZONE_CHANGED"
-        or event == "ZONE_CHANGED_INDOORS"
-        or event == "ZONE_CHANGED_NEW_AREA" then
-        update_zone_text()
 
     end
 end)
