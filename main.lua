@@ -2494,7 +2494,7 @@ end
 
 local function prepare_options_frame()
     local at_info = addonTable.info
-    options_frame = wow.CreateFrame("Frame", "ClassicUA_Options")
+    options_frame = wow.CreateFrame("Frame", "ClassicUA_Options_Frame")
     local f = nil
 
     -- title
