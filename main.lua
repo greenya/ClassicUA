@@ -1997,61 +1997,6 @@ local function show_greeting()
 end
 
 -- --------------
--- [ book frame ]
--- --------------
-
----@type integer?
-local book_item_id = nil
-
-local book_frame = nil
-local function get_book_frame()
-    if book_frame then
-        return book_frame
-    end
-
-    local width, height = wow.ItemTextScrollFrame:GetSize()
-    local frame = wow.CreateFrame("Frame", nil, wow.ItemTextScrollFrame, "BackdropTemplate")
-    frame:SetFrameStrata("HIGH")
-    frame:SetSize(width + 18, height + 18)
-    frame:SetPoint("TOP", 0, 18/2)
-    frame:SetPoint("RIGHT", width + 27 + 18, 0)
-    setup_frame_background_and_border(frame)
-    setup_frame_scrollbar_and_content(frame, { text={ font=fonts.header } })
-    frame:Show()
-
-    book_frame = frame
-    return book_frame
-end
-
-local function set_book_content(text)
-    local f = get_book_frame()
-    local h = 16
-
-    f.text:SetPoint("TOPLEFT", f.content, 12, -h)
-    f.text:SetText(text)
-    h = h + f.text:GetHeight() + 12
-
-    setup_frame_scrollbar_values(f, h)
-end
-
-local function show_book()
-    local book = get_entry("book", book_item_id)
-    if book then
-        local page = wow.ItemTextGetPage()
-        if not book[page] and book[1] then
-            book[page] = book[1]
-        end
-        set_book_content(book[page])
-        get_book_frame():Show()
-    end
-end
-
-local function hide_book()
-    get_book_frame():Hide()
-    book_item_id = nil
-end
-
--- --------------
 -- [ zone names ]
 -- --------------
 
@@ -2169,6 +2114,55 @@ local function prepare_zone_names()
 
     -- force minimap update, otherwise it will show original zone name until player changes zone
     wow.Minimap_Update()
+end
+
+-- --------------
+-- [ item texts ]
+-- --------------
+
+---@type integer?
+local book_item_id = nil
+
+local function prepare_item_texts()
+    local original_item_text_get_text = _G.ItemTextGetText
+    _G.ItemTextGetText = function (...)
+        local text = original_item_text_get_text(...)
+        local book = get_entry("book", book_item_id)
+        if book then
+            local page = wow.ItemTextGetPage()
+            if book[page] then
+                text = book[page]
+            end
+        end
+        return text
+    end
+
+    local original_item_text_get_item = _G.ItemTextGetItem
+    _G.ItemTextGetItem = function (...)
+        local text = original_item_text_get_item(...)
+        -- book_item_id is not ready at this moment, so we use last mouse hovered item
+        if known_tooltips[1].classicua.entry_type == "item" then
+            local item_id = known_tooltips[1].classicua.entry_id
+            local item = get_entry("item", item_id)
+            if item then
+                text = capitalize(item[1])
+            end
+        end
+        return text
+    end
+end
+
+local function item_text_begin()
+    -- we store last mouse hovered item in separate variable, because player can mouse over
+    -- many items before closing the book, so we keep id of currently opened book for correct
+    -- pages lookup in ItemTextGetText() hook
+    if known_tooltips[1].classicua.entry_type == "item" then
+        book_item_id = known_tooltips[1].classicua.entry_id
+    end
+end
+
+local function item_text_closed()
+    book_item_id = nil
 end
 
 -- ----------------
@@ -2811,7 +2805,6 @@ event_frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 event_frame:RegisterEvent("GOSSIP_SHOW")
 event_frame:RegisterEvent("QUEST_GREETING")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
-event_frame:RegisterEvent("ITEM_TEXT_READY")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
@@ -2844,6 +2837,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_get_text_code_replace_seq(name)
         prepare_quest_frames()
         prepare_zone_names()
+        prepare_item_texts()
 
     elseif event == "PLAYER_TARGET_CHANGED" then
         update_target_frame_text()
@@ -2855,15 +2849,10 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         show_greeting()
 
     elseif event == "ITEM_TEXT_BEGIN" then
-        if known_tooltips[1].classicua.entry_type == "item" then
-            book_item_id = tonumber(known_tooltips[1].classicua.entry_id)
-        end
-
-    elseif event == "ITEM_TEXT_READY" then
-        show_book()
+        item_text_begin()
 
     elseif event == "ITEM_TEXT_CLOSED" then
-        hide_book()
+        item_text_closed()
 
     end
 end)
