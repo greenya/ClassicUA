@@ -68,7 +68,7 @@ local global_strings = {
 { "REWARD_ITEMS_ONLY", "Ви отримаєте:" }, -- "You will receive:"
 { "REWARD_SPELL", "Ви навчитеся:" }, -- "You will learn:"
 { "REWARD_TITLE", "Вас буде удостоєно званням:" }, -- "You shall be granted the title:"
-{ "REWARD_TRADESKILL_SPELL", "Вы навчитеся створювати:" }, -- "You will learn how to create:"
+{ "REWARD_TRADESKILL_SPELL", "Ви навчитеся створювати:" }, -- "You will learn how to create:"
 { "SANCTUARY_TERRITORY", "(Прихисток)" }, -- "(Sanctuary)"
 { "SECONDARYHANDSLOT", "Неосновна рука" }, -- "Off Hand"
 { "SHIELDSLOT", "Щит" }, -- "Shield"
