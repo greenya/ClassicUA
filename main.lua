@@ -68,16 +68,16 @@ local wow = {
     WorldFrame                  = _G.WorldFrame,
 }
 
-local build_info = wow.GetBuildInfo()
-local is_classic = string.byte(build_info, 1) == string.byte("1")
+local is_classic = string.byte(wow.GetBuildInfo(), 1) == string.byte("1")
 local is_classic_sod = is_classic and wow.C_Seasons and wow.C_Seasons.HasActiveSeason() and wow.C_Seasons.GetActiveSeason() == wow.Enum.SeasonID.SeasonOfDiscovery
-local is_tbc = string.byte(build_info, 1) == string.byte("2")
-local is_wrath = string.byte(build_info, 1) == string.byte("3")
-local is_cata = string.byte(build_info, 1) == string.byte("4")
+local is_tbc = string.byte(wow.GetBuildInfo(), 1) == string.byte("2")
+local is_wrath = string.byte(wow.GetBuildInfo(), 1) == string.byte("3")
+local is_cata = string.byte(wow.GetBuildInfo(), 1) == string.byte("4")
 
 local asset_ua_code = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t"
-local asset_font1_path = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf"
-local asset_font2_path = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf"
+local font_logo = SystemFont_Huge2
+local font_header = QuestFont_Huge
+local font_content = SystemFont_Med2
 
 ---@class options_class
 local options = nil
@@ -434,7 +434,7 @@ end
 
 local function dev_log_init()
     dev_log.addon_version = wow.GetAddOnMetadata("ClassicUA", "Version")
-    dev_log.game_version = build_info
+    dev_log.game_version = wow.GetBuildInfo()
     dev_log.game_expansion = game_expansion_key()
 
     if not dev_log.missing_quests           then dev_log.missing_quests = {} end
@@ -1725,7 +1725,7 @@ local function setup_frame_background_and_border(frame)
     })
 end
 
--- areas: { area1 = { font, size }, ... }
+-- areas: { area1={ font }, ... }
 local function setup_frame_scrollbar_and_content(frame, areas, scrollframe_width_override)
     local scrollframe = wow.CreateFrame("ScrollFrame", nil, frame)
     scrollframe:SetPoint("TOPLEFT", 8, -9)
@@ -1744,9 +1744,7 @@ local function setup_frame_scrollbar_and_content(frame, areas, scrollframe_width
         a:SetJustifyH("LEFT")
         a:SetJustifyV("TOP")
         a:SetTextColor(0, 0, 0)
-        if type(v) == "table" and #v == 2 then
-            a:SetFont(v[1], v[2])
-        end
+        a:SetFontObject(v.font)
         frame[k] = a
     end
 
@@ -1790,34 +1788,6 @@ end
 -- [ quest frames ]
 -- ----------------
 
-local quest_frames = {}
-local function get_quest_frame(name)
-    if quest_frames[name] then
-        return quest_frames[name]
-    end
-
-    local width, height = wow.QuestFrame:GetSize()
-    local frame = wow.CreateFrame("Frame", nil, wow.QuestFrame, "BackdropTemplate")
-    frame:SetFrameStrata("HIGH")
-    frame:SetSize(width - 64, height - 160)
-    frame:SetPoint("TOP", 0, -72)
-    frame:SetPoint("RIGHT", frame:GetWidth() - 37, 0)
-
-    setup_frame_background_and_border(frame)
-
-    setup_frame_scrollbar_and_content(frame, {
-        title = { asset_font1_path, options.quest_text_size + 5 },
-        text = { asset_font2_path, options.quest_text_size },
-        more_title = { asset_font1_path, options.quest_text_size + 5 },
-        more_text = { asset_font2_path, options.quest_text_size }
-    })
-
-    frame:Show()
-
-    quest_frames[name] = frame
-    return quest_frames[name]
-end
-
 -- frame must have properties: title, text, more_title, more_text
 local function set_quest_content(frame, title, text, more_title, more_text)
     local h = 16
@@ -1857,28 +1827,26 @@ end
 local quest_frames_vars
 
 local function on_quest_log_entry_selected()
-    local qfv = quest_frames_vars
-    qfv.questlog_selected_quest_entry = nil
+    quest_frames_vars.questlog_selected_quest_entry = nil
     local selection = wow.GetQuestLogSelection()
     if selection > 0 then
         local id = select(8, wow.GetQuestLogTitle(selection))
         local entry = get_entry("quest", id)
         if entry then
-            qfv.questlog_selected_quest_entry = entry
+            quest_frames_vars.questlog_selected_quest_entry = entry
         end
     end
 end
 
 local function on_quest_frames_set_text(self, text)
-    local qfv = quest_frames_vars
-    if not qfv.set_text_hook_allowed then
+    if not quest_frames_vars.set_text_hook_allowed then
         return
     end
 
     local new_text
 
     -- quest entry indices: [1] title, [2] description, [3] objective, [4] progress, [5] completion
-    local quest_entry = get_entry("quest", wow.GetQuestID()) or qfv.questlog_selected_quest_entry
+    local quest_entry = get_entry("quest", wow.GetQuestID()) or quest_frames_vars.questlog_selected_quest_entry
     if quest_entry then
         if self == QuestLogQuestTitle       then new_text = quest_entry[1] end
         if self == QuestInfoTitleHeader     then new_text = quest_entry[1] end
@@ -1916,9 +1884,9 @@ local function on_quest_frames_set_text(self, text)
     end
 
     if new_text then
-        qfv.set_text_hook_allowed = false
+        quest_frames_vars.set_text_hook_allowed = false
         self:SetText(new_text)
-        qfv.set_text_hook_allowed = true
+        quest_frames_vars.set_text_hook_allowed = true
     end
 end
 
@@ -1926,61 +1894,52 @@ local function prepare_quest_frames()
     quest_frames_vars = {
         questlog_selected_quest_entry = nil,
         set_text_hook_allowed = true,
-        font_title = { asset_font1_path, options.quest_text_size + 5 },
-        font_content = { asset_font2_path, options.quest_text_size },
     }
-
-    local qfv = quest_frames_vars
 
     wow.hooksecurefunc("SelectQuestLogEntry", on_quest_log_entry_selected)
 
     for _, info in ipairs({
         -- greetings dialog (talking to npc)
-        { frame=CurrentQuestsText, font=qfv.font_title }, -- "Current Quests"
-        { frame=AvailableQuestsText, font=qfv.font_title }, -- "Available Quests"
+        { frame=CurrentQuestsText }, -- "Current Quests"
+        { frame=AvailableQuestsText }, -- "Available Quests"
         -- quest details step + rewards step (talking to npc); QuestInfoXXX is used as quest log parts in WOTLK and QuestLogXXX is removed
-        { frame=QuestInfoTitleHeader, font=qfv.font_title }, -- quest title
-        { frame=QuestInfoDescriptionHeader, font=qfv.font_title }, -- "Description"
-        { frame=QuestInfoDescriptionText, font=qfv.font_content }, -- quest description
-        { frame=QuestInfoObjectivesHeader, font=qfv.font_title }, -- "Quest Objectives"
-        { frame=QuestInfoObjectivesText, font=qfv.font_content }, -- quest objectives
-        { frame=QuestInfoRewardText, font=qfv.font_content }, -- quest completion
-        { frame=QuestInfoRewardsFrame.Header, font=qfv.font_title }, -- "Rewards"
-        { frame=QuestInfoRewardsFrame.ItemChooseText, font=qfv.font_content }, -- "You will be able to choose one of these rewards:", "Choose your reward:"
-        { frame=QuestInfoRewardsFrame.ItemReceiveText, font=qfv.font_content }, -- "You will receive:"
-        { frame=QuestInfoRewardsFrame.PlayerTitleText, font=qfv.font_content }, -- "You shall be granted the title:"
-        { frame=QuestInfoXPFrame.ReceiveText, font=qfv.font_content }, -- "Experience:"
+        { frame=QuestInfoTitleHeader }, -- quest title
+        { frame=QuestInfoDescriptionHeader }, -- "Description"
+        { frame=QuestInfoDescriptionText }, -- quest description
+        { frame=QuestInfoObjectivesHeader }, -- "Quest Objectives"
+        { frame=QuestInfoObjectivesText }, -- quest objectives
+        { frame=QuestInfoRewardText }, -- quest completion
+        { frame=QuestInfoRewardsFrame.Header }, -- "Rewards"
+        { frame=QuestInfoRewardsFrame.ItemChooseText }, -- "You will be able to choose one of these rewards:", "Choose your reward:"
+        { frame=QuestInfoRewardsFrame.ItemReceiveText }, -- "You will receive:"
+        { frame=QuestInfoRewardsFrame.PlayerTitleText }, -- "You shall be granted the title:"
+        { frame=QuestInfoXPFrame.ReceiveText }, -- "Experience:"
         -- quest progress step (talking to npc)
-        { frame=QuestProgressTitleText, font=qfv.font_title }, -- quest title
-        { frame=QuestProgressText, font=qfv.font_content }, -- quest progress
-        { frame=QuestProgressRequiredItemsText, font=qfv.font_title }, -- "Required items:"
-        { frame=QuestProgressRequiredMoneyText, font=qfv.font_title }, -- "Required Money:"
+        { frame=QuestProgressTitleText }, -- quest title
+        { frame=QuestProgressText }, -- quest progress
+        { frame=QuestProgressRequiredItemsText }, -- "Required items:"
+        { frame=QuestProgressRequiredMoneyText }, -- "Required Money:"
         -- questlog details (browsing player personal quest log); QuestLogXXX is removed from WOTLK and QuestInfoXXX is used instead
-        { frame=QuestLogQuestTitle, font=qfv.font_title }, -- quest title
-        { frame=QuestLogObjectivesText, font=qfv.font_content }, -- quest objectives
-        { frame=QuestLogObjective1, font=qfv.font_content }, -- quest objective line 1
-        { frame=QuestLogObjective2, font=qfv.font_content }, -- quest objective line 2
-        { frame=QuestLogObjective3, font=qfv.font_content }, -- quest objective line 3
-        { frame=QuestLogObjective4, font=qfv.font_content }, -- quest objective line 4
-        { frame=QuestLogObjective5, font=qfv.font_content }, -- quest objective line 5
-        { frame=QuestLogObjective6, font=qfv.font_content }, -- quest objective line 6
-        { frame=QuestLogObjective7, font=qfv.font_content }, -- quest objective line 7
-        { frame=QuestLogObjective8, font=qfv.font_content }, -- quest objective line 8
-        { frame=QuestLogObjective9, font=qfv.font_content }, -- quest objective line 9
-        { frame=QuestLogObjective10, font=qfv.font_content }, -- quest objective line 10
-        { frame=QuestLogDescriptionTitle, font=qfv.font_title }, -- "Description"
-        { frame=QuestLogQuestDescription, font=qfv.font_content }, -- quest description
-        { frame=QuestLogRewardTitleText, font=qfv.font_title }, -- "Rewards"
-        { frame=QuestLogItemChooseText, font=qfv.font_content }, -- "You will be able to choose one of these rewards:"
-        { frame=QuestLogItemReceiveText, font=qfv.font_content }, -- "You will receive:", "You will also receive:"
+        { frame=QuestLogQuestTitle }, -- quest title
+        { frame=QuestLogObjectivesText }, -- quest objectives
+        { frame=QuestLogObjective1 }, -- quest objective line 1
+        { frame=QuestLogObjective2 }, -- quest objective line 2
+        { frame=QuestLogObjective3 }, -- quest objective line 3
+        { frame=QuestLogObjective4 }, -- quest objective line 4
+        { frame=QuestLogObjective5 }, -- quest objective line 5
+        { frame=QuestLogObjective6 }, -- quest objective line 6
+        { frame=QuestLogObjective7 }, -- quest objective line 7
+        { frame=QuestLogObjective8 }, -- quest objective line 8
+        { frame=QuestLogObjective9 }, -- quest objective line 9
+        { frame=QuestLogObjective10 }, -- quest objective line 10
+        { frame=QuestLogDescriptionTitle }, -- "Description"
+        { frame=QuestLogQuestDescription }, -- quest description
+        { frame=QuestLogRewardTitleText }, -- "Rewards"
+        { frame=QuestLogItemChooseText }, -- "You will be able to choose one of these rewards:"
+        { frame=QuestLogItemReceiveText }, -- "You will receive:", "You will also receive:"
     }) do
         if info.frame then
-            if info.font then
-                info.frame:SetFont(info.font[1], info.font[2])
-            end
-
             wow.hooksecurefunc(info.frame, "SetText", on_quest_frames_set_text)
-
             -- force update (trigger hook above), because some static texts never gets updated
             local text = info.frame:GetText()
             if text then info.frame:SetText(text) end
@@ -2049,13 +2008,8 @@ local function get_book_frame()
     frame:SetSize(width + 18, height + 18)
     frame:SetPoint("TOP", 0, 18/2)
     frame:SetPoint("RIGHT", width + 27 + 18, 0)
-
     setup_frame_background_and_border(frame)
-
-    setup_frame_scrollbar_and_content(frame, {
-        text = { asset_font1_path, options.book_text_size }
-    })
-
+    setup_frame_scrollbar_and_content(frame, { text={ font=font_header } })
     frame:Show()
 
     book_frame = frame
@@ -2310,6 +2264,92 @@ for event_name, _ in pairs(known_chat_msg_events) do
     wow.ChatFrame_AddMessageEventFilter(event_name, filter_chat_msg)
 end
 
+-- ---------
+-- [ fonts ]
+-- ---------
+
+local function prepare_fonts()
+    -- todo: check options.override_system_fonts
+
+    -- reference: https://www.townlong-yak.com/framexml/era/Blizzard_Fonts_Shared/SharedFonts.xml
+    local known_system_font_names = {
+        -- known font names use "Fonts\MORPHEUS.ttf"
+        "QuestFont_Large",
+        "QuestFont_Larger",
+        "QuestFont_Huge",
+        "QuestFont_39",
+        -- known font names use "Fonts\FRIZQT__.TTF"
+        "SystemFont_Tiny2",
+        "SystemFont_Tiny",
+        "SystemFont_Shadow_Small",
+        "Game10Font_o1",
+        "SystemFont_Small",
+        "SystemFont_Small2",
+        "SystemFont_Shadow_Small2",
+        "SystemFont_Shadow_Med1_Outline",
+        "SystemFont_Shadow_Med1",
+        "SystemFont_Med2",
+        "SystemFont_Med2_HSpacing",
+        "SystemFont_Med3",
+        "SystemFont_Shadow_Med3",
+        "SystemFont_Med4",
+        "SystemFont_Shadow_Med4",
+        "SystemFont_Large",
+        "SystemFont_Shadow_Large_Outline",
+        "SystemFont16_Shadow_ThickOutline",
+        "SystemFont_Shadow_Med2",
+        "SystemFont_Shadow_Large",
+        "SystemFont_Shadow_Large2",
+        "SystemFont_Shadow_Huge1",
+        "SystemFont_Huge2",
+        "SystemFont_Shadow_Huge2",
+        "SystemFont_Shadow_Huge3",
+        "SystemFont_Shadow_Outline_Huge3",
+        "SystemFont_World",
+        "SystemFont_World_ThickOutline",
+        "SystemFont_Shadow_Outline_Huge2",
+        "SystemFont_Med1",
+        "SystemFont_WTF2",
+        "SystemFont_Outline_WTF2",
+        "GameTooltipHeader",
+        "System_IME",
+        "Tooltip_Med",
+        "Tooltip_Small",
+        "System15Font",
+        "Game16Font",
+        "Game30Font",
+        "Game30Font2",
+        "Game30Font2Outline",
+        "Game32Font_Shadow2",
+    }
+
+    local known_font_file_overrides = {
+        { "Fonts\\MORPHEUS.ttf", "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf" },
+        { "Fonts\\FRIZQT__.TTF", "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf" },
+    }
+
+    for _, name in ipairs(known_system_font_names) do
+        local font = _G[name]
+        if font then
+            local font_file, font_height, font_flags = font:GetFont()
+            local font_file_lower = font_file:lower()
+            local new_file
+
+            for _, o in ipairs(known_font_file_overrides) do
+                local from_file_lower, to_file = o[1]:lower(), o[2]
+                if font_file_lower == from_file_lower then
+                    new_file = to_file
+                    break
+                end
+            end
+
+            if new_file then
+                font:SetFont(new_file, font_height, font_flags)
+            end
+        end
+    end
+end
+
 -- -----------------
 -- [ options frame ]
 -- -----------------
@@ -2369,7 +2409,7 @@ local function setup_player_name_cases_frame(content_frame)
 
         local label = root:CreateFontString()
         label:SetPoint("TOPLEFT", x, y - 0)
-        label:SetFont(asset_font2_path, 12)
+        label:SetFontObject(font_content)
         label:SetTextColor(0, 0, 0)
         label:SetText(case_name)
 
@@ -2500,15 +2540,15 @@ local function prepare_options_frame()
     -- title
 
     f = options_frame:CreateFontString()
-    f:SetPoint("TOPLEFT", 22, -20)
-    f:SetFont(asset_font2_path, 20)
+    f:SetPoint("TOPLEFT", 26, -20)
+    f:SetFontObject(font_logo)
     f:SetText("|cff1177eeClassic|r|cffffdd00UA|r")
 
     -- version & stats
 
     f = options_frame:CreateFontString()
-    f:SetPoint("TOPRIGHT", -20, -20)
-    f:SetFont(asset_font2_path, 12)
+    f:SetPoint("TOPRIGHT", -24, -20)
+    f:SetFontObject(font_content)
     f:SetJustifyH("LEFT")
     local stats = get_stats()
     f:SetText(
@@ -2525,9 +2565,9 @@ local function prepare_options_frame()
     -- reload button
 
     f = wow.CreateFrame("Button", "$parent.Reload", options_frame, "UIPanelButtonTemplate")
-    f:SetPoint("TOPRIGHT", -48, -128)
+    f:SetPoint("TOPRIGHT", -46, -128)
     f:SetText("/reload")
-    f:SetSize(88, 24)
+    f:SetSize(100, 24)
     f:SetScript("OnClick", function()
         wow.StaticPopup_Show("CLASSICUA_CONFIRM_RELOAD_UI")
     end)
@@ -2555,9 +2595,9 @@ local function prepare_options_frame()
     -- reset button
 
     f = wow.CreateFrame("Button", "$parent.Reset", options_frame, "UIPanelButtonTemplate")
-    f:SetPoint("TOPRIGHT", -48, -160)
+    f:SetPoint("TOPRIGHT", -46, -160)
     f:SetText("Скинути")
-    f:SetSize(88, 24)
+    f:SetSize(100, 24)
     f:SetScript("OnClick", function()
         wow.StaticPopup_Show("CLASSICUA_CONFIRM_SETTINGS_RESET")
     end)
@@ -2596,17 +2636,16 @@ local function prepare_options_frame()
 
     -- tabs
 
-    f = wow.CreateFrame("Frame", "$parent.Current_Tab", options_frame, "BackdropTemplate")
-    options_frame.current_tab = f
-    f:SetPoint("TOPLEFT", 24, -224)
-    f:SetSize(600, 340)
-    setup_frame_background_and_border(f)
-    setup_frame_scrollbar_and_content(f, {
-        title = { asset_font1_path, options.quest_text_size + 5 },
-        text = { asset_font2_path, options.quest_text_size }
-    }, f:GetWidth() - 16)
+    options_frame.current_tab = wow.CreateFrame("Frame", "$parent.Current_Tab", options_frame, "BackdropTemplate")
+    options_frame.current_tab:SetPoint("TOPLEFT", 24, -224)
+    options_frame.current_tab:SetSize(600, 340)
+    setup_frame_background_and_border(options_frame.current_tab)
+    setup_frame_scrollbar_and_content(options_frame.current_tab, {
+        title = { font=font_header },
+        text = { font=font_content },
+    }, options_frame.current_tab:GetWidth() - 16)
 
-    options_frame.current_tab.selected_tab_index = -1
+    options_frame.current_tab_index = -1
     options_frame.tab_buttons = {}
     options_frame.tab_child_frames = {}
 
@@ -2631,7 +2670,7 @@ local function prepare_options_frame()
             content_text            = at_info.contributors
         }
     }) do
-        f = wow.CreateFrame("Button", "$parent.Tab_Button_" .. tab_index, options_frame, "UIPanelButtonTemplate")
+        local f = wow.CreateFrame("Button", "$parent.Tab_Button_" .. tab_index, options_frame, "UIPanelButtonTemplate")
         table.insert(options_frame.tab_buttons, f)
         f.tab_index = tab_index
         f.tab_data = tab_data
@@ -2650,47 +2689,50 @@ local function prepare_options_frame()
     end
 
     options_frame.update_tab_scrollbar = function ()
-        local selected_tab_index = options_frame.current_tab.selected_tab_index
-        if selected_tab_index == -1 then
+        local of = options_frame
+
+        if of.current_tab_index == -1 then
             return
         end
 
-        local child_frame = options_frame.tab_child_frames[selected_tab_index]
+        local child_frame = of.tab_child_frames[of.current_tab_index]
         if child_frame then
-            local h = options_frame.current_tab.content_tab_base_height + child_frame:GetHeight()
-            setup_frame_scrollbar_values(options_frame.current_tab, h, true)
+            local h = of.current_tab.content_tab_base_height + child_frame:GetHeight()
+            setup_frame_scrollbar_values(of.current_tab, h, true)
         end
     end
 
-    options_frame.select_tab = function (tab_index)
-        if tab_index == options_frame.current_tab.selected_tab_index then
+    options_frame.select_tab = function (tab_index, force_refresh)
+        local of = options_frame
+
+        if tab_index == of.current_tab_index and not force_refresh then
             return
         end
 
-        local tab_button = options_frame.tab_buttons[tab_index]
+        local tab_button = of.tab_buttons[tab_index]
 
-        for _, btn_frame in ipairs(options_frame.tab_buttons) do
+        for _, btn_frame in ipairs(of.tab_buttons) do
             if btn_frame.tab_index ~= tab_button.tab_index then
                 btn_frame:UnlockHighlight()
             end
         end
 
-        set_quest_content(options_frame.current_tab, tab_button.tab_data.content_title, tab_button.tab_data.content_text)
-        options_frame.current_tab.content_tab_base_height = options_frame.current_tab.content:GetHeight()
-        options_frame.current_tab.selected_tab_index = tab_button.tab_index
+        set_quest_content(of.current_tab, tab_button.tab_data.content_title, tab_button.tab_data.content_text)
+        of.current_tab.content_tab_base_height = of.current_tab.content:GetHeight()
+        of.current_tab_index = tab_button.tab_index
         tab_button:LockHighlight()
 
-        for child_frame_index in pairs(options_frame.tab_child_frames) do
-            child_frame = options_frame.tab_child_frames[child_frame_index]
+        for child_frame_index in pairs(of.tab_child_frames) do
+            child_frame = of.tab_child_frames[child_frame_index]
             if child_frame and child_frame_index ~= tab_button.tab_index then
                 child_frame:Hide()
             end
         end
 
-        local child_frame = options_frame.tab_child_frames[tab_button.tab_index]
+        local child_frame = of.tab_child_frames[tab_button.tab_index]
         if child_frame then
             child_frame:Show()
-            options_frame.update_tab_scrollbar()
+            of.update_tab_scrollbar()
         end
     end
 
@@ -2701,14 +2743,23 @@ local function prepare_options_frame()
     options_frame.name = "ClassicUA"
     options_frame.default = reset_options
     options_frame.refresh = function ()
-        local f = options_frame
-        f.quest_text_size_slider:SetValue(options.quest_text_size)
-        f.book_text_size_slider:SetValue(options.book_text_size)
-        f.dev_mode_checkbox:SetChecked(options.dev_mode)
-        f.dev_mode_notify_activity_checkbox:SetChecked(options.dev_mode_notify_activity)
+        local of = options_frame
+        of.quest_text_size_slider:SetValue(options.quest_text_size)
+        of.book_text_size_slider:SetValue(options.book_text_size)
+        of.dev_mode_checkbox:SetChecked(options.dev_mode)
+        of.dev_mode_notify_activity_checkbox:SetChecked(options.dev_mode_notify_activity)
     end
 
-    options_frame:SetScript("OnShow", function (self) self.refresh() end)
+    options_frame.refresh()
+
+    -- force tab reselection to fix font rendering issue on game cold start
+    options_frame.was_shown_once = false
+    options_frame:SetScript("OnShow", function (self)
+        if not options_frame.was_shown_once then
+            options_frame.was_shown_once = true
+            options_frame.select_tab(options_frame.current_tab_index, true)
+        end
+    end)
 
     -- add options frame to Options -> AddOns
 
@@ -2763,6 +2814,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_options()
         prepare_options_frame()
         prepare_slash_command()
+        prepare_fonts()
 
         wow.DEFAULT_CHAT_FRAME:AddMessage(
             asset_ua_code
