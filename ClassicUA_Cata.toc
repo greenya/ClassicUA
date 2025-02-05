@@ -10,7 +10,7 @@
 ui\ClassicUA_UISliderTemplateWithLabels.xml
 
 entries\class.lua
-entries\const.lua
+entries\info.lua
 entries\race.lua
 entries\text.lua
 entries\zone.lua

@@ -185,40 +185,6 @@ local function fix_float_number(value)
     return result
 end
 
-local function parse_quest_single_objective_string(text)
-    if type(text) ~= "string" then
-        return { name="" }
-    end
-
-    -- trying to parse input text like:
-    -- "XXX slain: Y/Z (Complete)"  => { name="XXX", has_slain=true, progress="Y/Z", has_complete=true }
-    -- "XXX: Y/Z (Complete)"        => { name="XXX", progress="Y/Z", has_complete=true }
-    -- "XXX: Y/Z"                   => { name="XXX", progress="Y/Z" }
-    -- "Any custom text"            => { name="Any custom text" }
-
-    local name, part2 = string.match(text, "^(.-):%s*(.*)$")
-    if not name then
-        name = text
-        part2 = nil
-    end
-
-    local name_only = string.match(name, "^(.-)%s+slain$")
-    local has_slain = name_only ~= nil
-    if has_slain then
-        name = name_only
-    end
-
-    local progress = part2 and string.match(part2, "(%d+/%d+)") or nil
-    local has_complete = part2 and string.find(part2, "%(Complete%)") ~= nil
-
-    return {
-        name            = string.trim(name),
-        has_slain       = has_slain,
-        progress        = progress,
-        has_complete    = has_complete,
-    }
-end
-
 local function strip_color_codes(text)
     if type(text) == "string" then
         text = text:gsub("|c%x%x%x%x%x%x%x%x", "")
@@ -1926,12 +1892,23 @@ local function on_quest_frames_set_text(self, text)
     end
 
     if not new_text and 1 == string.find(self:GetName() or "", "QuestLogObjective") then
-        local obj = parse_quest_single_objective_string(text)
-        local obj_text = get_glossary_text(obj.name) or obj.name
-        if obj.progress     then obj_text = obj_text .. ": " .. obj.progress end
-        if obj.has_slain    then obj_text = obj_text .. " вбито" end
-        if obj.has_complete then obj_text = obj_text .. " (Завершено)" end
-        new_text = obj_text
+        -- try parse "XXX: YYY" and translate XXX
+        local parts = { string.split(":", text, 2) }
+        if #parts == 2 and #parts[1] > 0 then
+            local found = get_glossary_text(parts[1])
+            if found then
+                parts[1] = found
+            elseif #parts[1] > 1 and parts[1]:sub(#parts[1], #parts[1]) == "s" then
+                -- try plural => singular, e.g. "Kobold Workers" => "Kobold Worker"
+                local found_singular = get_glossary_text(parts[1]:sub(1, #parts[1] - 1))
+                if found_singular then
+                    parts[1] = found_singular
+                end
+            end
+            new_text = parts[1] .. ":" .. parts[2]
+        else
+            new_text = text
+        end
     end
 
     if not new_text then
@@ -1969,7 +1946,7 @@ local function prepare_quest_frames()
         { frame=QuestInfoObjectivesText, font=qfv.font_content }, -- quest objectives
         { frame=QuestInfoRewardText, font=qfv.font_content }, -- quest completion
         { frame=QuestInfoRewardsFrame.Header, font=qfv.font_title }, -- "Rewards"
-        { frame=QuestInfoRewardsFrame.ItemChooseText, font=qfv.font_content }, -- "You will be able to choose one of these rewards:"
+        { frame=QuestInfoRewardsFrame.ItemChooseText, font=qfv.font_content }, -- "You will be able to choose one of these rewards:", "Choose your reward:"
         { frame=QuestInfoRewardsFrame.ItemReceiveText, font=qfv.font_content }, -- "You will receive:"
         { frame=QuestInfoRewardsFrame.PlayerTitleText, font=qfv.font_content }, -- "You shall be granted the title:"
         { frame=QuestInfoXPFrame.ReceiveText, font=qfv.font_content }, -- "Experience:"
@@ -2516,7 +2493,7 @@ local function create_slider_frame(parent, point, x, y, width, height, min, max,
 end
 
 local function prepare_options_frame()
-    local at_text = addonTable.text -- can not use glossary as its not prepared at this moment
+    local at_info = addonTable.info
     options_frame = wow.CreateFrame("Frame", "ClassicUA_Options")
     local f = nil
 
@@ -2637,21 +2614,21 @@ local function prepare_options_frame()
         {
             title                   = "Персонаж",
             content_title           = "Персонаж: " .. wow.UnitName("player"),
-            content_text            = at_text["addon_player_character_desc"],
+            content_text            = at_info.player_character_desc,
             child_frame_setup_func  = setup_player_name_cases_frame
         }, {
             title                   = "Розробка",
             content_title           = "Розробка",
-            content_text            = at_text["addon_dev_mode_desc"]:gsub("@GAME_SUB_DIR", is_classic and "_classic_era_" or "_classic_"),
+            content_text            = at_info.dev_mode_desc:gsub("@GAME_SUB_DIR", is_classic and "_classic_era_" or "_classic_"),
             child_frame_setup_func  = setup_dev_mode_frame
         }, {
             title                   = "Оновлення",
             content_title           = "Оновлення",
-            content_text            = at_text["addon_changelog"]
+            content_text            = at_info.changelog
         }, {
             title                   = "Причетні",
             content_title           = "Причетні",
-            content_text            = at_text["addon_contributors"]
+            content_text            = at_info.contributors
         }
     }) do
         f = wow.CreateFrame("Button", "$parent.Tab_Button_" .. tab_index, options_frame, "UIPanelButtonTemplate")
