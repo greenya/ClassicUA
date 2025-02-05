@@ -68,16 +68,23 @@ local wow = {
     WorldFrame                  = _G.WorldFrame,
 }
 
-local is_classic = string.byte(wow.GetBuildInfo(), 1) == string.byte("1")
-local is_classic_sod = is_classic and wow.C_Seasons and wow.C_Seasons.HasActiveSeason() and wow.C_Seasons.GetActiveSeason() == wow.Enum.SeasonID.SeasonOfDiscovery
-local is_tbc = string.byte(wow.GetBuildInfo(), 1) == string.byte("2")
-local is_wrath = string.byte(wow.GetBuildInfo(), 1) == string.byte("3")
-local is_cata = string.byte(wow.GetBuildInfo(), 1) == string.byte("4")
+local is_classic        = string.byte(wow.GetBuildInfo(), 1) == string.byte("1")
+local is_classic_sod    = is_classic and wow.C_Seasons and wow.C_Seasons.HasActiveSeason() and wow.C_Seasons.GetActiveSeason() == wow.Enum.SeasonID.SeasonOfDiscovery
+local is_tbc            = string.byte(wow.GetBuildInfo(), 1) == string.byte("2")
+local is_wrath          = string.byte(wow.GetBuildInfo(), 1) == string.byte("3")
+local is_cata           = string.byte(wow.GetBuildInfo(), 1) == string.byte("4")
 
-local asset_ua_code = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t"
-local font_logo = SystemFont_Huge2
-local font_header = QuestFont_Huge
-local font_content = SystemFont_Med2
+local assets = {
+    icon_ua         = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t",
+    font_morpheus   = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf",
+    font_frizqt     = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf",
+}
+
+local fonts = {
+    logo        = SystemFont_Huge2,
+    header      = QuestFont_Huge,
+    content     = SystemFont_Med2,
+}
 
 ---@class options_class
 local options = nil
@@ -429,7 +436,7 @@ local default_dev_log = {
 }
 
 local function dev_log_print(text)
-    wow.DEFAULT_CHAT_FRAME:AddMessage(asset_ua_code .. " |cff4488aa[Розробка] " .. text .. "|r")
+    wow.DEFAULT_CHAT_FRAME:AddMessage(assets.icon_ua .. " |cff4488aa[Розробка] " .. text .. "|r")
 end
 
 local function dev_log_init()
@@ -1376,7 +1383,7 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
         return
     end
 
-    local prefix = sub_item_depth == 1 and asset_ua_code .. " " or ""
+    local prefix = sub_item_depth == 1 and assets.icon_ua .. " " or ""
     local heading = make_entry_text(entry[1], tooltip)
     tooltip:AddLine(prefix .. capitalize(heading), 1, 1, 1)
 
@@ -1409,7 +1416,7 @@ end
 local function add_spell_entry_to_tooltip(tooltip, entry, spell_id, is_aura, skip_title)
     if not skip_title then
         local heading = make_entry_text(entry[1], tooltip)
-        tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
+        tooltip:AddLine(assets.icon_ua .. " " .. capitalize(heading), 1, 1, 1)
     end
 
     if is_aura then
@@ -1436,7 +1443,7 @@ end
 
 local function add_sod_engraving_entry_to_tooltip(tooltip, entry, sod_engraving_id)
     local heading = make_entry_text(entry[1], tooltip)
-    tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
+    tooltip:AddLine(assets.icon_ua .. " " .. capitalize(heading), 1, 1, 1)
 
     if entry.spell then
         local spell = get_entry("spell", entry.spell)
@@ -1451,7 +1458,7 @@ end
 
 local function add_general_entry_to_tooltip(tooltip, entry)
     local heading = make_entry_text(entry[1], tooltip)
-    tooltip:AddLine(asset_ua_code .. " " .. capitalize(heading), 1, 1, 1)
+    tooltip:AddLine(assets.icon_ua .. " " .. capitalize(heading), 1, 1, 1)
 
     add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 1, 1)
 end
@@ -1485,7 +1492,7 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura)
     elseif options.dev_mode then
         updated = true
         tooltip:AddLine(" ")
-        tooltip:AddLine(asset_ua_code .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
+        tooltip:AddLine(assets.icon_ua .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
 
         if entry_type == "npc" then
             dev_log_missing_npc(entry_id, tt_title_line)
@@ -1521,7 +1528,7 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key)
                 tooltip:AddLine(" ")
             end
 
-            tooltip:AddLine(asset_ua_code .. " " .. result_text, 1, 1, 1, true)
+            tooltip:AddLine(assets.icon_ua .. " " .. result_text, 1, 1, 1, true)
 
             if tooltip:IsShown() then
                 tooltip:Show()
@@ -1570,7 +1577,7 @@ local function add_talent_entry_to_tooltip(tooltip, tab_index, tier, column, ran
     end
 
     tooltip:AddLine(" ")
-    tooltip:AddLine(asset_ua_code .. " " .. entry[1], 1, 1, 1)
+    tooltip:AddLine(assets.icon_ua .. " " .. entry[1], 1, 1, 1)
 
     if entry[2] then
         tooltip:AddLine(make_entry_text(entry[2], tooltip), 1, 0.82, 0, true)
@@ -2009,7 +2016,7 @@ local function get_book_frame()
     frame:SetPoint("TOP", 0, 18/2)
     frame:SetPoint("RIGHT", width + 27 + 18, 0)
     setup_frame_background_and_border(frame)
-    setup_frame_scrollbar_and_content(frame, { text={ font=font_header } })
+    setup_frame_scrollbar_and_content(frame, { text={ font=fonts.header } })
     frame:Show()
 
     book_frame = frame
@@ -2251,7 +2258,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, ...)
     end
 
     self:AddMessage(
-        asset_ua_code .. " " .. chat_message,
+        assets.icon_ua .. " " .. chat_message,
         known_event.info.r,
         known_event.info.g,
         known_event.info.b
@@ -2324,8 +2331,8 @@ local function prepare_fonts()
     }
 
     local known_font_file_overrides = {
-        { "Fonts\\MORPHEUS.ttf", "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf" },
-        { "Fonts\\FRIZQT__.TTF", "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf" },
+        { "Fonts\\MORPHEUS.ttf", assets.font_morpheus },
+        { "Fonts\\FRIZQT__.TTF", assets.font_frizqt },
     }
 
     for _, name in ipairs(known_system_font_names) do
@@ -2409,7 +2416,7 @@ local function setup_player_name_cases_frame(content_frame)
 
         local label = root:CreateFontString()
         label:SetPoint("TOPLEFT", x, y - 0)
-        label:SetFontObject(font_content)
+        label:SetFontObject(fonts.content)
         label:SetTextColor(0, 0, 0)
         label:SetText(case_name)
 
@@ -2541,14 +2548,14 @@ local function prepare_options_frame()
 
     f = options_frame:CreateFontString()
     f:SetPoint("TOPLEFT", 26, -20)
-    f:SetFontObject(font_logo)
+    f:SetFontObject(fonts.logo)
     f:SetText("|cff1177eeClassic|r|cffffdd00UA|r")
 
     -- version & stats
 
     f = options_frame:CreateFontString()
     f:SetPoint("TOPRIGHT", -24, -20)
-    f:SetFontObject(font_content)
+    f:SetFontObject(fonts.content)
     f:SetJustifyH("LEFT")
     local stats = get_stats()
     f:SetText(
@@ -2641,8 +2648,8 @@ local function prepare_options_frame()
     options_frame.current_tab:SetSize(600, 340)
     setup_frame_background_and_border(options_frame.current_tab)
     setup_frame_scrollbar_and_content(options_frame.current_tab, {
-        title = { font=font_header },
-        text = { font=font_content },
+        title = { font=fonts.header },
+        text = { font=fonts.content },
     }, options_frame.current_tab:GetWidth() - 16)
 
     options_frame.current_tab_index = -1
@@ -2817,7 +2824,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_fonts()
 
         wow.DEFAULT_CHAT_FRAME:AddMessage(
-            asset_ua_code
+            assets.icon_ua
             .. " ClassicUA v" .. wow.GetAddOnMetadata("ClassicUA", "Version")
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
             .. (options.dev_mode and " — Режим розробки" or "")
