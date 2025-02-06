@@ -22,6 +22,7 @@ local wow = {
     GetAddOnInfo                = _G.GetAddOnInfo,
     GetAddOnMemoryUsage         = _G.GetAddOnMemoryUsage,
     GetAddOnMetadata            = _G.GetAddOnMetadata,
+    GetBindLocation             = _G.GetBindLocation,
     GetBuildInfo                = _G.GetBuildInfo,
     GetMouseFoci                = _G.GetMouseFoci,
     GetMouseFocus               = _G.GetMouseFocus,
@@ -1404,6 +1405,12 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
     local prefix = sub_item_depth == 1 and assets.icon_ua .. " " or ""
     local heading = make_entry_text(entry[1], tooltip)
     tooltip:AddLine(prefix .. capitalize(heading), 1, 1, 1)
+
+    if tonumber(entry_id) == 6948 and type(entry.use) == "string" and entry.use:find("{домівка}") then -- 6948 for Hearthstone item id
+        local loc = wow.GetBindLocation()
+        local home = get_glossary_text(loc, loc, "zone")
+        entry.use = entry.use:gsub("{домівка}", home)
+    end
 
     add_line_to_tooltip(tooltip, entry.desc, "TEXT", 1, 1, 1)
     add_line_to_tooltip(tooltip, entry.equip, "При спорядженні: TEXT", 0, 1, 0, true, entry_id)
