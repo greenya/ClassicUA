@@ -2093,27 +2093,12 @@ local function prepare_data_hooks_for_quests()
     end
 end
 
--- --------------
--- [ zone names ]
--- --------------
-
-local function prepare_zone_names()
-    -- todo: remove this function, use get_glossary_text() with should_log_missing_type="zone"
-    local translate_zone_name = function (name)
-        local found = get_glossary_text(name)
-        if found then
-            name = capitalize(found)
-        elseif options.dev_mode then
-            dev_log_missing_zone(name)
-        end
-        return name
-    end
-
+local function prepare_data_hooks_for_zones()
     local original_c_map_get_map_info = wow.C_Map.GetMapInfo
     wow.C_Map.GetMapInfo = function (...)
         local info = original_c_map_get_map_info(...)
         if info and info.name then
-            info.name = translate_zone_name(info.name)
+            info.name = get_glossary_text(info.name, info.name, "zone")
         end
         return info
     end
@@ -2123,7 +2108,7 @@ local function prepare_zone_names()
         local infos = original_c_map_get_map_children_info(...)
         for _, info in ipairs(infos) do
             if info and info.name then
-                info.name = translate_zone_name(info.name)
+                info.name = get_glossary_text(info.name, info.name, "zone")
             end
         end
         return infos
@@ -2133,7 +2118,7 @@ local function prepare_zone_names()
     wow.C_Map.GetAreaInfo = function (...)
         local info = original_c_map_get_area_info(...)
         if type(info) == "string" then
-            info = translate_zone_name(info)
+            info = get_glossary_text(info, info, "zone")
         end
         return info
     end
@@ -2142,7 +2127,7 @@ local function prepare_zone_names()
     wow.C_Map.GetMapInfoAtPosition = function (...)
         local info = original_c_map_get_map_info_at_position(...)
         if info and info.name then
-            info.name = translate_zone_name(info.name)
+            info.name = get_glossary_text(info.name, info.name, "zone")
         end
         return info
     end
@@ -2160,7 +2145,7 @@ local function prepare_zone_names()
     _G.GetInstanceInfo = function (...)
         local info = { original_get_instance_info(...) }
         if info and info[1] then
-            info[1] = translate_zone_name(info[1])
+            info[1] = get_glossary_text(info[1], info[1], "zone")
         end
         return unpack(info)
     end
@@ -2169,7 +2154,7 @@ local function prepare_zone_names()
     _G.GetZoneText = function (...)
         local text = original_get_zone_text(...)
         if type(text) == "string" then
-            text = translate_zone_name(text)
+            text = get_glossary_text(text, text, "zone")
         end
         return text
     end
@@ -2178,7 +2163,7 @@ local function prepare_zone_names()
     _G.GetRealZoneText = function (...)
         local text = original_get_real_zone_text(...)
         if type(text) == "string" then
-            text = translate_zone_name(text)
+            text = get_glossary_text(text, text, "zone")
         end
         return text
     end
@@ -2187,7 +2172,7 @@ local function prepare_zone_names()
     _G.GetSubZoneText = function (...)
         local text = original_get_sub_zone_text(...)
         if type(text) == "string" then
-            text = translate_zone_name(text)
+            text = get_glossary_text(text, text, "zone")
         end
         return text
     end
@@ -2196,7 +2181,7 @@ local function prepare_zone_names()
     _G.GetAreaText = function (...)
         local text = original_get_area_text(...)
         if type(text) == "string" then
-            text = translate_zone_name(text)
+            text = get_glossary_text(text, text, "zone")
         end
         return text
     end
@@ -2205,7 +2190,7 @@ local function prepare_zone_names()
     _G.GetMinimapZoneText = function (...)
         local text = original_get_minimap_zone_text(...)
         if type(text) == "string" then
-            text = translate_zone_name(text)
+            text = get_glossary_text(text, text, "zone")
         end
         return text
     end
@@ -2214,14 +2199,10 @@ local function prepare_zone_names()
     wow.Minimap_Update()
 end
 
--- --------------
--- [ item texts ]
--- --------------
-
 ---@type integer?
 local book_item_id = nil
 
-local function prepare_item_texts()
+local function prepare_data_hooks_for_item_texts()
     local original_item_text_get_text = _G.ItemTextGetText
     _G.ItemTextGetText = function (...)
         local text = original_item_text_get_text(...)
@@ -2877,8 +2858,8 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_get_text_code_replace_seq(name)
         prepare_quest_frames()
         prepare_data_hooks_for_quests()
-        prepare_zone_names()
-        prepare_item_texts()
+        prepare_data_hooks_for_zones()
+        prepare_data_hooks_for_item_texts()
 
     elseif event == "PLAYER_TARGET_CHANGED" then
         update_target_frame_text()
