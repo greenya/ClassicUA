@@ -1207,12 +1207,14 @@ local function make_entry_text(text, tooltip, tooltip_matches_to_skip)
     return result
 end
 
-local function get_glossary_text(entry_key)
+local function get_glossary_text(entry_key, fallback, should_log_missing_type)
     local at = addonTable
 
     if type(entry_key) ~= "string" or type(at.glossary) ~= "table" then
-        return
+        return fallback
     end
+
+    local original_entry_key = entry_key
 
     -- prepare entry_key
     entry_key = strip_color_codes(entry_key)
@@ -1262,6 +1264,17 @@ local function get_glossary_text(entry_key)
             end
         end
     end
+
+    if options.dev_mode and should_log_missing_type then
+        local mt, oek = should_log_missing_type, original_entry_key
+        if mt == "zone" then
+            dev_log_missing_zone(oek)
+        else
+            dev_log_issue("непідтримуваний тип даних в get_glossary_text()", { mt, oek })
+        end
+    end
+
+    return fallback
 end
 
 local function get_gossip_text(npc_id, gossip_text)
@@ -2055,10 +2068,37 @@ local function show_greeting()
 end
 
 -- --------------
+-- [ data hooks ]
+-- --------------
+
+local function prepare_data_hooks_for_quests()
+    local original_get_quest_log_title = _G.GetQuestLogTitle
+    _G.GetQuestLogTitle = function (...)
+        local data = { original_get_quest_log_title(...) }
+        if data and type(data[1]) == "string" then
+            local is_header = data[4]
+            if is_header then
+                data[1] = get_glossary_text(data[1], data[1])
+            else
+                local quest_id = data[8]
+                local quest_entry = get_entry("quest", quest_id)
+                if quest_entry then
+                    data[1] = quest_entry[1]
+                else
+                    data[1] = get_glossary_text(data[1], data[1])
+                end
+            end
+        end
+        return unpack(data)
+    end
+end
+
+-- --------------
 -- [ zone names ]
 -- --------------
 
 local function prepare_zone_names()
+    -- todo: remove this function, use get_glossary_text() with should_log_missing_type="zone"
     local translate_zone_name = function (name)
         local found = get_glossary_text(name)
         if found then
@@ -2632,7 +2672,7 @@ local function prepare_options_frame()
         options_frame, "TOPLEFT", 24, -80,
         "Заміняти стандартні шрифти",
         options.override_system_fonts,
-        "Заміняти стандартні шрифти на аналогічні з українськими літерами. Інакше деякі літери можуть відображатися некоректно.\n\nРекомендовано вимкнути при використанні іншого аддону, який заміняє стандартні шрифти.",
+        "Заміняти стандартні шрифти на аналогічні з українськими літерами. Інакше деякі літери можуть відображатися некоректно.\n\nРекомендовано вимкнути при використанні іншого аддону для заміни шрифтів.",
         function (self) options.override_system_fonts = self:GetChecked() end
     )
 
@@ -2836,6 +2876,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_codes(name, race, class, sex == 2) -- 2 for male
         prepare_get_text_code_replace_seq(name)
         prepare_quest_frames()
+        prepare_data_hooks_for_quests()
         prepare_zone_names()
         prepare_item_texts()
 
