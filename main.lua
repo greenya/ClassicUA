@@ -1916,6 +1916,25 @@ local function on_quest_log_entry_selected()
     end
 end
 
+local function translate_single_quest_objective_line(text)
+    -- try parse "XXX: YYY" and translate XXX
+    local parts = { string.split(":", text, 2) }
+    if #parts == 2 and #parts[1] > 0 then
+        local found = get_glossary_text(parts[1])
+        if found then
+            parts[1] = found
+        elseif #parts[1] > 1 and parts[1]:sub(#parts[1], #parts[1]) == "s" then
+            -- try plural => singular, e.g. "Kobold Workers" => "Kobold Worker"
+            local found_singular = get_glossary_text(parts[1]:sub(1, #parts[1] - 1))
+            if found_singular then
+                parts[1] = found_singular
+            end
+        end
+        text = parts[1] .. ":" .. parts[2]
+    end
+    return text
+end
+
 local function on_quest_frames_set_text(self, text)
     if not quest_frames_vars.set_text_hook_allowed then
         return
@@ -1926,7 +1945,7 @@ local function on_quest_frames_set_text(self, text)
     -- quest entry indices: [1] title, [2] description, [3] objective, [4] progress, [5] completion
     local quest_entry = get_entry("quest", wow.GetQuestID()) or quest_frames_vars.questlog_selected_quest_entry
     if quest_entry then
-        if self == QuestLogQuestTitle       then new_text = quest_entry[1] end
+        -- if self == QuestLogQuestTitle       then new_text = quest_entry[1] end -- not handling it, explanation in prepare_quest_frames()
         if self == QuestInfoTitleHeader     then new_text = quest_entry[1] end
         if self == QuestProgressTitleText   then new_text = quest_entry[1] end
         if self == QuestLogQuestDescription then new_text = quest_entry[2] end
@@ -1937,24 +1956,10 @@ local function on_quest_frames_set_text(self, text)
         if self == QuestInfoRewardText      then new_text = quest_entry[5] end
     end
 
-    if not new_text and 1 == string.find(self:GetName() or "", "QuestLogObjective") then
-        -- try parse "XXX: YYY" and translate XXX
-        local parts = { string.split(":", text, 2) }
-        if #parts == 2 and #parts[1] > 0 then
-            local found = get_glossary_text(parts[1])
-            if found then
-                parts[1] = found
-            elseif #parts[1] > 1 and parts[1]:sub(#parts[1], #parts[1]) == "s" then
-                -- try plural => singular, e.g. "Kobold Workers" => "Kobold Worker"
-                local found_singular = get_glossary_text(parts[1]:sub(1, #parts[1] - 1))
-                if found_singular then
-                    parts[1] = found_singular
-                end
-            end
-            new_text = parts[1] .. ":" .. parts[2]
-        else
-            new_text = text
-        end
+    local known_obj_frame1 = 1 == string.find(self:GetName() or "", "QuestLogObjective")
+    local known_obj_frame2 = 1 == string.find(self:GetName() or "", "QuestInfoObjective")
+    if not new_text and (known_obj_frame1 or known_obj_frame2) then
+        new_text = translate_single_quest_objective_line(text)
     end
 
     if not new_text then
@@ -1998,7 +2003,7 @@ local function prepare_quest_frames()
         { frame=QuestProgressRequiredItemsText }, -- "Required items:"
         { frame=QuestProgressRequiredMoneyText }, -- "Required Money:"
         -- questlog details (browsing player personal quest log); QuestLogXXX is removed from WOTLK and QuestInfoXXX is used instead
-        { frame=QuestLogQuestTitle }, -- quest title
+        -- { frame=QuestLogQuestTitle }, -- quest title (no need to handle, as it will be handled by hook to GetQuestLogTitle(), also addons like Questie and Leatrix Plus can add level prefix, e.g. "[18] XXX")
         { frame=QuestLogObjectivesText }, -- quest objectives
         { frame=QuestLogObjective1 }, -- quest objective line 1
         { frame=QuestLogObjective2 }, -- quest objective line 2
@@ -2010,6 +2015,10 @@ local function prepare_quest_frames()
         { frame=QuestLogObjective8 }, -- quest objective line 8
         { frame=QuestLogObjective9 }, -- quest objective line 9
         { frame=QuestLogObjective10 }, -- quest objective line 10
+        { frame=QuestInfoObjective1 }, -- quest objective line 1 (wrath+)
+        { frame=QuestInfoObjective2 }, -- quest objective line 2 (wrath+)
+        { frame=QuestInfoObjective3 }, -- quest objective line 3 (wrath+)
+        { frame=QuestInfoObjective4 }, -- quest objective line 4 (wrath+)
         { frame=QuestLogDescriptionTitle }, -- "Description"
         { frame=QuestLogQuestDescription }, -- quest description
         { frame=QuestLogRewardTitleText }, -- "Rewards"

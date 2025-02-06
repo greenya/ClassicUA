@@ -30,6 +30,7 @@ local global_strings = {
 { "ITEM_OPENABLE", "<Клацніть правою кнопкою щоб відкрити>" }, -- "<Right Click to Open>"
 { "ITEM_READABLE", "<Клацніть правою кнопкою щоб прочитати>" }, -- "<Right Click to Read>"
 { "ITEM_SIGNABLE", "<Клацніть правою кнопкою для подробиць>" }, -- "<Right Click for Details>"
+{ "ITEM_STARTS_QUEST", "Цей предмет розпочинає завдання" }, -- "This Item Begins a Quest"
 { "KEYRING", "Кільце для ключів" }, -- "Keyring"
 { "LEGSSLOT", "Ноги" }, -- "Legs"
 { "MAINHANDSLOT", "Основна рука" }, -- "Main Hand"
