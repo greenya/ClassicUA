@@ -32,6 +32,7 @@ local global_strings = {
 { "ITEM_SIGNABLE", "<Клацніть правою кнопкою для подробиць>" }, -- "<Right Click for Details>"
 { "ITEM_STARTS_QUEST", "Цей предмет розпочинає завдання" }, -- "This Item Begins a Quest"
 { "KEYRING", "Кільце для ключів" }, -- "Keyring"
+{ "LEARN_SPELL_OBJECTIVE", "Вивчіть закляття:" }, -- "Learn Spell:"
 { "LEGSSLOT", "Ноги" }, -- "Legs"
 { "MAINHANDSLOT", "Основна рука" }, -- "Main Hand"
 { "MINIMAP_LABEL", "Мінікарта" }, -- "Minimap"
@@ -45,7 +46,7 @@ local global_strings = {
 { "POSTMASTER_PIPE_OUTLAND", "Позамежжя" }, -- "Outland"
 { "POSTMASTER_PIPE_PANDARIA", "Пандарія" }, -- "Pandaria"
 { "QUEST_DESCRIPTION", "Опис" }, -- "Description"
-{ "QUEST_MONSTERS_KILLED", "%s: %d/%d вбито" }, -- "%s slain: %d/%d" -- keep "%s:...", addon will split by ":" and lookup left part for translation
+{ "QUEST_MONSTERS_KILLED", "%s: %d/%d вбито" }, -- "%s slain: %d/%d" -- keep "%s:...", addon will split by ":" and lookup left part for translation, details in translate_quest_objective_task()
 { "QUEST_OBJECTIVES", "Доручення" }, -- "Quest Objectives"
 { "RAID_TARGET_1", "Зірка" }, -- "Star"
 { "RAID_TARGET_2", "Коло" }, -- "Circle"

@@ -1816,6 +1816,42 @@ local function setup_frame_scrollbar_values(frame, height, preserve_current_scro
     frame.content:SetSize(frame.content:GetWidth(), height)
 end
 
+-- frame must have properties: title, text, more_title, more_text
+local function set_text_frame_content(frame, title, text, more_title, more_text)
+    local h = 16
+
+    frame.title:SetPoint("TOPLEFT", frame.content, 12, -h)
+    frame.title:SetText(title)
+    h = h + frame.title:GetHeight() + 12
+
+    if text then
+        frame.text:SetPoint("TOPLEFT", frame.content, 12, -h)
+        frame.text:SetText(text)
+        h = h + frame.text:GetHeight() + 12
+    else
+        frame.text:SetText("")
+    end
+
+    if more_title and more_text then
+        frame.more_title:SetPoint("TOPLEFT", frame.content, 12, -h)
+        frame.more_title:SetText(more_title)
+        h = h + frame.more_title:GetHeight() + 12
+
+        frame.more_text:SetPoint("TOPLEFT", frame.content, 12, -h)
+        frame.more_text:SetText(more_text)
+        h = h + frame.more_text:GetHeight() + 12
+    else
+        if frame.more_title then
+            frame.more_title:SetText("")
+        end
+        if frame.more_text then
+            frame.more_text:SetText("")
+        end
+    end
+
+    setup_frame_scrollbar_values(frame, h)
+end
+
 local function add_tooltip_for_frame(frame, anchor, text)
     frame.tooltip_text = text
     frame:SetScript("OnEnter", function (self)
@@ -1873,57 +1909,68 @@ end
 -- [ quest frames ]
 -- ----------------
 
--- frame must have properties: title, text, more_title, more_text
-local function set_quest_content(frame, title, text, more_title, more_text)
-    local h = 16
-
-    frame.title:SetPoint("TOPLEFT", frame.content, 12, -h)
-    frame.title:SetText(title)
-    h = h + frame.title:GetHeight() + 12
-
-    if text then
-        frame.text:SetPoint("TOPLEFT", frame.content, 12, -h)
-        frame.text:SetText(text)
-        h = h + frame.text:GetHeight() + 12
-    else
-        frame.text:SetText("")
-    end
-
-    if more_title and more_text then
-        frame.more_title:SetPoint("TOPLEFT", frame.content, 12, -h)
-        frame.more_title:SetText(more_title)
-        h = h + frame.more_title:GetHeight() + 12
-
-        frame.more_text:SetPoint("TOPLEFT", frame.content, 12, -h)
-        frame.more_text:SetText(more_text)
-        h = h + frame.more_text:GetHeight() + 12
-    else
-        if frame.more_title then
-            frame.more_title:SetText("")
-        end
-        if frame.more_text then
-            frame.more_text:SetText("")
-        end
-    end
-
-    setup_frame_scrollbar_values(frame, h)
-end
-
-local quest_frames_vars
+local quest_ui = {
+    questlog_selected_quest_entry = nil,
+    set_text_hook_allowed = true,
+    widgets = {
+        -- greetings dialog (talking to npc)
+        { frame=CurrentQuestsText }, -- "Current Quests"
+        { frame=AvailableQuestsText }, -- "Available Quests"
+        -- quest details step + rewards step (talking to npc); QuestInfoXXX is used as quest log parts in WOTLK and QuestLogXXX is removed
+        { frame=QuestInfoTitleHeader, is_title=true }, -- quest title
+        { frame=QuestInfoDescriptionHeader }, -- "Description"
+        { frame=QuestInfoDescriptionText, is_desc=true }, -- quest description
+        { frame=QuestInfoObjectivesHeader }, -- "Quest Objectives"
+        { frame=QuestInfoObjectivesText, is_objective=true }, -- quest objectives
+        { frame=QuestInfoRewardText, is_completion=true }, -- quest completion
+        { frame=QuestInfoRewardsFrame.Header }, -- "Rewards"
+        { frame=QuestInfoRewardsFrame.ItemChooseText }, -- "You will be able to choose one of these rewards:", "Choose your reward:"
+        { frame=QuestInfoRewardsFrame.ItemReceiveText }, -- "You will receive:"
+        { frame=QuestInfoRewardsFrame.PlayerTitleText }, -- "You shall be granted the title:"
+        { frame=QuestInfoXPFrame.ReceiveText }, -- "Experience:"
+        -- quest progress step (talking to npc)
+        { frame=QuestProgressTitleText, is_title=true }, -- quest title
+        { frame=QuestProgressText, is_progress=true }, -- quest progress
+        { frame=QuestProgressRequiredItemsText }, -- "Required items:"
+        { frame=QuestProgressRequiredMoneyText }, -- "Required Money:"
+        -- questlog details (browsing player personal quest log); QuestLogXXX is removed from WOTLK and QuestInfoXXX is used instead
+        -- { frame=QuestLogQuestTitle, is_title=true }, -- quest title (no need to handle, as it will be handled by hook to GetQuestLogTitle(), also addons like Questie and Leatrix Plus can add level prefix, e.g. "[18] XXX")
+        { frame=QuestLogObjectivesText, is_objective=true }, -- quest objectives
+        { frame=QuestLogObjective1, is_objective_task=true }, -- quest objective line 1
+        { frame=QuestLogObjective2, is_objective_task=true }, -- quest objective line 2
+        { frame=QuestLogObjective3, is_objective_task=true }, -- quest objective line 3
+        { frame=QuestLogObjective4, is_objective_task=true }, -- quest objective line 4
+        { frame=QuestLogObjective5, is_objective_task=true }, -- quest objective line 5
+        { frame=QuestLogObjective6, is_objective_task=true }, -- quest objective line 6
+        { frame=QuestLogObjective7, is_objective_task=true }, -- quest objective line 7
+        { frame=QuestLogObjective8, is_objective_task=true }, -- quest objective line 8
+        { frame=QuestLogObjective9, is_objective_task=true }, -- quest objective line 9
+        { frame=QuestLogObjective10, is_objective_task=true }, -- quest objective line 10
+        { frame=QuestInfoObjective1, is_objective_task=true }, -- quest objective line 1 (wrath+)
+        { frame=QuestInfoObjective2, is_objective_task=true }, -- quest objective line 2 (wrath+)
+        { frame=QuestInfoObjective3, is_objective_task=true }, -- quest objective line 3 (wrath+)
+        { frame=QuestInfoObjective4, is_objective_task=true }, -- quest objective line 4 (wrath+)
+        { frame=QuestLogDescriptionTitle }, -- "Description"
+        { frame=QuestLogQuestDescription, is_desc=true }, -- quest description
+        { frame=QuestLogRewardTitleText }, -- "Rewards"
+        { frame=QuestLogItemChooseText }, -- "You will be able to choose one of these rewards:"
+        { frame=QuestLogItemReceiveText }, -- "You will receive:", "You will also receive:"
+    }
+}
 
 local function on_quest_log_entry_selected()
-    quest_frames_vars.questlog_selected_quest_entry = nil
+    quest_ui.questlog_selected_quest_entry = nil
     local selection = wow.GetQuestLogSelection()
     if selection > 0 then
         local id = select(8, wow.GetQuestLogTitle(selection))
         local entry = get_entry("quest", id)
         if entry then
-            quest_frames_vars.questlog_selected_quest_entry = entry
+            quest_ui.questlog_selected_quest_entry = entry
         end
     end
 end
 
-local function translate_single_quest_objective_line(text)
+local function translate_quest_objective_task(text)
     -- try parse "XXX: YYY" and translate XXX
     local parts = { string.split(":", text, 2) }
     if #parts == 2 and #parts[1] > 0 then
@@ -1943,30 +1990,26 @@ local function translate_single_quest_objective_line(text)
 end
 
 local function on_quest_frames_set_text(self, text)
-    if not quest_frames_vars.set_text_hook_allowed then
+    if not quest_ui.set_text_hook_allowed then
         return
     end
 
     local new_text
+    local meta = self.classicua_metadata
 
-    -- quest entry indices: [1] title, [2] description, [3] objective, [4] progress, [5] completion
-    local quest_entry = get_entry("quest", wow.GetQuestID()) or quest_frames_vars.questlog_selected_quest_entry
-    if quest_entry then
-        -- if self == QuestLogQuestTitle       then new_text = quest_entry[1] end -- not handling it, explanation in prepare_quest_frames()
-        if self == QuestInfoTitleHeader     then new_text = quest_entry[1] end
-        if self == QuestProgressTitleText   then new_text = quest_entry[1] end
-        if self == QuestLogQuestDescription then new_text = quest_entry[2] end
-        if self == QuestInfoDescriptionText then new_text = quest_entry[2] end
-        if self == QuestLogObjectivesText   then new_text = quest_entry[3] end
-        if self == QuestInfoObjectivesText  then new_text = quest_entry[3] end
-        if self == QuestProgressText        then new_text = quest_entry[4] end
-        if self == QuestInfoRewardText      then new_text = quest_entry[5] end
+    if meta.is_title or meta.is_desc or meta.is_objective or meta.is_progress or meta.is_completion then
+        local quest_entry = get_entry("quest", wow.GetQuestID()) or quest_ui.questlog_selected_quest_entry
+        if quest_entry then
+            if meta.is_title        then new_text = quest_entry[1] end
+            if meta.is_desc         then new_text = quest_entry[2] end
+            if meta.is_objective    then new_text = quest_entry[3] end
+            if meta.is_progress     then new_text = quest_entry[4] end
+            if meta.is_completion   then new_text = quest_entry[5] end
+        end
     end
 
-    local known_obj_frame1 = 1 == string.find(self:GetName() or "", "QuestLogObjective")
-    local known_obj_frame2 = 1 == string.find(self:GetName() or "", "QuestInfoObjective")
-    if not new_text and (known_obj_frame1 or known_obj_frame2) then
-        new_text = translate_single_quest_objective_line(text)
+    if meta.is_objective_task then
+        new_text = translate_quest_objective_task(text)
     end
 
     if not new_text then
@@ -1974,67 +2017,21 @@ local function on_quest_frames_set_text(self, text)
     end
 
     if new_text then
-        quest_frames_vars.set_text_hook_allowed = false
+        quest_ui.set_text_hook_allowed = false
         self:SetText(new_text)
-        quest_frames_vars.set_text_hook_allowed = true
+        quest_ui.set_text_hook_allowed = true
     end
 end
 
 local function prepare_quest_frames()
-    quest_frames_vars = {
-        questlog_selected_quest_entry = nil,
-        set_text_hook_allowed = true,
-    }
-
     wow.hooksecurefunc("SelectQuestLogEntry", on_quest_log_entry_selected)
 
-    for _, info in ipairs({
-        -- greetings dialog (talking to npc)
-        { frame=CurrentQuestsText }, -- "Current Quests"
-        { frame=AvailableQuestsText }, -- "Available Quests"
-        -- quest details step + rewards step (talking to npc); QuestInfoXXX is used as quest log parts in WOTLK and QuestLogXXX is removed
-        { frame=QuestInfoTitleHeader }, -- quest title
-        { frame=QuestInfoDescriptionHeader }, -- "Description"
-        { frame=QuestInfoDescriptionText }, -- quest description
-        { frame=QuestInfoObjectivesHeader }, -- "Quest Objectives"
-        { frame=QuestInfoObjectivesText }, -- quest objectives
-        { frame=QuestInfoRewardText }, -- quest completion
-        { frame=QuestInfoRewardsFrame.Header }, -- "Rewards"
-        { frame=QuestInfoRewardsFrame.ItemChooseText }, -- "You will be able to choose one of these rewards:", "Choose your reward:"
-        { frame=QuestInfoRewardsFrame.ItemReceiveText }, -- "You will receive:"
-        { frame=QuestInfoRewardsFrame.PlayerTitleText }, -- "You shall be granted the title:"
-        { frame=QuestInfoXPFrame.ReceiveText }, -- "Experience:"
-        -- quest progress step (talking to npc)
-        { frame=QuestProgressTitleText }, -- quest title
-        { frame=QuestProgressText }, -- quest progress
-        { frame=QuestProgressRequiredItemsText }, -- "Required items:"
-        { frame=QuestProgressRequiredMoneyText }, -- "Required Money:"
-        -- questlog details (browsing player personal quest log); QuestLogXXX is removed from WOTLK and QuestInfoXXX is used instead
-        -- { frame=QuestLogQuestTitle }, -- quest title (no need to handle, as it will be handled by hook to GetQuestLogTitle(), also addons like Questie and Leatrix Plus can add level prefix, e.g. "[18] XXX")
-        { frame=QuestLogObjectivesText }, -- quest objectives
-        { frame=QuestLogObjective1 }, -- quest objective line 1
-        { frame=QuestLogObjective2 }, -- quest objective line 2
-        { frame=QuestLogObjective3 }, -- quest objective line 3
-        { frame=QuestLogObjective4 }, -- quest objective line 4
-        { frame=QuestLogObjective5 }, -- quest objective line 5
-        { frame=QuestLogObjective6 }, -- quest objective line 6
-        { frame=QuestLogObjective7 }, -- quest objective line 7
-        { frame=QuestLogObjective8 }, -- quest objective line 8
-        { frame=QuestLogObjective9 }, -- quest objective line 9
-        { frame=QuestLogObjective10 }, -- quest objective line 10
-        { frame=QuestInfoObjective1 }, -- quest objective line 1 (wrath+)
-        { frame=QuestInfoObjective2 }, -- quest objective line 2 (wrath+)
-        { frame=QuestInfoObjective3 }, -- quest objective line 3 (wrath+)
-        { frame=QuestInfoObjective4 }, -- quest objective line 4 (wrath+)
-        { frame=QuestLogDescriptionTitle }, -- "Description"
-        { frame=QuestLogQuestDescription }, -- quest description
-        { frame=QuestLogRewardTitleText }, -- "Rewards"
-        { frame=QuestLogItemChooseText }, -- "You will be able to choose one of these rewards:"
-        { frame=QuestLogItemReceiveText }, -- "You will receive:", "You will also receive:"
-    }) do
+    for _, info in ipairs(quest_ui.widgets) do
         if info.frame then
             wow.hooksecurefunc(info.frame, "SetText", on_quest_frames_set_text)
-            -- force update (trigger hook above), because some static texts never gets updated
+            info.frame.classicua_metadata = info
+
+            -- force update (trigger SetText() hook), because some static texts never gets updated
             local text = info.frame:GetText()
             if text then info.frame:SetText(text) end
         end
@@ -2756,7 +2753,7 @@ local function prepare_options_frame()
             end
         end
 
-        set_quest_content(of.current_tab, tab_button.tab_data.content_title, tab_button.tab_data.content_text)
+        set_text_frame_content(of.current_tab, tab_button.tab_data.content_title, tab_button.tab_data.content_text)
         of.current_tab.content_tab_base_height = of.current_tab.content:GetHeight()
         of.current_tab_index = tab_button.tab_index
         tab_button:LockHighlight()
