@@ -81,9 +81,8 @@ local assets = {
 }
 
 local fonts = {
-    logo        = SystemFont_Huge2,
-    header      = QuestFont_Huge,
-    content     = SystemFont_Med2,
+    header  = QuestFont_Huge,
+    content = SystemFont_Med2,
 }
 
 ---@class options_class
@@ -686,8 +685,7 @@ end
 local default_options = {
     dev_mode = false,
     dev_mode_notify_activity = false,
-    quest_text_size = 13,
-    book_text_size = 15
+    override_system_fonts = true,
 }
 
 ---@class character_options_class
@@ -708,15 +706,22 @@ local function prepare_options()
     dev_log = ClassicUA_DevLog
     dev_log_init()
 
-    -- clean up unknown/deprecated keys
     for _, v in pairs({
         { options, default_options },
         { character_options, default_character_options },
         { dev_log, default_dev_log },
     }) do
+        -- clean up unknown/deprecated keys
         for k, _ in pairs(v[1]) do
             if v[2][k] == nil then
                 v[1][k] = nil
+            end
+        end
+
+        -- add brand new keys with default values
+        for k, _ in pairs(v[2]) do
+            if v[1][k] == nil then
+                v[1][k] = v[2][k]
             end
         end
     end
@@ -1791,6 +1796,59 @@ local function setup_frame_scrollbar_values(frame, height, preserve_current_scro
     frame.content:SetSize(frame.content:GetWidth(), height)
 end
 
+local function add_tooltip_for_frame(frame, anchor, text)
+    frame.tooltip_text = text
+    frame:SetScript("OnEnter", function (self)
+        wow.GameTooltip:SetOwner(self, anchor)
+        wow.GameTooltip:SetText(self.tooltip_text, nil, nil, nil, nil, true)
+    end)
+    frame:SetScript("OnLeave", function ()
+        wow.GameTooltip:Hide()
+    end)
+end
+
+local function create_checkbox_frame(parent, point, x, y, text, checked, tooltip_text, on_click)
+    local root = wow.CreateFrame("CheckButton", nil, parent, "InterfaceOptionsCheckButtonTemplate")
+
+    root:SetPoint(point, x, y)
+    root.Text:SetText(text)
+    root.Text:SetFontObject(SystemFont_Shadow_Med2)
+    root:SetChecked(checked)
+
+    if tooltip_text then
+        add_tooltip_for_frame(root, "ANCHOR_RIGHT", tooltip_text)
+    end
+
+    if on_click then
+        root:SetScript("OnClick", on_click)
+    end
+
+    return root
+end
+
+local function create_slider_frame(parent, point, x, y, width, height, min, max, step, tooltip_text, on_value_changed)
+    local root = wow.CreateFrame("Slider", nil, parent, "ClassicUA_UISliderTemplateWithLabels")
+
+    root:SetPoint(point, x, y)
+    root:SetWidth(width)
+    root:SetHeight(height)
+    root:SetObeyStepOnDrag(true)
+    root:SetValueStep(step)
+    root:SetMinMaxValues(min, max)
+    root.Low:SetText(tostring(min))
+    root.High:SetText(tostring(max))
+
+    if tooltip_text then
+        add_tooltip_for_frame(root, "ANCHOR_RIGHT", tooltip_text)
+    end
+
+    if on_value_changed then
+        root:SetScript("OnValueChanged", on_value_changed)
+    end
+
+    return root
+end
+
 -- ----------------
 -- [ quest frames ]
 -- ----------------
@@ -2270,7 +2328,9 @@ end
 -- ---------
 
 local function prepare_fonts()
-    -- todo: check options.override_system_fonts
+    if not options.override_system_fonts then
+        return
+    end
 
     -- reference: https://www.townlong-yak.com/framexml/era/Blizzard_Fonts_Shared/SharedFonts.xml
     local known_system_font_names = {
@@ -2457,28 +2517,21 @@ local function setup_dev_mode_frame(content_frame)
     local root = wow.CreateFrame("Frame", "ClassicUA_Dev_Mode_Options", content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
 
-    local dm_check = wow.CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
-    dm_check:SetPoint("TOPLEFT", 24, 0)
-    dm_check.Text:SetText("Режим розробки")
-    dm_check:SetChecked(options.dev_mode)
-    dm_check:SetScript("OnClick", function (self)
-        options.dev_mode = self:GetChecked()
-    end)
+    options_frame.dev_mode_checkbox = create_checkbox_frame(
+        root, "TOPLEFT", 24, 0,
+        "Режим розробки",
+        options.dev_mode,
+        nil,
+        function (self) options.dev_mode = self:GetChecked() end
+    )
 
-    local dm_na_check = wow.CreateFrame("CheckButton", nil, root, "InterfaceOptionsCheckButtonTemplate")
-    dm_na_check:SetPoint("TOPLEFT", 24, -28)
-    dm_na_check.Text:SetText("Сповіщення активності")
-    dm_na_check:SetChecked(options.dev_mode_notify_activity)
-    dm_na_check:SetScript("OnClick", function (self)
-        options.dev_mode_notify_activity = self:GetChecked()
-    end)
-    dm_na_check:SetScript("OnEnter", function(self)
-        wow.GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        wow.GameTooltip:SetText("Сповіщати в чат кожен раз при знаходженні нового відсутнього запису.", nil, nil, nil, nil, true)
-    end)
-    dm_na_check:SetScript("OnLeave", function()
-        wow.GameTooltip:Hide()
-    end)
+    options_frame.dev_mode_notify_activity_checkbox = create_checkbox_frame(
+        root, "TOPLEFT", 24, -24,
+        "Сповіщення активності",
+        options.dev_mode_notify_activity,
+        "Сповіщати в чат кожен раз при знаходженні нового відсутнього запису.",
+        function (self) options.dev_mode_notify_activity = self:GetChecked() end
+    )
 
     local stats_btn = wow.CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
     stats_btn:SetPoint("TOPLEFT", 24, -64)
@@ -2496,40 +2549,7 @@ local function setup_dev_mode_frame(content_frame)
         wow.StaticPopup_Show("CLASSICUA_CONFIRM_DEV_LOG_RESET")
     end)
 
-    options_frame.dev_mode_checkbox = dm_check
-    options_frame.dev_mode_notify_activity_checkbox = dm_na_check
-
     root:SetSize(content_frame:GetWidth(), 16 + 64 + 28)
-    return root
-end
-
-local function create_slider_frame(parent, point, x, y, width, height, min, max, step, tooltip_text, on_value_changed)
-    local root = wow.CreateFrame("Slider", nil, parent, "ClassicUA_UISliderTemplateWithLabels")
-
-    root:SetPoint(point, x, y)
-    root:SetWidth(width)
-    root:SetHeight(height)
-    root:SetObeyStepOnDrag(true)
-    root:SetValueStep(step)
-    root:SetMinMaxValues(min, max)
-    root.Low:SetText(tostring(min))
-    root.High:SetText(tostring(max))
-
-    if tooltip_text then
-        root.tooltip_text = tooltip_text
-        root:SetScript("OnEnter", function(self)
-            wow.GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-            wow.GameTooltip:SetText(self.tooltip_text, nil, nil, nil, nil, true)
-        end)
-        root:SetScript("OnLeave", function()
-            wow.GameTooltip:Hide()
-        end)
-    end
-
-    if on_value_changed then
-        root:SetScript("OnValueChanged", on_value_changed)
-    end
-
     return root
 end
 
@@ -2542,14 +2562,14 @@ local function prepare_options_frame()
 
     f = options_frame:CreateFontString()
     f:SetPoint("TOPLEFT", 26, -20)
-    f:SetFontObject(fonts.logo)
+    f:SetFontObject(SystemFont_Huge2)
     f:SetText("|cff1177eeClassic|r|cffffdd00UA|r")
 
     -- version & stats
 
     f = options_frame:CreateFontString()
     f:SetPoint("TOPRIGHT", -24, -20)
-    f:SetFontObject(fonts.content)
+    f:SetFontObject(SystemFont_Med2)
     f:SetJustifyH("LEFT")
     local stats = get_stats()
     f:SetText(
@@ -2566,7 +2586,7 @@ local function prepare_options_frame()
     -- reload button
 
     f = wow.CreateFrame("Button", "$parent.Reload", options_frame, "UIPanelButtonTemplate")
-    f:SetPoint("TOPRIGHT", -46, -128)
+    f:SetPoint("TOPRIGHT", -46, -130)
     f:SetText("/reload")
     f:SetSize(100, 24)
     f:SetScript("OnClick", function()
@@ -2596,43 +2616,24 @@ local function prepare_options_frame()
     -- reset button
 
     f = wow.CreateFrame("Button", "$parent.Reset", options_frame, "UIPanelButtonTemplate")
-    f:SetPoint("TOPRIGHT", -46, -160)
+    f:SetPoint("TOPRIGHT", -46, -158)
     f:SetText("Скинути")
     f:SetSize(100, 24)
     f:SetScript("OnClick", function()
         wow.StaticPopup_Show("CLASSICUA_CONFIRM_SETTINGS_RESET")
     end)
-    f:SetScript("OnEnter", function(self)
-        wow.GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        wow.GameTooltip:SetText(
-            "Скинути всі налаштування за замовчуванням. Деякі зміни будуть помітні лише після перезавантаження інтерфейсу гри.",
-            nil, nil, nil, nil, true
-        )
-    end)
-    f:SetScript("OnLeave", function()
-        wow.GameTooltip:Hide()
-    end)
-
-    -- options.quest_text_size
-
-    options_frame.quest_text_size_slider = create_slider_frame(
-        options_frame, "TOPLEFT", 24, -80, 200, 20, 10, 20, 1,
-        "Розмір шрифту в вікні завдання.",
-        function (self, value)
-            self.Text:SetText("Розмір тексту завдання: " .. value)
-            options.quest_text_size = value
-        end
+    add_tooltip_for_frame(f, "ANCHOR_RIGHT",
+        "Скинути всі налаштування за замовчуванням. Деякі зміни будуть помітні лише після перезавантаження інтерфейсу гри."
     )
 
-    -- options.book_text_size
+    -- options.override_system_fonts
 
-    options_frame.book_text_size_slider = create_slider_frame(
-        options_frame, "TOPLEFT", 24, -140, 200, 20, 10, 20, 1,
-        "Розмір шрифту в вікні книжки.",
-        function (self, value)
-            self.Text:SetText("Розмір тексту книжки: " .. value)
-            options.book_text_size = value
-        end
+    options_frame.override_system_fonts_checkbox = create_checkbox_frame(
+        options_frame, "TOPLEFT", 24, -80,
+        "Заміняти стандартні шрифти",
+        options.override_system_fonts,
+        "Заміняти стандартні шрифти на аналогічні з українськими літерами. Інакше деякі літери можуть відображатися некоректно.\n\nРекомендовано вимкнути при використанні іншого аддону, який заміняє стандартні шрифти.",
+        function (self) options.override_system_fonts = self:GetChecked() end
     )
 
     -- tabs
@@ -2745,8 +2746,7 @@ local function prepare_options_frame()
     options_frame.default = reset_options
     options_frame.refresh = function ()
         local of = options_frame
-        of.quest_text_size_slider:SetValue(options.quest_text_size)
-        of.book_text_size_slider:SetValue(options.book_text_size)
+        of.override_system_fonts_checkbox:SetChecked(options.override_system_fonts)
         of.dev_mode_checkbox:SetChecked(options.dev_mode)
         of.dev_mode_notify_activity_checkbox:SetChecked(options.dev_mode_notify_activity)
     end
