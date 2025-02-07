@@ -234,7 +234,7 @@ local function tooltip_title_line(tooltip)
     local text = _G[tooltip:GetName() .. "TextLeft1"]:GetText()
 
     -- check special case for item tooltip when showing currently equipped
-    if text == "Currently Equipped" and num_lines > 1 then
+    if text == CURRENTLY_EQUIPPED and num_lines > 1 then
         text = _G[tooltip:GetName() .. "TextLeft2"]:GetText()
     end
 
