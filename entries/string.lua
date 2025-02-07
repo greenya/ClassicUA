@@ -50,6 +50,7 @@ local global_strings = {
 { "FACTION_STANDING_DECREASED", "Ваша репутація з фракцією \"%s\" зменшилась на %d." }, -- "Your %s reputation has decreased by %d."
 { "FACTION_STANDING_DECREASED_GENERIC", "Репутація з фракцією \"%s\" погіршилась." }, -- "Reputation with %s decreased."
 { "FACTION_STANDING_INCREASED", "Ваша репутація з фракцією \"%s\" зросла на %d." }, -- "Your %s reputation has increased by %d."
+{ "FACTION_STANDING_INCREASED_GENERIC", "Репутація з фракцією \"%s\" покращилась." }, -- "Reputation with %s increased."
 { "FEETSLOT", "Ступні" }, -- "Feet"
 { "FINGER0SLOT", "Палець" }, -- "Finger"
 { "FINGER1SLOT", "Палець" }, -- "Finger"
@@ -151,14 +152,14 @@ local global_strings = {
 { "ZOOM_OUT", "Віддалити" }, -- "Zoom Out"
 }
 
-addonTable.text = {}
+addonTable.string = {}
 for _, s in ipairs(global_strings) do
     local key = s[1]
-    local text_en = _G[key]
-    if type(text_en) == "string" then
-        local text_uk = s[2]
-        addonTable.text[text_en] = text_uk
-        _G[key] = text_uk
+    local val_en = _G[key]
+    if type(val_en) == "string" then
+        local val_uk = s[2]
+        addonTable.string[val_en] = val_uk
+        _G[key] = val_uk
     end
 end
 

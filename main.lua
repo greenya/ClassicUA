@@ -783,8 +783,8 @@ local function prepare_glossary()
     local at = addonTable
     local glossary = {}
 
-    -- collect text-key entries: text, zone, object
-    for _, entry_type in pairs({ "text", "zone", "object" }) do
+    -- collect text-key entries: string, zone, object
+    for _, entry_type in pairs({ "string", "zone", "object" }) do
         for entry_key, entry_value in pairs(at[entry_type]) do
             local glossary_key = string.trim(entry_key:lower())
             if not glossary[glossary_key] then

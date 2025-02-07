@@ -12,7 +12,7 @@ ui\ClassicUA_UISliderTemplateWithLabels.xml
 entries\class.lua
 entries\info.lua
 entries\race.lua
-entries\text.lua
+entries\string.lua
 entries\zone.lua
 
 entries\classic\index.xml
