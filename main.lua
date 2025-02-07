@@ -1208,7 +1208,7 @@ local function make_entry_text(text, tooltip, tooltip_matches_to_skip)
     return result
 end
 
-local function get_glossary_text(entry_key, fallback, should_log_missing_type)
+local function get_glossary_text(entry_key, fallback, hint_type)
     local at = addonTable
 
     if type(entry_key) ~= "string" or type(at.glossary) ~= "table" then
@@ -1266,12 +1266,11 @@ local function get_glossary_text(entry_key, fallback, should_log_missing_type)
         end
     end
 
-    if options.dev_mode and should_log_missing_type then
-        local mt, oek = should_log_missing_type, original_entry_key
-        if mt == "zone" then
-            dev_log_missing_zone(oek)
+    if options.dev_mode and hint_type then
+        if hint_type == "zone" then
+            dev_log_missing_zone(original_entry_key)
         else
-            dev_log_issue("непідтримуваний тип даних в get_glossary_text()", { mt, oek })
+            dev_log_issue("непідтримуваний тип даних в get_glossary_text()", { hint_type, original_entry_key })
         end
     end
 
@@ -1318,16 +1317,11 @@ local function get_chat_text(npc_name, chat_text)
                 if chat_key then
                     local npc_name_uk = at.chat[char_key][1]
                     if not npc_name_uk then
-                        npc_name_uk = get_glossary_text(npc_name)
-                        if not npc_name_uk then
-                            npc_name_uk = npc_name
-                        end
+                        npc_name_uk = get_glossary_text(npc_name, npc_name)
                     end
 
-                    return
-                    capitalize(npc_name_uk),
-                    safe_make_chat_text(chat_text, at.chat[char_key][chat_key]),
-                    chat_code
+                    local chat_text_uk = safe_make_chat_text(chat_text, at.chat[char_key][chat_key])
+                    return capitalize(npc_name_uk), chat_text_uk, chat_code
                 end
             end
         end
@@ -1391,6 +1385,31 @@ local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_
     end
 end
 
+local function process_hearthstone_bind_location_code(entry)
+    if not entry or not entry.use then
+        return
+    end
+
+    local code = "{домівка}"
+    local lines = type(entry.use) == "table" and entry.use or { entry.use }
+    local home
+
+    for i = 1, #lines do
+        if type(lines[i]) == "string" and lines[i]:find(code) then
+            if not home then
+                local loc = wow.GetBindLocation()
+                home = get_glossary_text(loc, loc, "zone")
+            end
+            lines[i] = lines[i]:gsub(code, home)
+        end
+    end
+
+    -- we need only copy string value, in case of table its a ref and changes where made in place
+    if type(entry.use) == "string" then
+        entry.use = lines[1]
+    end
+end
+
 local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_depth)
     sub_item_depth = sub_item_depth or 1
     if sub_item_depth > 4 then
@@ -1402,15 +1421,11 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
         return
     end
 
+    process_hearthstone_bind_location_code(entry)
+
     local prefix = sub_item_depth == 1 and assets.icon_ua .. " " or ""
     local heading = make_entry_text(entry[1], tooltip)
     tooltip:AddLine(prefix .. capitalize(heading), 1, 1, 1)
-
-    if tonumber(entry_id) == 6948 and type(entry.use) == "string" and entry.use:find("{домівка}") then -- 6948 for Hearthstone item id
-        local loc = wow.GetBindLocation()
-        local home = get_glossary_text(loc, loc, "zone")
-        entry.use = entry.use:gsub("{домівка}", home)
-    end
 
     add_line_to_tooltip(tooltip, entry.desc, "TEXT", 1, 1, 1)
     add_line_to_tooltip(tooltip, entry.equip, "При спорядженні: TEXT", 0, 1, 0, true, entry_id)
@@ -1995,7 +2010,7 @@ local function on_quest_frames_set_text(self, text)
     end
 
     local new_text
-    local meta = self.classicua_metadata
+    local meta = self.classicua
 
     if meta.is_title or meta.is_desc or meta.is_objective or meta.is_progress or meta.is_completion then
         local quest_entry = get_entry("quest", wow.GetQuestID()) or quest_ui.questlog_selected_quest_entry
@@ -2029,7 +2044,7 @@ local function prepare_quest_frames()
     for _, info in ipairs(quest_ui.widgets) do
         if info.frame then
             wow.hooksecurefunc(info.frame, "SetText", on_quest_frames_set_text)
-            info.frame.classicua_metadata = info
+            info.frame.classicua = info
 
             -- force update (trigger SetText() hook), because some static texts never gets updated
             local text = info.frame:GetText()
@@ -2233,8 +2248,8 @@ local function prepare_data_hooks_for_item_texts()
     _G.ItemTextGetItem = function (...)
         local text = original_item_text_get_item(...)
         -- book_item_id is not ready at this moment, so we use last mouse hovered item
-        if known_tooltips[1].classicua.entry_type == "item" then
-            local item_id = known_tooltips[1].classicua.entry_id
+        if wow.GameTooltip.classicua.entry_type == "item" then
+            local item_id = wow.GameTooltip.classicua.entry_id
             local item = get_entry("item", item_id)
             if item then
                 text = capitalize(item[1])
@@ -2248,8 +2263,8 @@ local function item_text_begin()
     -- we store last mouse hovered item in separate variable, because player can mouse over
     -- many items before closing the book, so we keep id of currently opened book for correct
     -- pages lookup in ItemTextGetText() hook
-    if known_tooltips[1].classicua.entry_type == "item" then
-        book_item_id = known_tooltips[1].classicua.entry_id
+    if wow.GameTooltip.classicua.entry_type == "item" then
+        book_item_id = wow.GameTooltip.classicua.entry_id
     end
 end
 
