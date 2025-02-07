@@ -65,7 +65,7 @@ local global_strings = {
 { "ITEM_SIGNABLE", "<Клацніть правою кнопкою для подробиць>" }, -- "<Right Click for Details>"
 { "ITEM_STARTS_QUEST", "Цей предмет розпочинає завдання" }, -- "This Item Begins a Quest"
 { "KEYRING", "Кільце для ключів" }, -- "Keyring"
-{ "LEARN_SPELL_OBJECTIVE", "Вивчіть закляття:" }, -- "Learn Spell:"
+{ "LEARN_SPELL_OBJECTIVE", "Вивчіть заклинання:" }, -- "Learn Spell:"
 { "LEGSSLOT", "Ноги" }, -- "Legs"
 { "LEVEL_UP", "Вітаємо! Ви досягли %d-го рівня!" }, -- "Congratulations, you have reached level %d!"
 { "LEVEL_UP_CHAR_POINTS", "Ви отримали %d очко таланту." }, -- "You have gained %d talent point."
@@ -93,7 +93,7 @@ local global_strings = {
 { "QUEST_DESCRIPTION", "Опис" }, -- "Description"
 { "QUEST_MONSTERS_KILLED", "%s: %d/%d вбито" }, -- "%s slain: %d/%d" -- keep "%s:...", addon will split by ":" and lookup left part for translation, details in translate_quest_objective_task()
 { "QUEST_OBJECTIVES", "Доручення" }, -- "Quest Objectives"
-{ "QUEST_SPELL_NEEDED", "Вивчіть закляття: %s" }, -- "Learn Spell: %s"
+{ "QUEST_SPELL_NEEDED", "Вивчіть заклинання: %s" }, -- "Learn Spell: %s"
 { "RAID_TARGET_1", "Зірка" }, -- "Star"
 { "RAID_TARGET_2", "Коло" }, -- "Circle"
 { "RAID_TARGET_3", "Ромб" }, -- "Diamond"
@@ -109,14 +109,16 @@ local global_strings = {
 { "REQUIRED_MONEY", "Потрібні гроші:" }, -- "Required Money:"
 { "REWARDS", "Винагороди" }, -- "Rewards"
 { "REWARD_ABILITY", "Ви навчитеся наступному:" }, -- "You will learn the following:"
-{ "REWARD_AURA", "Ви отримаєте ефект наступного закляття:" }, -- "The following will be cast on you:"
+{ "REWARD_AURA", "На вас буде накладено наступне заклинання:" }, -- "The following will be cast on you:"
 { "REWARD_CHOICES", "Ви зможете обрати одну з цих винагород:" }, -- "You will be able to choose one of these rewards:"
 { "REWARD_CHOOSE", "Оберіть собі винагороду:" }, -- "Choose your reward:"
+{ "REWARD_FOLLOWER", "До вас приєднаються послідовники:" }, -- "You will gain these followers:"
 { "REWARD_ITEMS", "Ви також отримаєте:" }, -- "You will also receive:"
 { "REWARD_ITEMS_ONLY", "Ви отримаєте:" }, -- "You will receive:"
 { "REWARD_SPELL", "Ви навчитеся:" }, -- "You will learn:"
 { "REWARD_TITLE", "Вас буде удостоєно званням:" }, -- "You shall be granted the title:"
 { "REWARD_TRADESKILL_SPELL", "Ви навчитеся створювати:" }, -- "You will learn how to create:"
+{ "REWARD_UNLOCK", "Ви відриєте доступ до наступного:" }, -- "You will unlock access to the following:"
 { "SANCTUARY_TERRITORY", "(Прихисток)" }, -- "(Sanctuary)"
 { "SECONDARYHANDSLOT", "Неосновна рука" }, -- "Off Hand"
 { "SHIELDSLOT", "Щит" }, -- "Shield"
@@ -159,3 +161,14 @@ for _, s in ipairs(global_strings) do
         _G[key] = text_uk
     end
 end
+
+-- reset translations after they were cached in
+-- https://www.townlong-yak.com/framexml/era/Blizzard_UIPanels_Game/QuestInfo.lua#405
+QUEST_INFO_SPELL_REWARD_TO_HEADER = {
+    [QUEST_SPELL_REWARD_TYPE_FOLLOWER] = REWARD_FOLLOWER,
+    [QUEST_SPELL_REWARD_TYPE_TRADESKILL_SPELL] = REWARD_TRADESKILL_SPELL,
+    [QUEST_SPELL_REWARD_TYPE_ABILITY] = REWARD_ABILITY,
+    [QUEST_SPELL_REWARD_TYPE_AURA] = REWARD_AURA,
+    [QUEST_SPELL_REWARD_TYPE_SPELL] = REWARD_SPELL,
+    [QUEST_SPELL_REWARD_TYPE_UNLOCK] = REWARD_UNLOCK,
+}
