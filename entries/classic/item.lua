@@ -8,6 +8,7 @@ local items = {
 --     [equip]  = text or number (spell id) for "Equip: ..." (green color) (optional)
 --     [hit]    = text or number (spell id) for "Chance on hit: ..." (green color) (optional)
 --     [use]    = text or number (spell id) for "Use: ..." (green color) (optional)
+--                supports code "{домівка}" for Hearthstone bind location
 --     [recipe_result_item] = number (item id) to show the item after the spell-recipe (optional)
 --     [flavor] = quoted text (golden color) (optional)
 --     --------
