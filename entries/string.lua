@@ -21,7 +21,7 @@ local global_strings = {
 { "COPPER_AMOUNT_SYMBOL", "м" }, -- "c"
 { "CURRENT_QUESTS", "Поточні завдання" }, -- "Current Quests"
 { "CURRENTLY_EQUIPPED", "Наразі споряджено" }, -- "Currently Equipped"
-{ "DEFAULT_AFK_MESSAGE", "Немає за комп'ютером" }, -- "Away from Keyboard"
+{ "DEFAULT_AFK_MESSAGE", "Відлучилися" }, -- "Away from Keyboard"
 { "DEFAULT_DND_MESSAGE", "Не турбувати" }, -- "Do not Disturb"
 { "EXPERIENCE_COLON", "Досвід:" }, -- "Experience:"
 { "ERR_AUTOLOOT_MONEY_S", "Ваша здобич: %s" }, -- "You loot %s"
