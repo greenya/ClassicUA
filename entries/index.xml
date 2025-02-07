@@ -1,0 +1,8 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+    <Script file="class.lua"/>
+    <Script file="info.lua"/>
+    <Script file="misc.lua"/>
+    <Script file="race.lua"/>
+    <Script file="string.lua"/>
+    <Script file="zone.lua"/>
+</Ui>

@@ -51,8 +51,7 @@ class Terms(list['Term']):
 
         for term in self:
             if term.text_en.lower() in text_en_lower_patterns:
-                cases = term.text_uk.split('/', maxsplit=1)
-                return cases[1] if is_female and len(cases) > 1 else cases[0]
+                return term.translation(is_female=is_female)
 
             if term.is_location():
                 for alias in term.location_aliases():
@@ -71,14 +70,21 @@ class Term:
     def __repr__(self) -> str:
         return f'@term {self.text_en} -> {self.text_uk}'
 
+    def has_tag(self, tag: str) -> bool:
+        return tag in self.tags
+
     def is_npc(self) -> bool:
-        return 'нпц' in self.tags
+        return self.has_tag('нпц')
 
     def is_female(self) -> bool:
-        return 'жін' in self.tags
+        return self.has_tag('жін')
 
     def is_location(self) -> bool:
-        return 'локація' in self.tags
+        return self.has_tag('локація')
+
+    def translation(self, is_female=False) -> str:
+        cases = self.text_uk.split('/', maxsplit=1)
+        return cases[1] if is_female and len(cases) > 1 else cases[0]
 
     def desc(self, known_terms: Terms = None) -> str:
         for tag in self.tags:

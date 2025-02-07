@@ -41,6 +41,7 @@ All other files are edited manually, e.g. via pull requests.
     - Run python gen_addon_books_source_from_crowdin.py > translation_from_crowdin/books_stats.txt
     - Run python gen_addon_chats_source_from_crowdin.py > translation_from_crowdin/chats_stats.txt
     - Run python gen_addon_gossip_source_from_crowdin.py > translation_from_crowdin/gossip_stats.txt
+    - Run python gen_addon_misc_source_from_crowdin.py > translation_from_crowdin/misc_stats.txt
     - Run python gen_addon_npcs_source_from_crowdin.py > translation_from_crowdin/npcs_stats.txt
     - Run python gen_addon_quests_source_from_crowdin.py > translation_from_crowdin/quests_stats.txt
     - Run python gen_addon_zones_source_from_crowdin.py > translation_from_crowdin/zones_stats.txt

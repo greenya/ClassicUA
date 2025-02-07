@@ -9,12 +9,7 @@
 
 ui\ClassicUA_UISliderTemplateWithLabels.xml
 
-entries\class.lua
-entries\info.lua
-entries\race.lua
-entries\string.lua
-entries\zone.lua
-
+entries\index.xml
 entries\classic\index.xml
 entries\tbc\index.xml
 entries\wrath\index.xml
