@@ -1,9 +1,9 @@
-## Interface: 11505, 11506
+## Interface: 11506
 
 ## Title: |cff1177eeClassic|r|cffffdd00UA|r
 ## Notes: Game localization to Ukrainian language.
 ## Author: greenya
-## Version: 5.9.DEV
+## Version: 6.0
 ## SavedVariables: ClassicUA_Options, ClassicUA_DevLog
 ## SavedVariablesPerCharacter: ClassicUA_Character_Options
 
