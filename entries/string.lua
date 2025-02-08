@@ -61,6 +61,7 @@ local global_strings = {
 { "HANDSSLOT", "Руки" }, -- "Hands"
 { "HEADSLOT", "Голова" }, -- "Head"
 { "ITEM_DELTA_DESCRIPTION", "Заміна цього предмету призведе до зміни наступних характеристик:" }, -- "If you replace this item, the following stat changes will occur:"
+{ "ITEM_DELTA_MULTIPLE_COMPARISON_DESCRIPTION", "Заміна цих предметів призведе до зміни наступних характеристик:" }, -- "If you replace these items, the following stat changes will occur:"
 { "ITEM_OPENABLE", "<Клацніть правою кнопкою щоб відкрити>" }, -- "<Right Click to Open>"
 { "ITEM_READABLE", "<Клацніть правою кнопкою щоб прочитати>" }, -- "<Right Click to Read>"
 { "ITEM_SIGNABLE", "<Клацніть правою кнопкою для подробиць>" }, -- "<Right Click for Details>"

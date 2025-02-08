@@ -29,6 +29,7 @@ local wow = {
     GetNumAddOns                = _G.GetNumAddOns,
     GetQuestID                  = _G.GetQuestID,
     GetQuestLogSelection        = _G.GetQuestLogSelection,
+    GetQuestLogSelectedID       = _G.GetQuestLogSelectedID,
     GetQuestLogTitle            = _G.GetQuestLogTitle,
     GetTalentInfo               = _G.GetTalentInfo,
     GossipFrame                 = _G.GossipFrame,
@@ -1925,63 +1926,35 @@ end
 -- ----------------
 
 local quest_ui = {
-    questlog_selected_quest_entry = nil,
     set_text_hook_allowed = true,
-    widgets = {
-        -- greetings dialog (talking to npc)
+    labels = {
         { frame=CurrentQuestsText }, -- "Current Quests"
         { frame=AvailableQuestsText }, -- "Available Quests"
-        -- quest details step + rewards step (talking to npc); QuestInfoXXX is used as quest log parts in WOTLK and QuestLogXXX is removed
-        { frame=QuestInfoTitleHeader, is_title=true }, -- quest title
         { frame=QuestInfoDescriptionHeader }, -- "Description"
-        { frame=QuestInfoDescriptionText, is_desc=true }, -- quest description
         { frame=QuestInfoObjectivesHeader }, -- "Quest Objectives"
-        { frame=QuestInfoObjectivesText, is_objective=true }, -- quest objectives
-        { frame=QuestInfoRewardText, is_completion=true }, -- quest completion
         { frame=QuestInfoRewardsFrame.Header }, -- "Rewards"
         { frame=QuestInfoRewardsFrame.ItemChooseText }, -- "You will be able to choose one of these rewards:", "Choose your reward:"
         { frame=QuestInfoRewardsFrame.ItemReceiveText }, -- "You will receive:"
         { frame=QuestInfoRewardsFrame.PlayerTitleText }, -- "You shall be granted the title:"
         { frame=QuestInfoXPFrame.ReceiveText }, -- "Experience:"
-        -- quest progress step (talking to npc)
-        { frame=QuestProgressTitleText, is_title=true }, -- quest title
-        { frame=QuestProgressText, is_progress=true }, -- quest progress
         { frame=QuestProgressRequiredItemsText }, -- "Required items:"
         { frame=QuestProgressRequiredMoneyText }, -- "Required Money:"
-        -- questlog details (browsing player personal quest log); QuestLogXXX is removed from WOTLK and QuestInfoXXX is used instead
-        -- { frame=QuestLogQuestTitle, is_title=true }, -- quest title (no need to handle, as it will be handled by hook to GetQuestLogTitle(), also addons like Questie and Leatrix Plus can add level prefix, e.g. "[18] XXX")
-        { frame=QuestLogObjectivesText, is_objective=true }, -- quest objectives
-        { frame=QuestLogObjective1, is_objective_task=true }, -- quest objective line 1
-        { frame=QuestLogObjective2, is_objective_task=true }, -- quest objective line 2
-        { frame=QuestLogObjective3, is_objective_task=true }, -- quest objective line 3
-        { frame=QuestLogObjective4, is_objective_task=true }, -- quest objective line 4
-        { frame=QuestLogObjective5, is_objective_task=true }, -- quest objective line 5
-        { frame=QuestLogObjective6, is_objective_task=true }, -- quest objective line 6
-        { frame=QuestLogObjective7, is_objective_task=true }, -- quest objective line 7
-        { frame=QuestLogObjective8, is_objective_task=true }, -- quest objective line 8
-        { frame=QuestLogObjective9, is_objective_task=true }, -- quest objective line 9
-        { frame=QuestLogObjective10, is_objective_task=true }, -- quest objective line 10
-        { frame=QuestInfoObjective1, is_objective_task=true }, -- quest objective line 1 (wrath+)
-        { frame=QuestInfoObjective2, is_objective_task=true }, -- quest objective line 2 (wrath+)
-        { frame=QuestInfoObjective3, is_objective_task=true }, -- quest objective line 3 (wrath+)
-        { frame=QuestInfoObjective4, is_objective_task=true }, -- quest objective line 4 (wrath+)
         { frame=QuestLogDescriptionTitle }, -- "Description"
-        { frame=QuestLogQuestDescription, is_desc=true }, -- quest description
         { frame=QuestLogRewardTitleText }, -- "Rewards"
         { frame=QuestLogItemChooseText }, -- "You will be able to choose one of these rewards:"
         { frame=QuestLogItemReceiveText }, -- "You will receive:", "You will also receive:"
     }
 }
 
-local function on_quest_log_entry_selected()
-    quest_ui.questlog_selected_quest_entry = nil
-    local selection = wow.GetQuestLogSelection()
-    if selection > 0 then
-        local id = select(8, wow.GetQuestLogTitle(selection))
-        local entry = get_entry("quest", id)
-        if entry then
-            quest_ui.questlog_selected_quest_entry = entry
-        end
+local get_currently_viewed_quest_entry = function ()
+    local npc_quest_id = wow.GetQuestID and wow.GetQuestID() or nil
+    if npc_quest_id and npc_quest_id > 0 then
+        return get_entry("quest", npc_quest_id)
+    end
+
+    local questlog_quest_id = wow.GetQuestLogSelectedID and wow.GetQuestLogSelectedID() or nil
+    if questlog_quest_id and questlog_quest_id > 0 then
+        return get_entry("quest", questlog_quest_id)
     end
 end
 
@@ -2009,28 +1982,7 @@ local function on_quest_frames_set_text(self, text)
         return
     end
 
-    local new_text
-    local meta = self.classicua
-
-    if meta.is_title or meta.is_desc or meta.is_objective or meta.is_progress or meta.is_completion then
-        local quest_entry = get_entry("quest", wow.GetQuestID()) or quest_ui.questlog_selected_quest_entry
-        if quest_entry then
-            if meta.is_title        then new_text = quest_entry[1] end
-            if meta.is_desc         then new_text = quest_entry[2] end
-            if meta.is_objective    then new_text = quest_entry[3] end
-            if meta.is_progress     then new_text = quest_entry[4] end
-            if meta.is_completion   then new_text = quest_entry[5] end
-        end
-    end
-
-    if meta.is_objective_task then
-        new_text = translate_quest_objective_task(text)
-    end
-
-    if not new_text then
-        new_text = get_glossary_text(text)
-    end
-
+    local new_text = get_glossary_text(text)
     if new_text then
         quest_ui.set_text_hook_allowed = false
         self:SetText(new_text)
@@ -2039,16 +1991,13 @@ local function on_quest_frames_set_text(self, text)
 end
 
 local function prepare_quest_frames()
-    wow.hooksecurefunc("SelectQuestLogEntry", on_quest_log_entry_selected)
+    for _, label in ipairs(quest_ui.labels) do
+        if label.frame then
+            wow.hooksecurefunc(label.frame, "SetText", on_quest_frames_set_text)
 
-    for _, info in ipairs(quest_ui.widgets) do
-        if info.frame then
-            wow.hooksecurefunc(info.frame, "SetText", on_quest_frames_set_text)
-            info.frame.classicua = info
-
-            -- force update (trigger SetText() hook), because some static texts never gets updated
-            local text = info.frame:GetText()
-            if text then info.frame:SetText(text) end
+            -- force update (trigger SetText() hook), because some static texts never get updated
+            local text = label.frame:GetText()
+            if text then label.frame:SetText(text) end
         end
     end
 end
@@ -2111,11 +2060,87 @@ local function prepare_data_hooks_for_quests()
                 local quest_id = data[8]
                 local quest_entry = get_entry("quest", quest_id)
                 if quest_entry then
-                    data[1] = quest_entry[1]
+                    data[1] = quest_entry[1] or data[1]
                 else
                     data[1] = get_glossary_text(data[1], data[1])
                 end
             end
+        end
+        return unpack(data)
+    end
+
+    local original_get_title_text = _G.GetTitleText
+    _G.GetTitleText = function (...)
+        local title = original_get_title_text(...)
+        local quest_id = wow.GetQuestID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and type(title) == "string" then
+            title = quest_entry[1] or title
+        end
+        return title
+    end
+
+    local original_get_quest_text = _G.GetQuestText
+    _G.GetQuestText = function (...)
+        local text = original_get_quest_text(...)
+        local quest_id = wow.GetQuestID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and type(text) == "string" then
+            text = quest_entry[2] or text
+        end
+        return text
+    end
+
+    local original_get_objective_text = _G.GetObjectiveText
+    _G.GetObjectiveText = function (...)
+        local text = original_get_objective_text(...)
+        local quest_id = wow.GetQuestID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and type(text) == "string" then
+            text = quest_entry[3] or text
+        end
+        return text
+    end
+
+    local original_get_progress_text = _G.GetProgressText
+    _G.GetProgressText = function (...)
+        local text = original_get_progress_text(...)
+        local quest_id = wow.GetQuestID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and type(text) == "string" then
+            text = quest_entry[4] or text
+        end
+        return text
+    end
+
+    local original_get_reward_text = _G.GetRewardText
+    _G.GetRewardText = function (...)
+        local text = original_get_reward_text(...)
+        local quest_id = wow.GetQuestID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and type(text) == "string" then
+            text = quest_entry[5] or text
+        end
+        return text
+    end
+
+    local original_get_quest_log_quest_text = _G.GetQuestLogQuestText
+    _G.GetQuestLogQuestText = function (...)
+        local data = { original_get_quest_log_quest_text(...) }
+        local quest_id = wow.GetQuestLogSelectedID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and data then
+            if type(data[1]) == "string" then data[1] = quest_entry[2] or data[1] end
+            if type(data[2]) == "string" then data[2] = quest_entry[3] or data[2] end
+        end
+        return unpack(data)
+    end
+
+    local original_get_quest_log_leader_board = _G.GetQuestLogLeaderBoard
+    _G.GetQuestLogLeaderBoard = function (...)
+        local data = { original_get_quest_log_leader_board(...) }
+        if data and data[1] then
+            data[1] = translate_quest_objective_task(data[1])
         end
         return unpack(data)
     end
