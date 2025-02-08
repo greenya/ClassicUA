@@ -784,8 +784,8 @@ local function prepare_glossary()
     local at = addonTable
     local glossary = {}
 
-    -- collect text-key entries: misc, string, zone, object
-    for _, entry_type in pairs({ "misc", "string", "zone", "object" }) do
+    -- collect text-key entries: misc, string, object, zone
+    for _, entry_type in pairs({ "misc", "string", "object", "zone" }) do
         for entry_key, entry_value in pairs(at[entry_type]) do
             local glossary_key = string.trim(entry_key:lower())
             if not glossary[glossary_key] then
@@ -808,8 +808,8 @@ local function prepare_glossary()
         end
     end
 
-    -- collect id-key entries: quest, npc
-    for _, entry_type in pairs({ "quest_faction", "quest_both", "npc" }) do
+    -- collect id-key entries: spell, item, npc, quest
+    for _, entry_type in pairs({ "spell", "item", "npc", "quest_faction", "quest_both" }) do
         for _, entry_value in pairs(at[entry_type]) do
             if entry_value.en then
                 local glossary_key = string.trim(entry_value.en:lower())
@@ -1959,12 +1959,12 @@ local get_currently_viewed_quest_entry = function ()
 end
 
 local function translate_quest_objective_task(text)
-    -- try parse "XXX: YYY" and translate XXX
+    -- try parse "LEFT: RIGHT" and translate it
     local parts = { string.split(":", text, 2) }
     if #parts == 2 and #parts[1] > 0 then
-        local found = get_glossary_text(parts[1])
-        if found then
-            parts[1] = found
+        local found_left = get_glossary_text(parts[1])
+        if found_left then
+            parts[1] = found_left
         elseif #parts[1] > 1 and parts[1]:sub(#parts[1], #parts[1]) == "s" then
             -- try plural => singular, e.g. "Kobold Workers" => "Kobold Worker"
             local found_singular = get_glossary_text(parts[1]:sub(1, #parts[1] - 1))
@@ -1972,8 +1972,17 @@ local function translate_quest_objective_task(text)
                 parts[1] = found_singular
             end
         end
+
+        local found_right = get_glossary_text(parts[2])
+        if found_right then
+            parts[2] = " " .. found_right
+        end
+
         text = parts[1] .. ":" .. parts[2]
+    else
+        text = get_glossary_text(text, text)
     end
+
     return text
 end
 
