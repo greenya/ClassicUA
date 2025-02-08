@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.zone_stats = { count=3144 }
+addonTable.zone_stats = { count=3154 }
 
 addonTable.zone = { -- [key] = text
 ["7th Legion Base Camp"] = "опорний табір 7го Легіону",
@@ -581,6 +581,7 @@ addonTable.zone = { -- [key] = text
 ["Darkmoon Island"] = "острів Темного Місяця",
 ["Darkmoon Path"] = "стежина Темного Місяця",
 ["Darkshire"] = "Темноділ",
+["Darkshire Town Hall"] = "ратуша Темнодолу",
 ["Darkshore"] = "Темнобережжя",
 ["Darkspear Hold"] = "фортеця Темного Списа",
 ["Darkspear Strand"] = "узбережжя Темного Списа",
@@ -632,6 +633,7 @@ addonTable.zone = { -- [key] = text
 ["Deepmist Grotto"] = "грот Глибинної Імли",
 ["Deeprun Tram"] = "Підземний трамвай",
 ["Deepwater Tavern"] = "таверна «Глибоководдя»",
+["Defias Hideout"] = "схованка повстанців",
 ["Defiled Chapel"] = "Осквернена каплиця",
 ["Defiler's Den"] = "лігво Труїтелів",
 ["Demon Fall Barrow"] = "курган Погибелі демона",
@@ -933,6 +935,7 @@ addonTable.zone = { -- [key] = text
 ["Forgewright's Tomb"] = "гробниця Файнокова",
 ["Forgotten Hill"] = "Забутий пагорб",
 ["Forgotten Overlook"] = "Забута варта",
+["Forgotten Pool"] = "Забутий став",
 ["Forgotten Shore"] = "Забутий берег",
 ["Forlorn Mine"] = "Покинута шахта",
 ["Forlorn Ridge"] = "Самотній край",
@@ -1344,6 +1347,7 @@ addonTable.zone = { -- [key] = text
 ["Kalimdor"] = "Калімдор",
 ["Kamagua"] = "Камаґуа",
 ["Karazhan"] = "Каражан",
+["Karazhan Crypts"] = "склепи Каражану",
 ["Kargath"] = "Карґат",
 ["Kargathia Keep"] = "фортеця Карґатія",
 ["Karnum's Glade"] = "галявина Карнума",
@@ -1406,6 +1410,8 @@ addonTable.zone = { -- [key] = text
 ["Lake Sunspring"] = "Сонцеджерельне озеро",
 ["Lakeridge Highway"] = "Приозерний тракт",
 ["Lakeshire"] = "Приозер'я",
+["Lakeshire Inn"] = "корчма Приозер'я",
+["Lakeshire Town Hall"] = "ратуша Приозер'я",
 ["Lakeside Landing"] = "Приозерний табір",
 ["Lakkari Tar Pits"] = "смоляні озера Лаккарі",
 ["Land's End Beach"] = "узбережжя на Краю землі",
@@ -1767,6 +1773,7 @@ addonTable.zone = { -- [key] = text
 ["Pilgrim's Precipice"] = "прірва паломника",
 ["Pincer X2"] = "Щипач Х2",
 ["Pipe"] = "Труба",
+["Pit of Criminals"] = "яма злочинців",
 ["Pit of Fangs"] = "яма ікл",
 ["Pit of Fiends"] = "Яма марників",
 ["Pit of Narjun"] = "Провал Нарджуна",
@@ -1969,7 +1976,7 @@ addonTable.zone = { -- [key] = text
 ["Ruins of Vashj'ir"] = "руїни Вайш'ира",
 ["Ruins of Zul'Kunda"] = "руїни Зул'Кунда",
 ["Ruins of Zul'Mamwe"] = "руїни Зул'Мамве",
-["Ruins of the Scarlet Enclave"] = "руїни Багряного Анклаву",
+["Ruins of the Scarlet Enclave"] = "руїни анклаву Багряного Походу",
 ["Runestone Falithas"] = "рунічний камінь Фалітас",
 ["Runestone Shan'dor"] = "рунічний камінь Шан'дор",
 ["Runeweaver Square"] = "Площа Руноплета",
@@ -2775,6 +2782,7 @@ addonTable.zone = { -- [key] = text
 ["Tomb of the Earthrager"] = "склеп Люті Землі",
 ["Tomb of the Lost Kings"] = "гробниця Загублених Королів",
 ["Tomb of the Sun King"] = "гробниця Сонячного Короля",
+["Tomb of the Unrepentant"] = "Гробниця Нерозкаяних",
 ["Tomb of the Watchers"] = "Гробниця Спостерігачів",
 ["Tombs of the Precursors"] = "гробниці Предтеч",
 ["Tor'Watha"] = "Тор'Вата",
@@ -2875,6 +2883,7 @@ addonTable.zone = { -- [key] = text
 ["Unu'pe"] = "Уну'пе",
 ["Upper Silvermarsh"] = "верхів'я Срібного болота",
 ["Upper Veil Shil'ak"] = "верхнє гніздів'я Ші'лак",
+["Upside-down Sinners"] = "яма грішників",
 ["Ursoc's Den"] = "лігво Урсока",
 ["Ursolan"] = "Урсолан",
 ["Utgarde Catacombs"] = "катакомби Утґарда",
@@ -3013,6 +3022,7 @@ addonTable.zone = { -- [key] = text
 ["Webwinder Path"] = "Павутиновита стежка",
 ["Weeping Quarry"] = "Плакучий кар'єр",
 ["Well of Eternity"] = "Колодязь Вічності",
+["Well of the Forgotten"] = "колодязь Забутих",
 ["Wellson Shipyard"] = "корабельня Веллсона",
 ["Wellspring Hovel"] = "Джерельна хатина",
 ["Wellspring Lake"] = "Джерельне озеро",

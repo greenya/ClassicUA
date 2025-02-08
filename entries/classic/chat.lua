@@ -169,7 +169,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text
 -- %s flee as the controlling power of the orb is drained.
 ["ssfeastecgprofteobisdd"] = [===[%s втікають, коли сила сфери домінування вичерпується.]===],
 },
-["Overlord Runthak"] = { "надправитель Рунтак",
+["Overlord Runthak"] = { "властитель Рунтак",
 -- Bear witness to the undeniable power of your Warchief! Be lifted by the rallying cry of your dragon slayers!
 ["brwstoteueprofyrwfbeldbytergcyofyrdnss"] = [===[Будьте свідками незаперечної сили вашого вождя! Сповнюйтесь рвучким кличем ваших драконоборців!]===],
 -- People of the Horde, citizens of Orgrimmar, come, gather round and celebrate a hero of the Horde. On this day, <name>, under the auspices of our glorious Warchief, laid a mortal blow against the Black Dragonflight. The brood mother, Onyxia, has been slain!
