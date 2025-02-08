@@ -54,7 +54,8 @@ All other files are edited manually, e.g. via pull requests.
     - Commit "Sync from Crowdin"
 
 5. Update and release new version
-    - Commit "Update changelog" with updated "addon_changelog" in text.lua
+    - Commit "Update Classic API to X.X.X and Cata to X.X.X" if needed
+    - Commit "Update changelog" with updated "addon_changelog" in info.lua
     - Commit "Bump version to X.X" with updated TOC files
     - Create new version archive "ClassicUA-vX.X.zip"
     - Upload the archive to CurseForge and wait until approved
