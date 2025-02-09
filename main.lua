@@ -2011,48 +2011,6 @@ local function prepare_quest_frames()
     end
 end
 
--- ----------------
--- [ gossip frame ]
--- ----------------
-
-local function show_gossip()
-    local npc_id = npc_id_from_unit_id("npc")
-    if npc_id then
-        local gossip_text_en = wow.C_GossipInfo:GetText()
-        local gossip_text_ua, gossip_code = get_gossip_text(npc_id, gossip_text_en)
-        if gossip_text_ua then
-            local gf = wow.GossipFrame
-            if gf and gf.GreetingPanel and gf.GreetingPanel.ScrollBox then
-                for _, child in ipairs({ gf.GreetingPanel.ScrollBox.ScrollTarget:GetChildren() }) do
-                    if child.GreetingText then
-                        child.GreetingText:SetText(gossip_text_ua)
-                        break
-                    end
-                end
-            end
-        elseif options.dev_mode and gossip_code then
-            dev_log_missing_gossip(npc_id, gossip_code, gossip_text_en)
-        end
-    end
-end
-
--- ------------------
--- [ greeting frame ]
----------------------
-
-local function show_greeting()
-    local npc_id = npc_id_from_unit_id("npc")
-    if npc_id then
-        local greet_text_en = GreetingText:GetText()
-        local greet_text_ua, greet_code = get_gossip_text(npc_id, greet_text_en)
-        if greet_text_ua then
-            GreetingText:SetText(greet_text_ua)
-        elseif options.dev_mode and greet_code then
-            dev_log_missing_gossip(npc_id, greet_code, greet_text_en)
-        end
-    end
-end
-
 -- --------------
 -- [ data hooks ]
 -- --------------
@@ -2152,6 +2110,110 @@ local function prepare_data_hooks_for_quests()
             data[1] = translate_quest_objective_task(data[1])
         end
         return unpack(data)
+    end
+end
+
+local function prepare_data_hooks_for_quest_greetings()
+    local original_get_greeting_text = _G.GetGreetingText
+    _G.GetGreetingText = function (...)
+        local text = original_get_greeting_text(...)
+        if text then
+            local npc_id = npc_id_from_unit_id("npc")
+            if npc_id then
+                local text_ua, code = get_gossip_text(npc_id, text)
+                if text_ua then
+                    text = text_ua
+                elseif options.dev_mode and code then
+                    dev_log_missing_gossip(npc_id, code, text)
+                end
+            end
+        end
+        return text
+    end
+
+    local original_get_available_title = _G.GetAvailableTitle
+    _G.GetAvailableTitle = function (...)
+        local data = { original_get_available_title(...) }
+        if data and type(data[1]) == "string" then
+            data[1] = get_glossary_text(data[1], data[1])
+        end
+        return unpack(data)
+    end
+
+    local original_get_active_title = _G.GetActiveTitle
+    _G.GetActiveTitle = function (...)
+        local data = { original_get_active_title(...) }
+        if data and type(data[1]) == "string" then
+            data[1] = get_glossary_text(data[1], data[1])
+        end
+        return unpack(data)
+    end
+end
+
+local function prepare_data_hooks_for_gossip()
+    local original_c_gossip_info_get_text = wow.C_GossipInfo.GetText
+    wow.C_GossipInfo.GetText = function (...)
+        local text = original_c_gossip_info_get_text(...)
+        if text then
+            local npc_id = npc_id_from_unit_id("npc")
+            if npc_id then
+                local text_ua, code = get_gossip_text(npc_id, text)
+                if text_ua then
+                    text = text_ua
+                elseif options.dev_mode and code then
+                    dev_log_missing_gossip(npc_id, code, text)
+                end
+            end
+        end
+        return text
+    end
+
+    local original_c_gossip_info_get_options = wow.C_GossipInfo.GetOptions
+    wow.C_GossipInfo.GetOptions = function (...)
+        local list = original_c_gossip_info_get_options(...)
+        for _, item in ipairs(list) do
+            if item and item.name then
+                item.name = get_glossary_text(item.name, item.name) -- todo: track missing gossip option
+            end
+        end
+        return list
+    end
+
+    local original_c_gossip_info_get_poi_info = wow.C_GossipInfo.GetPoiInfo
+    wow.C_GossipInfo.GetPoiInfo = function (...)
+        local info = original_c_gossip_info_get_poi_info(...)
+        if info and info.name then
+            info.name = get_glossary_text(info.name, info.name, "zone")
+        end
+        return info
+    end
+
+    local original_c_gossip_info_get_available_quests = wow.C_GossipInfo.GetAvailableQuests
+    wow.C_GossipInfo.GetAvailableQuests = function (...)
+        local list = original_c_gossip_info_get_available_quests(...)
+        for _, item in ipairs(list) do
+            if item.questID then
+                local quest_entry = get_entry("quest", item.questID)
+                item.title = quest_entry[1]
+            else
+                item.title = get_glossary_text(item.title, item.title)
+            end
+        end
+        return list
+    end
+
+    local original_c_gossip_info_get_active_quests = wow.C_GossipInfo.GetActiveQuests
+    wow.C_GossipInfo.GetActiveQuests = function (...)
+        local list = original_c_gossip_info_get_active_quests(...)
+        for _, item in ipairs(list) do
+            if item.questID then
+                local quest_entry = get_entry("quest", item.questID)
+                item.title = quest_entry[1]
+            else
+                item.title = get_glossary_text(item.title, item.title)
+            end
+        end
+        return list
     end
 end
 
@@ -2885,8 +2947,6 @@ local event_frame = wow.CreateFrame("Frame")
 event_frame:RegisterEvent("ADDON_LOADED")
 event_frame:RegisterEvent("PLAYER_LOGIN")
 event_frame:RegisterEvent("PLAYER_TARGET_CHANGED")
-event_frame:RegisterEvent("GOSSIP_SHOW")
-event_frame:RegisterEvent("QUEST_GREETING")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
 
@@ -2920,17 +2980,13 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_get_text_code_replace_seq(name)
         prepare_quest_frames()
         prepare_data_hooks_for_quests()
+        prepare_data_hooks_for_quest_greetings()
+        prepare_data_hooks_for_gossip()
         prepare_data_hooks_for_zones()
         prepare_data_hooks_for_item_texts()
 
     elseif event == "PLAYER_TARGET_CHANGED" then
         update_target_frame_text()
-
-    elseif event == "GOSSIP_SHOW" then
-        show_gossip()
-
-    elseif event == "QUEST_GREETING" then
-        show_greeting()
 
     elseif event == "ITEM_TEXT_BEGIN" then
         item_text_begin()

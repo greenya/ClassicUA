@@ -4,6 +4,7 @@ The following files are generated from Crowdin via set of scripts:
 - book.lua
 - chat.lua
 - gossip.lua
+- misc.lua
 - npc.lua
 - quest_alliance.lua
 - quest_both.lua
