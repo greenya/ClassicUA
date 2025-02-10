@@ -2543,81 +2543,29 @@ local function prepare_fonts()
         return
     end
 
-    -- reference: https://www.townlong-yak.com/framexml/era/Blizzard_Fonts_Shared/SharedFonts.xml
-    local known_system_font_names = {
-        -- known font names use "Fonts\MORPHEUS.ttf"
-        "QuestFont_Large",
-        "QuestFont_Larger",
-        "QuestFont_Huge",
-        "QuestFont_39",
-        -- known font names use "Fonts\FRIZQT__.TTF"
-        "SystemFont_Tiny2",
-        "SystemFont_Tiny",
-        "SystemFont_Shadow_Small",
-        "Game10Font_o1",
-        "SystemFont_Small",
-        "SystemFont_Small2",
-        "SystemFont_Shadow_Small2",
-        "SystemFont_Shadow_Med1_Outline",
-        "SystemFont_Shadow_Med1",
-        "SystemFont_Med2",
-        "SystemFont_Med2_HSpacing",
-        "SystemFont_Med3",
-        "SystemFont_Shadow_Med3",
-        "SystemFont_Med4",
-        "SystemFont_Shadow_Med4",
-        "SystemFont_Large",
-        "SystemFont_Shadow_Large_Outline",
-        "SystemFont16_Shadow_ThickOutline",
-        "SystemFont_Shadow_Med2",
-        "SystemFont_Shadow_Large",
-        "SystemFont_Shadow_Large2",
-        "SystemFont_Shadow_Huge1",
-        "SystemFont_Huge2",
-        "SystemFont_Shadow_Huge2",
-        "SystemFont_Shadow_Huge3",
-        "SystemFont_Shadow_Outline_Huge3",
-        "SystemFont_World",
-        "SystemFont_World_ThickOutline",
-        "SystemFont_Shadow_Outline_Huge2",
-        "SystemFont_Med1",
-        "SystemFont_WTF2",
-        "SystemFont_Outline_WTF2",
-        "GameTooltipHeader",
-        "System_IME",
-        "Tooltip_Med",
-        "Tooltip_Small",
-        "System15Font",
-        "Game16Font",
-        "Game30Font",
-        "Game30Font2",
-        "Game30Font2Outline",
-        "Game32Font_Shadow2",
+    local font_overrides = {
+        { name="GameFontNormal",        file=assets.font_frizqt },
+        { name="GameFontNormalLarge",   file=assets.font_frizqt },
+        { name="GameTooltipHeader",     file=assets.font_frizqt },
+        { name="MailFont_Large",        file=assets.font_morpheus },
+        { name="PVPInfoTextFont",       file=assets.font_frizqt },
+        { name="QuestFont_Huge",        file=assets.font_morpheus },
+        { name="QuestFont_Large",       file=assets.font_morpheus },
+        { name="QuestFont_Larger",      file=assets.font_morpheus },
+        { name="QuestFont",             file=assets.font_frizqt },
+        { name="QuestFontNormalSmall",  file=assets.font_frizqt },
+        { name="SubZoneTextFont",       file=assets.font_frizqt },
+        { name="Tooltip_Med",           file=assets.font_frizqt },
+        { name="Tooltip_Small",         file=assets.font_frizqt },
+        { name="WorldMapTextFont",      file=assets.font_frizqt },
+        { name="ZoneTextFont",          file=assets.font_frizqt },
     }
 
-    local known_font_file_overrides = {
-        { "Fonts\\MORPHEUS.ttf", assets.font_morpheus },
-        { "Fonts\\FRIZQT__.TTF", assets.font_frizqt },
-    }
-
-    for _, name in ipairs(known_system_font_names) do
-        local font = _G[name]
+    for _, f in ipairs(font_overrides) do
+        local font = _G[f.name]
         if font then
-            local font_file, font_height, font_flags = font:GetFont()
-            local font_file_lower = font_file:lower()
-            local new_file
-
-            for _, o in ipairs(known_font_file_overrides) do
-                local from_file_lower, to_file = o[1]:lower(), o[2]
-                if font_file_lower == from_file_lower then
-                    new_file = to_file
-                    break
-                end
-            end
-
-            if new_file then
-                font:SetFont(new_file, font_height, font_flags)
-            end
+            local _, font_height, font_flags = font:GetFont()
+            font:SetFont(f.file, font_height, font_flags)
         end
     end
 end
