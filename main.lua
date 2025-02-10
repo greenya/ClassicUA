@@ -610,7 +610,7 @@ local function dev_log_missing_book_page(book_id, page_number, page_text)
     dev_log.missing_books[book_id][page_key] = page_text
 end
 
-local function dev_log_missing_gossip(npc_id, gossip_code, gossip_text_en)
+local function dev_log_missing_gossip(npc_id, gossip_code, gossip_text_en, is_reply)
     npc_id = tonumber(npc_id)
     if not npc_id then
         return
@@ -628,7 +628,7 @@ local function dev_log_missing_gossip(npc_id, gossip_code, gossip_text_en)
         dev_log_print("Відсутня плітка \"" .. gossip_code .. "\" для персонажа #" .. npc_id)
     end
 
-    dev_log.missing_gossips[npc_id][gossip_code] = gossip_text_en
+    dev_log.missing_gossips[npc_id][gossip_code] = { gossip_text_en, is_reply=is_reply }
 end
 
 local function dev_log_missing_chat_text(npc_name, chat_text_code, chat_text_en)
@@ -1282,16 +1282,22 @@ local function get_gossip_text(npc_id, gossip_text)
     local at = addonTable
 
     if not npc_id or type(gossip_text) ~= "string" or #gossip_text < 1 or type(at.gossip) ~= "table" then
-        return
+        return nil, nil
     end
 
     npc_id = tonumber(npc_id)
     local gossip_code = get_text_code(gossip_text)
 
+    local minimum_match_ratio = 0.5 -- maybe we should just change text code generator algo
+    if      #gossip_text <= 10 then minimum_match_ratio = 0.9
+    elseif  #gossip_text <= 16 then minimum_match_ratio = 0.8
+    elseif  #gossip_text <= 22 then minimum_match_ratio = 0.7
+    elseif  #gossip_text <= 28 then minimum_match_ratio = 0.6 end
+
     for _, gossip_key in ipairs({ npc_id, '!common' }) do
         if at.gossip[gossip_key] then
             local known_gossip_keys = table_string_keys(at.gossip[gossip_key])
-            local gossip_fuzzy_key = fuzzy_match_text_code(gossip_code, known_gossip_keys)
+            local gossip_fuzzy_key = fuzzy_match_text_code(gossip_code, known_gossip_keys, minimum_match_ratio)
             if gossip_fuzzy_key then
                 return make_text(at.gossip[gossip_key][gossip_fuzzy_key]), gossip_code
             end
@@ -1299,6 +1305,66 @@ local function get_gossip_text(npc_id, gossip_text)
     end
 
     return nil, gossip_code
+end
+
+local function get_gossip_text_for_npc_talk(npc_id, gossip_text)
+    local text_uk, gossip_code = get_gossip_text(npc_id, gossip_text)
+    if text_uk then
+        return text_uk
+    end
+
+    if options.dev_mode and gossip_code then
+        dev_log_missing_gossip(npc_id, gossip_code, gossip_text, false)
+    end
+end
+
+local function get_gossip_text_for_player_reply(npc_id, gossip_text)
+    if type(gossip_text) ~= "string" then
+        return
+    end
+
+    -- the replies can be very similar, for example: "The inn", "The inn.", "Inn.", "inn"
+    -- we want to match it all, while having high minimum_match_ratio as its very short text,
+    -- so we try couple of cases
+
+    local gossip_text_list = { gossip_text }
+    local gossip_text_lower = gossip_text:lower()
+
+    if #gossip_text_lower > 6 then
+        if gossip_text_lower:find("^the ") then
+            table.insert(gossip_text_list, gossip_text_lower:sub(5))
+        else
+            table.insert(gossip_text_list, "the " .. gossip_text_lower)
+        end
+    end
+
+    if #gossip_text_lower > 2 then
+        if gossip_text_lower:find("%.$") then
+            table.insert(gossip_text_list, gossip_text_lower:sub(1, #gossip_text_lower - 1))
+        else
+            table.insert(gossip_text_list, gossip_text_lower .. ".")
+        end
+    end
+
+    for _, text_en in pairs(gossip_text_list) do
+        local text_uk = get_gossip_text(npc_id, text_en)
+        if text_uk then
+            return text_uk
+        end
+    end
+
+    -- replies are generally short, and also it can be class name, battleground name, dungeon name etc.
+    local found_text = get_glossary_text(gossip_text)
+    if found_text then
+        return found_text
+    end
+
+    if options.dev_mode then
+        local gossip_code = get_text_code(gossip_text)
+        if gossip_code then
+            dev_log_missing_gossip(npc_id, gossip_code, gossip_text, true)
+        end
+    end
 end
 
 local function get_chat_text(npc_name, chat_text)
@@ -2120,11 +2186,9 @@ local function prepare_data_hooks_for_quest_greetings()
         if text then
             local npc_id = npc_id_from_unit_id("npc")
             if npc_id then
-                local text_ua, code = get_gossip_text(npc_id, text)
+                local text_ua = get_gossip_text_for_npc_talk(npc_id, text)
                 if text_ua then
                     text = text_ua
-                elseif options.dev_mode and code then
-                    dev_log_missing_gossip(npc_id, code, text)
                 end
             end
         end
@@ -2157,11 +2221,9 @@ local function prepare_data_hooks_for_gossip()
         if text then
             local npc_id = npc_id_from_unit_id("npc")
             if npc_id then
-                local text_ua, code = get_gossip_text(npc_id, text)
+                local text_ua = get_gossip_text_for_npc_talk(npc_id, text)
                 if text_ua then
                     text = text_ua
-                elseif options.dev_mode and code then
-                    dev_log_missing_gossip(npc_id, code, text)
                 end
             end
         end
@@ -2171,9 +2233,13 @@ local function prepare_data_hooks_for_gossip()
     local original_c_gossip_info_get_options = wow.C_GossipInfo.GetOptions
     wow.C_GossipInfo.GetOptions = function (...)
         local list = original_c_gossip_info_get_options(...)
+        local npc_id = npc_id_from_unit_id("npc")
         for _, item in ipairs(list) do
             if item and item.name then
-                item.name = get_glossary_text(item.name, item.name) -- todo: track missing gossip option
+                local text_ua = get_gossip_text_for_player_reply(npc_id, item.name)
+                if text_ua then
+                    item.name = text_ua
+                end
             end
         end
         return list
@@ -2183,7 +2249,7 @@ local function prepare_data_hooks_for_gossip()
     wow.C_GossipInfo.GetPoiInfo = function (...)
         local info = original_c_gossip_info_get_poi_info(...)
         if info and info.name then
-            info.name = get_glossary_text(info.name, info.name, "zone")
+            info.name = get_glossary_text(info.name, info.name)
         end
         return info
     end

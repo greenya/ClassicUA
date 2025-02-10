@@ -6,8 +6,62 @@ local _, addonTable = ...
 
 local gossip = { -- [npc_id] = { [code1] = text1, [code2] = text2, ... }
 ["!common"] = {
+-- Auction House
+["ahctionhouse"] = [===[Аукціонний дім]===],
+-- Bank
+["bank________"] = [===[Банк]===],
+-- Battlemaster
+["battlemaster"] = [===[Воєначальник]===],
+-- Class Trainer
+["ctasstrainer"] = [===[Класовий тренер]===],
+-- Guild Master
+["gmildmaster_"] = [===[Розпорядник гільдій]===],
+-- Gryphon Master
+["gmyphonmaste"] = [===[Приборкувач грифонів]===],
+-- How do I form a guild?
+["hdifagformag"] = [===[Як створити гільдію?]===],
+-- I am interested in mage training.
+["iaiittereste"] = [===[Мене цікавить тренування мага.]===],
+-- Inn
+["inn_________"] = [===[Таверна]===],
+-- I want to browse your goods.
+["iwtbygobrows"] = [===[Я хочу переглянути ваші товари.]===],
+-- I want to create a guild crest.
+["iwtcagccreat"] = [===[Я хочу створити герб гільдії.]===],
+-- I wish to untrain my pet.
+["iwtumpountra"] = [===[Я хочу скасувати навчання свого вихованця.]===],
+-- I wish to unlearn my talents.
+["iwtumtounlea"] = [===[Я хочу забути свої таланти.]===],
+-- Let me browse your goods.
+["lmbygbrowsey"] = [===[Дозвольте мені переглянути ваші товари.]===],
+-- Make this inn your home.
+["mtiyhhisinny"] = [===[Зупинитися в цій таверні.]===],
+-- Please teach me.
+["ptmaseteachm"] = [===[Будь ласка, навчіть мене.]===],
+-- Profession Trainer
+["ptofessiontr"] = [===[Тренер професій]===],
+-- Rut'theran Ferry
+["rtftheranfer"] = [===[Рут'Теранська переправа]===],
+-- Stable Master
+["smablemaster"] = [===[Доглядач стайні]===],
+-- Tell me about dungeons I could explore.
+["tmadiceboutd"] = [===[Розкажіть мені про підземелля, які я міг би відвідати.]===],
+-- Train me.
+["tmainme_____"] = [===[Навчіть мене.]===],
+-- Train me in the ways of the beast.
+["tmitwotbnthe"] = [===[Навчіть мене шляхам звіра.]===],
+-- What can I do at an inn?
+["wcidaaiidoat"] = [===[Чим я можу зайнятися в таверні?]===],
+-- Weapon Master
+["wmaponmaster"] = [===[Знавець зброї]===],
+-- Wind Rider Master
+["wrmdridermas"] = [===[Приборкувач виверн]===],
+-- Weapons Trainer
+["wtaponstrain"] = [===[Тренер володіння зброєю]===],
 -- Where would you like to fly to?
 ["wwyltftuldyo"] = [===[Куди бажаєш полетіти?]===],
+-- Yes. I do.
+["yidido______"] = [===[Так, хочу.]===],
 },
 [197] = { -- Marshal McBride
 -- Hey, citizen!  You look like a stout one.  We guards are spread a little thin out here, and I could use your help...
