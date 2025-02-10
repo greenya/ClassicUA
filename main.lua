@@ -2486,10 +2486,14 @@ local known_chat_msg_events = {
     CHAT_MSG_RAID_BOSS_WHISPER  = { info=wow.ChatTypeInfo.RAID_BOSS_WHISPER,    verb="шепоче" },
 }
 
-local function filter_chat_msg(self, event, chat_text, npc_name, ...)
+local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
     local known_event = known_chat_msg_events[event]
-    if not known_event then
-        return nil, chat_text, npc_name, ...
+
+    -- not sure if npc can talk "Common", as "common" probably a collective term
+    local understandable_lang = lang_name == "" or lang_name == "Common"
+
+    if not known_event or not understandable_lang then
+        return nil, chat_text, npc_name, lang_name, ...
     end
 
     if npc_name == wow.UnitName("player") then
@@ -2499,7 +2503,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, ...)
     local npc_name_uk, chat_text_uk, chat_text_code = get_chat_text(npc_name, chat_text)
     if (not npc_name_uk or not chat_text_uk) and chat_text_code then
         dev_log_missing_chat_text(npc_name, chat_text_code, chat_text)
-        return nil, chat_text, npc_name, ...
+        return nil, chat_text, npc_name, lang_name, ...
     end
 
     if type(chat_text_uk) == 'string' and chat_text_uk:match("%%s") then
