@@ -2260,7 +2260,9 @@ local function prepare_data_hooks_for_gossip()
         for _, item in ipairs(list) do
             if item.questID then
                 local quest_entry = get_entry("quest", item.questID)
-                item.title = quest_entry[1]
+                if quest_entry then
+                    item.title = quest_entry[1]
+                end
             else
                 item.title = get_glossary_text(item.title, item.title)
             end
@@ -2274,7 +2276,9 @@ local function prepare_data_hooks_for_gossip()
         for _, item in ipairs(list) do
             if item.questID then
                 local quest_entry = get_entry("quest", item.questID)
-                item.title = quest_entry[1]
+                if quest_entry then
+                    item.title = quest_entry[1]
+                end
             else
                 item.title = get_glossary_text(item.title, item.title)
             end
