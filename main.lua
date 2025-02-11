@@ -631,7 +631,7 @@ local function dev_log_missing_gossip(npc_id, gossip_code, gossip_text_en, is_re
     dev_log.missing_gossips[npc_id][gossip_code] = { gossip_text_en, is_reply=is_reply }
 end
 
-local function dev_log_missing_chat_text(npc_name, chat_text_code, chat_text_en)
+local function dev_log_missing_chat_text(npc_name, chat_text_code, chat_text_en, lang_name)
     if not dev_log.missing_chats[npc_name] then
         dev_log.missing_chats[npc_name] = {}
     end
@@ -644,7 +644,7 @@ local function dev_log_missing_chat_text(npc_name, chat_text_code, chat_text_en)
         dev_log_print("Відсутній чат \"" .. chat_text_code .. "\" для " .. npc_name)
     end
 
-    dev_log.missing_chats[npc_name][chat_text_code] = chat_text_en
+    dev_log.missing_chats[npc_name][chat_text_code] = { chat_text_en, lang_name=lang_name }
 end
 
 local function dev_log_missing_zone(zone_name)
@@ -2488,11 +2488,7 @@ local known_chat_msg_events = {
 
 local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
     local known_event = known_chat_msg_events[event]
-
-    -- not sure if npc can talk "Common", as "common" probably a collective term
-    local understandable_lang = lang_name == "" or lang_name == "Common"
-
-    if not known_event or not understandable_lang then
+    if not known_event then
         return nil, chat_text, npc_name, lang_name, ...
     end
 
@@ -2502,7 +2498,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
 
     local npc_name_uk, chat_text_uk, chat_text_code = get_chat_text(npc_name, chat_text)
     if (not npc_name_uk or not chat_text_uk) and chat_text_code then
-        dev_log_missing_chat_text(npc_name, chat_text_code, chat_text)
+        dev_log_missing_chat_text(npc_name, chat_text_code, chat_text, lang_name)
         return nil, chat_text, npc_name, lang_name, ...
     end
 
