@@ -169,7 +169,6 @@ local function lower(str)
     return str:lower():gsub("Ї", "ї"):gsub("Є", "є"):gsub("І", "і"):gsub("Ґ", "ґ")
 end
 
-
 local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-strings-for-gsub
     return x:gsub('%%', '%%%%')
             :gsub('^%^', '%%^')
@@ -183,6 +182,23 @@ local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-st
             :gsub('%+', '%%+')
             :gsub('%-', '%%-')
             :gsub('%?', '%%?')
+end
+
+local function hash(text) -- https://wowwiki-archive.fandom.com/wiki/USERAPI_StringHash
+    if type(text) ~= "string" or text == "" then
+        return 0
+    end
+
+    local counter = 1
+    local len = #text
+    for i = 1, len, 3 do
+        counter = math.fmod(counter * 8161, 4294967279) +
+            (string.byte(text, i) * 16776193) +
+            ((string.byte(text, i+1) or (len - i + 256)) * 8372226) +
+            ((string.byte(text, i+2) or (len - i + 256)) * 3932164)
+    end
+
+    return math.fmod(counter, 4294967291) -- 2^32 - 5: Prime (and different from the prime in the loop)
 end
 
 local function fix_float_number(value)
@@ -200,7 +216,6 @@ local function strip_color_codes(text)
         text = text:gsub("|c%x%x%x%x%x%x %x", "")
         text = text:gsub("|r", "")
     end
-
     return text
 end
 
@@ -1925,8 +1940,10 @@ local function set_hooked_data_translation(data_type, data_key, text_en, text_uk
     end
 
     local data = dh[data_type][data_key]
-    data[text_en] = { en=text_en, uk=text_uk }
-    data[text_uk] = data[text_en]
+    local text_en_hash = hash(text_en)
+    local text_uk_hash = hash(text_uk)
+    data[text_en_hash] = { en=text_en, uk=text_uk }
+    data[text_uk_hash] = data[text_en_hash]
 
     if data_type == "quest" and #table_string_keys(data) > 30 then
         -- the quest is expected to contain about 5 keys (title, desc, obj, progress, completion)
@@ -1948,11 +1965,9 @@ local function get_hooked_data_translation(data_type, data_key, text, fallback)
     end
 
     local data = dh[data_type][data_key]
-    if data[text] then
-        return data[text][dh.preferred_lang]
-    else
-        return fallback
-    end
+    local text_hash = hash(text)
+
+    return data[text_hash] and data[text_hash][dh.preferred_lang] or fallback
 end
 
 local function get_quest_log_quest_id(quest_idx_maybe)
