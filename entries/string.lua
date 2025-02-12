@@ -159,12 +159,14 @@ local global_strings = {
 }
 
 addonTable.string = {}
+addonTable.string_back = {}
 for _, s in ipairs(global_strings) do
     local key = s[1]
     local val_en = _G[key]
     if type(val_en) == "string" then
         local val_uk = s[2]
         addonTable.string[val_en] = val_uk
+        addonTable.string_back[val_uk] = val_en
         _G[key] = val_uk
     end
 end

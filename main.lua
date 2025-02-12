@@ -6,9 +6,6 @@ local _, addonTable = ...
 
 local wow = {
     C_ChatBubbles               = _G.C_ChatBubbles,
-    C_GossipInfo                = _G.C_GossipInfo,
-    C_Map                       = _G.C_Map,
-    C_PvP                       = _G.C_PvP,
     C_Seasons                   = _G.C_Seasons,
     C_Timer                     = _G.C_Timer,
     ChatFrame_AddMessageEventFilter = _G.ChatFrame_AddMessageEventFilter,
@@ -41,14 +38,16 @@ local wow = {
     ItemTextGetPage             = _G.ItemTextGetPage,
     ItemTextGetText             = _G.ItemTextGetText,
     ItemTextScrollFrame         = _G.ItemTextScrollFrame,
-    Menu                        = _G.Menu,
-    MenuUtil                    = _G.MenuUtil,
     Minimap_Update              = _G.Minimap_Update,
     QuestFrame                  = _G.QuestFrame,
     QuestFrameDetailPanel       = _G.QuestFrameDetailPanel,
     QuestFrameProgressPanel     = _G.QuestFrameProgressPanel,
     QuestFrameRewardPanel       = _G.QuestFrameRewardPanel,
+    QuestLog_SetSelection       = _G.QuestLog_SetSelection,
+    QuestLog_Update             = _G.QuestLog_Update,
     QuestLogDetailScrollFrame   = _G.QuestLogDetailScrollFrame,
+    QuestLogFrameTrackButton    = _G.QuestLogFrameTrackButton,
+    QuestWatch_Update           = _G.QuestWatch_Update,
     TargetFrame                 = _G.TargetFrame,
     UnitAura                    = _G.UnitAura,
     UnitClass                   = _G.UnitClass,
@@ -66,6 +65,7 @@ local wow = {
     SlashCmdList                = _G.SlashCmdList,
     StaticPopup_Show            = _G.StaticPopup_Show,
     StaticPopupDialogs          = _G.StaticPopupDialogs,
+    WatchFrame_Update           = _G.WatchFrame_Update,
     WorldMapTooltip             = _G.WorldMapTooltip,
     WorldFrame                  = _G.WorldFrame,
 }
@@ -77,9 +77,10 @@ local is_wrath          = string.byte(wow.GetBuildInfo(), 1) == string.byte("3")
 local is_cata           = string.byte(wow.GetBuildInfo(), 1) == string.byte("4")
 
 local assets = {
-    icon_ua         = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t",
-    font_morpheus   = "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf",
-    font_frizqt     = "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf",
+    icon_ua_inline  = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t",
+    icon_scroll     =   "Interface\\AddOns\\ClassicUA\\assets\\scroll",
+    font_morpheus   =   "Interface\\AddOns\\ClassicUA\\assets\\Morpheus_UA.ttf",
+    font_frizqt     =   "Interface\\AddOns\\ClassicUA\\assets\\FRIZQT_UA.ttf",
 }
 
 local fonts = {
@@ -270,6 +271,22 @@ local function chat_bubble_font_string_with_text(text)
     end
 end
 
+-- returns 0 in case no quest (no npc quest and quest log is empty)
+-- note: 0 is a truthy value in Lua
+local get_currently_viewed_quest_id = function ()
+    local npc_quest_id = wow.GetQuestID and wow.GetQuestID() or nil
+    if npc_quest_id and npc_quest_id > 0 then
+        return npc_quest_id
+    end
+
+    local questlog_quest_id = wow.GetQuestLogSelectedID and wow.GetQuestLogSelectedID() or nil
+    if questlog_quest_id and questlog_quest_id > 0 then
+        return questlog_quest_id
+    end
+
+    return 0
+end
+
 local function mouse_hover_frame()
     if wow.GetMouseFocus then
         return wow.GetMouseFocus()
@@ -437,7 +454,7 @@ local default_dev_log = {
 }
 
 local function dev_log_print(text)
-    wow.DEFAULT_CHAT_FRAME:AddMessage(assets.icon_ua .. " |cff4488aa[Розробка] " .. text .. "|r")
+    wow.DEFAULT_CHAT_FRAME:AddMessage(assets.icon_ua_inline .. " |cff4488aa[Розробка] " .. text .. "|r")
 end
 
 local function dev_log_init()
@@ -1397,6 +1414,34 @@ local function get_chat_text(npc_name, chat_text)
     return nil, nil, chat_code
 end
 
+local function translate_quest_objective_task(text)
+    -- try parse "LEFT: RIGHT" and translate it
+    local parts = { string.split(":", text, 2) }
+    if #parts == 2 and #parts[1] > 0 then
+        local found_left = get_glossary_text(parts[1])
+        if found_left then
+            parts[1] = found_left
+        elseif #parts[1] > 1 and parts[1]:sub(#parts[1], #parts[1]) == "s" then
+            -- try plural => singular, e.g. "Kobold Workers" => "Kobold Worker"
+            local found_singular = get_glossary_text(parts[1]:sub(1, #parts[1] - 1))
+            if found_singular then
+                parts[1] = found_singular
+            end
+        end
+
+        local found_right = get_glossary_text(parts[2])
+        if found_right then
+            parts[2] = " " .. found_right
+        end
+
+        text = parts[1] .. ":" .. parts[2]
+    else
+        text = get_glossary_text(text, text)
+    end
+
+    return text
+end
+
 -- ------------
 -- [ tooltips ]
 -- ------------
@@ -1490,7 +1535,7 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
 
     process_hearthstone_bind_location_code(entry)
 
-    local prefix = sub_item_depth == 1 and assets.icon_ua .. " " or ""
+    local prefix = sub_item_depth == 1 and assets.icon_ua_inline .. " " or ""
     local heading = make_entry_text(entry[1], tooltip)
     tooltip:AddLine(prefix .. capitalize(heading), 1, 1, 1)
 
@@ -1523,7 +1568,7 @@ end
 local function add_spell_entry_to_tooltip(tooltip, entry, spell_id, is_aura, skip_title)
     if not skip_title then
         local heading = make_entry_text(entry[1], tooltip)
-        tooltip:AddLine(assets.icon_ua .. " " .. capitalize(heading), 1, 1, 1)
+        tooltip:AddLine(assets.icon_ua_inline .. " " .. capitalize(heading), 1, 1, 1)
     end
 
     if is_aura then
@@ -1550,7 +1595,7 @@ end
 
 local function add_sod_engraving_entry_to_tooltip(tooltip, entry, sod_engraving_id)
     local heading = make_entry_text(entry[1], tooltip)
-    tooltip:AddLine(assets.icon_ua .. " " .. capitalize(heading), 1, 1, 1)
+    tooltip:AddLine(assets.icon_ua_inline .. " " .. capitalize(heading), 1, 1, 1)
 
     if entry.spell then
         local spell = get_entry("spell", entry.spell)
@@ -1565,7 +1610,7 @@ end
 
 local function add_general_entry_to_tooltip(tooltip, entry)
     local heading = make_entry_text(entry[1], tooltip)
-    tooltip:AddLine(assets.icon_ua .. " " .. capitalize(heading), 1, 1, 1)
+    tooltip:AddLine(assets.icon_ua_inline .. " " .. capitalize(heading), 1, 1, 1)
 
     add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 1, 1)
 end
@@ -1599,7 +1644,7 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura)
     elseif options.dev_mode then
         updated = true
         tooltip:AddLine(" ")
-        tooltip:AddLine(assets.icon_ua .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
+        tooltip:AddLine(assets.icon_ua_inline .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
 
         if entry_type == "npc" then
             dev_log_missing_npc(entry_id, tt_title_line)
@@ -1635,7 +1680,7 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key)
                 tooltip:AddLine(" ")
             end
 
-            tooltip:AddLine(assets.icon_ua .. " " .. result_text, 1, 1, 1, true)
+            tooltip:AddLine(assets.icon_ua_inline .. " " .. result_text, 1, 1, 1, true)
 
             if tooltip:IsShown() then
                 tooltip:Show()
@@ -1684,7 +1729,7 @@ local function add_talent_entry_to_tooltip(tooltip, tab_index, tier, column, ran
     end
 
     tooltip:AddLine(" ")
-    tooltip:AddLine(assets.icon_ua .. " " .. entry[1], 1, 1, 1)
+    tooltip:AddLine(assets.icon_ua_inline .. " " .. entry[1], 1, 1, 1)
 
     if entry[2] then
         tooltip:AddLine(make_entry_text(entry[2], tooltip), 1, 0.82, 0, true)
@@ -1821,6 +1866,452 @@ wow.hooksecurefunc(wow.GameTooltip, "SetUnitDebuff", function (self, unit, index
         add_entry_to_tooltip(self, "spell", id, true)
     end
 end)
+
+-- --------------
+-- [ data hooks ]
+-- --------------
+
+local data_hooks = {
+    preferred_lang = "uk", -- "en" or "uk" only
+    original = {
+        -- quests
+        GetQuestLogTitle                = _G.GetQuestLogTitle,
+        GetTitleText                    = _G.GetTitleText,
+        GetQuestText                    = _G.GetQuestText,
+        GetObjectiveText                = _G.GetObjectiveText,
+        GetProgressText                 = _G.GetProgressText,
+        GetRewardText                   = _G.GetRewardText,
+        GetQuestLogQuestText            = _G.GetQuestLogQuestText,
+        GetQuestLogLeaderBoard          = _G.GetQuestLogLeaderBoard,
+        -- quest greetings
+        GetGreetingText                 = _G.GetGreetingText,
+        GetAvailableTitle               = _G.GetAvailableTitle,
+        GetActiveTitle                  = _G.GetActiveTitle,
+        -- gossips
+        C_GossipInfo_GetText            = _G.C_GossipInfo.GetText,
+        C_GossipInfo_GetOptions         = _G.C_GossipInfo.GetOptions,
+        C_GossipInfo_GetPoiInfo         = _G.C_GossipInfo.GetPoiInfo,
+        C_GossipInfo_GetAvailableQuests = _G.C_GossipInfo.GetAvailableQuests,
+        C_GossipInfo_GetActiveQuests    = _G.C_GossipInfo.GetActiveQuests,
+        -- zones
+        C_Map_GetMapInfo                = _G.C_Map.GetMapInfo,
+        C_Map_GetMapChildrenInfo        = _G.C_Map.GetMapChildrenInfo,
+        C_Map_GetAreaInfo               = _G.C_Map.GetAreaInfo,
+        C_Map_GetMapInfoAtPosition      = _G.C_Map.GetMapInfoAtPosition,
+        C_PvP_GetZonePVPInfo            = _G.C_PvP.GetZonePVPInfo,
+        GetInstanceInfo                 = _G.GetInstanceInfo,
+        GetZoneText                     = _G.GetZoneText,
+        GetRealZoneText                 = _G.GetRealZoneText,
+        GetSubZoneText                  = _G.GetSubZoneText,
+        GetAreaText                     = _G.GetAreaText,
+        GetMinimapZoneText              = _G.GetMinimapZoneText,
+        -- item texts
+        ItemTextGetText                 = _G.ItemTextGetText,
+        ItemTextGetItem                 = _G.ItemTextGetItem,
+    },
+    header = {},
+    quest = {},
+}
+
+local function set_hooked_data_translation(data_type, data_key, text_en, text_uk)
+    local dh = data_hooks
+
+    if not text_en or not text_uk or text_en == text_uk or not dh[data_type] then
+        return
+    end
+
+    if not dh[data_type][data_key] then
+        dh[data_type][data_key] = {}
+    end
+
+    local data = dh[data_type][data_key]
+    data[text_en] = { en=text_en, uk=text_uk }
+    data[text_uk] = data[text_en]
+
+    if data_type == "quest" and #table_string_keys(data) > 30 then
+        -- the quest is expected to contain about 5 keys (title, desc, obj, progress, completion)
+        -- plus all objective tasks (lets say up to 10), and multiple by 2 (en + uk),
+        -- so if at any point a quest has more than 30 keys, there is something
+        -- wrong with quest_id detection at some places where we call this func
+        local issue_key = tostring(data_type) .. "#" .. tostring(data_key)
+        dev_log_issue(issue_key, "переповнення максимальної кількості передбачуваних записів в set_hooked_data_translation")
+    end
+
+    return dh.preferred_lang == "uk" and text_uk or text_en
+end
+
+local function get_hooked_data_translation(data_type, data_key, text, fallback)
+    local dh = data_hooks
+
+    if not text or not dh[data_type] or not dh[data_type][data_key] then
+        return fallback
+    end
+
+    local data = dh[data_type][data_key]
+    if data[text] then
+        return data[text][dh.preferred_lang]
+    else
+        return fallback
+    end
+end
+
+local function get_quest_log_quest_id(quest_idx_maybe)
+    if quest_idx_maybe and quest_idx_maybe > 0 then
+        return select(8, data_hooks.original.GetQuestLogTitle(quest_idx_maybe))
+    else
+        return wow.GetQuestLogSelectedID()
+    end
+end
+
+local function prepare_data_hooks_for_quests()
+    local dh = data_hooks
+
+    _G.GetQuestLogTitle = function (...)
+        local data = { dh.original.GetQuestLogTitle(...) }
+        if data and type(data[1]) == "string" then
+            local is_header = data[4]
+            if is_header then
+                local header_title = get_glossary_text(data[1])
+                if header_title then
+                    data[1] = set_hooked_data_translation("header", "_", data[1], header_title)
+                end
+            else
+                local quest_id = data[8]
+                local quest_entry = get_entry("quest", quest_id)
+                local quest_title = quest_entry and quest_entry[1] or get_glossary_text(data[1])
+                if quest_title then
+                    data[1] = set_hooked_data_translation("quest", quest_id, data[1], quest_title)
+                end
+            end
+        end
+        return unpack(data)
+    end
+
+    _G.GetTitleText = function (...)
+        local text = dh.original.GetTitleText(...)
+        local quest_id = wow.GetQuestID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and type(text) == "string" then
+            text = set_hooked_data_translation("quest", quest_id, text, quest_entry[1])
+        end
+        return text
+    end
+
+    _G.GetQuestText = function (...)
+        local text = dh.original.GetQuestText(...)
+        local quest_id = wow.GetQuestID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and type(text) == "string" then
+            text = set_hooked_data_translation("quest", quest_id, text, quest_entry[2])
+        end
+        return text
+    end
+
+    _G.GetObjectiveText = function (...)
+        local text = dh.original.GetObjectiveText(...)
+        local quest_id = wow.GetQuestID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and type(text) == "string" then
+            text = set_hooked_data_translation("quest", quest_id, text, quest_entry[3])
+        end
+        return text
+    end
+
+    _G.GetProgressText = function (...)
+        local text = dh.original.GetProgressText(...)
+        local quest_id = wow.GetQuestID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and type(text) == "string" then
+            text = set_hooked_data_translation("quest", quest_id, text, quest_entry[4])
+        end
+        return text
+    end
+
+    _G.GetRewardText = function (...)
+        local text = dh.original.GetRewardText(...)
+        local quest_id = wow.GetQuestID()
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and type(text) == "string" then
+            text = set_hooked_data_translation("quest", quest_id, text, quest_entry[5])
+        end
+        return text
+    end
+
+    _G.GetQuestLogQuestText = function (...)
+        local data = { dh.original.GetQuestLogQuestText(...) }
+        local quest_idx = ...
+        local quest_id = get_quest_log_quest_id(quest_idx)
+        local quest_entry = get_entry("quest", quest_id)
+        if quest_entry and data then
+            data[1] = set_hooked_data_translation("quest", quest_id, data[1], quest_entry[2])
+            data[2] = set_hooked_data_translation("quest", quest_id, data[2], quest_entry[3])
+        end
+        return unpack(data)
+    end
+
+    _G.GetQuestLogLeaderBoard = function (...)
+        local data = { dh.original.GetQuestLogLeaderBoard(...) }
+        local _, quest_idx = ...
+        local quest_id = get_quest_log_quest_id(quest_idx)
+        if data and data[1] then
+            local quest_task_uk = translate_quest_objective_task(data[1])
+            if quest_task_uk ~= data[1] then
+                data[1] = set_hooked_data_translation("quest", quest_id, data[1], quest_task_uk)
+            end
+        end
+        return unpack(data)
+    end
+end
+
+local function prepare_data_hooks_for_quest_greetings()
+    local dh = data_hooks
+
+    _G.GetGreetingText = function (...)
+        local text = dh.original.GetGreetingText(...)
+        if text then
+            local npc_id = npc_id_from_unit_id("npc")
+            if npc_id then
+                local text_ua = get_gossip_text_for_npc_talk(npc_id, text)
+                if text_ua then
+                    text = text_ua
+                end
+            end
+        end
+        return text
+    end
+
+    _G.GetAvailableTitle = function (...)
+        local data = { dh.original.GetAvailableTitle(...) }
+        if data and type(data[1]) == "string" then
+            data[1] = get_glossary_text(data[1], data[1])
+        end
+        return unpack(data)
+    end
+
+    _G.GetActiveTitle = function (...)
+        local data = { dh.original.GetActiveTitle(...) }
+        if data and type(data[1]) == "string" then
+            data[1] = get_glossary_text(data[1], data[1])
+        end
+        return unpack(data)
+    end
+end
+
+local function prepare_data_hooks_for_gossip()
+    local dh = data_hooks
+
+    _G.C_GossipInfo.GetText = function (...)
+        local text = dh.original.C_GossipInfo_GetText(...)
+        if text then
+            -- the gossip window can be opened for objects, for example for "Hero's Call Board"
+            -- (object id 206111) and npc_id will not be resolved; when in gossip with such object,
+            -- the UnitGUID() actually returns valid result "GameObject-...-206111-...", so technically
+            -- we can support such gossip-able objects in future
+            local npc_id = npc_id_from_unit_id("npc")
+            if npc_id then
+                local text_ua = get_gossip_text_for_npc_talk(npc_id, text)
+                if text_ua then
+                    text = text_ua
+                end
+            end
+        end
+        return text
+    end
+
+    _G.C_GossipInfo.GetOptions = function (...)
+        local list = dh.original.C_GossipInfo_GetOptions(...)
+        local npc_id = npc_id_from_unit_id("npc")
+        for _, item in ipairs(list) do
+            if item and item.name then
+                local text_ua = get_gossip_text_for_player_reply(npc_id, item.name)
+                if text_ua then
+                    item.name = text_ua
+                end
+            end
+        end
+        return list
+    end
+
+    _G.C_GossipInfo.GetPoiInfo = function (...)
+        local info = dh.original.C_GossipInfo_GetPoiInfo(...)
+        if info and info.name then
+            info.name = get_glossary_text(info.name, info.name)
+        end
+        return info
+    end
+
+    _G.C_GossipInfo.GetAvailableQuests = function (...)
+        local list = dh.original.C_GossipInfo_GetAvailableQuests(...)
+        for _, item in ipairs(list) do
+            if item.questID then
+                local quest_entry = get_entry("quest", item.questID)
+                if quest_entry then
+                    item.title = quest_entry[1]
+                end
+            else
+                item.title = get_glossary_text(item.title, item.title)
+            end
+        end
+        return list
+    end
+
+    _G.C_GossipInfo.GetActiveQuests = function (...)
+        local list = dh.original.C_GossipInfo_GetActiveQuests(...)
+        for _, item in ipairs(list) do
+            if item.questID then
+                local quest_entry = get_entry("quest", item.questID)
+                if quest_entry then
+                    item.title = quest_entry[1]
+                end
+            else
+                item.title = get_glossary_text(item.title, item.title)
+            end
+        end
+        return list
+    end
+end
+
+local function prepare_data_hooks_for_zones()
+    local dh = data_hooks
+
+    _G.C_Map.GetMapInfo = function (...)
+        local info = dh.original.C_Map_GetMapInfo(...)
+        if info and info.name then
+            info.name = get_glossary_text(info.name, info.name, "zone")
+        end
+        return info
+    end
+
+    _G.C_Map.GetMapChildrenInfo = function (...)
+        local infos = dh.original.C_Map_GetMapChildrenInfo(...)
+        for _, info in ipairs(infos) do
+            if info and info.name then
+                info.name = get_glossary_text(info.name, info.name, "zone")
+            end
+        end
+        return infos
+    end
+
+    _G.C_Map.GetAreaInfo = function (...)
+        local info = dh.original.C_Map_GetAreaInfo(...)
+        if type(info) == "string" then
+            info = get_glossary_text(info, info, "zone")
+        end
+        return info
+    end
+
+    _G.C_Map.GetMapInfoAtPosition = function (...)
+        local info = dh.original.C_Map_GetMapInfoAtPosition(...)
+        if info and info.name then
+            info.name = get_glossary_text(info.name, info.name, "zone")
+        end
+        return info
+    end
+
+    _G.C_PvP.GetZonePVPInfo = function (...)
+        local info = { dh.original.C_PvP_GetZonePVPInfo(...) }
+        if info and info[3] then
+            info[3] = get_glossary_text(info[3]) or info[3]
+        end
+        return unpack(info)
+    end
+
+    _G.GetInstanceInfo = function (...)
+        local info = { dh.original.GetInstanceInfo(...) }
+        if info and info[1] then
+            info[1] = get_glossary_text(info[1], info[1], "zone")
+        end
+        return unpack(info)
+    end
+
+    _G.GetZoneText = function (...)
+        local text = dh.original.GetZoneText(...)
+        if type(text) == "string" then
+            text = get_glossary_text(text, text, "zone")
+        end
+        return text
+    end
+
+    _G.GetRealZoneText = function (...)
+        local text = dh.original.GetRealZoneText(...)
+        if type(text) == "string" then
+            text = get_glossary_text(text, text, "zone")
+        end
+        return text
+    end
+
+    _G.GetSubZoneText = function (...)
+        local text = dh.original.GetSubZoneText(...)
+        if type(text) == "string" then
+            text = get_glossary_text(text, text, "zone")
+        end
+        return text
+    end
+
+    _G.GetAreaText = function (...)
+        local text = dh.original.GetAreaText(...)
+        if type(text) == "string" then
+            text = get_glossary_text(text, text, "zone")
+        end
+        return text
+    end
+
+    _G.GetMinimapZoneText = function (...)
+        local text = dh.original.GetMinimapZoneText(...)
+        if type(text) == "string" then
+            text = get_glossary_text(text, text, "zone")
+        end
+        return text
+    end
+
+    -- force minimap update, otherwise it will show original zone name until player changes zone
+    wow.Minimap_Update()
+end
+
+---@type integer?
+local book_item_id = nil
+
+local function prepare_data_hooks_for_item_texts()
+    local dh = data_hooks
+
+    _G.ItemTextGetText = function (...)
+        local text = dh.original.ItemTextGetText(...)
+        local book = get_entry("book", book_item_id)
+        if book then
+            local page = wow.ItemTextGetPage()
+            if book[page] then
+                text = book[page]
+            end
+        end
+        return text
+    end
+
+    _G.ItemTextGetItem = function (...)
+        local text = dh.original.ItemTextGetItem(...)
+        -- book_item_id is not ready at this moment, so we use last mouse hovered item
+        if wow.GameTooltip.classicua.entry_type == "item" then
+            local item_id = wow.GameTooltip.classicua.entry_id
+            local item = get_entry("item", item_id)
+            if item then
+                text = capitalize(item[1])
+            end
+        end
+        return text
+    end
+end
+
+local function item_text_begin()
+    -- we store last mouse hovered item in separate variable, because player can mouse over
+    -- many items before closing the book, so we keep id of currently opened book for correct
+    -- pages lookup in ItemTextGetText() hook
+    if wow.GameTooltip.classicua.entry_type == "item" then
+        book_item_id = wow.GameTooltip.classicua.entry_id
+    end
+end
+
+local function item_text_closed()
+    book_item_id = nil
+end
 
 -- ----------
 -- [ frames ]
@@ -1987,11 +2478,11 @@ local function create_slider_frame(parent, point, x, y, width, height, min, max,
     return root
 end
 
--- ----------------
--- [ quest frames ]
--- ----------------
+-- ---------------
+-- [ frame hooks ]
+-- ---------------
 
-local quest_ui = {
+local frame_hooks = {
     set_text_hook_allowed = true,
     labels = {
         { frame=CurrentQuestsText }, -- "Current Quests"
@@ -2009,433 +2500,194 @@ local quest_ui = {
         { frame=QuestLogRewardTitleText }, -- "Rewards"
         { frame=QuestLogItemChooseText }, -- "You will be able to choose one of these rewards:"
         { frame=QuestLogItemReceiveText }, -- "You will receive:", "You will also receive:"
-    }
+    },
+    lang_switchers = {
+        -- quests
+        { parent={ frame=QuestDetailScrollChildFrame, point="TOPRIGHT", x=-6, y=-10 } },
+        { parent={ frame=QuestProgressScrollChildFrame, point="TOPRIGHT", x=-6, y=-10 } },
+        { parent={ frame=QuestRewardScrollChildFrame, point="TOPRIGHT", x=-6, y=-10 } },
+        { parent={ frame=QuestLogDetailScrollChildFrame, point="TOPRIGHT", x=-8, y=-12 } },
+        { parent={ frame=QuestMapDetailsScrollFrame and QuestMapDetailsScrollFrame.Contents or nil, point="TOPRIGHT", x=-26, y=-4 },
+          extra_target=QuestMapFrame and QuestMapFrame.DetailsFrame and QuestMapFrame.DetailsFrame.RewardsFrame or nil },
+    },
 }
 
-local get_currently_viewed_quest_entry = function ()
-    local npc_quest_id = wow.GetQuestID and wow.GetQuestID() or nil
-    if npc_quest_id and npc_quest_id > 0 then
-        return get_entry("quest", npc_quest_id)
-    end
-
-    local questlog_quest_id = wow.GetQuestLogSelectedID and wow.GetQuestLogSelectedID() or nil
-    if questlog_quest_id and questlog_quest_id > 0 then
-        return get_entry("quest", questlog_quest_id)
-    end
-end
-
-local function translate_quest_objective_task(text)
-    -- try parse "LEFT: RIGHT" and translate it
-    local parts = { string.split(":", text, 2) }
-    if #parts == 2 and #parts[1] > 0 then
-        local found_left = get_glossary_text(parts[1])
-        if found_left then
-            parts[1] = found_left
-        elseif #parts[1] > 1 and parts[1]:sub(#parts[1], #parts[1]) == "s" then
-            -- try plural => singular, e.g. "Kobold Workers" => "Kobold Worker"
-            local found_singular = get_glossary_text(parts[1]:sub(1, #parts[1] - 1))
-            if found_singular then
-                parts[1] = found_singular
-            end
-        end
-
-        local found_right = get_glossary_text(parts[2])
-        if found_right then
-            parts[2] = " " .. found_right
-        end
-
-        text = parts[1] .. ":" .. parts[2]
-    else
-        text = get_glossary_text(text, text)
-    end
-
-    return text
-end
-
-local function on_quest_frames_set_text(self, text)
-    if not quest_ui.set_text_hook_allowed then
+local function on_frame_hooks_label_set_text(self, text)
+    if not frame_hooks.set_text_hook_allowed then
         return
     end
 
-    local new_text = get_glossary_text(text)
+    -- we don't know the language of the "text" arg, as game could just pass value of
+    -- a global string, e.g. REWARD_ITEMS_ONLY, which we already changed in string.lua
+    self.classicua.en = addonTable.string_back[text] or text
+    self.classicua.uk = get_glossary_text(text, text)
+
+    local new_text = data_hooks.preferred_lang == "uk" and self.classicua.uk or self.classicua.en
     if new_text then
-        quest_ui.set_text_hook_allowed = false
+        frame_hooks.set_text_hook_allowed = false
         self:SetText(new_text)
-        quest_ui.set_text_hook_allowed = true
+        frame_hooks.set_text_hook_allowed = true
     end
 end
 
-local function prepare_quest_frames()
-    for _, label in ipairs(quest_ui.labels) do
-        if label.frame then
-            wow.hooksecurefunc(label.frame, "SetText", on_quest_frames_set_text)
-
-            -- force update (trigger SetText() hook), because some static texts never get updated
-            local text = label.frame:GetText()
-            if text then label.frame:SetText(text) end
+local function init_frame_hooks_labels()
+    for _, l in ipairs(frame_hooks.labels) do
+        if l.frame then
+            l.frame.classicua = {}
+            wow.hooksecurefunc(l.frame, "SetText", on_frame_hooks_label_set_text)
         end
     end
 end
 
--- --------------
--- [ data hooks ]
--- --------------
+local function update_frame_hooks_labels()
+    for _, l in ipairs(frame_hooks.labels) do
+        if l.frame then
+            local text = l.frame:GetText()
+            if text then
+                l.frame:SetText(text)
+            end
+        end
+    end
+end
 
-local function prepare_data_hooks_for_quests()
-    local original_get_quest_log_title = _G.GetQuestLogTitle
-    _G.GetQuestLogTitle = function (...)
-        local data = { original_get_quest_log_title(...) }
-        if data and type(data[1]) == "string" then
-            local is_header = data[4]
-            if is_header then
-                data[1] = get_glossary_text(data[1], data[1])
+local function update_frame_hooks_known_game_ui_places()
+    if wow.QuestLogFrameTrackButton and wow.QuestLogFrameTrackButton.Click then
+        -- this will effectively updates all places, it is short but ugly,
+        -- as we are actually clicking track/untrack for particular quest
+        -- notes/issues:
+        -- - the addons (which are tracking such state change) might do extra work
+        -- - the quest track list order gets changed (obviously)
+        --   (visible in default ui; Questie seems to be sorting quests and the state change is unnoticeable)
+        -- - wrath+ has WatchFrame_Update(), works -- updates side tracker; but consistent way
+        --   to update world map quest list is yet to be found (for now we do short and ugly below)
+
+        wow.QuestLogFrameTrackButton:Click() -- change state
+        wow.QuestLogFrameTrackButton:Click() -- revert state back
+    else
+        -- notes/issues:
+        -- - with quest level prefix (from Leatrix Plus), the quest names in the quest log list
+        --   do lack prefix until some extra refresh (click into list or reopen the quest log);
+        --   not nice and solution is yet to be found
+
+        if wow.QuestLog_Update then wow.QuestLog_Update() end -- quest log
+        if wow.QuestWatch_Update then wow.QuestWatch_Update() end -- classic quest tracker
+        if wow.WatchFrame_Update then wow.WatchFrame_Update() end -- wrath+ quest tracker
+
+        -- TODO: find a way to update wrath+ world map quest list:
+        -- QuestMapFrame_UpdateAll is a candidate, but it seems to do nothing
+        -- if a way is found, use "else" branch for all clients, remove ugly "if" branch
+    end
+end
+
+local function lang_switcher_translate_hooked_data_text(data_type, data_key, text)
+    local lookup_texts = { text }
+    local post_formatting = {}
+
+    if data_type == "quest" then
+        -- try Leatrix Plus quest header format, e.g. [44+] Quest Title Goes Here
+        local quest_prefix, quest_title = string.gmatch(text, "(%[.+%]) (.*)")()
+        if quest_prefix and quest_title then
+            table.insert(lookup_texts, quest_title)
+            post_formatting[quest_title] = quest_prefix .. " %s"
+        end
+    end
+
+    for _, t in ipairs(lookup_texts) do
+        local found = get_hooked_data_translation(data_type, data_key, t)
+        if found then
+            if post_formatting[t] then
+                found = string.format(post_formatting[t], found)
+            end
+            return found
+        end
+    end
+end
+
+local function lang_switcher_update_translation_for_frame(self, depth)
+    depth = depth or 1
+    if depth > 6 then
+        if options.dev_mode then
+            local issue_key = self:GetDebugName() or "???"
+            dev_log_issue(issue_key, "переповнення глибини пошуку в lang_switcher_update_translation_for_frame")
+        end
+        return
+    end
+
+    local is_lang_uk = data_hooks.preferred_lang == "uk"
+    local quest_id = get_currently_viewed_quest_id()
+
+    for _, region in ipairs({ self:GetRegions() }) do
+        if region.GetText and region.SetText then
+            if region.classicua then
+                region:SetText(is_lang_uk and region.classicua.uk or region.classicua.en)
             else
-                local quest_id = data[8]
-                local quest_entry = get_entry("quest", quest_id)
-                if quest_entry then
-                    data[1] = quest_entry[1] or data[1]
-                else
-                    data[1] = get_glossary_text(data[1], data[1])
+                local text = region:GetText()
+                if type(text) == "string" and text ~= "" then
+                    local found = lang_switcher_translate_hooked_data_text("quest", quest_id, text)
+                    if found then
+                        region:SetText(found)
+                    end
                 end
             end
         end
-        return unpack(data)
     end
 
-    local original_get_title_text = _G.GetTitleText
-    _G.GetTitleText = function (...)
-        local title = original_get_title_text(...)
-        local quest_id = wow.GetQuestID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and type(title) == "string" then
-            title = quest_entry[1] or title
+    for _, child in ipairs({ self:GetChildren() }) do
+        if child:IsShown() then
+            lang_switcher_update_translation_for_frame(child, depth + 1)
         end
-        return title
-    end
-
-    local original_get_quest_text = _G.GetQuestText
-    _G.GetQuestText = function (...)
-        local text = original_get_quest_text(...)
-        local quest_id = wow.GetQuestID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and type(text) == "string" then
-            text = quest_entry[2] or text
-        end
-        return text
-    end
-
-    local original_get_objective_text = _G.GetObjectiveText
-    _G.GetObjectiveText = function (...)
-        local text = original_get_objective_text(...)
-        local quest_id = wow.GetQuestID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and type(text) == "string" then
-            text = quest_entry[3] or text
-        end
-        return text
-    end
-
-    local original_get_progress_text = _G.GetProgressText
-    _G.GetProgressText = function (...)
-        local text = original_get_progress_text(...)
-        local quest_id = wow.GetQuestID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and type(text) == "string" then
-            text = quest_entry[4] or text
-        end
-        return text
-    end
-
-    local original_get_reward_text = _G.GetRewardText
-    _G.GetRewardText = function (...)
-        local text = original_get_reward_text(...)
-        local quest_id = wow.GetQuestID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and type(text) == "string" then
-            text = quest_entry[5] or text
-        end
-        return text
-    end
-
-    local original_get_quest_log_quest_text = _G.GetQuestLogQuestText
-    _G.GetQuestLogQuestText = function (...)
-        local data = { original_get_quest_log_quest_text(...) }
-        local quest_id = wow.GetQuestLogSelectedID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and data then
-            if type(data[1]) == "string" then data[1] = quest_entry[2] or data[1] end
-            if type(data[2]) == "string" then data[2] = quest_entry[3] or data[2] end
-        end
-        return unpack(data)
-    end
-
-    local original_get_quest_log_leader_board = _G.GetQuestLogLeaderBoard
-    _G.GetQuestLogLeaderBoard = function (...)
-        local data = { original_get_quest_log_leader_board(...) }
-        if data and data[1] then
-            data[1] = translate_quest_objective_task(data[1])
-        end
-        return unpack(data)
     end
 end
 
-local function prepare_data_hooks_for_quest_greetings()
-    local original_get_greeting_text = _G.GetGreetingText
-    _G.GetGreetingText = function (...)
-        local text = original_get_greeting_text(...)
-        if text then
-            local npc_id = npc_id_from_unit_id("npc")
-            if npc_id then
-                local text_ua = get_gossip_text_for_npc_talk(npc_id, text)
-                if text_ua then
-                    text = text_ua
-                end
+local function lang_switchers_update_all()
+    frame_hooks.set_text_hook_allowed = false
+
+    for _, s in ipairs(frame_hooks.lang_switchers) do
+        if s.frame then
+            s.frame:SetChecked(data_hooks.preferred_lang == "en")
+            lang_switcher_update_translation_for_frame(s.frame:GetParent())
+            if s.extra_target then
+                lang_switcher_update_translation_for_frame(s.extra_target)
             end
         end
-        return text
     end
 
-    local original_get_available_title = _G.GetAvailableTitle
-    _G.GetAvailableTitle = function (...)
-        local data = { original_get_available_title(...) }
-        if data and type(data[1]) == "string" then
-            data[1] = get_glossary_text(data[1], data[1])
-        end
-        return unpack(data)
-    end
-
-    local original_get_active_title = _G.GetActiveTitle
-    _G.GetActiveTitle = function (...)
-        local data = { original_get_active_title(...) }
-        if data and type(data[1]) == "string" then
-            data[1] = get_glossary_text(data[1], data[1])
-        end
-        return unpack(data)
-    end
+    frame_hooks.set_text_hook_allowed = true
 end
 
-local function prepare_data_hooks_for_gossip()
-    local original_c_gossip_info_get_text = wow.C_GossipInfo.GetText
-    wow.C_GossipInfo.GetText = function (...)
-        local text = original_c_gossip_info_get_text(...)
-        if text then
-            local npc_id = npc_id_from_unit_id("npc")
-            if npc_id then
-                local text_ua = get_gossip_text_for_npc_talk(npc_id, text)
-                if text_ua then
-                    text = text_ua
-                end
-            end
-        end
-        return text
-    end
+local function create_lang_switcher_frame(parent, point, x, y)
+    local root = wow.CreateFrame("CheckButton", nil, parent)
+    root:SetPoint(point, parent, x, y)
+    root:SetSize(40, 40)
 
-    local original_c_gossip_info_get_options = wow.C_GossipInfo.GetOptions
-    wow.C_GossipInfo.GetOptions = function (...)
-        local list = original_c_gossip_info_get_options(...)
-        local npc_id = npc_id_from_unit_id("npc")
-        for _, item in ipairs(list) do
-            if item and item.name then
-                local text_ua = get_gossip_text_for_player_reply(npc_id, item.name)
-                if text_ua then
-                    item.name = text_ua
-                end
-            end
-        end
-        return list
-    end
+    root:SetNormalTexture(assets.icon_scroll)
+    root:GetNormalTexture():SetBlendMode("ADD")
 
-    local original_c_gossip_info_get_poi_info = wow.C_GossipInfo.GetPoiInfo
-    wow.C_GossipInfo.GetPoiInfo = function (...)
-        local info = original_c_gossip_info_get_poi_info(...)
-        if info and info.name then
-            info.name = get_glossary_text(info.name, info.name)
-        end
-        return info
-    end
+    root:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD")
 
-    local original_c_gossip_info_get_available_quests = wow.C_GossipInfo.GetAvailableQuests
-    wow.C_GossipInfo.GetAvailableQuests = function (...)
-        local list = original_c_gossip_info_get_available_quests(...)
-        for _, item in ipairs(list) do
-            if item.questID then
-                local quest_entry = get_entry("quest", item.questID)
-                if quest_entry then
-                    item.title = quest_entry[1]
-                end
-            else
-                item.title = get_glossary_text(item.title, item.title)
-            end
-        end
-        return list
-    end
+    root:SetCheckedTexture(assets.icon_scroll)
+    root:GetCheckedTexture():SetBlendMode("ADD")
 
-    local original_c_gossip_info_get_active_quests = wow.C_GossipInfo.GetActiveQuests
-    wow.C_GossipInfo.GetActiveQuests = function (...)
-        local list = original_c_gossip_info_get_active_quests(...)
-        for _, item in ipairs(list) do
-            if item.questID then
-                local quest_entry = get_entry("quest", item.questID)
-                if quest_entry then
-                    item.title = quest_entry[1]
-                end
-            else
-                item.title = get_glossary_text(item.title, item.title)
-            end
-        end
-        return list
-    end
+    root:SetScript("OnClick", function (self)
+        data_hooks.preferred_lang = self:GetChecked() and "en" or "uk"
+        lang_switchers_update_all()
+        update_frame_hooks_labels()
+        update_frame_hooks_known_game_ui_places()
+    end)
+
+    return root
 end
 
-local function prepare_data_hooks_for_zones()
-    local original_c_map_get_map_info = wow.C_Map.GetMapInfo
-    wow.C_Map.GetMapInfo = function (...)
-        local info = original_c_map_get_map_info(...)
-        if info and info.name then
-            info.name = get_glossary_text(info.name, info.name, "zone")
+local function prepare_frame_hooks()
+    init_frame_hooks_labels()
+    update_frame_hooks_labels()
+
+    for _, switcher in ipairs(frame_hooks.lang_switchers) do
+        local p = switcher.parent
+        if p.frame then
+            switcher.frame = create_lang_switcher_frame(p.frame, p.point, p.x, p.y)
         end
-        return info
     end
-
-    local original_c_map_get_map_children_info = wow.C_Map.GetMapChildrenInfo
-    wow.C_Map.GetMapChildrenInfo = function (...)
-        local infos = original_c_map_get_map_children_info(...)
-        for _, info in ipairs(infos) do
-            if info and info.name then
-                info.name = get_glossary_text(info.name, info.name, "zone")
-            end
-        end
-        return infos
-    end
-
-    local original_c_map_get_area_info = wow.C_Map.GetAreaInfo
-    wow.C_Map.GetAreaInfo = function (...)
-        local info = original_c_map_get_area_info(...)
-        if type(info) == "string" then
-            info = get_glossary_text(info, info, "zone")
-        end
-        return info
-    end
-
-    local original_c_map_get_map_info_at_position = wow.C_Map.GetMapInfoAtPosition
-    wow.C_Map.GetMapInfoAtPosition = function (...)
-        local info = original_c_map_get_map_info_at_position(...)
-        if info and info.name then
-            info.name = get_glossary_text(info.name, info.name, "zone")
-        end
-        return info
-    end
-
-    local original_c_pvp_get_zone_pvp_info = wow.C_PvP.GetZonePVPInfo
-    wow.C_PvP.GetZonePVPInfo = function (...)
-        local info = { original_c_pvp_get_zone_pvp_info(...) }
-        if info and info[3] then
-            info[3] = get_glossary_text(info[3]) or info[3]
-        end
-        return unpack(info)
-    end
-
-    local original_get_instance_info = _G.GetInstanceInfo
-    _G.GetInstanceInfo = function (...)
-        local info = { original_get_instance_info(...) }
-        if info and info[1] then
-            info[1] = get_glossary_text(info[1], info[1], "zone")
-        end
-        return unpack(info)
-    end
-
-    local original_get_zone_text = _G.GetZoneText
-    _G.GetZoneText = function (...)
-        local text = original_get_zone_text(...)
-        if type(text) == "string" then
-            text = get_glossary_text(text, text, "zone")
-        end
-        return text
-    end
-
-    local original_get_real_zone_text = _G.GetRealZoneText
-    _G.GetRealZoneText = function (...)
-        local text = original_get_real_zone_text(...)
-        if type(text) == "string" then
-            text = get_glossary_text(text, text, "zone")
-        end
-        return text
-    end
-
-    local original_get_sub_zone_text = _G.GetSubZoneText
-    _G.GetSubZoneText = function (...)
-        local text = original_get_sub_zone_text(...)
-        if type(text) == "string" then
-            text = get_glossary_text(text, text, "zone")
-        end
-        return text
-    end
-
-    local original_get_area_text = _G.GetAreaText
-    _G.GetAreaText = function (...)
-        local text = original_get_area_text(...)
-        if type(text) == "string" then
-            text = get_glossary_text(text, text, "zone")
-        end
-        return text
-    end
-
-    local original_get_minimap_zone_text = _G.GetMinimapZoneText
-    _G.GetMinimapZoneText = function (...)
-        local text = original_get_minimap_zone_text(...)
-        if type(text) == "string" then
-            text = get_glossary_text(text, text, "zone")
-        end
-        return text
-    end
-
-    -- force minimap update, otherwise it will show original zone name until player changes zone
-    wow.Minimap_Update()
-end
-
----@type integer?
-local book_item_id = nil
-
-local function prepare_data_hooks_for_item_texts()
-    local original_item_text_get_text = _G.ItemTextGetText
-    _G.ItemTextGetText = function (...)
-        local text = original_item_text_get_text(...)
-        local book = get_entry("book", book_item_id)
-        if book then
-            local page = wow.ItemTextGetPage()
-            if book[page] then
-                text = book[page]
-            end
-        end
-        return text
-    end
-
-    local original_item_text_get_item = _G.ItemTextGetItem
-    _G.ItemTextGetItem = function (...)
-        local text = original_item_text_get_item(...)
-        -- book_item_id is not ready at this moment, so we use last mouse hovered item
-        if wow.GameTooltip.classicua.entry_type == "item" then
-            local item_id = wow.GameTooltip.classicua.entry_id
-            local item = get_entry("item", item_id)
-            if item then
-                text = capitalize(item[1])
-            end
-        end
-        return text
-    end
-end
-
-local function item_text_begin()
-    -- we store last mouse hovered item in separate variable, because player can mouse over
-    -- many items before closing the book, so we keep id of currently opened book for correct
-    -- pages lookup in ItemTextGetText() hook
-    if wow.GameTooltip.classicua.entry_type == "item" then
-        book_item_id = wow.GameTooltip.classicua.entry_id
-    end
-end
-
-local function item_text_closed()
-    book_item_id = nil
 end
 
 -- ----------------
@@ -2525,7 +2777,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
     end
 
     self:AddMessage(
-        assets.icon_ua .. " " .. chat_message,
+        assets.icon_ua_inline .. " " .. chat_message,
         known_event.info.r,
         known_event.info.g,
         known_event.info.b
@@ -2978,7 +3230,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_fonts()
 
         wow.DEFAULT_CHAT_FRAME:AddMessage(
-            assets.icon_ua
+            assets.icon_ua_inline
             .. " ClassicUA v" .. wow.GetAddOnMetadata("ClassicUA", "Version")
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
             .. (options.dev_mode and " — Режим розробки" or "")
@@ -2996,12 +3248,12 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_glossary()
         prepare_codes(name, race, class, sex == 2) -- 2 for male
         prepare_get_text_code_replace_seq(name)
-        prepare_quest_frames()
         prepare_data_hooks_for_quests()
         prepare_data_hooks_for_quest_greetings()
         prepare_data_hooks_for_gossip()
         prepare_data_hooks_for_zones()
         prepare_data_hooks_for_item_texts()
+        prepare_frame_hooks()
 
     elseif event == "PLAYER_TARGET_CHANGED" then
         update_target_frame_text()
