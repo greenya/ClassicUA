@@ -2029,71 +2029,87 @@ local function prepare_data_hooks_for_quests()
 
     _G.GetTitleText = function (...)
         local text = dh.original.GetTitleText(...)
-        local quest_id = wow.GetQuestID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and type(text) == "string" then
-            text = set_hooked_data_translation("quest", quest_id, text, quest_entry[1])
+        if type(text) == "string" then
+            local quest_id = wow.GetQuestID()
+            local quest_entry = get_entry("quest", quest_id)
+            if quest_entry and quest_entry[1] then
+                text = set_hooked_data_translation("quest", quest_id, text, quest_entry[1])
+            end
         end
         return text
     end
 
     _G.GetQuestText = function (...)
         local text = dh.original.GetQuestText(...)
-        local quest_id = wow.GetQuestID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and type(text) == "string" then
-            text = set_hooked_data_translation("quest", quest_id, text, quest_entry[2])
+        if type(text) == "string" then
+            local quest_id = wow.GetQuestID()
+            local quest_entry = get_entry("quest", quest_id)
+            if quest_entry and quest_entry[2] then
+                text = set_hooked_data_translation("quest", quest_id, text, quest_entry[2])
+            end
         end
         return text
     end
 
     _G.GetObjectiveText = function (...)
         local text = dh.original.GetObjectiveText(...)
-        local quest_id = wow.GetQuestID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and type(text) == "string" then
-            text = set_hooked_data_translation("quest", quest_id, text, quest_entry[3])
+        if type(text) == "string" then
+            local quest_id = wow.GetQuestID()
+            local quest_entry = get_entry("quest", quest_id)
+            if quest_entry and quest_entry[3] then
+                text = set_hooked_data_translation("quest", quest_id, text, quest_entry[3])
+            end
         end
         return text
     end
 
     _G.GetProgressText = function (...)
         local text = dh.original.GetProgressText(...)
-        local quest_id = wow.GetQuestID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and type(text) == "string" then
-            text = set_hooked_data_translation("quest", quest_id, text, quest_entry[4])
+        if type(text) == "string" then
+            local quest_id = wow.GetQuestID()
+            local quest_entry = get_entry("quest", quest_id)
+            if quest_entry and quest_entry[4] then
+                text = set_hooked_data_translation("quest", quest_id, text, quest_entry[4])
+            end
         end
         return text
     end
 
     _G.GetRewardText = function (...)
         local text = dh.original.GetRewardText(...)
-        local quest_id = wow.GetQuestID()
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and type(text) == "string" then
-            text = set_hooked_data_translation("quest", quest_id, text, quest_entry[5])
+        if type(text) == "string" then
+            local quest_id = wow.GetQuestID()
+            local quest_entry = get_entry("quest", quest_id)
+            if quest_entry and quest_entry[5] then
+                text = set_hooked_data_translation("quest", quest_id, text, quest_entry[5])
+            end
         end
         return text
     end
 
     _G.GetQuestLogQuestText = function (...)
         local data = { dh.original.GetQuestLogQuestText(...) }
-        local quest_idx = ...
-        local quest_id = get_quest_log_quest_id(quest_idx)
-        local quest_entry = get_entry("quest", quest_id)
-        if quest_entry and data then
-            data[1] = set_hooked_data_translation("quest", quest_id, data[1], quest_entry[2])
-            data[2] = set_hooked_data_translation("quest", quest_id, data[2], quest_entry[3])
+        if data and type(data[1]) == "string" and type(data[2]) == "string" then
+            local quest_idx = ...
+            local quest_id = get_quest_log_quest_id(quest_idx)
+            local quest_entry = get_entry("quest", quest_id)
+            if quest_entry then
+                if quest_entry[2] then
+                    data[1] = set_hooked_data_translation("quest", quest_id, data[1], quest_entry[2])
+                end
+                if quest_entry[3] then
+                    data[2] = set_hooked_data_translation("quest", quest_id, data[2], quest_entry[3])
+                end
+            end
         end
         return unpack(data)
     end
 
     _G.GetQuestLogLeaderBoard = function (...)
         local data = { dh.original.GetQuestLogLeaderBoard(...) }
-        local _, quest_idx = ...
-        local quest_id = get_quest_log_quest_id(quest_idx)
-        if data and data[1] then
+        if data and type(data[1]) == "string" then
+            local _, quest_idx = ...
+            local quest_id = get_quest_log_quest_id(quest_idx)
             local quest_task_uk = translate_quest_objective_task(data[1])
             if quest_task_uk ~= data[1] then
                 data[1] = set_hooked_data_translation("quest", quest_id, data[1], quest_task_uk)
