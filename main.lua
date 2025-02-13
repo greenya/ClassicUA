@@ -747,6 +747,7 @@ local default_options = {
     dev_mode = false,
     dev_mode_notify_activity = false,
     override_system_fonts = true,
+    translate_nameplates = true,
 }
 
 ---@class character_options_class
@@ -2751,7 +2752,7 @@ end
 -- ---------------
 
 wow.hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
-    if wow.ShouldShowName(self) and not self:IsForbidden() then
+    if options.translate_nameplates and wow.ShouldShowName(self) and not self:IsForbidden() then
         local npc_id = npc_id_from_unit_id(self.unit)
         if npc_id then
             local entry = get_entry("npc", npc_id)
@@ -3091,6 +3092,16 @@ local function prepare_options_frame()
         function (self) options.override_system_fonts = self:GetChecked() end
     )
 
+    -- options.translate_nameplates
+
+    options_frame.translate_nameplates_checkbox = create_checkbox_frame(
+        options_frame, "TOPLEFT", 24, -80-24,
+        "Перекладати плаваючі фрейми",
+        options.translate_nameplates,
+        "Перекладати плаваючі фрейми ворожих та союзних цілей.\n\nНалаштування діє одразу для новостворених фреймів. Для існуючих (на екрані) просто наведіть на них мишкою або поверніть камеру так щоб гра їх оновила.",
+        function (self) options.translate_nameplates = self:GetChecked() end
+    )
+
     -- tabs
 
     options_frame.current_tab = wow.CreateFrame("Frame", "$parent.Current_Tab", options_frame, "BackdropTemplate")
@@ -3202,6 +3213,7 @@ local function prepare_options_frame()
     options_frame.refresh = function ()
         local of = options_frame
         of.override_system_fonts_checkbox:SetChecked(options.override_system_fonts)
+        of.translate_nameplates_checkbox:SetChecked(options.translate_nameplates)
         of.dev_mode_checkbox:SetChecked(options.dev_mode)
         of.dev_mode_notify_activity_checkbox:SetChecked(options.dev_mode_notify_activity)
     end
