@@ -97,9 +97,7 @@ local global_strings = {
 { "QUEST_MONSTERS_KILLED", "%s: %d/%d вбито" }, -- "%s slain: %d/%d" -- keep "%s:...", addon will split by ":" and lookup left part for translation, details in translate_quest_objective_task()
 { "QUEST_OBJECTIVES", "Доручення" }, -- "Quest Objectives"
 { "QUEST_SPELL_NEEDED", "Вивчіть заклинання: %s" }, -- "Learn Spell: %s"
--- for some reason, if we change value of any RAID_TARGET_X constant,
--- we get "ClassicUA has been blocked from an action only available to the Blizzard UI."
--- when opening context menu of target frame and clicking "Copy Character Name" OR "Set Focus" (Cata)
+-- @taint
 -- { "RAID_TARGET_1", "Зірка" }, -- "Star"
 -- { "RAID_TARGET_2", "Коло" }, -- "Circle"
 -- { "RAID_TARGET_3", "Ромб" }, -- "Diamond"

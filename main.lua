@@ -1372,6 +1372,10 @@ local function get_gossip_text(npc_id, gossip_text)
 end
 
 local function get_gossip_text_for_npc_talk(npc_id, gossip_text)
+    if not npc_id or type(gossip_text) ~= "string" then
+        return
+    end
+
     local text_uk, gossip_code = get_gossip_text(npc_id, gossip_text)
     if text_uk then
         return text_uk
@@ -1382,54 +1386,55 @@ local function get_gossip_text_for_npc_talk(npc_id, gossip_text)
     end
 end
 
-local function get_gossip_text_for_player_reply(npc_id, gossip_text)
-    if type(gossip_text) ~= "string" then
-        return
-    end
+-- unused, was used only by tainted caller C_GossipInfo.GetOptions
+-- local function get_gossip_text_for_player_reply(npc_id, gossip_text)
+--     if not npc_id or type(gossip_text) ~= "string" then
+--         return
+--     end
 
-    -- the replies can be very similar, for example: "The inn", "The inn.", "Inn.", "inn"
-    -- we want to match it all, while having high minimum_match_ratio as its very short text,
-    -- so we try couple of cases
+--     -- the replies can be very similar, for example: "The inn", "The inn.", "Inn.", "inn"
+--     -- we want to match it all, while having high minimum_match_ratio as its very short text,
+--     -- so we try couple of cases
 
-    local gossip_text_list = { gossip_text }
-    local gossip_text_lower = gossip_text:lower()
+--     local gossip_text_list = { gossip_text }
+--     local gossip_text_lower = gossip_text:lower()
 
-    if #gossip_text_lower > 6 then
-        if gossip_text_lower:find("^the ") then
-            table.insert(gossip_text_list, gossip_text_lower:sub(5))
-        else
-            table.insert(gossip_text_list, "the " .. gossip_text_lower)
-        end
-    end
+--     if #gossip_text_lower > 6 then
+--         if gossip_text_lower:find("^the ") then
+--             table.insert(gossip_text_list, gossip_text_lower:sub(5))
+--         else
+--             table.insert(gossip_text_list, "the " .. gossip_text_lower)
+--         end
+--     end
 
-    if #gossip_text_lower > 2 then
-        if gossip_text_lower:find("%.$") then
-            table.insert(gossip_text_list, gossip_text_lower:sub(1, #gossip_text_lower - 1))
-        else
-            table.insert(gossip_text_list, gossip_text_lower .. ".")
-        end
-    end
+--     if #gossip_text_lower > 2 then
+--         if gossip_text_lower:find("%.$") then
+--             table.insert(gossip_text_list, gossip_text_lower:sub(1, #gossip_text_lower - 1))
+--         else
+--             table.insert(gossip_text_list, gossip_text_lower .. ".")
+--         end
+--     end
 
-    for _, text_en in pairs(gossip_text_list) do
-        local text_uk = get_gossip_text(npc_id, text_en)
-        if text_uk then
-            return text_uk
-        end
-    end
+--     for _, text_en in pairs(gossip_text_list) do
+--         local text_uk = get_gossip_text(npc_id, text_en)
+--         if text_uk then
+--             return text_uk
+--         end
+--     end
 
-    -- replies are generally short, and also it can be class name, battleground name, dungeon name etc.
-    local found_text = get_glossary_text(gossip_text)
-    if found_text then
-        return found_text
-    end
+--     -- replies are generally short, and also it can be class name, battleground name, dungeon name etc.
+--     local found_text = get_glossary_text(gossip_text)
+--     if found_text then
+--         return found_text
+--     end
 
-    if options.dev_mode then
-        local gossip_code = get_text_code(gossip_text)
-        if gossip_code then
-            dev_log_missing_gossip(npc_id, gossip_code, gossip_text, true)
-        end
-    end
-end
+--     if options.dev_mode then
+--         local gossip_code = get_text_code(gossip_text)
+--         if gossip_code then
+--             dev_log_missing_gossip(npc_id, gossip_code, gossip_text, true)
+--         end
+--     end
+-- end
 
 local function get_chat_text(npc_name, chat_text)
     local at = addonTable
@@ -1936,7 +1941,7 @@ local data_hooks = {
         GetActiveTitle                  = _G.GetActiveTitle,
         -- gossips
         C_GossipInfo_GetText            = _G.C_GossipInfo.GetText,
-        C_GossipInfo_GetOptions         = _G.C_GossipInfo.GetOptions,
+        -- C_GossipInfo_GetOptions         = _G.C_GossipInfo.GetOptions, -- @taint
         C_GossipInfo_GetPoiInfo         = _G.C_GossipInfo.GetPoiInfo,
         C_GossipInfo_GetAvailableQuests = _G.C_GossipInfo.GetAvailableQuests,
         C_GossipInfo_GetActiveQuests    = _G.C_GossipInfo.GetActiveQuests,
@@ -2157,19 +2162,22 @@ local function prepare_data_hooks_for_gossip()
         return text
     end
 
-    _G.C_GossipInfo.GetOptions = function (...)
-        local list = dh.original.C_GossipInfo_GetOptions(...)
-        local npc_id = npc_id_from_unit_id("npc")
-        for _, item in ipairs(list) do
-            if item and item.name then
-                local text_ua = get_gossip_text_for_player_reply(npc_id, item.name)
-                if text_ua then
-                    item.name = text_ua
-                end
-            end
-        end
-        return list
-    end
+    -- @taint
+    -- _G.C_GossipInfo.GetOptions = function (...)
+    --     local list = dh.original.C_GossipInfo_GetOptions(...)
+    --     local npc_id = npc_id_from_unit_id("npc")
+    --     if npc_id then
+    --         for ii, item in ipairs(list) do
+    --             if item and item.name then
+    --                 local text_ua = get_gossip_text_for_player_reply(npc_id, item.name)
+    --                 if text_ua then
+    --                     item.name = text_ua
+    --                 end
+    --             end
+    --         end
+    --     end
+    --     return list
+    -- end
 
     _G.C_GossipInfo.GetPoiInfo = function (...)
         local info = dh.original.C_GossipInfo_GetPoiInfo(...)
@@ -2735,7 +2743,7 @@ end
 -- [ target frame ]
 -- ----------------
 
-local function update_target_frame_text()
+local function on_player_target_changed()
     local npc_id = npc_id_from_unit_id("target")
     if npc_id then
         local entry = get_entry("npc", npc_id)
@@ -3297,7 +3305,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_frame_hooks()
 
     elseif event == "PLAYER_TARGET_CHANGED" then
-        update_target_frame_text()
+        on_player_target_changed()
 
     elseif event == "ITEM_TEXT_BEGIN" then
         on_item_text_begin()
@@ -3307,3 +3315,26 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
 
     end
 end)
+
+--[[
+
+@taint
+
+We mark "@taint" places which are disabled as they cause ui to stop working.
+More at https://wowpedia.fandom.com/wiki/Secure_Execution_and_Tainting.
+
+Known so far:
+- global strings:
+    - changing strings from content menu of unit frame will block actions "Copy Character Name" and "Set Focus"
+    - changing GENERAL_SPELLS (and potentially other strings in Spell Book) blocks its opening in combat
+- global functions:
+    - changing C_GossipInfo.GetOptions will block gossip from opening in combat
+
+Target dummy can be used for easy getting into combat and testing if ui working properly when making changes.
+
+PS.: maybe we should consider option for a player like "Allow Combat-Secured Translation" and
+explain in the tooltip so player knows what it means, basically player can choose to see maximum
+translated ui and agrees to have some "failed" messages in chat and "blocked" messages in popups
+when in combat.
+
+]]--
