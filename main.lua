@@ -25,7 +25,6 @@ local wow = {
     GetMouseFocus               = _G.GetMouseFocus,
     GetNumAddOns                = _G.GetNumAddOns,
     GetQuestID                  = _G.GetQuestID,
-    GetQuestLogSelection        = _G.GetQuestLogSelection,
     GetQuestLogSelectedID       = _G.GetQuestLogSelectedID,
     GetQuestLogTitle            = _G.GetQuestLogTitle,
     GetTalentInfo               = _G.GetTalentInfo,
@@ -43,11 +42,8 @@ local wow = {
     QuestFrameDetailPanel       = _G.QuestFrameDetailPanel,
     QuestFrameProgressPanel     = _G.QuestFrameProgressPanel,
     QuestFrameRewardPanel       = _G.QuestFrameRewardPanel,
-    QuestLog_SetSelection       = _G.QuestLog_SetSelection,
     QuestLog_Update             = _G.QuestLog_Update,
     QuestLogDetailScrollFrame   = _G.QuestLogDetailScrollFrame,
-    QuestLogFrameTrackButton    = _G.QuestLogFrameTrackButton,
-    QuestWatch_Update           = _G.QuestWatch_Update,
     TargetFrame                 = _G.TargetFrame,
     UnitAura                    = _G.UnitAura,
     UnitClass                   = _G.UnitClass,
@@ -65,7 +61,6 @@ local wow = {
     SlashCmdList                = _G.SlashCmdList,
     StaticPopup_Show            = _G.StaticPopup_Show,
     StaticPopupDialogs          = _G.StaticPopupDialogs,
-    WatchFrame_Update           = _G.WatchFrame_Update,
     WorldMapTooltip             = _G.WorldMapTooltip,
     WorldFrame                  = _G.WorldFrame,
 }
@@ -289,12 +284,12 @@ end
 -- returns 0 in case no quest (no npc quest and quest log is empty)
 -- note: 0 is a truthy value in Lua
 local get_currently_viewed_quest_id = function ()
-    local npc_quest_id = wow.GetQuestID and wow.GetQuestID() or nil
+    local npc_quest_id = wow.GetQuestID()
     if npc_quest_id and npc_quest_id > 0 then
         return npc_quest_id
     end
 
-    local questlog_quest_id = wow.GetQuestLogSelectedID and wow.GetQuestLogSelectedID() or nil
+    local questlog_quest_id = wow.GetQuestLogSelectedID()
     if questlog_quest_id and questlog_quest_id > 0 then
         return questlog_quest_id
     end
@@ -2585,8 +2580,8 @@ local function update_frame_hooks_labels()
 end
 
 local function update_frame_hooks_known_game_ui_places()
-    if wow.QuestLogFrameTrackButton and wow.QuestLogFrameTrackButton.Click then
-        -- this will effectively updates all places, it is short but ugly,
+    if _G.QuestLogFrameTrackButton and _G.QuestLogFrameTrackButton.Click then
+        -- this will effectively update all places, it is short but ugly,
         -- as we are actually clicking track/untrack for particular quest
         -- notes/issues:
         -- - the addons (which are tracking such state change) might do extra work
@@ -2595,20 +2590,16 @@ local function update_frame_hooks_known_game_ui_places()
         -- - wrath+ has WatchFrame_Update(), works -- updates side tracker; but consistent way
         --   to update world map quest list is yet to be found (for now we do short and ugly below)
 
-        wow.QuestLogFrameTrackButton:Click() -- change state
-        wow.QuestLogFrameTrackButton:Click() -- revert state back
+        _G.QuestLogFrameTrackButton:Click() -- change state
+        _G.QuestLogFrameTrackButton:Click() -- revert state back
     else
-        -- notes/issues:
-        -- - with quest level prefix (from Leatrix Plus), the quest names in the quest log list
-        --   do lack prefix until some extra refresh (click into list or reopen the quest log);
-        --   not nice and solution is yet to be found
-
-        if wow.QuestLog_Update then wow.QuestLog_Update() end -- quest log
-        if wow.QuestWatch_Update then wow.QuestWatch_Update() end -- classic quest tracker
-        if wow.WatchFrame_Update then wow.WatchFrame_Update() end -- wrath+ quest tracker
+        _G.QuestLog_SetSelection(_G.GetQuestLogSelection()) -- quest log, objective task list
+        _G.QuestLog_Update() -- quest log, quest list with headers
+        if _G.QuestWatch_Update then _G.QuestWatch_Update() end -- classic quest tracker
+        if _G.WatchFrame_Update then _G.WatchFrame_Update() end -- wrath+ quest tracker
 
         -- TODO: find a way to update wrath+ world map quest list:
-        -- QuestMapFrame_UpdateAll is a candidate, but it seems to do nothing
+        -- QuestMapFrame_UpdateAll is a candidate, but it seems doesn't refresh quest list
         -- if a way is found, use "else" branch for all clients, remove ugly "if" branch
     end
 end
