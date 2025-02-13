@@ -3307,8 +3307,3 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
 
     end
 end)
-
--- !! DEBUG
-DH = data_hooks
-HASH = hash
-TSK = table_string_keys
