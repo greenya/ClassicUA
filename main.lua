@@ -302,6 +302,38 @@ local get_currently_viewed_quest_id = function ()
     return 0
 end
 
+---@type integer?
+local last_item_text_item_id = 0
+
+-- returns 0 in case no book (item text) is opened at the moment, can be called when
+-- book is about to be open, in such case, the last mouse hovered item id will be returned
+-- note: 0 is a truthy value in Lua
+local get_currently_viewed_book_id = function ()
+    if last_item_text_item_id and last_item_text_item_id > 0 then
+        return last_item_text_item_id
+    end
+
+    local meta = wow.GameTooltip.classicua or {}
+    if meta.entry_type == "item" and meta.entry_id then
+        return tonumber(meta.entry_id)
+    end
+
+    return 0
+end
+
+local function on_item_text_begin()
+    -- we store last mouse hovered item in separate variable, because player can mouse over
+    -- many items before closing the book, so we keep the id
+    local meta = wow.GameTooltip.classicua or {}
+    if meta.entry_type == "item" and meta.entry_id then
+        last_item_text_item_id = tonumber(meta.entry_id)
+    end
+end
+
+local function on_item_text_closed()
+    last_item_text_item_id = 0
+end
+
 local function mouse_hover_frame()
     if wow.GetMouseFocus then
         return wow.GetMouseFocus()
@@ -1926,6 +1958,7 @@ local data_hooks = {
     },
     header = {},
     quest = {},
+    book = {},
 }
 
 local function set_hooked_data_translation(data_type, data_key, text_en, text_uk)
@@ -1940,19 +1973,10 @@ local function set_hooked_data_translation(data_type, data_key, text_en, text_uk
     end
 
     local data = dh[data_type][data_key]
-    local text_en_hash = hash(text_en)
-    local text_uk_hash = hash(text_uk)
+    local text_en_hash = hash(string.trim(text_en))
+    local text_uk_hash = hash(string.trim(text_uk))
     data[text_en_hash] = { en=text_en, uk=text_uk }
     data[text_uk_hash] = data[text_en_hash]
-
-    if data_type == "quest" and #table_string_keys(data) > 30 then
-        -- the quest is expected to contain about 5 keys (title, desc, obj, progress, completion)
-        -- plus all objective tasks (lets say up to 10), and multiple by 2 (en + uk),
-        -- so if at any point a quest has more than 30 keys, there is something
-        -- wrong with quest_id detection at some places where we call this func
-        local issue_key = tostring(data_type) .. "#" .. tostring(data_key)
-        dev_log_issue(issue_key, "переповнення максимальної кількості передбачуваних записів в set_hooked_data_translation")
-    end
 
     return dh.preferred_lang == "uk" and text_uk or text_en
 end
@@ -1965,7 +1989,7 @@ local function get_hooked_data_translation(data_type, data_key, text, fallback)
     end
 
     local data = dh[data_type][data_key]
-    local text_hash = hash(text)
+    local text_hash = hash(string.trim(text))
 
     return data[text_hash] and data[text_hash][dh.preferred_lang] or fallback
 end
@@ -2283,19 +2307,17 @@ local function prepare_data_hooks_for_zones()
     wow.Minimap_Update()
 end
 
----@type integer?
-local book_item_id = nil
-
 local function prepare_data_hooks_for_item_texts()
     local dh = data_hooks
 
     _G.ItemTextGetText = function (...)
         local text = dh.original.ItemTextGetText(...)
-        local book = get_entry("book", book_item_id)
-        if book then
-            local page = wow.ItemTextGetPage()
-            if book[page] then
-                text = book[page]
+        local item_id = get_currently_viewed_book_id()
+        local book_entry = get_entry("book", item_id)
+        if book_entry then
+            local page_number = wow.ItemTextGetPage()
+            if book_entry[page_number] then
+                text = set_hooked_data_translation("book", item_id, text, book_entry[page_number])
             end
         end
         return text
@@ -2303,29 +2325,15 @@ local function prepare_data_hooks_for_item_texts()
 
     _G.ItemTextGetItem = function (...)
         local text = dh.original.ItemTextGetItem(...)
-        -- book_item_id is not ready at this moment, so we use last mouse hovered item
-        if wow.GameTooltip.classicua.entry_type == "item" then
-            local item_id = wow.GameTooltip.classicua.entry_id
-            local item = get_entry("item", item_id)
-            if item then
-                text = capitalize(item[1])
+        local item_id = get_currently_viewed_book_id()
+        if item_id and item_id > 0 then
+            local item_entry = get_entry("item", item_id)
+            if item_entry then
+                text = set_hooked_data_translation("book", item_id, text, capitalize(item_entry[1]))
             end
         end
         return text
     end
-end
-
-local function item_text_begin()
-    -- we store last mouse hovered item in separate variable, because player can mouse over
-    -- many items before closing the book, so we keep id of currently opened book for correct
-    -- pages lookup in ItemTextGetText() hook
-    if wow.GameTooltip.classicua.entry_type == "item" then
-        book_item_id = wow.GameTooltip.classicua.entry_id
-    end
-end
-
-local function item_text_closed()
-    book_item_id = nil
 end
 
 -- ----------
@@ -2518,12 +2526,15 @@ local frame_hooks = {
     },
     lang_switchers = {
         -- quests
-        { parent={ frame=QuestDetailScrollChildFrame, point="TOPRIGHT", x=-6, y=-10 } },
-        { parent={ frame=QuestProgressScrollChildFrame, point="TOPRIGHT", x=-6, y=-10 } },
-        { parent={ frame=QuestRewardScrollChildFrame, point="TOPRIGHT", x=-6, y=-10 } },
-        { parent={ frame=QuestLogDetailScrollChildFrame, point="TOPRIGHT", x=-8, y=-12 } },
-        { parent={ frame=QuestMapDetailsScrollFrame and QuestMapDetailsScrollFrame.Contents or nil, point="TOPRIGHT", x=-26, y=-4 },
+        { hd_type="quest", parent={ frame=QuestDetailScrollChildFrame, point="TOPRIGHT", x=-6, y=-10 } },
+        { hd_type="quest", parent={ frame=QuestProgressScrollChildFrame, point="TOPRIGHT", x=-6, y=-10 } },
+        { hd_type="quest", parent={ frame=QuestRewardScrollChildFrame, point="TOPRIGHT", x=-6, y=-10 } },
+        { hd_type="quest", parent={ frame=QuestLogDetailScrollChildFrame, point="TOPRIGHT", x=-8, y=-12 } },
+        { hd_type="quest", parent={ frame=QuestMapDetailsScrollFrame and QuestMapDetailsScrollFrame.Contents or nil, point="TOPRIGHT", x=-24, y=-4 },
           extra_target=QuestMapFrame and QuestMapFrame.DetailsFrame and QuestMapFrame.DetailsFrame.RewardsFrame or nil },
+        -- books (item texts)
+        { hd_type="book", parent={ frame=ItemTextPageText, point="TOPRIGHT", x=10, y=6 },
+          extra_target=ItemTextFrame },
     },
 }
 
@@ -2605,6 +2616,12 @@ local function lang_switcher_translate_hooked_data_text(data_type, data_key, tex
             table.insert(lookup_texts, quest_title)
             post_formatting[quest_title] = quest_prefix .. " %s"
         end
+    elseif data_type == "book" then
+        -- apparently, game prefixes text with "\n", and we do the same here for authenticity
+        -- more at https://www.townlong-yak.com/framexml/era/Blizzard_UIPanels_Game/ItemTextFrame.lua#69
+        if text:find("^\n") then
+            post_formatting[text] = "\n%s"
+        end
     end
 
     for _, t in ipairs(lookup_texts) do
@@ -2618,7 +2635,7 @@ local function lang_switcher_translate_hooked_data_text(data_type, data_key, tex
     end
 end
 
-local function lang_switcher_update_translation_for_frame(self, depth)
+local function lang_switcher_update_translation_for_frame(self, hd_type, hd_key, depth)
     depth = depth or 1
     if depth > 6 then
         if options.dev_mode then
@@ -2629,7 +2646,6 @@ local function lang_switcher_update_translation_for_frame(self, depth)
     end
 
     local is_lang_uk = data_hooks.preferred_lang == "uk"
-    local quest_id = get_currently_viewed_quest_id()
 
     for _, region in ipairs({ self:GetRegions() }) do
         if region.GetText and region.SetText then
@@ -2638,7 +2654,7 @@ local function lang_switcher_update_translation_for_frame(self, depth)
             else
                 local text = region:GetText()
                 if type(text) == "string" and text ~= "" then
-                    local found = lang_switcher_translate_hooked_data_text("quest", quest_id, text)
+                    local found = lang_switcher_translate_hooked_data_text(hd_type, hd_key, text)
                     if found then
                         region:SetText(found)
                     end
@@ -2649,7 +2665,7 @@ local function lang_switcher_update_translation_for_frame(self, depth)
 
     for _, child in ipairs({ self:GetChildren() }) do
         if child:IsShown() then
-            lang_switcher_update_translation_for_frame(child, depth + 1)
+            lang_switcher_update_translation_for_frame(child, hd_type, hd_key, depth + 1)
         end
     end
 end
@@ -2660,9 +2676,19 @@ local function lang_switchers_update_all()
     for _, s in ipairs(frame_hooks.lang_switchers) do
         if s.frame then
             s.frame:SetChecked(data_hooks.preferred_lang == "en")
-            lang_switcher_update_translation_for_frame(s.frame:GetParent())
-            if s.extra_target then
-                lang_switcher_update_translation_for_frame(s.extra_target)
+
+            local hd_key
+            if s.hd_type == "quest" then
+                hd_key = get_currently_viewed_quest_id()
+            elseif s.hd_type == "book" then
+                hd_key = get_currently_viewed_book_id()
+            end
+
+            if s.hd_type and hd_key then
+                lang_switcher_update_translation_for_frame(s.frame:GetParent(), s.hd_type, hd_key)
+                if s.extra_target then
+                    lang_switcher_update_translation_for_frame(s.extra_target, s.hd_type, hd_key)
+                end
             end
         end
     end
@@ -3274,10 +3300,15 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         update_target_frame_text()
 
     elseif event == "ITEM_TEXT_BEGIN" then
-        item_text_begin()
+        on_item_text_begin()
 
     elseif event == "ITEM_TEXT_CLOSED" then
-        item_text_closed()
+        on_item_text_closed()
 
     end
 end)
+
+-- !! DEBUG
+DH = data_hooks
+HASH = hash
+TSK = table_string_keys
