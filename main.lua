@@ -2719,11 +2719,13 @@ local function create_lang_switcher_frame(parent, point, x, y)
 
     root:SetNormalTexture(assets.icon_scroll)
     root:GetNormalTexture():SetBlendMode("ADD")
+    root:GetNormalTexture():SetGradient("VERTICAL", CreateColor(1, 1, 0, 1), CreateColor(0, 0, 0.8, 1))
 
     root:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD")
 
     root:SetCheckedTexture(assets.icon_scroll)
     root:GetCheckedTexture():SetBlendMode("ADD")
+    root:GetCheckedTexture():SetGradient("VERTICAL", CreateColor(1, 1, 0, 0.6), CreateColor(0, 0, 0.8, 0.6))
 
     root:SetScript("OnClick", function (self)
         data_hooks.preferred_lang = self:GetChecked() and "en" or "uk"
