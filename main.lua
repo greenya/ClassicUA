@@ -2550,10 +2550,10 @@ local frame_hooks = {
         { hd_type="quest", parent={ frame=QuestProgressScrollFrame, point="TOPRIGHT", x=-6, y=-10 } },
         { hd_type="quest", parent={ frame=QuestRewardScrollFrame, point="TOPRIGHT", x=-6, y=-10 } },
         { hd_type="quest", parent={ frame=QuestLogDetailScrollFrame, point="TOPRIGHT", x=-8, y=-12 } },
-        { hd_type="quest", parent={ frame=QuestMapDetailsScrollFrame and QuestMapDetailsScrollFrame.Contents or nil, point="TOPRIGHT", x=-24, y=-4 },
+        { hd_type="quest", parent={ frame=QuestMapDetailsScrollFrame, point="TOPRIGHT", x=-2, y=-4 },
           extra_target=QuestMapFrame and QuestMapFrame.DetailsFrame and QuestMapFrame.DetailsFrame.RewardsFrame or nil },
         -- books (item texts)
-        { hd_type="book", parent={ frame=ItemTextPageText, point="TOPRIGHT", x=10, y=6 },
+        { hd_type="book", parent={ frame=ItemTextScrollFrame, point="TOPRIGHT", x=-2, y=-12 },
           extra_target=ItemTextFrame },
     },
 }
