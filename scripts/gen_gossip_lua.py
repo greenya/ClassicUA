@@ -91,7 +91,7 @@ def main():
     gossip, issues = collect_gossip()
 
     for expansion in gossip:
-        utils.write_lua_gossip_file(f'translation_from_crowdin/entries/{expansion}', 'gossip', gossip[expansion])
+        utils.write_lua_gossip_file(f'../entries/{expansion}', 'gossip', gossip[expansion])
 
     print_report(gossip, issues)
 

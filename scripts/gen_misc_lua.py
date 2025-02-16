@@ -33,7 +33,7 @@ def main():
     misc = collect_misc()
     misc = dict(sorted(misc.items()))
 
-    utils.write_lua_misc_file('translation_from_crowdin/entries', 'misc', misc)
+    utils.write_lua_misc_file('../entries', 'misc', misc)
 
     print_report(misc)
 

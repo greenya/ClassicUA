@@ -131,7 +131,7 @@ def main():
     for expansion in quests:
         for side in quests[expansion]:
             utils.write_lua_quest_file(
-                path    =f'translation_from_crowdin/entries/{expansion}',
+                path    =f'../entries/{expansion}',
                 filename=f'quest_{side}',
                 var     =f'quest_{side}',
                 quests  =quests[expansion][side]

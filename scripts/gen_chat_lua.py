@@ -116,7 +116,7 @@ def main():
     chats, issues = collect_chats()
 
     for expansion in chats:
-        utils.write_lua_chat_file(f'translation_from_crowdin/entries/{expansion}', 'chat', chats[expansion])
+        utils.write_lua_chat_file(f'../entries/{expansion}', 'chat', chats[expansion])
 
     print_report(chats, issues)
 

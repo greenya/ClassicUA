@@ -44,7 +44,7 @@ def main():
     zones, aliases_count, issues = collect_zones()
     zones = dict(sorted(zones.items()))
 
-    utils.write_lua_zone_file('translation_from_crowdin/entries', 'zone', zones, len(zones) - aliases_count)
+    utils.write_lua_zone_file('../entries', 'zone', zones, len(zones) - aliases_count)
 
     print_report(zones, aliases_count, issues)
 

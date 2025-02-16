@@ -61,7 +61,7 @@ def main():
 
     for expansion in npcs:
         utils.write_lua_npc_file(
-            path    =f'translation_from_crowdin/entries/{expansion}',
+            path    =f'../entries/{expansion}',
             filename='npc',
             npcs    =npcs[expansion]
         )

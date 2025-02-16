@@ -50,7 +50,7 @@ def main():
 
     for expansion in books:
         utils.write_lua_book_file(
-            path    =f'translation_from_crowdin/entries/{expansion}',
+            path    =f'../entries/{expansion}',
             filename='book',
             books   =books[expansion]
         )
