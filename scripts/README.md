@@ -39,13 +39,13 @@ All other files are edited manually, e.g. via pull requests.
         *   /gossip, gossip_*
         * /ClassicUA.tbx
 
-    - Run python gen_addon_books_source_from_crowdin.py > translation_from_crowdin/books_stats.txt
-    - Run python gen_addon_chats_source_from_crowdin.py > translation_from_crowdin/chats_stats.txt
-    - Run python gen_addon_gossip_source_from_crowdin.py > translation_from_crowdin/gossip_stats.txt
-    - Run python gen_addon_misc_source_from_crowdin.py > translation_from_crowdin/misc_stats.txt
-    - Run python gen_addon_npcs_source_from_crowdin.py > translation_from_crowdin/npcs_stats.txt
-    - Run python gen_addon_quests_source_from_crowdin.py > translation_from_crowdin/quests_stats.txt
-    - Run python gen_addon_zones_source_from_crowdin.py > translation_from_crowdin/zones_stats.txt
+    - Run python gen_book_lua.py > translation_from_crowdin/gen_book_lua_output.txt
+    - Run python gen_chat_lua.py > translation_from_crowdin/gen_chat_lua_output.txt
+    - Run python gen_gossip_lua.py > translation_from_crowdin/gen_gossip_lua_output.txt
+    - Run python gen_misc_lua.py > translation_from_crowdin/gen_misc_lua_output.txt
+    - Run python gen_npc_lua.py > translation_from_crowdin/gen_npc_lua_output.txt
+    - Run python gen_quest_lua.py > translation_from_crowdin/gen_quest_lua_output.txt
+    - Run python gen_zone_lua.py > translation_from_crowdin/gen_zone_lua_output.txt
 
     - [not used] Run python gen_addon_glossary_source_from_crowdin.py > translation_from_crowdin/glossary_stats.txt
         * Note: glossary generator must go last, as it uses previously generated lua files
