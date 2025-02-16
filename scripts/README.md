@@ -10,7 +10,6 @@ The following files are generated from Crowdin via set of scripts:
 - quest_both.lua
 - quest_horde.lua
 - zone.lua
-- [not used] glossary.lua
 
 All other files are edited manually, e.g. via pull requests.
 
@@ -46,9 +45,6 @@ All other files are edited manually, e.g. via pull requests.
     - Run python gen_npc_lua.py > translation_from_crowdin/gen_npc_lua_output.txt
     - Run python gen_quest_lua.py > translation_from_crowdin/gen_quest_lua_output.txt
     - Run python gen_zone_lua.py > translation_from_crowdin/gen_zone_lua_output.txt
-
-    - [not used] Run python gen_addon_glossary_source_from_crowdin.py > translation_from_crowdin/glossary_stats.txt
-        * Note: glossary generator must go last, as it uses previously generated lua files
 
 4. Update addon lua files:
     - Copy "translation_from_crowdin\entries" into "ClassicUA\entries"
