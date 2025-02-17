@@ -1382,55 +1382,54 @@ local function get_gossip_text_for_npc_talk(npc_id, gossip_text)
     end
 end
 
--- unused, was used only by tainted caller C_GossipInfo.GetOptions
--- local function get_gossip_text_for_player_reply(npc_id, gossip_text)
---     if not npc_id or type(gossip_text) ~= "string" then
---         return
---     end
+local function get_gossip_text_for_player_reply(npc_id, gossip_text)
+    if not npc_id or type(gossip_text) ~= "string" then
+        return
+    end
 
---     -- the replies can be very similar, for example: "The inn", "The inn.", "Inn.", "inn"
---     -- we want to match it all, while having high minimum_match_ratio as its very short text,
---     -- so we try couple of cases
+    -- the replies can be very similar, for example: "The inn", "The inn.", "Inn.", "inn"
+    -- we want to match it all, while having high minimum_match_ratio as its very short text,
+    -- so we try couple of cases
 
---     local gossip_text_list = { gossip_text }
---     local gossip_text_lower = gossip_text:lower()
+    local gossip_text_list = { gossip_text }
+    local gossip_text_lower = gossip_text:lower()
 
---     if #gossip_text_lower > 6 then
---         if gossip_text_lower:find("^the ") then
---             table.insert(gossip_text_list, gossip_text_lower:sub(5))
---         else
---             table.insert(gossip_text_list, "the " .. gossip_text_lower)
---         end
---     end
+    if #gossip_text_lower > 6 then
+        if gossip_text_lower:find("^the ") then
+            table.insert(gossip_text_list, gossip_text_lower:sub(5))
+        else
+            table.insert(gossip_text_list, "the " .. gossip_text_lower)
+        end
+    end
 
---     if #gossip_text_lower > 2 then
---         if gossip_text_lower:find("%.$") then
---             table.insert(gossip_text_list, gossip_text_lower:sub(1, #gossip_text_lower - 1))
---         else
---             table.insert(gossip_text_list, gossip_text_lower .. ".")
---         end
---     end
+    if #gossip_text_lower > 2 then
+        if gossip_text_lower:find("%.$") then
+            table.insert(gossip_text_list, gossip_text_lower:sub(1, #gossip_text_lower - 1))
+        else
+            table.insert(gossip_text_list, gossip_text_lower .. ".")
+        end
+    end
 
---     for _, text_en in pairs(gossip_text_list) do
---         local text_uk = get_gossip_text(npc_id, text_en)
---         if text_uk then
---             return text_uk
---         end
---     end
+    for _, text_en in pairs(gossip_text_list) do
+        local text_uk = get_gossip_text(npc_id, text_en)
+        if text_uk then
+            return text_uk
+        end
+    end
 
---     -- replies are generally short, and also it can be class name, battleground name, dungeon name etc.
---     local found_text = get_glossary_text(gossip_text)
---     if found_text then
---         return found_text
---     end
+    -- replies are generally short, and also it can be class name, battleground name, dungeon name etc.
+    local found_text = get_glossary_text(gossip_text)
+    if found_text then
+        return found_text
+    end
 
---     if options.dev_mode then
---         local gossip_code = get_text_code(gossip_text)
---         if gossip_code then
---             dev_log_missing_gossip(npc_id, gossip_code, gossip_text, true)
---         end
---     end
--- end
+    if options.dev_mode then
+        local gossip_code = get_text_code(gossip_text)
+        if gossip_code then
+            dev_log_missing_gossip(npc_id, gossip_code, gossip_text, true)
+        end
+    end
+end
 
 local function get_chat_text(npc_name, chat_text)
     local at = addonTable
@@ -2750,6 +2749,40 @@ local function prepare_frame_hooks()
 end
 
 -- ----------------
+-- [ gossip frame ]
+-- ----------------
+
+local function on_gossip_show()
+    local npc_id = npc_id_from_unit_id("npc")
+    if not npc_id then
+        return
+    end
+    local total_height_shift = 0
+
+    for _, gossip_subframe in GossipFrame.GreetingPanel.ScrollBox:EnumerateFrames() do
+        local buttonType = gossip_subframe.GetElementData().buttonType;
+        if (buttonType == 3) then
+            -- buttonType == 3 - reply option (GOSSIP_BUTTON_TYPE_OPTION). See https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_UIPanels_Game/Shared/GossipFrameShared.lua
+            if (total_height_shift > 0) then
+                local point, relativeTo, relativePoint, xOfs, yOfs = gossip_subframe:GetPoint(1)
+                gossip_subframe:ClearAllPoints()
+                gossip_subframe:SetPoint(point, relativeTo, relativePoint, xOfs, yOfs - total_height_shift)
+            end
+
+            local original_height = gossip_subframe:GetHeight()
+            local button_text = gossip_subframe:GetText()
+            local text_ua = get_gossip_text_for_player_reply(npc_id, button_text)
+            if text_ua then
+                gossip_subframe:SetText(text_ua)
+                gossip_subframe:Resize()
+                local current_height_shift = gossip_subframe:GetHeight() - original_height
+                total_height_shift = total_height_shift + current_height_shift
+            end
+        end
+    end
+end
+
+-- ----------------
 -- [ target frame ]
 -- ----------------
 
@@ -3289,6 +3322,7 @@ event_frame:RegisterEvent("PLAYER_LOGIN")
 event_frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
+event_frame:RegisterEvent("GOSSIP_SHOW")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
@@ -3334,6 +3368,8 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
     elseif event == "ITEM_TEXT_CLOSED" then
         on_item_text_closed()
 
+    elseif (event=="GOSSIP_SHOW") then
+        on_gossip_show();
     end
 end)
 
