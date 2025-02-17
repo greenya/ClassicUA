@@ -3,6 +3,7 @@
     <Script file="info.lua"/>
     <Script file="misc.lua"/>
     <Script file="race.lua"/>
+    <Script file="stat_count.lua"/>
     <Script file="string.lua"/>
     <Script file="zone.lua"/>
 </Ui>
