@@ -2757,29 +2757,28 @@ local function on_gossip_show()
     if not npc_id then
         return
     end
-    local total_height_shift = 0
 
-    for _, gossip_subframe in GossipFrame.GreetingPanel.ScrollBox:EnumerateFrames() do
-        local buttonType = gossip_subframe.GetElementData().buttonType;
-        if (buttonType == 3) then
-            -- buttonType == 3 - reply option (GOSSIP_BUTTON_TYPE_OPTION). See https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_UIPanels_Game/Shared/GossipFrameShared.lua
-            if (total_height_shift > 0) then
-                local point, relativeTo, relativePoint, xOfs, yOfs = gossip_subframe:GetPoint(1)
-                gossip_subframe:ClearAllPoints()
-                gossip_subframe:SetPoint(point, relativeTo, relativePoint, xOfs, yOfs - total_height_shift)
-            end
+    local gossip_scroll_box = GossipFrame and GossipFrame.GreetingPanel and GossipFrame.GreetingPanel.ScrollBox
+    if not gossip_scroll_box then
+        return
+    end
 
-            local original_height = gossip_subframe:GetHeight()
-            local button_text = gossip_subframe:GetText()
-            local text_ua = get_gossip_text_for_player_reply(npc_id, button_text)
+    for _, child in gossip_scroll_box:EnumerateFrames() do
+        local element_data = child:GetElementData()
+        if element_data.buttonType == GOSSIP_BUTTON_TYPE_OPTION then
+            local text_en = child:GetText()
+            local text_ua = get_gossip_text_for_player_reply(npc_id, text_en)
             if text_ua then
-                gossip_subframe:SetText(text_ua)
-                gossip_subframe:Resize()
-                local current_height_shift = gossip_subframe:GetHeight() - original_height
-                total_height_shift = total_height_shift + current_height_shift
+                child:SetText(text_ua)
+                child:Resize()
+                element_data.info.name = text_ua
+                element_data.titleOptionButton:Setup(element_data.info)
             end
         end
     end
+
+    gossip_scroll_box:Layout()
+    gossip_scroll_box:Update()
 end
 
 -- ----------------
