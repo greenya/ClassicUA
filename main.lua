@@ -337,6 +337,43 @@ local function mouse_hover_frame()
     end
 end
 
+local function get_match_list_of_equal_meaning_english_texts_for_phrase(phrase)
+    if type(phrase) ~= "string" or phrase == "" then
+        return {}
+    end
+
+    -- input: "Bank" or "The bank" or "A bank." etc., all such cases will same output
+    -- output: "bank", "a bank", "an bank", "the bank", "bank.", "a bank.", "an bank.", "the bank."
+    -- note: "an bank" and "an bank." are incorrect, but will be returned (keep in mind)
+
+    local phrase_lower = string.trim(phrase:lower())
+    local phrase_lower_clean = phrase_lower
+
+    -- remove ending "." if needed
+    if phrase_lower_clean:find("%.$") then
+        phrase_lower_clean = phrase_lower_clean:sub(1, #phrase_lower_clean - 1)
+    end
+
+    local known_prefixes = { "the ", "a ", "an " }
+
+    -- extract "bank"
+    for _, p in ipairs(known_prefixes) do
+        if phrase_lower:find("^" .. p) then
+            phrase_lower_clean = phrase_lower:sub(#p + 1)
+            break
+        end
+    end
+
+    -- generate all combinations
+    local result = { phrase_lower_clean, phrase_lower_clean .. "." }
+    for _, p in ipairs(known_prefixes) do
+        table.insert(result, p .. phrase_lower_clean)
+        table.insert(result, p .. phrase_lower_clean .. ".")
+    end
+
+    return result
+end
+
 local get_text_code_replace_seq = {}
 
 local function prepare_get_text_code_replace_seq(player_name)
@@ -1389,30 +1426,8 @@ local function get_gossip_text_for_player_reply(npc_id, gossip_text)
         return
     end
 
-    -- the replies can be very similar, for example: "The inn", "The inn.", "Inn.", "inn"
-    -- we want to match it all, while having high minimum_match_ratio as its very short text,
-    -- so we try couple of cases
-
-    local gossip_text_list = { gossip_text }
-    local gossip_text_lower = gossip_text:lower()
-
-    if #gossip_text_lower > 6 then
-        if gossip_text_lower:find("^the ") then
-            table.insert(gossip_text_list, gossip_text_lower:sub(5))
-        else
-            table.insert(gossip_text_list, "the " .. gossip_text_lower)
-        end
-    end
-
-    if #gossip_text_lower > 2 then
-        if gossip_text_lower:find("%.$") then
-            table.insert(gossip_text_list, gossip_text_lower:sub(1, #gossip_text_lower - 1))
-        else
-            table.insert(gossip_text_list, gossip_text_lower .. ".")
-        end
-    end
-
-    for _, text_en in pairs(gossip_text_list) do
+    local match_list = get_match_list_of_equal_meaning_english_texts_for_phrase(gossip_text)
+    for _, text_en in pairs(match_list) do
         -- we require 100% match for text code of the reply otherwise we easily match incorrect translation
         local text_uk = get_gossip_text(npc_id, text_en, 1.0)
         if text_uk then
