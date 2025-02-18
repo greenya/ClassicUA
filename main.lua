@@ -1338,7 +1338,7 @@ local function get_glossary_text(entry_key, fallback, hint_type)
     return fallback
 end
 
-local function get_gossip_text(npc_id, gossip_text)
+local function get_gossip_text(npc_id, gossip_text, minimum_match_ratio)
     local at = addonTable
 
     if not npc_id or type(gossip_text) ~= "string" or #gossip_text < 1 or type(at.gossip) ~= "table" then
@@ -1348,11 +1348,13 @@ local function get_gossip_text(npc_id, gossip_text)
     npc_id = tonumber(npc_id)
     local gossip_code = get_text_code(gossip_text)
 
-    local minimum_match_ratio = 0.5 -- maybe we should just change text code generator algo
-    if      #gossip_text <= 10 then minimum_match_ratio = 0.9
-    elseif  #gossip_text <= 16 then minimum_match_ratio = 0.8
-    elseif  #gossip_text <= 22 then minimum_match_ratio = 0.7
-    elseif  #gossip_text <= 28 then minimum_match_ratio = 0.6 end
+    if not minimum_match_ratio then
+        minimum_match_ratio = 0.5 -- maybe we should just change text code generator algo
+        if      #gossip_text <= 10 then minimum_match_ratio = 0.9
+        elseif  #gossip_text <= 16 then minimum_match_ratio = 0.8
+        elseif  #gossip_text <= 22 then minimum_match_ratio = 0.7
+        elseif  #gossip_text <= 28 then minimum_match_ratio = 0.6 end
+    end
 
     for _, gossip_key in ipairs({ npc_id, '!common' }) do
         if at.gossip[gossip_key] then
@@ -1411,7 +1413,8 @@ local function get_gossip_text_for_player_reply(npc_id, gossip_text)
     end
 
     for _, text_en in pairs(gossip_text_list) do
-        local text_uk = get_gossip_text(npc_id, text_en)
+        -- we require 100% match for text code of the reply otherwise we easily match incorrect translation
+        local text_uk = get_gossip_text(npc_id, text_en, 1.0)
         if text_uk then
             return text_uk
         end
