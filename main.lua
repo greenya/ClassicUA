@@ -4,46 +4,22 @@ local _, addonTable = ...
 -- [ globals ]
 -- -----------
 
-local wow = {
+local wow = { -- only for frequently accessed wow api globals
     C_ChatBubbles               = _G.C_ChatBubbles,
-    C_Seasons                   = _G.C_Seasons,
     C_Timer                     = _G.C_Timer,
-    ChatFrame_AddMessageEventFilter = _G.ChatFrame_AddMessageEventFilter,
-    ChatTypeInfo                = _G.ChatTypeInfo,
-    CreateFrame                 = _G.CreateFrame,
-    DEFAULT_CHAT_FRAME          = _G.DEFAULT_CHAT_FRAME,
-    DevTools_Dump               = _G.DevTools_Dump,
-    Enum                        = _G.Enum,
     GameTooltip                 = _G.GameTooltip,
     GameTooltipStatusBar        = _G.GameTooltipStatusBar,
-    GetAddOnInfo                = _G.GetAddOnInfo,
-    GetAddOnMemoryUsage         = _G.GetAddOnMemoryUsage,
-    GetAddOnMetadata            = _G.GetAddOnMetadata,
     GetBindLocation             = _G.GetBindLocation,
-    GetBuildInfo                = _G.GetBuildInfo,
     GetMouseFoci                = _G.GetMouseFoci,
     GetMouseFocus               = _G.GetMouseFocus,
-    GetNumAddOns                = _G.GetNumAddOns,
     GetQuestID                  = _G.GetQuestID,
     GetQuestLogSelectedID       = _G.GetQuestLogSelectedID,
     GetQuestLogTitle            = _G.GetQuestLogTitle,
     GetTalentInfo               = _G.GetTalentInfo,
     GossipFrame                 = _G.GossipFrame,
-    hooksecurefunc              = _G.hooksecurefunc,
-    InterfaceAddOnsList_Update  = _G.InterfaceAddOnsList_Update,
-    InterfaceOptions_AddCategory = _G.InterfaceOptions_AddCategory,
-    InterfaceOptionsFrame_OpenToCategory = _G.InterfaceOptionsFrame_OpenToCategory,
     ItemRefTooltip              = _G.ItemRefTooltip,
     ItemTextGetPage             = _G.ItemTextGetPage,
     ItemTextGetText             = _G.ItemTextGetText,
-    ItemTextScrollFrame         = _G.ItemTextScrollFrame,
-    Minimap_Update              = _G.Minimap_Update,
-    QuestFrame                  = _G.QuestFrame,
-    QuestFrameDetailPanel       = _G.QuestFrameDetailPanel,
-    QuestFrameProgressPanel     = _G.QuestFrameProgressPanel,
-    QuestFrameRewardPanel       = _G.QuestFrameRewardPanel,
-    QuestLog_Update             = _G.QuestLog_Update,
-    QuestLogDetailScrollFrame   = _G.QuestLogDetailScrollFrame,
     TargetFrame                 = _G.TargetFrame,
     UnitAura                    = _G.UnitAura,
     UnitClass                   = _G.UnitClass,
@@ -52,24 +28,18 @@ local wow = {
     UnitName                    = _G.UnitName,
     UnitRace                    = _G.UnitRace,
     UnitSex                     = _G.UnitSex,
-    UpdateAddOnMemoryUsage      = _G.UpdateAddOnMemoryUsage,
-    ReloadUI                    = _G.ReloadUI,
-    Settings                    = _G.Settings,
     ShoppingTooltip1            = _G.ShoppingTooltip1,
     ShoppingTooltip2            = _G.ShoppingTooltip2,
     ShouldShowName              = _G.ShouldShowName,
-    SlashCmdList                = _G.SlashCmdList,
-    StaticPopup_Show            = _G.StaticPopup_Show,
-    StaticPopupDialogs          = _G.StaticPopupDialogs,
     WorldMapTooltip             = _G.WorldMapTooltip,
     WorldFrame                  = _G.WorldFrame,
 }
 
-local is_classic        = string.byte(wow.GetBuildInfo(), 1) == string.byte("1")
-local is_classic_sod    = is_classic and wow.C_Seasons and wow.C_Seasons.HasActiveSeason() and wow.C_Seasons.GetActiveSeason() == wow.Enum.SeasonID.SeasonOfDiscovery
-local is_tbc            = string.byte(wow.GetBuildInfo(), 1) == string.byte("2")
-local is_wrath          = string.byte(wow.GetBuildInfo(), 1) == string.byte("3")
-local is_cata           = string.byte(wow.GetBuildInfo(), 1) == string.byte("4")
+local is_classic        = string.byte(GetBuildInfo(), 1) == string.byte("1")
+local is_classic_sod    = is_classic and C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
+local is_tbc            = string.byte(GetBuildInfo(), 1) == string.byte("2")
+local is_wrath          = string.byte(GetBuildInfo(), 1) == string.byte("3")
+local is_cata           = string.byte(GetBuildInfo(), 1) == string.byte("4")
 
 local assets = {
     icon_ua_inline  = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t",
@@ -108,8 +78,8 @@ local function game_expansion_key()
 end
 
 local function dump(value)
-    if type(wow.DevTools_Dump) == "function" then
-        wow.DevTools_Dump(value)
+    if type(DevTools_Dump) == "function" then
+        DevTools_Dump(value)
     else
         print("[dump]", value)
     end
@@ -283,7 +253,7 @@ end
 
 -- returns 0 in case no quest (no npc quest and quest log is empty)
 -- note: 0 is a truthy value in Lua
-local get_currently_viewed_quest_id = function ()
+local function get_currently_viewed_quest_id()
     local npc_quest_id = wow.GetQuestID()
     if npc_quest_id and npc_quest_id > 0 then
         return npc_quest_id
@@ -303,7 +273,7 @@ local last_item_text_item_id = 0
 -- returns 0 in case no book (item text) is opened at the moment, can be called when
 -- book is about to be open, in such case, the last mouse hovered item id will be returned
 -- note: 0 is a truthy value in Lua
-local get_currently_viewed_book_id = function ()
+local function get_currently_viewed_book_id()
     if last_item_text_item_id and last_item_text_item_id > 0 then
         return last_item_text_item_id
     end
@@ -533,12 +503,12 @@ local default_dev_log = {
 }
 
 local function dev_log_print(text)
-    wow.DEFAULT_CHAT_FRAME:AddMessage(assets.icon_ua_inline .. " |cff4488aa[Розробка] " .. text .. "|r")
+    DEFAULT_CHAT_FRAME:AddMessage(assets.icon_ua_inline .. " |cff4488aa[Розробка] " .. text .. "|r")
 end
 
 local function dev_log_init()
-    dev_log.addon_version = wow.GetAddOnMetadata("ClassicUA", "Version")
-    dev_log.game_version = wow.GetBuildInfo()
+    dev_log.addon_version = GetAddOnMetadata("ClassicUA", "Version")
+    dev_log.game_version = GetBuildInfo()
     dev_log.game_expansion = game_expansion_key()
 
     if not dev_log.missing_quests           then dev_log.missing_quests = {} end
@@ -838,32 +808,6 @@ end
 -- -----------
 -- [ entries ]
 -- -----------
-
-local function get_stats()
-    local at = addonTable
-    local stats = {}
-
-    for _, v in ipairs({
-        "quest_alliance",
-        "quest_horde",
-        "quest_both",
-        "book",
-        "item",
-        "spell",
-        "npc",
-        "object",
-        "zone"
-    }) do
-        if at[v .. '_stats'] then
-            stats[v] = at[v .. '_stats'].count
-        else
-            stats[v] = 0
-            for _, _ in pairs(at[v]) do stats[v] = stats[v] + 1 end
-        end
-    end
-
-    return stats
-end
 
 local function prepare_talent_tree(class)
     -- keep only player class tree
@@ -1904,28 +1848,28 @@ for _, tt in pairs(known_tooltips) do
     end
 end
 
-wow.hooksecurefunc(wow.GameTooltip, "SetTalent", function (self, tab_index, talent_index, _, is_pet)
+hooksecurefunc(wow.GameTooltip, "SetTalent", function (self, tab_index, talent_index, _, is_pet)
     if not is_pet then
         local _, _, tier, column, rank, max_rank = wow.GetTalentInfo(tab_index, talent_index)
         add_talent_entry_to_tooltip(self, tab_index, tier, column, rank, max_rank)
     end
 end)
 
-wow.hooksecurefunc(wow.GameTooltip, "SetUnitAura", function (self, unit, index, filter)
+hooksecurefunc(wow.GameTooltip, "SetUnitAura", function (self, unit, index, filter)
     local id = select(10, wow.UnitAura(unit, index, filter))
     if id then
         add_entry_to_tooltip(self, "spell", id, true)
     end
 end)
 
-wow.hooksecurefunc(wow.GameTooltip, "SetUnitBuff", function (self, unit, index)
+hooksecurefunc(wow.GameTooltip, "SetUnitBuff", function (self, unit, index)
     local id = select(10, wow.UnitAura(unit, index, "HELPFUL"))
     if id then
         add_entry_to_tooltip(self, "spell", id, true)
     end
 end)
 
-wow.hooksecurefunc(wow.GameTooltip, "SetUnitDebuff", function (self, unit, index)
+hooksecurefunc(wow.GameTooltip, "SetUnitDebuff", function (self, unit, index)
     local id = select(10, wow.UnitAura(unit, index, "HARMFUL"))
     if id then
         add_entry_to_tooltip(self, "spell", id, true)
@@ -2341,7 +2285,7 @@ local function prepare_data_hooks_for_zones()
     end
 
     -- force minimap update, otherwise it will show original zone name until player changes zone
-    wow.Minimap_Update()
+    Minimap_Update()
 end
 
 local function prepare_data_hooks_for_item_texts()
@@ -2392,20 +2336,20 @@ end
 
 -- areas: { area1={ font }, ... }
 local function setup_frame_scrollbar_and_content(frame, areas, scrollframe_width_override)
-    local scrollframe = wow.CreateFrame("ScrollFrame", nil, frame)
+    local scrollframe = CreateFrame("ScrollFrame", nil, frame)
     scrollframe:SetPoint("TOPLEFT", 8, -9)
     scrollframe:SetPoint("BOTTOMRIGHT", -8, 9)
     frame.scrollframe = scrollframe
     local scrollframe_width = scrollframe_width_override or scrollframe:GetWidth()
 
-    local content = wow.CreateFrame("Frame", nil, scrollframe)
-    content:SetSize(scrollframe_width - 60, 0)
+    local content = CreateFrame("Frame", nil, scrollframe)
+    content:SetSize(scrollframe_width, 0)
     scrollframe:SetScrollChild(content)
     frame.content = content
 
     for k, v in pairs(areas) do
         local a = content:CreateFontString(nil, "OVERLAY")
-        a:SetWidth(frame:GetWidth() - 60)
+        a:SetWidth(frame:GetWidth() - 78)
         a:SetJustifyH("LEFT")
         a:SetJustifyV("TOP")
         a:SetTextColor(0, 0, 0)
@@ -2413,7 +2357,7 @@ local function setup_frame_scrollbar_and_content(frame, areas, scrollframe_width
         frame[k] = a
     end
 
-    local scrollbar = wow.CreateFrame("Slider", nil, scrollframe, "UIPanelScrollBarTemplate")
+    local scrollbar = CreateFrame("Slider", nil, scrollframe, "UIPanelScrollBarTemplate")
     scrollbar:SetPoint("TOPLEFT", frame, "TOPRIGHT", -26, -27)
     scrollbar:SetPoint("BOTTOMLEFT", frame, "BOTTOMRIGHT", 0, 26)
     scrollbar:SetValueStep(40)
@@ -2452,13 +2396,14 @@ end
 -- frame must have properties: title, text, more_title, more_text
 local function set_text_frame_content(frame, title, text, more_title, more_text)
     local h = 16
+    local pad_x = 24
 
-    frame.title:SetPoint("TOPLEFT", frame.content, 12, -h)
+    frame.title:SetPoint("TOPLEFT", frame.content, pad_x, -h)
     frame.title:SetText(title)
     h = h + frame.title:GetHeight() + 12
 
     if text then
-        frame.text:SetPoint("TOPLEFT", frame.content, 12, -h)
+        frame.text:SetPoint("TOPLEFT", frame.content, pad_x, -h)
         frame.text:SetText(text)
         h = h + frame.text:GetHeight() + 12
     else
@@ -2466,11 +2411,11 @@ local function set_text_frame_content(frame, title, text, more_title, more_text)
     end
 
     if more_title and more_text then
-        frame.more_title:SetPoint("TOPLEFT", frame.content, 12, -h)
+        frame.more_title:SetPoint("TOPLEFT", frame.content, pad_x, -h)
         frame.more_title:SetText(more_title)
         h = h + frame.more_title:GetHeight() + 12
 
-        frame.more_text:SetPoint("TOPLEFT", frame.content, 12, -h)
+        frame.more_text:SetPoint("TOPLEFT", frame.content, pad_x, -h)
         frame.more_text:SetText(more_text)
         h = h + frame.more_text:GetHeight() + 12
     else
@@ -2497,7 +2442,7 @@ local function add_tooltip_for_frame(frame, anchor, text)
 end
 
 local function create_checkbox_frame(parent, point, x, y, text, checked, tooltip_text, on_click)
-    local root = wow.CreateFrame("CheckButton", nil, parent, "InterfaceOptionsCheckButtonTemplate")
+    local root = CreateFrame("CheckButton", nil, parent, "InterfaceOptionsCheckButtonTemplate")
 
     root:SetPoint(point, x, y)
     root.Text:SetText(text)
@@ -2516,7 +2461,7 @@ local function create_checkbox_frame(parent, point, x, y, text, checked, tooltip
 end
 
 local function create_slider_frame(parent, point, x, y, width, height, min, max, step, tooltip_text, on_value_changed)
-    local root = wow.CreateFrame("Slider", nil, parent, "ClassicUA_UISliderTemplateWithLabels")
+    local root = CreateFrame("Slider", nil, parent, "ClassicUA_UISliderTemplateWithLabels")
 
     root:SetPoint(point, x, y)
     root:SetWidth(width)
@@ -2597,7 +2542,7 @@ local function init_frame_hooks_labels()
     for _, l in ipairs(frame_hooks.labels) do
         if l.frame then
             l.frame.classicua = {}
-            wow.hooksecurefunc(l.frame, "SetText", on_frame_hooks_label_set_text)
+            hooksecurefunc(l.frame, "SetText", on_frame_hooks_label_set_text)
         end
     end
 end
@@ -2730,7 +2675,7 @@ local function lang_switchers_update_all()
 end
 
 local function create_lang_switcher_frame(parent, point, x, y)
-    local root = wow.CreateFrame("CheckButton", nil, parent)
+    local root = CreateFrame("CheckButton", nil, parent)
     root:SetPoint(point, parent, x, y)
     root:SetSize(40, 40)
 
@@ -2776,7 +2721,7 @@ local function on_gossip_show()
         return
     end
 
-    local gossip_scroll_box = GossipFrame and GossipFrame.GreetingPanel and GossipFrame.GreetingPanel.ScrollBox
+    local gossip_scroll_box = wow.GossipFrame and wow.GossipFrame.GreetingPanel and wow.GossipFrame.GreetingPanel.ScrollBox
     if not gossip_scroll_box then
         return
     end
@@ -2819,7 +2764,7 @@ end
 -- [ name plates ]
 -- ---------------
 
-wow.hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
+hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
     if options.translate_nameplates and wow.ShouldShowName(self) and not self:IsForbidden() then
         local npc_id = npc_id_from_unit_id(self.unit)
         if npc_id then
@@ -2838,13 +2783,13 @@ end)
 -- --------
 
 local known_chat_msg_events = {
-    CHAT_MSG_MONSTER_EMOTE      = { info=wow.ChatTypeInfo.MONSTER_EMOTE,        verb=false },
-    CHAT_MSG_MONSTER_PARTY      = { info=wow.ChatTypeInfo.MONSTER_PARTY,        verb="говорить" },
-    CHAT_MSG_MONSTER_SAY        = { info=wow.ChatTypeInfo.MONSTER_SAY,          verb="говорить" },
-    CHAT_MSG_MONSTER_WHISPER    = { info=wow.ChatTypeInfo.MONSTER_WHISPER,      verb="шепоче" },
-    CHAT_MSG_MONSTER_YELL       = { info=wow.ChatTypeInfo.MONSTER_YELL,         verb="вигукує" },
-    CHAT_MSG_RAID_BOSS_EMOTE    = { info=wow.ChatTypeInfo.RAID_BOSS_EMOTE,      verb=false },
-    CHAT_MSG_RAID_BOSS_WHISPER  = { info=wow.ChatTypeInfo.RAID_BOSS_WHISPER,    verb="шепоче" },
+    CHAT_MSG_MONSTER_EMOTE      = { info=ChatTypeInfo.MONSTER_EMOTE,        verb=false },
+    CHAT_MSG_MONSTER_PARTY      = { info=ChatTypeInfo.MONSTER_PARTY,        verb="говорить" },
+    CHAT_MSG_MONSTER_SAY        = { info=ChatTypeInfo.MONSTER_SAY,          verb="говорить" },
+    CHAT_MSG_MONSTER_WHISPER    = { info=ChatTypeInfo.MONSTER_WHISPER,      verb="шепоче" },
+    CHAT_MSG_MONSTER_YELL       = { info=ChatTypeInfo.MONSTER_YELL,         verb="вигукує" },
+    CHAT_MSG_RAID_BOSS_EMOTE    = { info=ChatTypeInfo.RAID_BOSS_EMOTE,      verb=false },
+    CHAT_MSG_RAID_BOSS_WHISPER  = { info=ChatTypeInfo.RAID_BOSS_WHISPER,    verb="шепоче" },
 }
 
 local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
@@ -2896,7 +2841,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
 end
 
 for event_name, _ in pairs(known_chat_msg_events) do
-    wow.ChatFrame_AddMessageEventFilter(event_name, filter_chat_msg)
+    ChatFrame_AddMessageEventFilter(event_name, filter_chat_msg)
 end
 
 -- ---------
@@ -2939,7 +2884,7 @@ end
 -- [ options frame ]
 -- -----------------
 
-wow.StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
+StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
     text = "Дійсно скинути всі накопичені дані?",
     button1 = "Так",
     button2 = "Ні",
@@ -2949,17 +2894,17 @@ wow.StaticPopupDialogs["CLASSICUA_CONFIRM_DEV_LOG_RESET"] = {
     hideOnEscape = true
 }
 
-wow.StaticPopupDialogs["CLASSICUA_CONFIRM_RELOAD_UI"] = {
+StaticPopupDialogs["CLASSICUA_CONFIRM_RELOAD_UI"] = {
     text = "Дійсно перезавантажити інтерфейс гри?",
     button1 = "Так",
     button2 = "Ні",
-    OnAccept = wow.ReloadUI,
+    OnAccept = ReloadUI,
     timeout = 0,
     whileDead = true,
     hideOnEscape = true
 }
 
-wow.StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
+StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
     text = "Дійсно скинути всі налаштування за замовчуванням?\n\n(Відмінювання імен персонажів скинуто не буде.)",
     button1 = "Так",
     button2 = "Ні",
@@ -2969,8 +2914,147 @@ wow.StaticPopupDialogs["CLASSICUA_CONFIRM_SETTINGS_RESET"] = {
     hideOnEscape = true
 }
 
+local function setup_stat_count_frame(content_frame)
+    local root = CreateFrame("Frame", "ClassicUA_Stat_Count", content_frame)
+    root:SetPoint("BOTTOMLEFT", 0, -12)
+    root:SetWidth(content_frame:GetWidth())
+
+    local stat_count = addonTable.stat_count
+    local rows = {
+        col_sizes = { 140 },
+        col_aligns= { "LEFT",   "RIGHT",    "RIGHT",    "RIGHT",    "RIGHT",    "RIGHT",    "RIGHT" },
+                    { "",       "total",    "classic",  "sod",      "tbc",      "wrath",    "cata", size=112, vert=true },
+                    { "quests" },
+                    { "books" },
+                    { "npcs" },
+                    { "items" },
+                    { "spells" },
+                    { "sod_engravings" },
+                    { "objects" },
+                    { "zones" },
+                    { "chats" },
+                    { "gossips" },
+                    { "misc" },
+        display_text = {
+            classic         = "Класична\n(Classic)",
+            sod             = "Сезон Відкриттів\n(SOD)",
+            tbc             = "Палаючий Похід\n(TBC)",
+            wrath           = "Гнів Короля-ліча\n(WOTLK)",
+            cata            = "Катаклізм\n(Cataclysm)",
+
+            total           = "Всього",
+            quests          = "Завдання",
+            books           = "Книжки",
+            npcs            = "Персонажі",
+            items           = "Предмети",
+            spells          = "Заклинання",
+            sod_engravings  = "Гравіювання (SOD)",
+            objects         = "Об'єкти",
+            zones           = "Локації *",
+            chats           = "Чати **",
+            gossips         = "Плітки **",
+            misc            = "Додаткові фрази *",
+        },
+        display_delta_pos = {
+            total={2,12}, classic={-2,8}, sod={-2,8}, tbc={-2,8}, wrath={-2,8}, cata={-2,8}
+        },
+    }
+
+    local default_row_size, default_col_size, default_col_align = 20, 62, "LEFT"
+    local start_x, start_y = 24, 0
+    local x, y = 0, start_y
+
+    for row_idx, row in ipairs(rows) do
+        local row_size = row.size or default_row_size
+        x = start_x
+        y = y - row_size
+
+        for col_idx, _ in ipairs(rows[1]) do
+            local col_size = rows.col_sizes[col_idx] or default_col_size
+            local col_align = not row.vert and rows.col_aligns[col_idx] or default_col_align
+            local col_name = row[col_idx]
+            local col_text = col_name
+
+            if rows.display_text[col_text] then
+                col_text = rows.display_text[col_text]
+            end
+
+            if not col_text then
+                local row_key = rows[1][col_idx]
+                local col_key = rows[row_idx][1]
+                if stat_count[row_key] and stat_count[row_key][col_key] then
+                    col_text = tostring(stat_count[row_key][col_key])
+                end
+            end
+
+            if col_text and col_text ~= "0" then
+                local label = root:CreateFontString()
+                label:SetPoint("TOPLEFT", x, y)
+                label:SetSize(col_size, row_size)
+                label:SetJustifyH(col_align)
+                label:SetJustifyV("MIDDLE")
+                label:SetFontObject(fonts.content)
+                label:SetTextColor(0, 0, 0)
+                label:SetText(col_text)
+
+                if row.vert then
+                    label:SetRotation(math.rad(90))
+                    label:SetSize(row_size, col_size)
+                    label:SetJustifyH("CENTER")
+                    label:SetPoint("TOPLEFT", x-col_size/2, y+row_size/2)
+                end
+
+                if rows.display_delta_pos[col_name] then
+                    local _, _, _, px, py = label:GetPoint(1)
+                    local delta_pos = rows.display_delta_pos[col_name]
+                    label:SetPoint("TOPLEFT", px + delta_pos[1], py + delta_pos[2])
+                end
+            end
+
+            if row_idx == #rows and col_idx > 3 then
+                local vertical_line = root:CreateTexture(nil, "BACKGROUND")
+                vertical_line:SetPoint("TOPLEFT", 4 + x, start_y)
+                vertical_line:SetSize(2, -y - start_y + row_size)
+                vertical_line:SetColorTexture(0, 0, 0, 0.11)
+            end
+
+            x = x + col_size
+        end
+
+        if row_idx > 1 then
+            local horizontal_line = root:CreateTexture(nil, "BACKGROUND")
+            horizontal_line:SetPoint("TOPLEFT", start_x, y+1)
+            horizontal_line:SetSize(x - start_x, 2)
+            horizontal_line:SetColorTexture(0, 0, 0, 0.22)
+        end
+    end
+
+    local total_column_bar = root:CreateTexture(nil, "BACKGROUND")
+    total_column_bar:SetPoint("TOPLEFT", start_x + rows.col_sizes[1], start_y)
+    total_column_bar:SetSize(4 + (rows.col_sizes[2] or default_col_size), -y + (rows[#rows].size or default_row_size))
+    total_column_bar:SetColorTexture(0, 0, 0, 0.11)
+
+    y = y - default_row_size - 20
+
+    local foot_note = root:CreateFontString()
+    foot_note:SetPoint("TOPLEFT", start_x, y)
+    foot_note:SetWidth(root:GetWidth() - 2*start_x - 16)
+    foot_note:SetFontObject(fonts.content)
+    foot_note:SetJustifyH("LEFT")
+    foot_note:SetTextColor(0, 0, 0)
+    foot_note:SetText(
+        "* Локації та додаткові фрази не прив'язані до конкретних доповнень.\n" ..
+        "** Чати та плітки відображають кількість персонажів для яких є фрази, а не загальну кількість фраз."
+    )
+
+    y = y - foot_note:GetHeight() - 20
+
+    root:SetHeight(-y + 8)
+    return root
+end
+
 local function setup_player_name_cases_frame(content_frame)
-    local root = wow.CreateFrame("Frame", "ClassicUA_Player_Options", content_frame)
+    local root = CreateFrame("Frame", "ClassicUA_Player_Options", content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
 
     local cases = {
@@ -2983,9 +3067,9 @@ local function setup_player_name_cases_frame(content_frame)
         { "к", "Кличний — (Звертання)" }
     }
 
-    local x = 42
-    local y = -8
-    local edit_box_width = 230
+    local start_x, start_y = 32, -12
+    local x, y = start_x, start_y
+    local edit_box_width = 236
     local prev_edit_box = nil
 
     for i, c in ipairs(cases) do
@@ -2998,7 +3082,7 @@ local function setup_player_name_cases_frame(content_frame)
         label:SetTextColor(0, 0, 0)
         label:SetText(case_name)
 
-        local edit_box = wow.CreateFrame("EditBox", nil, root, "InputBoxTemplate")
+        local edit_box = CreateFrame("EditBox", nil, root, "InputBoxTemplate")
         edit_box:SetPoint("TOPLEFT", x, y - 4)
         edit_box:SetSize(edit_box_width, 40)
         edit_box:SetAutoFocus(false)
@@ -3028,8 +3112,8 @@ local function setup_player_name_cases_frame(content_frame)
 
         y = y - 40
         if i == 4 then
-            y = -8
-            x = x + edit_box_width + 30
+            y = start_y
+            x = x + edit_box_width + 32
         end
     end
 
@@ -3038,11 +3122,11 @@ local function setup_player_name_cases_frame(content_frame)
 end
 
 local function setup_dev_mode_frame(content_frame)
-    local root = wow.CreateFrame("Frame", "ClassicUA_Dev_Mode_Options", content_frame)
+    local root = CreateFrame("Frame", "ClassicUA_Dev_Mode_Options", content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
 
     options_frame.dev_mode_checkbox = create_checkbox_frame(
-        root, "TOPLEFT", 24, 0,
+        root, "TOPLEFT", 24, -8,
         "Режим розробки",
         options.dev_mode,
         nil,
@@ -3050,27 +3134,27 @@ local function setup_dev_mode_frame(content_frame)
     )
 
     options_frame.dev_mode_notify_activity_checkbox = create_checkbox_frame(
-        root, "TOPLEFT", 24, -24,
+        root, "TOPLEFT", 24, -32,
         "Сповіщення активності",
         options.dev_mode_notify_activity,
         "Сповіщати в чат кожен раз при знаходженні нового відсутнього запису.",
         function (self) options.dev_mode_notify_activity = self:GetChecked() end
     )
 
-    local stats_btn = wow.CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
-    stats_btn:SetPoint("TOPLEFT", 24, -64)
+    local stats_btn = CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
+    stats_btn:SetPoint("TOPLEFT", 24, -76)
     stats_btn:SetText("Статистика")
-    stats_btn:SetSize(140, 28)
+    stats_btn:SetSize(100, 28)
     stats_btn:SetScript("OnClick", function()
         dev_log_print_stats()
     end)
 
-    local reset_btn = wow.CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
-    reset_btn:SetPoint("TOPLEFT", 24 + 160, -64)
+    local reset_btn = CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
+    reset_btn:SetPoint("LEFT", stats_btn, "RIGHT", 12, 0)
     reset_btn:SetText("Скинути")
-    reset_btn:SetSize(140, 28)
+    reset_btn:SetSize(100, 28)
     reset_btn:SetScript("OnClick", function()
-        wow.StaticPopup_Show("CLASSICUA_CONFIRM_DEV_LOG_RESET")
+        StaticPopup_Show("CLASSICUA_CONFIRM_DEV_LOG_RESET")
     end)
 
     root:SetSize(content_frame:GetWidth(), 16 + 64 + 28)
@@ -3079,50 +3163,37 @@ end
 
 local function prepare_options_frame()
     local at_info = addonTable.info
-    options_frame = wow.CreateFrame("Frame", "ClassicUA_Options_Frame")
-    local f = nil
+    options_frame = CreateFrame("Frame", "ClassicUA_Options_Frame")
 
-    -- title
+    -- title & version
 
-    f = options_frame:CreateFontString()
-    f:SetPoint("TOPLEFT", 26, -20)
-    f:SetFontObject(SystemFont_Huge2)
-    f:SetText("|cff1177eeClassic|r|cffffdd00UA|r")
+    local title_string = options_frame:CreateFontString("$parent.Title")
+    title_string:SetPoint("TOPLEFT", 26, -20)
+    title_string:SetFontObject(SystemFont_Huge2)
+    title_string:SetText("|cff1177eeClassic|r|cffffdd00UA|r")
 
-    -- version & stats
-
-    f = options_frame:CreateFontString()
-    f:SetPoint("TOPRIGHT", -24, -20)
-    f:SetFontObject(SystemFont_Med2)
-    f:SetJustifyH("LEFT")
-    local stats = get_stats()
-    f:SetText(
-        "Версія: " .. wow.GetAddOnMetadata("ClassicUA", "Version") .. "\n"
-        .. "— завдань: " .. stats.quest_alliance + stats.quest_horde + stats.quest_both .. "\n"
-        .. "— книжок: " .. stats.book .. "\n"
-        .. "— локацій: " .. stats.zone .. "\n"
-        .. "— персонажів: " .. stats.npc .. "\n"
-        .. "— предметів: " .. stats.item .. "\n"
-        .. "— об'єктів: " .. stats.object .. "\n"
-        .. "— заклять: " .. stats.spell
-    )
+    local version_string = options_frame:CreateFontString("$parent.Version")
+    version_string:SetPoint("BOTTOMLEFT", title_string, "BOTTOMRIGHT", 10, 1.5)
+    version_string:SetFontObject(SystemFont_Med3)
+    version_string:SetTextColor(.5, .6, .7)
+    version_string:SetText(GetAddOnMetadata("ClassicUA", "Version"))
 
     -- reload button
 
-    f = wow.CreateFrame("Button", "$parent.Reload", options_frame, "UIPanelButtonTemplate")
-    f:SetPoint("TOPRIGHT", -46, -130)
-    f:SetText("/reload")
-    f:SetSize(100, 24)
-    f:SetScript("OnClick", function()
-        wow.StaticPopup_Show("CLASSICUA_CONFIRM_RELOAD_UI")
+    local reload_button = CreateFrame("Button", "$parent.Reload", options_frame, "UIPanelButtonTemplate")
+    reload_button:SetPoint("TOPRIGHT", -46, -18)
+    reload_button:SetText("/reload")
+    reload_button:SetSize(92, 24)
+    reload_button:SetScript("OnClick", function()
+        StaticPopup_Show("CLASSICUA_CONFIRM_RELOAD_UI")
     end)
-    f:SetScript("OnEnter", function(self)
+    reload_button:SetScript("OnEnter", function(self)
         local memory_usage_text = ""
-        wow.UpdateAddOnMemoryUsage()
-        for i = 1, wow.GetNumAddOns() do
-            local name = wow.GetAddOnInfo(i)
+        UpdateAddOnMemoryUsage()
+        for i = 1, GetNumAddOns() do
+            local name = GetAddOnInfo(i)
             if name == "ClassicUA" then
-                local megabytes = wow.GetAddOnMemoryUsage(i) / 1024
+                local megabytes = GetAddOnMemoryUsage(i) / 1024
                 memory_usage_text = string.format("\n\nВикористання пам'яті: %.1f Мб", megabytes)
             end
         end
@@ -3133,20 +3204,20 @@ local function prepare_options_frame()
             nil, nil, nil, nil, true
         )
     end)
-    f:SetScript("OnLeave", function()
+    reload_button:SetScript("OnLeave", function()
         wow.GameTooltip:Hide()
     end)
 
     -- reset button
 
-    f = wow.CreateFrame("Button", "$parent.Reset", options_frame, "UIPanelButtonTemplate")
-    f:SetPoint("TOPRIGHT", -46, -158)
-    f:SetText("Скинути")
-    f:SetSize(100, 24)
-    f:SetScript("OnClick", function()
-        wow.StaticPopup_Show("CLASSICUA_CONFIRM_SETTINGS_RESET")
+    local reset_button = CreateFrame("Button", "$parent.Reset", options_frame, "UIPanelButtonTemplate")
+    reset_button:SetPoint("TOPRIGHT", -46, -46)
+    reset_button:SetText("Скинути")
+    reset_button:SetSize(92, 24)
+    reset_button:SetScript("OnClick", function()
+        StaticPopup_Show("CLASSICUA_CONFIRM_SETTINGS_RESET")
     end)
-    add_tooltip_for_frame(f, "ANCHOR_RIGHT",
+    add_tooltip_for_frame(reset_button, "ANCHOR_RIGHT",
         "Скинути всі налаштування за замовчуванням. Деякі зміни будуть помітні лише після перезавантаження інтерфейсу гри."
     )
 
@@ -3172,9 +3243,9 @@ local function prepare_options_frame()
 
     -- tabs
 
-    options_frame.current_tab = wow.CreateFrame("Frame", "$parent.Current_Tab", options_frame, "BackdropTemplate")
-    options_frame.current_tab:SetPoint("TOPLEFT", 24, -224)
-    options_frame.current_tab:SetSize(600, 340)
+    options_frame.current_tab = CreateFrame("Frame", "$parent.Current_Tab", options_frame, "BackdropTemplate")
+    options_frame.current_tab:SetPoint("TOPLEFT", 24, -200)
+    options_frame.current_tab:SetSize(600, 364)
     setup_frame_background_and_border(options_frame.current_tab)
     setup_frame_scrollbar_and_content(options_frame.current_tab, {
         title = { font=fonts.header },
@@ -3204,14 +3275,18 @@ local function prepare_options_frame()
             title                   = "Причетні",
             content_title           = "Причетні",
             content_text            = at_info.contributors
+        }, {
+            title                   = "Статистика",
+            content_title           = "Статистика бази перекладів",
+            child_frame_setup_func  = setup_stat_count_frame,
         }
     }) do
-        local f = wow.CreateFrame("Button", "$parent.Tab_Button_" .. tab_index, options_frame, "UIPanelButtonTemplate")
+        local f = CreateFrame("Button", "$parent.Tab_Button_" .. tab_index, options_frame, "UIPanelButtonTemplate")
         table.insert(options_frame.tab_buttons, f)
         f.tab_index = tab_index
         f.tab_data = tab_data
-        f:SetSize(100, 32)
-        f:SetPoint("TOPLEFT", 24 + tab_index * f:GetWidth(), -200)
+        f:SetSize(92, 32)
+        f:SetPoint("BOTTOMLEFT", options_frame.current_tab, "TOPLEFT", -22 + tab_index * f:GetWidth(), -8)
         f:SetText(f.tab_data.title)
         f:SetScript("OnClick", function (self)
             options_frame.select_tab(self.tab_index)
@@ -3299,23 +3374,23 @@ local function prepare_options_frame()
 
     -- add options frame to Options -> AddOns
 
-    if wow.Settings and wow.Settings.RegisterCanvasLayoutCategory and wow.Settings.RegisterAddOnCategory then
-        local category = wow.Settings.RegisterCanvasLayoutCategory(options_frame, options_frame.name)
-        wow.Settings.RegisterAddOnCategory(category)
+    if Settings and Settings.RegisterCanvasLayoutCategory and Settings.RegisterAddOnCategory then
+        local category = Settings.RegisterCanvasLayoutCategory(options_frame, options_frame.name)
+        Settings.RegisterAddOnCategory(category)
         options_frame.category_id = category:GetID()
-    elseif wow.InterfaceOptions_AddCategory then
-        wow.InterfaceOptions_AddCategory(options_frame)
+    elseif InterfaceOptions_AddCategory then
+        InterfaceOptions_AddCategory(options_frame)
     else
         dev_log_issue("не визначено способу додати вікно налаштувань аддону")
     end
 end
 
 local function open_options()
-    if wow.Settings and wow.Settings.OpenToCategory then
-        wow.Settings.OpenToCategory(options_frame.category_id)
-    elseif wow.InterfaceAddOnsList_Update and wow.InterfaceOptionsFrame_OpenToCategory then
-        wow.InterfaceAddOnsList_Update()
-        wow.InterfaceOptionsFrame_OpenToCategory(options_frame)
+    if Settings and Settings.OpenToCategory then
+        Settings.OpenToCategory(options_frame.category_id)
+    elseif InterfaceAddOnsList_Update and InterfaceOptionsFrame_OpenToCategory then
+        InterfaceAddOnsList_Update()
+        InterfaceOptionsFrame_OpenToCategory(options_frame)
     else
         dev_log_issue("не визначено способу відкрити вікно налаштувань аддону")
     end
@@ -3323,16 +3398,14 @@ end
 
 local function prepare_slash_command()
     _G.SLASH_CLASSICUA_SETTINGS1 = "/ua"
-    wow.SlashCmdList.CLASSICUA_SETTINGS = function ()
-        open_options()
-    end
+    SlashCmdList.CLASSICUA_SETTINGS = open_options
 end
 
 -- ----------
 -- [ events ]
 -- ----------
 
-local event_frame = wow.CreateFrame("Frame")
+local event_frame = CreateFrame("Frame")
 
 event_frame:RegisterEvent("ADDON_LOADED")
 event_frame:RegisterEvent("PLAYER_LOGIN")
@@ -3350,9 +3423,9 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_slash_command()
         prepare_fonts()
 
-        wow.DEFAULT_CHAT_FRAME:AddMessage(
+        DEFAULT_CHAT_FRAME:AddMessage(
             assets.icon_ua_inline
-            .. " ClassicUA v" .. wow.GetAddOnMetadata("ClassicUA", "Version")
+            .. " ClassicUA v" .. GetAddOnMetadata("ClassicUA", "Version")
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
             .. (options.dev_mode and " — Режим розробки" or "")
         )
@@ -3386,7 +3459,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         on_item_text_closed()
 
     elseif (event=="GOSSIP_SHOW") then
-        on_gossip_show();
+        on_gossip_show()
     end
 end)
 
@@ -3399,7 +3472,7 @@ More at https://wowpedia.fandom.com/wiki/Secure_Execution_and_Tainting.
 
 Known so far:
 - global strings:
-    - changing strings from content menu of unit frame will block actions "Copy Character Name" and "Set Focus"
+    - changing strings from context menu of unit frame will block actions "Copy Character Name" and "Set Focus"
     - changing GENERAL_SPELLS (and potentially other strings in Spell Book) blocks its opening in combat
 - global functions:
     - changing C_GossipInfo.GetOptions will block gossip from opening in combat

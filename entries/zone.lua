@@ -4,8 +4,6 @@
 
 local _, addonTable = ...
 
-addonTable.zone_stats = { count=3154 }
-
 addonTable.zone = { -- [key] = text
 ["7th Legion Base Camp"] = "опорний табір 7го Легіону",
 ["7th Legion Front"] = "передова 7-го легіону",

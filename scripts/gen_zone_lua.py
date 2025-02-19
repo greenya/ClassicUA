@@ -22,15 +22,15 @@ def collect_zones():
                 if alias not in aliases:
                     issues.append(f'[!] Alias "{alias}" in term "{term.text_en}" matches other unique term')
 
-    return result, len(aliases), issues
+    return result, issues
 
-def print_report(zones, aliases_count, issues):
+def print_report(zones, issues):
     print('-' * 80)
     for key in zones:
         print(key, '->', zones[key])
 
     print('-' * 80)
-    print('Total zones: %d (+%d aliases)' % ( len(zones) - aliases_count, aliases_count ))
+    print('Total zones: %d' % len(zones))
 
     if issues:
         print('-' * 80)
@@ -41,11 +41,11 @@ def print_report(zones, aliases_count, issues):
 def main():
     sys.stdout.reconfigure(encoding='utf-8')
 
-    zones, aliases_count, issues = collect_zones()
+    zones, issues = collect_zones()
     zones = dict(sorted(zones.items()))
 
-    utils.write_lua_zone_file('../entries', 'zone', zones, len(zones) - aliases_count)
+    utils.write_lua_zone_file('../entries', 'zone', zones)
 
-    print_report(zones, aliases_count, issues)
+    print_report(zones, issues)
 
 main()
