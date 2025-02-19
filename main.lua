@@ -22,12 +22,8 @@ local wow = { -- only for frequently accessed wow api globals
     ItemTextGetText             = _G.ItemTextGetText,
     TargetFrame                 = _G.TargetFrame,
     UnitAura                    = _G.UnitAura,
-    UnitClass                   = _G.UnitClass,
-    UnitFactionGroup            = _G.UnitFactionGroup,
     UnitGUID                    = _G.UnitGUID,
     UnitName                    = _G.UnitName,
-    UnitRace                    = _G.UnitRace,
-    UnitSex                     = _G.UnitSex,
     ShoppingTooltip1            = _G.ShoppingTooltip1,
     ShoppingTooltip2            = _G.ShoppingTooltip2,
     ShouldShowName              = _G.ShouldShowName,
@@ -805,6 +801,28 @@ local function reset_options()
     end
 end
 
+-- ---------------
+-- [ player unit ]
+-- ---------------
+
+---@class player_unit_class
+local player_unit = {}
+
+-- todo: handle faction update when panda-player chooses faction (mop+)
+-- note: if we expect to update faction then prepare_quests() needs rework
+
+local function prepare_player_unit()
+    player_unit.name        = UnitName("player")
+    player_unit.sex         = UnitSex("player")
+    player_unit.is_male     = player_unit.sex == 2
+    player_unit.is_female   = player_unit.sex == 3
+    player_unit.race        = select(2, UnitRace("player"))
+    player_unit.class       = select(2, UnitClass("player"))
+    player_unit.faction     = UnitFactionGroup("player")
+    player_unit.is_alliance = player_unit.faction == "Alliance"
+    player_unit.is_horde    = player_unit.faction == "Horde"
+end
+
 -- -----------
 -- [ entries ]
 -- -----------
@@ -864,11 +882,10 @@ local function prepare_glossary()
     at.glossary = glossary
 end
 
-local function prepare_codes(name, race, class, is_male)
+local function prepare_codes(name, name_cases, race, class, is_male)
     local at = addonTable
     local sex = is_male and 1 or 2
     local cases = { "н", "р", "д", "з", "о", "м", "к" }
-    local name_cases = character_options.name_cases
     local codes = {}
     local race_lower = race:lower()
 
@@ -970,7 +987,7 @@ end
 local function make_chat_text(original, translation)
     local known_templates = { ["name"] = true, ["race"] = true, ["class"] = true, ["target"] = true }
     local at = addonTable
-    local sex = wow.UnitSex("player") == 2 and 1 or 2  -- UnitSex("player") == 2 - male
+    local sex = player_unit.is_male and 1 or 2
 
     if not translation then
         return nil
@@ -1019,7 +1036,7 @@ local function make_chat_text(original, translation)
         if lower(pattern_uk_type) == "ім'я" then
             local name_en = template_matches["name"]
             local name_uk
-            if name_en == wow.UnitName("player") then
+            if name_en == player_unit.name then
                 name_uk = character_options.name_cases and character_options.name_cases[case] or name_en
             else
                 name_uk = name_en
@@ -1054,7 +1071,7 @@ local function make_chat_text(original, translation)
         if lower(pattern_uk_type) == "ціль" then
             local target_en = template_matches["target"]
             local target_uk
-            if target_en == wow.UnitName("player") then
+            if target_en == player_unit.name then
                 target_uk = character_options.name_cases and character_options.name_cases[case]
             elseif at.class[target_en:upper():gsub(" ", "")] then
                 target_uk = at.class[target_en:upper():gsub(" ", "")][case][sex]
@@ -2798,7 +2815,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
         return nil, chat_text, npc_name, lang_name, ...
     end
 
-    if npc_name == wow.UnitName("player") then
+    if npc_name == player_unit.name then
         npc_name = "!player"
     end
 
@@ -3259,7 +3276,7 @@ local function prepare_options_frame()
     for tab_index, tab_data in ipairs({
         {
             title                   = "Персонаж",
-            content_title           = "Персонаж: " .. wow.UnitName("player"),
+            content_title           = "Персонаж: " .. player_unit.name,
             content_text            = at_info.player_character_desc,
             child_frame_setup_func  = setup_player_name_cases_frame
         }, {
@@ -3417,11 +3434,26 @@ event_frame:RegisterEvent("GOSSIP_SHOW")
 event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
         self:UnregisterEvent("ADDON_LOADED")
-
         prepare_options()
+        prepare_fonts()
+
+    elseif event == "PLAYER_LOGIN" then
+        prepare_player_unit()
+        prepare_talent_tree(player_unit.class)
+        prepare_quests(player_unit.is_alliance)
+        prepare_codes(player_unit.name, character_options.name_cases, player_unit.race, player_unit.class, player_unit.is_male)
+        prepare_get_text_code_replace_seq(player_unit.name)
+        prepare_glossary()
+
+        prepare_data_hooks_for_quests()
+        prepare_data_hooks_for_quest_greetings()
+        prepare_data_hooks_for_gossip()
+        prepare_data_hooks_for_zones()
+        prepare_data_hooks_for_item_texts()
+        prepare_frame_hooks()
+
         prepare_options_frame()
         prepare_slash_command()
-        prepare_fonts()
 
         DEFAULT_CHAT_FRAME:AddMessage(
             assets.icon_ua_inline
@@ -3429,25 +3461,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
             .. (options.dev_mode and " — Режим розробки" or "")
         )
-
-    elseif event == "PLAYER_LOGIN" then
-        local name = wow.UnitName("player")
-        local _, class = wow.UnitClass("player")
-        local _, race = wow.UnitRace("player")
-        local sex = wow.UnitSex("player")
-        local faction = wow.UnitFactionGroup("player")
-
-        prepare_talent_tree(class)
-        prepare_quests(faction == "Alliance")
-        prepare_glossary()
-        prepare_codes(name, race, class, sex == 2) -- 2 for male
-        prepare_get_text_code_replace_seq(name)
-        prepare_data_hooks_for_quests()
-        prepare_data_hooks_for_quest_greetings()
-        prepare_data_hooks_for_gossip()
-        prepare_data_hooks_for_zones()
-        prepare_data_hooks_for_item_texts()
-        prepare_frame_hooks()
 
     elseif event == "PLAYER_TARGET_CHANGED" then
         on_player_target_changed()
