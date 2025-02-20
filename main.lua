@@ -159,7 +159,7 @@ local function hash(text) -- https://wowwiki-archive.fandom.com/wiki/USERAPI_Str
             ((string.byte(text, i+2) or (len - i + 256)) * 3932164)
     end
 
-    return math.fmod(counter, 4294967291) -- 2^32 - 5: Prime (and different from the prime in the loop)
+    return math.fmod(counter, 4294967291)
 end
 
 local function fix_float_number(value)
@@ -1289,14 +1289,6 @@ local function get_glossary_text(entry_key, fallback, hint_type)
 
     local key, key1, key2
 
-    -- check using Taxi Map destination format: Undercity, Tirisfal
-    key1, key2 = string.gmatch(entry_key, "(.*), (.*)")()
-    if key1 and key2 then
-        if at.glossary[key1] and at.glossary[key2] then
-            return capitalize(at.glossary[key1]) .. ", " .. capitalize(at.glossary[key2])
-        end
-    end
-
     -- check using Questie' quest format: [57+] Feathermoon Stronghold
     key = string.gmatch(entry_key, "%[.+%] (.*)")()
     if key then
@@ -1441,7 +1433,7 @@ local function get_chat_text(npc_name, chat_text)
 end
 
 local function translate_quest_objective_task(text)
-    -- try parse "LEFT: RIGHT" and translate it
+    -- try parse "LEFT: RIGHT"
     local parts = { string.split(":", text, 2) }
     if #parts == 2 and #parts[1] > 0 then
         local found_left = get_glossary_text(parts[1])
@@ -1461,6 +1453,20 @@ local function translate_quest_objective_task(text)
         end
 
         text = parts[1] .. ":" .. parts[2]
+    else
+        text = get_glossary_text(text, text)
+    end
+
+    return text
+end
+
+local function translate_taxi_node_name(text)
+    -- try parse: "NAME1, NAME2"
+    local key1, key2 = string.gmatch(text, "(.*), (.*)")()
+    if key1 and key2 then
+        key1_text = get_glossary_text(key1, key1, "zone")
+        key2_text = get_glossary_text(key2, key2, "zone")
+        text = string.format("%s, %s", key1_text, key2_text)
     else
         text = get_glossary_text(text, text)
     end
@@ -1931,6 +1937,7 @@ local data_hooks = {
         GetSubZoneText                  = _G.GetSubZoneText,
         GetAreaText                     = _G.GetAreaText,
         GetMinimapZoneText              = _G.GetMinimapZoneText,
+        TaxiNodeName                    = _G.TaxiNodeName,
         -- item texts
         ItemTextGetText                 = _G.ItemTextGetText,
         ItemTextGetItem                 = _G.ItemTextGetItem,
@@ -2299,6 +2306,14 @@ local function prepare_data_hooks_for_zones()
             text = get_glossary_text(text, text, "zone")
         end
         return text
+    end
+
+    _G.TaxiNodeName = function (...)
+        local name = dh.original.TaxiNodeName(...)
+        if type(name) == "string" then
+            name = translate_taxi_node_name(name)
+        end
+        return name
     end
 
     -- force minimap update, otherwise it will show original zone name until player changes zone
@@ -3481,7 +3496,9 @@ end)
 @taint
 
 We mark "@taint" places which are disabled as they cause ui to stop working.
-More at https://wowpedia.fandom.com/wiki/Secure_Execution_and_Tainting.
+More at:
+- https://wowpedia.fandom.com/wiki/Secure_Execution_and_Tainting
+- https://wowpedia.fandom.com/wiki/Category:API_functions/restricted
 
 Known so far:
 - global strings:
