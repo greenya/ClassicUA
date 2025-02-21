@@ -18,8 +18,6 @@ local wow = { -- only for frequently accessed wow api globals
     GetTalentInfo               = _G.GetTalentInfo,
     GossipFrame                 = _G.GossipFrame,
     ItemRefTooltip              = _G.ItemRefTooltip,
-    ItemTextGetPage             = _G.ItemTextGetPage,
-    ItemTextGetText             = _G.ItemTextGetText,
     TargetFrame                 = _G.TargetFrame,
     UnitAura                    = _G.UnitAura,
     UnitGUID                    = _G.UnitGUID,
@@ -219,19 +217,6 @@ local function tooltip_title_line(tooltip)
     return text
 end
 
--- unit_id is one of https://warcraft.wiki.gg/wiki/UnitId
-local function npc_id_from_unit_id(unit_id)
-    if type(unit_id) == "string" then
-        local guid = wow.UnitGUID(unit_id)
-        if guid then
-            local kind, _, _, _, _, id, _ = string.split("-", guid)
-            if id and (kind == "Creature" or kind == "Vehicle") then
-                return tonumber(id)
-            end
-        end
-    end
-end
-
 local function chat_bubble_font_string_with_text(text)
     local bubbles = wow.C_ChatBubbles:GetAllChatBubbles()
     for _, bubble in pairs(bubbles) do
@@ -247,8 +232,20 @@ local function chat_bubble_font_string_with_text(text)
     end
 end
 
+-- unit_id is one of https://warcraft.wiki.gg/wiki/UnitId
+local function npc_id_from_unit_id(unit_id)
+    if type(unit_id) == "string" then
+        local guid = wow.UnitGUID(unit_id)
+        if guid then
+            local kind, _, _, _, _, id, _ = string.split("-", guid)
+            if id and (kind == "Creature" or kind == "Vehicle") then
+                return tonumber(id)
+            end
+        end
+    end
+end
+
 -- returns 0 in case no quest (no npc quest and quest log is empty)
--- note: 0 is a truthy value in Lua
 local function get_currently_viewed_quest_id()
     local npc_quest_id = wow.GetQuestID()
     if npc_quest_id and npc_quest_id > 0 then
@@ -263,36 +260,10 @@ local function get_currently_viewed_quest_id()
     return 0
 end
 
----@type integer?
-local last_item_text_item_id = 0
-
--- returns 0 in case no book (item text) is opened at the moment, can be called when
--- book is about to be open, in such case, the last mouse hovered item id will be returned
--- note: 0 is a truthy value in Lua
+-- returns 0 in case no book (item text) is opened at the moment
 local function get_currently_viewed_book_id()
-    if last_item_text_item_id and last_item_text_item_id > 0 then
-        return last_item_text_item_id
-    end
-
-    local meta = wow.GameTooltip.classicua or {}
-    if meta.entry_type == "item" and meta.entry_id then
-        return tonumber(meta.entry_id)
-    end
-
-    return 0
-end
-
-local function on_item_text_begin()
-    -- we store last mouse hovered item in separate variable, because player can mouse over
-    -- many items before closing the book, so we keep the id
-    local meta = wow.GameTooltip.classicua or {}
-    if meta.entry_type == "item" and meta.entry_id then
-        last_item_text_item_id = tonumber(meta.entry_id)
-    end
-end
-
-local function on_item_text_closed()
-    last_item_text_item_id = 0
+    local meta = ItemTextFrame.classicua or {}
+    return meta.entry_type == "item" and meta.entry_id or 0
 end
 
 local function mouse_hover_frame()
@@ -301,6 +272,20 @@ local function mouse_hover_frame()
     elseif wow.GetMouseFoci then
         return wow.GetMouseFoci()[1]
     end
+end
+
+local function update_item_text_scrollbar()
+    local sf, sb = ItemTextScrollFrame, ItemTextScrollFrameScrollBar
+    if not sf or not sb then return end
+
+    sf.scrollBarHideable = false
+    sf:GetScrollChild():SetHeight(1)
+    sf:UpdateScrollChildRect()
+    if math.floor(sf:GetVerticalScrollRange()) > 0 then
+        sf:GetScrollChild():SetHeight(sf:GetHeight() + sf:GetVerticalScrollRange() + 30)
+    end
+
+    sb:SetValue(0)
 end
 
 local function get_match_list_of_equal_meaning_english_texts_for_phrase(phrase)
@@ -1185,7 +1170,7 @@ local function get_entry(entry_type, entry_id)
         if book then
             return make_text_array(book)
         elseif options.dev_mode and entry_id ~= 8383 then -- #8383 is a saved letter inventory item
-            dev_log_missing_book_page(entry_id, wow.ItemTextGetPage(), wow.ItemTextGetText())
+            dev_log_missing_book_page(entry_id, ItemTextGetPage(), ItemTextGetText())
         end
 
         return
@@ -1921,7 +1906,6 @@ local data_hooks = {
         GetActiveTitle                  = _G.GetActiveTitle,
         -- gossips
         C_GossipInfo_GetText            = _G.C_GossipInfo.GetText,
-        -- C_GossipInfo_GetOptions         = _G.C_GossipInfo.GetOptions, -- @taint
         C_GossipInfo_GetPoiInfo         = _G.C_GossipInfo.GetPoiInfo,
         C_GossipInfo_GetAvailableQuests = _G.C_GossipInfo.GetAvailableQuests,
         C_GossipInfo_GetActiveQuests    = _G.C_GossipInfo.GetActiveQuests,
@@ -1938,9 +1922,6 @@ local data_hooks = {
         GetAreaText                     = _G.GetAreaText,
         GetMinimapZoneText              = _G.GetMinimapZoneText,
         TaxiNodeName                    = _G.TaxiNodeName,
-        -- item texts
-        ItemTextGetText                 = _G.ItemTextGetText,
-        ItemTextGetItem                 = _G.ItemTextGetItem,
     },
     header = {},
     quest = {},
@@ -2159,23 +2140,6 @@ local function prepare_data_hooks_for_gossip()
         return text
     end
 
-    -- @taint
-    -- _G.C_GossipInfo.GetOptions = function (...)
-    --     local list = dh.original.C_GossipInfo_GetOptions(...)
-    --     local npc_id = npc_id_from_unit_id("npc")
-    --     if npc_id then
-    --         for ii, item in ipairs(list) do
-    --             if item and item.name then
-    --                 local text_ua = get_gossip_text_for_player_reply(npc_id, item.name)
-    --                 if text_ua then
-    --                     item.name = text_ua
-    --                 end
-    --             end
-    --         end
-    --     end
-    --     return list
-    -- end
-
     _G.C_GossipInfo.GetPoiInfo = function (...)
         local info = dh.original.C_GossipInfo_GetPoiInfo(...)
         if info and info.name then
@@ -2318,35 +2282,6 @@ local function prepare_data_hooks_for_zones()
 
     -- force minimap update, otherwise it will show original zone name until player changes zone
     Minimap_Update()
-end
-
-local function prepare_data_hooks_for_item_texts()
-    local dh = data_hooks
-
-    _G.ItemTextGetText = function (...)
-        local text = dh.original.ItemTextGetText(...)
-        local item_id = get_currently_viewed_book_id()
-        local book_entry = get_entry("book", item_id)
-        if book_entry then
-            local page_number = wow.ItemTextGetPage()
-            if book_entry[page_number] then
-                text = set_hooked_data_translation("book", item_id, text, book_entry[page_number])
-            end
-        end
-        return text
-    end
-
-    _G.ItemTextGetItem = function (...)
-        local text = dh.original.ItemTextGetItem(...)
-        local item_id = get_currently_viewed_book_id()
-        if item_id and item_id > 0 then
-            local item_entry = get_entry("item", item_id)
-            if item_entry then
-                text = set_hooked_data_translation("book", item_id, text, capitalize(item_entry[1]))
-            end
-        end
-        return text
-    end
 end
 
 -- ----------
@@ -2548,7 +2483,7 @@ local frame_hooks = {
           extra_target=QuestMapFrame and QuestMapFrame.DetailsFrame and QuestMapFrame.DetailsFrame.RewardsFrame or nil },
         -- books (item texts)
         { hd_type="book", parent={ frame=ItemTextScrollFrame, point="TOPRIGHT", x=-2, y=-12 },
-          extra_target=ItemTextFrame },
+          extra_target=ItemTextFrame, post_update=update_item_text_scrollbar },
     },
 }
 
@@ -2696,8 +2631,13 @@ local function lang_switchers_update_all()
 
             if s.hd_type and hd_key then
                 lang_switcher_update_translation_for_frame(s.frame:GetParent(), s.hd_type, hd_key)
+
                 if s.extra_target then
                     lang_switcher_update_translation_for_frame(s.extra_target, s.hd_type, hd_key)
+                end
+
+                if s.post_update then
+                    s.post_update()
                 end
             end
         end
@@ -2739,6 +2679,55 @@ local function prepare_frame_hooks()
         local p = switcher.parent
         if p.frame then
             switcher.frame = create_lang_switcher_frame(p.frame, p.point, p.x, p.y)
+        end
+    end
+end
+
+-- -------------------
+-- [ item text frame ]
+-- -------------------
+
+ItemTextFrame.classicua = {}
+
+local function on_item_text_begin()
+    local tt_meta = wow.GameTooltip.classicua or {}
+    if tt_meta.entry_type == "item" and tt_meta.entry_id then
+        local meta = ItemTextFrame.classicua
+        meta.entry_type = tt_meta.entry_type
+        meta.entry_id = tonumber(tt_meta.entry_id)
+    end
+end
+
+local function on_item_text_closed()
+    local meta = ItemTextFrame.classicua
+    meta.entry_type = false
+    meta.entry_id = false
+end
+
+local function on_item_text_ready()
+    local meta = ItemTextFrame.classicua
+
+    if meta.entry_type == "item" and meta.entry_id then
+        local item_id = meta.entry_id
+
+        local item_entry = get_entry("item", item_id)
+        if item_entry then
+            local en = ItemTextGetItem()
+            local uk = capitalize(item_entry[1])
+            local translation = set_hooked_data_translation("book", item_id, en, uk)
+            ItemTextTitleText:SetText(translation)
+        end
+
+        local book_entry = get_entry("book", item_id)
+        if book_entry then
+            local page_num = ItemTextGetPage()
+            if book_entry[page_num] then
+                local en = ItemTextGetText()
+                local uk = book_entry[page_num]
+                local translation = set_hooked_data_translation("book", item_id, en, uk)
+                ItemTextPageText:SetText("\n" .. translation)
+                update_item_text_scrollbar()
+            end
         end
     end
 end
@@ -3444,6 +3433,7 @@ event_frame:RegisterEvent("PLAYER_LOGIN")
 event_frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
+event_frame:RegisterEvent("ITEM_TEXT_READY")
 event_frame:RegisterEvent("GOSSIP_SHOW")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
@@ -3464,7 +3454,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         prepare_data_hooks_for_quest_greetings()
         prepare_data_hooks_for_gossip()
         prepare_data_hooks_for_zones()
-        prepare_data_hooks_for_item_texts()
         prepare_frame_hooks()
 
         prepare_options_frame()
@@ -3486,6 +3475,9 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
     elseif event == "ITEM_TEXT_CLOSED" then
         on_item_text_closed()
 
+    elseif event == "ITEM_TEXT_READY" then
+        on_item_text_ready()
+
     elseif (event=="GOSSIP_SHOW") then
         on_gossip_show()
     end
@@ -3502,10 +3494,11 @@ More at:
 
 Known so far:
 - global strings:
-    - changing strings from context menu of unit frame will block actions "Copy Character Name" and "Set Focus"
+    - changing strings from context menu of unit frame blocks the actions "Copy Character Name" and "Set Focus"
     - changing GENERAL_SPELLS (and potentially other strings in Spell Book) blocks its opening in combat
 - global functions:
-    - changing C_GossipInfo.GetOptions will block gossip from opening in combat
+    - changing C_GossipInfo.GetOptions blocks gossip from opening in combat
+    - changing ItemTextGetText or ItemTextGetItem blocks book from opening in combat
 
 Target dummy can be used for easy getting into combat and testing if ui working properly when making changes.
 
