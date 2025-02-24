@@ -2846,7 +2846,9 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
         wow.C_Timer.After(0.01, function ()
             local font_string = chat_bubble_font_string_with_text(chat_text)
             if font_string then
+                local MAX_CHATBUBBLE_WIDTH = 314 -- value observed from default chat bubbles.
                 font_string:SetText(chat_text_uk)
+                font_string:SetWidth(math.min(font_string:GetStringWidth(), MAX_CHATBUBBLE_WIDTH))
             end
         end)
     else
