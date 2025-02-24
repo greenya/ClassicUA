@@ -1,16 +1,16 @@
 local _, addonTable = ...
-addonTable.race = { -- [id] = { [н/р/д/з/о/м/к] = { 1=male, 2=female, 3=sexless_many, sexless_one (optional) } }
+addonTable.race = { -- [id] = { [н/р/д/з/о/м/к] = { 1=male, 2=female, 3=neutral_plural, neutral_singular (optional) } }
 
 -- id: lowercased value of .clientFileString column from https://warcraft.wiki.gg/wiki/RaceId
 
 ["human"] = {
-    ["н"] = { "чоловік", "жінка", "люди", sexless_one="людина" },
-    ["р"] = { "чоловіка", "жінки", "людей", sexless_one="людини" },
-    ["д"] = { "чоловіку", "жінці", "людям", sexless_one="людині" },
-    ["з"] = { "чоловіка", "жінку", "людей", sexless_one="людину" },
-    ["о"] = { "чоловіком", "жінкою", "людьми", sexless_one="людиною" },
-    ["м"] = { "чоловікові", "жінці", "людях", sexless_one="людині" },
-    ["к"] = { "чоловіче", "жінко", "люди", sexless_one="людино" },
+    ["н"] = { "чоловік", "жінка", "люди", neutral_singular="людина" },
+    ["р"] = { "чоловіка", "жінки", "людей", neutral_singular="людини" },
+    ["д"] = { "чоловіку", "жінці", "людям", neutral_singular="людині" },
+    ["з"] = { "чоловіка", "жінку", "людей", neutral_singular="людину" },
+    ["о"] = { "чоловіком", "жінкою", "людьми", neutral_singular="людиною" },
+    ["м"] = { "чоловікові", "жінці", "людях", neutral_singular="людині" },
+    ["к"] = { "чоловіче", "жінко", "люди", neutral_singular="людино" },
 },
 
 ["dwarf"] = {
@@ -124,3 +124,19 @@ addonTable.race = { -- [id] = { [н/р/д/з/о/м/к] = { 1=male, 2=female, 3=s
 },
 
 }
+
+addonTable.race["undead"] = addonTable.race["scourge"]  -- Alias for raceName
+
+-- Adding key for plural chat cases: {раса:мн}, {раса:мр}, etc
+for _, race_table in pairs(addonTable.race) do
+    local origKeys = {}
+    for case, _ in pairs(race_table) do
+        table.insert(origKeys, case)
+    end
+
+    for _, key in ipairs(origKeys) do
+        local newKey = "м" .. key
+        local pluralForm = race_table[key][3]
+        race_table[newKey] = { pluralForm, pluralForm }
+    end
+end
