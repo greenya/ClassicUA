@@ -867,6 +867,20 @@ local function prepare_glossary()
     at.glossary = glossary
 end
 
+-- pushes codes "xxx", "Xxx", "XXX" to given table
+-- all string args are expected to be lowercased; case_key is optional
+local push_code_group_to_table = function (tbl, name_key, case_key, text)
+    if case_key then
+        tbl["{"            .. name_key  .. ":" .. case_key .. "}"] = text               -- {клас:о} = "магом"
+        tbl["{" .. capitalize(name_key) .. ":" .. case_key .. "}"] = capitalize(text)   -- {Клас:о} = "Магом"
+        tbl["{" ..      upper(name_key) .. ":" .. case_key .. "}"] = upper(text)        -- {КЛАС:о} = "МАГОМ"
+    else
+        tbl["{"            .. name_key  ..                    "}"] = text               -- {клас} = "маг"
+        tbl["{" .. capitalize(name_key) ..                    "}"] = capitalize(text)   -- {Клас} = "Маг"
+        tbl["{" ..      upper(name_key) ..                    "}"] = upper(text)        -- {КЛАС} = "МАГ"
+    end
+end
+
 local function prepare_codes(name, name_cases, race, class, is_male)
     local at = addonTable
     local sex = is_male and 1 or 2
@@ -885,13 +899,9 @@ local function prepare_codes(name, name_cases, race, class, is_male)
             end
         end
 
-        codes["{ім'я:" .. c .. "}"] = t
-        codes["{Ім'я:" .. c .. "}"] = capitalize(t)
-        codes["{ІМ'Я:" .. c .. "}"] = string.upper(t)
-        if c == "н" then -- "н" is default grammatical case
-            codes["{ім'я}"] = codes["{ім'я:н}"]
-            codes["{Ім'я}"] = codes["{Ім'я:н}"]
-            codes["{ІМ'Я}"] = codes["{ІМ'Я:н}"]
+        push_code_group_to_table(codes, "ім'я", c, t)
+        if c == "н" then
+            push_code_group_to_table(codes, "ім'я", nil, t)
         end
     end
 
@@ -905,13 +915,9 @@ local function prepare_codes(name, name_cases, race, class, is_male)
 
     for _, c in ipairs(cases) do
         local t = at.race[race_lower][c][sex]
-        codes["{раса:" .. c .. "}"] = t
-        codes["{Раса:" .. c .. "}"] = capitalize(t)
-        codes["{РАСА:" .. c .. "}"] = string.upper(t)
-        if c == "н" then -- "н" is default grammatical case
-            codes["{раса}"] = codes["{раса:н}"]
-            codes["{Раса}"] = codes["{Раса:н}"]
-            codes["{РАСА}"] = codes["{РАСА:н}"]
+        push_code_group_to_table(codes, "раса", c, t)
+        if c == "н" then
+            push_code_group_to_table(codes, "раса", nil, t)
         end
     end
 
@@ -924,13 +930,9 @@ local function prepare_codes(name, name_cases, race, class, is_male)
 
     for _, c in ipairs(cases) do
         local t = at.class[class][c][sex]
-        codes["{клас:" .. c .. "}"] = t
-        codes["{Клас:" .. c .. "}"] = capitalize(t)
-        codes["{КЛАС:" .. c .. "}"] = string.upper(t)
-        if c == "н" then -- "н" is default grammatical case
-            codes["{клас}"] = codes["{клас:н}"]
-            codes["{Клас}"] = codes["{Клас:н}"]
-            codes["{КЛАС}"] = codes["{КЛАС:н}"]
+        push_code_group_to_table(codes, "клас", c, t)
+        if c == "н" then
+            push_code_group_to_table(codes, "клас", nil, t)
         end
     end
 
