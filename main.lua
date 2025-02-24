@@ -900,6 +900,7 @@ local function prepare_codes(name, name_cases, race, class, is_male)
     if not at.race[race_lower] then
         -- use some default value in case race is unknown/unsupported
         race = "Human"
+        race_lower = race:lower()
     end
 
     for _, c in ipairs(cases) do
