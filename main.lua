@@ -990,7 +990,6 @@ local function make_chat_text(original, translation)
     local text_templates = {}
     for i = 2, #translation_split do
         local template = translation_split[i]
-        -- TODO: Instead of one-placeholder-per-template remember placeholders types, allowing to have few placeholders in one template
         local template_type = template:match("<(.+)>")
         if known_templates[template_type] then
             text_templates[template_type] = template
@@ -1029,7 +1028,7 @@ local function make_chat_text(original, translation)
             else
                 name_uk = name_en
             end
-            name_uk = name_uk and pattern_uk_type == "Ім'я" and capitalize(name_uk) or name_uk  -- TODO: check these operators and maybe optimize their usage
+            name_uk = name_uk and pattern_uk_type == "Ім'я" and capitalize(name_uk) or name_uk
             name_uk = name_uk and pattern_uk_type == "ІМ'Я" and upper(name_uk) or name_uk
             translation = translation:gsub(pattern_uk, name_uk)
         end
@@ -1037,10 +1036,6 @@ local function make_chat_text(original, translation)
         if pattern_uk_type:lower() == "раса" then
             local race_en = template_matches["race"]
             local race_key = race_en:lower():gsub(" ", "")
-            if race_key == "undead" then
-                -- Player's race called "scourge", but NPCs call them "undead"
-                race_key = "scourge"
-            end
             local race_uk = at.race[race_key] and at.race[race_key][case][sex]
             race_uk = race_uk and pattern_uk_type == "Раса" and capitalize(race_uk) or race_uk
             race_uk = race_uk and pattern_uk_type == "РАСА" and upper(race_uk) or race_uk
@@ -1065,9 +1060,6 @@ local function make_chat_text(original, translation)
                 target_uk = at.class[target_en:upper():gsub(" ", "")][case][sex]
             elseif at.race[target_en:lower():gsub(" ", "")] then
                 local race_key = target_en:lower():gsub(" ", "")
-                if race_key == "undead" then
-                    race_key = "scourge"
-                end
                 target_uk = at.race[race_key][case][sex]
             elseif at.glossary[target_en:lower()] then
                 target_uk = at.glossary[target_en:lower()]

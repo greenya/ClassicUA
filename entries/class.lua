@@ -104,3 +104,17 @@ addonTable.class = { -- [id] = { [н/р/д/з/о/м/к] = { 1=male, 2=female, 3=
 },
 
 }
+
+-- Adding key for plural chat cases: {клас:мн}, {клас:мр}, etc
+for _, class_table in pairs(addonTable.class) do
+    local origKeys = {}
+    for case, _ in pairs(class_table) do
+        table.insert(origKeys, case)
+    end
+
+    for _, key in ipairs(origKeys) do
+        local newKey = "м" .. key
+        local pluralForm = class_table[key][3]
+        class_table[newKey] = { pluralForm, pluralForm }
+    end
+end
