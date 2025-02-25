@@ -886,7 +886,6 @@ local function prepare_codes(name, name_cases, race, class, is_male)
     local sex = is_male and 1 or 2
     local cases = { "н", "р", "д", "з", "о", "м", "к" }
     local codes = {}
-    local race_lower = race:lower()
 
     -- name
 
@@ -907,14 +906,14 @@ local function prepare_codes(name, name_cases, race, class, is_male)
 
     -- race
 
-    if not at.race[race_lower] then
+    local race_key = race:lower()
+    if not at.race[race_key] then
         -- use some default value in case race is unknown/unsupported
-        race = "Human"
-        race_lower = race:lower()
+        race_key = "human"
     end
 
     for _, c in ipairs(cases) do
-        local t = at.race[race_lower][c][sex]
+        local t = at.race[race_key][c][sex]
         push_code_group_to_table(codes, "раса", c, t)
         if c == "н" then
             push_code_group_to_table(codes, "раса", nil, t)
@@ -923,13 +922,14 @@ local function prepare_codes(name, name_cases, race, class, is_male)
 
     -- class
 
-    if not at.class[class] then
+    local class_key = class:lower()
+    if not at.class[class_key] then
         -- use some default value in case class is unknown/unsupported
-        class = "WARRIOR"
+        class_key = "warrior"
     end
 
     for _, c in ipairs(cases) do
-        local t = at.class[class][c][sex]
+        local t = at.class[class_key][c][sex]
         push_code_group_to_table(codes, "клас", c, t)
         if c == "н" then
             push_code_group_to_table(codes, "клас", nil, t)
@@ -1044,7 +1044,7 @@ local function make_chat_text(original, translation)
 
         if pattern_uk_type:lower() == "клас" then
             local class_en = template_matches["class"]
-            local class_key = class_en:upper():gsub(" ", "")
+            local class_key = class_en:lower():gsub(" ", "")
             local class_uk = at.class[class_key] and at.class[class_key][case][sex]
             class_uk = class_uk and pattern_uk_type == "Клас" and capitalize(class_uk) or class_uk
             class_uk = class_uk and pattern_uk_type == "КЛАС" and upper(class_uk) or class_uk
@@ -1056,8 +1056,8 @@ local function make_chat_text(original, translation)
             local target_uk
             if target_en == player_unit.name then
                 target_uk = character_options.name_cases and character_options.name_cases[case]
-            elseif at.class[target_en:upper():gsub(" ", "")] then
-                target_uk = at.class[target_en:upper():gsub(" ", "")][case][sex]
+            elseif at.class[target_en:lower():gsub(" ", "")] then
+                target_uk = at.class[target_en:lower():gsub(" ", "")][case][sex]
             elseif at.race[target_en:lower():gsub(" ", "")] then
                 local race_key = target_en:lower():gsub(" ", "")
                 target_uk = at.race[race_key][case][sex]
