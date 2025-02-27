@@ -2872,27 +2872,35 @@ local function prepare_fonts()
     end
 
     local font_overrides = {
-        { name="GameFontNormal",        file=assets.font_frizqt },
-        { name="GameFontNormalLarge",   file=assets.font_frizqt },
-        { name="GameTooltipHeader",     file=assets.font_frizqt },
-        { name="MailFont_Large",        file=assets.font_morpheus },
-        { name="PVPInfoTextFont",       file=assets.font_frizqt },
-        { name="QuestFont_Huge",        file=assets.font_morpheus },
-        { name="QuestFont_Large",       file=assets.font_morpheus },
-        { name="QuestFont_Larger",      file=assets.font_morpheus },
-        { name="QuestFont",             file=assets.font_frizqt },
-        { name="QuestFontNormalSmall",  file=assets.font_frizqt },
-        { name="SubZoneTextFont",       file=assets.font_frizqt },
-        { name="Tooltip_Med",           file=assets.font_frizqt },
-        { name="Tooltip_Small",         file=assets.font_frizqt },
-        { name="WorldMapTextFont",      file=assets.font_frizqt },
-        { name="ZoneTextFont",          file=assets.font_frizqt },
+        { name="CombatTextFont",                file=assets.font_frizqt, height=25 },
+        { name="CombatTextFontOutline",         file=assets.font_frizqt, height=25 },
+        { name="GameFontHighlightSmallOutline", file=assets.font_frizqt },
+        { name="GameFontNormal",                file=assets.font_frizqt },
+        { name="GameFontNormalLarge",           file=assets.font_frizqt },
+        { name="GameFontNormalSmall",           file=assets.font_frizqt },
+        { name="GameTooltipHeader",             file=assets.font_frizqt },
+        { name="MailFont_Large",                file=assets.font_morpheus },
+        { name="PVPInfoTextFont",               file=assets.font_frizqt },
+        { name="QuestFont_Huge",                file=assets.font_morpheus },
+        { name="QuestFont_Large",               file=assets.font_morpheus },
+        { name="QuestFont_Larger",              file=assets.font_morpheus },
+        { name="QuestFont",                     file=assets.font_frizqt },
+        { name="QuestFontNormalSmall",          file=assets.font_frizqt },
+        { name="SubZoneTextFont",               file=assets.font_frizqt },
+        { name="Tooltip_Med",                   file=assets.font_frizqt },
+        { name="Tooltip_Small",                 file=assets.font_frizqt },
+        { name="WorldMapTextFont",              file=assets.font_frizqt },
+        { name="ZoneTextFont",                  file=assets.font_frizqt },
     }
 
     for _, f in ipairs(font_overrides) do
         local font = _G[f.name]
         if font then
             local _, font_height, font_flags = font:GetFont()
+            if font_height > 120 and f.height then
+                -- 120 is a maximum font height. But, as example, for CombatTextFont:GetFont() height is ~100256, though actual height in CombatText1..20 frames is 25
+                font_height = f.height
+            end
             font:SetFont(f.file, font_height, font_flags)
         end
     end
