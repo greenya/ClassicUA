@@ -143,7 +143,8 @@ local function esc(x) -- https://stackoverflow.com/questions/9790688/escaping-st
             :gsub('%?', '%%?')
 end
 
-local function hash(text) -- https://wowwiki-archive.fandom.com/wiki/USERAPI_StringHash
+-- [!] Any changes made to string_hash() func must be kept in sync with Python impl
+local function string_hash(text) -- https://wowwiki-archive.fandom.com/wiki/USERAPI_StringHash
     if type(text) ~= "string" or text == "" then
         return 0
     end
@@ -323,6 +324,11 @@ local function get_match_list_of_equal_meaning_english_texts_for_phrase(phrase)
     end
 
     return result
+end
+
+-- [!] Any changes made to get_text_hash() func must be kept in sync with Python impl
+local function get_text_hash(text)
+    return type(text) == "string" and string_hash(lower(string.trim(text))) or 0
 end
 
 local get_text_code_replace_seq = {}
@@ -1308,7 +1314,7 @@ local function get_glossary_text(entry_key, fallback, hint_type)
     return fallback
 end
 
-local function get_gossip_text(npc_id, gossip_text, minimum_match_ratio)
+local function get_gossip_text(npc_id, gossip_text)
     local at = addonTable
 
     if not npc_id or type(gossip_text) ~= "string" or #gossip_text < 1 or type(at.gossip) ~= "table" then
@@ -1316,22 +1322,36 @@ local function get_gossip_text(npc_id, gossip_text, minimum_match_ratio)
     end
 
     npc_id = tonumber(npc_id)
-    local gossip_code = get_text_code(gossip_text)
 
-    if not minimum_match_ratio then
-        minimum_match_ratio = 0.5 -- maybe we should just change text code generator algo
-        if      #gossip_text <= 10 then minimum_match_ratio = 0.9
-        elseif  #gossip_text <= 16 then minimum_match_ratio = 0.8
-        elseif  #gossip_text <= 22 then minimum_match_ratio = 0.7
-        elseif  #gossip_text <= 28 then minimum_match_ratio = 0.6 end
-    end
+    -- check text hash hit
+
+    local gossip_text_hash = get_text_hash(gossip_text)
 
     for _, gossip_key in ipairs({ npc_id, '!common' }) do
-        if at.gossip[gossip_key] then
-            local known_gossip_keys = table_string_keys(at.gossip[gossip_key])
+        local npc_strings = at.gossip[gossip_key]
+        if npc_strings and npc_strings[gossip_text_hash] then
+            return make_text(npc_strings[gossip_text_hash]), nil
+        end
+    end
+
+    -- check text code hit
+
+    local gossip_code = get_text_code(gossip_text)
+
+    local minimum_match_ratio = 0.5 -- maybe we should just change text code generator algo
+    if      #gossip_text <= 10 then minimum_match_ratio = 0.9
+    elseif  #gossip_text <= 16 then minimum_match_ratio = 0.8
+    elseif  #gossip_text <= 22 then minimum_match_ratio = 0.7
+    elseif  #gossip_text <= 28 then minimum_match_ratio = 0.6 end
+
+    for _, gossip_key in ipairs({ npc_id, '!common' }) do
+        local npc_strings = at.gossip[gossip_key]
+        if npc_strings and npc_strings['!fuzzy'] then
+            local known_gossip_keys = table_string_keys(npc_strings['!fuzzy'])
             local gossip_fuzzy_key = fuzzy_match_text_code(gossip_code, known_gossip_keys, minimum_match_ratio)
             if gossip_fuzzy_key then
-                return make_text(at.gossip[gossip_key][gossip_fuzzy_key]), gossip_code
+                local hash = npc_strings['!fuzzy'][gossip_fuzzy_key]
+                return make_text(npc_strings[hash]), gossip_code
             end
         end
     end
@@ -1361,8 +1381,7 @@ local function get_gossip_text_for_player_reply(npc_id, gossip_text)
 
     local match_list = get_match_list_of_equal_meaning_english_texts_for_phrase(gossip_text)
     for _, text_en in pairs(match_list) do
-        -- we require 100% match for text code of the reply otherwise we easily match incorrect translation
-        local text_uk = get_gossip_text(npc_id, text_en, 1.0)
+        local text_uk = get_gossip_text(npc_id, text_en)
         if text_uk then
             return text_uk
         end
@@ -1935,8 +1954,8 @@ local function set_hooked_data_translation(data_type, data_key, text_en, text_uk
     end
 
     local data = dh[data_type][data_key]
-    local text_en_hash = hash(string.trim(text_en))
-    local text_uk_hash = hash(string.trim(text_uk))
+    local text_en_hash = string_hash(string.trim(text_en))
+    local text_uk_hash = string_hash(string.trim(text_uk))
     data[text_en_hash] = { en=text_en, uk=text_uk }
     data[text_uk_hash] = data[text_en_hash]
 
@@ -1951,7 +1970,7 @@ local function get_hooked_data_translation(data_type, data_key, text, fallback)
     end
 
     local data = dh[data_type][data_key]
-    local text_hash = hash(string.trim(text))
+    local text_hash = string_hash(string.trim(text))
 
     return data[text_hash] and data[text_hash][dh.preferred_lang] or fallback
 end

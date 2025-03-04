@@ -4,94 +4,108 @@
 
 local _, addonTable = ...
 
-local gossip = { -- [npc_id] = { [code1] = text1, [code2] = text2, ... }
+local gossip = { -- [npc_id] = { [hash]=translation, ..., [!fuzzy]={...} (optional) }, ... }
 ["!common"] = {
 -- Auction House
-["ahctionhouse"] = [===[Аукціонний дім]===],
+[3408769971] = [===[Аукціонний дім]===],
 -- Bank
-["bank________"] = [===[Банк]===],
+[410675714] = [===[Банк]===],
 -- Battlemaster
-["battlemaster"] = [===[Воєначальник]===],
+[253322801] = [===[Воєначальник]===],
 -- Class Trainer
-["ctasstrainer"] = [===[Класовий тренер]===],
--- Guild Master
-["gmildmaster_"] = [===[Розпорядник гільдій]===],
+[3462538363] = [===[Класовий тренер]===],
 -- Gryphon Master
-["gmyphonmaste"] = [===[Приборкувач грифонів]===],
+[199682921] = [===[Приборкувач грифонів]===],
+-- Guild Master
+[837930098] = [===[Розпорядник гільдій]===],
 -- How do I form a guild?
-["hdifagformag"] = [===[Як створити гільдію?]===],
+[2178875214] = [===[Як створити гільдію?]===],
 -- I am interested in mage training.
-["iaiittereste"] = [===[Мене цікавить тренування мага.]===],
--- Inn
-["inn_________"] = [===[Таверна]===],
+[2633380395] = [===[Мене цікавить тренування мага.]===],
 -- I want to browse your goods.
-["iwtbygobrows"] = [===[Я хочу переглянути ваші товари.]===],
+[789255659] = [===[Я хочу переглянути ваші товари.]===],
 -- I want to create a guild crest.
-["iwtcagccreat"] = [===[Я хочу створити герб гільдії.]===],
--- I wish to untrain my pet.
-["iwtumpountra"] = [===[Я хочу скасувати навчання свого вихованця.]===],
+[2070578652] = [===[Я хочу створити герб гільдії.]===],
 -- I wish to unlearn my talents.
-["iwtumtounlea"] = [===[Я хочу забути свої таланти.]===],
+[792537735] = [===[Я хочу забути свої таланти.]===],
+-- I wish to untrain my pet.
+[795867403] = [===[Я хочу скасувати навчання свого вихованця.]===],
+-- Inn
+[3114991326] = [===[Таверна]===],
 -- Let me browse your goods.
-["lmbygbrowsey"] = [===[Дозвольте мені переглянути ваші товари.]===],
+[3929971245] = [===[Дозвольте мені переглянути ваші товари.]===],
 -- Make this inn your home.
-["mtiyhhisinny"] = [===[Зупинитися в цій таверні.]===],
+[722140911] = [===[Зупинитися в цій таверні.]===],
 -- Please teach me.
-["ptmaseteachm"] = [===[Будь ласка, навчіть мене.]===],
+[1829526179] = [===[Будь ласка, навчіть мене.]===],
 -- Profession Trainer
-["ptofessiontr"] = [===[Тренер професій]===],
+[1221755545] = [===[Тренер професій]===],
 -- Rut'theran Ferry
-["rtftheranfer"] = [===[Рут'Теранська переправа]===],
+[3985347023] = [===[Рут'Теранська переправа]===],
 -- Stable Master
-["smablemaster"] = [===[Доглядач стайні]===],
+[1214104245] = [===[Доглядач стайні]===],
 -- Tell me about dungeons I could explore.
-["tmadiceboutd"] = [===[Розкажіть мені про підземелля, які я міг би відвідати.]===],
--- Train me.
-["tmainme_____"] = [===[Навчіть мене.]===],
+[2492432873] = [===[Розкажіть мені про підземелля, які я міг би відвідати.]===],
 -- Train me in the ways of the beast.
-["tmitwotbnthe"] = [===[Навчіть мене шляхам звіра.]===],
--- What can I do at an inn?
-["wcidaaiidoat"] = [===[Чим я можу зайнятися в таверні?]===],
+[4194210259] = [===[Навчіть мене шляхам звіра.]===],
+-- Train me.
+[448462128] = [===[Навчіть мене.]===],
 -- Weapon Master
-["wmaponmaster"] = [===[Знавець зброї]===],
--- Wind Rider Master
-["wrmdridermas"] = [===[Приборкувач виверн]===],
+[2984198724] = [===[Знавець зброї]===],
 -- Weapons Trainer
-["wtaponstrain"] = [===[Тренер володіння зброєю]===],
+[79040106] = [===[Тренер володіння зброєю]===],
+-- What can I do at an inn?
+[2439012089] = [===[Чим я можу зайнятися в таверні?]===],
 -- Where would you like to fly to?
-["wwyltftuldyo"] = [===[Куди бажаєш полетіти?]===],
+[4139945412] = [===[Куди бажаєш полетіти?]===],
+-- Wind Rider Master
+[1433933426] = [===[Приборкувач виверн]===],
 -- Yes. I do.
-["yidido______"] = [===[Так, хочу.]===],
+[505109101] = [===[Так, хочу.]===],
 },
 [197] = { -- Marshal McBride
 -- Hey, citizen!  You look like a stout one.  We guards are spread a little thin out here, and I could use your help...
-["haltohaicuyh"] = [===[Гей, {стать:громадянине:громадянко}! Виглядаєте {стать:міцним:міцною}. Нас, охоронців, тут небагато, і мені потрібна ваша допомога...]===],
+[2262730092] = [===[Гей, {стать:громадянине:громадянко}! Виглядаєте {стать:міцним:міцною}. Нас, охоронців, тут небагато, і мені потрібна ваша допомога...]===],
+["!fuzzy"] = {
+["haltohaicuyh"] = 2262730092,
+},
 },
 [198] = { -- Khelden Bremen
 -- Greetings <class>.  Shall I provide you with further insight into the world of magic?
-["gmipywfiitwo"] = [===[Вітаю, {клас:к}. Чи варто мені глибше розповісти тобі про світ магії?]===],
+[394012010] = [===[Вітаю, {клас:к}. Чи варто мені глибше розповісти тобі про світ магії?]===],
 -- Well met, <class>.  My advice to you is this: as you travel the world, be wary of magic for it will burn the untrained.
-["wwbwomfiwbtu"] = [===[Вітаю, {клас:к}. Моя порада тобі: подорожуючи світом, остерігайся магії, бо вона спалить непідготовленого.]===],
+[3436288619] = [===[Вітаю, {клас:к}. Моя порада тобі: подорожуючи світом, остерігайся магії, бо вона спалить непідготовленого.]===],
+["!fuzzy"] = {
+["gmipywfiitwo"] = 394012010,
+["wwbwomfiwbtu"] = 3436288619,
+},
 },
 [375] = { -- Priestess Anetta
 -- Do not turn your back on the Light, <class>, it may be the one thing that saves you some day.
-["dottsysdimbt"] = [===[Не повертайся спиною до світла, {клас:к}, можливо це єдине, що колись тебе врятує.]===],
+[2507475128] = [===[Не повертайся спиною до світла, {клас:к}, можливо це єдине, що колись тебе врятує.]===],
 -- I trust the Light is with you, <name>. Is there something that I can I help you with?
-["icihywyitsti"] = [===[Я вірю, що Світло з тобою, {ім'я:к}. Чи можу я чимось тобі допомогти?]===],
+[2722278334] = [===[Я вірю, що Світло з тобою, {ім'я:к}. Чи можу я чимось тобі допомогти?]===],
+["!fuzzy"] = {
+["dottsysdimbt"] = 2507475128,
+["icihywyitsti"] = 2722278334,
+},
 },
 [911] = { -- Llane Beshere
 -- I can tell just by the way you're standing that you're no warrior.
 --
 -- Why don't you go do something safe, like read a book.
-["irrabtygdssl"] = [===[Я бачу, що ти не {стать:воїн:воїтелька}, просто по тому як ти стоїш.
+[1298350057] = [===[Я бачу, що ти не {стать:воїн:воїтелька}, просто по тому як ти стоїш.
 
 Чому б тобі не зайнятися чимось безпечним, наприклад почитати книжку.]===],
--- Stormwind is the pillar of the human race, maintained through strength of will and the edge of the sturdy blade.
-["sateotsbtsow"] = [===[Штормовій — опора людської раси, яка підтримується силою волі та вістрям міцного клинка.]===],
+-- Stormwind is the pillar of the human race, maintained through strength of will and the edge of a sturdy blade.
+[2471265741] = [===[Штормовій — опора людської раси, яка підтримується силою волі та вістрям міцного клинка.]===],
+["!fuzzy"] = {
+["irrabtygdssl"] = 1298350057,
+},
 },
 [925] = { -- Brother Sammuel
 -- May the Light protect you this day.
-["mtlpytdightp"] = [===[Нехай Світло береже тебе.]===],
+[4100779666] = [===[Нехай Світло береже тебе.]===],
 },
 }
 

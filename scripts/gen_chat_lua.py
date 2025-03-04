@@ -72,7 +72,7 @@ def collect_chats():
                     issues.append(f'[!] Different number of en->uk strings for {filename}. File skipped.')
                     continue
 
-                npc_chats, npc_chats_issues = utils.build_text_codes_map(strings_en, strings_uk, utils.get_chat_code)
+                npc_chats, npc_chats_issues = utils.build_strings_list(strings_en, strings_uk, code_func=utils.get_chat_code)
                 issues.extend(npc_chats_issues)
 
                 if not npc_chats:
@@ -81,9 +81,11 @@ def collect_chats():
                 if not npc_name_uk and npc_name_en not in [ '!common', '!player' ]:
                     issues.append(f'[?] Missing translation for [{expansion}] {npc_name_en}')
 
+                strings_dict = { i['en_code']: { 'en': i['en'], 'uk': i['uk'] } for i in npc_chats }
+
                 chats[expansion][npc_name_en] = {
                     'uk'        : npc_name_uk,
-                    'strings'   : dict(sorted(npc_chats.items()))
+                    'strings'   : dict(sorted(strings_dict.items()))
                 }
 
         chats[expansion] = dict(sorted(chats[expansion].items()))

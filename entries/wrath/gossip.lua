@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local gossip = { -- [npc_id] = { [code1] = text1, [code2] = text2, ... }
+local gossip = { -- [npc_id] = { [hash]=translation, ..., [!fuzzy]={...} (optional) }, ... }
 }
 
 if addonTable.gossip then

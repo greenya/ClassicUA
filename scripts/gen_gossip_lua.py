@@ -49,15 +49,21 @@ def collect_gossip():
                     issues.append(f'[!] Different number of en->uk strings for {filename}. File skipped.')
                     continue
 
-                npc_gossip, npc_gossip_issues = utils.build_text_codes_map(strings_en, strings_uk, utils.get_text_code)
+                npc_gossip_strings, npc_gossip_issues = utils.build_strings_list(strings_en, strings_uk, hash_func=utils.get_text_hash, code_func=utils.get_text_code)
                 issues.extend(npc_gossip_issues)
 
-                if not npc_gossip:
+                if not npc_gossip_strings:
                     continue
+
+                # remove en_code if translation doesn't have dynamic codes,
+                # e.g. this removes fuzzy key for "Bank", "Auction House", "I want to browse your goods." etc.
+                for string in npc_gossip_strings:
+                    if '{' not in string['uk'] and '}' not in string['uk']:
+                        string['en_code'] = None
 
                 gossip[expansion][npc_id] = {
                     'name'      : npc_name,
-                    'strings'   : dict(sorted(npc_gossip.items()))
+                    'strings'   : sorted(npc_gossip_strings, key=lambda s: s['en']),
                 }
 
         gossip[expansion] = dict(sorted(gossip[expansion].items()))
@@ -72,7 +78,7 @@ def print_report(gossip, issues):
         for npc_id in gossip[expansion]:
             npc_name = gossip[expansion][npc_id]['name']
             npc_strings = gossip[expansion][npc_id]['strings']
-            print(f'npc [{expansion}] #{npc_id} {npc_name}: {", ".join(npc_strings.keys())}')
+            print(f'npc [{expansion}] #{npc_id} {npc_name}: {len(npc_strings)}')
             total_texts += len(npc_strings)
 
     print('-' * 80)
