@@ -177,7 +177,7 @@ local function write_lua_stats_file(filename, var, stats)
     f:write("addonTable." .. var .. " = {\n")
 
     local cats = { "total" }
-    for _, exp in ipairs(known_expansions) do table.insert(cats, exp) end
+    for _, exp in ipairs(known_expansions) do cats[#cats + 1] = exp end
 
     for _, cat in ipairs(cats) do
         f:write(cat .. " = {\n")

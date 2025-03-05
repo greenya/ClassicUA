@@ -13,4 +13,4 @@ entries\index.xml
 entries\classic\index.xml
 entries\tbc\index.xml
 
-main.lua
+scripts\index.xml

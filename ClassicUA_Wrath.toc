@@ -14,4 +14,4 @@ entries\classic\index.xml
 entries\tbc\index.xml
 entries\wrath\index.xml
 
-main.lua
+scripts\index.xml
