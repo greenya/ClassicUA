@@ -471,36 +471,34 @@ known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = (
 )
 
 def get_chat_code(text):
-    # print('TEXT1', text)
     text = text.lower()
-    # print('TEXT2', text)
-
     for p in known_gossip_dynamic_seq_with_multiple_words_for_get_text_code:
         text = text.replace(p[0], p[1])
-    # print('TEXT3', text)
 
-    words = re.findall(r'([\w/]+)', text)  # TODO: case "<boss/boss-lady>", "ma'am" (NPC Sister Goldskimmer)
+    words = re.findall(r"""([\w<][\w\-'/]*[\w>])""", text)  # matches words with at least 2 word-characters and allows punctuation characters inside (boss-lady, ma'am, etc)
     result = list()
     for word in words:
         if len(word) > 0:
-
-            if word in ('class', 'race'):
-                result.append('..')
-            elif word in ('name', 'target'):
-                result.append('.-')
-            elif '/' in word:
-                male_word, female_word = word.split('/')
-                if male_word[0] == female_word[0]:
-                    result.append(male_word[0])
-                else:
-                    result.append('.')
-                if male_word[-1] == female_word[-1]:
-                    result.append(male_word[-1])
-                else:
-                    result.append('.')
+            if word.startswith('<') and word.endswith('>'):
+                #  It is <class>, <race>, <name>, <target> or gender-specific text (<his/her>)
+                template_type = word[1:-1]
+                if template_type in ('class', 'race'):
+                    result.append('..')
+                elif template_type in ('name', 'target'):
+                    result.append('.-')
+                elif '/' in template_type:
+                    # FIXME: if gender template contains space - it will not work (like <he's a king/she's a queen>)
+                    male_word, female_word = template_type.split('/')
+                    if male_word[0] == female_word[0]:
+                        result.append(male_word[0])
+                    else:
+                        result.append('.')
+                    if male_word[-1] == female_word[-1]:
+                        result.append(male_word[-1])
+                    else:
+                        result.append('.')
             else:
                 result.append(word[0])
                 result.append(word[-1])
 
-    # print('CODE', ''.join(result))
     return ''.join(result)
