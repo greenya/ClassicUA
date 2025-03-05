@@ -388,15 +388,15 @@ local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"mag'har orc", "magharorc"},
     {"zandalari troll", "zandalaritroll"},
 }
--- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
-utils.get_text_code_for_chat = function (text)
+-- [!] Any changes made to get_chat_code() func must be kept in sync with Python impl in utils.py
+utils.get_chat_code = function (text)
     local text_low_case = text:lower()
     local seq_pairs = known_gossip_dynamic_seq_with_multiple_words_for_get_text_code
     for i = 1, #seq_pairs do
         text_low_case = text_low_case:gsub(seq_pairs[i][1], seq_pairs[i][2])
     end
     local result = {}
-    for word in string_gmatch(text_low_case, "%w+") do
+    for word in string_gmatch(text_low_case, [===[%w[%w%-']*%w]===]) do
         if #word > 0 then
             result[#result+1] = word:sub(1, 1)
             result[#result+1] = word:sub(-1)
