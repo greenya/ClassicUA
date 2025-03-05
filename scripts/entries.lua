@@ -204,43 +204,42 @@ local function make_chat_text(original, translation)
     end
 
     local translation_split = { string_split("#", translation) }
-    if #translation_split == 1 then
-        return translation_split[1]
-    end
-
-    translation = translation_split[1]
-    local text_templates = {}
-    for i = 2, #translation_split do
-        local template = translation_split[i]
-        local template_type = template:match("<(.+)>")
-        if known_templates[template_type] then
-            text_templates[template_type] = template
-        elseif template_type:match("/") then
-            local match_male, match_female = template_type:match("^(%w+)/(%w+)$")
-            if original:match(template:gsub("<"..template_type..">", match_male)) then
-                sex = 1
-            elseif original:match(template:gsub("<"..template_type..">", match_female)) then
-                sex = 2
+    local template_matches = {}
+    if #translation_split > 1 then
+        local text_templates = {}
+        for i = 2, #translation_split do
+            local template = translation_split[i]
+            local template_type = template:match("<(.+)>")
+            if known_templates[template_type] then
+                text_templates[template_type] = template
+            elseif template_type:match("/") then
+                local match_male, match_female = template_type:match("^(.+)/(.+)$")
+                if original:match(utils.esc(template:gsub("<"..utils.esc(template_type)..">", match_male))) then
+                    sex = 1
+                elseif original:match(utils.esc(template:gsub("<"..utils.esc(template_type)..">", match_female))) then
+                    sex = 2
+                else
+                    error("Error. Unknown sex.")
+                end
             else
-                error("Error. Unknown sex.")
+                error("Error. Unknown template type: " .. tostring(template_type))
             end
-        else
-            error("Error. Unknown template type: " .. tostring(template_type))
+        end
+
+        for template_type, template in pairs(text_templates) do
+            local template_expression = utils.esc(template):gsub("<" .. template_type .. ">", "(.-)")
+            local match = original:match(template_expression)
+            template_matches[template_type] = match
         end
     end
 
-    local template_matches = {}
-    for template_type, template in pairs(text_templates) do
-        local template_expression = utils.esc(template):gsub("<" .. template_type .. ">", "(.-)")
-        local match = original:match(template_expression)
-        template_matches[template_type] = match
-    end
+    translation = translation_split[1]
 
     for pattern_uk in translation:gmatch("{(.-)}") do
         local pattern_uk_split = { string_split(":", pattern_uk) }
         local pattern_uk_type = pattern_uk_split[1]
         local case = pattern_uk_split[2] or "н"
-        pattern_uk = "{" .. pattern_uk .. "}"
+        pattern_uk = "{" .. utils.esc(pattern_uk) .. "}"
 
         if utils.lower(pattern_uk_type) == "ім'я" then
             local name_en = template_matches["name"]
@@ -624,7 +623,7 @@ entries.get_chat_text = function (npc_name, chat_text)
         return
     end
 
-    local chat_code = utils.get_text_code_for_chat(chat_text)
+    local chat_code = utils.get_chat_code(chat_text)
 
     if chat_code and #chat_code > 0 then
         for _, char_key in ipairs({ npc_name, '!common' }) do
