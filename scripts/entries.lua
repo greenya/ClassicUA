@@ -306,7 +306,7 @@ local function safe_make_chat_text(original, translation)
         return result
     else
         dev_log.issue("Помилка перекладу чату \"" .. tostring(original) .. "\"", tostring(result))
-        return original
+        return nil
     end
 end
 
