@@ -1,10 +1,10 @@
 local _, addon_table = ...
 
-local dev_log = addon_table.dev_log ---@class dev_log_class
-local frames = addon_table.frames ---@class frames_class
-local options = addon_table.options ---@class options_class
-local options_ui = addon_table.options_ui ---@class options_ui_class
-local utils = addon_table.utils ---@class utils_class
+local dev_log       = addon_table.use("dev_log") ---@class dev_log_class
+local frames        = addon_table.use("frames") ---@class frames_class
+local options       = addon_table.use("options") ---@class options_class
+local options_ui    = addon_table.use("options_ui") ---@class options_ui_class
+local utils         = addon_table.use("utils") ---@class utils_class
 
 ---@class Frame
 options_ui.frame = nil
@@ -372,7 +372,7 @@ options_ui.select_tab = function (tab_index, force_refresh)
     end
 end
 
-options_ui.prepare = function ()
+local function prepare_options_frame()
     local info = addon_table.info
 
     options_ui.frame = CreateFrame("Frame", "ClassicUA_Options_Frame")
@@ -536,7 +536,10 @@ options_ui.prepare = function ()
             options_ui.select_tab(options_ui.frame.current_tab_index, true)
         end
     end)
+end
 
+options_ui.prepare = function ()
+    prepare_options_frame()
     register_static_popup_dialogs()
     register_game_options_category()
     register_slash_command()

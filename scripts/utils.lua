@@ -1,6 +1,6 @@
 local _, addon_table = ...
 
-local utils = addon_table.utils ---@class utils_class
+local utils = addon_table.use("utils") ---@class utils_class
 
 local math_floor            = _G.math.floor
 local math_fmod             = _G.math.fmod
@@ -20,11 +20,11 @@ local UnitGUID              = _G.UnitGUID
 utils.prepare = function ()
     local build_version = GetBuildInfo()
 
-    utils.is_classic = string_byte(build_version, 1) == string_byte("1")
-    utils.is_classic_sod = utils.is_classic and C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
-    utils.is_tbc = string_byte(build_version, 1) == string_byte("2")
-    utils.is_wrath = string_byte(build_version, 1) == string_byte("3")
-    utils.is_cata = string_byte(build_version, 1) == string_byte("4")
+    utils.is_classic        = string_byte(build_version, 1) == string_byte("1")
+    utils.is_classic_sod    = utils.is_classic and C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
+    utils.is_tbc            = string_byte(build_version, 1) == string_byte("2")
+    utils.is_wrath          = string_byte(build_version, 1) == string_byte("3")
+    utils.is_cata           = string_byte(build_version, 1) == string_byte("4")
 
     if     utils.is_classic then utils.expansion_key = utils.is_classic_sod and "sod" or "classic"
     elseif utils.is_tbc     then utils.expansion_key = "tbc"

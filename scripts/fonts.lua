@@ -1,8 +1,8 @@
 local _, addon_table = ...
 
-local assets = addon_table.assets ---@class assets_class
-local fonts = addon_table.fonts ---@class fonts_class
-local options = addon_table.options ---@class options_class
+local assets    = addon_table.use("assets") ---@class assets_class
+local fonts     = addon_table.use("fonts") ---@class fonts_class
+local options   = addon_table.use("options") ---@class options_class
 
 fonts.prepare = function ()
     if not options.account.override_system_fonts then

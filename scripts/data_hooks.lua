@@ -1,8 +1,8 @@
 local _, addon_table = ...
 
-local data_hooks = addon_table.data_hooks ---@class data_hooks_class
-local entries = addon_table.entries ---@class entries_class
-local utils = addon_table.utils ---@class utils_class
+local data_hooks    = addon_table.use("data_hooks") ---@class data_hooks_class
+local entries       = addon_table.use("entries") ---@class entries_class
+local utils         = addon_table.use("utils") ---@class utils_class
 
 local string_trim           = _G.string.trim
 local GetQuestID            = _G.GetQuestID

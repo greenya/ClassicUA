@@ -1,6 +1,6 @@
 local _, addon_table = ...
 
-local frames = addon_table.frames ---@class frames_class
+local frames = addon_table.use("frames") ---@class frames_class
 
 local fonts = {
     checkbox = SystemFont_Shadow_Med2,

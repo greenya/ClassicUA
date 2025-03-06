@@ -1,12 +1,12 @@
 local _, addon_table = ...
 
-local assets = addon_table.assets ---@class assets_class
-local data_hooks = addon_table.data_hooks ---@class data_hooks_class
-local dev_log = addon_table.dev_log ---@class dev_log_class
-local entries = addon_table.entries ---@class entries_class
-local frame_hooks = addon_table.frame_hooks ---@class frame_hooks_class
-local options = addon_table.options ---@class options_class
-local utils = addon_table.utils ---@class utils_class
+local assets        = addon_table.use("assets") ---@class assets_class
+local data_hooks    = addon_table.use("data_hooks") ---@class data_hooks_class
+local dev_log       = addon_table.use("dev_log") ---@class dev_log_class
+local entries       = addon_table.use("entries") ---@class entries_class
+local frame_hooks   = addon_table.use("frame_hooks") ---@class frame_hooks_class
+local options       = addon_table.use("options") ---@class options_class
+local utils         = addon_table.use("utils") ---@class utils_class
 
 local string_format = _G.string.format
 local string_gmatch = _G.string.gmatch

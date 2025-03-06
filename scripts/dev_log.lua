@@ -1,9 +1,9 @@
 local _, addon_table = ...
 
-local assets = addon_table.assets ---@class assets_class
-local dev_log = addon_table.dev_log ---@class dev_log_class
-local options = addon_table.options ---@class options_class
-local utils = addon_table.utils ---@class utils_class
+local assets    = addon_table.use("assets") ---@class assets_class
+local dev_log   = addon_table.use("dev_log") ---@class dev_log_class
+local options   = addon_table.use("options") ---@class options_class
+local utils     = addon_table.use("utils") ---@class utils_class
 
 local string_match  = _G.string.match
 local string_trim   = _G.string.trim

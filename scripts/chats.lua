@@ -1,10 +1,10 @@
 local _, addon_table = ...
 
-local assets = addon_table.assets ---@class assets_class
-local chats = addon_table.chats ---@class chats_class
-local dev_log = addon_table.dev_log ---@class dev_log_class
-local entries = addon_table.entries ---@class entries_class
-local utils = addon_table.utils ---@class utils_class
+local assets    = addon_table.use("assets") ---@class assets_class
+local chats     = addon_table.use("chats") ---@class chats_class
+local dev_log   = addon_table.use("dev_log") ---@class dev_log_class
+local entries   = addon_table.use("entries") ---@class entries_class
+local utils     = addon_table.use("utils") ---@class utils_class
 
 local math_min          = _G.math.min
 local string_format     = _G.string.format

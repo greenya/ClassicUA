@@ -1,8 +1,8 @@
 local _, addon_table = ...
 
-local options = addon_table.options ---@class options_class
-local options_ui = addon_table.options_ui ---@class options_ui_class
-local utils = addon_table.utils ---@class utils_class
+local options       = addon_table.use("options") ---@class options_class
+local options_ui    = addon_table.use("options_ui") ---@class options_ui_class
+local utils         = addon_table.use("utils") ---@class utils_class
 
 options.account = nil ---@class account_options_class
 local default_account = { ---@class account_options_class

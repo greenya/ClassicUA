@@ -1,6 +1,6 @@
 local _, addon_table = ...
 
-local assets = addon_table.assets ---@class assets_class
+local assets = addon_table.use("assets") ---@class assets_class
 
 assets.icon_ua_inline   = "|TInterface\\AddOns\\ClassicUA\\assets\\ua:0|t"
 assets.icon_scroll      =   "Interface\\AddOns\\ClassicUA\\assets\\scroll"
