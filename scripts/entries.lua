@@ -553,20 +553,16 @@ local function get_gossip_text(npc_id, gossip_text)
 
     local gossip_code = utils.get_text_code(gossip_text)
 
-    local minimum_match_ratio = 0.5 -- maybe we should just change text code generator algo
-    if      #gossip_text <= 10 then minimum_match_ratio = 0.9
-    elseif  #gossip_text <= 16 then minimum_match_ratio = 0.8
-    elseif  #gossip_text <= 22 then minimum_match_ratio = 0.7
-    elseif  #gossip_text <= 28 then minimum_match_ratio = 0.6 end
-
-    for _, gossip_key in ipairs({ npc_id, '!common' }) do
-        local npc_strings = at.gossip[gossip_key]
-        if npc_strings and npc_strings['!fuzzy'] then
-            local known_gossip_keys = utils.table_string_keys(npc_strings['!fuzzy'])
-            local gossip_fuzzy_key = utils.fuzzy_match_text_code(gossip_code, known_gossip_keys, minimum_match_ratio)
-            if gossip_fuzzy_key then
-                local hash = npc_strings['!fuzzy'][gossip_fuzzy_key]
-                return make_text(npc_strings[hash]), gossip_code
+    if gossip_code and #gossip_code > 0 then
+        for _, gossip_key in ipairs({ npc_id, '!common' }) do
+            local npc_strings = at.gossip[gossip_key]
+            if npc_strings and npc_strings['!code'] then
+                local known_gossip_keys = utils.table_string_keys(npc_strings['!code'])
+                local gossip_key = utils.match_text_code(gossip_code, known_gossip_keys)
+                if gossip_key then
+                    local hash = npc_strings['!code'][gossip_key]
+                    return make_text(npc_strings[hash]), gossip_code
+                end
             end
         end
     end
@@ -623,20 +619,38 @@ entries.get_chat_text = function (npc_name, chat_text)
         return
     end
 
-    local chat_code = utils.get_chat_code(chat_text)
+    -- check text hash hit
+
+    local chat_hash = utils.get_text_hash(chat_text)
+    for _, npc_key in ipairs({ npc_name, '!common' }) do
+        local npc_strings = at.chat[npc_key]
+        if npc_strings and npc_strings[chat_hash] then
+            local npc_name_uk = at.chat[npc_key][1]
+            if not npc_name_uk then
+                npc_name_uk = entries.get_glossary_text(npc_name, npc_name)
+            end
+            local chat_text_uk = safe_make_chat_text(chat_text, at.chat[npc_key][chat_hash])
+            return utils.cap(npc_name_uk), chat_text_uk, nil
+        end
+    end
+
+    -- check text code hit
+
+    local chat_code = utils.get_text_code(chat_text)
 
     if chat_code and #chat_code > 0 then
-        for _, char_key in ipairs({ npc_name, '!common' }) do
-            if at.chat[char_key] then
-                local known_chat_keys = utils.table_string_keys(at.chat[char_key])
+        for _, npc_key in ipairs({ npc_name, '!common' }) do
+            local npc_strings = at.chat[npc_key]
+            if npc_strings and npc_strings['!code'] then
+                local known_chat_keys = utils.table_string_keys(npc_strings['!code'])
                 local chat_key = utils.match_text_code(chat_code, known_chat_keys)
                 if chat_key then
-                    local npc_name_uk = at.chat[char_key][1]
+                    local npc_name_uk = npc_strings[1]
                     if not npc_name_uk then
                         npc_name_uk = entries.get_glossary_text(npc_name, npc_name)
                     end
-
-                    local chat_text_uk = safe_make_chat_text(chat_text, at.chat[char_key][chat_key])
+                    local hash = npc_strings['!code'][chat_key]
+                    local chat_text_uk = safe_make_chat_text(chat_text, npc_strings[hash])
                     return utils.cap(npc_name_uk), chat_text_uk, chat_code
                 end
             end

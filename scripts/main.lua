@@ -167,7 +167,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
 
     elseif event == "PLAYER_LOGIN" then
         entries.prepare()
-        utils.prepare_get_text_code_replace_seq()
         data_hooks.prepare()
         frame_hooks.prepare()
         options_ui.prepare()

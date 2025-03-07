@@ -72,7 +72,7 @@ def collect_chats():
                     issues.append(f'[!] Different number of en->uk strings for {filename}. File skipped.')
                     continue
 
-                npc_chats, npc_chats_issues = utils.build_strings_list(strings_en, strings_uk, code_func=utils.get_chat_code)
+                npc_chats, npc_chats_issues = utils.build_strings_list(strings_en, strings_uk, hash_func=utils.get_text_hash, code_func=utils.get_text_code)
                 issues.extend(npc_chats_issues)
 
                 if not npc_chats:
@@ -81,11 +81,15 @@ def collect_chats():
                 if not npc_name_uk and npc_name_en not in [ '!common', '!player' ]:
                     issues.append(f'[?] Missing translation for [{expansion}] {npc_name_en}')
 
-                strings_dict = { i['en_code']: { 'en': i['en'], 'uk': i['uk'] } for i in npc_chats }
+                # remove en_code if translation doesn't have dynamic codes,
+                # e.g. this removes fuzzy key for "Bank", "Auction House", "I want to browse your goods." etc.
+                for string in npc_chats:
+                    if '{' not in string['uk'] and '}' not in string['uk']:
+                        string['en_code'] = None
 
                 chats[expansion][npc_name_en] = {
                     'uk'        : npc_name_uk,
-                    'strings'   : dict(sorted(strings_dict.items()))
+                    'strings'   : sorted(npc_chats, key=lambda s: s['en']),
                 }
 
         chats[expansion] = dict(sorted(chats[expansion].items()))
@@ -99,7 +103,7 @@ def print_report(chats, issues):
     for expansion in chats:
         for npc_name in chats[expansion]:
             npc_strings = chats[expansion][npc_name]['strings']
-            print(f'npc [{expansion}] \"{npc_name}\": {", ".join(npc_strings.keys())}')
+            print(f'npc [{expansion}] \"{npc_name}\": {len(npc_strings)}')
             total_texts += len(npc_strings)
 
     print('-' * 80)
