@@ -309,72 +309,6 @@ utils.get_text_hash = function (text)
     return type(text) == "string" and utils.string_hash(utils.lower(string_trim(text))) or 0
 end
 
-local get_text_code_replace_seq = {}
-
-utils.prepare_get_text_code_replace_seq = function ()
-    local at = addon_table
-    local rs = get_text_code_replace_seq
-
-    -- player races
-    rs[#rs + 1] = "<race>"
-    for _, w in ipairs(utils.table_string_keys(at.race)) do
-        rs[#rs + 1] = w:lower()
-    end
-
-    -- player classes
-    rs[#rs + 1] = "<class>"
-    for _, w in ipairs(utils.table_string_keys(at.class)) do
-        rs[#rs + 1] = w:lower()
-    end
-
-    -- player name
-    rs[#rs + 1] = "<name>"
-    rs[#rs + 1] = UnitName("player"):lower()
-end
-
--- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
-utils.get_text_code = function (text)
-    local result = { "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_" }
-    local result_len = #result
-    text = text:lower()
-
-    for _, w in ipairs(get_text_code_replace_seq) do
-        text = text:gsub(w, "")
-    end
-
-    local result_fill_idx = 1
-    for word in string_gmatch(text, "%w+") do
-        if #word > 0 then
-            if result_fill_idx > result_len then
-                break
-            end
-
-            for i = 1, #word do
-                result[result_fill_idx] = string_sub(word, i, i)
-                result_fill_idx = result_fill_idx + 1
-                if result_fill_idx > result_len then
-                    break
-                end
-            end
-        end
-    end
-
-    local result_idx = 1
-    local result_rewind = 1
-    for word in string_gmatch(text, "%w+") do
-        if #word > 0 then
-            result[result_idx] = string_sub(word, 1, 1)
-            result_idx = result_idx + 1
-            if result_idx > result_len then
-                result_rewind = result_rewind < result_len and result_rewind + 1 or result_len - 3
-                result_idx = result_rewind
-            end
-        end
-    end
-
-    return table_concat(result)
-end
-
 local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"night elf", "nightelf"},
     {"blood elf", "bloodelf"},
@@ -388,8 +322,8 @@ local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"mag'har orc", "magharorc"},
     {"zandalari troll", "zandalaritroll"},
 }
--- [!] Any changes made to get_chat_code() func must be kept in sync with Python impl in utils.py
-utils.get_chat_code = function (text)
+-- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
+utils.get_text_code = function (text)
     local text_low_case = text:lower()
     local seq_pairs = known_gossip_dynamic_seq_with_multiple_words_for_get_text_code
     for i = 1, #seq_pairs do
@@ -406,38 +340,9 @@ utils.get_chat_code = function (text)
     return table_concat(result)
 end
 
-utils.fuzzy_match_text_code = function (code, candidates, minimum_match_ratio)
-    if not minimum_match_ratio then
-        minimum_match_ratio = 0.5
-    end
-
-    local best_match = false
-    local best_match_ratio = 0.0
-
-    for i = 1, #candidates do
-        local matches = 0
-
-        if #code == #candidates[i] then
-            for j = 1, #candidates[i] do
-                if string_sub(code, j, j) == string_sub(candidates[i], j, j) then
-                    matches = matches + 1
-                end
-            end
-        end
-
-        local ratio = matches/#code
-        if ratio >= minimum_match_ratio and ratio > best_match_ratio then
-            best_match = candidates[i]
-            best_match_ratio = ratio
-        end
-    end
-
-    return best_match
-end
-
 utils.match_text_code = function (code, candidates)
     for _, candidate in ipairs(candidates) do
-        if code:match('^'..candidate..'$') then
+        if code:match('^'..candidate..'.*$') then
             return candidate
         end
     end

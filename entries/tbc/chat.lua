@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [code1] = text1, [code2] = text2, ... }
+local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=translation, ..., [!code]={ [code]=hash, ...} (optional) }
 }
 
 if addonTable.chat then
