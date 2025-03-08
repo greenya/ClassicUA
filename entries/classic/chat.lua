@@ -709,9 +709,6 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [2304120575] = [===[Ого, то все серйозно! Але ти ж не {стать:думав:думала}, що я теж буду сам, ге ж?!]===],
 -- Okay, okay! No need to get all violent. I'll talk. I'll talk!
 [2507800932] = [===[Гаразд, гаразд! Досить цього насильства. Я все скажу!]===],
-["!code"] = {
-["ohisonnwbtyuttidbeaetohh"] = 2304120575,
-},
 },
 ["Theramore Sentry"] = { "тераморський караульний",
 -- Don't let them catch you!

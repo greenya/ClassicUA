@@ -163,9 +163,6 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [83414805] = [===[Наш перший претендент — місцевий герой. Привітайте земляка з Пристробляху... Ґоса Мастилоляпа!]===],
 -- Three cheers for our new champion!
 [3061749624] = [===[Привітайте {стать:нашого нового чемпіона:нашу нову чемпіонку}!]===],
-["!code"] = {
-["tecsfrornwcn"] = 3061749624,
-},
 },
 ["Flamebringer Kelris"] = { "вогненосець Келріс",
 -- Dust to dust.
@@ -185,9 +182,6 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Frix Xizzix"] = { "Фрікс Ксіззікс",
 -- Thanks again pal! Next time you are in Booty Bay make sure and pay my brother a visit. He might have some junk laying around you'll find valuable. Byeeee!
 [1838432706] = [===[Ще раз дякую, {стать:друже:подруго}! Наступного разу, як будеш у Грабіжній Бухті, обов'язково навідайся до мого брата. Можливо, у нього знайдеться якийсь мотлох, що буде тобі корисним. Бувай!]===],
-["!code"] = {
-["tsanplntteyuaeinbybymeseadpymybrvthemthe"] = 1838432706,
-},
 },
 ["Ghamoo-Raja"] = { "Гаму-Раджа",
 -- Oh, I am so tired...
@@ -244,9 +238,6 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Nandieb"] = { "Нандіб",
 -- Begone, wretched interloper!
 [172298674] = [===[Геть, {стать:клятий чужинець:клята чужинка}!]===],
-["!code"] = {
-["bewdir"] = 172298674,
-},
 },
 ["Nogg"] = {
 -- Alright everyone listen up. Some stooge... uh, I mean "brave adventurer" brought me a whole huge pile of secret gnomish tech and once we finish applying our superior goblin ingenuity to it we are going to use it to BLOW SO MUCH STUFF UP. Gather 'round and let's party!
@@ -255,9 +246,6 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Polymorphed Apprentice"] = { "споліморфлений учень",
 -- I'm back to my old self!  Thank you, hero!
 [3152132687] = [===[Я знову в нормі! Дякую, {стать:герою:героїне}!]===],
-["!code"] = {
-["imbktomyodsftkyuho"] = 3152132687,
-},
 },
 ["Pyranis"] = { "Піраніс",
 -- Interlopers! You can't stop what has been put in motion.

@@ -66,9 +66,6 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [197] = { -- Marshal McBride
 -- Hey, citizen!  You look like a stout one.  We guards are spread a little thin out here, and I could use your help...
 [2262730092] = [===[Гей, {стать:громадянине:громадянко}! Виглядаєте {стать:міцним:міцною}. Нас, охоронців, тут небагато, і мені потрібна ваша допомога...]===],
-["!code"] = {
-["hycnyulklestoewegsaesdletnotheadcdueyrhp"] = 2262730092,
-},
 },
 [198] = { -- Khelden Bremen
 -- Greetings <class>.  Shall I provide you with further insight into the world of magic?
@@ -99,9 +96,6 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 Чому б тобі не зайнятися чимось безпечним, наприклад почитати книжку.]===],
 -- Stormwind is the pillar of the human race, maintained through strength of will and the edge of a sturdy blade.
 [2471265741] = [===[Штормовій — опора людської раси, яка підтримується силою волі та вістрям міцного клинка.]===],
-["!code"] = {
-["cntljtbytewyyesgttyenowrwydtyugodosgsele"] = 1298350057,
-},
 },
 [925] = { -- Brother Sammuel
 -- May the Light protect you this day.
