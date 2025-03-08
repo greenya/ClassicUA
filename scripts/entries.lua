@@ -156,7 +156,7 @@ entries.prepare = function ()
 
     local name          = UnitName("player")
     local sex           = UnitSex("player")
-    local is_male       = pl_sex == 2
+    local is_male       = sex == 2
     local race          = select(2, UnitRace("player"))
     local class         = select(2, UnitClass("player"))
     local faction       = UnitFactionGroup("player")
