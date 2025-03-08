@@ -84,7 +84,7 @@ def collect_chats():
                 # remove en_code if translation doesn't have dynamic codes,
                 # e.g. this removes fuzzy key for "Bank", "Auction House", "I want to browse your goods." etc.
                 for string in npc_chats:
-                    if '{' not in string['uk'] and '}' not in string['uk']:
+                    if '<' not in string['en'] and '>' not in string['en']:
                         string['en_code'] = None
 
                 chats[expansion][npc_name_en] = {
