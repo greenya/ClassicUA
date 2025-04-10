@@ -9,7 +9,7 @@ local npc = { -- [id] = { title, description (optional) }
 [6] = { "кобольд-шкідник", en="Kobold Vermin" }, -- Kobold Vermin
 [30] = { "лісовий павук", en="Forest Spider" }, -- Forest Spider
 [36] = { "жнивальний голем", en="Harvest Golem" }, -- Harvest Golem
-[38] = { "розбійник повстанців", en="Defias Thug" }, -- Defias Thug
+[38] = { "розбійник Непокірних", en="Defias Thug" }, -- Defias Thug
 [40] = { "кобольд-шахтар", en="Kobold Miner" }, -- Kobold Miner
 [43] = { "шахтний павук", en="Mine Spider" }, -- Mine Spider
 [46] = { "мурлок-здобувач", en="Murloc Forager" }, -- Murloc Forager
@@ -26,8 +26,8 @@ local npc = { -- [id] = { title, description (optional) }
 [80] = { "кобольд-різнороб", en="Kobold Laborer" }, -- Kobold Laborer
 [89] = { "пекельник", en="Infernal" }, -- Infernal
 [92] = { "кам'яний елементаль", en="Rock Elemental" }, -- Rock Elemental
-[94] = { "кишеньковий злодій повстанців", en="Defias Cutpurse" }, -- Defias Cutpurse
-[95] = { "контрабандист повстанців", en="Defias Smuggler" }, -- Defias Smuggler
+[94] = { "кишеньковий злодій Непокірних", en="Defias Cutpurse" }, -- Defias Cutpurse
+[95] = { "контрабандист Непокірних", en="Defias Smuggler" }, -- Defias Smuggler
 [97] = { "річколапе щеня", en="Riverpaw Runt" }, -- Riverpaw Runt
 [98] = { "річколапий орудар", en="Riverpaw Taskmaster" }, -- Riverpaw Taskmaster
 [99] = { "Морґана Підступна", en="Morgaine the Sly" }, -- Morgaine the Sly
@@ -36,12 +36,12 @@ local npc = { -- [id] = { title, description (optional) }
 [113] = { "кам'янорилий кнур", en="Stonetusk Boar" }, -- Stonetusk Boar
 [114] = { "жнивальний доглядач", en="Harvest Watcher" }, -- Harvest Watcher
 [115] = { "жнивальний збирач", en="Harvest Reaper" }, -- Harvest Reaper
-[116] = { "бандит повстанців", en="Defias Bandit" }, -- Defias Bandit
+[116] = { "бандит Непокірних", en="Defias Bandit" }, -- Defias Bandit
 [117] = { "річколапий гнол", en="Riverpaw Gnoll" }, -- Riverpaw Gnoll
 [118] = { "бродячий хижак", en="Prowler" }, -- Prowler
 [119] = { "довгорил", en="Longsnout" }, -- Longsnout
-[121] = { "вистежувач повстанців", en="Defias Pathstalker" }, -- Defias Pathstalker
-[122] = { "нальотчик повстанців", en="Defias Highwayman" }, -- Defias Highwayman
+[121] = { "вистежувач Непокірних", en="Defias Pathstalker" }, -- Defias Pathstalker
+[122] = { "нальотник Непокірних", en="Defias Highwayman" }, -- Defias Highwayman
 [123] = { "річколапа дворняга", en="Riverpaw Mongrel" }, -- Riverpaw Mongrel
 [124] = { "річколапий моцак", en="Riverpaw Brute" }, -- Riverpaw Brute
 [125] = { "річколапий розпорядник", en="Riverpaw Overseer" }, -- Riverpaw Overseer
@@ -66,7 +66,7 @@ local npc = { -- [id] = { title, description (optional) }
 [210] = { "кісткогриз", en="Bone Chewer" }, -- Bone Chewer
 [212] = { "воїн Сколотого Кулака", en="Splinter Fist Warrior" }, -- Splinter Fist Warrior
 [213] = { "голодний зловісний вовк", en="Starving Dire Wolf" }, -- Starving Dire Wolf
-[215] = { "нічний вісник повстанців", en="Defias Night Runner" }, -- Defias Night Runner
+[215] = { "нічний вісник Непокірних", en="Defias Night Runner" }, -- Defias Night Runner
 [217] = { "отруйний колопряд", en="Venom Web Spider" }, -- Venom Web Spider
 [218] = { "розкрадач могил", en="Grave Robber" }, -- Grave Robber
 [222] = { "Ніллен Андемар", "майстер булав", en="Nillen Andemar" }, -- Nillen Andemar <Macecrafter>
@@ -197,8 +197,8 @@ local npc = { -- [id] = { title, description (optional) }
 [445] = { "багрянокряжовий альфа", en="Redridge Alpha" }, -- Redridge Alpha
 [446] = { "багрянокряжове гепало", en="Redridge Basher" }, -- Redridge Basher
 [448] = { "Кнурило", en="Hogger" }, -- Hogger
-[449] = { "кастетник повстанців", en="Defias Knuckleduster" }, -- Defias Knuckleduster
-[450] = { "маг-відступник повстанців", en="Defias Renegade Mage" }, -- Defias Renegade Mage
+[449] = { "кастетник Непокірних", en="Defias Knuckleduster" }, -- Defias Knuckleduster
+[450] = { "маг-відступник Непокірних", en="Defias Renegade Mage" }, -- Defias Renegade Mage
 [452] = { "річколапий бандит", en="Riverpaw Bandit" }, -- Riverpaw Bandit
 [453] = { "річколапий містик", en="Riverpaw Mystic" }, -- Riverpaw Mystic
 [454] = { "молодий іклоштрик", en="Young Goretusk" }, -- Young Goretusk
@@ -211,18 +211,18 @@ local npc = { -- [id] = { title, description (optional) }
 [464] = { "вартовий Паркер", en="Guard Parker" }, -- Guard Parker
 [465] = { "бармен Доббінс", "бармен", en="Barkeep Dobbins" }, -- Barkeep Dobbins <Bartender>
 [466] = { "генерал Марк Джонатан", "верховний командир штормовійської оборони" }, -- Marcus Jonathan
-[467] = { "зрадник повстанців", en="The Defias Traitor" }, -- The Defias Traitor
+[467] = { "зрадник Непокірних", en="The Defias Traitor" }, -- The Defias Traitor
 [468] = { "міський оповісник", en="Town Crier" }, -- Town Crier
 [469] = { "лейтенант Дорен", en="Lieutenant Doren" }, -- Lieutenant Doren
 [471] = { "мати Ікло", en="Mother Fang" }, -- Mother Fang
 [472] = { "Кріпоїдло", en="Fedfennel" }, -- Fedfennel
 [473] = { "Морган \"Збирач\"", en="Morgan the Collector" }, -- Morgan the Collector
-[474] = { "чарівник-пройдисвіт повстанців", en="Defias Rogue Wizard" }, -- Defias Rogue Wizard
+[474] = { "чарівник-пройдисвіт Непокірних", en="Defias Rogue Wizard" }, -- Defias Rogue Wizard
 [475] = { "кобольд-прохідник", en="Kobold Tunneler" }, -- Kobold Tunneler
 [476] = { "кобольд-геомант", en="Kobold Geomancer" }, -- Kobold Geomancer
 [478] = { "річколапий вістовий", en="Riverpaw Outrunner" }, -- Riverpaw Outrunner
 [480] = { "іржавий жнивальний голем", en="Rusty Harvest Golem" }, -- Rusty Harvest Golem
-[481] = { "харциз повстанців", en="Defias Footpad" }, -- Defias Footpad
+[481] = { "харциз Непокірних", en="Defias Footpad" }, -- Defias Footpad
 [482] = { "Еллінг Тріас", "майстер сироваріння", en="Elling Trias" }, -- Elling Trias
 [483] = { "Елейн Тріас", "майстриня сироваріння", en="Elaine Trias" }, -- Elaine Trias
 [485] = { "вістовий Чорнокаменю", en="Blackrock Outrunner" }, -- Blackrock Outrunner
@@ -239,7 +239,7 @@ local npc = { -- [id] = { title, description (optional) }
 [501] = { "річколапий травник", en="Riverpaw Herbalist" }, -- Riverpaw Herbalist
 [502] = { "Бенні Блаанко", en="Benny Blaanco" }, -- Benny Blaanco
 [503] = { "лорд Малатром", en="Lord Malathrom" }, -- Lord Malathrom
-[504] = { "капканник повстанців", en="Defias Trapper" }, -- Defias Trapper
+[504] = { "капканник Непокірних", en="Defias Trapper" }, -- Defias Trapper
 [505] = { "великий тарантул", en="Greater Tarantula" }, -- Greater Tarantula
 [506] = { "сержант Хмизодряп", en="Sergeant Brashclaw" }, -- Sergeant Brashclaw
 [507] = { "Фенрос", en="Fenros" }, -- Fenros
@@ -267,7 +267,7 @@ local npc = { -- [id] = { title, description (optional) }
 [545] = { "мурлок-хвилезов", en="Murloc Tidecaller" }, -- Murloc Tidecaller
 [547] = { "великий іклоштрик", en="Great Goretusk" }, -- Great Goretusk
 [548] = { "мурлок-молодший хвилезов", en="Murloc Minor Tidecaller" }, -- Murloc Minor Tidecaller
-[550] = { "посильний повстанців", en="Defias Messenger" }, -- Defias Messenger
+[550] = { "гонець Непокірних", en="Defias Messenger" }, -- Defias Messenger
 [565] = { "скажений зловісний вовк", en="Rabid Dire Wolf" }, -- Rabid Dire Wolf
 [567] = { "Чорнокіготь", en="Blacknails" }, -- Blacknails
 [568] = { "тінешкурий воїн", en="Shadowhide Warrior" }, -- Shadowhide Warrior
@@ -282,24 +282,24 @@ local npc = { -- [id] = { title, description (optional) }
 [579] = { "тінешкурий душогуб", en="Shadowhide Assassin" }, -- Shadowhide Assassin
 [580] = { "багрянокряжовий чорнороб", en="Redridge Drudger" }, -- Redridge Drudger
 [582] = { "старенька Білявка", en="Old Blanchy" }, -- Old Blanchy
-[583] = { "душитель повстанців", en="Defias Ambusher" }, -- Defias Ambusher
+[583] = { "душитель Непокірних", en="Defias Ambusher" }, -- Defias Ambusher
 [584] = { "Казон", en="Kazon" }, -- Kazon
 [587] = { "воїн Кровоскальпих", en="Bloodscalp Warrior" }, -- Bloodscalp Warrior
 [588] = { "розвідник Кровоскальпих", en="Bloodscalp Scout" }, -- Bloodscalp Scout
-[589] = { "грабіжник повстанців", en="Defias Pillager" }, -- Defias Pillager
-[590] = { "здобичник повстанців", en="Defias Looter" }, -- Defias Looter
-[594] = { "поплічник повстанців", en="Defias Henchman" }, -- Defias Henchman
+[589] = { "грабіжник Непокірних", en="Defias Pillager" }, -- Defias Pillager
+[590] = { "здобичник Непокірних", en="Defias Looter" }, -- Defias Looter
+[594] = { "поплічник Непокірних", en="Defias Henchman" }, -- Defias Henchman
 [595] = { "мисливець Кровоскальпих", en="Bloodscalp Hunter" }, -- Bloodscalp Hunter
 [596] = { "вельможа з промитими мізками", en="Brainwashed Noble" }, -- Brainwashed Noble
 [597] = { "берсерк Кровоскальпих", en="Bloodscalp Berserker" }, -- Bloodscalp Berserker
-[598] = { "шахтар повстанців", en="Defias Miner" }, -- Defias Miner
+[598] = { "шахтар Непокірних", en="Defias Miner" }, -- Defias Miner
 [599] = { "Маріса дю'Пейдж", en="Marisa du'Paige" }, -- Marisa du'Paige
 [601] = { "Капо Підлий", en="Capo the Mean" }, -- Capo the Mean
 [603] = { "Хмурозуб", en="Grimtooth" }, -- Grimtooth
 [604] = { "розповсюдник чуми", en="Plague Spreader" }, -- Plague Spreader
 [615] = { "пантрувач Чорнокаменю", en="Blackrock Tracker" }, -- Blackrock Tracker
 [616] = { "Скрекотун", en="Chatter" }, -- Chatter
-[619] = { "заклинатель повстанців", en="Defias Conjurer" }, -- Defias Conjurer
+[619] = { "заклинатель Непокірних", en="Defias Conjurer" }, -- Defias Conjurer
 [620] = { "курка", en="Chicken" }, -- Chicken
 [622] = { "гоблін-інженер", en="Goblin Engineer" }, -- Goblin Engineer
 [623] = { "скелетний шахтар", en="Skeletal Miner" }, -- Skeletal Miner
@@ -308,9 +308,9 @@ local npc = { -- [id] = { title, description (optional) }
 [626] = { "десятник Лютополох", en="Foreman Thistlenettle" }, -- Foreman Thistlenettle
 [628] = { "чорний спустошник", en="Black Ravager" }, -- Black Ravager
 [633] = { "Елейн Карвін", en="Elaine Carevin" }, -- Elaine Carevin
-[634] = { "розпорядник повстанців", en="Defias Overseer" }, -- Defias Overseer
-[636] = { "лайдак повстанців", en="Defias Blackguard" }, -- Defias Blackguard
-[639] = { "Едвін ван Кліф", "бос повстанців", en="Edwin VanCleef" }, -- Edwin VanCleef
+[634] = { "розпорядник Непокірних", en="Defias Overseer" }, -- Defias Overseer
+[636] = { "лайдак Непокірних", en="Defias Blackguard" }, -- Defias Blackguard
+[639] = { "Едвін ван Кліф", "бос Непокірних", en="Edwin VanCleef" }, -- Edwin VanCleef
 [641] = { "гоблін-дроворіз", en="Goblin Woodcarver" }, -- Goblin Woodcarver
 [642] = { "подрібнювач Сніда", "начальник лісозаготівлі", en="Sneed's Shredder" }, -- Sneed's Shredder
 [643] = { "Снід", "начальник лісозаготівлі", en="Sneed" }, -- Sneed
@@ -319,7 +319,7 @@ local npc = { -- [id] = { title, description (optional) }
 [646] = { "пан Бац", "перший корабельний помічник", en="Mr. Smite" }, -- Mr. Smite
 [647] = { "капітан Зеленошкір", en="Captain Greenskin" }, -- Captain Greenskin
 [656] = { "Вайлдер Лютополох", en="Wilder Thistlenettle" }, -- Wilder Thistlenettle
-[657] = { "пірат повстанців", en="Defias Pirate" }, -- Defias Pirate
+[657] = { "пірат Непокірних", en="Defias Pirate" }, -- Defias Pirate
 [658] = { "Стен Міцнорук", en="Sten Stoutarm" }, -- Sten Stoutarm
 [659] = { "Ель Полло Гранде", "Чорна курка смерті", en="El Pollo Grande" }, -- El Pollo Grande
 [660] = { "знахар Кровоскальпих", en="Bloodscalp Witch Doctor" }, -- Bloodscalp Witch Doctor
@@ -460,7 +460,7 @@ local npc = { -- [id] = { title, description (optional) }
 [821] = { "капітан Данувін", "Народне ополчення", en="Captain Danuvin" }, -- Captain Danuvin <The People's Militia>
 [822] = { "молодий лісовий ведмідь", en="Young Forest Bear" }, -- Young Forest Bear
 [823] = { "заступник Віллем", en="Deputy Willem" }, -- Deputy Willem
-[824] = { "землекоп повстанців", en="Defias Digger" }, -- Defias Digger
+[824] = { "землекоп Непокірних", en="Defias Digger" }, -- Defias Digger
 [826] = { "вартовий Ян", "Нічна варта", en="Watcher Jan" }, -- Watcher Jan <The Night Watch>
 [827] = { "вартовий Мокарскі", "Нічна варта", en="Watcher Mocarski" }, -- Watcher Mocarski <The Night Watch>
 [828] = { "вартовий Пятрас", "Нічна варта", en="Watcher Petras" }, -- Watcher Petras <The Night Watch>
@@ -529,8 +529,8 @@ local npc = { -- [id] = { title, description (optional) }
 [906] = { "Максиміліан Кроу", "тренер чорнокнижників", en="Maximillian Crowe" }, -- Maximillian Crowe <Warlock Trainer>
 [907] = { "Керас Вовкородний", "воєначальник низини Араті", en="Keras Wolfheart" }, -- Keras Wolfheart <Arathi Basin Battlemaster>
 [908] = { "Флора Срібновій", "досвідчена травниця", en="Flora Silverwind" }, -- Flora Silverwind <Superior Herbalist>
-[909] = { "нічне лезо повстанців", en="Defias Night Blade" }, -- Defias Night Blade
-[910] = { "чародій повстанців", en="Defias Enchanter" }, -- Defias Enchanter
+[909] = { "нічне лезо Непокірних", en="Defias Night Blade" }, -- Defias Night Blade
+[910] = { "чародій Непокірних", en="Defias Enchanter" }, -- Defias Enchanter
 [911] = { "Ллейн Бішір", "тренер воїнів", en="Llane Beshere" }, -- Llane Beshere <Warrior Trainer>
 [912] = { "Тран Хорман", "тренер воїнів", en="Thran Khorman" }, -- Thran Khorman <Warrior Trainer>
 [913] = { "Лірія дю Лак", "тренерка воїнів", en="Lyria Du Lac" }, -- Lyria Du Lac <Warrior Trainer>
@@ -689,7 +689,7 @@ local npc = { -- [id] = { title, description (optional) }
 [1106] = { "загублений кухар", en="Lost One Cook" }, -- Lost One Cook
 [1108] = { "туманодільна горила", en="Mistvale Gorilla" }, -- Mistvale Gorilla
 [1109] = { "плотодер", en="Fleshripper" }, -- Fleshripper
-[1110] = { "скелетний нальотчик", en="Skeletal Raider" }, -- Skeletal Raider
+[1110] = { "скелетний нальотник", en="Skeletal Raider" }, -- Skeletal Raider
 [1111] = { "кровопивець-ловець", en="Leech Stalker" }, -- Leech Stalker
 [1112] = { "кровопивця-вдова", en="Leech Widow" }, -- Leech Widow
 [1114] = { "джунглевий рокотун", en="Jungle Thunderer" }, -- Jungle Thunderer
@@ -970,7 +970,7 @@ local npc = { -- [id] = { title, description (optional) }
 [1430] = { "Томас", "кухар", en="Tomas" }, -- Tomas <Cook>
 [1431] = { "Сузетта Ґелліна", en="Suzetta Gallina" }, -- Suzetta Gallina
 [1432] = { "Ренато Ґелліна", en="Renato Gallina" }, -- Renato Gallina
-[1433] = { "Корбетт Шнайдер", en="Corbett Schneider" }, -- Corbett Schneider
+[1433] = { "Корбет Шнайдер", en="Corbett Schneider" }, -- Corbett Schneider
 [1434] = { "караульний Менетіла", en="Menethil Sentry" }, -- Menethil Sentry
 [1435] = { "Зардет Чорний Кіготь", en="Zardeth of the Black Claw" }, -- Zardeth of the Black Claw
 [1436] = { "вартовий Катфорд", "Нічна варта", en="Watcher Cutford" }, -- Watcher Cutford <The Night Watch>
@@ -1116,7 +1116,7 @@ local npc = { -- [id] = { title, description (optional) }
 [1666] = { "Кам Темнолют", en="Kam Deepfury" }, -- Kam Deepfury
 [1667] = { "Мевен Корґал", en="Meven Korgal" }, -- Meven Korgal
 [1668] = { "Вільям Мак-Грегор", "майстер луків", en="William MacGregor" }, -- William MacGregor <Bowyer>
-[1669] = { "спекулянт повстанців", "мандрівний торговець", en="Defias Profiteer" }, -- Defias Profiteer
+[1669] = { "спекулянт Непокірних", "мандрівний торговець", en="Defias Profiteer" }, -- Defias Profiteer
 [1670] = { "Майк Міллер", "продавець хліба", en="Mike Miller" }, -- Mike Miller
 [1671] = { "Ламар Вейсіллі", "продавець фруктів", en="Lamar Veisilli" }, -- Lamar Veisilli <Fruit Seller>
 [1672] = { "Логан Єва", "кравецькі припаси", en="Lohgan Eva" }, -- Lohgan Eva <Tailoring Supplies>
@@ -1150,24 +1150,24 @@ local npc = { -- [id] = { title, description (optional) }
 [1701] = { "Змок Мрякоріз", "тренер гірництва", en="Dank Drizzlecut" }, -- Dank Drizzlecut <Mining Trainer>
 [1702] = { "Бронк Шестерньоїд", "інженер-підмайстер", en="Bronk Guzzlegear" }, -- Bronk Guzzlegear <Journeyman Engineer>
 [1703] = { "Утрар Трекс", "кравець-підмайстер", en="Uthrar Threx" }, -- Uthrar Threx <Journeyman Tailor>
-[1706] = { "в'язень повстанців", en="Defias Prisoner" }, -- Defias Prisoner
-[1707] = { "бранець повстанців", en="Defias Captive" }, -- Defias Captive
-[1708] = { "невільник повстанців", en="Defias Inmate" }, -- Defias Inmate
-[1711] = { "каторжник повстанців", en="Defias Convict" }, -- Defias Convict
+[1706] = { "в'язень Непокірних", en="Defias Prisoner" }, -- Defias Prisoner
+[1707] = { "бранець Непокірних", en="Defias Captive" }, -- Defias Captive
+[1708] = { "невільник Непокірних", en="Defias Inmate" }, -- Defias Inmate
+[1711] = { "каторжник Непокірних", en="Defias Convict" }, -- Defias Convict
 [1713] = { "стара тінепаща пантера", en="Elder Shadowmaw Panther" }, -- Elder Shadowmaw Panther
-[1715] = { "заколотник повстанців", en="Defias Insurgent" }, -- Defias Insurgent
+[1715] = { "заколотник Непокірних", en="Defias Insurgent" }, -- Defias Insurgent
 [1716] = { "Базіл Тредд", en="Bazil Thredd" }, -- Bazil Thredd
 [1717] = { "Голяш", en="Hamhock" }, -- Hamhock
 [1718] = { "кам'янощелепий рейдер", en="Rockjaw Raider" }, -- Rockjaw Raider
 [1719] = { "наглядач Телвотер", en="Warden Thelwater" }, -- Warden Thelwater
 [1720] = { "Бруґал Залізний Кулак", en="Bruegal Ironknuckle" }, -- Bruegal Ironknuckle
 [1721] = { "Нікова Раскол", en="Nikova Raskol" }, -- Nikova Raskol
-[1725] = { "вартовий повстанців", en="Defias Watchman" }, -- Defias Watchman
-[1726] = { "чаротворець повстанців", en="Defias Magician" }, -- Defias Magician
-[1727] = { "робітник повстанців", en="Defias Worker" }, -- Defias Worker
-[1729] = { "пробудитель повстанців", en="Defias Evoker" }, -- Defias Evoker
+[1725] = { "вартовий Непокірних", en="Defias Watchman" }, -- Defias Watchman
+[1726] = { "чаротворець Непокірних", en="Defias Magician" }, -- Defias Magician
+[1727] = { "робітник Непокірних", en="Defias Worker" }, -- Defias Worker
+[1729] = { "пробудитель Непокірних", en="Defias Evoker" }, -- Defias Evoker
 [1731] = { "гоблін-ремісник", en="Goblin Craftsman" }, -- Goblin Craftsman
-[1732] = { "вітропліт повстанців", en="Defias Squallshaper" }, -- Defias Squallshaper
+[1732] = { "вітроплет Непокірних", en="Defias Squallshaper" }, -- Defias Squallshaper
 [1733] = { "Зґґі", "прислужник Зардета", en="Zggi" }, -- Zggi
 [1735] = { "смертестраж Авраам", en="Deathguard Abraham" }, -- Deathguard Abraham
 [1736] = { "смертестраж Рендольф", en="Deathguard Randolph" }, -- Deathguard Randolph
@@ -1838,7 +1838,7 @@ local npc = { -- [id] = { title, description (optional) }
 [2583] = { "стромвартський мисливець на тролів", en="Stromgarde Troll Hunter" }, -- Stromgarde Troll Hunter
 [2584] = { "стромвартський захисник", en="Stromgarde Defender" }, -- Stromgarde Defender
 [2585] = { "стромвартський поборник", en="Stromgarde Vindicator" }, -- Stromgarde Vindicator
-[2586] = { "нальотчик Синдикату", en="Syndicate Highwayman" }, -- Syndicate Highwayman
+[2586] = { "нальотник Синдикату", en="Syndicate Highwayman" }, -- Syndicate Highwayman
 [2587] = { "вистежувач Синдикату", en="Syndicate Pathstalker" }, -- Syndicate Pathstalker
 [2588] = { "скрадач Синдикату", en="Syndicate Prowler" }, -- Syndicate Prowler
 [2589] = { "найманець Синдикату", en="Syndicate Mercenary" }, -- Syndicate Mercenary
@@ -2579,7 +2579,7 @@ local npc = { -- [id] = { title, description (optional) }
 [3447] = { "Паві Мрякогін", en="Pawe Mistrunner" }, -- Pawe Mistrunner
 [3448] = { "Тонґа Рунний Тотем", en="Tonga Runetotem" }, -- Tonga Runetotem
 [3449] = { "Дарсок Хуткоклин", en="Darsok Swiftdagger" }, -- Darsok Swiftdagger
-[3450] = { "супутник повстанців", en="Defias Companion" }, -- Defias Companion
+[3450] = { "супутник Непокірних", en="Defias Companion" }, -- Defias Companion
 [3451] = { "водій Кривошип-с", en="Pilot Wizzlecrank" }, -- Pilot Wizzlecrank
 [3452] = { "Серена Кривавопера", en="Serena Bloodfeather" }, -- Serena Bloodfeather
 [3453] = { "завідувач причалу Запаморок", en="Wharfmaster Dizzywig" }, -- Wharfmaster Dizzywig
@@ -2888,6 +2888,7 @@ local npc = { -- [id] = { title, description (optional) }
 [3840] = { "друїд Ікла", en="Druid of the Fang" }, -- Druid of the Fang
 [3841] = { "Кейліс Перомісяць", "приборкувачка гіпогрифів", en="Caylais Moonfeather" }, -- Caylais Moonfeather <Hippogryph Master>
 [3842] = { "Бромбар Нелад", "ключник", en="Brombar Higgleby" }, -- Brombar Higgleby
+[3843] = { "Анайя" }, -- Anaya Dawnrunner
 [3844] = { "цілющий оберіг IV", en="Healing Ward IV" }, -- Healing Ward IV
 [3845] = { "Шиндрел Спалах", en="Shindrell Swiftfire" }, -- Shindrell Swiftfire
 [3846] = { "Тален", en="Talen" }, -- Talen
@@ -3345,9 +3346,9 @@ local npc = { -- [id] = { title, description (optional) }
 [4413] = { "темножвалий павук", en="Darkfang Spider" }, -- Darkfang Spider
 [4414] = { "темножвалий ядоплюй", en="Darkfang Venomspitter" }, -- Darkfang Venomspitter
 [4415] = { "гігантський темножвалий павук", en="Giant Darkfang Spider" }, -- Giant Darkfang Spider
-[4416] = { "гірник повстанців", en="Defias Strip Miner" }, -- Defias Strip Miner
-[4417] = { "орудар повстанців", en="Defias Taskmaster" }, -- Defias Taskmaster
-[4418] = { "чарівник повстанців", en="Defias Wizard" }, -- Defias Wizard
+[4416] = { "гірник Непокірних", en="Defias Strip Miner" }, -- Defias Strip Miner
+[4417] = { "орудар Непокірних", en="Defias Taskmaster" }, -- Defias Taskmaster
+[4418] = { "чарівник Непокірних", en="Defias Wizard" }, -- Defias Wizard
 [4419] = { "розпорядник перегонів Вайлоїзд", en="Race Master Kronkrider" }, -- Race Master Kronkrider
 [4420] = { "властитель Таранний Бивень", en="Overlord Ramtusk" }, -- Overlord Ramtusk
 [4421] = { "Чарлґа Бритвобока", "відьма", en="Charlga Razorflank" }, -- Charlga Razorflank
@@ -3758,7 +3759,7 @@ local npc = { -- [id] = { title, description (optional) }
 [4995] = { "вартовий в'язниці", en="Stockade Guard" }, -- Stockade Guard
 [4996] = { "поранений вартовий в'язниці", en="Injured Stockade Guard" }, -- Injured Stockade Guard
 [5042] = { "медсестра Ліліан", en="Nurse Lillian" }, -- Nurse Lillian
-[5043] = { "заколотник повстанців", en="Defias Rioter" }, -- Defias Rioter
+[5043] = { "заколотник Непокірних", en="Defias Rioter" }, -- Defias Rioter
 [5044] = { "тераморський скрадач", en="Theramore Skirmisher" }, -- Theramore Skirmisher
 [5045] = { "рядова Геллен", en="Private Hallan" }, -- Private Hallan
 [5046] = { "лейтенант Кальдвел", en="Lieutenant Caldwell" }, -- Lieutenant Caldwell
@@ -4507,7 +4508,7 @@ local npc = { -- [id] = { title, description (optional) }
 [6177] = { "Нарм Фок", en="Narm Faulk" }, -- Narm Faulk
 [6178] = { "Муйредон Боєкузня", en="Muiredon Battleforge" }, -- Muiredon Battleforge
 [6179] = { "Тіза Боєкузня", en="Tiza Battleforge" }, -- Tiza Battleforge
-[6180] = { "рейдер повстанців", en="Defias Raider" }, -- Defias Raider
+[6180] = { "рейдер Непокірних", en="Defias Raider" }, -- Defias Raider
 [6181] = { "Джордан Стілвелл", en="Jordan Stilwell" }, -- Jordan Stilwell
 [6182] = { "Дафна Стілвелл", en="Daphne Stilwell" }, -- Daphne Stilwell
 [6184] = { "деревопузий слідопит", en="Timbermaw Pathfinder" }, -- Timbermaw Pathfinder
@@ -4764,8 +4765,8 @@ local npc = { -- [id] = { title, description (optional) }
 [6806] = { "Таннок Кригомолот", "помічник корчмаря", en="Tannok Frosthammer" }, -- Tannok Frosthammer <Innkeeper Assistant>
 [6807] = { "корчмар Здирник", "корчмар", en="Innkeeper Skindle" }, -- Innkeeper Skindle <Innkeeper>
 [6826] = { "Талваш дель Кіссель", en="Talvash del Kissel" }, -- Talvash del Kissel
-[6846] = { "начальник доку повстанців", en="Defias Dockmaster" }, -- Defias Dockmaster
-[6866] = { "тілоохоронець повстанців", en="Defias Bodyguard" }, -- Defias Bodyguard
+[6846] = { "начальник доку Непокірних", en="Defias Dockmaster" }, -- Defias Dockmaster
+[6866] = { "тілоохоронець Непокірних", en="Defias Bodyguard" }, -- Defias Bodyguard
 [6867] = { "мисливський собака", en="Tracking Hound" }, -- Tracking Hound
 [6868] = { "Джаркал Змішаний Мох", en="Jarkal Mossmeld" }, -- Jarkal Mossmeld
 [6886] = { "Онін Мак-Гаммар", en="Onin MacHammar" }, -- Onin MacHammar
@@ -4778,7 +4779,7 @@ local npc = { -- [id] = { title, description (optional) }
 [6911] = { "прислужник Сетіра" }, -- Sethir the Ancient
 [6912] = { "рештки паладина", en="Remains of a Paladin" }, -- Remains of a Paladin
 [6913] = { "загублений мандрівник розломами", en="Lost One Rift Traveler" }, -- Lost One Rift Traveler
-[6927] = { "докер повстанців", en="Defias Dockworker" }, -- Defias Dockworker
+[6927] = { "докер Непокірних", en="Defias Dockworker" }, -- Defias Dockworker
 [6928] = { "корчмар Ґроск", "корчмар", en="Innkeeper Grosk" }, -- Innkeeper Grosk <Innkeeper>
 [6929] = { "корчмарка Гришка", "корчмарка", en="Innkeeper Gryshka" }, -- Innkeeper Gryshka <Innkeeper>
 [6930] = { "корчмар Каракул", "корчмар", en="Innkeeper Karakul" }, -- Innkeeper Karakul <Innkeeper>
@@ -4788,7 +4789,7 @@ local npc = { -- [id] = { title, description (optional) }
 [6986] = { "Дран Дрофферс", "вторсировина Дрофферса і сина", en="Dran Droffers" }, -- Dran Droffers
 [6987] = { "Малтон Дрофферс", "вторсировина Дрофферса і сина", en="Malton Droffers" }, -- Malton Droffers
 [7007] = { "Тьєв Мордун", en="Tiev Mordune" }, -- Tiev Mordune
-[7009] = { "Арантір", "Рука Хаосу", en="Arantir" }, -- Arantir
+[7009] = { "Арантір", "Рука Хаосу" }, -- Arantir
 [7010] = { "Зілзібін Ударник", en="Zilzibin Drumlore" }, -- Zilzibin Drumlore
 [7011] = { "земельник-трощитель", en="Earthen Rocksmasher" }, -- Earthen Rocksmasher
 [7012] = { "земельник-скульптор", en="Earthen Sculptor" }, -- Earthen Sculptor
@@ -4823,12 +4824,12 @@ local npc = { -- [id] = { title, description (optional) }
 [7047] = { "чорна малеча", en="Black Broodling" }, -- Black Broodling
 [7048] = { "палюча малеча", en="Scalding Broodling" }, -- Scalding Broodling
 [7049] = { "вогнелуска малеча", en="Flamescale Broodling" }, -- Flamescale Broodling
-[7050] = { "мрець повстанців", en="Defias Drone" }, -- Defias Drone
-[7051] = { "потворний мрець повстанців", en="Malformed Defias Drone" }, -- Malformed Defias Drone
-[7052] = { "патрульний вежі повстанців", en="Defias Tower Patroller" }, -- Defias Tower Patroller
+[7050] = { "мрець Непокірних", en="Defias Drone" }, -- Defias Drone
+[7051] = { "потворний мрець Непокірних", en="Malformed Defias Drone" }, -- Malformed Defias Drone
+[7052] = { "патрульна вежі Непокірних", en="Defias Tower Patroller" }, -- Defias Tower Patroller
 [7053] = { "Клейвен Мортвейк", en="Klaven Mortwake" }, -- Klaven Mortwake
 [7055] = { "ворг Чорнокаменю", en="Blackrock Worg" }, -- Blackrock Worg
-[7056] = { "караульний вежі повстанців", en="Defias Tower Sentry" }, -- Defias Tower Sentry
+[7056] = { "караульний вежі Непокірних", en="Defias Tower Sentry" }, -- Defias Tower Sentry
 [7057] = { "Копальник Лопатофланж", en="Digmaster Shovelphlange" }, -- Digmaster Shovelphlange
 [7067] = { "мрець ТзНБ \"Авантюра\"", en="Venture Co. Drone" }, -- Venture Co. Drone
 [7068] = { "приречений послушник", en="Condemned Acolyte" }, -- Condemned Acolyte
@@ -4896,6 +4897,7 @@ local npc = { -- [id] = { title, description (optional) }
 [7208] = { "Безрук", en="Noarm" }, -- Noarm
 [7209] = { "обсидіановий осколок", en="Obsidian Shard" }, -- Obsidian Shard
 [7228] = { "Залізанія", en="Ironaya" }, -- Ironaya
+[7229] = { "Тінь Арантіра" }, -- Arantir
 [7230] = { "Шаїс Сталелють", "бронярка", en="Shayis Steelfury" }, -- Shayis Steelfury <Armor Crafter>
 [7231] = { "Келґрук Кривава Сокира", "зброяр", en="Kelgruk Bloodaxe" }, -- Kelgruk Bloodaxe <Weapon Crafter>
 [7232] = { "Борґус Сталерук", "зброяр", en="Borgus Steelhand" }, -- Borgus Steelhand <Weapon Crafter>
@@ -6610,7 +6612,7 @@ local npc = { -- [id] = { title, description (optional) }
 [11578] = { "вихровий подрібнювач", en="Whirlwind Shredder" }, -- Whirlwind Shredder
 [11582] = { "темний закликач Некроситету", en="Scholomance Dark Summoner" }, -- Scholomance Dark Summoner
 [11583] = { "Нефаріан", en="Nefarian" }, -- Nefarian
-[11596] = { "Сміід Гвинтодряп", en="Smeed Scrabblescrew" }, -- Smeed Scrabblescrew
+[11596] = { "Смід Гвинтодряп", en="Smeed Scrabblescrew" }, -- Smeed Scrabblescrew
 [11598] = { "воскреслий вартовий", en="Risen Guardian" }, -- Risen Guardian
 [11600] = { "залізодонний шаман", en="Irondeep Shaman" }, -- Irondeep Shaman
 [11602] = { "залізодонний череполом", en="Irondeep Skullthumper" }, -- Irondeep Skullthumper
@@ -6962,7 +6964,7 @@ local npc = { -- [id] = { title, description (optional) }
 [12259] = { "Геєнас", en="Gehennas" }, -- Gehennas
 [12260] = { "дракончик Оніксії", en="Onyxian Drake" }, -- Onyxian Drake
 [12261] = { "заражений троль Моходерів", en="Infected Mossflayer" }, -- Infected Mossflayer
-[12262] = { "захисник зиккурата", en="Ziggurat Protector" }, -- Ziggurat Protector
+[12262] = { "захисник зикурата", en="Ziggurat Protector" }, -- Ziggurat Protector
 [12263] = { "захисник бійні", en="Slaughterhouse Protector" }, -- Slaughterhouse Protector
 [12264] = { "Шаззрах", en="Shazzrah" }, -- Shazzrah
 [12265] = { "породження лави", en="Lava Spawn" }, -- Lava Spawn
@@ -7137,7 +7139,7 @@ local npc = { -- [id] = { title, description (optional) }
 [12837] = { "Яма Сніжне Копито", en="Yama Snowhoof" }, -- Yama Snowhoof
 [12856] = { "вісниця Ясенедолу", en="Ashenvale Outrunner" }, -- Ashenvale Outrunner
 [12858] = { "Торек", en="Torek" }, -- Torek
-[12859] = { "нальотчик Тріснутого Дерева", en="Splintertree Raider" }, -- Splintertree Raider
+[12859] = { "нальотник Тріснутого Дерева", en="Splintertree Raider" }, -- Splintertree Raider
 [12860] = { "Дюріель Місяцежар", en="Duriel Moonfire" }, -- Duriel Moonfire
 [12862] = { "розвідниця Пісні Війни", en="Warsong Scout" }, -- Warsong Scout
 [12863] = { "гонець Пісні Війни", en="Warsong Runner" }, -- Warsong Runner
@@ -7472,7 +7474,7 @@ local npc = { -- [id] = { title, description (optional) }
 [14322] = { "Кріґ-Тупцюн", "Сп'янілий", en="Stomper Kreeg" }, -- Stomper Kreeg
 [14323] = { "вартовий Сліп'кік", en="Guard Slip'kik" }, -- Guard Slip'kik
 [14324] = { "Чо'Раш-Спостерігач", en="Cho'Rush the Observer" }, -- Cho'Rush the Observer
-[14325] = { "капітан Кромхруст", en="Captain Kromcrush" }, -- Captain Kromcrush
+[14325] = { "капітан Дужохруст", en="Captain Kromcrush" }, -- Captain Kromcrush
 [14326] = { "вартовий Мол'дар", en="Guard Mol'dar" }, -- Guard Mol'dar
 [14327] = { "Лестендріс", en="Lethtendris" }, -- Lethtendris
 [14331] = { "червоний бойовий кінь-скелет", en="Red Skeletal Warhorse" }, -- Red Skeletal Warhorse
@@ -8422,6 +8424,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16073] = { "дух лорда Вальталака" }, -- Valthalak
 [16075] = { "Купі С.В. Купайло", en="Kwee Q. Peddlefeet" }, -- Kwee Q. Peddlefeet
 [16080] = { "Мор Сиве Копито", en="Mor Grayhoof" }, -- Mor Grayhoof
+[16085] = { "Купі" }, -- Kwee Q. Peddlefeet
 [16090] = { "Рауш", en="Rousch" }, -- Rousch
 [16091] = { "Дірк Громоліс", en="Dirk Thunderwood" }, -- Dirk Thunderwood
 [16093] = { "примарний ловець", en="Spectral Stalker" }, -- Spectral Stalker
@@ -8439,6 +8442,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16107] = { "аптекар Стаффрон Лерент", "Королівське товариство аптекарів", en="Apothecary Staffron Lerent" }, -- Apothecary Staffron Lerent <Royal Apothecary Society>
 [16108] = { "Фенстад Арґайл", en="Fenstad Argyle" }, -- Fenstad Argyle
 [16109] = { "Мара Реннік", en="Mara Rennick" }, -- Mara Rennick
+[16110] = { "Анналіз Лерент", en="Annalise Lerent" }, -- Annalise Lerent
 [16111] = { "манекен закоханого", en="Love Fool" }, -- Love Fool
 [16112] = { "Корфакс, поборник Світла", "братство Світла", en="Korfax, Champion of the Light" }, -- Korfax, Champion of the Light <Brotherhood of the Light>
 [16113] = { "отець Ініґо Монтой", "братство Світла", en="Father Inigo Montoy" }, -- Father Inigo Montoy <Brotherhood of the Light>

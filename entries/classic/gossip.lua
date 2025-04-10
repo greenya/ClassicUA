@@ -87,6 +87,13 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 ["ttteltiswhyu.-istesgttcnhpyuwh"] = 2722278334,
 },
 },
+[5769] = { -- Arch Druid Hamuul Runetotem
+-- The earth keeps many secrets, <class>; it is our duty to ensure that those that must remain a secret for the good of all stays as such.
+[78290476] = [===[Земля приховує чимало таємниць, {клас:к}. Наш обов'язок — захищати ці таємниці, задля загального блага.]===],
+["!code"] = {
+["teehksmyss..itisordytoeetttettmtrnstfrtegd"] = 78290476,
+},
+},
 [911] = { -- Llane Beshere
 -- I can tell just by the way you're standing that you're no warrior.
 --
