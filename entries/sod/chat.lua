@@ -130,7 +130,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Denizens of Kalimdor, the dread beast Aku'mai has been slain and Ashenvale has been cleansed of the blight of the Old Gods' influence. Bask in the boon of Blackfathom, and bathe in the cleansing light of the dawn!
 [244370849] = [===[Жителі Калімдору, жахливе чудовисько Аку'май було вбито, а Ясенеділ очищено від впливу Старих Богів. Відчуйте благословення Чорноводдя та очиститесь сяйвом світанку!]===],
 },
-["Defias Scout"] = { "розвідник повстанців",
+["Defias Scout"] = { "розвідник Непокірних",
 -- ...Uh oh...
 [3576956817] = [===[...Ой-йой...]===],
 -- I'm out of here!
@@ -147,6 +147,14 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Electrocutioner 6000"] = {
 -- Electric justice!
 [416161370] = [===[Електричне правосуддя!]===],
+},
+["Explosive Egg"] = { "вибухове яйце",
+-- %s is now armed!
+[273264594] = [===[%s активоване!]===],
+-- %s will be armed in 10 seconds!
+[1592013139] = [===[%s активується через 10 секунд!]===],
+-- %s will be armed in 5 seconds!
+[3424761200] = [===[%s активується через 5 секунд!]===],
 },
 ["Fizbuz Mithril"] = { "Фіцбуц Мітрил",
 -- Alright folks, gather 'round! The fights are about to begin!
@@ -254,6 +262,30 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3628615700] = [===[Ні! Ми були...так близько...]===],
 -- Your sight betrays you!
 [3424232333] = [===[Ваш зір підводить вас!]===],
+},
+["STX-96/FR"] = { "СТХ-96/ВГ",
+-- And STAY dead!
+[1124539967] = [===[І НЕ ВСТАВАЙ!]===],
+},
+["STX-97/IC"] = { "СТХ-97/КГ",
+-- And STAY dead!
+[1124539967] = [===[І НЕ ВСТАВАЙ!]===],
+},
+["STX-98/PO"] = { "СТХ-98/РА",
+-- And STAY dead!
+[1124539967] = [===[І НЕ ВСТАВАЙ!]===],
+},
+["STX-99/XD"] = { "СТХ-99/УМ",
+-- And STAY dead!
+[1124539967] = [===[І НЕ ВСТАВАЙ!]===],
+},
+["Scarlet Inquisitor Caldoran"] = { "Калдоран",
+-- Give your strength to the crystal, champions!
+[1285079693] = [===[Направте свою силу в кристал, герої!]===],
+},
+["Shadowy Figure"] = { "загадкова постать",
+-- And so you take another step closer to me...
+[4060092740] = [===[І ось ти робиш ще один крок назустріч мені...]===],
 },
 ["Uther"] = { "Утер",
 -- I dearly hope that there's a special place in hell waiting for you, Arthas.

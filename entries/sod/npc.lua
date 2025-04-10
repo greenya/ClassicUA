@@ -150,7 +150,7 @@ local npc = { -- [id] = { title, description (optional) }
 [210501] = { "прототип жнивального збирача", en="Harvest Reaper Prototype" }, -- Harvest Reaper Prototype
 [210533] = { "Срібногін", en="Silverspur" }, -- Silverspur
 [210537] = { "невмирущий робітник", en="Undying Laborer" }, -- Undying Laborer
-[210549] = { "розвідник повстанців", en="Defias Scout" }, -- Defias Scout
+[210549] = { "розвідник Непокірних", en="Defias Scout" }, -- Defias Scout
 [210697] = { "капітан Нам'єр", en="Captain Namier" }, -- Captain Namier
 [210750] = { "М'ґррґл", en="M'grrgl" }, -- M'grrgl
 [210802] = { "оплутана жертва", en="Webbed Victim" }, -- Webbed Victim
@@ -616,7 +616,7 @@ local npc = { -- [id] = { title, description (optional) }
 [222649] = { "дикий дух", en="Wild Spirit" }, -- Wild Spirit
 [222650] = { "вітряна святиня", en="Windswept Shrine" }, -- Windswept Shrine
 [222651] = { "вітряний дух", en="Windswept Spirit" }, -- Windswept Spirit
-[222656] = { "нічне лезо повстанців", en="Defias Night Blade" }, -- Defias Night Blade
+[222656] = { "нічне лезо Непокірних", en="Defias Night Blade" }, -- Defias Night Blade
 [222684] = { "квартирмейстер Фалінар", en="Quartermaster Falinar" }, -- Quartermaster Falinar
 [222685] = { "квартирмейстерка Кайлін", en="Quartermaster Kyleen" }, -- Quartermaster Kyleen
 [222686] = { "квартирмейстерка Аландра", en="Quartermaster Alandra" }, -- Quartermaster Alandra
@@ -1068,6 +1068,7 @@ local npc = { -- [id] = { title, description (optional) }
 [237820] = { "загибла шукачка пригод", en="Deceased Adventurer" }, -- Deceased Adventurer
 [237938] = { "Флеврік", "майстер демонології", en="Fleuric" }, -- Fleuric
 [237964] = { "Вісник Гріха", en="Harbinger of Sin" }, -- Harbinger of Sin
+[237969] = { "поневолені прядильники", en="Subjugated Spinners" }, -- Subjugated Spinners
 [238024] = { "повзуча погань", en="Creeping Malison" }, -- Creeping Malison
 [238038] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [238040] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
@@ -1105,7 +1106,7 @@ local npc = { -- [id] = { title, description (optional) }
 [238355] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [238356] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [238365] = { "темний вершник", en="Dark Rider" }, -- Dark Rider
-[238376] = { "брату Луктус", "провидець душ" }, -- Brother Luctus
+[238376] = { "брат Луктус", "провидець душ" }, -- Brother Luctus
 [238382] = { "Куґ М'якощелепий", en="Kug Softjaw" }, -- Kug Softjaw
 [238407] = { "Сайруг Марила", "бездарна учениця", en="Sairuh Maryla" }, -- Sairuh Maryla
 [238415] = { "Ґрок'ло Мок'ло", "Сріблястий Світанок", en="Grok'lo Mok'lo" }, -- Grok'lo Mok'lo <The Argent Dawn>
@@ -1149,6 +1150,7 @@ local npc = { -- [id] = { title, description (optional) }
 [238459] = { "Фінкельбат \"Ніж\"", "проклятий інженер", en="\"Tableknife\" Finkelbat" }, -- "Tableknife" Finkelbat
 [238460] = { "Альфвіт Ґріґдерт", "неофіт", en="Alfwhit Grigdert" }, -- Alfwhit Grigdert
 [238461] = { "Віс", en="Wis" }, -- Wis
+[238477] = { "Едгар", "режисер вистави", en="Edgar" }, -- Edgar
 [238499] = { "темний вершник", en="Dark Rider" }, -- Dark Rider
 [238508] = { "покинутий послушник", en="Abandoned Acolyte" }, -- Abandoned Acolyte
 [238509] = { "загублений неофіт", en="Lost Neophyte" }, -- Lost Neophyte

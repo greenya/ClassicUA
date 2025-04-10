@@ -107,7 +107,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Sister Goldskimmer"] = {
 -- Hope you don't mind the extra fortitude, <boss-man/boss-lady>.
-[354775951] = [===[Сподіваюся, ви не проти додаткової стійкості, {стать:пане-бос:пані-бос}.]===],
+[354775951] = [===[Сподіваюся, ви не проти додаткової стійкості, {стать:пане-бос:пані-бос}.#fortitude, <boss-man/boss-lady>.]===],
 -- I really should charge you for that.
 [1786184250] = [===[Мені вже час брати з вас гроші.]===],
 -- I was wondering when I'd see you again, <name>.
@@ -121,7 +121,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Nothing wrong with a little drive-by fortitude!
 [3314228777] = [===[Нічого поганого в невеликій прибавці до стійкості!]===],
 -- That one's free of charge, <sir/ma'am>.
-[1366712352] = [===[Це безкоштовно, {стать:пане:пані}.]===],
+[1366712352] = [===[Це безкоштовно, {стать:пане:пані}.#charge, <sir/ma'am>]===],
 ["!code"] = {
 ["heyudtmdteeafeb."] = 354775951,
 ["wswgwnidseyuan.-"] = 3438828945,
