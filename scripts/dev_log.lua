@@ -91,7 +91,7 @@ dev_log.issue = function (key, data)
         dev_print("Помилка: " .. key)
     end
 
-    dev_log.issues[key] = data and data or true
+    log.issues[key] = data and data or true
 end
 
 dev_log.issue_entry = function (entry_type, entry_id, key, data)
