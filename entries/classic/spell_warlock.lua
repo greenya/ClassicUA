@@ -317,7 +317,7 @@ local warlock_spells = {
 [23470] = { ref=6263 }, -- Lesser Healthstone
 [23471] = { ref=6263 }, -- Lesser Healthstone
 -- Life Tap
-[1454] = { "Витік життя", "Перетворює {1} здоров'я на {2} мани[ вам і вашому демону-прислужнику#for you and your Demon pet].#{1} health into {2} mana", en="Life Tap" },
+[1454] = { "Витік життя", "Перетворює {1} здоров'я на {2} мани.#{1} health into {2} mana", en="Life Tap" },
 [1455] = { ref=1454 }, -- Life Tap
 [1456] = { ref=1454 }, -- Life Tap
 [11687] = { ref=1454 }, -- Life Tap

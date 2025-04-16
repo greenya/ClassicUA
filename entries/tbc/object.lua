@@ -40,7 +40,6 @@ local objects_tbc = {
 ["Cursed Cauldron"] = "проклятий казан",
 ["Damaged Diving Gear"] = "пошкоджене водолазне спорядження",
 ["Dead Mire Soil"] = "ґрунт Мертвої Трясовини",
-["Dented Chest"] = "пом'ята скриня",
 ["Deserter Propaganda"] = "дезертирська пропаганда",
 ["Discarded Nutriment"] = "полишений корм",
 ["Dragon Bone"] = "кістка дракона",
