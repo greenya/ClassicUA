@@ -57,6 +57,8 @@ local priest_spells = {
 [402836] = { "Гомункули", "Отримати здібність \"Гомункули\":", rune=402799, en="Homunculi" },
 -- Increased Fortitude
 [436951] = { "Підвищена стійкість", "Зменшує витрати мани на \"Слово сили: Стійкість\" на {1}% і збільшує його тривалість на {2}%.#Fortitude by {1}%#duration by {2}%", en="Increased Fortitude" },
+-- Infusion of Souls
+[1232095] = { ref=1230948 }, -- Infusion of Souls
 -- Mass Penance
 [437921] = { "Масова сповідь", en="Mass Penance" },
 [437924] = { "Масова сповідь", en="Mass Penance" },
