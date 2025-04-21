@@ -225,7 +225,7 @@ dev_log.missing_gossip = function (npc_id, gossip_code, gossip_text_en, is_reply
         dev_print("Відсутня плітка \"" .. gossip_code:sub(0,20) .. "\" для персонажа #" .. npc_id)
     end
 
-    log.missing_gossips[npc_id][gossip_code] = { gossip_text_en, is_reply=is_reply }
+    log.missing_gossips[npc_id][gossip_code] = { string_trim(gossip_text_en), is_reply=is_reply }
 end
 
 dev_log.missing_chat_text = function (npc_name, chat_code, chat_text_en, lang_name)
@@ -241,7 +241,7 @@ dev_log.missing_chat_text = function (npc_name, chat_code, chat_text_en, lang_na
         dev_print("Відсутній чат \"" .. chat_code:sub(0,20) .. "\" для " .. npc_name)
     end
 
-    log.missing_chats[npc_name][chat_code] = { chat_text_en, lang_name=lang_name }
+    log.missing_chats[npc_name][chat_code] = { string_trim(chat_text_en), lang_name=lang_name }
 end
 
 dev_log.missing_zone = function (zone_name)
