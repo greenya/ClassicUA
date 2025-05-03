@@ -5,7 +5,7 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
-[173338] = { "кролик-невидимка", en="Invisible Bunny" }, -- Invisible Bunny
+[173338] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
 [176721] = { "манекен", en="Dummy" }, -- Dummy
 [184383] = { "Сульфурон-Провісник", en="Sulfuron Harbinger" }, -- Sulfuron Harbinger
 [185320] = { "нестабільний хроматичний дракон", en="Unstable Chromatic Drake" }, -- Unstable Chromatic Drake
@@ -111,6 +111,9 @@ local npc = { -- [id] = { title, description (optional) }
 [208802] = { "поранений шукач пригод", en="Wounded Adventurer" }, -- Wounded Adventurer
 [208812] = { "Йорул", en="Jorul" }, -- Jorul
 [208841] = { "шанований чемпіон", en="Revered Champion" }, -- Revered Champion
+[208845] = { "Пар'курк", "вістовий Чорнокаменю", en="Par'kourc" }, -- Par'kourc
+[208846] = { "шанувальник сонця", en="Sun Admirer" }, -- Sun Admirer
+[208847] = { "Крадій", "злодюга", en="The Snatcher" }, -- The Snatcher
 [208875] = { "грабіжник з завулка", en="Back-alley Mugger" }, -- Back-alley Mugger
 [208876] = { "головоріз-грабіжник", en="Cut-throat Mugger" }, -- Cut-throat Mugger
 [208886] = { "Чорнощур", en="Blackrat" }, -- Blackrat
@@ -182,6 +185,7 @@ local npc = { -- [id] = { title, description (optional) }
 [211953] = { "громіздкий захисний залізоплетник", en="Bulky Protective Ironweave" }, -- Bulky Protective Ironweave
 [211954] = { "електростатичний розрядник", en="Electrostatic Discharge Shielding" }, -- Electrostatic Discharge Shielding
 [211955] = { "допоміжний захист від несанкціонованого доступу", en="Auxiliary Anti-Tamper Mechanism" }, -- Auxiliary Anti-Tamper Mechanism
+[211956] = { "Шрамній Мандрівний", "проклятий захисник", en="Scarimous the Wandering" }, -- Scarimous the Wandering
 [211965] = { "Карродин", en="Carrodin" }, -- Carrodin
 [212157] = { "тотем-приманка", en="Decoy Totem" }, -- Decoy Totem
 [212159] = { "старий Серра'кіс", "виїдений" }, -- Old Serra'kis
@@ -244,7 +248,15 @@ local npc = { -- [id] = { title, description (optional) }
 [214208] = { "Н'ора Сердечна", "дослідниця екзотичної фауни", en="N'ora Anyheart" }, -- N'ora Anyheart
 [214212] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
 [214456] = { "Дро'зем Богохульний", en="Dro'zem the Blasphemous" }, -- Dro'zem the Blasphemous
+[214458] = { "барон Акваніс", en="Baron Aquanis" }, -- Baron Aquanis
+[214468] = { "Гаму-ра", en="Ghamoo-ra" }, -- Ghamoo-ra
+[214469] = { "леді Сарвесс", en="Lady Sarevess" }, -- Lady Sarevess
 [214519] = { "спалювач Ґар'ім", en="Incinerator Gar'im" }, -- Incinerator Gar'im
+[214523] = { "гвардієць Чорноводдя", en="Blackfathom Elite" }, -- Blackfathom Elite
+[214524] = { "Ґеліхаст", en="Gelihast" }, -- Gelihast
+[214525] = { "Лорґус Джетт", en="Lorgus Jett" }, -- Lorgus Jett
+[214526] = { "сутінковий лорд Келріс", en="Twilight Lord Kelris" }, -- Twilight Lord Kelris
+[214527] = { "Аку'май", en="Aku'mai" }, -- Aku'mai
 [214528] = { "манекен-бос", en="Boss Dummy" }, -- Boss Dummy
 [214529] = { "сміливець Кам'яний Смолоскип", en="Brave Stonetorch" }, -- Brave Stonetorch
 [214530] = { "Ардель Дральта", en="Ardelle Dralta" }, -- Ardelle Dralta
@@ -401,6 +413,7 @@ local npc = { -- [id] = { title, description (optional) }
 [219199] = { "прислужник Омена" }, -- Omen
 [219659] = { "Верховний штукар Меккакруть", "король гномів" }, -- Gelbin Mekkatorque
 [219663] = { "Ноґґ", "інженер-експерт", en="Nogg" }, -- Nogg <Expert Engineer>
+[219704] = { "Ґурґток", en="Gurgthock" }, -- Gurgthock
 [219822] = { "прикутий дух", en="Chained Spirit" }, -- Chained Spirit
 [219986] = { "дух вовка", en="Spirit Wolf" }, -- Spirit Wolf
 [219999] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
@@ -813,7 +826,7 @@ local npc = { -- [id] = { title, description (optional) }
 [229018] = { "гнилий труп дворфа", en="Rotting Dwarf Corpse" }, -- Rotting Dwarf Corpse
 [229057] = { "лютень Ядра", en="Core Rager" }, -- Core Rager
 [229061] = { "дозорний Торієвого братства", "Торієве братство", en="Thorium Brotherhood Lookout" }, -- Thorium Brotherhood Lookout <The Thorium Brotherhood>
-[229110] = { "кролик-невидимка", en="Invisible Bunny" }, -- Invisible Bunny
+[229110] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
 [229156] = { "фрагмент повітряного елементаля", en="Air Elemental Fragment" }, -- Air Elemental Fragment
 [229200] = { "астральний привид", en="Astral Wraith" }, -- Astral Wraith
 [229202] = { "оберіг альтруїста", en="Altruist Ward" }, -- Altruist Ward
@@ -895,6 +908,8 @@ local npc = { -- [id] = { title, description (optional) }
 [232559] = { "шурхітливий мрець", en="Shambling Dead" }, -- Shambling Dead
 [232560] = { "піхотинець Скари", en="Scourge Footsoldier" }, -- Scourge Footsoldier
 [232561] = { "моторошний чароплет", en="Dread Spellweaver" }, -- Dread Spellweaver
+[232562] = { "розоритель Скари", en="Scourge Reaver" }, -- Scourge Reaver
+[232564] = { "жах Скари", en="Scourge Horror" }, -- Scourge Horror
 [232568] = { "дочка Нандіба" }, -- Nandieb
 [232587] = { "Нефаріан", en="Nefarian" }, -- Nefarian
 [232596] = { "Ріос", en="Riosus" }, -- Riosus
@@ -974,7 +989,7 @@ local npc = { -- [id] = { title, description (optional) }
 [233158] = { "Азґалот", "владика безодні", en="Azgaloth" }, -- Azgaloth
 [233159] = { "Грегорі", "Правдоносець", en="Gregory" }, -- Gregory
 [233165] = { "Грегорі", "Правдоносець", en="Gregory" }, -- Gregory
-[233175] = { "кролик-невидимка", en="Invisible Bunny" }, -- Invisible Bunny
+[233175] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
 [233178] = { "герцог Гідраксіс", en="Duke Hydraxis" }, -- Duke Hydraxis
 [233206] = { "Еонас", "колишній паладин Сріблястої Десниці" }, -- Aeonas
 [233234] = { "прикутий дух", en="Chained Spirit" }, -- Chained Spirit
@@ -994,7 +1009,7 @@ local npc = { -- [id] = { title, description (optional) }
 [234183] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [234184] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [234193] = { "позолочений скарабей", en="Gilded Scarab" }, -- Gilded Scarab
-[234218] = { "кролик-невидимка", en="Invisible Bunny" }, -- Invisible Bunny
+[234218] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
 [234472] = { "зброєносець Сріблястого Світанку", en="Argent Squire" }, -- Argent Squire
 [234539] = { "Селестраза", "рід Алекстрази" }, -- Selestrasza
 [234542] = { "сутінковий кіразький бойовий танк" }, -- Qiraji Battle Tank
@@ -1062,7 +1077,7 @@ local npc = { -- [id] = { title, description (optional) }
 [237676] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [237677] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [237678] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
-[237773] = { "Калдоран", "інквізитор Багряного Походу", en="Caldoran" }, -- Caldoran
+[237773] = { "інквізитор Багряного Походу Калдоран" }, -- Baelin Caldoran
 [237818] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
 [237819] = { "поранений шукач пригод", en="Injured Adventurer" }, -- Injured Adventurer
 [237820] = { "загибла шукачка пригод", en="Deceased Adventurer" }, -- Deceased Adventurer
@@ -1126,7 +1141,7 @@ local npc = { -- [id] = { title, description (optional) }
 [238430] = { "літаючий смолоскип", en="Floating Firebrand" }, -- Floating Firebrand
 [238431] = { "енергійний світлик", en="Enthusiastic Wisp" }, -- Enthusiastic Wisp
 [238432] = { "швець Багряного Походу", en="Scarlet Clothier" }, -- Scarlet Clothier
-[238433] = { "Беатрікс", en="Beatrix" }, -- Beatrix
+[238433] = { "командир Беатрікс" }, -- Beatrix
 [238434] = { "стратег Багряного Походу", en="Scarlet Strategist" }, -- Scarlet Strategist
 [238435] = { "тактик Багряного Походу", en="Scarlet Tactician" }, -- Scarlet Tactician
 [238436] = { "вартовий Сріблястого Світанку", en="Argent Guard" }, -- Argent Guard
@@ -1187,20 +1202,25 @@ local npc = { -- [id] = { title, description (optional) }
 [238680] = { "загадковий ейдолон", en="Mysterious Eidolon" }, -- Mysterious Eidolon
 [238681] = { "загадковий ейдолон", en="Mysterious Eidolon" }, -- Mysterious Eidolon
 [238682] = { "загадковий ейдолон", en="Mysterious Eidolon" }, -- Mysterious Eidolon
+[238715] = { "біженець Нового Авалону", en="New Avalon Refugee" }, -- New Avalon Refugee
 [238734] = { "скриня зі скарбами", en="Treasure Chest" }, -- Treasure Chest
+[238745] = { "шпигун Багряного Походу", en="Scarlet Infiltrator" }, -- Scarlet Infiltrator
 [238766] = { "зів'ялий ірис", en="Withering Iris" }, -- Withering Iris
 [238767] = { "величезний камінь", "непорушний", en="Immense Rock" }, -- Immense Rock
 [238941] = { "павук", en="Spider" }, -- Spider
 [238942] = { "чорний пацюк", en="Black Rat" }, -- Black Rat
 [238943] = { "тарган", en="Roach" }, -- Roach
+[238954] = { "Солістраза", en="Solistrasza" }, -- Solistrasza
 [238985] = { "Ганс", en="Hans" }, -- Hans
 [238986] = { "Ґрета", en="Greta" }, -- Greta
 [238992] = { "бабуся Фінетта", en="Grandma Finette" }, -- Grandma Finette
-[239031] = { "Калдоран", "інквізитор Багряного Походу", en="Caldoran" }, -- Caldoran
-[239032] = { "Беатрікс", "верховний генерал" }, -- Beatrix
+[239031] = { "інквізитор Багряного Походу Калдоран" }, -- Baelin Caldoran
+[239032] = { "командир Беатрікс" }, -- Beatrix
 [239036] = { "лицар Багряного Походу", en="Scarlet Crusader" }, -- Scarlet Crusader
+[239047] = { "командир облоги Багряного Походу", en="Scarlet Siege Commander" }, -- Scarlet Siege Commander
 [239054] = { "посланець Сріблястого Світанку", "Сріблястий Світанок", en="Argent Messenger" }, -- Argent Messenger <The Argent Dawn>
 [239139] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[239151] = { "монумент", en="Monument" }, -- Monument
 [239187] = { "Грегорі", "Правдоносець", en="Gregory" }, -- Gregory
 [239328] = { "палаючий гуль", en="Burning Ghoul" }, -- Burning Ghoul
 [239329] = { "закатований учень", en="Tortured Student" }, -- Tortured Student
@@ -1211,10 +1231,271 @@ local npc = { -- [id] = { title, description (optional) }
 [239382] = { "заражений труп", en="Diseased Corpse" }, -- Diseased Corpse
 [239573] = { "Ґрета", en="Greta" }, -- Greta
 [239642] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[240246] = { "захисник Нового Авалону", en="New Avalon Defender" }, -- New Avalon Defender
+[240247] = { "гончак Багряного Походу", en="Scarlet Bloodhound" }, -- Scarlet Bloodhound
+[240248] = { "Бріон Сталеклин", "квартирмейстер Багряного Походу", en="Bryon Steelblade" }, -- Bryon Steelblade
 [240310] = { "темний вершник", en="Dark Rider" }, -- Dark Rider
 [240352] = { "елементаль мани", en="Mana Elemental" }, -- Mana Elemental
 [240568] = { "примарне ковадло", en="Haunted Anvil" }, -- Haunted Anvil
+[240604] = { "Керрі Прихистень", "шеф-кухарка", en="Carrie Hearthfire" }, -- Carrie Hearthfire
+[240607] = { "Девон Вудс", "охорона", en="Devon Woods" }, -- Devon Woods
+[240609] = { "житель Нового Авалону", en="New Avalon Citizen" }, -- New Avalon Citizen
+[240631] = { "Тейлор Кравець", "кравецькі припаси", en="Taylor Stitchings" }, -- Taylor Stitchings <Tailoring Supplies>
+[240632] = { "Таня Гарбар", "товари для шкірництва", en="Tanya Hyde" }, -- Tanya Hyde <Leatherworking Supplies>
+[240633] = { "Коваленко", "ковальські припаси", en="Smith" }, -- Smith <Blacksmithing Supplies>
+[240654] = { "Шипоплав", "кмітливий інженер", en="Fizzlefuse" }, -- Fizzlefuse
+[240779] = { "чатовий Багряного Походу", en="Scarlet Warder" }, -- Scarlet Warder
+[240780] = { "гончак Багряного Походу", en="Scarlet Bloodhound" }, -- Scarlet Bloodhound
+[240781] = { "претор Багряного Походу", en="Scarlet Praetorian" }, -- Scarlet Praetorian
+[240782] = { "священник Багряного Походу", en="Scarlet Cleric" }, -- Scarlet Cleric
+[240783] = { "курат Багряного Походу", en="Scarlet Curate" }, -- Scarlet Curate
+[240784] = { "архімаг Багряного Походу", en="Scarlet Archmage" }, -- Scarlet Archmage
+[240785] = { "алхімік Багряного Походу", en="Scarlet Alchemist" }, -- Scarlet Alchemist
+[240786] = { "медик Багряного Походу", en="Scarlet Medic" }, -- Scarlet Medic
+[240787] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[240788] = { "чароплет Багряного Походу", en="Scarlet Spellbinder" }, -- Scarlet Spellbinder
+[240789] = { "чаролом Багряного Походу", en="Scarlet Spellbreaker" }, -- Scarlet Spellbreaker
+[240790] = { "лісоруб Багряного Походу", en="Scarlet Lumberjack" }, -- Scarlet Lumberjack
+[240791] = { "робітник Багряного Походу", en="Scarlet Worker" }, -- Scarlet Worker
+[240792] = { "коваль Багряного Походу", en="Scarlet Smith" }, -- Scarlet Smith
+[240793] = { "солдат Багряного Походу", en="Scarlet Soldier" }, -- Scarlet Soldier
+[240794] = { "Алєксєй-Звіролов", en="Alexei the Beastlord" }, -- Alexei the Beastlord
+[240795] = { "Герод", "чемпіон Багряного Походу" }, -- Herod
+[240796] = { "кавалерист Багряного Походу", en="Scarlet Cavalier" }, -- Scarlet Cavalier
+[240797] = { "кат Багряного Походу", en="Scarlet Executioner" }, -- Scarlet Executioner
+[240798] = { "лицар Багряного Походу", en="Scarlet Knight" }, -- Scarlet Knight
+[240799] = { "слідопит Багряного Походу", en="Scarlet Ranger" }, -- Scarlet Ranger
+[240800] = { "заклинатель Багряного Походу", en="Scarlet Invoker" }, -- Scarlet Invoker
+[240801] = { "маг Багряного Походу", en="Scarlet Mage" }, -- Scarlet Mage
+[240802] = { "паладин Багряного Походу", en="Scarlet Paladin" }, -- Scarlet Paladin
+[240803] = { "командир Ґраніс Темномолот", en="Commander Granis Darkhammer" }, -- Commander Granis Darkhammer
+[240804] = { "інквізитор Тенн Вогнемов" }, -- Tenn Flamecaster
+[240805] = { "капітан Манадар", en="Captain Manadar" }, -- Captain Manadar
+[240806] = { "капітан Бузан", en="Captain Buzan" }, -- Captain Buzan
+[240807] = { "капітан Йорн", en="Captain Jorn" }, -- Captain Jorn
+[240808] = { "капітан Карнвельд", en="Captain Karnwield" }, -- Captain Karnwield
+[240809] = { "Вішас" }, -- Interrogator Vishas
+[240810] = { "Доан" }, -- Arcanist Doan
+[240811] = { "Бальназар", en="Balnazzar" }, -- Balnazzar
+[240812] = { "верховний командир Беатрікс" }, -- Beatrix
+[240978] = { "яблуко", en="Apple" }, -- Apple
+[240998] = { "садівник Нового Авалону", en="New Avalon Orchardist" }, -- New Avalon Orchardist
+[241006] = { "верховний лицар Калдоран" }, -- Baelin Caldoran
+[241019] = { "Джонні", "свіжі яблука", en="Johnny" }, -- Johnny
+[241021] = { "Мейсон Ехо", "верховний адмірал", en="Mason the Echo" }, -- Mason the Echo
+[241032] = { "бочка риби", en="Fish Barrel" }, -- Fish Barrel
+[241048] = { "мисливець Багряного Походу", en="Scarlet Hunter" }, -- Scarlet Hunter
+[241119] = { "вартовий Нового Авалону", en="New Avalon Watchman" }, -- New Avalon Watchman
+[241120] = { "піхотинець Багряного Походу", en="Scarlet Footman" }, -- Scarlet Footman
+[241121] = { "лучник Багряного Походу", en="Scarlet Archer" }, -- Scarlet Archer
+[241122] = { "сповідник Багряного Походу", en="Scarlet Confessor" }, -- Scarlet Confessor
+[241123] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
 [241136] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[241406] = { "бойовий маг Багряного Походу", en="Scarlet Battle Mage" }, -- Scarlet Battle Mage
+[241407] = { "оборонець Багряного Походу", en="Scarlet Defender" }, -- Scarlet Defender
+[241409] = { "броняр Багряного Походу", en="Scarlet Armorer" }, -- Scarlet Armorer
+[241411] = { "стрілець Багряного Походу", en="Scarlet Rifleman" }, -- Scarlet Rifleman
+[241434] = { "караульний Багряного Походу", en="Scarlet Sentry" }, -- Scarlet Sentry
+[241437] = { "кур'єр Багряного Походу", en="Scarlet Courier" }, -- Scarlet Courier
+[241492] = { "Бальназар", en="Balnazzar" }, -- Balnazzar
+[241493] = { "верховний лицар Датроган", en="Grand Crusader Dathrohan" }, -- Grand Crusader Dathrohan
+[241501] = { "верховний лицар Датроган", en="Grand Crusader Dathrohan" }, -- Grand Crusader Dathrohan
+[241518] = { "верховний лицар Калдоран" }, -- Baelin Caldoran
+[241519] = { "верховний командир Беатрікс" }, -- Beatrix
+[241613] = { "Кіндра Стрімкостріла", en="Kyndra Swiftarrow" }, -- Kyndra Swiftarrow
+[241616] = { "новобранець Багряного Походу", "новобранець гарнізону" }, -- Scarlet Trainee
+[241659] = { "Марк Прихистень", "корчмар", en="Markus Hearthfire" }, -- Markus Hearthfire <Innkeeper>
+[241663] = { "Джеральд", "бармен", en="Gerald" }, -- Gerald <Bartender>
+[241664] = { "Мелорі", "їжа та напої", en="Malorie" }, -- Malorie <Food & Drink>
+[241665] = { "архімаг Нілас Арканістер", en="Archmagus Nilas Arcanister" }, -- Archmagus Nilas Arcanister
+[241768] = { "Герод", "чемпіон Багряного Походу" }, -- Herod
+[241769] = { "арканіст Доан", en="Arcanist Doan" }, -- Arcanist Doan
+[241770] = { "допитувач Вішас", en="Interrogator Vishas" }, -- Interrogator Vishas
+[241772] = { "верховний лицар Калдоран" }, -- Baelin Caldoran
+[241778] = { "тауматург Багряного Походу", en="Scarlet Thaumaturgist" }, -- Scarlet Thaumaturgist
+[241828] = { "новобранець Багряного Походу", en="Scarlet Trainee" }, -- Scarlet Trainee
+[241834] = { "Істарія", en="Istaria" }, -- Istaria
+[241838] = { "допитливий троль", en="Curious Troll" }, -- Curious Troll
+[241862] = { "сховок Багряного Походу", en="Scarlet Stash" }, -- Scarlet Stash
+[241877] = { "мер Квімбі", en="Mayor Quimby" }, -- Mayor Quimby
+[241895] = { "Манат Магоспів", "архімаг", en="Manath Magesinger" }, -- Manath Magesinger
+[241904] = { "артилерія Багряного Походу", en="Scarlet Artillery" }, -- Scarlet Artillery
+[241906] = { "сер Дорнел", en="Sir Dornel" }, -- Sir Dornel
+[241921] = { "Морлун Могутній", "командир Багряного Походу", en="Morlune the Mighty" }, -- Morlune the Mighty
+[242010] = { "цуцик", "дуже хороший хлопчик", en="Pupper" }, -- Pupper
+[242019] = { "Леонід Варфоломій Шанований", "Сріблястий Світанок" }, -- Leonid Barthalomew <The Argent Dawn>
+[242092] = { "спустошник Багряного Походу", en="Scarlet Ravager" }, -- Scarlet Ravager
+[242093] = { "папуга", en="Parrot" }, -- Parrot
+[242098] = { "чаклун Багряного Походу", en="Scarlet Magus" }, -- Scarlet Magus
+[242106] = { "канонір Східних морів", en="Eastsea Cannoneer" }, -- Eastsea Cannoneer
+[242107] = { "докер Східних морів", en="Eastsea Dockworker" }, -- Eastsea Dockworker
+[242109] = { "шибайголова Східних морів", en="Eastsea Swashbuckler" }, -- Eastsea Swashbuckler
+[242111] = { "буканьєр Східних морів", en="Eastsea Buccaneer" }, -- Eastsea Buccaneer
+[242112] = { "корсар Східних морів", en="Eastsea Privateer" }, -- Eastsea Privateer
+[242113] = { "перший помічник Кіп", en="First Mate Kip" }, -- First Mate Kip
+[242114] = { "піхота Багряного Походу", en="Scarlet Infantry" }, -- Scarlet Infantry
+[242125] = { "майстер-ремісник Омаріон", en="Master Craftsman Omarion" }, -- Master Craftsman Omarion
+[242135] = { "приборкувач Східних морів", en="Eastsea Handler" }, -- Eastsea Handler
+[242137] = { "Ун'Ґорська горила", en="Un'Goro Gorilla" }, -- Un'Goro Gorilla
+[242142] = { "молодий тернистодільний тигр", en="Young Stranglethorn Tiger" }, -- Young Stranglethorn Tiger
+[242148] = { "кавалерія Багряного Походу", en="Scarlet Cavalry" }, -- Scarlet Cavalry
+[242160] = { "велика акула", en="Great Shark" }, -- Great Shark
+[242161] = { "шахтар Багряного Походу", en="Scarlet Miner" }, -- Scarlet Miner
+[242174] = { "Тізалі Ворона", "друїд Кігтя", en="Thisalee Crow" }, -- Thisalee Crow
+[242183] = { "Абата Росина", "флористка", en="Abatha Rainwater" }, -- Abatha Rainwater
+[242188] = { "Робін Д. Бенкс", "професійний \"писар\"", en="Robin D. Banks" }, -- Robin D. Banks
+[242214] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[242216] = { "лучник Багряного Походу", en="Scarlet Archer" }, -- Scarlet Archer
+[242218] = { "маг Багряного Походу", en="Scarlet Mage" }, -- Scarlet Mage
+[242224] = { "кардинал Штільц", en="Cardinal Stiltz" }, -- Cardinal Stiltz
+[242271] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[242272] = { "лучник Багряного Походу", en="Scarlet Archer" }, -- Scarlet Archer
+[242283] = { "маг Багряного Походу", en="Scarlet Mage" }, -- Scarlet Mage
+[242296] = { "командир лучників Пак", en="Bowmaster Puck" }, -- Bowmaster Puck
+[242301] = { "капітан артилерії Лінд", en="Cannon Mistress Lind" }, -- Cannon Mistress Lind
+[242304] = { "лицар-капітан Фратлі", en="Knight-Captain Fratley" }, -- Knight-Captain Fratley
+[242308] = { "капітан гвардії Штейн", en="Shield Warden Stein" }, -- Shield Warden Stein
+[242310] = { "арканістка Гільда", en="Arcanist Hilda" }, -- Arcanist Hilda
+[242344] = { "скелет", en="Skeleton" }, -- Skeleton
+[242367] = { "житель Нового Авалону", en="New Avalon Citizen" }, -- New Avalon Citizen
+[242386] = { "пожежник Багряного Походу", en="Scarlet Firefighter" }, -- Scarlet Firefighter
+[242439] = { "Тізалі Ворона", "друїд Кігтя", en="Thisalee Crow" }, -- Thisalee Crow
+[242470] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[242499] = { "верховний повелитель Моґрейн", "Спопелитель" }, -- Highlord Mograine <The Ashbringer>
+[242547] = { "претор Багряного Походу", en="Scarlet Praetorian" }, -- Scarlet Praetorian
+[242560] = { "Тенн Вогнемов", en="Tenn Flamecaster" }, -- Tenn Flamecaster
+[242563] = { "Беатрікс", en="Beatrix" }, -- Beatrix
+[242564] = { "Герод", en="Herod" }, -- Herod
+[242580] = { "світлик", en="wisp" }, -- wisp
+[242605] = { "Істота", en="The Creature" }, -- The Creature
+[242751] = { "Візніт-Лиходій", en="Viznit the Scoundrel" }, -- Viznit the Scoundrel
+[242757] = { "радник Нового Авалону", en="New Avalon Councilman" }, -- New Avalon Councilman
+[242788] = { "командир лучників Пак", en="Bowmaster Puck" }, -- Bowmaster Puck
+[242789] = { "капітан артилерії Лінд", en="Cannon Mistress Lind" }, -- Cannon Mistress Lind
+[242790] = { "лицар-капітан Фратлі", en="Knight-Captain Fratley" }, -- Knight-Captain Fratley
+[242791] = { "капітан гвардії Штейн", en="Shield Warden Stein" }, -- Shield Warden Stein
+[242792] = { "арканістка Гільда", en="Arcanist Hilda" }, -- Arcanist Hilda
+[242793] = { "кардинал Штільц", en="Cardinal Stiltz" }, -- Cardinal Stiltz
+[242827] = { "капітан Кровошаг", "аукціонер-мореплавець", en="Captain Bloodcoin" }, -- Captain Bloodcoin
+[242828] = { "Герод", en="Herod" }, -- Herod
+[242853] = { "моряк Східних морів", en="Eastsea Scallywag" }, -- Eastsea Scallywag
+[242872] = { "леді Бломе", en="Lady Blaumeux" }, -- Lady Blaumeux
+[242874] = { "Тан Корт'азз", en="Thane Korth'azz" }, -- Thane Korth'azz
+[242877] = { "cер Зелєк", en="Sir Zeliek" }, -- Sir Zeliek
+[242878] = { "верховний повелитель Моґрейн", en="Highlord Mograine" }, -- Highlord Mograine
+[242886] = { "гармата Східних морів", en="Eastsea Long Barrel" }, -- Eastsea Long Barrel
+[242954] = { "ковадло", en="Anvil" }, -- Anvil
+[242958] = { "піхота Багряного Походу", en="Scarlet Infantry" }, -- Scarlet Infantry
+[243001] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[243005] = { "Гниліс", en="Putress" }, -- Putress
+[243007] = { "виючий жах", en="Screeching Terror" }, -- Screeching Terror
+[243011] = { "пекельник", en="Infernal" }, -- Infernal
+[243021] = { "Ліліан Восс", en="Lillian Voss" }, -- Lillian Voss
+[243023] = { "інквізиторка Жозефіна", en="Inquisitor Jociphine" }, -- Inquisitor Jociphine
+[243027] = { "маг Багряного Походу", en="Scarlet Mage" }, -- Scarlet Mage
+[243046] = { "капітан Багряного Походу", en="Scarlet Captain" }, -- Scarlet Captain
+[243051] = { "крихта можливостей", en="Mote of Possibility" }, -- Mote of Possibility
+[243056] = { "лицар Фарріс", en="Knight Farris" }, -- Knight Farris
+[243057] = { "лицар Штерн", en="Knight Stearn" }, -- Knight Stearn
+[243060] = { "розгублений чарівник Багряного Походу", en="Distracted Scarlet Wizard" }, -- Distracted Scarlet Wizard
+[243076] = { "світлоносець Багряного Походу", en="Scarlet Lightbearer" }, -- Scarlet Lightbearer
+[243086] = { "докер Східних морів", en="Eastsea Dockworker" }, -- Eastsea Dockworker
+[243087] = { "найманець Східних морів", en="Eastsea Mercenary" }, -- Eastsea Mercenary
+[243094] = { "чарівник Багряного Походу", en="Scarlet Wizard" }, -- Scarlet Wizard
+[243139] = { "сповнений світлом дракончик", en="Lightgorged Whelp" }, -- Lightgorged Whelp
+[243158] = { "кардинал Мартелл", en="Cardinal Martell" }, -- Cardinal Martell
+[243159] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[243186] = { "Фідріель", "Сріблястий Світанок", en="Fydriel" }, -- Fydriel <The Argent Dawn>
+[243190] = { "вартовий Сріблястого Світанку", en="Argent Guard" }, -- Argent Guard
+[243191] = { "вершник Сріблястого Світанку", "Сріблястий Світанок", en="Argent Rider" }, -- Argent Rider <The Argent Dawn>
+[243192] = { "Роуен Ґріфін", "вершник на грифонах", en="Griffin Rowan" }, -- Griffin Rowan
+[243193] = { "Анжела Досантос", en="Angela Dosantos" }, -- Angela Dosantos
+[243194] = { "шпигун Рікі Бісмут", "Сріблястий Світанок", en="Spymaster Ricky Bismuth" }, -- Spymaster Ricky Bismuth <The Argent Dawn>
+[243195] = { "розвідник Сріблястого Світанку", "Сріблястий Світанок", en="Argent Scout" }, -- Argent Scout <The Argent Dawn>
+[243250] = { "капітан Калдоран" }, -- Baelin Caldoran
+[243251] = { "лицар Калдоран" }, -- Baelin Caldoran
+[243252] = { "Леонід Варфоломій", en="Leonid Barthalomew" }, -- Leonid Barthalomew
+[243254] = { "Леонід Варфоломій", en="Leonid Barthalomew" }, -- Leonid Barthalomew
+[243255] = { "лицар Багряного Походу", en="Scarlet Crusader" }, -- Scarlet Crusader
+[243299] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[243331] = { "Ліліана Варфоломій", en="Liliana Barthalomew" }, -- Liliana Barthalomew
+[243332] = { "Персіваль Варфоломій", en="Percival Barthalomew" }, -- Percival Barthalomew
+[243386] = { "Леонід Варфоломій Шанований", "Сріблястий Світанок" }, -- Leonid Barthalomew <The Argent Dawn>
+[243393] = { "Леонід Варфоломій Шанований", "Сріблястий Світанок" }, -- Leonid Barthalomew <The Argent Dawn>
+[243394] = { "Персіваль Варфоломій", en="Percival Barthalomew" }, -- Percival Barthalomew
+[243627] = { "розвідник Сріблястого Світанку", "Сріблястий Світанок", en="Argent Scout" }, -- Argent Scout <The Argent Dawn>
+[243628] = { "розвідник Сріблястого Світанку", "Сріблястий Світанок", en="Argent Scout" }, -- Argent Scout <The Argent Dawn>
+[243632] = { "розвідник Сріблястого Світанку", "Сріблястий Світанок", en="Argent Scout" }, -- Argent Scout <The Argent Dawn>
+[243647] = { "древній війни", en="Ancient of War" }, -- Ancient of War
+[243657] = { "труп лицаря Багряного Походу", en="Scarlet Crusader Corpse" }, -- Scarlet Crusader Corpse
+[243702] = { "паладин Багряного Походу", en="Scarlet Paladin" }, -- Scarlet Paladin
+[243737] = { "мірмідон Багряного Походу", en="Scarlet Myrmidon" }, -- Scarlet Myrmidon
+[243755] = { "піхотинець Сріблястого Світанку", "Сріблястий Світанок", en="Argent Dawn Infantry" }, -- Argent Dawn Infantry <The Argent Dawn>
+[243756] = { "лицар Багряного Походу", en="Scarlet Crusader" }, -- Scarlet Crusader
+[243757] = { "Анжела Досантос", en="Angela Dosantos" }, -- Angela Dosantos
+[243834] = { "Джонні Великосердний", "видатний будівельник", en="Johnny Heart Man" }, -- Johnny Heart Man
+[243838] = { "Двіба", "він теж тут", en="Dwiba" }, -- Dwiba
+[243893] = { "верховний генерал Аббендіс", en="High General Abbendis" }, -- High General Abbendis
+[243904] = { "паладин Багряного Походу", en="Scarlet Paladin" }, -- Scarlet Paladin
+[243946] = { "піхотинець Сріблястого Світанку", "Сріблястий Світанок", en="Argent Dawn Infantry" }, -- Argent Dawn Infantry <The Argent Dawn>
+[244005] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[244006] = { "маг Багряного Походу", en="Scarlet Mage" }, -- Scarlet Mage
+[244007] = { "піхота Багряного Походу", en="Scarlet Infantry" }, -- Scarlet Infantry
+[244008] = { "кавалерія Багряного Походу", en="Scarlet Cavalry" }, -- Scarlet Cavalry
+[244009] = { "артилерія Багряного Походу", en="Scarlet Artillery" }, -- Scarlet Artillery
+[244010] = { "лучник Багряного Походу", en="Scarlet Archer" }, -- Scarlet Archer
+[244011] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[244013] = { "маг Багряного Походу", en="Scarlet Mage" }, -- Scarlet Mage
+[244014] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[244015] = { "піхота Багряного Походу", en="Scarlet Infantry" }, -- Scarlet Infantry
+[244016] = { "кавалерія Багряного Походу", en="Scarlet Cavalry" }, -- Scarlet Cavalry
+[244017] = { "артилерія Багряного Походу", en="Scarlet Artillery" }, -- Scarlet Artillery
+[244018] = { "лучник Багряного Походу", en="Scarlet Archer" }, -- Scarlet Archer
+[244019] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[244020] = { "маг Багряного Походу", en="Scarlet Mage" }, -- Scarlet Mage
+[244021] = { "піхота Багряного Походу", en="Scarlet Infantry" }, -- Scarlet Infantry
+[244022] = { "кавалерія Багряного Походу", en="Scarlet Cavalry" }, -- Scarlet Cavalry
+[244024] = { "лучник Багряного Походу", en="Scarlet Archer" }, -- Scarlet Archer
+[244064] = { "лучник Багряного Походу", en="Scarlet Archer" }, -- Scarlet Archer
+[244066] = { "кавалерія Багряного Походу", en="Scarlet Cavalry" }, -- Scarlet Cavalry
+[244067] = { "піхота Багряного Походу", en="Scarlet Infantry" }, -- Scarlet Infantry
+[244068] = { "маг Багряного Походу", en="Scarlet Mage" }, -- Scarlet Mage
+[244069] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[244102] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[244103] = { "маг Багряного Походу", en="Scarlet Mage" }, -- Scarlet Mage
+[244104] = { "піхота Багряного Походу", en="Scarlet Infantry" }, -- Scarlet Infantry
+[244105] = { "кавалерія Багряного Походу", en="Scarlet Cavalry" }, -- Scarlet Cavalry
+[244106] = { "артилерія Багряного Походу", en="Scarlet Artillery" }, -- Scarlet Artillery
+[244122] = { "канонір Східних морів", en="Eastsea Cannoneer" }, -- Eastsea Cannoneer
+[244131] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
+[244132] = { "маг Багряного Походу", en="Scarlet Mage" }, -- Scarlet Mage
+[244133] = { "піхота Багряного Походу", en="Scarlet Infantry" }, -- Scarlet Infantry
+[244134] = { "кавалерія Багряного Походу", en="Scarlet Cavalry" }, -- Scarlet Cavalry
+[244135] = { "артилерія Багряного Походу", en="Scarlet Artillery" }, -- Scarlet Artillery
+[244136] = { "лучник Багряного Походу", en="Scarlet Archer" }, -- Scarlet Archer
+[244151] = { "священник Сріблястого Світанку", "Сріблястий Світанок", en="Argent Dawn Cleric" }, -- Argent Dawn Cleric <The Argent Dawn>
+[244172] = { "піхотинець Сріблястого Світанку", "Сріблястий Світанок", en="Argent Dawn Infantry" }, -- Argent Dawn Infantry <The Argent Dawn>
+[244310] = { "меблі", en="Furniture" }, -- Furniture
+[244311] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
+[244321] = { "Леонід Варфоломій Шанований", "Сріблястий Світанок" }, -- Leonid Barthalomew <The Argent Dawn>
+[244477] = { "їздовий грифон", en="Riding Gryphon" }, -- Riding Gryphon
+[244480] = { "їздовий грифон", en="Riding Gryphon" }, -- Riding Gryphon
+[244481] = { "їздовий грифон", en="Riding Gryphon" }, -- Riding Gryphon
+[244482] = { "їздовий грифон", en="Riding Gryphon" }, -- Riding Gryphon
+[244495] = { "їздовий грифон", en="Riding Gryphon" }, -- Riding Gryphon
+[244612] = { "мандрівний мечник", en="Wandering Swordsman" }, -- Wandering Swordsman
+[244766] = { "Бальназар", en="Balnazzar" }, -- Balnazzar
+[244819] = { "первісне полум'я", en="Primordial Flame" }, -- Primordial Flame
+[244852] = { "вибухова вівця", en="Explosive Sheep" }, -- Explosive Sheep
+[244949] = { "курка", en="Chicken" }, -- Chicken
+[245070] = { "сповнений світлом дракончик", en="Lightgorged Whelp" }, -- Lightgorged Whelp
+[245234] = { "містер Біґлсворт", en="Mr. Bigglesworth" }, -- Mr. Bigglesworth
+[245337] = { "Гігант", en="The Giant" }, -- The Giant
+[245340] = { "Муґул Хитрий", "майстер клинка", en="Moogul the Sly" }, -- Moogul the Sly <Blademaster>
+[245342] = { "Джубей", "майстер клинка", en="Jubei" }, -- Jubei <Blademaster>
+[245343] = { "Тояра", "майстриня клинка", en="Tojara" }, -- Tojara <Blademaster>
+[245373] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[245376] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 }
 
 if addonTable.npc then

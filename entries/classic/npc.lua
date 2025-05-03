@@ -1655,7 +1655,7 @@ local npc = { -- [id] = { title, description (optional) }
 [2383] = { "Ліндія Рабонн", "рибальські снасті та наживка", en="Lindea Rabonne" }, -- Lindea Rabonne
 [2384] = { "голодний гірський лев", en="Starving Mountain Lion" }, -- Starving Mountain Lion
 [2385] = { "лютий гірський лев", en="Feral Mountain Lion" }, -- Feral Mountain Lion
-[2386] = { "південнобережний вартовий", en="Southshore Guard" }, -- Southshore Guard
+[2386] = { "вартовий Південнобережжя", en="Southshore Guard" }, -- Southshore Guard
 [2387] = { "гіллзбрадський радник", en="Hillsbrad Councilman" }, -- Hillsbrad Councilman
 [2388] = { "корчмар Шей", "корчмар", en="Innkeeper Shay" }, -- Innkeeper Shay <Innkeeper>
 [2389] = { "Заріса", "приборкувачка кажанів", en="Zarise" }, -- Zarise <Bat Handler>
@@ -2994,7 +2994,7 @@ local npc = { -- [id] = { title, description (optional) }
 [3969] = { "Фагран Тихоклин", "інструменти та припаси", en="Fahran Silentblade" }, -- Fahran Silentblade
 [3970] = { "Ллана", "реагенти", en="Llana" }, -- Llana
 [3974] = { "псар Локсі", en="Houndmaster Loksey" }, -- Houndmaster Loksey
-[3975] = { "Герод", "чемпіон Багряного Походу", en="Herod" }, -- Herod
+[3975] = { "Герод", "чемпіон Багряного Походу" }, -- Herod
 [3976] = { "командир Багряного Походу Моґрейн", en="Scarlet Commander Mograine" }, -- Scarlet Commander Mograine
 [3977] = { "верховна інквізиторка Білогрива" }, -- Sally Whitemane
 [3978] = { "Любомудр Шукач Істини", en="Sage Truthseeker" }, -- Sage Truthseeker
@@ -4765,6 +4765,7 @@ local npc = { -- [id] = { title, description (optional) }
 [6806] = { "Таннок Кригомолот", "помічник корчмаря", en="Tannok Frosthammer" }, -- Tannok Frosthammer <Innkeeper Assistant>
 [6807] = { "корчмар Здирник", "корчмар", en="Innkeeper Skindle" }, -- Innkeeper Skindle <Innkeeper>
 [6826] = { "Талваш дель Кіссель", en="Talvash del Kissel" }, -- Talvash del Kissel
+[6827] = { "краб", en="crab" }, -- crab
 [6846] = { "начальник доку Непокірних", en="Defias Dockmaster" }, -- Defias Dockmaster
 [6866] = { "тілоохоронець Непокірних", en="Defias Bodyguard" }, -- Defias Bodyguard
 [6867] = { "мисливський собака", en="Tracking Hound" }, -- Tracking Hound
@@ -6358,7 +6359,7 @@ local npc = { -- [id] = { title, description (optional) }
 [11033] = { "Димень ЛаРу", en="Smokey LaRue" }, -- Smokey LaRue
 [11034] = { "лорд Максвелл Тірос", "Сріблястий Світанок", en="Lord Maxwell Tyrosus" }, -- Lord Maxwell Tyrosus <The Argent Dawn>
 [11035] = { "Бетіна Біґґльзінк", "Сріблястий Світанок", en="Betina Bigglezink" }, -- Betina Bigglezink <The Argent Dawn>
-[11036] = { "Леонід Варфоломій Шанований", "Сріблястий Світанок", en="Leonid Barthalomew the Revered" }, -- Leonid Barthalomew the Revered <The Argent Dawn>
+[11036] = { "Леонід Варфоломій Шанований", "Сріблястий Світанок" }, -- Leonid Barthalomew <The Argent Dawn>
 [11037] = { "Дженна Лемкеніллі", "інженерка-підмайстриня", en="Jenna Lemkenilli" }, -- Jenna Lemkenilli <Journeyman Engineer>
 [11038] = { "доглядач Ален", "Сріблястий Світанок", en="Caretaker Alen" }, -- Caretaker Alen <The Argent Dawn>
 [11039] = { "герцог Ніколас Зверенгоф", "Сріблястий Світанок", en="Duke Nicholas Zverenhoff" }, -- Duke Nicholas Zverenhoff <The Argent Dawn>
@@ -8412,7 +8413,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16059] = { "Телдрен", en="Theldren" }, -- Theldren
 [16060] = { "Готик-Жнець", en="Gothik the Harvester" }, -- Gothik the Harvester
 [16061] = { "інструктор Разувій", en="Instructor Razuvious" }, -- Instructor Razuvious
-[16062] = { "верховний повелитель Моґрейн", "Спопелитель", en="Highlord Mograine" }, -- Highlord Mograine <The Ashbringer>
+[16062] = { "верховний повелитель Моґрейн", "Спопелитель" }, -- Highlord Mograine <The Ashbringer>
 [16063] = { "cер Зелєк", en="Sir Zeliek" }, -- Sir Zeliek
 [16064] = { "Тан Корт'азз", en="Thane Korth'azz" }, -- Thane Korth'azz
 [16065] = { "леді Бломе", en="Lady Blaumeux" }, -- Lady Blaumeux
@@ -8493,7 +8494,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16226] = { "вартовий Дідьє", "братство Світла", en="Guard Didier" }, -- Guard Didier <Brotherhood of the Light>
 [16227] = { "Браґок", "майстер польотів", en="Bragok" }, -- Bragok <Flight Master>
 [16228] = { "піхотинець Сріблястого Світанку", "Сріблястий Світанок", en="Argent Dawn Infantry" }, -- Argent Dawn Infantry <The Argent Dawn>
-[16229] = { "поранений піхотинець Сріблястого Світанку", "Сріблястий Світанок", en="Injured Argent Dawn Infantry" }, -- Injured Argent Dawn Infantry <The Argent Dawn>
+[16229] = { "поранений піхотинець Сріблястого Світанку", "Сріблястий Світанок" }, -- Argent Dawn Infantry <The Argent Dawn>
 [16230] = { "культист-інженер", en="Cultist Engineer" }, -- Cultist Engineer
 [16232] = { "караванний мул", en="Caravan Mule" }, -- Caravan Mule
 [16236] = { "очний мацак", en="Eye Stalk" }, -- Eye Stalk
@@ -8515,7 +8516,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16359] = { "посланець Сріблястого Світанку", "Сріблястий Світанок", en="Argent Messenger" }, -- Argent Messenger <The Argent Dawn>
 [16360] = { "зомбі-закуска", en="Zombie Chow" }, -- Zombie Chow
 [16361] = { "командир Томасом Гелеран", "Сріблястий Світанок", en="Commander Thomas Helleran" }, -- Commander Thomas Helleran <The Argent Dawn>
-[16365] = { "майстер-ремісник Омаріон", "братство Світла", en="Master Craftsman Omarion" }, -- Master Craftsman Omarion <Brotherhood of the Light>
+[16365] = { "майстер-ремісник Омаріон", "братство Світла" }, -- Master Craftsman Omarion <Brotherhood of the Light>
 [16368] = { "некропольський послушник", en="Necropolis Acolyte" }, -- Necropolis Acolyte
 [16371] = { "споліморфлена свиня", en="Polymorphed Pig" }, -- Polymorphed Pig
 [16372] = { "споліморфлена вівця", en="Polymorphed Sheep" }, -- Polymorphed Sheep
@@ -8629,7 +8630,7 @@ local npc = { -- [id] = { title, description (optional) }
 [166359] = { "зуліанський тигр", en="Zulian Tiger" }, -- Zulian Tiger
 [173754] = { "майор Маттінґлі", en="Major Mattingly" }, -- Major Mattingly
 [173758] = { "властитель Рунтак", en="Overlord Runthak" }, -- Overlord Runthak
-[174404] = { "кролик-невидимка", en="Invisible Bunny" }, -- Invisible Bunny
+[174404] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
 [176443] = { "манекен", en="Dummy" }, -- Dummy
 [176525] = { "пророк Скерам", en="The Prophet Skeram" }, -- The Prophet Skeram
 [177469] = { "манекен-бос", en="Boss Dummy" }, -- Boss Dummy
