@@ -1,6 +1,7 @@
 import sys
 import sqlite3
 from xml.etree import ElementTree
+import stats
 import utils
 
 def collect_quests():
@@ -87,6 +88,23 @@ def collect_quests():
 
     return quests, quests_cat_count, quests_cat_total, text_chars_used, issues
 
+def generate_and_write_lua_stat_quest_file(tbx_path, entries_path, filename, var, quests_cat_count, quests_cat_total) -> None:
+    stats.Stats.init(tbx_path, allow_set_locale_collate=True)
+    st = stats.Row(keep_rows_sorted=False)
+
+    for expansion in quests_cat_total:
+        for cat in sorted(quests_cat_total[expansion].keys()):
+            st.row(f'{expansion}/{cat}').add(
+                count = quests_cat_count[expansion][cat] if cat in quests_cat_count[expansion] else 0,
+                total = quests_cat_total[expansion][cat],
+            )
+
+    st.write_lua_file(
+        entries_path    = entries_path,
+        filename        = filename,
+        var             = var,
+    )
+
 def print_report(quests, quests_cat_count, quests_cat_total, text_chars_used, issues):
     print('-' * 80)
     total = 0
@@ -136,6 +154,15 @@ def main():
                 var     =f'quest_{side}',
                 quests  =quests[expansion][side]
             )
+
+    generate_and_write_lua_stat_quest_file(
+        tbx_path        = 'translation_from_crowdin/ClassicUA.tbx',
+        entries_path    = '../entries',
+        filename        = 'stat_quest',
+        var             = 'stat_quest',
+        quests_cat_count= quests_cat_count,
+        quests_cat_total= quests_cat_total,
+    )
 
     print_report(quests, quests_cat_count, quests_cat_total, text_chars_used, issues)
 

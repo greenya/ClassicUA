@@ -1,5 +1,6 @@
 local _, addon_table = ...
 
+local assets        = addon_table.use("assets") ---@class assets_class
 local dev_log       = addon_table.use("dev_log") ---@class dev_log_class
 local frames        = addon_table.use("frames") ---@class frames_class
 local options       = addon_table.use("options") ---@class options_class
@@ -75,6 +76,161 @@ end
 local function register_slash_command()
     _G.SLASH_CLASSICUA_SETTINGS1 = "/ua"
     SlashCmdList.CLASSICUA_SETTINGS = options_ui.open
+end
+
+local tree_view_options = {
+    row_height          = 20,
+    row_offset_x        = 26,
+    font_path           = assets.font_frizqt,
+    font_size           = 14,
+    line_height         = 2,
+    progress_bar_width  = 180,
+}
+
+local function update_tree_view(row)
+    local tvo = tree_view_options
+
+    if row.is_expandable then
+        if row.is_expanded then
+            local rows_height = 0
+            for i, sub_row in ipairs(row.rows) do
+                local sub_row_height = update_tree_view(sub_row)
+                sub_row.frame:SetPoint("TOPLEFT", 0, -rows_height)
+                rows_height = rows_height + sub_row_height
+            end
+
+            row.frame.button:SetText("-")
+            row.frame.rows:SetHeight(rows_height)
+            row.frame.rows:Show()
+            row.frame:SetHeight(tvo.row_height + rows_height)
+        else
+            row.frame.button:SetText("+")
+            row.frame.rows:Hide()
+            row.frame:SetHeight(tvo.row_height)
+        end
+    end
+
+    if type(row.on_updated) == "function" then
+        row.on_updated(row)
+    end
+
+    return row.frame:GetHeight()
+end
+
+local function create_tree_view_row(row, root_row, parent_rows_frame)
+    local tvo = tree_view_options
+
+    local row_frame = CreateFrame("Frame", "$parent.Row", parent_rows_frame)
+    row_frame:SetPoint("TOPLEFT", 0, 0)
+    row_frame:SetSize(parent_rows_frame:GetWidth(), tvo.row_height)
+
+    row_frame.root_row = root_row
+    row_frame.row = row
+    row.frame = row_frame
+    row.is_expandable = row.rows and #row.rows > 0
+
+    row_frame.name = row_frame:CreateFontString("$parent.Name")
+    row_frame.name:SetPoint("TOPLEFT", 0, -4)
+    row_frame.name:SetTextColor(0, 0, 0)
+    row_frame.name:SetFont(tvo.font_path, tvo.font_size)
+    row_frame.name:SetText(row.name)
+
+    row_frame.line = row_frame:CreateTexture("$parent.Line", "BACKGROUND")
+    row_frame.line:SetPoint("TOPLEFT", 0, -tvo.row_height + tvo.line_height)
+    row_frame.line:SetPoint("TOPRIGHT", 0, -tvo.row_height + tvo.line_height)
+    row_frame.line:SetHeight(tvo.line_height)
+    row_frame.line:SetColorTexture(0, 0, 0, 0.11)
+
+    if row.count and row.total then
+        row_frame.progress_text = row_frame:CreateFontString("$parent.Count_And_Total")
+        row_frame.progress_text:SetPoint("TOPRIGHT", -8, -4)
+        row_frame.progress_text:SetTextColor(0, 0, 0)
+        row_frame.progress_text:SetFont(tvo.font_path, tvo.font_size-2)
+        row_frame.progress_text:SetText(string.format("%i / %i", row.count, row.total))
+    end
+
+    if row.total and row.total > 0 then
+        local ratio = row.count/row.total
+
+        row_frame.progress_bar = row_frame:CreateTexture("$parent.Progress_Bar", "BACKGROUND")
+        row_frame.progress_bar:SetPoint("TOPLEFT", -1 + row_frame:GetWidth() - tvo.progress_bar_width, -tvo.row_height + tvo.line_height)
+        row_frame.progress_bar:SetSize(1 + tvo.progress_bar_width * ratio, -tvo.row_height + tvo.line_height)
+        row_frame.progress_bar:SetColorTexture(0, 0, 0, 0.08)
+
+        local percent_text = string.format("%.0f%%", 100 * ratio)
+        if row.count < row.total and percent_text == "100%" then
+            percent_text = "99%"
+        end
+
+        row_frame.progress_percent = row_frame:CreateFontString("$parent.Progress_Percent")
+        row_frame.progress_percent:SetPoint("TOPRIGHT", -tvo.progress_bar_width + 44, -4)
+        row_frame.progress_percent:SetTextColor(0, 0, 0, 0.33)
+        row_frame.progress_percent:SetFont(tvo.font_path, tvo.font_size-2)
+        row_frame.progress_percent:SetText(percent_text)
+    end
+
+    if row == root_row then
+        row_frame.root_line = row_frame:CreateTexture("$parent.Root_Line", "BACKGROUND")
+        row_frame.root_line:SetPoint("TOPLEFT", -1 + row_frame:GetWidth() - tvo.progress_bar_width, -tvo.row_height)
+        row_frame.root_line:SetSize(1 + tvo.progress_bar_width, -tvo.line_height)
+        row_frame.root_line:SetColorTexture(0, 0, 0, 0.33)
+    end
+
+    if row.is_expandable then
+        row.is_expanded = false
+
+        row_frame.name:SetPoint("TOPLEFT", tvo.row_offset_x, -4)
+        row_frame.line:SetPoint("TOPLEFT", tvo.row_offset_x, -tvo.row_height + tvo.line_height)
+
+        row_frame.button = CreateFrame("Button", "$parent.Button", row_frame, "UIPanelButtonTemplate")
+        row_frame.button:SetPoint("TOPLEFT", 0, 0)
+        row_frame.button:SetText("+")
+        row_frame.button:SetSize(tvo.row_height + 1, tvo.row_height)
+
+        row_frame.button:SetScript("OnClick", function(self)
+            local row_frame = self:GetParent()
+            row_frame.row.is_expanded = not row_frame.row.is_expanded
+            update_tree_view(row_frame.root_row)
+        end)
+
+        row_frame.rows = CreateFrame("Frame", "$parent.Rows", row_frame, "BackdropTemplate")
+        row_frame.rows:SetPoint("TOPLEFT", tvo.row_offset_x, -tvo.row_height)
+        row_frame.rows:SetSize(parent_rows_frame:GetWidth() - tvo.row_offset_x, 0)
+
+        local y = 0
+        for _, sub_row in ipairs(row.rows) do
+            create_tree_view_row(sub_row, root_row, row_frame.rows)
+        end
+    end
+end
+
+local function setup_stat_quest_frame(content_frame)
+    local root_frame = CreateFrame("Frame", "ClassicUA_Stat_Quest", content_frame)
+    root_frame:SetPoint("BOTTOMLEFT", 0, -12)
+    root_frame:SetWidth(content_frame:GetWidth() - 42)
+
+    local root_row = addon_table.stat_quest
+    create_tree_view_row(root_row, root_row, root_frame)
+
+    root_row.is_expanded = true
+    root_row.frame.button:Hide()
+    root_row.frame.name:Hide()
+    root_row.frame.line:Hide()
+
+    root_row.on_updated = function (row)
+        local tvo = tree_view_options
+
+        local row_h = row.frame:GetHeight()
+        root_frame:SetPoint("BOTTOMLEFT", 24 - tvo.row_offset_x, tvo.row_height)
+        root_frame:SetHeight(row_h - 8)
+
+        if options_ui._update_tab_scrollbar then
+            options_ui._update_tab_scrollbar()
+        end
+    end
+
+    update_tree_view(root_row)
+    return root_frame
 end
 
 local function setup_stat_count_frame(content_frame)
@@ -324,7 +480,7 @@ local function setup_dev_mode_frame(content_frame)
     return root
 end
 
-local function update_tab_scrollbar()
+options_ui._update_tab_scrollbar = function ()
     local of = options_ui.frame
 
     if of.current_tab_index == -1 then
@@ -368,7 +524,7 @@ options_ui.select_tab = function (tab_index, force_refresh)
     local child_frame = of.tab_child_frames[tab_button.tab_index]
     if child_frame then
         child_frame:Show()
-        update_tab_scrollbar()
+        options_ui._update_tab_scrollbar()
     end
 end
 
@@ -468,6 +624,8 @@ local function prepare_options_frame()
     options_ui.frame.tab_buttons = {}
     options_ui.frame.tab_child_frames = {}
 
+    -- todo: maybe reorganize tabs: "Статистика" should have sub tabs "Лічильники" and "Завдання"
+
     for tab_index, tab_data in ipairs({
         {
             title                   = "Персонаж",
@@ -491,14 +649,18 @@ local function prepare_options_frame()
             title                   = "Статистика",
             content_title           = "Статистика бази перекладів",
             child_frame_setup_func  = setup_stat_count_frame,
-        }
+        }, {
+            title                   = "Завдання",
+            content_title           = "Прогрес перекладу завдань",
+            child_frame_setup_func  = setup_stat_quest_frame,
+        },
     }) do
         local f = CreateFrame("Button", "$parent.Tab_Button_" .. tab_index, options_ui.frame, "UIPanelButtonTemplate")
         options_ui.frame.tab_buttons[#options_ui.frame.tab_buttons + 1] = f
         f.tab_index = tab_index
         f.tab_data = tab_data
         f:SetSize(92, 32)
-        f:SetPoint("BOTTOMLEFT", options_ui.frame.current_tab, "TOPLEFT", -22 + tab_index * f:GetWidth(), -8)
+        f:SetPoint("BOTTOMLEFT", options_ui.frame.current_tab, "TOPLEFT", -68 + tab_index * f:GetWidth(), -8)
         f:SetText(f.tab_data.title)
         f:SetScript("OnClick", function (self)
             options_ui.select_tab(self.tab_index)
