@@ -947,7 +947,7 @@ addonTable.object = { -- [key] = text
 ["Horatio Montgomery, M.D."] = "Гораціо Монтгомері, доктор медичних наук",
 ["Horde Catapult"] = "катапульта Орди",
 ["Horde Military Ranks"] = "військові звання Орди",
-["Icecrown and the Frozen Throne"] = "Льодяна Корона та Зледенілий трон",
+["Icecrown and the Frozen Throne"] = "Крижана Корона та Зледенілий трон",
 ["In Loving Memory"] = "вічна пам'ять",
 ["Invar One-Arm"] = "Інвар Однорукий",
 ["Ironforge - the Awakening of the Dwarves"] = "Залізогарт - пробудження дворфів",
@@ -1034,11 +1034,17 @@ addonTable.object = { -- [key] = text
 ["Waterlogged Footlocker"] = "промокла скринька",
 
 -- Signs and boards
+["Alchemy Needs"] = "Все для алхімії",
 ["Crusaders' Square"] = "площа Лицарів",
+["Duncan's Textiles"] = "Текстиль Дункана",
 ["Elders' Square"] = "площа Старійшин",
 ["Elevator to Mulgore"] = "підйомник до Мулґора",
 ["Menethil"] = "Менетіли",
 ["Service Entrance Gate"] = "ворота службового входу",
+["Stormwind Counting House"] = "Рахункова палата Штормовію",
+["Stormwind Visitor's Center"] = "Центр пригодників Штормовію",
+["The Gilded Rose"] = "Позолочена троянда",
+["The Protective Hide"] = "Міцна шкура",
 
 -- Skills
 ["Lightwell"] = "колодязь світла",
