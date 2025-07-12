@@ -102,7 +102,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- My banishment is ended! Let the blood flow!
 [4107680260] = [===[Моє вигнання закінчено! Нехай тече кров!]===],
 },
-["Avatar of Hakkar"] = {
+["Avatar of Hakkar"] = { "аватар Гаккара",
 -- DIE, MORTALS!
 [744259549] = [===[ПОМРІТЬ, СМЕРТНІ!]===],
 -- HAKKAR LIVES!
@@ -146,13 +146,13 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Your soul is mine!
 [879713163] = [===[Твоя душа належить мені!]===],
 },
-["Baron Aquanis"] = {
+["Baron Aquanis"] = { "барон Акваніс",
 -- Baron Aquanis's Ice Barrier dissipates.
 [1966461185] = [===[Льодяний бар'єр барона Акваніса розсіюється.]===],
 -- Baron Aquanis's Ice Barrier weakens.
 [658235428] = [===[Льодяний бар'єр барона Акваніса слабшає.]===],
 },
-["Bashana Runetotem"] = {
+["Bashana Runetotem"] = { "Башана Рунний Тотем",
 -- Denizens of Kalimdor, the dread beast Aku'mai has been slain and Ashenvale has been cleansed of the blight of the Old Gods' influence. Feel the boon of Blackfathom, and bask in the warmth of the Earth Mother's gaze!
 [2980773496] = [===[Жителі Калімдору, жахливе чудовисько Аку'май було вбито, а Ясенеділ очищено від впливу Старих Богів. Відчуйте благословення Чорноводдя і зогрійтесь в теплі Матері-Землі!]===],
 },
@@ -192,7 +192,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Enough! I'll suffer no more of your quarreling. The Argent Dawn will aid us in crushing the Scourge underfoot. I'll hear no more of this.
 [2888118517] = [===[Досить! Мені набридли ваші сварки. Сріблястий Світанок допоможе нам розбити Скару. І я не хочу більше цього чути.]===],
 },
-["Crowd Pummeler 9-60"] = {
+["Crowd Pummeler 9-60"] = { "пробійник натовпу 9-60",
 -- Pummel Delivered.
 [1219653229] = [===[Пробиття виконано.]===],
 },
@@ -218,7 +218,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- The hunt begins.
 [3409542744] = [===[Полювання починається.]===],
 },
-["Dawnwatcher Selgorm"] = {
+["Dawnwatcher Selgorm"] = { "світанковий вартовий Селґорм",
 -- Denizens of Kalimdor, the dread beast Aku'mai has been slain and Ashenvale has been cleansed of the blight of the Old Gods' influence. Bask in the boon of Blackfathom, and bathe in the cleansing light of the dawn!
 [244370849] = [===[Жителі Калімдору, жахливе чудовисько Аку'май було вбито, а Ясенеділ очищено від впливу Старих Богів. Відчуйте благословення Чорноводдя та очиститесь сяйвом світанку!]===],
 },
@@ -242,7 +242,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- I'm starting to hate you...
 [917006510] = [===[Я починаю ненавидіти вас...]===],
 },
-["Electrocutioner 6000"] = {
+["Electrocutioner 6000"] = { "Електрошокер 6000",
 -- Electric justice!
 [416161370] = [===[Електричне правосуддя!]===],
 },
@@ -297,7 +297,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Oh, I am so tired...
 [2812935238] = [===[Ох, я так втомився...]===],
 },
-["Ghamoo-ra"] = {
+["Ghamoo-ra"] = { "Гаму-ра",
 -- Ghamoo-ra's Aqua Shell begins to shatter!
 [3338015425] = [===[Водяний панцир Гаму-ра тріскається!]===],
 },
@@ -437,7 +437,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- What is this, soldier? We are not here to coddle these peasants, we are here to purge them! Get to work!
 [3069568855] = [===[Що це, солдате? Ми тут не для того, щоб панькатися з цими селянами, а щоб очистити їх! До роботи!]===],
 },
-["Lady Sarevess"] = {
+["Lady Sarevess"] = { "леді Сарвесс",
 -- Guards... take care of it.
 [738902409] = [===[Варта... розберіться з цим.]===],
 -- Something disturbs our waters.
@@ -499,7 +499,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Your kind does not belong here!
 [2615176847] = [===[Вам не можна тут бути!]===],
 },
-["Nogg"] = {
+["Nogg"] = { "Ноґґ",
 -- Alright everyone listen up. Some stooge... uh, I mean "brave adventurer" brought me a whole huge pile of secret gnomish tech and once we finish applying our superior goblin ingenuity to it we are going to use it to BLOW SO MUCH STUFF UP. Gather 'round and let's party!
 [35961088] = [===[Гаразд, слухайте сюди. Один найманець... гм, тобто "відважний шукач пригод" приніс мені цілу купу секретних технологій гномів, і коли ми додамо до них нашу неперевершену гоблінську винахідливість, ми використаємо їх, щоб ПІДІРВАТИ ВСІЛЯКІ ШТУКИ! Збирайтеся і нумо веселитися!]===],
 },

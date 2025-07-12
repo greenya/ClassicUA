@@ -124,7 +124,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- The invaders persist! Hold them off!
 [2211203697] = [===[Загарбники не здаються! Затримайте їх!]===],
 },
-["Eitrigg"] = {
+["Eitrigg"] = { "Ейтріґ",
 -- At once, sir!  For the Horde!
 [1933442232] = [===[Слухаюсь, вождь! За Орду!]===],
 -- Thrall!  My lord... are you all right?

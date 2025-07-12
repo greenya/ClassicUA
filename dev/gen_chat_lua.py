@@ -4,7 +4,7 @@ import utils
 
 def resolve_npc_name_pair(npc_exp: str, npc_id: int, db_npcs_rows: list) -> tuple:
     for exp, id, name_en, name_uk in db_npcs_rows:
-        if exp == npc_exp and id == npc_id:
+        if exp in utils.known_expansions_inclusion[npc_exp] and id == npc_id:
             return name_en, name_uk
 
     return None, None

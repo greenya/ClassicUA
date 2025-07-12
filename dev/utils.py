@@ -4,6 +4,15 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 known_expansions = ('classic', 'sod', 'tbc', 'wrath', 'cata', 'mists')
+known_expansions_inclusion = {
+    # this should match expansion TOC files
+    'classic'   : ('classic'),
+    'sod'       : ('classic', 'sod'),
+    'tbc'       : ('classic', 'tbc'),
+    'wrath'     : ('classic', 'tbc', 'wrath'),
+    'cata'      : ('classic', 'tbc', 'wrath', 'cata'),
+    'mists'     : ('classic', 'tbc', 'wrath', 'cata', 'mists'),
+}
 known_sides = ('alliance', 'horde', 'both')
 
 is_str_and_has_only_ascii_chars =\
