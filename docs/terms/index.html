@@ -412,7 +412,7 @@
                 filterDropdownTagsCountLimit: true,
                 filterDropdownTagsText: '',
                 termDetails: {},
-                maxVisibleTerms: 1000,
+                maxVisibleTerms: 4000,
             },
             created: function () {
                 this.state = 'load';
@@ -619,6 +619,7 @@
                             'tbc': 'tbc',
                             'wrath': 'wotlk',
                             'cata': 'cata',
+                            'mists': 'mop-classic',
                         }
                         return `https://www.wowhead.com/${wh_exp_map[exp]}/npc=${id}`
                     }

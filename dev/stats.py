@@ -13,6 +13,7 @@ known_extra_translations = {
     "tbc"                       : "Палаючий Похід (TBC)",
     "wrath"                     : "Гнів Короля-ліча (WOTLK)",
     "cata"                      : "Катаклізм (Cataclysm)",
+    "mists"                     : "Тумани Пандарії (MOP)",
 
     # general category names, not in terms; maybe we should add them to terms as they probably can be found
     # in Quest Log categories, so having translation of them in terms is beneficial not only to this script

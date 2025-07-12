@@ -14,5 +14,6 @@ entries\classic\index.xml
 entries\tbc\index.xml
 entries\wrath\index.xml
 entries\cata\index.xml
+entries\mists\index.xml
 
 scripts\index.xml

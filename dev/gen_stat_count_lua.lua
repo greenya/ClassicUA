@@ -1,4 +1,4 @@
-local known_expansions = { "classic", "sod", "tbc", "wrath", "cata" }
+local known_expansions = { "classic", "sod", "tbc", "wrath", "cata", "mists" }
 local known_entity_types = {
     {
         name = "quests",

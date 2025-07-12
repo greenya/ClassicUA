@@ -8,8 +8,8 @@ This folder contains development scripts, which are used to generate lua files (
     - Export terms in TBX (v2) format -> ClassicUA.tbx
     - Export quests via "Build & Download" -> ClassicUA.zip
     - Download source for following folders:
-        - chats, chats_*
-        - gossip, gossip_*
+        - chats*
+        - gossip*
         Note: select multiple folders, right click and choose "Download sources" -> ClassicUA_en.zip
 
 2. Update Terms app:
@@ -23,8 +23,8 @@ This folder contains development scripts, which are used to generate lua files (
     - Expected structure at this point:
         * /uk                   <- from ClassicUA.zip
         * /en                   <- from ClassicUA_en.zip
-        *   /chats, /chats_*
-        *   /gossip, gossip_*
+        *   /chats*
+        *   /gossip*
         * /ClassicUA.tbx
 
     - Run python gen_book_lua.py > translation_from_crowdin/gen_book_lua_output.txt

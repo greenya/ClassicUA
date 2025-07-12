@@ -25,11 +25,13 @@ utils.prepare = function ()
     utils.is_tbc            = string_byte(build_version, 1) == string_byte("2")
     utils.is_wrath          = string_byte(build_version, 1) == string_byte("3")
     utils.is_cata           = string_byte(build_version, 1) == string_byte("4")
+    utils.is_mists          = string_byte(build_version, 1) == string_byte("5")
 
     if     utils.is_classic then utils.expansion_key = utils.is_classic_sod and "sod" or "classic"
     elseif utils.is_tbc     then utils.expansion_key = "tbc"
     elseif utils.is_wrath   then utils.expansion_key = "wrath"
     elseif utils.is_cata    then utils.expansion_key = "cata"
+    elseif utils.is_mists   then utils.expansion_key = "mists"
     else                         utils.expansion_key = "???" end
 end
 
