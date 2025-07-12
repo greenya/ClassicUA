@@ -367,7 +367,6 @@ local npc = { -- [id] = { title, description (optional) }
 [218243] = { "СТХ-13/БН", en="STX-13/LL" }, -- STX-13/LL
 [218244] = { "СТХ-25/БК", en="STX-25/NB" }, -- STX-25/NB
 [218245] = { "СТХ-37/КК", en="STX-37/CN" }, -- STX-37/CN
-[218246] = { "Ґурґток", en="Gurgthock" }, -- Gurgthock
 [218249] = { "слизькоріза жриця припливу", en="Slitherblade Tide Priestess" }, -- Slitherblade Tide Priestess
 [218262] = { "опромінений асистент", en="Leprous Assistant" }, -- Leprous Assistant
 [218263] = { "опромінений машиніст", en="Leprous Machinesmith" }, -- Leprous Machinesmith
@@ -413,7 +412,6 @@ local npc = { -- [id] = { title, description (optional) }
 [219199] = { "прислужник Омена" }, -- Omen
 [219659] = { "Верховний штукар Меккакруть", "король гномів" }, -- Gelbin Mekkatorque
 [219663] = { "Ноґґ", "інженер-експерт", en="Nogg" }, -- Nogg <Expert Engineer>
-[219704] = { "Ґурґток", en="Gurgthock" }, -- Gurgthock
 [219822] = { "прикутий дух", en="Chained Spirit" }, -- Chained Spirit
 [219986] = { "дух вовка", en="Spirit Wolf" }, -- Spirit Wolf
 [219999] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
@@ -847,7 +845,7 @@ local npc = { -- [id] = { title, description (optional) }
 [230319] = { "Деліана", en="Deliana" }, -- Deliana
 [230347] = { "повелитель жаху", en="dreadlord" }, -- dreadlord
 [230348] = { "вартовий приречення-командир", en="Doomguard Commander" }, -- Doomguard Commander
-[230349] = { "гвардієць-вартовий скверни", en="Felguard Elite" }, -- Felguard Elite
+[230349] = { "вартовий скверни-гвардієць", en="Felguard Elite" }, -- Felguard Elite
 [230481] = { "фрагмент елементаля землі", en="Earth Elemental Fragment" }, -- Earth Elemental Fragment
 [230513] = { "Сіопі", en="Siopi" }, -- Siopi
 [230558] = { "агресивний елементаль землі", en="Territorial Terran" }, -- Territorial Terran
@@ -963,7 +961,7 @@ local npc = { -- [id] = { title, description (optional) }
 [232936] = { "росток зцілення", en="Sprig of Growth" }, -- Sprig of Growth
 [232937] = { "росток зцілення", en="Sprig of Restoration" }, -- Sprig of Restoration
 [232938] = { "росток зцілення", en="Sprig of Healing" }, -- Sprig of Healing
-[232939] = { "гвардієць-вартовий скверни", en="Felguard Elite" }, -- Felguard Elite
+[232939] = { "вартовий скверни-гвардієць", en="Felguard Elite" }, -- Felguard Elite
 [232940] = { "гончак скверни-чаролов", en="Felhound Spellseeker" }, -- Felhound Spellseeker
 [232942] = { "масивний вартовий приречення", en="Hulking Doomguard" }, -- Hulking Doomguard
 [232943] = { "Діатор-Шукач", en="Diathorus the Seeker" }, -- Diathorus the Seeker
@@ -1022,7 +1020,7 @@ local npc = { -- [id] = { title, description (optional) }
 [234755] = { "кіразький губитель розуму", en="Qiraji Mindslayer" }, -- Qiraji Mindslayer
 [234762] = { "кіразький губитель розуму", en="Qiraji Mindslayer" }, -- Qiraji Mindslayer
 [234798] = { "кіразький чемпіон", en="Qiraji Champion" }, -- Qiraji Champion
-[234800] = { "кіразький вбивця", en="Qiraji Slayer" }, -- Qiraji Slayer
+[234800] = { "кіразька вбивця", en="Qiraji Slayer" }, -- Qiraji Slayer
 [234814] = { "кіразький воєвода", en="Qiraji Warlord" }, -- Qiraji Warlord
 [234830] = { "анубісат-захисник", en="Anubisath Defender" }, -- Anubisath Defender
 [234880] = { "Емерісс", en="Emeriss" }, -- Emeriss
@@ -1291,6 +1289,7 @@ local npc = { -- [id] = { title, description (optional) }
 [241122] = { "сповідник Багряного Походу", en="Scarlet Confessor" }, -- Scarlet Confessor
 [241123] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest
 [241136] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[241334] = { "воля Спопелителя", en="Will of the Ashbringer" }, -- Will of the Ashbringer
 [241406] = { "бойовий маг Багряного Походу", en="Scarlet Battle Mage" }, -- Scarlet Battle Mage
 [241407] = { "оборонець Багряного Походу", en="Scarlet Defender" }, -- Scarlet Defender
 [241409] = { "броняр Багряного Походу", en="Scarlet Armorer" }, -- Scarlet Armorer
@@ -1362,6 +1361,7 @@ local npc = { -- [id] = { title, description (optional) }
 [242439] = { "Тізалі Ворона", "друїд Кігтя", en="Thisalee Crow" }, -- Thisalee Crow
 [242470] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [242499] = { "верховний повелитель Моґрейн", "Спопелитель" }, -- Highlord Mograine <The Ashbringer>
+[242501] = { "воля Спопелителя", en="Will of the Ashbringer" }, -- Will of the Ashbringer
 [242547] = { "претор Багряного Походу", en="Scarlet Praetorian" }, -- Scarlet Praetorian
 [242560] = { "Тенн Вогнемов", en="Tenn Flamecaster" }, -- Tenn Flamecaster
 [242563] = { "Беатрікс", en="Beatrix" }, -- Beatrix
@@ -1379,6 +1379,8 @@ local npc = { -- [id] = { title, description (optional) }
 [242827] = { "капітан Кровошаг", "аукціонер-мореплавець", en="Captain Bloodcoin" }, -- Captain Bloodcoin
 [242828] = { "Герод", en="Herod" }, -- Herod
 [242853] = { "моряк Східних морів", en="Eastsea Scallywag" }, -- Eastsea Scallywag
+[242863] = { "багаття Гіджала", en="Hyjal Bonfire" }, -- Hyjal Bonfire
+[242867] = { "воля Спопелителя", en="Will of the Ashbringer" }, -- Will of the Ashbringer
 [242872] = { "леді Бломе", en="Lady Blaumeux" }, -- Lady Blaumeux
 [242874] = { "Тан Корт'азз", en="Thane Korth'azz" }, -- Thane Korth'azz
 [242877] = { "cер Зелєк", en="Sir Zeliek" }, -- Sir Zeliek
@@ -1496,6 +1498,7 @@ local npc = { -- [id] = { title, description (optional) }
 [245343] = { "Тояра", "майстриня клинка", en="Tojara" }, -- Tojara <Blademaster>
 [245373] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [245376] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[245635] = { "воля Спопелителя", en="Will of the Ashbringer" }, -- Will of the Ashbringer
 }
 
 if addonTable.npc then

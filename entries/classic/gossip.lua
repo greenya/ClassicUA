@@ -6,93 +6,680 @@ local _, addonTable = ...
 
 local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optional) }, ... }
 ["!common"] = {
+-- A Horde Commendation Signet is awarded to a hero who goes above and beyond the call of duty to the Horde.  Various Commendation Officers for the factions of the Horde are located in all of the major cities; speak with the one with whom you'd like to raise your reputation, and give them the number of signets they ask for!
+--
+-- By the way, during the war effort here, if you'd rather receive a material reward for your signets instead of reputation, seek out Warlord Gorchuk.
+[742061915] = [===[Відзнака подяки Орди вручається героям, що діють понад обов'язок на благо Орди. У всіх великих містах Орди можна знайти офіцерів, що приймають відзнаки подяки в обмін на репутацію своєї фракції.
+
+До речі, поки йде військова кампанія, якщо бажаєш отримати матеріальну винагороду за свої відзнаки замість репутації — звернися до воєводи Ґорчука.]===],
+-- A Hunter is it?  Well, then you will want to speak with Thorfin Stoneshield over in the Dwarven District.
+--
+-- Oh, and you be sure to tell him that if I step in his pet's business one more time, he's going to be training other hunters from behind bars in the Stockade!
+[2136556690] = [===[Мисливець, так? Ну, тоді вам варто поговорити з Торфіном Камнещитом у Дворфійському районі.
+
+О, і обов'язково передайте йому, що якщо я ще раз втраплю в відходи його звіра, йому доведеться тренувати мисливців з-за ґрат в'язниці!]===],
+-- A rogue?  Hmmm... well, I've heard that Keryn Sylvius hangs around those shady types.  You might want to talk to her and see what you can learn.
+[1125838270] = [===[Пройдисвіт? Хмм... ну, здається, Керін Сільвія крутиться з цих підозрілими типами. Можете поговорити з нею і дізнатися, чого вона може навчити.]===],
+-- A tailor is it?  Well, if you hang out here long enough you'll eventually hear word of mouth about Georgio Bolero.  He's been setting the trends for some months now.  If you wish to learn from him, you can find him over in the Mage Quarter in the outer rim.
+[2871497380] = [===[Кравця шукаєте? Ну, якщо ви пройдетесь містом, то не раз почуєте ім'я Джорджіо Болеро. Він певно найкращий кравець Штормовію. Якщо хочете повчитися у нього, то можете знайти його у кварталі Магів, на зовнішньому колі.]===],
+-- Actually I prefer traditional medicines... leeches, maggots, bonesaws... that sort of thing.  Well to each their own.  You can find the our local Herbalism Trainer, Faruza, standing out front near the stables in Brill.
+[760756751] = [===[Мені більше до вподоби традиційна медицина... п'явки, черви... такі от речі. Ну, кожному своє. Ти знайдеш нашу місцеву тренерку травництва, Фарузу, біля стайні у Бріллі.]===],
+-- Ah yes, Skinning.  There is no one finer in wielding a skinning knife than Yonn Deepcut.  You can find him in the great tent at the northwest corner of the village.
+[923338962] = [===[Так, шкуродерство. Ніхто не вміє так вправно володіти ножем для зняття шкур, як Йонн Глибокоріз. Його можна знайти у великому наметі на північному заході селища.]===],
+-- Ah yes, it is Seikwa that you must find.  I believe I saw her last standing out in front of the inn.
+[3365356481] = [===[Так, тобі потрібна Сейква. Зазвичай її можна знайти неподалік від таверни.]===],
+-- Ah, The Gilded Rose... with its soft down beds and warm baths... just thinking about that Inn makes me want to... ::yawn:: Lucky you if you're heading over there...  you will find it in the west side of the Trade District.   ...nice soft pillows, warm blankets.  ::yawn::
+[1329175932] = [===[Ах, «Позолочена Троянда»... там такі м'які ліжка та теплі ванни... просто думаю про цю таверну, і вже хочеться... <позіхає> Заздрю вам, якщо ви туди прямуєте... вона знаходиться на західній стороні Торгового району.  ...приємні пухові подушки, теплі ковдри... <позіхає>]===],
+-- Ah, you must go to the great heights of Thunder Bluff to visit one of those.  Follow the path north out of Bloodhoof Village.  At the base of the bluffs is an elevator that will take you to the top.  When you get there ask for further directions from one of the Bluffwatchers.
+[2528182335] = [===[Хм, для цього тобі потрібно піднятися до Громового Бескиду. Йди дорогою на північ з селища Криваве Копито, а біля підніжжя бескидів скористайся підйомником. Як дістанешся туди — запитай в одного з вартових бескиду.]===],
+-- Ah, you're looking for Lucan Cordell.  He runs a shop on the outside of the Magic Quarter on your way to the Stockade.
+[1147131748] = [===[Ах, ви шукаєте Люкана Корделла. Він тримає крамницю на околиці кварталу Магії, по дорозі до в'язниці.]===],
+-- Ahhh, Stormwind Visitor's Center is what you are looking for then. It's the first building on the left as you walk through the front gates from the Valley of Heroes.
+[4106002766] = [===[Ага, тоді вам потрібен центр пригодників Штормовію. Це перша будівля зліва, як заходите через головні ворота з Долини Героїв.]===],
+-- Ahhh, you are looking for Dungar Longdrink. He has some of the fastest gryphons this side of Khaz Modan! You can find him up on the ramparts in the Trade District.
+[4154475320] = [===[Вам потрібен Дунґар Довгопий. У нього найшвидші грифони по цей бік Каз-Модану! Ви знайдеш його на стіні у Торговому районі.]===],
+-- All of a sudden you're a 'Defender of the Alliance' are you?! Well, I suppose you'll be wanting to head to the Champions' Hall now. It's over in Old Town, but they won't let you in unless you're an officer, so you might just have to settle for talking to Officer Areyn outside. Move along now.
+[2261101872] = [===[Раптом стали "{стать:Захисником:Захисницею} Альянсу"? Що ж, гадаю, тепер ви хочете потрапити до зали Чемпіонів. Це в Старому Місті, але якщо ви не офіцер, то вас не пропустять і доведеться обмежитись розмовою з офіцером Арейн зовні.]===],
+-- An Alliance Commendation Signet is awarded to a hero who goes above and beyond the call of duty to the Alliance.  Various Commendation Officers for the factions of the Alliance are located in all of the major cities; speak with the one with whom you'd like to raise your reputation, and give them the number of signets they ask for!
+--
+-- By the way, during the war effort here, if you'd rather receive a material reward for your signets in lieu of reputation, seek out Field Marshal Snowfall.
+[2069442724] = [===[Відзнака подяки Альянсу вручається героям, що діють понад обов'язок на благо Альянсу. У всіх столицях Альянсу можна знайти офіцерів, що приймають відзнаки подяки в обмін на репутацію своєї фракції.
+
+До речі, поки йде військова кампанія, якщо бажаєш отримати матеріальну винагороду за свої відзнаки замість репутації — звернися до воєводи фельдмаршала Снігопада.]===],
+-- And I wish I could join you <name>. Head over to Stormwind Keep. You'll find Thelman Slatefist in the King's audience chamber. He will aid you in getting to Alterac Valley.
+[2184089775] = [===[Ех, хотілось би мені приєднатися до вас, {ім'я:к}. Прямуйте до фортеці Штормовія. Там ви знайдете Тельмана Шиферука в тронній залі короля. Він допоможе вам дістатися до Альтерацької долини.]===],
+-- Another entrepreneur, eh? Well, the Auction House can be found in the Trade District.  Not far from the bank.
+[3317137317] = [===[Любите торги, так? Ну, Аукціонний дім знаходиться в Торговому районі, зовсім поруч із банком.]===],
+-- Are you here for training?  Or are you just here to waste a warrior's time.
+[572714820] = [===[Ти {стать:прийшов:прийшла} на тренування? Чи ти просто марнуєш час воїна?]===],
+-- Are you interested in exploring one of these dungeons?
+[4158578474] = [===[Хочеш дослідити одне з цих підземель?]===],
+-- As a mage, you are one of a select group that can conjure a portal to transport you back to this very place.  I can teach you if you are ready.
+[3693696857] = [===[Як {клас:н}, ти належиш до небагатьох, хто може створити портал, що перенесе тебе сюди. Я можу навчити тебе, якщо ти {стать:готовий:готова}.]===],
+-- As the wind on the plains, you are always welcome here.
+[2208953291] = [===[Тут завжди раді тобі, як вітру на рівнинах.]===],
+-- At the southeast edge of town is the Gallows' End Tavern.  Go there and head upstairs, and you'll find Dark Cleric Beryl inside the reading room.
+[3091882083] = [===[На південно-східній околиці міста знаходиться таверна «Край шибениці». Йди туди та підіймайся нагору — в читальній залі ти знайдеш темного священника Берила.]===],
 -- Auction House
 [3408769971] = [===[Аукціонний дім]===],
+-- Away to Thunder Bluff to the north is where your journey takes you then friend.  Once there seek out the wisdom of one of the Bluffwatchers who can tell you directly where to find whom you seek.
+[1676859523] = [===[Твій шлях лежить до Громового Бескиду, {стать:друже:подруго}. Опинившись там, звернися за порадою до одного з вартових бескиду, які зможуть точніше вказати, кого саме ти шукаєш.]===],
+-- Balai Lok'Wein of Brackenwall Village in Dustwallow Marsh sells a manual that you will need to study in order to improve your skills!
+[2542725402] = [===[Балая Лок'Вейн з селища Папорохащі, що в Бруднолипкій трясовині, продає посібник, який тобі варто прочитати, щоб покращити свої навички!]===],
+-- Bandages, anti-venoms and such things, these are the inevitable necessities of life on the plains.  Vira Younghoof can teach you this knowledge.  You can find her in the long house on the west side of Bloodhoof Village.
+[3380816968] = [===[Бинти, протиотрути та подібні речі — це необхідність для виживання на рівнинах. Віра Молоде Копито може розповісти тобі про них більше. Ти знайдеш її у довгому будинку на західному боці селища Криваве Копито.]===],
 -- Bank
 [410675714] = [===[Банк]===],
+-- Bank of Stormwind
+[3371581698] = [===[Банк Штормовію]===],
 -- Battlemaster
 [253322801] = [===[Воєначальник]===],
+-- Besides the Grunts outside, my brothers and I fought at the battle of Hyjal. Any who seek to steal from the bank must face us first.
+[2858302175] = [===[Мало того, що ззовні стоять бугаї, ми з братами були в битві під Гіджалом. Будь-хто, хто намагатиметься пограбувати банк, має спершу здолати нас.]===],
+-- Best deals in all of Stormwind my friend, won't find any better. Now, what can I help you with?
+[2598353272] = [===[Найкращі ціни у всьому Штормовії, {стать:друже:подруго}, кращих не знайдеш. Ну, чим можу допомогти?]===],
+-- Blackrock Mountain lies between Searing Gorge in the north and Burning Steppes in the south.
+[2051475275] = [===[Чорноскельна гора лежить між Випаленою ущелиною на півночі та Палаючим степом на півдні.]===],
+-- Blacksmith?  Nope, our last one turned back into one of those mindless Scourge.  There's one in the Undercity though to the south of town though.  Undercity is underneath the Ruins of Lordaeron, clever name, huh?  Just take the elevators down at the back of the ruins and then you can talk to one of the Undercity Guardians.  They should be able to point you in the right direction.
+[3977806636] = [===[Тобі потрібен коваль? Ну, наш останній знову втратив розум і приєднався до Скари. Проте є ще один в Підмісті, що на південь звідси. Підмістя знаходиться під руїнами Лордерона, логічно, ге ж? Просто спустить туди в задній частині руїн і поговори з одним із вартових Підмістя. Вони вкажуть тобі правильний напрямок.]===],
+-- Built twelve thousand years ago by a covert sect of night elf sorcerers, the ancient city of Eldre'Thalas was used to protect Queen Azshara's most prized arcane secrets. Though it was ravaged by the Great Sundering of the world, much of the wondrous city still stands as the imposing Dire Maul. The ruins' three distinct districts have been overrun by all manner of creatures - especially the spectral highborne, foul satyr and brutish ogres.
+[2387865313] = [===[Стародавнє місто Ельдре'Талас, збудоване дванадцять тисяч років тому таємним орденом нічних ельфів-чаклунів, було призначене для захисту найцінніших магічних таємниць королеви Азшари. Хоча воно зазнало руйнування внаслідок Великого Розколу, більша частина цього дивовижного міста все ще стоїть, і нині відома як Грізний Молот. Три окремі райони руїн заполонили всілякі істоти — здебільшого примарні високородні, сатири та огри.]===],
+-- Butcher you say?  Oh, First Aid Trainer!  Same thing.  When you see Nurse Neela standing just inside the Gallows' End Tavern on the southeast side of town you'll know why.
+[859883934] = [===[М'ясник, кажеш? А, тренер першої допомоги! Одне й те ж. Як побачиш санітарку Нілу, то зрозумієш чому. Вона стоїть одразу біля входу до таверни «Край шибениці», що на південно-східній околиці міста.]===],
+-- Can you tell me more about this place?
+[57088927] = [===[Можеш розповісти більше про це місце?]===],
+-- Check around Old Town at the Barracks or the Pig and Whistle Tavern. If you go to the tavern, be sure to sample some of the fine brews. Puts the dwarven ales to shame, I tell ya.
+[2872006923] = [===[Погляньте в Старому Місті — біля казарм або у таверні «Свиня і Свисток». Якщо підете в таверну, обов'язково спробуйте тамтешнє пиво. Кажу вам, дворфійський ель і поруч не стояв.]===],
 -- Class Trainer
 [3462538363] = [===[Класовий тренер]===],
+-- Clyde Kellen, the local bass master, has his favorite fishing spot just east of Brill at Brightwater Lake.
+[1776223672] = [===[Клайд Келлен, наш місцевий майстер риболовлі, зазвичай проводить час на Ясноводному озері, що на схід від Брілля.]===],
+-- Dem other ogres was dumb to attack you, boss!  Dat's why I'm still alive - I'm smart and stuff!
+[1878897489] = [===[Ті другі огри нападали на тебе, бо були дурні, бос! Того я ше живий — бо я умний, ага!]===],
+-- Dirge Quikcleave of Gadgetzan is a master of the culinary arts.  To better yourself you will need to seek him out.
+[116251768] = [===[Могиль Хуткоріз з Пристробляху — визнаний майстер кулінарного мистецтва. Тобі варто поговорити з ним, щоб вдосконалити свої навички.]===],
+-- Do I look to you like I cast spells?  Well, I did hear that Cain Firesong was hanging out on the upstairs landing of the Gallows' End Tavern at the southeast end of town.  Odd how he just stands there outside of Gretchen's room like that.
+[114604624] = [===[Хіба схоже, що я вмію чаклувати? Ну, я чув, що Каїн Вогнеспів зависає на другому поверсі таверни «Край шибениці», що на південному сході міста. Дивно, що він просто стоїть там, біля кімнати Ґретхен.]===],
+-- Do not turn your back on the Light, <class>, it may be the one thing that saves you some day.
+[2507475128] = [===[Не повертайся спиною до Світла, {клас:к}, можливо це єдине, що колись тебе врятує.]===],
+-- Don't let the jingle of the bells take away from the jingle in your pocket!  Buy Smokywood Pastures treats for your Winter Veil festivities!
+[204946947] = [===[Не дозволяй святковим дзвоникам затьмарити дзвін твого гаманця! Купуй ласощі від Пасовищ Димного Лісу для святкування Зимової Покрови!]===],
+-- Duncan's Textiles employs one of the finest tailors in Stormwind, Georgio Bolero. Look for the shop over in the Mage Quarter.
+[3556568180] = [===[Один з найкращих кравців Штормовію, Джорджіо Болеро, працює у крамниці «Текстиль Дункана». Це у кварталі Магів.]===],
+-- During the War of the Ancients, the demigod Agamaggan came forth to battle the Burning Legion. The colossal boar was defeated, and over time in the areas where his blood fell, massive thorn-ridden vines sprouted to life. The quilboar came to occupy these regions and hold them sacred. The heart of these massive thorn-colonies is the Razorfen. Razorfen Kraul was conquered by the crone, Charlga Razorflank, who some speculate has been negotiating with agents of the Scourge for some insidious purpose.
+[2680698699] = [===[Під час Війни Древніх напівбог Аґамаґґан вийшов на бій проти Палаючого Легіону. Гігантський кнур був переможений, і згодом там, де пролилася його кров, проросли величезні колючі лози. Свинобрази племені Бритвоболотих оселились в цих місцях і стали вважати їх священними. Крааль Бритвоболотих був захоплений відьмою Чарлґою Бритвобокою, яка, як дехто припускає, веде переговори з агентами Скари з якоюсь лихою метою.]===],
+-- Fancy yourself a chef?  Head to the Undercity south of town for your training.  You can catch the elevators heading down at the back of the Ruins of Lordaeron.  Talk to one of those lumbering Undercity Guardians for further assistance once you arrive.
+[355834312] = [===[Хочеш стати {стать:шеф-кухарем:шеф-кухаркою}? Тоді тобі слід йти до Підмістя, що на південь звідси. Ти зможеш спуститись туди на одному з підйомників, що в глибині руїн Лордерона. Як будеш там — запитай одного з тих величезних вартових Підмістя.]===],
+-- Fill yer tankard and pull up a chair. We've stories to tell and kegs to empty.
+[3334331673] = [===[Наповнюй кружку і си влаштовуй зручніше. Ми тут любим розказувать історії, а в коморі ще купа випивки.]===],
+-- Gelman Stonehand would be the one to talk to. I think he has a house over in the Dwarven District but I can't remember exactly. I would check over there.
+[2705099054] = [===[Ґелман Камнерук знається на цьому. Здається, у нього є будинок у Дворфійському районі, але я точно не пам'ятаю. Раджу пошукати там.]===],
+-- Give a bull a fish and feed him for a day.  Teach a bull to fish and feed him for life.  Uthan Stillwater can teach you how to fish.  Seek his wisdom west of Bloodhoof Village along the banks of Stonebull Lake.
+[783072954] = [===[Дай таурену рибу, і він буде ситий один день. Навчи його ловити рибу, і він буде ситий все життя. Утан Тиха Вода може навчити тебе рибалити. Шукай його на заході від селища Криваве Копито на березі озера Кам'яного Бика.]===],
+-- Gnomeregan can be found in western Dun Morogh.
+[2281661873] = [===[Гномреґан можна знайти на заході Дун-Морога.]===],
+-- Gonna make a guild, are ya? Good luck to ya then!
+--
+-- Talk to Aldwin Laughlin in the Stormwind Vistor's Center. It's in the Trade District right as you come in from the Valley of Heroes.
+[805390248] = [===[Збираєтесь створити гільдію, так? Ну, хай щастить!
+
+Поговоріть з Олдвіном Сміхтом у центрі пригодників Штормовію. Це в Торговому районі, одразу як заходите з Долини Героїв.]===],
+-- Greetings <class>.  Shall I provide you with further insight into the world of magic?
+[394012010] = [===[Вітаю, {клас:к}. Бажаєш дізнатись більше про світ магії?]===],
+-- Greetings and salutations, hero!  I have the latest news from both continents and points beyond for your consideration.
+[3616294988] = [===[Вітаю тебе, {стать:герою:героїне}! Маю для тебе найсвіжіші новини з обох континентів і не тільки.]===],
+-- Greetings, traveler.
+[3398832840] = [===[Вітаю, {стать:мандрівниче:мандрівнице}.]===],
+-- Greetings.  I'm an undead mage trainer, and you're a mage.
+[3889447333] = [===[Вітаю. Я навчаю магів, а ти, здається, маг.]===],
 -- Gryphon Master
 [199682921] = [===[Приборкувач грифонів]===],
+-- Gryphons, eh? Never really cared for the beasts but to each their own.
+--
+-- You can find Dungar Longdrink on the rampart in the Trade District.
+[1779945546] = [===[Грифони, ге? Мені ніколи не подобалися ці звірі, але кожному своє.
+
+Ви можете знайти Дунґара Довгопия на стіні в Торговому районі.]===],
 -- Guild Master
 [837930098] = [===[Розпорядник гільдій]===],
+-- Hail to da new king!
+[1901002890] = [===[Слава новому королю!]===],
+-- Hey, that reminds me, I need to have my rocket boots repaired.  Word to the wise my friend, rocket boots and gryphons don't mix.
+--
+-- Oh, but you need directions...  just head on over to the Dwarven District, you'll find Lilliam Sparkspindle towards the back.
+[349376281] = [===[Хм, а мені саме потрібно відремонтувати мої реактивні черевики. Невеличка порада — не намагайтеся використовувати їх верхи на грифоні.
+
+Але вам потрібні вказівки... просто прямуйте до Дворфійського району, ви знайдете Ліліама Іскрошпинделя в дальній частині.]===],
+-- Hmmm, I think you will need to go up to Thunder Bluff to learn that.  Head north on the road out of Bloodhoof Village.  It will take you to the base of Thunder Bluff.  Ride the elevator to the top and you should be able to ask any of the Bluffwatchers there for further assistance.
+[2215581862] = [===[Хм... Думаю, тобі потрібно буде піти до Громового Бескиду для цього. Вирушай на північ з селища Криваве Копито. Дорога приведе тебе до підніжжя Громового Бескиду. Піднімись на вершину і зможеш запитати в будь-якого вартового бескиду.]===],
 -- How do I form a guild?
 [2178875214] = [===[Як створити гільдію?]===],
 -- I am interested in mage training.
-[2633380395] = [===[Мене цікавить тренування мага.]===],
+[2633380395] = [===[Мене цікавить вивчення магії.]===],
+-- I am so smart!  S-M-R-T!
+[553580770] = [===[Я такий вумний! ВУМНИЙ!!]===],
+-- I can not train you, <class>.
+[596497898] = [===[Я не можу навчати тебе, {клас:к}.]===],
+-- I can not train you. You need to talk to your class trainer.
+[1475993360] = [===[Я не можу тебе навчати. Тобі слід поговорити з тренером свого класу.]===],
+-- I can teach you fishing skills.
+[3788223572] = [===[Я можу навчити тебе навичок рибальства.]===],
+-- I can train you in First Aid techniques.
+[575566740] = [===[Я можу навчити тебе технік першої допомоги.]===],
+-- I cause you no trouble, boss.
+[3172668669] = [===[Від мене не буде проблем, бос.]===],
+-- I do not have the knowledge you seek.
+[3395417804] = [===[Я не володію знаннями, які ти шукаєш.]===],
+-- I don't know how they do it...  those mailboxes must be magic portals or something.  Why I see people gathered around the mailbox next to the bank all day pulling swords and shields and various armor all from that small box!
+[1595202472] = [===[Я не знаю, як вони це роблять... в цих поштові скриньки, мабуть, магічні портали чи щось подібне. Я постійно бачу, як зі скриньки, що поруч з банком люди витягують мечі, щити та всілякі обладунки!]===],
+-- I guarantee this bank's security with my own blood, is that good enough for you?
+[3685220376] = [===[Я гарантую безпеку цього банку власною кров'ю. Тобі цього достатньо?]===],
+-- I hear that they have a Mining Trainer in Thunder Bluff to the north.  Take the road out of the village and when you get there ride the elevator to the top of the rise.  Any of the Bluffwatchers should be able to help you from there.
+[3495433497] = [===[У Громовому Бескиді, що на півночі, є тренер гірництва. Вирушай дорогою з селища, а коли дістанешся туди — скористайся підйомником. Будь-який вартовий бескиду зможе допомогти тобі.]===],
+-- I hear that they have a Mining Trainer in the Undercity.  All you have to do to get there is head south out of town and go to the back of the Ruins of Lordaeron.  Then take the elevator down into the Undercity itself and ask an Undercity Guardian for further directions.
+[3877773273] = [===[Кажуть, що у Підмісті є тренер гірництва. Щоб потрапити туди, вирушай на південь з міста і йди до задньої частини руїн Лордерона. Там спуститися в саме Підмістя та запитай в одного вартових.]===],
+-- I kinnae help ye with trainin'. Ye should look fer a <class> trainer.
+[666770767] = [===[Я не можу помогти тобі з тренуванням. Тобі треба тренер {клас:мр}.]===],
+-- I need a ride.
+[3956547599] = [===[Мені потрібно летіти.]===],
+-- I require <class> training.
+[3729571731] = [===[Я хочу навчитися навичок {клас:мр}.]===],
+-- I sell only the best gear, tested and true. And the prices are set, so if you want to haggle then go find a Goblin.
+[4181239680] = [===[Я продаю лише найкраще спорядження, випробуване і якісне. І ціни фіксовані, тож якщо хочеш поторгуватися — йди до гоблінів.]===],
+-- I sell only the finest arcane gear, made by the crafters and mages here in the city of Stormwind.
+[716595721] = [===[Я продаю лише найкраще магічне спорядження, виготовлене майстрами та магами Штормовію.]===],
+-- I trust the Light is with you, <name>. Is there something that I can I help you with?
+[2722278334] = [===[Бережи тебе Світло, {ім'я:к}. Чи можу я чимось тобі допомогти?]===],
+-- I want to ask you about something else.
+[900518594] = [===[Я хочу запитати про щось інше.]===],
 -- I want to browse your goods.
-[789255659] = [===[Я хочу переглянути ваші товари.]===],
+[789255659] = [===[Я хочу переглянути товари.]===],
 -- I want to create a guild crest.
 [2070578652] = [===[Я хочу створити герб гільдії.]===],
+-- I wish to browse your wares.
+[43845290] = [===[Я хочу переглянути товари.]===],
+-- I wish to make a purchase.
+[959732348] = [===[Я хочу щось придбати.]===],
 -- I wish to unlearn my talents.
 [792537735] = [===[Я хочу забути свої таланти.]===],
 -- I wish to untrain my pet.
-[795867403] = [===[Я хочу скасувати навчання свого вихованця.]===],
+[795867403] = [===[Я хочу перевчити свого вихованця.]===],
+-- I would like to buy from you.
+[3219197346] = [===[Я хочу щось купити.]===],
+-- I would like to check my deposit box.
+[837558441] = [===[Я хочу перевірити свою банківську скриньку.]===],
+-- I would like to go to the battleground.
+[1233882911] = [===[Я хочу піти на поле бою.]===],
+-- I would like to train.
+[3808875460] = [===[Я хочу тренуватися.]===],
+-- I would suggest looking in the Cathedral of Light in Cathedral Square.
+[1745904651] = [===[Раджу шукати в соборі Світла, що на Соборній площі.]===],
+-- I'd like some weapon training
+[2242737969] = [===[Я хочу навчитись користуватись зброєю]===],
+-- I'd like you better if you would apply some perfume.
+[1931840696] = [===[Ти мені {стать:сподобався:сподобалася} би більше, якби {стать:користувався:користувалася} парфумами.]===],
+-- I'd wager Keryn Sylvius knows the type you're looking for. The company Keryn keeps is less than honorable. She usually hangs out in the Lion's Pride Inn.
+[3728150709] = [===[Б'юся об заклад, що Керін Сільвія зможе вам з цим допомогти. Вона постійно вештається з не надто благородними людьми. Зазвичай її можна знайти в таверні «Гордість лева».]===],
+-- If I had some chestnuts, you'd better believe I'd have them roasting over an open fire.  Mmmm!
+[1806437966] = [===[Ех, були б каштани — можна було б посмажити їх на вогнищі... Це така смакота!]===],
+-- If it is the way of the Warrior that you crave then you must seek out Krang Stonehoof.  You will find him in the southeast corner of the village at his training circle, often instructing his other students.
+[2985620478] = [===[Якщо тобі до вподоби шлях воїнів — тобі слід поговорити з Кранґом Кам'яним Копитом. Його можна знайти на південно-східному краю селища біля тренувального кола, де він часто навчає інших учнів.]===],
+-- If we are to make these new lands ours then we must have places to rest our battle weary bodies. Lay your axe by the fire and share the stories of your mighty battles.
+[4079025104] = [===[Якщо ми хочемо, щоб ці землі стали нашим новим домом, нам потрібні місця, де ми могли б відпочити після виснажливих битв. Поклади свою зброю, сядь біля вогнища та розкажи про свої славні битви.]===],
+-- If you are looking to become a great cook, venture over to the Pig and Whistle Tavern in Old Town and talk to Stephen Ryback. That man knows how to cook up a rack of ribs like no other.
+--
+-- Man... now you got me hungry for some of his famous ribs. Don't count on him teaching you that recipe though!
+[1898560686] = [===[Якщо ви хочете навчитись гарно готувати — вирушайте до таверни «Свиня і Свисток» у Старому Місті та поговоріть зі Стівеном Райбеком. Він готує найкращі реберця в місті!
+
+Ох... тепер мені хочеться поласувати його знаменитими реберцями. Але не сподівайтеся, що він поділиться з вами цим рецептом!]===],
+-- If you are looking to become a mighty paladin, there is no better teacher then Lord Grayson Shadowbreaker. He can be found in the Cathedral of Light in Cathedral Square.
+[576578790] = [===[Якщо ви хочете стати {стать:могутнім:могутньою} {клас:о}, то немає кращого вчителя, ніж лорд Сивенко Тінелом. Його можна знайти в соборі Світла, що на Соборній площі.]===],
+-- If you desire to learn the ways of Herbalism then it is to Thunder Bluff that you must go.  Follow the road north out of Bloodhoof Village and take the elevator to the top of the rise.  You can ask a Bluffwatcher there for further assistance.
+[36132864] = [===[Якщо ти бажаєш опанувати травництво, тобі слід вирушати до Громового Бескиду. Прямуй дорогою на північ від селища Криваве Копито та скористайся підйомником, щоб піднятися на вершину. Там тобі допоможуть вартові бескиду.]===],
+-- If you desire, in addition to training, I have it within my power to erase the knowledge of your talents from your mind.  Be warned that every time you undergo this procedure the more difficult it is to perform, and therefore the more expensive it becomes.
+[3461100739] = [===[Якщо бажаєш, окрім навчання, я можу також стерти з твоєї пам'яті набуті тобою таланти.  Але попереджаю, що з кожним разом ця процедура стає все складнішою, а отже і дорожчою.]===],
+-- If you need to house your pet while you're training another, then you should talk to Jenova Stoneshield over in the Dwarven District.
+[975191646] = [===[Якщо вам потрібно прихистити свого вихованця, поки ви тренуєте іншого — зверніться до Дженови Камнещит у Дворфійському районі.]===],
+-- If you need training in alchemy, there is only one place in Stormwind you need to go... Alchemy Needs. You can find it in the Mage Quarter along the outer rim of shops.
+[298463633] = [===[Якщо бажаєте навчатися алхімії, є лише одне місце в Штормовії, куди вам варто звернутись... крамничка "Все для алхімії"! Ви знайдете її у кварталі Магів уздовж зовнішнього кола крамниць.]===],
+-- If you put on cologne or perfume, then you'll see who is amorous.  Those are the ones who accept love tokens... and offer a gift in return.
+--
+-- But remember: to give someone a love token, you have to smell just right!  Men like the scent of perfume, while women prefer cologne.
+[264717150] = [===[Якщо ти нанесеш одеколон або парфуми, то побачиш тих, хто закоханий. Вони приймають знаки кохання, а натомість пропонують подарунок.
+
+Але пам'ятай: щоб подарувати комусь знак кохання, ти маєш пахнути саме так, як треба! Чоловіки люблять запах парфумів, а жінки віддають перевагу одеколону.]===],
+-- In the King's audience chamber you will find the Lady Hoteshem.  She can assist you in getting to Arathi Basin where The League of Arathor is in need of assistance against The Defilers.
+[1793720499] = [===[У тронній залі короля ви знайдете леді Готшем. Вона допоможе вам дістатися до низини Араті, де Ліга Аратора бореться проти Труїтелів.]===],
+-- Indeed, Silverwing Hold is in need of your assistance. Speak with Elfarran in the audience chamber at Stormwind Keep.
+[1696649627] = [===[Так, фортеці Срібнокрилих не завадить ваша допомога. Поговоріть з Ельфарран в тронній залі короля, що у фортеці Штормовію.]===],
 -- Inn
 [3114991326] = [===[Таверна]===],
+-- Innkeeper Kauth can see to your needs.  He can be found on the west side of the village in one of the long houses.
+[1210962884] = [===[Корчмар Каут радо прийме тебе. Його можна знайти в одному з довгих будинків на західній стороні селища.]===],
+-- Inside the great tent at the northwest corner of the village is where Chaw Stronghide resides.  He will teach you what you must know of Leatherworking for now.
+[590550159] = [===[У великому наметі на північно-західному боці селища мешкає Чау Дужа Шкура. Він навчить тебе усього, що ти маєш знати про шкірництво.]===],
+-- It is Bowen Brisboise that you seek then.  You'll find him inside his house southwest of Brill just on the other side of the bridge at Cold Hearth Manor.
+[2518849726] = [===[Тобі потрібен Боуен Брібуа. Ти знайдеш його в будинку на південний захід від Брілля одразу за мостом біля садиби Холодне Вогнище.]===],
+-- It is Gennia Runetotem's counsel that you seek.  You will find her in the large tent on the east side of the village.
+[1541086168] = [===[Ти шукаєш Ґеннію Рунний Тотем. Її можна знайти у великому наметі на східному боці селища.]===],
+-- It is located in the Trade District citizen.  It is nearly straight on from the entrance of Stormwind.
+[2390003191] = [===[Він розташований у Торговому районі, {стать:громадянине:громадянко}. Практично навпроти входу до Штормовію.]===],
+-- It's admirable what The League of Arathor is attempting to do in Arathi Basin.  Too bad those undead abominations and their Horde friends are standing in the way.  Head over to Stormwind Keep.  Lady Hoteshem awaits you in the King's audience chamber.  She can help you to get to Arathi Basin.
+[2413904415] = [===[Звершення Ліги Аратора в низині Араті справді викликають захоплення. Шкода, що їм перешкоджають невмерлі потвори та їхні друзі з Орди. Вирушайте до фортеці Штормовія. Леді Готшем чекатиме в тронній залі короля. Вона допоможе вам дістатися до низини Араті.]===],
+-- Jenova Stoneshield over in the Dwarven District is the one you're looking for.  She tends to hunters' pets while they seek training from her father.
+[1380463225] = [===[Вам потрібна Дженова Камнещит з Дворфійського району. Поки її батько тренує мисливців, вона піклується про їхніх вихованців.]===],
+-- Join a group going to this dungeon.    <This choice will place you in a meetingstone queue>
+[4159826890] = [===[Приєднатися до групи, що йде до цього підземелля.    <Цей вибір додасть вас у чергу каменю зустрічі>]===],
+-- Just browsing my wares or is there something specific I can help you find today?
+[2764111522] = [===[Просто розглядаєш мої товари чи хочеш знайти щось конкретне?]===],
+-- Krang Stonehoof stands astride his training circle at the southeast corner of the village.
+[2500330050] = [===[Кранґ Кам'яне Копито стоїть біля тренувального кола на південному сході селища.]===],
+-- Laurena is the High Priestess of Stormwind. You can find her in the Catheral of Light in Cathedral Square.
+[883098760] = [===[Лорена — верховна жриця Штормовію. Ви можете знайти її у Соборі Світла на Соборній площі.]===],
+-- Leave it to the dwarves to send a mining specialist from Ironforge to tell us how to mine.  How hard is it to take a pick and chip away at some rock?  Well, since he's here, he's probably the one you should see anyhow.  His name is Gelman and he resides over in the Dwarven District.
+[1766064190] = [===[Уявляєте, до нас з Залізогарту відправили цілого спеціаліста, щоб він розповів нам, як правильно займатися гірництвом! Наскільки важко взяти кирку і відколоти шматок каменю? Ну, раз він тут, то саме до нього вам і слід звернутися. Його звати Ґелман, і він мешкає у Дворфійському районі.]===],
 -- Let me browse your goods.
-[3929971245] = [===[Дозвольте мені переглянути ваші товари.]===],
+[3929971245] = [===[Дозволь мені переглянути товари.]===],
+-- Located in Dun Morogh, Gnomeregan has been the gnomes' capital city for generations, though it was recently infested by mutant troggs. In a desperate attempt to retaliate, High Tinker Mekkatorque ordered the emergency venting of the city's radioactive waste tanks. Though the troggs became irradiated, their siege continued unabated and the gnomes were forced to seek refuge in the dwarven city of Ironforge, where the High Tinker now enlists brave souls to help his people reclaim their beloved city.
+[3218607412] = [===[Розташований у Дун-Морозі, Гномреґан був столицею гномів протягом багатьох поколінь, але нещодавно його захопили троги-мутанти. У відчайдушній спробі помсти, верховний штукар Меккакруть наказав відкрити резервуари з радіоактивними відходами. Хоча троги опромінилися, їх натиск не припинився, і гноми були змушені шукати притулку у дворфійському місті Залізогарт, де верховний штукар тепер шукає сміливців, що допоможуть його народу повернути своє рідне місто.]===],
+-- Look for Faruza.  Last I saw she was standing out front between the stables and the house on the northwest end of town.
+[3717079329] = [===[Тобі потрібна Фаруза. Востаннє мені доводилось бачити її між стайнею та будинком на північному заході містечка.]===],
+-- Look inside the Gallows' End Tavern's main dining room for Austil de Mon.  The tavern is on the southeast edge of Brill.
+[4005221652] = [===[Ти знайдеш Остіля де Мона у головній залі таверни «Край шибениці». Таверна розташована на південно-східній околиці Брілля.]===],
+-- Looking for some training, eh? I could train you better then anyone in Stormwind but the guard prohibits it. I guess you will have to settle for one of those has beens hanging out around the Barracks or at the Pig and Whistle Tavern in Old Town.
+[257144037] = [===[Хочете тренуватись? Я можу тренувати краще за будь-кого в Штормовії, але варта забороняє це. Мабуть, вам доведеться звернутися до когось зі старожилів біля Казарм або в таверні «Свиня і Свисток» у Старому Місті.]===],
+-- Love tokens are small messages of affection you can give to amorous town and city folk.  Such people will reward you with a gift of adoration.
+--
+-- Or, if you are already adored by another, then at the least they'll give you a gift of friendship.
+[842898975] = [===[Знаки кохання — це маленькі послання прихильності, які можна подарувати закоханим містянам. Вони своєю чергою віддячать даром обожнювання.
+
+Або, якщо тебе вже обожнює хтось інший, то вони подарують тобі дар дружби.]===],
+-- Lucan Cordell has a small shop on the canal by the Stockade. I am sure he will be able to teach you the art of enchanting.
+[1729072959] = [===[Люкан Корделл має невеличку крамницю біля каналу неподалік в'язниці. Думаю, він зможе навчити вас накладання чарів.]===],
 -- Make this inn your home.
 [722140911] = [===[Зупинитися в цій таверні.]===],
+-- Many are the paths of the Earth Mother.  May your ancestors watch over you <class>.
+[3087833908] = [===[Шляхи Матері-Землі незліченні. Нехай предки оберігають тебе, {клас:к}.]===],
+-- Marion Call is keeping Dark Cleric Beryl company in the reading room upstairs at the Gallows' End Tavern on the southeast edge of Brill.  I'm just dying to see who wins that staring contest.
+[2865273998] = [===[Маріон Призов проводить час з темним священником Берилом у читальні на другому поверсі таверни «Край шибениці», що на південно-східній околиці Брілля. Цікаво, чому вони постійно витріщаються одне на одного.]===],
+-- Master Woo Ping has mastered nearly every weapon known to man.  He is especially deadly with his sword techniques.  He spends a good deal of time over in the Weller's Arsenal waiting on new shipments of weapons to arrive if you need some training.
+[2198297058] = [===[Майстер Ву Пінь володіє майже всіма відомими людству видами зброї. Він особливо небезпечний своїми техніками володіння мечем. Якщо ви хочете у нього вчитись — можете знайти його в арсеналі Колодязників. Він проводить багато часу там, чекаючи на нову зброю.]===],
+-- May the Light protect you this day.
+[4100779666] = [===[Нехай Світло береже тебе.]===],
+-- May the light guide your path and aid you in your journeys. If you need any assistance browsing, I will be right over here.
+[2791983483] = [===[Нехай світло веде тебе і допомагає у твоїх мандрівках. Якщо знадобиться допомога — я буду тут.]===],
+-- May the spirits be with you.
+[1787114019] = [===[Нехай духи бережуть тебе.]===],
+-- Morganus the stable master can be found out in front of the stables strangely enough.
+[3334844378] = [===[Як не дивно, доглядача стайні Морґануса можна зустріти перед стайнями.]===],
+-- My mouth waters just to think on it.  Pyall Silentstride is the finest cook in Bloodhoof Village.  You will find him in the great tent at the northwest corner of the village.
+[3290562292] = [===[П'ял Тихобіг — найкращий кухар у селищі Криваве Копито. Ти знайдеш його у великому наметі на північно-західному краю селища. У мене вже слина тече від одної лиш думки про його страви.]===],
+-- No better place to learn First Aid than under the watchful eye of Shaina Fuller at the Cathedral of Light.
+--
+-- To get there, just look for the yellow rooftops, or the towering spire of the Cathedral itself which you can see from almost anywhere in the city.
+[1972986016] = [===[Немає кращого місця для вивчення першої допомоги, ніж під пильним наглядом Шайни Валюшник у соборі Світла.
+
+Щоб дістатися туди, просто шукайте жовті дахи або шпиль самого собору, який можна побачити майже з будь-якої точки міста.]===],
+-- No one's ever stolen anything out of here. Not in the whole history of... the whole history!
+[3931980287] = [===[Ніхто ще звідси нічого не крав. З часів... та ніколи!]===],
+-- No, I'm not, but lots of others are looking for love.  You should buy my love tokens, put on some cologne or perfume, and then pass them around!
+[3432830285] = [===[Ні, я не з таких, але багато хто шукає кохання. Тобі слід намаститися парфумами чи одеколоном, придбати мої знаки кохання і роздати їх!]===],
+-- Not too clever are you?  Hmm, if I were a stable master perhaps I might be in the vicinity of say, the stable?  Look for Morganus over there.
+[2562715738] = [===[А ти не дуже {стать:кмітливий:кмітлива}, еге ж? Хм, якби я був доглядачем стайні, де б я був? Може, біля стайні? Шукай Морґануса там.]===],
+-- Nothing frees the spirit like soaring through the sky.  There is such a place in our great tribal center Thunder Bluff.  The road north out of Bloodhoof Village will guide you there.  Once you ride the elevator to the top speak with one of the Bluffwatchers who can give you further directions.
+[2314381375] = [===[Ніщо так не звільняє дух, як ширяння в небі. Таке місце є в нашому великому місті, Громовому Бескиді. Тебе приведе туди дорога, що веде на північ з селища Криваве Копито. Піднявшись на вершину, звернись за допомогою до одного з вартових бескиду.]===],
+-- Nothing like spending a day down at Crystal Lake fishing. Arnold Leland is the man that taught me. You can usually find him out on the dock in the Canal District just fishing the day away.
+--
+-- Oh, and don't believe any of the stories he tells you about monsters in the canals either.
+[4174992640] = [===[Немає нічого кращого, ніж провести день на Кришталевому озері, рибалячи. Мене цього навчив Арнольд Ліланд. Його зазвичай можна знайти на причалі у районі каналів, де він рибалить увесь день.
+
+О, і не вірте жодним його історіям про монстрів, що водяться в каналах.]===],
+-- Now if I were Innkeeper Renee where might I be?  Hmmm?  Oh, perhaps inside the Gallows' End Tavern.  Yes, that's it, I'm sure of it.  Try the southeast end of Brill... think you can find that?
+[3058313594] = [===[Хм... Якби я був корчмаркою Рені, де ж я міг би бути? Хм? О, можливо, в таверні «Край шибениці». Так, точно, саме там. Це на південному сході від Брілля... ти ж розумієш, в якому це напрямку?]===],
+-- Now is the time when the year is new and the moon shines bright.
+--
+-- It is our time... when the ancients awake.
+[3022226889] = [===[Це пора нового року, коли молодий місяць сяє вперше.
+
+Це наш час... час, коли пробуджуються предки.]===],
+-- Nurse Neela greets all of her future customers as they enter the Gallows' End Tavern at the southeast end of town.
+[67215632] = [===[Санітарка Ніла радо вітає всіх своїх майбутніх клієнтів, коли вони заходять до таверни «Край шибениці», що на південному сході міста.]===],
+-- Officers' Lounge
+[4272071823] = [===[Офіцерська зала]===],
+-- Oh, looking for some arcane enlightenment are you? No place better then then Wizard's Sanctum in the Mage Quarter.
+[1416635900] = [===[О, то ви шукаєте магічного просвітлення, так? Для цього немає кращого місця за святилище чарівників, що у кварталі Магів.]===],
+-- Old king got dead?  That's unpossible!
+[1515266328] = [===[Старий король мертвий? Це не може бути!]===],
+-- Once the capital city of the Dark Iron dwarves, this volcanic labyrinth now serves as the seat of power for Ragnaros the Firelord. Ragnaros has uncovered the secret to creating life from stone and plans to build an army of unstoppable golems to aid him in conquering the whole of Blackrock Mountain. Obsessed with defeating Nefarian and his draconic minions, Ragnaros will go to any extreme to achieve final victory.
+[4187685329] = [===[Колишня столиця дворфів Темного Заліза тепер служить Раґнаросу, лорду вогню. Раґнарос відкрив секрет створення життя з каменю і планує створити армію непереможних големів, які допоможуть йому завоювати всю Чорноскельну гору. Одержимий бажанням перемогти Нефаріана та його драконічних підданих, Раґнарос не зупиниться ні перед чим, щоб досягти остаточної перемоги.]===],
+-- Once the jewel of northern Lordaeron, the city of Stratholme is where Prince Arthas turned against his mentor, Uther Lightbringer, and slaughtered hundreds of his own subjects who were believed to have contracted the plague of undeath. Arthas' surrender to the Lich King soon followed. The broken city is now inhabited by the undead Scourge - led by the powerful lich, Kel'Thuzad, and a contingent of Scarlet Crusaders, led by Grand Crusader Dathrohan. The two sides are locked in constant, violent combat.
+[1631233284] = [===[Колишня перлина північного Лордерону, місто Стратгольм — це місце, де принц Артас відвернувся від свого наставника, Утера Світлоносця, та вбив сотні своїх підданих, які, як вважалося, були заражені чумою невмерлих. Незабаром після цього Артас скорився Королю-лічу. Зруйноване місто тепер заповнене Скарою, якою керує могутній ліч, Кел'Тузад, та загонами Багряного Походу на чолі з верховним лицарем Датроганом. Обидві сторони безупинно ведуть жорстокі бої.]===],
+-- Our Alchemist's name is Carolai Anise.  You'll find her in a house at the northwest end of Brill.
+[3011143480] = [===[Нашу майстриню алхімії звати Каролая Аніс. Ти знайдеш її в будинку на північно-західному краю Брілля.]===],
+-- Over a thousand years ago a group of troll priests known as the Atal'ai attempted to bring back an ancient blood god named Hakkar the Soulflayer. After the resulting civil war the priests were defeated and exiled to the Swamp of Sorrows. There they erected a temple to Hakkar to prepare for his arrival into the physical world. The dragon Aspect Ysera soon learned of the Atal'ai's plans and smashed the temple beneath the marshes. To this day, the temple's ruins are guarded by the mighty green dragons.
+[3723630804] = [===[Більше тисячі років тому група тролів-жерців, відомих як Атал'ай, намагалася повернути до життя древнього бога крові, на ім'я Гаккар-Здирач душ. Після громадянської війни жерці були переможені й вигнані до болота Скорбот. Там вони спорудили храм Гаккару, готуючись до його прибуття в матеріальний світ. Дракон-аспект Ізера швидко дізналася про плани Атал'ай і зруйнувала храм, затопивши його в болотах. Донині руїни храму охороняють могутні зелені дракони.]===],
 -- Please teach me.
 [1829526179] = [===[Будь ласка, навчіть мене.]===],
 -- Profession Trainer
-[1221755545] = [===[Тренер професій]===],
+[1221755545] = [===[Тренер професії]===],
+-- Rand Rhobart is fairly good at skinning felbats and the like.  You can find him at a camp along the road to the southeast of Brill.  Take the road southeast out of town and then head east at the intersection.
+[3474038326] = [===[Ренд Робарт досить непогано вміє знімати шкури з кажанів і подібних тварин. Ти знайдеш його в придорожньому таборі на південний схід від Брілля. Іди дорогою на південний схід з міста, а на перехресті поверни наліво.]===],
+-- Razorfen Downs can be found on the very southern tip of the Barrens on the east side of the road.
+[2470543870] = [===[Нори Бритвоболотих можна знайти на самому південному краю Степів зі східного боку дороги.]===],
+-- Razorfen Kraul can be found on the very southern tip of the Barrens on the west side of the road.
+[551578166] = [===[Крааль Бритвоболотих можна знайти на самому півдні Степів з західного боку дороги.]===],
+-- Rest your weary bones for a spell.
+[28114999] = [===[Дай своїм змученим кісткам трохи відпочити.]===],
+-- Rifles, dynamite, bombs, exploding sheep... what's not to love?  To learn how to make these and many other exciting tools of the trade head to the Undercity, under the Ruins of Lordaeron to the south of Brill.  Take the elevators down at the back of the ruins.  Once you arrive speak to one of the Undercity Guardians about where the trainer is exactly.
+[182066288] = [===[Гвинтівки, динаміт, бомби, вибухові вівці... гарні штуки, ге ж? Щоб дізнатись, як зробити їх та багато інших захопливих речей, прямуй до Підмістя, під руїни Лордерона, що на південь від Брілля. Спустись туди в задній частині руїн. Коли будеш там — запитай в одного з вартових Підмістя про те, де саме знаходиться тренер.]===],
+-- Rupert Boch is his name.  I hear that he's upstairs in one of the rooms at the Gallows' End Tavern on the southeast end of town.
+[1120724056] = [===[Тобі потрібен Руперт Бох. Я чув, що він мешкає в одній із кімнат таверни «Край шибениці», що на південно-східному краю міста.]===],
 -- Rut'theran Ferry
 [3985347023] = [===[Рут'Теранська переправа]===],
+-- Scarlet Monastery lies in the hills northeast of Tirisfal Glades.
+[2462972856] = [===[Багряний монастир розташований у пагорбах на північний схід від Тірісфальського перелісся.]===],
+-- Seikwa can take care of your animal friends when you have the need.  Seek her out in front of the inn.
+[535842022] = [===[Сейква може подбати про твоїх друзів-тварин, якщо виникне така потреба. Шукай її поруч з таверною.]===],
+-- Show me where I can fly.
+[3288848329] = [===[Покажи куди я можу полетіти.]===],
+-- Since the fall of Dalaran and the destruction of Quel'Thalas, wares of this sort have been hard to come by. But Lucan Cordell and some of our other Tradesman have been doing a fine job of filling our orders with quality merchandise.
+[1417749096] = [===[Після падіння Даларану та знищення Квел'Таласу такі речі важко знайти. Але Люкан Корделл та деякі інші наші торговці чудово справляються з постачаннями якісних товарів.]===],
+-- So long as you stay here with us, you da king.  You take off, and some other ogre will take your place.  That's da way of da Gordok!
+[1283843462] = [===[Поки ти з нами — ти король. Ти підеш — інший огр займе твоє місце. Так роблять Ґордоки!]===],
+-- Sorry friend, we don't have one of those here in Brill.  You'll have to head to the Undercity for that.  The Undercity is underneath the Ruins of Lordaeron to the south of Brill.  From the back of the ruins take the elevator down and then speak to one of the Undercity Guardians to find your way further.
+[4240649768] = [===[Вибачай, {стать:друже:подруго}, але у Бріллі такого немає. Тобі доведеться вирушити до Підмістя. Воно знаходиться під руїнами Лордерона на південь від Брілля. В дальній частині руїн спустися вниз на підйомнику, а потім поговори з одним із вартових Підмістя, щоб дізнатися, куди йти далі.]===],
+-- Sorry, but I only train rogues.
+[130610742] = [===[Вибач, я навчаю лише пройдисвітів.]===],
+-- Sounds like you want to talk to Maginor Dumas! You can usually find him in the Wizard's Sanctum in the Mage Quarter. Course, you never know when or where those magi will portal off to.
+[1306819016] = [===[Схоже, що вам потрібен Маґінор Дюма! Зазвичай його можна знайти у Святилищі чарівників, що у кварталі Магів. Ніколи не вгадаєш, куди ці маги відкриють черговий портал, еге ж?]===],
 -- Stable Master
 [1214104245] = [===[Доглядач стайні]===],
+-- Stormwind Counting House is located by the front gates in the Trade District of Stormwind. And when you get tired of counting your money, be sure to stop by the Gilded Rose for a drink.
+[4191392836] = [===[Рахункова палата Штормовію розташована неподалік головних воріт у Торговому районі. А як втомитеся рахувати гроші, обов'язково зайдіть до «Позолоченої троянди» на кухлик.]===],
+-- Stormwind is the pillar of the human race, maintained through strength of will and the edge of a sturdy blade.
+[2471265741] = [===[Штормовій — опора людської раси, яка підтримується силою волі та вістрям міцного клинка.]===],
+-- Stormwind's resident engineer trainer is an ingenious gnome by the name of Lilliam Sparkspindle. He can be found in the back of the Dwarven District.
+[2527203566] = [===[Найкращий тренер інженерії в Штормовії — це геніальний гном на імʼя Ліліам Іскрошпиндель. Його можна знайти в глибині Дворфійського району.]===],
+-- Such wisdom is steeped in a mystery that can only be found in great Thunder Bluff.  Follow the path north out of Bloodhoof Village until you come to an elevator at the base of the bluffs.  Ride it to the top and ask one of the Bluffwatchers for further assistance.
+[1715904376] = [===[Таку таємничу мудрість можна знайти лише у величному Громовому Бескиді. Йди стежкою на північ з селища Криваве Копито, поки не дійдеш до підйомника біля підніжжя бескидів. Піднімися на вершину і запитай у когось з вартових бескиду.]===],
+-- Tailoring you say?  Hmmm.  Ah yes, of course.  You'll need to head to Thunder Bluff, up north.  Take the path out of the village to get there.  When you arrive at the base of the bluffs ride the elevator to the top of the rise and speak with one of the Bluffwatchers.
+[1348842449] = [===[Кравецтво, кажеш? Хмм. Так, звісно. Тобі слід відправитися до Громового Бескиду, на північ. Йди туди дорогою з селища, а як дістанешся підніжжя — скористайся підйомником. Нагорі ти зможеш запитати дорогу у вартових бескиду.]===],
 -- Tell me about dungeons I could explore.
-[2492432873] = [===[Розкажіть мені про підземелля, які я міг би відвідати.]===],
+[2492432873] = [===[Розкажи мені про підземелля, які я можу відвідати.]===],
+-- That bum Leland... all he does is sit out on the dock outside the Trade District and fish all day.  I sure hope he's good at it for all the time he spends fishing.  If you want to learn, why don't you go talk to him?
+[3313944131] = [===[Цей нероба Ліланд... він днями сидить на причалі зовні Торгового району і рибалить. Сподіваюся, у нього це хоча б добре виходить, зважаючи на те, скільки часу він цим займається. Якщо теж хочете навчитися, чому б вам не звернутися до нього?]===],
+-- That would be Shelene Rhobart.  Take the road southeast out of Brill then head east at the intersection.  She's at a camp along the side of the road.
+[612538589] = [===[Тобі потрібна Шелен Робарт. Їди дорогою на південний схід з Брілля, а на перехресті поверни ліворуч. Вона в таборі на узбіччі.]===],
+-- That's Rupert Boch you're looking for.  He and his entourage have a room upstairs at the Gallows' End Tavern on the southeast end of Brill.
+[3970188744] = [===[Тобі потрібен Руперт Бох. Він і йому подібні розмістилися в кімнаті на верхньому поверсі таверни «Край шибениці», що на південному сході Брілля.]===],
+-- The Bank of Stormwind is located in the Trade District just northwest of the city gates. Here, let me show you on your map.
+[3052515204] = [===[Банк Штормовію розташований у Торговому районі на північний захід від міських воріт. Дозвольте, я покажу вам на мапі.]===],
+-- The Cathedral of Light in Cathedral Square is home to the priests of Stormwind. There you will find High Priestess Laurena.
+[107874079] = [===[Собор Світла, що розташований на Соборній площі, служить домівкою для жерців Штормовія. Саме там ви знайдете верховну жрицю Лорену.]===],
+-- The Cathedral of Light is the center of all the healing practices of Stormwind. There you can find Shaina Fuller to help you learn this craft.
+[2646012415] = [===[У Соборі Світла вивчають усі лікувальні практики Штормовія. Там ви можете знайти Шайну Валюшник, яка допоможе вам навчитися цього ремесла.]===],
+-- The Dual Talent Specialization allows you to keep two active talent sets. You will be able to easily switch between these two specializations. When you switch between sets, you will also gain access to a second set of action bars. Switching cannot be performed while in combat, and will consume your available resources.
+[2855043518] = [===[Подвійна спеціалізація дозволяє мати два активних набори талантів. Ти зможеш легко перемикатися між цими двома спеціалізаціями. При перемиканні між ними ти також отримаєш доступ до другого набору панелей дій. Перемикання не можна виконати під час бою і воно витратить всі доступні ресурси.]===],
+-- The Light protect you, <class>.
+[3948734958] = [===[Нехай Світло береже тебе, {клас:к}.]===],
+-- The Park is where you want to go if you are looking for druid trainers. Theridan and Maldryn can usually be found by the moonwell in the center of the district.
+[3374114541] = [===[Якщо ви шукаєте тренерів-друїдів, вам варто піти до парку. Терідрана та Малдріна зазвичай можна знайти біля місячного колодязя в центрі району.]===],
+-- The Rogue Trainer's name is Marion Call.  You can find her upstairs in the reading room at the Gallows' End Tavern at the town's southeast edge.
+[3880267669] = [===[Тренерку пройдисвітів звуть Маріон Призов. Ти можеш знайти її нагорі в читальній залі таверни «Край шибениці», що на південно-східному краю міста.]===],
+-- The Scholomance is housed in crypts beneath the Caer Darrow keep. Once owned by the noble Barov family, the keep fell to ruin after the Second War. As the wizard Kel'Thuzad enlisted followers for his Cult of the Damned, he often promised immortality for those who served his Lich King. The Barovs fell to his influence and donated their keep, but the cultists killed the family and turned the crypts into a school of necromancy. Though Kel'Thuzad no longer resides there, cultists and instructors still remain.
+[3018548165] = [===[Некроситет розташований у склепах під Тверджею Дарроу. Колись цей замок належав шляхетній родині Барових, але після Другої війни він був зруйнований. Коли чаклун Кел'Тузад вербував послідовників для свого культу Проклятих, він часто обіцяв безсмертя тим, хто служив Королю-лічу. Барови підпали під його вплив і пожертвували свою фортецю, але культисти вбили їх і перетворили склепи на школу некромантії. Хоча Кел'Тузад більше не мешкає там, культисти та викладачі досі лишаються всередині.]===],
+-- The School for Necromancy known as Scholomance is on the ruined island of Caer Darrow in the Western Plaguelands.
+[981571142] = [===[Школа Некромантії, відома як Некроситет, розташована на зруйнованому острові Тверджа Дарроу у Західних Зачумлених землях.]===],
+-- The Silverwing Sentinels can use all the help they can get in their fight against the Warsong Outriders. <name>, go to Stormwind Keep and speak with Elfarran if you wish to assist them.
+[3230762823] = [===[Срібнокрилим стражам потрібна будь-яка можлива допомога у боротьбі проти авангарду Пісні Війни. {Ім'я:к}, вирушайте до фортеці Штормовія та поговоріть з Ельфарран, якщо бажаєте допомогти їм.]===],
+-- The Stars of this time are bent on new paths, beacons of hope and strength for the coming ages.
+[1113658956] = [===[Цієї пори зорі прямують новими шляхами, стаючи маяками надії та сили для прийдешніх поколінь.]===],
+-- The Sunken Temple can be found in the center of a great lake in eastern Swamp of Sorrows.
+[2591657221] = [===[Затонулий храм можна знайти в центрі великого озера на сході болота Скорбот.]===],
+-- The bat handler
+[1039490946] = [===[Приборкувач кажанів]===],
+-- The magi congregate in the Wizard's Sanctum in the Mage Quarter. Quite a tower they have there. Makes our barracks look like peasant hovels.
+[3795015972] = [===[Маги збираються у святилищі чарівників у кварталі Магів. Так, башта в них там неабияка. Наші казарми в порівнянні з нею виглядають як селянські халупи.]===],
+-- The mighty fortress carved within the fiery bowels of Blackrock Mountain was held by the sinister Dark Iron dwarves for centuries until Nefarian - the cunning son of the dragon, Deathwing - took control of the upper Spire and made war on the dwarves' holdings in the mountain's volcanic depths. Realizing that the dwarves were led by the mighty fire elemental, Ragnaros - Nefarian vowed to crush his enemies and claim the whole of Blackrock mountain for himself.
+[1219406897] = [===[Могутню фортецю, висічену у вогняних надрах Чорноскельної гори, століттями утримували зловісні дворфи Темного Заліза, доки Нефаріан — хитрий син дракона Смертекрила — не захопив верхній Шпиль і не розпочав війну проти володінь дворфів у вулканічних глибинах гори. Усвідомивши, що дворфами керує могутній вогняний елементаль, Раґнарос, Нефаріан поклявся розгромити своїх ворогів та завоювати всю Чорноскельну гору.]===],
+-- The monastery was once a center for learning and enlightenment. With the rise of the undead Scourge during the Third War, the peaceful Monastery was converted into a stronghold of the fanatical Scarlet Crusade. The Crusaders are intolerant of all non-human races, regardless of alliance or affiliation. They believe that any and all outsiders are potential carriers of the undead plague - and must be destroyed.
+[3595565728] = [===[Колись монастир був центром навчання та просвітництва. З появою Скари під час Третьої війни, мирний монастир був перетворений на фортецю фанатичного Багряного Походу. Його члени не терплять будь-які нелюдські раси, незалежно від альянсу чи приналежності. Вони вважають, що всі чужинці є потенційними носіями чуми невмерлих і мають бути знищені.]===],
+-- The ruined city of Stratholme lies in the Eastern Plaguelands to the north of the Plaguewood.
+[692722891] = [===[Зруйноване місто Стратгольм розташоване у Східних Зачумлених землях на північ від Чумолісся.]===],
+-- The ruins of Dire Maul stand in central Ferelas.
+[2546276561] = [===[Руїни Грізного Молота стоять у центрі Фераласу.]===],
+-- The spirits have guided you to me. How may I be of service?
+[2601883962] = [===[Духи привели тебе до мене. Чим я можу допомогти?]===],
+-- The way of the Druid is sibling to the Shaman.  Gennia Runetotem is steeped in such knowledge.  Seek her out in the large tent on the east side of Bloodhoof Village.
+[930996498] = [===[Шлях друїдів тісно пов'язаний зі шляхом шаманів. Ґеннія Рунний Тотем досконало володіє такими знаннями. Розшукай її у великому наметі на східному боці селища Криваве Копито.]===],
+-- The zeppelin master
+[1252443735] = [===[Провідник дирижабля]===],
+-- Then it is Thelman Slatefist that you wish to speak to. You can find him in the presence of the King at Stormwind Keep.
+[2343698065] = [===[Це вам потрібен Тельман Шиферук. Його можна знайти неподалік від короля у фортеці Штормовію.]===],
+-- There are many establishments where you can get a drink in Stormwind, but only one will let you spend the night. Head over to the Gilded Rose in the Trade District. I've heard the cost of a room is reasonable and the sheets are clean.
+[1065012391] = [===[У Штормовії є багато закладів, де можна випити, але лише в одному з них можна залишитися на ніч. Завітайте до «Позолоченої троянди» в Торговому районі. Кімнати там недорогі, а постіль завжди чиста.]===],
+-- There are those that would teach you of Herbalism in the great home of Thunder Bluff away to the north.  Follow the road out of the village to get there and at the base of the bluff ride the elevator to the top of the rise.  There are many Bluffwatchers there who can direct you further.
+[2197654607] = [===[У нашому великому домі, Громовому Бескиді, що далеко на півночі, є ті, хто можуть навчити тебе травництва. Прямуй дорогою з селиша, щоб дістатися туди, і підіймись на вершину. Там багато вартових бескиду, що зможуть направити тебе далі.]===],
+-- There is a Blacksmithing Trainer in our great home Thunder Bluff to the north.  If you seek such knowledge then head there and ask one of the Bluffwatchers for directions.
+[3954586167] = [===[Тренер ковальства є в нашому великому домі, Громовому Бескиді на півночі. Якщо ти шукаєш таких знань, вирушай туди та запитай в одного з вартових бескиду, куди йти далі.]===],
+-- There is a Wind Rider Master in the great city of Thunder Bluff to the north.  Ride the elevator from the base of Thunder Bluff to the top and ask one of the Bluffwatchers there for further instructions.
+[3157074226] = [===[У великому місті Громовий Бескид, що на півночі, є приборкувач виверн. Піднімися туди, скориставшись підйомником біля підніжжя бескиду та звернись до одного з тамтешніх вартових.]===],
+-- There is a large tent on the east side of Bloodhoof Village.  You will find Narm Skychaser awaiting you there.
+[3731782284] = [===[На східному боці селища Криваве Копито стоїть великий намет. Там ти знайдеш Нарма Небесного Мисливця.]===],
+-- There is a mailbox located conveniently right between the Stormwind Bank and The Gilded Rose Inn in the Trade District.
+[3431578091] = [===[Ви знайдете поштову скриньку прямо між банком Штормовія та таверною "Позолочена троянда" у Торговому районі.]===],
+-- There is a time and a place for all things, including relaxation.  On the west side of Bloodhoof Village Innkeeper Kauth maintains a long house for those who seek to rest.  You will find him there.
+[1013599473] = [===[Для всього є свій час і місце, зокрема й для відпочинку. На західній стороні селища Криваве Копито корчмар Каут тримає довгий будинок для тих, хто бажає відпочити. Ти знайдеш його там.]===],
+-- There is a wise one in the village who goes by the name Narm Skychaser.  He can continue your learning along the path of the Shaman.
+[3089516944] = [===[Є один мудрець у селищі, на ім'я Нарм Небесний Мисливець. Він може продовжити твоє навчання шляху шаманів.]===],
+-- There's a Bat Handler inside the Undercity.  Head south down the road out of Brill, then west at the T-intersection.  The Ruins of Lordaeron will be on your left.  Go into them and then down into the Undercity.  You can ask an Undercity Guardian there for further assistance.
+[42075415] = [===[У Підмісті є приборкувач кажанів. Прямуй на південь дорогою з Брілля, потім на роздоріжжі йди на захід. Руїни Лордерона будуть ліворуч. Заходь в них і потім спускайся в Підмістя. Там ти зможеш розпитати вартових Підмістя.]===],
+-- There's a great cook who works at the Pig and Whistle Tavern in Old Town.  I've watched him use a knife when he cooks and just between you and me, I don't think he's always been a cook.  Don't get me wrong... if you still want to learn, he's the best we have.
+[1031620905] = [===[У таверні «Свиня і Свисток», що у Старому Місті, працює талановитий кухар. Враховуючи те, як майстерно він володіє ножем, думаю, він не завжди був кухарем. Але якщо ви все ще бажаєте навчатися, то краще за нього не знайдете.]===],
+-- There's nothing quite like communing with nature... or at least that's what the night elves tell me.  I'm not much for talking to flowers and trees, but I'm sure Tannysa could help you out.  She's over in the Mage Quarter outside of Alchemy Needs.
+[1696342909] = [===[Немає нічого подібного на спілкування з природою... принаймні так кажуть нічні ельфи. Я не дуже люблю розмовляти з квітами та деревами, але я певен, що Танніса може вам допомогти. Вона знаходиться у кварталі Магів біля крамниці "Все для алхімії".]===],
+-- Therum Deepforge is the dwarf you want to talk to. One of the finest blacksmiths around if you ask me. You can find him in the heart of the Dwarven District.
+[2509190657] = [===[Терум Ковоглиб — це дворф, якого ви шукаєте. Один з найкращих ковалів у місті, як на мене. Ви знайдете його в самому серці Дворфійського району.]===],
+-- Thorfin Stoneshield came to us all the way from Ironforge to bring us his expertise in hunting.  If you don't mind breathing the smoke filled air of the Dwarven District then you'll find him at his house in the northeast area of the district.
+[3472681366] = [===[Торфін Камнещит приїхав до нас аж із Залізогарта, щоб поділитися своїм мисливським досвідом. Якщо ви не проти подихати кіптявою у Дворфійському районі, то знайдете його у його будинку на північному сході району.]===],
+-- Through rigorous retraining I have had to break many students of all they had previously learned so that I might teach them anew.  The service I offer becomes increasingly difficult to perform each time it is done.  It is for that reason that it becomes increasingly expensive with each retraining.  Do you desire that I break you of the talents you have learned?
+[2256619837] = [===[Через сувору перепідготовку мені довелося позбавити багатьох студентів усього, чого вони раніше навчилися, щоб навчати їх заново. Послугу, яку я пропоную, з кожним разом стає все важче виконувати. Саме тому вона буде дорожчати дорожчою з кожним перенавчанням. Ти справді хочеш забути свої таланти?]===],
+-- To learn to be one with Nature in the eyes of the Earth Mother, this is a matter of pride.  If your will is to learn the ways of the Hunter you must seek out Yaw Sharpmane at the north end of Bloodhoof Village.
+[575687704] = [===[Навчитися бути одним цілим з природою в очах Матері Землі — це велика гордість. Якщо ти хочеш опанувати шляхи мисливців, ти маєш знайти Йова Гострогрива на північному краю селища Криваве Копито.]===],
 -- Train me in the ways of the beast.
 [4194210259] = [===[Навчіть мене шляхам звіра.]===],
 -- Train me.
 [448462128] = [===[Навчіть мене.]===],
+-- Tucked away in the Mage Quarter, there is a little shop called Alchemy Needs.  You're bound to see all sort of strange shops on your way through the Mage Quarter, but if you stick to the outer rim you'll be sure to find it.
+[3320322019] = [===[У кварталі Магів є невеличка крамниця під назвою "Все для алхімії". Ви побачите багато дивних крамниць на шляху через квартал Магів, але якщо проходитиме зовнішнім кільцем, то обов'язково її знайдете.]===],
+-- Unfortunately we do not have one who teaches Tailoring here in Bloodhoof Village, but you can find a trainer in Thunder Bluff.  Follow the path north out of the village until you come to a set of elevators.  Take one up to the top of the rise and ask one of the Bluffwatchers there for directions.
+[2883491561] = [===[На жаль, у селищі Криваве Копито немає тренера кравецтва, але його можна знайти в Громовому Бескиді. Йди стежкою на північ від селища, поки не дійдеш до підйомників. Скористайся одним з них і запитай у когось з вартових бескиду нагорі.]===],
+-- Using the fruits of the Earth Mother to create potions to aid us in our eternal struggle is an honorable endeavor.  To learn of this you must travel north to our great home of Thunder Bluff.  When you arrive at the top seek out the assistance of one of the Bluffwatchers for more specific directions.
+[3476228550] = [===[Використання плодів Матері-Землі для створення зіллів, що допомагають у нашій вічній боротьбі — почесна справа. Щоб навчитися цього, тобі слід вирушити на північ до нашого великого дому, Громового Бескиду. Як піднімешся на вершину, звернись за допомогою до одного з вартових бескиду.]===],
+-- Vira Younghoof keeps her practice inside the long house on the west side of the village.
+[1580652653] = [===[Шукай Віру Молоде Копито у довгому будинку на західній стороні селища.]===],
+-- Want to learn leatherworking, eh? Simon Tanner would be able to teach you. He can be found in Old Town at the Protective Hide.
+[684979652] = [===[Хочете навчитись шкірництва, так? Вам слід звернутись до Симона Кожум'яки. Його можна знайти в Старому Місті у крамниці "Міцна шкура".]===],
+-- Warlocks, eh.  Well, you didn't hear it from me, but I've heard rumors that those types gather at a bar called the Slaughtered Lamb in the Mage Quarter.
+[762815094] = [===[Що, чорнокнижники? Якщо що — ви це дізнались не від мене, але кажуть, що вони збираються у барі під назвою «Зарізане ягня» у кварталі Магів.]===],
+-- Warriors can usually be found either at the Pig and Whistle Tavern or the Barracks in Old Town. Tell ya though, the tavern is probably a better place look.
+[2692130417] = [===[Воїнів зазвичай можна знайти або в таверні «Свиня і Свисток», або в казармах у Старому Місті. Але певно краще все ж шукати в таверні.]===],
+-- We a lot cleaner than da ogres in Tanaris.  All over da desert as far as da eye can see - ogre poo.  Not here, no sir!
+[2413043267] = [===[Ми не такі брудні як огри в Танарісі. Вся пустеля, де не глянь, в огрячих кізяках. В нас такого нема!]===],
+-- We don't have a bank here in Brill, you'll have to go to the Undercity for that.  At the back of the Ruins of Lordaeron to the south are elevators that will take you down into the Undercity.  Once there ask one of the Undercity Guardians for more precise directions.
+[2320326466] = [===[У нас в Бріллі немає банку, тому тобі доведеться вирушити до Підмістя. У дальній частині руїн Лордерона є підйомники, якими можна спуститись у Підмістя. Як будеш там — запитай одного з вартових Підмістя.]===],
+-- We have no such place in the village.  The soaring heights of Thunder Bluff does though.  Head north up the road out of Bloodhoof Village until you come to the base of the bluffs.  There ride the elevator to the top and speak with a Bluffwatcher.  May your ancestors watch over you.
+[4020472215] = [===[У нашому селищі такого місця немає. Але воно є у Громовому Бескиді. Вирушай на північ по дорозі з селища Криваве Копито, доки не дійдеш до підніжжя бескиду. Там скористайся підйомником і поговори з вартовим бескиду. Нехай предки оберігають тебе.]===],
 -- Weapon Master
 [2984198724] = [===[Знавець зброї]===],
 -- Weapons Trainer
 [79040106] = [===[Тренер володіння зброєю]===],
+-- Welcome to my Inn, weary traveler. What can I do for you?
+[1816071830] = [===[Ласкаво прошу до моєї таверни, {стать:стомлений мандрівниче:стомлена мандрівнице}. Що я можу для тебе зробити?]===],
+-- Welcome to the Bank of Stormwind. We offer financial accounts and safety deposit boxes for valuable items. Do you already have an account with us <sir/ma'am>?
+[4280290942] = [===[Ласкаво просимо до Банку Штормовію. Ми пропонуємо фінансові рахунки та сейфи для зберігання цінних речей. Ви вже маєте рахунок у нас, {стать:пане:пані}?]===],
+-- Well met, <class>.  My advice to you is this: as you travel the world, be wary of magic for it will burn the untrained.
+[3436288619] = [===[Вітаю, {клас:к}. Моя порада тобі: подорожуючи світом, остерігайся магії, бо вона нищить непідготовлених.]===],
+-- Well met, <class>.  You want some advice?  Befriend a mage!  We have a trick or two up our sleeves, we do...
+[4120959544] = [===[Радий зустріти тебе, {клас:к}. Хочеш пораду? Подружись з магом! У нас завжди є в запасі кілька хитрощів, о так...]===],
+-- Well, well, moving up in the world are we? You're looking for the Champions' Hall, and you'll find it on the southeast end of Old Town. If you're an officer you can enter the hall, otherwise you can still speak to Officer Areyn standing outside. Good luck!
+[182484818] = [===[Що, просуваєтесь по кар'єрних сходах? Тоді вам до зали Чемпіонів, вона знаходиться в південно-східній частині Старого Міста. Якщо ви офіцер, то зможете увійти до зали, а якщо ні, то можете поспілкуватися з офіцером Арейн, що стоїть зовні. Щасти вам!]===],
+-- Well, you can find Theridan or Maldryn by the moonwell in the Park.  Just head to the western area of Stormwind, north of the Mage District, but west of the Cathedral Square.
+[2082750703] = [===[Ну, ви можете знайти Терідрана чи Малдріна поруч із місячним колодязем у Парку. Просто прямуйте до західної частини Штормовію, на північ від кварталу Магів, але на захід від Соборної площі.]===],
+-- What are the Paragons of Power?
+[4045865235] = [===[Що таке взірці могутності?]===],
+-- What are you looking for?
+[3127536296] = [===[Чого ти шукаєш?]===],
 -- What can I do at an inn?
 [2439012089] = [===[Чим я можу зайнятися в таверні?]===],
+-- What can other weapon masters teach?
+[3823556983] = [===[Чого можуть навчити інші знавці зброї?]===],
+-- What could you possibly need a bank for?  Very well, you'll need to go through the Ruins of Lordaeron to the south of Brill.  In the back are a set of elevators leading down into the Undercity.  When you get there stop any of those lumbering Abominations they like to call an Undercity Guardian and ask it for better directions.
+[158662273] = [===[Навіщо тобі може знадобитися банк? Ну добре, тобі потрібно пройти крізь руїни Лордерона, що на південь від Брілля. Позаду знаходяться підйомники, що ведуть до Підмістя. Як будеш там, зупини будь-яку з тих велетенських потвор, яких вони називають вартовими Підмістя, і запитай у них.]===],
+-- What do you have for sale?
+[2613206497] = [===[Що ти продаєш?]===],
+-- What do you need directions to?
+[315240381] = [===[Що ви хочете знайти?]===],
+-- What is a Horde Commendation Signet?
+[2970795463] = [===[Що таке відзнака подяки Орди?]===],
+-- What is an Alliance Commendation Signet?
+[919263168] = [===[Що таке відзнака подяки Альянсу?]===],
+-- What? I don't know of any warlock trainers in Stormwind.
+--
+-- Although... There have been some sightings of demonic activity over by The Slaughtered Lamb in the Mage Quarter. I suppose you could check there.
+[3476830926] = [===[Що? Не знаю я ні про яких тренерів чорнокнижників у Штормовії.
+
+Хоча... Було кілька випадків демонічної активності біля таверни "Зарізане ягня" у кварталі Магів. Гадаю, варто поглянути там.]===],
+-- When I scowled at you before you became da new king... um... I was just joking.
+--
+-- Yeah!
+[685663900] = [===[Коли я злитися на тебе коли ти не бути новий король... ем... це я так жартувати.
+
+Ага!]===],
+-- When we use the hides of the animals we must fell for food or protection we give honor to the Earth Mother and respect to the animal.  Chaw Stronghide can teach you of such things.  You will find him in the great tent at the northwest corner of Bloodhoof Village.
+[2850055259] = [===[Коли ми використовуємо шкуру тварини, вбитої задля їжі чи захисту, ми віддаємо шану Матері-Землі та тварині. Чау Дужа Шкура може навчити тебе таких речей. Ти знайдеш його у великому наметі з північно-західного краю селища Криваве Копито.]===],
+-- When you give love tokens to townsfolk, you'll receive different gifts in return.  Some of those you'll want to keep and use, but others can be bundled together and given to your favorite hero!  Visit Kwee Q. Peddlefeet to turn them in.
+--
+-- Kwee can be found near Cairne, Sylvanas and Thrall.
+[1411309816] = [===[Коли ти даруєш містянам знаки кохання, то отримуєш у відповідь різні подарунки. Деякі з них ти захочеш залишити собі, інші можна об'єднати разом та подарувати улюбленому герою! Звернись до Купі С.В. Купайла, щоб віддати їх.
+
+Купі можна знайти поруч з Керном, Сильваною та Траллом.]===],
 -- Where would you like to fly to?
 [4139945412] = [===[Куди бажаєш полетіти?]===],
+-- Which battleground are you interested in?
+[3650936074] = [===[Який поле бою вас цікавить?]===],
+-- Which class trainer are you looking for?
+[3070143212] = [===[Тренера якого класу ви шукаєте?]===],
+-- Which profession trainer are you looking for?
+[1990326142] = [===[Тренера якої професії ви шукаєте?]===],
+-- Which profession?
+[2893777626] = [===[Якої професії?]===],
+-- Which trainer do you seek?
+[242532920] = [===[Якого тренера ти шукаєш?]===],
+-- While there's no Engineering Trainer in Brill, there is one down in the Undercity.  To get there head to the back of the Ruins of Lordaeron to the south of town and take the elevator down.  Once you get there ask an Undercity Guardian for more specific directions.
+[2144827554] = [===[У Бріллі немає тренера інженерії, але він є у Підмісті. Щоб дістатися туди, іди до задньої частини руїн Лордерона, що на південь звідси, і спускайся вниз. Як будеш там — запитай одного з вартових Підмістя.]===],
+-- While we have no Alchemy Trainer here in Bloodhoof Village, there is one in Thunder Bluff to the north.  Follow the road there and ask one of the Bluffwatchers for directions when you get to the top.
+[2663348922] = [===[Хоча у нас в селищі Криваве Копито немає тренера алхімії, та він є в Громовому Бескиді. Прямуй туди дорогою на північ та, діставшись вершини, запитай дорогу у вартових бескиду.]===],
 -- Wind Rider Master
 [1433933426] = [===[Приборкувач виверн]===],
+-- With the sanction of Lord Varimathras, the Deathstalkers' numbers grow. More blades to strike at our enemies when they least expect it.
+[1379987604] = [===[З санкції лорда Варіматраса ряди Смертоловів зростають. Тепер у нас ще більше клинків, готових вразити наших ворогів в будь-який момент.]===],
+-- Woo Ping's stamina is simply astounding.  Watching him practice his weapon techniques for hours on end, I felt sorry for the practice dummy afterward.  I can't think of anyone better suited to train you in armed combat.
+[1622039302] = [===[Витривалість Ву Піня просто вражає. Спостерігаючи, як він годинами відпрацьовує свої техніки бою, мені стало шкода тренувальний манекен. Не можу уявити когось, хто б краще підходив для навчання володіння зброєю.]===],
+-- Word is that Vance Undergloom has taken a permanent room upstairs at the Gallows' End Tavern at the southeast end of town.  I think he's just off the reading room.
+[1682363331] = [===[Кажуть, Венс Підцвіт оселився в кімнаті нагорі таверни «Край шибениці», що на південному сході міста. Думаю, він десь біля кімнати з книжками.]===],
+-- Would you rather trust your goods with a goblin?
+[1632820229] = [===[Чи {стать:довірив би:довірила б} ти свої речі гоблінам?]===],
+-- Ya may not follow the ways of the Light like a Knight of the Silver Hand, but ya can always ask us for aid.
+[1262318310] = [===[Хай може ти й не слідуєш шляхом Світла, як лицарі Сріблястої Десниці, але ти завжди можеш розраховувати на нашу допомогу.]===],
+-- Yaw Sharpmane awaits you on the north edge of the village.  He can teach you the ways of the Hunter.
+[1666404570] = [===[Йов Гострогрив знаходиться на північному краю селища. Він зможе навчити тебе шляху мисливців.]===],
+-- Yeah, that would be Austil de Mon.  He's always hanging out in the tavern at the southeast end of town.  It's called the Gallows' End Tavern, you can't miss it.
+[3867286350] = [===[Тобі потрібен Остіль де Мон. Він постійно висить у таверні на південному сході міста. Її назва — «Край шибениці», ти не пропустиш.]===],
+-- Yes, <class>?
+[3563799772] = [===[Так, {клас:к}?]===],
 -- Yes. I do.
 [505109101] = [===[Так, хочу.]===],
+-- Yonn Deepcut can be found inside the great tent at the northwest corner of Bloodhoof Village.
+[409230663] = [===[Йонна Глибокоріза можна знайти у великому наметі на північному заході селища Криваве Копито.]===],
+-- You aiming to be a taxidermist?  I don't like people who think they can stuff and mount me because they think I'm dead.  No?  Good!  Look for Rand Rhobart at a camp to the southeast of town.  To get to him take the road southeast out of Brill and hang a left at the intersection.
+[1139680776] = [===[Хочеш зайнятись таксидермією? Не люблю тих, хто вважає, що з мене можна зробити ляльку лише тому, що я мертвий. Ні? Добре! Тоді шукай Ренда Робарта у таборі на південний схід від міста. Щоб дістатися до нього, рушай дорогою на південний схід з Брілля і на перехресті поверни ліворуч.]===],
+-- You are gonna want to head over to Old Town and drop by the Protective Hide if you are lookin' to learn skinning.
+[1176383274] = [===[Якщо хочете навчитися знімати шкури, вам слід відправитися в Старе місто і завітати до крамниці «Міцна шкура».]===],
+-- You are looking for Uthan Stillwater.  You will find him west of the village, fishing at Stonebull Lake.
+[88808188] = [===[Тобі потрібен Утан Тиха Вода. Він зазвичай рибалить на озері Кам'яного Бика, що на захід від селища.]===],
+-- You can find Aldwin Laughlin at the Stormwind Vistor's Center in the Trade District.
+[677670961] = [===[Ви знайдете Олдвіна Сміхта у центрі пригодників Штормовію в Торговому районі.]===],
+-- You can find Tannysa standing outside Alchemy Needs in the Mage Quarter.
+[2306273353] = [===[Ви знайдете Таннісу ззовні крамниці «Все для алхімії» у кварталі Магів.]===],
+-- You can find Vance Undergloom upstairs in a room at the Gallows' End Tavern on the southeast side of Brill.
+[2784314238] = [===[Ти знайдеш Венс Підцвіт нагорі таверни «Край шибениці», що на південно-східній околиці Брілля.]===],
+-- You can find the gryphon master on the northeast rampart overlooking the Valley of Heroes.
+[376581717] = [===[Ви можете знайти приборкувача грифонів на північно-східній стіні, з якої відкривається вид на Долину Героїв.]===],
+-- You desire to shape the bones of the Earth Mother into tools that will aid the Horde.  Good, good.  Follow the path north out of Bloodhoof Village until you come to the elevator leading to the top of Thunder Bluff.  A Bluffwatcher there can give you further assistance.
+[2186538907] = [===[Ти бажаєш перетворити дари Матері-Землі на знаряддя, які допоможуть Орді? Добре, дуже добре. Прямуй дорогою на північ від селища Криваве Копито, поки не дійдеш до підйомника, що веде на вершину Громового Бескиду. Там тобі допоможуть вартові бескиду.]===],
+-- You don't have the stomach for the gryphon ride, huh.  Well lucky for you, we have an alternative where you can keep your feet on the ground... more or less.  It's the gnomish mover of people, the Deeprun Tram.  Conveniently located in the back of the Dwarven District.
+[3019631382] = [===[Що, не вистачає духу літати на грифонах? Ну, вам пощастило, бо у нас є альтернатива, де вам не доведеться відриватись від землі... ну майже. Це гномська самохідна машина, Підземний трамвай. Він розташований у задній частині Дворфійського району.]===],
+-- You know, I could run an orc through or slice up a troll.  I could even carve my initials in an ogre's flank, but I just can't stand to skin an animal.  Go figure, eh.
+--
+-- Well, if you have the stomach for it, then go see Maris Granger at the Protective Hide in Old Town.
+[2971021565] = [===[Знаєте, я міг би проткнути орка наскрізь або розрубати троля. Я навіть міг би вирізати свої ініціали на боці огра, але просто не можу здирати шкуру з тварини. Отак от.
+
+Що ж, якщо у вас вистачає духу для цього, то завітайте до Меріс Грейнджер у крамниці «Міцна шкура», що у Старому Місті.]===],
+-- You mean you can't smell the smoke of the Dwarven forges from here?  Well, you will be looking for Therum Deepforge if you want to learn blacksmithing.  He's over in the Dwarven District which is just north of the Cathedral Square.
+[1024462341] = [===[Хочете сказати, що ви не відчуваєте запах диму з дворфійських ковальнь? Ну, якщо хочете навчитися ковальства, вам потрібен Терум Ковоглиб. Він знаходиться у Дворфійському районі, що на північ від Соборної площі.]===],
+-- You will find Pyall Silentstride inside the great tent in the northwest corner of the village.  He can teach you what you crave.
+[3305678530] = [===[Ти знайдеш П'ял Тихобіга у великому наметі на північно-західному краю селища. Він зможе навчити тебе.]===],
+-- You'll find Innkeeper Renee inside the Gallows' End Tavern at the southeast end of the street running through town.
+[3440903634] = [===[Ти знайдеш корчмарку Рені у таверні «Край шибениці», що знаходиться на східному краю міста.]===],
+-- You'll find the Mage Trainer, Cain Firesong, upstairs on the landing at the Gallows' End Tavern, which is on the southeast end of Brill.  I guess he checked in too late to get a room.
+[96817491] = [===[Ти знайдеш тренера магів, Каїна Вогнеспіва, нагорі таверни «Край шибениці», що на південно-східному краю Брілля. Думаю, він заїхав надто пізно, щоб отримати кімнату.]===],
+-- You'll need more training before I can share my knowledge with you, I'm afraid.
+[1886983044] = [===[Боюсь, тобі потрібно більше тренуватись, перш ніж приходити до мене.]===],
+-- You're into leather, eh?  Sounds like you should talk to Simon Tanner over in Old Town.  He runs a shop there called the Protective Hide.
+[3768333171] = [===[Любите шкіру, так? Тоді вас слід поговорити з Симоном Кожум'якою у Старому Місті. Він тримає там крамницю, що зветься "Міцна шкура".]===],
+-- You've heard about the Tram have you?  What a ride that thing is!  You'll find it in the Dwarven District towards the back.  Oh, and be sure to keep your arms and legs inside the tram while the tram is in motion.
+[1035238969] = [===[Ви ж чули про трамвай? Це той ще атракціон! Він знаходиться в кінці Дворфійського району. О, і не висовуйте голову з трамвая, поки він рухається.]===],
+-- Your body looks worn and your spirit weary. Rest yourself beneath our roof and allow Elune to guide your dreams.
+[326768818] = [===[Твоє тіло виглядає стомленим, а дух — виснаженим. Відпочинь під нашим дахом і дозволь Елуні оберігати твої сни.]===],
+["!code"] = {
+["adwhcdjnyu.-hdortosdkpylfdtnstinteksaecrhe"] = 2184089775,
+["donttnyrbkontelt..itmybeteoetgttssyusedy"] = 2507475128,
+["gs..slpeyuwhfritiotewdofmc"] = 394012010,
+["cnnttnyu.."] = 596497898,
+["kehpyewhtnyesdlkfr..tr"] = 666770767,
+["re..tg"] = 3729571731,
+["ttteltiswhyu.-istesgttcnhpyuwh"] = 2722278334,
+["myaetepsofteehmrmyyraswhoryu.."] = 3087833908,
+["teltptyu.."] = 3948734958,
+["tesgsscnuealtehptycngtintrftattewgos.-goto"] = 3230762823,
+["wetotebkofsdweorflasadsydtbsfrveisdoyuay"] = 4280290942,
+["wlmt..myaetoyuistsasyutltewdbewyofmcfritwl"] = 3436288619,
+["wlmt..yuwtseaebdmewehetkortouporsswedo"] = 4120959544,
+["ys.."] = 3563799772,
+},
+},
+[11036] = { -- Leonid Barthalomew the Revered
+-- Through knowledge, may we find salvation.
+[2891883280] = [===[Через знання ми зможемо знайти спасіння.]===],
 },
 [197] = { -- Marshal McBride
 -- Hey, citizen!  You look like a stout one.  We guards are spread a little thin out here, and I could use your help...
 [2262730092] = [===[Гей, {стать:громадянине:громадянко}! Виглядаєте {стать:міцним:міцною}. Нас, охоронців, тут небагато, і мені потрібна ваша допомога...]===],
 },
-[198] = { -- Khelden Bremen
--- Greetings <class>.  Shall I provide you with further insight into the world of magic?
-[394012010] = [===[Вітаю, {клас:к}. Чи варто мені глибше розповісти тобі про світ магії?]===],
--- Well met, <class>.  My advice to you is this: as you travel the world, be wary of magic for it will burn the untrained.
-[3436288619] = [===[Вітаю, {клас:к}. Моя порада тобі: подорожуючи світом, остерігайся магії, бо вона спалить непідготовленого.]===],
-["!code"] = {
-["gs..slpeyuwhfritiotewdofmc"] = 394012010,
-["wlmt..myaetoyuistsasyutltewdbewyofmcfritwl"] = 3436288619,
+[5570] = { -- Bruuk Barleybeard
+-- Hey there. What can I get for you?
+[4191088603] = [===[Привіт. Що тобі налляти?]===],
+-- To be honest, we're struggling to make ends meet. Business has been slowing down lately, no thanks to drunkards like Bruart harassing other customers.
+[428061917] = [===[Якщо чесно, ми ледве зводимо кінці з кінцями. Бізнес загальмувалася останнім часом, не в останню чергу через п'яниць типу Бруарта, що чіпляються до інших клієнтів.]===],
 },
-},
-[375] = { -- Priestess Anetta
--- Do not turn your back on the Light, <class>, it may be the one thing that saves you some day.
-[2507475128] = [===[Не повертайся спиною до світла, {клас:к}, можливо це єдине, що колись тебе врятує.]===],
--- I trust the Light is with you, <name>. Is there something that I can I help you with?
-[2722278334] = [===[Я вірю, що Світло з тобою, {ім'я:к}. Чи можу я чимось тобі допомогти?]===],
-["!code"] = {
-["donttnyrbkontelt..itmybeteoetgttssyusedy"] = 2507475128,
-["ttteltiswhyu.-istesgttcnhpyuwh"] = 2722278334,
-},
-},
-[5769] = { -- Arch Druid Hamuul Runetotem
--- The earth keeps many secrets, <class>; it is our duty to ensure that those that must remain a secret for the good of all stays as such.
-[78290476] = [===[Земля приховує чимало таємниць, {клас:к}. Наш обов'язок — захищати ці таємниці, задля загального блага.]===],
-["!code"] = {
-["teehksmyss..itisordytoeetttettmtrnstfrtegd"] = 78290476,
-},
+[8737] = { -- Linken
+-- I... I'm not really sure how I got here...
+--
+-- I seem to remember traveling... a raft...
+[2614069872] = [===[Я... якщо чесно, я не зовсім розумію, як я сюди потрапив...
+
+Здається, я кудись плив... на плоті...]===],
 },
 [911] = { -- Llane Beshere
 -- I can tell just by the way you're standing that you're no warrior.
@@ -101,12 +688,6 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [1298350057] = [===[Я бачу, що ти не {стать:воїн:воїтелька}, просто по тому як ти стоїш.
 
 Чому б тобі не зайнятися чимось безпечним, наприклад почитати книжку.]===],
--- Stormwind is the pillar of the human race, maintained through strength of will and the edge of a sturdy blade.
-[2471265741] = [===[Штормовій — опора людської раси, яка підтримується силою волі та вістрям міцного клинка.]===],
-},
-[925] = { -- Brother Sammuel
--- May the Light protect you this day.
-[4100779666] = [===[Нехай Світло береже тебе.]===],
 },
 }
 

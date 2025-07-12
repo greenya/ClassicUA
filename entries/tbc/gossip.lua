@@ -5,6 +5,344 @@
 local _, addonTable = ...
 
 local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optional) }, ... }
+[18063] = { -- Garrosh
+-- What is it that you want, <race>?
+[511042405] = [===[Що ти хочеш, {раса:к}?]===],
+["!code"] = {
+["wtisitttyuwt.."] = 511042405,
+},
+},
+[18141] = { -- Greatmother Geyah
+-- <Greatmother Geyah laughs weakly.>
+--
+-- Of course not, dear. But it's not me that has to believe...
+--
+-- Garrosh can lead the Mag'har. He is strong and wise. All of the spirits approve of him. He just needs to believe in himself. He fears so much... He fears so deeply that if he lets himself go, his rage will consume him and all that would be near him.
+[601419251] = [===[<Праматір Ґейя знесилено сміється.>
+
+Звісно ж ні, {стать:любий:люба}. Але це не я маю вірити...
+
+Ґаррош здатен очолити Маґ'харів. Він має силу та мудрість. Всі духи підтримують його. Йому лише бракує віри в себе. Він так боїться... Він так сильно боїться, що якщо дозволить собі розслабитися, його гнів може поглинути і його, і всіх, хто буде поруч з ним.]===],
+-- <Greatmother Geyah nods, accepting your answer.>
+--
+-- I can no longer fight the spirits, <name>. My time has long since passed. Once again, I must thank you for all that you have done. While Garrosh may be unmoveable, many of my people have been lifted by your accomplishments. They are now willing to fight for our rights as a unified clan.
+[3458163657] = [===[<Праматів Ґейя киває вам у відповідь.>
+
+Я більше не можу боротися з духами, {ім'я:к}. Мій час давно минув. Ще раз дякую тобі за все, що ти {стать:зробив:зробила}. Хоча Ґаррош, можливо, і непохитний, багато хто з мого народу надихнувся твоїми досягненнями. Тепер вони готові боротися за наш клан.]===],
+-- <Greatmother Geyah nods.>
+-- Did you know my son?
+[2630451707] = [===[<Праматір Гейя киває.>
+
+Ти {стать:знав:знала} мого сина?]===],
+-- <Greatmother Geyah smiles at you.>
+--
+-- You remind me of my son, <name>.
+--
+-- He was an immovable mountain. A pillar of strength and honor.
+--
+-- <Geyah's eyes well up with tears.>
+--
+-- He sacrificed himself so that we could survive. So that generations of orcs after him could be born into a world without the blood curse... Without Gul'dan and his Old Horde...
+--
+-- <Geyah stares into the distance, lost in thought.>
+--
+-- Oh Durotan, how I wish you could be here. Your people so desperately need you...
+[2776905495] = [===[<Праматір Ґейя усміхається вам.>
+
+Ти нагадуєш мені мого сина, {ім'я:к}.
+
+Він був незрушною горою. Стовпом сили та честі.
+
+<Очі Ґейї наповнюються сльозами..>
+
+Він пожертвував собою, щоб ми могли вижити. Щоб наступні покоління орків могли народитися у світі без кровного прокляття... Без Ґул'дана і його Старої Орди...
+
+<Ґейя дивиться вдалину, заглибившись у думки.>
+
+Ох, Дуротане, якби тільки ти міг бути тут. Твій народ так потребує тебе...]===],
+-- <Greatmother Geyah smiles.>
+--
+-- I am old. When I pass, my spirit will move on to the spirit realm. It is there that I will stand with my ancestors. It is there that we will watch over our people.
+--
+-- When Garad was alive, Mother Kashur's duty was the same as my duty now.
+[2993124967] = [===[<Праматір Ґейя усміхається.>
+
+Я уже стара. Коли я помру, моя душа перейде в царство духів. Там я буду разом із предками. Там ми будемо пильнувати за нашим народом.
+
+Коли Ґарад був живий, обов'язок матері Кашур був таким самим, як і мій зараз.]===],
+-- <Greatmother Geyah's violet eyes lock onto yours.>
+--
+-- Yes...
+[2802313280] = [===[<Праматір Ґейя пильно дивиться вам у вічі.>
+
+Так?..]===],
+-- <Tears stream down Greatmother Geyah's face.>
+--
+-- I... I... Durotan survived to have a child? The child Draka told me of before they left... It was their greatest fear... To raise a child in this world. On the other side of that gate was their only hope. I dared not tell Durotan, but secretly, I begged the spirits to watch over them- to protect their child and to give them strength.
+--
+-- I... I must see my grandchild. I must see him. Please, I am too weak. You must tell him. Before I leave this world...
+[4024433122] = [===[<По щоках праматері Ґейї течуть сльози.>
+
+Я... Я... Дуротан вижив, і в нього народилася дитина? Дитина, про яку мені казала Драка перед тим, як вони пішли... То був їхній найбільший страх... Виховувати дитину в цьому світі. По інший бік брами була їхня єдина надія. Я не наважилась сказати про це Дуротану, але потайки я благала духів наглядати за ними... захищати їхню дитину і дарувати їй силу.
+
+Я... Я маю побачити свого онука. Я маю побачити його. Будь ласка, я занадто слабка. Ти маєш сказати йому. Перш ніж я покину цей світ...]===],
+-- Do you believe that?
+[2718438949] = [===[Ви в це вірите?]===],
+-- Garrosh is beyond redemption, Greatmother. I fear that in helping the Mag'har, I have convinced Garrosh that he is unfit to lead.
+[2218319486] = [===[Ґаррошу вже немає порятунку, праматір. Боюся, що, допомагаючи Маґ'харам, я {стать:переконав:переконала} Ґарроша в тому, що він не гідний бути лідером.]===],
+-- Greatmother, I never had the honor. Durotan died long before my time, but his heroics are known to all on my world. The orcs of Azeroth reside in a place known as Durotar, named after your son. And... <You take a moment to breathe and think through what you are about to tell the Greatmother.>
+[3200651922] = [===[Ні, праматір, мені не випала така честь. Дуротан помер задовго до мого народження, але його героїзм відомий усім у моєму світі. Орки Азероту мешкають у місці, відомому як Дуротар, названому на честь вашого сина. І... <Ви робите паузу, щоб перевести подих і обдумати те, що збираєтеся сказати праматері.>]===],
+-- Greatmother, you are the mother of Durotan?
+[213614705] = [===[Праматір, ви мати Дуротана?]===],
+-- Hello, Greatmother. Garrosh told me that you wanted to speak with me.
+[10272067] = [===[ВІтаю, праматір. Ґаррош сказав мені, що ви хотіли поговорити зі мною.]===],
+-- Hello, dear. I am Geyah, matron of the Mag'har.
+--
+-- <Greatmother Geyah coughs.>
+--
+-- If you are here, it would be safe to assume that the portal has opened. Most of the orcs here were too young or too sick to remember the Dark Portal.
+--
+-- <Greatmother Geyah points to the orcs around her.>
+--
+-- Many of them were orphans or would soon become orphans. Aye, Blackhand would have it no other way. Keep the sick from the healthy. Only the strong would survive... Or so they say.
+[668698122] = [===[Привіт, {стать:любий:люба}. Я — Ґейя, матрона Маг'харів.
+
+<Праматір Ґейя кашляє.>
+
+Якщо ти тут, можна з упевненістю припустити, що портал знову відкритий. Більшість тутешніх орків були занадто молодими або занадто хворими, щоб пам'ятати відкриття Темного Порталу.
+
+<Праматір Ґейя вказує на орків навколо себе.>
+
+Багато з них були сиротами або незабаром мали ними стати. Так, Чорнорук би не допустив іншого. Відокремити хворих від здорових. Лише сильні повинні вижити... Так тоді казали.]===],
+-- Hello, young <race>.
+[3054648004] = [===[Здрастуй, {стать:юний:юна} {раса:к}.]===],
+-- I have done all that I could, Greatmother. I thank you for your kind words.
+[626702165] = [===[Я {стать:зробив:зробила} все, що {стать:міг:могла}, праматір. Дякую за ваші добрі слова.]===],
+-- I will return to Azeroth at once, Greatmother.
+[2020116693] = [===[Я негайно повернуся до Азероту, праматір.]===],
+-- I wish I knew, dear. He will not listen to you nor will he listen to me. In truth, it is why I am still here. It is why I have not left with Mother Kashur. He must find his heart. Our people will not survive through the winter without leadership.
+[1907741357] = [===[Хотіла б я знати, {стать:любий:люба}. Він не слухатиме ні тебе, ні мене. Власне, саме тому я досі тут. Саме тому я не пішла разом із матір'ю Кашур. Він повинен віднайти своє серце. Наш народ не переживе зиму без лідера.]===],
+-- Is there anything I can do for you, Greatmother?
+[2751971330] = [===[Чи є щось, що я можу зробити для вас, праматір?]===],
+-- It is my Warchief, Greatmother. The leader of my people from my world. He... He is the son of Durotan. He is your grandchild.
+[551700603] = [===[Це мій вождь, праматір. Лідер мого народу з мого світу. Він... Він син Дуротана. Він ваш онук.]===],
+-- Left? How can you choose to leave?
+[2362491811] = [===[Пішла? Як ви можете піти?]===],
+-- The duty of a clan mother is to listen. To listen to the wind and the water and the fire and the earth. To gather information for her clan in the way others gather furs to stay warm. It is the spirits that I commune with... In my dreams, Mother Kashur speaks to me like the spirits that spoke to her once... When I pass, I will speak to Drakia and Celestine in this manner.
+--
+-- <Greatmother Geyah smiles.>
+[2266065314] = [===[Обов'язок матері клану — слухати. Слухати вітер, воду, вогонь і землю. Збирати інформацію для свого клану так, як інші збирають хутра, щоб зігрітися. Я спілкуюся з духами... У моїх снах мати Кашур розмовляє зі мною так само як колись з нею розмовляли духи… Коли я помру, я буду таким же чином розмовляти з Дракією і Целестіною.
+
+<Праматір Ґейя усміхається.>]===],
+-- They have grown up here. We kept them safe from harm. We did the best that we could in nursing them back to health. Many perished but many, many more grew strong. Like Garrosh...
+--
+-- <Greatmother Geyah sighs.>
+--
+-- He has lost his heart, you know. He tells me that I am his balance. That without me, the bloodlust that consumed his father and ultimately cursed our people would take him over.
+[1736851125] = [===[Вони виросли тут. Ми оберігали їх від небезпеки. Ми робили все, що могли, аби вилікувати їх. Багато хто загинув, але ще більше стали сильними. Як Ґаррош...
+
+<Праматір Ґейя зітхає.>
+
+Він втратив своє серце, знаєш. Він каже мені, що я є його рівновагою. Що без мене жага крові, яка поглинула його батька та врешті прокляла наш народ, захопить і його.]===],
+-- What can be done? I have tried many different things. I have done my best to help the people of Nagrand. Each time I have approached Garrosh, he has dismissed me.
+[2307592632] = [===[Що можна зробити? Я {стать:спробував:спробувала} багато різних речей. Я {стать:зробив:зробила} все можливе, щоб допомогти жителям Наґранда. Щоразу, коли я {стать:звертався:зверталася} до Ґарроша, він відмовлявся мене слухати.]===],
+-- What did Garrosh tell you, <name>?
+[2954981535] = [===[Що сказав тобі Ґаррош, {ім'я:к}?]===],
+-- What is this duty?
+[2489747424] = [===[Що це за обов'язок?]===],
+-- You raised all the orcs here, Greatmother?
+[3380192431] = [===[Ви виростили всіх тутешніх орків?]===],
+["!code"] = {
+["grnrhdtehrdnddlgbemytebthshsaekntoalonmy"] = 3200651922,
+["hoyg.."] = 3054648004,
+["tedyofcnmristolntolntotewdadtewradtefead"] = 2266065314,
+["tyhegnuphewekttmsefmhmweddtebtttwecdinng"] = 1736851125,
+["wtddghtlyu.-"] = 2954981535,
+},
+},
+[18180] = { -- Hemet Nesingwary
+-- Hemet Nesingwary, what are you doing here in Outland?
+[3676854123] = [===[Гемет Ернінґвей? Що ти робиш у Позамежжі?]===],
+-- Keep a sharp eye, <class>. You never know when some beastie is stalking you instead of the other way around.
+[2716658081] = [===[Будь насторожі, {клас:к}. Ніколи не знаєш, коли на тебе полює якесь чудовисько.]===],
+-- Listen lad. I left the expedition in the capable hands of me son, Junior. When you've stalked the finest game in all of Azeroth you start to itch for something more.
+--
+-- And have you seen the size of the beasties here?!
+--
+-- I'm here hunting the most dangerous prey you'll ever lay your eyes on. I mean to bag myself Tusker and take her heart as my trophy!
+[2713948826] = [===[Слухай, {стать:приятелю:приятелько}. Я залишив експедицію в надійних руках свого сина, Гемета молодшенького. Коли ти полював на найкращу дичину по всьому Азероту, починаєш прагнути чогось більшого.
+
+А ти {стать:бачив:бачила} розміри цих звірів?!
+
+Я тут полюю на найнебезпечнішу здобич, яку ти коли-небудь {стать:бачив:бачила}. Я маю на меті вполювати Бивню та забрати її серце як трофей!]===],
+["!code"] = {
+["kpspee..yunrkwwnsebeissgyuidofteorwyad"] = 2716658081,
+},
+},
+[18200] = { -- Shado Fitz Farstrider
+-- Greetings, <class>. You seek to push yourself to the limits of your hunting prowess? Look no further.
+--
+-- Hemet Nesingwary has assembled the finest expedition the remnant of this world has ever known. Join us on safari if you dare.
+[212988032] = [===[Вітаю, {клас:к}. Ти прагнеш випробувати межі своїх мисливських здібностей? Тоді ти {стать:прийшов:прийшла} куди треба.
+
+Гемет Ернінґвей зібрав найкращу експедицію, яку коли-небудь бачив цей світ. Приєднуйся до нас на сафарі, якщо наважишся.]===],
+["!code"] = {
+["gs..yusktophyftotelsofyrhgpslknofrhtnyhsad"] = 212988032,
+},
+},
+[18218] = { -- Harold Lane
+-- There I was tumbling in a patch of prickly undergrowth with a talbuk stag, hand-to-hand, only my sharp knife...<cough>... and keen hunter's intellect to save me.
+--
+-- All of a sudden I'm jumped by a pair of fierce windroc hunters that came at me from the skies! Their cowardly attack...<cough>... didn't help them any though.
+--
+-- And while I have their beaks as trophies, I received an infected scratch out of the ordeal. Kind of nasty, and I'm in a lot of pain, but I'm sure it'll heal up in a day or two.
+[452630244] = [===[Я опинився в колючих хащах, борючись з величезним талбуком, маючи при собі лише ніж... <кашель>... і гострий мисливський розум.
+
+Раптом на мене прямо з неба накинулася пара лютих вітрухів-мисливців! Та їх підступний напад... <кашель>... їм не допоміг.
+
+І хоча я отримав їхні дзьоби як трофеї, в результаті я ще й дістав інфіковану подряпину. Це досить неприємно, і я відчуваю сильний біль, але, думаю, за день-два все це загоїться.]===],
+["!code"] = {
+["tewstginphofpyuhwhtksghdoymyspkeadknhsit"] = 452630244,
+},
+},
+[18278] = { -- Pilot Marsha
+-- We wouldn't have crashed if Hemet could learn how to avoid shooting through the ailerons when he's trying to bag game on the ground!
+--
+-- No worries though, I'll have her fixed up quick enough.
+[381728108] = [===[Ми б не розбилися, якби Гемет навчився не стріляти через елерони, намагаючись вполювати щось на землі!
+
+Але не біда, я швидко все полагоджу.]===],
+},
+[18294] = { -- Kristen Dipswitch
+-- Hey! Didn't I give you a bundle of skins before?
+--
+-- Either way, I'm glad to be saved from the ruthless clutches of that evil Gankly Rottenfist!
+[3329490652] = [===[Гей! Хіба я вже не давала тобі в'язку шкур?
+
+У будь-якому разі, я вдячна за порятунок від безжальних лап того мерзотного Ґанклі Гнилорука!]===],
+-- I am SO glad that evil Gankly Rottenfist got his just desserts! I have lots of skins if you want some to give to Harold.
+[4048881763] = [===[Я ТАК радий, що цей негідник, Ґанклі Гнилорук, отримав по заслугах! У мене тут є багато шкур, якщо ти хочеш щось передати Гарольду.]===],
+},
+[18351] = { -- Lump
+-- <Lump shrugs.>
+--
+-- You bring da war to da Boulderfist. We put it in da stew.
+[2681114732] = [===[<Брил знизує плечима.>
+
+Ти приносити війну до Брилоруких, ми робити з цього юшка.]===],
+-- And you think you can just eat anything you want? You're obviously trying to eat the Broken of Telaar.
+[2323480429] = [===[І ти думаєш, що можна їсти все, що захочеш? Ти явно хочеш їсти Зломлених з Телаара.]===],
+-- Boulderfist hungry! Need food! Warmaul ogre tribe kick Boulderfist out of mound to north. Many more Boulderfist to feed now.
+[569153874] = [===[Брилоруки голодні! Потрібна їжа! Плем'я Бойового Молота вигнати Брилоруких з півночі. Багато Брилоруких потрібно годувати.]===],
+-- Dat not true. Me just want to nibble. I don't eat all. Ok, maybe I eat da little ones.
+--
+-- Dey so delicious!
+[2179892798] = [===[Це не правда. Я просто хочу куснути. Я не їсти все. Добре, може, я їсти маленькі.
+
+Вони такі смачні!]===],
+-- I need answers, ogre!
+[912715085] = [===[Мені потрібні відповіді, огр!]===],
+-- OK! Lump tell you anything you want!
+[92405385] = [===[Добре! Брил розповісти все, що хочеш!]===],
+-- This means war, Lump! War I say!
+[4042492387] = [===[Це означає війну, Брил! Війну!]===],
+-- Why are Boulderfist out this far? You know that this is Kurenai territory.
+[780071423] = [===[Чому Брилорукі забралися так далеко? Ви знаєте, що це територія Куренай.]===],
+-- Why you mean to Lump? Lump hungry, dat's all.
+[2787589097] = [===[Чому ти так до Брил? Брил голодний, от і всьо.]===],
+},
+[18369] = { -- Corki
+-- Get me out of here, draenei!
+[2562874385] = [===[Витягни мене звідси, {раса:к}!]===],
+},
+[18471] = { -- Gurgthock
+-- Get out of my way, <race>. Can't you see that we're in the middle of a battle!
+[2606837510] = [===[Забирайся з дороги, {раса:к}. Ти що, не бачиш, бій в самому розпалі!]===],
+-- Hail, champion! Have you eve thought about going into the gladiator business full time? You and I could make a mountain of gold.
+[3563165130] = [===[Привіт, {стать:чемпіоне:чемпіонко}! Ти коли-небудь {стать:думав:думала} про те, щоб зайнятися гладіаторськими боями? Ми могли б заробити купу золота.]===],
+-- You're definitely strong, <race>, but do you have what it takes to become the Warmaul champion?
+[3861738372] = [===[Ти, безумовно, {стать:сильний:сильна}, {раса:к}, але чи вистачить тобі сил стати {стать:чемпіоном:чемпіонкою} Бойового Молота?]===],
+["!code"] = {
+["gtotofmywy..ctyusettweintemeofbe"] = 2606837510,
+["yedysg..btdoyuhewtittstobetewlcn"] = 3861738372,
+},
+},
+[18482] = { -- Empoor
+-- Now that I've been beaten to within an inch of my life what do you want?
+[474052142] = [===[Ну що, раз ти мене вже до півсмерті {стать:побив:побила}, чого ти від мене хочеш?]===],
+-- Oh no, not you again! Go away!
+[3282973086] = [===[О ні, тільки не ти знову! Іди геть!]===],
+-- Very busy... very busy! What?
+[2361180942] = [===[Я дуже зайнятий... дуже зайнятий! Що таке?]===],
+},
+[18716] = { -- Shadowy Initiate
+-- Practicing! Soon I'Il be good enough to join the other summoners and take my turn inside the Shadow Labyrinth at Auchindoun.
+--
+-- I hope that I'Il get the chance to summon something big! Maybe something as big as Murmur, though I wouldn't lose control of him!
+[2896528315] = [===[Практикуюсь! Скоро мені вистачить вправності, щоб приєднатися до інших закликачів і зайняти своє місце в Тіньовому лабіринті Акіндуну.
+
+Сподіваюся, що мені випаде шанс викликати щось велике! Можливо, щось таке ж велике, як Бурмотун! Хоч би не втратити контроль над ним.]===],
+-- What are you doing there?
+[3022296670] = [===[Що ти тут робиш?]===],
+-- Yes? Darn it all, now I'll have to start over from scratch!
+[3759031140] = [===[Га? От трясця, тепер доведеться починати все з початку!]===],
+},
+[18717] = { -- Shadowy Laborer
+-- What's it look like I'm doing? I'm fixing the place up - all on my own I might add - so that we can move in!
+--
+-- With a base of operations out here in the forest, it'll be easier to keep track of what Shattrath, Allerian, Stonebreaker and the Cenarion druids are all up to. Our base in Auchindoun is just too inconvenient for that.
+--
+-- Wait a minute, do I know you?
+[3558096234] = [===[А як ти думаєш, що я роблю? Я відновлюю це місце — самотужки, до речі — щоб ми могли тут оселитися!
+
+З базою у цьому лісі нам буде легше стежити за тим, що роблять в Шаттраті, бастіоні Аллерії, форті Каменеломів та Кенарійській гущавині. З нашої бази в Акіндуні просто незручно це робити.
+
+Зачекай хвильку, ми знайомі?]===],
+-- Why are you fixing all of this up?
+[1847005441] = [===[Чому ти все це робиш?]===],
+-- Yeah, what do you want? Can't you see I'm busy here? The Shadow Council isn't paying me by the hour!
+[955810428] = [===[Га, що тобі потрібно? Ти не бачиш, що я тут зайнятий? Тіньова Рада не платить мені за балачки!]===],
+},
+[18719] = { -- Shadowy Advisor
+-- Advisor, what's the latest news?
+[1097780887] = [===[Раднику, які останні новини?]===],
+-- And what is it exactly that you think I can do for you? Can't you see that I'm very busy here discussing matters of import with our illustrious leader?
+--
+-- Be quick about your business or l'll have you beaten, dog!
+[1681688411] = [===[І що, по твоєму, я можу для тебе зробити? Ти не бачиш, що я тут обговорюю важливі питання з нашим видатним лідером?
+
+Давай, скоріше кажи що хочеш, а то накажу спустити на тебе собак!]===],
+-- Well, I was just giving our leader here a progress report on how everything is proceeding according to plan. It should only be a few more weeks and we'll have this place back in shape.
+--
+-- We may want the Shadow Council to only staff the village with orcs, however. That way we can make an ancestral claim and work undercover.
+--
+-- Wait a minute. Do I know you? What's your name?
+[2796726707] = [===[Ну, я просто звітую нашому лідеру, що все йде за планом. Ще кілька тижнів, і ми приведемо це місце до ладу.
+
+Однак, можливо, нам варто попросити Тіньову Раду заселити селище лише орками. Так це все буде менш підозрілим і ми зможемо працювати під прикриттям.
+
+Зачекай-но. Я тебе знаю? Як тебе звати?]===],
+},
+[19137] = { -- Shotgun Jones
+-- Never look these Broken directly in the eyes. I think they can suck the soul right out of you if they're so inclined!
+[868844785] = [===[Ніколи не дивися цим Зломленим в очі. Здається, вони можуть висмоктати душу самим лише поглядом!]===],
+},
+[19606] = { -- Grek
+-- Grek, will you try out this new weapon oil Rakoria made?
+[1971093979] = [===[Ґрек, можеш спробувати цю нову олію для зброї, яку зробила Ракорія?]===],
+-- You read wanted poster to Grek?
+--
+-- Grek want to help!
+[2550973210] = [===[Можеш прочитать оголошення для Ґрека?
+
+Грек хоче помогти!]===],
+},
+[19720] = { -- Dirty Larry
+-- Beat it, kid. I got business to attend to...
+[1762200962] = [===[Мотай звідси, {стать:малий:мала}. У мене тут серйозні діла.]===],
+-- Ezekiel said that you might have a certain book...
+[4029173455] = [===[Єзекиїл сказав, що у вас може бути одна книга...]===],
+},
 }
 
 if addonTable.gossip then

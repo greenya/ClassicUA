@@ -5,6 +5,198 @@
 local _, addonTable = ...
 
 local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optional) }, ... }
+["!common"] = {
+-- <The mage seems dazed and weak.>
+[1339000464] = [===[<Маг, здається, знесилений до непритомності.>]===],
+-- <You notice a torn scrap of note clutched in the mage's hand. There is no response as you take it.>
+[2269074839] = [===[<Ви помічаєте обірваний клаптик записки, затиснутий у руці мага. Коли ви забираєте його, маг ніяк не реагує.>]===],
+-- <name>, my favorite supplier! How can I help you today?
+[1455894303] = [===[{Ім'я:н}, {стать:мій улюблений постачальник:моя улюблена постачальниця}! Чим можу допомогти тобі?]===],
+-- Dare you trade for these tomes and secrets, knowing the power they hold?
+[1766042740] = [===[Чи наважишся ти купувати ці фоліанти і таємниці, знаючи, яку силу вони мають?]===],
+-- How's business?
+[2704419393] = [===[Як йдуть справи?]===],
+-- I would like to disable Discoverer's Delight.
+[1411310874] = [===[Я хочу вимкнути "Захват першовідкривача".]===],
+-- I would like to enable Discoverer's Delight.
+[2525990914] = [===[Я хочу увімкнути "Захват першовідкривача".]===],
+-- Mighty loa, grant me your boon!
+[1381897040] = [===[Могутній лоа, даруй мені своє благословення!]===],
+-- Oy, you there! *hic* You got some kinda problem pal?
+[2990377078] = [===[Гей, ти! *гик* У тебе якісь проблеми, {стать:малий:мала}?]===],
+-- ROARRRRR!!
+[1646177819] = [===[РРРРРР!!!]===],
+-- Seems you've had a few too many. Time for you to leave.
+[1224498059] = [===[Здається, ти трохи перебрав. Тобі краще піти.]===],
+-- Show me.
+[3338386452] = [===[Покажи мені їх.]===],
+-- Sounds like you need someone to bounce him for you.
+[2535098223] = [===[Схоже, вам потрібен хтось, хто зможе його вигнати.]===],
+-- Thank you for your continued help keeping our forces supplied. Is there anything I can do for you today?
+[162115474] = [===[Дякую, що постійно допомагаєш нам з припасами. Чим я можу допомогти?]===],
+-- We've had trouble with shipments going missing across Azeroth. If you find any, I'd appreciate if you could return them to me.
+[436013782] = [===[У нас трапляються проблеми з вантажами припасів, що губляться по всьому Азероту. Якщо знайдеш їх, я буду вдячна, якщо ти повернеш їх мені.]===],
+-- You'd certainly be doing everyone a favor. He's a mean drunk though, and quite the brawler, so be ready for a fight.
+[2335022422] = [===[Ти, безумовно, зробиш усім велику послугу. Але він злісний п'яниця і любить помахати кулаками, тож будь {стать:готовий:готова} до бійки.]===],
+["!code"] = {
+[".-myfesrhwcnhpyuty"] = 1455894303,
+},
+},
+[11036] = { -- Leonid Barthalomew the Revered
+-- Caldoran is a murderous thug. His entire life, he's followed supposedly righteous causes that allow him to inflict pain and suffering unto others without facing the consequences. Ever the zealot, the ends will always justify the means to him.
+[818452746] = [===[Калдоран — вбивця та головоріз. Все своє життя він дотримувався нібито праведних цілей лиш заради того, щоб завдавати болю та страждань іншим, уникаючи будь-яких наслідків. Самовідданий фанатик, для нього мета завжди виправдовує засоби.]===],
+-- I thank you, <name>. All you need to know is to take heed of my warnings about that man. He is the worst kind of monster... he's the kind that truly believes that he's doing the right thing.
+[2811265531] = [===[Дякую, {ім'я:к}. Єдине, що ти маєш знати — остерігайся цього чоловіка. Він гірше за будь-яке чудовисько... він щиро вірить, що чинить правильно.]===],
+-- I'm sorry, Leonid. I won't push you further.
+[2754503276] = [===[Вибач, Леоніде. Я не наполягатиму.]===],
+-- Is there anything else you can tell me about Baelin Caldoran?
+[2717319269] = [===[Можливо, ви можете розповісти ще щось про Бейліна Калдорана?]===],
+-- It sounds like you two have a long history.
+[2091160478] = [===[Схоже у вас з ним давня історія.]===],
+-- Yes, we do. Caldoran cost me... everything. My home, my family, and ultimately my life.
+--
+-- I... cannot speak more on this. It fills me with too much pain.
+[64032486] = [===[Так і є. Калдоран забрав у мене... все. Мій дім, мою родину, і зрештою моє життя.
+
+Я... не хочу більше говорити про нього. Це завдає мені надто великого болю.]===],
+["!code"] = {
+["tkyu.-alyundtokwistotehdofmywsatttmnheiste"] = 2811265531,
+},
+},
+[237773] = { -- Scarlet Inquisitor Caldoran
+-- Collecting remnants for Softjaw, are you?
+--
+-- I can empower the creatures within Naxxramas, if you wish. The greater the risk, the greater the reward, as they say.
+--
+-- Push yourself as far as you can, <class>, and remember that power begets power.
+[2029078787] = [===[Збираєш рештки для М'якощелепого, так?
+
+Я можу посилити істот всередині Наксрамаса, якщо бажаєш. Як то кажуть, що більший ризик, то більша нагорода.
+
+Прагни більшого, {клас:к}, і пам'ятай, що сила породжує ще більшу силу.]===],
+-- We're ready. We want to proceed.
+[1564521514] = [===[Ми готові йти далі.]===],
+-- We've changed our minds.
+[3857013429] = [===[Ми передумали.]===],
+-- What!? What is it?
+--
+-- It's tremendously hard to maintain this spell, <class>. Speak quickly.
+[3791411870] = [===[Що!? Що сталося?
+
+Це закляття вкрай важко підтримувати, {клас:к}. Говори швидше.]===],
+["!code"] = {
+["cgrsfrswaeyucnertecswnnsifyuwhtegrterkte"] = 2029078787,
+["wtwtisitistyhdtomntssl..skqy"] = 3791411870,
+},
+},
+[239031] = { -- Scarlet Inquisitor Caldoran
+-- <Caldoran eyes you with barely contained hostility.>
+--
+-- Weapons are tools. A resource. Nothing more and nothing less. That tool served its purpose, and has been replaced.
+--
+-- This is a pointless triviality, <class>. Mind your own concerns.
+[3166117158] = [===[<Погляд Калдорана видає ледве стриману ворожість.>
+
+Зброя — це лиш інструмент. Ресурс. Ні більше, ні менше. Цей інструмент виконав свою функцію і був замінений.
+
+Це безглузда дрібниця, {клас:к}. Займися своїми справами.]===],
+-- Caldoran, I noticed that you've lost the blade you carried in Naxxramas. What became of it?
+[981272589] = [===[Калдоране, я бачу, що ти втратив клинок, який носив у Наксрамасі. Що з ним сталося?]===],
+-- Tell me, <class>, have you come to gloat at our misfortune on behalf of the Argent Dawn? While we bled for you in Naxxramas, a most insidious evil has infiltrated our sacred enclave.
+--
+-- Arm yourself and help us, or be gone with you.
+[607260865] = [===[Скажи мені, {клас:к}, ти {стать:прийшов:прийшла} позловтішатися над нашою бідою від імені Сріблястого Світанку? Поки ми проливали за вас кров у Наксрамасі, у наш священний анклав проникло найпідступніше зло.
+
+Озбройся і допоможи нам, або йди геть!]===],
+["!code"] = {
+["tlme..heyucetogtatormeonbfofteatdnwewebdfr"] = 607260865,
+},
+},
+[239032] = { -- Commander Beatrix
+-- Dathrohan? Commander, I'm not sure how to tell you this but that isn't the Grand Crusader...
+[122937081] = [===[Датроган? Командире, я не певен, як вам це сказати, але це не верховний лицар...]===],
+-- Not as much as I'd like, I am afraid. We had one of our scouts sneak into Tyr's Hand to get an idea of what was going on. He returned to us nearly a day later, sporting heavy wounds and near death. Before he passed he told us that he had seen none other than Saidan Dathrohan inside the Cathedral, apparently in command. My counterpart, High General Abbendis, was nowhere to be seen. I fear the worst for her...
+[2660763255] = [===[Боюся, не так багато, як би мені хотілося. Один із наших розвідників пробрався в Десницю Тіра, щоб зрозуміти, що там відбувається. Він повернувся до нас майже через добу із серйозними пораненнями. Перед смертю він сказав, що бачив в соборі самого Сайдана Датрогана, який, вочевидь, і командує їхніми силами. Моя колега, верховний генерал Аббендіс, ніде не була помічена. Я боюся, що її вже немає в живих…]===],
+-- Oh I am well aware of Balnazzar's grand deception. It is a mark of shame that the crusade will bear for a lifetime. Whatever game the dreadlord is playing at, it can't be good for us or Light's Hope chapel. We need to retake Tyr's Hand and put an end to Balnazzar once and for all.
+[3180686332] = [===[О, добре знаю про великий обман Бальназара. Це тавро ганьби, яке Похід носитиме до кінця часів. Та що б повелитель жаху не задумав, це загрожує не лише нам, а й каплиці Надії Світла. Ми повинні повернути Десницю Тіра і покінчити з Бальназаром раз і назавжди.]===],
+-- Thank you, <class>. I know that you may not approve of the Scarlet Crusade's methods, but our cause is righteous and our aims are pure. I hope that once this is over, we may begin work on a lasting peace in the Plaguelands and can realize our shared goal to crush the scourge in this region.
+[2721834929] = [===[Дякую, {клас:к}. Я розумію, що ти можеш не схвалювати методи Багряного Походу, але наша справа праведна, а наша мета чиста. Сподіваюся, коли це закінчиться, ми зможемо почати працювати над встановленням тривалого миру, щоб разом знищити Скару у Зачумлених земляx.]===],
+-- Tyr's hand must be reclaimed at any cost.
+[3041783610] = [===[Десницю Тіра необхідно повернути за будь-якої ціни.]===],
+-- Very well, I will report back to Light's Hope Chapel now, but when I return I will do my best to assist.
+[2925111842] = [===[Гаразд, я поки маю повернутись до каплиці Надії Світла, але повернусь з допомогою.]===],
+-- What do you know so far?
+[2375273881] = [===[Що вам вдалося з'ясувати?]===],
+["!code"] = {
+["tkyu..kwttyumyntaeoftestcsmsbtorceisrsador"] = 2721834929,
+},
+},
+[242751] = { -- Viznit the Scoundrel
+-- <Viznit looks up from the floor>
+--
+-- Ah, a witness to my disgrace. That's just peachy!
+[297861573] = [===[<Візніт підводить погляд від підлоги>
+
+О, свідок мого сорому. Просто чудово!]===],
+-- <Viznit rolls his eyes>
+--
+-- You're one of those "selective hearing" types, aren't ya?
+--
+-- Listen, I'll cut you a deal. You bust me out of here, and I'll tell you where the admiral keeps his stash. Sound good?
+[117805645] = [===[<Візніт закочує очі>
+
+А тобі лиш скажи про скарби, ге?
+
+Слухай, я пропоную угоду. Ти витягнеш мене звідси, я розкажу, де адмірал тримає свій сховок. Згода?]===],
+-- A deal's a deal, and I'm a gnome of my word.
+--
+-- Mason keeps his treasure in the ship with red and black sails, closest to the lighthouse. Below deck, but above the cargo hold, there'll be a chest and a ship's wheel. Turn the wheel twice to the left, three times to the right, and left once more to unlock the chest.
+--
+-- Much as I'd love to have it for myself, I'm not pushing my luck twice!
+[1123582043] = [===[Угода є угода, а я ─ гном слова.
+
+Мейсон зберігає свій скарб на кораблі з червоними та чорними вітрилами, котрий ближче до маяка. Під палубою, але вище вантажного трюму, ти знайдеш скриню і штурвал. Поверни кермо двічі вліво, тричі вправо і ще раз вліво, щоб відкрити скриню.
+
+Я б з радістю спробував зробити це сам, але не хочу випробовувати свою вдачу двічі!]===],
+-- I may not look it, chained up here an' all, but I'm an expert thief.
+--
+-- I snuck onto an Eastsea ship after hearing ol' Mason had procured a bit of treasure I'd had my eye on. Stowing away with the cargo, I snooped around the ship at night.
+--
+-- Naturally, I managed to find his little stash completely undetected. I nabbed my prize and hid until we returned to land.
+--
+-- Once the ship had docked, I assumed we were somewhere like Booty Bay, and I'd be able to slip off the boat unnoticed. Imagine my surprise when I stepped out here!
+--
+-- Needless to say, I was arrested on the spot and dumped in prison. So ends the illustrious career of Viznit the Scoundrel!
+[4267793834] = [===[Можливо, це звучить дивно, враховуючи те, що я сиджу в цих кайданах і все таке, але я — досвідчений злодій.
+
+Я проник на корабель Східних морів після того, як почув, що старий Мейсон здобув скарб, який мене цікавив. Заховавшись у вантажі, я прокрався на корабель вночі.
+
+Само собою, мені без проблем вдалося знайти його сховок. Я забрав свою здобич і сховався, поки ми не повернулися на землю.
+
+Коли корабель пришвартувався, я думав, що ми десь у Грабіжній Бухті, і я зможу тихенько зійти з човна, залишившись непоміченим. Уяви моє здивування, коли я вийшов тут!
+
+Звісно ж, мене спіймали та запроторили у в'язницю. Так закінчилася славетна кар'єра Візніта-Лиходія!]===],
+-- Treasure, you say?
+[2293786736] = [===[Скарб, кажеш?]===],
+-- What's got you down?
+[1763113194] = [===[Що з тобою трапилося?]===],
+},
+[243023] = { -- Inquisitor Jociphine
+-- Caldoran tells me you can help with a more "subtle" approach to get into Tyr's Hand and New Avalon
+[2885376153] = [===[Калдоран сказав мені, що ти можеш допомогти з більш "обережним" підходом до розвідки у Десниці Тіра та Новому Авалоні]===],
+-- Indeed.
+--
+-- I can cast a spell on you for a very short time that will disguise you as a New Avalon citizen. Take care however as not all personnel within the enclave will be fooled by this disguise, and it only lasts a short time. Conduct your business and return.
+[369125443] = [===[Саме так.
+
+Я можу накласти на тебе короткочасне заклинання, що замаскує тебе під мешканця Нового Авалону. Однак будь {стать:обережний:обережна}, оскільки не всіх в анклаві можна обдурити таким маскуванням, і воно триває недовго. Виконай усе необхідне і повертайся.]===],
+-- It is done. Now go, complete your mission.
+[857126181] = [===[Готово. Тепер іди, виконай своє завдання.]===],
+-- Sounds good. I'd like to make use of your illusion.
+[1225804640] = [===[Звучить непогано. Я хочу скористатися твоєю ілюзією.]===],
+-- What do you want?
+[1934197222] = [===[Чого ти хочеш?]===],
+},
 }
 
 if addonTable.gossip then

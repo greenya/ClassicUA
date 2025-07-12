@@ -5,6 +5,644 @@
 local _, addonTable = ...
 
 local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=translation, ..., [!code]={ [code]=hash, ...} (optional) }
+["\"Creepjack\""] = { "\"Ганкун\"",
+-- %s cracks his knuckles.
+[1662481913] = [===[%s хрустить пальцями.]===],
+},
+["\"Dirty\" Larry"] = { "\"Брудний\" Ларрі",
+-- Alright, we give up! Don't hurt us!
+[1858415130] = [===[Все, все, ми здаємось! Не бий нас!]===],
+-- Now I'm gonna give you to the count of '3' to get out of here before I sick the dogs on you.
+[2357839263] = [===[Щоб через 3 секунди твоєї нікчемної, брехливої, брудної і смердючої туші тут не було.]===],
+-- Time to meet your maker!
+[2301643714] = [===[Я попереджав, тварюко!]===],
+-- Time to teach you a lesson in manners, little <boy/girl>!
+[408216710] = [===[Ми навчимо тебе манер, {стать:хлопчисько:дівчисько}!]===],
+["!code"] = {
+["tetothyulninmsle.."] = 408216710,
+},
+},
+["\"Epic\" Malone"] = { "Малоун \"Епічний\"",
+-- %s cracks his knuckles.
+[1662481913] = [===[%s хрустить пальцями.]===],
+},
+["Akuno"] = { "Акуно",
+-- Beware!  More cultists come!
+[1839323777] = [===[Стережись! Там ще більше культистів!]===],
+-- I can find my way from here.  My friend Mekeda will reward you for your kind actions.
+[385595062] = [===[Я зможу дійти звідси сам. Мій друг Мекеда винагородить тебе за такий добрий вчинок.]===],
+-- Let us leave this place.  I've had enough of these madmen!
+[1938088156] = [===[Давай покинемо це місце. Мене вже дістали ці божевільні!]===],
+},
+["Aldor Marksman"] = {
+-- ...at least we know my rifle is sighted properly.
+[884689404] = [===[...ну, принаймні я влучив.]===],
+-- Uhh, whoops...
+[504792170] = [===[Емм... йой...]===],
+},
+["Arcanist Adyria"] = { "арканістка Адирія",
+-- Are you joking?  I'm a Scryer, I always watch what I say.  More enemies than allies in this city, it seems.
+[2482655725] = [===[Жартуєш? Я одна з Провидців, я завжди стежу за своїми словами. Здається, у цьому місті у нас більше ворогів, ніж союзників.]===],
+},
+["Captive Child"] = { "викрадена дитина",
+-- Gross!
+[4062259531] = [===[Фу!]===],
+-- I think those weird bird guys were going to eat us.  Gross!
+[1617207771] = [===[Думаю, ці дивні птахолюди збиралися нас з'їсти. Жах!]===],
+-- Woot!
+[1294435749] = [===[Ура!]===],
+-- Yay!  We love you!  You saved us!
+[823129780] = [===[Ура! Ми любимо тебе! Ми врятовані!]===],
+-- Yay!  We're free!
+[2691725009] = [===[Ура! Ми вільні!]===],
+},
+["Chief Archaeologist Letoll"] = { "старший археолог Летолл",
+-- %s picks up the drum.
+[3321264061] = [===[%s піднімає барабан.]===],
+-- Almost got it!
+[941991627] = [===[Майже дістали!]===],
+-- Aright, <race>, just keep us safe from harm while we work. We'll pay you when we return.
+[3477606909] = [===[Гараз, {раса:к}, просто захищай нас від небезпек, поки ми працюємо. Ми заплатимо тобі, коли повернемося.#Aright, <race>, just]===],
+-- Aright, listen up! Form a circle around me and move out!
+[18422776] = [===[Гаразі, слухайте сюди! Станьте навколо мене і ми рушаємо!]===],
+-- By Brann's brittle bananas! What is it!? It... It looks like a drum.
+[3516271051] = [===[Клянусь крихкими бананами Бранна! Що це таке!? Це... це ніби як барабан.]===],
+-- Don't just stand there! Help <him/her> out!
+[1484629519] = [===[Не стійте! Допоможіть {стать:йому:їй}!#Help <him/her> out]===],
+-- Have ye gone mad? You expect me to leave behind a drum without first beatin' on it? Not this son of Ironforge! No sir!
+[1136276302] = [===[Ви з глузду з'їхали? Хочеш, щоб я залишив барабан, не вдаривши по ньому? Ні, який я тоді син Залізогарту?]===],
+-- I think there's somethin' buried here, beneath the sand!
+[454550153] = [===[Здається, тут щось заховане, прямо під піском!]===],
+-- IN YOUR FACE! I told you there was somethin' here!
+[2770848263] = [===[ВИКУСІТЬ! Я ж казав, що тут щось є!]===],
+-- Shut yer yaps! I'm gonna bang on this drum and that's that!
+[2883346681] = [===[Стуліть пельки! Я вдарю в цей барабан, і все!]===],
+-- The dig site is just north of here.
+[3486567994] = [===[Розкопки будуть трохи на північ звідси.]===],
+-- We're here! Start diggin'!
+[1109441304] = [===[Ми на місці! Починаєм копать!]===],
+-- You've been a tremendous help, <race>! Let's get out of here before more of those things show up! I'll let Dwarfowitz know you did the job asked of ya' admirably.
+[3890582232] = [===[Без тебе ми б не впорались, {раса:к}! Давай виберемось звідси, поки не з'явилось ще більше цих створінь! Я скажу Дворфовіцу, що все пройшло відмінно.#help, <race>! Let's]===],
+["!code"] = {
+["at..jtkpussefmhmwewewkwlpyyuwnwern"] = 3477606909,
+["dtjtsdtehph.ot"] = 1484629519,
+["yebntshp..lsgtotofhebemeoftetsswupilltdzkw"] = 3890582232,
+},
+},
+["Clarissa"] = { "Кларисса",
+-- %s wipes the tears away.
+[3185640617] = [===[%s витирає сльози.]===],
+-- Father, give me strength to go on.
+[494348224] = [===[Батьку, дай мені сили рухатися далі.]===],
+-- Father? Father is that you?
+[3161210800] = [===[Батьку? Батьку, це ти?]===],
+-- I know it will be ok, baby.
+[877764588] = [===[Я знаю, що все буде гаразд, крихітко.]===],
+-- In the end, we will all be together, sweetheart.
+[1417756479] = [===[Зрештою, ми всі будемо разом, любий.]===],
+-- Mommy is going to make sure you're ok, baby.
+[4221294595] = [===[Мама просто переконається, що з тобою все гаразд, крихітко.]===],
+-- Mommy won't let anyone harm you, sweetheart.
+[448031941] = [===[Мама не дозволить нікому зашкодити тобі, любий.]===],
+-- Please, father, I do not have your strength. I cannot do this on my own. Please help me...
+[3589687854] = [===[Будь ласка, батьку, я не маю твоєї сили. Я не зможу зробити це самотужки. Прошу, допоможи мені...]===],
+},
+["Defender Grashna"] = { "захисник Ґрашна",
+-- An Avatar of Terokk!! To arms!
+[1990742569] = [===[Аватар Терокка!! До зброї!]===],
+-- More Minions of Terokk are coming!
+[2342533511] = [===[Нові прислужники Терокка наближаються!]===],
+-- The Avatar of Terokk has been defeated! Death to Terokk! Death to Skettis!
+[102538669] = [===[Аватар Терокка переможено! Смерть Терокку! Смерть Скеттісу!]===],
+-- The invaders persist! Hold them off!
+[2211203697] = [===[Загарбники не здаються! Затримайте їх!]===],
+},
+["Eitrigg"] = {
+-- At once, sir!  For the Horde!
+[1933442232] = [===[Слухаюсь, вождь! За Орду!]===],
+-- Thrall!  My lord... are you all right?
+[3795070418] = [===[Тралл! Мій вождь... з тобою все гаразд?]===],
+-- With all due respect, Warchief.  Our enemies would take advantage of your sudden absence if we don't prepare properly.
+[2238905960] = [===[З усією повагою, вождь, та мушу сказати, що наші вороги неодмінно скористаються твоєю відсутністю, якщо ми не підготуємося належним чином.]===],
+},
+["Explorers' League Researcher"] = { "вчений Ліги дослідників",
+-- I don't think it can top the one time where he told us that he'd heard that Arthas's "cousin's" skeleton was frozen beneath a glacier in Winterspring. I'll never forgive you for that one, Letoll. I mean honestly... Arthas's cousin?
+[3878340519] = [===[Я не думаю, що це може перевершити той випадок, коли він сказав нам, що чув, що скелет "двоюрідного брата" Артаса заморожений під льодовиком у Зимоключі. Ніколи не пробачу тобі це, Летолл. Серйозно? Двоюрідний брат Артаса?]===],
+-- I dunno. It can't possibly beat the time he tried to convince us that we're all actually a figment of some being's imagination and that they only use us for their own personal amusement. That went over well during dinner with the family.
+[2166077160] = [===[Ну не знаю. А пам'ятаєте, як він намагався переконати нас, що ми всі насправді вигадка уяви якоїсь істоти, і що вони використовують нас для розваги. Чудова тема для сімейної вечері.]===],
+-- Or that time when you told us that you'd discovered the cure for the plague of the 20th century. What is that even? 20th century?
+[1366753459] = [===[Чи той випадок, коли ти розповів нам, що знайшов ліки проти чуми XX століття. Що взагалі таке це "XX століття"?]===],
+-- Say, do you guys hear that?
+[2775376632] = [===[Хей, ви це чуєте?]===],
+-- This discovery will surely rock the foundation of modern archaeology.
+[2945370744] = [===[Це відкриття безумовно похитне основи сучасної археології.]===],
+-- This reminds me of that one time where you made us search Silithus for evidence of sand gnomes.
+[479384269] = [===[Це нагадує мені, як ти змусив нас шукати в Силітусі докази існування піщаних гномів.]===],
+-- Wow... a drum.
+[4228178954] = [===[Ого... барабан.]===],
+-- Yea, great. Can we leave now? This desert is giving me hives.
+[3629437018] = [===[Ага, чудово. Можемо вже йти? У мене від цього піску все свербить.]===],
+},
+["Gankly Rottenfist"] = { "Ґанклі Гнилорук",
+-- %s rifles through Kristen's stuff and grabs her bundle of skins.
+[2098107600] = [===[%s риється в речах Крістен і забирає собі в'язку шкур.]===],
+-- Here are my skins, Harold. Now give me the reward!
+[77638324] = [===[Ось шкури, Гарольде. Давай винагороду!]===],
+-- I'll be taking those skins, tiny.
+[2817852967] = [===[Я заберу ці шкури, мала.]===],
+},
+["Garadar Defender"] = {
+-- Are the rumors true? Does he really carry the Greatmother's bloodline?
+[1234384791] = [===[То правду кажуть? Він дійсно нащадок праматері?]===],
+-- Could it really be? The son of Durotan?
+[736084690] = [===[Невже це він? Син Дуротана?]===],
+-- For the first time, I feel safe. I do not know you, stranger, but I know that I would lay down my life for you if only you asked.
+[1580029948] = [===[Я вперше почуваюся... в безпеці. Я не знаю тебе, незнайомцю, але знаю, що я без вагань віддав би за тебе своє життя.]===],
+-- He carries the Doomhammer!
+[2586291740] = [===[Він несе Молот Згуби!]===],
+-- I am unworthy, son of Durotan. We are all unworthy...
+[145052625] = [===[Я недостойний, сине Дуротана. Як і всі ми...]===],
+-- I have never felt such strength radiate from an orc. Is he... mortal...
+[2651528502] = [===[Я ніколи не відчував подібної могутності від орка. Чи він взагалі... смертний?]===],
+-- Who is he? He looks so familiar.
+[1429320229] = [===[Хто це? Він мені когось нагадує...]===],
+},
+["Garrosh"] = { "Ґаррош",
+-- %s collapses.
+[3481768076] = [===[%s падає навколішки.]===],
+-- As you wish, Thrall, son of Durotan.
+[3752413724] = [===[Як забажаєш, Тралл, син Дуротана.]===],
+-- For my entire life I have thought my bloodline cursed. I have lived beneath the shadow of my father's greatest failure.
+[2954757036] = [===[Все своє життя я вважав свій рід проклятим. Я жив у тіні найбільшої помилки свого батька.]===],
+-- I am Garrosh Hellscream, son of Grom, chieftain of the Mag'har! Let the battle call of Hellscream give you courage and strength! Be lifted by my rallying cry.
+[2039023675] = [===[Я — Ґаррош Пеклокрик, син Ґрома, вождь Маґ'харів! Нехай бойовий клич Пеклокрика наповнить вас відвагою та силою! Надихайтеся моїм бойовим кличем.]===],
+-- I hated him for what he had done. I hated him for the burden he left me. But now...
+[4128827153] = [===[Я ненавидів його за те, що він зробив. Я ненавидів його за тягар, що він лишив мені. Але тепер...]===],
+-- On this day, a great burden has been lifted from my chest. My heart swells with pride. And for the first time, I can proudly proclaim who I am. I can finally unleash the fury in my heart.
+[977036607] = [===[Цього дня важкий тягар спав з моїх плечей. Моє серце сповнюється гордістю. Вперше я можу з гордістю сказати, ким я є. Нарешті я можу випустити на волю лють, що накопичилася в моєму серці.]===],
+-- Thank you, son of Durotan.
+[4072941625] = [===[Дякую тобі, син Дуротана.]===],
+-- We are honored by your presence, son of Durotan. The Greatmother awaits you at the hospice.
+[2203689001] = [===[Твоя присутність — честь для нас, сину Дуротана. Праматір чекає на тебе нагорі.]===],
+-- You have shown me truths that I would have never known. You and your allies have gifted me with something that cannot bear a price: Redemption. Thrall, redeemer of the Mag'har, you honor me as none ever have...
+[3900687498] = [===[Ти показав мені правду, якої я ніколи б не дізнався. Ти та твої союзники дарували мені безцінний дар: спокуту. Тралл, спаситель Маг'харів, ти вшанував мене, як ніхто інший...]===],
+},
+["Greatfather Aldrimus"] = { "дідусь Алдрімус",
+-- In death, all is forgiven...
+[3448453505] = [===[У смерті все прощається...]===],
+-- It will be alright, darling. Grieve no more...
+[560134739] = [===[Все буде добре, люба. Полиш горе у минулому...]===],
+},
+["Greatmother Geyah"] = { "праматір Ґейя",
+-- %s wipes a tear away.
+[3422969438] = [===[%s витирає сльози.]===],
+-- Blessed spirits! For twenty years, all we knew was that Grom was the first to drink from the cursed chalice and bring damnation down upon our people... It is the only truth his son, Garrosh has ever known.
+[2091077769] = [===[О, благословенні духи! Впродовж двадцяти років ми знали лише те, що Ґром був першим, хто випив з того проклятого келиха і накликав прокляття на наш народ... Це єдине, що знав його син, Ґаррош.]===],
+-- Go'el. You are Go'el, son of Durotan - rightful chieftain of the Frostwolves. This day, grandson - you are the great joy of my heart.
+[242207753] = [===[Ґо'ел. Ти — Ґо'ел, син Дуротана — законний вождь Морозних Вовків. Сьогодні, онуку, ти — моя найбільша втіха.]===],
+-- Grandson, will you... Will you tell Garrosh what you have told me about his father?
+[329071927] = [===[Любий, ти... Можеш розказати Ґаррошу те, що розповів мені про його батька?]===],
+-- I have been expecting you, young one. Come closer - my eyes are not as sharp as they once were.
+[1140916468] = [===[Я чекала на тебе, юначе. Підійди ближче — мій зір вже не той, що колись.]===],
+-- I see that you hold the Doomhammer. Have all of our greatest heroes fallen, grandson?
+[2988186500] = [===[Я бачу, що Молот Згуби у тебе. Невже всі наші великі герої померли?]===],
+-- There is no doubt - you are the heir of Durotan... my grandson. Draka told me she was with child before she and your father left our world, but I never dared dream that they would survive...
+[1180517478] = [===[Так, без сумніву, ти нащадок Дуротана... ти мій онук. Драка казала мені, що чекає дитину, перш ніж вони з твоїм батьком покинули наш світ. Але я вже й не сподівалася, що вони вижили...]===],
+-- Thrall? You've been a slave only to the past, grandson! But no more! When last I saw him, Durotan told me the name he would give his unborn son... He was... so proud...
+[2248688719] = [===[Тралл? Ні, ти більше не раб, онучку! Коли я востаннє бачила Дуротана, він сказав мені, яке ім'я дасть своєму синові... Він був... такий гордий...]===],
+-- What of Grommash? What of Hellscream?
+[1526302775] = [===[А як же Ґроммаш? Що сталось з Пеклокриком?]===],
+-- Yes, you move like my son. You have his broad shoulders - ahh, and your mother's fierce eyes.
+[84539802] = [===[Так, ти рухаєшся, як мій син. У тебе такі ж широкі плечі... ох, а очі такі ж пронизливі, як у твоєї матері.]===],
+},
+["Grom Hellscream"] = {
+-- NOOOO!
+[1443793092] = [===[НІІІ!!]===],
+-- The demon's fire has burnt out in my veins. I have... freed myself.
+[3805996974] = [===[Демонічний вогонь в моїх жилах... він згас. Я... звільнив себе від нього.]===],
+-- Thrall... The blood haze has lifted.
+[4141069632] = [===[Тралл... Кривава імла... розвіялася.]===],
+},
+["Gurgthock"] = { "Ґурґток",
+-- <name> has been defeated!
+[2816320712] = [===[{ім'я:н} зазнає поразки!#<name> has]===],
+-- <name> has defeated Brokentoe!
+[4234154820] = [===[{ім'я:н} перемагає Клишонога!#<name> has defeated]===],
+-- <name> has defeated the hero of the Warmaul, Mogor! All hail <name>!
+[2860616732] = [===[І {ім'я:н} перемагає героя Бойового Молота, Моґора! Слава {ім'я:д}!#All hail <name>!]===],
+-- <name> is victorious once more!
+[73956466] = [===[{ім'я:н} знову перемагає!#<name> is victorious]===],
+-- <name> went down like a sack of orc skulls!
+[274813040] = [===[І {ім'я:н} падає, як мішок з... черепами!#<name> went]===],
+-- All that's left of <name> is a red stain on the floor!
+[148033406] = [===[Від {ім'я:р} лишилася тільки червона калюжа!#of <name> is]===],
+-- For the first time in the Ring of Blood's history, Mogor has chosen to exercise his right of battle! On this wartorn ground, <name> will face Mogor, hero of the Warmaul!
+[3828505599] = [===[Вперше в історії Кільця Крові Моґор скористався своїм правом на поєдинок! На цій просякнутій кров'ю землі {ім'я:н} зіткнеться в бою з Моґором, героєм Бойового Молота!#ground, <name> will]===],
+-- From parts unknown: Skra'gath! Can <name> possibly survive the onslaught of void energies?
+[3068458860] = [===[З невідомих земель: Скра'ґат! Чи виживе {ім'я:н} під натиском сил порожнечі?#Can <name> possibly]===],
+-- Get in the Ring of Blood, <name>. The fight is about to start!
+[238797763] = [===[Заходь в Кільце Крові, {ім'я:к}. Бій скоро розпочнеться!#Blood, <name>.]===],
+-- Hailing from the mountains of Blade's Edge comes Rokdar the Sundered Lord! <name> is in for the fight of <his/her> life.
+[2222309070] = [===[Прямо з Лезокраїх гір, зустрічайте, Рокдар, Розколотий Повелитель! {ім'я:н} готується до найважчої битви в {стать:його:її} житті.#Lord! <name> is#fight of <his/her> life]===],
+-- Mogor has challenged you. You have to accept! Get in the ring if you are ready to fight.
+[773980745] = [===[Моґор кинув тобі виклик. І ти маєш його прийняти! Йди на ринг і готуйся до бою.]===],
+-- The battle is about to begin! <name> versus the ferocious clefthoof, Brokentoe!
+[1050530907] = [===[Бій ось-ось розпочнеться! {ім'я:н} проти лютого копитня, Клишонога!#begin! <name> versus]===],
+-- The battle is about to begin! The unmerciful Murkblood twins versus <name>!
+[3807743494] = [===[Бій ось-ось розпочнеться! Невблаганні близнюки з племені Хмурокрових проти {ім'я:р}!#versus <name>!]===],
+-- This is the moment we've all been waiting for! The Warmaul champion is about to make his first showing at the Ring of Blood in weeks! Will <name> go down in defeat as easily as the champion's other opponents? We shall see...
+[1075531593] = [===[Це те, на що всі ми чекали! Чемпіон Бойового Молота ось-ось з'явиться на Кільці Крові, вперше за довгий час! Чи поляже {ім'я:н} так само легко, як і всі минулі суперники чемпіона? Скоро ми це побачимо...#Will <name> go]===],
+-- Unbelievable! <name> has defeated the Murkblood twins!
+[3281142414] = [===[Неймовірно! {ім'я:н} перемагає близнюків з племені Хмурокрових!#Unbelievable! <name> has]===],
+["!code"] = {
+[".-hsbndd"] = 2816320712,
+[".-hsddbe"] = 4234154820,
+[".-hsddtehooftewlmralhl.-"] = 2860616732,
+[".-isvsoeme"] = 73956466,
+[".-wtdnleskofocss"] = 274813040,
+["altsltof.-isrdsnontefr"] = 148033406,
+["frteftteintergofbshymrhscntoeehsrtofbeon"] = 3828505599,
+["fmpsunshcn.-pyseteotofvdes"] = 3068458860,
+["gtintergofbd.-teftisattost"] = 238797763,
+["hgfmtemsofbseecsrrtesdld.-isinfrteftofh.le"] = 2222309070,
+["tebeisattobn.-vstefscfbe"] = 1050530907,
+["tebeisattobnteulmdtsvs.-"] = 3807743494,
+["tsistemtwealbnwgfrtewlcnisattomehsftsgat"] = 1075531593,
+["ue.-hsddtemdts"] = 3281142414,
+},
+},
+["Gurok the Usurper"] = { "Ґурок Узурпатор",
+-- WHO DARES CALL GUROK FROM THE UNDERNEATH?
+[3785501809] = [===[ХТО СМІЄ КЛИКАТИ ҐУРОКА З ГЛИБИН?]===],
+},
+["Ha'lei"] = { "Га'лей",
+-- % giggles.
+[1443196901] = [===[% сміється.]===],
+-- % tugs on Clarissa's robe.
+[3507793163] = [===[% смикає за Клариссу за сукню.]===],
+-- Don't cry, Mommy. Greatfather says not to worry.
+[589998429] = [===[Не плач, матусю. Дідусь каже, що не варто хвилюватися.]===],
+-- I will, Greatfather.
+[496151904] = [===[Добре, дідусю.]===],
+-- I'll tell her, Greatfather.
+[1008663395] = [===[Я скажу їй, дідусю.]===],
+-- Mommy, Greatfather says everything will be ok.
+[317958273] = [===[Мамо, дідусь каже, що все буде добре.]===],
+-- Mommy, Greatfather told me that he will watch over us and make sure we're ok.
+[416738575] = [===[Мамо, дідусь сказав мені, що буде оберігати та захищати нас.]===],
+-- Ok!
+[2887755178] = [===[Добре!]===],
+-- You promise?
+[243074810] = [===[Обіцяєш?]===],
+},
+["Haggard War Veteran"] = { "виснажений ветеран",
+-- Khadgar himself is showing you around?  You must have made a good impression, <name>.
+[1936647128] = [===[Сам Кадґар проводить тобі екскурсію містом? Тобі, певно, вдалось його зацікавити, {ім'я:к}.#impression, <name>.]===],
+["!code"] = {
+["krhfissgyuadyumthemegdin.-"] = 1936647128,
+},
+},
+["Harold Lane"] = { "Гарольд Лейн",
+-- %s begins to whistle a tune, but then stops abruptly and moans.
+[4206422212] = [===[%s починає насвистувати мелодію, але потім різко зупиняється і стогне.]===],
+-- %s groans in pain.
+[3519073848] = [===[%s стогне від болю.]===],
+-- %s looks at his friends and then grunts painfully.
+[1379785700] = [===[%s дивиться на своїх друзів, а потім болісно стогне.]===],
+-- %s wakes himself up snoring.
+[2166109840] = [===[%s прокидається від власного хропіння.]===],
+-- %s winces when he touches the tender area around his scratch.
+[2474826080] = [===[%s здригається, коли торкається своєї подряпини.]===],
+-- Hemet?  Fitz?
+[2964688553] = [===[Гемет? Грег?]===],
+-- Oh good, I was beginning to worry.
+[2812677701] = [===[Ох, добре, я вже починав хвилюватися.]===],
+-- Shifting, %s moans from the pain of his thorn scratch.
+[3938821015] = [===[%s здригається та стогне від болю, спричиненого подряпиною.]===],
+-- Uh... sure thing, Gankly.  Just...<cough>... wait right there.  <Cough>  Guys?
+[1563580005] = [===[Е-е... звісно, Ґанклі. Зачекай... <кашляє>... хвильку. <кашляє> Хлопці?]===],
+-- Um... guys?
+[3228782965] = [===[Ем... хлопці?]===],
+-- What's going on?!
+[362044455] = [===[Що відбувається?!]===],
+["!code"] = {
+["uhsetggyjtwtrttegs"] = 1563580005,
+},
+},
+["Hemet Nesingwary"] = { "Гемет Ернінґвей",
+-- Look out, Fitz, they're coming right for us!
+[1064460775] = [===[Дивись, Грег, вони йдуть прямо на нас!]===],
+-- Uh oh, those stags don't look pleased with us!
+[441192153] = [===[Ой-ой, ці талбуки, здається, чимось незадоволені!]===],
+},
+["Isla Starmane"] = { "Ісла Зоряна Грива",
+-- <cough> <cough> Damsel in distress over here!
+[3424662546] = [===[<кхе> <кхе> Леді в біді! Прямо тут!]===],
+-- Alright, let's do this!
+[1884461872] = [===[Гаразд, вперед!]===],
+-- Don't leave me in here!  Cause if you do, I will find you...
+[2439451127] = [===[Не залишай мене тут! Бо якщо залишиш, я знайду тебе...]===],
+-- Hello?  Help?
+[3378047616] = [===[Привіт? Допоможеш?]===],
+-- Ok, I think I can make it on my own from here.  Thank you so much for breaking me out of there!
+[3588508545] = [===[Гаразд, думаю, далі я дійду сама. Дуже дякую, що {стать:допоміг:допомогла} мені вибратися звідти!]===],
+-- Ok, let's get out of here!
+[3689078413] = [===[Гаразд, забираймось звідси!]===],
+-- When you get a chance do you think you could let me out of here?
+[2525306205] = [===[Як буде час, може допоможеш мені втекти звідси?]===],
+-- You sure you're ready?  Take a moment.
+[2087541501] = [===[Ти точно {стать:готовий:готова}? Не квапся.]===],
+["!code"] = {
+["dlindsorhe"] = 3424662546,
+},
+},
+["Iz'zard"] = {
+-- Be mindful of what you say, this one's being shown around by Khadgar's pet.
+[4040897455] = [===[Стеж за своїми словами, там розгулює улюбленець Кадґара.]===],
+},
+["Khadgar"] = { "Кадґар",
+-- Do not burden A'dal with mundane questions, <race>.  This being's will is all that keeps our enemies from crushing this city.
+[355936373] = [===[Не турбуй А'дала своїми банальними питаннями, {раса:к}. Воля цієї істоти — це єдине, що утримує наших ворогів від знищення цього міста.#questions, <race>.]===],
+-- Show our guest around Shattrath, will you?  Keep an eye out for pickpockets in the Lower City.
+[3162469201] = [===[Покажи {стать:нашому гостю:нашій гості} Шаттрат, добре? І остерігайтесь кишенькових злодіїв в Нижньому Місті.]===],
+["!code"] = {
+["dontbnalwhmeqs..tsbswlisalttksoresfmcgtscy"] = 355936373,
+},
+},
+["Khadgar's Servant"] = { "слуга Кадґара",
+-- As the naaru approached him, Voren'thal kneeled before him and uttered the following words: "I've seen you in a vision, naaru. My race's only hope for survival lies with you. My followers and I are here to serve you."
+[412670834] = [===[Коли наару наблизився до нього, Ворен'тал впав на коліна і промовив наступні слова: «Я бачив тебе у видінні, наару. Ти — єдина надія на виживання мого народу. Ми з моїми послідовниками прийшли, щоб служити тобі».]===],
+-- As the regiment of blood elves crossed this very bridge, the Aldor's exarchs and vindicators lined up to defend the Terrace of Light.  But then the unexpected happened.
+[2977586662] = [===[Коли загін ельфів крові проходив через цей міст, екзархи та захисники Алдорів вишикувалися, щоб захищати терасу Світла. Але тоді сталося те, чого ніхто не очікував.]===],
+-- Follow me, stranger.  This won't take long.
+[238453341] = [===[Слідуй за мною. Це не займе багато часу.]===],
+-- Good luck stranger, and welcome to Shattrath City.
+[4003798801] = [===[Нехай щастить, {стать:мандрівниче:мандрівнице}, і ласкаво просимо до Шаттрату.]===],
+-- It wouldn't be long, however, before the city came under attack once again.  This time, the attack came from Illidan's armies. A large regiment of blood elves had been sent by Illidan's ally, Kael'thas Sunstrider, to lay waste to the city.
+[354228476] = [===[Однак незабаром місто знову зазнало нападу. Цього разу це були війська Іллідана. Великий загін ельфів крові був посланий союзником Іллідана, Кель'тасом Сонячним Блукачем, щоб знищити місто.]===],
+-- Khadgar should be ready to see you again.  Just remember that to serve the Sha'tar you will most likely have to ally with the Aldor or the Scryers. And seeking the favor of one group will cause the others' dislike.
+[2730140558] = [===[Думаю, Кадґар вже готовий знову зустрітися з тобою. Просто пам'ятай, що для служіння Ша'тар тобі, швидше за все, доведеться укласти союз з Алдорами або Провидцями. Але здобуваючи прихильність однієї фракції ти будеш погіршувати відносини з іншою.]===],
+-- Let us go into the Lower City.  I will warn you that as one of the only safe havens in Outland, Shattrath has attracted droves of refugees from all wars, current and past.
+[1404743070] = [===[Ходімо до Нижнього Міста. Але попереджаю, що як одне з небагатьох безпечних місць у Позамежжі, Шаттрат прихистив багато біженців з усіх воєн, як минулих, так і теперішніх.]===],
+-- Many of the priesthood had been slain by the same magisters who now vowed to serve the naaru.  They were not happy to share the city with their former enemies.
+[973656338] = [===[Багато дренейських священників полягло від рук тих самих магістрів, які тепер поклялися служити наару. Їм не хотілося ділити місто зі своїми колишніми ворогами.]===],
+-- Shattrath was once the draenei capital of this world. Its name means "dwelling of light."
+[3304252208] = [===[Шаттрат колись був столицею дренеїв цього світу. Його назва означає "оселя світла".]===],
+-- Such is their animosity that they vie for the honor of being sent to assist the naaru there. Each day, that decision is made here by A'dal.  The armies gather here to receive A'dal's blessing before heading to Shadowmoon.
+[412035521] = [===[Їхня ворожнеча така велика, що вони змагаються за почесне право допомогти наару в долині. Кожного дня це рішення приймається тут А'далом. Війська збираються, щоб отримати благословення А'дала перед тим, як вирушити в долину Тінистого Місяця.]===],
+-- The Aldor are followers of the Light and forgiveness and redemption are values they understand. However, they found hard to forget the deeds of the blood elves while under Kael's command.
+[2128241608] = [===[Алдори — це послідовники Світла, і прощення та спокута їм не чужі. Однак, їм було важко забути вчинки ельфів крові під командуванням Келя.]===],
+-- The Aldor's most holy temple and its surrounding dwellings lie on the terrace above.  As a holy site, only the initiated are welcome inside.
+[1278595936] = [===[Найсвященніший храм Алдорів та їхні помешкання розташовані на терасі, що нагорі. Туди, як і в будь-яке священне місце, допускають тільки тих, хто пройшов посвяту в Алдори.]===],
+-- The Sha'tar, or "born from light" are the naaru that came to Outland to fight the demons of the Burning Legion.
+[1975039967] = [===[Ша'тар, або "народжені зі світла", це наару, які прийшли до Позамежжя, щоб боротися з демонами Палаючого Легіону.]===],
+-- The attacks against Shattrath continued, but the city did not fall, as you can see. On the contrary, the naaru known as Xi'ri led a successful incursion into Shadowmoon Valley - Illidan's doorstep.
+[4035758966] = [===[Атаки на Шаттрат продовжуються, але місто не впало, як бачите. Навпаки, наару, на ім'я Зі'рі, успішно проник в долину Тінистого Місяця — на самій поріг до Іллідана.]===],
+-- The blood elves laid down their weapons in front of the city's defenders; their leader, a blood elf elder known as Voren'thal, stormed into the Terrace of Light and demanded to speak to A'dal.
+[343245555] = [===[Ельфи крові склали зброю перед захисниками міста, а їхній лідер, старійшина ельфів крові на ім'я Ворен'тал, увірвався на терасу Світла і вимагав розмови з А'далом.]===],
+-- The city was left in ruins and darkness... until the Sha'tar arrived.
+[4063402784] = [===[Місто лежало у руїнах та темряві... до приходу Ша'тар.]===],
+-- The defection of Voren'thal and his followers was the largest loss ever incurred by Kael's forces. And these weren't just any blood elves.  Many of the best and brightest amongst Kael's scholars and magisters had been swayed by Voren'thal's influence.
+[12433733] = [===[Зрада Ворен'тала та його послідовників стала найбільшою втратою, якої зазнали сили Келя. І це були не прості ельфи крові. Багато найкращих вчених та магістрів Келя пішли з Ворен'талом.]===],
+-- The naaru accepted the defectors, who would be known as the Scryers; their dwelling lies in the platform above.  Only those initiated with the Scryers are allowed there.
+[1911405235] = [===[Наару прийняли відступників, яких стали називати Провидцями. Вони мешкають на цьому ярусі. Туди можуть потрапити лише ті, хто поклявся у вірності Провидцям.]===],
+-- The priesthood, known as the Aldor, quickly regained its strength as word spread that the naaru had returned and reconstruction soon began.  The ruined temple is now used as an infirmary for injured refugees.
+[3036491468] = [===[Дренейські священники, відомі як Алдори, швидко відновили свої сили коли поширилася звістка про повернення наару, і невдовзі розпочалася відбудова міста. Руїни храму тепер використовуються як лазарет для поранених біженців.]===],
+-- There he continues to wage war on Illidan with the assistance of the Aldor and the Scryers.  The two factions have not given up on their old feuds, though.
+[843365368] = [===[Там він продовжує вести війну проти Ілліданом за підтримки Алдорів та Провидців. Проте, самі ці фракції так і не забули про свою ворожнечу.]===],
+-- They were drawn to the ruins of Shattrath City where a small remnant of the draenei priesthood conducted its rites inside a ruined temple on this very spot.
+[594486705] = [===[Їх привабили руїни міста Шаттрат, де невелика група дренейських священників проводила свої обряди всередині зруйнованого храму на цьому самому місці.]===],
+-- When the Burning Legion turned the orcs against the draenei, the fiercest battle was fought here. The draenei fought tooth and nail, but in the end the city fell.
+[1874068242] = [===[Коли Палаючий Легіон обернув орків проти дренеїв, тут відбулася найкривавіша битва. Дренеї билися до останку, але врешті-решт місто впало.]===],
+},
+["Kristen Dipswitch"] = { "Крістен Перемикачка",
+-- Ack!  Somebody help me!
+[11480307] = [===[Ой! Хто-небудь, допоможіть!]===],
+-- Hi, Harold.  I have your skins!
+[2566040657] = [===[Привіт, Гарольде. Я принесла шкури!]===],
+},
+["Kurenai Captive"] = { "куренайський полонений",
+-- Farewell, stranger. Your heroics will be remembered by my people. Now, hurry to Telaar!
+[4148598814] = [===[Прощавай, {стать:незнайомцю:незнайомко}. Мій народ пам'ятатиме твої героїчні вчинки. А тепер поспішай до Телаара!]===],
+-- It's an ambush! Defend yourselves!
+[2786035536] = [===[Це засада!]===],
+-- Up ahead is the road to Telaar. We will split up when we reach the fork as they will surely send more Murkblood after us. Hopefully one of us makes it back to Telaar alive.
+[2101267871] = [===[Попереду дорога до Телаара. Ми розділимося на перехресті, адже за нами обов'язково пошлють ще більше Хмурокрових. Сподіваюся, хтось із нас повернеться до Телаара живим.]===],
+-- We are surrounded!
+[2656908362] = [===[Ми оточенні!]===],
+-- We must leave before more are alerted.
+[3824663998] = [===[Ми маємо йти, поки не підняли тривогу.]===],
+},
+["Luanga the Imprisoner"] = { "Луанґа Ув'язнювач",
+-- Skywing, I will free you from your curse over my dead body!
+[1720019307] = [===[Небокрил, я звільню тебе від прокляття тільки через свій труп!]===],
+},
+["Lump"] = { "Брил",
+-- In Nagrand, food hunt ogre!
+[1863279927] = [===[У Наґранді їжа полювати на огр!]===],
+-- OK, OK! Lump give up!
+[2682081641] = [===[Добре, добре! Брил здаватись!]===],
+-- You taste good with maybe a little salt and pepper.
+[102518390] = [===[Ти смакувати добре з дрібка сіль і перець.]===],
+},
+["Malukaz"] = { "Малуказ",
+-- %s dons his wolf-fur vestments.
+[3362381774] = [===[%s надягає вбрання з вовчої шкури.]===],
+-- But we have returned, spirit! We have returned to honor you again. Favor us with your presence once more.
+[4247446213] = [===[Але ми повернулися, духу! Ми повернулися, щоб знову вшанувати тебе. Змилуйся над нами та явись нам знову!]===],
+-- Long ago, you were a companion to my people. We gave ourselves to evil and you were forgotten.
+[903260656] = [===[Ти давно був супутником мого народу. Та ми віддали себе злу і забули про тебе.]===],
+-- May our bond with you never be broken again, spirit.
+[527161896] = [===[Нехай наш з тобою зв'язок ніколи більше не буде розірваний.]===],
+-- We have done it! Thrall would be proud.
+[2697020827] = [===[Ми зробили це! Тралл пишався б нами.]===],
+-- Wolf spirit of the forest, hear me!
+[3973561668] = [===[Вовчий духу лісу, почуй мене!]===],
+},
+["Mannoroth"] = {
+-- A worthy effort, but futile.
+[889503915] = [===[Гідна спроба, але марна.]===],
+-- His blood is mine, as is your whole misbegotten race.
+[3558290011] = [===[Його кров — моя. Як і ваша вся недолуга раса.]===],
+-- So predictable. I knew you would come. And I see you've brought the mighty Hellscream.
+[3258182692] = [===[Так передбачувано. Я знав, що ти прийдеш. І бачу, що ти привів із собою могутнього Пеклокрика.]===],
+-- The boy believed you could be saved, but he didn't know what burns within your soul when in your heart, you know we are the same.
+[2321064507] = [===[Цей хлопець вірив, що тебе можна врятувати, але він не знав, що за вогонь палає у твоїх жилах. В глибині душі ти знаєш, що ми однакові.]===],
+},
+["Matron Drakia"] = { "матрона Дракія",
+-- Greatmother, Garrosh has lost his heart. We are lost without you.
+[4222523304] = [===[Праматір, Ґаррош втратив своє серце. Без вас ми пропадемо.]===],
+-- Greatmother, is there anything I can do?
+[1394653004] = [===[Праматір, чи можу я якось допомогти?]===],
+-- Greatmother, please drink this water.
+[4124889689] = [===[Праматір, прошу, випийте це.]===],
+-- I will do my best to take care of the children, Greatmother.
+[4067012899] = [===[Я зроблю все можливе, щоб подбати про дітей, праматір.]===],
+},
+["Mogor"] = {
+-- Dat was poop! Mogor could put up much better fight den dat!
+[2375767012] = [===[Це було лайно! Моґор битись сильно краще!]===],
+-- Mogor not impressed! Skra'gath wuz made of da air and shadow! Soft like da squishy orcies!
+[1440763267] = [===[Моґор не вражений! Скра'ґат був зроблений з повітря і тіні! Слабкий, як ті м'які орки!]===],
+-- No more chances! Now you pay da ogre!
+[3560480872] = [===[Ну все! Тепер тобі кінець!]===],
+-- No more nice ogre! You hurt Mogor!!
+[2935771771] = [===[Ти догратися! Тепер Моґор злий!]===],
+-- Now you face da true champion! I give you chance to run away little one. Run away now before Mogor decim... destyor... Run away before Mogor KILL!
+[1229438619] = [===[Тепер тебе бити справжній чемпіон! Я дати тобі шанс тікати, маля. Тікай, поки Моґор не плундр... не руйно... Тікай, поки Моґор не ВБИВАТИ!]===],
+-- WUT!? UNPOSSIBLE!! You fight Mogor now! Mogor destroy!
+[3252817378] = [===[ШО!? НЕ МОЖЛИВО!! Ти зараз битися з Моґор! Моґор нищити!]===],
+},
+["Murkblood Twin"] = { "близнюк з племені Хмурокрових",
+-- Blue brothers reign supreme!
+[1840069280] = [===[Братів Блакиті не спинити!]===],
+},
+["Ramdor the Mad"] = { "Рамдор Божевільний",
+-- %s rummages through the bones.
+[2613547789] = [===[%s риється в кістках.]===],
+-- And now to do what I should have done a hundred years ago.
+[2226805722] = [===[І тепер я зроблю те, що мав зробити сто років тому.]===],
+-- Be silent! Damn you, spirits!
+[1701370528] = [===[Замовкніть! Кляті духи!]===],
+-- I broke a covenant? I BROKE A COVENANT? What about that fool exarch and his avatar?
+[2203654015] = [===[Я порушив угоду? Я ПОРУШИВ УГОДУ? А як щодо того дурного екзарха та його аватара?]===],
+-- I'll show them... I'll show them all!
+[1342376500] = [===[Я їм покажу... Я всім їм покажу!]===],
+-- Never again...
+[1916759602] = [===[Ніколи знову...]===],
+-- No, spirit, I am afraid that they are all trapped inside - FOREVER! Now leave me be...
+[1098374866] = [===[Ні, дух, боюся, що вони усі застрягли всередині. НАЗАВЖДИ! А тепер облиш мене...]===],
+-- The dead are not supposed to speak. Now be silent!
+[2411027981] = [===[Мертві не повинні говорити. Замовкни!]===],
+-- Throw me out of the priory, will they?
+[3771350774] = [===[Виженуть мене з монастиря, еге ж?]===],
+-- Why? WHY! Why was I "gifted" such a burden?
+[3077035066] = [===[Чому? ЧОМУ! Чому я був "обдарований" таким тягарем?]===],
+},
+["Reanimated Exarch"] = { "воскреслий екзарх",
+-- You have brought me back too soon! I am weak yet... What is this! Who... It matters not! DIE!
+[467837350] = [===[Ви повернули мене надто рано! Я ще слабкий... Що це! Хто... Це неважливо! ПОМРИ!]===],
+},
+["Rokdar the Sundered Lord"] = { "Рокдар Розколотий Повелитель",
+-- ROKDAR SMASH PUNY <name>!
+[1738172158] = [===[РОКДАР РОЗЧАВИТИ {ім'я:н}!#PUNY <name>!]===],
+["!code"] = {
+["rrshpy.-"] = 1738172158,
+},
+},
+["Scryer Arcanist"] = {
+-- We're rather selective of who we befriend, <name>. You think you have what it takes?
+[692277156] = [===[Ми не товаришуємо аби з ким, {ім'я:к}. Думаєш, в тобі є те, що нам потрібно?#befriend, <name>.]===],
+["!code"] = {
+["werrseofwowebd.-yutkyuhewtitts"] = 692277156,
+},
+},
+["Seth"] = { "Сет",
+-- Coming, momma!
+[3528144014] = [===[Йду, мамо!]===],
+-- Don't cry mommy.  I'm right here, see?
+[408720943] = [===[Не плач, матусю. Я тут, бачиш?]===],
+},
+["Sha'nir"] = { "Ша'нір",
+-- A newcomer to Shattrath!  Make sure to drop by later.  We can always use a hand with the injured.
+[1849421078] = [===[Нове обличчя у Шаттраті! Обов'язково заходь потім до нас. Нам завжди потрібна допомога з пораненими.]===],
+-- Drink this, Zahlia.  It is not as potent as I'd hoped, but perhaps it will help.
+[2527639055] = [===[Випий це, Заглія. Воно не таке сильнодійне, як я очікувала, але, можливо, допоможе.]===],
+},
+["Shado 'Fitz' Farstrider"] = { "Горій \"Грег\" Сіра Грива",
+-- %s smiles and sheathes his rifle.
+[2146458071] = [===[%s посміхається і ховає свою рушницю.]===],
+},
+["Skra'gath"] = { "Скра'ґат",
+-- %s absorbs the arcane energy of the attack.
+[79673580] = [===[%s поглинає арканічну енергію атаки.]===],
+-- %s absorbs the fire energy of the attack.
+[1442519166] = [===[%s поглинає вогняну енергію атаки.]===],
+-- %s absorbs the frost energy of the attack.
+[1975920602] = [===[%s поглинає крижану енергію атаки.]===],
+-- %s absorbs the holy energy of the attack.
+[1464325047] = [===[%s поглинає святу енергію атаки.]===],
+-- %s absorbs the nature energy of the attack.
+[4119508864] = [===[%s поглинає природну енергію атаки.]===],
+-- %s absorbs the shadow energy of the attack.
+[3973035223] = [===[%s поглинає тіньову енергію атаки.]===],
+-- Closer... Come closer... See what the void brings!
+[1183814528] = [===[Ближче... Підійди ближче... Подивись, що несе порожнеча!]===],
+},
+["Skywing"] = { "Небокрил",
+-- Free at last from that horrible curse! Thank you! Please send word to Rilak the Redeemed that I am okay. My mission lies in Skettis. Terokk must be defeated!
+[3421942336] = [===[Нарешті я вільний від цього жахливого прокляття! Дякую! Будь ласка, передай Рілаку Визволеному, що зі мною все гаразд. Мій шлях лежить до Скеттіса. Терокк має бути переможений!]===],
+},
+["Terokkar Wolf Spirit"] = { "тероккарський дух вовка",
+-- %s expresses its approval.
+[1958256898] = [===[%s виражає своє схвалення.]===],
+-- %s howls in response to Malukaz's call.
+[1647986706] = [===[%s виє у відповідь на заклик Малуказа.]===],
+},
+["Thrall"] = {
+-- %s places a hand on Garrosh's shoulder.
+[3535794773] = [===[%s кладе руку на плече Ґарроша.]===],
+-- %s roars in defiance.
+[4019875078] = [===[%s грізно ричить.]===],
+-- At long last, I am home...
+[263532630] = [===[Нарешті, я вдома...]===],
+-- Garrosh, son of Hellscream, your father lived and died as our greatest hero. Honor me by allowing me to show you what your father sacrificed so that we could live free of the demon's grasp.
+[1875893239] = [===[Ґаррош, син Пеклокрика, твій батько жив і помер як наш найвеличніший герой. Дозволь мені показати тобі, чим пожертвував твій батько, щоб ми могли жити вільними від влади демонів.]===],
+-- Greatmother...
+[1742489590] = [===[Праматір...]===],
+-- Greatmother...Am I...
+[2550104857] = [===[Праматір... Я...]===],
+-- He died our greatest hero. It was Grom who freed us all... I was by his side when he struck down Mannoroth and ended the curse forever.
+[3956455322] = [===[Він помер нашим найвеличнішим героєм. Саме Ґром звільнив нас усіх… Я був поруч з ним, коли він знищив Маннорота і назавжди поклав край прокляттю.]===],
+-- Hellscream! Blessed ancestors! He is the mirrored reflection of Grom, Drek'Thar.
+[2154972591] = [===[Пеклокрик! Благословенні предки! Дрек'Таре, він викапаний Ґром.]===],
+-- I am sorry that I did not come sooner, young Hellscream. There is so much that I have to tell you about your father, but first you must tell me where I may find the Greatmother.
+[2426878447] = [===[Мені шкода, що я не з'явився раніше, юний Пеклокрик. Я маю так багато розповісти тобі про твого батька, але спочатку скажи мені, де я можу знайти праматір.]===],
+-- I have dreamed of this moment all my life, Greatmother. 'Till now, all I've had were Orgrim's stories about my parents and their adventures on Draenor. He was my greatest teacher and dearest friend. He died a hero... They all died as heroes - and for all of them, a song of honor remains.
+[2732388184] = [===[Я мріяв про цю мить все своє життя, праматір. Досі я знав лише те, що розповідав Орґрім про моїх батьків та їхні пригоди на Дренорі. Він був моїм найкращим вчителем і найближчим другом. Він помер як герой... Всі вони померли як герої, і кожного з них згадують з пошаною.]===],
+-- I have returned, Greatmother. Garrosh has found his heart and his fury.
+[4133560367] = [===[Я повернувся, праматір. Ґаррош віднайшов своє серце та свою лють.]===],
+-- I thank you, Garrosh. We have much to discuss when I return from my visit with the Greatmother.
+[174878873] = [===[Дякую, Ґарроше. Ми маємо багато що обговорити, коли я повернуся від праматері.]===],
+-- No, old friend. You've freed us all...
+[548480673] = [===[Ні, друже. Ти звільнив всіх нас...]===],
+-- Please excuse me, Greatmother. I will return soon.
+[3327610334] = [===[Пробач, праматір. Я скоро повернуся.]===],
+-- Spirits give me strength! Take from my soul these old wounds and expose them for all to see! Let this child know his father! Let these people know their savior!
+[3591544360] = [===[Духи, дайте мені сили! Візьміть ці старі рани моєї душі та покажіть їх усім! Нехай це дитя дізнається правду про свого батька! Нехай всі дізнаються про свого спасителя!]===],
+-- Tell him? Greatmother, that boy's father died so that all of us could live free of the blood curse. I will tell him nothing. I will show him! Show him and any that would doubt Hellscream's resolve exactly what Grom Hellscream did for all orcs!
+[3011365076] = [===[Розказати йому? Праматір, його батько загинув заради того, щоб всі ми могли жити вільні від кровного прокляття. Ні, я не розкажу йому. Я йому покажу! Покажу йому і всім, хто сумнівається в рішучості Пеклокрика, що саме Ґром Пеклокрик зробив заради всіх орків!]===],
+-- They died honorably, Greatmother.
+[1400039576] = [===[Вони померли з честю, праматір.]===],
+-- They... did not, Greatmother. They were killed shortly after I was born. I never knew them. I was raised as a slave. To this day, I carry the name of Thrall.
+[3365195422] = [===[Вони… ні, праматір. Їх вбили незабаром після мого народження. Я ніколи їх не знав. Я виріс як раб. І до цього дня я ношу ім'я Тралл.]===],
+-- You need not thank me, Garrosh. Your father was a brother to me. I would do anything for you and the Mag'har. I must now return to the Greatmother.
+[364137692] = [===[Ти не мусиш дякувати мені, Ґарроше. Твій батько був братом для мене. Я б зробив все для тебе та Маґ'харів. Тепер я мушу повернутися до праматері.]===],
+},
+["Vision of the Forgotten"] = { "видіння Забутого",
+-- It is a beacon. A remnant of a forgotten era.
+[2223748302] = [===[Це маяк. Залишок забутої епохи.]===],
+-- They lack control... Oshu'gun calls to them...
+[3512562335] = [===[Їм бракує контролю... Ошу'ґун кличе їх...]===],
+-- Turn back, mortal... This is not your battle.
+[2799910506] = [===[Йди звідси, {стать:смертний:смертна}... Це не твоя битва.]===],
+-- We are infinite... eternal.
+[778779047] = [===[Ми нескінченні... вічні.]===],
+-- You cannot stop them...
+[1943938200] = [===[Ти не зупиниш їх...]===],
+},
+["Warmaul Champion"] = { "чемпіон Бойового Молота",
+-- Piece by piece I will tear this challenger apart... PIECE BY PIECE!
+[1416902590] = [===[Я розірву тебе... НА ДРІБНІ ШМАТКИ!]===],
+},
+["Zahlia"] = { "Заглія",
+-- Don't go too far away Seth.  You know mommy doesn't like it when she can't hear you.
+[1100565626] = [===[Не відходь надто далеко, Сет. Ти ж знаєш, мамі не подобається, коли вона не може тебе чути.]===],
+-- I thought I'd never see my son's face again.  Come here, Seth!  Let mom take a look at you!
+[299579514] = [===[Я думала, що більше ніколи не побачу обличчя свого сина. Ходи сюди, Сет! Дай мамі поглянути на тебе!]===],
+-- I... I can see...
+[771967388] = [===[Я... Я бачу...]===],
+},
 }
 
 if addonTable.chat then

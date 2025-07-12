@@ -849,8 +849,8 @@ local npc = { -- [id] = { title, description (optional) }
 [1286] = { "Една Муллбі", "постачальниця торговельних принад", en="Edna Mullby" }, -- Edna Mullby <Trade Supplier>
 [1287] = { "Марда Колодязник", "продавчиня зброї", en="Marda Weller" }, -- Marda Weller <Weapons Merchant>
 [1289] = { "Ґюнтер Колодязник", "продавець зброї", en="Gunther Weller" }, -- Gunther Weller <Weapons Merchant>
-[1291] = { "Карла Грейнджер", "продавчиня тканинних обладунків", en="Carla Granger" }, -- Carla Granger <Cloth Armor Merchant>
-[1292] = { "Меріс Грейнджер", "тренерка шкуродерства", en="Maris Granger" }, -- Maris Granger <Skinning Trainer>
+[1291] = { "Карла Ґрейнджер", "продавчиня тканинних обладунків", en="Carla Granger" }, -- Carla Granger <Cloth Armor Merchant>
+[1292] = { "Меріс Ґрейнджер", "тренерка шкуродерства", en="Maris Granger" }, -- Maris Granger <Skinning Trainer>
 [1294] = { "Олдрік Мур", "продавець кольчужних обладунків", en="Aldric Moore" }, -- Aldric Moore <Mail Armor Merchant>
 [1295] = { "Лара Мур", "продавчиня шкіряних обладунків", en="Lara Moore" }, -- Lara Moore <Leather Armor Merchant>
 [1296] = { "Фелдер Пічник", "зброяр", en="Felder Stover" }, -- Felder Stover <Weaponsmith>
@@ -1460,7 +1460,7 @@ local npc = { -- [id] = { title, description (optional) }
 [2128] = { "Каїн Вогнеспів", "тренер магів", en="Cain Firesong" }, -- Cain Firesong <Mage Trainer>
 [2129] = { "темний священник Берил", "тренер жерців", en="Dark Cleric Beryl" }, -- Dark Cleric Beryl <Priest Trainer>
 [2130] = { "Маріон Призов", "тренерка пройдисвітів", en="Marion Call" }, -- Marion Call <Rogue Trainer>
-[2131] = { "Остін де Мон", "тренер воїнів", en="Austil de Mon" }, -- Austil de Mon <Warrior Trainer>
+[2131] = { "Остіль де Мон", "тренер воїнів", en="Austil de Mon" }, -- Austil de Mon <Warrior Trainer>
 [2132] = { "Каролая Аніс", "алхімік-підмайстер", en="Carolai Anise" }, -- Carolai Anise <Journeyman Alchemist>
 [2134] = { "пані Зимова", "загальні припаси", en="Mrs. Winters" }, -- Mrs. Winters <General Supplies>
 [2135] = { "Ейб Зимовий", "учень броняра", en="Abe Winters" }, -- Abe Winters <Apprentice Armorer>
@@ -2240,7 +2240,7 @@ local npc = { -- [id] = { title, description (optional) }
 [3083] = { "почесний вартовий", en="Honor Guard" }, -- Honor Guard
 [3084] = { "вартовий бескиду", en="Bluffwatcher" }, -- Bluffwatcher
 [3085] = { "Глорія Феммель", "товари для куховарства", en="Gloria Femmel" }, -- Gloria Femmel <Cooking Supplies>
-[3086] = { "Гретхен Фогель", "офіціантка", en="Gretchen Vogel" }, -- Gretchen Vogel <Waitress>
+[3086] = { "Ґретхен Фогель", "офіціантка", en="Gretchen Vogel" }, -- Gretchen Vogel <Waitress>
 [3087] = { "Крістал Бауман", "тренерка куховарства", en="Crystal Boughman" }, -- Crystal Boughman <Cooking Trainer>
 [3088] = { "Генрі Чапал", "вогнепальна зброя", en="Henry Chapal" }, -- Henry Chapal <Gunsmith>
 [3089] = { "Шерман Феммель", "м'ясар", en="Sherman Femmel" }, -- Sherman Femmel <Butcher>
@@ -3846,7 +3846,7 @@ local npc = { -- [id] = { title, description (optional) }
 [5157] = { "Ґімбль Шип'ях", "чародій-експерт", en="Gimble Thistlefuzz" }, -- Gimble Thistlefuzz <Expert Enchanter>
 [5158] = { "Тіллі Шип'ях", "товари для накладання чарів", en="Tilli Thistlefuzz" }, -- Tilli Thistlefuzz <Enchanting Supplies>
 [5159] = { "Деріл Рицин", "тренер куховарства", en="Daryl Riknussun" }, -- Daryl Riknussun <Cooking Trainer>
-[5160] = { "Емрул Рікнуссен", "товари для куховарства", en="Emrul Riknussun" }, -- Emrul Riknussun <Cooking Supplier>
+[5160] = { "Емрул Рицин", "товари для куховарства", en="Emrul Riknussun" }, -- Emrul Riknussun <Cooking Supplier>
 [5161] = { "Хмурун Кам'яне Таавро", "тренер рибальства", en="Grimnur Stonebrand" }, -- Grimnur Stonebrand <Fishing Trainer>
 [5162] = { "Тенсі Бруднопінна", "рибальські принади", en="Tansy Puddlefizz" }, -- Tansy Puddlefizz <Fishing Supplier>
 [5163] = { "Бурбік Зчеповерт", "постачальник торговельних принад", en="Burbik Gearspanner" }, -- Burbik Gearspanner <Trade Supplier>
@@ -4421,7 +4421,7 @@ local npc = { -- [id] = { title, description (optional) }
 [6008] = { "чорнокнижник тінеклятів", en="Shadowsworn Warlock" }, -- Shadowsworn Warlock
 [6009] = { "жахоткач тінеклятів", en="Shadowsworn Dreadweaver" }, -- Shadowsworn Dreadweaver
 [6010] = { "скверногонча", en="Felhound" }, -- Felhound
-[6011] = { "караульний-вартовий скверни", en="Felguard Sentry" }, -- Felguard Sentry
+[6011] = { "вартовий скверни-караульний", en="Felguard Sentry" }, -- Felguard Sentry
 [6012] = { "тотем язика полум'я II" }, -- Flametongue Totem
 [6013] = { "норовливий канюк", en="Wayward Buzzard" }, -- Wayward Buzzard
 [6014] = { "Кси'єра", "тренер жерців", en="X'yera" }, -- X'yera <Priest Trainer>
@@ -5546,7 +5546,7 @@ local npc = { -- [id] = { title, description (optional) }
 [8681] = { "спорядник Ерік", "особливі кравецькі припаси", en="Outfitter Eric" }, -- Outfitter Eric
 [8696] = { "Генрі Штерн", en="Henry Stern" }, -- Henry Stern
 [8716] = { "повелитель жаху", en="dreadlord" }, -- dreadlord
-[8717] = { "гвардієць-вартовий скверни", en="Felguard Elite" }, -- Felguard Elite
+[8717] = { "вартовий скверни-гвардієць", en="Felguard Elite" }, -- Felguard Elite
 [8718] = { "гончак мани", en="Manahound" }, -- Manahound
 [8719] = { "аукціоніст Фітч", en="Auctioneer Fitch" }, -- Auctioneer Fitch
 [8720] = { "аукціоністка Червонка", en="Auctioneer Redmuse" }, -- Auctioneer Redmuse
@@ -7958,7 +7958,7 @@ local npc = { -- [id] = { title, description (optional) }
 [15246] = { "кіразький губитель розуму", en="Qiraji Mindslayer" }, -- Qiraji Mindslayer
 [15247] = { "кіразький губитель мізків", en="Qiraji Brainwasher" }, -- Qiraji Brainwasher
 [15249] = { "кіразька бичувальниця", en="Qiraji Lasher" }, -- Qiraji Lasher
-[15250] = { "кіразький вбивця", en="Qiraji Slayer" }, -- Qiraji Slayer
+[15250] = { "кіразька вбивця", en="Qiraji Slayer" }, -- Qiraji Slayer
 [15252] = { "кіразький чемпіон", en="Qiraji Champion" }, -- Qiraji Champion
 [15260] = { "божевільний дух друїда", en="Demented Druid Spirit" }, -- Demented Druid Spirit
 [15261] = { "тінь душі", en="Spirit Shade" }, -- Spirit Shade
@@ -8217,8 +8217,8 @@ local npc = { -- [id] = { title, description (optional) }
 [15696] = { "рекрут військової кампанії", en="War Effort Recruit" }, -- War Effort Recruit
 [15698] = { "помічник Дідуся Зими", en="Father Winter's Helper" }, -- Father Winter's Helper
 [15699] = { "спокійний механічний єті", en="Tranquil Mechanical Yeti" }, -- Tranquil Mechanical Yeti
-[15700] = { "воєвода Ґорчук", "командир військових постачань", en="Warlord Gorchuk" }, -- Warlord Gorchuk <War Effort Commander>
-[15701] = { "фельдмаршал Снігопад", "командир військових постачань", en="Field Marshal Snowfall" }, -- Field Marshal Snowfall <War Effort Commander>
+[15700] = { "воєвода Ґорчук", "командир військової кампанії", en="Warlord Gorchuk" }, -- Warlord Gorchuk <War Effort Commander>
+[15701] = { "фельдмаршал Снігопад", "командир військової кампанії", en="Field Marshal Snowfall" }, -- Field Marshal Snowfall <War Effort Commander>
 [15702] = { "старша сержантка Тайґа", "військова рекрутерка", en="Senior Sergeant Taiga" }, -- Senior Sergeant Taiga
 [15703] = { "старший сержант Хмурфорд", "військовий рекрутер", en="Senior Sergeant Grimsford" }, -- Senior Sergeant Grimsford
 [15704] = { "старша сержантка Кай'джин", "військова рекрутерка", en="Senior Sergeant Kai'jin" }, -- Senior Sergeant Kai'jin
@@ -8554,7 +8554,7 @@ local npc = { -- [id] = { title, description (optional) }
 [16436] = { "жрець Сріблястого Світанку", "Сріблястий Світанок", en="Argent Dawn Priest" }, -- Argent Dawn Priest <The Argent Dawn>
 [16437] = { "спектральний дух", en="Spectral Spirit" }, -- Spectral Spirit
 [16438] = { "скелетний боєць", en="Skeletal Trooper" }, -- Skeletal Trooper
-[16441] = { "захисник Льодяної Корони", en="Guardian of Icecrown" }, -- Guardian of Icecrown
+[16441] = { "захисник Крижаної Корони", en="Guardian of Icecrown" }, -- Guardian of Icecrown
 [16446] = { "чумний гаргуйль", en="Plagued Gargoyle" }, -- Plagued Gargoyle
 [16447] = { "чумний гуль", en="Plagued Ghoul" }, -- Plagued Ghoul
 [16448] = { "чумна смертогонча", en="Plagued Deathhound" }, -- Plagued Deathhound
