@@ -191,6 +191,8 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Commander Beatrix"] = { "командир Беатрікс",
 -- Enough! I'll suffer no more of your quarreling. The Argent Dawn will aid us in crushing the Scourge underfoot. I'll hear no more of this.
 [2888118517] = [===[Досить! Мені набридли ваші сварки. Сріблястий Світанок допоможе нам розбити Скару. І я не хочу більше цього чути.]===],
+-- Enough! I'll suffer no more of your quarreling. The Argent Dawn will aid us in crushing the Scourge underfoot. I'll hear no more of this.
+[2888118517] = [===[Досить! Мені набридли ваші сварки. Сріблястий Світанок допоможе нам розбити Скару. І я не хочу більше цього чути.]===],
 },
 ["Crowd Pummeler 9-60"] = { "пробійник натовпу 9-60",
 -- Pummel Delivered.
@@ -546,6 +548,8 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3878902674] = [===[Що це!? Це зовсім не дерево! Варта! Варта!]===],
 },
 ["Scarlet Inquisitor Caldoran"] = { "інквізитор Багряного Походу Калдоран",
+-- Give your strength to the crystal, champions!
+[1285079693] = [===[Направте свою силу в кристал, герої!]===],
 -- Give your strength to the crystal, champions!
 [1285079693] = [===[Направте свою силу в кристал, герої!]===],
 },

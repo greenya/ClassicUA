@@ -56,10 +56,6 @@ def collect_chats():
                     if not npc_name_en:
                         npc_name_en = npc_name_from_filename
 
-                if npc_name_en in chats[expansion]:
-                    issues.append(f'[!] Duplicated npc name \"{npc_name_en}\" via {filename}. File skipped.')
-                    continue
-
                 uk_strings_map, uk_strings_issues = utils.get_strings_map_from_xml_file(os.path.join(dirpath, filename))
                 if not uk_strings_map: continue
                 issues.extend(uk_strings_issues)
@@ -90,10 +86,15 @@ def collect_chats():
                     if '<' not in string['en'] and '>' not in string['en']:
                         string['en_code'] = None
 
-                chats[expansion][npc_name_en] = {
-                    'uk'        : npc_name_uk,
-                    'strings'   : sorted(npc_chats, key=lambda s: s['en']),
-                }
+                if npc_name_en not in chats[expansion]:
+                    chats[expansion][npc_name_en] = {
+                        'uk'        : npc_name_uk,
+                        'strings'   : [],
+                    }
+
+                npc_row = chats[expansion][npc_name_en]
+                npc_row['strings'].extend(npc_chats)
+                npc_row['strings'] = sorted(npc_row['strings'], key=lambda s: s['en'])
 
         chats[expansion] = dict(sorted(chats[expansion].items()))
 

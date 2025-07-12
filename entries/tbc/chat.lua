@@ -645,6 +645,8 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3535794773] = [===[%s кладе руку на плече Ґарроша.]===],
 -- %s roars in defiance.
 [4019875078] = [===[%s грізно ричить.]===],
+-- ...uncorrupted!
+[1778638395] = [===[...неосквернений!]===],
 -- At long last, I am home...
 [263532630] = [===[Нарешті, я вдома...]===],
 -- Garrosh, son of Hellscream, your father lived and died as our greatest hero. Honor me by allowing me to show you what your father sacrificed so that we could live free of the demon's grasp.
@@ -665,6 +667,12 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [4133560367] = [===[Я повернувся, праматір. Ґаррош віднайшов своє серце та свою лють.]===],
 -- I thank you, Garrosh. We have much to discuss when I return from my visit with the Greatmother.
 [174878873] = [===[Дякую, Ґарроше. Ми маємо багато що обговорити, коли я повернуся від праматері.]===],
+-- I'll be fine, Eitrigg.  We must begin preparations... I need to go to Outland at once!
+[3820799121] = [===[Я в порядку, Ейтріґ. Ми маємо підготуватись... Я мушу негайно вирушити в Позамежжя!]===],
+-- If he's anything like his father, allying with the Mag'har will mark the dawn of a new age for the Horde.
+[3307125648] = [===[Якщо він хоч трохи схожий на свого батька, союз з Маґ'харами означатиме початок нової ери для Орди.]===],
+-- My people have survived in Outland...
+[3098092720] = [===[Мій народ вижив у Позамежжі...]===],
 -- No, old friend. You've freed us all...
 [548480673] = [===[Ні, друже. Ти звільнив всіх нас...]===],
 -- Please excuse me, Greatmother. I will return soon.
@@ -677,6 +685,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [1400039576] = [===[Вони померли з честю, праматір.]===],
 -- They... did not, Greatmother. They were killed shortly after I was born. I never knew them. I was raised as a slave. To this day, I carry the name of Thrall.
 [3365195422] = [===[Вони… ні, праматір. Їх вбили незабаром після мого народження. Я ніколи їх не знав. Я виріс як раб. І до цього дня я ношу ім'я Тралл.]===],
+-- Unnoticed for years...
+[1609410186] = [===[Непомічений роками...]===],
+-- You are right, Eitrigg.  The timing is unfavorable.  Make sure our best ambassadors are sent as envoys to Hellscream.
+[1832833613] = [===[Ти маєш рацію, Ейтріґ. Час не сприятливий. Переконайся, що наші найкращі посли будуть відправлені до Пеклокрика.]===],
 -- You need not thank me, Garrosh. Your father was a brother to me. I would do anything for you and the Mag'har. I must now return to the Greatmother.
 [364137692] = [===[Ти не мусиш дякувати мені, Ґарроше. Твій батько був братом для мене. Я б зробив все для тебе та Маґ'харів. Тепер я мушу повернутися до праматері.]===],
 },
