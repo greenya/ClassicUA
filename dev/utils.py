@@ -47,23 +47,37 @@ def get_clean_text(text):
 
     return '\n'.join(lines[:last_non_empty_line_idx + 1]) if last_non_empty_line_idx >= 0 else ''
 
-def get_all_strings_from_xml_file(filename) -> list:
-    result = []
+def get_strings_map_from_xml_file(filename) -> map | list:
+    result, issues = {}, []
 
     for s in ElementTree.parse(filename).getroot().findall('./string'):
-        if s.text:
-            t = get_clean_text(s.text)
-            result.append(t)
+        if not s.text: continue
 
-    return result
+        name = s.attrib["name"]
+        text = s.text
 
-def build_strings_list(strings_en: list, strings_uk: list, hash_func: callable = None, code_func: callable = None) -> (list, list):
+        if not name:
+            issues.append(f'[!] {filename} has string without name. Each string must have unique name within the file. String text: "{text}". The string is skipped.')
+            continue
+
+        if name in result:
+            issues.append(f'[!] {filename} has string with duplicated name ("{name}"). This new string is skipped.')
+
+        result[name] = get_clean_text(s.text)
+
+    return result, issues
+
+def build_strings_list(en_strings_map: map, uk_strings_map: list, hash_func: callable = None, code_func: callable = None) -> list | list:
     result, issues = [], []
     all_en_hashes, all_en_codes = [], []
 
-    for i in range(len(strings_uk)):
-        uk = strings_uk[i]
-        en = strings_en[i]
+    for name in uk_strings_map:
+        if name not in en_strings_map:
+            issues.append(f'[!] String name "{name}" is found in UK strings, but not found in EN strings. This string is skipped.')
+            continue
+
+        uk = uk_strings_map[name]
+        en = en_strings_map[name]
 
         if uk == en:
             continue

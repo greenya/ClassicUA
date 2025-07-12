@@ -34,6 +34,13 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Let us leave this place.  I've had enough of these madmen!
 [1938088156] = [===[Давай покинемо це місце. Мене вже дістали ці божевільні!]===],
 },
+["Aldor Anchorite"] = {
+-- Light be with you, <name>. And welcome to Shattrath.
+[3594589136] = [===[Бережи тебе Світло, {ім'я:к}. І ласкаво просимо до Шаттрату.#you, <name>.]===],
+["!code"] = {
+["ltbewhyu.-adwetosh"] = 3594589136,
+},
+},
 ["Aldor Marksman"] = {
 -- ...at least we know my rifle is sighted properly.
 [884689404] = [===[...ну, принаймні я влучив.]===],
@@ -125,6 +132,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- With all due respect, Warchief.  Our enemies would take advantage of your sudden absence if we don't prepare properly.
 [2238905960] = [===[З усією повагою, вождь, та мушу сказати, що наші вороги неодмінно скористаються твоєю відсутністю, якщо ми не підготуємося належним чином.]===],
 },
+["Empoor"] = { "Емпур",
+-- What is the meaning of this?!
+[1315977397] = [===[Що все це означає?!]===],
+},
 ["Explorers' League Researcher"] = { "вчений Ліги дослідників",
 -- I don't think it can top the one time where he told us that he'd heard that Arthas's "cousin's" skeleton was frozen beneath a glacier in Winterspring. I'll never forgive you for that one, Letoll. I mean honestly... Arthas's cousin?
 [3878340519] = [===[Я не думаю, що це може перевершити той випадок, коли він сказав нам, що чув, що скелет "двоюрідного брата" Артаса заморожений під льодовиком у Зимоключі. Ніколи не пробачу тобі це, Летолл. Серйозно? Двоюрідний брат Артаса?]===],
@@ -215,6 +226,14 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Yes, you move like my son. You have his broad shoulders - ahh, and your mother's fierce eyes.
 [84539802] = [===[Так, ти рухаєшся, як мій син. У тебе такі ж широкі плечі... ох, а очі такі ж пронизливі, як у твоєї матері.]===],
 },
+["Grek"] = { "Ґрек",
+-- Grek try!
+[3666011605] = [===[Грек спробує!]===],
+-- Someone come read this wanted poster to Grek.  Grek can't read!
+[50571849] = [===[Хтось, будь ласка, прочитайте це оголошення для Ґрека. Ґрек не вміє читати!]===],
+-- This oil no good for Grek! What Grek look like to you, some weakling in robes?
+[1677232467] = [===[Це масло не годиться для Ґрека! Хто Ґрек по твоєму, якийсь дохляк в мантії?]===],
+},
 ["Grom Hellscream"] = {
 -- NOOOO!
 [1443793092] = [===[НІІІ!!]===],
@@ -301,6 +320,48 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["!code"] = {
 ["krhfissgyuadyumthemegdin.-"] = 1936647128,
 },
+},
+["Harbinger Haronem"] = { "провісник Гаронем",
+-- Again, very nice strutting ladies.
+[2310431882] = [===[Панночки, ваші рухи стегнами не перестають дивувати.]===],
+-- Alright now, let's get those rifles sighted in...
+[4100485604] = [===[Добре, тепер ви маєте прицілитись…]===],
+-- At ease, men.
+[1747741006] = [===[Вільно, хлопці.]===],
+-- Carefully now, we don't need any more mista-
+[3623383354] = [===[Уважно, нам не потрібно більше нещас-]===],
+-- Clearly, this group is not ready for weapons exercises.
+[2489580364] = [===[Вочевидь, ця група поки що не готова до вправ зі зброєю.]===],
+-- Enough messing around! There's a war going on here!
+[2251843050] = [===[Досить бавитись! Ми на війні!]===],
+-- Fall in for some marching practice! Let's see if we can manage to walk without suffering any casualties...
+[3582701481] = [===[Шикуйсь! Подивимось, чи здатні ви марширувати без втрат...]===],
+-- Fall in men! It's time to drill!
+[1300577531] = [===[Хлопці, шикуйсь! Пора тренуватись!]===],
+-- Get into formation and get those guns sighted in!
+[796754018] = [===[Займіть позиції та прицільтесь!]===],
+-- If we can't teach you to shoot, you'll have a career in the cantina to fall back on.
+[2747456305] = [===[Якщо не навчитесь стріляти, раджу вам податись в кабаре.]===],
+-- In fact, let's see some more of that fancy walkin'... Move it!
+[1306438148] = [===[Що ж, давайте ще трохи подивимося на це модельне шоу... Кроком руш!]===],
+-- Now let's give shootin' another try...
+[3448308420] = [===[Тепер спробуємо ще раз стрільбу...]===],
+-- Oh, that was cute...
+[2549934547] = [===[Ох, як це мило...]===],
+-- Soldier...
+[3886072506] = [===[Солдате...]===],
+-- Soup's on, men! Eat up. We've got a long day ahead.
+[599030377] = [===[Суп готовий, хлопці! Їжте. Попереду у нас довгий день.]===],
+-- That was some pretty fancy prancin' ladies!
+[3904344228] = [===[Які елегантні випади, паняночки!]===],
+-- We'll be marching all day if I see any more of that!
+[1226897284] = [===[Якщо я ще раз побачу щось подібне, ми будемо марширувати весь день!]===],
+-- What's this? You've shifted into an incorrect formation!
+[3491708316] = [===[Що це таке? Це неправильний стрій!]===],
+-- You DO know that marksmen are issued blanks for practice drills, right?
+[1021002412] = [===[Ти ж знаєш, що стрільцям видають холості патрони для тренувань?]===],
+-- You are only to use the staggered formation just before atta-
+[2040562207] = [===[Таке шикування слід використовувати лише безпосередньо перед атак-]===],
 },
 ["Harold Lane"] = { "Гарольд Лейн",
 -- %s begins to whistle a tune, but then stops abruptly and moans.

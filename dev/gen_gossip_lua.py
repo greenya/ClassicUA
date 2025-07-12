@@ -37,19 +37,22 @@ def collect_gossip():
                         issues.append(f'[!] Duplicated npc #{npc_id} via {filename}. File skipped.')
                         continue
 
-                strings_uk = utils.get_all_strings_from_xml_file(os.path.join(dirpath, filename))
-                if not strings_uk:
-                    continue
+                uk_strings_map, uk_strings_issues = utils.get_strings_map_from_xml_file(os.path.join(dirpath, filename))
+                if not uk_strings_map: continue
+                issues.extend(uk_strings_issues)
 
                 filename_sub_path = f'{dirpath}/{filename}'.replace(gossip_path_uk, '').replace(filename, '')
                 filename_sub_path = '' if filename_sub_path == '/' else filename_sub_path
-                strings_en = utils.get_all_strings_from_xml_file(os.path.join(gossip_path_en, filename_sub_path, filename))
+                en_strings_map, en_strings_issues = utils.get_strings_map_from_xml_file(os.path.join(gossip_path_en, filename_sub_path, filename))
+                if not en_strings_map: continue
+                issues.extend(en_strings_issues)
 
-                if len(strings_uk) != len(strings_en):
-                    issues.append(f'[!] Different number of en->uk strings for {filename}. File skipped.')
-                    continue
-
-                npc_gossip_strings, npc_gossip_issues = utils.build_strings_list(strings_en, strings_uk, hash_func=utils.get_text_hash, code_func=utils.get_text_code)
+                npc_gossip_strings, npc_gossip_issues = utils.build_strings_list(
+                    en_strings_map  = en_strings_map,
+                    uk_strings_map  = uk_strings_map,
+                    hash_func       = utils.get_text_hash,
+                    code_func       = utils.get_text_code,
+                )
                 issues.extend(npc_gossip_issues)
 
                 if not npc_gossip_strings:

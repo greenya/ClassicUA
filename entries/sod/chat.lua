@@ -82,6 +82,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- To me, champions! I'll shield you!
 [3230068312] = [===[До мене, чемпіони! Я захищу вас!]===],
 },
+["Argent Guard"] = { "вартовий Сріблястого Світанку",
+-- AACHOOOO!!
+[1616084186] = [===[ААПЧХИ!!]===],
+},
 ["Arkonos the Cursed"] = { "Арконос Проклятий",
 -- Oh so the whelp survived? And would you look at that? He's found a new master to follow like the good little dog he is. Fortunately for you, I have no time to waste on distractions like yourselves. Run along now, lest my pets find you. They are ever so hungry, you see!
 [3428047295] = [===[О, то цей опецьок вижив? І погляньте на це! Він вже на побігеньках у нового хазяїна. На щастя для вас, у мене немає часу на таких нікчем, як ви. Біжіть звідси, поки мої слуги не знайшли вас. Вони давно не їли свіжу плоть!]===],
@@ -117,6 +121,30 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Back-alley Mugger"] = { "грабіжник з завулка",
 -- Well, well. Looks like we got ourselves some competition. Get 'em boys!
 [245626722] = [===[Так-так-так. Схоже, у нас тут з'явились конкуренти. Хлопці, за роботу!]===],
+},
+["Balnazzar"] = { "Бальназар",
+-- A waste of time.
+[3646792151] = [===[Марна трата часу.]===],
+-- Begone, Thal'kituun.
+[1650669208] = [===[Згинь, Тал'кітуун.]===],
+-- Feel my wrath!
+[2215644364] = [===[Відчуйте мій гнів!]===],
+-- Flee while you can mortal!
+[1716267369] = [===[Тікайте поки можете, смертні!]===],
+-- My domain has only begun. You and this false idol have outlived your usefulness.
+[1065071478] = [===[Моє правління тільки починається. Мені не потрібні більше ні ви, ні ваше безглузде поклоніння.]===],
+-- None will bear witness to your ruin.
+[1328171121] = [===[Ніхто не побачить вашу загибель.]===],
+-- The night beckons!
+[4000938560] = [===[Ніч кличе!]===],
+-- Unwise.
+[2940464724] = [===[Нерозумно.]===],
+-- You dawdling children.
+[3100933614] = [===[Ви нерозумні вилупки.]===],
+-- Your disruptive tendencies have pained me for the last time mortals.
+[3615827612] = [===[Цього разу я покінчу з вами назавжди, смертні.]===],
+-- Your soul is mine!
+[879713163] = [===[Твоя душа належить мені!]===],
 },
 ["Baron Aquanis"] = {
 -- Baron Aquanis's Ice Barrier dissipates.
@@ -183,6 +211,12 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Cut-throat Mugger"] = { "головоріз-грабіжник",
 -- Well, well. Looks like we got ourselves some competition. Get 'em boys!
 [245626722] = [===[Так-так-так. Схоже, у нас тут з'явились конкуренти. Хлопці, за роботу!]===],
+},
+["Dark Rider"] = { "темний вершник",
+-- Delightful.
+[3011384963] = [===[Чарівно.]===],
+-- The hunt begins.
+[3409542744] = [===[Полювання починається.]===],
 },
 ["Dawnwatcher Selgorm"] = {
 -- Denizens of Kalimdor, the dread beast Aku'mai has been slain and Ashenvale has been cleansed of the blight of the Old Gods' influence. Bask in the boon of Blackfathom, and bathe in the cleansing light of the dawn!
@@ -273,6 +307,36 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- This'll be a piece of cake!
 [2236190598] = [===[Ха, раз плюнути!]===],
 },
+["Grand Crusader Caldoran"] = { "верховний лицар Калдоран",
+-- Fortunately his weakness was brought on by your efforts. I suppose I should thank you. Now that we've reclaimed the enclave, we can resume our great work.
+[2424680074] = [===[На щастя, ви доклали руку до його гибелі. Тож я маю подякувати вам. Тепер, коли ми повернули анклав, ми можемо продовжити нашу велику справу.]===],
+-- I expected more.
+[2577886828] = [===[Я очікував більшого.]===],
+-- Nathrezim! I swore upon my life that I would end you, and I am here to uphold my oath.
+[3424180782] = [===[Натрезим! Я поклявся життям, що знищу тебе, і я тут, щоб виконати цю клятву.]===],
+-- Remember the mercy I am showing you. Beatrix, take our "allies" to New Avalon and ensure that they receive adequate accommodation. We will find a use for them.
+[1511570792] = [===[Не забувайте про моє милосердя до вас. Беатрікс, відведи наших "союзників" до Нового Авалону і переконайся, що вони отримають належне помешкання. Ми знайдемо їм застосування.]===],
+-- You do not deserve the opportunity to grovel at my feet. I only wish I could savor this moment a bit longer.
+[3583375251] = [===[Ти не гідний навіть благати прощення в мене. Якби ж я міг ще трохи насолодитися цією миттю.]===],
+},
+["Gregory"] = { "Грегорі",
+-- A symbol of faith, gifted from one with newly discovered purpose...
+[64129775] = [===[Символ віри, подарований тому, хто знайшов нову мету...]===],
+-- Aeonas... no... what have you... done.
+[3170996547] = [===[Еонас... ні... що ж ти... накоїв.]===],
+-- An elixir of fire, created with steady hands and an unsteady mind...
+[2398393856] = [===[Вогняний еліксир, створений міцними руками та нестійким розумом...]===],
+-- And the final ingredient... is you, paladin. "The blood of a would-be hero, unwillingly given, and coldly taken".
+[2013646674] = [===[І останній інгредієнт... це ти, {стать:паладине:паладинко}. "Кров потенційного героя, відібрана холоднокровно".]===],
+-- Grave dust from the resting place of one murdered by those most loved...
+[3445543257] = [===[Пил з могили того, кого вбило кохання...]===],
+-- Let us begin...
+[1597360902] = [===[Розпочнімо...]===],
+-- Silence Aeonas. That is enough. I must concentrate on the ritual.
+[1720406166] = [===[Замовкни, Еонасе. Досить. Я маю зосередитись на ритуалі.]===],
+-- Stand clear my friend. This is what must be done. This mission is bigger than one single mortal. Even one as useful as this.
+[1672459603] = [===[Відійди, друже. Це те, що необхідно зробити. Ця місія важливіша за життя {стать:смертного:смертної}. Навіть {стать:такого корисного, як цей:такої корисної, як ця}.]===],
+},
 ["Harbinger of Sin"] = { "Вісник Гріха",
 -- Come, succumb to the sorrowful dark!
 [3325259986] = [===[Підходьте і підкоріться скорботній темряві!]===],
@@ -310,6 +374,12 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [2714286339] = [===[Не провокуй мій гнів.]===],
 -- Master yourself!
 [4153820886] = [===[Опануй себе!]===],
+},
+["High Commander Beatrix"] = { "верховний командир Беатрікс",
+-- Impossible... the light fades...
+[4258119254] = [===[Неможливо... світло... згасає...]===],
+-- Pathetic. You never stood a chance.
+[1105233784] = [===[Жалюгідно. У вас ніколи не було шансів.]===],
 },
 ["High Tinker Mekkatorque"] = { "Верховний штукар Меккакруть",
 -- Citizens of the great cities of both Gnomeregan and Ironforge, gather round and take heed! This mighty adventurer has done the impossible and ended the threat of Sicco Thermaplugg once and for all and has saved Dun Morogh from a fiery fate! Gather and be inspired, one and all!
@@ -396,6 +466,12 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [1074031385] = [===[Я виповз звідси, сповнений рішучості знайти і врятувати свого сина. Але врешті-решт, мої рани були надто тяжкими. Я помер тут, і тут я повстав, щоб служити Скарі. Все через нього. Через Калдорана...]===],
 -- This is... where it happened. I rushed into the city as quickly as I was able and my heart soared when I saw Liliana and Percival, alive.
 [2835062758] = [===[Це тут... тут все і сталося. Я кинувся у місто так швидко, як тільки зміг, і я радів, коли побачив Ліліану і Персіваля живими.]===],
+},
+["Mason the Echo"] = { "Мейсон Ехо",
+-- Fire!
+[1285734094] = [===[Вогонь!]===],
+-- I'll have to improvise.
+[525829005] = [===[Доведеться імпровізувати.]===],
 },
 ["Nandieb"] = { "Нандіб",
 -- Begone, wretched interloper!
@@ -508,6 +584,18 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [2224067862] = [===[Я...вільний?]===],
 -- Now, about that treasure...
 [444964289] = [===[Отож, щодо того скарбу...]===],
+},
+["Wandering Swordsman"] = { "мандрівний мечник",
+-- Aha, a challenger at last!
+[1363214405] = [===[Нарешті, новий суперник!]===],
+-- Bested again! Next time, I shall not falter...
+[3458410094] = [===[Я знову програв! Наступного разу я не помиляюся...]===],
+-- Farewell, friend. Until next we meet!
+[2394858181] = [===[Прощавай, {стать:друже:подруго}. До наступної зустрічі!]===],
+-- Old friend! What a pleasant surprise seeing you here!
+[110834784] = [===[{стать:Старий друже:Стара подруго}! Яка приємна несподіванка!]===],
+-- Your swordsmanship is quite remarkable. Please, take this as a memento of our duel.
+[3354608146] = [===[Твої навички володіння мечем вражають. Прошу, прийми це на згадку про наш двобій.]===],
 },
 ["Ylanthrius"] = { "Ілантрій",
 -- %s lets out a terrifying roar, momentarily pulling in denizens from other rifts!
