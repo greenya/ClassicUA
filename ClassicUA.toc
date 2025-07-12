@@ -4,4 +4,4 @@
 
 ## Interface: 00000
 ## Title: |cff1177eeClassic|r|cffffdd00UA|r |cFFFF0000(game client not supported)|r
-## Notes: ClassicUA only supports WOW Vanilla, WOW TBC, WOW Wrath and WOW Cata.
+## Notes: ClassicUA only supports WOW Vanilla, TBC, Wrath Cata and Mists.

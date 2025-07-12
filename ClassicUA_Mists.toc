@@ -1,0 +1,18 @@
+## Interface: 50500
+
+## Title: |cff1177eeClassic|r|cffffdd00UA|r
+## Notes: Game localization to Ukrainian language.
+## Author: greenya
+## Version: 6.2
+## SavedVariables: ClassicUA_Options, ClassicUA_DevLog
+## SavedVariablesPerCharacter: ClassicUA_Character_Options
+
+ui\ClassicUA_UISliderTemplateWithLabels.xml
+
+entries\index.xml
+entries\classic\index.xml
+entries\tbc\index.xml
+entries\wrath\index.xml
+entries\cata\index.xml
+
+scripts\index.xml
