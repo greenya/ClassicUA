@@ -92,6 +92,15 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
 
     local prefix = sub_item_depth == 1 and assets.icon_ua_inline .. " " or ""
     local heading = entries.make_entry_text(entry[1], tooltip)
+
+    if utils.tooltip_item_suffix_id(tooltip) then
+        local item_name_en = tooltip:GetItem()
+        local item_suffix_uk = entries.get_item_suffix(item_name_en)
+        if item_suffix_uk then
+            heading = heading .. " " .. item_suffix_uk
+        end
+    end
+
     tooltip:AddLine(prefix .. utils.cap(heading), 1, 1, 1)
 
     add_line_to_tooltip(tooltip, entry.desc, "TEXT", 1, 1, 1)
@@ -312,12 +321,9 @@ local function add_talent_entry_to_tooltip(tooltip, tab_index, tier, column, ran
 end
 
 local function tooltip_set_item(self)
-    local _, link = self:GetItem()
-    if link then
-        local _, _, id = link:find("Hitem:(%d+):")
-        if id then
-            add_entry_to_tooltip(self, "item", id)
-        end
+    local id = utils.tooltip_item_id(self)
+    if id then
+        add_entry_to_tooltip(self, "item", id)
     end
 end
 

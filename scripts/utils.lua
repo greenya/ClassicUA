@@ -198,6 +198,26 @@ utils.tooltip_title_line = function (tooltip)
     return text
 end
 
+utils.tooltip_item_id = function (tooltip)
+    local _, item_link = tooltip:GetItem()
+    if item_link then
+        local _, _, item_id = item_link:find("Hitem:(%d+):")
+        if item_id then
+            return tonumber(item_id)
+        end
+    end
+end
+
+utils.tooltip_item_suffix_id = function (tooltip)
+    local _, item_link = tooltip:GetItem()
+    if item_link then
+        local suffix_id = select(8, string_split(":", item_link))
+        if suffix_id then
+            return tonumber(suffix_id)
+        end
+    end
+end
+
 utils.chat_bubble_font_string_with_text = function (text)
     local bubbles = C_ChatBubbles:GetAllChatBubbles()
     for _, bubble in pairs(bubbles) do

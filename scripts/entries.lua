@@ -660,6 +660,16 @@ entries.get_chat_text = function (npc_name, chat_text)
     return nil, nil, chat_code
 end
 
+entries.get_item_suffix = function (item_name_en)
+    local at = addon_table
+    local marker = " of "
+    local marker_idx = item_name_en:find(marker)
+    if marker_idx then
+        local item_suffix_en = item_name_en:sub(marker_idx + 1)
+        return at.item_suffix[item_suffix_en]
+    end
+end
+
 entries.translate_quest_objective_task = function (text)
     -- try parse "LEFT: RIGHT"
     local parts = { string_split(":", text, 2) }
