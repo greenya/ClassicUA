@@ -153,10 +153,9 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- You raised all the orcs here, Greatmother?
 [3380192431] = [===[Ви виростили всіх тутешніх орків?]===],
 ["!code"] = {
-["grnrhdtehrdnddlgbemytebthshsaekntoalonmy"] = 3200651922,
+["grghnsagyrarcnnolrfttess.-mytehslgsepdoean"] = 3458163657,
+["grghssatyuyurdmeofmysn.-hewsaniemnprofshad"] = 2776905495,
 ["hoyg.."] = 3054648004,
-["tedyofcnmristolntolntotewdadtewradtefead"] = 2266065314,
-["tyhegnuphewekttmsefmhmweddtebtttwecdinng"] = 1736851125,
 ["wtddghtlyu.-"] = 2954981535,
 },
 },
@@ -201,9 +200,6 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 Раптом на мене прямо з неба накинулася пара лютих вітрухів-мисливців! Та їх підступний напад... <кашель>... їм не допоміг.
 
 І хоча я отримав їхні дзьоби як трофеї, в результаті я ще й дістав інфіковану подряпину. Це досить неприємно, і я відчуваю сильний біль, але, думаю, за день-два все це загоїться.]===],
-["!code"] = {
-["tewstginphofpyuhwhtksghdoymyspkeadknhsit"] = 452630244,
-},
 },
 [18278] = { -- Pilot Marsha
 -- We wouldn't have crashed if Hemet could learn how to avoid shooting through the ailerons when he's trying to bag game on the ground!

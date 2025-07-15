@@ -85,7 +85,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 
 Це закляття вкрай важко підтримувати, {клас:к}. Говори швидше.]===],
 ["!code"] = {
-["cgrsfrswaeyucnertecswnnsifyuwhtegrterkte"] = 2029078787,
+["cgrsfrswaeyucnertecswnnsifyuwhtegrterktegr"] = 2029078787,
 ["wtwtisitistyhdtomntssl..skqy"] = 3791411870,
 },
 },
@@ -109,6 +109,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 
 Озбройся і допоможи нам, або йди геть!]===],
 ["!code"] = {
+["cnesyuwhbycdhywsaetsrengmeadnglstttlsdispe"] = 3166117158,
 ["tlme..heyucetogtatormeonbfofteatdnwewebdfr"] = 607260865,
 },
 },

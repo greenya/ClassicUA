@@ -653,7 +653,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 ["myaetepsofteehmrmyyraswhoryu.."] = 3087833908,
 ["teltptyu.."] = 3948734958,
 ["tesgsscnuealtehptycngtintrftattewgos.-goto"] = 3230762823,
-["wetotebkofsdweorflasadsydtbsfrveisdoyuay"] = 4280290942,
+["wetotebkofsdweorflasadsydtbsfrveisdoyuayhe"] = 4280290942,
 ["wlmt..myaetoyuistsasyutltewdbewyofmcfritwl"] = 3436288619,
 ["wlmt..yuwtseaebdmewehetkortouporsswedo"] = 4120959544,
 ["ys.."] = 3563799772,
