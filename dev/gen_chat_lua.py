@@ -80,11 +80,14 @@ def collect_chats():
                 if not npc_name_uk and npc_name_en not in [ '!common', '!player' ]:
                     issues.append(f'[?] Missing translation for [{expansion}] {npc_name_en}')
 
-                # remove en_code if translation doesn't have dynamic codes,
-                # e.g. this removes fuzzy key for "Bank", "Auction House", "I want to browse your goods." etc.
                 for string in npc_chats:
-                    if '<' not in string['en'] and '>' not in string['en']:
+                    if '.' not in string['en_code']:
+                        # remove en_code if translation doesn't have dynamic codes,
+                        # e.g. this removes fuzzy key for "Bank", "Auction House", "I want to browse your goods." etc.
                         string['en_code'] = None
+                    else:
+                        # limit en_code length to MAX_TEXT_CODE_LENGTH
+                        string['en_code'] = string['en_code'][:utils.MAX_TEXT_CODE_LENGTH]
 
                 if npc_name_en not in chats[expansion]:
                     chats[expansion][npc_name_en] = {

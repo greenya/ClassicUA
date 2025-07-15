@@ -280,13 +280,13 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [".-isvsoeme"] = 73956466,
 [".-wtdnleskofocss"] = 274813040,
 ["altsltof.-isrdsnontefr"] = 148033406,
-["frteftteintergofbshymrhscntoeehsrtofbeon"] = 3828505599,
+["frteftteintergofbshymrhscntoeehsrtofbeonts"] = 3828505599,
 ["fmpsunshcn.-pyseteotofvdes"] = 3068458860,
 ["gtintergofbd.-teftisattost"] = 238797763,
 ["hgfmtemsofbseecsrrtesdld.-isinfrteftofh.le"] = 2222309070,
 ["tebeisattobn.-vstefscfbe"] = 1050530907,
 ["tebeisattobnteulmdtsvs.-"] = 3807743494,
-["tsistemtwealbnwgfrtewlcnisattomehsftsgat"] = 1075531593,
+["tsistemtwealbnwgfrtewlcnisattomehsftsgatte"] = 1075531593,
 ["ue.-hsddtemdts"] = 3281142414,
 },
 },
@@ -386,9 +386,6 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3228782965] = [===[Ем... хлопці?]===],
 -- What's going on?!
 [362044455] = [===[Що відбувається?!]===],
-["!code"] = {
-["uhsetggyjtwtrttegs"] = 1563580005,
-},
 },
 ["Hemet Nesingwary"] = { "Гемет Ернінґвей",
 -- Look out, Fitz, they're coming right for us!
@@ -413,9 +410,6 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [2525306205] = [===[Як буде час, може допоможеш мені втекти звідси?]===],
 -- You sure you're ready?  Take a moment.
 [2087541501] = [===[Ти точно {стать:готовий:готова}? Не квапся.]===],
-["!code"] = {
-["dlindsorhe"] = 3424662546,
-},
 },
 ["Iz'zard"] = {
 -- Be mindful of what you say, this one's being shown around by Khadgar's pet.

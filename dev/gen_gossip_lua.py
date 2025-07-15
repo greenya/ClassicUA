@@ -58,11 +58,14 @@ def collect_gossip():
                 if not npc_gossip_strings:
                     continue
 
-                # remove en_code if translation doesn't have dynamic codes,
-                # e.g. this removes fuzzy key for "Bank", "Auction House", "I want to browse your goods." etc.
                 for string in npc_gossip_strings:
-                    if '<' not in string['en'] and '>' not in string['en']:
+                    if '.' not in string['en_code']:
+                        # remove en_code if translation doesn't have dynamic codes,
+                        # e.g. this removes fuzzy key for "Bank", "Auction House", "I want to browse your goods." etc.
                         string['en_code'] = None
+                    else:
+                        # limit en_code length to MAX_TEXT_CODE_LENGTH
+                        string['en_code'] = string['en_code'][:utils.MAX_TEXT_CODE_LENGTH]
 
                 gossip[expansion][npc_id] = {
                     'name'      : npc_name,

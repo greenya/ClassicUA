@@ -390,7 +390,7 @@ known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = (
     ("mag'har orc", "magharorc"),
     ("zandalari troll", "zandalaritroll"),
 )
-MAX_CODE_LENGTH = 40
+MAX_TEXT_CODE_LENGTH = 42
 
 # [!] Any changes made to get_text_code() func must be kept in sync with Lua impl in main.lua
 def get_text_code(text) -> (str, str):
@@ -402,17 +402,15 @@ def get_text_code(text) -> (str, str):
     result = list()
     for word in words:
         if len(word) > 0:
-            if word.startswith('<'):
-                #  It should be <class>, <race>, <name>, <target> or gender-specific text (<his/her>)
+            if word.startswith('<') and word.endswith('>'):
+                # It should be <class>, <race>, <name>, <target> or gender-specific text (<his/her>)
                 # FIXME: if gender template contains space - it will not work (like <he's a king/she's a queen>)
-                if not word.endswith('>'):
-                    return None, f'[!] Template code missmatch during code creation for text "{text}"'
                 template_type = word[1:-1]
                 if template_type in ('class', 'race'):
                     result.append('..')
                 elif template_type in ('name', 'target'):
                     result.append('.-')
-                elif '/' in template_type:
+                elif '/' in template_type:  # Gender-specific text
                     male_word, female_word = template_type.split('/')
                     if male_word[0] == female_word[0]:
                         result.append(male_word[0])
@@ -423,9 +421,8 @@ def get_text_code(text) -> (str, str):
                     else:
                         result.append('.')
             else:
+                word = word.strip("<>")
                 result.append(word[0])
                 result.append(word[-1])
-        if len(result) >= MAX_CODE_LENGTH:
-            break
 
     return ''.join(result), None
