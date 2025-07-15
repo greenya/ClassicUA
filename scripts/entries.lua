@@ -662,12 +662,8 @@ end
 
 entries.get_item_suffix = function (item_name_en)
     local at = addon_table
-    local marker = " of "
-    local marker_idx = item_name_en:find(marker)
-    if marker_idx then
-        local item_suffix_en = item_name_en:sub(marker_idx + 1)
-        return at.item_suffix[item_suffix_en]
-    end
+    local item_suffix_en = item_name_en:match(".+ (of .-)$")
+    return at.item_suffix[item_suffix_en]
 end
 
 entries.translate_quest_objective_task = function (text)
