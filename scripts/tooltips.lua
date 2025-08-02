@@ -416,12 +416,17 @@ tooltips.prepare = function ()
         end
     end
 
-    hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index, _, is_pet)
-        if not is_pet then
-            local _, _, tier, column, rank, max_rank = GetTalentInfo(tab_index, talent_index)
-            add_talent_entry_to_tooltip(self, tab_index, tier, column, rank, max_rank)
-        end
-    end)
+    -- we don't need to handle "SetTalent" for Mists as talent tooltip works
+    -- by handling "OnTooltipSetSpell" (above); that is also why for Mists we don't need
+    -- an extra talent_tree.lua (a "talent row+col => spell id" mapper)
+    if utils.is_classic or utils.is_tbc or utils.is_wrath or utils.is_cata then
+        hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index, x, is_pet)
+            if not is_pet then
+                local _, _, tier, column, rank, max_rank = GetTalentInfo(tab_index, talent_index)
+                add_talent_entry_to_tooltip(self, tab_index, tier, column, rank, max_rank)
+            end
+        end)
+    end
 
     hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
         local id = select(10, UnitAura(unit, index, filter))
