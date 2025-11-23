@@ -27,13 +27,14 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
         return nil, chat_text, npc_name, lang_name, ...
     end
 
+    local npc_name_key = npc_name
     if npc_name == UnitName("player") then
-        npc_name = "!player"
+        npc_name_key = "!player"
     end
 
-    local npc_name_uk, chat_text_uk, chat_text_code = entries.get_chat_text(npc_name, chat_text)
+    local npc_name_uk, chat_text_uk, chat_text_code = entries.get_chat_text(npc_name_key, chat_text)
     if (not npc_name_uk or not chat_text_uk) and chat_text_code then
-        dev_log.missing_chat_text(npc_name, chat_text_code, chat_text, lang_name)
+        dev_log.missing_chat_text(npc_name_key, chat_text_code, chat_text, lang_name)
         return nil, chat_text, npc_name, lang_name, ...
     end
 
