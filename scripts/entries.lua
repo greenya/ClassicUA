@@ -465,6 +465,8 @@ entries.make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     --    dev_log.issue("незаповнені значення шаблону [" .. tt_lines[1] .. "] " .. text[1])
     --end
 
+    result = string_trim(result)
+
     return result
 end
 
