@@ -331,6 +331,7 @@ utils.get_text_hash = function (text)
     return type(text) == "string" and utils.string_hash(utils.lower(string_trim(text))) or 0
 end
 
+-- [!] Must be kept in sync with values in utils.py
 local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"night elf", "nightelf"},
     {"blood elf", "bloodelf"},
@@ -344,6 +345,8 @@ local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"mag'har orc", "magharorc"},
     {"zandalari troll", "zandalaritroll"},
 }
+local MAX_TEXT_CODE_LENGTH = 42
+
 -- [!] Any changes made to get_text_code() func must be kept in sync with Python impl in utils.py
 utils.get_text_code = function (text)
     local text_low_case = text:lower()
@@ -364,8 +367,14 @@ end
 
 utils.match_text_code = function (code, candidates)
     for _, candidate in ipairs(candidates) do
-        if code:match('^'..candidate..'.*$') then
+        -- If #code == MAX_TEXT_CODE_LENGTH - we do prefix match, as code may have been stripped
+        -- If #code < MAX_TEXT_CODE_LENGTH  - we do exact match, as code is full
+        if #code == MAX_TEXT_CODE_LENGTH and code:match('^' .. candidate .. '.*$') then
             return candidate
+        else
+            if #code < MAX_TEXT_CODE_LENGTH and code:match('^' .. candidate .. '$') then
+                return candidate
+            end
         end
     end
     return false
