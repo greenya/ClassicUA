@@ -305,9 +305,11 @@ local function prepare_data_hooks_for_zones()
 
     _G.C_Map.GetMapChildrenInfo = function (...)
         local infos = data_hooks.original.C_Map_GetMapChildrenInfo(...)
-        for _, info in ipairs(infos) do
-            if info and info.name then
-                info.name = entries.get_glossary_text(info.name, info.name, "zone")
+        if infos then
+            for _, info in ipairs(infos) do
+                if info and info.name then
+                    info.name = entries.get_glossary_text(info.name, info.name, "zone")
+                end
             end
         end
         return infos
