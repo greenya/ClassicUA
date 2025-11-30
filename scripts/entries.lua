@@ -397,27 +397,30 @@ end
 
 local function resolve_optional_entry_text(text, tt_lines, tooltip_matches_to_skip)
     return text:gsub("%[(.-)#(.-)%]", function(translation, condition)
-        local pattern = utils.esc(condition):gsub("{(%d+)}", function () return "([%d,\.]*%d)" end)
-        local match_number = 0
         local values = {}
-        for j = 1, #tt_lines do
-            local matches = { tt_lines[j]:match(pattern) }
-            if #matches > 0 then
-                match_number = match_number + 1
-                if match_number > tooltip_matches_to_skip then
-                    if #matches == 1 and matches[1] == pattern then
-                        return translation
-                    end
-                    if #matches > 0 then
-                        for k = 1, #matches do
-                            values[#values + 1] = utils.fix_float_number(matches[k])
+        local conditions = { string_split("#", condition) }
+        for i = 1, #conditions do
+            local pattern = utils.esc(conditions[i]):gsub("{(%d+)}", function () return "([%d,\.]*%d)" end)
+            local match_number = 0
+            for j = 1, #tt_lines do
+                local matches = { tt_lines[j]:match(pattern) }
+                if #matches > 0 then
+                    match_number = match_number + 1
+                    if match_number > tooltip_matches_to_skip then
+                        if #matches > 0 and not (matches[1] == pattern) then
+                            for k = 1, #matches do
+                                values[#values + 1] = utils.fix_float_number(matches[k])
+                            end
                         end
-                        return translation:gsub("{(%d+)}", function (a) return values[tonumber(a)] end)
+                        break
                     end
                 end
             end
+            if match_number <= tooltip_matches_to_skip then
+                return ""
+            end
         end
-        return ""
+        return translation:gsub("{(%d+)}", function (a) return values[tonumber(a)] end)
     end)
 end
 
