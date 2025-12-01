@@ -2,6 +2,7 @@
     <Script file="book.lua"/>
     <Script file="chat.lua"/>
     <Script file="gossip.lua"/>
+    <Script file="item.lua"/>
     <Script file="npc.lua"/>
     <Script file="quest_alliance.lua"/>
     <Script file="quest_both.lua"/>
