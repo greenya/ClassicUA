@@ -85,6 +85,7 @@ local objects_tbc = {
 ["Gilded Brazier"] = "позолочена жаровня",
 ["Glistening Mud"] = "блискучий мул",
 ["Glowcap"] = "сяйношляпка",
+["Grove Seedling"] = "саджанець Живого гаю",
 ["Gryphon Egg"] = "яйце грифона",
 ["Haal'eshi Altar"] = "вівтар Гаал'еші",
 ["Harbinger of the Second Trial"] = "вісник другого випробування",

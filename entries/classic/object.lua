@@ -38,7 +38,7 @@ addonTable.object = { -- [key] = text
 ["Blindweed"] = "сліпниця",
 ["Briarthorn"] = "шипшилючка",
 ["Bruiseweed"] = "синцівка",
-["Doom Weed"] = "трава приреченості",
+["Doom Weed"] = "бур'ян приречення",
 ["Dreamfoil"] = "снолистя",
 ["Earthroot"] = "землекорінь",
 ["Fadeleaf"] = "бляклолист",
