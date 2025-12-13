@@ -240,9 +240,9 @@ local function setup_stat_count_frame(content_frame)
 
     local stat_count = addon_table.stat_count
     local rows = {
-        col_sizes = { 140 },
-        col_aligns= { "LEFT",   "RIGHT",    "RIGHT",    "RIGHT",    "RIGHT",    "RIGHT",    "RIGHT" },
-                    { "",       "total",    "classic",  "sod",      "tbc",      "wrath",    "cata", size=112, vert=true },
+        col_sizes = { 128 },
+        col_aligns= { "LEFT", "RIGHT", "RIGHT",   "RIGHT", "RIGHT", "RIGHT", "RIGHT", "RIGHT" },
+                    { "",     "total", "classic", "sod",   "tbc",   "wrath", "cata", "mists", size=112, vert=true },
                     { "quests" },
                     { "books" },
                     { "npcs" },
@@ -260,6 +260,7 @@ local function setup_stat_count_frame(content_frame)
             tbc             = "Палаючий Похід\n(TBC)",
             wrath           = "Гнів Короля-ліча\n(WOTLK)",
             cata            = "Катаклізм\n(Cataclysm)",
+            mists           = "Тумани Пандарії\n(MOP)",
 
             total           = "Всього",
             quests          = "Завдання",
@@ -275,11 +276,17 @@ local function setup_stat_count_frame(content_frame)
             misc            = "Додаткові фрази *",
         },
         display_delta_pos = {
-            total={2,12}, classic={-2,8}, sod={-2,8}, tbc={-2,8}, wrath={-2,8}, cata={-2,8}
+            total   = {-2,12},
+            classic = {-6,4},
+            sod     = {-6,4},
+            tbc     = {-6,4},
+            wrath   = {-6,4},
+            cata    = {-6,4},
+            mists   = {-6,4},
         },
     }
 
-    local default_row_size, default_col_size, default_col_align = 20, 62, "LEFT"
+    local default_row_size, default_col_size, default_col_align = 20, 56, "LEFT"
     local start_x, start_y = 24, 0
     local x, y = 0, start_y
 
