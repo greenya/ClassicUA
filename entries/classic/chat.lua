@@ -229,11 +229,11 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- A-Me home! A-Me, good! Good A-Me. Home. Home. Home.
 [984586274] = [===[Е-Мі вдома! Е-Мі хороша! Е-Мі хороша. Дім. Дім. Дім.]===],
 -- A-Me, home. A-Me go home! <target>, no stop A-Me.
-[1905289744] = [===[Е-Мі, дім. Е-Мі йти додому! {Ціль}, не зупинити Е-Мі.#<target>, no stop]===],
+[1905289744] = [===[Е-Мі, дім. Е-Мі йти додому! {Ціль}, не зупинити Е-Мі.#go home! <target>, no stop]===],
 -- Bad, <target>. <target>, bad!
-[366152338] = [===[Погано, {ціль}. {Ціль}, погано!]===],
+[366152338] = [===[Погано, {ціль}. {Ціль}, погано!#Bad, <target>.]===],
 -- Danger. Danger! <target> try hurt A-Me.
-[3529954952] = [===[Небезпека. Небезпека! {Ціль} намагається зашкодити Е-Мі.#<target> try hurt]===],
+[3529954952] = [===[Небезпека. Небезпека! {Ціль} намагається зашкодити Е-Мі.#Danger! <target> try hurt]===],
 -- Good... good, A-Me. A-Me good. Home. Find home.
 [1146351847] = [===[Хороша... хороша Е-Мі. Е-Мі хороша. Дім. Знайти дім.]===],
 ["!code"] = {
@@ -823,7 +823,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Arugal"] = { "Аруґал",
 -- I have changed my mind loyal servants, you do not need to bring the prisoner all the way to my study, I will deal with him here and now.
-[4255016249] = [===[Я передумав, мої вірні слуги, немає потреби тагнути в'язня до мого кабінету, я розберуся з ним тут і зараз.]===],
+[4255016249] = [===[Я передумав, мої вірні слуги, немає потреби тягнути в'язня до мого кабінету, я розберуся з ним тут і зараз.]===],
 -- If you will not serve my Master with your sword and knowledge of his enemies...
 [1939065914] = [===[Якщо ти не будеш служити моєму майстру своїм мечем і знаннями про його ворогів...]===],
 -- Vincent!  You and your pathetic ilk will find no more success in routing my sons and I than those beggardly remnants of the Kirin Tor.
@@ -3292,7 +3292,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Lillith Nefara"] = { "Лілліт Нефара",
 -- You have disturbed my rest, <class>.  Now face my wrath!
-[1965714104] = [===[Ти смієш порушувати мій спокій, {клас:к}? Тепер ти пізнаєш мій гнів!#my rest, <class>.]===],
+[1965714104] = [===[Ти смієш порушувати мій спокій, {клас:н}? Пізнай мій гнів!#my rest, <class>.]===],
 ["!code"] = {
 ["yuheddmyrt..nwfemywh"] = 1965714104,
 },
@@ -3985,7 +3985,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Zandalarian Emissary"] = { "емісар Зандаларів",
 -- All Hail <name>, slayer of Hakkar, and hero of Azeroth!
-[609189386] = [===[Хвала {ім'я:д}, вбивці Гаккара, і герою Азероту!]===],
+[609189386] = [===[Хвала {ім'я:д}, вбивці Гаккара, і герою Азероту!#All Hail <name>,]===],
 -- The Blood God, the Soulflayer, has been defeated!  We are imperiled no longer!
 [3569422340] = [===[Кривавого Бога, Здирача душ, знищено! Він нам більше не загрожуватиме!]===],
 ["!code"] = {

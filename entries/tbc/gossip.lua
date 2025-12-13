@@ -339,6 +339,69 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Ezekiel said that you might have a certain book...
 [4029173455] = [===[Єзекиїл сказав, що у вас може бути одна книга...]===],
 },
+[21066] = { -- Rina Moonspring
+-- Our work in the Living Grove must not be endangered. Our very lives hinge upon its continued health and growth.
+[2275710987] = [===[Ми маємо уникати будь-яких загроз нашій роботі в Живому гаю. Саме наше життя залежить від його подальшого росту.]===],
+},
+[21151] = { -- Borgrim Stouthammer
+-- As representatives of the Explorers' League, Bronwyn and I are here at the Alliance's behest to study these mountains.
+--
+-- But between you and me, after an extended stay in Silithus, we just needed a vacation. This seems like a nice enough spot.
+[3088750655] = [===[Як представники Ліги дослідників, ми з Бронвін досліджуємо ці гори за дорученням Альянсу.
+
+Але чесно кажучи, після тої виснажливої кампанії в Силітусі нам просто необхідна була відпустка. А це місце здається досить приємним.]===],
+},
+[21158] = { -- Commander Skyshadow
+-- It's good to see a <race>, such as yourself, contributing to the well-bring of Sylvanaar. We've done a lot here in the very short time, but the forces that surround us threaten our way of life.
+--
+-- I would hear what you have to say. Speak your mind, <class>.
+[3363798807] = [===[Приємно бачити {раса:мр}, як ти, що сприяють процвітанню Сильванаара. Ми вже багато чого досягли за дуже короткий час, але нас оточує ще багато загроз.
+
+Цікаво, що ти про це думаєш. Говори, {клас:к}.]===],
+["!code"] = {
+["isgdtose..shasyfcgtotewgofsrwedeltheintevy"] = 3363798807,
+},
+},
+[21197] = { -- Bronwyn Stouthammer
+-- Borgrim might be correct. Maybe we do need to take a break.
+--
+-- But now that we're here, I'm eager to get my hands dirty and study what this land has to offer.
+[2846851945] = [===[Думаю, Борґрім має рацію. Нам дійсно не завадить перерва.
+
+Але раз ми вже тут, я збираюся вздовж і впоперек дослідити ці землі.]===],
+},
+[21277] = { -- Vindicator Vuuleen
+-- Hey, don't open the cage! Okay?
+--
+-- These ogres have got me right where I want them.
+[2803492868] = [===[Ей, не відкривай клітку! Добре?
+
+Ці огри тримають мене саме там, де мені потрібно.]===],
+},
+[21690] = { -- R-3D0
+-- I AM FLUENT IN OVER TWO LANGUAGES: DWARVISH, GNOMISH AND THE VERY COMMON TONGUE OF HUMANS. BUT I HAVE NO IDEA WHAT YOU ARE SAYING!
+--
+-- SPEAK UP; I CANNOT HEAR YOU OVER THE GRINDING OF MY GEARS!
+[3518579447] = [===[Я ВІЛЬНО ВОЛОДІЮ БІЛЬШ НІЖ ДВОМА МОВАМИ: ДВОРФІЙСЬКОЮ, ГНОМСЬКОЮ ТА МОВОЮ ЛЮДЕЙ. АЛЕ Я НЕ РОЗУМІЮ, ЩО ВИ ГОВОРИТЕ!
+
+ГОВОРІТЬ ГОЛОСНІШЕ; Я НЕ ЧУЮ ВАС ЧЕРЕЗ СКРЕГІТ ШЕСТЕРЕНЬ!]===],
+},
+[21691] = { -- Toshley
+-- Yeah, yeah... welcome to my station.
+--
+-- So, what do you think? Pretty nifty what we've done here, wouldn't you say?
+--
+-- Makes me glad to be rid of those stuffy elves at Sylvanaar anyway.
+--
+-- Make yourself useful around here: there're plenty of experiments and whatnot to help out with.
+[1715045547] = [===[Так, так... ласкаво просимо до моєї станції.
+
+То що скажеш? Ми тут непогано попрацювали, чи не так?
+
+Я радий, що позбувся тих занудних ельфів із Сильванаара.
+
+А ти можеш нам допомогти: тут багато експериментів та всіляких інших справ.]===],
+},
 }
 
 if addonTable.gossip then

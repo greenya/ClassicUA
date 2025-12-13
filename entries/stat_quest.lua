@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.stat_quest = { name="root", count=6733, total=15911, rows={
+addonTable.stat_quest = { name="root", count=6753, total=15911, rows={
     { name="Класична (Classic)", count=4275, total=4275, rows={
         { name="Калімдор", count=1277, total=1277, rows={
             { name="Азшара", count=33, total=33 },
@@ -221,7 +221,7 @@ addonTable.stat_quest = { name="root", count=6733, total=15911, rows={
             { name="Штормовій", count=7, total=7 },
         } },
     } },
-    { name="Палаючий Похід (TBC)", count=1252, total=2338, rows={
+    { name="Палаючий Похід (TBC)", count=1272, total=2338, rows={
         { name="Калімдор", count=276, total=276, rows={
             { name="Бруднолипка трясовина", count=76, total=76 },
             { name="Громовий Бескид", count=4, total=4 },
@@ -266,17 +266,17 @@ addonTable.stat_quest = { name="root", count=6733, total=15911, rows={
             { name="Цитадель Пекельного Вогню", count=6, total=17 },
             { name="Чорноскельний шпиль", count=2, total=2 },
         } },
-        { name="Позамежжя", count=555, total=1138, rows={
+        { name="Позамежжя", count=575, total=1138, rows={
             { name="Акіндун", count=5, total=16 },
             { name="Болота Занґар", count=97, total=97 },
             { name="Долина Тінистого Місяця", count=0, total=199 },
-            { name="Лезокраї гори", count=6, total=155 },
+            { name="Лезокраї гори", count=25, total=155 },
             { name="Ліс Тероккар", count=108, total=111 },
             { name="Наґранд", count=129, total=136 },
             { name="Низошторм", count=0, total=162 },
             { name="Півострів Пекельного Вогню", count=175, total=187 },
             { name="Скеттіс", count=0, total=14 },
-            { name="Шаттрат", count=35, total=61 },
+            { name="Шаттрат", count=36, total=61 },
         } },
         { name="Поля битв", count=14, total=14, rows={
             { name="Альтерацька долина", count=2, total=2 },

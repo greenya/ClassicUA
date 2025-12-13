@@ -75,7 +75,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Battlemaster
 [253322801] = [===[Воєначальник]===],
 -- Besides the Grunts outside, my brothers and I fought at the battle of Hyjal. Any who seek to steal from the bank must face us first.
-[2858302175] = [===[Мало того, що ззовні стоять бугаї, ми з братами були в битві під Гіджалом. Будь-хто, хто намагатиметься пограбувати банк, має спершу здолати нас.]===],
+[2858302175] = [===[Мало того, що ззовні стоять бугаї, ми з братами — ветерани битви під Гіджалом. Якщо хтось захоче пограбувати банк — доведеться спершу здолати нас.]===],
 -- Best deals in all of Stormwind my friend, won't find any better. Now, what can I help you with?
 [2598353272] = [===[Найкращі ціни у всьому Штормовії, {стать:друже:подруго}, кращих не знайдеш. Ну, чим можу допомогти?]===],
 -- Blackrock Mountain lies between Searing Gorge in the north and Burning Steppes in the south.

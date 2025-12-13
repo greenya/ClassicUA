@@ -172,9 +172,9 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- These tremors sure aren't helping...
 [1189115224] = [===[Ці поштовхи не сприяють роботі...]===],
 -- We have to seal these vents.
-[717771882] = [===[Ми повинні запечатати ці вентиляційні отвори.]===],
+[717771882] = [===[Ми повинні запечатати вентиляційні отвори.]===],
 -- this city...
-[768574561] = [===[цього міста...]===],
+[768574561] = [===[Це місто...]===],
 },
 ["Blightbark"] = { "Трутовик",
 -- I see now that you are worthy, <class>. Perhaps the earth will be safe in your care...

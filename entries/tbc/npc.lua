@@ -421,7 +421,7 @@ local npc = { -- [id] = { title, description (optional) }
 [17246] = { "\"Кухарчик\" Недосоленко", "тренер та продавець товарів для куховарства", en="\"Cookie\" McWeaksauce" }, -- "Cookie" McWeaksauce <Cooking Trainer & Supplies>
 [17275] = { "Водяниця", en="Aqueous" }, -- Aqueous
 [17280] = { "гончак Розтрощеної Руки", en="Shattered Hand Warhound" }, -- Shattered Hand Warhound
-[17287] = { "cтражниця Люсіель Зорешепіт", "Срібнокрилі стражі", en="Sentinel Luciel Starwhisper" }, -- Sentinel Luciel Starwhisper <Silverwing Sentinels>
+[17287] = { "cтражниця Люсіель Зоряний Шепіт", "Срібнокрилі стражі", en="Sentinel Luciel Starwhisper" }, -- Sentinel Luciel Starwhisper <Silverwing Sentinels>
 [17291] = { "архітектор Немос", en="Architect Nemos" }, -- Architect Nemos
 [17298] = { "воєвода Срісс'тіз", en="Warlord Sriss'tiz" }, -- Warlord Sriss'tiz
 [17300] = { "Ґорґаннон", en="Gorgannon" }, -- Gorgannon

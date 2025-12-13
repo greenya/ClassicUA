@@ -517,7 +517,7 @@ addonTable.zone = { -- [key] = text
 ["Coven"] = "Ковен",
 ["Cradle of the Ancients"] = "Колиска Древніх",
 ["Craftsmen's Terrace"] = "тераса Ремісників",
-["Crag of the Everliving"] = "Скеля Вічноживих",
+["Crag of the Everliving"] = "Скеля Вічноживучого",
 ["Cragpool Lake"] = "Скельнодонне озеро",
 ["Crash Site"] = "місце падіння",
 ["Crimson Cathedral"] = "Багряний собор",

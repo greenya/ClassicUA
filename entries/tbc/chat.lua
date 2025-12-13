@@ -5,6 +5,25 @@
 local _, addonTable = ...
 
 local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=translation, ..., [!code]={ [code]=hash, ...} (optional) }
+["!common"] = {
+-- Bloodmaul Brew? Me favorite!
+[3822383857] = [===[Пиво Кривавого Молота? Моє любиме!]===],
+-- Mmm. Me thirsty!
+[4150365662] = [===[Ммм... Питво!]===],
+-- Ohh, look! Bloodmaul Brew! Mmmm...
+[3386989170] = [===[О, гляди! Пиво Кривавого Молота! Мммм...]===],
+-- Raaar!!! Me smash <target>!
+[2221081731] = [===[Раарр!!! Моя бити {ціль}!#Me smash <target>!]===],
+-- Ugh... Me not feel so guud.
+[2528283506] = [===[Ой... Шось мені не хорошо.]===],
+-- Wut's dis?
+[3237502229] = [===[Шо це?]===],
+-- You shut up!
+[1527944209] = [===[Стулися!]===],
+["!code"] = {
+["rrmesh.-"] = 2221081731,
+},
+},
 ["\"Creepjack\""] = { "\"Ганкун\"",
 -- %s cracks his knuckles.
 [1662481913] = [===[%s хрустить пальцями.]===],
@@ -50,6 +69,30 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Arcanist Adyria"] = { "арканістка Адирія",
 -- Are you joking?  I'm a Scryer, I always watch what I say.  More enemies than allies in this city, it seems.
 [2482655725] = [===[Жартуєш? Я одна з Провидців, я завжди стежу за своїми словами. Здається, у цьому місті у нас більше ворогів, ніж союзників.]===],
+},
+["Bladespire Brute"] = {
+-- Duck!
+[1693840493] = [===[Пригнися!]===],
+-- Uh oh...
+[2538907759] = [===[Ой-йой...]===],
+-- Whoa!
+[3731868640] = [===[Ого!]===],
+-- Wut dat?
+[3889726260] = [===[Шо це?]===],
+},
+["Bladespire Shaman"] = {
+-- Duck!
+[1693840493] = [===[Пригнися!]===],
+-- Whoa!
+[3731868640] = [===[Ого!]===],
+},
+["Bladespire Supplicant"] = {
+-- Me live to serve.
+[1061407437] = [===[Я живу, щоб служити.]===],
+},
+["Borgrim Stouthammer"] = {
+-- ACK!  That's the worst thing I've ever tasted!  I wouldn't let my ram drink that!
+[3898983697] = [===[Фу! Це найгірше, що я коли-небудь пробував! Я б навіть барана таким не поїв!]===],
 },
 ["Captive Child"] = { "викрадена дитина",
 -- Gross!
@@ -113,6 +156,13 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [448031941] = [===[Мама не дозволить нікому зашкодити тобі, любий.]===],
 -- Please, father, I do not have your strength. I cannot do this on my own. Please help me...
 [3589687854] = [===[Будь ласка, батьку, я не маю твоєї сили. Я не зможу зробити це самотужки. Прошу, допоможи мені...]===],
+},
+["Daranelle"] = {
+-- Good, <name>, you are under the spell's influence. I must analyze it quickly, then we can talk.
+[1692856735] = [===[Добре, {ім'я:к}, на тебе діє закляття. Мені потрібно швиденько його проаналізувати, а потім ми зможемо поговорити.#Good, <name>, you]===],
+["!code"] = {
+["gd.-yuaeurtessiemtaeitqytnwecntk"] = 1692856735,
+},
 },
 ["Defender Grashna"] = { "захисник Ґрашна",
 -- An Avatar of Terokk!! To arms!
@@ -552,6 +602,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Blue brothers reign supreme!
 [1840069280] = [===[Братів Блакиті не спинити!]===],
 },
+["R-3D0"] = {
+-- WARNING! WARNING! AWAY HOSTILE BEINGS! DO NOT HEAD UP THE RIDGE TO TOSHLEY'S STATION!
+[4256445455] = [===[УВАГА! УВАГА! ТРИМАЙТЕСЬ ПОДАЛІ, ВОРОЖІ ІСТОТИ! НЕ ЙДІТЬ НА КРЯЖ ДО СТАНЦІЇ ТОШЛІ!]===],
+},
 ["Ramdor the Mad"] = { "Рамдор Божевільний",
 -- %s rummages through the bones.
 [2613547789] = [===[%s риється в кістках.]===],
@@ -628,6 +682,22 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Free at last from that horrible curse! Thank you! Please send word to Rilak the Redeemed that I am okay. My mission lies in Skettis. Terokk must be defeated!
 [3421942336] = [===[Нарешті я вільний від цього жахливого прокляття! Дякую! Будь ласка, передай Рілаку Визволеному, що зі мною все гаразд. Мій шлях лежить до Скеттіса. Терокк має бути переможений!]===],
 },
+["Station Technician"] = {
+-- I'M ON FIRE!!!
+[293232203] = [===[Я ГОРЮ!!!]===],
+-- I'M ON FIRE!!!  AGAIN!!
+[182489614] = [===[Я ГОРЮ!!! ЗНОВУ!!]===],
+-- IT BURNS!!
+[3279804917] = [===[АЙ! ПЕЧЕ!!]===],
+-- Not again...
+[599949968] = [===[Тільки не знову...]===],
+-- This is going to hurt in the morning.
+[3797978996] = [===[Ох, завтра буде боліти.]===],
+-- WHY ME!?!
+[851100716] = [===[ЧОМУ Я!?!]===],
+-- YEOW!!
+[3344476674] = [===[А-А-Й!]===],
+},
 ["Terokkar Wolf Spirit"] = { "тероккарський дух вовка",
 -- %s expresses its approval.
 [1958256898] = [===[%s виражає своє схвалення.]===],
@@ -685,6 +755,15 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [1832833613] = [===[Ти маєш рацію, Ейтріґ. Час не сприятливий. Переконайся, що наші найкращі посли будуть відправлені до Пеклокрика.]===],
 -- You need not thank me, Garrosh. Your father was a brother to me. I would do anything for you and the Mag'har. I must now return to the Greatmother.
 [364137692] = [===[Ти не мусиш дякувати мені, Ґарроше. Твій батько був братом для мене. Я б зробив все для тебе та Маґ'харів. Тепер я мушу повернутися до праматері.]===],
+},
+["Vindicator Vuuleen"] = {
+-- No.  Don't open the cage.  One of them might notice!
+[833398002] = [===[Ні. Не відкривай клітку. Вони можуть помітити!]===],
+-- Psst, <race>, up here near the entrance. I'm in the cage. Hurry!
+[413087053] = [===[Псс, {раса:к}, сюди, біля входу. Я в клітці. Швидше!#Psst, <race>, up here]===],
+["!code"] = {
+["pt..uphenrteeeimintecehy"] = 413087053,
+},
 },
 ["Vision of the Forgotten"] = { "видіння Забутого",
 -- It is a beacon. A remnant of a forgotten era.

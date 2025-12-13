@@ -1814,7 +1814,7 @@ local npc = { -- [id] = { title, description (optional) }
 [2557] = { "темний мисливець Зів'ялої Кори", en="Witherbark Shadow Hunter" }, -- Witherbark Shadow Hunter
 [2558] = { "берсерк Зів'ялої Кори", en="Witherbark Berserker" }, -- Witherbark Berserker
 [2559] = { "плоскогірний бігун", en="Highland Strider" }, -- Highland Strider
-[2560] = { "плоскогірний трупоїд", en="Highland Thrasher" }, -- Highland Thrasher
+[2560] = { "плоскогірний молотник", en="Highland Thrasher" }, -- Highland Thrasher
 [2561] = { "плоскогірний плотожер", en="Highland Fleshstalker" }, -- Highland Fleshstalker
 [2562] = { "брилорукий огр", en="Boulderfist Ogre" }, -- Boulderfist Ogre
 [2563] = { "рівнинний підкрадач", en="Plains Creeper" }, -- Plains Creeper
@@ -2914,7 +2914,7 @@ local npc = { -- [id] = { title, description (optional) }
 [3875] = { "примарний слуга", en="Haunted Servitor" }, -- Haunted Servitor
 [3877] = { "стогнучий гвардієць", en="Wailing Guardsman" }, -- Wailing Guardsman
 [3879] = { "душогуб Темного Пасма", en="Dark Strand Assassin" }, -- Dark Strand Assassin
-[3880] = { "стражниця Мелірія Криготінь" }, -- Melyria Frostshadow
+[3880] = { "стражниця Мелірія Крижана Тінь" }, -- Melyria Frostshadow
 [3881] = { "Ґрімтак", "м'ясар", en="Grimtak" }, -- Grimtak <Butcher>
 [3882] = { "Злаґк", "м'ясар", en="Zlagk" }, -- Zlagk <Butcher>
 [3883] = { "Мудан Сонячне Колосся", "пекар", en="Moodan Sungrain" }, -- Moodan Sungrain <Baker>
@@ -3181,7 +3181,7 @@ local npc = { -- [id] = { title, description (optional) }
 [4200] = { "Лейрд", "продавець риби", en="Laird" }, -- Laird <Fish Vendor>
 [4201] = { "Зіз Фіззікс", en="Ziz Fizziks" }, -- Ziz Fizziks
 [4202] = { "Ґерензо Свистоключ", en="Gerenzo Wrenchwhistle" }, -- Gerenzo Wrenchwhistle
-[4203] = { "Ерієль Тіненеба", "продавчиня зброї", en="Ariyell Skyshadow" }, -- Ariyell Skyshadow <Weapon Merchant>
+[4203] = { "Ерієль Небесна Тінь", "продавчиня зброї", en="Ariyell Skyshadow" }, -- Ariyell Skyshadow <Weapon Merchant>
 [4204] = { "Фіродрен Місяцеклич", "тренер травництва", en="Firodren Mooncaller" }, -- Firodren Mooncaller <Herbalism Trainer>
 [4205] = { "Доріон", "тренер мисливців", en="Dorion" }, -- Dorion <Hunter Trainer>
 [4208] = { "Лаірн", "банкір", en="Lairn" }, -- Lairn <Banker>
@@ -7107,7 +7107,7 @@ local npc = { -- [id] = { title, description (optional) }
 [12777] = { "капітан Молотолам", "квартирмейстер обладунків", en="Captain Dirgehammer" }, -- Captain Dirgehammer <Armor Quartermaster>
 [12778] = { "лейтенант Рейчел Ваккар", en="Lieutenant Rachel Vaccar" }, -- Lieutenant Rachel Vaccar
 [12779] = { "архімаг Ґайман", en="Archmage Gaiman" }, -- Archmage Gaiman
-[12780] = { "сержант-майор Тіненеба", en="Sergeant Major Skyshadow" }, -- Sergeant Major Skyshadow
+[12780] = { "сержант-майор Небесна Тінь", en="Sergeant Major Skyshadow" }, -- Sergeant Major Skyshadow
 [12781] = { "майстер-сержант Здоровінс", "квартирмейстер офіцерських припасів", en="Master Sergeant Biggins" }, -- Master Sergeant Biggins <Officer Accessories Quartermaster>
 [12782] = { "капітан О'Ніл", "забезпечення зброєю", en="Captain O'Neal" }, -- Captain O'Neal <Weapons Quartermaster>
 [12783] = { "лейтенант Картер", "продавчиня верхових тварин", en="Lieutenant Karter" }, -- Lieutenant Karter
