@@ -563,15 +563,8 @@ local function prepare_options_frame()
         StaticPopup_Show("CLASSICUA_CONFIRM_RELOAD_UI")
     end)
     reload_button:SetScript("OnEnter", function(self)
-        local memory_usage_text = ""
-        UpdateAddOnMemoryUsage()
-        for i = 1, GetNumAddOns() do
-            local name = GetAddOnInfo(i)
-            if name == "ClassicUA" then
-                local megabytes = GetAddOnMemoryUsage(i) / 1024
-                memory_usage_text = string.format("\n\nВикористання пам'яті: %.1f Мб", megabytes)
-            end
-        end
+        local memory_usage_mb = utils.addon_mem_usage() / 1024
+        local memory_usage_text = string.format("\n\nВикористання пам'яті: %.1f Мб", memory_usage_mb)
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
         GameTooltip:SetText(
             "Перезавантажити інтерфейс гри. Деякі зміни в налаштуваннях будуть помітні лише після такої операції."

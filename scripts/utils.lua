@@ -40,6 +40,13 @@ utils.addon_version = function ()
     return get_metadata and get_metadata("ClassicUA", "Version") or "???"
 end
 
+-- implicitly does UpdateAddOnMemoryUsage() and returns value in kilobytes
+utils.addon_mem_usage = function ()
+    if UpdateAddOnMemoryUsage then UpdateAddOnMemoryUsage() end
+    local get_mem_usage = C_AddOns and C_AddOns.GetAddOnMemoryUsage or GetAddOnMemoryUsage
+    return get_mem_usage and get_mem_usage("ClassicUA") or 0
+end
+
 utils.dump = function (value)
     if type(_G.DevTools_Dump) == "function" then
         _G.DevTools_Dump(value)
