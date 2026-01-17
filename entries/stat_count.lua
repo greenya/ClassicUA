@@ -6,17 +6,17 @@ local _, addonTable = ...
 
 addonTable.stat_count = {
 total = {
-    quests = 6753,
-    books = 294,
-    npcs = 11339,
+    quests = 6881,
+    books = 295,
+    npcs = 11342,
     items = 29914,
     spells = 19607,
     sod_engravings = 267,
     objects = 1522,
     zones = 3279,
-    chats = 535,
-    gossips = 37,
-    misc = 284,
+    chats = 548,
+    gossips = 53,
+    misc = 285,
 },
 classic = {
     quests = 4275,
@@ -40,14 +40,14 @@ sod = {
     gossips = 7,
 },
 tbc = {
-    quests = 1272,
-    books = 4,
-    npcs = 1182,
+    quests = 1400,
+    books = 5,
+    npcs = 1185,
     items = 1794,
     spells = 2122,
     objects = 193,
-    chats = 64,
-    gossips = 24,
+    chats = 77,
+    gossips = 40,
 },
 wrath = {
     quests = 271,

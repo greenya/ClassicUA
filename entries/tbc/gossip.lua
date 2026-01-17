@@ -339,9 +339,54 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Ezekiel said that you might have a certain book...
 [4029173455] = [===[Єзекиїл сказав, що у вас може бути одна книга...]===],
 },
+[20494] = { -- Dama Wildmane
+-- Fine beasts, aren't they? The wyverns we raise here are trained to handle the fiercest and strangest weather conditions Draenor has to offer. You'll find them dependable and hardy.
+[4207219548] = [===[Чудові звірі, чи не так? Виверни, яких ми тут вирощуємо, треновані витримувати найсуворіші та найдивніші погодні умови Дренору. Вони надзвичайно стійкі та витривалі.]===],
+-- Let me see the wyverns, Dama.
+[1340842123] = [===[Дозволь мені поглянути на виверн, Дамо.]===],
+},
 [21066] = { -- Rina Moonspring
 -- Our work in the Living Grove must not be endangered. Our very lives hinge upon its continued health and growth.
 [2275710987] = [===[Ми маємо уникати будь-яких загроз нашій роботі в Живому гаю. Саме наше життя залежить від його подальшого росту.]===],
+},
+[21110] = { -- Fizit Doc Clocktock
+-- Welcome to the Toshley's Station inn. What can I do for you?
+[3792327969] = [===[Ласкаво просимо до таверни станції Тошлі. Чим можу допомогти?]===],
+},
+[21117] = { -- Gordrek
+-- I honor my ancestors in the time-honored shamanistic tradition. We must never forget the sacrifices that they have made so that we can be here.
+--
+-- And we, in turn, must make the necessary sacrifices so that our descendants will have a future.
+--
+-- What brings you to me, <class>?
+[2377211256] = [===[Я вшановую своїх предків згідно з давніми шаманськими традиціями. Ми ніколи не маємо забувати жертви, які вони принесли, щоб ми могли бути тут.
+
+І ми, своєю чергою, повинні принести необхідні жертви, щоб наші нащадки мали майбутнє.
+
+Що привело тебе до мене, {клас:к}?]===],
+["!code"] = {
+["hrmyasintetdsctnwemtnrfttesstttyhemesottwe"] = 2377211256,
+},
+},
+[21118] = { -- Razak Ironsides
+-- <Son/Young lady>, I'm not going to lie to you; things aren't pretty around here. We're under constant assault by the bugs and our very way of life, our freedom, is at stake!
+--
+-- Are you going to be a responsible citizen and help out?
+[3835136981] = [===[{стать:Синку:Юна леді}, чесно кажучи, ситуація тут не з найкращих. Ми постійно зазнаємо нападів жуків і наша свобода, наш спосіб життя опинився під загрозою!
+
+Чи будеш ти {стать:відповідальним громадянином:відповідальною громадянкою} і допоможеш нам?]===],
+},
+[21147] = { -- Torchunk Twoclaws
+-- Bah! Do I look like I have time for idle chit-chat?
+--
+-- Do I?
+--
+-- Be quick about your business. There are ogres to be killed!
+[19858903] = [===[Тьху! По твоєму, в мене є час на пусті балачки?
+
+Чи, може, є?
+
+Давай швидше. Нам треба вбивати огрів!]===],
 },
 [21151] = { -- Borgrim Stouthammer
 -- As representatives of the Explorers' League, Bronwyn and I are here at the Alliance's behest to study these mountains.
@@ -378,6 +423,64 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 
 Ці огри тримають мене саме там, де мені потрібно.]===],
 },
+[21311] = { -- Rokgah Bloodgrip
+-- I came to this place because of my study into the backward culture that used to be the Thunderlord clan.
+--
+-- They were weak and succumbed to the lure of power that came with being transformed into fel orcs through Mannoroth's blood.
+--
+-- I have read all of their texts. I am particularly interested in the recovery of an artifact, a drum, an arrow and a tablet that were lost when we crushed the Bladespire ogres and pushed them back down into their hold.
+[4077517098] = [===[Я прибула сюди, щоб досліджувати стародавню культуру клану Громовержців.
+
+Вони були слабкими та піддалися спокусі сили, яку давало перетворення на орків Скверни через кров Маннорота.
+
+Я прочитала всі їхні тексти. І мене особливо цікавить повернення артефакту, барабана, стріли та скрижалі, які були втрачені, коли ми розгромили огрів клану Клинорогих і відтіснили їх до їхньої фортеці.]===],
+},
+[21349] = { -- Tchali the Witch Doctor
+-- The ogres, they bury me here up to my neck and then forget to come back.
+--
+-- Yah, mon, funny. Laugh it up. Disembodied ghost head here.
+--
+-- Of course, if you want to help me out, I might be able to make it worth your
+-- while.
+--
+-- But no, keep laughing.
+[1252172942] = [===[Кляті огри, закопують мене тут по шию, а потім забувають повернутися.
+
+Ага, {стать:чувак:мала}, смішно. Смійся-смійся. Це ж привид без тіла.
+
+Звісно, якщо хочеш допомогти мені, я міг би тебе винагородити.
+
+Але ні, смійся далі.]===],
+},
+[21460] = { -- Tally Zapnabber
+-- Hello, <name>! How goes your adventures? My experiments are progressing nicely...
+--
+-- Be sure to check back with me later! I might have more test flight opportunities for you!
+[1386887282] = [===[Привіт, {ім'я:н}! Як твої пригоди? Мої експерименти проходять чудово...
+
+Обов'язково зазирни до мене пізніше! Я збираюсь провести кілька випробувальних польотів!]===],
+-- I need another waiver!
+[3478874580] = [===[Мені потрібен новий бланк відмови від претензій!]===],
+-- Toshley's Station is the best! The solitude and supply of strange, Outland power sources is an ideal setting for extreme experiments!
+[2690376095] = [===[Станція Тошлі - найкраща! Усамітнення і доступ до дивних енергетичних джерел Позамежжя — ідеальні умови для екстремальних експериментів!]===],
+["!code"] = {
+["ho.-hwgsyrasmyesaepgnybesetockbkwhmelrmthe"] = 1386887282,
+},
+},
+[21461] = { -- Rally Zapnabber
+-- Have you talked to my clone--I mean... my twin?
+[3803910437] = [===[Ти {стать:говорив:говорила} з моїм клоном... е-е-е... тобто... моїм двійником?]===],
+-- I want to fly to an old location!
+[998062986] = [===[Я хочу полетіти до минулого місця!]===],
+-- I'm ready for my test flight!
+[1776446583] = [===[Я {стать:готовий:готова} до випробувального польоту!]===],
+-- Send me to Razaan's Landing!
+[941679876] = [===[Відправ мене до табору Разаана!]===],
+-- Take me to Ruuan.
+[2569111263] = [===[Відправ мене до галявини Рууан.]===],
+-- Take me to Singing Ridge.
+[2197946652] = [===[Відправ мене на Співучий кряж.]===],
+},
 [21690] = { -- R-3D0
 -- I AM FLUENT IN OVER TWO LANGUAGES: DWARVISH, GNOMISH AND THE VERY COMMON TONGUE OF HUMANS. BUT I HAVE NO IDEA WHAT YOU ARE SAYING!
 --
@@ -401,6 +504,143 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 Я радий, що позбувся тих занудних ельфів із Сильванаара.
 
 А ти можеш нам допомогти: тут багато експериментів та всіляких інших справ.]===],
+},
+[21755] = { -- Nickwinkle the Metro-Gnome
+-- I'm a scientist who studies both time and sound, so I'm not quite certain how I'm supposed to think, or find the time to get any work done around here, with all of this racket?!
+--
+-- Why can't these fools go blow themselves up somewhere else?
+--
+-- Ah well, at least I look good. Say, boy, have I seen you around here before?
+[3191688486] = [===[Я вчений, який вивчає час та звук, і я поняття не маю, як я маю думати серед цього галасу!
+
+Чому ці дурні не можуть підірвати себе деінде?
+
+Ну що ж, принаймні я маю гарний вигляд. Слухай, а ми раніше не зустрічались?]===],
+},
+[21824] = { -- Dizzy Dina
+-- When you run with Razak's Roughriders you learn a thing or two about following orders.
+--
+-- The first thing is that you fight until you die. The second thing is, see the first thing.
+[3188800174] = [===[З Шибайголовами Ращака, ти швидко засвоюєш дві речі.
+
+Перша — бийся до смерті. Друга — не забувай першу.]===],
+},
+[21950] = { -- Garm Wolfbrother
+-- Whatever advice I can give to aid in your fight against the ogres, you shall have it!
+[3603935772] = [===[Чим би я не міг допомогти тобі в боротьбі проти огрів — можеш розраховувати на мене!]===],
+},
+[21981] = { -- Overseer Nuaar
+-- Negotiations? NEGOTIATIONS!
+--
+-- Allow me to make our stance perfectly clear. We are a free people, able to do whatever we want and come and go as we please. The Cenarion Expedition does not own this mountain range.
+--
+-- There will be no negotiations! Now, go back to the druids and tell them that we will continue to do as we people.
+[89177261] = [===[Переговори? ПЕРЕГОВОРИ?!
+
+Дозволь мені чітко висловити нашу позицію. Ми — вільний народ, здатний робити все, що забажаємо, і приходити та йти, коли забажаємо. Кенарійська експедиція не володіє цими горами.
+
+Не буде ніяких переговорів! А тепер повертайся до друїдів і скажи їм, що ми продовжимо робити те, що захочемо.]===],
+-- Overseer, I am here to negotiate on behalf of the Cenarion Expedition.
+[203117856] = [===[Розпоряднику, я тут, щоб вести переговори від імені Кенарійської експедиції.]===],
+-- The Blade's Edge Mountains are a place of great opportunity. How unfortunate that some deem themselves above all others on matters that pertain to talking advantage of such opportunities.
+--
+-- Who do the Cenarion Expedition think they are to tell us what we can and cannot do here?
+[1479146164] = [===[Лезокраї гори — місце великих можливостей. Як прикро, що деякі вважають себе вищими за інших у питаннях, що стосуються використання таких можливостей.
+
+Ким себе вважає Кенарійська експедиція, щоб вказувати нам, що ми можемо і не можемо тут робити?]===],
+},
+[21984] = { -- Rexxar
+-- The search for my people. Our struggle against the Alliance. The war with the ogres and their gronn masters.
+--
+-- All of these things weigh heavy upon my shoulders, <class>.
+--
+-- Even I can use some help from time to time.
+[2576647219] = [===[Пошуки мого народу. Боротьба проти Альянсу. Війна з ограми та ґроннами.
+
+Усе це — тяжкий тягар, {клас:к}.
+
+Навіть мені іноді потрібна допомога.]===],
+["!code"] = {
+["teshfrmypeorseatteaetewrwhteosadtrgnmsalof"] = 2576647219,
+},
+},
+[22019] = { -- Kolphis Darkscale
+-- Absolutely!
+[4001780463] = [===[Безумовно!]===],
+-- Begone, overseer! We've already spoken.
+--
+-- Stop dragging your feet and execute your orders at Ruuan Weald!
+[3463708202] = [===[Йди вже звідси! Ми все обговорили.
+
+Припини плентатись тут і виконуй свої накази на галявині Рууан!]===],
+-- I don't want excuses, I demand results!
+--
+-- You think what we're doing here is a joke? If we don't do this right, then not only will the so-called do-gooders come calling, but we'll be found unworthy for elevation within the ranks of the Blackwing.
+--
+-- Is that what you want?
+[1462776484] = [===[Мені не потрібні виправдання. Я вимагаю результатів!
+
+Думаєш, те, що ми тут робимо, це жарт? Якщо ми не зробимо все як слід, то мало того, що тут з'являть непрохані гості, але й нас визнають негідними підвищення в рядах Чорного Крила.
+
+Ти цього хочеш?]===],
+-- I'm fine, thank you. You asked for me?
+[1642777581] = [===[Все гаразд, дякую. Ви хотіли мене бачити?]===],
+-- Impressive. When do we attack?
+[1515199885] = [===[Вражаюче. Коли ми нападемо?]===],
+-- Nuaar, are you feeling well? You don't look like yourself today.
+[1130304690] = [===[Нуаар, ти в порядку? Ти ніби сам не свій.]===],
+-- Oh, it's not my fault, I can assure you.
+[3435989119] = [===[О, це не моя провина, запевняю вас.]===],
+-- Right, the meeting. Let's get down to it then.
+--
+-- The fact is that the lumber and livestock being gathered from the Ruuan Weald, which you're responsible for, has slowed to a trickle.
+--
+-- We need those resources, but you've allowed the druids of the Cenarion Expedition to get in the way!
+[1144148704] = [===[Так, зустріч. Ну, до справи.
+
+Річ у тім, що постачання деревини та худоби з галявини Рууан, за яку ви відповідаєте, майже зупинилося.
+
+Нам потрібні ці ресурси, але ви дозволили друїдам з Кенарійської експедиції стати на заваді!]===],
+-- That's the spirit!
+--
+-- I'm glad that we had this little meeting. I feel much better about the attack now. With leaders like you on the front, how can we lose?
+--
+-- Alright, you have your marching orders. Now get back to the Ruuan Weald and make it happen!
+[3486023571] = [===[Оце вже краще!
+
+Я радий, що ми провели цю невелику нараду. Тепер я почуваюся значно впевненіше щодо атаки. Як ми можемо програти з такими лідерами, як ти?
+
+Гаразд, ти отримав свої накази. Тепер повертайся на галявину Рууан і виконуй їх!]===],
+-- Um, no... no, I don't want that at all.
+[3312523795] = [===[Ем... ні... ні, я зовсім цього не хочу.]===],
+-- We're putting the final preparations together even as we speak. The rest will depend upon how quickly you can organize your forces at Ruuan Weald.
+--
+-- Do you think that you can handle that and get it done quickly?
+[2871955566] = [===[Ми саме зараз завершуємо останні приготування. Решта буде залежати від того, як швидко ви зможете висунути свої сили на галявину Рууан.
+
+Як думаєш, зможете швидко з цим впоартись?]===],
+-- You could at least try to sound a little bit convincing.
+--
+-- Look, Nuaar, I wasn't going to tell you this, but I might as well because it's going to involve you, too. Maxnar is planning an all-out attack on the druids at Ruuan Weald. And he intends to wipe them out.
+--
+-- It's bad enough that we've been fighting with the Boulder'mok ogres, so we can't afford another front to deal with. I've arranged for a temporary truce with the arakkoa.
+--
+-- Well, what do you think?
+[3018526955] = [===[Ти міг би хоча б спробувати говорити трохи переконливіше.
+
+Послухай, Нуааре, я не збирався тобі це казати, але, мабуть, варто, бо це стосується і тебе. Макснар планує повномасштабну атаку на друїдів на галявині Рууан. І він має намір знищити їх.
+
+Нам і так вистачає проблем з ограми Валун'мока, тому ми не можемо дозволити собі відкрити ще один фронт. Я домовився про тимчасове перемир'я з араккоа.
+
+Ну, що скажеш?]===],
+},
+[22020] = { -- OMally Zapnabber
+-- These druids have tapped a tremendous source of power! They can turn into animals... project lightning and intense moonlight... I must discover how they do it!
+--
+-- Perhaps they're wearing batteries underneath those robes...
+[884326883] = [===[Ці друїди віднайшли неабияке джерело сили! Вони можуть перетворюватися на тварин... створювати блискавки та яскраве місячне сяйво... Я мушу дізнатися, як вони це роблять!
+
+Можливо, вони носять батареї під мантіями...]===],
 },
 }
 

@@ -70,6 +70,22 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Are you joking?  I'm a Scryer, I always watch what I say.  More enemies than allies in this city, it seems.
 [2482655725] = [===[Жартуєш? Я одна з Провидців, я завжди стежу за своїми словами. Здається, у цьому місті у нас більше ворогів, ніж союзників.]===],
 },
+["Baron Sablemane"] = {
+-- %s begins emanating immense power.
+[3852527274] = [===[%s починає випромінювати колосальну силу.]===],
+-- Baron Sablemane. It will be on your lips as you gasp your dying breath.
+[2985425463] = [===[Барон Чорногрив. Це останнє, що ти промовиш, коли за тобою прийде смерть.]===],
+-- It's only right that you know the name of the one who will take your life.
+[2583883281] = [===[Буде правильно, якщо ти знатимеш ім'я того, хто забере твоє життя.]===],
+-- Let us begin.
+[4181282802] = [===[Розпочнімо.]===],
+-- There, it is completed.
+[2719149447] = [===[Ось так, готово.]===],
+-- We will speak again, but away from here.
+[1480317382] = [===[Ми ще поговоримо, але не тут.]===],
+-- Your father destroyed my children and left their bodies impaled upon the rocky blades at Dragons' End.  For this, you will die!  Enough of this farce.  Prepare to face my full wrath!
+[38173491] = [===[Ваш батько знищив моїх дітей і залишив їх тіла на скелястих шипах, в місці, що тепер називається драконячою згубою. І за це ти помреш! Достатньо цього фарсу. Пізнай мій гнів!]===],
+},
 ["Bladespire Brute"] = {
 -- Duck!
 [1693840493] = [===[Пригнися!]===],
@@ -93,6 +109,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Borgrim Stouthammer"] = {
 -- ACK!  That's the worst thing I've ever tasted!  I wouldn't let my ram drink that!
 [3898983697] = [===[Фу! Це найгірше, що я коли-небудь пробував! Я б навіть барана таким не поїв!]===],
+},
+["Cansis"] = {
+-- If you ever do that again, I will break your neck.
+[1667793241] = [===[Ще раз таке зробиш, і я тобі голову відірву.]===],
 },
 ["Captive Child"] = { "викрадена дитина",
 -- Gross!
@@ -174,6 +194,38 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- The invaders persist! Hold them off!
 [2211203697] = [===[Загарбники не здаються! Затримайте їх!]===],
 },
+["Dertrok"] = {
+-- Cansis, hold still. I'm going to try to use this crystal.
+[81664443] = [===[Кансіс, не рухайся. Я спробую використати цей кристал.]===],
+-- Cansis. You are a chicken.
+[3246258388] = [===[Кансіс. Ти курка.]===],
+-- Fascinating.
+[1005184417] = [===[Дивовижно.]===],
+-- Interesting... Let me try something.
+[3887156970] = [===[Цікаво... Дай-но я дещо спробую.]===],
+},
+["Dullgrom Dredger"] = {
+-- ARGH!!
+[3041796235] = [===[АГРРХ!!]===],
+-- Bird spell not working. Me is free!
+[1557484359] = [===[Пташине закляття не працює. Я вільний!]===],
+-- Bird, you hurting me!
+[256834064] = [===[Ай, пташка, це боляче!]===],
+-- Me do whatever birdy want. Just stop the hurting.
+[3713367681] = [===[Я робити, все, що хоче пташка. Не роби боляче.]===],
+-- Me no can think right anymore!
+[1488674101] = [===[Я більше не можу думати!]===],
+-- Me no want to die.
+[1932953605] = [===[Я не хочу вмирать.]===],
+-- Me promise be good...
+[3605827518] = [===[Я обіцяти бути хорошим...]===],
+-- Me sorry little birdy!
+[2803363763] = [===[Вибач, маленька пташка!]===],
+-- Me sorry...
+[1909608651] = [===[Пробач...]===],
+-- Why you keep hurting me? Me said me sorry...
+[2765194308] = [===[Чому ти робиш боляче? Я ж вибачивсь...]===],
+},
 ["Eitrigg"] = { "Ейтріґ",
 -- At once, sir!  For the Horde!
 [1933442232] = [===[Слухаюсь, вождь! За Орду!]===],
@@ -228,6 +280,19 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Who is he? He looks so familiar.
 [1429320229] = [===[Хто це? Він мені когось нагадує...]===],
 },
+["Garm Wolfbrother"] = {
+-- <name>, you above all have earned the right for the Horde to inhabit our ancestral home.
+[182977267] = [===[{ім'я:к}, ти {стать:заслужив:заслужила} право для Орди жити на землі наших предків.#<name>, you]===],
+-- By recovering the artifacts of our clan, by taking up the fight against our ancient enemy, the Bladespire ogres, and their gronn masters, by returning the Thunderspike to my hand, you have secured the blessing of the Thunderlord clan.
+[1467974110] = [===[Повернувши артефакти нашого клану, борючись проти наших давніх ворогів — огрів клану Клинорогих і їхніх господарів-ґроннів, повернувши Громовий спис до моїх рук, ти {стать:здобув:здобула} благословення клану Громовержців.]===],
+-- I have been watching you and Rexxar.  You must aid him to secure the future of the Horde here in these mountains.  Only when you have forced the ogres into submission and slain their master, Gruul the Dragonkiller, will your people be safe.
+[3226237076] = [===[Я спостерігав за тобою і Рексаром. Ти мусиш допомогти йому, щоб забезпечити майбутнє Орди у цих горах. Лише коли ти змусиш огрів підкоритися і вб‘єш їхнього повелителя, Ґруула Убивцю Драконів, твій народ буде в безпеці.]===],
+-- You honor our memory.
+[3971694028] = [===[Ти {стать:вшанував:вшанувала} пам'ять про нас.]===],
+["!code"] = {
+[".-yuaealheedtertfrtehetoitoralhe"] = 182977267,
+},
+},
 ["Garrosh"] = { "Ґаррош",
 -- %s collapses.
 [3481768076] = [===[%s падає навколішки.]===],
@@ -247,6 +312,39 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [2203689001] = [===[Твоя присутність — честь для нас, сину Дуротана. Праматір чекає на тебе нагорі.]===],
 -- You have shown me truths that I would have never known. You and your allies have gifted me with something that cannot bear a price: Redemption. Thrall, redeemer of the Mag'har, you honor me as none ever have...
 [3900687498] = [===[Ти показав мені правду, якої я ніколи б не дізнався. Ти та твої союзники дарували мені безцінний дар: спокуту. Тралл, спаситель Маг'харів, ти вшанував мене, як ніхто інший...]===],
+},
+["Gnome Spirit"] = {
+-- Thank you, <name>, for saving us from a fate worse than death. You have our eternal gratitude.
+[1614028924] = [===[Дякуємо, {ім'я:к}. Ти {стать:врятував:врятувала} нас від долі гіршої за смерть. Ми навіки вдячні тобі.#Thank you, <name>, for saving]===],
+["!code"] = {
+["tkyu.-frsgusfmfewetndhyuheorelge"] = 1614028924,
+},
+},
+["Goc"] = {
+-- Who dares place this affront upon the altar of Goc?
+[1657257979] = [===[Хто сміє оскверняти вівтар Ґока?]===],
+-- Who dares rouse Goc from his restful slumber?
+[242260134] = [===[Хто сміє порушувати спокійний сон Ґока?]===],
+-- Your name is as insignificant to me as the names of the thousands who have died under the might of Goc.  I will crush you and <name>!
+[3715521231] = [===[Твоє ім'я нічого не варте, як й імена тисяч тих, хто вже згинув від Ґока. Я знищу і тебе, і {ім'я:р}!#crush you and <name>!]===],
+["!code"] = {
+["yrneisasittomeastensoftetswoheddurtemtofgc"] = 3715521231,
+},
+},
+["Gor Grimgut"] = {
+-- Hah!  The Thunderspike is mine.  Die!
+[1187079826] = [===[Ха! Громовий спис — мій. Помри!]===],
+-- Puny <race> cannot lift spear. Gor lift spear!
+[2672214170] = [===[{стать:Крихітний:Крихітна} {раса:н} не може підняти спис. Ґор підняти спис!#Puny <race> cannot]===],
+["!code"] = {
+["py..ctltsrgrltsr"] = 2672214170,
+},
+},
+["Gorgrom the Dragon-Eater"] = {
+-- I will crush it and flay it and eat its meat and crack its bones one by one when I am done.
+[2808950911] = [===[Я розчавлю тебе, здеру шкіру, з'їм м'ясо та переламаю всі кістки, одну за одною.]===],
+-- Who dares defile the altar of Gorgrom the Dragon-Eater?
+[1846853318] = [===[Хто сміє оскверняти вівтар Ґорґрома Драконожера?]===],
 },
 ["Greatfather Aldrimus"] = { "дідусь Алдрімус",
 -- In death, all is forgiven...
@@ -584,6 +682,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- I will do my best to take care of the children, Greatmother.
 [4067012899] = [===[Я зроблю все можливе, щоб подбати про дітей, праматір.]===],
 },
+["Misha"] = {
+-- %s lets out a loud roar as she rakes her claws against the gronn's altar.
+[567922361] = [===[%s видає гучний рик, коли вона вдаряє лапою по вівтарю ґронна.]===],
+},
 ["Mogor"] = {
 -- Dat was poop! Mogor could put up much better fight den dat!
 [2375767012] = [===[Це було лайно! Моґор битись сильно краще!]===],
@@ -597,6 +699,13 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [1229438619] = [===[Тепер тебе бити справжній чемпіон! Я дати тобі шанс тікати, маля. Тікай, поки Моґор не плундр... не руйно... Тікай, поки Моґор не ВБИВАТИ!]===],
 -- WUT!? UNPOSSIBLE!! You fight Mogor now! Mogor destroy!
 [3252817378] = [===[ШО!? НЕ МОЖЛИВО!! Ти зараз битися з Моґор! Моґор нищити!]===],
+},
+["Mok'Nathal Spirit"] = {
+-- You have saved us from a fate far worse than death, <name>. You have the eternal gratitude of the Mok'Nathal ancestors.
+[1037632254] = [===[Ти {стать:врятував:врятувала} нас від долі гіршої за смерть, {ім'я:к}. Предки Мок'Наталів навіки вдячні тобі.#than death, <name>.]===],
+["!code"] = {
+["yuhesdusfmfefrwetndh.-yuheteelgeoftemlas"] = 1037632254,
+},
 },
 ["Murkblood Twin"] = { "близнюк з племені Хмурокрових",
 -- Blue brothers reign supreme!
@@ -631,6 +740,22 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Reanimated Exarch"] = { "воскреслий екзарх",
 -- You have brought me back too soon! I am weak yet... What is this! Who... It matters not! DIE!
 [467837350] = [===[Ви повернули мене надто рано! Я ще слабкий... Що це! Хто... Це неважливо! ПОМРИ!]===],
+},
+["Rexxar"] = {
+-- And their torment at your hands is at an end. By my name, I shall put an end to your life.
+[357427896] = [===[І їм більше не доведеться страждати від твої рук. Клянусь своїм ім'ям, я покладу тобі край.]===],
+-- I am Rexxar, son of the Mok'Nathal, champion of the Horde.
+[755211460] = [===[Я Рексар, син Мок'Наталів, чемпіон Орди.]===],
+-- I could not have achieved this victory without you. We will speak back at Thunderlord Stronghold.
+[654085305] = [===[Без тебе я б не зміг здобути цю перемогу. Ми поговоримо пізніше, у твердині Громовержців.]===],
+-- I think I hear him coming now.
+[949011292] = [===[Здається, я чую, як він летить.]===],
+-- Must you leave so soon?  Very well, may your journey bring you honor.
+[1065619989] = [===[Тобі вже треба летіти? Добре, нехай твоя подорож принесе тобі честь.]===],
+-- Prepare yourself for the end.
+[4034904180] = [===[Готуйся до смерті.]===],
+-- Thank you, my friend.  This drake from Dragons' End is just what we need to lure Goc out from hiding!
+[3658614020] = [===[Дякую, мій друже. Цей дракон з Драконячої згуби саме те, що нам потрібно, щоб виманити Ґока з укриття!]===],
 },
 ["Rokdar the Sundered Lord"] = { "Рокдар Розколотий Повелитель",
 -- ROKDAR SMASH PUNY <name>!
@@ -681,6 +806,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Skywing"] = { "Небокрил",
 -- Free at last from that horrible curse! Thank you! Please send word to Rilak the Redeemed that I am okay. My mission lies in Skettis. Terokk must be defeated!
 [3421942336] = [===[Нарешті я вільний від цього жахливого прокляття! Дякую! Будь ласка, передай Рілаку Визволеному, що зі мною все гаразд. Мій шлях лежить до Скеттіса. Терокк має бути переможений!]===],
+},
+["Spirit"] = {
+-- %s uses the key to open the cage.
+[213673430] = [===[%s відмикає клітку ключем.]===],
 },
 ["Station Technician"] = {
 -- I'M ON FIRE!!!

@@ -2699,7 +2699,7 @@ local npc = { -- [id] = { title, description (optional) }
 [3580] = { "тотем невидимості", en="Invisibility Totem" }, -- Invisibility Totem
 [3581] = { "стічний звір", en="Sewer Beast" }, -- Sewer Beast
 [3582] = { "Аман", en="Aman" }, -- Aman
-[3583] = { "Барітрас Місяцетінь", en="Barithras Moonshade" }, -- Barithras Moonshade
+[3583] = { "Барітрас Місячна Тінь", en="Barithras Moonshade" }, -- Barithras Moonshade
 [3584] = { "Терилуна", en="Therylune" }, -- Therylune
 [3585] = { "Терисіль", en="Therysil" }, -- Therysil
 [3586] = { "шахтар Джонсон", en="Miner Johnson" }, -- Miner Johnson
@@ -8058,7 +8058,7 @@ local npc = { -- [id] = { title, description (optional) }
 [15450] = { "Марта Гострошпилька", "збирачка товстої шкіри", en="Marta Finespindle" }, -- Marta Finespindle
 [15451] = { "стражниця Срібнонебесна", "збирачка лляних бинтів", en="Sentinel Silversky" }, -- Sentinel Silversky
 [15452] = { "медсестра Кам'янопільська", "збирачка шовкових бинтів", en="Nurse Stonefield" }, -- Nurse Stonefield
-[15453] = { "хранитель Місяцетінь", "збирач рунічних бинтів", en="Keeper Moonshade" }, -- Keeper Moonshade
+[15453] = { "хранитель Місячна Тінь", "збирач рунічних бинтів", en="Keeper Moonshade" }, -- Keeper Moonshade
 [15455] = { "Слизький Гастрогном", "збирач веселкових тунців", en="Slicky Gastronome" }, -- Slicky Gastronome
 [15456] = { "Сара Сумносвист", "збирачка смажених рапторів", en="Sarah Sadwhistle" }, -- Sarah Sadwhistle
 [15457] = { "мисливиця Стрімкоріка", "збирачка плямистого жовтохвоста", en="Huntress Swiftriver" }, -- Huntress Swiftriver
@@ -8226,7 +8226,7 @@ local npc = { -- [id] = { title, description (optional) }
 [15706] = { "північний олень", en="Winter Reindeer" }, -- Winter Reindeer
 [15707] = { "майстер-сержант Шипоболт", "військовий рекрутер", en="Master Sergeant Fizzlebolt" }, -- Master Sergeant Fizzlebolt
 [15708] = { "майстер-сержантка Маклур", "військова рекрутерка", en="Master Sergeant Maclure" }, -- Master Sergeant Maclure
-[15709] = { "майстер-сержантка Місяцетінь", "військова рекрутерка", en="Master Sergeant Moonshadow" }, -- Master Sergeant Moonshadow
+[15709] = { "майстер-сержантка Місячна Тінь", "військова рекрутерка", en="Master Sergeant Moonshadow" }, -- Master Sergeant Moonshadow
 [15710] = { "крихітний сніговик", en="Tiny Snowman" }, -- Tiny Snowman
 [15713] = { "синій кіразький бойовий танк" }, -- Qiraji Battle Tank
 [15714] = { "жовтий кіразький бойовий танк" }, -- Qiraji Battle Tank

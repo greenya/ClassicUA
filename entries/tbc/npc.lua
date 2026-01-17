@@ -864,6 +864,7 @@ local npc = { -- [id] = { title, description (optional) }
 [18817] = { "старший дослідник Картос", en="Chief Researcher Kartos" }, -- Chief Researcher Kartos
 [18827] = { "ґан'арґ-сапер", en="Gan'arg Sapper" }, -- Gan'arg Sapper
 [18865] = { "викривлене породження", en="Warp Aberration" }, -- Warp Aberration
+[18877] = { "підсвітній драк", en="nether drake" }, -- nether drake
 [18878] = { "викривлений звір", en="Warp Beast" }, -- Warp Beast
 [18884] = { "викривлений переслідувач", en="Warp Chaser" }, -- Warp Chaser
 [18904] = { "видіння Забутого", en="Vision of the Forgotten" }, -- Vision of the Forgotten
@@ -998,7 +999,7 @@ local npc = { -- [id] = { title, description (optional) }
 [20234] = { "Рунтоґ Дикий Молот", "приборкувач грифонів", en="Runetog Wildhammer" }, -- Runetog Wildhammer <Gryphon Master>
 [20235] = { "грифонерка Вітрорев", en="Gryphoneer Windbellow" }, -- Gryphoneer Windbellow
 [20270] = { "друїд Дикотвані", en="Feralfen Druid" }, -- Feralfen Druid
-[20284] = { "доктор Бум", en="Dr. Boom" }, -- Dr. Boom
+[20284] = { "Доктор Бум", en="Dr. Boom" }, -- Dr. Boom
 [20293] = { "болотостром-тріскун", en="Bogstrok Clacker" }, -- Bogstrok Clacker
 [20294] = { "болотостром-клешнеріз", en="Bogstrok Razorclaw" }, -- Bogstrok Razorclaw
 [20295] = { "болотостром-дробар", en="Bogstrok Crusher" }, -- Bogstrok Crusher
@@ -1057,6 +1058,7 @@ local npc = { -- [id] = { title, description (optional) }
 [21859] = { "вбитий акенайський воїн", en="Slain Sha'tar Vindicator" }, -- Slain Sha'tar Vindicator
 [21902] = { "змовник-чароплет", en="Cabal Spell-weaver" }, -- Cabal Spell-weaver
 [21907] = { "змовник-посвячений", en="Cabal Initiate" }, -- Cabal Initiate
+[21984] = { "Рексар", "чемпіон Орди", en="Rexxar" }, -- Rexxar
 [22038] = { "Хай'шулуд", "кістяний імператор", en="Hai'shulud" }, -- Hai'shulud
 [22095] = { "заражений коренехід", en="Infested Root-Walker" }, -- Infested Root-Walker
 [22107] = { "капітан Темнорев", en="Captain Darkhowl" }, -- Captain Darkhowl
@@ -1103,6 +1105,7 @@ local npc = { -- [id] = { title, description (optional) }
 [22466] = { "просіювач кісток", en="Bone Sifter" }, -- Bone Sifter
 [22481] = { "Дворфовітц", "лідер експедиції", en="Dwarfowitz" }, -- Dwarfowitz
 [22482] = { "дорослий просіювач кісток", en="Mature Bone Sifter" }, -- Mature Bone Sifter
+[22498] = { "Міша", en="Misha" }, -- Misha
 [22506] = { "вивержене зло", en="Foul Purge" }, -- Foul Purge
 [22507] = { "вивільнений морок", en="Darkness Released" }, -- Darkness Released
 [22832] = { "Мортіс Шелест Крила", "друїд Кігтя", en="Morthis Whisperwing" }, -- Morthis Whisperwing

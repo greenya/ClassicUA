@@ -183,7 +183,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- I need a ride.
 [3956547599] = [===[Мені потрібно летіти.]===],
 -- I require <class> training.
-[3729571731] = [===[Я хочу навчитися навичок {клас:мр}.]===],
+[3729571731] = [===[Я хочу навчитися навичок {клас:мр}.#require <class> training]===],
 -- I sell only the best gear, tested and true. And the prices are set, so if you want to haggle then go find a Goblin.
 [4181239680] = [===[Я продаю лише найкраще спорядження, випробуване і якісне. І ціни фіксовані, тож якщо хочеш поторгуватися — йди до гоблінів.]===],
 -- I sell only the finest arcane gear, made by the crafters and mages here in the city of Stormwind.

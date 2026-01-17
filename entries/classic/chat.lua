@@ -2128,7 +2128,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- %s looks from side to side...
 [3704651144] = [===[%s озирається навсібіч...]===],
 -- Hm... if you're looking to adle wits, <name>, then the secret behind Zanzil's zombies might just do the trick!
-[2306586681] = [===[Хм... Знаю, {ім'я:н}! Щоб задурити голову, нам можуть допомогти ті безмізкі зомбі Занзіла!]===],
+[2306586681] = [===[Хм... Знаю, {ім'я:н}! Щоб задурити голову, нам можуть допомогти ті безмізкі зомбі Занзіла!#wits, <name>, then]===],
 -- I'm sure I can find a use for this mixture...
 [1487846011] = [===[Думаю, я знайду де використати цю суміш...]===],
 -- Thank you, <name>.
@@ -3625,7 +3625,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Guess there's nothing more to be done. Blast!
 [2282864288] = [===[Певно, тут вже нічого не вдієш. Прокляття!]===],
 -- What was that!
-[2855240268] = [===[Що це було!]===],
+[2855240268] = [===[Що це було?!]===],
 },
 ["Roman"] = { "Роман",
 -- Eww... that's not a fish!
