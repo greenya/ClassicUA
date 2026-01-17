@@ -35,6 +35,11 @@ utils.prepare = function ()
     else                         utils.expansion_key = "???" end
 end
 
+utils.addon_version = function ()
+    local get_metadata = C_AddOns and C_AddOns.GetAddOnMetadata or GetAddOnMetadata
+    return get_metadata and get_metadata("ClassicUA", "Version") or "???"
+end
+
 utils.dump = function (value)
     if type(_G.DevTools_Dump) == "function" then
         _G.DevTools_Dump(value)

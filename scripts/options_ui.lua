@@ -551,7 +551,7 @@ local function prepare_options_frame()
     version_string:SetPoint("BOTTOMLEFT", title_string, "BOTTOMRIGHT", 10, 1.5)
     version_string:SetFontObject(fonts.addon_version)
     version_string:SetTextColor(.5, .6, .7)
-    version_string:SetText(GetAddOnMetadata("ClassicUA", "Version"))
+    version_string:SetText(utils.addon_version())
 
     -- reload button
 

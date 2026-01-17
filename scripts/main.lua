@@ -173,7 +173,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
 
         DEFAULT_CHAT_FRAME:AddMessage(
             assets.icon_ua_inline
-            .. " ClassicUA v" .. GetAddOnMetadata("ClassicUA", "Version")
+            .. " ClassicUA v" .. utils.addon_version()
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
             .. (options.account.dev_mode and " — Режим розробки" or "")
         )

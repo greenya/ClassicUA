@@ -31,7 +31,7 @@ local function dev_print(text)
 end
 
 local function log_init()
-    log.addon_version = GetAddOnMetadata("ClassicUA", "Version")
+    log.addon_version = utils.addon_version()
     log.game_version = GetBuildInfo()
     log.game_expansion = utils.expansion_key
 
