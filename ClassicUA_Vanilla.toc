@@ -2,8 +2,10 @@
 
 ## Title: |cff1177eeClassic|r|cffffdd00UA|r
 ## Notes: Game localization to Ukrainian language.
-## Author: greenya
-## Version: 6.4
+## Author: Greenya, Jakanis, and others
+## Version: 6.5
+## Category: Quests
+## IconTexture: Interface\Addons\ClassicUA\assets\icon.png
 ## SavedVariables: ClassicUA_Options, ClassicUA_DevLog
 ## SavedVariablesPerCharacter: ClassicUA_Character_Options
 
