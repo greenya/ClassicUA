@@ -626,6 +626,11 @@ local function prepare_options_frame()
 
     -- todo: maybe reorganize tabs: "Статистика" should have sub tabs "Лічильники" and "Завдання"
 
+    local game_sub_dir_name =
+        utils.is_classic and    "_classic_era_" or
+        utils.is_tbc and        "_anniversary_" or
+                                "_classic_"
+
     for tab_index, tab_data in ipairs({
         {
             title                   = "Персонаж",
@@ -635,7 +640,7 @@ local function prepare_options_frame()
         }, {
             title                   = "Розробка",
             content_title           = "Розробка",
-            content_text            = info.dev_mode_desc:gsub("@GAME_SUB_DIR", utils.is_classic and "_classic_era_" or "_classic_"),
+            content_text            = info.dev_mode_desc:gsub("@GAME_SUB_DIR", game_sub_dir_name),
             child_frame_setup_func  = setup_dev_mode_frame
         }, {
             title                   = "Оновлення",
