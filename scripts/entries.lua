@@ -72,8 +72,8 @@ local function prepare_codes(name, name_cases, race, class, is_male)
         race_key = "human"
     end
 
-    for _, c in ipairs(cases) do
-        local t = at.race[race_key][c][sex]
+    for c, race_case in pairs(at.race[race_key]) do
+        local t = race_case[sex]
         push_code_group_to_table(codes, "раса", c, t)
         if c == "н" then
             push_code_group_to_table(codes, "раса", nil, t)
@@ -88,8 +88,8 @@ local function prepare_codes(name, name_cases, race, class, is_male)
         class_key = "warrior"
     end
 
-    for _, c in ipairs(cases) do
-        local t = at.class[class_key][c][sex]
+    for c, class_case in pairs(at.class[class_key]) do
+        local t = class_case[sex]
         push_code_group_to_table(codes, "клас", c, t)
         if c == "н" then
             push_code_group_to_table(codes, "клас", nil, t)
