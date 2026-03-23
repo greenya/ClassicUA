@@ -381,10 +381,10 @@ utils.match_text_code = function (code, candidates)
     for _, candidate in ipairs(candidates) do
         -- If #code == MAX_TEXT_CODE_LENGTH - we do prefix match, as code may have been stripped
         -- If #code < MAX_TEXT_CODE_LENGTH  - we do exact match, as code is full
-        if #code == MAX_TEXT_CODE_LENGTH and code:match('^' .. candidate .. '.*$') then
+        if #candidate == MAX_TEXT_CODE_LENGTH and code:match('^' .. candidate .. '.*$') then
             return candidate
         else
-            if #code < MAX_TEXT_CODE_LENGTH and code:match('^' .. candidate .. '$') then
+            if #candidate < MAX_TEXT_CODE_LENGTH and code:match('^' .. candidate .. '$') then
                 return candidate
             end
         end
