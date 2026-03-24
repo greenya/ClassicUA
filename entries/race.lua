@@ -135,8 +135,6 @@ addonTable.race = { -- [id] = { [н/р/д/з/о/м/к] = { 1=male, 2=female, 3=n
 
 }
 
-addonTable.race["undead"] = addonTable.race["scourge"]  -- Alias for raceName
-
 -- Adding key for plural chat cases: {раса:мн}, {раса:мр}, etc
 for _, race_table in pairs(addonTable.race) do
     local origKeys = {}
@@ -150,3 +148,5 @@ for _, race_table in pairs(addonTable.race) do
         race_table[newKey] = { pluralForm, pluralForm }
     end
 end
+
+addonTable.race["undead"] = addonTable.race["scourge"]  -- Alias for raceName
