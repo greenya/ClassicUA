@@ -375,7 +375,11 @@ def string_hash(text: str) -> int:
 
 # [!] Any changes made to get_text_hash() func must be kept in sync with Lua impl
 def get_text_hash(text: str) -> int:
-    return string_hash(text.strip().lower()) if isinstance(text, str) else 0
+    if not isinstance(text, str):
+        return 0
+    # Replacing multiple NBSPs and spaces with single space
+    text = re.sub(r'[ \u00A0]+', ' ', text).strip().lower()
+    return string_hash(text)
 
 known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = (
     ("night elf", "nightelf"),

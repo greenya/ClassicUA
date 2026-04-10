@@ -340,7 +340,12 @@ end
 
 -- [!] Any changes made to get_text_hash() func must be kept in sync with Python impl
 utils.get_text_hash = function (text)
-    return type(text) == "string" and utils.string_hash(utils.lower(string_trim(text))) or 0
+    if type(text) ~= "string" then
+        return 0
+    end
+    -- Replacing multiple NBSPs and spaces with single space
+    text = string_trim(utils.lower(text:gsub("\194\160", " "):gsub(" +", " ")))
+    return utils.string_hash(text)
 end
 
 -- [!] Must be kept in sync with values in utils.py
