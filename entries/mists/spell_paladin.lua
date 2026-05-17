@@ -36,7 +36,7 @@ local paladin_spells = {
 -- Divine Plea
 [54428] = { "Божественне моління", "Вдновлює ману в обсязі {1}% від духу (за вийнятком короткочасних бонусів до духу) кожні {2} с протягом {3} с. Відновить щонайменше {4}% максимального запасу мани.#equal to {1}%#every {2} sec for {3} sec#less than {4}% of", "Вдновлення мани в обсязі {1}% від духу кожні {2} с.#Gaining {1}%#every {2} sec", en="Divine Plea" },
 -- Divine Protection
-[498] = { "Божественний захист", "Зменшу отриману магічну шкоду на {1}%[, а фізичну шкоду - на {1}%#physical damage taken by {1}%] протягом {2} с.#magical damage taken by {1}%#for {2} sec", "[Отриману магічну шкоду зменшено на {1}%.#Magical damage taken reduced by {1}%][\nОтриману фізичну шкоду зменшено на {1}%.#Physical damage taken reduced by {1}%]", en="Divine Protection" },
+[498] = { "Божественний захист", "Зменшує отриману магічну шкоду на {1}%[, а фізичну шкоду - на {1}%#physical damage taken by {1}%] протягом {2} с.#magical damage taken by {1}%#for {2} sec", "[Отриману магічну шкоду зменшено на {1}%.#Magical damage taken reduced by {1}%][\nОтриману фізичну шкоду зменшено на {1}%.#Physical damage taken reduced by {1}%]", en="Divine Protection" },
 -- Divine Purpose
 [86172] = { "Божественний задум", "Здібності, що витрачають заряди святої сили з ймовірністю {1}% спричинять ефект \"Божественний задум\".#a {1}% chance", rune=90174, en="Divine Purpose" },
 [90174] = { "Божественний задум", "Наступна здібність не поглине заряди святої сили та спрацює так, ніби поглинула {1} заряди. Ефект триває {2} с.#as if {1} Holy#Lasts {2} sec", "Наступна здібність не поглине заряди святої сили та спрацює так, ніби поглинула {1} заряди.#as if {1} Holy", en="Divine Purpose" },
@@ -90,7 +90,7 @@ local paladin_spells = {
 -- Item - Paladin Pvp Set Retribution 4P Bonus
 [31829] = { "Предмет - Бонус 4 предметів PvP комплекту паладина розплати", "Ви отримуєте заряд святої сили при отриманні прямої шкоди. Цей ефект не може спрацьовувати частіше, ніж раз на {1} с.#every {1} sec", en="Item - Paladin Pvp Set Retribution 4P Bonus" },
 -- Judgment
-[20271] = { "Присуд", "Магічна атака, що вивільняє енергію печатки, завдаючи [{1}#cause {1} Holy][від {1} до {2}#cause {1} to {2} Holy] шкоди святістю[ та надаючи заряд святої сили#and generates one charge of Holy Power][, надаючи заряд святої сили та накладаючи ефект \"Фізичної вразливості\" на ціль.#and apply the Physical Vulnerability debuff to a target].", rune=81326, en="Judgment" },
+[20271] = { "Присуд", "Магічна атака, що вивільняє енергію печатки, завдаючи [{1}#cause {1} Holy][від {1} до {2}#cause {1} to {2} Holy] шкоди святістю[ та надаючи заряд святої сили#and generates one charge of Holy Power][, надаючи заряд святої сили та накладаючи ефект \"Фізичної вразливості\" на ціль#and apply the Physical Vulnerability debuff to a target].", rune=81326, en="Judgment" },
 -- Judgments of the Pure
 [53657] = { "Присуд чистоти", "Ваш \"Присуд\" збільшує відновлення мани від духу під час бою.", "Відновлення мани від духу збільшено на {1}%.#by {1}%", en="Judgments of the Pure" },
 [54151] = { "Присуд чистоти", "Ваш \"Присуд\" збільшує відновлення мани від духу під час бою на {1}% протягом {2} хв.#combat by {1}% for {2} min", en="Judgments of the Pure" },
@@ -156,7 +156,7 @@ local paladin_spells = {
 -- Vindication
 [26017] = { nil, nil, "Завдану фізичну шкоду зменшено на {1}%.#by {1}%", ref=26016 }, -- Vindication
 -- Word of Glory
-[85673] = { "Уславлення", "Поглинає до трьох зарядів святої сили, щоб зцілити дружній цілі {1} здоров'я[ або завдати ворогу {1} шкоди#or harm an enemy target for {1}] за кожен заряд святої сили.[ При зціленні союзника ви зцілитесь на {1}% від обсягу зцілення.#you will be healed for {1}% of the amount healed][ Ваша шкода збільшується на {1}% за кожен заряд святої сили протягом {2} с.#damage is increased by {1}% per Holy Power spent for {2} sec]#friendly target for {1}", en="Word of Glory" },
+[85673] = { "Уславлення", "Поглинає до трьох зарядів святої сили, щоб зцілити дружній цілі [{1}#friendly target for {1}][від {1} до {2}#friendly target for {1} to {2} ] здоров'я[ або завдати ворогу {1} шкоди#or harm an enemy target for {1}][ або завдати ворогу від {1} до {2} шкоди#or harm an enemy target for {1} to {2}] за кожен заряд святої сили.[ При зціленні союзника ви зцілитесь на {1}% від обсягу зцілення.#you will be healed for {1}% of the amount healed][ Ваша шкода збільшується на {1}% за кожен заряд святої сили протягом {2} с.#damage is increased by {1}% per Holy Power spent for {2} sec]", en="Word of Glory" },
 
 -- Item effects
 [23733] = { "Сліпуче світло", "Наповнює паладина енергією світла, збільшуючи показник швидкості ближнього бою на {1}, а показник швидкості заклять на {2} протягом {3} с.#melee haste by {1} and spell haste by {2} for {3} sec", "Збільшує показник швидкості ближнього бою на {1}.\nЗбільшує показник швидкості заклять на {2}.#Increases melee haste by {1}#Increases spell haste by {2}", en="Blinding Light" },

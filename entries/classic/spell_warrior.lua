@@ -215,6 +215,12 @@ local warrior_spells = {
 [12282] = { "Покращений героїчний удар", "Зменшує витрати люті здібності \"Героїчний удар\" на {1}.#by {1} rage", en="Improved Heroic Strike" },
 [12663] = { ref=12282 }, -- Improved Heroic Strike
 [12664] = { ref=12282 }, -- Improved Heroic Strike
+-- Improved Inner Rage
+[12325] = { "Покращена внутрішня лють", "Зменшує час відновлення здіюності \"Внутрішня лють\" на {1} с.#by {1} sec", en="Improved Inner Rage" },
+[12863] = { ref=12325 }, -- Improved Inner Rage
+[12864] = { ref=12325 }, -- Improved Inner Rage
+[12865] = { ref=12325 }, -- Improved Inner Rage
+[12866] = { nil, "Зменшує час відновлення здіюності \"Внутрішня лють\" на {1} хв.#by {1} min", ref=12325 }, -- Improved Inner Rage
 -- Improved Intercept
 [20504] = { "Покращене перехоплення", "Зменшує час відновлення здібності \"Перехоплення\" на {1} с.#ability by {1} sec", en="Improved Intercept" },
 [20505] = { ref=20504 }, -- Improved Intercept

@@ -14,6 +14,11 @@ local shaman_spells = {
 [1064] = { "Ланцюгове зцілення", "Зцілює дружній цілі від {1} до {2} здоров'я та перестрибує на інші цілі неподалік. Якщо закляття було націлене на учасника групи, подальші стрибки переходитимуть лише на інших її учасників. Кожен наступний стрибок зцілює на {3}% менше здоров'я. Зцілює до {4} цілей.#for {1} to {2}#heal by {3}%#Heals {4} total", en="Chain Heal" },
 [10622] = { ref=1064 }, -- Chain Heal
 [10623] = { ref=1064 }, -- Chain Heal
+[25422] = { ref=1064 }, -- Chain Heal
+[25423] = { ref=1064 }, -- Chain Heal
+-- Chain Lightning
+[25439] = { ref=421 }, -- Chain Lightning
+[25442] = { ref=421 }, -- Chain Lightning
 -- Clearcasting
 [16246] = { "Ясномова", nil, "Ваші {1} наступні стихійні бойові закляття витратять на {2}% менше мани.#next {1} elemental#reduced by {2}%", en="Clearcasting" },
 -- Corrupted Totems
@@ -22,6 +27,8 @@ local shaman_spells = {
 [2062] = { "Тотем елементаля землі", "Викликає тотем, який закликає великого елементаля землі на захист заклинателя і його союзників. Існує {1} хв.#Lasts {1} min", en="Earth Elemental Totem" },
 -- Earth Shield
 [974] = { "Щит землі", "Захищає ціль земляним щитом, що з ймовірністю {1}% запобігає затримці вимови заклять при отриманні шкоди, а також зцілює ціль на {2} при отриманні удару. Цей ефект може спрацьовувати лише раз на кілька секунд. Ефект має {3} зарядів та триває {4} хв. Одночасно щит землі може захищати лише одну ціль і лише один щит стихій може бути активним на цілі.#a {1}% chance#target for {2}#{3} charges#Lasts {4} min", "З ймовірністю {1}% запобігає затримці вимови заклять при отриманні шкоди, а атаки по захищеній цілі зцілюють її на {2}.#{1}% chance#target for {2}.", en="Earth Shield" },
+[32593] = { ref=974 }, -- Earth Shield
+[32594] = { ref=974 }, -- Earth Shield
 -- Earth Shock
 [8042] = { "Земний шок", "Миттєво вражає ціль ударною хвилею, завдаючи від {1} до {2} шкоди від природи. Також перериває вимову закляття та унеможливлює вимову будь-яких інших заклять тієї ж школи магії протягом {3} с.#causing {1} to {2}#for {3} sec", en="Earth Shock" },
 [8044] = { ref=8042 }, -- Earth Shock
@@ -30,20 +37,33 @@ local shaman_spells = {
 [10412] = { ref=8042 }, -- Earth Shock
 [10413] = { ref=8042 }, -- Earth Shock
 [10414] = { ref=8042 }, -- Earth Shock
+[25454] = { ref=8042 }, -- Earth Shock
 -- Elemental Focus
 [16164] = { "Стихійна зосередженість", "Коли ви завдаєте критичного удару закляттями вогню, криги чи природи, ви отримуєте ефект \"Ясномова\", що зменшує витрати мани на {1} наступні бойові закляття на {2}%.#next {1} damage#by {2}%", en="Elemental Focus" },
 -- Elemental Precision
 [30672] = { "Стихійна точність", "Збільшує ймовірність завдання удару закляттями вогню, криги та природи на {1}% та зменшує загрозу заклять вогню, криги та природи на {2}%.#hit with Fire, Frost and Nature spells by {1}%#caused by Fire, Frost and Nature spells by {2}%", en="Elemental Precision" },
 [30673] = { ref=30672 }, -- Elemental Precision
 [30674] = { ref=30672 }, -- Elemental Precision
+-- Elemental Shields
+[30669] = { "Щити стихій", "Зменшує ймовірність отримання критичного удару від атак ближнього та дальнього бою на {1}%.#attacks by {1}%", en="Elemental Shields" },
+[30670] = { ref=30669 }, -- Elemental Shields
+[30671] = { ref=30669 }, -- Elemental Shields
 -- Elemental Weapons
 [16266] = { "Зброя стихій", "Збільшує шкоду від \"Зброї каменолома\" на {1}%, ефект \"Зброї буревію\" на {2}% і шкоду від \"Зброї язика полум'я\" та \"Зброї крижаного тавра\" на {3}%.#Rockbiter Weapon by {1}%#Windfury Weapon effect by {2}%#Frostbrand Weapon by {3}%", en="Elemental Weapons" },
 [29079] = { ref=16266 }, -- Elemental Weapons
 [29080] = { ref=16266 }, -- Elemental Weapons
 -- Fire Elemental Totem
 [2894] = { "Тотем елементаля вогню", "Викликає тотем, який закликає великого вогняного елементаля, який нищить ворогів. Існує {1} хв.#Lasts {1} min", en="Fire Elemental Totem" },
+-- Fire Nova Totem
+[25546] = { ref=1535 }, -- Fire Nova Totem
+[25547] = { ref=1535 }, -- Fire Nova Totem
+-- Fire Resistance Totem
+[25563] = { ref=8184 }, -- Fire Resistance Totem
+-- Flame Shock
+[25457] = { ref=8050 }, -- Flame Shock
 -- Flametongue Totem
 [8227] = { "Тотем язика полум'я", "Викликає тотем язика полум'я, що підсилює вогнем зброю в основній руці всіх учасників групи в межах {1} м. Кожен удар завдає від {2} до {3} додаткової шкоди вогнем. Триває {4} хв.#within {1} y#causes {2} to {3}#Lasts {4} min", en="Flametongue Totem" },
+[25557] = { ref=8227 }, -- Flametongue Totem
 -- Flametongue Weapon
 [8024] = { "Зброя язика полум'я", "Підсилює зброю шамана вогнем. Кожен удар завдає цілі від {1} до {2} додаткової шкоди вогнем залежно від швидкості зброї. Повільна зброя завдає більшої шкоди за удар. Триває {3} хв.#causes {1} to {2}#Lasts {3} min", en="Flametongue Weapon" },
 [8027] = { ref=8024 }, -- Flametongue Weapon
@@ -51,6 +71,7 @@ local shaman_spells = {
 [16339] = { ref=8024 }, -- Flametongue Weapon
 [16341] = { ref=8024 }, -- Flametongue Weapon
 [16342] = { ref=8024 }, -- Flametongue Weapon
+[25489] = { ref=8024 }, -- Flametongue Weapon
 -- Focused
 [43339] = { "Зосередженість", nil, "Наступний шок витратить на {1}% менше мани.#by {1}%", en="Focused" },
 -- Focused Casting
@@ -59,17 +80,21 @@ local shaman_spells = {
 [30864] = { "Зосереджений розум", "Зменшує тривалість ефектів знемовлення та переривання, що діють на вас. на {1}%. Цей ефект не поєднується з іншими подібними ефектами.#by {1}%", en="Focused Mind" },
 [30865] = { ref=30864 }, -- Focused Mind
 [30866] = { ref=30864 }, -- Focused Mind
+-- Frost Resistance Totem
+[25560] = { ref=8181 }, -- Frost Resistance Totem
 -- Frost Shock
 [8056] = { "Крижаний шок", "Миттєво вражає ціль кригою, завдаючи від {1} до {2} шкоди кригою та сповільнюючи рух на {3}%. Триває {4} с. Спричиняє високий рівень загрози.#causing {1} to {2}#speed by {3}%#Lasts {4} sec", "Рух сповільнено на {1}%.#by {1}%", en="Frost Shock" },
 [8058] = { ref=8056 }, -- Frost Shock
 [10472] = { ref=8056 }, -- Frost Shock
 [10473] = { ref=8056 }, -- Frost Shock
+[25464] = { "Крижаний шок", "Миттєво вражає ціль кригою, завдаючи від {1} до {2} шкоди кригою та зменшуючи її швидкість руху до {3}% від звичайної. Триває {4} с. Спричиняє високий рівень загрози.#causing {1} to {2}#speed to {3}% of#Lasts {4} sec", "Швидкість руху зменшено до {1}% від звичайної.#to {1}%", en="Frost Shock" },
 -- Frostbrand Weapon
 [8033] = { "Зброя крижаного тавра", "Підсилює зброю шамана кригою. Кожен удар може завдати цілі додатково {1} шкоди кригою та сповільнити її рух на {2}% протягом {3} с. Триває {4} хв.#causing {1}#by {2}% for {3} sec#Lasts {4} min", en="Frostbrand Weapon" },
 [8038] = { ref=8033 }, -- Frostbrand Weapon
 [10456] = { ref=8033 }, -- Frostbrand Weapon
 [16355] = { ref=8033 }, -- Frostbrand Weapon
 [16356] = { ref=8033 }, -- Frostbrand Weapon
+[25500] = { ref=8033 }, -- Frostbrand Weapon
 -- Grounding Totem
 [8177] = { "Тотем заземлення", "Викликає тотем заземлення з {1} здоров'я, який спрямовує на себе шкідливе заклинання, застосоване на учасника групи або рейду, тим самим знищуючи себе. Не спрямовує заклинання що діють на область. Триває {2} с.#with {1} health#Lasts {2} sec", en="Grounding Totem" },
 -- Healing Focus
@@ -82,11 +107,21 @@ local shaman_spells = {
 [29187] = { "Цілюще благовоління", "Зменшує загрозу від ваших цілющих заклять на {1}% та зменшує ймовірність того, що ваші ефекти буде розвіяно на {2}%.#spells by {1}%#dispelled by {2}%", en="Healing Grace" },
 [29189] = { ref=29187 }, -- Healing Grace
 [29191] = { ref=29187 }, -- Healing Grace
+-- Healing Stream Totem
+[25567] = { ref=5394 }, -- Healing Stream Totem
+-- Healing Wave
+[25391] = { ref=331 }, -- Healing Wave
+[25396] = { ref=331 }, -- Healing Wave
 -- Heroism
 [32182] = { "Героїзм", ref=2825, en="Heroism" },
 -- Improved Chain Heal
 [30872] = { "Покращене ланцюгове зцілення", "Збільшує ефективність закляття \"Ланцюгове зцілення\" на {1}%.#by {1}%", en="Improved Chain Heal" },
 [30873] = { ref=30872 }, -- Improved Chain Heal
+-- Lesser Healing Wave
+[25420] = { ref=8004 }, -- Lesser Healing Wave
+-- Lightning Bolt
+[25448] = { ref=403 }, -- Lightning Bolt
+[25449] = { ref=403 }, -- Lightning Bolt
 -- Lightning Overload
 [30675] = { "Перевантаження блискавки", "Ваші закляття \"Блискавка\" та \"Ланцюгова блискавка\" з ймовірністю {1}% спричинять друге, подібне закляття на ту саму ціль без додаткових витрат мани. Повторне закляття завдає половину шкоди й не спричиняє загрози.#a {1}% chance", en="Lightning Overload" },
 [30678] = { ref=30675 }, -- Lightning Overload
@@ -102,6 +137,14 @@ local shaman_spells = {
 [8134] = { ref=324 }, -- Lightning Shield
 [10431] = { ref=324 }, -- Lightning Shield
 [10432] = { ref=324 }, -- Lightning Shield
+[25469] = { nil, nil, "Завдає {1} шкоди від природи нападникам при отриманні удару. Зарядів: {2}.#Causes {1} Nature#{2} charges", ref=324 }, -- Lightning Shield
+[25472] = { ref=25469 }, -- Lightning Shield
+-- Magma Totem
+[8187] = { "Тотем магми", "Викликає тотем магми з {1} здоров'я на {2} с, який завдає {3} шкоди вогнем усім істотам в межах {4} м кожні {5} с.#with {1} health#for {2} sec#causes {3}#within {4} yards every {5} sec", en="Magma Totem" },
+[25550] = { ref=8187 }, -- Magma Totem
+[25552] = { ref=8187 }, -- Magma Totem
+-- Mana Spring Totem
+[25570] = { ref=5675 }, -- Mana Spring Totem
 -- Mana Tide
 [16191] = { "Приплив мани", nil, "Відновлює {1}% мани кожні {2} с.#Gain {1}%#every {2} sec", en="Mana Tide" },
 -- Mana Tide Totem
@@ -110,6 +153,8 @@ local shaman_spells = {
 [30812] = { "Швидке мислення", "Зменшує витрати мани на миттєві закляття на {1}% та збільшує шкоду та зцілення заклять на {2}% від сили атаки.#by {1}%#to {2}% of", en="Mental Quickness" },
 [30813] = { ref=30812 }, -- Mental Quickness
 [30814] = { ref=30812 }, -- Mental Quickness
+-- Nature Resistance Totem
+[25574] = { ref=10595 }, -- Nature Resistance Totem
 -- Nature's Guardian
 [30881] = { "Вартовий природи", "Коли атака знижує ваш рівень здоров'я нижче {1}%, з ймовірністю {2}% ви відновлюєте {3}% здоров'я та зменшуєте вашу загрозу цілі. Час відновлення - {4} секунд.#below {1}%#a {2}% chance to heal {3}% of#{4} second cooldown", en="Nature's Guardian" },
 [30883] = { ref=30881 }, -- Nature's Guardian
@@ -132,6 +177,10 @@ local shaman_spells = {
 [16314] = { ref=8017 }, -- Rockbiter Weapon
 [16315] = { ref=8017 }, -- Rockbiter Weapon
 [16316] = { ref=8017 }, -- Rockbiter Weapon
+[25479] = { ref=8017 }, -- Rockbiter Weapon
+[25485] = { ref=8017 }, -- Rockbiter Weapon
+-- Searing Totem
+[25533] = { "Тотем обпалення", "Викликає тотем обпалення з {1} здоров'я на {2} хв. Тотем періодично атакує ворогів у радіусі {3} м, завдаючи від {4} до {5} шкоди вогнем.#with {1} health#for {2} min#within {3} yards for {4} to {5} Fire", en="Searing Totem" },
 -- Shamanistic Focus
 [43338] = { "Шаманська зосередженість", "Після завдання критичного удару в ближньому бою ви отримуєте ефект зосередженості. Зосередженість зменшує витрати мани наступного шоку на {1}%.#spell by {1}%", en="Shamanistic Focus" },
 -- Shamanistic Rage
@@ -141,14 +190,22 @@ local shaman_spells = {
 [18848] = { ref=16268 }, -- Spirit Weapons
 -- Stoneclaw Totem
 [5730] = { "Тотем кам'яного пазура", "Викликає тотем кам'яного пазура з {1} здоров'я на {2} с. Тотем провокує істот в межах {3} м атакувати його. Ворогів, що атакують тотем, з ймовірністю {4}% буде приголомшено на {5} с.#with {1} health#caster for {2} sec#within {3} y#a {4}% chance to be stunned for {5} sec", en="Stoneclaw Totem" },
+[25525] = { ref=5730 }, -- Stoneclaw Totem
+-- Stoneskin Totem
+[25508] = { ref=8071 }, -- Stoneskin Totem
+[25509] = { ref=8071 }, -- Stoneskin Totem
 -- Stormstrike
 [17364] = { "Штормовий удар", "Миттєва атака з обох рук.[ Окрім того, наступні {1} ураження цілі шкодою від природи посилені на {2}%.#next {1} sources of Nature damage dealt to the target are increased by {2}%.][ Триває {1} с.#Lasts {1} sec]", "Отриману шкоду від природи збільшено на {1}%.#by {1}%", en="Stormstrike" },
+-- Strength of Earth Totem
+[25528] = { ref=8075 }, -- Strength of Earth Totem
 -- Tidal Focus
 [16179] = { "Припливна зосередженість", "Зменшує витрати мани на ваші цілющі закляття на {1}%.#by {1}%", en="Tidal Focus" },
 [16214] = { ref=16179 }, -- Tidal Focus
 [16215] = { ref=16179 }, -- Tidal Focus
 [16216] = { ref=16179 }, -- Tidal Focus
 [16217] = { ref=16179 }, -- Tidal Focus
+-- Totem of Wrath
+[30706] = { "Тотем гніву", "Викликає тотем гніву з {1} здоров'я. Тотем збільшує ймовірність завдання удару та ймовірність завдання критичного удару закляттями на {2}% для всіх учасників групи в радіусі {3} м. Існує {4} хв.#with {1} health#spells by {2}% for all#within {3} y#Lasts {4} min", en="Totem of Wrath" },
 -- Totemic Call
 [36936] = { "Повернення тотемів", "Повертає ваші тотеми в землю, відновлюючи вам {1}% мани, необхідної для виклику кожного з повернених тотемів.#you {1}%", en="Totemic Call" },
 -- Toughness
@@ -172,17 +229,25 @@ local shaman_spells = {
 [30664] = { "Нещадна буря", "Відновлює ману в обсязі {1}% від вашого інтелекту кожні {2} с навіть під час вимови заклять.#to {1}% of#every {2} sec", en="Unrelenting Storm" },
 [30665] = { ref=30664 }, -- Unrelenting Storm
 [30666] = { ref=30664 }, -- Unrelenting Storm
+[30667] = { ref=30664 }, -- Unrelenting Storm
+[30668] = { ref=30664 }, -- Unrelenting Storm
 -- Water Shield
 [23575] = { "Водяний щит", en="Water Shield" },
 [24398] = { "Водяний щит", "Заклинача оточують {1} кулі води, які відновлюють {2} мани кожні {3} с. Коли заклинання, атака ближнього або дальнього бою вражає заклинача, одна куля води знищується та відновлює {4} мани. Куля води може бути знищена лише раз на кілька секунд. Триває {5} хв. Одночасно на шамані може бути активний лише один щит стихій.#by {1} globes#granting {2} mana per {3} sec#{4} mana is restored#Lasts {5} min", "Відновлює {1} мани кожні {2} с. Заклинання та атаки проти вас спричиняють відновлення {3} мани. {4} заряди.#{1} mana per {2} sec#restore {3} mana#{4} charges", en="Water Shield" },
 [33736] = { ref=24398 }, -- Water Shield
 [33737] = { ref=23575 }, -- Water Shield
 [34828] = { "Водяний щит", "Вражає ціль водяною стрілою, що завдає [{1}#for {1} Nature][від {1} до {2}#for {1} to {2} Nature] шкоди від природи.", "Швидкість вимови заклять збільшено на {1}%.#by {1}%", en="Water Shield" },
+-- Windfury Totem
+[25585] = { "Тотем буревію", "Викликає тотем буревію з {1} здоров'я. Тотем підсилює вітром зброю в основній руці всіх учасників групи в межах {2} м. Кожен удар з імовірністю {3}% спричиняє {4} додаткову атаку зі збільшеною на {5} силою атаки ближнього бою. Триває {6} хв.#with {1} health#within {2} y#{3}% chance#{4} extra attack with {5}#Lasts {6} min", en="Windfury Totem" },
+[25587] = { ref=25585 }, -- Windfury Totem
 -- Windfury Weapon
 [8232] = { "Зброя буревію", "Підсилює зброю шамана вітром. Кожен удар з ймовірністю {1}% спричиняє дві додаткові атаки зі збільшеною на {2} силою атаки. Триває {3} хв.#{1}% chance#attacks with {2} extra#Lasts {3} min", en="Windfury Weapon" },
 [8235] = { ref=8232 }, -- Windfury Weapon
 [10486] = { ref=8232 }, -- Windfury Weapon
 [16362] = { ref=8232 }, -- Windfury Weapon
+[25505] = { ref=8232 }, -- Windfury Weapon
+-- Windwall Totem
+[25577] = { ref=15107 }, -- Windwall Totem
 -- Wrath of Air Totem
 [3738] = { "Тотем повітряного гніву", "Викликає тотем повітряного гніву з {1} здоров'я. Тотем збільшує шкоду і зцілення заклять всіх учасників групи в радіусі {2} м на {3}. Існує {4} хв.#with {1} health#within {2} yards#by up to {3}#Lasts {4} min", en="Wrath of Air Totem" },
 

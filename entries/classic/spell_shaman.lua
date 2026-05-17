@@ -314,6 +314,7 @@ local shaman_spells = {
 [10585] = { ref=8190 }, -- Magma Totem
 [10586] = { ref=8190 }, -- Magma Totem
 [10587] = { ref=8190 }, -- Magma Totem
+[8187] = { "Тотем магми", en="Magma Totem" },
 -- Mana Spring
 [5677] = { "Джерело мани", nil, "Відновлює {1} мани кожні {2} с.#Gain {1} mana every {2} sec", en="Mana Spring" },
 [10491] = { ref=5677 }, -- Mana Spring
