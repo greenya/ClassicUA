@@ -27,6 +27,8 @@ local warrior_spells = {
 [23892] = { ref=23881 }, -- Bloodthirst
 [23893] = { ref=23881 }, -- Bloodthirst
 [23894] = { ref=23881 }, -- Bloodthirst
+[25251] = { ref=23881 }, -- Bloodthirst
+[30335] = { ref=23881 }, -- Bloodthirst
 -- Booming Voice
 [12321] = { "Гулкий голос", "Збільшує зону дії та тривалість \"Бойового кличу\", \"Деморалізуючого кличу\" та \"Командирського крику\" на {1}%.#Shout by {1}%", en="Booming Voice" },
 [12835] = { ref=12321 }, -- Booming Voice
@@ -35,6 +37,8 @@ local warrior_spells = {
 [12838] = { ref=12321 }, -- Booming Voice
 -- Challenging Shout
 [1161] = { "Провокуючий клич", "Змушує всіх ворогів в межах {1} м зосередити атаки на вас протягом {2} с.#within {1} y#for {2} sec", "Спровоковано.", en="Challenging Shout" },
+-- Cleave
+[25231] = { ref=845 }, -- Cleave
 -- Commanding Presence
 [12318] = { "Голос командира", "Збільшує додаткову силу атаки ближнього бою від вашого \"Бойового кличу\" та збільшення здоров'я від вашого \"Командирського крику\" на {1}%.#Shout by {1}%", en="Commanding Presence" },
 [12857] = { ref=12318 }, -- Commanding Presence
@@ -53,18 +57,44 @@ local warrior_spells = {
 [12303] = { "Виклик", "Збільшує загрозу від ваших атак на {1}% допоки ви перебуваєте в захисній стійці та збільшує вашу вправність на {2}.#attacks by {1}%#expertise by {2}", en="Defiance" },
 [12788] = { ref=12303 }, -- Defiance
 [12789] = { ref=12303 }, -- Defiance
+-- Demoralizing Shout
+[25202] = { ref=1160 }, -- Demoralizing Shout
+[25203] = { ref=1160 }, -- Demoralizing Shout
+-- Devastate
+[30016] = { ref=20243 }, -- Devastate
+[30022] = { "Спустошення", "Розколює броню цілі, накладаючи ефект \"Розколу броні\". Окрім того, завдає {1}% шкоди зброї плюс {2} за кожен ефект \"Розколу броні\" на цілі. Ефект \"Розколу броні\" накопичується до {3} разів.#causes {1}% of#plus {2} for#up to {3} times", en="Devastate" },
+-- Endless Rage
+[29623] = { "Нескінченна лють", "Ви отримуєте на {1}% більше люті від усієї завданої шкоди.#generate {1}% more", en="Endless Rage" },
 -- Execute
 [5308] = { "Страта", "Спроба добити пораненого ворога, завдаючи {1} шкоди і додатково {2} шкоди за кожну надлишкову одиницю люті. Можна використати лише проти ворогів, що мають менше {3}% здоров'я.#causing {1} damage#into {2} additional#less than {3}% health", en="Execute" },
 [20658] = { ref=5308 }, -- Execute
 [20660] = { ref=5308 }, -- Execute
 [20661] = { ref=5308 }, -- Execute
 [20662] = { ref=5308 }, -- Execute
+[25234] = { ref=5308 }, -- Execute
+[25236] = { ref=5308 }, -- Execute
+-- Focused Rage
+[29787] = { "Зосереджена лють", "Зменшує витрати люті ваших атакуючих здібностей на {1}.#abilities by {1}", en="Focused Rage" },
+[29790] = { ref=29787 }, -- Focused Rage
+[29792] = { ref=29787 }, -- Focused Rage
 -- Frightening Shout
 [19134] = { "Жахаючий клич", "Кричить на навколишніх ворогів, змушуючи їх втікати від страху протягом {1} с.#for {1} sec", "Налякано.", en="Frightening Shout" },
 [29544] = { ref=19134 }, -- Frightening Shout
+-- Hamstring
+[25212] = { "Нівечення", "Калічить ворога, завдаючи {1} шкоди та зменшуючи швидкість руху до {2}% від звичайної протягом {3} с.#causing {1} damage#movement to {2}% of#for {3} sec", "Швидкість руху зменшено до {1}% від звичайної.#to {1}%", en="Hamstring" },
+-- Heroic Strike
+[29707] = { "Героїчний удар", "Сильна атака, що збільшує шкоду ближнього бою на {1} і спричиняє високий рівень загрози. Завдає додатково {2} шкоди запамороченим цілям.#damage by {1}#Causes {2} additional", en="Heroic Strike" },
+[30324] = { ref=29707 }, -- Heroic Strike
+-- Improved Berserker Stance
+[29759] = { "Покращена стійка берсерка", "Збільшує силу атаки на {1}% та зменшує загрозу на {2}% у стійці берсерка.#attack power by {1}%#threat caused by {2}%", en="Improved Berserker Stance" },
+[29760] = { ref=29759 }, -- Improved Berserker Stance
+[29761] = { ref=29759 }, -- Improved Berserker Stance
+[29762] = { ref=29759 }, -- Improved Berserker Stance
+[29763] = { ref=29759 }, -- Improved Berserker Stance
 -- Improved Defensive Stance
 [29593] = { "Покращена захисна стійка", "Зменшує всю отриману шкоду від заклять в захисній стійці на {1}%.#by {1}%", en="Improved Defensive Stance" },
 [29594] = { ref=29593 }, -- Improved Defensive Stance
+[29595] = { ref=29593 }, -- Improved Defensive Stance
 -- Improved Disciplines
 [29723] = { "Вдосконалені навички", "Зменшує час відновлення здібностей \"Відплата\", \"Навіженість\" та \"Стіна щитів\" на {1} хв та збільшує тривалість їх ефектів на {2} с.#abilities by {1} min#duration by {2} sec", en="Improved Disciplines" },
 [29724] = { ref=29723 }, -- Improved Disciplines
@@ -72,6 +102,12 @@ local warrior_spells = {
 -- Improved Intercept
 [29888] = { "Покращене перехоплення", "Зменшує час відновлення здібності \"Перехоплення\" на {1} с.#ability by {1} sec", en="Improved Intercept" },
 [29889] = { ref=29888 }, -- Improved Intercept
+-- Improved Mortal Strike
+[35446] = { "Покращений смертельний удар", "Зменшує час відновлення \"Смертельного удару\" на {1} с та збільшує його шкоду на {2}%.#ability by {1} sec#causes by {2}%", en="Improved Mortal Strike" },
+[35448] = { ref=35446 }, -- Improved Mortal Strike
+[35449] = { ref=35446 }, -- Improved Mortal Strike
+[35450] = { ref=35446 }, -- Improved Mortal Strike
+[35451] = { ref=35446 }, -- Improved Mortal Strike
 -- Improved Sunder Armor
 [12308] = { "Покращений розкол броні", "Зменшує витрати люті здібностей \"Розкол броні\" та \"Спустошення\" на {1}.#by {1} rage", en="Improved Sunder Armor" },
 [12810] = { ref=12308 }, -- Improved Sunder Armor
@@ -80,6 +116,12 @@ local warrior_spells = {
 [12287] = { "Покращений громовий удар", "Зменшує витрати люті здібності \"Громовий удар\" на {1}, збільшує його шкоду на {2}% та посилює ефект сповільнення на {3}%.#by {1} rage#damage by {2}%#additional {3}%", en="Improved Thunder Clap" },
 [12665] = { ref=12287 }, -- Improved Thunder Clap
 [12666] = { ref=12287 }, -- Improved Thunder Clap
+-- Improved Whirlwind
+[29721] = { "Покращений вихор", "Зменшує час відновлення здібності \"Вихор\" на {1} с.#ability by {1} sec", en="Improved Whirlwind" },
+[29776] = { ref=29721 }, -- Improved Whirlwind
+-- Intercept
+[25272] = { ref=20252 }, -- Intercept
+[25275] = { ref=20252 }, -- Intercept
 -- Intervene
 [3411] = { "Втручання", "Воїн здійснює стрімкий ривок до учасника групи, перехоплюючи наступну атаку ближнього або дальнього бою.", "Наступна атака ближнього чи дальнього бою, спрямована проти вас, натомість вразить воїна.", en="Intervene" },
 -- Intimidating Shout
@@ -92,6 +134,11 @@ local warrior_spells = {
 [12702] = { ref=12701 }, -- Mace Specialization
 [12703] = { ref=12701 }, -- Mace Specialization
 [12704] = { ref=12701 }, -- Mace Specialization
+-- Mocking Blow
+[25266] = { ref=694 }, -- Mocking Blow
+-- Mortal Strike
+[25248] = { ref=12294 }, -- Mortal Strike
+[30330] = { ref=12294 }, -- Mortal Strike
 -- One-Handed Weapon Specialization
 [16538] = { "Спеціалізація на одноручній зброї", "Збільшує вашу фізичну шкоду при використанні одноручної зброї на {1}%.#equipped by {1}%", en="One-Handed Weapon Specialization" },
 [16539] = { ref=16538 }, -- One-Handed Weapon Specialization
@@ -107,9 +154,13 @@ local warrior_spells = {
 [12784] = { ref=12700 }, -- Poleaxe Specialization
 [12785] = { ref=12700 }, -- Poleaxe Specialization
 -- Precision
-[29592] = { "Точність", "Збільшує вашу ймовірність завдання удару зброєю ближнього бою на {1}%.#by {1}%", en="Precision" },
+[29590] = { "Точність", "Збільшує вашу ймовірність завдання удару зброєю ближнього бою на {1}%.#by {1}%", en="Precision" },
+[29591] = { ref=29590 }, -- Precision
+[29592] = { ref=29590 }, -- Precision
 -- Rampage
 [29801] = { "Шаленство", "Воїн впадає в шаленство, збільшуючи силу атаки на {1}, а більшість ударів ближнього бою збільшуватимуть силу атаки додатково на {2}. Ефект накопичується до {3} разів. Триває {4} с. Цю здібність можна використати лише після завдання критичного удару.#increasing attack power by {1}#attack power by an additional {2}#stack up to {3} times#Lasts {4} sec", "Більшість ударів ближнього бою збільшують силу атаки.", en="Rampage" },
+[30030] = { ref=29801 }, -- Rampage
+[30033] = { ref=29801 }, -- Rampage
 -- Recklessness
 [1719] = { "Навіженість", "Воїн буде завдавати критичних ударів більшістю своїх атак та отримає невразливість до ефектів страху протягом {1} с, але отримана шкода збільшиться на {2}%.#next {1} sec#increased by {2}", "Невразливість до ефектів страху, більшість атак завдають критичних ударів, але отриману шкоду збільшено на {1}%.#increased by {1}%", en="Recklessness" },
 -- Rend
@@ -120,18 +171,33 @@ local warrior_spells = {
 [11572] = { ref=772 }, -- Rend
 [11573] = { ref=772 }, -- Rend
 [11574] = { ref=772 }, -- Rend
+[25208] = { ref=772 }, -- Rend
+-- Revenge
+[25269] = { ref=6572 }, -- Revenge
+[30357] = { ref=6572 }, -- Revenge
 -- Second Wind
 [29834] = { "Друге дихання", "Після отримання ефекту приголомшення чи знерухомлення ви отримуєте {1} люті та відновлюєте {2}% здоров'я протягом {3} с.#generate {1} rage and {2}%#over {3} sec", en="Second Wind" },
 [29838] = { ref=29834 }, -- Second Wind
+-- Shield Bash
+[29704] = { "Удар щитом", "Удар цілі щитом, що завдає {1} шкоди. Також паморочить ціль, перериває вимову закляття та унеможливлює вимову заклять тієї ж школи протягом {2} с.#for {1} damage#for {2} sec", en="Shield Bash" },
 -- Shield Mastery
 [29598] = { "Майстерність володіння щитом", "Збільшує обсяг шкоди, яку поглинає ваш щит, на {1}%.#by {1}%", en="Shield Mastery" },
+[29599] = { ref=29598 }, -- Shield Mastery
+[29600] = { ref=29598 }, -- Shield Mastery
 -- Shield Slam
 [23922] = { "Трощення щитом", "Трощить ціль щитом, завдаючи від {1} до {2} шкоди, збільшеної від показника блоку щитом, та розвіює 1 магічний ефект на цілі. Також спричиняє великий рівень загрози.#causing {1} to {2} damage", en="Shield Slam" },
 [23923] = { ref=23922 }, -- Shield Slam
 [23924] = { ref=23922 }, -- Shield Slam
 [23925] = { ref=23922 }, -- Shield Slam
+[25258] = { ref=23922 }, -- Shield Slam
+[30356] = { ref=23922 }, -- Shield Slam
+-- Slam
+[25241] = { ref=1464 }, -- Slam
+[25242] = { ref=1464 }, -- Slam
 -- Stance Mastery
 [12678] = { "Опанування стійок", "Ви зберігаєте до {1} люті при зміні стійки.#retain up to {1} of", en="Stance Mastery" },
+-- Sunder Armor
+[25225] = { ref=7386 }, -- Sunder Armor
 -- Sweeping Strikes
 [12328] = { "Розлогі удари", "Ваші наступні {1} атак ближнього бою вражають ще одного ворога неподалік.#next {1} melee", "Ваші наступні {1} атак ближнього бою вражають ще одного ворога неподалік.#next {1} melee", en="Sweeping Strikes" },
 -- Sword Specialization
@@ -151,6 +217,7 @@ local warrior_spells = {
 [8205] = { ref=6343 }, -- Thunder Clap
 [11580] = { ref=6343 }, -- Thunder Clap
 [11581] = { ref=6343 }, -- Thunder Clap
+[25264] = { nil, nil, "Швидкість атаки зменшено на {1}%.#by {1}%", ref=6343 }, -- Thunder Clap
 -- Unbridled Wrath
 [12322] = { "Нестримний гнів", "При завданні шкоди зброєю ближнього бою ви можете отримати додаткову одиницю люті.", en="Unbridled Wrath" },
 [12999] = { "Нестримний гнів", "При завданні шкоди зброєю ближнього бою ви можете отримати додаткову одиницю люті. Спрацьовує частіше за \"Нестримний гнів\" (Ранг {1}).#(Rank {1})", en="Unbridled Wrath" },

@@ -373,7 +373,7 @@ local mage_spells = {
 [29075] = { ref=29074 }, -- Master of Elements
 [29076] = { ref=29074 }, -- Master of Elements
 -- Permafrost
-[11175] = { "Вічна мерзлота", "Збільшує тривалість ваших ефектів \"Охолодження\" на {1} с та зменшує швидкість ворожої цілі на {2}%.#effects by {1} sec#additional {2}%", en="Permafrost" },
+[11175] = { "Вічна мерзлота", "Збільшує тривалість ваших ефектів \"Охолодження\" на {1} с та зменшує швидкість ворожої цілі ще на {2}%.#effects by {1} sec#additional {2}%", en="Permafrost" },
 [12569] = { ref=11175 }, -- Permafrost
 [12571] = { ref=11175 }, -- Permafrost
 -- Piercing Ice
