@@ -5,16 +5,48 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional) }
+[34668] = { "Шпичка Гайкокрут", "ваша виконавча асистентка" }, -- Sassy Hardwrench
+[34692] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
+[34695] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
+[35650] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
+[35786] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
+[35805] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
+[36077] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
+[36379] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
+[36425] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
+[36521] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
+[36523] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
+[37680] = { "Шпичка Гайкокрут", "ваша виконавча асистентка" }, -- Sassy Hardwrench
+[37804] = { "повітряна куля \"Каджа-Коли\"", en="Kaja'Cola Balloon" }, -- Kaja'Cola Balloon
+[38120] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
+[38124] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
+[38387] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
+[38515] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
+[38516] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
+[38869] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
+[38928] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
+[39199] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
 [39281] = { "Фентон Стомосхиб", en="Fenton Frazzlecraz" }, -- Fenton Frazzlecraz
 [42195] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
 [42640] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
+[43095] = { "Шпичка Гайкокрут", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[43333] = { "Шпичка Гайкокрут", en="Sassy Hardwrench" }, -- Sassy Hardwrench
 [46654] = { "Рея", en="Rhea" }, -- Rhea
 [46785] = { "лорд Розпал", en="Lord Cannon" }, -- Lord Cannon
 [46955] = { "Рея", en="Rhea" }, -- Rhea
+[47208] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
+[47209] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
+[48494] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
+[48496] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
 [48993] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
+[49900] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
+[49901] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
 [51152] = { "ультрамариновий кіразький бойовий танк" }, -- Qiraji Battle Tank
 [51394] = { "гігантське пазуристе щупальце", en="Giant Claw Tentacle" }, -- Giant Claw Tentacle
 [51428] = { "пазуристе щупальце", en="Claw Tentacle" }, -- Claw Tentacle
+[52267] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
+[57682] = { "Тіріґоса", en="Tyrygosa" }, -- Tyrygosa
+[57684] = { "проєкція Тіріґоси" }, -- Tyrygosa
 }
 
 if addonTable.npc then

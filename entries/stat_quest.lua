@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.stat_quest = { name="root", count=6881, total=15911, rows={
+addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
     { name="Класична (Classic)", count=4275, total=4275, rows={
         { name="Калімдор", count=1277, total=1277, rows={
             { name="Азшара", count=33, total=33 },
@@ -221,7 +221,7 @@ addonTable.stat_quest = { name="root", count=6881, total=15911, rows={
             { name="Штормовій", count=7, total=7 },
         } },
     } },
-    { name="Палаючий Похід (TBC)", count=1400, total=2338, rows={
+    { name="Палаючий Похід (TBC)", count=1568, total=2338, rows={
         { name="Калімдор", count=276, total=276, rows={
             { name="Бруднолипка трясовина", count=76, total=76 },
             { name="Громовий Бескид", count=4, total=4 },
@@ -250,33 +250,33 @@ addonTable.stat_quest = { name="root", count=6881, total=15911, rows={
             { name="Чорнокнижник", count=12, total=12 },
             { name="Шаман", count=26, total=26 },
         } },
-        { name="Підземелля", count=22, total=84, rows={
+        { name="Підземелля", count=24, total=84, rows={
             { name="Акенайські склепи", count=2, total=2 },
             { name="Багряний монастир", count=1, total=1 },
+            { name="Загони рабів", count=0, total=3 },
             { name="Мародон", count=1, total=1 },
             { name="Паросховище", count=0, total=3 },
             { name="Печери Часу", count=0, total=37 },
             { name="Підболоття", count=4, total=4 },
-            { name="Склепи мани", count=3, total=5 },
+            { name="Склепи мани", count=5, total=5 },
             { name="Стратгольм", count=1, total=1 },
-            { name="Табір рабів", count=0, total=3 },
             { name="Тераса Магістрів", count=0, total=5 },
             { name="Тіньовий лабіринт", count=0, total=1 },
             { name="Ульдаман", count=2, total=2 },
             { name="Цитадель Пекельного Вогню", count=6, total=17 },
             { name="Чорноскельний шпиль", count=2, total=2 },
         } },
-        { name="Позамежжя", count=703, total=1138, rows={
+        { name="Позамежжя", count=869, total=1138, rows={
             { name="Акіндун", count=5, total=16 },
             { name="Болота Занґар", count=97, total=97 },
-            { name="Долина Тінистого Місяця", count=0, total=199 },
-            { name="Лезокраї гори", count=147, total=155 },
+            { name="Долина Тінистого Місяця", count=8, total=199 },
+            { name="Лезокраї гори", count=152, total=155 },
             { name="Ліс Тероккар", count=108, total=111 },
             { name="Наґранд", count=129, total=136 },
-            { name="Низошторм", count=5, total=162 },
+            { name="Низошторм", count=155, total=162 },
             { name="Півострів Пекельного Вогню", count=175, total=187 },
             { name="Скеттіс", count=0, total=14 },
-            { name="Шаттрат", count=37, total=61 },
+            { name="Шаттрат", count=40, total=61 },
         } },
         { name="Поля битв", count=14, total=14, rows={
             { name="Альтерацька долина", count=2, total=2 },
@@ -595,6 +595,7 @@ addonTable.stat_quest = { name="root", count=6881, total=15911, rows={
             { name="Грізний Молот", count=0, total=29 },
             { name="Ґрім-Батол", count=0, total=3 },
             { name="Ґундрак", count=0, total=8 },
+            { name="Загони рабів", count=0, total=4 },
             { name="Загублене місто Толвірів", count=0, total=3 },
             { name="Зали Блискавок", count=0, total=4 },
             { name="Зали Відображень", count=0, total=3 },
@@ -626,7 +627,6 @@ addonTable.stat_quest = { name="root", count=6881, total=15911, rows={
             { name="Сетеккські зали", count=0, total=4 },
             { name="Склепи мани", count=0, total=5 },
             { name="Стратгольм", count=0, total=16 },
-            { name="Табір рабів", count=0, total=4 },
             { name="Твердиня Драк'Тарон", count=0, total=4 },
             { name="Твердиня Утґард", count=0, total=7 },
             { name="Тераса Магістрів", count=0, total=6 },

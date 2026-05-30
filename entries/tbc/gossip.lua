@@ -25,29 +25,30 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 Ґаррош здатен очолити Маґ'харів. Він має силу та мудрість. Всі духи підтримують його. Йому лише бракує віри в себе. Він так боїться... Він так сильно боїться, що якщо дозволить собі розслабитися, його гнів може поглинути і його, і всіх, хто буде поруч з ним.]===],
 -- <Greatmother Geyah nods, accepting your answer.>
 --
--- I can no longer fight the spirits, <name>. My time has long since passed. Once again, I must thank you for all that you have done. While Garrosh may be unmoveable, many of my people have been lifted by your accomplishments. They are now willing to fight for our rights as a unified clan.
-[3458163657] = [===[<Праматів Ґейя киває вам у відповідь.>
+-- I can no longer fight the spirits, <name>. My time has long since passed. Once again, I must thank you for all that you have done. While Garrosh may be unmovable, many of my people have been lifted by your accomplishments. They are now willing to fight for our rights as a united clan.
+[2473103482] = [===[<Праматір Ґейя киває вам у відповідь.>
 
 Я більше не можу боротися з духами, {ім'я:к}. Мій час давно минув. Ще раз дякую тобі за все, що ти {стать:зробив:зробила}. Хоча Ґаррош, можливо, і непохитний, багато хто з мого народу надихнувся твоїми досягненнями. Тепер вони готові боротися за наш клан.]===],
 -- <Greatmother Geyah nods.>
+--
 -- Did you know my son?
-[2630451707] = [===[<Праматір Гейя киває.>
+[1408561307] = [===[<Праматір Гейя киває.>
 
 Ти {стать:знав:знала} мого сина?]===],
 -- <Greatmother Geyah smiles at you.>
 --
 -- You remind me of my son, <name>.
 --
--- He was an immovable mountain. A pillar of strength and honor.
+-- He was an immovable mountain: A pillar of strength and honor.
 --
 -- <Geyah's eyes well up with tears.>
 --
--- He sacrificed himself so that we could survive. So that generations of orcs after him could be born into a world without the blood curse... Without Gul'dan and his Old Horde...
+-- He sacrificed himself so that we could survive. So that generations of orcs after him could be born into a world without the blood curse... Without Gul'dan and his dark Horde...
 --
 -- <Geyah stares into the distance, lost in thought.>
 --
 -- Oh Durotan, how I wish you could be here. Your people so desperately need you...
-[2776905495] = [===[<Праматір Ґейя усміхається вам.>
+[3359971584] = [===[<Праматір Ґейя усміхається вам.>
 
 Ти нагадуєш мені мого сина, {ім'я:к}.
 
@@ -55,11 +56,21 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 
 <Очі Ґейї наповнюються сльозами..>
 
-Він пожертвував собою, щоб ми могли вижити. Щоб наступні покоління орків могли народитися у світі без кровного прокляття... Без Ґул'дана і його Старої Орди...
+Він пожертвував собою, щоб ми могли вижити. Щоб наступні покоління орків могли народитися у світі без кровного прокляття... Без Ґул'дана і його темної Орди...
 
 <Ґейя дивиться вдалину, заглибившись у думки.>
 
 Ох, Дуротане, якби тільки ти міг бути тут. Твій народ так потребує тебе...]===],
+-- <Greatmother Geyah smiles.>
+--
+-- I am old. It is my time. When I pass, my spirit will move on to the spirit realm. It is there that I will stand with my ancestors. It is there that we will watch over our people.
+--
+-- When Garad was alive Mother Kashur's duty was the same as my duty now.
+[1401478464] = [===[<Праматір Ґейя усміхається.>
+
+Я уже стара. Мій час прийшов. Коли я помру, моя душа перейде в царство духів. Там я буду разом із предками. Там ми будемо пильнувати за нашим народом.
+
+Коли Ґарад був живий, обов'язок матері Кашур був таким самим, як і мій зараз.]===],
 -- <Greatmother Geyah smiles.>
 --
 -- I am old. When I pass, my spirit will move on to the spirit realm. It is there that I will stand with my ancestors. It is there that we will watch over our people.
@@ -78,10 +89,10 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 Так?..]===],
 -- <Tears stream down Greatmother Geyah's face.>
 --
--- I... I... Durotan survived to have a child? The child Draka told me of before they left... It was their greatest fear... To raise a child in this world. On the other side of that gate was their only hope. I dared not tell Durotan, but secretly, I begged the spirits to watch over them- to protect their child and to give them strength.
+-- I... I... Durotan survived to have a child? The child Draka told me of before they left... It was their greatest fear... To raise a child in this world. On the other side of that gate was their only hope. I dared not tell Durotan, but secretly, I begged the spirits to watch over them - to protect their child and to give them strength.
 --
 -- I... I must see my grandchild. I must see him. Please, I am too weak. You must tell him. Before I leave this world...
-[4024433122] = [===[<По щоках праматері Ґейї течуть сльози.>
+[963507686] = [===[<По щоках праматері Ґейї течуть сльози.>
 
 Я... Я... Дуротан вижив, і в нього народилася дитина? Дитина, про яку мені казала Драка перед тим, як вони пішли... То був їхній найбільший страх... Виховувати дитину в цьому світі. По інший бік брами була їхня єдина надія. Я не наважилась сказати про це Дуротану, але потайки я благала духів наглядати за ними... захищати їхню дитину і дарувати їй силу.
 
@@ -126,6 +137,8 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [2751971330] = [===[Чи є щось, що я можу зробити для вас, праматір?]===],
 -- It is my Warchief, Greatmother. The leader of my people from my world. He... He is the son of Durotan. He is your grandchild.
 [551700603] = [===[Це мій вождь, праматір. Лідер мого народу з мого світу. Він... Він син Дуротана. Він ваш онук.]===],
+-- It is my warchief, Greatmother. The leader of my people. From my world. He... He is the son of Durotan. He is your grandchild.
+[3353761351] = [===[Це мій вождь, праматір. Лідер мого народу з мого світу. Він... Він син Дуротана. Він ваш онук.]===],
 -- Left? How can you choose to leave?
 [2362491811] = [===[Пішла? Як ви можете піти?]===],
 -- The duty of a clan mother is to listen. To listen to the wind and the water and the fire and the earth. To gather information for her clan in the way others gather furs to stay warm. It is the spirits that I commune with... In my dreams, Mother Kashur speaks to me like the spirits that spoke to her once... When I pass, I will speak to Drakia and Celestine in this manner.
@@ -134,6 +147,16 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [2266065314] = [===[Обов'язок матері клану — слухати. Слухати вітер, воду, вогонь і землю. Збирати інформацію для свого клану так, як інші збирають хутра, щоб зігрітися. Я спілкуюся з духами... У моїх снах мати Кашур розмовляє зі мною так само як колись з нею розмовляли духи… Коли я помру, я буду таким же чином розмовляти з Дракією і Целестіною.
 
 <Праматір Ґейя усміхається.>]===],
+-- They have grown up here. We kept them safe from harm. We did the best that we could in nursing them back to health. Many perished but many, many more grew strong. Like Garrosh...
+--
+-- <Greatmother Geyah sighs.>
+--
+-- He has lost his heart, you know. He tells me that I am his balance. That without me, the blood lust that consumed his father and ultimately cursed our people would take him over.
+[524179417] = [===[Вони виросли тут. Ми оберігали їх від небезпеки. Ми робили все, що могли, аби вилікувати їх. Багато хто загинув, але ще більше стали сильними. Як Ґаррош...
+
+<Праматір Ґейя зітхає.>
+
+Він втратив своє серце, знаєш. Він каже мені, що я є його рівновагою. Що без мене жага крові, яка поглинула його батька та врешті прокляла наш народ, захопить і його.]===],
 -- They have grown up here. We kept them safe from harm. We did the best that we could in nursing them back to health. Many perished but many, many more grew strong. Like Garrosh...
 --
 -- <Greatmother Geyah sighs.>
@@ -150,18 +173,20 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [2954981535] = [===[Що сказав тобі Ґаррош, {ім'я:к}?]===],
 -- What is this duty?
 [2489747424] = [===[Що це за обов'язок?]===],
+-- You raised all of the orcs here, Greatmother?
+[2499541539] = [===[Ви виростили всіх тутешніх орків?]===],
 -- You raised all the orcs here, Greatmother?
 [3380192431] = [===[Ви виростили всіх тутешніх орків?]===],
 ["!code"] = {
-["grghnsagyrarcnnolrfttess.-mytehslgsepdoean"] = 3458163657,
-["grghssatyuyurdmeofmysn.-hewsaniemnprofshad"] = 2776905495,
+["grghnsagyrarcnnolrfttess.-mytehslgsepdoean"] = 2473103482,
+["grghssatyuyurdmeofmysn.-hewsaniemnprofshad"] = 3359971584,
 ["hoyg.."] = 3054648004,
 ["wtddghtlyu.-"] = 2954981535,
 },
 },
 [18180] = { -- Hemet Nesingwary
--- Hemet Nesingwary, what are you doing here in Outland?
-[3676854123] = [===[Гемет Ернінґвей? Що ти робиш у Позамежжі?]===],
+-- Hemet Nesingwary, what are you doing here in the Outland?
+[1236741140] = [===[Гемет Ернінґвей? Що ти робиш у Позамежжі?]===],
 -- Keep a sharp eye, <class>. You never know when some beastie is stalking you instead of the other way around.
 [2716658081] = [===[Будь насторожі, {клас:к}. Ніколи не знаєш, коли на тебе полює якесь чудовисько.]===],
 -- Listen lad. I left the expedition in the capable hands of me son, Junior. When you've stalked the finest game in all of Azeroth you start to itch for something more.
@@ -271,11 +296,20 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Very busy... very busy! What?
 [2361180942] = [===[Я дуже зайнятий... дуже зайнятий! Що таке?]===],
 },
+[18537] = { -- Adyen the Lightwarden
+-- I'm ready, Adyen.
+[3535099250] = [===[Я {стать:готовий:готова}, Адиєне.]===],
+-- It is time to face Socrethar, <name>. Are you ready?
+[3501413583] = [===[Час зустрітися з Сокретаром, {ім'я:к}. Ти {стать:готовий:готова}?]===],
+["!code"] = {
+["itistetofesr.-aeyury"] = 3501413583,
+},
+},
 [18716] = { -- Shadowy Initiate
--- Practicing! Soon I'Il be good enough to join the other summoners and take my turn inside the Shadow Labyrinth at Auchindoun.
+-- Practicing! Soon I'll be good enough to join the other summoners and take my turn inside the Shadow Labyrinth at Auchindoun.
 --
--- I hope that I'Il get the chance to summon something big! Maybe something as big as Murmur, though I wouldn't lose control of him!
-[2896528315] = [===[Практикуюсь! Скоро мені вистачить вправності, щоб приєднатися до інших закликачів і зайняти своє місце в Тіньовому лабіринті Акіндуну.
+-- I hope that I'll get the chance to summon something big! Maybe something as big as Murmur, though I wouldn't lose control of him!
+[619465792] = [===[Практикуюсь! Скоро мені вистачить вправності, щоб приєднатися до інших закликачів і зайняти своє місце в Тіньовому лабіринті Акіндуну.
 
 Сподіваюся, що мені випаде шанс викликати щось велике! Можливо, щось таке ж велике, як Бурмотун! Хоч би не втратити контроль над ним.]===],
 -- What are you doing there?
@@ -304,10 +338,10 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [1097780887] = [===[Раднику, які останні новини?]===],
 -- And what is it exactly that you think I can do for you? Can't you see that I'm very busy here discussing matters of import with our illustrious leader?
 --
--- Be quick about your business or l'll have you beaten, dog!
-[1681688411] = [===[І що, по твоєму, я можу для тебе зробити? Ти не бачиш, що я тут обговорюю важливі питання з нашим видатним лідером?
+-- Be quick about your business or I'll have you beaten, dog!
+[3309910560] = [===[І що, по-твоєму, я можу для тебе зробити? Ти не бачиш, що я тут обговорюю важливі питання з нашим видатним лідером?
 
-Давай, скоріше кажи що хочеш, а то накажу спустити на тебе собак!]===],
+Давай, скоріше, кажи, що хочеш, а то накажу спустити на тебе собак!]===],
 -- Well, I was just giving our leader here a progress report on how everything is proceeding according to plan. It should only be a few more weeks and we'll have this place back in shape.
 --
 -- We may want the Shadow Council to only staff the village with orcs, however. That way we can make an ancestral claim and work undercover.
@@ -315,13 +349,69 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Wait a minute. Do I know you? What's your name?
 [2796726707] = [===[Ну, я просто звітую нашому лідеру, що все йде за планом. Ще кілька тижнів, і ми приведемо це місце до ладу.
 
-Однак, можливо, нам варто попросити Тіньову Раду заселити селище лише орками. Так це все буде менш підозрілим і ми зможемо працювати під прикриттям.
+Однак, можливо, нам варто попросити Тіньову Раду заселити селище лише орками. Так це все буде менш підозрілим, і ми зможемо працювати під прикриттям.
 
 Зачекай-но. Я тебе знаю? Як тебе звати?]===],
 },
 [19137] = { -- Shotgun Jones
 -- Never look these Broken directly in the eyes. I think they can suck the soul right out of you if they're so inclined!
 [868844785] = [===[Ніколи не дивися цим Зломленим в очі. Здається, вони можуть висмоктати душу самим лише поглядом!]===],
+},
+[19217] = { -- Ravandwyr
+-- 'Netherstorm' was not always as you see it now.
+--
+-- There was a time when this crumbling land was known as the Plains of Farahlon. Little of those days has survived the evil that has taken hold here.
+[3468761880] = [===["Низошторм" колись був інакшим.
+
+Колись ця розтрощена земля була відома як Фаралон. Мало що з тих часів вціліло після того, як тут запанувало зло.]===],
+-- Archmage Vargoth enstrusted me with his staff when he told me to flee from the blood elf attack on Violet Tower. I did as he told me, hoping to take refuge in the old draenei settlement of Arklon.
+--
+-- There was to be no respite. I had walked right into the leading edge of a Burning Legion force. The demons wrested the staff from me, but I managed to escape with my life.
+--
+-- Though my master knows nothing of my failure, it still shames me.
+[2402943177] = [===[Архімаг Варґот довірив мені свій посох, коли наказав тікати від нападу ельфів крові на Лілову вежу. Я виконав його наказ, сподіваючись знайти притулок у старому поселенні дренеїв — Арклоні.
+
+Проте перепочинку не було. Я натрапив на війська Палаючого Легіону. Демони вирвали у мене посох, але мені вдалося врятуватися.
+
+Хоча мій вчитель нічого не знає про це, мені все одно соромно.]===],
+-- I've lost Archmage Vargoth's Staff. Can you replace it?
+[940689017] = [===[Я {стать:загубив:загубила} посох архімага Варґота. Ти можеш замінити його?]===],
+},
+[19481] = { -- Archmage Vargoth
+-- <Archmage Vargoth favors you with a wry smile.>
+--
+-- Plenty of room at the cursed Violet Tower.
+--
+-- Any time of year, you can find me here.
+[1115965386] = [===[<Архімаг Варґот вітає вас гіркою посмішкою.>
+
+У проклятій Ліловій Вежі багато місця.
+
+Якщо я тобі знадоблюся — я буду тут.]===],
+-- The night Kael'thas leveled the village, I could do nothing to help. His magic had already sealed me in the tower, exacerbating my torment by forcing me to witness the deaths of my fellows.
+--
+-- And still their voices are calling from far away, waking me up in the middle of the night.
+[2268615858] = [===[Тієї ночі, коли Кель'тас зруйнував селище, я нічого не міг вдіяти. Його магія ув'язнила мене у вежі, змусивши спостерігати за смертю моїх побратимів.
+
+Я досі чую відлуння їхніх голосів...]===],
+-- The orb behind me was once capable of glimpsing into the happenings on Azeroth.
+--
+-- Kael'thas's curse changed all that, of course, but during our years of isolation many of the mages found solace in its images.
+--
+-- Some scried to remember; some scried to forget.
+[1473239074] = [===[Куля, що знаходиться за моєю спиною, колись давала змогу спостерігати за подіями в Азероті.
+
+Звісно, прокляття Кель'таса все це змінило, але за роки нашої ізоляції багато магів знаходили розраду в її образах.
+
+Дехто дивився в неї, щоб згадати. Дехто — щоб забути...]===],
+},
+[19488] = { -- Custodian Dieworth
+-- Kirin'Var survived 20 long years and countless orc assaults, but it could not withstand the forces of Kael'thas. A man who once called himself a member of the Kirin Tor murdered all of us, save one.
+--
+-- Archmage Vargoth survived the attack, so Kael'thas imprisoned him within the Violet Tower, warding it with a magic that forbids the passage of any of the Kirin Tor.
+[1563703295] = [===[Кірін'Вар пережив 20 довгих років і незліченні напади орків, але не зміг протистояти силам Кель'таса. Той, хто колись називав себе членом Кірін-Тору, вбив усіх нас, крім одного.
+
+Архімаг Варґот пережив напад, тому Кель'тас ув'язнив його в Ліловій вежі, запечатавши її магією, що забороняє прохід будь-кому з Кірін-Тору.]===],
 },
 [19606] = { -- Grek
 -- Grek, will you try out this new weapon oil Rakoria made?
@@ -333,17 +423,92 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 
 Грек хоче помогти!]===],
 },
+[19644] = { -- Image of Archmage Vargoth
+-- <The archmage's image seems to look through you, rather than at you.>
+--
+-- Ribbons and currents of arcane energy ebb and flow here as if the area is awash in a sea of magical power. Not even the first cataclysm caused this kind of damage.
+[3687134808] = [===[<Здається, погляд проєкції архімага спрямований крізь вас.>
+
+Течії арканічної енергії звиваються та пульсують, ніби ця місцевість просякнута магічною силою. Навіть перший катаклізм не завдав таких руйнувань.]===],
+-- <The image's head blurs as it turns to take in its surroundings.>
+--
+-- If you had seen the Plains of Farahlon, you wouldn't believe this is the same place. Mere months ago, these fields would not have looked out of place in Westfall.
+--
+-- All that is gone now, but how and why?
+[959281096] = [===[<Голова проєкції розмивається, коли вона повертається, щоб оглянути околиці.>
+
+Якби ти {стать:бачив:бачила} рівнини Фаралону, ти б не {стать:повірив:повірила}, що це те саме місце. Лише кілька місяців тому ці поля нічим не відрізнялися від полів Західного краю.
+
+Тепер усього цього немає, але як і чому?]===],
+-- I will have my revenge on Kael'thas for this outrage against the Kirin Tor! He once walked among us as a brother, but we are brothers no more.
+--
+-- There will be a reckoning.
+--
+-- <The archmage nods grimly, not relishing the prospect.>
+--
+-- Kael'thas is more than a mere rogue mage. Once I am free from my tower, Ravandwyr and I will assist anyone who opposes him.
+[3289102633] = [===[Я помщуся Кель'тасу за цей злочин проти Кірін-Тора! Колись він нам як брат, але більше він не один з нас.
+
+Настане час розплати.
+
+<Архімаг похмуро киває, не в захваті від такої думки.>
+
+Кель'тас — не якийсь простий зрадник-маг. Щойно я звільнюся з вежі, ми з Равандвіром допоможемо всім, хто протистоїть йому.]===],
+-- The land is in worse shape than I could've imagined. If the damage continues at this rate, Farahlon -- err, Netherstorm will be nothing but cosmic gravel very soon.
+--
+-- Where will it stop, I wonder? Perhaps the better question is, 'will it stop?'
+[2359521288] = [===[Ці землі в гіршому стані, ніж я міг уявити. Якщо руйнування триватимуть такими темпами, Фаралон... тобто, Низошторм дуже скоро перетвориться на космічний щебінь.
+
+Цікаво, де це зупиниться? Хоча, мабуть, краще запитати: «Чи зупиниться це взагалі?»]===],
+},
 [19720] = { -- Dirty Larry
 -- Beat it, kid. I got business to attend to...
 [1762200962] = [===[Мотай звідси, {стать:малий:мала}. У мене тут серйозні діла.]===],
 -- Ezekiel said that you might have a certain book...
 [4029173455] = [===[Єзекиїл сказав, що у вас може бути одна книга...]===],
 },
+[20071] = { -- Wind Trader Marid
+-- There are only 3 kinds of people in this world: competitors, customers, and employees. Competitors are to be crushed ruthlessly, customers indulged, and employees strictly supervised.
+--
+-- Independent contractors are a myth.They want to be paid better than employees, but treated like customers. Never trust one who calls himself by that title.
+[1134518756] = [===[У цьому світі є лише 3 типи істот: конкуренти, клієнти та працівники. Конкурентів треба нещадно знищувати, клієнтів — балувати, а працівників — суворо контролювати.
+
+Незалежні підрядники — це міф. Вони хочуть отримувати вищу оплату, ніж працівники, але вимагають ставлення як до клієнтів. Ніколи не довіряй тим, хто так себе називає.]===],
+-- Wind Trader Marid, I've returned with more information on the nether drakes. I'm prepared to be your business partner, and for an extra sum, I'll take care of that troublesome elf and her human friend.
+[3978593515] = [===[Маріде, в мене є нова інформація про підсвітніх драконів. Я {стать:готовий:готова} співпрацювати, а за додаткову плату я розберуся з тією набридливою ельфійкою та її другом.]===],
+},
 [20494] = { -- Dama Wildmane
 -- Fine beasts, aren't they? The wyverns we raise here are trained to handle the fiercest and strangest weather conditions Draenor has to offer. You'll find them dependable and hardy.
 [4207219548] = [===[Чудові звірі, чи не так? Виверни, яких ми тут вирощуємо, треновані витримувати найсуворіші та найдивніші погодні умови Дренору. Вони надзвичайно стійкі та витривалі.]===],
 -- Let me see the wyverns, Dama.
 [1340842123] = [===[Дозволь мені поглянути на виверн, Дамо.]===],
+},
+[20518] = { -- Image of Wind Trader Marid
+-- There are only 3 kinds of people in this world: competitors, customers, and employees. Competitors are to be crushed ruthlessly, customers indulged, and employees strictly supervised.
+--
+-- Independent contractors are a myth.They want to be paid better than employees, but treated like customers. Never trust one who calls himself by that title.
+[1134518756] = [===[У цьому світі є лише 3 типи істот: конкуренти, клієнти та працівники. Конкурентів треба нещадно знищувати, клієнтів — балувати, а працівників — суворо контролювати.
+
+Незалежні підрядники — це міф. Вони хочуть отримувати вищу оплату, ніж працівники, але вимагають ставлення як до клієнтів. Ніколи не довіряй тим, хто так себе називає.]===],
+},
+[20985] = { -- Captain Saeed
+-- Ameer might be worried about what the Ethereum are doing but I'm squarely focused on the real danger here: Dimensius.
+[1097884478] = [===[Амір, можливо, й хвилюється через те, що тут робить Ефіріум, але я зосереджений на справжній небезпеці — Вимірії.]===],
+-- Fleshling, I am Captain Saeed of the Protectorate and these soldiers that stand by me are my avengers. We await orders from the fleshling who destroyed the void conduit. On that fleshling's word, we will make our way up to Dimensius's lair and wait for the word to make a final strike!
+--
+-- Too long it has been... The void lord will soon face our combined might!
+[1244134717] = [===[Створіння з плоті, я капітан Саїд з Протекторату, а ці солдати, що стоять поруч зі мною, — мої месники. Ми чекаємо наказів від створіння з плоті, що знищило провідник порожнечі. За його наказом ми вирушимо до лігва Вимірія і чекатимемо на команду, щоб завдати остаточного удару!
+
+Занадто довго це тривало... Скоро повелитель порожнечі відчує нашу силу!]===],
+-- I am ready. Let's make history!
+[2077818259] = [===[Я {стать:готовий:готова}. Покінчімо з Вимірієм!]===],
+-- I am that fleshling, Saeed. Let's go!
+[830189237] = [===[Я і є те створіння з плоті, Саїде. Рушаймо!]===],
+-- This is it, <name>. We charge on your orders! Just say the word and my men and I will engage!
+[1082828988] = [===[Ось і все, {ім'я:к}. Ми підемо в атаку за твоїм наказом! Просто скажи, і я поведу моїх месників!]===],
+["!code"] = {
+["tsisit.-weceonyrosjtsytewdadmymnadwlee"] = 1082828988,
+},
 },
 [21066] = { -- Rina Moonspring
 -- Our work in the Living Grove must not be endangered. Our very lives hinge upon its continued health and growth.
@@ -530,22 +695,28 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [3603935772] = [===[Чим би я не міг допомогти тобі в боротьбі проти огрів — можеш розраховувати на мене!]===],
 },
 [21981] = { -- Overseer Nuaar
+-- Haha, you're back? You don't seriously expect me to change my mind do you?
+--
+-- Get lost.
+[2495552328] = [===[Ха-ха, ти {стать:повернувся:повернулася}? Ти справді очікуєш, що я передумаю?
+
+Згинь.]===],
 -- Negotiations? NEGOTIATIONS!
 --
 -- Allow me to make our stance perfectly clear. We are a free people, able to do whatever we want and come and go as we please. The Cenarion Expedition does not own this mountain range.
 --
--- There will be no negotiations! Now, go back to the druids and tell them that we will continue to do as we people.
-[89177261] = [===[Переговори? ПЕРЕГОВОРИ?!
+-- There will be no negotiations! Now, go back to the druids and tell them that we will continue to do as we please.
+[2243175923] = [===[Переговори? ПЕРЕГОВОРИ?!
 
 Дозволь мені чітко висловити нашу позицію. Ми — вільний народ, здатний робити все, що забажаємо, і приходити та йти, коли забажаємо. Кенарійська експедиція не володіє цими горами.
 
-Не буде ніяких переговорів! А тепер повертайся до друїдів і скажи їм, що ми продовжимо робити те, що захочемо.]===],
+Не буде ніяких переговорів! А тепер повертайся до друїдів і скажи їм, що ми й надалі робитимемо те, що захочемо.]===],
 -- Overseer, I am here to negotiate on behalf of the Cenarion Expedition.
 [203117856] = [===[Розпоряднику, я тут, щоб вести переговори від імені Кенарійської експедиції.]===],
--- The Blade's Edge Mountains are a place of great opportunity. How unfortunate that some deem themselves above all others on matters that pertain to talking advantage of such opportunities.
+-- The Blade's Edge Mountains are a place of great opportunity. How unfortunate that some deem themselves above all others on matters that pertain to taking advantage of such opportunities.
 --
 -- Who do the Cenarion Expedition think they are to tell us what we can and cannot do here?
-[1479146164] = [===[Лезокраї гори — місце великих можливостей. Як прикро, що деякі вважають себе вищими за інших у питаннях, що стосуються використання таких можливостей.
+[3495446751] = [===[Лезокраї гори — місце великих можливостей. Як прикро, що деякі вважають себе вищими за інших у питаннях, що стосуються використання таких можливостей.
 
 Ким себе вважає Кенарійська експедиція, щоб вказувати нам, що ми можемо і не можемо тут робити?]===],
 },

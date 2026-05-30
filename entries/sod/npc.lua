@@ -646,7 +646,7 @@ local npc = { -- [id] = { title, description (optional) }
 [222726] = { "тиран вулика", en="Tyrant of the Hive" }, -- Tyrant of the Hive
 [222763] = { "міксмайстер Блікс", "майстер міксології", en="Mixmaster Blix" }, -- Mixmaster Blix
 [222765] = { "Жадан", "майстер темноплетіння", en="Desirous" }, -- Desirous
-[222768] = { "Лізабет Ла'Моналісьє", "майстриня фазоплетіння", en="Lisabeth La'monalissier" }, -- Lisabeth La'monalissier
+[222768] = { "Лізабет Рал", "майстриня фазоплетіння", en="Lisabeth Ral" }, -- Lisabeth Ral
 [222772] = { "Кримеон Лаклин", "майстер трансмутації", en="Crimeon Lablade" }, -- Crimeon Lablade
 [222789] = { "Гігант", en="The Giant" }, -- The Giant
 [222799] = { "кипучий елементаль", en="Simmering Elemental" }, -- Simmering Elemental
@@ -1216,7 +1216,7 @@ local npc = { -- [id] = { title, description (optional) }
 [239032] = { "командир Беатрікс" }, -- Beatrix
 [239036] = { "лицар Багряного Походу", en="Scarlet Crusader" }, -- Scarlet Crusader
 [239047] = { "командир облоги Багряного Походу", en="Scarlet Siege Commander" }, -- Scarlet Siege Commander
-[239054] = { "посланець Сріблястого Світанку", "Сріблястий Світанок", en="Argent Messenger" }, -- Argent Messenger <The Argent Dawn>
+[239054] = { "емісар Сріблястого Світанку", "Сріблястий Світанок", en="Argent Emissary" }, -- Argent Emissary <The Argent Dawn>
 [239139] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [239151] = { "монумент", en="Monument" }, -- Monument
 [239187] = { "Грегорі", "Правдоносець", en="Gregory" }, -- Gregory

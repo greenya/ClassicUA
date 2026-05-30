@@ -1039,7 +1039,7 @@ local npc = { -- [id] = { title, description (optional) }
 [1507] = { "посвячений Багряного Походу", en="Scarlet Initiate" }, -- Scarlet Initiate
 [1508] = { "молодий падальник", en="Young Scavenger" }, -- Young Scavenger
 [1509] = { "обірваний падальник", en="Ragged Scavenger" }, -- Ragged Scavenger
-[1511] = { "розлюченя горила-срібноспин", en="Enraged Silverback Gorilla" }, -- Enraged Silverback Gorilla
+[1511] = { "розлючена горила-срібноспин", en="Enraged Silverback Gorilla" }, -- Enraged Silverback Gorilla
 [1512] = { "сутінковий кажан", en="Duskbat" }, -- Duskbat
 [1513] = { "облізлий сутінковий кажан", en="Mangy Duskbat" }, -- Mangy Duskbat
 [1514] = { "Мокк Лютий", en="Mokk the Savage" }, -- Mokk the Savage
@@ -1381,7 +1381,7 @@ local npc = { -- [id] = { title, description (optional) }
 [2021] = { "кривавопера матріарх", en="Bloodfeather Matriarch" }, -- Bloodfeather Matriarch
 [2022] = { "деревник", en="Timberling" }, -- Timberling
 [2025] = { "деревник-корервач", en="Timberling Bark Ripper" }, -- Timberling Bark Ripper
-[2027] = { "деревник-топотун", en="Timberling Trampler" }, -- Timberling Trampler
+[2027] = { "деревник-тупотун", en="Timberling Trampler" }, -- Timberling Trampler
 [2029] = { "деревник-болотяник", en="Timberling Mire Beast" }, -- Timberling Mire Beast
 [2030] = { "старий деревник", en="Elder Timberling" }, -- Elder Timberling
 [2031] = { "молодий ночезуб", en="Young Nightsaber" }, -- Young Nightsaber
@@ -3066,7 +3066,7 @@ local npc = { -- [id] = { title, description (optional) }
 [4051] = { "кенарійський ботанік", en="Cenarion Botanist" }, -- Cenarion Botanist
 [4052] = { "кенарійський друїд", en="Cenarion Druid" }, -- Cenarion Druid
 [4053] = { "дочка Кенарія" }, -- Cenarius
-[4054] = { "весела сестра", en="Laughing Sister" }, -- Laughing Sister
+[4054] = { "сміхотлива сестра", en="Laughing Sister" }, -- Laughing Sister
 [4056] = { "хранитель Хмуромутного озера", en="Mirkfallon Keeper" }, -- Mirkfallon Keeper
 [4057] = { "син Кенарія" }, -- Cenarius
 [4061] = { "дріада Хмуромутного озера", en="Mirkfallon Dryad" }, -- Mirkfallon Dryad
@@ -3079,8 +3079,8 @@ local npc = { -- [id] = { title, description (optional) }
 [4068] = { "змій-посланець", en="Serpent Messenger" }, -- Serpent Messenger
 [4070] = { "будівельник ТзНБ \"Авантюра\"", en="Venture Co. Builder" }, -- Venture Co. Builder
 [4072] = { "в'язень Джин'Зіла" }, -- Jin'Zil
-[4073] = { "XT:4", en="XT:4" }, -- XT:4
-[4074] = { "XT:9", en="XT:9" }, -- XT:9
+[4073] = { "ХТ:4", en="XT:4" }, -- XT:4
+[4074] = { "ХТ:9", en="XT:9" }, -- XT:9
 [4075] = { "пацюк", en="Rat" }, -- Rat
 [4076] = { "тарган", en="Roach" }, -- Roach
 [4077] = { "Ґаксим Іржошип", en="Gaxim Rustfizzle" }, -- Gaxim Rustfizzle
@@ -3726,7 +3726,7 @@ local npc = { -- [id] = { title, description (optional) }
 [4946] = { "гномський буксир", en="Gnome Drag Car" }, -- Gnome Drag Car
 [4947] = { "тераморський лейтенант", en="Theramore Lieutenant" }, -- Theramore Lieutenant
 [4948] = { "ад'ютант Тесоран", en="Adjutant Tesoran" }, -- Adjutant Tesoran
-[4949] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
+[4949] = { "Тралл", "воєвождь" }, -- Thrall <Warchief>
 [4950] = { "Плямчик", en="Spot" }, -- Spot
 [4951] = { "тераморський вартовий-новачок", en="Theramore Practicing Guard" }, -- Theramore Practicing Guard
 [4952] = { "тераморський бойовий манекен", en="Theramore Combat Dummy" }, -- Theramore Combat Dummy
@@ -4664,7 +4664,7 @@ local npc = { -- [id] = { title, description (optional) }
 [6510] = { "кровоцвіт-потрошитель", en="Bloodpetal Flayer" }, -- Bloodpetal Flayer
 [6511] = { "кровоцвіт-молотник", en="Bloodpetal Thresher" }, -- Bloodpetal Thresher
 [6512] = { "кровоцвіт-капканник", en="Bloodpetal Trapper" }, -- Bloodpetal Trapper
-[6513] = { "Ун'Ґорський топотун", en="Un'Goro Stomper" }, -- Un'Goro Stomper
+[6513] = { "Ун'Ґорський тупотун", en="Un'Goro Stomper" }, -- Un'Goro Stomper
 [6514] = { "Ун'Ґорська горила", en="Un'Goro Gorilla" }, -- Un'Goro Gorilla
 [6516] = { "Ун'Ґорський рокотун", en="Un'Goro Thunderer" }, -- Un'Goro Thunderer
 [6517] = { "смоляник", en="Tar Beast" }, -- Tar Beast
@@ -4812,7 +4812,7 @@ local npc = { -- [id] = { title, description (optional) }
 [7034] = { "вогнечеревий огр-маг", en="Firegut Ogre Mage" }, -- Firegut Ogre Mage
 [7035] = { "вогнечеревий моцак", en="Firegut Brute" }, -- Firegut Brute
 [7036] = { "шпигун Тауріссана", en="Thaurissan Spy" }, -- Thaurissan Spy
-[7037] = { "пробуджувач полум'я Тауріссана", en="Thaurissan Firewalker" }, -- Thaurissan Firewalker
+[7037] = { "вогнеступ Тауріссана", en="Thaurissan Firewalker" }, -- Thaurissan Firewalker
 [7038] = { "агент Тауріссана", en="Thaurissan Agent" }, -- Thaurissan Agent
 [7039] = { "бойовий розоритель", en="War Reaver" }, -- War Reaver
 [7040] = { "чорний драконід", en="Black Dragonspawn" }, -- Black Dragonspawn
@@ -4822,7 +4822,7 @@ local npc = { -- [id] = { title, description (optional) }
 [7044] = { "чорний дракончик", en="Black Drake" }, -- Black Drake
 [7045] = { "палючий дракон", en="Scalding Drake" }, -- Scalding Drake
 [7046] = { "шкваролуский дракон", en="Searscale Drake" }, -- Searscale Drake
-[7047] = { "чорна малеча", en="Black Broodling" }, -- Black Broodling
+[7047] = { "чорне драконеня", en="Black Broodling" }, -- Black Broodling
 [7048] = { "палюча малеча", en="Scalding Broodling" }, -- Scalding Broodling
 [7049] = { "вогнелуска малеча", en="Flamescale Broodling" }, -- Flamescale Broodling
 [7050] = { "мрець Непокірних", en="Defias Drone" }, -- Defias Drone
@@ -4878,7 +4878,7 @@ local npc = { -- [id] = { title, description (optional) }
 [7136] = { "пекельник-караульний", en="Infernal Sentry" }, -- Infernal Sentry
 [7137] = { "Опалитель", en="Immolatus" }, -- Immolatus
 [7138] = { "залізодеревний блукач", en="Irontree Wanderer" }, -- Irontree Wanderer
-[7139] = { "залізодеревний топотун", en="Irontree Stomper" }, -- Irontree Stomper
+[7139] = { "залізодеревний тупотун", en="Irontree Stomper" }, -- Irontree Stomper
 [7149] = { "зів'ялий захисник", en="Withered Protector" }, -- Withered Protector
 [7153] = { "мертволісий воїн", en="Deadwood Warrior" }, -- Deadwood Warrior
 [7154] = { "мертволісий садівник", en="Deadwood Gardener" }, -- Deadwood Gardener
@@ -6237,7 +6237,7 @@ local npc = { -- [id] = { title, description (optional) }
 [10756] = { "термальний елементаль", en="Scalding Elemental" }, -- Scalding Elemental
 [10757] = { "киплячий елементаль", en="Boiling Elemental" }, -- Boiling Elemental
 [10758] = { "бандит Зловісного Тотема", en="Grimtotem Bandit" }, -- Grimtotem Bandit
-[10759] = { "топотун Зловісного Тотема", en="Grimtotem Stomper" }, -- Grimtotem Stomper
+[10759] = { "тупотун Зловісного Тотема", en="Grimtotem Stomper" }, -- Grimtotem Stomper
 [10760] = { "геомант Зловісного Тотема", en="Grimtotem Geomancer" }, -- Grimtotem Geomancer
 [10761] = { "розоритель Зловісного Тотема", en="Grimtotem Reaver" }, -- Grimtotem Reaver
 [10762] = { "бандит Чорнорука", en="Blackhand Thug" }, -- Blackhand Thug
@@ -6559,7 +6559,7 @@ local npc = { -- [id] = { title, description (optional) }
 [11461] = { "Хибнодрев-вартовий", en="Warpwood Guardian" }, -- Warpwood Guardian
 [11462] = { "Хибнодрев-деревань", en="Warpwood Treant" }, -- Warpwood Treant
 [11464] = { "Хибнодрев-плетун", en="Warpwood Tangler" }, -- Warpwood Tangler
-[11465] = { "Хибнодрев-топотун", en="Warpwood Stomper" }, -- Warpwood Stomper
+[11465] = { "Хибнодрев-тупотун", en="Warpwood Stomper" }, -- Warpwood Stomper
 [11466] = { "високородний закликач", en="Highborne Summoner" }, -- Highborne Summoner
 [11467] = { "Цу'зі", en="Tsu'zee" }, -- Tsu'zee
 [11469] = { "ельдретський споглядач", en="Eldreth Seether" }, -- Eldreth Seether
@@ -7218,7 +7218,7 @@ local npc = { -- [id] = { title, description (optional) }
 [13138] = { "лейтенант Спенсер", en="Lieutenant Spencer" }, -- Lieutenant Spencer
 [13139] = { "командир Рендольф", en="Commander Randolph" }, -- Commander Randolph
 [13140] = { "командир Дардош", en="Commander Dardosh" }, -- Commander Dardosh
-[13141] = { "прогнилий топотун", en="Deeprot Stomper" }, -- Deeprot Stomper
+[13141] = { "прогнилий тупотун", en="Deeprot Stomper" }, -- Deeprot Stomper
 [13142] = { "прогнилий плетун", en="Deeprot Tangler" }, -- Deeprot Tangler
 [13143] = { "лейтенант Дуже Копито", en="Lieutenant Stronghoof" }, -- Lieutenant Stronghoof
 [13144] = { "лейтенант Вол'талар", en="Lieutenant Vol'talar" }, -- Lieutenant Vol'talar
@@ -7426,7 +7426,7 @@ local npc = { -- [id] = { title, description (optional) }
 [14221] = { "Могиль Петля", en="Gravis Slipknot" }, -- Gravis Slipknot
 [14222] = { "Араґа", en="Araga" }, -- Araga
 [14223] = { "Примхливий Бенж", en="Cranky Benj" }, -- Cranky Benj
-[14224] = { "7:XT", "ремонтний пристрій великого радіуса дії", en="7:XT" }, -- 7:XT
+[14224] = { "7:ХТ", "ремонтний пристрій великого радіуса дії", en="7:XT" }, -- 7:XT
 [14225] = { "принц Келлен", en="Prince Kellen" }, -- Prince Kellen
 [14226] = { "Каскк", en="Kaskk" }, -- Kaskk
 [14227] = { "Шипун", en="Hissperak" }, -- Hissperak
@@ -7682,7 +7682,7 @@ local npc = { -- [id] = { title, description (optional) }
 [14605] = { "кістяне творіння", en="Bone Construct" }, -- Bone Construct
 [14621] = { "розпорядник Мальторій", en="Overseer Maltorius" }, -- Overseer Maltorius
 [14622] = { "дозорний Торієвого братства", "Торієве братство", en="Thorium Brotherhood Lookout" }, -- Thorium Brotherhood Lookout <The Thorium Brotherhood>
-[14624] = { "майстер-коваль Вогнерод", "Торієве братство", en="Master Smith Burninate" }, -- Master Smith Burninate
+[14624] = { "коваль-майстер Вогнерод", "Торієве братство", en="Master Smith Burninate" }, -- Master Smith Burninate
 [14625] = { "розпорядник Слизькорук", "Торієве братство", en="Overseer Oilfist" }, -- Overseer Oilfist
 [14626] = { "орудар Скрендж", "Торієве братство", en="Taskmaster Scrange" }, -- Taskmaster Scrange
 [14627] = { "Гензель Важкорук", "Торієве братство", en="Hansel Heavyhands" }, -- Hansel Heavyhands

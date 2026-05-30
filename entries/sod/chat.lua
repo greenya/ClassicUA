@@ -405,7 +405,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- %s devours the carcass!
 [1380741171] = [===[%s пожирає труп!]===],
 -- Blood and souls for Hakkar!  HAHAHAH!
-[2053800616] = [===[Кров і душі для Гаккара!  ХАХАХАХ!]===],
+[1741994312] = [===[Кров і душі для Гаккара! ХАХАХА!]===],
 -- Fleeing will do you no good, mortals!
 [601365663] = [===[Вам не втекти, смертні!]===],
 -- Having a good time?
@@ -417,7 +417,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- The feast of souls begins now...
 [3232331725] = [===[Я пожеру ваші душі...]===],
 -- They thought I was weak.  Haha!!
-[3319741895] = [===[Вони думали, що я слабкий. Ха-ха!!]===],
+[3672803721] = [===[Вони думали, що я слабкий. Ха-ха!!]===],
 -- Tonight, your blood will run red on the stones of our altars.
 [2791033887] = [===[Ваша кров тектиме каменями наших жертовників.]===],
 },
@@ -511,7 +511,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Polymorphed Apprentice"] = { "споліморфлений учень",
 -- I'm back to my old self!  Thank you, hero!
-[3152132687] = [===[Я знову в нормі! Дякую, {стать:герою:героїне}!]===],
+[2816899350] = [===[Я знову в нормі! Дякую, {стать:герою:героїне}!]===],
 },
 ["Pyranis"] = { "Піраніс",
 -- Interlopers! You can't stop what has been put in motion.

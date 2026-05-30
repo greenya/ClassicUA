@@ -168,7 +168,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Once the ship had docked, I assumed we were somewhere like Booty Bay, and I'd be able to slip off the boat unnoticed. Imagine my surprise when I stepped out here!
 --
 -- Needless to say, I was arrested on the spot and dumped in prison. So ends the illustrious career of Viznit the Scoundrel!
-[4267793834] = [===[Можливо, це звучить дивно, враховуючи те, що я сиджу в цих кайданах і все таке, але я — досвідчений злодій.
+[4267793834] = [===[Можливо, в це важко повірити, враховуючи те, що я сиджу в цих кайданах і все таке, але я — досвідчений злодій.
 
 Я проник на корабель Східних морів після того, як почув, що старий Мейсон здобув скарб, який мене цікавив. Заховавшись у вантажі, я прокрався на корабель вночі.
 

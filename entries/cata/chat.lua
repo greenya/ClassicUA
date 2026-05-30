@@ -9,7 +9,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Excellent!
 [3067708623] = [===[Блискуче!]===],
 },
-["Assistant Greely"] = {
+["Assistant Greely"] = { "асистентка Ґрілі",
 -- Greely coughs.
 [2440344171] = [===[Грілі кашляє.]===],
 -- Greely sighs and rolls her eyes.
@@ -39,7 +39,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- You don't have to yell, Hobart, I'm standing right here. Sheesh!
 [980960439] = [===[Не треба кричати, Гобарте, я стою поряд. Шііш!]===],
 },
-["Hobart Grapplehammer"] = {
+["Hobart Grapplehammer"] = { "Гобарт Грейфер",
 -- Are we still alive?
 [1511179017] = [===[Ми досі живі?]===],
 -- Excellent. Now back away from the Ultra Concave Fissionable Testing Platform. Slowly, if you please.
@@ -81,7 +81,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Well of course we are, my dear Greely. And look there. The Micro Mechachicken's stabilization appears to be a complete success!
 [3913401521] = [===[Ну, звичайно, живі, люба Ґрілі. І поглянь, здається, стабілізація мікро-меха-курчати завершилася успішно!]===],
 },
-["Kaja'Cola Balloon"] = {
+["Kaja'Cola Balloon"] = { "повітряна куля \"Каджа-Коли\"",
 -- Drink Kaja'Cola!
 [2671472329] = [===[Пий Каджа-Колу!]===],
 -- Enjoy the refreshingly intelligent taste of all new Kaja'Cola!
@@ -97,15 +97,15 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Take the Kaja'Cola Taste Test Challenge!
 [1762935399] = [===[Прийміть виклик випробування смаку Каджа-Коли!]===],
 },
-["Maxx Avalanche"] = {
+["Maxx Avalanche"] = { "Макс Лавина",
 -- Shadow and fire, how quaint. Ride the lightning!
 [3442023235] = [===[Тінь та вогонь, як оригінально. Осідлай блискавку!]===],
 },
-["Sassy Hardwrench"] = {
+["Sassy Hardwrench"] = { "Шпичка Гайкокрут",
 -- Haha! That should be a blast!
 [3887724747] = [===[Ха-ха! Має бути вибухово!]===],
 },
-["Sister Goldskimmer"] = {
+["Sister Goldskimmer"] = { "сестра Благозлотка",
 -- Hope you don't mind the extra fortitude, <boss-man/boss-lady>.
 [354775951] = [===[Сподіваюся, ви не проти додаткової стійкості, {стать:пане-бос:пані-бос}.#fortitude, <boss-man/boss-lady>.]===],
 -- I really should charge you for that.
