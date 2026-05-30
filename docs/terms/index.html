@@ -416,7 +416,7 @@
             },
             created: function () {
                 this.state = 'load';
-                this.load('ClassicUA.tbx').then(xml => {
+                this.load(`ClassicUA.tbx?v=${this.infoDateUpdated}`).then(xml => {
                     this.parse(xml);
                     this.state = 'ready';
                 }).catch(e => {
