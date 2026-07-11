@@ -4,6 +4,24 @@ local assets    = addon_table.use("assets") ---@class assets_class
 local fonts     = addon_table.use("fonts") ---@class fonts_class
 local options   = addon_table.use("options") ---@class options_class
 
+-- Since 2.5.6 (and corresponding builds for other versions) GetFont() reports internal font attributes (e.g. FILTER, FIXEDHEIGHT) among flags.
+-- Passing FIXEDHEIGHT back into SetFont() breaks rendering of pooled combat text font strings,
+-- so only real render flags are kept when reapplying.
+local allowed_font_flags = { OUTLINE = true, THICKOUTLINE = true, MONOCHROME = true }
+
+local function sanitize_font_flags(font_flags)
+    if not font_flags or font_flags == "" then
+        return ""
+    end
+    local result = {}
+    for token in font_flags:gmatch("[^,%s]+") do
+        if allowed_font_flags[token] then
+            result[#result + 1] = token
+        end
+    end
+    return table.concat(result, ", ")
+end
+
 fonts.prepare = function ()
     if not options.account.override_system_fonts then
         return
@@ -47,7 +65,7 @@ fonts.prepare = function ()
                 -- 120 is a maximum font height. But, as example, for CombatTextFont:GetFont() height is ~100256, though actual height in CombatText1..20 frames is 25
                 font_height = f.height
             end
-            font:SetFont(f.file, font_height, font_flags)
+            font:SetFont(f.file, font_height, sanitize_font_flags(font_flags))
         end
     end
 end
