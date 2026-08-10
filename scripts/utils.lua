@@ -185,6 +185,29 @@ utils.strip_color_codes = function (text)
     return text
 end
 
+-- Splits text by a plain separator string and returns the parts as a table,
+-- e.g. utils.split_by_text("||", "a||b") -> { "a", "b" }
+utils.split_by_text = function (separator, text)
+    if type(text) ~= "string" or type(separator) ~= "string" or separator == "" then
+        return { text }
+    end
+
+    local parts = {}
+    local pos = 1
+
+    while true do
+        local sep_start, sep_end = text:find(separator, pos, true)
+        if not sep_start then
+            -- pos == 1 means the separator never occurred - keep the original string instead of copying it
+            parts[#parts + 1] = pos == 1 and text or text:sub(pos)
+            return parts
+        end
+
+        parts[#parts + 1] = text:sub(pos, sep_start - 1)
+        pos = sep_end + 1
+    end
+end
+
 utils.first_line_only = function (text)
     if type(text) == "string" then
         local lines = { string_split("\n\r", text) }

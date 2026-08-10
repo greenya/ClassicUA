@@ -31,7 +31,7 @@ local priest_spells = {
 [59890] = { ref=59887 }, -- Borrowed Time
 [59891] = { ref=59887 }, -- Borrowed Time
 -- Circle of Healing
-[34861] = { "Коло зцілення", "Зцілює {1} учасникам групи чи рейду в межах {2} м від цілі [{1}#target for {1}][від {1} до {2}#target for {1} to {2}] здоров'я.#up to {1} friendly#within {2} yards", en="Circle of Healing" },
+[34861] = { "Коло зцілення", "Зцілює {1} учасникам групи чи рейду в межах {2} м від цілі [від {1} до {2}#target for {1} to {2}||{1}#target for {1}] здоров'я.#up to {1} friendly#within {2} yards", en="Circle of Healing" },
 [34863] = { ref=34861 }, -- Circle of Healing
 [34864] = { ref=34861 }, -- Circle of Healing
 [34865] = { ref=34861 }, -- Circle of Healing
