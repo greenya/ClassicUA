@@ -7,7 +7,6 @@ local math_fmod             = _G.math.fmod
 local string_byte           = _G.string.byte
 local string_gmatch         = _G.string.gmatch
 local string_split          = _G.string.split
-local string_sub            = _G.string.sub
 local string_trim           = _G.string.trim
 local table_concat          = _G.table.concat
 local C_ChatBubbles         = _G.C_ChatBubbles
@@ -124,6 +123,9 @@ utils.cap = function (text)
     end
 end
 
+-- gsub() returns (string, count) so a bare "return x:gsub(...)" leaks that count as a second return value.
+-- Parenthesis added for guarding callers from receiving count value
+-- Otherwise, e.g. strtrim(utils.lower(s)) becomes strtrim(s, count) and trims digits instead of whitespaces.
 utils.upper = function (str)
     return (str:upper():gsub("ї", "Ї"):gsub("є", "Є"):gsub("і", "І"):gsub("ґ", "Ґ"))
 end
@@ -247,14 +249,25 @@ utils.tooltip_item_suffix_id = function (tooltip)
 end
 
 utils.chat_bubble_font_string_with_text = function (text)
+    if type(text) ~= "string" then
+        return
+    end
+
+    -- The client does not hand the chat bubble the exact string that came with the CHAT_MSG_* event:
+    -- trailing newlines in bubble are trimmed (but not trailing spaces)
+    local target = string_trim(text)
+
     local bubbles = C_ChatBubbles:GetAllChatBubbles()
     for _, bubble in pairs(bubbles) do
         if not bubble:IsForbidden() then
             local frame = select(1, bubble:GetChildren())
             for i = 1, frame:GetNumRegions() do
                 local region = select(i, frame:GetRegions())
-                if region:GetObjectType() == "FontString" and region:GetText() == text then
-                    return region
+                if region:GetObjectType() == "FontString" then
+                    local region_text = region:GetText()
+                    if region_text and string_trim(region_text) == target then
+                        return region
+                    end
                 end
             end
         end
@@ -360,7 +373,9 @@ utils.get_text_hash = function (text)
         return 0
     end
     -- Replacing multiple NBSPs and spaces with single space
-    text = string_trim(utils.lower(text:gsub("\194\160", " "):gsub(" +", " ")))
+    text = text:gsub("\194\160", " "):gsub(" +", " ")
+    text = string_trim(text)
+    text = utils.lower(text)
     return utils.string_hash(text)
 end
 
