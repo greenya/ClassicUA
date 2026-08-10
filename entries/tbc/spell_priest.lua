@@ -22,7 +22,7 @@ local priest_spells = {
 [44046] = { ref=44041 }, -- Chastise
 [44047] = { ref=44041 }, -- Chastise
 -- Circle of Healing
-[34861] = { "Коло зцілення", "Зцілює дружній цілі та учасникам групи цілі в межах {1} м від неї [{1}#target for {1}][від {1} до {2}#target for {1} to {2}] здоров'я.#within {1} yards", en="Circle of Healing" },
+[34861] = { "Коло зцілення", "Зцілює дружній цілі та учасникам групи цілі в межах {1} м від неї [від {1} до {2}#target for {1} to {2}||{1}#target for {1}] здоров'я.#within {1} yards", en="Circle of Healing" },
 [34863] = { ref=34861 }, -- Circle of Healing
 [34864] = { ref=34861 }, -- Circle of Healing
 [34865] = { ref=34861 }, -- Circle of Healing

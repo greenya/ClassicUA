@@ -395,33 +395,63 @@ entries.get_entry = function (entry_type, entry_id)
     return resolve_entry_with_possible_ref(entry_type, entry_id)
 end
 
-local function resolve_optional_entry_text(text, tt_lines, tooltip_matches_to_skip)
-    return text:gsub("%[(.-)#(.-)%]", function(translation, condition)
-        local values = {}
-        local conditions = { string_split("#", condition) }
-        for i = 1, #conditions do
-            local pattern = utils.esc(conditions[i]):gsub("{(%d+)}", function () return "([%d,\.]*%d)" end)
-            local match_number = 0
-            for j = 1, #tt_lines do
-                local matches = { tt_lines[j]:match(pattern) }
-                if #matches > 0 then
-                    match_number = match_number + 1
-                    if match_number > tooltip_matches_to_skip then
-                        if #matches > 0 and not (matches[1] == pattern) then
-                            for k = 1, #matches do
-                                values[#values + 1] = utils.fix_float_number(matches[k])
-                            end
+-- Resolves a single variant of an optional block, e.g. "від {1} до {2}#target for {1} to {2}", "{1}#target for {1}"
+-- Returns nil when the variant does not satisfy its conditions.
+-- Conditions within a variant are separated by "#" and must all match.
+local function resolve_optional_variant(translation, condition, tt_lines, tooltip_matches_to_skip)
+    if not condition then
+        return translation
+    end
+
+    local values = {}
+    local conditions = { string_split("#", condition) }
+    for i = 1, #conditions do
+        local pattern = utils.esc(conditions[i]):gsub("{(%d+)}", function () return "([%d,.]*%d)" end)
+        local match_number = 0
+        for j = 1, #tt_lines do
+            local matches = { tt_lines[j]:match(pattern) }
+            if #matches > 0 then
+                match_number = match_number + 1
+                if match_number > tooltip_matches_to_skip then
+                    if not (matches[1] == pattern) then
+                        for k = 1, #matches do
+                            values[#values + 1] = utils.fix_float_number(matches[k])
                         end
-                        break
                     end
+                    break
                 end
             end
-            if match_number <= tooltip_matches_to_skip then
-                return ""
+        end
+        if match_number <= tooltip_matches_to_skip then
+            return nil
+        end
+    end
+
+    return (translation:gsub("{(%d+)}", function (a) return values[tonumber(a)] end))
+end
+
+-- Handles "[text#condition]" block that renders "text" when the tooltip matches "condition".
+-- Variants are separated by "||" and the first matching one wins, so the most specific variant must come first:
+--     [від {1} до {2}#target for {1} to {2}||{1}#target for {1}]
+-- A trailing variant with no "#" is a default that always matches:
+--     [a#cond1||b#cond2||default text]
+local function resolve_optional_entry_text(text, tt_lines, tooltip_matches_to_skip)
+    return (text:gsub("%[(.-)%]", function (block)
+        if not block:find("#", 1, true) then
+            return nil -- no conditions: not an optional block, leave it as is
+        end
+
+        local variants = utils.split_by_text("||", block)
+        for i = 1, #variants do
+            local translation, condition = variants[i]:match("^(.-)#(.*)$")
+            local resolved = resolve_optional_variant(translation or variants[i], condition,tt_lines, tooltip_matches_to_skip)
+            if resolved then
+                return resolved
             end
         end
-        return translation:gsub("{(%d+)}", function (a) return values[tonumber(a)] end)
-    end)
+
+        return ""
+    end))
 end
 
 entries.make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
@@ -442,7 +472,7 @@ entries.make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
 
     local values = {}
     for i = 2, #text do
-        local pattern = utils.esc(text[i]:lower()):gsub("{(%d+)}", function () return "([%d,\.]*%d)" end)
+        local pattern = utils.esc(text[i]:lower()):gsub("{(%d+)}", function () return "([%d,.]*%d)" end)
         local pattern_numbers = {}
         for pattern_number in text[i]:lower():gmatch("{(%d+)}") do
             pattern_numbers[#pattern_numbers + 1] = tonumber(pattern_number)
