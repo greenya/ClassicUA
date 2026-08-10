@@ -454,6 +454,20 @@ local function resolve_optional_entry_text(text, tt_lines, tooltip_matches_to_sk
     end))
 end
 
+-- Resolves optional "[text#condition]" blocks against the original text
+entries.make_optional_text = function (text, text_en, matches_to_skip)
+    if type(text) ~= "string" or type(text_en) ~= "string" then
+        return text
+    end
+
+    if not text:find("[", 1, true) then
+        -- no optional blocks
+        return text
+    end
+
+    return resolve_optional_entry_text(text, { text_en }, matches_to_skip or 0)
+end
+
 entries.make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     if not text then
         return
@@ -590,7 +604,7 @@ local function get_gossip_text(npc_id, gossip_text)
     for _, gossip_key in ipairs({ npc_id, '!common' }) do
         local npc_strings = at.gossip[gossip_key]
         if npc_strings and npc_strings[gossip_text_hash] then
-            return make_text(npc_strings[gossip_text_hash]), nil
+            return make_text(entries.make_optional_text(npc_strings[gossip_text_hash], gossip_text)), nil
         end
     end
 
@@ -606,7 +620,7 @@ local function get_gossip_text(npc_id, gossip_text)
                 local gossip_key = utils.match_text_code(gossip_code, known_gossip_keys)
                 if gossip_key then
                     local hash = npc_strings['!code'][gossip_key]
-                    return make_text(npc_strings[hash]), gossip_code
+                    return make_text(entries.make_optional_text(npc_strings[hash], gossip_text)), gossip_code
                 end
             end
         end

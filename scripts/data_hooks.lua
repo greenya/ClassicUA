@@ -73,6 +73,7 @@ data_hooks.set_translation = function (data_type, data_key, text_en, text_uk)
         cache[data_type][data_key] = {}
     end
 
+    text_uk = entries.make_optional_text(text_uk, text_en)
     local data = cache[data_type][data_key]
     local text_en_hash = utils.string_hash(string_trim(text_en))
     local text_uk_hash = utils.string_hash(string_trim(text_uk))
