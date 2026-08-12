@@ -7,6 +7,7 @@ local utils     = addon_table.use("utils") ---@class utils_class
 
 local string_match  = _G.string.match
 local string_trim   = _G.string.trim
+local table_concat  = _G.table.concat
 
 local log ---@class dev_log_state_class
 local default_log = {
@@ -62,22 +63,74 @@ dev_log.reset = function ()
     dev_print("Всі накопичені дані скинуто.")
 end
 
-dev_log.print_stats = function ()
-    dev_print("-------- Статистика накопичених даних --------")
-    dev_print("Відсутні завдання: "     .. utils.table_keys_count(log.missing_quests))
-    dev_print("Відсутні персонажі: "    .. utils.table_keys_count(log.missing_npcs))
-    dev_print("Відсутні предмети: "     .. utils.table_keys_count(log.missing_items))
-    dev_print("Відсутні закляття: "     .. utils.table_keys_count(log.missing_spells))
-    dev_print("Відсутні книжки: "       .. utils.table_keys_count(log.missing_books))
-    dev_print("Відсутні плітки: "       .. utils.table_keys_count(log.missing_gossips))
-    dev_print("Відсутні чати: "         .. utils.table_keys_count(log.missing_chats))
-    dev_print("Відсутні зони: "         .. utils.table_keys_count(log.missing_zones))
-    dev_print("Відсутні об'єкти: "      .. utils.table_keys_count(log.missing_objects))
-    if utils.is_classic_sod then
-        dev_print("Відсутні SOD гравіювання: " .. utils.table_keys_count(log.missing_sod_engravings))
+local stat_entries = {
+    { key = "missing_quests",           name = "Завдання" },
+    { key = "missing_npcs",             name = "Персонажі" },
+    { key = "missing_items",            name = "Предмети" },
+    { key = "missing_spells",           name = "Закляття" },
+    { key = "missing_books",            name = "Книжки" },
+    { key = "missing_gossips",          name = "Плітки" },
+    { key = "missing_chats",            name = "Чати" },
+    { key = "missing_zones",            name = "Локації" },
+    { key = "missing_objects",          name = "Об'єкти" },
+    { key = "missing_sod_engravings",   name = "Гравіювання", sod_only = true },
+    { key = "issues",                   name = "Помилки" },
+}
+
+dev_log.get_stats = function ()
+    local stats = {}
+
+    for _, entry in ipairs(stat_entries) do
+        if not entry.sod_only or utils.is_classic_sod then
+            stats[#stats + 1] = {
+                name = entry.name,
+                count = log and utils.table_keys_count(log[entry.key]) or 0,
+            }
+        end
     end
-    dev_print("Помилки: "               .. utils.table_keys_count(log.issues))
-    dev_print("----------------------------------------------")
+
+    return stats
+end
+
+local function quote_string(text)
+    text = text:gsub("\\", "\\\\"):gsub("\"", "\\\""):gsub("\n", "\\n"):gsub("\r", "\\r"):gsub("|", "\\124")
+    return "\"" .. text .. "\""
+end
+
+local serialize_value
+
+local function serialize_table(t, out)
+    out[#out + 1] = "{"
+    for key in pairs(t) do
+        if type(key) == "number" then
+            out[#out + 1] = "[" .. key .. "]="
+        else
+            out[#out + 1] = "[" .. quote_string(key) .. "]="
+        end
+        serialize_value(t[key], out)
+        out[#out + 1] = ","
+    end
+    out[#out + 1] = "}"
+end
+
+serialize_value = function (value, out)
+    local value_type = type(value)
+
+    if value_type == "string" then
+        out[#out + 1] = quote_string(value)
+    elseif value_type == "number" or value_type == "boolean" then
+        out[#out + 1] = tostring(value)
+    elseif value_type == "table" then
+        serialize_table(value, out)
+    else
+        out[#out + 1] = "nil"
+    end
+end
+
+dev_log.serialize = function ()
+    local out = { "ClassicUA_DevLog = " }
+    serialize_value(ClassicUA_DevLog or {}, out)
+    return table_concat(out)
 end
 
 dev_log.issue = function (key, data)
