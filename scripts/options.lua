@@ -9,7 +9,23 @@ local default_account = { ---@class account_options_class
     dev_mode = false,
     dev_mode_notify_activity = false,
     override_system_fonts = true,
+
+    disable_all_translation = false,
+    translate_quest = true,
+    translate_book = true,
+    translate_gossip = true,
+    translate_chat = true,
+    translate_chat_bubble = true,
+    chat_style = 1, -- see chat_styles in chats.lua
+    translate_item = true,
+    translate_spell = true,
+    translate_npc = true,
     translate_nameplates = true,
+    translate_npc_tooltip = true,
+    translate_npc_target_frame = true,
+    translate_other_tooltips = true,
+    translate_string = true,
+    translate_zone = true,
 }
 
 options.character = nil ---@class character_options_class
@@ -27,9 +43,30 @@ options.prepare = function ()
     utils.table_sync_keys(options.character, default_character)
 end
 
+options.can_translate = function (...)
+    local oa = options.account
+
+    if oa.disable_all_translation then
+        return false
+    end
+
+    for i = 1, select("#", ...) do
+        if not oa[(select(i, ...))] then
+            return false
+        end
+    end
+
+    return true
+end
+
+options.can_lookup = function (...)
+    return options.account.dev_mode or options.can_translate(...)
+end
+
 options.reset = function ()
-    ClassicUA_Options = copy_table({}, default_account)
+    ClassicUA_Options = utils.copy_table({}, default_account)
     options.account = ClassicUA_Options
 
+    options_ext_ui.mark_needs_reload()
     options_ext_ui.refresh()
 end

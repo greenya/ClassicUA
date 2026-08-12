@@ -94,6 +94,10 @@ end
 
 utils.cap = function (text)
     local b1 = string_byte(text, 1)
+    if not b1 then
+        return text
+    end
+
     if b1 >= 208 and b1 <= 210 then -- this is utf8 character, 2 bytes long
         local b2 = string_byte(text, 2)
         if b1 == 209 and b2 == 148 then

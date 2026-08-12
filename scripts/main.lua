@@ -1,4 +1,4 @@
-local _, addon_table = ...
+local addon_name, addon_table = ...
 
 local assets        = addon_table.use("assets") ---@class assets_class
 local chats         = addon_table.use("chats") ---@class chats_class
@@ -8,7 +8,9 @@ local entries       = addon_table.use("entries") ---@class entries_class
 local fonts         = addon_table.use("fonts") ---@class fonts_class
 local frame_hooks   = addon_table.use("frame_hooks") ---@class frame_hooks_class
 local options       = addon_table.use("options") ---@class options_class
+local options_ext_ui = addon_table.use("options_ext_ui") ---@class options_ext_ui_class
 local options_ui    = addon_table.use("options_ui") ---@class options_ui_class
+local strings       = addon_table.use("strings") ---@class strings_class
 local tooltips      = addon_table.use("tooltips") ---@class tooltips_class
 local utils         = addon_table.use("utils") ---@class utils_class
 
@@ -42,7 +44,7 @@ end
 local function on_item_text_ready()
     local meta = ItemTextFrame.classicua
 
-    if meta.entry_type == "item" and meta.entry_id then
+    if meta.entry_type == "item" and meta.entry_id and options.can_lookup("translate_book") then
         local item_id = meta.entry_id
 
         local item_entry = entries.get_entry("item", item_id)
@@ -72,6 +74,11 @@ end
 -- ----------------
 
 local function on_gossip_show()
+    if not options.can_lookup("translate_gossip") then
+        return
+    end
+
+    local is_translation_on = options.can_translate("translate_gossip")
     local npc_id = utils.npc_id_from_unit_id("npc")
     if not npc_id then
         return
@@ -82,22 +89,27 @@ local function on_gossip_show()
         return
     end
 
+    local is_any_reply_translated = false
+
     for _, child in gossip_scroll_box:EnumerateFrames() do
         local element_data = child:GetElementData()
         if element_data.buttonType == GOSSIP_BUTTON_TYPE_OPTION then
             local text_en = child:GetText()
             local text_ua = entries.get_gossip_text_for_player_reply(npc_id, text_en)
-            if text_ua then
-                child:SetText(text_ua)
+            if text_ua and is_translation_on then
+                local translation = data_hooks.set_translation("gossip", npc_id, text_en, text_ua) or text_ua
+                child:SetText(translation)
                 child:Resize()
-                element_data.info.name = text_ua
+                element_data.info.name = translation
                 element_data.titleOptionButton:Setup(element_data.info)
+                is_any_reply_translated = true
             end
         end
     end
 
-    gossip_scroll_box:Layout()
-    gossip_scroll_box:Update()
+    if is_any_reply_translated then
+        gossip_scroll_box:FullUpdate(true)
+    end
 end
 
 -- ----------------
@@ -105,13 +117,19 @@ end
 -- ----------------
 
 local function on_player_target_changed()
+    if not options.can_lookup("translate_npc", "translate_npc_target_frame") then
+        return
+    end
+
     local npc_id = utils.npc_id_from_unit_id("target")
     if npc_id then
         local entry = entries.get_entry("npc", npc_id)
-        if entry then
+        if not entry then
+            if options.account.dev_mode then
+                dev_log.missing_npc(npc_id, UnitName("target"))
+            end
+        elseif options.can_translate("translate_npc", "translate_npc_target_frame") then
             TargetFrame.name:SetText(utils.cap(entry[1]))
-        elseif options.account.dev_mode then
-            dev_log.missing_npc(npc_id, UnitName("target"))
         end
     end
 end
@@ -122,7 +140,7 @@ end
 
 local function prepare_nameplates()
     hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
-        if not options.account.translate_nameplates then
+        if not options.can_lookup("translate_npc", "translate_nameplates") then
             return
         end
 
@@ -130,10 +148,12 @@ local function prepare_nameplates()
             local npc_id = utils.npc_id_from_unit_id(self.unit)
             if npc_id then
                 local entry = entries.get_entry("npc", npc_id)
-                if entry then
+                if not entry then
+                    if options.account.dev_mode then
+                        dev_log.missing_npc(npc_id, UnitName(self.unit))
+                    end
+                elseif options.can_translate("translate_npc", "translate_nameplates") then
                     self.name:SetText(utils.cap(entry[1]))
-                elseif options.account.dev_mode then
-                    dev_log.missing_npc(npc_id, UnitName(self.unit))
                 end
             end
         end
@@ -156,9 +176,15 @@ event_frame:RegisterEvent("GOSSIP_SHOW")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
+        local loaded_addon_name = ...
+        if loaded_addon_name ~= addon_name then
+            return
+        end
+
         self:UnregisterEvent("ADDON_LOADED")
         utils.prepare()
         options.prepare()
+        strings.prepare()
         dev_log.prepare()
         fonts.prepare()
         tooltips.prepare()
@@ -169,6 +195,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         entries.prepare()
         data_hooks.prepare()
         frame_hooks.prepare()
+        options_ext_ui.prepare()
         options_ui.prepare()
 
         DEFAULT_CHAT_FRAME:AddMessage(

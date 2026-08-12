@@ -179,7 +179,7 @@ local function add_general_entry_to_tooltip(tooltip, entry)
     add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 1, 1)
 end
 
-local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura)
+local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_translation_on)
     if tooltip.classicua.entry_type then
         return
     end
@@ -192,7 +192,7 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura)
     local updated = false
     local entry = entries.get_entry(entry_type, entry_id)
 
-    if entry then
+    if entry and is_translation_on then
         updated = true
         tooltip:AddLine(" ")
 
@@ -205,7 +205,7 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura)
         else
             add_general_entry_to_tooltip(tooltip, entry)
         end
-    elseif options.account.dev_mode then
+    elseif not entry and options.account.dev_mode then
         updated = true
         tooltip:AddLine(" ")
         tooltip:AddLine(assets.icon_ua_inline .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
@@ -237,7 +237,7 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key)
     glossary_key = utils.strip_color_codes(glossary_key)
     if glossary_key then
         local found = entries.get_glossary_text(glossary_key)
-        if found then
+        if found and options.can_translate("translate_other_tooltips") then
             local result_text = utils.cap(found)
 
             if tooltip:NumLines() > 1 then
@@ -249,13 +249,18 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key)
             if tooltip:IsShown() then
                 tooltip:Show()
             end
-        elseif options.account.dev_mode and utils.mouse_hover_frame() == WorldFrame then
+        elseif not found and options.account.dev_mode and utils.mouse_hover_frame() == WorldFrame then
             dev_log.missing_object(glossary_key)
         end
     end
 
     tooltip.classicua.entry_type = "glossary"
     tooltip.classicua.entry_id = glossary_key
+end
+
+local function claim_tooltip(tooltip, entry_type, entry_id)
+    tooltip.classicua.entry_type = entry_type
+    tooltip.classicua.entry_id = entry_id
 end
 
 local function add_talent_entry_to_tooltip(tooltip, tab_index, tier, column, rank, max_rank)
@@ -292,6 +297,11 @@ local function add_talent_entry_to_tooltip(tooltip, tab_index, tier, column, ran
         end
     end
 
+    if not options.can_translate("translate_spell") then
+        claim_tooltip(tooltip, "spell", talent[rank_to_show])
+        return
+    end
+
     tooltip:AddLine(" ")
     tooltip:AddLine(assets.icon_ua_inline .. " " .. entry[1], 1, 1, 1)
 
@@ -322,24 +332,37 @@ end
 
 local function tooltip_set_item(self)
     local id = utils.tooltip_item_id(self)
-    if id then
-        add_entry_to_tooltip(self, "item", id)
+    if not id then
+        return
+    end
+
+    if options.can_lookup("translate_item") then
+        add_entry_to_tooltip(self, "item", id, false, options.can_translate("translate_item"))
+    else
+        claim_tooltip(self, "item", id)
     end
 end
 
 local function tooltip_set_spell(self)
     local _, id = self:GetSpell()
-    if id then
-        add_entry_to_tooltip(self, "spell", id)
+    if not id then
+        return
+    end
+
+    if options.can_lookup("translate_spell") then
+        add_entry_to_tooltip(self, "spell", id, false, options.can_translate("translate_spell"))
+    else
+        claim_tooltip(self, "spell", id)
     end
 end
 
 local function tooltip_set_unit(self)
     local _, unit = self:GetUnit()
-    if unit then
+    if unit and options.can_lookup("translate_npc", "translate_npc_tooltip") then
         local npc_id = utils.npc_id_from_unit_id(unit)
         if npc_id then
-            add_entry_to_tooltip(self, "npc", npc_id)
+            add_entry_to_tooltip(self, "npc", npc_id, false,
+                options.can_translate("translate_npc", "translate_npc_tooltip"))
         end
     end
 end
@@ -355,12 +378,13 @@ local function tooltip_updated(self)
         return
     end
 
-    if addon_table.sod_engraving then
+    if addon_table.sod_engraving and options.can_lookup("translate_spell") then
         local owner = self:GetOwner()
         if owner then
             local owner_name = owner:GetName()
             if owner_name and owner_name:find("^EngravingFrameScrollFrameButton") and owner.skillLineAbilityID then
-                add_entry_to_tooltip(self, "sod_engraving", owner.skillLineAbilityID)
+                add_entry_to_tooltip(self, "sod_engraving", owner.skillLineAbilityID, false,
+                    options.can_translate("translate_spell"))
                 return
             end
         end
@@ -371,7 +395,9 @@ local function tooltip_updated(self)
         return
     end
 
-    add_glossary_entry_to_tooltip(self, text)
+    if options.can_lookup("translate_other_tooltips") then
+        add_glossary_entry_to_tooltip(self, text)
+    end
 end
 
 local function tooltip_cleared(self)
@@ -421,7 +447,7 @@ tooltips.prepare = function ()
     -- an extra talent_tree.lua (a "talent row+col => spell id" mapper)
     if utils.is_classic or utils.is_tbc or utils.is_wrath or utils.is_cata then
         hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index, x, is_pet)
-            if not is_pet then
+            if not is_pet and options.can_lookup("translate_spell") then
                 local _, _, tier, column, rank, max_rank = GetTalentInfo(tab_index, talent_index)
                 add_talent_entry_to_tooltip(self, tab_index, tier, column, rank, max_rank)
             end
@@ -430,22 +456,22 @@ tooltips.prepare = function ()
 
     hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
         local id = select(10, UnitAura(unit, index, filter))
-        if id then
-            add_entry_to_tooltip(self, "spell", id, true)
+        if id and options.can_lookup("translate_spell") then
+            add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
         end
     end)
 
     hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
         local id = select(10, UnitAura(unit, index, "HELPFUL"))
-        if id then
-            add_entry_to_tooltip(self, "spell", id, true)
+        if id and options.can_lookup("translate_spell") then
+            add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
         end
     end)
 
     hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
         local id = select(10, UnitAura(unit, index, "HARMFUL"))
-        if id then
-            add_entry_to_tooltip(self, "spell", id, true)
+        if id and options.can_lookup("translate_spell") then
+            add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
         end
     end)
 end

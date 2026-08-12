@@ -23,7 +23,7 @@ local function sanitize_font_flags(font_flags)
 end
 
 fonts.prepare = function ()
-    if not options.account.override_system_fonts then
+    if not options.can_translate("override_system_fonts") then
         return
     end
 

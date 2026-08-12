@@ -207,9 +207,13 @@ local global_strings = {
 { "ZOOM_OUT", "Віддалити" }, -- "Zoom Out"
 }
 
--- This file only collects the replacements; the global strings themselves are written by
--- scripts\strings.lua, which runs once the options are known and can leave them alone.
--- Only keys which exist in the running game version are collected.
+-- chat_string_globals are managed in scripts\chats.lua only
+addonTable.chat_string_globals = { -- [key] = text
+["CHAT_MONSTER_SAY_GET"] = "%s каже: ", -- "%s says: "
+["CHAT_MONSTER_WHISPER_GET"] = "%s шепоче: ", -- "%s whispers: "
+["CHAT_MONSTER_YELL_GET"] = "%s вигукує: ", -- "%s yells: "
+}
+
 addonTable.string = {}
 addonTable.string_back = {}
 addonTable.string_globals = {}
