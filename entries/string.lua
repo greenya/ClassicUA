@@ -207,8 +207,12 @@ local global_strings = {
 { "ZOOM_OUT", "Віддалити" }, -- "Zoom Out"
 }
 
+-- This file only collects the replacements; the global strings themselves are written by
+-- scripts\strings.lua, which runs once the options are known and can leave them alone.
+-- Only keys which exist in the running game version are collected.
 addonTable.string = {}
 addonTable.string_back = {}
+addonTable.string_globals = {}
 for _, s in ipairs(global_strings) do
     local key = s[1]
     local val_en = _G[key]
@@ -216,17 +220,6 @@ for _, s in ipairs(global_strings) do
         local val_uk = s[2]
         addonTable.string[val_en] = val_uk
         addonTable.string_back[val_uk] = val_en
-        _G[key] = val_uk
+        addonTable.string_globals[key] = val_uk
     end
 end
-
--- reset translations after they were cached in
--- https://www.townlong-yak.com/framexml/era/Blizzard_UIPanels_Game/QuestInfo.lua#405
-QUEST_INFO_SPELL_REWARD_TO_HEADER = {
-    [QUEST_SPELL_REWARD_TYPE_FOLLOWER] = REWARD_FOLLOWER,
-    [QUEST_SPELL_REWARD_TYPE_TRADESKILL_SPELL] = REWARD_TRADESKILL_SPELL,
-    [QUEST_SPELL_REWARD_TYPE_ABILITY] = REWARD_ABILITY,
-    [QUEST_SPELL_REWARD_TYPE_AURA] = REWARD_AURA,
-    [QUEST_SPELL_REWARD_TYPE_SPELL] = REWARD_SPELL,
-    [QUEST_SPELL_REWARD_TYPE_UNLOCK] = REWARD_UNLOCK,
-}
