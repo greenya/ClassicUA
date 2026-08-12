@@ -1,8 +1,8 @@
 local _, addon_table = ...
 
-local options       = addon_table.use("options") ---@class options_class
-local options_ui    = addon_table.use("options_ui") ---@class options_ui_class
-local utils         = addon_table.use("utils") ---@class utils_class
+local options        = addon_table.use("options") ---@class options_class
+local options_ext_ui = addon_table.use("options_ext_ui") ---@class options_ext_ui_class
+local utils          = addon_table.use("utils") ---@class utils_class
 
 options.account = nil ---@class account_options_class
 local default_account = { ---@class account_options_class
@@ -31,7 +31,5 @@ options.reset = function ()
     ClassicUA_Options = copy_table({}, default_account)
     options.account = ClassicUA_Options
 
-    if options_ui.frame then
-        options_ui.frame.refresh()
-    end
+    options_ext_ui.refresh()
 end

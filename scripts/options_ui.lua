@@ -4,6 +4,7 @@ local assets        = addon_table.use("assets") ---@class assets_class
 local dev_log       = addon_table.use("dev_log") ---@class dev_log_class
 local frames        = addon_table.use("frames") ---@class frames_class
 local options       = addon_table.use("options") ---@class options_class
+local options_ext_ui = addon_table.use("options_ext_ui") ---@class options_ext_ui_class
 local options_ui    = addon_table.use("options_ui") ---@class options_ui_class
 local utils         = addon_table.use("utils") ---@class utils_class
 
@@ -22,7 +23,10 @@ local function register_static_popup_dialogs()
         text        = "Дійсно скинути всі накопичені дані?",
         button1     = "Так",
         button2     = "Ні",
-        OnAccept    = dev_log.reset,
+        OnAccept    = function ()
+            dev_log.reset()
+            options_ext_ui.refresh()
+        end,
         timeout     = 0,
         whileDead   = true,
         hideOnEscape= true
@@ -55,8 +59,10 @@ local function register_game_options_category()
         local category = Settings.RegisterCanvasLayoutCategory(options_ui.frame, options_ui.frame.name)
         Settings.RegisterAddOnCategory(category)
         options_ui.frame.category_id = category:GetID()
+        options_ext_ui.register_subcategories(category, options_ui.frame.name)
     elseif InterfaceOptions_AddCategory then
         InterfaceOptions_AddCategory(options_ui.frame)
+        options_ext_ui.register_subcategories(nil, options_ui.frame.name)
     else
         dev_log.issue("не визначено способу додати вікно налаштувань аддону")
     end
@@ -447,46 +453,6 @@ local function setup_player_name_cases_frame(content_frame)
     return root
 end
 
-local function setup_dev_mode_frame(content_frame)
-    local root = CreateFrame("Frame", "ClassicUA_Dev_Mode_Options", content_frame)
-    root:SetPoint("BOTTOMLEFT", 0, 0)
-
-    options_ui.frame.dev_mode_checkbox = frames.create_checkbox_frame(
-        root, "TOPLEFT", 24, -8,
-        "Режим розробки",
-        options.account.dev_mode,
-        nil,
-        function (self) options.account.dev_mode = self:GetChecked() end
-    )
-
-    options_ui.frame.dev_mode_notify_activity_checkbox = frames.create_checkbox_frame(
-        root, "TOPLEFT", 24, -32,
-        "Сповіщення активності",
-        options.account.dev_mode_notify_activity,
-        "Сповіщати в чат кожен раз при знаходженні нового відсутнього запису.",
-        function (self) options.account.dev_mode_notify_activity = self:GetChecked() end
-    )
-
-    local stats_btn = CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
-    stats_btn:SetPoint("TOPLEFT", 24, -76)
-    stats_btn:SetText("Статистика")
-    stats_btn:SetSize(100, 28)
-    stats_btn:SetScript("OnClick", function()
-        dev_log.print_stats()
-    end)
-
-    local reset_btn = CreateFrame("Button", nil, root, "UIPanelButtonTemplate")
-    reset_btn:SetPoint("LEFT", stats_btn, "RIGHT", 12, 0)
-    reset_btn:SetText("Скинути")
-    reset_btn:SetSize(100, 28)
-    reset_btn:SetScript("OnClick", function()
-        StaticPopup_Show("CLASSICUA_CONFIRM_DEV_LOG_RESET")
-    end)
-
-    root:SetSize(content_frame:GetWidth(), 16 + 64 + 28)
-    return root
-end
-
 options_ui._update_tab_scrollbar = function ()
     local of = options_ui.frame
 
@@ -575,6 +541,7 @@ local function prepare_options_frame()
     reload_button:SetScript("OnLeave", function()
         GameTooltip:Hide()
     end)
+    options_ui.frame.reload_button = reload_button
 
     -- reset button
 
@@ -589,24 +556,17 @@ local function prepare_options_frame()
         "Скинути всі налаштування за замовчуванням. Деякі зміни будуть помітні лише після перезавантаження інтерфейсу гри."
     )
 
-    -- override_system_fonts
+    -- extended options button
 
-    options_ui.frame.override_system_fonts_checkbox = frames.create_checkbox_frame(
-        options_ui.frame, "TOPLEFT", 24, -80,
-        "Заміняти стандартні шрифти",
-        options.account.override_system_fonts,
-        "Заміняти стандартні шрифти на аналогічні з українськими літерами. Інакше деякі літери можуть відображатися некоректно.\n\nРекомендовано вимкнути при використанні іншого аддону для заміни шрифтів.",
-        function (self) options.account.override_system_fonts = self:GetChecked() end
-    )
-
-    -- translate_nameplates
-
-    options_ui.frame.translate_nameplates_checkbox = frames.create_checkbox_frame(
-        options_ui.frame, "TOPLEFT", 24, -80-24,
-        "Перекладати плаваючі фрейми",
-        options.account.translate_nameplates,
-        "Перекладати плаваючі фрейми ворожих та союзних цілей.\n\nНалаштування діє одразу для новостворених фреймів. Для існуючих (на екрані) просто наведіть на них мишкою або поверніть камеру так щоб гра їх оновила.",
-        function (self) options.account.translate_nameplates = self:GetChecked() end
+    local extended_options_button = CreateFrame("Button", "$parent.Extended_Options", options_ui.frame, "UIPanelButtonTemplate")
+    extended_options_button:SetPoint("TOPLEFT", 24, -80)
+    extended_options_button:SetText("Додаткові налаштування")
+    extended_options_button:SetSize(200, 28)
+    extended_options_button:SetScript("OnClick", function ()
+        options_ext_ui.open()
+    end)
+    frames.add_tooltip_for_frame(extended_options_button, "ANCHOR_RIGHT",
+        "Вимкнути окремі частини функціоналу аддону: переклад, заміну шрифтів тощо."
     )
 
     -- tabs
@@ -626,22 +586,12 @@ local function prepare_options_frame()
 
     -- todo: maybe reorganize tabs: "Статистика" should have sub tabs "Лічильники" and "Завдання"
 
-    local game_sub_dir_name =
-        utils.is_classic and    "_classic_era_" or
-        utils.is_tbc and        "_anniversary_" or
-                                "_classic_"
-
     for tab_index, tab_data in ipairs({
         {
             title                   = "Персонаж",
             content_title           = "Персонаж: " .. UnitName("player"),
             content_text            = info.player_character_desc,
             child_frame_setup_func  = setup_player_name_cases_frame
-        }, {
-            title                   = "Розробка",
-            content_title           = "Розробка",
-            content_text            = info.dev_mode_desc:gsub("@GAME_SUB_DIR", game_sub_dir_name),
-            child_frame_setup_func  = setup_dev_mode_frame
         }, {
             title                   = "Оновлення",
             content_title           = "Оновлення",
@@ -684,16 +634,6 @@ local function prepare_options_frame()
 
     options_ui.frame.name = "ClassicUA"
     options_ui.frame.default = options.reset
-    options_ui.frame.refresh = function ()
-        local of = options_ui.frame
-        local oa = options.account
-        of.override_system_fonts_checkbox:SetChecked(oa.override_system_fonts)
-        of.translate_nameplates_checkbox:SetChecked(oa.translate_nameplates)
-        of.dev_mode_checkbox:SetChecked(oa.dev_mode)
-        of.dev_mode_notify_activity_checkbox:SetChecked(oa.dev_mode_notify_activity)
-    end
-
-    options_ui.frame.refresh()
 
     -- force tab reselection to fix font rendering issue on game cold start
     options_ui.frame.was_shown_once = false
