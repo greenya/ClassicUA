@@ -145,6 +145,42 @@ frames.create_checkbox_frame = function (parent, point, x, y, text, checked, too
     return root
 end
 
+-- "values" is an array of strings; "on_select" receives the frame and the selected index.
+frames.create_dropdown_frame = function (parent, name, point, x, y, width, values, selected_index, tooltip_text, on_select)
+    local root = CreateFrame("Frame", name, parent, "UIDropDownMenuTemplate")
+
+    -- template keeps ~16px of its left border outside of the text area - shifting back to align
+    root:SetPoint(point, x - 16, y)
+    root.values = values
+    root.selected_index = selected_index or 1
+
+    UIDropDownMenu_SetWidth(root, width)
+    UIDropDownMenu_Initialize(root, function (self)
+        for i, v in ipairs(self.values) do
+            local info = UIDropDownMenu_CreateInfo()
+            info.text = v
+            info.value = i
+            info.checked = i == self.selected_index
+            info.func = function (item)
+                self.selected_index = item.value
+                UIDropDownMenu_SetText(self, self.values[item.value])
+                if on_select then
+                    on_select(self, item.value)
+                end
+            end
+            UIDropDownMenu_AddButton(info)
+        end
+    end)
+    UIDropDownMenu_SetText(root, values[root.selected_index])
+
+    if tooltip_text then
+        root:EnableMouse(true)
+        frames.add_tooltip_for_frame(root, "ANCHOR_RIGHT", tooltip_text)
+    end
+
+    return root
+end
+
 frames.create_slider_frame = function (parent, point, x, y, width, height, min, max, step, tooltip_text, on_value_changed)
     local root = CreateFrame("Slider", nil, parent, "ClassicUA_UISliderTemplateWithLabels")
 
