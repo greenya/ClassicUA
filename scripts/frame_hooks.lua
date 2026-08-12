@@ -5,6 +5,7 @@ local data_hooks    = addon_table.use("data_hooks") ---@class data_hooks_class
 local dev_log       = addon_table.use("dev_log") ---@class dev_log_class
 local entries       = addon_table.use("entries") ---@class entries_class
 local frame_hooks   = addon_table.use("frame_hooks") ---@class frame_hooks_class
+local frames        = addon_table.use("frames") ---@class frames_class
 local options       = addon_table.use("options") ---@class options_class
 local utils         = addon_table.use("utils") ---@class utils_class
 
@@ -42,6 +43,10 @@ local lang_switchers = {
     -- books (item texts)
     { hd_type="book", parent={ frame=ItemTextScrollFrame, point="TOPRIGHT", x=-2, y=-12 },
       extra_target=ItemTextFrame, post_update=function () utils.update_item_text_scrollbar() end },
+    -- gossips (npc talk and player replies)
+    { hd_type="gossip", parent={ frame=GossipFrameInset, point="TOPRIGHT", x=-6, y=-10 },
+      post_update=function () frame_hooks.update_gossip_scroll_box() end },
+    { hd_type="gossip", parent={ frame=QuestGreetingScrollFrame, point="TOPRIGHT", x=-6, y=-10 } },
 }
 
 local function on_hooked_label_set_text(self, text)
@@ -149,18 +154,29 @@ local function update_lang_switcher_translation_for_frame(self, hd_type, hd_key,
     end
 end
 
+local function update_lang_switcher_tooltip(frame)
+    frame.tooltip_text = data_hooks.preferred_lang == "uk" and "Показати оригінал" or "Показати переклад"
+
+    if GameTooltip:IsShown() and GameTooltip:GetOwner() == frame then
+        GameTooltip:SetText(frame.tooltip_text, nil, nil, nil, nil, true)
+    end
+end
+
 local function update_lang_switchers()
     is_set_text_hook_allowed = false
 
     for _, s in ipairs(lang_switchers) do
         if s.frame then
             s.frame:SetChecked(data_hooks.preferred_lang == "en")
+            update_lang_switcher_tooltip(s.frame)
 
             local hd_key
             if s.hd_type == "quest" then
                 hd_key = utils.get_currently_viewed_quest_id()
             elseif s.hd_type == "book" then
                 hd_key = utils.get_currently_viewed_book_id()
+            elseif s.hd_type == "gossip" then
+                hd_key = utils.npc_id_from_unit_id("npc")
             end
 
             if s.hd_type and hd_key then
@@ -220,6 +236,9 @@ local function create_lang_switcher_frame(parent, point, x, y)
     root:GetCheckedTexture():SetBlendMode("ADD")
     root:GetCheckedTexture():SetGradient("VERTICAL", CreateColor(1, 1, 0, 0.6), CreateColor(0, 0, 0.8, 0.6))
 
+    frames.add_tooltip_for_frame(root, "ANCHOR_RIGHT", nil)
+    update_lang_switcher_tooltip(root)
+
     root:SetScript("OnClick", function (self)
         data_hooks.preferred_lang = self:GetChecked() and "en" or "uk"
         update_lang_switchers()
@@ -236,6 +255,51 @@ local function prepare_lang_switchers()
         if p.frame then
             switcher.frame = create_lang_switcher_frame(p.frame, p.point, p.x, p.y)
         end
+    end
+end
+
+frame_hooks.update_gossip_scroll_box = function ()
+    local npc_id = utils.npc_id_from_unit_id("npc")
+    local scroll_box = GossipFrame and GossipFrame.GreetingPanel and GossipFrame.GreetingPanel.ScrollBox
+
+    if not npc_id or not scroll_box then
+        return
+    end
+
+    local is_any_text_translated = false
+
+    for _, child in scroll_box:EnumerateFrames() do
+        local element_data = child.GetElementData and child:GetElementData()
+        local info = element_data and element_data.info
+
+        if info then
+            -- a player reply ("name") or a quest title ("title")
+            for _, key in ipairs({ "name", "title" }) do
+                local found = info[key] and data_hooks.get_translation("gossip", npc_id, info[key])
+                if found then
+                    info[key] = found
+                    is_any_text_translated = true
+                end
+            end
+
+            if child.Setup then
+                child:Setup(info)
+            end
+
+        elseif element_data and element_data.text then
+            local found = data_hooks.get_translation("gossip", npc_id, element_data.text)
+            if found then
+                element_data.text = found
+                is_any_text_translated = true
+                if child.Setup then
+                    child:Setup(found)
+                end
+            end
+        end
+    end
+
+    if is_any_text_translated then
+        scroll_box:FullUpdate(true)
     end
 end
 
