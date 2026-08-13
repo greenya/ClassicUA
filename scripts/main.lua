@@ -74,15 +74,18 @@ end
 -- ----------------
 
 local function on_gossip_show()
+    local npc_id = utils.npc_id_from_unit_id("npc")
+    if not npc_id then
+        return
+    end
+
+    frame_hooks.update_gossip_npc_name()
+
     if not options.can_lookup("translate_gossip") then
         return
     end
 
     local is_translation_on = options.can_translate("translate_gossip")
-    local npc_id = utils.npc_id_from_unit_id("npc")
-    if not npc_id then
-        return
-    end
 
     local gossip_scroll_box = GossipFrame and GossipFrame.GreetingPanel and GossipFrame.GreetingPanel.ScrollBox
     if not gossip_scroll_box then
@@ -109,6 +112,14 @@ local function on_gossip_show()
 
     if is_any_reply_translated then
         gossip_scroll_box:FullUpdate(true)
+    end
+end
+
+local function on_quest_log_update()
+    -- the gossip window redraws itself on this event while it has active quests,
+    -- which puts the original npc name back into its header
+    if GossipFrame:IsShown() then
+        frame_hooks.update_gossip_npc_name()
     end
 end
 
@@ -173,6 +184,7 @@ event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
 event_frame:RegisterEvent("ITEM_TEXT_READY")
 event_frame:RegisterEvent("GOSSIP_SHOW")
+event_frame:RegisterEvent("QUEST_LOG_UPDATE")
 
 event_frame:SetScript("OnEvent", function (self, event, ...)
     if event == "ADDON_LOADED" then
@@ -219,5 +231,8 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
 
     elseif (event=="GOSSIP_SHOW") then
         on_gossip_show()
+
+    elseif event == "QUEST_LOG_UPDATE" then
+        on_quest_log_update()
     end
 end)

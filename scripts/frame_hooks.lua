@@ -11,6 +11,7 @@ local utils         = addon_table.use("utils") ---@class utils_class
 
 local string_format = _G.string.format
 local string_gmatch = _G.string.gmatch
+local UnitName      = _G.UnitName
 
 local is_set_text_hook_allowed = true
 
@@ -34,9 +35,12 @@ local hooked_labels = {
 
 local lang_switchers = {
     -- quests
-    { hd_type="quest", parent={ frame=QuestDetailScrollFrame, point="TOPRIGHT", x=-6, y=-10 } },
-    { hd_type="quest", parent={ frame=QuestProgressScrollFrame, point="TOPRIGHT", x=-6, y=-10 } },
-    { hd_type="quest", parent={ frame=QuestRewardScrollFrame, point="TOPRIGHT", x=-6, y=-10 } },
+    { hd_type="quest", parent={ frame=QuestDetailScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
+      post_update=function () frame_hooks.update_quest_npc_name() end },
+    { hd_type="quest", parent={ frame=QuestProgressScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
+      post_update=function () frame_hooks.update_quest_npc_name() end },
+    { hd_type="quest", parent={ frame=QuestRewardScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
+      post_update=function () frame_hooks.update_quest_npc_name() end },
     { hd_type="quest", parent={ frame=QuestLogDetailScrollFrame, point="TOPRIGHT", x=-8, y=-12 } },
     { hd_type="quest", parent={ frame=QuestMapDetailsScrollFrame, point="TOPRIGHT", x=-2, y=-4 },
       extra_target=QuestMapFrame and QuestMapFrame.DetailsFrame and QuestMapFrame.DetailsFrame.RewardsFrame or nil },
@@ -45,8 +49,12 @@ local lang_switchers = {
       extra_target=ItemTextFrame, post_update=function () utils.update_item_text_scrollbar() end },
     -- gossips (npc talk and player replies)
     { hd_type="gossip", parent={ frame=GossipFrameInset, point="TOPRIGHT", x=-6, y=-10 },
-      post_update=function () frame_hooks.update_gossip_scroll_box() end },
-    { hd_type="gossip", parent={ frame=QuestGreetingScrollFrame, point="TOPRIGHT", x=-6, y=-10 } },
+      post_update=function ()
+          frame_hooks.update_gossip_scroll_box()
+          frame_hooks.update_gossip_npc_name()
+      end },
+    { hd_type="gossip", parent={ frame=QuestGreetingScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
+      post_update=function () frame_hooks.update_quest_npc_name() end },
 }
 
 local function on_hooked_label_set_text(self, text)
@@ -258,6 +266,36 @@ local function prepare_lang_switchers()
     end
 end
 
+-- the name in the window header comes from UnitName(), so the game puts the original back
+-- every time it refreshes the window; returns nil when the name should be left alone
+local function npc_name_in_preferred_lang(unit_id)
+    if not options.can_translate("translate_npc") then
+        return
+    end
+
+    local npc_id = utils.npc_id_from_unit_id(unit_id)
+    local entry = npc_id and entries.get_entry("npc", npc_id)
+    if not entry then
+        return
+    end
+
+    return data_hooks.preferred_lang == "uk" and utils.cap(entry[1]) or UnitName(unit_id)
+end
+
+frame_hooks.update_gossip_npc_name = function ()
+    local name = GossipFrame.SetGossipTitle and npc_name_in_preferred_lang("npc")
+    if name then
+        GossipFrame:SetGossipTitle(name)
+    end
+end
+
+frame_hooks.update_quest_npc_name = function ()
+    local name = QuestFrameNpcNameText and npc_name_in_preferred_lang("questnpc")
+    if name then
+        QuestFrameNpcNameText:SetText(name)
+    end
+end
+
 frame_hooks.update_gossip_scroll_box = function ()
     local npc_id = utils.npc_id_from_unit_id("npc")
     local scroll_box = GossipFrame and GossipFrame.GreetingPanel and GossipFrame.GreetingPanel.ScrollBox
@@ -307,4 +345,9 @@ frame_hooks.prepare = function ()
     prepare_hooked_labels()
     update_hooked_labels() -- need this update to initially translate labels which never gets updated by the game
     prepare_lang_switchers()
+
+    -- the game calls this for every quest window: detail, progress, reward and greeting
+    if QuestFrame_SetPortrait then
+        hooksecurefunc("QuestFrame_SetPortrait", frame_hooks.update_quest_npc_name)
+    end
 end
