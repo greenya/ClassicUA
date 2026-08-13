@@ -2,6 +2,7 @@
     <Script file="class.lua"/>
     <Script file="info.lua"/>
     <Script file="item_suffix.lua"/>
+    <Script file="language.lua"/>
     <Script file="misc.lua"/>
     <Script file="race.lua"/>
     <Script file="stat_count.lua"/>

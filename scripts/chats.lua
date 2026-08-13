@@ -68,6 +68,14 @@ local function translate_chat_bubble(chat_text, chat_text_uk)
     end)
 end
 
+local function resolve_lang_name(chat_frame, lang_name)
+    if lang_name == "" or lang_name == chat_frame.defaultLanguage then
+        return lang_name
+    end
+
+    return entries.get_language_text(lang_name)
+end
+
 local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
     local known_event = known_chat_msg_events[event]
     if not known_event or not options.can_lookup("translate_chat") then
@@ -93,7 +101,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
 
     if not chat_text_uk then
         if is_replacement then
-            return nil, chat_text, resolve_npc_name(npc_name, npc_name_uk), lang_name, ...
+            return nil, chat_text, resolve_npc_name(npc_name, npc_name_uk), resolve_lang_name(self, lang_name), ...
         end
         return nil, chat_text, npc_name, lang_name, ...
     end
@@ -107,7 +115,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
     end
 
     if is_replacement then
-        return nil, chat_text_uk, npc_name_uk, lang_name, ...
+        return nil, chat_text_uk, npc_name_uk, resolve_lang_name(self, lang_name), ...
     end
 
     if options.account.chat_style == chat_styles.addition then

@@ -473,6 +473,16 @@ entries.make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     return result
 end
 
+entries.get_language_text = function (language_name)
+    local at = addon_table
+
+    if type(at.language) ~= "table" then
+        return language_name
+    end
+
+    return at.language[language_name] or language_name
+end
+
 entries.get_glossary_text = function (entry_key, fallback, hint_type)
     local at = addon_table
 
