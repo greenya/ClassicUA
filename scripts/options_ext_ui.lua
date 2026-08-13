@@ -133,6 +133,14 @@ local option_rows = {
         tooltip     = "Назви та описи предметів у підказках."
     },
     {
+        key         = "quest_item",
+        option_key  = "translate_quest_item",
+        parent_key  = "item",
+        sub         = true,
+        name        = "У вікнах завдань",
+        tooltip     = "Назви нагород і потрібних предметів у вікнах завдань та в журналі."
+    },
+    {
         key         = "spell",
         option_key  = "translate_spell",
         name        = "Закляття й таланти",

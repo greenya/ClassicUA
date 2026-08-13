@@ -18,6 +18,7 @@ local default_account = { ---@class account_options_class
     translate_chat_bubble = true,
     chat_style = 1, -- see chat_styles in chats.lua
     translate_item = true,
+    translate_quest_item = true,
     translate_spell = true,
     translate_npc = true,
     translate_nameplates = true,

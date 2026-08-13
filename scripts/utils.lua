@@ -214,14 +214,18 @@ utils.tooltip_title_line = function (tooltip)
     return text
 end
 
-utils.tooltip_item_id = function (tooltip)
-    local _, item_link = tooltip:GetItem()
-    if item_link then
+utils.item_id_from_link = function (item_link)
+    if type(item_link) == "string" then
         local _, _, item_id = item_link:find("Hitem:(%d+):")
         if item_id then
             return tonumber(item_id)
         end
     end
+end
+
+utils.tooltip_item_id = function (tooltip)
+    local _, item_link = tooltip:GetItem()
+    return utils.item_id_from_link(item_link)
 end
 
 utils.tooltip_item_suffix_id = function (tooltip)

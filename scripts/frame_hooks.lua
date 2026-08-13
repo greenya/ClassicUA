@@ -33,28 +33,188 @@ local hooked_labels = {
     { frame=QuestLogItemReceiveText }, -- "You will receive:", "You will also receive:"
 }
 
+local function npc_name_in_preferred_lang(unit_id)
+    if not options.can_translate("translate_npc") then
+        return
+    end
+
+    local npc_id = utils.npc_id_from_unit_id(unit_id)
+    local entry = npc_id and entries.get_entry("npc", npc_id)
+    if not entry then
+        return
+    end
+
+    return data_hooks.preferred_lang == "uk" and utils.cap(entry[1]) or UnitName(unit_id)
+end
+
+local function update_gossip_npc_name()  -- todo: move from frame_hooks?
+    local name = GossipFrame.SetGossipTitle and npc_name_in_preferred_lang("npc")
+    if name then
+        GossipFrame:SetGossipTitle(name)
+    end
+end
+
+local function update_quest_npc_name()
+    local name = QuestFrameNpcNameText and npc_name_in_preferred_lang("questnpc")
+    if name then
+        QuestFrameNpcNameText:SetText(name)
+    end
+end
+
+local function set_quest_item_name(font_string, item_link)
+    local item_entry = item_link and entries.get_entry("item", utils.item_id_from_link(item_link))
+    if not font_string or not item_entry then
+        return
+    end
+
+    local name = data_hooks.preferred_lang == "uk"
+        and utils.cap(item_entry[1])
+        or item_link:match("%[(.-)%]") -- the link carries the original name
+
+    if name then
+        font_string:SetText(name)
+    end
+end
+
+-- the rewards a quest offers, in the talk windows and in the quest log alike
+local function update_quest_reward_names()
+    if not options.can_translate("translate_item", "translate_quest_item") then
+        return
+    end
+
+    local rewards_frame = QuestInfoFrame and QuestInfoFrame.rewardsFrame
+    local buttons = rewards_frame and rewards_frame.RewardButtons
+    local get_item_link = QuestInfoFrame and QuestInfoFrame.questLog and GetQuestLogItemLink or GetQuestItemLink
+
+    if not buttons or not get_item_link then
+        return
+    end
+
+    for _, button in ipairs(buttons) do
+        if button:IsShown() and button.objectType == "item" and button.type then
+            set_quest_item_name(button.Name, get_item_link(button.type, button:GetID()))
+        end
+    end
+end
+
+local function update_numbered_item_buttons(name_prefix, get_item_link)
+    local i = 1
+    local button = _G[name_prefix .. i]
+
+    while button do
+        if button:IsShown() and button.type and button.objectType ~= "currency" then
+            set_quest_item_name(_G[name_prefix .. i .. "Name"], get_item_link(button.type, button:GetID()))
+        end
+
+        i = i + 1
+        button = _G[name_prefix .. i]
+    end
+end
+
+local function update_quest_required_item_names()
+    if not options.can_translate("translate_item", "translate_quest_item") or not GetQuestItemLink then
+        return
+    end
+
+    update_numbered_item_buttons("QuestProgressItem", GetQuestItemLink)
+end
+
+local function update_quest_frame_item_names(quest_state)
+    if not options.can_translate("translate_item", "translate_quest_item") or type(quest_state) ~= "string" then
+        return
+    end
+
+    local get_item_link = quest_state == "QuestLog" and GetQuestLogItemLink or GetQuestItemLink
+    if not get_item_link then
+        return
+    end
+
+    update_numbered_item_buttons(quest_state .. "Item", get_item_link)
+end
+
+local function update_gossip_scroll_box()
+    local npc_id = utils.npc_id_from_unit_id("npc")
+    local scroll_box = GossipFrame and GossipFrame.GreetingPanel and GossipFrame.GreetingPanel.ScrollBox
+
+    if not npc_id or not scroll_box then
+        return
+    end
+
+    local is_any_text_translated = false
+
+    for _, child in scroll_box:EnumerateFrames() do
+        local element_data = child.GetElementData and child:GetElementData()
+        local info = element_data and element_data.info
+
+        if info then
+            -- a player reply ("name") or a quest title ("title")
+            for _, key in ipairs({ "name", "title" }) do
+                local found = info[key] and data_hooks.get_translation("gossip", npc_id, info[key])
+                if found then
+                    info[key] = found
+                    is_any_text_translated = true
+                end
+            end
+
+            if child.Setup then
+                child:Setup(info)
+            end
+
+        elseif element_data and element_data.text then
+            local found = data_hooks.get_translation("gossip", npc_id, element_data.text)
+            if found then
+                element_data.text = found
+                is_any_text_translated = true
+                if child.Setup then
+                    child:Setup(found)
+                end
+            end
+        end
+    end
+
+    if is_any_text_translated then
+        scroll_box:FullUpdate(true)
+    end
+end
+
 local lang_switchers = {
     -- quests
     { hd_type="quest", parent={ frame=QuestDetailScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
-      post_update=function () frame_hooks.update_quest_npc_name() end },
+      post_update=function ()
+          update_quest_npc_name()
+          update_quest_reward_names()
+      end },
     { hd_type="quest", parent={ frame=QuestProgressScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
-      post_update=function () frame_hooks.update_quest_npc_name() end },
+      post_update=function ()
+          update_quest_npc_name()
+          update_quest_required_item_names()
+      end },
     { hd_type="quest", parent={ frame=QuestRewardScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
-      post_update=function () frame_hooks.update_quest_npc_name() end },
-    { hd_type="quest", parent={ frame=QuestLogDetailScrollFrame, point="TOPRIGHT", x=-8, y=-12 } },
+      post_update=function ()
+          update_quest_npc_name()
+          update_quest_reward_names()
+      end },
+    { hd_type="quest", parent={ frame=QuestLogDetailScrollFrame, point="TOPRIGHT", x=-8, y=-12 },
+      post_update=function ()
+          update_quest_reward_names()
+          update_quest_frame_item_names("QuestLog")
+      end },
     { hd_type="quest", parent={ frame=QuestMapDetailsScrollFrame, point="TOPRIGHT", x=-2, y=-4 },
-      extra_target=QuestMapFrame and QuestMapFrame.DetailsFrame and QuestMapFrame.DetailsFrame.RewardsFrame or nil },
+      extra_target=QuestMapFrame and QuestMapFrame.DetailsFrame and QuestMapFrame.DetailsFrame.RewardsFrame or nil,
+      post_update=function () update_quest_reward_names() end },
+
     -- books (item texts)
     { hd_type="book", parent={ frame=ItemTextScrollFrame, point="TOPRIGHT", x=-2, y=-12 },
       extra_target=ItemTextFrame, post_update=function () utils.update_item_text_scrollbar() end },
+
     -- gossips (npc talk and player replies)
     { hd_type="gossip", parent={ frame=GossipFrameInset, point="TOPRIGHT", x=-6, y=-10 },
       post_update=function ()
-          frame_hooks.update_gossip_scroll_box()
-          frame_hooks.update_gossip_npc_name()
+          update_gossip_scroll_box()
+          update_gossip_npc_name()
       end },
     { hd_type="gossip", parent={ frame=QuestGreetingScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
-      post_update=function () frame_hooks.update_quest_npc_name() end },
+      post_update=function () update_quest_npc_name() end },
 }
 
 local function on_hooked_label_set_text(self, text)
@@ -266,88 +426,38 @@ local function prepare_lang_switchers()
     end
 end
 
--- the name in the window header comes from UnitName(), so the game puts the original back
--- every time it refreshes the window; returns nil when the name should be left alone
-local function npc_name_in_preferred_lang(unit_id)
-    if not options.can_translate("translate_npc") then
-        return
+local function prepare_quest_window_hooks()
+    -- NPC name in quest window
+    if QuestFrame_SetPortrait then
+        hooksecurefunc("QuestFrame_SetPortrait", update_quest_npc_name)
     end
 
-    local npc_id = utils.npc_id_from_unit_id(unit_id)
-    local entry = npc_id and entries.get_entry("npc", npc_id)
-    if not entry then
-        return
+    -- rewards in the quest talk windows, in the wrath+ world map, in cata+ quest logs
+    if QuestInfo_Display then
+        hooksecurefunc("QuestInfo_Display", update_quest_reward_names)
     end
 
-    return data_hooks.preferred_lang == "uk" and utils.cap(entry[1]) or UnitName(unit_id)
-end
-
-frame_hooks.update_gossip_npc_name = function ()
-    local name = GossipFrame.SetGossipTitle and npc_name_in_preferred_lang("npc")
-    if name then
-        GossipFrame:SetGossipTitle(name)
+    -- QUEST_ITEM_UPDATE repaints the rewards, without going through QuestInfo_Display
+    if QuestInfo_ShowRewards then
+        hooksecurefunc("QuestInfo_ShowRewards", update_quest_reward_names)
     end
-end
 
-frame_hooks.update_quest_npc_name = function ()
-    local name = QuestFrameNpcNameText and npc_name_in_preferred_lang("questnpc")
-    if name then
-        QuestFrameNpcNameText:SetText(name)
+    -- required quest items in progress window
+    if QuestFrameProgressItems_Update then
+        hooksecurefunc("QuestFrameProgressItems_Update", update_quest_required_item_names)
+    end
+
+    -- rewards in pre-cata quest log
+    if QuestFrameItems_Update then
+        hooksecurefunc("QuestFrameItems_Update", update_quest_frame_item_names)
     end
 end
 
-frame_hooks.update_gossip_scroll_box = function ()
-    local npc_id = utils.npc_id_from_unit_id("npc")
-    local scroll_box = GossipFrame and GossipFrame.GreetingPanel and GossipFrame.GreetingPanel.ScrollBox
-
-    if not npc_id or not scroll_box then
-        return
-    end
-
-    local is_any_text_translated = false
-
-    for _, child in scroll_box:EnumerateFrames() do
-        local element_data = child.GetElementData and child:GetElementData()
-        local info = element_data and element_data.info
-
-        if info then
-            -- a player reply ("name") or a quest title ("title")
-            for _, key in ipairs({ "name", "title" }) do
-                local found = info[key] and data_hooks.get_translation("gossip", npc_id, info[key])
-                if found then
-                    info[key] = found
-                    is_any_text_translated = true
-                end
-            end
-
-            if child.Setup then
-                child:Setup(info)
-            end
-
-        elseif element_data and element_data.text then
-            local found = data_hooks.get_translation("gossip", npc_id, element_data.text)
-            if found then
-                element_data.text = found
-                is_any_text_translated = true
-                if child.Setup then
-                    child:Setup(found)
-                end
-            end
-        end
-    end
-
-    if is_any_text_translated then
-        scroll_box:FullUpdate(true)
-    end
-end
+frame_hooks.update_gossip_npc_name = update_gossip_npc_name
 
 frame_hooks.prepare = function ()
     prepare_hooked_labels()
     update_hooked_labels() -- need this update to initially translate labels which never gets updated by the game
     prepare_lang_switchers()
-
-    -- the game calls this for every quest window: detail, progress, reward and greeting
-    if QuestFrame_SetPortrait then
-        hooksecurefunc("QuestFrame_SetPortrait", frame_hooks.update_quest_npc_name)
-    end
+    prepare_quest_window_hooks()
 end
