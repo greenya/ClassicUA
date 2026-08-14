@@ -60,6 +60,13 @@ utils.copy_table = function (target, source)
     return target
 end
 
+utils.copy_table_deep = function (target, source)
+    for k, v in pairs(source) do
+        target[k] = type(v) == "table" and utils.copy_table_deep({}, v) or v
+    end
+    return target
+end
+
 utils.table_string_keys = function (tbl)
     local result = {}
     for k, _ in pairs(tbl) do

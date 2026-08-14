@@ -5,10 +5,10 @@ local dev_log_ui        = addon_table.use("dev_log_ui") ---@class dev_log_ui_cla
 local frames            = addon_table.use("frames") ---@class frames_class
 local options           = addon_table.use("options") ---@class options_class
 local options_ext_ui    = addon_table.use("options_ext_ui") ---@class options_ext_ui_class
-local options_ui        = addon_table.use("options_ui") ---@class options_ui_class
 local utils             = addon_table.use("utils") ---@class utils_class
 
 local CreateFrame       = _G.CreateFrame
+local UnitName          = _G.UnitName
 local math_ceil         = _G.math.ceil
 
 local fonts = {
@@ -283,28 +283,53 @@ local function checkbox_checked(row)
     return options.account[row.option_key]
 end
 
-local extra_page_frame = nil
+local reload_pages = {}
 local needs_reload = false
 
 local function update_reload_button()
-    if extra_page_frame then
+    for _, frame in ipairs(reload_pages) do
         if needs_reload then
-            extra_page_frame.reload_button:LockHighlight()
-            extra_page_frame.reload_warning:Show()
+            frame.reload_button:LockHighlight()
+            frame.reload_warning:Show()
         else
-            extra_page_frame.reload_button:UnlockHighlight()
-            extra_page_frame.reload_warning:Hide()
+            frame.reload_button:UnlockHighlight()
+            frame.reload_warning:Hide()
         end
     end
+end
 
-    local main_page_button = options_ui.frame and options_ui.frame.reload_button
-    if main_page_button then
-        if needs_reload then
-            main_page_button:LockHighlight()
-        else
-            main_page_button:UnlockHighlight()
-        end
-    end
+-- "/reload" on the title line, with the warning and the page' own reset button to its left
+local function create_reload_button(frame, reset_button, tooltip_text)
+    local l = layout
+
+    local reload_button = CreateFrame("Button", "$parent.Reload", frame, "UIPanelButtonTemplate")
+    reload_button:SetPoint("TOPRIGHT", -l.pad_x, l.pad_y)
+    reload_button:SetSize(92, 24)
+    reload_button:SetText("/reload")
+    reload_button:SetScript("OnClick", function ()
+        StaticPopup_Show("CLASSICUA_CONFIRM_RELOAD_UI")
+    end)
+    reload_button:SetScript("OnEnter", function (self)
+        GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+        GameTooltip:SetText(tooltip_text(), nil, nil, nil, nil, true)
+    end)
+    reload_button:SetScript("OnLeave", function ()
+        GameTooltip:Hide()
+    end)
+    frame.reload_button = reload_button
+
+    reset_button:SetPoint("RIGHT", reload_button, "LEFT", -8, 0)
+
+    local reload_warning = frame:CreateFontString("$parent.Reload_Warning")
+    reload_warning:SetPoint("RIGHT", reset_button, "LEFT", -10, 0)
+    reload_warning:SetJustifyH("RIGHT")
+    reload_warning:SetFontObject(fonts.content)
+    reload_warning:SetTextColor(1, 0.7, 0.2)
+    reload_warning:SetText("Потрібне перезавантаження")
+    reload_warning:Hide()
+    frame.reload_warning = reload_warning
+
+    reload_pages[#reload_pages + 1] = frame
 end
 
 options_ext_ui.mark_needs_reload = function ()
@@ -367,32 +392,26 @@ local function create_extra_page()
         "Тут можна вимкнути окремі частини перекладу."
     )
 
-    extra_page_frame = frame
     frame.widgets = {}
 
-    -- reload button, sitting on the title line
+    -- reset and reload buttons, sitting on the title line
 
-    local reload_button = CreateFrame("Button", "$parent.Reload", frame, "UIPanelButtonTemplate")
-    reload_button:SetPoint("TOPRIGHT", -l.pad_x, l.pad_y)
-    reload_button:SetSize(92, 24)
-    reload_button:SetText("/reload")
-    reload_button:SetScript("OnClick", function ()
-        StaticPopup_Show("CLASSICUA_CONFIRM_RELOAD_UI")
+    local reset_button = CreateFrame("Button", "$parent.Reset", frame, "UIPanelButtonTemplate")
+    reset_button:SetSize(92, 24)
+    reset_button:SetText("Скинути")
+    reset_button:SetScript("OnClick", function ()
+        StaticPopup_Show("CLASSICUA_CONFIRM_SETTINGS_RESET")
     end)
-    frames.add_tooltip_for_frame(reload_button, "ANCHOR_LEFT",
-        "Перезавантажити інтерфейс гри."
-        .. "\n\nНалаштування з позначкою (/reload) діють лише після перезавантаження."
+    frames.add_tooltip_for_frame(reset_button, "ANCHOR_LEFT",
+        "Скинути всі налаштування за замовчуванням."
+        .. "\n\nДеякі зміни будуть помітні лише після перезавантаження інтерфейсу гри."
     )
-    frame.reload_button = reload_button
 
-    local reload_warning = frame:CreateFontString("$parent.Reload_Warning")
-    reload_warning:SetPoint("RIGHT", reload_button, "LEFT", -10, 0)
-    reload_warning:SetJustifyH("RIGHT")
-    reload_warning:SetFontObject(fonts.content)
-    reload_warning:SetTextColor(1, 0.7, 0.2)
-    reload_warning:SetText("Потрібне перезавантаження")
-    reload_warning:Hide()
-    frame.reload_warning = reload_warning
+    create_reload_button(frame, reset_button, function ()
+        return "Перезавантажити інтерфейс гри."
+            .. "\n\nНалаштування з позначкою (/reload) діють лише після перезавантаження."
+            .. string.format("\n\nВикористання пам'яті: %.1f Мб", utils.addon_mem_usage() / 1024)
+    end)
 
     local function update_row_states()
         for _, w in pairs(frame.widgets) do
@@ -556,24 +575,103 @@ local function create_copyable_row(frame, y, label_text, value_text, box_width)
     return y - 30
 end
 
-local function create_info_page()
+local function create_character_page()
+    local l = layout
+
     local frame, y = create_page_frame(
-        "ClassicUA_Options_Info_Frame",
-        "Посилання",
-        "Клацніть на посилання, щоб виділити його, а тоді натисніть Ctrl+C."
+        "ClassicUA_Options_Character_Frame",
+        "Персонаж",
+        addon_table.info.player_character_desc
     )
 
-    local links = {
-        { "Словник",                "https://greenya.github.io/ClassicUA/terms/" },
-        { "Код аддону",             "https://github.com/greenya/ClassicUA" },
-        { "CurseForge",             "https://www.curseforge.com/wow/addons/classicua" },
-        { "Переклад (Crowdin)",     "https://crowdin.com/project/classicua" },
-        { "Спільнота в Discord",    "https://discord.gg/uGG83AaY3k" },
+    local name = frame:CreateFontString("$parent.Name")
+    name:SetPoint("TOPLEFT", l.pad_x, y)
+    name:SetFontObject(fonts.group)
+    name:SetText(UnitName("player"))
+
+    local reset_button = CreateFrame("Button", "$parent.Reset", frame, "UIPanelButtonTemplate")
+    reset_button:SetSize(92, 24)
+    reset_button:SetText("Скинути")
+    reset_button:SetScript("OnClick", function ()
+        StaticPopup_Show("CLASSICUA_CONFIRM_CHARACTER_RESET")
+    end)
+    frames.add_tooltip_for_frame(reset_button, "ANCHOR_LEFT",
+        "Скинути налаштування цього персонажа за замовчуванням."
+    )
+
+    create_reload_button(frame, reset_button, function ()
+        return "Перезавантажити інтерфейс гри."
+            .. "\n\nВідмінювання застосовується лише після перезавантаження."
+    end)
+
+    y = y - 28
+
+    frame.case_edit_boxes = {}
+
+    local cases = {
+        { "н", "Називний — (Є) Хто? Що?" },
+        { "р", "Родовий — (Немає) Кого? Чого?" },
+        { "д", "Давальний — (Даю) Кому? Чому?" },
+        { "з", "Знахідний — (Бачу) Кого? Що?" },
+        { "о", "Орудний — (Пишаюся) Ким? Чим?" },
+        { "м", "Місцевий — (Стою) На кому? На чому?" },
+        { "к", "Кличний — (Звертання)" },
     }
 
-    for _, link in ipairs(links) do
-        y = create_copyable_row(frame, y, link[1], link[2], 460)
+    local edit_box_width = 236
+    local column_x, row_y = l.pad_x, y
+    local prev_edit_box
+
+    for i, c in ipairs(cases) do
+        local case_key = c[1]
+
+        local label = frame:CreateFontString()
+        label:SetPoint("TOPLEFT", column_x, row_y)
+        label:SetFontObject(fonts.content)
+        label:SetText(c[2])
+
+        local edit_box = CreateFrame("EditBox", nil, frame, "InputBoxTemplate")
+        edit_box:SetPoint("TOPLEFT", column_x + 6, row_y - 18)
+        edit_box:SetSize(edit_box_width, 22)
+        edit_box:SetAutoFocus(false)
+        edit_box:SetMaxLetters(40)
+        edit_box:SetText(options.character.name_cases[case_key] or "")
+        edit_box:SetCursorPosition(0)
+        edit_box.case_key = case_key
+
+        edit_box:SetScript("OnTextChanged", function (self, is_user_input)
+            if is_user_input then
+                options.character.name_cases[self.case_key] = string.trim(self:GetText() or "")
+                options_ext_ui.mark_needs_reload()
+            end
+        end)
+
+        edit_box:SetScript("OnTabPressed", function (self)
+            if self.next_tab_focus then
+                self.next_tab_focus:SetFocus()
+            end
+        end)
+
+        if prev_edit_box then
+            prev_edit_box.next_tab_focus = edit_box
+        end
+        prev_edit_box = edit_box
+        frame.case_edit_boxes[case_key] = edit_box
+
+        row_y = row_y - 48
+        if i == 4 then
+            row_y = y
+            column_x = column_x + edit_box_width + 44
+        end
     end
+
+    frame.OnRefresh = function ()
+        for case_key, edit_box in pairs(frame.case_edit_boxes) do
+            edit_box:SetText(options.character.name_cases[case_key] or "")
+            edit_box:SetCursorPosition(0)
+        end
+    end
+    frame.refresh = frame.OnRefresh
 
     return frame
 end
@@ -690,14 +788,21 @@ local function create_dev_page()
 end
 
 local pages = {
-    { create_func = create_extra_page },
-    { create_func = create_dev_page },
-    { create_func = create_info_page },
+    { key = "character",    create_func = create_character_page },
+    { key = "settings",     create_func = create_extra_page },
+    { key = "dev",          create_func = create_dev_page },
 }
 
--- opens a subcategory by its index in "pages"
-options_ext_ui.open = function (page_index)
-    local page = pages[page_index or 1]
+local function page_by_key(page_key)
+    for _, p in ipairs(pages) do
+        if p.key == page_key then
+            return p
+        end
+    end
+end
+
+options_ext_ui.open = function (page_key)
+    local page = page_by_key(page_key) or page_by_key("settings")
 
     if page.category_id and Settings and Settings.OpenToCategory then
         Settings.OpenToCategory(page.category_id)

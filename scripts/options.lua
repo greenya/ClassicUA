@@ -39,7 +39,7 @@ options.prepare = function ()
     options.account = ClassicUA_Options
     utils.table_sync_keys(options.account, default_account)
 
-    ClassicUA_Character_Options = ClassicUA_Character_Options or utils.copy_table({}, default_character)
+    ClassicUA_Character_Options = ClassicUA_Character_Options or utils.copy_table_deep({}, default_character)
     options.character = ClassicUA_Character_Options
     utils.table_sync_keys(options.character, default_character)
 end
@@ -67,6 +67,14 @@ end
 options.reset = function ()
     ClassicUA_Options = utils.copy_table({}, default_account)
     options.account = ClassicUA_Options
+
+    options_ext_ui.mark_needs_reload()
+    options_ext_ui.refresh()
+end
+
+options.reset_character = function ()
+    ClassicUA_Character_Options = utils.copy_table_deep({}, default_character)
+    options.character = ClassicUA_Character_Options
 
     options_ext_ui.mark_needs_reload()
     options_ext_ui.refresh()

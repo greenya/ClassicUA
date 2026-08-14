@@ -42,8 +42,18 @@ local function register_static_popup_dialogs()
         hideOnEscape= true
     }
 
+    StaticPopupDialogs.CLASSICUA_CONFIRM_CHARACTER_RESET = {
+        text        = "Дійсно скинути налаштування цього персонажа?",
+        button1     = "Так",
+        button2     = "Ні",
+        OnAccept    = options.reset_character,
+        timeout     = 0,
+        whileDead   = true,
+        hideOnEscape= true
+    }
+
     StaticPopupDialogs.CLASSICUA_CONFIRM_SETTINGS_RESET = {
-        text        = "Дійсно скинути всі налаштування за замовчуванням?\n\n(Відмінювання імен персонажів скинуто не буде.)",
+        text        = "Дійсно скинути всі налаштування за замовчуванням?",
         button1     = "Так",
         button2     = "Ні",
         OnAccept    = options.reset,
@@ -385,71 +395,53 @@ local function setup_stat_count_frame(content_frame)
     return root
 end
 
-local function setup_player_name_cases_frame(content_frame)
-    local root = CreateFrame("Frame", "ClassicUA_Player_Options", content_frame)
+local function setup_links_frame(content_frame)
+    local root = CreateFrame("Frame", "ClassicUA_Links", content_frame)
     root:SetPoint("BOTTOMLEFT", 0, 0)
+    root:SetWidth(content_frame:GetWidth())
 
-    local cases = {
-        { "н", "Називний — (Є) Хто? Що?" },
-        { "р", "Родовий — (Немає) Кого? Чого?" },
-        { "д", "Давальний — (Даю) Кому? Чому?" },
-        { "з", "Знахідний — (Бачу) Кого? Що?" },
-        { "о", "Орудний — (Пишаюся) Ким? Чим?" },
-        { "м", "Місцевий — (Стою) На кому? На чому?" },
-        { "к", "Кличний — (Звертання)" }
+    local links = {
+        { "Словник",    "https://greenya.github.io/ClassicUA/terms/" },
+        { "Github",     "https://github.com/greenya/ClassicUA" },
+        { "CurseForge", "https://www.curseforge.com/wow/addons/classicua" },
+        { "Crowdin",    "https://crowdin.com/project/classicua" },
+        { "Discord",    "https://discord.gg/uGG83AaY3k" },
     }
 
-    local start_x, start_y = 32, -12
-    local x, y = start_x, start_y
-    local edit_box_width = 236
-    local prev_edit_box = nil
+    local label_width, row_height = 100, 32
+    local x, y = 32, -8
 
-    for i, c in ipairs(cases) do
-        local case_key = c[1]
-        local case_name = c[2]
+    for _, link in ipairs(links) do
+        local url = link[2]
 
         local label = root:CreateFontString()
-        label:SetPoint("TOPLEFT", x, y - 0)
+        label:SetPoint("TOPLEFT", x, y - 6)
+        label:SetWidth(label_width)
+        label:SetJustifyH("LEFT")
         label:SetFontObject(fonts.content)
         label:SetTextColor(0, 0, 0)
-        label:SetText(case_name)
+        label:SetText(link[1])
 
         local edit_box = CreateFrame("EditBox", nil, root, "InputBoxTemplate")
-        edit_box:SetPoint("TOPLEFT", x, y - 4)
-        edit_box:SetSize(edit_box_width, 40)
+        edit_box:SetPoint("TOPLEFT", x + label_width, y)
+        edit_box:SetSize(420, 28)
         edit_box:SetAutoFocus(false)
-        edit_box:SetMaxLetters(40)
-
-        edit_box:SetText(options.character.name_cases[case_key] or "")
+        edit_box:SetText(url)
         edit_box:SetCursorPosition(0)
-        edit_box.case_key = case_key
-
+        edit_box:SetScript("OnEscapePressed", edit_box.ClearFocus)
+        edit_box:SetScript("OnEditFocusGained", function (self) self:HighlightText() end)
+        -- read only: revert any edit, so the address is always safe to copy
         edit_box:SetScript("OnTextChanged", function (self, is_user_input)
             if is_user_input then
-                local new_text = string.trim(self:GetText() or "")
-                options.character.name_cases[self.case_key] = new_text
+                self:SetText(url)
+                self:HighlightText()
             end
         end)
 
-        edit_box:SetScript("OnTabPressed", function (self)
-            if edit_box.next_tab_focus then
-                edit_box.next_tab_focus:SetFocus()
-            end
-        end)
-
-        if prev_edit_box then
-            prev_edit_box.next_tab_focus = edit_box
-        end
-        prev_edit_box = edit_box
-
-        y = y - 40
-        if i == 4 then
-            y = start_y
-            x = x + edit_box_width + 32
-        end
+        y = y - row_height
     end
 
-    root:SetSize(content_frame:GetWidth(), 16 + 4 * 40)
+    root:SetHeight(8 + #links * row_height)
     return root
 end
 
@@ -519,61 +511,24 @@ local function prepare_options_frame()
     version_string:SetTextColor(.5, .6, .7)
     version_string:SetText(utils.addon_version())
 
-    -- reload button
+    -- settings button
 
-    local reload_button = CreateFrame("Button", "$parent.Reload", options_ui.frame, "UIPanelButtonTemplate")
-    reload_button:SetPoint("TOPRIGHT", -46, -18)
-    reload_button:SetText("/reload")
-    reload_button:SetSize(92, 24)
-    reload_button:SetScript("OnClick", function()
-        StaticPopup_Show("CLASSICUA_CONFIRM_RELOAD_UI")
-    end)
-    reload_button:SetScript("OnEnter", function(self)
-        local memory_usage_mb = utils.addon_mem_usage() / 1024
-        local memory_usage_text = string.format("\n\nВикористання пам'яті: %.1f Мб", memory_usage_mb)
-        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        GameTooltip:SetText(
-            "Перезавантажити інтерфейс гри. Деякі зміни в налаштуваннях будуть помітні лише після такої операції."
-            .. memory_usage_text,
-            nil, nil, nil, nil, true
-        )
-    end)
-    reload_button:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-    options_ui.frame.reload_button = reload_button
-
-    -- reset button
-
-    local reset_button = CreateFrame("Button", "$parent.Reset", options_ui.frame, "UIPanelButtonTemplate")
-    reset_button:SetPoint("TOPRIGHT", -46, -46)
-    reset_button:SetText("Скинути")
-    reset_button:SetSize(92, 24)
-    reset_button:SetScript("OnClick", function()
-        StaticPopup_Show("CLASSICUA_CONFIRM_SETTINGS_RESET")
-    end)
-    frames.add_tooltip_for_frame(reset_button, "ANCHOR_RIGHT",
-        "Скинути всі налаштування за замовчуванням. Деякі зміни будуть помітні лише після перезавантаження інтерфейсу гри."
-    )
-
-    -- extended options button
-
-    local extended_options_button = CreateFrame("Button", "$parent.Extended_Options", options_ui.frame, "UIPanelButtonTemplate")
-    extended_options_button:SetPoint("TOPLEFT", 24, -80)
-    extended_options_button:SetText("Додаткові налаштування")
-    extended_options_button:SetSize(200, 28)
-    extended_options_button:SetScript("OnClick", function ()
+    local settings_button = CreateFrame("Button", "$parent.Settings", options_ui.frame, "UIPanelButtonTemplate")
+    settings_button:SetPoint("TOPRIGHT", -46, -18)
+    settings_button:SetText("Налаштування")
+    settings_button:SetSize(140, 24)
+    settings_button:SetScript("OnClick", function ()
         options_ext_ui.open()
     end)
-    frames.add_tooltip_for_frame(extended_options_button, "ANCHOR_RIGHT",
-        "Вимкнути окремі частини функціоналу аддону: переклад, заміну шрифтів тощо."
+    frames.add_tooltip_for_frame(settings_button, "ANCHOR_RIGHT",
+        "Налаштування окремих частин функціоналу аддону: перекладу, заміни шрифтів тощо."
     )
 
     -- tabs
 
     options_ui.frame.current_tab = CreateFrame("Frame", "$parent.Current_Tab", options_ui.frame, "BackdropTemplate")
-    options_ui.frame.current_tab:SetPoint("TOPLEFT", 24, -200)
-    options_ui.frame.current_tab:SetSize(600, 364)
+    options_ui.frame.current_tab:SetPoint("TOPLEFT", 24, -120)
+    options_ui.frame.current_tab:SetSize(600, 444)
     frames.setup_frame_background_and_border(options_ui.frame.current_tab)
     frames.setup_frame_scrollbar_and_content(options_ui.frame.current_tab, {
         title = { font=fonts.header },
@@ -588,11 +543,6 @@ local function prepare_options_frame()
 
     for tab_index, tab_data in ipairs({
         {
-            title                   = "Персонаж",
-            content_title           = "Персонаж: " .. UnitName("player"),
-            content_text            = info.player_character_desc,
-            child_frame_setup_func  = setup_player_name_cases_frame
-        }, {
             title                   = "Оновлення",
             content_title           = "Оновлення",
             content_text            = info.changelog
@@ -608,6 +558,10 @@ local function prepare_options_frame()
             title                   = "Завдання",
             content_title           = "Прогрес перекладу завдань",
             child_frame_setup_func  = setup_stat_quest_frame,
+        }, {
+            title                   = "Посилання",
+            content_title           = "Посилання",
+            child_frame_setup_func  = setup_links_frame,
         },
     }) do
         local f = CreateFrame("Button", "$parent.Tab_Button_" .. tab_index, options_ui.frame, "UIPanelButtonTemplate")
