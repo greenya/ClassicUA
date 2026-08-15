@@ -50,14 +50,14 @@ local function log_init()
 end
 
 dev_log.prepare = function ()
-    ClassicUA_DevLog = ClassicUA_DevLog or utils.copy_table({}, default_log)
+    ClassicUA_DevLog = ClassicUA_DevLog or utils.copy_table_deep({}, default_log)
     log = ClassicUA_DevLog
     utils.table_sync_keys(log, default_log)
     log_init()
 end
 
 dev_log.reset = function ()
-    ClassicUA_DevLog = utils.copy_table({}, default_log)
+    ClassicUA_DevLog = utils.copy_table_deep({}, default_log)
     log = ClassicUA_DevLog
     log_init()
     dev_print("Всі накопичені дані скинуто.")

@@ -91,10 +91,11 @@ utils.table_sync_keys = function (target_table, blueprint_table)
         end
     end
 
-    -- add brand new keys with default values
-    for k, _ in pairs(blueprint_table) do
+    -- add brand new keys with default values; a table default is copied, or the blueprint
+    -- would end up sharing it with the saved variables
+    for k, v in pairs(blueprint_table) do
         if target_table[k] == nil then
-            target_table[k] = blueprint_table[k]
+            target_table[k] = type(v) == "table" and utils.copy_table_deep({}, v) or v
         end
     end
 end

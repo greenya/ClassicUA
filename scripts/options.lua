@@ -35,7 +35,7 @@ local default_character = { ---@class character_options_class
 }
 
 options.prepare = function ()
-    ClassicUA_Options = ClassicUA_Options or utils.copy_table({}, default_account)
+    ClassicUA_Options = ClassicUA_Options or utils.copy_table_deep({}, default_account)
     options.account = ClassicUA_Options
     utils.table_sync_keys(options.account, default_account)
 
@@ -65,7 +65,7 @@ options.can_lookup = function (...)
 end
 
 options.reset = function ()
-    ClassicUA_Options = utils.copy_table({}, default_account)
+    ClassicUA_Options = utils.copy_table_deep({}, default_account)
     options.account = ClassicUA_Options
 
     options_ext_ui.mark_needs_reload()
