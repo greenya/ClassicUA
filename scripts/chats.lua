@@ -22,18 +22,16 @@ local known_chat_msg_events = {
     CHAT_MSG_RAID_BOSS_WHISPER  = { info=ChatTypeInfo.RAID_BOSS_WHISPER,    verb="шепоче" },
 }
 
--- How a translated line reaches the chat frame. The values are stored in options.chat_style
--- and must match the order of chat_style_values in options_ext_ui.lua.
-local chat_styles = {
-    replacement = 1, -- hand our text to the game and let it print the line as usual
-    addition    = 2, -- let the game print the original, then add ours underneath
+chats.styles = {
+    { key = "replacement", label = "Заміна" },      -- hand our text to the game and let it print the line as usual
+    { key = "addition",    label = "Доповнення" },  -- let the game print the original, then add ours underneath
 }
 
 -- the game builds the npc chat line itself, prefixing it with the speaker name and a verb;
 -- like the interface strings, these are written once and only put back by a reload
 local function replace_chat_prefixes()
     if not options.can_translate("translate_chat")
-        or options.account.chat_style ~= chat_styles.replacement then
+        or options.account.chat_style ~= "replacement" then
         return
     end
 
@@ -97,7 +95,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
         return nil, chat_text, npc_name, lang_name, ...
     end
 
-    local is_replacement = options.account.chat_style == chat_styles.replacement
+    local is_replacement = options.account.chat_style == "replacement"
 
     if not chat_text_uk then
         if is_replacement then
@@ -118,7 +116,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
         return nil, chat_text_uk, npc_name_uk, resolve_lang_name(self, lang_name), ...
     end
 
-    if options.account.chat_style == chat_styles.addition then
+    if options.account.chat_style == "addition" then
         local chat_message = assets.icon_ua_inline .. " " .. (known_event.verb
             and string_format("%s %s: %s", npc_name_uk, known_event.verb, chat_text_uk)
             or chat_text_uk) -- emote

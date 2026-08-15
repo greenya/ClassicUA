@@ -7,16 +7,18 @@
     <Script file="chats.lua"/>
     <Script file="data_hooks.lua"/>
     <Script file="dev_log.lua"/>
-    <Script file="dev_log_ui.lua"/>
     <Script file="entries.lua"/>
     <Script file="fonts.lua"/>
     <Script file="frame_hooks.lua"/>
     <Script file="frames.lua"/>
     <Script file="main.lua"/>
     <Script file="options.lua"/>
-    <Script file="options_ext_ui.lua"/>
-    <Script file="options_ui.lua"/>
     <Script file="strings.lua"/>
     <Script file="tooltips.lua"/>
     <Script file="utils.lua"/>
+
+    <!-- the *_ui views depend on models-->
+    <Script file="dev_log_ui.lua"/>
+    <Script file="options_ext_ui.lua"/>
+    <Script file="options_ui.lua"/>
 </Ui>

@@ -1,5 +1,6 @@
 local _, addon_table = ...
 
+local chats             = addon_table.use("chats") ---@class chats_class
 local dev_log           = addon_table.use("dev_log") ---@class dev_log_class
 local dev_log_ui        = addon_table.use("dev_log_ui") ---@class dev_log_ui_class
 local frames            = addon_table.use("frames") ---@class frames_class
@@ -10,6 +11,51 @@ local utils             = addon_table.use("utils") ---@class utils_class
 local CreateFrame       = _G.CreateFrame
 local UnitName          = _G.UnitName
 local math_ceil         = _G.math.ceil
+
+local function register_static_popup_dialogs()
+    StaticPopupDialogs.CLASSICUA_CONFIRM_DEV_LOG_RESET = {
+        text        = "Дійсно скинути всі накопичені дані?",
+        button1     = "Так",
+        button2     = "Ні",
+        OnAccept    = function ()
+            dev_log.reset()
+            options_ext_ui.refresh()
+        end,
+        timeout     = 0,
+        whileDead   = true,
+        hideOnEscape= true
+    }
+
+    StaticPopupDialogs.CLASSICUA_CONFIRM_RELOAD_UI = {
+        text        = "Дійсно перезавантажити інтерфейс гри?",
+        button1     = "Так",
+        button2     = "Ні",
+        OnAccept    = _G.ReloadUI,
+        timeout     = 0,
+        whileDead   = true,
+        hideOnEscape= true
+    }
+
+    StaticPopupDialogs.CLASSICUA_CONFIRM_CHARACTER_RESET = {
+        text        = "Дійсно скинути налаштування цього персонажа?",
+        button1     = "Так",
+        button2     = "Ні",
+        OnAccept    = options_ext_ui.reset_character_options,
+        timeout     = 0,
+        whileDead   = true,
+        hideOnEscape= true
+    }
+
+    StaticPopupDialogs.CLASSICUA_CONFIRM_SETTINGS_RESET = {
+        text        = "Дійсно скинути всі налаштування за замовчуванням?",
+        button1     = "Так",
+        button2     = "Ні",
+        OnAccept    = options_ext_ui.reset_options,
+        timeout     = 0,
+        whileDead   = true,
+        hideOnEscape= true
+    }
+end
 
 local fonts = {
     page_title      = GameFontNormalLarge,
@@ -32,9 +78,6 @@ local layout = {
     checkbox_height     = 24,
     dropdown_height     = 32,
 }
-
--- how a translated chat line reaches the frame; the order matches chat_styles in chats.lua
-local chat_style_values = { "Заміна", "Доповнення" }
 
 -- Rows are rendered top to bottom; a row is a group header ({ group=... }), a checkbox
 -- ({ key=... }), a dropdown ({ dropdown=... }) or { column_break=true }, which continues
@@ -108,7 +151,7 @@ local option_rows = {
         option_key  = "chat_style",
         parent_key  = "chat",
         label       = "Стиль",
-        values      = chat_style_values,
+        values      = chats.styles,
         tooltip     = "Як відображати переклад у чаті."
             .. "\n\nЗаміна — замість оригіналу, як звичайне повідомлення."
             .. "\nДоповнення — окремим рядком після оригіналу."
@@ -268,11 +311,11 @@ local function create_scroll_area(frame, top_y)
 end
 
 local function dropdown_selected(row)
-    return options.account[row.option_key] or 1
+    return options.account[row.option_key]
 end
 
-local function set_dropdown_selected(row, index)
-    options.account[row.option_key] = index
+local function set_dropdown_selected(row, key)
+    options.account[row.option_key] = key
 end
 
 local function checkbox_text(row)
@@ -490,7 +533,7 @@ local function create_extra_page()
                 l.dropdown_width,
                 row.values, dropdown_selected(row),
                 row.tooltip,
-                function (self, index) set_dropdown_selected(row, index) end
+                function (self, key) set_dropdown_selected(row, key) end
             )
             dropdown.is_dropdown = true
             dropdown.label = label
@@ -530,8 +573,7 @@ local function create_extra_page()
                 frame.widgets[row.key]:SetChecked(checkbox_checked(row))
             elseif row.dropdown then
                 local dropdown = frame.widgets[row.dropdown]
-                dropdown.selected_index = dropdown_selected(row)
-                UIDropDownMenu_SetText(dropdown, row.values[dropdown.selected_index])
+                dropdown:set_selected(dropdown_selected(row))
             end
         end
         update_row_states()
@@ -819,7 +861,21 @@ options_ext_ui.register_subcategories = function (parent_category, parent_name)
     end
 end
 
+options_ext_ui.reset_options = function ()
+    options.reset()
+    options_ext_ui.mark_needs_reload()
+    options_ext_ui.refresh()
+end
+
+options_ext_ui.reset_character_options = function ()
+    options.reset_character()
+    options_ext_ui.mark_needs_reload()
+    options_ext_ui.refresh()
+end
+
 options_ext_ui.prepare = function ()
+    register_static_popup_dialogs()
+
     for _, page in ipairs(pages) do
         page.frame = page.create_func()
     end

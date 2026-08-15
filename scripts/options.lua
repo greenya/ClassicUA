@@ -1,7 +1,6 @@
 local _, addon_table = ...
 
 local options        = addon_table.use("options") ---@class options_class
-local options_ext_ui = addon_table.use("options_ext_ui") ---@class options_ext_ui_class
 local utils          = addon_table.use("utils") ---@class utils_class
 
 options.account = nil ---@class account_options_class
@@ -16,7 +15,7 @@ local default_account = { ---@class account_options_class
     translate_gossip = true,
     translate_chat = true,
     translate_chat_bubble = true,
-    chat_style = 1, -- see chat_styles in chats.lua
+    chat_style = "replacement", -- key from chats.styles
     translate_item = true,
     translate_quest_item = true,
     translate_spell = true,
@@ -67,15 +66,9 @@ end
 options.reset = function ()
     ClassicUA_Options = utils.copy_table_deep({}, default_account)
     options.account = ClassicUA_Options
-
-    options_ext_ui.mark_needs_reload()
-    options_ext_ui.refresh()
 end
 
 options.reset_character = function ()
     ClassicUA_Character_Options = utils.copy_table_deep({}, default_character)
     options.character = ClassicUA_Character_Options
-
-    options_ext_ui.mark_needs_reload()
-    options_ext_ui.refresh()
 end

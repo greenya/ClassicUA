@@ -3,7 +3,6 @@ local _, addon_table = ...
 local assets        = addon_table.use("assets") ---@class assets_class
 local dev_log       = addon_table.use("dev_log") ---@class dev_log_class
 local frames        = addon_table.use("frames") ---@class frames_class
-local options       = addon_table.use("options") ---@class options_class
 local options_ext_ui = addon_table.use("options_ext_ui") ---@class options_ext_ui_class
 local options_ui    = addon_table.use("options_ui") ---@class options_ui_class
 local utils         = addon_table.use("utils") ---@class utils_class
@@ -17,51 +16,6 @@ local fonts = {
     addon_title     = SystemFont_Huge2,
     addon_version   = SystemFont_Med3,
 }
-
-local function register_static_popup_dialogs()
-    StaticPopupDialogs.CLASSICUA_CONFIRM_DEV_LOG_RESET = {
-        text        = "Дійсно скинути всі накопичені дані?",
-        button1     = "Так",
-        button2     = "Ні",
-        OnAccept    = function ()
-            dev_log.reset()
-            options_ext_ui.refresh()
-        end,
-        timeout     = 0,
-        whileDead   = true,
-        hideOnEscape= true
-    }
-
-    StaticPopupDialogs.CLASSICUA_CONFIRM_RELOAD_UI = {
-        text        = "Дійсно перезавантажити інтерфейс гри?",
-        button1     = "Так",
-        button2     = "Ні",
-        OnAccept    = _G.ReloadUI,
-        timeout     = 0,
-        whileDead   = true,
-        hideOnEscape= true
-    }
-
-    StaticPopupDialogs.CLASSICUA_CONFIRM_CHARACTER_RESET = {
-        text        = "Дійсно скинути налаштування цього персонажа?",
-        button1     = "Так",
-        button2     = "Ні",
-        OnAccept    = options.reset_character,
-        timeout     = 0,
-        whileDead   = true,
-        hideOnEscape= true
-    }
-
-    StaticPopupDialogs.CLASSICUA_CONFIRM_SETTINGS_RESET = {
-        text        = "Дійсно скинути всі налаштування за замовчуванням?",
-        button1     = "Так",
-        button2     = "Ні",
-        OnAccept    = options.reset,
-        timeout     = 0,
-        whileDead   = true,
-        hideOnEscape= true
-    }
-end
 
 -- add options frame to Game' Options -> AddOns
 local function register_game_options_category()
@@ -573,7 +527,7 @@ local function prepare_options_frame()
     -- setup options frame details
 
     options_ui.frame.name = "ClassicUA"
-    options_ui.frame.default = options.reset
+    options_ui.frame.default = options_ext_ui.reset_options
 
     -- force tab reselection to fix font rendering issue on game cold start
     options_ui.frame.was_shown_once = false
@@ -587,7 +541,6 @@ end
 
 options_ui.prepare = function ()
     prepare_options_frame()
-    register_static_popup_dialogs()
     register_game_options_category()
     register_slash_command()
 end

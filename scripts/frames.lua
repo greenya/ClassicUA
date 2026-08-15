@@ -181,25 +181,36 @@ frames.create_checkbox_frame = function (parent, point, x, y, text, checked, too
     return root
 end
 
--- "values" is an array of strings; "on_select" receives the frame and the selected index.
-frames.create_dropdown_frame = function (parent, name, point, x, y, width, values, selected_index, tooltip_text, on_select)
+-- "values" is an array of { key, label }; "on_select" receives the frame and the selected key.
+-- Call "set_selected" on the returned frame to show another value.
+frames.create_dropdown_frame = function (parent, name, point, x, y, width, values, selected_key, tooltip_text, on_select)
     local root = CreateFrame("Frame", name, parent, "UIDropDownMenuTemplate")
 
     -- template keeps ~16px of its left border outside of the text area - shifting back to align
     root:SetPoint(point, x - 16, y)
     root.values = values
-    root.selected_index = selected_index or 1
+
+    root.value_by_key = {}
+    for _, v in ipairs(values) do
+        root.value_by_key[v.key] = v
+    end
+
+    root.set_selected = function (self, key)
+        local value = self.value_by_key[key] or self.values[1]
+
+        self.selected_key = value.key
+        UIDropDownMenu_SetText(self, value.label)
+    end
 
     UIDropDownMenu_SetWidth(root, width)
     UIDropDownMenu_Initialize(root, function (self)
-        for i, v in ipairs(self.values) do
+        for _, v in ipairs(self.values) do
             local info = UIDropDownMenu_CreateInfo()
-            info.text = v
-            info.value = i
-            info.checked = i == self.selected_index
+            info.text = v.label
+            info.value = v.key
+            info.checked = v.key == self.selected_key
             info.func = function (item)
-                self.selected_index = item.value
-                UIDropDownMenu_SetText(self, self.values[item.value])
+                self:set_selected(item.value)
                 if on_select then
                     on_select(self, item.value)
                 end
@@ -207,7 +218,7 @@ frames.create_dropdown_frame = function (parent, name, point, x, y, width, value
             UIDropDownMenu_AddButton(info)
         end
     end)
-    UIDropDownMenu_SetText(root, values[root.selected_index])
+    root:set_selected(selected_key)
 
     if tooltip_text then
         root:EnableMouse(true)
