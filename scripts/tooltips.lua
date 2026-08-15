@@ -52,29 +52,33 @@ local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_
     end
 end
 
-local function process_hearthstone_bind_location_code(entry)
-    if not entry or not entry.use then
-        return
+local function use_text_with_bind_location(entry)
+    local use = entry and entry.use
+    if not use then
+        return use
     end
 
     local code = "{домівка}"
-    local lines = type(entry.use) == "table" and entry.use or { entry.use }
-    local home
+    local lines = type(use) == "table" and use or { use }
+    local result, home
 
     for i = 1, #lines do
-        if type(lines[i]) == "string" and lines[i]:find(code) then
+        local line = lines[i]
+        if type(line) == "string" and line:find(code) then
             if not home then
                 local loc = GetBindLocation()
                 home = entries.get_glossary_text(loc, loc, "zone")
+                result = utils.copy_table({}, lines)
             end
-            lines[i] = lines[i]:gsub(code, home)
+            result[i] = line:gsub(code, home)
         end
     end
 
-    -- we need only copy string value, in case of table its a ref and changes where made in place
-    if type(entry.use) == "string" then
-        entry.use = lines[1]
+    if not result then
+        return use
     end
+
+    return type(use) == "table" and result or result[1]
 end
 
 local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_depth)
@@ -87,8 +91,6 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
         end
         return
     end
-
-    process_hearthstone_bind_location_code(entry)
 
     local prefix = sub_item_depth == 1 and assets.icon_ua_inline .. " " or ""
     local heading = entries.make_entry_text(entry[1], tooltip)
@@ -106,7 +108,7 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
     add_line_to_tooltip(tooltip, entry.desc, "TEXT", 1, 1, 1)
     add_line_to_tooltip(tooltip, entry.equip, "При спорядженні: TEXT", 0, 1, 0, true, entry_id)
     add_line_to_tooltip(tooltip, entry.hit, "Шанс при влучанні: TEXT", 0, 1, 0, true, entry_id)
-    add_line_to_tooltip(tooltip, entry.use, "Використання: TEXT", 0, 1, 0, true, entry_id)
+    add_line_to_tooltip(tooltip, use_text_with_bind_location(entry), "Використання: TEXT", 0, 1, 0, true, entry_id)
 
     if entry.recipe_result_item then
         if tonumber(entry_id) ~= tonumber(entry.recipe_result_item) then
