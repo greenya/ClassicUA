@@ -17,6 +17,42 @@ frames.add_tooltip_for_frame = function (frame, anchor, text)
     end)
 end
 
+-- Without "on_changed" the box is read only: it selects itself when focused and puts back
+-- whatever was last set on it, so the value stays safe to copy.
+frames.create_edit_box_frame = function (parent, point, x, y, width, height, text, on_changed)
+    local root = CreateFrame("EditBox", nil, parent, "InputBoxTemplate")
+
+    root:SetPoint(point, x, y)
+    root:SetSize(width, height)
+    root:SetAutoFocus(false)
+    root:SetScript("OnEscapePressed", root.ClearFocus)
+
+    hooksecurefunc(root, "SetText", function (self, new_text)
+        self.original_text = new_text or ""
+    end)
+
+    root:SetText(text or "")
+    root:SetCursorPosition(0)
+
+    if on_changed then
+        root:SetScript("OnTextChanged", function (self, is_user_input)
+            if is_user_input then
+                on_changed(self)
+            end
+        end)
+    else
+        root:SetScript("OnEditFocusGained", function (self) self:HighlightText() end)
+        root:SetScript("OnTextChanged", function (self, is_user_input)
+            if is_user_input then
+                self:SetText(self.original_text)
+                self:HighlightText()
+            end
+        end)
+    end
+
+    return root
+end
+
 frames.setup_frame_background_and_border = function (frame)
     local texture = frame:CreateTexture(nil, "BACKGROUND")
     texture:SetTexture("Interface\\QuestFrame\\QuestBG")

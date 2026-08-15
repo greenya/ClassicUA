@@ -556,21 +556,7 @@ local function create_copyable_row(frame, y, label_text, value_text, box_width)
     label:SetFontObject(fonts.content)
     label:SetText(label_text)
 
-    local edit_box = CreateFrame("EditBox", nil, frame, "InputBoxTemplate")
-    edit_box:SetPoint("TOPLEFT", l.pad_x + label_width, y)
-    edit_box:SetSize(box_width or 340, 28)
-    edit_box:SetAutoFocus(false)
-    edit_box:SetText(value_text)
-    edit_box:SetCursorPosition(0)
-    edit_box:SetScript("OnEscapePressed", edit_box.ClearFocus)
-    edit_box:SetScript("OnEditFocusGained", function (self) self:HighlightText() end)
-    -- read only: revert any edit, so the value is always safe to copy
-    edit_box:SetScript("OnTextChanged", function (self, is_user_input)
-        if is_user_input then
-            self:SetText(value_text)
-            self:HighlightText()
-        end
-    end)
+    frames.create_edit_box_frame(frame, "TOPLEFT", l.pad_x + label_width, y, box_width or 340, 28, value_text)
 
     return y - 30
 end
@@ -630,21 +616,16 @@ local function create_character_page()
         label:SetFontObject(fonts.content)
         label:SetText(c[2])
 
-        local edit_box = CreateFrame("EditBox", nil, frame, "InputBoxTemplate")
-        edit_box:SetPoint("TOPLEFT", column_x + 6, row_y - 18)
-        edit_box:SetSize(edit_box_width, 22)
-        edit_box:SetAutoFocus(false)
-        edit_box:SetMaxLetters(40)
-        edit_box:SetText(options.character.name_cases[case_key] or "")
-        edit_box:SetCursorPosition(0)
-        edit_box.case_key = case_key
-
-        edit_box:SetScript("OnTextChanged", function (self, is_user_input)
-            if is_user_input then
+        local edit_box = frames.create_edit_box_frame(
+            frame, "TOPLEFT", column_x + 6, row_y - 18, edit_box_width, 22,
+            options.character.name_cases[case_key],
+            function (self)
                 options.character.name_cases[self.case_key] = string.trim(self:GetText() or "")
                 options_ext_ui.mark_needs_reload()
             end
-        end)
+        )
+        edit_box:SetMaxLetters(40)
+        edit_box.case_key = case_key
 
         edit_box:SetScript("OnTabPressed", function (self)
             if self.next_tab_focus then

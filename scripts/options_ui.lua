@@ -422,21 +422,7 @@ local function setup_links_frame(content_frame)
         label:SetTextColor(0, 0, 0)
         label:SetText(link[1])
 
-        local edit_box = CreateFrame("EditBox", nil, root, "InputBoxTemplate")
-        edit_box:SetPoint("TOPLEFT", x + label_width, y)
-        edit_box:SetSize(420, 28)
-        edit_box:SetAutoFocus(false)
-        edit_box:SetText(url)
-        edit_box:SetCursorPosition(0)
-        edit_box:SetScript("OnEscapePressed", edit_box.ClearFocus)
-        edit_box:SetScript("OnEditFocusGained", function (self) self:HighlightText() end)
-        -- read only: revert any edit, so the address is always safe to copy
-        edit_box:SetScript("OnTextChanged", function (self, is_user_input)
-            if is_user_input then
-                self:SetText(url)
-                self:HighlightText()
-            end
-        end)
+        frames.create_edit_box_frame(root, "TOPLEFT", x + label_width, y, 420, 28, url)
 
         y = y - row_height
     end

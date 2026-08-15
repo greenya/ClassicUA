@@ -3,6 +3,7 @@ local _, addon_table = ...
 local assets        = addon_table.use("assets") ---@class assets_class
 local dev_log       = addon_table.use("dev_log") ---@class dev_log_class
 local dev_log_ui    = addon_table.use("dev_log_ui") ---@class dev_log_ui_class
+local frames        = addon_table.use("frames") ---@class frames_class
 
 local CreateFrame       = _G.CreateFrame
 local UIParent          = _G.UIParent
@@ -61,25 +62,12 @@ local function create_frame()
 
     -- text area
 
-    local edit_box = CreateFrame("EditBox", "$parent.EditBox", frame, "InputBoxTemplate")
-    edit_box:SetPoint("TOPLEFT", 32, -96)
-    edit_box:SetSize(612, 28)
-    edit_box:SetAutoFocus(false)
+    local edit_box = frames.create_edit_box_frame(frame, "TOPLEFT", 32, -96, 612, 28)
     edit_box:SetFont(text_font_path, text_font_size, "")
     edit_box:SetMaxLetters(0)
-    edit_box:SetScript("OnEscapePressed", function (self) self:ClearFocus() end)
 
     -- a click anywhere selects everything
     edit_box:SetScript("OnMouseUp", function (self) self:HighlightText() end)
-    edit_box:SetScript("OnEditFocusGained", function (self) self:HighlightText() end)
-
-    -- undo any text changes
-    edit_box:SetScript("OnTextChanged", function (self, is_user_input)
-        if is_user_input then
-            self:SetText(frame.text or "")
-            self:HighlightText()
-        end
-    end)
 
     frame.edit_box = edit_box
 
