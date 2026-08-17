@@ -95,8 +95,8 @@ local function on_gossip_show()
     local is_any_reply_translated = false
 
     for _, child in gossip_scroll_box:EnumerateFrames() do
-        local element_data = child:GetElementData()
-        if element_data.buttonType == GOSSIP_BUTTON_TYPE_OPTION then
+        local element_data = child.GetElementData and child:GetElementData()
+        if element_data and element_data.buttonType == GOSSIP_BUTTON_TYPE_OPTION then
             local text_en = child:GetText()
             local text_ua = entries.get_gossip_text_for_player_reply(npc_id, text_en)
             if text_ua and is_translation_on then
