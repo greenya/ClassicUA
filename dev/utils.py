@@ -6,7 +6,7 @@ from xml.etree import ElementTree
 known_expansions = ('classic', 'sod', 'tbc', 'wrath', 'cata', 'mists')
 known_expansions_inclusion = {
     # this should match expansion TOC files
-    'classic'   : ('classic'),
+    'classic'   : ('classic',),
     'sod'       : ('classic', 'sod'),
     'tbc'       : ('classic', 'tbc'),
     'wrath'     : ('classic', 'tbc', 'wrath'),
