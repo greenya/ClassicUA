@@ -7,7 +7,7 @@ local options   = addon_table.use("options") ---@class options_class
 -- Since 2.5.6 (and corresponding builds for other versions) GetFont() reports internal font attributes (e.g. FILTER, FIXEDHEIGHT) among flags.
 -- Passing FIXEDHEIGHT back into SetFont() breaks rendering of pooled combat text font strings,
 -- so only real render flags are kept when reapplying.
-local allowed_font_flags = { OUTLINE = true, THICKOUTLINE = true, MONOCHROME = true }
+local allowed_font_flags = { OUTLINE = true, THICKOUTLINE = true, MONOCHROME = true, SLUG = true }
 
 local function sanitize_font_flags(font_flags)
     if not font_flags or font_flags == "" then
@@ -39,6 +39,8 @@ fonts.prepare = function ()
         { name="QuestFont",                         file=assets.font_frizqt },
         { name="QuestFontNormalSmall",              file=assets.font_frizqt },
         { name="SubZoneTextFont",                   file=assets.font_frizqt },
+        { name="SystemFont_NamePlate",              file=assets.font_frizqt },
+        { name="SystemFont_NamePlate_Outlined",     file=assets.font_frizqt },
         { name="SystemFont_Shadow_Large",           file=assets.font_frizqt },
         { name="SystemFont_Shadow_Large_Outline",   file=assets.font_frizqt },
         { name="SystemFont_Shadow_Large2",          file=assets.font_frizqt },
