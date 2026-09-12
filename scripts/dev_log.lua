@@ -101,15 +101,26 @@ local serialize_value
 
 local function serialize_table(t, out)
     out[#out + 1] = "{"
-    for key in pairs(t) do
-        if type(key) == "number" then
-            out[#out + 1] = "[" .. key .. "]="
-        else
-            out[#out + 1] = "[" .. quote_string(key) .. "]="
-        end
-        serialize_value(t[key], out)
+
+    local array_len = #t
+    for i = 1, array_len do
+        serialize_value(t[i], out)
         out[#out + 1] = ","
     end
+
+    for key, value in pairs(t) do
+        local is_array_index = type(key) == "number" and key >= 1 and key <= array_len
+        if not is_array_index then
+            if type(key) == "number" then
+                out[#out + 1] = "[" .. key .. "]="
+            else
+                out[#out + 1] = "[" .. quote_string(key) .. "]="
+            end
+            serialize_value(value, out)
+            out[#out + 1] = ","
+        end
+    end
+
     out[#out + 1] = "}"
 end
 
