@@ -198,9 +198,9 @@ local priest_spells = {
 [10927] = { ref=139 }, -- Renew
 [10928] = { ref=139 }, -- Renew
 [10929] = { ref=139 }, -- Renew
-[25315] = { ref=139 }, -- Renew
 [25221] = { ref=139 }, -- Renew
 [25222] = { ref=139 }, -- Renew
+[25315] = { ref=139 }, -- Renew
 -- Resurrection
 [25435] = { ref=2006 }, -- Resurrection
 -- Shadow Power

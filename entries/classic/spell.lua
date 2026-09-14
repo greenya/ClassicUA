@@ -1670,7 +1670,7 @@ addonTable.spell = {
 [1940] = { "Вибух ракети", "Завдає від {1} до {2} шкоди вогнем в радіусі {3} м.#Inflicts {1} to {2} Fire#a {3} yard", en="Rocket Blast" },
 [2023] = { ref=436 }, -- Restore Mana
 [2024] = { ref=439 }, -- Healing Potion
-[2370] = { "Зілля омолодження", "Відновлює [{1}#Restores {1} mana][від {1} до {2}#Restores 90 to 150 mana] мани та [{1}#and {1} health][від {1} до {2}#and {1} to {2} health] здоров'я.", en="Rejuvenation Potion" },
+[2370] = { "Зілля омолодження", "Відновлює [{1}#Restores {1} mana][від {1} до {2}#Restores {1} to {2} mana] мани та [{1}#and {1} health][від {1} до {2}#and {1} to {2} health] здоров'я.", en="Rejuvenation Potion" },
 [2597] = { ref=2370 }, -- Rejuvenation Potion
 [2599] = { ref=2370 }, -- Rejuvenation Potion
 [2600] = { ref=2370 }, -- Rejuvenation Potion
@@ -1940,7 +1940,7 @@ addonTable.spell = {
 [11008] = { "Звичайний алкоголь", "Звичайний алкогольний напій.", "На підпитку.", en="Standard Alcohol" },
 [11009] = { "Міцний алкоголь", "Міцний алкогольний напій.", "П'яний.", en="Strong Alcohol" },
 [11350] = { "Вогняний щит", "Завдає {1} шкоди вогнем усім ворогам у радіусі {2} м кожні {3} с протягом {4} с.#Does {1} fire#within a {2} yard#every {3} seconds for {4} sec", "Завдає {1} шкоди вогнем усім ворогам у радіусі {2} м кожні {3} с.#{1} Fire damage#within {2} yard#every {3} sec", en="Fire Shield" },
-[11387] = { "Зілля диколоззя", "Відновлює від {1} до {2} здоров'я та від {3} до {4} мани.#{1} to {2} health and {3} to {4} mana", en="Wildvine Potion" },
+[11387] = { "Зілля диколоззя", "Відновлює [від {1} до {2}#Restores {1} to {2} health||{1}#Restores {1} health] здоров'я та [від {1} до {2}#and {1} to {2} mana||{1}#and {1} mana] мани.", en="Wildvine Potion" },
 [11629] = { "Потужний алкоголь", "Потужний алкогольний напій.", "Налиганий.", en="Potent Alcohol" },
 [11657] = { "Джанґ'траз", "Захищає власника від фізичної шкоди, поглинаючи від {1} до {2} шкоди. Триває {3} секунд.#absorbing {1} to {2} damage#Lasts {3} sec", "Поглинає фізичну шкоду.", en="Jang'thraze" },
 [11658] = { "Суль'траз", "Вражає ворога люттю Суль'траза. Зменшує силу цілі на {1} та завдає від {2} до {3} шкоди від тіні і додатково {4} шкоди протягом {5} с.#strength by {1} and deals {2} to {3} Shadow#additional {4} damage over {5} sec", "Знижує силу та завдає {1} шкоди від тіні кожні {2} с.#and {1} Shadow#every {2} sec", en="Sul'thraze" },

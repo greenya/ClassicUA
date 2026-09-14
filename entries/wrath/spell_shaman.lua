@@ -156,8 +156,8 @@ local shaman_spells = {
 [8053] = { ref=8050 }, -- Flame Shock
 [10447] = { ref=8050 }, -- Flame Shock
 [10448] = { ref=8050 }, -- Flame Shock
-[29228] = { ref=8050 }, -- Flame Shock
 [25457] = { ref=8050 }, -- Flame Shock
+[29228] = { ref=8050 }, -- Flame Shock
 -- Flametongue Totem
 [8227] = { "Тотем язика полум'я", "Викликає тотем язика полум'я з {1} здоров'я. Тотем збільшує шкоду і зцілення заклять всіх учасників групи чи рейду в межах {2} м на {3}. Триває {4} хв.#with {1} health#within {2} y#by up to {3}#Lasts {4} min", en="Flametongue Totem" },
 [25557] = { ref=8227 }, -- Flametongue Totem

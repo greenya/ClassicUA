@@ -233,8 +233,8 @@ local warrior_spells = {
 [7379] = { ref=6572 }, -- Revenge
 [11600] = { ref=6572 }, -- Revenge
 [11601] = { ref=6572 }, -- Revenge
-[25288] = { ref=6572 }, -- Revenge
 [25269] = { ref=6572 }, -- Revenge
+[25288] = { ref=6572 }, -- Revenge
 [30357] = { ref=6572 }, -- Revenge
 -- Safeguard
 [46945] = { "Оберігання", "Зменшує отриману ціллю вашого \"Втручання\" шкоду на {1}% протягом {2} с.#by {1}% for {2} sec", en="Safeguard" },

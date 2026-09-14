@@ -310,11 +310,11 @@ local shaman_spells = {
 [26370] = { ref=26363 }, -- Lightning Shield
 [27635] = { ref=26363 }, -- Lightning Shield
 -- Magma Totem
+[8187] = { "Тотем магми", en="Magma Totem" },
 [8190] = { "Тотем магми", "Викликає тотем магми з {1} здоров'я на {2} с, який завдає {3} шкоди вогнем усім істотам в межах {4} м кожні {5} с.#with {1} health#for {2} sec#causes {3}#within {4} yards every {5} sec", en="Magma Totem" },
 [10585] = { ref=8190 }, -- Magma Totem
 [10586] = { ref=8190 }, -- Magma Totem
 [10587] = { ref=8190 }, -- Magma Totem
-[8187] = { "Тотем магми", en="Magma Totem" },
 -- Mana Spring
 [5677] = { "Джерело мани", nil, "Відновлює {1} мани кожні {2} с.#Gain {1} mana every {2} sec", en="Mana Spring" },
 [10491] = { ref=5677 }, -- Mana Spring
