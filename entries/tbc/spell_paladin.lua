@@ -276,6 +276,7 @@ local paladin_spells = {
 
 -- Item effects
 [23733] = { "Сліпуче світло", "Наповнює паладина енергією світла, збільшуючи показник швидкості атак на {1}, а показник швидкості заклять на {2} протягом {3} с.#increasing haste rating by {1} and spell haste rating by {2} for {3} sec", "Збільшує показник швидкості на {1}.\nЗбільшує показник швидкості заклять на {2}.#Increases haste rating by {1}#Increases spell haste rating by {2}", en="Blinding Light" },
+[37763] = { "Збільшена шкода Удару лицаря", "Збільшує шкоду \"Удару лицаря\" на {1}.#by Crusader Strike by {1}", en="Increased Crusader Strike Damage" },
 
 -- Mounts
 [34767] = { "Виклик скакуна", "Викликає скакуна для верхової їзди. Збільшує швидкість руху на {1}%.#by {1}%", "Швидкість руху збільшено на {1}%.#by {1}%", en="Summon Charger" },
