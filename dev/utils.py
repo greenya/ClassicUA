@@ -402,20 +402,24 @@ def get_text_code(text) -> (str, str):
     for p in known_gossip_dynamic_seq_with_multiple_words_for_get_text_code:
         text = text.replace(p[0], p[1])
 
+    # A gender template whose variants are more than one word (<Son/Young lady>) renders to ".-".
+    text = re.sub(r'<[^<>]*/[^<>]*>',
+                  lambda m: '<multiword>' if ' ' in m.group(0) else m.group(0), text)
+
     # "{1}" marks a spot where original text has a dynamic number, e.g. ("Number of Necropolises remaining: {1}").
     text = re.sub(r'\{\d+\}', '<number>', text)
 
-    words = re.findall(r"""([\w<][\w\-'/]*[\w>])""", text)  # matches words with at least 2 word-characters and allows punctuation characters inside (boss-lady, ma'am, etc)
+    # A template keeps its slash (<his/her>); an ordinary word does not
+    words = re.findall(r"""(<[\w\-'/]+>|\w[\w\-']*\w)""", text)  # words of at least 2 word-characters, punctuation allowed inside (boss-lady, ma'am)
     result = list()
     for word in words:
         if len(word) > 0:
             if word.startswith('<') and word.endswith('>'):
                 # It should be <class>, <race>, <name>, <target> or gender-specific text (<his/her>)
-                # FIXME: if gender template contains space - it will not work (like <he's a king/she's a queen>)
                 template_type = word[1:-1]
                 if template_type in ('class', 'race'):
                     result.append('..')
-                elif template_type in ('name', 'target', 'number'):
+                elif template_type in ('name', 'target', 'number', 'multiword'):
                     result.append('.-')
                 elif '/' in template_type:  # Gender-specific text
                     male_word, female_word = template_type.split('/')
