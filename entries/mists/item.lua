@@ -1897,7 +1897,7 @@ local items = {
 [22325] = { "пояс спритника", en="Belt of the Trickster" },
 [22326] = { "перстень злиття", en="Amalgam's Band" },
 [22328] = { "ножні лати пильності", en="Legplates of Vigilance" },
-[22329] = { "cкіпетр безупинного зосередження", en="Scepter of Interminable Focus" },
+[22329] = { "скіпетр безупинного зосередження", en="Scepter of Interminable Focus" },
 [22330] = { "накидка арканічної майстерності", en="Shroud of Arcane Mastery" },
 [22331] = { "кільце непохитного героя", en="Band of the Steadfast Hero" },
 [22332] = { "клинок некромантії", en="Blade of Necromancy" },

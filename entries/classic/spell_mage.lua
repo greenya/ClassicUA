@@ -353,7 +353,7 @@ local mage_spells = {
 [22782] = { ref=6117 }, -- Mage Armor
 [22783] = { ref=6117 }, -- Mage Armor
 -- Magic Absorption
-[29441] = { "Магічне поглинання", "Збільшує всі ваші види опору на {1}, а всі закляття, яким ви повністю протистояли, відновлюють {2}% від вашого запасу мани.#resistances by {1}#restore {2}", en="Magic Absorption" },
+[29441] = { "Магічне поглинання", "Збільшує всі ваші види опору на {1}, а всі закляття, яким ви повністю протистояли, відновлюють {2}% від вашого запасу мани. Час відновлення - {3} с.#resistances by {1}#restore {2}#{3} sec. cooldown", en="Magic Absorption" },
 [29444] = { ref=29441 }, -- Magic Absorption
 [29445] = { ref=29441 }, -- Magic Absorption
 [29446] = { ref=29441 }, -- Magic Absorption
