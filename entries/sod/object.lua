@@ -197,7 +197,6 @@ local objects_sod = {
 ["Shipwreck Cache"] = "скриня з кораблетрощі",
 ["Shrine"] = "святилище",
 ["Shrine of the Beast"] = "вівтар звіра",
-["Shrine of Cooperation"] = "святилище співпрацi",
 ["Shrine of the Moon"] = "вівтар місяця",
 ["Shrine of the Warden"] = "вівтар вартового",
 ["Shrine of Cooperation"] = "святилище співпрацi",
