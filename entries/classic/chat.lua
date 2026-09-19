@@ -10,6 +10,8 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [2101560904] = [===[%s налякано тікає геть!]===],
 -- %s becomes enraged!
 [1054177436] = [===[%s лютує!]===],
+-- %s bows.
+[893328153] = [===[%s кланяється.]===],
 -- %s calls for help!
 [47867955] = [===[%s кличе на допомогу!]===],
 -- %s charges!
@@ -24,6 +26,8 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3306693484] = [===[%s заперечливо хитає головою.]===],
 -- %s goes into a berserker rage!
 [3158386481] = [===[%s впадає в лють берсерка!]===],
+-- %s goes into a frenzy!
+[2524513457] = [===[%s впадає в шаленство!]===],
 -- %s goes into a killing frenzy!
 [2760472643] = [===[%s впадає в смертоносне шаленство!]===],
 -- %s goes into a rage after seeing a friend fall in battle!
@@ -93,7 +97,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- HOORAY! I AM SAVED!
 [3297333262] = [===[УРА! Я ВРЯТОВАНИЙ!]===],
 -- Heeellp meee... ri... ribss... bro... broken.
-[3200050258] = [===[Допоможіть мені... рe... ребра... з... зламані.]===],
+[3200050258] = [===[Допоможіть мені... ре... ребра... з... зламані.]===],
 -- How can I get anything done with the Scourge running amok around here?!
 [1821764902] = [===[Як я можу щось робити, коли тут розгулює Скара?!]===],
 -- How can I get anything done with the Scourge running amok in here?!
@@ -156,6 +160,8 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [890948796] = [===[Вартові, захистіть мене!]===],
 -- Sweet, sweet embrace... take me...
 [2323969113] = [===[Ніжні обійми... смерті... заберіть мене...]===],
+-- The Ashbringer...
+[535755616] = [===[Спопелитель...]===],
 -- The Brotherhood will not tolerate your actions.
 [2169983480] = [===[Братство вам не пробачить.]===],
 -- The Old Gods will be restored.  You will not be allowed to interfere!
@@ -672,7 +678,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Aquementas"] = { "Акваментас",
 -- <name>, you have disturbed me from my rest!
-[737656795] = [===[{Ім'я:н}, як ти смієш порушувати мій спокій?!]===],
+[737656795] = [===[{ім'я:н}, як ти смієш порушувати мій спокій?!#<name>, you have]===],
 -- Who dares awaken Aquementas?
 [3994679415] = [===[Хто сміє тривожити Акваментаса?]===],
 ["!code"] = {
@@ -685,7 +691,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Arathandris Silversky"] = { "Аратандріс Срібнонебесна",
 -- Here is a beacon for you, <name>.  You must keep it in your possession if you are to find the corrupted items we will need.
-[2921104914] = [===[Ось твій маяк, {ім'я:к}. Ти маєш тримати його при собі, якщо хочеш знайти осквернені матеріали для бальзаму.]===],
+[2921104914] = [===[Ось твій маяк, {ім'я:к}. Ти маєш тримати його при собі, якщо хочеш знайти осквернені матеріали для бальзаму.#beacon for you, <name>.]===],
 ["!code"] = {
 ["heisbnfryu.-yumtkpitinyrpnifyuaetofdtecdis"] = 2921104914,
 },
@@ -768,11 +774,11 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Arei"] = { "Арей",
 -- <name>, my form has now changed! The true strength of my spirit is returning to me now... The cursed grasp of the forest is leaving me.
-[448726927] = [===[{ім'я:к}, я змінився! Я відчуваю, як справжня сила мого духу повертається... Прокляття лісу полишає мене.]===],
+[448726927] = [===[{ім'я:к}, я змінився! Я відчуваю, як справжня сила мого духу повертається... Прокляття лісу полишає мене.#<name>, my form]===],
 -- Help me with this <target>!
 [3084819251] = [===[Допоможи мені, тут {ціль}!#this <target>!]===],
 -- I can sense it now, <name>. Ashenvale lies down this path.
-[2790504842] = [===[Я відчуваю це, {ім'я:к}. Ясенеділ знаходиться там.]===],
+[2790504842] = [===[Я відчуваю це, {ім'я:к}. Ясенеділ знаходиться там.# it now, <name>.]===],
 -- I feel... something strange...
 [797569848] = [===[Я відчуваю... щось дивне...]===],
 -- I regret that I must fight this <target>.
@@ -938,7 +944,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- This land belongs to the Dark Iron Dwarves.  Prepare to see the afterlife, <class>!
 [2006902243] = [===[Ця земля належить дворфам Темного Заліза. Готуйся до смерті, {клас:к}!#afterlife, <class>!]===],
 -- Who is this weak <class> who challenges my might?  Die fool!
-[657430326] = [===[Що за {стать:нікчемний:нікчемна} {раса:н} кидає виклик моїй могутності? Помри, {стать:дурню:дурепо}!#weak <class> who]===],
+[657430326] = [===[Що за {стать:нікчемний:нікчемна} {клас:н} кидає виклик моїй могутності? Помри, {стать:дурню:дурепо}!#weak <class> who]===],
 ["!code"] = {
 [".-brofrs"] = 2449643246,
 [".-petomtyrdm"] = 2753768394,
@@ -1369,7 +1375,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Brother Kristoff"] = { "брат Крістофф",
 -- Thank you, <name>.  May the Light bless you, <brother/sister>, and guide your path.
-[4268511530] = [===[Дякую тобі, {ім'я:к}. Нехай Світло благословить тебе, {стать:брате:сестро}, і вказує тобі шлях.]===],
+[4268511530] = [===[Дякую тобі, {ім'я:к}. Нехай Світло благословить тебе, {стать:брате:сестро}, і вказує тобі шлях.#Thank you, <name>.#bless you, <brother/sister>,]===],
 ["!code"] = {
 ["tkyu.-myteltbsyu.radgeyrph"] = 4268511530,
 },
@@ -1497,7 +1503,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- By the Light!  This cursed spy was a good one!  I'm glad he's dead.
 [212216446] = [===[Світлом клянуся! Цей проклятий шпигун був справжнім майстром своєї справи! Я радий, що він тепер мертвий.]===],
 -- Tesoran! I need someone--Falgran Hastil, preferably--to take care of <name>'s lead on the prints near the Shady Rest Inn.
-[2961950009] = [===[Тесоране! Мені потрібно, щоб хтось — бажано, Фальґран Гастіл — зайнявся зачіпками {ім'я:р} щодо слідів біля таверни «Відпочинок у затінку».]===],
+[2961950009] = [===[Тесоране! Мені потрібно, щоб хтось — бажано, Фальґран Гастіл — зайнявся зачіпками {ім'я:р} щодо слідів біля таверни «Відпочинок у затінку».#care of <name>'s lead]===],
 -- Thank you for this report, <name>.  It is now clear that we must tighten our patrols near Theramore.
 [423630119] = [===[Дякую за звіт, {ім'я:к}. Вочевидь, ми маємо посилити патрулювання навколо Терамора.#report, <name>.]===],
 ["!code"] = {
@@ -1574,7 +1580,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- DIE, DEMON DOGS!
 [3835335579] = [===[ЗДОХНІТЬ, КЛЯТІ ДЕМОНИ!]===],
 -- I'm ready, <name>. Let's find my equipment and get out of here. I think I know where it is.
-[2758958107] = [===[Я готова, {ім'я:к}. Ходімо, знайдемо моє спорядження та виберемось звідси. Думаю, я знаю, де воно знаходиться.]===],
+[2758958107] = [===[Я готова, {ім'я:к}. Ходімо, знайдемо моє спорядження та виберемося звідси. Здається, я знаю, де воно знаходиться.#I'm ready, <name>.]===],
 -- NO! What have they done to you!?
 [2508488588] = [===[НІ! Що вони з тобою зробили!?]===],
 -- No! My friend... what's happened? This is all my fault...
@@ -1645,7 +1651,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Captured Mountaineer"] = { "полонений горянин",
 -- I raise my brew and hope to be rid of the likes of you!  Cheers, you no good scoundrel, <name>!
-[1625155266] = [===[Я підіймаю цей келих за знищення таких, як ти! За твоє нездоров'я, {ім'я:к}!scoundrel, <name>!]===],
+[1625155266] = [===[Я підіймаю цей келих за знищення таких, як ти! За твоє нездоров'я, {ім'я:к}!#scoundrel, <name>!]===],
 ["!code"] = {
 ["remybwadhetoberdoftelsofyucsyunogdsl.-"] = 1625155266,
 },
@@ -1694,7 +1700,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Cauldron Lord Bilemaw"] = { "хранитель котла Жовчерот",
 -- <race> flesh... must feed!
-[20730558] = [===[{Раса:н}... плоть... мушу їсти...]===],
+[20730558] = [===[{Раса:н}... плоть... мушу їсти...#<race> flesh...]===],
 ["!code"] = {
 ["..fhmtfd"] = 20730558,
 },
@@ -1778,9 +1784,9 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- You dare spill blood on neutral ground? OUT! OUT, I SAY!
 [1901191019] = [===[Ти насмілюєшся проливати кров на нейтральній землі? ГЕТЬ! ГЕТЬ, КАЖУ!]===],
 -- Your actions shame us all, <class>. I hurt inside as I beat you senseless.
-[1484695459] = [===[Ти ганьбиш нас всіх, {клас:к}. Серце кров'ю обливається, але я мушу тебе провчити.]===],
+[1484695459] = [===[Ти ганьбиш нас всіх, {клас:к}. Серце кров'ю обливається, але я мушу тебе провчити.#us all, <class>.]===],
 -- Your actions shame us all, <class>. It pains me to beat you senseless!
-[653642717] = [===[Ти ганьбиш нас всіх, {клас:к}. Мені шкода, але я мушу тебе провчити.]===],
+[653642717] = [===[Ти ганьбиш нас всіх, {клас:к}. Мені шкода, але я мушу тебе провчити.#us all, <class>.]===],
 ["!code"] = {
 ["wedttekytoms.."] = 554360574,
 ["yrasseusal..htieasbtyuss"] = 1484695459,
@@ -1795,7 +1801,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- You dare spill blood on neutral ground? OUT! OUT, I SAY!
 [1901191019] = [===[Ти насмілюєшся проливати кров на нейтральній землі? ГЕТЬ! ГЕТЬ, КАЖУ!]===],
 -- Your actions shame us all, <class>. It pains me to beat you senseless!
-[653642717] = [===[Ти ганьбиш нас всіх, {клас:к}. Мені шкода, але я мушу тебе провчити.]===],
+[653642717] = [===[Ти ганьбиш нас всіх, {клас:к}. Мені шкода, але я мушу тебе провчити.#us all, <class>.]===],
 ["!code"] = {
 ["yrasseusal..itpsmetobtyuss"] = 653642717,
 },
@@ -1940,7 +1946,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Chromie"] = { "Хромі",
 -- <name>, can you hear me? I think the spell went a little haywire and dropped you and your friend in different locations. Hurry up and find him, then get what you need and get back to the Inn on the west side of town. The portal will be waiting!
-[2074803005] = [===[{Ім'я:н}, ти мене чуєш? Здається, заклинання спрацювало трішки не так і вас перенесло в різні місця. Поквапся і знайди свого друга, потім візьміть те, що вам потрібно, і повертайтесь в таверну на західному краю міста. Там буде портал!]===],
+[2074803005] = [===[{Ім'я:н}, ти мене чуєш? Здається, заклинання спрацювало трішки не так і вас перенесло в різні місця. Поквапся і знайди свого друга, потім візьміть те, що вам потрібно, і повертайтесь в таверну на західному краю міста. Там буде портал!#<name>, can you]===],
 -- Let's find out the whole story.  That's going to take some magic...
 [3853568339] = [===[Давай дізнаємося всю історію. Нам потрібна лиш дрібка магії...]===],
 -- There, it is done.  The book has been enhanced...
@@ -2124,7 +2130,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Corrupted Cat"] = { "осквернений кіт",
 -- %s snarls ferociously.
-[843923798] = [===[%s лютo гарчить.]===],
+[843923798] = [===[%s люто гарчить.]===],
 },
 ["Councilman Millstipe"] = { "радник Млинченко",
 -- The forest is crawling with Worgen and Ghouls.  Something must be done!
@@ -2335,7 +2341,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- I smell a <race>.
 [1936749167] = [===[Я чую запах {раса:р}.# a <race>.]===],
 -- Kill the filthy <race>!
-[528832848] = [===[Вбийте {стать:цього:цю} {клас:з}.#filthy <race>!]===],
+[528832848] = [===[Вбийте {стать:цього:цю} {раса:з}.#filthy <race>!]===],
 -- King Magni Bronzebeard is a fool and a charlatan!
 [2546813352] = [===[Король Маґні Бронзобородий — дурень і брехун!]===],
 -- The Stonewrought Dam will be destroyed!  Long live Ragnaros!
@@ -2343,11 +2349,11 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- The Thandol Span fell to Ragnaros.  So shall the Stonewrought Dam!
 [1657121103] = [===[Віадук Тандола скорився волі Раґнароса. Каменярська дамба буде наступною!]===],
 -- This <class> intrudes on our work! Die fool!
-[1098267361] = [===[{Раса:н} заважає нашій роботі! Здохни, нікчемо!#This <class> intrudes]===],
+[1098267361] = [===[{стать:Цей:Ця} {клас:н} заважає нашій роботі! Здохни, нікчемо!#This <class> intrudes]===],
 -- Wahehe! I'm taking you down with me!
 [2759381457] = [===[Вахаха! Я заберу тебе з собою!]===],
 -- What have we here?  <name> the <class>?  Attack!
-[1299706956] = [===[Що це тут в нас? {Ім'я:н}-{клас:н}? В атаку!#here?  <name> the#the <class>?  Attack]===],
+[1299706956] = [===[Що це тут в нас? {Клас:н} {ім'я:н}? В атаку!#here?  <name> the#the <class>?  Attack]===],
 -- What was that?
 [3106407048] = [===[Що це було?]===],
 ["!code"] = {
@@ -2521,7 +2527,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Be careful, <name>.  Those wolves like to hide among the trees.
 [3886861748] = [===[Обережно, {ім'я:к}. Вовки люблять ховатись серед дерев.#careful, <name>.]===],
 -- Beware!  A <target> is upon us!
-[2653272304] = [===[Стережися! {Ціль:н} йде на нас!]===],
+[2653272304] = [===[Стережися! {Ціль:н} йде на нас!#A <target> is upon]===],
 -- Beware!  I am under attack!
 [1540598206] = [===[Обережно! На мене напали!]===],
 -- Hello, Quinn.  How are you faring?
@@ -2592,7 +2598,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Die in the name of Edwin Van Cleef!
 [2233079587] = [===[Помри в імʼя Едвіна Ван-Кліфа!]===],
 -- Here's a singing telegram for <name>: Roses are red, violets are blue, I will kill any <race> I see, including you!
-[268868155] = [===[Ось музичне послання для {ім'я:р}: Скільки себе пам'ятаю, завше хотілось мені, вбити нікчему-{раса:з}, прямо {стать:такого, як ти:таку, як і ти}!]===],
+[268868155] = [===[Ось музичне послання для {ім'я:р}: Скільки себе пам'ятаю, завше хотілось мені, вбити нікчему-{раса:з}, прямо {стать:такого, як ти:таку, як і ти}!#telegram for <name>:#kill any <race> I see]===],
 -- I have a special message for <name>.  And it says you must die!
 [1839139285] = [===[У мене є особливе повідомлення для {ім'я:р}. І в ньому сказано, що ти маєш померти!#for <name>.]===],
 -- I'll deliver you, weak <class>, to the afterlife!
@@ -2604,7 +2610,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Who dares interfere with the business of the Defias Brotherhood?  Die <class>!
 [2459955564] = [===[Хто сміє втручатися в справи Братства Непокірних? Помри, {клас:к}!#Die <class>!]===],
 -- Who dares to provoke the messenger of Edwin Van Cleef?  Die <race>!
-[1238356432] = [===[Хто насмілюється перешкоджати гінцю Едвіна Ван-Кліфа? Помри, {раса:к}!]===],
+[1238356432] = [===[Хто насмілюється перешкоджати гінцю Едвіна Ван-Кліфа? Помри, {раса:к}!#Die <race>!]===],
 ["!code"] = {
 ["amcgaylsadto.-wynolsleistefryutode"] = 3470112421,
 ["dhtoay..ttssinmywy"] = 2656952024,
@@ -2768,7 +2774,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- %s flaps its wings furiously!
 [415426053] = [===[%s несамовито розмахує крилами!]===],
 },
-["Edwin VanCleef"] = { "Едвін ван Кліф",
+["Edwin VanCleef"] = { "Едвін Ван-Кліф",
 -- %s calls more of his allies out of the shadows.
 [1500841817] = [===[%s викликає більше союзників з тіней.]===],
 -- And stay down!
@@ -2980,8 +2986,6 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Flamegor"] = { "Вогнеклик",
 -- %s flaps its wings furiously!
 [415426053] = [===[%s несамовито розмахує крилами!]===],
--- %s goes into a frenzy!
-[2524513457] = [===[%s впадає в шаленство!]===],
 },
 ["Fobeed"] = { "Фобід",
 -- And it's the Gnome Racer coming through turn one!
@@ -3041,14 +3045,12 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Gluth"] = { "Ґлут",
 -- %s devours all nearby zombies!
 [2860631378] = [===[%s пожирає всіх зомбі поблизу!]===],
--- %s goes into a frenzy!
-[2524513457] = [===[%s впадає в шаленство!]===],
 -- %s spots a zombie to devour!
 [2516590261] = [===[%s помічає зомбі, якого можна зжерти!]===],
 },
 ["Gnome Pit Boss"] = { "гном-начальник піт-стопу",
 -- Look at what <name> brought us!  Let's drink up!
-[1401600312] = [===[Подивіться, що нам {стать:приніс:принесла} {ім'я:н}! Давайте вип'ємо!]===],
+[1401600312] = [===[Подивіться, що нам {стать:приніс:принесла} {ім'я:н}! Давайте вип'ємо!#at what <name> brought]===],
 -- No time for beer!  The race is about to start.
 [2169209350] = [===[Немає часу на випивку! Перегони ось-ось почнуться.]===],
 ["!code"] = {
@@ -3065,7 +3067,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Goblin Pit Boss"] = { "гоблін-начальник піт-стопу",
 -- <name> brought us booze!  Let's party!
-[2066772425] = [===[{ім'я:н} {стать:приніс:принесла} нам випивку! Влаштуймо вечірку!]===],
+[2066772425] = [===[{ім'я:н} {стать:приніс:принесла} нам випивку! Влаштуймо вечірку!#<name> brought us]===],
 ["!code"] = {
 [".-btusbelspy"] = 2066772425,
 },
@@ -3171,11 +3173,37 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Ah, much appreciated, Corbett.  We'll get these on the racks immediately.
 [1670365174] = [===[О, щиро вдячний, Корбете. Ми негайно розмістимо їх на полицях.]===],
 },
+["Helcular's Remains"] = { "останки Гелькулара",
+-- Die in the name of the Dark Lady, <name>.
+[625437598] = [===[Помри в ім'я Темної Леді, {ім'я:к}.#Dark Lady, <name>.]===],
+-- I have risen!
+[3346445819] = [===[Я повстав!]===],
+-- I rise from the grave to take my revenge!
+[1198038012] = [===[Я повстав, щоб помститися!]===],
+-- Revenge shall be mine at last!
+[2531896496] = [===[Нарешті я помщуся!]===],
+-- Southshore shall pay in blood!
+[3189066412] = [===[Південнобережжя заплатить кров'ю!]===],
+-- The undead shall feast on your soul, <name>.
+[3748584293] = [===[Невмерлі пожруть твою душу, {ім'я:к}.#your soul, <name>.]===],
+["!code"] = {
+["deinteneoftedkly.-"] = 625437598,
+["teudslftonyrsl.-"] = 3748584293,
+},
+},
 ["Herald of Thrall"] = { "вісник Тралла",
 -- Be bathed in the power of the Warchief! Drink in his might! Battle for the glory of the Horde!
 [3800785804] = [===[Купайтеся в силі вождя! Сповнюйтесь його могутністю! Бийтеся за славу Орди!]===],
 -- Honor your heroes! On this day, they have dealt a great blow against one of our most hated enemies! The false Warchief, Rend Blackhand, has fallen!
 [3974062951] = [===[Шануймо наших героїв! Цього дня вони завдали нищівного удару одному з наших найненависніших ворогів! Самозваний вождь, Ренд Чорнорук, нарешті мертвий!]===],
+},
+["High Inquisitor Whitemane"] = { "верховна інквізиторка Білогрива",
+-- Arise, my champion!
+[758207027] = [===[Повстань, мій чемпіоне!]===],
+-- Mograine has fallen? You shall pay for this treachery!
+[1535535368] = [===[Моґрейн загинув? Ви заплатите за це!]===],
+-- The Light has spoken!
+[2109167413] = [===[Світло виголосило вирок!]===],
 },
 ["High Overlord Saurfang"] = { "верховний надповелитель Саурфанґ",
 -- Be lifted by <name>'s accomplishment! Revel in <his/her> rallying cry!
@@ -3277,6 +3305,13 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3551363608] = [===[Я бачу вихід! Швидше, швидше!]===],
 -- Thank you for rescuing me! Word of your deed will not go unnoticed.
 [1834292233] = [===[Дякую за порятунок! Я всім розкажу про ваше геройство.]===],
+},
+["King Magni Bronzebeard"] = { "король Маґні Бронзобородий",
+-- Let it be known that <name> - Alliance <class> - has earned the undying respect of Ironforge and the Alliance as a whole.  He has engaged in great diplomacy with Timbermaw Hold and performed valiant actions for them on our behalf.   <He/She> has gone above and beyond the call of duty.  Three cheers for <name> - a true hero of the Alliance!
+[2690950332] = [===[Знайте ж, що {клас:н} Альянсу, {ім'я:н}, {стать:заслужив:заслужила} на безмежну повагу Залізогарту та всього Альянсу. {стать:Він долучився:Вона долучилась} до великої дипломатичної місії з оплотом Деревопузих та {стать:здійснив:здійснила} відважні вчинки для них від нашого імені, перевершивши свій службовий обов'язок. Славімо {ім'я:з} — {стать:справжнього героя:справжню героїню} Альянсу!#that <name> - Alliance#Alliance <class> - has#<He/She> has engaged]===],
+["!code"] = {
+["ltitbekntt.-ae..hsedteugrtofieadteaeaswehe"] = 2690950332,
+},
 },
 ["Krug Skullsplit"] = { "Краґ Череполам",
 -- Attack!  For the Horde!
@@ -3394,6 +3429,13 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["vywl.-"] = 2633782526,
 },
 },
+["Maybess Riverbreeze"] = { "Майбесса Річковий Вітер",
+-- Here is a beacon for you, <name>.  You must keep it in your possession if you are to find the corrupted items we will need.
+[2921104914] = [===[Ось твій маяк, {ім'я:к}. Ти маєш тримати його при собі, якщо хочеш знайти осквернені матеріали для бальзаму.#beacon for you, <name>.]===],
+["!code"] = {
+["heisbnfryu.-yumtkpitinyrpnifyuaetofdtecdis"] = 2921104914,
+},
+},
 ["Mekgineer Thermaplugg"] = { "мекженер Термоштепсель",
 -- And STAY dead!
 [1124539967] = [===[І НЕ ВСТАВАЙ!]===],
@@ -3502,6 +3544,18 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3222180413] = [===[%s надто поранений, щоб продовжувати спротив.]===],
 -- Please... please... Miss Proudmore. I didn't mean to...
 [3622396216] = [===[Будь ласка... прошу вас... Пані Праудмур. Я не хотів...]===],
+},
+["Puppet of Helcular"] = { "маріонетка Гелькулара",
+-- Die in the name of the Dark Lady, <name>.
+[625437598] = [===[Помри в ім'я Темної Леді, {ім'я:к}.#Dark Lady, <name>.]===],
+-- I rise from the grave to take my revenge!
+[1198038012] = [===[Я повстав, щоб помститися!]===],
+-- The undead shall feast on your soul, <name>.
+[3748584293] = [===[Невмерлі пожруть твою душу, {ім'я:к}.#your soul, <name>.]===],
+["!code"] = {
+["deinteneoftedkly.-"] = 625437598,
+["teudslftonyrsl.-"] = 3748584293,
+},
 },
 ["Pyroguard Emberseer"] = { "вогнестраж Вуглегляд",
 -- %s begins to regain its strength!
@@ -3619,6 +3673,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Wow! We did it... not sure why we thought we needed the likes of you. Nevertheless, speak with Smeed Scrablescrew; he will give you your earnings!
 [1050836932] = [===[Вау! Ми впорались... Не знаю, нащо нам була твоя допомога... Та все ж поговори зі Смідом Гвинтодряпом — він віддасть тобі твій заробіток!]===],
 },
+["Rimblat Earthshatter"] = { "Рімблат Землетрощитель",
+-- Watch, druid. The earth still breathes. It yearns to be cleansed.
+[4226834156] = [===[Дивись, друїдко. Ця земля все ще дихає. Вона жадає очищення.]===],
+},
 ["Rizzle Brassbolts"] = { "Різзл Латуноболт",
 -- Bloody... Must have been the goblins... Let's see how bad the damage is.
 [2337038046] = [===[Трясця… Певно, це були гобліни… Подивимося, наскільки пошкодження серйозні.]===],
@@ -3691,9 +3749,17 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Your message did reach us, Commander, but by no means is our involvement here sanctioned by the Grand Crusader.
 [1907424612] = [===[Ми отримали ваше повідомлення, командире, але наша присутність тут не була схвалена верховним лицарем.]===],
 },
+["Scarlet Commander Mograine"] = { "командир Багряного Походу Моґрейн",
+-- At your side, milady!
+[1519258498] = [===[Я з вами, міледі!]===],
+-- Infidels! They must be purified!
+[3101416325] = [===[Невірні! Світло покарає їх!]===],
+-- Unworthy.
+[3795056019] = [===[Негідні.]===],
+},
 ["Scooty"] = { "Скуті",
 -- Alright, <name>, your transponder is ready!
-[529291730] = [===[Ну от і все, {ім'я:к}, твій транспондер готовий!]===],
+[529291730] = [===[Ну от і все, {ім'я:к}, твій транспондер готовий!#Alright, <name>, your]===],
 -- Give me a moment while I calibrate the transponder to your height and weight specifications, <name>.
 [743348165] = [===[Зачекай хвильку, {ім'я:к}, я відкалібрую транспондер відповідно до твоїх параметрів зросту та ваги.#specifications, <name>.]===],
 ["!code"] = {
@@ -3991,6 +4057,14 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["!code"] = {
 ["alhl.-srofhradhoofah"] = 609189386,
 },
+},
+["Zixil"] = { "Зіксіль",
+-- Now you've gone and done it. I thought you were better than the people at Southshore. They would have bought all my wares!
+[3904672283] = [===[Ну от. Я думав, що ви кращі за людей із Південнобережжя. Вони б скупили весь мій товар!]===],
+-- Ok I am here.  Come buy my wares while the getting is good.  I mean I am giving you first crack at these.
+[3762307106] = [===[Гаразд, я тут. Приходьте купувати мій товар, поки є така нагода. Я даю вам змогу першими отримати ці речі!]===],
+-- Very well.  Since you didn't buy me out I am forced to make my livelihood in your enemies' town.
+[2402287572] = [===[Що ж, гаразд. Раз ви все це не розкупили, доведеться заробляти на ваших ворогах.]===],
 },
 }
 

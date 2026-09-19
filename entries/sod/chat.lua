@@ -156,6 +156,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Denizens of Kalimdor, the dread beast Aku'mai has been slain and Ashenvale has been cleansed of the blight of the Old Gods' influence. Feel the boon of Blackfathom, and bask in the warmth of the Earth Mother's gaze!
 [2980773496] = [===[Жителі Калімдору, жахливе чудовисько Аку'май було вбито, а Ясенеділ очищено від впливу Старих Богів. Відчуйте благословення Чорноводдя і зогрійтесь в теплі Матері-Землі!]===],
 },
+["Beatrix"] = { "Беатрікс",
+-- Enough! I'll suffer no more of your quarreling. The Argent Dawn will aid us in crushing the Scourge underfoot. I'll hear no more of this.
+[2888118517] = [===[Досить! Мені набридли ваші сварки. Сріблястий Світанок допоможе нам розбити Скару. І я не хочу більше цього чути.]===],
+},
 ["Blastmaster Emi Shortfuse"] = { "підривниця Емі Куций Запал",
 -- Get this, Grubbis off of me!
 [3654234429] = [===[Заберіть цього Бубонника від мене!]===],
@@ -189,8 +193,6 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 },
 ["Commander Beatrix"] = { "командир Беатрікс",
--- Enough! I'll suffer no more of your quarreling. The Argent Dawn will aid us in crushing the Scourge underfoot. I'll hear no more of this.
-[2888118517] = [===[Досить! Мені набридли ваші сварки. Сріблястий Світанок допоможе нам розбити Скару. І я не хочу більше цього чути.]===],
 -- Enough! I'll suffer no more of your quarreling. The Argent Dawn will aid us in crushing the Scourge underfoot. I'll hear no more of this.
 [2888118517] = [===[Досить! Мені набридли ваші сварки. Сріблястий Світанок допоможе нам розбити Скару. І я не хочу більше цього чути.]===],
 },
@@ -305,7 +307,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 },
 ["Gos Greasebasher"] = { "Ґос Мастилоляп",
 -- Ow ow ow! I yield, okay? I yield!
-[3215870184] = [===[Aй, aй! Гаразд, я здаюся. Здаюся!]===],
+[3215870184] = [===[Ай, ай! Гаразд, я здаюся. Здаюся!]===],
 -- This'll be a piece of cake!
 [2236190598] = [===[Ха, раз плюнути!]===],
 },

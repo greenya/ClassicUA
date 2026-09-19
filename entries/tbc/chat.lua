@@ -45,6 +45,23 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- %s cracks his knuckles.
 [1662481913] = [===[%s хрустить пальцями.]===],
 },
+["A'dal"] = { "А'дал",
+-- %s's thoughts invade your mind.
+[2030343839] = [===[Думки А'дала вриваються у ваш розум.]===],
+-- Kael'thas Sunstrider has been defeated by <name> and <his/her> allies.
+[3830449463] = [===[{ім'я:н} та {стать:його:її} союзники здолали Кель'таса Сонячного Блукача.#by <name> and#and <his/her> allies]===],
+-- Silence descends upon Shattrath.
+[213554283] = [===[Тиша огортає Шаттрат.]===],
+-- The time to strike at the remaining blood elves of Tempest Keep is now. Take arms and let A'dal's song of battle empower you!
+[1191985657] = [===[Настав час завдати удару по залишках ельфів крові у Фортеці Бурі. Візьміться за зброю, і нехай бойова пісня А'дала сповнює вас силою!]===],
+["!code"] = {
+["kssrhsbnddby.-adh.as"] = 3830449463,
+},
+},
+["Abbendis"] = { "Аббендіс",
+-- By the Light! What is it?
+[1993985561] = [===[Заради Світла! Що це таке?]===],
+},
 ["Abjurist Belmara"] = { "відступниця Белмара",
 -- I can't sleep without a good bedtime story. Now I'm certain to rest well.
 [1214832680] = [===[Я не можу заснути без гарної історії на ніч. Тепер я точно добре відпочину.]===],
@@ -56,6 +73,81 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [235316438] = [===[Нас може й небагато, Сокретаре, але наша віра сильна. Це те, чого ти ніколи не зрозумієш. Тепер, коли обряд дотримано, готуйся зустріти свою смерть!]===],
 -- We're here for you, lost brother.  It is custom to offer you a chance to repent before you are destroyed.  We offer you this chance, as the naaru's law commands.
 [2274221425] = [===[Ми прийшли за тобою, заблудлий брате. За звичаєм, ми даємо тобі шанс покаятися перед смертю, як того вимагає закон наару.]===],
+},
+["Aeonus"] = { "Еонус",
+-- Let us see what fate has in store....
+[3532624356] = [===[Побачимо, що приготувала вам доля...]===],
+-- No one will stop us!
+[4137892966] = [===[Нас ніхто не зупинить!]===],
+-- One less obstacle in our way!
+[2754226497] = [===[Однією перешкодою менше!]===],
+-- The time has come to shatter this clockwork universe forever! Let us no longer be slaves of the hourglass! I warn you: those who do not embrace this greater path shall become victims of its passing!
+[2830368906] = [===[Настав час назавжди розтрощити цей часомірний всесвіт! Годі бути рабами пісочного годинника! Попереджаю: ті, хто не прийме вищого шляху, стануть його жертвами!]===],
+-- We will triumph. It is only a matter... of time.
+[3067895202] = [===[Ми переможемо... Це лише питання... часу.]===],
+-- Your time is up, slave of the past.
+[1546468771] = [===[Твій час сплив, раб минулого!]===],
+},
+["Akama"] = { "Акама",
+-- %s's attention shifts to a crack along the temple's southern wall.
+[3731154460] = [===[%s звертає увагу на тріщину на південній стіні храму.]===],
+-- A mere nuisance, I assure you! Tell the Master his prisoner will not escape while Akama and his Deathsworn watch over her.
+[2093139158] = [===[Звичайний клопіт, запевняю вас! Передайте господарю, що його полонянка не втече, доки за нею наглядають Акама та його смертекляти.]===],
+-- Akama has no master.  Not anymore.
+[188834254] = [===[В Аками більше немає володаря.]===],
+-- But that is not part of the vision I was granted... that is not... how my people will be freed.
+[1518471184] = [===[Але не таким було моє видіння… Ні… Не так мій народ здобуде свободу.]===],
+-- But, sire!  You have misjudged my actions... I do have knowledge of someone close to you who plans to betray you.  It is that dog, Kael'thas!  He has allied with Kil'jaeden and intends to replace you as Lord of Outland!
+[3969078659] = [===[Але, володарю! Я не мав на меті завадити вам... Мені відомо про одного з ваших наближених, що планує вас зрадити! Це той пес Кель'тас! Він уклав союз із Кіл'джеденом і має намір зайняти ваше місце Володаря Позамежжя!]===],
+-- Farewell, dear friend. We shall meet you in the next world when our duties in this one are fulfilled.
+[195697432] = [===[Прощавай, мій друже. Ми зустрінемося з тобою в іншому світі, коли виконаємо свій обов'язок у цьому.]===],
+-- Forgive my harsh methods, but the Betrayer cannot learn of the truth. My secret must be kept at all costs!
+[704976395] = [===[Пробач за це, але Зрадник не повинен дізнатися правду. Я мушу зберегти цю таємницю будь-якою ціною!]===],
+-- Have no fear, <race>. Just play along.
+[3362906361] = [===[Не бійся, {раса:к}. Просто підіграй.#no fear, <race>.]===],
+-- I cannot do this alone...
+[2017042653] = [===[Я не впораюсь сам...]===],
+-- I thank you for your aid, brothers. Our people will be redeemed!
+[1559338280] = [===[Дякую вам за допомогу, брати. Наш народ здобуде спокуту!]===],
+-- I will deal with these mongrels! Strike now, friends! Strike at the Betrayer!
+[160896891] = [===[Я займуся цим поріддям! Бийтесь, друзі! Зосередьтеся на Зраднику!]===],
+-- Illidan will become suspicious... that much is for certain.  We will deal with it as we always do.
+[874386398] = [===[Іллідан щось запідозрить — це точно. Та ми впораємося з цим, як завжди.]===],
+-- In due time, Maiev. I've spent years preparing to make my move - I can't afford to put my plans in peril by tipping my hand too soon.
+[2964908638] = [===[Згодом, Маєв. Я багато років готувався до цього — і я не можу ризикувати, розкриваючи свої плани занадто рано.]===],
+-- It appears your mind is set then.  We will guide you to the spirit world with as much kindness as we can.
+[3475356519] = [===[Що ж, це твоє рішення. Ми проведемо тебе у світ духів із усією почестю, на яку ми здатні.]===],
+-- It will be done, my lord!
+[2222448871] = [===[Буде зроблено, мій володарю!]===],
+-- Master!  We've found the traitor who escaped Vashj!  His body lies in front of me... lifeless!
+[3509813988] = [===[Володарю, ми знайшли зрадника, що втік від Вайш! Його тіло лежить переді мною.]===],
+-- Now is the time, Maiev!  Unleash your wrath!
+[3201137684] = [===[Пора, Маєв! Вивільни свій гнів!]===],
+-- Olum... old friend.  It is good to see that you are safe.
+[2068793344] = [===[Олуме... старий друже. Радий бачити тебе живим.]===],
+-- Our plans are in danger already.  It appears Maiev's decided to do things her own way.
+[2212071228] = [===[Наші плани під загрозою. Схоже, Маєв вирішила діяти по-своєму.]===],
+-- Slay all who see us!  Word must not get back to Illidan.
+[490507364] = [===[Убивайте всіх, хто нас побачить! Іллідан не має дізнатися.]===],
+-- The Heart of Fury... I witnessed its power long ago, when Velen wielded it.  I feel the same power coursing through it right now!
+[35085785] = [===[Серце Люті... Я бачив його силу ще коли ним володів Велен. І я відчуваю, як та сама сила пронизує його зараз!]===],
+-- The Light will bless these dismal halls once again.... I swear it.
+[4206252437] = [===[Світло знову благословить ці порожні зали.... Клянуся.]===],
+-- The time has come! The moment is at hand!
+[117212021] = [===[Час настав! Зараз або ніколи!]===],
+-- This door is all that stands between us and the Betrayer. Stand aside, friends.
+[2631739748] = [===[Ці двері — все, що стоїть між нами і Зрадником. Відійдіть, друзі.]===],
+-- We must carry on with or without Maiev.  Inside!  Quickly!
+[2777533527] = [===[Ми мусимо рухатись — з Маєв чи без неї. Усередину! Хутко!]===],
+-- We've come to end your reign, Illidan. My people, and all of Outland, shall be free!
+[4232246920] = [===[Твоєму пануванню настав кінець, Іллідане. Ми прийшли звільнити мій народ і все Позамежжя!]===],
+-- With this crystal's powers, my Deathsworn and I... we'd be unstoppable!  We could destroy Illidan!  We could... replace him as lords of Outland!
+[2113644351] = [===[Із силою цього кристала ми з моїми смертеклятами... Ми були б непереможні! Ми могли б знищити Іллідана! Ми могли б... стати володарями Позамежжя!]===],
+-- You cannot... be serious, Olum.  Your sacrifice has already been too great.
+[4138961896] = [===[Ти ж не серйозно, Олуме? Ти вже приніс велику жертву.]===],
+["!code"] = {
+["henofr..jtpyag"] = 3362906361,
+},
 },
 ["Akuno"] = { "Акуно",
 -- Beware!  More cultists come!
@@ -78,6 +170,17 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Uhh, whoops...
 [504792170] = [===[Емм... йой...]===],
 },
+["Altruis the Sufferer"] = { "Альтруїс Страждалець",
+-- No... you must take this from me, <name>!  I feel its dark power swaying my will already!  Use it to destroy Varedis.
+[1939109969] = [===[Ні... Забери її, {ім'я:к}! Я вже відчуваю, як її темна сила захоплює мою волю! Використай її, щоб знищити Варедіса.#from me, <name>!]===],
+-- The information you seek... I cannot give you that freely.  You will have to prove that your enemies are the same as mine.
+[2824231515] = [===[Інформація, що ти шукаєш... Я не можу надати її тобі просто так. Спершу доведи, що ми боремось проти одних й тих самих ворогів.]===],
+-- This book would give me unlimited power over my enemies... I would become... unstoppable!
+[3349355659] = [===[Ця книга дала б мені безмежну силу... Я став би... нездоланним!]===],
+["!code"] = {
+["noyumttetsfmme.-flisdkprsgmywlayueittodyvs"] = 1939109969,
+},
+},
 ["Ambassador Pax'ivi"] = { "посол Пакс'іві",
 -- I... I am free! Ethereum were planning on torturing me until I gave in to their requests. I fear that, had you not come along, I would have surely given in to their torment.
 [323272412] = [===[Я... Я вільний! Ефіріум планував катувати мене, доки я не поступлюся їхнім вимогам. Боюсь, що якби не ти, я б неодмінно піддався їхнім тортурам.]===],
@@ -86,6 +189,14 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["!code"] = {
 ["kwts..wnsscsatteedoftetsrsceofuepritishdin"] = 1722641454,
 },
+},
+["Ancient Shadowmoon Spirit"] = { "древній дух Тінистого Місяця",
+-- Death incarnate has been released upon the world once more! Teron Gorefiend has returned...
+[3693603044] = [===[Втілення смерті знову на волі! Терон Кровобіс повернувся...]===],
+-- We will meet again... Someday.
+[1682806139] = [===[Ми зустрінемося знову... Колись.]===],
+-- Your body is mine! Our fates are forever intertwined.
+[679342693] = [===[Твоє тіло — моє! Наші долі тепер переплетені навіки.]===],
 },
 ["Arcanist Adyria"] = { "арканістка Адирія",
 -- Are you joking?  I'm a Scryer, I always watch what I say.  More enemies than allies in this city, it seems.
@@ -96,6 +207,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [226443076] = [===[Так, мій володарю.]===],
 -- You cannot be serious!  We are severely understaffed and can barely keep this manaforge functional!
 [999396833] = [===[Ви жартуєте?! У нас серйозний брак персоналу, і ми ледве можемо підтримувати цей манагорн в робочому стані!]===],
+},
+["Arcanist Doan"] = { "арканіст Доан",
+-- What do you propose, Mograine?
+[1493848467] = [===[Що ти пропонуєш, Моґрейне?]===],
 },
 ["Archmage Vargoth"] = { "архімаг Варґот",
 -- I can't thank you enough for your help, <name>. At long last, I will be free of this tower and Kael's damnable magic!
@@ -154,6 +269,14 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Me live to serve.
 [1061407437] = [===[Я живу, щоб служити.]===],
 },
+["Blood Lord Zarath"] = { "повелитель крові Зарат",
+-- As you wish, my lord.
+[3754695118] = [===[Як забажаєте, мій пане.]===],
+-- My lord, surely you do not expect me to leave you unattended. Lord Illidan would have my head if anything were to happen to you.
+[1741995058] = [===[Мій пане, ви ж не думаєте, що я залишу вас без нагляду? Володар Іллідан відсіче мені голову, якщо з вами щось трапиться.]===],
+-- What is it, my lord?
+[2925655807] = [===[У чому справа, мій пане?]===],
+},
 ["Boots"] = { "Валянок",
 -- I'm ok, I'm ok!  Ah well, back to the drawing board on that rocket fuel!
 [2023966276] = [===[Я в порядку, в порядку! Ех, ну що ж, доведеться вигадувати нове ракетне паливо!]===],
@@ -164,13 +287,39 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Woot!  Here we go!
 [1631799206] = [===[Ну, поїхали!]===],
 },
+["Borak, Son of Oronok"] = { "Борак, син Оронока",
+-- Hide! Hide before they see you! Back up!
+[1347708031] = [===[Ховайся! Ховайся, поки вони тебе не побачили! Назад!]===],
+-- The time to strike is at hand. Terminate Icarius.
+[2649572883] = [===[Час завдати удару. Вбий Ікарія.]===],
+},
 ["Borgrim Stouthammer"] = { "Борґрім Міцномолот",
 -- ACK!  That's the worst thing I've ever tasted!  I wouldn't let my ram drink that!
 [1239701611] = [===[Фу! Це найгірше, що я коли-небудь пробував! Я б навіть барана таким не поїв!]===],
 },
+["Brazen"] = { "Бразен",
+-- When you are ready to fly to Durnholde, let me know and I shall take you.
+[3178118322] = [===[Коли будеш {стать:готовий:готова} летіти до Дарнгольда — дай мені знати, і я віднесу тебе туди.]===],
+},
 ["Cansis"] = { "Кансіс",
 -- If you ever do that again, I will break your neck.
 [1667793241] = [===[Ще раз таке зробиш, і я тобі голову відірву.]===],
+},
+["Captain Edward Hanes"] = { "капітан Едвард Хейнс",
+-- %s gasps.
+[3948605147] = [===[%s охає.]===],
+-- Aye, she's a beaut alright. And you parked her right next to my frigate! *hic*
+[3515175549] = [===[Еге ж, справжня краля. І ти пришвартував її прямо біля мого фрегата! *гик*]===],
+-- Ayep! She's all mine... I'm gonna sail her around the world. Across the sea!
+[311584953] = [===[Атож! Уся моя... Обпливу на ній навколо світу. Через усе море!]===],
+-- I'm sorry, Sanders. I've just never seen such a bounty. It took me by surprise.
+[1690148481] = [===[Пробач, Сандерсе. Просто зроду не бачив такого багатства. Заскочило мене зненацька.]===],
+-- Lead the way, Sanders!
+[3588779418] = [===[Веди, Сандерсе!]===],
+-- Sanders, what have you got in that chest?
+[537887251] = [===[Сандерсе, а що в тебе в тій скрині?]===],
+-- What are you doing, Sanders?
+[2280440380] = [===[Що ти робиш, Сандерсе?]===],
 },
 ["Captain Saeed"] = { "капітан Саїд",
 -- It's now or never, soldiers! Let's do this! For K'aresh! For the Protectorate!
@@ -185,6 +334,59 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["tlmewnyuaery.-wewlakonyrcd"] = 2766830719,
 },
 },
+["Captain Sanders"] = { "капітан Сандерс",
+-- An' last but certainly not least, one enormous bag! Big enough to fit eight whole apples! Eight, Ed! Can ye believe it!?
+[2123530186] = [===[І насамкінець — здоровенний мішок! Такий великий, що влізе аж вісім яблук! Вісім, Еде! Як тобі таке?]===],
+-- Arrr, Ed! She definitely be seaworthy!
+[1799831584] = [===[Аррр, Еде! Оце вже точно морехідне судно!]===],
+-- Avast, Ed! Lemme show ye me ship! *hic*
+[2263344923] = [===[Гей, Еде! Давай-но я покажу тобі свій корабель! *гик*]===],
+-- Can ye keep a secret, Ed? Arr, dead men tell no tales!
+[2145554512] = [===[Втримаєш таємницю, Еде? Арр, мерці лишнього не бовкають!]===],
+-- I just be makin' sure we wasn't followed! *hic*
+[976533091] = [===[Та то ж я дивлю, чи не стеже хто за нами! *гик*]===],
+-- It be alright, Ed. Me booty be locked away good in that thar chest. No fool will ever have Cap'n Sanders's treasure! Let's go get another drink. The spirits be runnin' low.
+[3599364503] = [===[Та нічого, Еде. Моя здобич надійно замкнена у тій-о скрині. Жоден дурень не запопаде скарбу капітана Сандерса! Ходімо ще хильнемо. А то вже вивітрилось.]===],
+-- It be clear...
+[3094291643] = [===[Чисто...]===],
+-- It be me treasure, Ed. Me life's work! Arrr... One white shirt fit fer a pirate king to be wearin'!
+[2909573368] = [===[То мій скарб, Еде. Праця всього мого життя! Арр... Одна біла сорочка, гідна самого короля піратів!]===],
+-- One red sash that ye can put on yer head or your britches. Pride o' the fleet, that sash is...
+[990164925] = [===[Один червоний пояс. Можна на голову чи на штани. Гордість флоту, оцей-от пояс...]===],
+-- Thar she be! Ain't she a beaut?
+[3970910863] = [===[Ось вона, красунечка! Ну хіба ж не краля?]===],
+-- That thar monster be yers, Ed? Arrr...She's a big'un!
+[1229042135] = [===[То то чудовисько твоє, Еде? Аррр... Ото дебеле!]===],
+-- Yarrr! Keep it down, Ed! Thar be scallywags about! Their scallywag ears be listenin' for gasps like the one that just escaped yer lips!
+[1873553330] = [===[Яррр! Тихіше, Еде! Тут кругом волоцюги! Їхні волоцюжні вуха тільки й чекають почути отаке ахкання!]===],
+},
+["Captain Skarloc"] = { "капітан Скарлок",
+-- Did you really think you would leave here alive?
+[4211481917] = [===[Невже ви думали, що підете звідси живими?]===],
+-- Guards... guards!
+[1404829287] = [===[Варта... Варта!]===],
+-- I don't know what Blackmoore sees in you. For my money, you're just another ignorant savage!
+[743011745] = [===[Не знаю, що Блекмур у тобі знайшов. Як на мене, ти просто черговий дикун!]===],
+-- Thrall will never be free!
+[87574608] = [===[Тралл ніколи не буде вільним!]===],
+-- Thrall! You didn't really think you would escape, did you?  You and your allies shall answer to Blackmoore... after I've had my fun.
+[2577994220] = [===[Тралл! Невже ти справді думав, що втечеш? Ти й твої спільники відповісте перед Блекмуром... після того, як я повеселюся!]===],
+-- You're a slave. That's all you'll ever be.
+[149298439] = [===[Ти раб. І ніким більше ти не станеш.]===],
+},
+["Captain Skyshatter"] = { "капітан Неботрощ",
+-- I weep for you, <name>. You really have no idea what you've gotten yourself into...
+[2922415434] = [===[Мені шкода тебе, {ім'я:к}. Ти й гадки не маєш, у що вплутуєшся...#weep for you, <name>.]===],
+-- I... I am undone... The new top orc is <name>!
+[1915451508] = [===[Я... я переможений... Новий орк вищої ліги — {ім'я:н}!#top orc is <name>!]===],
+-- Prepare a funeral pyre! <name> has challenged Skyshatter!
+[3394137651] = [===[Готуйте поховальне вогнище! {ім'я:н} кидає виклик Неботрощу!# <name> has challenged]===],
+["!code"] = {
+["wpfryu.-yuryhenoiawtyegnyfio"] = 2922415434,
+["amuetenwtpocis.-"] = 1915451508,
+["peflpe.-hscdsr"] = 3394137651,
+},
+},
 ["Captive Child"] = { "викрадена дитина",
 -- Gross!
 [4062259531] = [===[Фу!]===],
@@ -197,6 +399,18 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Yay!  We're free!
 [3550795858] = [===[Ура! Ми вільні!]===],
 },
+["Chef Jessen"] = { "шеф-кухар Джессен",
+-- AAAAAAaaaarrrrgh!!!!! SHUT IT!
+[2979654138] = [===[АААААААРРРГХ!!! ЗАМОВКНІТЬ!]===],
+-- EVERYBODY LISTEN UP!
+[4126098460] = [===[СЛУХАЙТЕ СЮДИ!]===],
+-- I'm speakin' to you too, mister fancy britches Mograine! SHUT YER YAP!
+[238078098] = [===[Я й до тебе звертаюся, Моґрейне! СТУЛИ ПЕЛЬКУ!]===],
+-- NOW, everybody in this bar is gonna keep the noise to a minimum or ol' Jessen is gonna bust out his rollin' pin and cleaver and go orc on all of ya! IS EVERYONE CLEAR?!!!
+[3489401227] = [===[А тепер усі в цьому шинку поводитимуться тихо, бо старий Джессен дістане свою качалку й натовче вам боки! УСІМ ЗРОЗУМІЛО?!!!]===],
+-- This is madness! I've had enough! ENOUGH!
+[1977481008] = [===[Це якесь божевілля! Скільки можна?! ДОСИТЬ!]===],
+},
 ["Chief Archaeologist Letoll"] = { "старший археолог Летолл",
 -- %s picks up the drum.
 [3321264061] = [===[%s піднімає барабан.]===],
@@ -205,13 +419,13 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Aright, <race>, just keep us safe from harm while we work. We'll pay you when we return.
 [3477606909] = [===[Гаразд, {раса:к}, просто захищай нас від небезпек, поки ми працюємо. Ми заплатимо тобі, коли повернемося.#Aright, <race>, just]===],
 -- Aright, listen up! Form a circle around me and move out!
-[18422776] = [===[Гаразд, слухайте сюди! Станьте навколо мене і ми рушаємо!]===],
+[18422776] = [===[Гаразд, слухайте сюди! Станьте навколо мене, і ми рушаємо!]===],
 -- By Brann's brittle bananas! What is it!? It... It looks like a drum.
-[3516271051] = [===[Клянусь крихкими бананами Бранна! Що це таке!? Це... це ніби як барабан.]===],
+[3516271051] = [===[Клянусь смаженими бананами Бранна! Що це таке!? Це... це ніби як барабан.]===],
 -- Don't just stand there! Help <him/her> out!
 [1484629519] = [===[Не стійте! Допоможіть {стать:йому:їй}!#Help <him/her> out]===],
 -- Have ye gone mad? You expect me to leave behind a drum without first beatin' on it? Not this son of Ironforge! No sir!
-[1136276302] = [===[Ви з глузду з'їхали? Хочеш, щоб я залишив барабан, не вдаривши по ньому? Ні, який я тоді син Залізогарту?]===],
+[1136276302] = [===[Ви з глузду з'їхали? Хочете, щоб я залишив барабан, не вдаривши по ньому? Який я тоді син Залізогарту?]===],
 -- I think there's somethin' buried here, beneath the sand!
 [454550153] = [===[Здається, тут щось заховане, прямо під піском!]===],
 -- IN YOUR FACE! I told you there was somethin' here!
@@ -219,9 +433,9 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Shut yer yaps! I'm gonna bang on this drum and that's that!
 [2883346681] = [===[Стуліть пельки! Я вдарю в цей барабан, і все!]===],
 -- The dig site is just north of here.
-[3486567994] = [===[Розкопки будуть трохи на північ звідси.]===],
+[3486567994] = [===[Розкопки будуть неподалік, на півночі.]===],
 -- We're here! Start diggin'!
-[1109441304] = [===[Ми на місці! Починаєм копать!]===],
+[1109441304] = [===[Ми на місці! Починаєм копати!]===],
 -- You've been a tremendous help, <race>! Let's get out of here before more of those things show up! I'll let Dwarfowitz know you did the job asked of ya' admirably.
 [3890582232] = [===[Без тебе ми б не впорались, {раса:к}! Давай виберемось звідси, поки не з'явилось ще більше цих створінь! Я скажу Дворфовіцу, що все пройшло відмінно.#help, <race>!]===],
 ["!code"] = {
@@ -229,6 +443,20 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["dtjtsdtehph.ot"] = 1484629519,
 ["yebntshp..lsgtotofhebemeoftetsswupilltdzkw"] = 3890582232,
 },
+},
+["Chrono Lord Deja"] = { "повелитель часу Дежа",
+-- I told you it was a fool's quest!
+[517846497] = [===[Я ж казав, що це безглузда затія!]===],
+-- If you will not cease this foolish quest, then you will die!
+[2922312910] = [===[Якщо ви не облишите цю безглузду затію, ви помрете!]===],
+-- Leaving so soon?
+[2852448804] = [===[Так швидко?]===],
+-- Time... is on our side.
+[2795821792] = [===[Час... на нашому боці.]===],
+-- Why do you aid the Magus? Just think of how many lives could be saved if the portal is never opened, if the resulting wars could be erased....
+[2116351867] = [===[Навіщо ви допомагаєте чаклуну? Тільки подумайте, скільки життів можна було б врятувати, якби портал так і не відкрився, якби всіх цих воєн не було...]===],
+-- You have outstayed your welcome, Keeper. Be gone!
+[1430424711] = [===[Ти надто вже затримався тут, хранителю. Геть!]===],
 },
 ["Clarissa"] = { "Кларисса",
 -- %s wipes the tears away.
@@ -252,17 +480,95 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Phew! There's my lucky hat. I've been looking for it everywhere.
 [3876503891] = [===[Фух! Ось де мій щасливий капелюх. Я його скрізь шукав.]===],
 },
+["Coilfang Champion"] = { "чемпіон Крученого Ікла",
+-- Intrudersss with the prisssoner!  Kill them!!!
+[1240939138] = [===[Чужинці з бранцем! Ссстратити!!!]===],
+},
+["Coilskar Commander"] = { "командир Кільчастих Шрамів",
+-- %s regains consciousness.
+[4158052104] = [===[%s приходить до тями.]===],
+-- COILSSSKARRR!
+[2802909437] = [===[Тільки не бий!]===],
+-- Do not beat the Coilsssskaarrr commander anymore, orc! I will tell you! The cipherrr... It is hidden in one of the chests at Coilssskarrr Point... The naga there hold the keysss...
+[3675447199] = [===[Не бий мене, орку! Я всссе ссскажу! Шшшифр... Він сссхований в одній зі ссскринь в таборі Кільчассстих Шшшрамів... Ключі у наг...]===],
+-- The naga do nottt... have thissss... cipherrr...
+[1780987340] = [===[У наг... немає сссього... шшшифру..]===],
+-- Whhaaat... are you sssspeaking of, ssssoft-sskin?
+[3834222491] = [===[Про шшщо... ти говоришшш, м'якошшшкірий?]===],
+-- Yesss... Yesss... Ssset me freee...
+[2940219776] = [===[Так... Так... Відпуссстити...]===],
+},
 ["Commander Dawnforge"] = { "командир Світанкова Кузня",
 -- My lord!
 [3279595150] = [===[Мій володарю!]===],
 -- See to it, Ardonis!
-[1865232779] = [===[Займись цим, Ардонісe!]===],
+[1865232779] = [===[Займись цим, Ардонісе!]===],
 -- We need you to send reinforcements to Manaforge Duro, Ardonis.  This is not a request, it's an order.
 [1416879197] = [===[Нам потрібно, щоб ти надіслав підкріплення до манагорна Дуро, Ардонісе. Це не прохання, це наказ.]===],
 -- Yes, my lord.
 [226443076] = [===[Так, мій володарю.]===],
 -- You will do as ordered.  Manaforge Duro has come under heavy attack by mana creatures and the situation is out of control.  Failure to comply will not be tolerated!
 [3563602670] = [===[Ти виконаєш наказ. Манагорн Дуро зазнав сильного нападу мана-істот і ситуація вийшла з-під контролю.]===],
+},
+["Commander Mograine"] = { "командир Моґрейн",
+-- %s lowers his voice to a whisper.
+[3597020439] = [===[%s переходить на шепіт.]===],
+-- %s puts the crystal back inside the chest.
+[243623574] = [===[%s кладе кристал назад у скриню.]===],
+-- %s reaches out to touch the light crystal.
+[3816898092] = [===[%s простягає руку, щоб торкнутися кристала.]===],
+-- %s removes the gauntlet from his right arm and shows everyone his mangled hand.
+[2041625590] = [===[%s знімає рукавицю з правої руки й показує всім свою покалічену долоню.]===],
+-- %s shakes his head.
+[1338901866] = [===[%s хитає головою.]===],
+-- %s unlocks the chest.
+[3968825772] = [===[%s відчиняє скриню.]===],
+-- And if that answer is no, then could it be possible that because this artifact exists, its polar opposite must also exist?
+[3730331795] = [===[І якщо відповідь — ні, то чи не можливо, що самим існуванням цього артефакту зумовлене й існування його цілковитої протилежності?]===],
+-- And there is this...
+[1079680110] = [===[І ще є ось це...]===],
+-- BY THE LIGHT! Could it be? Could this be it?
+[3139030435] = [===[ЗАРАДИ СВІТЛА! Невже це можливо? Невже це воно?]===],
+-- Brothers and sisters, I have called you here today to discuss the fate of Lordaeron.
+[2909344540] = [===[Брати й сестри, я скликав вас сьогодні, щоб обговорити долю Лордерону.]===],
+-- Could you imagine what the material manifestation of the Light could do against the undead?
+[2315364216] = [===[Чи можете ви уявити, на що здатний матеріальний прояв Світла проти невмерлих?]===],
+-- Do not get too close. I laid a hand upon it once... Only once and never again. The memories of that day still linger.
+[1877222795] = [===[Не підходьте надто близько. Я одного разу торкнувся його рукою... Лише раз і більше ніколи. Спогади про той день і досі не полишають мене.]===],
+-- Gasps can be heard throughout the room.
+[3560480835] = [===[По всій кімнаті чути здивовані зойки.]===],
+-- I have had this object in my possession for 10 years. Since Blackrock Spire...
+[3657256655] = [===[Цей предмет був у мене вже десять років. З битви в Чорноскельній горі...]===],
+-- I have heard that Northrend is lost...
+[1098967390] = [===[Я чув, що Нортренд втрачено...]===],
+-- I have seen it... From this blessed crystal we will forge a weapon. This weapon will hold inside it a piece of each of us... And when it is used against undead, it shall cast them down. And in its wake, it will leave only ashes...
+[1431716161] = [===[Я бачив це... З цього благословенного кристалу ми викуємо зброю. Ця зброя нестиме в собі частку кожного з нас... І коли її застосують проти невмерлих, вона знищить їх. А по собі лишатиме тільки попіл...]===],
+-- I hear things... Things that should not be.
+[3088302312] = [===[До мене доходять чутки... Про жахливі речі.]===],
+-- I must know... I will know...
+[1458979000] = [===[Я мушу знати... і я дізнаюся.]===],
+-- I surmise that this object is the living embodiment of shadows... darkness... It is a manifestation. It is a void.
+[2357563907] = [===[Я вважаю, що цей предмет — живе втілення тіней... темряви... Це її прояв. Це порожнеча.]===],
+-- I wrested it free from the remains of an orc lieutenant - a dark caster... It is from their homeworld.
+[787796888] = [===[Я знайшов його серед решток лейтенанта орків, темного заклинача... Він із їхнього рідного світу.]===],
+-- I... It... It is beautiful. What I felt when I touched it... The Light coursed through me and I through it... It healed my spirit.
+[838334764] = [===[Я... воно... воно прекрасне. Те, що я відчув, торкнувшись його... Світло текло крізь мене, а я — крізь нього... Воно зцілило мій дух.]===],
+-- It consumed the Light!
+[2271323981] = [===[Він поглинув Світло!]===],
+-- Keep your voices down. There are strangers about...
+[726409301] = [===[Тихіше, прошу. Тут є чужинці...]===],
+-- Let me ask you this, brothers and sisters: Can good exist without evil? Can there be light without dark?
+[750046157] = [===[Дозвольте запитати вас, брати й сестри: чи може добро існувати без зла? Чи може бути світло без темряви?]===],
+-- Let us never again speak of this day. Our enemies are many. They need not know we hold such artifacts.
+[3993059802] = [===[Нехай ми ніколи більше не згадуємо про цей день. У нас багато ворогів. Їм не варто знати, що ми володіємо такими артефактами.]===],
+-- No, old friend, it is very relevant.
+[1497530489] = [===[Ні, старий друже, це якраз дуже пов'язано.]===],
+-- Propose? I propose that we prepare. That we prepare our loved ones, family and friends for the possibility of an undead holocaust.
+[3541452104] = [===[Пропоную? Пропоную готуватися. Готувати наших близьких, родину й друзів до можливої масової різанини, яку вчинять невмерлі.]===],
+-- The dead rise... Undead, from the frozen northlands. Whole cities have gone missing. I...
+[1331604555] = [===[Мертві повстають... Невмерлі, з крижаних північних земель. Цілі міста зникають безвісти. Я...]===],
+-- We must stand at the ready. I have faced undead before. They are ruthless killing machines, devoid of any emotion or compassion.
+[1362937481] = [===[Ми мусимо бути напоготові. Мені вже доводилося стикатися з невмерлими. Це безжальні машини для вбивства, позбавлені будь-яких емоцій чи співчуття.]===],
 },
 ["Commander Sarannis"] = { "командирка Саранніс",
 -- %s calls for reinforcements!
@@ -290,6 +596,72 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- There it is! I could've sworn it wasn't here last time I checked...
 [3237312467] = [===[Ось він! Я міг би присягнутися, що його тут раніше не було...]===],
 },
+["Corlok the Vet"] = { "Корлок-Ветеран",
+-- Let's get this over with...
+[2350968567] = [===[Покінчимо з цим...]===],
+-- You put up a hell of a fight, newbie. Hell of a fight...
+[3870972790] = [===[Ти дав гарний бій. Гарний бій...]===],
+},
+["Custodian of Time"] = { "берегиня часу",
+-- %s examines the specimen.
+[1697729490] = [===[%s оглядає зразок.]===],
+-- All we know of this timeway is that it leads to Mount Hyjal. The Infinite Dragonflight have gone to great lengths to prevent our involvement. We know next to nothing, mortal. Soridormi is currently attempting to break through the timeway's defenses but has thus far been unsuccessful. You might be our only hope of breaking through and resolving the conflict.
+[1219301504] = [===[Усе, що ми знаємо про цей часовий прохід, — це те, що він веде до гори Гіджал. Дракони нескінченності доклали неабияких зусиль, щоб перешкодити нам. Ми майже нічого не знаємо, {стать:смертний:смертна}. Сорідормі наразі намагається прорватися крізь захист часового проходу, але поки що безуспішно. Можливо, ти — наша єдина надія на розв'язання цього конфлікту.]===],
+-- As custodians of time, we watch over and care for Nozdormu's realm. The master is away at the moment, which means that attempts are being made to dramatically alter time. The master never meddles in the affairs of mortals but instead corrects the alterations made to time by others. He is reactionary in this regard.
+[1148744610] = [===[Ми, берегині часу, наглядаємо за володіннями Ноздорму й дбаємо про них. Господаря наразі немає, а це означає, що хтось намагається докорінно змінити час. Господар ніколи не втручається у справи смертних, проте він виправляє зміни часу, зроблені іншими.]===],
+-- Follow me, please.
+[2127826316] = [===[Прошу, йди за мною.]===],
+-- For normal maintenance of time, the Keepers of Time are sufficient caretakers. We are able to deal with most ordinary disturbances. I speak of little things, such as rogue mages changing something in the past to elevate their status or wealth in the present.
+[3595069357] = [===[Для звичайного догляду за часом Хранителів Часу цілком достатньо. Ми здатні впоратися з більшістю звичайних порушень. Я кажу про дрібниці на кшталт мага-відступника, який змінює щось у минулому заради статусу чи багатства в теперішньому.]===],
+-- Greetings, <name>. I will guide you through the cavern. Please try and keep up.
+[2539677248] = [===[Вітаю, {ім'я:к}. Я проведу тебе крізь печеру. Прошу, намагайся не відставати.#Greetings, <name>.]===],
+-- Have the Scale of Sands been made aware?
+[1242614602] = [===[Піщаним Терезам вже повідомили?]===],
+-- I can't get a reading... Something is interfering...
+[3716657177] = [===[Не можу отримати показання... Щось заважає...]===],
+-- It is strange, I know... Most mortals cannot actually comprehend what they see here, as often, what they see is not anchored within their own perception of reality.
+[734968674] = [===[Це дивно, я знаю... Більшість смертних насправді не здатна осягнути те, що бачать тут, адже часто побачене не закорінене в їхньому сприйнятті реальності.]===],
+-- Our time is at an end, <name>. I would wish you luck, if such a thing existed.
+[1483073578] = [===[Наш час добіг кінця, {ім'я:к}. Я побажала б тобі удачі, якби це щось значило.#at an end, <name>.]===],
+-- The timeways are currently ranked in order from least catastrophic to most catastrophic. Note that they are all classified as catastrophic, meaning that any single one of these timeways collapsing would mean that your world would end. We only classify them in such a way so that the heroes and adventurers that are sent here know which timeway best suits their abilities.
+[1513011942] = [===[Часові проходи наразі впорядковані за шкалою від найменш до найбільш катастрофічних. Зваж, що всі вони класифікуються як катастрофічні — тобто крах будь-якого з цих часових проходів означав би кінець твого світу. Ми впорядковуємо їх у такий спосіб лише для того, щоб герої й шукачі пригод, які сюди приходять, знали, який часовий прохід найкраще підходить їхнім здібностям.]===],
+-- There are only two truths to be found here: First, that time is chaotic, always in flux, and completely malleable and second, perception does not dictate reality.
+[2985087312] = [===[Тут можна знайти лише дві істини. Перша — час хаотичний, завжди в плинності й цілковито піддатливий. Друга — сприйняття не диктує реальність.]===],
+-- These tunnels that you see are called timeways. They are infinite in number. The ones that currently exist in your reality are what the master has deemed as 'trouble spots.'  These trouble spots may differ completely in theme but they always share a cause. That is, their existence is a result of the same temporal disturbance. Remember that should you venture inside one...
+[1446392451] = [===[Ці тунелі, які ти бачиш, називаються часовими проходами. Їх безліч. Ті, що наразі існують у твоїй реальності, — це те, що господар визначив як "джерела клопоту". Ці джерела можуть цілковито різнитися за змістом, але завжди мають спільну причину. Тобто вони існують внаслідок часових порушень. Пам'ятай про це, якщо наважишся зайти в один із них...]===],
+-- This specimen is fading from existence. Something or someone is altering the timeway.
+[492498945] = [===[Цей зразок зникає з буття. Щось або хтось змінює часовий прохід.]===],
+-- This timeway collapsed and reformed. The result was Stratholme of yore. What could possibly be happening inside?
+[3917813480] = [===[Цей часовий прохід зруйнувався й утворився знову. В результаті він веде до давнього Стратгольма. Що ж там може відбуватися?]===],
+-- This timeway is currently collapsing. What that may hold for the past, present and future is currently unknown...
+[1427941991] = [===[Цей часовий прохід наразі руйнується. Що це може означати для минулого, теперішнього й майбутнього — наразі невідомо...]===],
+-- This timeway is in great disarray! We have agents inside right now attempting to restore order. What little information I have indicates that Thrall's freedom is in jeopardy. A malevolent organization known as the Infinite Dragonflight is trying to prevent his escape. I fear without outside assistance, all will be lost.
+[3257535309] = [===[Цей часовий прохід у цілковитому безладі! Наразі всередині перебувають наші агенти, які намагаються відновити порядок. Ті нечисленні відомості, які я маю, вказують, що свободі Тралла загрожує небезпека. Зловісне угруповання, знане як дракони нескінченності, намагається перешкодити його втечі. Боюся, що без сторонньої допомоги нам не впоратися.]===],
+-- We do not know if the Caverns of Time have always been accessible to mortals. Truly, it is impossible to tell as the Timeless One is in perpetual motion, changing our timeways as he sees fit. What you see now may very well not exist tomorrow. You may wake up yesterday and have no memory of this place.
+[4122415387] = [===[Ми не знаємо, чи Печери Часу завжди були доступні для смертних. Правду кажучи, це неможливо визначити, оскільки Позачасовий перебуває в безнастанному русі, змінюючи наші часові проходи на свій розсуд. Те, що ти бачиш зараз, цілком може не існувати завтра. Ти можеш прокинутися вчора й не мати жодного спогаду про це місце.]===],
+-- We have very little information on this timeway. Sa'at has been dispatched and is currently inside. The data we have gathered from his correspondence is that the Infinite Dragonflight are once again attempting to alter time. Could it be that the opening of the Dark Portal is being targeted for sabotage? Let us hope not...
+[1179471100] = [===[Про цей часовий прохід у нас дуже мало відомостей. Са'ата вже відрядили туди, і він зараз усередині. Дані, які ми зібрали з його донесень, вказують, що дракони нескінченності знову намагаються змінити час. Невже їхньою метою стало саме відкриття Темного Порталу? Будемо сподіватися, що ні...]===],
+-- We must dispatch another watcher. Balance must be maintained...
+[4180177455] = [===[Ми мусимо відрядити ще одного вартового. Рівновагу потрібно підтримувати...]===],
+["!code"] = {
+["gs.-wlgeyuthtecnpetyadkpup"] = 2539677248,
+["orteisataned.-wdwhyulkifshtged"] = 1483073578,
+},
+},
+["Cyrukh the Firelord"] = { "Цирух, Володар Вогню",
+-- Come, mortals, face the lord of fire!
+[1509095441] = [===[Ну ж бо, смертні, пізнайте силу володаря вогню!]===],
+-- Cyrukh comes for you!
+[1403305408] = [===[Цирух прийшов за вами!]===],
+-- Cyrukh has awoken!
+[3061625665] = [===[Цирух пробудився!]===],
+-- Little creature made of flesh, your wish is granted! Death comes for you!
+[1749710838] = [===[Нікчемна шкіряна істота, тебе чекає лише смерть!]===],
+-- Those that dare play with fire will be incinerated!
+[173588555] = [===[Хто грає з вогнем, той згорить дотла!]===],
+-- You will suffer eternally!
+[2879211332] = [===[Ви страждатимете довіку!]===],
+},
 ["Daranelle"] = { "Даранель",
 -- Good, <name>, you are under the spell's influence. I must analyze it quickly, then we can talk.
 [1692856735] = [===[Добре, {ім'я:к}, на тебе діє закляття. Мені потрібно швиденько його проаналізувати, а потім ми зможемо поговорити.#Good, <name>, you]===],
@@ -297,7 +669,15 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["gd.-yuaeurtessiemtaeitqytnwecntk"] = 1692856735,
 },
 },
-["Deathbringer Jovaan"] = {
+["David Wayne"] = { "Девід Вейн",
+-- %s reads several pages of the Lexicon Demonica before beginning his work.
+[4092843591] = [===[%s читає кілька сторінок «Демонічного словника», перш ніж розпочати роботу.]===],
+-- Anti-demon magics flare to life and imbue the weapon.
+[2779535705] = [===[Магія згуби демонів спалахує і наповнює зброю силою.]===],
+-- Into this blade, I imbue the power to strike down the strongest of demons! No demon shall stand before the wielder of this weapon!
+[2562518482] = [===[У це лезо я вкладаю силу, здатну знищити найсильніших демонів! Жоден демон не встоїть перед тим, хто володіє цією зброєю!]===],
+},
+["Deathbringer Jovaan"] = { "смертоносець Йоваан",
 -- Everything is in readiness, warbringer.
 [784833548] = [===[Усе готове, завойовнику.]===],
 -- It shall be as you say, warbringer. One last question, if I may...
@@ -350,6 +730,14 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [2357432614] = [===[Ох! Хтось має загасити цю пожежу, щоб я міг зайти туди та врятувати того гобліна!]===],
 -- Right... let me in there!
 [1696071325] = [===[Гаразд... Пропустіть мене!]===],
+},
+["Don Carlos"] = { "Дон Карлос",
+-- Die like a dog!
+[695207822] = [===[Здохни, псино!]===],
+-- HAH! How do you like THAT?!
+[2727258362] = [===[ХА! Як тобі таке?!]===],
+-- Im... possible...
+[3312115863] = [===[Не... можливо...]===],
 },
 ["Doomclaw"] = { "Кіготь Згуби",
 -- Faster, or you will taste The Claw!
@@ -406,6 +794,196 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Why you keep hurting me? Me said me sorry...
 [2765194308] = [===[Чому ти робиш боляче? Я ж вибачивсь...]===],
 },
+["Durnholde Armorer"] = { "зброяр Дарнгольда",
+-- What's the meaning of this? GUARDS!
+[3441260553] = [===[Що це в біса таке? ВАРТА!]===],
+},
+["Durnholde Mage"] = { "маг Дарнгольда",
+-- Blackmoore will have... your head!
+[3648231219] = [===[Блекмур зніме вам голови!]===],
+-- Cursed scum!
+[1546983177] = [===[Кляті покидьки!]===],
+-- Halt!
+[66631755] = [===[Стій!]===],
+-- I hear that Blackmoore has been acting strange.
+[1051672430] = [===[Чув, Блекмур останнім часом якийсь дивний.]===],
+-- I was just... following orders.
+[3026677263] = [===[Я лише... виконував накази.]===],
+-- I'm thinking of a vacation. I hear Hearthglen is nice.
+[956495879] = [===[Думаю про відпустку. Кажуть, у Вогнедолі непогано.]===],
+-- Quitting time can't come too soon.
+[3631529728] = [===[Швидше б уже кінець зміни.]===],
+-- Stop them!
+[4169533765] = [===[Зупиніть їх!]===],
+-- Surrender immediately!
+[2975121768] = [===[Негайно здавайтеся!]===],
+-- This area is restricted!
+[4049938359] = [===[Сюди вхід заборонено!]===],
+-- Why...?
+[39780694] = [===[Чому...?]===],
+},
+["Durnholde Rifleman"] = { "стрілець Дарнгольда",
+-- Blackmoore will have... your head!
+[3648231219] = [===[Блекмур зніме вам голови!]===],
+-- Cursed scum!
+[1546983177] = [===[Кляті покидьки!]===],
+-- Halt!
+[66631755] = [===[Стій!]===],
+-- I hear that Blackmoore has been acting strange.
+[1051672430] = [===[Чув, Блекмур останнім часом якийсь дивний.]===],
+-- I was just... following orders.
+[3026677263] = [===[Я лише... виконував накази.]===],
+-- I'm thinking of a vacation. I hear Hearthglen is nice.
+[956495879] = [===[Думаю про відпустку. Кажуть, у Вогнедолі непогано.]===],
+-- Quitting time can't come too soon.
+[3631529728] = [===[Швидше б уже кінець зміни.]===],
+-- Stop them!
+[4169533765] = [===[Зупиніть їх!]===],
+-- Surrender immediately!
+[2975121768] = [===[Негайно здавайтеся!]===],
+-- This area is restricted!
+[4049938359] = [===[Сюди вхід заборонено!]===],
+-- Why...?
+[39780694] = [===[Чому...?]===],
+},
+["Durnholde Sentry"] = { "вартовий Дарнгольда",
+-- Blackmoore will have... your head!
+[3648231219] = [===[Блекмур зніме вам голови!]===],
+-- Cursed scum!
+[1546983177] = [===[Кляті покидьки!]===],
+-- Halt!
+[66631755] = [===[Стій!]===],
+-- I hear that Blackmoore has been acting strange.
+[1051672430] = [===[Чув, Блекмур останнім часом якийсь дивний.]===],
+-- I was just... following orders.
+[3026677263] = [===[Я лише... виконував накази.]===],
+-- I'm thinking of a vacation. I hear Hearthglen is nice.
+[956495879] = [===[Думаю про відпустку. Кажуть, у Вогнедолі непогано.]===],
+-- Quitting time can't come too soon.
+[3631529728] = [===[Швидше б уже кінець зміни.]===],
+-- Stop them!
+[4169533765] = [===[Зупиніть їх!]===],
+-- Surrender immediately!
+[2975121768] = [===[Негайно здавайтеся!]===],
+-- This area is restricted!
+[4049938359] = [===[Сюди вхід заборонено!]===],
+-- Why...?
+[39780694] = [===[Чому...?]===],
+},
+["Durnholde Veteran"] = { "ветеран Дарнгольда",
+-- Blackmoore will have... your head!
+[3648231219] = [===[Блекмур зніме вам голови!]===],
+-- Cursed scum!
+[1546983177] = [===[Кляті покидьки!]===],
+-- Halt!
+[66631755] = [===[Стій!]===],
+-- I hear that Blackmoore has been acting strange.
+[1051672430] = [===[Чув, Блекмур останнім часом якийсь дивний.]===],
+-- I was just... following orders.
+[3026677263] = [===[Я лише... виконував накази.]===],
+-- I'm thinking of a vacation. I hear Hearthglen is nice.
+[956495879] = [===[Думаю про відпустку. Кажуть, у Вогнедолі непогано.]===],
+-- Quitting time can't come too soon.
+[3631529728] = [===[Швидше б уже кінець зміни.]===],
+-- Stop them!
+[4169533765] = [===[Зупиніть їх!]===],
+-- Surrender immediately!
+[2975121768] = [===[Негайно здавайтеся!]===],
+-- This area is restricted!
+[4049938359] = [===[Сюди вхід заборонено!]===],
+-- Why...?
+[39780694] = [===[Чому...?]===],
+},
+["Durnholde Warden"] = { "наглядач Дарнгольда",
+-- Blackmoore will have... your head!
+[3648231219] = [===[Блекмур зніме вам голови!]===],
+-- Cursed scum!
+[1546983177] = [===[Кляті покидьки!]===],
+-- Halt!
+[66631755] = [===[Стій!]===],
+-- I hear that Blackmoore has been acting strange.
+[1051672430] = [===[Чув, Блекмур останнім часом якийсь дивний.]===],
+-- I was just... following orders.
+[3026677263] = [===[Я лише... виконував накази.]===],
+-- I'm thinking of a vacation. I hear Hearthglen is nice.
+[956495879] = [===[Думаю про відпустку. Кажуть, у Вогнедолі непогано.]===],
+-- Quitting time can't come too soon.
+[3631529728] = [===[Швидше б уже кінець зміни.]===],
+-- Stop them!
+[4169533765] = [===[Зупиніть їх!]===],
+-- Surrender immediately!
+[2975121768] = [===[Негайно здавайтеся!]===],
+-- This area is restricted!
+[4049938359] = [===[Сюди вхід заборонено!]===],
+-- Why...?
+[39780694] = [===[Чому...?]===],
+},
+["Earthbinder Rayge"] = { "землев'яз Райдж",
+-- Psst! Hey, <race>, over here to your left. Come here!
+[1697650611] = [===[Псс! Гей, {раса:к}, сюди, ліворуч. Підійди!#Hey, <race>, over here]===],
+["!code"] = {
+["pthy..orhetoyrltcehe"] = 1697650611,
+},
+},
+["Earthmender Torlok"] = { "цілитель землі Торлок",
+-- Do not doubt my comrades and I, spirit. Tell us how to conjure the fire lord. My allies will destroy him.
+[2631225161] = [===[Не сумнівайся в мені та моїх товаришах, духу. Розкажи нам, як викликати володаря вогню. Мої союзники знищать його.]===],
+-- I hear what you hear, brother. Look behind you...
+[2782787853] = [===[Я чую те саме, що й ти, брате. Озирнись...]===],
+-- Now to recover the lost words!
+[647827321] = [===[Тепер ми маємо знайти втрачені слова!]===],
+-- Spirits of fire grant us wisdom!
+[709086064] = [===[Духи вогню, даруйте нам мудрість!]===],
+-- Stand back, <name>. The spirits may lash out.
+[3831459984] = [===[Тримайся подалі, {ім'я:к}. Духи можуть напасти.#Stand back, <name>.]===],
+-- The... The fire lord? An elemental lord was unearthed? Of course... Gul'dan you were a damned fool!
+[4236970423] = [===[Володар... вогню? Володар стихій пробудився? Ну звісно... Ґул'дан, який же ти дурень!]===],
+-- There must be a way.
+[3139372772] = [===[Має ж бути якийсь вихід.]===],
+-- We will find these words. We will summon your master and we will destroy him.
+[2425630085] = [===[Ми знайдемо ці слова. Ми викличемо вашого володаря і знищимо його.]===],
+-- We wish to help you, spirit. We seek your wisdom.
+[3719045079] = [===[Ми хочемо допомогти вам. Ми просимо вашої мудрості.]===],
+-- You are right, spirit. It was my people that did this to you. Allow us to make it right.
+[1004263748] = [===[Ви маєте рацію. Саме мій народ так вчинив з вами. Дозвольте нам виправити це.]===],
+["!code"] = {
+["sdbk.-tessmylhot"] = 3831459984,
+},
+},
+["Earthmender Wilda"] = { "цілителька землі Вільда",
+-- Grant me protection, <name>. I must break through their foul magic!
+[3028555844] = [===[Захисти мене, {ім'я:к}. Я мушу зламати їхню мерзенну магію!#protection, <name>.]===],
+-- I sense the tortured spirits, <name>. They are this way. Come quickly!
+[101156493] = [===[Я відчуваю змучених духів, {ім'я:к}. Вони там. Швидше, ходімо!#spirits, <name>.]===],
+-- It shouldn't be much further, <name>. The exit is just up ahead.
+[894171936] = [===[Уже недалеко, {ім'я:к}. Вихід просто попереду.#further, <name>.]===],
+-- Lady Vashj must answer for these atrocities. She must be brought to justice!
+[2353146499] = [===[Леді Вайш має відповісти за ці звірства. Її потрібно притягнути до відповідальності!]===],
+-- Naga attackers! Defend yourself!
+[447294676] = [===[Наги атакують! Захищайся!]===],
+-- Now we must find the exit.
+[2276745025] = [===[Тепер треба знайти вихід.]===],
+-- Thank you, <name>. Please return to my brethren at the Altar of Damnation, near the Hand of Gul'dan, and tell them that Wilda is safe. May the Earthmother watch over you...
+[3058911733] = [===[Дякую, {ім'я:к}. Будь ласка, повернися до моїх побратимів на Вівтар Прокляття, що неподалік від Руки Ґул'дана, і передай їм, що Вільда в безпеці. Нехай Матір-Земля береже тебе...#Thank you, <name>.]===],
+-- Thank you, kind soul. You have freed me from the watery prison of Coilskar but many more are being held prisoner nearby. Will you assist me in freeing them as well?
+[1632283912] = [===[Дякую тобі, добра душе. Завдяки тобі я вирвалася з темниці Кільчастих Шрамів, та в ній утримують ще багатьох. Ти допоможеш мені визволити їх?]===],
+-- The naga do not respect nature. They twist and corrupt it to meet their needs. They live to agitate the spirits.
+[969476129] = [===[Наги не шанують природи. Вони марнують і спотворюють її, щоб задовольнити свої потреби. Вони живуть тим, щоб збурювати духів.]===],
+-- The naga of Coilskar are exceptionally cruel to their prisoners. It is a miracle that I survived inside that watery prison for as long as I did. Earthmother be praised.
+[1695310109] = [===[Наги Кільчастих Шрамів винятково жорстокі зі своїми полоненими. Те, що я протрималася в тій водяній в'язниці так довго — справжнє диво. Хвала Матері-Землі.]===],
+-- The naga torture the spirits of water. They invoke chaos and destruction!
+[3195912515] = [===[Наги мучать духів води. Вони сіють хаос і руйнування!]===],
+-- The tumultuous nature of the great waterways of Azeroth and Draenor are a direct result of tormented water spirits.
+[3216496915] = [===[Бурхливий характер великих вод Азерота й Дренора — прямий наслідок мук духів води.]===],
+-- Watch out!
+[908545306] = [===[Стережися!]===],
+["!code"] = {
+["gtmepn.-mtbkthtrflmc"] = 3028555844,
+["setetdss.-tyaetswyceqy"] = 101156493,
+["itstbemhfr.-teetisjtupad"] = 894171936,
+["tkyu.-perntomybnattearofdnnrtehdofgnadtltm"] = 3058911733,
+},
+},
 ["Eitrigg"] = { "Ейтріґ",
 -- At once, sir!  For the Horde!
 [930211498] = [===[Слухаюсь, вождь! За Орду!]===],
@@ -421,6 +999,56 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Empoor"] = { "Емпур",
 -- What is the meaning of this?!
 [1315977397] = [===[Що все це означає?!]===],
+},
+["Enslaved Netherwing Drake"] = { "поневолений драк Підсвітніх Крил",
+-- %s lets loose a low, guttural growl.
+[4162659653] = [===[%s видає глухе утробне гарчання.]===],
+},
+["Envoy Icarius"] = { "посланець Ікарій",
+-- %s puts the bundle of bloodthistle in his robe.
+[1336404450] = [===[%s ховає пучок кровополоху в свою мантію.]===],
+-- Ah, damn it all! Clever trap. Too bad you'll never live to tell the tale...
+[274377831] = [===[Якого біса? Гарна пастка. Шкода, що тобі це не допоможе...]===],
+-- Ah, sweet, sweet bloodthistle... Probably left behind by one of those filthy addicts at Eclipse Point.
+[3265791823] = [===[Ммм, який гарний кровополох... Мабуть, його залишив хтось із тих брудних наркоманів із табору Затемнення.]===],
+-- Halt!
+[66631755] = [===[Стій!]===],
+-- Their loss is most definitely my gain...
+[2038861197] = [===[Ну, що впало, те пропало...]===],
+-- Zarath you must return to the Black Temple at once! I... I seem to have misplaced Lord Illidan's orders. Quickly!
+[700349992] = [===[Зарате, ти мусиш негайно повернутися до Чорного Храму! Я... здається, я загубив накази володаря Іллідана. Швидше!]===],
+-- Zarath, I am perfectly capable of making it up this road to Eclipse Point. If we do not deliver the missive, Lord Illidan will have both of our heads! You are dismissed!
+[2538362401] = [===[Зарате, я цілком здатний самостійно дістатися цією дорогою до табору Затемнення. Якщо ми не доставимо послання, володар Іллідан відсіче голови нам обом! Рушай!]===],
+},
+["Epoch Hunter"] = { "мисливець епох",
+-- Ah, there you are. I had hoped to accomplish this with a bit of subtlety, but I suppose direct confrontation was inevitable. Your future, Thrall, must not come to pass and so... you and your troublesome friends must die!
+[2826238691] = [===[А, ось і ти. Я сподівався розібратися з цим трохи витонченіше, але, гадаю, ця битва була неминучою. Твоє майбутнє, Тралле, не має настати, а тому... ти й твої настирливі друзі помрете!]===],
+-- Enough, I will erase your very existence!
+[2010807317] = [===[Досить! Я зітру саме твоє існування!]===],
+-- No! The master will... not be... pleased.
+[2600747939] = [===[Ні! Володар буде... незадоволений...]===],
+-- Not so fast!
+[1604028530] = [===[Не так швидко!]===],
+-- Struggle as much as you like...
+[4061414656] = [===[Можете пручатися скільки завгодно...]===],
+-- Taretha's life hangs in the balance. Surely you care for her. Surely you wish to save her...
+[4219860614] = [===[Життя Тарети висить на волосині. Ти ж дбаєш про неї. Ти ж хочеш її врятувати...]===],
+-- Thrall will remain a slave. Taretha will die. You have failed.
+[1815558187] = [===[Тралл лишиться рабом. Тарета помре. У вас нічого не вийде.]===],
+-- Thrall! Come outside and face your fate!
+[3989656323] = [===[Тралл! Вийди назовні й прийми свою долю!]===],
+-- You are... irrelevant.
+[879881094] = [===[Ви... незначущі.]===],
+-- You cannot fight fate!
+[1251285253] = [===[Долі не уникнути!]===],
+},
+["Erozion"] = { "Ерозій",
+-- Her fate is regrettably unavoidable.
+[3771203740] = [===[Її доля, на жаль, невідворотна.]===],
+-- I believe I can explain everything to you two if you give me a moment of your time.
+[3781359258] = [===[Гадаю, я можу все пояснити вам обом, якщо ви приділите мені хвилинку.]===],
+-- That spell should wipe their memories of us and what just happened. All they should remember now is what reality would be like without the attempted temporal interference. Well done. Thrall will journey on to find his destiny, and Taretha...
+[3031686552] = [===[Це заклинання має стерти їхні спогади про нас і про те, що щойно сталося. Тепер вони пам'ятатимуть лише те, якою мала б бути реальність без втручання в час. Гарна робота. Тралл вирушить далі назустріч своєму призначенню, а Таретта...]===],
 },
 ["Ethereum Nexus-Stalker"] = { "нексус-ловець Ефіріума",
 -- Protect the conduit! Stop the intruders!
@@ -447,6 +1075,23 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [4228178954] = [===[Ого... барабан.]===],
 -- Yea, great. Can we leave now? This desert is giving me hives.
 [3629437018] = [===[Ага, чудово. Можемо вже йти? У мене від цього піску все свербить.]===],
+},
+["Fairbanks"] = { "Феєрбенкс",
+-- Is... Is it getting lighter? Its coloration... It is changing.
+[1006131352] = [===[Він... світлішає? Його забарвлення... воно змінюється.]===],
+},
+["Force Commander Danath Trollbane"] = { "командувач сил Данат Тролебій",
+-- Hear me brothers and sisters-in-arms! The time of our enemies is at an end! We must strike at the fel orcs that remain! Exterminate them like the vermin that they are! Carry with you the favor of the Sons of Lothar!
+[1367079474] = [===[Почуйте мене, брати і сестри по зброї! Нашим ворогам настав кінець! Добийте залишки орків скверни! Знищіть їх дощенту! Несіть у бій честь Синів Лотара!]===],
+-- The feast of corruption is no more! Magtheridon has fallen to the battle prowess of <name> and <his/her> allies! Witness the might of the Alliance! A pit lord commander is destroyed!
+[2131393896] = [===[Безчинству скверни прийшов кінець! Маґтерідон не встояв перед бойовою доблестю {ім'я:р} та {стать:його:її} союзників! Ось вона, могутність Альянсу! Володара безодні знищено!#prowess of <name> and#and <his/her> allies!]===],
+["!code"] = {
+["teftofcnisnomemnhsfntotebepsof.-adh.aswste"] = 2131393896,
+},
+},
+["Fyra Dawnstar"] = { "Фіра Світанкова Зоря",
+-- Onward, Scryers!  Show Illidan's lackeys the temper of our steel!
+[1177980780] = [===[Вперед, Провидці! Покажіть слугам Іллідана міць нашої сталі!]===],
 },
 ["Gankly Rottenfist"] = { "Ґанклі Гнилорук",
 -- %s rifles through Kristen's stuff and grabs her bundle of skins.
@@ -532,6 +1177,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["py..ctltsrgrltsr"] = 2672214170,
 },
 },
+["Gordie"] = { "Горді",
+-- It's a complete and total barf-o-rama! RUN FOR YOUR LIVES!
+[720895458] = [===[Це справжня, повна і тотальна огида! РЯТУЙТЕСЯ, ХТО МОЖЕ!]===],
+},
 ["Gorgrom the Dragon-Eater"] = { "Ґорґром Драконожер",
 -- I will crush it and flay it and eat its meat and crack its bones one by one when I am done.
 [2808950911] = [===[Я розчавлю тебе, здеру шкіру, з'їм м'ясо та переламаю всі кістки, одну за одною.]===],
@@ -574,6 +1223,12 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- This oil no good for Grek! What Grek look like to you, some weakling in robes?
 [1677232467] = [===[Це масло не годиться для Ґрека! Хто Ґрек по твоєму, якийсь дохляк в мантії?]===],
 },
+["Grokom Deatheye"] = { "Ґроком Смертегляд",
+-- No, this isn't right. What's happened here?
+[742541034] = [===[Ні, щось тут не так...]===],
+-- The metal has lost its magic. I could make a weapon from it, but it would be no different from a mundane blade.
+[374654955] = [===[Метал втратив свою магію. Я міг би виготовити з нього зброю, але вона нічим не відрізнялася б від звичайного меча.]===],
+},
 ["Grom Hellscream"] = { "Ґром Пеклокрик",
 -- NOOOO!
 [1443793092] = [===[НІІІ!!]===],
@@ -581,6 +1236,40 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3805996974] = [===[Демонічний вогонь в моїх жилах... він згас. Я... звільнив себе від нього.]===],
 -- Thrall... The blood haze has lifted.
 [4141069632] = [===[Тралл... Кривава імла... розвіялася.]===],
+},
+["Grom'tor, Son of Oronok"] = { "Ґром'тор, син Оронока",
+-- %s spits on the Coilskar naga.
+[3237536732] = [===[%s плює на нагу Кільчастих Шрамів.]===],
+-- Could... Could it be over? Is he destroyed?
+[278577879] = [===[Невже... Це кінець? Ми його знищили?]===],
+-- DO I HONESTLY LOOK THAT STUPID TO YOU, NAGA? NOW YOU FEEL PAIN!
+[421427672] = [===[ТИ ДУМАЄШ, ЩО Я НАСТІЛЬКИ ДУРНИЙ, ГА? ПОДИВИМОСЬ, ЩО ТИ СКАЖЕШ НА ЦЕ!]===],
+-- GET UP YOU ROTTEN PIECE OF TRASH! GET UP BEFORE I END YOU!
+[3501083210] = [===[ВСТАВАЙ, ГНИЛИЙ ШМАТ ЛАЙНА! ВСТАВАЙ, ПОКИ Я ТЕБЕ НЕ ПРИКІНЧИВ!]===],
+-- I feel so stupid. Maybe I should unchain you and set you free?
+[548851492] = [===[Яка ж це дурість. Може, мені слід відпустити тебе?]===],
+-- I'm listening...
+[3255061681] = [===[Ну, я слухаю...]===],
+-- I'm through asking nicely, fish-man.
+[4094912222] = [===[Досить з тебе ввічливості, риболюд.]===],
+-- No... Of course not. What was I thinking? Why would you have a third of the Cipher of Damnation?
+[2718599539] = [===[Ну звісно... У вас його немає. Про що я взагалі думав? Звідки у вас могла взятися частина Шифру Прокляття?]===],
+-- Where is the Cipher of Damnation? I know a third of it is in this village.
+[3635776432] = [===[Кажи, де Шифр Прокляття? Я знаю, що його частина знаходиться у вас.]===],
+},
+["Gul'dan"] = { "Ґул'дан",
+-- Be silent! The shattering is soon to come!
+[745877676] = [===[Замовкніть! Розкол уже близько!]===],
+-- Bear witness to the undeniable power of our dark master!
+[1022391330] = [===[Пізнайте беззаперечну силу нашого темного володаря!]===],
+-- It... is... done...
+[3943658573] = [===[Це... звершилось...]===],
+-- Watch! See the ground shatter before us! Watch as the energy flows! It will feed our armies...
+[4169468087] = [===[Дивіться! Погляньте, як земля розколюється перед нами! Дивіться, як струменіє енергія! Вона живитиме наші війська...]===],
+-- We will never be without power! I have secured our future! Bask in my glory!
+[1496954673] = [===[Ми ніколи не лишимося без сили! Я забезпечив наше майбутнє! Відчуйте мою велич!]===],
+-- With his gift, I shall raze this land and reform it!
+[385362330] = [===[Його даром я зруйную цю землю дощенту й створю її наново!]===],
 },
 ["Gurgthock"] = { "Ґурґток",
 -- <name> has been defeated!
@@ -635,10 +1324,12 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3785501809] = [===[ХТО СМІЄ КЛИКАТИ ҐУРОКА З ГЛИБИН?]===],
 },
 ["Ha'lei"] = { "Га'лей",
--- % giggles.
-[1443196901] = [===[% сміється.]===],
--- % tugs on Clarissa's robe.
-[3507793163] = [===[% смикає за Клариссу за сукню.]===],
+-- %s giggles.
+[3275763762] = [===[%s сміється.]===],
+-- %s smiles.
+[2061840479] = [===[%s усміхається.]===],
+-- %s tugs on Clarissa's robe.
+[3596695126] = [===[%s смикає за Клариссу за сукню.]===],
 -- Don't cry, Mommy. Greatfather says not to worry.
 [589998429] = [===[Не плач, матусю. Дідусь каже, що не варто хвилюватися.]===],
 -- I will, Greatfather.
@@ -660,6 +1351,28 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["!code"] = {
 ["krhfissgyuadyumthemegdin.-"] = 1921748962,
 },
+},
+["Hal McAllister"] = { "Гел Макалістер",
+-- I worry about you sometimes, Nat.
+[4208335339] = [===[Іноді я за тебе хвилююся, Нете.]===],
+-- Impossible!
+[1838236757] = [===[Неможливо!]===],
+-- It'll never happen, Nat.
+[1190168530] = [===[Цього ніколи не станеться, Нете.]===],
+-- Nat, I've heard a whopper or two in my day but that one takes the cake.
+[387292862] = [===[Нете, я в своєму житті чув усякі дурниці, але ця б'є всі рекорди.]===],
+-- Nat, Nat, Nat...
+[1086888212] = [===[Нете, Нете...]===],
+-- No way.
+[2946443520] = [===[Ні за що не повірю.]===],
+-- Shut up and fish, Nat.
+[2855974624] = [===[Замовкни й рибаль, Нете.]===],
+-- What you got in that pipe, Nat?
+[3999855305] = [===[Що це ти куриш у тій люльці, Нете?]===],
+-- Which one?
+[1608655019] = [===[Який саме?]===],
+-- Yea, Nat?
+[221430183] = [===[Що, Нете?]===],
 },
 ["Harbinger Haronem"] = { "провісник Гаронем",
 -- Again, very nice strutting ladies.
@@ -727,11 +1440,83 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- What's going on?!
 [362044455] = [===[Що відбувається?!]===],
 },
+["Helcular"] = { "Гелькулар",
+-- And the Kirin Tor? What have they to say of necromancy?
+[426378411] = [===[А Кірін-Тор? Що вони кажуть про некромантію?]===],
+-- So you can teach me this... this...
+[1317367435] = [===[То ти можеш навчити мене... ну... цього...]===],
+-- Then teach me, Kel'Thuzad. Teach me everything you know...
+[3665014406] = [===[Тоді навчи мене, Кел'Тузаде. Навчи мене всього, що знаєш...]===],
+},
 ["Hemet Nesingwary"] = { "Гемет Ернінґвей",
 -- Look out, Fitz, they're coming right for us!
 [1064460775] = [===[Дивись, Грег, вони йдуть прямо на нас!]===],
 -- Uh oh, those stags don't look pleased with us!
 [441192153] = [===[Ой-ой, ці талбуки, здається, чимось незадоволені!]===],
+},
+["Illidan Stormrage"] = { "Іллідан Шаленство Бурі",
+-- Akama. Your duplicity is hardly surprising. I should have slaughtered you and your malformed brethren long ago.
+[2668851450] = [===[Акамо. Твоя дволичність мене анітрохи не дивує. Варто було винищити тебе й твоїх потворних братів ще давним-давно.]===],
+-- Behold the power... of the demon within!
+[2802899402] = [===[Узріть силу... мого демона!]===],
+-- Blathering idiot. You incomprehensibly incompetent buffoon...
+[1354398423] = [===[Тупий ти кретин. Незбагненно бездарний вилупок...]===],
+-- Boldly said. But I remain... unconvinced.
+[898295892] = [===[Сміливо сказано. Але... непереконливо.]===],
+-- Come, my minions. Deal with this traitor as he deserves!
+[1489369157] = [===[Сюди, слуги. Знищіть цього зрадника!]===],
+-- Feel the hatred of ten thousand years!
+[1697655160] = [===[Відчуйте ненависть десяти тисячоліть!]===],
+-- I expect to see this insect's carcass in pieces in my lair within the hour. Fail and you will suffer a fate so much worse than death.
+[433249698] = [===[Я хочу бачити розтерзані рештки цієї комахи у своєму лігві протягом години. Не впораєшся — і на тебе чекає доля, значно гірша за смерть.]===],
+-- Is this it, mortals? Is this all the fury you can muster?
+[2080983982] = [===[Це все, смертні? Це вся ваша лють?]===],
+-- Maiev... How is it even possible?
+[1177275787] = [===[Маєв... Як це взагалі можливо?]===],
+-- SILENCE!
+[497185723] = [===[МОВЧАТИ!]===],
+-- Stare into the eyes of the Betrayer!
+[2665602476] = [===[Зазирніть в очі Зрадника!]===],
+-- Such arrogance!
+[1260475799] = [===[Яке зухвальство!]===],
+-- THIS is your hero?
+[3231214781] = [===[Ти привів мені ОЦЕ?]===],
+-- This is too easy!
+[994423317] = [===[Надто просто!]===],
+-- This... whole... operation... HAS BEEN COMPROMISED!
+[3630090746] = [===[Всі… наші… плани… БУЛИ ВИКРИТІ!]===],
+-- What is the meaning of this, Mor'ghor?
+[159447587] = [===[Що тут відбувається, Мор'гор?]===],
+-- Who shall be next to taste my blades?
+[84351318] = [===[Хто наступний?!]===],
+-- You are not prepared!
+[2561191935] = [===[Ви не готові!]===],
+-- You have been deceived, imbecile.
+[3099604497] = [===[Тебе обдурили, недоумку.]===],
+-- You have won... Maiev. But the huntress... is nothing without the hunt. You... are nothing... without me.
+[4033285463] = [===[Ти перемогла... Маєв. Але мисливиця... ніщо без полювання. Ти... ніщо... без мене.]===],
+-- You know nothing of power!
+[1768212455] = [===[Ви не здатні осягнути цю силу!]===],
+-- You've wasted too much time mortals, now you shall fall!
+[4052766594] = [===[Ви змарнували час, смертні, тепер ви згинете!]===],
+},
+["Illidan's Presence"] = { "образ Іллідана",
+-- I do not sense lies in your voice Akama. That Kael'thas would betray me does not come a big surprise. I'm not as oblivious as some would think. That one of your own was involved with him puts your loyalties into question.
+[1724328832] = [===[Я не відчуваю брехні в твоєму голосі, Акамо. Те, що Кель'тас зрадив мене, не так вже й несподівано. Я не такий сліпий, як дехто гадає. Але те, що один із твоїх послідовників був із ним пов'язаний, ставить під сумнів твою відданість.]===],
+-- Send your Ashtongue into Tempest Keep and slay his most prized possession, the phoenix known as Al'ar. I must know that you're not on his side. Do not think of betraying me, broken. We both know who owns your soul.
+[1415157273] = [===[Пошли своїх Попеловустих у Фортецю Бурі, і нехай вони вб'ють його найдорожчий скарб — фенікса, відомого як Ал'ар. Я маю знати, що ти не на його боці. Навіть не думай зрадити мене, зломлений. Ми обидва знаємо, кому належить твоя душа.]===],
+-- You disappoint me Akama. I wanted to question the treacherous worm myself! I'm beginning to question your allegiance, broken.
+[2454924928] = [===[Ти розчаровуєш мене, Акамо. Я хотів сам допитати цього хробака! Я починаю сумніватися в твоїй відданості, зломлений.]===],
+},
+["Image of Arcanagos"] = { "образ Арканаґоса",
+-- A dark power seeks to use you, Medivh!  If you stay, dire days will follow.  You must hurry, we don't have much time!
+[1904124505] = [===[Темна сила прагне використати тебе, Медіве! Якщо ти залишишся — гряде лихо. Поквапся, часу обмаль!]===],
+-- What have you done, wizard?  This cannot be!  I'm burning from... within!
+[3015751923] = [===[Що ти накоїв, чарівнику? НІ, не може бути! Вогонь... поглинає мене!]===],
+-- You leave me no alternative.  I will stop you by force if you won't listen to reason!
+[1255618570] = [===[Ти не лишаєш мені вибору. Якщо не прислухаєшся до розуму, я зупиню тебе силою!]===],
+-- Your dabbling in the arcane has gone too far, Medivh.  You've attracted the attention of powers beyond your understanding.  You must leave Karazhan at once!
+[2330381754] = [===[Твої забави з арканічною магією зайшли надто далеко, Медіве. Ти привернув увагу сил, яких не годен осягнути. Ти мусиш негайно покинути Каражан!]===],
 },
 ["Image of Commander Sarannis"] = { "проєкція командирки Саранніс",
 -- A flickering image of a female blood elf commander appears. From the surroundings, you can tell she must be inside Tempest Keep.
@@ -739,7 +1524,25 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- The blood elf doesn't appear to be a magister, but perhaps she holds something that is the key to the tower's curse.
 [797044284] = [===[Ця ельфа крові не схожа на магістра, але, можливо, вона володіє чимось, що є ключем до прокляття вежі.]===],
 },
-["Image of Warbringer Razuun"] = {
+["Image of Erozion"] = { "образ Ерозія",
+-- I have set back the flow of time just once more. If you fail to prevent Thrall's death, then all is lost.
+[1789184158] = [===[Я повернув плин часу ще один, останній раз. Якщо ви не зумієте відвернути смерть Тралла, усе буде втрачено.]===],
+-- My magical power can turn back time to before Thrall's death, but be careful. My power to manipulate time is limited.
+[3573718025] = [===[Моя магічна сила може повернути час до моменту перед смертю Тралла, але слід бути обережними. Моя влада над часом обмежена.]===],
+},
+["Image of Medivh"] = { "образ Медіва",
+-- %s begins to cast a spell of great power, weaving his own essence into the magic.
+[2252017811] = [===[%s починає вимовляти могутнє заклинання, вплітаючи в нього власну сутність.]===],
+-- He should not have angered me.  I must go... recover my strength now...
+[3286496599] = [===[Не варто було мене гнівити. Я... мушу... відновити сили...]===],
+-- I do not know what you speak of, dragon... but  I will not be bullied by this display of insolence.  I'll leave Karazhan when it suits me!
+[907360308] = [===[Не розумію, про що ти, драконе... але я не дозволю себе залякувати. Я покину Каражан тоді, коли сам того забажаю!]===],
+-- You dare challenge me at my own dwelling?  Your arrogance is astounding, even for a dragon!
+[1747853351] = [===[Ти смієш кидати мені виклик у моєму власному домі? Це неабияка зухвалість, навіть для дракона!]===],
+-- You've got my attention, dragon.  You'll find I'm not as easily scared as the villagers below.
+[1542025437] = [===[Ти привернув мою увагу, драконе. Мене налякати не так легко, як тих селян унизу.]===],
+},
+["Image of Warbringer Razuun"] = { "проєкція завойовника Разууна",
 -- Crate? I didn't send you a crate, Jovaan. Don't you have more important things to worry about? Go see to them!
 [2767261636] = [===[Ящик? Я не надсилав тобі ящик, Йоваане. У тебе що, немає важливіших справ? Займися атакою!]===],
 -- Don't worry about that. I've increased production at the Deathforge. You'll have all the infernals you need to carry out your orders. Don't fail, Jovaan.
@@ -753,17 +1556,105 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- %s begins to sputter as its engine malfunctions.
 [4082657824] = [===[%s починає гуркотіти, коли його двигун виходить з ладу.]===],
 },
+["Infinite Defiler"] = { "труїтель з крила нескінченності",
+-- All that you know... will be undone.
+[1160144871] = [===[Усе, що ви знаєте... зникне.]===],
+-- Do not think you can win!
+[1751344747] = [===[Не думайте, що можете перемогти!]===],
+-- Give up or die!
+[47868593] = [===[Здавайтеся або помріть!]===],
+-- Nice try.
+[1622733838] = [===[Непогана спроба.]===],
+-- Oh no, you don't....
+[1122783417] = [===[О ні, навіть не думайте....]===],
+-- We have all the time in the world....
+[1319621950] = [===[У нас є безліч часу...]===],
+-- You are too late!
+[991183432] = [===[Ви запізнилися!]===],
+-- You cannot escape us!
+[3113724000] = [===[Вам від нас не втекти!]===],
+-- You don't stand a chance!
+[2935795832] = [===[У вас немає жодного шансу!]===],
+-- You have achieved nothing!
+[65250927] = [===[У вас нічого не вийде!]===],
+-- You think you've won?
+[216525208] = [===[Думаєте, ви перемогли?]===],
+-- You won't get far....
+[2875515611] = [===[Далеко ви не втечете...]===],
+},
+["Infinite Saboteur"] = { "диверсант з крила нескінченності",
+-- All that you know... will be undone.
+[1160144871] = [===[Усе, що ви знаєте... зникне.]===],
+-- Do not think you can win!
+[1751344747] = [===[Не думайте, що можете перемогти!]===],
+-- Give up or die!
+[47868593] = [===[Здавайтеся або помріть!]===],
+-- Nice try.
+[1622733838] = [===[Непогана спроба.]===],
+-- Oh no, you don't....
+[1122783417] = [===[О ні, навіть не думайте....]===],
+-- We have all the time in the world....
+[1319621950] = [===[У нас є безліч часу...]===],
+-- You are too late!
+[991183432] = [===[Ви запізнилися!]===],
+-- You cannot escape us!
+[3113724000] = [===[Вам від нас не втекти!]===],
+-- You don't stand a chance!
+[2935795832] = [===[У вас немає жодного шансу!]===],
+-- You have achieved nothing!
+[65250927] = [===[У вас нічого не вийде!]===],
+-- You think you've won?
+[216525208] = [===[Думаєте, ви перемогли?]===],
+-- You won't get far....
+[2875515611] = [===[Далеко ви не втечете...]===],
+},
+["Infinite Slayer"] = { "вбивця з крила нескінченності",
+-- All that you know... will be undone.
+[1160144871] = [===[Усе, що ви знаєте... зникне.]===],
+-- Do not think you can win!
+[1751344747] = [===[Не думайте, що можете перемогти!]===],
+-- Give up or die!
+[47868593] = [===[Здавайтеся або помріть!]===],
+-- Nice try.
+[1622733838] = [===[Непогана спроба.]===],
+-- Oh no, you don't....
+[1122783417] = [===[О ні, навіть не думайте....]===],
+-- We have all the time in the world....
+[1319621950] = [===[У нас є безліч часу...]===],
+-- You are too late!
+[991183432] = [===[Ви запізнилися!]===],
+-- You cannot escape us!
+[3113724000] = [===[Вам від нас не втекти!]===],
+-- You don't stand a chance!
+[2935795832] = [===[У вас немає жодного шансу!]===],
+-- You have achieved nothing!
+[65250927] = [===[У вас нічого не вийде!]===],
+-- You think you've won?
+[216525208] = [===[Думаєте, ви перемогли?]===],
+-- You won't get far....
+[2875515611] = [===[Далеко ви не втечете...]===],
+},
 ["Ishanah"] = { "Ішана",
 -- I offer myself in exchange.  You will have Ishanah, the High Priestess of the Aldor, as your prisoner if you release Kaylaan from your dark grasp.
 [2360978737] = [===[Натомість я пропоную себе. Якщо ти відпустиш Кайлаана, у твоєму полоні буде Ішана, верховна жриця Алдорів!]===],
 -- The Light wants its lost son back, Socrethar.
 [3617531666] = [===[Світло хоче повернути свого загубленого сина, Сокретаре.]===],
 },
+["Isillien"] = { "Ізіллієн",
+-- I do not see how this evil artifact is relevant to the undead. We must destroy it!
+[2102250616] = [===[Не розумію, до чого тут цей темний артефакт і невмерлі. Ми мусимо його знищити!]===],
+-- Nonsense, Mograine! It must be destroyed!
+[1217961062] = [===[Дурниці, Моґрейне! Його треба знищити!]===],
+-- Shock then silence overtakes the crowd.
+[2273426109] = [===[Присутніх охоплює шок, а тоді настає тиша.]===],
+-- Your hand! It is healed!
+[2490475312] = [===[Твоя рука! Вона зцілена!]===],
+},
 ["Isla Starmane"] = { "Ісла Зоряна Грива",
 -- <cough> <cough> Damsel in distress over here!
 [3424662546] = [===[<кхе> <кхе> Леді в біді! Прямо тут!]===],
 -- Alright, let's do this!
-[1884461872] = [===[Гаразд, вперед!]===],
+[1884461872] = [===[Гаразд, ходімо!]===],
 -- Don't leave me in here!  Cause if you do, I will find you...
 [3453649919] = [===[Не залишай мене тут! Бо якщо залишиш, я знайду тебе...]===],
 -- Hello?  Help?
@@ -773,13 +1664,60 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Ok, let's get out of here!
 [3689078413] = [===[Гаразд, забираймось звідси!]===],
 -- When you get a chance do you think you could let me out of here?
-[2525306205] = [===[Як буде час, може допоможеш мені втекти звідси?]===],
+[2525306205] = [===[Як буде час, може, допоможеш мені втекти звідси?]===],
 -- You sure you're ready?  Take a moment.
 [3367913518] = [===[Ти точно {стать:готовий:готова}? Не квапся.]===],
 },
 ["Iz'zard"] = { "Із'зард",
 -- Be mindful of what you say, this one's being shown around by Khadgar's pet.
 [4040897455] = [===[Стеж за своїми словами, там розгулює улюбленець Кадґара.]===],
+},
+["Jerry Carter"] = { "Джеррі Картер",
+-- Look at it, Jon. It's glorious!
+[414401012] = [===[Поглянь на неї, Джоне. Вона неймовірна!]===],
+},
+["Jonathan Revah"] = { "Джонатан Рева",
+-- Indeed. What better way to symbolize the bond of friendship and brotherhood between Tarren Mill and Southshore by erecting this tower at the halfway point between both towns. Brilliant!
+[139081254] = [===[Справді. Немає кращого способу символізувати дружбу та братерство між Тарренським Млином і Південнобережжям, ніж звести цю вежу посередині між обома містами. Блискуче!]===],
+},
+["Julie Honeywell"] = { "Джулі Медодар",
+-- Can I play?
+[1719949676] = [===[Можна мені погратися?]===],
+-- Ew, boys are gross!
+[1011923482] = [===[Фу, хлопці — гидота!]===],
+-- Heeeelllpp!!
+[394711169] = [===[Ряту-у-уйте-е-е!!]===],
+-- Mommy, mommy!
+[746357572] = [===[Мамо, мамо!]===],
+},
+["Kael'thas Sunstrider"] = { "Кель'тас Сонячний Блукач",
+-- All for what? Trinkets? You are too late. The preparations have already begun. Soon the master will make his return.
+[61138122] = [===[І заради чого все це? Трофеїв і брязкалець? Ви спізнилися. Приготування вже почалося. Незабаром володар повернеться.]===],
+-- And there is nothing you or that fool, Illidan, can do to stop me! You have both served me in your own right - unwittingly.
+[665867022] = [===[Ані тобі, ані тому дурню Іллідану мене не зупинити! Ви обоє служили моїм планам, не усвідомлюючи цього.]===],
+-- Lay down your arms and succumb to the might of Kil'jaeden!
+[4050392421] = [===[Складіть зброю і скоріться могутності Кіл'джедена!]===],
+-- Your monkeys failed to finish the job, naaru. Beaten but alive... The same mistake was not made when we took command of your vessel.
+[477518319] = [===[Твої недолугі найманці не довели справу до кінця, наару. Побитий, але не переможений... Ми не припускалися таких помилок, коли захоплювали твій корабель.]===],
+},
+["Karsius the Ancient Watcher"] = { "Карсій, Наглядач Древності",
+-- Let this be a lesson to those that would do evil to our lands!
+[2255930766] = [===[Нехай це буде уроком для тих, хто хоче заподіяти зло нашим землям!]===],
+-- What ... have you done...
+[2472871559] = [===[Що... ти {стать:накоїв:накоїла}...]===],
+-- Your pathetic attempt to escape will be short lived, Gorefiend. Let the <boy/girl> go and submit! Even with your armor and weapons, you cannot defeat the ancients!
+[3207851648] = [===[Твоя жалюгідна спроба втекти буде марною, Кровобіс. Відпусти {стать:цього хлопця:цю дівчину} і підкорись! Навіть з цими обладунками та зброєю ти не зможеш здолати древніх!#Let the <boy/girl> go]===],
+["!code"] = {
+["yrpcattoeewlbestldgdltte..goadstenwhyrarad"] = 3207851648,
+},
+},
+["Karynaku"] = { "Каринаку",
+-- Farewell, mortal. We are forever indebted to you.
+[2083926766] = [===[Прощавай, {стать:смертний:смертна}. Ми навіки в боргу перед тобою.]===],
+-- In time, we will again require the assistance of the mortals. Across this world our birthright is shattered. It will be the mortal races that help us regain our rightful place on Draenor. Watch over them, Mordenaku...
+[3737315195] = [===[Настане час, і нам знову знадобиться допомога смертних. Наш рід розкиданий по всьому цьому світу. Саме смертні допоможуть повернути нам належне місце на Дренорі. Пильнуй їх, Морденаку...]===],
+-- Mordenaku... Your allies have saved us and destroyed the wretch, Zuluhed. Forever they will be a friend to the Netherwing.
+[3476812201] = [===[Морденаку... Твої союзники врятували нас і знищили Зулугеда. Віднині й навіки вони — друзі Підсвітніх Крил.]===],
 },
 ["Kaylaan the Lost"] = { "Кайлаан Загублений",
 -- I turned that hate on the Illidari and the Burning Legion... but they weren't the ones who betrayed us.  We were the naaru's chosen!  We lived and died for them!
@@ -798,6 +1736,28 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [699815887] = [===[Так... повелителю.]===],
 -- You are wrong, Adyen.  My mind has never been clearer.
 [581649913] = [===[Ти помиляєшся, Адиєне. Мій розум ніколи не був яснішим, ніж зараз.]===],
+},
+["Kel'Thuzad"] = { "Кел'Тузад",
+-- %s utters some unintelligible words.
+[3232931600] = [===[%s промовляє якісь незрозумілі слова.]===],
+-- And death...
+[3632256026] = [===[І над смертю...]===],
+-- But to be perfectly frank, I do not give a damn what the Kirin Tor think! They are fools, set in their archaic ways.
+[748365224] = [===[Але якщо чесно, мені начхати, що думає Кірін-Тор! Вони — дурні, що застрягли у своїх архаїчних звичаях.]===],
+-- Come, Helcular, let me give you a small taste...
+[4140910615] = [===[Ходи-но, Гелькуларе, я тобі дещо продемонструю...]===],
+-- I'm still working out some minor details...
+[2504022243] = [===[Я ще працюю над деякими дрібними деталями...]===],
+-- In due time, Helcular... All in due time...
+[1760188984] = [===[Усьому свій час, Гелькуларе... Усьому свій час...]===],
+-- Keep your voice down, Helcular. Strangers abound...
+[3609494414] = [===[Тихіше, Гелькуларе. Тут повно чужинців...]===],
+-- Necromancy. It is called necromancy. And yes, I have it within my power to bless you with this gift.
+[2762127641] = [===[Некромантії. Це зветься некромантією. І так, я можу поділитися з тобою цим даром.]===],
+-- Now do you see, Helcular? Do you doubt the power? I control life!
+[1235739501] = [===[Тепер бачиш, Гелькуларе? Сумніваєшся в цій силі? Я владарюю над життям!]===],
+-- That is none of your concern, Helcular, as you are neither Kirin Tor nor a necromancer.
+[3039935000] = [===[Це не твій клопіт, Гелькуларе. Ти не належиш ні до Кірін-Тору, ні до некромантів.]===],
 },
 ["Khadgar"] = { "Кадґар",
 -- Do not burden A'dal with mundane questions, <race>.  This being's will is all that keeps our enemies from crushing this city.
@@ -872,6 +1832,75 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- We must leave before more are alerted.
 [3824663998] = [===[Ми маємо йти, поки не підняли тривогу.]===],
 },
+["Lady Sinestra"] = { "леді Сінестра",
+-- I am Lady Sinestra.
+[41879331] = [===[Я леді Сінестра.]===],
+-- I thank you for your graciousness, Mor'ghor. I must now take my leave.
+[1024440669] = [===[Дякую за вашу люб'язність, Мор'горе. Тепер я мушу йти.]===],
+-- Now... We need the eggs that you recover. The Netherwing eggs. They are, after all, a product of the master. We will pay whatever price that you ask.
+[503357402] = [===[Тепер... нам потрібні яйця, які ви добуваєте. Яйця Підсвітніх Крил. Вони ж, зрештою, витвір самого володаря. Ми заплатимо будь-яку ціну.]===],
+-- Overlord Mor'ghor, I presume... A pleasure to finally make your acquaintance.
+[979403281] = [===[Властитель Мор'гор, припускаю... Приємно нарешті познайомитися.]===],
+-- The master will be most pleased with this news. The Black Dragonflight will provide you all that you ask. You will be allowed to ride upon the backs of our drakes as needed.
+[1165665492] = [===[Володар буде вельми задоволений цією звісткою. Чорні дракони нададуть вам усе, що ви попросите. Ви зможете їздити верхи на наших драконах за потреби.]===],
+-- You have no doubt heard about Nefarian's failures on Azeroth... While he has fallen, the experiments continue. My master... He continues the work that his progeny began.
+[597140677] = [===[Ви, безсумнівно, чули про невдачі Нефаріана на Азероті... Хай він і загинув, та досліди тривають. Мій володар... Він продовжує працю свого нащадка.]===],
+-- You were once a chief lieutenant, Mor'ghor. Your work in Grim Batol is not easily forgotten.
+[1142240675] = [===[Колись ви були головним лейтенантом, Мор'горе. Ваша служба в Ґрім-Батолі була видатною.]===],
+},
+["Lieutenant Drake"] = { "лейтенант Дрейк",
+-- I know what you're up to, and I mean to put an end to it, permanently!
+[4224633529] = [===[Я знаю, що ви задумали, і покладу цьому край!]===],
+-- No more meddling for you!
+[109262396] = [===[Досить тобі пхати носа куди не треба!]===],
+-- Run, you blasted cowards!
+[1777583127] = [===[Тікайте, кляті боягузи!]===],
+-- Thrall... must not... go free.
+[452522880] = [===[Тралл... не має... втекти.]===],
+-- Time to bleed!
+[4268359480] = [===[Час пролити кров!]===],
+-- You there, fetch water quickly! Get these flames out before they spread to the rest of the keep! Hurry, damn you!
+[970684528] = [===[Гей, ти! Хутко неси воду! Загасіть полум'я, поки воно не перекинулося на решту фортеці! Ворушіться, хай вас чорти візьмуть!]===],
+-- You will not interfere!
+[898255736] = [===[Не варто було лізти сюди!]===],
+},
+["Lord Illidan Stormrage"] = { "володар Іллідан Шаленство Бурі",
+-- Destroy them, Torloth. Let loose their blood like a river upon this hallowed ground.
+[1453075082] = [===[Знищ їх, Торлоте. Нехай їхня кров проллється рікою на цю священну землю.]===],
+-- Run while you still can. The highlords come soon...
+[3219401093] = [===[Тікайте, поки ще можете. Верховний повелитель вже йде...]===],
+-- So you have defeated the Crimson Sigil. You now seek to challenge my rule? Not even Arthas could defeat me, yet you dare to even harbor such thoughts? Then I say to you, come! Come <name>! The Black Temple awaits...
+[3424354262] = [===[Отже, ви перемогли Багряну печатку. Тепер ви хочете кинути виклик моїй владі? Навіть Артас не зміг мене перемогти — як ви смієте навіть думати про це? Що ж, вперед! Вперед, {ім'я:к}! Чорний Храм чекає...#Come <name>!]===],
+-- Torloth, your master calls!
+[1622522582] = [===[Торлоте, господар кличе!]===],
+-- What manner of fool dares stand before Illidan Stormrage? Soldiers, destroy these insects!
+[2346953206] = [===[Які дурні сміють йти проти Іллідана Шаленства Бурі? Солдати, знищіть цих комах!]===],
+-- You are no challenge for the Crimson Sigil. Mind breakers, end this nonsense!
+[3683316216] = [===[Ви не рівня Багряній печатці. Підкорювачі розуму, покінчіть з ними!]===],
+["!code"] = {
+["soyuheddtecnslyunwsktocemyrentenascddtmeyt"] = 3424354262,
+},
+},
+["Lordaeron Sentry"] = { "лордеронський вартовий",
+-- Agh!
+[2361391241] = [===[Аргх!]===],
+-- I'll...
+[3601644503] = [===[Я тебе...]===],
+-- Stop right there!
+[3367256853] = [===[Ані руш!]===],
+-- What do you think you're doing?
+[4266942085] = [===[Що ви в біса робите?]===],
+},
+["Lordaeron Watchman"] = { "лордеронський сторож",
+-- Agh!
+[2361391241] = [===[Аргх!]===],
+-- I'll...
+[3601644503] = [===[Я тебе...]===],
+-- Stop right there!
+[3367256853] = [===[Ані руш!]===],
+-- What do you think you're doing?
+[4266942085] = [===[Що ви в біса робите?]===],
+},
 ["Luanga the Imprisoner"] = { "Луанґа Ув'язнювач",
 -- Skywing, I will free you from your curse over my dead body!
 [1720019307] = [===[Небокрил, я звільню тебе від прокляття тільки через свій труп!]===],
@@ -883,6 +1912,34 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [2682081641] = [===[Добре, добре! Брил здаватись!]===],
 -- You taste good with maybe a little salt and pepper.
 [102518390] = [===[Ти смакувати добре з дрібка сіль і перець.]===],
+},
+["Maiev Shadowsong"] = { "Маєв Пісня Тіней",
+-- Curse you, Akama! I am not a pawn in your game... my will is my own. When I unleash my wrath upon Illidan it will have nothing to do with your foolish scheme!
+[2396458297] = [===[Будь ти проклятий, Акамо! Я не буду пішаком у твоїй грі... Я сама розпоряджаюся своєю долею. Коли я вивільню свій гнів на Іллідана, це не матиме нічого спільного з твоєю безглуздою змовою!]===],
+-- Farewell, champions.
+[805488361] = [===[Прощавайте, чемпіони.]===],
+-- He's right. I feel nothing... I am... nothing.
+[1789039966] = [===[Його правда. Я відчуваю порожнечу... Я... ніщо...]===],
+-- I've waited for this moment for years.  Illidan and his lapdogs will be destroyed!
+[2005275212] = [===[Я чекала цього багато років. Ми знищимо Іллідана і його прихвоснів!]===],
+-- If we truly desire the same thing, Akama, then release me!  If Illidan is to die, it shall be by my hand!
+[2480714179] = [===[Якщо ми справді прагнемо одного й того ж, Акамо, то відпусти мене! Якщо Іллідан має померти, то це має статися від моєї руки!]===],
+-- It is finished. You are beaten.
+[3671881864] = [===[Усе скінчено, Іллідане.]===],
+-- Meet your end, demon!
+[3566778829] = [===[Тобі кінець, демоне!]===],
+-- My long hunt is finally over. Today, Justice will be done!
+[2852797788] = [===[Моє полювання нарешті скінчилося. Сьогодні здійсниться правосуддя!]===],
+-- Release me immediately or face my wrath!
+[4140807540] = [===[Негайно відпусти мене, інакше пізнаєш мій гнів!]===],
+-- That is for Naisha!
+[4291527991] = [===[Це за Наішу!]===],
+-- Their fury pales before mine, Illidan. We have some unsettled business between us.
+[2320701315] = [===[Їхня лють ніщо перед моєю, Іллідане. У нас із тобою лишилися незакінчені справи.]===],
+-- There shall be no prison for you this time!
+[2944980267] = [===[Цього разу обійдемось без в'язниці!]===],
+-- This cell won't hold me for long. I will have Illidan's head one way or another.
+[3935630764] = [===[Ця камера довго мене не втримає. Я так чи інакше доберуся до Іллідана.]===],
 },
 ["Malukaz"] = { "Малуказ",
 -- %s dons his wolf-fur vestments.
@@ -908,6 +1965,17 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- The boy believed you could be saved, but he didn't know what burns within your soul when in your heart, you know we are the same.
 [2321064507] = [===[Цей хлопець вірив, що тебе можна врятувати, але він не знав, що за вогонь палає у твоїх жилах. В глибині душі ти знаєш, що ми однакові.]===],
 },
+["Marcus Auralion"] = { "Маркус Авраліон",
+-- Dark days are upon us, <name>. What are we to do when even our greatest heroes fall before the might of Illidan?
+[3271187349] = [===[Нас чекають темні часи, {ім'я:к}. Що ж нам робити, коли навіть наші найвеличніші герої падають перед могутністю Іллідана?#upon us, <name>.]===],
+-- Quickly, get to the middle of the platform! Illidan's fury is soon to be unleashed!
+[757848503] = [===[Швидше, йди до середини платформи! Незабаром розгориться гнів Іллідана!]===],
+-- Return to Shattrath, hero. Seek out the wisdom of A'dal.
+[1465822976] = [===[Повертайся до Шаттрата, {стать:герою:героїне}. Звернися за мудрістю до А'дала.]===],
+["!code"] = {
+["dkdsaeunus.-wtaewetodownenorgthsflbetemtof"] = 3271187349,
+},
+},
 ["Matron Drakia"] = { "матрона Дракія",
 -- Greatmother, Garrosh has lost his heart. We are lost without you.
 [4222523304] = [===[Праматір, Ґаррош втратив своє серце. Без вас ми пропадемо.]===],
@@ -917,6 +1985,26 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [4124889689] = [===[Праматір, прошу, випийте це.]===],
 -- I will do my best to take care of the children, Greatmother.
 [4067012899] = [===[Я зроблю все можливе, щоб подбати про дітей, праматір.]===],
+},
+["Mature Netherwing Drake"] = { "дорослий драк Підсвітніх Крил",
+-- %s hungrily eats the flayer carcass.
+[607200593] = [===[%s жадібно пожирає тушу скеледера.]===],
+},
+["Medivh"] = { "Медів",
+-- Champions! My shield grows weak!
+[2973609979] = [===[Чемпіони! Мій щит слабшає!]===],
+-- I am grateful for your aid, champions. Now, Gul'dan's Horde will sweep across this world like a locust swarm, and all my designs, all my carefully-laid plans will at last fall into place.
+[3530796822] = [===[Я вдячний вам за допомогу, чемпіони. Тепер Орда Ґул'дана прокотиться цим світом, немов сарана, і всі мої задуми, всі мої ретельно виплекані плани нарешті втіляться.]===],
+-- My powers must be concentrated on the portal! I do not have time to hold the shield!
+[3976753750] = [===[Я маю зосередити свою силу на порталі! У мене немає часу утримувати щит!]===],
+-- No! Damn this feeble, mortal coil!
+[389964552] = [===[Ні! Клята смертна оболонка!]===],
+-- Orcs of the Horde! This portal is the gateway to your new destiny! Azeroth lies before you, ripe for the taking!
+[377774038] = [===[Орки Орди! Цей портал — брама до вашої нової долі! Азерот лежить перед вами, готовий до підкорення!]===],
+-- The shield is nearly gone! All that I have worked for is in danger!
+[4060176587] = [===[Щит майже зник! Вся моя праця під загрозою!]===],
+-- The time has come! Gul'dan, order your warlocks to double their efforts! Moments from now the gateway will open and your Horde will be released upon this ripe, unsuspecting world!
+[3901480983] = [===[Час настав! Ґул'дане, накажи своїм чорнокнижникам подвоїти зусилля! З хвилини на хвилину портал відкриється і ваша Орда вирветься в цей чистий, слабкий світ!]===],
 },
 ["Misha"] = { "Міша",
 -- %s lets out a loud roar as she rakes her claws against the gronn's altar.
@@ -943,6 +2031,25 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["yuhesdusfmfefrwetndh.-yuheteelgeoftemlas"] = 1037632254,
 },
 },
+["Mordenai"] = { "Морденай",
+-- %s picks up the flayer carcass.
+[1872529085] = [===[%s піднімає тушу скеледера.]===],
+-- Beware the Dragonmaw Skybreakers and ascendants as they are not fooled by our magic! Always keep your distance from those entities!
+[417528944] = [===[Остерігайся неболомів і вознесенців Драконової Пащі. Вони не піддаються нашій магії, тож тримайся від них подалі!]===],
+-- Just one good shot...
+[2747610338] = [===[Всього один влучний постріл...]===],
+-- Mother!
+[245068740] = [===[Мамо!]===],
+},
+["Murg \"Oldie\" Muckjaw"] = { "Марґ \"Стариган\" Брудноротий",
+-- I may be old but I can still take on a young whippersnapper like you, <name>. Try not to fall behind...
+[1413628724] = [===[Може, я й старий, але досі можу впоратися з такими шмаркачами, як ти, {ім'я:к}. Постарайся не відставати...#like you, <name>.]===],
+-- Well, you won... I guess.
+[337478882] = [===[Ну що ж, перемога твоя... мабуть.]===],
+["!code"] = {
+["mybeodbtcnslteonygwrleyu.-tynttoflbd"] = 1413628724,
+},
+},
 ["Murkblood Twin"] = { "близнюк з племені Хмурокрових",
 -- Blue brothers reign supreme!
 [1840069280] = [===[Братів Блакиті не спинити!]===],
@@ -950,6 +2057,79 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Nadja"] = { "Надя",
 -- Daddy!
 [2742844747] = [===[Татечко!]===],
+},
+["Nakansi"] = { "Накансі",
+-- I've rigged a few control consoles down the slope. Get to one quickly and take control of the fel reaver! You'll only have a limited amount of time.
+[3937951828] = [===[Я розмістив кілька панелей керування унизу. Скоріше скористайся однією з них і візьми під контроль сквернобота! У тебе обмаль часу.]===],
+},
+["Nat Pagle"] = { "Нет Пеґл",
+-- And if that weren't crazy enough, that big demon gets killed by a bunch of little floating light things... Oh, I was also a female elf in that one... Yep...
+[2385654319] = [===[І наче цього мало, того здоровенного демона вбила купка якихось маленьких летючих сяючих штучок... О, а ще в тому сні я був ельфійкою... Ага...]===],
+-- And people from all over the world come to me to pay homage... and learn to fish.
+[2300622043] = [===[І народ з усього світу приходить до мене, щоб вшанувати... і навчитися рибалити.]===],
+-- But tragically, Arthas is consumed by the evil and becomes evil himself...
+[1703344688] = [===[Але, на жаль, зло поглинає Артаса, і він сам стає злом...]===],
+-- Could ya imagine such a thing, Hal? Could ya?
+[163445515] = [===[Ти можеш таке уявити, Геле? Божевілля!]===],
+-- Crazy, isn't it?
+[120220673] = [===[Божевілля, правда ж?]===],
+-- Had that dream again last night...
+[3395730899] = [===[Знову той сон наснився минулої ночі...]===],
+-- Hal...
+[2466417870] = [===[Геле...]===],
+-- He ends up destroying the whole keep, freeing all the orcs we're keeping in the camps, and rising to power as the king of orcs... Warchief or somethin'.
+[1856869466] = [===[Він зрештою руйнує всю фортецю, звільняє всіх орків, яких ми тримаємо в таборах, і стає ніби як королем орків... Вождем, чи якось так.]===],
+-- I can't even believe this one... You know that loud-mouthed ruffian, Tigule?
+[219681704] = [===[Оцьому я й сам не вірю... Знаєш того горлатого розбійника, Тіґуля?]===],
+-- I can't even believe this one... You know those two loud-mouthed ruffians, Foror and Tigule?
+[350979141] = [===[Оцьому я й сам не вірю... Знаєш тих двох горлатих розбійників, Форора й Тіґуля?]===],
+-- I'm like some kind of fishing god...
+[2156374083] = [===[Я був наче якийсь бог рибальства...]===],
+-- If that weren't crazy enough, he decides to quit the ice-cream business and become an adventurer... He traveled all over the place and finally disappeared into some portal. I woke up in a cold sweat after that one...
+[393433638] = [===[І наче цього мало, він вирішує кинути справу з морозивом і стати шукачем пригод... Мандрував усюди, а тоді врешті зник у якомусь порталі. Прокинувся я тоді в холодному поту...]===],
+-- If that weren't crazy enough, they decide to quit the ice-cream business and become adventurers... They travel all over the place and finally disappear into some portal. I woke up in a cold sweat after that one...
+[2415381719] = [===[І наче цього мало, вони вирішують кинути справу з морозивом і стати шукачами пригод... Мандрували усюди, а тоді врешті зникли в якомусь порталі. Прокинувся я тоді в холодному поту...]===],
+-- In this dream, I was fishin' master of the world. I moved to some place called Kalimdor...
+[3059627082] = [===[У тому сні я був майстерним рибалкою. Переїхав я кудись, що звалося Калімдором...]===],
+-- Out of nowhere, some 300 foot tall demon or somethin' walks up and starts climbin' the tree...
+[3884377242] = [===[І тут звідкись береться демон, метрів сто заввишки, і починає дертися на те дерево...]===],
+-- So I'm on some mountain with some big ol' tree. Bunch of elves runnin' around all over...
+[413884013] = [===[Значить, стою я на якійсь горі, а там велике таке древнє дерево. Купа ельфів бігає туди-сюди...]===],
+-- Sometimes, even when I'm awake, I think they're watching us. Maybe they're watching us right now...
+[718066020] = [===[Іноді, навіть коли я не сплю, мені здається, що вони дивляться на нас. Може, вони дивляться на нас просто зараз...]===],
+-- Tarren Mill is destroyed by some crazy force of undead and forever more becomes an enemy to Southshore.
+[861225592] = [===[Тарренський Млин знищила якась божевільна орда невмерлих, і відтоді він навіки став ворогом Південнобережжя.]===],
+-- That one dream... The crazy one. Remember?
+[2168086892] = [===[Отой сон... Той, божевільний. Пам'ятаєш?]===],
+-- That one where I'm in Durnholde and that one orc that Blackmoore keeps as his personal slave breaks out...
+[1219843399] = [===[Отой, де я в Дарнгольді, і той орк, якого Блекмур тримає своїм особистим рабом, втікає...]===],
+-- That one where thousands of people are all watching us from up in the sky...
+[3068216053] = [===[Отой, де тисячі людей дивляться на нас звідкись із неба...]===],
+-- This one's real grim... So the king's kid, Arthas... Well he goes out to battle evil, along with Uther... *Nat pats his brow dry*
+[4010873148] = [===[Оцей сон геть моторошний... Значить, синок короля, Артас... Виходить він битися зі злом, разом із Утером...]===],
+-- We're like their puppets - we dance and cry and fight and say silly things for their amusement.
+[4110523224] = [===[Ми наче їхні маріонетки — танцюємо, плачемо, б'ємося й кажемо всілякі дурниці їм на розвагу.]===],
+-- Well in this dream, he somehow end up inventing something called ice-cream and flavoring it with strawberries... Well, long story short, he ends up striking it rich!
+[2083750692] = [===[Так от, у тому сні він якимось чином винаходить щось зване морозивом і робить його зі смаком полуниці... Ну, коротше кажучи, він на цьому розбагатів!]===],
+-- Well in this dream, they somehow end up inventing something called ice-cream and flavoring it with strawberries... Well, long story short, they end up striking it rich!
+[610440289] = [===[Так от, у тому сні вони якимось чином винаходять щось зване морозивом і роблять його зі смаком полуниці... Ну, коротше кажучи, вони на цьому розбагатіли!]===],
+-- Well, he comes back to the king all pretendin' to be nice, draws his sword, and runs the king through, elbow to ... well you know... kills him on the spot.
+[3155100658] = [===[Так от, повертається він до короля, вдаючи із себе доброго, вихоплює меч і проштрикує короля наскрізь, по саме... ну, ти розумієш... вбиває на місці.]===],
+},
+["Naturalist Bite"] = { "натураліст Кус",
+-- Hey! Over here! Yeah, over here... I'm in this cage!!!
+[486015388] = [===[Гей! Сюди! Так, сюди... Я в клітці!!!]===],
+-- Uh oh!  It would appear that all of the noise you've been making has attracted some unwanted attention!
+[2098533794] = [===[Ой-ой! Схоже, весь цей галас привернув увагу наг!]===],
+},
+["Nazgrel"] = { "Назґрел",
+-- Hellfire Citadel is ours! The source of Illidan's fel orc army is no more! Magtheridon has fallen to the might of <name> and <his/her> allies!
+[1130819443] = [===[Цитадель Пекельного Вогню наша! Джерело орків скверни для військ Іллідана знищено! Маґтерідон не встояв перед міццю {ім'я:р} та {стать:його:її} союзників!#might of <name> and#and <his/her> allies!]===],
+-- The time for us to rise and strike at the fel orcs that remain is now! Do this for your Warchief! Do this for the Horde!
+[1531067249] = [===[Настав час добити залишки орків скверни! Зробіть це заради вашого вождя! Зробіть це заради Орди!]===],
+["!code"] = {
+["heclisosteseofisflocayisnomemnhsfntotemtof"] = 1130819443,
+},
 },
 ["Nexus-King Salhadaar"] = { "король сплетіння Салгадаар",
 -- Prepare to enter oblivion, meddlers. You have unleashed a god!
@@ -961,6 +2141,81 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Yikes!  Someone call the fire marshal!  Medic!!!  Is there a doctor in the house?
 [2059395087] = [===[Ой! Хтось викличте пожежників! Медик!!! Тут є лікар?]===],
 },
+["Orc Prisoner"] = { "орк-в'язень",
+-- Don't feel... so good.
+[2434327239] = [===[Щось мені... недобре.]===],
+-- Hm, hungry.
+[68357398] = [===[Гм, голодний.]===],
+-- So-ngh-thirsty.
+[266096810] = [===[Хочу... пити.]===],
+-- When can we eat again?
+[1522052487] = [===[Коли буде їжа?]===],
+},
+["Ordinn Thunderfist"] = { "Ордін Громовий Кулак",
+-- The metal's magical properties are gone! It can still be worked, but not by conventional smithing methods.
+[2650813972] = [===[Магічні властивості металу зникли! З ним можна працювати, але не звичайними ковальськими методами.]===],
+-- This doesn't look right...
+[2471248509] = [===[Щось тут не так...]===],
+},
+["Oronok Torn-heart"] = { "Оронок Краяне Серце",
+-- Give these to the heroes that made this possible.
+[1979729353] = [===[Віддай це героям, завдяки яким ми здобули сьогоднішню перемогу.]===],
+-- Over my dead body!
+[3822998600] = [===[Тільки через мій труп!]===],
+-- The Torn-heart men give their weapons to Earthmender Torlok.
+[27219662] = [===[Оронок та його сини віддають свою зброю цілителю землі Торлоку.]===],
+-- They are redeemed! Then we have won?
+[1851917946] = [===[Вони визволені! То ми перемогли?]===],
+-- We leave, then, Torlok. I have only one request...
+[2955337183] = [===[Ми йдемо, Торлоку. У мене є лише одне прохання...]===],
+-- We must speak with the shaman of the Earthen Ring. Come...
+[3347723508] = [===[Ми маємо поговорити з шаманом Служителів Землі. Ходімо...]===],
+-- We will fight when you are ready.
+[149732822] = [===[Ми почнемо бій по твоїй команді.]===],
+-- We will set the elements free of your grasp by force!
+[1416285438] = [===[Ми звільнимо стихії з-під твого панування!]===],
+-- What say the elements, Torlok? I hear only silence.
+[3764429495] = [===[Що кажуть стихії, Торлоку? Я чую лише тишу.]===],
+-- You do not fight alone, <name>! Together, we will banish this spawn of hellfire!
+[3584178554] = [===[Ти не битимешся наодинці, {ім'я:к}! Разом ми виженемо це породження пекельного вогню!#fight alone, <name>!]===],
+-- You'll pay for that!
+[3672182252] = [===[Ти за це заплатиш!]===],
+-- You're not getting my sheep, scoundrel!
+[2167162688] = [===[Ти не забереш моїх овець, мерзото!]===],
+["!code"] = {
+["yudontftae.-trwewlbhtssnofhe"] = 3584178554,
+},
+},
+["Overlord Mor'ghor"] = { "властитель Мор'гор",
+-- All hail Lord Illidan!
+[2017821409] = [===[Слава володарю Іллідану!]===],
+-- But... My lord, I do not understand. <name>... <He/She> is the orc that has...
+[158424291] = [===[Але... мій володарю, я не розумію. {ім'я:н}... Це {стать:він:вона}...#understand. <name>...#<He/She> is the orc]===],
+-- Come, <name>. Lord Stormrage awaits.
+[2861532183] = [===[Ходімо, {ім'я:к}. Володар Іллідан чекає.#Come, <name>.]===],
+-- I will not drag this out any further than it needs, Lady Sinestra. You have bent my ear, now tell me what it is that you want from Dragonmaw.
+[283378363] = [===[Давайте пропустимо порожні балачки, леді Сінестро. Кажіть, чого ви хочете від Драконової Пащі.]===],
+-- It will be done, my lord.
+[2440539380] = [===[Буде зроблено, мій володарю.]===],
+-- Lord Illidan will be here shortly.
+[2015113696] = [===[Володар Іллідан скоро прибуде.]===],
+-- Lord Illidan, this is the Dragonmaw that I, and others, have told you about. <He/She> will lead us to victory!
+[976508512] = [===[Володарю Іллідане, ось {стать:той орк:та орчиня} Драконової Пащі, про {стать:якого:яку} ми вам казали. {стать:Він:Вона} приведе нас до перемоги!#<He/She> will lead]===],
+-- So you thought to make a fool of Mor'ghor, eh? Before you are delivered to Lord Illidan, you will feel pain that you could not know to exist. I will take pleasure in exacting my own vengeance.
+[1041409165] = [===[То ти думаєш виставити Мор'гора дурнем, га? Я відправлю тебе до володаря Іллідана, але спершу ти пізнаєш біль. Я насолоджуватимусь кожним твоїм криком.]===],
+-- The... The master? He lives?
+[3535953328] = [===[Володар? Він... він живий?]===],
+-- Warriors of Dragonmaw, gather 'round! One among you has attained the rank of highlord! Bow your heads in reverence! Show your respect and allegiance to Highlord <name>!
+[831451482] = [===[Воїни Драконової Пащі, збирайтеся! Один із вас досяг рангу верховного повелителя! Схиліть голови у шані! Виявіть повагу й відданість новому верховному повелителю — {ім'я:д}!#Highlord <name>!]===],
+-- Ye... Yes, yes... Of course. We need only the crystals and ore from this place. There is... We will need mounts.
+[751415935] = [===[Т-так... Так... Звісно. Нас тут цікавлять лише кристали та руда. Але... нам потрібен транспорт.]===],
+["!code"] = {
+["btmylddontud.-.eisteoctths"] = 158424291,
+["ce.-ldseas"] = 2861532183,
+["ldintsistedwttadoshetdyuat.ewlldustovy"] = 976508512,
+["wsofdwgrrdoeagyuhsadterkofhdbwyrhsinreswyr"] = 831451482,
+},
+},
 ["Pathaleon the Calculator's Image"] = { "проєкція Паталеона Обчислювача",
 -- Duro will be reinforced!  Ultris was a complete disaster.  I will NOT have that mistake repeated!
 [2023919890] = [===[Дуро отримає підкріплення! Ультріс був повною катастрофою. Я не дозволю повторити цю помилку!]===],
@@ -970,6 +2225,10 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3063777065] = [===[Все так, це не прохання.]===],
 -- We've had too many setbacks along the way: Hellfire Citadel, Fallen Sky Ridge, Firewing Point...  Prince Kael'thas will tolerate no further delays.  I will tolerate nothing other than complete success!
 [2321705472] = [===[Ми зазнали багатьох невдач на цьому шляху: цитадель Пекельного Вогню, кряж Впалого Неба, табір Вогнекрилів... Принц Кель'тас не терпітиме нових затримок. Я не терпітиму нічого, крім повного успіху!]===],
+},
+["Plexi"] = { "Плексі",
+-- I've rigged a few control consoles down the slope. Get to one quickly and take control of the fel reaver! You'll only have a limited amount of time.
+[3937951828] = [===[Я розмістив кілька панелей керування унизу. Скоріше скористайся однією з них і візьми під контроль сквернобота! У тебе обмаль часу.]===],
 },
 ["Protectorate Avenger"] = { "месник Протекторату",
 -- We are victorious! Dimensius is no more! Report back to the Professor, hero.
@@ -1023,9 +2282,31 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Why? WHY! Why was I "gifted" such a burden?
 [3077035066] = [===[Чому? ЧОМУ! Чому я був "обдарований" таким тягарем?]===],
 },
+["Ravenous Flayer Matriarch"] = { "матріарх ненаситних скеледерів",
+-- %s lays an egg.
+[1233010492] = [===[%s відкладає яйце.]===],
+},
 ["Reanimated Exarch"] = { "воскреслий екзарх",
 -- You have brought me back too soon! I am weak yet... What is this! Who... It matters not! DIE!
-[467837350] = [===[Ви повернули мене надто рано! Я ще слабкий... Що це! Хто... Це неважливо! ПОМРИ!]===],
+[467837350] = [===[Ви повернули мене надто рано! Я ще слабкий... Що це? Хто... Це неважливо! ПОМРИ!]===],
+},
+["Redeemed Spirit of Fire"] = { "визволений дух вогню",
+-- Yes... Well enough for the elements that are here, but the cipher is known to another... The spirits of fire are in turmoil... If this force is not stopped, the world where these mortals came from will cease.
+[3388716637] = [===[Так... Добре — та лише для тутешніх стихій. Зла сила заволоділа цим шифром... Духи вогню в сум'ятті... Якщо цю силу не спинити, світ, звідки прийшли ці смертні, перестане існувати.]===],
+},
+["Redeemed Spriit of Earth"] = { "визволений дух землі",
+-- Farewell, mortals... The earthmender knows what fire feels...
+[2542223956] = [===[Прощавайте, смертні... Цілитель землі знає, що відчуває вогонь...]===],
+-- It is now as it should be, shaman. You have done well.
+[2931161771] = [===[Тепер усе так, як має бути, шамане. Ви вчинили добре.]===],
+},
+["Renault Mograine"] = { "Рено Моґрейн",
+-- ARGH! It has struck a fatal blow! I have failed you...
+[4168405444] = [===[Ааах! Чудовисько завдало смертельного удару! Я підвів тебе...]===],
+-- At your side, milady!
+[1519258498] = [===[Я з вами, міледі!]===],
+-- The infidel shall be purified, milady!
+[1541406735] = [===[Невірні будуть покарані, міледі!]===],
 },
 ["Rexxar"] = { "Рексар",
 -- And their torment at your hands is at an end. By my name, I shall put an end to your life.
@@ -1050,6 +2331,54 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["rrshpy.-"] = 1738172158,
 },
 },
+["Ruul the Darkener"] = { "Руул Затьмарювач",
+-- Forced to land like a dog. No matter. Soon, all of these wonderous beasts will be under the control of the master.
+[921078943] = [===[Трясця, знову доводиться приземлятися. Та нехай. Скоро всі ці звірі опиняться під контролем володаря.]===],
+-- The skies will darken and all will go quiet. Only then will you know the sweet serenity of death...
+[1453770493] = [===[Небеса затьмаряться і все затихне. Лише тоді ви пізнаєте затишок смерті...]===],
+-- Your world is at an end.
+[2477441222] = [===[Ваш світ загине.]===],
+},
+["Sally Whitemane"] = { "Саллі Білогрива",
+-- Mograine has fallen! You shall pay for this treachery! Arise, my champion! Arise!
+[2259231241] = [===[Моґрейн загинув! Ти заплатиш за це! Повстань, мій чемпіоне! Повстань!]===],
+-- My champion, destroy this monster!
+[206768267] = [===[Мій чемпіоне, знищ це чудовисько!]===],
+-- We are victorious!
+[2505462929] = [===[Ми перемогли!]===],
+-- We will attack as one!
+[724432429] = [===[Ми атакуємо разом!]===],
+},
+["Scorned Spirit of Air"] = { "зневажений дух повітря",
+-- Why should we help you? The world is ruined. Destroyed.
+[3236444783] = [===[Чому ми маємо вам допомагати? Цей світ зруйнований. Знищений.]===],
+-- You must utter the words...
+[322822928] = [===[Потрібно вимовити слова...]===],
+},
+["Scorned Spirit of Earth"] = { "зневажений дух землі",
+-- Fool! Cyrukh the fire lord! When the tie was severed, Cyrukh awoke. It is the tears of Cyrukh that fill this land with molten rock.
+[1507699792] = [===[Дурень! Цирух, володар вогню! Коли зв'язок було розірвано, Цирух прокинувся. Саме його сльози вкривають цю землю розплавленим камінням.]===],
+-- Talk. More talk... Now release us, mortal.
+[988187304] = [===[Балачки. Самі лише балачки... А тепер відпусти нас, смертний.]===],
+-- Why have you captured us?
+[161756852] = [===[Навіщо ви нас полонили?]===],
+-- Yes... Yes... the words. The words of damnation. The words spoken by the dark one. Your master.
+[906315634] = [===[Так... Так... Слова. Слова прокляття. Слова, вимовлені Темним. Твоїм господарем.]===],
+},
+["Scorned Spirit of Fire"] = { "зневажений дух вогню",
+-- He is insane now. Driven mad during the shattering. There is no rest for the elements.
+[1161927444] = [===[Він збожеволів. Руйнування світу зламало його. Стихії не можуть заспокоїтися.]===],
+-- What is it that you hope to gain from this?
+[440223456] = [===[Що ви хочете отримати від нас?]===],
+-- Yes... Gul'dan...
+[920939591] = [===[Так... Ґул'даном...]===],
+},
+["Scorned Spirit of Water"] = { "зневажений дух води",
+-- Wisdom? It was your people that caused the insufferable wrath of Cyrukh.
+[2513683850] = [===[Мудрості? Це твій народ накликав жахливий гнів Цируха.]===],
+-- Yes, a way. Destroy Cyrukh. Destroy an elemental lord.
+[2327979401] = [===[Так, вихід є. Знищити Цируха. Знищити володаря стихій.]===],
+},
 ["Scryer Arcanist"] = { "арканіст Провидців",
 -- We're rather selective of who we befriend, <name>. You think you have what it takes?
 [692277156] = [===[Ми не товаришуємо аби з ким, {ім'я:к}. Думаєш, в тобі є те, що нам потрібно?#befriend, <name>.]===],
@@ -1057,11 +2386,37 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["werrseofwowebd.-yutkyuhewtitts"] = 692277156,
 },
 },
+["Seasoned Magister"] = { "досвідчений магістр",
+-- Come closer, demon!  Death awaits!
+[1761996100] = [===[Підходь, демоне. Не бійся.]===],
+-- I've a message for your master, scum!
+[1800757136] = [===[Передавай вітання своєму хазяїну, виродок!]===],
+-- Illidan's lapdogs!  Destroy them all!
+[3485136104] = [===[Прихвосні Іллідана! Знищити їх усіх!]===],
+-- Pathetic worm... your master's days are over!
+[2258563184] = [===[Жалюгідний хробак... твоєму хазяїну кінець!]===],
+},
+["Seer Olum"] = { "провидець Олум",
+-- Akama, my friend!  Have you been informed?  I was found out by Vashj's followers.  Our secret is in peril!
+[1029911424] = [===[Акамо, друже мій. Тебе вже сповістили? Мене викрили послідовники Вайш. Тепер наша таємниця в небезпеці!]===],
+-- I thank you, Akama.  You honor me by allowing me this moment, surrounded by my brothers.  Farewell, friend.  Guide our people well.
+[37990780] = [===[Дякую тобі, Акамо. Це велика честь — зустріти цю мить в оточенні моїх братів. Прощавай, друже. Веди наш народ гідно.]===],
+-- Illidan is looking for me.  I am not safe here... none of us are.
+[1358209101] = [===[Іллідан шукає мене. Мені тут не можна бути... нікому з нас.]===],
+-- Illidan will find me and when he does... he will pry the Ashtongue secret from me - such is the power of the Betrayer!  No... there is only one way.  My usefulness to the cause has come to an end. I must venture into the spirit world!
+[3471724226] = [===[Іллідан знайде мене. І коли це станеться, він видере з мене таємницю Попеловустих! Лишається тільки один шлях. Я більше не потрібен нашій справі. Пора мені вирушити у світ духів.]===],
+-- My decision is final.  I will not be dissuaded.  I have devoted my life to our plan.  To jeopardize it now would betray all who have died for the cause long before me.
+[2046058144] = [===[Моє рішення остаточне. Ти мене не переконаєш. Я присвятив цій справі все своє життя. Якщо я поставлю її під загрозу зараз — я зраджу всіх, хто загинув за неї до мене.]===],
+},
 ["Seth"] = { "Сет",
 -- Coming, momma!
 [3528144014] = [===[Йду, мамо!]===],
 -- Don't cry mommy.  I'm right here, see?
 [3414134211] = [===[Не плач, матусю. Я тут, бачиш?]===],
+},
+["Severin"] = { "Северин",
+-- Adaris!
+[303772426] = [===[Адарісе!]===],
 },
 ["Sha'nir"] = { "Ша'нір",
 -- A newcomer to Shattrath!  Make sure to drop by later.  We can always use a hand with the injured.
@@ -1072,6 +2427,34 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["Shado 'Fitz' Farstrider"] = { "Горій \"Грег\" Сіра Грива",
 -- %s smiles and sheathes his rifle.
 [2146458071] = [===[%s посміхається і ховає свою рушницю.]===],
+},
+["Shadowmoon Harbinger"] = { "провісник Тінистого Місяця",
+-- Gorefiend will have your head, interloper!
+[748469220] = [===[Кровобіс знищить тебе, мерзото!]===],
+-- It is you who have invaded our home. Gorefiend will avenge us!
+[2704787874] = [===[Ви вторглися в наш дім. Кровобіс помститься за нас!]===],
+-- Pray that the chilling embrace of Teron Gorefiend does not reach out for you...
+[3780142963] = [===[Молися, щоб крижана хватка Терона Кровобіса оминула тебе…]===],
+-- We are bound here... eternally. It is the will of Gorefiend.
+[1858945935] = [===[Ми прикуті тут... навіки. Така воля Кровобіса.]===],
+-- We will never dissipate, mortal... Our fate is tied to Gorefiend...
+[1152865408] = [===[Ми ніколи не зникнемо... Наша доля пов'язана з Кровобісом...]===],
+},
+["Shadowmoon Valley Invisible Trigger (Tiny)"] = {
+-- A flaming vortex takes shape.
+[42364112] = [===[Вогняний вихор набуває форми.]===],
+},
+["Shadowmoon Zealot"] = { "ревнитель Тінистого Місяця",
+-- Gorefiend will have your head, interloper!
+[748469220] = [===[Кровобіс знищить тебе, мерзото!]===],
+-- It is you who have invaded our home. Gorefiend will avenge us!
+[2704787874] = [===[Ви вторглися в наш дім. Кровобіс помститься за нас!]===],
+-- Pray that the chilling embrace of Teron Gorefiend does not reach out for you...
+[3780142963] = [===[Молися, щоб крижана хватка Терона Кровобіса оминула тебе…]===],
+-- We are bound here... eternally. It is the will of Gorefiend.
+[1858945935] = [===[Ми прикуті тут... навіки. Така воля Кровобіса.]===],
+-- We will never dissipate, mortal... Our fate is tied to Gorefiend...
+[1152865408] = [===[Ми ніколи не зникнемо... Наша доля пов'язана з Кровобісом...]===],
 },
 ["Skra'gath"] = { "Скра'ґат",
 -- %s absorbs the arcane energy of the attack.
@@ -1088,6 +2471,22 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3973035223] = [===[%s поглинає тіньову енергію атаки.]===],
 -- Closer... Come closer... See what the void brings!
 [1183814528] = [===[Ближче... Підійди ближче... Подивись, що несе порожнеча!]===],
+},
+["Sky Commander Adaris"] = { "командир Небесної гвардії Адаріс",
+-- I see them now... assassins from Skettis!
+[3251555542] = [===[Тепер я бачу їх... вбивць Скеттіса!]===],
+-- The arakkoa can send all the assassins they have... they will meet the same fate as these!
+[1834633194] = [===[Хай араккоа шлють усіх своїх вбивць... на них чекає та ж доля, що й на цих!]===],
+-- The elixir... give it to me, Severin!
+[366922458] = [===[Еліксир... дай його мені, Северине!]===],
+},
+["Skyguard Prisoner"] = { "полонений Небесної гвардії",
+-- Let's keep moving.  I don't like this place.
+[1593449841] = [===[Давай рухатись далі. Мені не подобається це місце.]===],
+-- Thanks again.  Sergeant Doryn will be glad to hear he has one less scout to replace this week.
+[3546656211] = [===[Ще раз дякую. Сержант Дорін буде радий дізнатись, що йому не доведеться шукати мені заміну.]===],
+-- Thanks for your help.  Let's get out of here!
+[2704290524] = [===[Дякую за допомогу. А тепер забираймось звідси!]===],
 },
 ["Skywing"] = { "Небокрил",
 -- Free at last from that horrible curse! Thank you! Please send word to Rilak the Redeemed that I am okay. My mission lies in Skettis. Terokk must be defeated!
@@ -1121,6 +2520,37 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- %s uses the key to open the cage.
 [213673430] = [===[%s відмикає клітку ключем.]===],
 },
+["Spirit of Ar'tor"] = { "дух Ар'тора",
+-- I... I have died... I was in so much pain... engulfed in darkness... Can you see me, <race>?
+[3142392518] = [===[Я... Я помер... Було так боляче... Мене охопила темрява... Ти мене бачиш, {раса:к}?#see me, <race>?]===],
+["!code"] = {
+["heddwsinsomhpnedindscnyuseme.."] = 3142392518,
+},
+},
+["Spirit of Olum"] = { "дух Олума",
+-- Your people will always be with you!
+[3506791011] = [===[Твій народ завжди буде з тобою!]===],
+},
+["Spirit of Udalo"] = { "дух Удало",
+-- You are not alone, Akama.
+[290694113] = [===[Ти не сам, Акамо.]===],
+},
+["Spirit of the Past"] = { "дух минулого",
+-- Do not do this, Gul'dan! The elements will never forgive us!
+[956294080] = [===[Не роби цього, Ґул'дане! Стихії нам ніколи не пробачать!]===],
+-- Stop! You must stop!
+[2253230421] = [===[Спинися! Ти мусиш спинитися!]===],
+-- Tear the land asunder, Gul'dan! Sever the tie!
+[1788580177] = [===[Розколи цю землю, Ґул'дане! Розірви зв'язок!]===],
+-- They have abandoned us! Do not forget!
+[1005832806] = [===[Вони покинули нас! Не забувайте!]===],
+-- Think of our younglings, Gul'dan! You will destroy us all!
+[683053365] = [===[Ґул'дане, зупинись! Ти згубиш нас усіх!]===],
+-- We will take from the land if it refuses to give!
+[1550033739] = [===[Ми заберемо у землі те, що вона відмовляється віддавати!]===],
+-- You have damned us all... We are lost.
+[2481381049] = [===[Ти прокляв нас усіх... Нам кінець.]===],
+},
 ["Station Technician"] = { "технік станції",
 -- I'M ON FIRE!!!
 [293232203] = [===[Я ГОРЮ!!!]===],
@@ -1137,23 +2567,199 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- YEOW!!
 [3344476674] = [===[А-А-Й!]===],
 },
+["Taretha"] = { "Тарета",
+-- I'm free! Thank you all!
+[4249980773] = [===[Я вільна! Дякую вам усім!]===],
+-- They call you a monster. But they're the monsters, not you. Farewell, Thrall.
+[758019619] = [===[Вони звуть тебе чудовиськом. Але це вони чудовиська, а не ти. Прощавай, Тралле.]===],
+-- Thrall, I've never met these people before in my life.
+[3389204125] = [===[Тралле, я ніколи їх раніше не бачила.]===],
+-- Thrall, you escaped!
+[284816204] = [===[Тралле, ти втік!]===],
+},
+["Tarren Mill Guardsman"] = { "гвардієць Тарренського Млина",
+-- All that you know... will be undone.
+[1160144871] = [===[Усе, що ви знаєте... зникне.]===],
+-- Do not think you can win!
+[1751344747] = [===[Не думайте, що можете перемогти!]===],
+-- Give up or die!
+[47868593] = [===[Здавайтеся або помріть!]===],
+-- Nice try.
+[1622733838] = [===[Непогана спроба.]===],
+-- Oh no, you don't....
+[1122783417] = [===[О ні, навіть не думайте....]===],
+-- We have all the time in the world....
+[1319621950] = [===[У нас є безліч часу...]===],
+-- You are too late!
+[991183432] = [===[Ви запізнилися!]===],
+-- You cannot escape us!
+[3113724000] = [===[Вам від нас не втекти!]===],
+-- You don't stand a chance!
+[2935795832] = [===[У вас немає жодного шансу!]===],
+-- You have achieved nothing!
+[65250927] = [===[У вас нічого не вийде!]===],
+-- You think you've won?
+[216525208] = [===[Думаєте, ви перемогли?]===],
+-- You won't get far....
+[2875515611] = [===[Далеко ви не втечете...]===],
+},
+["Tarren Mill Horsehand"] = { "конюх Тарренського Млина",
+-- %s grabs an apple from the tree.
+[1356717474] = [===[%s зриває яблуко з дерева.]===],
+-- Any luck, Samuel?
+[2016948136] = [===[Ну як, щось виходить, Самуелю?]===],
+-- Good day, Benjamin! Would you mind if I took an apple for Bessy?
+[3529027903] = [===[Добридень, Бенджаміне! Не проти, якщо я візьму яблуко для Бессі?]===],
+-- Hullo there, Benjamin! Mind if I snack an apple for Old Bessy?
+[2113986169] = [===[Агов, Бенджаміне! Не заперечуєш, якщо я візьму яблучко для старої Бессі?]===],
+-- Such an old wagon, no wonder it broke down on you, Samuel.
+[731495118] = [===[Такий старий віз. Не дивно, що він зламався, Самуелю.]===],
+-- Thanks, Benjamin!
+[1813807556] = [===[Дякую, Бенджаміне!]===],
+-- That wagon break down on you again, Samuel?
+[677791852] = [===[Знову цей віз зламався, Самуелю?]===],
+-- Well, I'm sorry to hear that. I'll be by again later if you want a hand.
+[1985499293] = [===[Ну що ж, шкода це чути. Зазирну пізніше, якщо буде потрібна допомога.]===],
+},
+["Tarren Mill Lookout"] = { "дозорний Тарренського Млина",
+-- All that you know... will be undone.
+[1160144871] = [===[Усе, що ви знаєте... зникне.]===],
+-- Do not think you can win!
+[1751344747] = [===[Не думайте, що можете перемогти!]===],
+-- Give up or die!
+[47868593] = [===[Здавайтеся або помріть!]===],
+-- He's here, stop him!
+[3994527729] = [===[Він тут, зупиніть його!]===],
+-- I thought I saw something go into the barn.
+[2431741098] = [===[Здається, що я бачив, як щось забігло до хліва.]===],
+-- Nice try.
+[1622733838] = [===[Непогана спроба.]===],
+-- Oh no, you don't....
+[1122783417] = [===[О ні, навіть не думайте....]===],
+-- Something riled that horse. Let's go!
+[4198621068] = [===[Щось стривожило коня. Ходімо!]===],
+-- Thrall's trapped himself in the chapel. He can't escape now.
+[2617587887] = [===[Тралл сам загнав себе у пастку в каплиці. Тепер йому не втекти.]===],
+-- We have all the time in the world....
+[1319621950] = [===[У нас є безліч часу...]===],
+-- You are too late!
+[991183432] = [===[Ви запізнилися!]===],
+-- You cannot escape us!
+[3113724000] = [===[Вам від нас не втекти!]===],
+-- You don't stand a chance!
+[2935795832] = [===[У вас немає жодного шансу!]===],
+-- You have achieved nothing!
+[65250927] = [===[У вас нічого не вийде!]===],
+-- You think you've won?
+[216525208] = [===[Думаєте, ви перемогли?]===],
+-- You won't get far....
+[2875515611] = [===[Далеко ви не втечете...]===],
+},
+["Tarren Mill Peasant"] = { "селянин Тарренського Млина",
+-- %s grumbles to himself while he works.
+[3151379626] = [===[%s працює, бурмочучи щось під ніс.]===],
+-- Aye, its still broken. Can't afford to buy a new one though.
+[3114180996] = [===[Еге ж, досі зламаний. Тільки от на новий грошей не назбираю.]===],
+-- Nay, its still broken. No luck at all, I suppose.
+[516683667] = [===[Та ні, віз досі зламаний. Не щастить мені, та й годі.]===],
+-- Sure, go ahead and take one, there's plenty for all!
+[3479743286] = [===[Аякже, бери, скільки хочеш, тут на всіх вистачить!]===],
+},
+["Tarren Mill Protector"] = { "захисник Тарренського Млина",
+-- All that you know... will be undone.
+[1160144871] = [===[Усе, що ви знаєте... зникне.]===],
+-- Do not think you can win!
+[1751344747] = [===[Не думайте, що можете перемогти!]===],
+-- Give up or die!
+[47868593] = [===[Здавайтеся або помріть!]===],
+-- I didn't see anything.
+[3596514829] = [===[Я нічого не бачив.]===],
+-- Nice try.
+[1622733838] = [===[Непогана спроба.]===],
+-- Oh no, you don't....
+[1122783417] = [===[О ні, навіть не думайте....]===],
+-- We have all the time in the world....
+[1319621950] = [===[У нас є безліч часу...]===],
+-- You are too late!
+[991183432] = [===[Ви запізнилися!]===],
+-- You cannot escape us!
+[3113724000] = [===[Вам від нас не втекти!]===],
+-- You don't stand a chance!
+[2935795832] = [===[У вас немає жодного шансу!]===],
+-- You have achieved nothing!
+[65250927] = [===[У вас нічого не вийде!]===],
+-- You think you've won?
+[216525208] = [===[Думаєте, ви перемогли?]===],
+-- You won't get far....
+[2875515611] = [===[Далеко ви не втечете...]===],
+},
+["Temporus"] = { "Темпорус",
+-- Keeper! The sands of time have run out for you.
+[1664729056] = [===[Хранитель, твій час вичерпано!]===],
+-- My death means... little.
+[1810854541] = [===[Моя смерть нічого... не значить...]===],
+-- So be it... you have been warned.
+[2440996564] = [===[Хай буде так... Вас попереджали.]===],
+-- Why do you persist? Surely you can see the futility of it all. It is not too late! You may still leave with your lives...
+[3156430042] = [===[Чому ви такі вперті? Невже ви не бачите, що все це марно? Ще не пізно! Ви ще можете піти звідси живими...]===],
+-- You should have left when you had the chance.
+[551962498] = [===[Варто було піти, поки була нагода.]===],
+-- Your days are done.
+[2106932833] = [===[Твої дні скінчені.]===],
+},
+["Terokk"] = { "Терокк",
+-- Kwa! You cannot kill me, I am immortal!
+[2103429639] = [===[Кра-а! Вам не вбити мене! Я безсмертний!]===],
+-- Show me how tough you are, <name>!
+[1743899558] = [===[Покажи мені свою силу, {ім'я:к}!#you are, <name>!]===],
+-- Show me what you're made of, <name>!
+[4265584612] = [===[Покажи мені свою міць, {ім'я:к}!#made of, <name>!]===],
+-- Who calls me to this world?  The stars are not yet aligned... my powers fail me!  You will pay for this!
+[501894658] = [===[Хто викликає мене в цей світ? Зорі ще не зійшлися... Моя сила покидає мене! Ви за це заплатите!]===],
+["!code"] = {
+["swmehwthyuae.-"] = 1743899558,
+["swmewtyemeof.-"] = 4265584612,
+},
+},
 ["Terokkar Wolf Spirit"] = { "тероккарський дух вовка",
 -- %s expresses its approval.
-[1958256898] = [===[%s виражає своє схвалення.]===],
+[1958256898] = [===[%s демонструє своє схвалення.]===],
 -- %s howls in response to Malukaz's call.
 [1647986706] = [===[%s виє у відповідь на заклик Малуказа.]===],
+},
+["The Voice of Gorefiend"] = { "голос Кровобіса",
+-- Waste no time, fool! Use our power to kill those that stand in our way! Destroy Karsius before you are subdued!
+[3320132450] = [===[Не гай часу, дурепо! Скористайся нашою силою, щоб знищити тих, хто стоїть на нашому шляху! Знищ Карсія, поки тебе не скорили!]===],
 },
 ["Thrall"] = { "Тралл",
 -- %s places a hand on Garrosh's shoulder.
 [3535794773] = [===[%s кладе руку на плече Ґарроша.]===],
 -- %s roars in defiance.
 [4019875078] = [===[%s грізно ричить.]===],
+-- %s startles the horse with a fierce yell!
+[2717872175] = [===[%s лякає коня лютим криком!]===],
+-- %s tries to calm the horse down.
+[773995927] = [===[%s намагається заспокоїти коня.]===],
 -- ...uncorrupted!
 [1778638395] = [===[...неосквернений!]===],
+-- A good day... to die.
+[65838309] = [===[Гарний день... щоб померти.]===],
+-- A rider approaches.
+[59130494] = [===[Наближається вершник.]===],
+-- As long as we're going with a new plan, I may as well pick up a weapon and some armor.
+[91227672] = [===[Раз в нас новий план, то краще мені озброїтися й вдягнути якийсь обладунок.]===],
 -- At long last, I am home...
 [263532630] = [===[Нарешті, я вдома...]===],
+-- Blackmoore has much to answer for!
+[2882799496] = [===[Блекмур відповість за все це!]===],
+-- Bring the fight to me and pay with your lives!
+[2278787892] = [===[Нападайте і зустріньте свою погибель!]===],
+-- Do not give an inch of ground!
+[3325859595] = [===[Не відступайте ні на крок!]===],
 -- Garrosh, son of Hellscream, your father lived and died as our greatest hero. Honor me by allowing me to show you what your father sacrificed so that we could live free of the demon's grasp.
 [1875893239] = [===[Ґаррош, син Пеклокрика, твій батько жив і помер як наш найвеличніший герой. Дозволь мені показати тобі, чим пожертвував твій батько, щоб ми могли жити вільними від влади демонів.]===],
+-- Goodbye, Taretha. I will never forget your kindness.
+[3786891220] = [===[Прощавай, Таретто. Я ніколи не забуду твоєї доброти.]===],
 -- Greatmother...
 [1742489590] = [===[Праматір...]===],
 -- Greatmother...Am I...
@@ -1162,38 +2768,154 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [3956455322] = [===[Він помер нашим найвеличнішим героєм. Саме Ґром звільнив нас усіх… Я був поруч з ним, коли він знищив Маннорота і назавжди поклав край прокляттю.]===],
 -- Hellscream! Blessed ancestors! He is the mirrored reflection of Grom, Drek'Thar.
 [2154972591] = [===[Пеклокрик! Благословенні предки! Дрек'Таре, він викапаний Ґром.]===],
+-- Hold them back. Do not falter!
+[921143666] = [===[Стримуйте їх. Не відступайте!]===],
+-- I am a slave no longer!
+[56040881] = [===[Я більше не раб!]===],
 -- I am sorry that I did not come sooner, young Hellscream. There is so much that I have to tell you about your father, but first you must tell me where I may find the Greatmother.
 [2426878447] = [===[Мені шкода, що я не з'явився раніше, юний Пеклокрик. Я маю так багато розповісти тобі про твого батька, але спочатку скажи мені, де я можу знайти праматір.]===],
+-- I am truly in your debt, strangers.
+[371843683] = [===[Я справді у боргу перед вами, незнайомці.]===],
+-- I did not ask for this!
+[1850819647] = [===[Я не просив цього!]===],
 -- I have dreamed of this moment all my life, Greatmother. 'Till now, all I've had were Orgrim's stories about my parents and their adventures on Draenor. He was my greatest teacher and dearest friend. He died a hero... They all died as heroes - and for all of them, a song of honor remains.
 [2732388184] = [===[Я мріяв про цю мить все своє життя, праматір. Досі я знав лише те, що розповідав Орґрім про моїх батьків та їхні пригоди на Дренорі. Він був моїм найкращим вчителем і найближчим другом. Він помер як герой... Всі вони померли як герої, і кожного з них згадують з пошаною.]===],
+-- I have earned my freedom!
+[513104889] = [===[Я заслужив свою свободу!]===],
 -- I have returned, Greatmother. Garrosh has found his heart and his fury.
 [4133560367] = [===[Я повернувся, праматір. Ґаррош віднайшов своє серце та свою лють.]===],
 -- I thank you, Garrosh. We have much to discuss when I return from my visit with the Greatmother.
 [174878873] = [===[Дякую, Ґарроше. Ми маємо багато що обговорити, коли я повернуся від праматері.]===],
+-- I will lay down for no one!
+[3207013517] = [===[Я не схилюся ні перед ким!]===],
+-- I will not waste this chance. I will seek out my destiny.
+[1407063355] = [===[Я не змарную цей шанс. Я знайду своє призначення.]===],
 -- I'll be fine, Eitrigg.  We must begin preparations... I need to go to Outland at once!
 [271205467] = [===[Я в порядку, Ейтріґ. Ми маємо підготуватись... Я мушу негайно вирушити в Позамежжя!]===],
+-- I'll fight... to the last!
+[137483375] = [===[Я битимусь... до останнього!]===],
+-- I'll never be chained again!
+[3578880927] = [===[Мене ніколи більше не закують у кайдани!]===],
+-- I'm glad you're safe, Taretha. None of this would have been possible without your friends. They made all of this happen.
+[1308695880] = [===[Я радий, що ти в безпеці, Тарето. Нічого з цього не сталося б без твоїх друзів. Це все їхня заслуга.]===],
 -- If he's anything like his father, allying with the Mag'har will mark the dawn of a new age for the Horde.
 [3307125648] = [===[Якщо він хоч трохи схожий на свого батька, союз з Маґ'харами означатиме початок нової ери для Орди.]===],
+-- It is over... Withdraw! We have failed.
+[3450688562] = [===[Усе скінчено... Відступаємо! Наші війська розбито.]===],
+-- It should not have come to this!
+[1881206826] = [===[До цього не мало дійти!]===],
+-- Let's go.
+[2498574389] = [===[Ходімо.]===],
+-- Let's ride!
+[4196106689] = [===[Поїхали!]===],
+-- Make ready for another wave! Lok'tar Ogar!
+[1115392990] = [===[Приготуйтеся до нової хвилі! Лок'тар Оґар!]===],
 -- My people have survived in Outland...
 [3098092720] = [===[Мій народ вижив у Позамежжі...]===],
+-- No!
+[2904467889] = [===[Ні!]===],
 -- No, old friend. You've freed us all...
 [548480673] = [===[Ні, друже. Ти звільнив всіх нас...]===],
 -- Please excuse me, Greatmother. I will return soon.
 [3327610334] = [===[Пробач, праматір. Я скоро повернуся.]===],
+-- She's not here.
+[3115342137] = [===[Її тут немає.]===],
 -- Spirits give me strength! Take from my soul these old wounds and expose them for all to see! Let this child know his father! Let these people know their savior!
 [3591544360] = [===[Духи, дайте мені сили! Візьміть ці старі рани моєї душі та покажіть їх усім! Нехай це дитя дізнається правду про свого батька! Нехай всі дізнаються про свого спасителя!]===],
+-- Taretha isn't here. Let's head into town.
+[1464115143] = [===[Тарети тут немає. Ходімо в місто.]===],
+-- Taretha must be in the inn. Let's go.
+[1891537732] = [===[Тарета, певно, у корчмі. Ходімо.]===],
+-- Taretha! What foul magic is this?
+[2508440718] = [===[Тарето! Що це за мерзенна магія?]===],
+-- Taretha....
+[431625899] = [===[Тарето...]===],
 -- Tell him? Greatmother, that boy's father died so that all of us could live free of the blood curse. I will tell him nothing. I will show him! Show him and any that would doubt Hellscream's resolve exactly what Grom Hellscream did for all orcs!
 [3011365076] = [===[Розказати йому? Праматір, його батько загинув заради того, щоб всі ми могли жити вільні від кровного прокляття. Ні, я не розкажу йому. Я йому покажу! Покажу йому і всім, хто сумнівається в рішучості Пеклокрика, що саме Ґром Пеклокрик зробив заради всіх орків!]===],
+-- Thank you, strangers. You have given me hope.
+[3373097208] = [===[Дякую вам, незнайомці. Ви дарували мені надію.]===],
+-- That's enough out of him.
+[3790537434] = [===[З нього досить.]===],
+-- Then who are these people?
+[2543888435] = [===[Тоді хто ж це такі?]===],
 -- They died honorably, Greatmother.
 [1400039576] = [===[Вони померли з честю, праматір.]===],
 -- They... did not, Greatmother. They were killed shortly after I was born. I never knew them. I was raised as a slave. To this day, I carry the name of Thrall.
 [3365195422] = [===[Вони… ні, праматір. Їх вбили незабаром після мого народження. Я ніколи їх не знав. Я виріс як раб. І до цього дня я ношу ім'я Тралл.]===],
+-- Things are looking grim....
+[2360467971] = [===[Справи кепські...]===],
+-- This day is long overdue! Out of my way!
+[2683399262] = [===[Цей день давно назрів! Геть з дороги!]===],
 -- Unnoticed for years...
 [1609410186] = [===[Непомічений роками...]===],
+-- Very well then. Let's go!
+[184385802] = [===[Що ж, гаразд. Ходімо!]===],
+-- Very well. Tarren Mill lies just west of here. Since time is of the essence...
+[2872182719] = [===[Що ж, гаразд. Тарренський Млин знаходиться на заході звідси. А якщо часу обмаль...]===],
+-- Victory or death!
+[3410520196] = [===[Перемога або смерть!]===],
+-- War drums echo in the distance.
+[4112245987] = [===[Здалеку доноситься гуркіт бойових барабанів.]===],
+-- We have played our part and done well. It's up to the others now.
+[366258134] = [===[Ми зробили свою справу — і зробили її добре. Тепер черга за іншими.]===],
+-- Who or what was that?
+[873040955] = [===[Хто чи що це було?]===],
 -- You are right, Eitrigg.  The timing is unfavorable.  Make sure our best ambassadors are sent as envoys to Hellscream.
 [337441815] = [===[Ти маєш рацію, Ейтріґ. Час не сприятливий. Переконайся, що наші найкращі посли будуть відправлені до Пеклокрика.]===],
+-- You have forced my hand!
+[3301006603] = [===[Це ви змусили мене!]===],
 -- You need not thank me, Garrosh. Your father was a brother to me. I would do anything for you and the Mag'har. I must now return to the Greatmother.
 [364137692] = [===[Ти не мусиш дякувати мені, Ґарроше. Твій батько був братом для мене. Я б зробив все для тебе та Маґ'харів. Тепер я мушу повернутися до праматері.]===],
+},
+["Tirion Fordring"] = { "Тіріон Фордрінґ",
+-- Aye, I've battled them as well. We are ill-prepared as a kingdom to withstand such an assault.
+[3534318564] = [===[Так, я теж бився з ними. Наше королівство недостатньо підготовлене, щоб витримати такий натиск.]===],
+-- Impossible!
+[1838236757] = [===[Неможливо!]===],
+},
+["Tobias the Filth Gorger"] = { "Тобіас Брудожер",
+-- %s cracks the rotten egg open and - to the horror and dismay of all around him - begins to drink from its putrid core.
+[2512729536] = [===[%s розбиває гниле яйце і — на жах і подив усіх навколо — починає пити його смердючий вміст.]===],
+-- %s lets loose the most foul belch ever heard or smelled.
+[3761293483] = [===[%s видає наймрзеннішу відрижку, яку тільки можна було уявити.]===],
+-- Ok then, back to business.
+[2423938215] = [===[Гаразд, а тепер до справи.]===],
+-- That was life-changing... Excuse me for one minute.
+[3763938008] = [===[Це було надзвичайно. Перепрошую...]===],
+},
+["Torloth the Magnificent"] = { "Торлот Величний",
+-- As you desire, Lord Illidan.
+[863212050] = [===[Як забажаєте, владико Іллідане.]===],
+-- At your command, my liege...
+[3489385010] = [===[Що накажете, мій володарю...]===],
+-- For Lord Illidan, I would sacrifice even this magnificent physique. On this day, you will fall - another victim of Torloth...
+[4239089852] = [===[Заради владики Іллідана я готовий пожертвувати навіть цим величним тілом. Сьогодні ви загинете — станете ще однією жертвою Торлота...]===],
+},
+["Trope the Filth-Belcher"] = { "Троп Гидориг",
+-- Trope will show you how to fly like a Dragonmaw... You will show Trope how to die like a scrub.
+[2309919836] = [===[Троп покаже тобі, як літати... А ти покажеш Тропу, як вмирати.]===],
+-- You did well. Certainly a surprise to Trope... Report back to Ja'y.
+[2096600721] = [===[Непогано в тебе вийшло. Троп здивований... Розкажи про це Джею.]===],
+},
+["Vagath"] = { "Ваґат",
+-- Mortals, here? What is the meaning of this, pathetic Broken!
+[3832390832] = [===[Смертні, тут? Що все це означає, нікчемний Зломлений?]===],
+-- Pitiful wretches. You dared to assault Illidan's temple? Very well, I shall make it your death bed!
+[4191761917] = [===[Нікчемні виродки. Ви посміли вторгнутися до храму Іллідана? Що ж, тут ви й зустрінете свою смерть!]===],
+-- You'd do well not to toy with me, Akama. Illidan has given me specific orders to keep a close watch on the Warden. If I find out you're hiding anything from me, I will crush you with my own hands!
+[831780009] = [===[Краще не грайся зі мною, Акамо. Іллідан дав мені чіткі вказівки уважно стежити за Вартовою. Якщо я дізнаюся, що ти щось від мене приховуєш, я власноруч розчавлю тебе!]===],
+-- You've sealed your fate, Akama.  The Master will learn of your betrayal!
+[2164235927] = [===[Ти сам обрав свою долю, Акамо. Володар дізнається про твою зраду!]===],
+},
+["Veneratus the Many"] = { "Венератус Численний",
+-- Petulent fool! You will never have the Cipher!
+[493029154] = [===[Уперті недоумки! Ви ніколи не отримаєте Шифр!]===],
+-- The Cipher of Damnation belongs to us now!
+[518405637] = [===[Шифр Прокляття тепер належить нам!]===],
+-- The master will know of this incursion. You will be hunted for all eternity!
+[1510669325] = [===[Господар дізнається про це. Тебе переслідуватимуть вічно!]===],
+-- You will be destroyed!
+[2313227745] = [===[Я тебе знищу!]===],
 },
 ["Vindicator Vuuleen"] = { "поборниця Вуулін",
 -- No.  Don't open the cage.  One of them might notice!
@@ -1216,6 +2938,14 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- You cannot stop them...
 [1943938200] = [===[Ти не зупиниш їх...]===],
 },
+["Warcaller Beersnout"] = { "закликач війни Пивонюх",
+-- Aye, that'll do it! They'll come runnin' once they see the reward we've put up!
+[4210404530] = [===[Ага, так згодиться! Вони вмить прибіжать, як побачать таку винагороду!]===],
+},
+["Warcaller Sardon Truslice"] = { "закликач війни Сардон Нарізач",
+-- Wit a reward like dis, how could they refuse, mon?
+[1678531195] = [===[Оце так нагорода, як від такого можна відмовиться?]===],
+},
 ["Warmaul Champion"] = { "чемпіон Бойового Молота",
 -- Piece by piece I will tear this challenger apart... PIECE BY PIECE!
 [1416902590] = [===[Я розірву тебе... НА ДРІБНІ ШМАТКИ!]===],
@@ -1229,6 +2959,38 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["ltushdordninmepepefwme.-"] = 2025055001,
 },
 },
+["Wing Commander Ichman"] = { "командир повітряних сил Ічман",
+-- I'm taking this back to the old school. I'll be the Alliance and you be Frostwolf Village. BOMBS AWAY!
+[2481560947] = [===[Повернімося до класики. Я буду Альянсом, а ти — селищем Морозних Вовків. БОМБИ ПІШЛИ!]===],
+-- Thank you for that... It was humbling to be served in such a manner.
+[507874069] = [===[Дякую тобі... Це було досить повчально.]===],
+},
+["Wing Commander Mulverick"] = { "командир повітряних сил Малверік",
+-- You're in for a rough ride, <name>. I hope you've already made funeral arrangements.
+[2981735134] = [===[Це буде важкий заїзд, {ім'я:к}. Сподіваюся, тебе буде кому хоронити.#ride, <name>.]===],
+-- You're the best I've ever seen. I can't believe I'm saying this but you might have a chance against Skyshatter. And hey, if that doesn't go so well you can be my wing man...
+[3926220051] = [===[Я ще не бачив таких здібних вершників. Не вірю, що кажу це, але, можливо, тобі вдасться перемогти Неботроща. А якщо не складеться — можемо літати разом...]===],
+["!code"] = {
+["yeinfrrhre.-heyeaymeflas"] = 2981735134,
+},
+},
+["Xeleth"] = { "Кселет",
+-- Who disturbs my slumber? That spear... I still carry the scar!
+[4170582098] = [===[Хто сміє турбувати мій сон? Цей спис... Я досі ношу шрам від нього!]===],
+},
+["Xi'ri"] = { "Зі'рі",
+-- %s begins channeling the powers of the light.
+[1889557099] = [===[%s починає накликати сили світла.]===],
+-- %s falls silent and a quiet tension falls over nearby Sha'tar forces as Xi'ri makes his decision.
+[216881450] = [===[%s замовкає, і тиха напруга огортає сили Ша'тар, поки Зі'рі приймає рішення.]===],
+},
+["Yarzill the Merc"] = { "Ярзіл Найманець",
+-- You will not harm the <boy/girl>, Mor'ghor! Quickly, <name>, climb on my back!
+[2422603847] = [===[Ти не зашкодиш {стать:йому:їй}, Мор'горе! Хутчіш, {ім'я:к}, залазь мені на спину!#the <boy/girl>,#Quickly, <name>,]===],
+["!code"] = {
+["yuwlnthmte..mrqy.-cbonmybk"] = 2422603847,
+},
+},
 ["Zahlia"] = { "Заглія",
 -- Don't go too far away Seth.  You know mommy doesn't like it when she can't hear you.
 [3836804831] = [===[Не відходь надто далеко, Сет. Ти ж знаєш, мамі не подобається, коли вона не може тебе чути.]===],
@@ -1236,6 +2998,26 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 [2724588062] = [===[Я думала, що більше ніколи не побачу обличчя свого сина. Ходи сюди, Сет! Дай мамі поглянути на тебе!]===],
 -- I... I can see...
 [771967388] = [===[Я... Я бачу...]===],
+},
+["Zixil"] = { "Зіксіль",
+-- Just a few more swings and it'll be ready...
+[1351878897] = [===[Ще кілька ударів, і буде готово...]===],
+-- Maybe I can sell these things to other goblins? I'll be rich! Rich I say!
+[452201796] = [===[Може, я зможу продавати ці штуки іншим гоблінам? Я стану багатим! Нечувано багатим!]===],
+-- When I get this hunk of junk up and running, I'll be able to walk the roads without fear of being jumped by bandits!
+[3688463028] = [===[Коли я запущу цю купу брухту, зможу ходити дорогами, не боячись, що на мене нападуть бандити!]===],
+-- Yes, Zixil will be a household name! I'll corner the market!
+[2899731138] = [===[Так, Зіксіля знатимуть у кожному домі! Я монополізую весь ринок!]===],
+},
+["Zuluhed the Whacked"] = { "Зулугед Збожеволілий",
+-- Destroy them! Destroy them all!
+[1393781775] = [===[Знищити їх! Знищити всіх до одного!]===],
+-- Foolish mortals. Did you think that I would not strike you down for your transgressions?
+[567822510] = [===[Дурні смертні. Невже ви думали, що я не покараю вас за цю зухвалість?]===],
+-- Indeed, the time has come to end this charade.
+[2263041107] = [===[Що ж, пора покінчити з цим.]===],
+-- Lord Illidan, bless me with the power of the flight!
+[1196697552] = [===[Володарю Іллідане, благослови мене своєю силою!]===],
 },
 }
 

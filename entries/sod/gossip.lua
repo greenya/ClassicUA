@@ -46,7 +46,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Caldoran is a murderous thug. His entire life, he's followed supposedly righteous causes that allow him to inflict pain and suffering unto others without facing the consequences. Ever the zealot, the ends will always justify the means to him.
 [818452746] = [===[Калдоран — вбивця та головоріз. Все своє життя він дотримувався нібито праведних цілей лиш заради того, щоб завдавати болю та страждань іншим, уникаючи будь-яких наслідків. Самовідданий фанатик, для нього мета завжди виправдовує засоби.]===],
 -- I thank you, <name>. All you need to know is to take heed of my warnings about that man. He is the worst kind of monster... he's the kind that truly believes that he's doing the right thing.
-[2811265531] = [===[Дякую, {ім'я:к}. Єдине, що ти маєш знати — остерігайся цього чоловіка. Він гірше за будь-яке чудовисько... він щиро вірить, що чинить правильно.]===],
+[2811265531] = [===[Дякую, {ім'я:к}. Єдине, що ти маєш знати — остерігайся цього чоловіка. Він гірший за будь-яке чудовисько… Він щиро вірить, що чинить правильно.]===],
 -- I'm sorry, Leonid. I won't push you further.
 [2754503276] = [===[Вибач, Леоніде. Я не наполягатиму.]===],
 -- Is there anything else you can tell me about Baelin Caldoran?
@@ -107,7 +107,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Arm yourself and help us, or be gone with you.
 [607260865] = [===[Скажи мені, {клас:к}, ти {стать:прийшов:прийшла} позловтішатися над нашою бідою від імені Сріблястого Світанку? Поки ми проливали за вас кров у Наксрамасі, у наш священний анклав проникло найпідступніше зло.
 
-Озбройся і допоможи нам, або йди геть!]===],
+Озбройся і допоможи нам або йди геть!]===],
 ["!code"] = {
 ["cnesyuwhbycdhywsaetsrengmeadnglstttlsdispe"] = 3166117158,
 ["tlme..heyucetogtatormeonbfofteatdnwewebdfr"] = 607260865,
@@ -121,7 +121,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Oh I am well aware of Balnazzar's grand deception. It is a mark of shame that the crusade will bear for a lifetime. Whatever game the dreadlord is playing at, it can't be good for us or Light's Hope chapel. We need to retake Tyr's Hand and put an end to Balnazzar once and for all.
 [3180686332] = [===[О, добре знаю про великий обман Бальназара. Це тавро ганьби, яке Похід носитиме до кінця часів. Та що б повелитель жаху не задумав, це загрожує не лише нам, а й каплиці Надії Світла. Ми повинні повернути Десницю Тіра і покінчити з Бальназаром раз і назавжди.]===],
 -- Thank you, <class>. I know that you may not approve of the Scarlet Crusade's methods, but our cause is righteous and our aims are pure. I hope that once this is over, we may begin work on a lasting peace in the Plaguelands and can realize our shared goal to crush the scourge in this region.
-[2721834929] = [===[Дякую, {клас:к}. Я розумію, що ти можеш не схвалювати методи Багряного Походу, але наша справа праведна, а наша мета чиста. Сподіваюся, коли це закінчиться, ми зможемо почати працювати над встановленням тривалого миру, щоб разом знищити Скару у Зачумлених земляx.]===],
+[2721834929] = [===[Дякую, {клас:к}. Я розумію, що ти можеш не схвалювати методи Багряного Походу, але наша справа праведна, а мета — чиста. Сподіваюся, що коли це закінчиться, ми зможемо почати працювати над встановленням тривалого миру, щоб разом знищити Скару у Зачумлених землях.]===],
 -- Tyr's hand must be reclaimed at any cost.
 [3041783610] = [===[Десницю Тіра необхідно повернути за будь-якої ціни.]===],
 -- Very well, I will report back to Light's Hope Chapel now, but when I return I will do my best to assist.

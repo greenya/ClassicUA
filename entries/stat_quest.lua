@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
+addonTable.stat_quest = { name="root", count=7426, total=15922, rows={
     { name="Класична (Classic)", count=4275, total=4275, rows={
         { name="Калімдор", count=1277, total=1277, rows={
             { name="Азшара", count=33, total=33 },
@@ -21,14 +21,14 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Орґріммар", count=83, total=83 },
             { name="Селище Рут'Теран", count=4, total=4 },
             { name="Силітус", count=119, total=119 },
-            { name="Сквернолісся", count=83, total=83 },
+            { name="Сквернолісся", count=84, total=84 },
             { name="Спустошище", count=57, total=57 },
             { name="Степи", count=97, total=97 },
             { name="Танаріс", count=92, total=92 },
             { name="Тельдрассіль", count=48, total=48 },
             { name="Темнобережжя", count=72, total=72 },
             { name="Тисяча Шипів", count=63, total=63 },
-            { name="Фералас", count=79, total=79 },
+            { name="Фералас", count=78, total=78 },
             { name="Ясенеділ", count=77, total=77 },
         } },
         { name="Класи", count=520, total=520, rows={
@@ -136,7 +136,7 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Штормовій", count=77, total=77 },
         } },
     } },
-    { name="Сезон Відкриттів (SOD)", count=935, total=935, rows={
+    { name="Сезон Відкриттів (SOD)", count=937, total=937, rows={
         { name="Калімдор", count=150, total=150, rows={
             { name="Азшара", count=2, total=2 },
             { name="Аубердін", count=1, total=1 },
@@ -194,8 +194,8 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Руїни Ан'Кіражу", count=1, total=1 },
             { name="Храм Ан'Кіражу", count=4, total=4 },
         } },
-        { name="Різне", count=126, total=126, rows={
-            { name="Без категорії", count=61, total=61 },
+        { name="Різне", count=128, total=128, rows={
+            { name="Без категорії", count=63, total=63 },
             { name="Епічні", count=2, total=2 },
             { name="Легендарні", count=31, total=31 },
             { name="Навала Скари", count=4, total=4 },
@@ -221,7 +221,7 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Штормовій", count=7, total=7 },
         } },
     } },
-    { name="Палаючий Похід (TBC)", count=1568, total=2338, rows={
+    { name="Палаючий Похід (TBC)", count=1943, total=2348, rows={
         { name="Калімдор", count=276, total=276, rows={
             { name="Бруднолипка трясовина", count=76, total=76 },
             { name="Громовий Бескид", count=4, total=4 },
@@ -250,39 +250,39 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Чорнокнижник", count=12, total=12 },
             { name="Шаман", count=26, total=26 },
         } },
-        { name="Підземелля", count=24, total=84, rows={
+        { name="Підземелля", count=81, total=84, rows={
             { name="Акенайські склепи", count=2, total=2 },
             { name="Багряний монастир", count=1, total=1 },
-            { name="Загони рабів", count=0, total=3 },
+            { name="Загони рабів", count=3, total=3 },
             { name="Мародон", count=1, total=1 },
-            { name="Паросховище", count=0, total=3 },
-            { name="Печери Часу", count=0, total=37 },
+            { name="Паросховище", count=3, total=3 },
+            { name="Печери Часу", count=37, total=37 },
             { name="Підболоття", count=4, total=4 },
             { name="Склепи мани", count=5, total=5 },
             { name="Стратгольм", count=1, total=1 },
-            { name="Тераса Магістрів", count=0, total=5 },
-            { name="Тіньовий лабіринт", count=0, total=1 },
+            { name="Тераса Магістрів", count=2, total=5 },
+            { name="Тіньовий лабіринт", count=1, total=1 },
             { name="Ульдаман", count=2, total=2 },
-            { name="Цитадель Пекельного Вогню", count=6, total=17 },
+            { name="Цитадель Пекельного Вогню", count=17, total=17 },
             { name="Чорноскельний шпиль", count=2, total=2 },
         } },
-        { name="Позамежжя", count=869, total=1138, rows={
-            { name="Акіндун", count=5, total=16 },
+        { name="Позамежжя", count=1120, total=1137, rows={
+            { name="Акіндун", count=16, total=16 },
             { name="Болота Занґар", count=97, total=97 },
-            { name="Долина Тінистого Місяця", count=8, total=199 },
-            { name="Лезокраї гори", count=152, total=155 },
-            { name="Ліс Тероккар", count=108, total=111 },
-            { name="Наґранд", count=129, total=136 },
-            { name="Низошторм", count=155, total=162 },
-            { name="Півострів Пекельного Вогню", count=175, total=187 },
-            { name="Скеттіс", count=0, total=14 },
-            { name="Шаттрат", count=40, total=61 },
+            { name="Долина Тінистого Місяця", count=198, total=199 },
+            { name="Лезокраї гори", count=152, total=154 },
+            { name="Ліс Тероккар", count=109, total=111 },
+            { name="Наґранд", count=135, total=136 },
+            { name="Низошторм", count=156, total=162 },
+            { name="Півострів Пекельного Вогню", count=185, total=187 },
+            { name="Скеттіс", count=14, total=14 },
+            { name="Шаттрат", count=58, total=61 },
         } },
-        { name="Поля битв", count=14, total=14, rows={
+        { name="Поля битв", count=18, total=18, rows={
             { name="Альтерацька долина", count=2, total=2 },
             { name="Низина Араті", count=5, total=5 },
             { name="Око Бурі", count=2, total=2 },
-            { name="Поля битв", count=3, total=3 },
+            { name="Поля битв", count=7, total=7 },
             { name="Тіснина Пісні Війни", count=2, total=2 },
         } },
         { name="Професії", count=3, total=26, rows={
@@ -293,18 +293,18 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Куховарство", count=0, total=4 },
             { name="Рибальство", count=0, total=6 },
         } },
-        { name="Рейди", count=0, total=73, rows={
-            { name="Вершина Гіджала", count=0, total=1 },
-            { name="Зміїне святилище", count=0, total=9 },
+        { name="Рейди", count=60, total=73, rows={
+            { name="Вершина Гіджала", count=1, total=1 },
+            { name="Зміїне святилище", count=9, total=9 },
             { name="Зул'Аман", count=0, total=8 },
-            { name="Каражан", count=0, total=34 },
-            { name="Лігво Маґтерідона", count=0, total=2 },
+            { name="Каражан", count=34, total=34 },
+            { name="Лігво Маґтерідона", count=2, total=2 },
             { name="Плато Сонячного Колодязя", count=0, total=5 },
-            { name="Фортеця Бурі", count=0, total=11 },
-            { name="Чорний Храм", count=0, total=3 },
+            { name="Фортеця Бурі", count=11, total=11 },
+            { name="Чорний Храм", count=3, total=3 },
         } },
-        { name="Різне", count=20, total=20, rows={
-            { name="Без категорії", count=10, total=10 },
+        { name="Різне", count=20, total=27, rows={
+            { name="Без категорії", count=10, total=17 },
             { name="Військова кампанія Ан'Кіража", count=2, total=2 },
             { name="Репутація", count=8, total=8 },
         } },
@@ -317,8 +317,8 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Хмільний фестиваль", count=0, total=35 },
             { name="Ярмарок Темного місяця", count=1, total=5 },
         } },
-        { name="Східні Королівства", count=220, total=251, rows={
-            { name="Альтерацькі гори", count=2, total=4 },
+        { name="Східні Королівства", count=223, total=251, rows={
+            { name="Альтерацькі гори", count=4, total=4 },
             { name="Безплідні краї", count=1, total=1 },
             { name="Болото Скорбот", count=4, total=4 },
             { name="Випалена ущелина", count=2, total=2 },
@@ -332,7 +332,7 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Ліс Вічноспіву", count=71, total=71 },
             { name="Лох-Модан", count=1, total=1 },
             { name="Острів Квел'Данас", count=0, total=28 },
-            { name="Перевал Мертвого Вітру", count=0, total=1 },
+            { name="Перевал Мертвого Вітру", count=1, total=1 },
             { name="Передгір'я Гіллзбраду", count=5, total=5 },
             { name="Підмістя", count=4, total=4 },
             { name="Примарнокрай", count=64, total=64 },
@@ -509,8 +509,8 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Штормовій", count=14, total=17 },
         } },
     } },
-    { name="Катаклізм (Cataclysm)", count=0, total=5488, rows={
-        { name="Калімдор", count=0, total=1932, rows={
+    { name="Катаклізм (Cataclysm)", count=0, total=5487, rows={
+        { name="Калімдор", count=0, total=1931, rows={
             { name="Азшара", count=0, total=116 },
             { name="Бруднолипка трясовина", count=0, total=103 },
             { name="Гора Гіджал", count=0, total=150 },
@@ -525,7 +525,7 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Місячна галявина", count=0, total=1 },
             { name="Мулґор", count=0, total=44 },
             { name="Орґріммар", count=0, total=63 },
-            { name="Острів Кривавої Мли", count=0, total=2 },
+            { name="Острів Кривавої Мли", count=0, total=1 },
             { name="Острів Лазурової Мли", count=0, total=7 },
             { name="Острови Ехо", count=0, total=60 },
             { name="Південні Степи", count=0, total=110 },
@@ -566,8 +566,8 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Чорнокнижник", count=0, total=11 },
             { name="Шаман", count=0, total=10 },
         } },
-        { name="Нортренд", count=0, total=55, rows={
-            { name="Акерус: Чорна фортеця", count=0, total=6 },
+        { name="Нортренд", count=0, total=56, rows={
+            { name="Акерус: Чорна фортеця", count=0, total=7 },
             { name="Борейська тундра", count=0, total=12 },
             { name="Грозові вершини", count=0, total=2 },
             { name="Даларан", count=0, total=2 },
@@ -583,7 +583,7 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Азжол-Неруб", count=0, total=3 },
             { name="Акенайські склепи", count=0, total=4 },
             { name="Ан'кахет: Старе королівство", count=0, total=3 },
-            { name="Аркатраc", count=0, total=3 },
+            { name="Аркатрас", count=0, total=3 },
             { name="Багряний монастир", count=0, total=27 },
             { name="Бастіони Пекельного Вогню", count=0, total=8 },
             { name="Ботаніка", count=0, total=3 },
@@ -650,10 +650,10 @@ addonTable.stat_quest = { name="root", count=7049, total=15911, rows={
             { name="Низошторм", count=0, total=3 },
             { name="Півострів Пекельного Вогню", count=0, total=5 },
         } },
-        { name="Професії", count=0, total=95, rows={
+        { name="Професії", count=0, total=94, rows={
             { name="Алхімія", count=0, total=3 },
             { name="Археологія", count=0, total=10 },
-            { name="Інженерія", count=0, total=3 },
+            { name="Інженерія", count=0, total=2 },
             { name="Куховарство", count=0, total=32 },
             { name="Рибальство", count=0, total=31 },
             { name="Травництво", count=0, total=1 },

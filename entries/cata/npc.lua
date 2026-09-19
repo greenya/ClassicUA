@@ -8,6 +8,7 @@ local npc = { -- [id] = { title, description (optional) }
 [34668] = { "Шпичка Гайкокрут", "ваша виконавча асистентка" }, -- Sassy Hardwrench
 [34692] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
 [34695] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
+[34853] = { "орк-в'язень", en="Orc Prisoner" }, -- Orc Prisoner
 [35650] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
 [35786] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
 [35805] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
@@ -31,20 +32,41 @@ local npc = { -- [id] = { title, description (optional) }
 [42640] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
 [43095] = { "Шпичка Гайкокрут", en="Sassy Hardwrench" }, -- Sassy Hardwrench
 [43333] = { "Шпичка Гайкокрут", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[45167] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[45213] = { "Сінестра", "дружина Смертекрила" }, -- Sinestra
+[45668] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
 [46654] = { "Рея", en="Rhea" }, -- Rhea
 [46785] = { "лорд Розпал", en="Lord Cannon" }, -- Lord Cannon
+[46895] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
 [46955] = { "Рея", en="Rhea" }, -- Rhea
 [47208] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
 [47209] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
+[48129] = { "Гелькулар", en="Helcular" }, -- Helcular
+[48365] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[48478] = { "Сінестра", en="Sinestra" }, -- Sinestra
 [48494] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
 [48496] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
 [48993] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
+[49026] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[49196] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[49270] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[49358] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
 [49900] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
 [49901] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
 [51152] = { "ультрамариновий кіразький бойовий танк" }, -- Qiraji Battle Tank
 [51394] = { "гігантське пазуристе щупальце", en="Giant Claw Tentacle" }, -- Giant Claw Tentacle
 [51428] = { "пазуристе щупальце", en="Claw Tentacle" }, -- Claw Tentacle
+[51571] = { "Курдран Дикий Молот", "представник клану Диких Молотів" }, -- Kurdran Wildhammer
 [52267] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
+[54667] = { "наглядачка Джанг", en="Watcher Jhang" }, -- Watcher Jhang
+[54675] = { "наглядачка Джанг", en="Watcher Jhang" }, -- Watcher Jhang
+[54678] = { "натураліст Кус", en="Naturalist Bite" }, -- Naturalist Bite
+[54848] = { "наглядачка Джанг", en="Watcher Jhang" }, -- Watcher Jhang
+[54849] = { "натураліст Кус", en="Naturalist Bite" }, -- Naturalist Bite
+[54851] = { "вітрозов Кіготь", en="Windcaller Claw" }, -- Windcaller Claw
+[54852] = { "землев'яз Райдж", en="Earthbinder Rayge" }, -- Earthbinder Rayge
+[54890] = { "бойовий командир Мафуун", en="Field Commander Mahfuun" }, -- Field Commander Mahfuun
+[54891] = { "шпигунка Ґрік'та", en="Spy Grik'tha" }, -- Spy Grik'tha
 [57682] = { "Тіріґоса", en="Tyrygosa" }, -- Tyrygosa
 [57684] = { "проєкція Тіріґоси" }, -- Tyrygosa
 }

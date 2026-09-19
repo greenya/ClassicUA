@@ -8,11 +8,17 @@ local npc = { -- [id] = { title, description (optional) }
 [69] = { "хворий сірий вовк", en="Diseased Timber Wolf" }, -- Diseased Timber Wolf
 [299] = { "хворий молодий вовк", en="Diseased Young Wolf" }, -- Diseased Young Wolf
 [1502] = { "жалюгідний гуль", en="Wretched Ghoul" }, -- Wretched Ghoul
+[25465] = { "Кел'Тузад", en="Kel'Thuzad" }, -- Kel'Thuzad
+[27766] = { "образ Кел'Тузада" }, -- Kel'Thuzad
+[28907] = { "принц Валанар", en="Prince Valanar" }, -- Prince Valanar
+[31395] = { "Іллідан Шаленство Бурі", en="Illidan Stormrage" }, -- Illidan Stormrage
 [31412] = { "Тралл", "воєвождь" }, -- Thrall <Warchief>
 [31650] = { "Тралл", "воєвождь" }, -- Thrall <Warchief>
 [32363] = { "Тралл", "воєвождь" }, -- Thrall <Warchief>
 [32518] = { "Тралл", "воєвождь" }, -- Thrall <Warchief>
 [32568] = { "летючий чорний кіразький бойовий танк" }, -- Qiraji Battle Tank
+[32587] = { "Іллідан Шаленство Бурі", en="Illidan Stormrage" }, -- Illidan Stormrage
+[32588] = { "Іллідан Шаленство Бурі", en="Illidan Stormrage" }, -- Illidan Stormrage
 [34994] = { "Тралл", "воєвождь" }, -- Thrall <Warchief>
 [35368] = { "Тралл", "воєвождь" }, -- Thrall <Warchief>
 [36208] = { "Зераш Вогняне Лезо", en="Xerash Fireblade" }, -- Xerash Fireblade

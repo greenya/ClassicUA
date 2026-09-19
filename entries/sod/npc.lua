@@ -209,7 +209,7 @@ local npc = { -- [id] = { title, description (optional) }
 [212703] = { "дріада Срібнокрилих", en="Silverwing Dryad" }, -- Silverwing Dryad
 [212706] = { "друїд Срібнокрилих", en="Silverwing Druid" }, -- Silverwing Druid
 [212707] = { "Лародар", "хранитель гаю", en="Larodar" }, -- Larodar <Keeper of the Grove>
-[212727] = { "бугай Пісні Війни", en="Warsong Grunt" }, -- Warsong Grunt
+[212727] = { "рубайло Пісні Війни", en="Warsong Grunt" }, -- Warsong Grunt
 [212728] = { "рейдер Пісні Війни", en="Warsong Raider" }, -- Warsong Raider
 [212729] = { "шаман Пісні Війни", en="Warsong Shaman" }, -- Warsong Shaman
 [212730] = { "Тояра", "майстриня клинка", en="Tojara" }, -- Tojara <Blademaster>
@@ -262,7 +262,7 @@ local npc = { -- [id] = { title, description (optional) }
 [214530] = { "Ардель Дральта", en="Ardelle Dralta" }, -- Ardelle Dralta
 [214603] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
 [214612] = { "рибоїд Аку'май", en="Aku'mai Fisher" }, -- Aku'mai Fisher
-[214695] = { "наймит", en="peon" }, -- peon
+[214695] = { "батрак", en="peon" }, -- peon
 [214830] = { "світлик", en="wisp" }, -- wisp
 [214876] = { "Давій Пустосяй", en="Davius Voidstar" }, -- Davius Voidstar
 [214914] = { "перлина Чорноводдя", en="Blackfathom Pearl" }, -- Blackfathom Pearl
@@ -1246,7 +1246,7 @@ local npc = { -- [id] = { title, description (optional) }
 [240780] = { "гончак Багряного Походу", en="Scarlet Bloodhound" }, -- Scarlet Bloodhound
 [240781] = { "претор Багряного Походу", en="Scarlet Praetorian" }, -- Scarlet Praetorian
 [240782] = { "священник Багряного Походу", en="Scarlet Cleric" }, -- Scarlet Cleric
-[240783] = { "курат Багряного Походу", en="Scarlet Curate" }, -- Scarlet Curate
+[240783] = { "вікарій Багряного Походу", en="Scarlet Curate" }, -- Scarlet Curate
 [240784] = { "архімаг Багряного Походу", en="Scarlet Archmage" }, -- Scarlet Archmage
 [240785] = { "алхімік Багряного Походу", en="Scarlet Alchemist" }, -- Scarlet Alchemist
 [240786] = { "медик Багряного Походу", en="Scarlet Medic" }, -- Scarlet Medic
@@ -1383,7 +1383,7 @@ local npc = { -- [id] = { title, description (optional) }
 [242867] = { "воля Спопелителя", en="Will of the Ashbringer" }, -- Will of the Ashbringer
 [242872] = { "леді Бломе", en="Lady Blaumeux" }, -- Lady Blaumeux
 [242874] = { "Тан Корт'азз", en="Thane Korth'azz" }, -- Thane Korth'azz
-[242877] = { "cер Зелєк", en="Sir Zeliek" }, -- Sir Zeliek
+[242877] = { "сер Зелєк", en="Sir Zeliek" }, -- Sir Zeliek
 [242878] = { "верховний повелитель Моґрейн", en="Highlord Mograine" }, -- Highlord Mograine
 [242886] = { "гармата Східних морів", en="Eastsea Long Barrel" }, -- Eastsea Long Barrel
 [242954] = { "ковадло", en="Anvil" }, -- Anvil
@@ -1437,7 +1437,7 @@ local npc = { -- [id] = { title, description (optional) }
 [243757] = { "Анжела Досантос", en="Angela Dosantos" }, -- Angela Dosantos
 [243834] = { "Джонні Великосердний", "видатний будівельник", en="Johnny Heart Man" }, -- Johnny Heart Man
 [243838] = { "Двіба", "він теж тут", en="Dwiba" }, -- Dwiba
-[243893] = { "верховний генерал Аббендіс", en="High General Abbendis" }, -- High General Abbendis
+[243893] = { "верховний генерал Аббендіс" }, -- Abbendis
 [243904] = { "паладин Багряного Походу", en="Scarlet Paladin" }, -- Scarlet Paladin
 [243946] = { "піхотинець Сріблястого Світанку", "Сріблястий Світанок", en="Argent Dawn Infantry" }, -- Argent Dawn Infantry <The Argent Dawn>
 [244005] = { "жрець Багряного Походу", en="Scarlet Priest" }, -- Scarlet Priest

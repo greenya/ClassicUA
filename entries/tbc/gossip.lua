@@ -5,6 +5,104 @@
 local _, addonTable = ...
 
 local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optional) }, ... }
+[16816] = { -- Echo of Medivh
+-- Now that you have bested me, test your skills against each other! Take control of either king to begin play.
+[3966870133] = [===[Тепер, коли ви здолали мене, випробуйте свою майстерність одне проти одного! Торкніться будь-якого короля, щоб почати гру.]===],
+-- Please reset the chess board, we would like to play again.
+[506398006] = [===[Будь ласка, віднови шахову дошку — ми хотіли б зіграти ще раз.]===],
+-- To pass beyond my Hall, you must defeat me in a game of skill! Control your king when you are ready to begin...
+[1419056002] = [===[Щоб пройти повз мою залу, ви маєте здолати мене в грі на майстерність! Торкніться короля, коли будете готові почати...]===],
+},
+[17827] = { -- Claw
+-- How embarrassing to be taken as a pet by a hunter!
+--
+-- I owe you my life, but please, trouble yourself no longer with my welfare. Now that you've freed me from Musel'ek, I'll be able to find my way out. Maybe I'll pick up Rayge along the way.
+[3146544543] = [===[Як принизливо бути ручною твариною якогось мисливця!
+
+Я завдячую тобі життям, але не переймайся за мене. Тепер, коли ти звільнив мене від Мусел'ека, я й сам знайду дорогу назад. Може, ще й підхоплю Райджа по дорозі.]===],
+},
+[17852] = { -- Thrall
+-- I am with you, Thrall.
+[1582545310] = [===[Я з тобою, Тралле.]===],
+-- Lady Proudmoore's forces have bled to delay Archimonde and his Burning Legion, and now this grim task falls to us. Are you ready to stand with me against the onslaught?
+[1791273726] = [===[Сили леді Праудмур проливали кров, стримуючи Архімонда та його Палаючий Легіон, і тепер це завдання лягає на нас. Ти {стать:готовий:готова} стояти зі мною проти цього натиску?]===],
+-- May the spirits be with you.
+[1787114019] = [===[Нехай духи бережуть тебе.]===],
+-- Outstanding! Kaz'rogal's death cry should strike fear into the core of the Burning Legion. They now know the power your forces possess, so expect the worst the Legion can offer.
+[322899723] = [===[Неймовірно! Передсмертний крик Каз'роґала мав вразити навіть війська Палаючого Легіону. Тепер вони знають, на що здатне наше військо, тож чекай найгіршого, що може запропонувати Легіон.]===],
+-- Outstanding! Killing a Pit Lord such as Azgalor is no small feat, my friend. If we had more time, I would love to hear the story of you and your companions. Archimonde will not give us that pleasure, however. My scouts have already reported that the Legion is amassing an immense force outside our camp, and Archimonde is very close to the World Tree. We are evacuating with the help of Lady Proudmoore. You should head to the World Tree at once. The fate of our world is still undecided.
+[3958017961] = [===[Неймовірно! Убити володаря безодні на кшталт Азґалора — це не аби що. Якби в нас було більше часу, я залюбки послухав би історію про тебе й твоїх супутників. Та Архімонд не дасть нам перепочинку. Мої розвідники доповіли, що Легіон збирає величезні сили біля нашого табору, а Архімонд зовсім близько до Світового Дерева. Ми відступимо за допомогою леді Праудмур. Тобі слід негайно вирушити до Світового Дерева. Доля нашого світу ще не вирішена.]===],
+-- The Burning Legion presses us hard, but our defenses hold. Every moment we keep Archimonde away from the World Tree brings us closer to victory.
+[2914616063] = [===[Палаючий Легіон тисне на нас щосили, але наша оборона тримається. Кожна мить, поки ми стримуємо Архімонда від Світового Дерева, наближає нас до перемоги.]===],
+-- Then let the Legion do their worst!
+[3820951068] = [===[Тоді нехай Легіон покаже все, на що здатний!]===],
+-- Until we meet again, Thrall.
+[494422791] = [===[До нових зустрічей, Тралле.]===],
+-- We have nothing to fear.
+[3778471281] = [===[Нам нема чого боятися.]===],
+},
+[17876] = { -- Thrall
+-- I will do no such thing. I simply cannot leave Taretha in danger while I run off into the mountains. I am no coward. Now, where is she?
+[569161794] = [===[Я не можу піти. Я не можу просто лишити Таретту в небезпеці й втекти в гори. Я не боягуз. Кажи, де вона?]===],
+-- I'm glad Taretha is alive. We now must find a way to free her from her magical bindings.
+[4174243572] = [===[Я радий, що Тарета жива. Тепер ми маємо якось звільнити її від магічних пут.]===],
+-- Taretha cannot see you, Thrall.
+[4185996467] = [===[Тарета поки не зможе прийти, Тралле.]===],
+-- Tarren Mill lies beyond these trees. The commotion at Durnholde should give us a little time to find Taretha before the entire countryside is flooded with human soldiers. Let's check the nearby barn, then head into town.
+[3685946611] = [===[Тарренський Млин прямо за цими деревами. Метушня в Дарнгольді має дати нам трохи часу, щоб знайти Тарету, перш ніж солдати заполонять усю округу. Оглянемо той хлів, а тоді вирушимо до міста.]===],
+-- Tarren Mill.
+[3964443608] = [===[В Тарренському Млині.]===],
+-- Thank you friends, I owe my freedom to you. Where is Taretha? I hoped to see her one last time and thank her before leaving into the mountains.
+[2191648695] = [===[Дякую, друзі, я завдячую вам своєю свободою. Де Тарета? Я сподівався ще раз побачити її й віддячити, перш ніж піти в гори.]===],
+-- The situation is rather complicated, Thrall. It would be best for you to head into the mountains now, before more of Blackmoore's men show up. We'll make sure Taretha is safe.
+[4177929075] = [===[Ситуація доволі складна, Тралле. Тобі краще вирушити в гори зараз, поки не прийшло ще більше людей Блекмура. Ми подбаємо, щоб Тарета була в безпеці.]===],
+-- We are ready to get you out of here, Thrall. Let's go!
+[3858421082] = [===[Ми готові вивести тебе звідси, Тралле. Ходімо!]===],
+-- We're ready, Thrall.
+[3231349268] = [===[Ми готові, Тралле.]===],
+-- What do you mean by this? Is Taretha in danger?
+[3159376543] = [===[Що сталося? Тареті щось загрожує?]===],
+-- Who are you? Just leave me be.
+[3866901876] = [===[Хто ти? Просто дай мені спокій.]===],
+},
+[17885] = { -- Earthbinder Rayge
+-- Thank goodness for you! Claw and I were investigating this place when we were jumped by Swamplord Musel'ek. He can control animals, even druids!
+--
+-- Unfortunately, Claw was caught in bear form at the time, and is now the swamplord's pet. I don't dare change into cat form or he'll get me too!
+--
+-- I'm afraid you'll have to fight Claw in order to save him. Just keep heading west; you can't miss him.
+[471357637] = [===[Яке щастя, що ти тут! Ми з Кігтем досліджували це місце, коли на нас накинувся володар боліт Мусел'ек. Він уміє підкоряти тварин, навіть друїдів!
+
+На жаль, Кіготь саме тоді був у подобі ведмедя, і тепер він — ручний звір володаря боліт. Я не ризикну битися в подобі кота, бо тоді він і мене підкорить!
+
+Боюся, що тобі доведеться перемогти Кігтя, щоб визволити його. Просто йди далі — ти не проминеш їх.]===],
+},
+[17890] = { -- Weeder Greenthumb
+-- Here lie the remains of Weeder Greenthumb, one of Watcher Jhang's druid companions. By all appearances he was killed quick and clean while trying to make his escape from the Slave Pens.
+[2988504336] = [===[Тут лежать рештки травника Зеленопала, одного з товаришів наглядачки Джанг. Судячи з усього, його вбили під час спроби втечі із Загонів рабів.]===],
+},
+[17893] = { -- Naturalist Bite
+-- Alright, Bite, I'll let you out.
+[3820726957] = [===[Гаразд, Кусе, я тебе випущу.]===],
+-- I almost made it!
+--
+-- I came in here to prove the existence of Quagmirran, that most mythical of fungal giants. I got my wish, sort of.
+--
+-- You must let me free! In return I will grant you a boon to help you to deal with Quagmirran.
+[2884663809] = [===[Мені майже вдалось!
+
+Я прийшов сюди, щоб довести існування Трясовуна, найміфічнішого з грибних велетнів. Моє бажання здійснилося... Ну, певною мірою.
+
+Ти маєш звільнити мене! Натомість я дарую тобі благословення, яке допоможе тобі впоратися з Трясовуном.]===],
+-- Naturalist, please grant me your boon.
+[3342410959] = [===[Натуралісте, даруй мені своє благословення.]===],
+-- Now that the rude interruption is over, as I was saying, Quagmirran is nearby!
+--
+-- As promised, I can fortify you with a magical boon that should aid you in your fight with him.
+[3186562443] = [===[Як я вже казав, Трясовун десь неподалік!
+
+Я можу надати тобі магічне благословення, яке допоможе в бою з ним.]===],
+},
 [18063] = { -- Garrosh
 -- What is it that you want, <race>?
 [511042405] = [===[Що ти хочеш, {раса:к}?]===],
@@ -184,6 +282,58 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 ["wtddghtlyu.-"] = 2954981535,
 },
 },
+[18166] = { -- Khadgar
+-- <Khadgar grins to himself>
+--
+-- I convinced A'dal and his brethren to return here with me. I believe that only their power can drive the Legion from this universe. But as you will no doubt find - their power must first live in our hearts.
+--
+-- To combat the darkness, we must become beacons of their eternal Light.
+[237784392] = [===[<Кадґар усміхається сам до себе.>
+
+Я переконав А'дала та інших наару повернутися сюди зі мною. Я вірю, що лише їхня сила здатна вигнати Легіон із цього світу. Та, як ти й {стать:сам:сама} переконаєшся, — їхня сила спершу має оселитися в наших серцях.
+
+Щоб протистояти темряві, ми самі маємо стати маяками їхнього вічного Світла.]===],
+-- Go on, please.
+[3050890991] = [===[Прошу, продовжуй.]===],
+-- I am Khadgar, former apprentice to the fallen Guardian, Medivh. I'm sure you've heard his name before.
+--
+-- It was I who discovered that Medivh had been possessed by the Evil One, Sargeras - and that he had opened the Dark Portal between this world and Azeroth. Though I honored my Master, I was forced to slay him and put his tortured soul to rest.
+[1192462097] = [===[Я Кадґар, колишній учень сумнозвісного Вартівника, Медіва. Певен, ти вже {стать:чув:чула} це ім'я.
+
+Це я виявив, що Медівом заволоділо зло, Сарґерас, і що саме він відкрив Темний Портал між цим світом та Азеротом. Хоч я й шанував свого наставника, мені довелося вбити його й принести спокій його змученій душі.]===],
+-- I fought alongside Lord Anduin Lothar as we drove the Horde from our lands on Azeroth. As the heir of Medivh's legacy, I could do no less.
+--
+-- When the call finally came to invade this grim world - and put an end to the orcs' evil forever - I stepped forward along with my friends Turalyon, Alleria, Danath and Kurdran.
+[3592739027] = [===[Я бився пліч-о-пліч із лордом Андуїном Лотаром, коли ми виганяли Орду з наших земель на Азероті. Як спадкоємець справи Медіва, я не міг чинити інакше.
+
+Коли нарешті пролунав заклик вторгнутися в цей похмурий світ — і назавжди покласти край злу орків, — я виступив уперед разом зі своїми друзями Тураліоном, Аллерією, Данатом і Курдраном.]===],
+-- I see.
+[143907485] = [===[Продовжуй.]===],
+-- I've heard your name spoken only in whispers, mage. Who are you?
+[3020638981] = [===[Я не раз {стать:чув:чула} твоє ім'я, магу. Хто ти?]===],
+-- My comrades and I called ourselves the Sons of Lothar - in honor of the greatest, most selfless man we ever knew. We gave our all to defeat Ner'zhul and end his madness.
+--
+-- As this doomed world fell apart around us, we shattered the Dark Portal to prevent any further harm befalling our beloved Azeroth.
+[1635771567] = [===[Ми назвали себе Синами Лотара — на честь найвеличнішої, найшляхетнішої людини, яку ми знали. Ми відчайдушно билися, щоб здолати Нер'зула й покласти край його безумству.
+
+Коли цей приречений світ почав руйнуватись, ми знищили Темний Портал, щоб запобігти подальшій шкоді Азероту.]===],
+-- The naaru are wise beyond our understanding. I've learned more from A'dal in the last five months than all the years I spent in the libraries of Dalaran.
+[333724075] = [===[Наару мудріші, ніж ми здатні осягнути. За останні п'ять місяців я навчився від А'дала більше, ніж за всі роки, проведені в бібліотеках Даларана.]===],
+-- There was something else I wanted to ask you.
+[2072845323] = [===[Я {стать:хотів:хотіла} запитати ще дещо.]===],
+-- Trapped in this broken wasteland, we did our best to survive. Over time we sensed that a new evil was closing in around us from the Twisting Nether. More foul than the dark orcs - it was the Burning Legion itself that sought to take hold of this... Outland.
+[3628931464] = [===[Замкнені в цій понівеченій пустці, ми робили все можливе, щоб вижити. Із часом ми відчули, як із Підсвітньої Крутоверті насувається нове зло. Гірше за темних орків — сам Палаючий Легіон прагнув заволодіти цим... Позамежжям.]===],
+-- What did you do then?
+[1287418806] = [===[Що було далі?]===],
+-- What happened next?
+[280265843] = [===[Що сталося потім?]===],
+-- While my comrades held the line against the encroaching darkness, I used my magic to reach out into the Great Dark Beyond. There, I sensed beings of immense Light - of unfathomable purity.
+--
+-- It was A'dal and his naaru I had found. It was nothing short of a... miracle.
+[2758076725] = [===[Поки мої побратими стримували наступ темряви, я спрямував свою магію у Велику Позамежну Темряву. Там я відчув присутність істот безмежного Світла — незбагненної чистоти.
+
+Я знайшов А'дала і його наару. Це було справжнє... диво.]===],
+},
 [18180] = { -- Hemet Nesingwary
 -- Hemet Nesingwary, what are you doing here in the Outland?
 [1236741140] = [===[Гемет Ернінґвей? Що ти робиш у Позамежжі?]===],
@@ -276,6 +426,138 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Get me out of here, draenei!
 [2562874385] = [===[Витягни мене звідси, {раса:к}!]===],
 },
+[18417] = { -- Altruis the Sufferer
+-- <Altruis turns to face you and smiles.>
+--
+-- I do not.
+--
+-- <Altruis points to his steed, Nethrandamus.>
+--
+-- We must stop them before these forge camps are able to complete whatever it is that they are building.
+[4218248463] = [===[<Альтруіс обертається до вас і усміхається.>
+
+Я їх не бачу.
+
+<Альтруіс вказує на Нетрандамуса.>
+
+Ми повинні зупинити їх, поки ці табори Легіону не завершили те, що вони будують.]===],
+-- And now?
+[107197372] = [===[А зараз?]===],
+-- As a reward for his years of service, Illidan allowed Kael'thas to send him five warriors to train under him. It would be the first time blood elves would be allowed to train as demon hunters.
+--
+-- The training was brutal. Illidan put Kael's warriors through trials that would defeat most fully capable demon hunters.
+--
+-- Three of Kael's elves died in training - another went mad.
+--
+-- One succeeded.
+[2138459205] = [===[В нагороду за багаторічну службу Іллідан дозволив Кель'тасу відправити до нього п'ятьох воїнів на навчання. Це був перший випадок, коли ельфам крові дозволили пройти тренування мисливців на демонів.
+
+Навчання було жорстоким. Іллідан піддав воїнів Келя випробуванням, які були б непростими навіть для найдосвідченіших мисливців на демонів.
+
+Троє ельфів Келя загинули під час навчання, ще один збожеволів.
+
+Та один витримав.]===],
+-- Do you know what I see? A precursor to invasion.
+--
+-- Aye, the master was wise in sealing the portals but has since lost his... how shall I put this? The master has lost his focus. Yes... Focus.
+--
+-- With this loss, the Legion has seized opportunity. They seep out now, growing in number day by day.
+[2303884909] = [===[Знаєш, що я бачу? Провісник вторгнення.
+
+Так, майстер вчинив розумно, запечатуючи портали, але відтоді він втратив... як би це сказати? Майстер втратив пильність. Так... Пильність.
+
+Легіон скористався цією нагодою. Вони просочуються, збільшуючи свою чисельність з кожним днем.]===],
+-- Forge camps?
+[3567402919] = [===[Табори Легіону?]===],
+-- Go on, please.
+[3050890991] = [===[Прошу, продовжуй.]===],
+-- How do you see them now?
+[219341404] = [===[Як ти їх зараз бачиш?]===],
+-- I see twisted steel and smell sundered earth.
+[1711303890] = [===[Я бачу скручену сталь і відчуваю запах випаленої землі.]===],
+-- I'm listening.
+[1669020772] = [===[Я слухаю.]===],
+-- Interesting.
+[3941825665] = [===[Цікаво.]===],
+-- It is not surprising that a blood elf's potential for power as a demon hunter is so high. After all, the sin'dorei do not have the natural aversion to demonic magic that night elves do.
+--
+-- However, I do not expect many to succeed. Most of them, Varedis included, pursue power for its own sake. That power will consume them, for they are not driven by the pure fire that burns inside a true demon hunter's heart.
+[2252191110] = [===[Не дивно, що потенціал ельфів крові як мисливців на демонів настільки високий. Адже сін'дорай не мають тієї природної відрази до демонічної магії, яка притаманна нічним ельфам.
+
+Однак я не думаю, що це вдасться багатьом. Більшість з них, включаючи Варедіса, прагне сили заради самої сили. І ця сила поглине їх, адже їх не живить той чистий вогонь, що палає в серці справжнього мисливця на демонів.]===],
+-- Knowledge of a demon's true name is rumored to give a certain amount of power over that demon.
+--
+-- The Book of Fel names is said to contain the true name of every demon ever to have existed. By memorizing the passages in the book, Varedis had found a source of power to rival Illidan's own drinking from the Skull of Gul'dan.
+--
+-- At Illidan's request, Varedis now runs the training grounds at the Ruins of Karabor - along with the three masters that mentored Varedis.
+[2348518445] = [===[Кажуть, що знання справжнього імені демона надає певну владу над ним.
+
+Вважається, що "Книга імен Скверни" містить справжні імена кожного демона, який коли-небудь існував. Запам'ятавши уривки цієї книги, Варедіс знайшов джерело сили, що може зрівнятися з силою самого Іллідана, яку той черпає з черепа Ґул'дана.
+
+На прохання Іллідана Варедіс тепер керує тренувальними майданчиками в руїнах Карабора разом із трьома майстрами, які колись його навчали.]===],
+-- Legion?
+[2947674949] = [===[Легіон?]===],
+-- Tell me about the demon hunter training grounds at the Ruins of Karabor.
+[1554087451] = [===[Розкажи мені про тренувальний майданчик мисливців на демонів у руїнах Карабора.]===],
+-- That is what these structures that litter the landscape are called. The Legion have employed the mo'arg and gan'arg to build weapons of mass destruction at these mobile forge camps. Let us not find out what it is that they intend to build here in Nagrand!
+--
+-- You will be my eyes. Your weapons will be my fury.
+[1532062468] = [===[Це те, як називаються ці споруди, що розкидані по світу. Легіон використовує мо'арґів і ґан'арґів, щоб зводити зброю масового знищення в цих таборах. Не будемо з'ясовувати, що вони мають намір тут будувати!
+
+Ти будеш моїми очима. А твоя зброя — моєю люттю.]===],
+-- That's quite a story.
+[3295224045] = [===[Нічого собі історія.]===],
+-- The Burning Legion. Demons. I see them as clearly as you can see your own hand in front of your face. That is, I used to be able to see them clearly.
+--
+-- With the Legion's return come new machinations. Under normal circumstances, I am able to sense the presence of a demon from a thousand paces.
+--
+-- <Altruis grimaces.>
+[434634972] = [===[Палаючий Легіон. Демони. Я бачу їх так само чітко, як ти можеш бачити власну руку. Тобто, раніше я міг їх бачити.
+
+У Легіону з'являються нові хитрощі. Зазвичай я здатен відчути демона з тисячі кроків.
+
+<Альтруїс примружується.>]===],
+-- There was something else I wanted to ask you, Altruis.
+[3481557353] = [===[Я хочу запитати у тебе ще дещо, Альтруїсе.]===],
+-- They elude me. I cannot see past their defenses. They have put in place wards to prevent detection.
+--
+-- <Altruis points westward.>
+--
+-- They fear us because they know that we fear nothing. The cost for such power is great, the sacrifices many.
+[2874419594] = [===[Вони уникають мене. Я не можу проникнути крізь їхні захисти. Вони встановили бар'єри, щоб запобігти виявленню.
+
+<Альтруїс вказує на захід.>
+
+Вони бояться нас, бо знають, що ми нічого не боїмося. Ціна такої сили — велика жертва.]===],
+-- This is what I have gathered from the information that you collected from the survey.
+--
+-- There are two primary forge camps: Forge Camp: Hate, directly west of where we stand and Forge Camp: Fear, directly southwest. Each camp has a Legion transporter, one forge, and several spell warding towers. Additionally, the camps are guarded by wrathguards manning fel cannons. Lastly, each camp has a pit lord overseer.
+--
+-- Right then, this should be no problem at all...
+--
+-- <Altruis laughs.>
+[4215656436] = [===[Ось що я дізнався із інформації, яку ви зібрали з опитування.
+
+Є два основні табори Легіону: "Ненависть" знаходиться прямо на захід від нас, а "Страх" прямо на південний захід. Кожен табір має транспортер Легіону, одну кузню та кілька башт захисту. Крім того, табори охороняються вартовими гніву, які керують гарматами Скверни. Також у кожному таборі є розпорядник — володар безодні.
+
+Отже, це буде не складно...
+
+<Альтруїс сміється.>]===],
+-- Varedis was his name. To Illidan's surprise, not only did he succeed in the excruciating rites of passage that are part of the training; Varedis was already displaying better command over his powers than many veteran demon hunters.
+--
+-- Illidan sensed the potential in Varedis and assigned three master demon hunters to train him further in their ways.
+[3631389462] = [===[Його ім'я — Варедіс. На подив Іллідана, він не лише успішно пройшов виснажливі обряди ініціації, що є частиною тренувань, а й проявив кращий контроль над своїми силами, ніж багато досвідчених мисливців на демонів.
+
+Іллідан відчував потенціал Варедіса і доручив трьом майстрам-мисливцям на демонів продовжити його навчання.]===],
+-- What do you see when you look to the west, mortal?
+[2709663911] = [===[Що ти бачиш, коли дивишся на захід, {стать:смертний:смертна}?]===],
+-- Within a year of training under Illidan's best three demon hunters, Varedis had surpassed them.
+--
+-- No longer content with the training they had to offer, Varedis infiltrated the Shadow Council where he learned of a powerful relic known as the Book of Fel Names. He secretly read from this book, committing each passage to memory.
+[1675158572] = [===[Вже через рік навчання під керівництвом трьох найкращих мисливців на демонів Іллідана Варедіс перевершив їх.
+
+Невдоволений тим, що вони могли йому запропонувати, Варедіс проник до Тіньової Ради, де дізнався про потужний артефакт, відомий як "Книга імен Скверни". Він таємно читав цю книгу, запам'ятовуючи кожний уривок.]===],
+},
 [18471] = { -- Gurgthock
 -- Get out of my way, <race>. Can't you see that we're in the middle of a battle!
 [2606837510] = [===[Забирайся з дороги, {раса:к}. Ти що, не бачиш, бій в самому розпалі!]===],
@@ -288,6 +570,10 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 ["yedysg..btdoyuhewtittstobetewlcn"] = 3861738372,
 },
 },
+[18481] = { -- Adal
+-- <A soothing light fills you as you approach the naaru. Slow musical chimes echo within your mind and, though a word is not uttered, you feel an assurance of safety. You are welcome in Shattrath City.>
+[1250821424] = [===[<Заспокійливе світло наповнює вас, щойно ви наближаєтеся до наару. Повільний музичний передзвін лунає у вашому розумі, і хоча жодного слова не промовлено, ви відчуваєте, що ви в безпеці. Вам раді в Шаттраті.>]===],
+},
 [18482] = { -- Empoor
 -- Now that I've been beaten to within an inch of my life what do you want?
 [474052142] = [===[Ну що, раз ти мене вже до півсмерті {стать:побив:побила}, чого ти від мене хочеш?]===],
@@ -295,6 +581,10 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [3282973086] = [===[О ні, тільки не ти знову! Іди геть!]===],
 -- Very busy... very busy! What?
 [2361180942] = [===[Я дуже зайнятий... дуже зайнятий! Що таке?]===],
+},
+[18528] = { -- Xiri
+-- I am ready to join your forces in battle, Xi'ri.
+[4039673439] = [===[Я {стать:готовий:готова} до бою, Зі'рі.]===],
 },
 [18537] = { -- Adyen the Lightwarden
 -- I'm ready, Adyen.
@@ -353,6 +643,43 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 
 Зачекай-но. Я тебе знаю? Як тебе звати?]===],
 },
+[18723] = { -- Erozion
+-- Here are more of the incendiary devices, <name>. Be careful with these, they can cause a great deal of disruption to time if used improperly.
+[2153778303] = [===[Ось ще кілька запальних пристроїв, {ім'я:к}. Будь {стать:обережний:обережна} із ними — якщо застосувати їх неправильно, вони можуть спричинити серйозні порушення часу.]===],
+-- I need a pack of incendiary bombs.
+[4227347639] = [===[Мені потрібен пакунок запальних бомб.]===],
+-- If you are ready and wish to quickly return to the normal time stream, I can transport you to Andormu in the Caverns of Time.
+[1935914608] = [===[Якщо ти {стать:готовий:готова} і бажаєш швидко повернутися до звичайного часового потоку, я можу перенести тебе до Андорму в Печери Часу.]===],
+-- Shaping the flow of time is a very difficult and quite delicate task, but you have performed admirably today.
+[4019397670] = [===[Формувати плин часу — вкрай складне і доволі делікатне завдання, але ти чудово {стать:впорався:впоралася}.]===],
+-- Take me back to my time.
+[1948948975] = [===[Поверни мене до мого часу.]===],
+-- You must use the incendiary bombs at the barrels inside the internment lodges of Durnholde Keep. Once five bombs have been ignited and the diversion has been set, find Thrall in the basement prison of Durnholde and set him free. Follow him and make sure that he does not die!
+--
+-- Brazen will fly you to Durnholde when you are ready.
+[3981485894] = [===[Ти маєш скористатися запальними бомбами на бочках усередині бараків фортеці Дарнгольд. Щойно п'ять бомб буде запалено для диверсії, знайди Тралла в підвальній в'язниці Дарнгольда й звільни його. Іди за ним і подбай, щоб він не загинув!]===],
+["!code"] = {
+["heaemeofteiyds.-beclwhtetycncegtdlofdntote"] = 2153778303,
+},
+},
+[18725] = { -- Brazen
+-- I can take you to Durnholde directly, if that is your wish.
+[2514492131] = [===[Я можу віднести тебе прямо до Дарнгольда, якщо на те твоя воля.]===],
+-- I'm ready to go to Durnholde Keep.
+[2717129089] = [===[Я {стать:готовий:готова} вирушити до фортеці Дарнгольд.]===],
+-- You should recieve a pack of incendiary bombs from Erozion before I fly you to Durnholde. You wouldn't want to waste time, after all.
+[2977004492] = [===[Тобі варто отримати пакунок запальних бомб від Ерозія, перш ніж я віднесу тебе до Дарнгольда. Зрештою, ти ж не хочеш марнувати час.]===],
+},
+[18887] = { -- Taretha
+-- Strange wizard?
+[797104162] = [===[Дивний чарівник?]===],
+-- Thank you for helping Thrall escape, friends. Now I only hope you can help me as well. I awoke this morning to find myself trapped in this magical prison. A strange wizard told me that I would have to stay here for a while.
+[2378941945] = [===[Дякую, що допомогли Траллу втекти, друзі. Тепер сподіваюся, що ви зможете допомогти й мені. Я прокинулася сьогодні вранці й виявила, що потрапила в цю магічну в'язницю. Якийсь дивний чарівник сказав, що мені доведеться побути тут якийсь час.]===],
+-- We'll get you out, Taretha. Don't worry. I doubt the wizard would wander too far away.
+[466474151] = [===[Ми тебе звідси витягнемо, Тарето. Не хвилюйся. Навряд чи той чарівник пішов надто далеко.]===],
+-- Yes, friends. This man was no wizard of Dalaran. His clothes looked quite foreign, and his accent was unfamiliar. All he could mumble about was time this, time that. You'll have to find that wizard and convince him to release me.
+[3199438856] = [===[Так, друзі. Цей чоловік був не з даларанських чарівників. Його одяг виглядав доволі чужоземним, а вимова — незнайомою. Він тільки й міг, що бурмотіти щось про «час те, час се». Вам доведеться знайти цього чарівника й переконати його звільнити мене.]===],
+},
 [19137] = { -- Shotgun Jones
 -- Never look these Broken directly in the eyes. I think they can suck the soul right out of you if they're so inclined!
 [868844785] = [===[Ніколи не дивися цим Зломленим в очі. Здається, вони можуть висмоктати душу самим лише поглядом!]===],
@@ -376,6 +703,12 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 Хоча мій вчитель нічого не знає про це, мені все одно соромно.]===],
 -- I've lost Archmage Vargoth's Staff. Can you replace it?
 [940689017] = [===[Я {стать:загубив:загубила} посох архімага Варґота. Ти можеш замінити його?]===],
+},
+[19333] = { -- Grokom Deatheye
+-- Let me see your wares.
+[2061582353] = [===[Дозволь мені оглянути твої товари.]===],
+-- Need your blade sharpened, or perhaps a new weapon? Better safe than sorry...
+[871012592] = [===[Потрібно нагострити клинок чи, може, придбати нову зброю? Краще перестрахуватися…]===],
 },
 [19481] = { -- Archmage Vargoth
 -- <Archmage Vargoth favors you with a wry smile.>
@@ -477,6 +810,17 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Wind Trader Marid, I've returned with more information on the nether drakes. I'm prepared to be your business partner, and for an extra sum, I'll take care of that troublesome elf and her human friend.
 [3978593515] = [===[Маріде, в мене є нова інформація про підсвітніх драконів. Я {стать:готовий:готова} співпрацювати, а за додаткову плату я розберуся з тією набридливою ельфійкою та її другом.]===],
 },
+[20142] = { -- Steward of Time
+-- Beware, mortal, beyond this hall lies dangers unheard of in your world. Tread carefully...
+[2295478089] = [===[Стережися, {стать:смертний:смертна}, за цією залою чигають небезпеки, небачені в твоєму світі. Стережися...]===],
+-- It is good to see you again, <name>. Would you like me to take you to the master's lair?
+[2779850560] = [===[Радий знову тебе бачити, {ім'я:к}. Хочеш, щоб я доправив тебе до лігва господаря?]===],
+-- Please take me to the master's lair.
+[2737517983] = [===[Прошу, доправ мене до лігва господаря.]===],
+["!code"] = {
+["itisgdtoseyuan.-wdyulemetoteyutotemslr"] = 2779850560,
+},
+},
 [20494] = { -- Dama Wildmane
 -- Fine beasts, aren't they? The wyverns we raise here are trained to handle the fiercest and strangest weather conditions Draenor has to offer. You'll find them dependable and hardy.
 [4207219548] = [===[Чудові звірі, чи не так? Виверни, яких ми тут вирощуємо, треновані витримувати найсуворіші та найдивніші погодні умови Дренору. Вони надзвичайно стійкі та витривалі.]===],
@@ -490,6 +834,38 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [1134518756] = [===[У цьому світі є лише 3 типи істот: конкуренти, клієнти та працівники. Конкурентів треба нещадно знищувати, клієнтів — балувати, а працівників — суворо контролювати.
 
 Незалежні підрядники — це міф. Вони хочуть отримувати вищу оплату, ніж працівники, але вимагають ставлення як до клієнтів. Ніколи не довіряй тим, хто так себе називає.]===],
+},
+[20563] = { -- Grand Commander Ruusk
+-- Ah, good of you to come around, Ruusk. Thank you and farewell.
+[998709445] = [===[А, добре, що ти передумав, Рууск. Дякую й до нових зустрічей.]===],
+-- Do I need to go into all the gory details? I think we are both well aware of what Lord Illidan does with those that would oppose his word. Now, I must be going! Farewell, Ruusk! Forever...
+[2443741358] = [===[Чи потрібно мені розповідати всі криваві подробиці? Гадаю, ми обоє добре знаємо, що володар Іллідан робить з тими, хто наважується йому суперечити. Ну що ж, я {стать:пішов:пішла}! Бувай, Рууск! Прощавай...]===],
+-- I bring word from Lord Illidan.
+[3626957331] = [===[Я несу наказ від володаря Іллідана.]===],
+-- I'm listening.
+[1669020772] = [===[Слухаю.]===],
+-- Listen to me, peon. We have a process for the delivery and safekeeping of the cipher fragment. The envoy delivers the missive, which is sealed by Lord Illidan. No missive, no transfer.
+[2893605033] = [===[Послухай мене, батраче. Ми маємо чіткий порядок доставки та зберігання фрагмента шифру. Посланець доставляє послання, запечатане володарем Ілліданом. Немає послання — немає перевезення.]===],
+-- Oh? Of course you have papers documenting this request.
+[2736556051] = [===[Справді? І в тебе, звісно, є документи, що підтверджують це?]===],
+-- Perhaps you did not hear me, Ruusk. I am giving you an order from Illidan himself!
+[767086326] = [===[Мабуть, ти мене не почув, Рууск. Це наказ від самого Іллідана!]===],
+-- The cipher fragment is to be moved. Have it delivered to Zuluhed.
+[366625220] = [===[Фрагмент шифру потрібно перевезти. Доставте його до Зулугеда.]===],
+-- Very well. I will return to the Black Temple and notify Lord Illidan of your unwillingness to carry out his wishes. I suggest you make arrangements with your subordinates and let them know that you will be leaving this world soon.
+[125750160] = [===[Гаразд. Тоді я повернуся до Чорного Храму та сповіщу володаря Іллідана про відмову виконувати його наказ. Раджу тобі підготувати своїх підлеглих і попередити, що скоро ти полишиш цей світ.]===],
+-- Wait. Where are you going? You needed a transfer, correct? Let's just get it done and over with, ok? Zuluhed at Dragonmaw? It will be done. Please let Lord Illidan know that his orders were carried out with the full cooperation of the Eclipsion.
+--
+-- I will dispatch Ruul the Darkener to personally deliver the fragment!
+--
+-- You heard me right - Ruul...
+[1054729187] = [===[Зачекай. Куди ти? Ми маємо перевезти шифр, так? То ми й перевеземо, гаразд? Зулугед з Драконової Пащі? Все буде зроблено. Будь ласка, передай володарю Іллідану, що табір Затемнення виконає його накази.
+
+Я відправлю Руула Затьмарювача, щоб він особисто передав фрагмент!
+
+Так, усе вірно — Руула...]===],
+-- Who dares interrupt the Grand Commander?
+[2192476923] = [===[Хто сміє перебивати верховного командира?]===],
 },
 [20985] = { -- Captain Saeed
 -- Ameer might be worried about what the Ethereum are doing but I'm squarely focused on the real danger here: Dimensius.
@@ -537,9 +913,12 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- <Son/Young lady>, I'm not going to lie to you; things aren't pretty around here. We're under constant assault by the bugs and our very way of life, our freedom, is at stake!
 --
 -- Are you going to be a responsible citizen and help out?
-[3835136981] = [===[{стать:Синку:Юна леді}, чесно кажучи, ситуація тут не з найкращих. Ми постійно зазнаємо нападів жуків і наша свобода, наш спосіб життя опинився під загрозою!
+[3835136981] = [===[{стать:Синку:Юна леді}, чесно кажучи, ситуація тут не з найкращих. Ми постійно зазнаємо нападів жуків, і наша свобода, наш спосіб життя опинилися під загрозою!
 
 Чи будеш ти {стать:відповідальним громадянином:відповідальною громадянкою} і допоможеш нам?]===],
+["!code"] = {
+[".-imntggtoletoyutsatpyadheweurctatbytebsad"] = 3835136981,
+},
 },
 [21147] = { -- Torchunk Twoclaws
 -- Bah! Do I look like I have time for idle chit-chat?
@@ -572,6 +951,102 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 ["isgdtose..shasyfcgtotewgofsrwedeltheintevy"] = 3363798807,
 },
 },
+[21183] = { -- Oronok Torn-heart
+-- A wave of sickness rushed through me. After the ritual was over, I ran home to my children. I gathered what belongings I could carry in my arms and left with my boys. We ran to the hills and hid. There really was no other option...
+--
+-- Not a day goes by that I don't think of the cut. It has taken 20 years to reconnect with the elements. It has taken 20 years for the elements to even begin to heal.
+[1262789141] = [===[Мене охопила хвиля нудоти. Після завершення ритуалу я побіг додому, до своїх дітей. Я зібрав все, що міг узяти з собою, і пішов разом із хлопцями. Ми побігли до пагорбів і сховалися. Іншого виходу просто не було...
+
+Не минає й дня, щоб я не згадувала про той день. Минуло 20 років, перш ніж стихії хоча б почали загоювати рани.]===],
+-- Are you ready to hear the story of the Cipher of Damnation, <name>?
+[4261382346] = [===[Ти {стать:готовий:готова} вислухати історію про Шифр Прокляття, {ім'я:к}?]===],
+-- As I said, the cipher was found by Illidan when he took over the Black Temple. He divided the tome into three parts and charged their care to his minions.
+--
+-- My boys... My boys are grown now. When I got word of what Illidan had done with the cipher, I sent my boys to recover the pieces.
+--
+-- You must find my boys, <name>. You must find them and recover the Cipher of Damnation.
+[1567010756] = [===[Як я вже сказав, шифр знайшов Іллідан, коли захопив Чорний храм. Він розділив фоліант на три частини й доручив їх охорону своїм підлеглим.
+
+Мої хлопці... Мої хлопці вже дорослі. Коли я дізнався, що Іллідан зробив із шифром, я відправив їх, щоб вони повернули частини.
+
+Ти мусиш знайти моїх хлопців, {ім'я:к}. Ти мусиш знайти їх і повернути Шифр Прокляття.]===],
+-- Continue, please.
+[1503029911] = [===[Прошу, продовжуй.]===],
+-- Greetings, traveler. I am Oronok. Please, sit by my fire and warm yourself.
+--
+-- Beware the ravenous beasts of the shattered shelf below us!
+[3552809186] = [===[Вітаю, {стать:мандрівнику:мандрівнице}. Я Оронок. Сідай біля мого вогнища та зігрійся.
+
+І стережися ненажерливих звірів на розтрощеному виступі під нами!]===],
+-- How do I find the cipher?
+[3986296796] = [===[Як мені знайти цей шифр?]===],
+-- How do you know all of this?
+[3004181728] = [===[Звідки ти все це знаєш?]===],
+-- I am ready to hear your story, Oronok.
+[2816890374] = [===[Я {стать:готовий:готова} вислухати твою історію, Ороноку.]===],
+-- I will find your boys and the cipher, Oronok.
+[1365265794] = [===[Я знайду твоїх хлопців і шифр, Ороноку.]===],
+-- I will never forget that day, <race>. Never. Even though I had long since abandoned shamanism in favor of shadow magic, I felt the cut. A sense of loss so profound... I could not explain it to you with mere words.
+--
+-- When the tie to the elements was severed, all orcs on Draenor changed. If there was ever any doubt in the power of the shadows, it was washed away with the cresting of the molten lava over the shattered earth.
+[222077772] = [===[Я ніколи не забуду того дня, {раса:к}. Ніколи. Хоча я вже давно відмовився від шаманізму на користь магії тіней, я відчув цей удар. Таке глибоке відчуття втрати… Я не зможу пояснити тобі це простими словами.
+
+Коли зв'язок із стихіями було розірвано, усі орки на Дренорі змінилися. Якщо й були колись якісь сумніви щодо сили тіней, то їх змила хвиля розпеченої лави, що хлинула по розтрощеній землі.]===],
+-- So what of the cipher now? And your boys?
+[3340732340] = [===[То що тепер із шифром? І з твоїми хлопцями?]===],
+-- The Cipher of Damnation was kept in Gul'dan's private quarters inside Karabor for twenty years. Ah, that's right, you have no idea what Karabor is, do you?
+--
+-- The Black Temple...
+--
+-- Aye, now home to Illidan Stormrage.
+--
+-- When Illidan took control of the Black Temple, he discovered the cipher. He recognized that the damage to this world had already been done but thought it wise to keep the cipher secure for later use.
+[1024181640] = [===[Шифр Прокляття протягом двадцяти років зберігався в особистих покоях Ґул'дана в Караборі. А, так, ти ж навіть не уявляєш, що таке Карабор, чи не так?
+
+Чорний Храм…
+
+Так, зараз там мешкає Іллідан Шаленство Бурі.
+
+Коли Іллідан захопив Чорний храм, він виявив цей шифр. Він розумів, що шкода цьому світу вже завдана, але вирішив зберегти шифр у безпеці для подальшого використання.]===],
+-- Very well. The words you seek have a name, <name>. They are known as the Cipher of Damnation: The words uttered by Gul'dan himself to shatter this land. The very spell that severed the last remaining tie the orcs had with the elements of Draenor.
+--
+-- <Oronok nods.>
+--
+-- Aye, it is the cipher that you must reconstruct and ultimately the words of the cipher that you must call.
+[1466092207] = [===[Дуже добре. Слова, які ти шукаєш, мають назву, {ім'я:к}. Вони відомі як "Шифр Прокляття": слова, вимовлені самим Ґул'даном, щоб зруйнувати цю землю. Саме ці слова розірвали останні зв'язки орків із стихіями Дренора.
+
+<Оронок киває.>
+
+Так, саме цей шифр ти маєш відновити, а зрештою — вимовити слова, що містяться в ньому.]===],
+-- What do you have for sale, Oronok?
+[1637166313] = [===[Що у тебе є на продаж, Ороноку?]===],
+-- When you stand at the Altar of Damnation and see the spirits of the damned, kneeling in prayer, what you do not see is me, standing next to Gul'dan.
+--
+-- <Oronok nods.>
+--
+-- I told you that I was a lot of things, did I not? One of those 'things' was a lieutenant of Gul'dan.
+--
+-- I have done many terrible things in my life. I have slaughtered man, woman, and child alike. Danced in the blood of innocent draenei... yet...
+--
+-- <Oronok chokes on his words.>
+[258260300] = [===[Коли ти стоїш біля Вівтаря Прокляття й бачиш духів проклятих, що стоять на колінах у молитві, ти не бачиш поруч із Ґул'даном мене.
+
+<Оронок киває.>
+
+Я ж казав тобі, що ким я тільки не був, чи не так? Власне, я також був лейтенантом Гул'дана.
+
+Я зробив багато жахливих речей у своєму житті. Я вбивав і чоловіків, і жінок, і дітей. Танцював у крові невинних дренеїв… та все ж…
+
+<Оронок затинається.>]===],
+-- Yet what? What is it, Oronok?
+[586609441] = [===[Та все ж що, Ороноку?]===],
+["!code"] = {
+["aeyurytohrtesyoftecrofdn.-"] = 4261382346,
+["assdtecrwsfdbyinwnhetkortebkteheddteteiote"] = 1567010756,
+["wlnrftttdy..nrenthhdlgseadsminfrofswmcftte"] = 222077772,
+["vywltewsyuskhene.-tyaeknastecrofdntewsudby"] = 1466092207,
+},
+},
 [21197] = { -- Bronwyn Stouthammer
 -- Borgrim might be correct. Maybe we do need to take a break.
 --
@@ -588,6 +1063,21 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 
 Ці огри тримають мене саме там, де мені потрібно.]===],
 },
+[21292] = { -- Artor Son of Oronok
+-- Ar'tor's lifeless body remains suspended in mid-air by demonic magic. They take from him, even in death...
+[2059923271] = [===[Бездиханне тіло Ар'тора й досі висить у повітрі під дією демонічної магії. Вони забирають у нього все, навіть після смерті...]===],
+},
+[21293] = { -- Borak Son of Oronok
+-- Borak, I need another bundle of bloodthistle.
+[1669672259] = [===[Бораку, мені потрібен пучок кровополоху.]===],
+-- I need another disguise, Borak. I lost the last one.
+[2281628099] = [===[Мені потрібне нове маскування, Бораку. Я {стать:втратив:втратила} попереднє.]===],
+-- Tread lightly, <race>. Beyond this bridge lies hell.
+[2052979851] = [===[Будь {стать:обережним:обережною}, {раса:к}. За цим мостом — саме пекло.]===],
+["!code"] = {
+["tdly..bdtsbelshl"] = 2052979851,
+},
+},
 [21311] = { -- Rokgah Bloodgrip
 -- I came to this place because of my study into the backward culture that used to be the Thunderlord clan.
 --
@@ -599,6 +1089,25 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 Вони були слабкими та піддалися спокусі сили, яку давало перетворення на орків Скверни через кров Маннорота.
 
 Я прочитала всі їхні тексти. І мене особливо цікавить повернення артефакту, барабана, стріли та скрижалі, які були втрачені, коли ми розгромили огрів клану Клинорогих і відтіснили їх до їхньої фортеці.]===],
+},
+[21318] = { -- Spirit of Artor
+-- As you wish, <name>. The spirit hunter is ready.
+[777873330] = [===[Звісно, {ім'я:к}. Дух-мисливець готовий.]===],
+-- I require the aid of another spirit hunter, Ar'tor.
+[103793841] = [===[Ар'торе, мені потрібна допомога духа-мисливця.]===],
+-- I... died.
+--
+-- Why am I still here? Is there no great hunting ground that I ascend to?
+--
+-- No... I must first complete my task. Before I can leave this world, the second part of the Cipher of Damnation must be recovered.
+[207569283] = [===[Я... помер.
+
+Чому я досі тут? Невже немає тих величних мисливських угідь, до яких я маю відійти?
+
+Ні... Я мушу виконати своє завдання. Перш ніж я покину цей світ, я маю знайти другу частину Шифру Прокляття.]===],
+["!code"] = {
+["asyuwh.-testhrisry"] = 777873330,
+},
 },
 [21349] = { -- Tchali the Witch Doctor
 -- The ogres, they bury me here up to my neck and then forget to come back.
@@ -621,9 +1130,9 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Hello, <name>! How goes your adventures? My experiments are progressing nicely...
 --
 -- Be sure to check back with me later! I might have more test flight opportunities for you!
-[1386887282] = [===[Привіт, {ім'я:н}! Як твої пригоди? Мої експерименти проходять чудово...
+[1386887282] = [===[Привіт, {ім'я:к}! Як твої пригоди? Мої експерименти проходять чудово...
 
-Обов'язково зазирни до мене пізніше! Я збираюсь провести кілька випробувальних польотів!]===],
+Обов'язково зазирни до мене пізніше! Я збираюся провести кілька випробувальних польотів!]===],
 -- I need another waiver!
 [3478874580] = [===[Мені потрібен новий бланк відмови від претензій!]===],
 -- Toshley's Station is the best! The solitude and supply of strange, Outland power sources is an ideal setting for extreme experiments!
@@ -645,6 +1154,57 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [2569111263] = [===[Відправ мене до галявини Рууан.]===],
 -- Take me to Singing Ridge.
 [2197946652] = [===[Відправ мене на Співучий кряж.]===],
+},
+[21465] = { -- David Wayne
+-- You can take a man away from the Sons of Lothar, but you can't take the Sons out of him.
+--
+-- <The smith shrugs.>
+--
+-- It's hard to explain, but I don't feel like I'm meant to be at Honor Hold right now, is all.
+--
+-- Perhaps I'm meant to be part of something larger.
+[1612219531] = [===[Можна забрати людину з Синів Лотара, але не можна забрати в неї дух Синів.
+
+<Коваль знизує плечима.>
+
+Важко це пояснити, але я просто не відчуваю, що мені є місце в оплоті Честі, ось і все.
+
+Можливо, мені призначено бути частиною чогось більшого.]===],
+},
+[21657] = { -- Neltharaku
+-- <Neltharaku nods.>
+--
+-- Karynaku... She is held prisoner atop Dragonmaw Fortress. I have made many attempts to free her. All have failed... You have battled these beasts before, have you not?
+[1373915578] = [===[<Нелтараку киває.>
+
+Каринаку... Її тримають у полоні на вершині фортеці Драконової Пащі. Я багато разів намагався визволити її, та всі спроби були марні... Ти ж уже {стать:бився:билася} з цими чудовиськами, чи не так?]===],
+-- But you are dragons! How could orcs do this to you?
+[3422924553] = [===[Але ж ви дракони! Як орки змогли вчинити з вами таке?]===],
+-- Greetings, mortal.
+[1622257970] = [===[Вітаю, {стать:смертний:смертна}.]===],
+-- I am listening, dragon.
+[793752517] = [===[Я слухаю тебе, драконе.]===],
+-- I have battled many beasts, dragon. I will help you.
+[1178020103] = [===[Я {стать:бився:билася} з багатьма чудовиськами, драконе. Я допоможу тобі.]===],
+-- I... We are powerless. Illidan found and delivered unto the Dragonmaw their leader - Zuluhed. This orc was the one responsible for the capture and incarceration of Alexstrasza. How could we fight against such power? He captured an Aspect!
+--
+-- And just as easily, he took my mate.
+[2005207542] = [===[Я... Ми безсилі. Іллідан розшукав і привів до Драконової Пащі їхнього ватажка — Зулугеда. Саме цей орк колись полонив і ув'язнив Алекстразу. Як нам боротися з такою силою? Він захопив Аспекта!
+
+І так само легко він забрав мою дружину.]===],
+-- In the eastern reaches of the Netherwing Fields lies Dragonmaw Fortress. It is there that the cruel Dragonmaw orc clan tortures the drakes that they capture in an attempt to bend them to their will. Many have given up hope, choosing instead to do the bidding of Dragonmaw. The others... They refuse to land for fear of Dragonmaw war parties capturing them and taking them back to the fortress.
+[2401050777] = [===[На східних околицях полів Підсвітніх Крил стоїть фортеця Драконової Пащі. Саме там жорстокий орківський клан Драконової Пащі катує захоплених драків, намагаючись зламати їх і підкорити своїй волі. Багато хто вже втратив надію й скорився, виконуючи їхні накази. Інші ж... Вони бояться спускатися на землю, щоб бойові ватаги Драконової Пащі не схопили їх і не потягли назад до фортеці.]===],
+-- Your mate?
+[2225572621] = [===[Твою дружину?]===],
+},
+[21685] = { -- Oronok Torn-heart
+-- I am ready, Oronok. Let us destroy Cyrukh and free the elements!
+[1044131985] = [===[Я {стать:готовий:готова}, Ороноку. Давай знищимо Цируха і визволимо стихії!]===],
+-- We will fight when you are ready, <name>.
+[4154713349] = [===[Ми почнемо бій, коли ти будеш {стать:готовий:готова}, {ім'я:к}.]===],
+["!code"] = {
+["wewlftwnyuaery.-"] = 4154713349,
+},
 },
 [21690] = { -- R-3D0
 -- I AM FLUENT IN OVER TWO LANGUAGES: DWARVISH, GNOMISH AND THE VERY COMMON TONGUE OF HUMANS. BUT I HAVE NO IDEA WHAT YOU ARE SAYING!
@@ -670,6 +1230,22 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 
 А ти можеш нам допомогти: тут багато експериментів та всіляких інших справ.]===],
 },
+[21700] = { -- Akama
+-- To many of my people I am known as a traitor... as Illidan's lapdog. It is best that they continue to think that for now.
+[3248925107] = [===[Багато хто з мого народу вважає мене зрадником... слугою Іллідана. Та поки що краще, щоб вони продовжували так думати.]===],
+},
+[21725] = { -- Kagrosh
+-- Search the corpse for Kagrosh's pack.
+[1004242261] = [===[Обшукати тіло Каґроша.]===],
+-- The orc's corpse has been casually tossed aside so as not to litter the walkway.
+[166874673] = [===[Труп орка недбало відкинули убік, аби не захаращувати прохід.]===],
+},
+[21727] = { -- Flanis Swiftwing
+-- Reclaim Flanis's pack.
+[503364057] = [===[Забрати сумку Фланіса.]===],
+-- The dwarf appears to have been discovered and slain in the midst of a spy mission. The Deathforge's attendants have left the corpse in the open, perhaps as a warning to other would-be interlopers.
+[2448073638] = [===[Цього дворфа, здається, викрили й убили під час шпигунської місії. Служителі Кузні Смерті залишили тіло на видноті, можливо, як попередження для інших.]===],
+},
 [21755] = { -- Nickwinkle the Metro-Gnome
 -- I'm a scientist who studies both time and sound, so I'm not quite certain how I'm supposed to think, or find the time to get any work done around here, with all of this racket?!
 --
@@ -681,6 +1257,29 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 Чому ці дурні не можуть підірвати себе деінде?
 
 Ну що ж, принаймні я маю гарний вигляд. Слухай, а ми раніше не зустрічались?]===],
+},
+[21772] = { -- Chief Apothecary Hildagard
+-- Hildagard, I need a new pair of goggles.
+[203860185] = [===[Гільдаґард, мені потрібні нові окуляри.]===],
+-- I'm extremely busy, <race>.
+--
+-- We have a terrible problem on our hands that must be dealt with at once!
+[864142418] = [===[Я дуже зайнята, {раса:к}.
+
+У нас є серйозна проблема, яку потрібно вирішити негайно!]===],
+["!code"] = {
+["imeyby..wehetepmonorhsttmtbedtwhatoe"] = 864142418,
+},
+},
+[21774] = { -- Zorus the Judicator
+-- Here to help with the disturbances?
+[1796712235] = [===[Ти тут, бо хочеш допомогти?]===],
+-- Zorus, I need a new pair of goggles.
+[1007001120] = [===[Зорусе, мені потрібні нові окуляри.]===],
+},
+[21797] = { -- Ancient Shadowmoon Spirit
+-- Teron Gorefiend? Yes... I know of him.
+[1077783753] = [===[Терон Кровобіс? Так... Я знаю про нього.]===],
 },
 [21824] = { -- Dizzy Dina
 -- When you run with Razak's Roughriders you learn a thing or two about following orders.
@@ -812,6 +1411,144 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [884326883] = [===[Ці друїди віднайшли неабияке джерело сили! Вони можуть перетворюватися на тварин... створювати блискавки та яскраве місячне сяйво... Я мушу дізнатися, як вони це роблять!
 
 Можливо, вони носять батареї під мантіями...]===],
+},
+[22024] = { -- Parshah
+-- <The arakkoa favors you with a haunted gaze and alternates between looking at you and looking through you.>
+--
+-- What have our efforts wrought, but a greater abomination than we sought to prevent?
+[2091568907] = [===[<Аракоа окидає вас мертвим поглядом, дивлячись то на вас, то повз вас.>
+
+Все, чого ми досягли, — ще більше зло, ніж те, що ми намагалися зупинити.]===],
+},
+[22073] = { -- Marcus Auralion
+-- Save yourself, <race>. Flee from this place! The Crimson Sigil will execute you on sight if you are discovered.
+[2964957370] = [===[Рятуйся, {раса:к}. Тікай з цього проклятого місця! Багряна печатка не знає милосердя.]===],
+["!code"] = {
+["seyf..fefmtspetecnslwleeyuonstifyuaedd"] = 2964957370,
+},
+},
+[22112] = { -- Karynaku
+-- You must... free... my children...
+[2536310416] = [===[Звільни... моїх... дітей...]===],
+},
+[22113] = { -- Mordenai
+-- <Brother/Sister>, you are now considered bound by blood to the Netherwing. All of Netherwing will be behind you now! The time to strike at the heart of our enemies is now, friend! We must reclaim our lost heritage.
+[3101351825] = [===[{стать:Брате:Сестро}, відтепер ти {стать:пов'язаний:пов'язана} з Підсвітніми Крилами кров'ю. Усі ми тепер за тобою! Настав час ударити в саме серце наших ворогів! Ми маємо повернути свою втрачену спадщину.]===],
+-- It is good to see you again, friend.
+[2875814677] = [===[Радий знову тебе бачити, {стать:друже:подруго}.]===],
+-- They can't keep this up! Their wings will eventually give...
+[354448695] = [===[Вони довго так не протримаються! Їхні крила просто не витримають...]===],
+-- You have done much for our cause, <name>, but you may go no further until you have mastered flight. Only the most stalwart riders are able to assist the Netherwing.
+[160149925] = [===[Ти багато {стать:зробив:зробила} для нас, {ім'я:к}, та далі тобі шляху немає, поки не опануєш політ. Лише найдосвідченіші вершники здатні допомогти Підсвітнім Крилам.]===],
+["!code"] = {
+[".ryuaenwcdbdbybdtotengalofngwlbebdyunwtete"] = 3101351825,
+["yuhedemhfrorce.-btyumygonofrulyuhemdftoyte"] = 160149925,
+},
+},
+[23089] = { -- Akama
+-- Be wary, friends. The Betrayer meditates on the court just beyond.
+[735949512] = [===[Будьте обережні, друзі. Зрадник медитує на терасі.]===],
+-- I'm ready, Akama.
+[3797796841] = [===[Я {стать:готовий:готова}, Акамо.]===],
+-- The time has come to face Illidan, <name>. Are you ready?
+[2511283186] = [===[Настав час зустрітися з Ілліданом, {ім'я:к}. Ти {стать:готовий:готова}?]===],
+-- We're ready to face Illidan.
+[1214385519] = [===[Ми готові кинути виклик Іллідану.]===],
+["!code"] = {
+["tetehscetofein.-aeyury"] = 2511283186,
+},
+},
+[23139] = { -- Overlord Morghor
+-- <Overlord Mor'ghor salutes.>
+[1665994397] = [===[<Властитель Мор'гор віддає честь.>]===],
+-- Stand at attention, captain!
+[3293815155] = [===[Струнко, капітане!]===],
+-- Stand at attention, grunt!
+[3384412323] = [===[Струнко, рубайло!]===],
+},
+[23309] = { -- Murkblood Overseer
+-- <The Murkblood overseer grunts.>
+[3100553754] = [===[<Розпорядник Хмурокрових стогне.>]===],
+-- Continue please.
+[1149709754] = [===[Продовжуй.]===],
+-- How dare you question an overseer of the Dragonmaw!
+[1488728116] = [===[Як ти смієш сумніватися в {стать:розпоряднику:розпорядниці} Драконової Пащі!]===],
+-- I am here for you, overseer.
+[3359454993] = [===[Я {стать:прийшов:прийшла} за тобою, розпоряднику.]===],
+-- I gladly make such a sacrifice if it means the downfall of the Dragonmaw.
+[3822944293] = [===[Я охоче принесу таку жертву, якщо це наблизить поразку орків Драконової Пащі.]===],
+-- Overseer?
+--
+-- You are no more an overseer than I am the king of Stormwind. Yes... You are the one they speak of.
+[4869486] = [===[{стать:Розпоряднику:Розпорядниці}?
+
+Ти {стать:такий самий розпорядник:така сама розпорядниця}, як я — король Штормовія. Так... Це про тебе вони казали.]===],
+-- The Dragonmaw are corrupt. They are strip-mining this island of all natural resources and using those resources to supply Illidan's armies out of the Black Temple. They take much for themselves, however, and sell whatever they have hidden away to the highest bidder.
+[1200505449] = [===[Орки Драконова Пащі продажні. Вони виснажують острів дочиста, вигрібаючи всі ресурси, і постачають ними війська Іллідана в Чорному Храмі. Проте чимало лишають собі й продають тому, хто дає більше.]===],
+-- The Netherwing. They speak to us. They offered us peace and protection. Something the broken have never truly felt. We accepted their offer and assisted Toranaku in rousing the creatures of this mine - at great personal cost to us. Many of my brothers gave their lives for this offensive. We were attempting to make the mine uninhabitable, forcing the Dragonmaw to relocate and ultimately move off of this island.
+[3493152489] = [===[Підсвітні Крила. Вони говорять з нами. Запропонували мир і захист — те, чого зломлені ніколи по-справжньому не знали. Ми прийняли їхню пропозицію й допомогли Торанаку розігнати робітників цієї шахти — ціною чималих втрат для нас самих. Багато моїх братів віддали свої життя. Ми намагалися зробити шахту непридатною для життя, щоб змусити орків Драконової Пащі покинути її й урешті-решт залишити цей острів.]===],
+-- They sent you to kill me, eh? So predictable... Creatures ruled by terror are all the same.
+--
+-- But you... You are not one of them...
+[3025185913] = [===[Тебе послали вбити мене, так? Як передбачувано... Істоти, керовані жахом, усі однакові.
+
+Але ти... ти не {стать:один:одна} з них...]===],
+-- We do not know. We believe that the Black dragonflight is involved as are some independent third parties. That is why you are here, <race>. You will unravel this mystery from the inside and bring redemption to Netherwing.
+--
+-- And now... I can only assume she asked you to bring back my hand.
+[3961281813] = [===[Нам невідомо. Ми вважаємо, що тут замішані чорні дракони, а також ще хтось. Саме тому ти тут, {раса:к}. Ти розгадаєш цю таємницю й принесеш Підсвітнім Крилам перемогу.
+
+А тепер... припускаю, що вона попросила тебе принести мою руку.]===],
+-- Well... yes.
+[3473549927] = [===[Ну... так.]===],
+-- Who are these bidders?
+[505955962] = [===[І хто ж дає більше?]===],
+-- Who speaks of me? What are you talking about, broken?
+[2045499698] = [===[Хто казав про мене? Про що ти говориш, зломлений?]===],
+["!code"] = {
+["wedontkwwebetttebkdtisidasaeseittdpsttiswy"] = 3961281813,
+},
+},
+[23473] = { -- Aether-tech Apprentice
+-- Our Skyguard Aether-tech and her escort is studying the Bash'ir crystal forge. She needs help! Go to Bash'ir Landing, find the aether-tech and keep her safe!
+[1978559540] = [===[Ефір-тех Небесної гвардії разом зі своїм супроводом вже досліджує кришталеву кузню Баш'іра. Їй потрібна допомога! Вирушай до табору Баш'іра, знайди ефір-теха й захисти її!]===],
+-- We are launching an assault on Bash'ir Landing, to study their Crystalforge. Help us if you can! Our Skyguard Aether-tech will leave in <about {1} minutes/1 hour>.
+[3123484776] = [===[Ми йдемо на штурм табору Баш'іра, щоб дослідити їхню кришталеву кузню. Допоможи нам, якщо можеш! Ефір-тех Небесної гвардії вирушить приблизно за [{1} хвилин#in about {1} minute][годину#in about 1 hour].]===],
+["!code"] = {
+["weaelganatonbrlgtosytrcehpusifyucnorsdahwl"] = 3123484776,
+},
+},
+[24369] = { -- Wind Trader Zhareem
+-- Many are the rare and precious objects that my clientele seek.
+--
+-- You could be the one to bring them to me, <class>. In return I offer that which you covet.
+--
+-- Shall we speak more on that which I look to procure today?
+[1606279403] = [===[Чимало рідкісних і цінних речей шукає моя клієнтура.
+
+Ти {стать:міг би:могла б} принести їх мені, {клас:к}. Натомість я запропоную тобі те, чого ти жадаєш.
+
+Обговорімо детальніше те, що я хочу роздобути сьогодні?]===],
+["!code"] = {
+["myaetereadpsosttmyceskyucdbeteoetobgtmtome"] = 1606279403,
+},
+},
+[24370] = { -- Nether-Stalker Mahduun
+-- An order is whispered upon the nether winds and Mah'duun hears.
+--
+-- A <man/woman> comes before Mah'duun, and they speak of those which the winds demand be slain today.
+[2502814741] = [===[Наказ шепочуть вітри Підсвіття, і Ма'дуун чує.
+
+{Раса:н} постає перед Ма'дууном, і вони говорять про тих, кого вітри вимагають убити сьогодні.]===],
+-- Do you question your master? Neither does Mah'duun.
+[3252297004] = [===[Ти сумніваєшся у своєму хазяїні? Ма'дуун теж ні.]===],
+["!code"] = {
+["anoriswduntenrwsadmnhs.ncsbemnadtyskoftewh"] = 2502814741,
+},
+},
+[28126] = { -- Don Carlos
+-- Don't mind me. I'm just an old man, waiting on an old... friend.
+[4162693214] = [===[Не зважай на мене. Я просто старий, що чекає на старого... друга.]===],
 },
 }
 

@@ -47,9 +47,9 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 
 До речі, поки йде військова кампанія, якщо бажаєш отримати матеріальну винагороду за свої відзнаки замість репутації — звернися до воєводи фельдмаршала Снігопада.]===],
 -- And I wish I could join you <name>. Head over to Stormwind Keep. You'll find Thelman Slatefist in the King's audience chamber. He will aid you in getting to Alterac Valley.
-[2184089775] = [===[Ех, хотілось би мені приєднатися до вас, {ім'я:к}. Прямуйте до фортеці Штормовія. Там ви знайдете Тельмана Шиферука в тронній залі короля. Він допоможе вам дістатися до Альтерацької долини.]===],
+[2184089775] = [===[Ех, хотілося б мені приєднатися до вас, {ім'я:к}. Прямуйте до фортеці Штормовію. Там ви знайдете Тельмана Шиферука в тронній залі короля. Він допоможе вам дістатися до Альтерацької долини.]===],
 -- Another entrepreneur, eh? Well, the Auction House can be found in the Trade District. Not far from the bank.
-[1158430877] = [===[Любите торги, так? Ну, Аукціонний дім знаходиться в Торговому районі, зовсім поруч із банком.]===],
+[1158430877] = [===[Любите торги, так? Ну, аукціон знаходиться в Торговому районі, зовсім поруч із банком.]===],
 -- Are you here for training? Or are you just here to waste a warrior's time.
 [1801687685] = [===[Ти {стать:прийшов:прийшла} на тренування? Чи просто марнуєш мій час?]===],
 -- Are you interested in exploring one of these dungeons?
@@ -61,7 +61,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- At the southeast edge of town is the Gallows' End Tavern. Go there and head upstairs, and you'll find Dark Cleric Beryl inside the reading room.
 [881297538] = [===[На південно-східній околиці міста знаходиться таверна «Край шибениці». Йди туди та підіймайся нагору — в читальній залі ти знайдеш темного священника Берила.]===],
 -- Auction House
-[3408769971] = [===[Аукціонний дім]===],
+[3408769971] = [===[Аукціон]===],
 -- Away to Thunder Bluff to the north is where your journey takes you then friend. Once there seek out the wisdom of one of the Bluffwatchers who can tell you directly where to find whom you seek.
 [3302415773] = [===[Твій шлях лежить до Громового Бескиду, {стать:друже:подруго}. Опинившись там, звернися за порадою до одного з вартових бескиду, які зможуть точніше вказати, кого саме ти шукаєш.]===],
 -- Axe
@@ -77,7 +77,7 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 -- Battlemaster
 [253322801] = [===[Воєначальник]===],
 -- Besides the Grunts outside, my brothers and I fought at the battle of Hyjal. Any who seek to steal from the bank must face us first.
-[2858302175] = [===[Мало того, що ззовні стоять бугаї, ми з братами — ветерани битви під Гіджалом. Якщо хтось захоче пограбувати банк — доведеться спершу здолати нас.]===],
+[2858302175] = [===[Мало того, що ззовні стоять рубайли, ми з братами — ветерани битви під Гіджалом. Якщо хтось захоче пограбувати банк — доведеться спершу здолати нас.]===],
 -- Best deals in all of Stormwind my friend, won't find any better. Now, what can I help you with?
 [2598353272] = [===[Найкращі ціни у всьому Штормовії, {стать:друже:подруго}, кращих не знайдеш. Ну, чим можу допомогти?]===],
 -- Blackrock Mountain lies between Searing Gorge in the north and Burning Steppes in the south.
@@ -712,6 +712,212 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [11036] = { -- Leonid Barthalomew the Revered
 -- Through knowledge, may we find salvation.
 [2891883280] = [===[Через знання ми зможемо знайти спасіння.]===],
+},
+[12919] = { -- Nat Pagle
+-- If you ask me, the best part about fishing is its slow pace. It gives one time to think, to reflect on past events and to plan for future ones.
+--
+-- Oh, and it's also a great excuse to drink. Heavily.
+[2020145101] = [===[Як на мене, найкраще в рибалці — це її неквапливість. Вона дає час подумати, поміркувати над минулим і спланувати майбутнє.
+
+О, а ще це чудовий привід випити. Добряче так.]===],
+},
+[16285] = { -- Argent Emissary
+-- Are the Blasted Lands currently under attack?
+[4272759170] = [===[Спустошені землі зараз під атакою?]===],
+-- Are the Burning Steppes currently under attack?
+[3469565912] = [===[Палаючий степ зараз під атакою?]===],
+-- Are the Eastern Plaguelands currently under attack?
+[2150353723] = [===[Східні Зачумлені землі зараз під атакою?]===],
+-- For the time being, that area is free of Scourge influence. I fear it will only be a matter of time before they return.
+[3218633970] = [===[Наразі там немає Скари. Та боюся, що це лише питання часу, перш ніж вона повернеться.]===],
+-- How many battles have we won?
+[523867938] = [===[Скільки битв ми виграли?]===],
+-- I have another question.
+[3099471438] = [===[У мене є інше запитання.]===],
+-- If additional support is not soon sent to the Burning Steppes, I fear the Scourge will establish a base of operations there. If you can, you should go there to aid the defenders.
+--
+-- Number of Necropolises remaining: {1}
+[3481671681] = [===[Якщо найближчим часом до Палаючого степу не надійде підкріплення, боюся, Скара влаштує там свою базу. Якщо можеш — вирушай туди й допоможи захисникам.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- Indeed, the hills of Winterspring are currently attempting to withstand a renewed Scourge assault. Your assistance would help them greatly.
+--
+-- Number of Necropolises remaining: {1}
+[3869908532] = [===[Так, пагорби Зимоключа просто зараз зазнають чергової атаки Скари. Твоя допомога буде дуже доречною.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- Is Azshara currently under attack?
+[912499119] = [===[Азшара зараз під атакою?]===],
+-- Is Tanaris currently under attack?
+[3338943452] = [===[Танаріс зараз під атакою?]===],
+-- Is Winterspring currently under attack?
+[480698015] = [===[Зимоключ зараз під атакою?]===],
+-- It seems the army of the Scourge has come to Tanaris. A significant number of their necropolises and other forces have been dispatched there.
+--
+-- Number of Necropolises remaining: {1}
+[448398259] = [===[Схоже, що військо Скари дісталося Танарісу. Туди відрядили чимало їхніх некрополів.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- The Lich King brought only small forces to bear against each of Azeroth's capital cities, while their main forces periodically attack the following lands:
+--
+-- Azshara, the Blasted Lands, the Burning Steppes, the Tanaris Desert, the Eastern Plaguelands and Winterspring.
+[554231078] = [===[Король-ліч кинув невеликі сили на кожну зі столиць Азероту, але його основні війська періодично нападають на Азшару, Спустошені землі, Палаючий степ, пустелю Танаріс, Східні Зачумлені землі та Зимоключ.]===],
+-- The Scourge are establishing small staging points in the places under attack, receiving communications and other assistance from the necropolises that fly overhead. From what we can tell, the only way to root them out is by killing the ground forces that surround the points.
+[2788138449] = [===[Скара закладає невеликі плацдарми в районах, що зазнають нападу, отримуючи підкріплення від некрополів, які літають над ними. Наскільки нам відомо, єдиний спосіб позбутися їх — знищити наземні сили, які обороняють ці плацдарми.]===],
+-- The Scourge brought only small forces to bear against each of Azeroth's capital cities, while their main forces periodically attack the following lands:
+--
+-- Azshara, the Blasted Lands, the Burning Steppes, the Tanaris Desert, the Eastern Plaguelands and Winterspring.
+[3859143054] = [===[Скара кинула невеликі сили на кожну зі столиць Азероту, але основні їхні війська періодично нападають на Азшару, Спустошені землі, Палаючий степ, пустелю Танаріс, Східні Зачумлені землі та Зимоключ.]===],
+-- The Scourge infestation grows in Azshara. Every able bodied warrior is needed to stem the tide of their invasion.
+--
+-- Number of Necropolises remaining: {1}
+[3731930412] = [===[Навала Скари в Азшарі посилюється. Нам потрібен кожен боєздатний воїн, щоб стримати їхнє вторгнення.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- The Scourge infestation grows in the Blasted Lands. Every able bodied warrior is needed to stem the tide of their invasion.
+--
+-- Number of Necropolises remaining: {1}
+[3294003233] = [===[Навала Скари в Спустошених землях посилюється. Нам потрібен кожен боєздатний воїн, щоб стримати їхнє вторгнення.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- The Scourge infestation grows in the Eastern Plaguelands. Every able bodied warrior is needed to stem the tide of their invasion.
+--
+-- Number of Necropolises remaining: {1}
+[2072091967] = [===[Навала Скари в Східних Зачумлених землях посилюється. Нам потрібен кожен боєздатний воїн, щоб стримати їхнє вторгнення.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- The tides of war have come again. From the cold north, the Lich King's necropolises have laid siege to our lands. He and his cursed general, Kel'Thuzad, send flying necropolises to invade across the world.
+[2826517962] = [===[Гряде нова війна. Із холодної півночі на наші землі насуваються некрополі Короля-ліча. Він та його проклятий генерал, Кел'Тузад, посилають літаючі некрополі для вторгнення в різні куточки світу.]===],
+-- The tides of war have come again. From the cold north, the Lich King's necropolises have laid siege to our lands. He sends flying necropolises to invade across the world.
+[1270290518] = [===[Гряде нова війна. Із холодної півночі на наші землі насуваються некрополі Короля-ліча. Він посилає їх для вторгнення в різні куточки світу.]===],
+-- The time has come for Horde and Alliance to look towards Northrend and the invasion of the Lich King. In recent days, territories across Kalimdor and the Eastern Kingdoms have come under attack. Will you take up arms to save your land from destruction at their hands?
+[2321215868] = [===[Настав час Орді та Альянсу звернути погляд на Нортренд — туди, звідки насувається навала Короля-ліча. Останніми днями землі Калімдору та Східних Королівств зазнають нападів. Чи візьмешся ти за зброю, щоб урятувати ці землі від винищення?]===],
+-- The time has come for Horde and Alliance to look towards the north and the invasion of the Scourge. In recent days, territories across Kalimdor and the Eastern Kingdoms have come under attack. Will you take up arms to save your land from destruction at their hands?
+[3974967650] = [===[Настав час Орді та Альянсу звернути погляд на північ — туди, звідки насувається навала Скари. Останніми днями землі Калімдору та Східних Королівств зазнають нападів. Чи візьмешся ти за зброю, щоб урятувати ці землі від винищення?]===],
+-- We have won {1} battles against the Scourge. Gird yourself, <name>, for this war is far from over.
+[1708285408] = [===[Кількість перемог над Скарою вже сягнула [{1}#We have won {1} battles]. Готуйся до бою, {ім'я:к}, бо ця війна ще далека від завершення.]===],
+-- We have won {1} battles against the Scourge. Stand firm, <name>! We must persevere!
+[2527784419] = [===[Кількість перемог над Скарою вже сягнула [{1}#We have won {1} battles]. Тримайся, {ім'я:к}! Ми мусимо вистояти!]===],
+-- We have won {1} battles against the Scourge. Take heart, <name>, while many battles lie ahead, heroes, heroes from every realm have risen to fight them.
+[3133352255] = [===[Кількість перемог над Скарою вже сягнула [{1}#We have won {1} battles]. Не занепадай духом, {ім'я:к} — попереду ще чимало боїв, але герої з кожного куточка світу зібралися, щоб дати відсіч Скарі.]===],
+-- What can I do?
+[3298573089] = [===[Чим я можу допомогти?]===],
+-- What's happening?
+[3261740361] = [===[Що відбувається?]===],
+-- Where are we battling the Scourge?
+[4094336380] = [===[Де ми б'ємося зі Скарою?]===],
+-- Where else are we battling the Scourge?
+[1786825028] = [===[Де ще ми б'ємося зі Скарою?]===],
+["!code"] = {
+["ifalstisntsnsttotebgssfrtesewlehbeofosteif"] = 3481671681,
+["idtehsofwgaecyagtowdrdseatyraewdhptmgynrof"] = 3869908532,
+["itssteayoftesehscetotsstnroftrnsadorfshebn"] = 448398259,
+["teseingsinaaeyaebdwrisndtosmteteoftrinnrof"] = 3731930412,
+["teseingsintebdlseyaebdwrisndtosmteteoftrin"] = 3294003233,
+["teseingsinteenpseyaebdwrisndtosmteteoftrin"] = 2072091967,
+["wehewn.-bsattesegdyf.-frtswrisfrfmor"] = 1708285408,
+["wehewn.-bsattesesdfm.-wemtpe"] = 2527784419,
+["wehewn.-bsatteseteht.-wemybsleadhshsfmeyrm"] = 3133352255,
+},
+},
+[16359] = { -- Argent Messenger
+-- Are the Blasted Lands currently under attack?
+[4272759170] = [===[Спустошені землі зараз під атакою?]===],
+-- Are the Burning Steppes currently under attack?
+[3469565912] = [===[Палаючий степ зараз під атакою?]===],
+-- Are the Eastern Plaguelands currently under attack?
+[2150353723] = [===[Східні Зачумлені землі зараз під атакою?]===],
+-- For the time being, that area is free of Scourge influence. I fear it will only be a matter of time before they return.
+[3218633970] = [===[Наразі там немає Скари. Та боюся, що це лише питання часу, перш ніж вона повернеться.]===],
+-- How many battles have we won?
+[523867938] = [===[Скільки битв ми виграли?]===],
+-- I have another question.
+[3099471438] = [===[У мене є інше запитання.]===],
+-- If additional support is not soon sent to the Burning Steppes, I fear the Scourge will establish a base of operations there. If you can, you should go there to aid the defenders.
+--
+-- Number of Necropolises remaining: {1}
+[3481671681] = [===[Якщо найближчим часом до Палаючого степу не надійде підкріплення, боюся, Скара влаштує там свою базу. Якщо можеш — вирушай туди й допоможи захисникам.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- Indeed, the hills of Winterspring are currently attempting to withstand a renewed Scourge assault. Your assistance would help them greatly.
+--
+-- Number of Necropolises remaining: {1}
+[3869908532] = [===[Так, пагорби Зимоключа просто зараз зазнають чергової атаки Скари. Твоя допомога буде дуже доречною.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- Is Azshara currently under attack?
+[912499119] = [===[Азшара зараз під атакою?]===],
+-- Is Tanaris currently under attack?
+[3338943452] = [===[Танаріс зараз під атакою?]===],
+-- Is Winterspring currently under attack?
+[480698015] = [===[Зимоключ зараз під атакою?]===],
+-- It seems the army of the Scourge has come to Tanaris. A significant number of their necropolises and other forces have been dispatched there.
+--
+-- Number of Necropolises remaining: {1}
+[448398259] = [===[Схоже, що військо Скари дісталося Танарісу. Туди відрядили чимало їхніх некрополів.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- The Lich King brought only small forces to bear against each of Azeroth's capital cities, while their main forces periodically attack the following lands:
+--
+-- Azshara, the Blasted Lands, the Burning Steppes, the Tanaris Desert, the Eastern Plaguelands and Winterspring.
+[554231078] = [===[Король-ліч кинув невеликі сили на кожну зі столиць Азероту, але його основні війська періодично нападають на Азшару, Спустошені землі, Палаючий степ, пустелю Танаріс, Східні Зачумлені землі та Зимоключ.]===],
+-- The Scourge are establishing small staging points in the places under attack, receiving communications and other assistance from the necropolises that fly overhead. From what we can tell, the only way to root them out is by killing the ground forces that surround the points.
+[2788138449] = [===[Скара закладає невеликі плацдарми в районах, що зазнають нападу, отримуючи підкріплення від некрополів, які літають над ними. Наскільки нам відомо, єдиний спосіб позбутися їх — знищити наземні сили, які обороняють ці плацдарми.]===],
+-- The Scourge brought only small forces to bear against each of Azeroth's capital cities, while their main forces periodically attack the following lands:
+--
+-- Azshara, the Blasted Lands, the Burning Steppes, the Tanaris Desert, the Eastern Plaguelands and Winterspring.
+[3859143054] = [===[Скара кинула невеликі сили на кожну зі столиць Азероту, але основні їхні війська періодично нападають на Азшару, Спустошені землі, Палаючий степ, пустелю Танаріс, Східні Зачумлені землі та Зимоключ.]===],
+-- The Scourge infestation grows in Azshara. Every able bodied warrior is needed to stem the tide of their invasion.
+--
+-- Number of Necropolises remaining: {1}
+[3731930412] = [===[Навала Скари в Азшарі посилюється. Нам потрібен кожен боєздатний воїн, щоб стримати їхнє вторгнення.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- The Scourge infestation grows in the Blasted Lands. Every able bodied warrior is needed to stem the tide of their invasion.
+--
+-- Number of Necropolises remaining: {1}
+[3294003233] = [===[Навала Скари в Спустошених землях посилюється. Нам потрібен кожен боєздатний воїн, щоб стримати їхнє вторгнення.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- The Scourge infestation grows in the Eastern Plaguelands. Every able bodied warrior is needed to stem the tide of their invasion.
+--
+-- Number of Necropolises remaining: {1}
+[2072091967] = [===[Навала Скари в Східних Зачумлених землях посилюється. Нам потрібен кожен боєздатний воїн, щоб стримати їхнє вторгнення.
+
+Залишилося некрополів: [{1}#Necropolises remaining: {1}]]===],
+-- The tides of war have come again. From the cold north, the Lich King's necropolises have laid siege to our lands. He and his cursed general, Kel'Thuzad, send flying necropolises to invade across the world.
+[2826517962] = [===[Гряде нова війна. Із холодної півночі на наші землі насуваються некрополі Короля-ліча. Він та його проклятий генерал, Кел'Тузад, посилають літаючі некрополі для вторгнення в різні куточки світу.]===],
+-- The tides of war have come again. From the cold north, the Lich King's necropolises have laid siege to our lands. He sends flying necropolises to invade across the world.
+[1270290518] = [===[Гряде нова війна. Із холодної півночі на наші землі насуваються некрополі Короля-ліча. Він посилає їх для вторгнення в різні куточки світу.]===],
+-- The time has come for Horde and Alliance to look towards Northrend and the invasion of the Lich King. In recent days, territories across Kalimdor and the Eastern Kingdoms have come under attack. Will you take up arms to save your land from destruction at their hands?
+[2321215868] = [===[Настав час Орді та Альянсу звернути погляд на Нортренд — туди, звідки насувається навала Короля-ліча. Останніми днями землі Калімдору та Східних Королівств зазнають нападів. Чи візьмешся ти за зброю, щоб урятувати ці землі від винищення?]===],
+-- The time has come for Horde and Alliance to look towards the north and the invasion of the Scourge. In recent days, territories across Kalimdor and the Eastern Kingdoms have come under attack. Will you take up arms to save your land from destruction at their hands?
+[3974967650] = [===[Настав час Орді та Альянсу звернути погляд на північ — туди, звідки насувається навала Скари. Останніми днями землі Калімдору та Східних Королівств зазнають нападів. Чи візьмешся ти за зброю, щоб урятувати ці землі від винищення?]===],
+-- We have won {1} battles against the Scourge. Gird yourself, <name>, for this war is far from over.
+[1708285408] = [===[Кількість перемог над Скарою вже сягнула [{1}#We have won {1} battles]. Готуйся до бою, {ім'я:к}, бо ця війна ще далека від завершення.]===],
+-- We have won {1} battles against the Scourge. Stand firm, <name>! We must persevere!
+[2527784419] = [===[Кількість перемог над Скарою вже сягнула [{1}#We have won {1} battles]. Тримайся, {ім'я:к}! Ми мусимо вистояти!]===],
+-- We have won {1} battles against the Scourge. Take heart, <name>, while many battles lie ahead, heroes, heroes from every realm have risen to fight them.
+[3133352255] = [===[Кількість перемог над Скарою вже сягнула [{1}#We have won {1} battles]. Не занепадай духом, {ім'я:к} — попереду ще чимало боїв, але герої з кожного куточка світу зібралися, щоб дати відсіч Скарі.]===],
+-- What can I do?
+[3298573089] = [===[Чим я можу допомогти?]===],
+-- What's happening?
+[3261740361] = [===[Що відбувається?]===],
+-- Where are we battling the Scourge?
+[4094336380] = [===[Де ми б'ємося зі Скарою?]===],
+-- Where else are we battling the Scourge?
+[1786825028] = [===[Де ще ми б'ємося зі Скарою?]===],
+["!code"] = {
+["ifalstisntsnsttotebgssfrtesewlehbeofosteif"] = 3481671681,
+["idtehsofwgaecyagtowdrdseatyraewdhptmgynrof"] = 3869908532,
+["itssteayoftesehscetotsstnroftrnsadorfshebn"] = 448398259,
+["teseingsinaaeyaebdwrisndtosmteteoftrinnrof"] = 3731930412,
+["teseingsintebdlseyaebdwrisndtosmteteoftrin"] = 3294003233,
+["teseingsinteenpseyaebdwrisndtosmteteoftrin"] = 2072091967,
+["wehewn.-bsattesegdyf.-frtswrisfrfmor"] = 1708285408,
+["wehewn.-bsattesesdfm.-wemtpe"] = 2527784419,
+["wehewn.-bsatteseteht.-wemybsleadhshsfmeyrm"] = 3133352255,
+},
 },
 [197] = { -- Marshal McBride
 -- Hey, citizen! You look like a stout one. We guards are spread a little thin out here, and I could use your help...
