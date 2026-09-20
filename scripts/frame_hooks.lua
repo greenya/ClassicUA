@@ -205,7 +205,13 @@ local lang_switchers = {
 
     -- books (item texts)
     { hd_type="book", parent={ frame=ItemTextScrollFrame, point="TOPRIGHT", x=-2, y=-12 },
-      extra_target=ItemTextFrame, post_update=function () utils.update_item_text_scrollbar() end },
+      extra_target=ItemTextFrame,
+      post_update=function ()
+          if ItemTextFrame.classicua.refresh then
+              ItemTextFrame.classicua.refresh()
+          end
+          utils.update_item_text_scrollbar()
+      end },
 
     -- gossips (npc talk and player replies)
     { hd_type="gossip", parent={ frame=GossipFrameInset, point="TOPRIGHT", x=-6, y=-10 },
