@@ -23,6 +23,7 @@ local default_log = {
     missing_chats = {},
     missing_zones = {},
     missing_objects = {},
+    missing_object_texts = {},
     missing_sod_engravings = {},
     issues = {}
 }
@@ -45,6 +46,7 @@ local function log_init()
     if not log.missing_chats            then log.missing_chats = {} end
     if not log.missing_zones            then log.missing_zones = {} end
     if not log.missing_objects          then log.missing_objects = {} end
+    if not log.missing_object_texts     then log.missing_object_texts = {} end
     if not log.missing_sod_engravings   then log.missing_sod_engravings = {} end
     if not log.issues                   then log.issues = {} end
 end
@@ -73,6 +75,7 @@ local stat_entries = {
     { key = "missing_chats",            name = "Чати" },
     { key = "missing_zones",            name = "Локації" },
     { key = "missing_objects",          name = "Об'єкти" },
+    { key = "missing_object_texts",     name = "Тексти об'єктів" },
     { key = "missing_sod_engravings",   name = "Гравіювання", sod_only = true },
     { key = "issues",                   name = "Помилки" },
 }
@@ -339,4 +342,23 @@ dev_log.missing_object = function (object_name)
     end
 
     log.missing_objects[object_name] = true
+end
+
+dev_log.missing_object_text = function (object_name, page_number, page_text)
+    object_name = string_trim(object_name or "???")
+
+    if not log.missing_object_texts[object_name] then
+        log.missing_object_texts[object_name] = {}
+    end
+
+    local page_key = "page_" .. tostring(page_number)
+    if log.missing_object_texts[object_name][page_key] then
+        return
+    end
+
+    if options.account.dev_mode_notify_activity then
+        dev_print("Відсутній текст об'єкта \"" .. object_name .. "\" (сторінка " .. tostring(page_number) .. ")")
+    end
+
+    log.missing_object_texts[object_name][page_key] = page_text or true
 end
