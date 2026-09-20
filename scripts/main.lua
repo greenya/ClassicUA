@@ -26,6 +26,12 @@ local UnitName          = _G.UnitName
 
 ItemTextFrame.classicua = {}
 
+local function set_item_text_page(text)
+    -- classic reader puts a line break before every page, retail-based reader (forever) does not
+    ItemTextPageText:SetText(ItemTextTitleText and ("\n" .. text) or text)
+    utils.update_item_text_scrollbar()
+end
+
 local function on_item_text_begin()
     local tt_meta = GameTooltip.classicua or {}
     local meta = ItemTextFrame.classicua
@@ -68,9 +74,7 @@ local function on_item_text_ready()
             if book_entry[page_num] then
                 local en = ItemTextGetText()
                 local uk = book_entry[page_num]
-                local translation = data_hooks.set_translation("book", item_id, en, uk)
-                ItemTextPageText:SetText("\n" .. translation)
-                utils.update_item_text_scrollbar()
+                set_item_text_page(data_hooks.set_translation("book", item_id, en, uk))
             end
         end
 
@@ -97,15 +101,15 @@ local function on_item_text_ready()
             end
 
             if meta.pages and meta.pages[page_num] then
-                local translation = data_hooks.set_translation("book", name_en, en, meta.pages[page_num])
-                ItemTextPageText:SetText("\n" .. translation)
-                utils.update_item_text_scrollbar()
+                set_item_text_page(data_hooks.set_translation("book", name_en, en, meta.pages[page_num]))
             elseif not meta.pages and options.account.dev_mode then
                 dev_log.missing_object_text(name_en, page_num, en)
             end
         end
     end
 end
+
+ItemTextFrame.classicua.refresh = on_item_text_ready
 
 -- ----------------
 -- [ gossip frame ]
