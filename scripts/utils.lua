@@ -325,10 +325,10 @@ utils.get_currently_viewed_quest_id = function ()
     return 0
 end
 
--- returns 0 in case no book (item text) is opened at the moment
+-- returns 0 in case no readable item/object opened at the moment
 utils.get_currently_viewed_book_id = function ()
     local meta = ItemTextFrame.classicua or {}
-    return meta.entry_type == "item" and meta.entry_id or 0
+    return (meta.entry_type == "item" or meta.entry_type == "object") and meta.entry_id or 0
 end
 
 utils.mouse_hover_frame = function ()

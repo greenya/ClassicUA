@@ -28,17 +28,24 @@ ItemTextFrame.classicua = {}
 
 local function on_item_text_begin()
     local tt_meta = GameTooltip.classicua or {}
+    local meta = ItemTextFrame.classicua
     if tt_meta.entry_type == "item" and tt_meta.entry_id then
-        local meta = ItemTextFrame.classicua
         meta.entry_type = tt_meta.entry_type
         meta.entry_id = tonumber(tt_meta.entry_id)
+    -- else if ItemTextGetCreator(): translate mail
+    elseif not ItemTextGetCreator() then
+        -- a readable world object: no item under the cursor and no creator; the name comes at ITEM_TEXT_READY
+        meta.entry_type = "object"
+        meta.entry_id = false
     end
+    meta.pages = nil
 end
 
 local function on_item_text_closed()
     local meta = ItemTextFrame.classicua
     meta.entry_type = false
     meta.entry_id = false
+    meta.pages = nil
 end
 
 local function on_item_text_ready()
@@ -64,6 +71,37 @@ local function on_item_text_ready()
                 local translation = data_hooks.set_translation("book", item_id, en, uk)
                 ItemTextPageText:SetText("\n" .. translation)
                 utils.update_item_text_scrollbar()
+            end
+        end
+
+    elseif meta.entry_type == "object" and options.can_lookup("translate_book") then
+        local name_en = ItemTextGetItem()
+        if type(name_en) == "string" and name_en ~= "" then
+            meta.entry_id = name_en
+
+            local name_uk = entries.get_glossary_text(name_en, nil, "object")
+            if name_uk then
+                local translation = data_hooks.set_translation("book", name_en, name_en, utils.cap(name_uk))
+                if ItemTextTitleText then
+                    ItemTextTitleText:SetText(translation)
+                elseif ItemTextFrame.SetTitle then
+                    ItemTextFrame:SetTitle(translation)
+                end
+            end
+
+            -- the pages are found once per reading: namesakes are told apart by the first page
+            local en = ItemTextGetText()
+            local page_num = ItemTextGetPage()
+            if meta.pages == nil then
+                meta.pages = entries.get_object_text_pages(name_en, en) or false
+            end
+
+            if meta.pages and meta.pages[page_num] then
+                local translation = data_hooks.set_translation("book", name_en, en, meta.pages[page_num])
+                ItemTextPageText:SetText("\n" .. translation)
+                utils.update_item_text_scrollbar()
+            elseif not meta.pages and options.account.dev_mode then
+                dev_log.missing_object_text(name_en, page_num, en)
             end
         end
     end

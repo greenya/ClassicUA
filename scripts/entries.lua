@@ -351,12 +351,32 @@ local function resolve_entry_with_possible_ref(entry_type, entry_id, depth)
     return entry
 end
 
+entries.get_object_text_pages = function (name, first_page_text)
+    local entry = addon_table.object_text and addon_table.object_text[name]
+    if not entry then
+        return
+    end
+
+    if type(entry[1]) == "table" then
+        local hash = utils.get_text_hash(first_page_text)
+        for _, variant in ipairs(entry) do
+            if variant.h1 == hash then
+                return make_text_array(variant)
+            end
+        end
+        return
+    end
+
+    return make_text_array(entry)
+end
+
 entries.get_entry = function (entry_type, entry_id)
     if not entry_type or not entry_id then
         return
     end
 
     local at = addon_table
+
     entry_id = tonumber(entry_id)
     if entry_id == 0 then
         return
