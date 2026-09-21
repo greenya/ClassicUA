@@ -35,6 +35,7 @@ This folder contains development scripts, which are used to generate lua files (
     - Run python gen_object_text_lua.py > translation_from_crowdin/gen_object_text_lua_output.txt
     - Run python gen_quest_lua.py > translation_from_crowdin/gen_quest_lua_output.txt
     - Run python gen_zone_lua.py > translation_from_crowdin/gen_zone_lua_output.txt
+    - Run python gen_talent_lua.py > translation_from_crowdin/gen_talent_lua_output.txt
 
     - Run lua54 gen_stat_count_lua.lua > translation_from_crowdin/gen_stat_count_lua_output.txt
         Note: this script must go last, it collects stats based on all current lua files in ./entries

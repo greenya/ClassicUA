@@ -13,12 +13,6 @@ local string_trim   = _G.string.trim
 local UnitName      = _G.UnitName
 local UnitSex       = _G.UnitSex
 
-local function prepare_talent_tree(class)
-    local at = addon_table
-    -- keep only player class tree
-    at.talent_tree = at.talent_tree[class]
-end
-
 local function prepare_quests(is_alliance)
     local at = addon_table
     -- init faction quests reference
@@ -162,7 +156,6 @@ entries.prepare = function ()
     local faction       = UnitFactionGroup("player")
     local is_alliance   = faction == "Alliance"
 
-    prepare_talent_tree(class)
     prepare_quests(is_alliance)
     prepare_codes(name, options.character.name_cases, race, class, is_male)
     prepare_glossary()

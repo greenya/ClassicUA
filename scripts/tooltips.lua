@@ -7,10 +7,7 @@ local options   = addon_table.use("options") ---@class options_class
 local tooltips  = addon_table.use("tooltips") ---@class tooltips_class
 local utils     = addon_table.use("utils") ---@class utils_class
 
-local math_max              = _G.math.max
-local math_min              = _G.math.min
 local GetBindLocation       = _G.GetBindLocation
-local GetTalentInfo         = _G.GetTalentInfo
 local GameTooltipStatusBar  = _G.GameTooltipStatusBar
 local UnitAura              = _G.UnitAura
 local WorldFrame            = _G.WorldFrame
@@ -265,71 +262,44 @@ local function claim_tooltip(tooltip, entry_type, entry_id)
     tooltip.classicua.entry_id = entry_id
 end
 
-local function add_talent_entry_to_tooltip(tooltip, tab_index, tier, column, rank, max_rank)
-    if tooltip.classicua.entry_type then
-        return
-    end
-
-    local tal_tree = addon_table.talent_tree
-    local talent =
-        tal_tree and
-        tal_tree[tab_index] and
-        tal_tree[tab_index][tier] and
-        tal_tree[tab_index][tier][column] or false
-
-    if not talent then
-        return
-    end
-
-    local rank_to_show = math_max(rank, 1)
-    local next_rank_to_show = math_min(rank + 1, max_rank)
-
-    if not talent[rank_to_show] or not talent[next_rank_to_show] then
-        -- this should never be true (otherwise, bug in talent_tree)
-        return
-    end
-
-    local entry = entries.get_entry("spell", talent[rank_to_show])
-    if not entry then
-        if options.account.dev_mode then
-            dev_log.missing_spell(talent[rank_to_show], utils.tooltip_title_line(tooltip))
-            entry = { "spell#" .. talent[rank_to_show] }
-        else
-            return
+-- the rank of a talent a spell is, nil when it is none of them
+local function get_talent_rank(ranks, spell_id)
+    for rank = 1, #ranks do
+        if ranks[rank] == spell_id then
+            return rank
         end
     end
+end
 
-    if not options.can_translate("translate_spell") then
-        claim_tooltip(tooltip, "spell", talent[rank_to_show])
+-- adds the rank in use and the next rank of a talent to its tooltip
+local function handle_talent_tooltip(tooltip, talent_id)
+    local ranks = addon_table.talent_tree[talent_id]
+    if not ranks then
+        return
+    end
+
+    -- the game fires OnTooltipSetSpell inside SetTalent, so the spell path has put the rank in use on
+    -- the tooltip already; a talent with no point spent gets no spell tooltip and shows its first rank
+    local claim = tooltip.classicua
+    if not claim.entry_type then
+        add_entry_to_tooltip(tooltip, "spell", ranks[1], false, options.can_translate("translate_spell"))
+        return
+    end
+
+    local rank = claim.entry_type == "spell" and get_talent_rank(ranks, claim.entry_id)
+    local next_entry = rank and ranks[rank + 1] and entries.get_entry("spell", ranks[rank + 1])
+    if not (next_entry and next_entry[2] and options.can_translate("translate_spell")) then
         return
     end
 
     tooltip:AddLine(" ")
-    tooltip:AddLine(assets.icon_ua_inline .. " " .. entry[1], 1, 1, 1)
-
-    if entry[2] then
-        tooltip:AddLine(entries.make_entry_text(entry[2], tooltip), 1, 0.82, 0, true)
-    end
-
-    if rank_to_show ~= next_rank_to_show then
-        local next_rank_desc = "spell#" .. talent[next_rank_to_show]
-
-        local entry_next = entries.get_entry("spell", talent[next_rank_to_show])
-        if entry_next and entry_next[2] then
-            next_rank_desc = entries.make_entry_text(entry_next[2], tooltip, 1)
-        end
-
-        tooltip:AddLine(" ")
-        tooltip:AddLine("Наступний ранг:", 1, 1, 1)
-        tooltip:AddLine(next_rank_desc, 1, 0.82, 0, true)
-    end
+    tooltip:AddLine("Наступний ранг:", 1, 1, 1)
+    -- the values of the next rank are the second match in the tooltip, the first is the rank in use
+    add_line_to_tooltip(tooltip, entries.make_entry_text(next_entry[2], tooltip, 1), "TEXT", 1, 0.82, 0)
 
     if tooltip:IsShown() then
         tooltip:Show()
     end
-
-    tooltip.classicua.entry_type = "spell"
-    tooltip.classicua.entry_id = talent[rank_to_show]
 end
 
 local function tooltip_set_item(self)
@@ -444,14 +414,11 @@ tooltips.prepare = function ()
         end
     end
 
-    -- we don't need to handle "SetTalent" for Mists as talent tooltip works
-    -- by handling "OnTooltipSetSpell" (above); that is also why for Mists we don't need
-    -- an extra talent_tree.lua (a "talent row+col => spell id" mapper)
+    -- we don't need to handle "SetTalent" for Mists as talent tooltip there is a spell tooltip hooked on "OnTooltipSetSpell"
     if utils.is_classic or utils.is_tbc or utils.is_wrath or utils.is_cata then
-        hooksecurefunc(GameTooltip, "SetTalent", function (self, tab_index, talent_index, x, is_pet)
+        hooksecurefunc(GameTooltip, "SetTalent", function (self, talent_id, is_inspect, is_pet)
             if not is_pet and options.can_lookup("translate_spell") then
-                local _, _, tier, column, rank, max_rank = GetTalentInfo(tab_index, talent_index)
-                add_talent_entry_to_tooltip(self, tab_index, tier, column, rank, max_rank)
+                handle_talent_tooltip(self, talent_id)
             end
         end)
     end
