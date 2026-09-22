@@ -56,8 +56,9 @@ local translate_option_by_data_type = {
 data_hooks.set_translation = function (data_type, data_key, text_en, text_uk)
     local cache = translations_cache
 
+    -- the callers hand the result back to the game, so nothing to translate means the original text
     if not text_en or not text_uk or text_en == text_uk then
-        return
+        return text_en
     end
 
     local option_key = translate_option_by_data_type[data_type]
