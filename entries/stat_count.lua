@@ -7,7 +7,7 @@ local _, addonTable = ...
 addonTable.stat_count = {
 total = {
     quests = 7426,
-    books = 301,
+    item_texts = 301,
     npcs = 12566,
     items = 31710,
     spells = 20570,
@@ -21,7 +21,7 @@ total = {
 },
 classic = {
     quests = 4275,
-    books = 262,
+    item_texts = 262,
     npcs = 8647,
     items = 15009,
     spells = 6952,
@@ -32,7 +32,7 @@ classic = {
 },
 sod = {
     quests = 937,
-    books = 27,
+    item_texts = 27,
     npcs = 1494,
     items = 6825,
     spells = 3460,
@@ -44,7 +44,7 @@ sod = {
 },
 tbc = {
     quests = 1943,
-    books = 11,
+    item_texts = 11,
     npcs = 2341,
     items = 2730,
     spells = 2768,
@@ -55,7 +55,7 @@ tbc = {
 },
 wrath = {
     quests = 271,
-    books = 1,
+    item_texts = 1,
     npcs = 20,
     items = 720,
     spells = 3822,
@@ -66,7 +66,7 @@ wrath = {
 },
 cata = {
     quests = 0,
-    books = 0,
+    item_texts = 0,
     npcs = 64,
     items = 3746,
     spells = 2459,
@@ -77,7 +77,7 @@ cata = {
 },
 mists = {
     quests = 0,
-    books = 0,
+    item_texts = 0,
     npcs = 0,
     items = 2680,
     spells = 1109,

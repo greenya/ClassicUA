@@ -203,8 +203,8 @@ local lang_switchers = {
       extra_target=QuestMapFrame and QuestMapFrame.DetailsFrame and QuestMapFrame.DetailsFrame.RewardsFrame or nil,
       post_update=function () update_quest_reward_names() end },
 
-    -- books (item texts)
-    { hd_type="book", parent={ frame=ItemTextScrollFrame, point="TOPRIGHT", x=-2, y=-12 },
+    -- item texts (books, notes, scrolls)
+    { hd_type="item_text", parent={ frame=ItemTextScrollFrame, point="TOPRIGHT", x=-2, y=-12 },
       extra_target=ItemTextFrame,
       post_update=function ()
           if ItemTextFrame.classicua.refresh then
@@ -274,7 +274,7 @@ local function translate_hooked_data_text(data_type, data_key, text)
             lookup_texts[#lookup_texts + 1] = quest_title
             post_formatting[quest_title] = quest_prefix .. " %s"
         end
-    elseif data_type == "book" then
+    elseif data_type == "item_text" then
         -- apparently, game prefixes text with "\n", and we do the same here for authenticity
         -- more at https://www.townlong-yak.com/framexml/era/Blizzard_UIPanels_Game/ItemTextFrame.lua#69
         if text:find("^\n") then
@@ -347,8 +347,8 @@ local function update_lang_switchers()
             local hd_key
             if s.hd_type == "quest" then
                 hd_key = utils.get_currently_viewed_quest_id()
-            elseif s.hd_type == "book" then
-                hd_key = utils.get_currently_viewed_book_id()
+            elseif s.hd_type == "item_text" then
+                hd_key = utils.get_currently_viewed_text_id()
             elseif s.hd_type == "gossip" then
                 hd_key = utils.npc_id_from_unit_id("npc")
             end

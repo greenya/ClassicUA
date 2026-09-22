@@ -23,10 +23,10 @@ local known_entity_types = {
         },
     },
     {
-        name = "books",
+        name = "item_texts",
         expansions = known_expansions,
-        addon_table_keys = { "book" },
-        files = { "book.lua" },
+        addon_table_keys = { "item_text" },
+        files = { "item_text.lua" },
     },
     {
         name = "npcs",

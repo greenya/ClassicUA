@@ -18,7 +18,7 @@ local default_log = {
     missing_npcs = {},
     missing_items = {},
     missing_spells = {},
-    missing_books = {},
+    missing_item_texts = {},
     missing_gossips = {},
     missing_chats = {},
     missing_zones = {},
@@ -41,7 +41,7 @@ local function log_init()
     if not log.missing_npcs             then log.missing_npcs = {} end
     if not log.missing_items            then log.missing_items = {} end
     if not log.missing_spells           then log.missing_spells = {} end
-    if not log.missing_books            then log.missing_books = {} end
+    if not log.missing_item_texts       then log.missing_item_texts = {} end
     if not log.missing_gossips          then log.missing_gossips = {} end
     if not log.missing_chats            then log.missing_chats = {} end
     if not log.missing_zones            then log.missing_zones = {} end
@@ -70,7 +70,7 @@ local stat_entries = {
     { key = "missing_npcs",             name = "Персонажі" },
     { key = "missing_items",            name = "Предмети" },
     { key = "missing_spells",           name = "Закляття" },
-    { key = "missing_books",            name = "Книжки" },
+    { key = "missing_item_texts",       name = "Тексти предметів" },
     { key = "missing_gossips",          name = "Плітки" },
     { key = "missing_chats",            name = "Чати" },
     { key = "missing_zones",            name = "Локації" },
@@ -250,28 +250,28 @@ dev_log.missing_sod_engraving = function (sod_engraving_id, sod_engraving_name)
     log.missing_sod_engravings[sod_engraving_id] = sod_engraving_name
 end
 
-dev_log.missing_book_page = function (book_id, page_number, page_text)
-    book_id = tonumber(book_id)
-    if not book_id then
+dev_log.missing_item_text = function (item_id, page_number, page_text)
+    item_id = tonumber(item_id)
+    if not item_id then
         return
     end
 
-    if not log.missing_books[book_id] then
-        log.missing_books[book_id] = {}
+    if not log.missing_item_texts[item_id] then
+        log.missing_item_texts[item_id] = {}
     end
 
     local page_number_text = tostring(page_number)
     local page_key = "page_" .. page_number_text
 
-    if log.missing_books[book_id][page_key] then
+    if log.missing_item_texts[item_id][page_key] then
         return
     end
 
     if options.account.dev_mode_notify_activity then
-        dev_print("Відсутня сторінка " .. page_number_text .. " книги #" .. book_id)
+        dev_print("Відсутня сторінка " .. page_number_text .. " книги #" .. item_id)
     end
 
-    log.missing_books[book_id][page_key] = page_text
+    log.missing_item_texts[item_id][page_key] = page_text
 end
 
 dev_log.missing_gossip = function (npc_id, gossip_code, gossip_text_en, is_reply)

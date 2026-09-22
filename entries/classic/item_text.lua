@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local book = { -- [id] = { page1, page2 (optional), page3 (optional), ... }
+local item_text = { -- [id] = { page1, page2 (optional), page3 (optional), ... }
 [745] = { -- Marshal McBrides Documents (4 pages)
 [===[ЗВІТ: Кобольди
 
@@ -3969,8 +3969,8 @@ V. Індикатор температури
 },
 }
 
-if addonTable.book then
-    for k, v in pairs(book) do addonTable.book[k] = v end
+if addonTable.item_text then
+    for k, v in pairs(item_text) do addonTable.item_text[k] = v end
 else
-    addonTable.book = book
+    addonTable.item_text = item_text
 end

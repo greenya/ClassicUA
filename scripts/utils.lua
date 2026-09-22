@@ -327,7 +327,7 @@ utils.get_currently_viewed_quest_id = function ()
 end
 
 -- returns 0 in case no readable item/object opened at the moment
-utils.get_currently_viewed_book_id = function ()
+utils.get_currently_viewed_text_id = function ()
     local meta = ItemTextFrame.classicua or {}
     return (meta.entry_type == "item" or meta.entry_type == "object") and meta.entry_id or 0
 end

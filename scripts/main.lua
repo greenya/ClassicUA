@@ -64,17 +64,17 @@ local function on_item_text_ready()
         if item_entry then
             local en = ItemTextGetItem()
             local uk = utils.cap(item_entry[1])
-            local translation = data_hooks.set_translation("book", item_id, en, uk)
+            local translation = data_hooks.set_translation("item_text", item_id, en, uk)
             ItemTextTitleText:SetText(translation)
         end
 
-        local book_entry = entries.get_entry("book", item_id)
-        if book_entry then
+        local item_text_entry = entries.get_entry("item_text", item_id)
+        if item_text_entry then
             local page_num = ItemTextGetPage()
-            if book_entry[page_num] then
+            if item_text_entry[page_num] then
                 local en = ItemTextGetText()
-                local uk = book_entry[page_num]
-                set_item_text_page(data_hooks.set_translation("book", item_id, en, uk))
+                local uk = item_text_entry[page_num]
+                set_item_text_page(data_hooks.set_translation("item_text", item_id, en, uk))
             end
         end
 
@@ -85,7 +85,7 @@ local function on_item_text_ready()
 
             local name_uk = entries.get_glossary_text(name_en, nil, "object")
             if name_uk then
-                local translation = data_hooks.set_translation("book", name_en, name_en, utils.cap(name_uk))
+                local translation = data_hooks.set_translation("item_text", name_en, name_en, utils.cap(name_uk))
                 if ItemTextTitleText then
                     ItemTextTitleText:SetText(translation)
                 elseif ItemTextFrame.SetTitle then
@@ -101,7 +101,7 @@ local function on_item_text_ready()
             end
 
             if meta.pages and meta.pages[page_num] then
-                set_item_text_page(data_hooks.set_translation("book", name_en, en, meta.pages[page_num]))
+                set_item_text_page(data_hooks.set_translation("item_text", name_en, en, meta.pages[page_num]))
             elseif not meta.pages and options.account.dev_mode then
                 dev_log.missing_object_text(name_en, page_num, en)
             end

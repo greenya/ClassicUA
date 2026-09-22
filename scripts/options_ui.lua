@@ -214,7 +214,7 @@ local function setup_stat_count_frame(content_frame)
         col_aligns= { "LEFT", "RIGHT", "RIGHT",   "RIGHT", "RIGHT", "RIGHT", "RIGHT", "RIGHT" },
                     { "",     "total", "classic", "sod",   "tbc",   "wrath", "cata", "mists", size=112, vert=true },
                     { "quests" },
-                    { "books" },
+                    { "item_texts" },
                     { "npcs" },
                     { "items" },
                     { "spells" },
@@ -235,7 +235,7 @@ local function setup_stat_count_frame(content_frame)
 
             total           = "Всього",
             quests          = "Завдання",
-            books           = "Книжки",
+            item_texts      = "Тексти предметів",
             npcs            = "Персонажі",
             items           = "Предмети",
             spells          = "Заклинання",

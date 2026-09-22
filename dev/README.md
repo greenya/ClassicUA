@@ -10,7 +10,7 @@ This folder contains development scripts, which are used to generate lua files (
     - Download source for following folders:
         - chats*
         - gossip*
-        - objects*
+        - object_texts*
         Note: select multiple folders, right click and choose "Download sources" -> ClassicUA_en.zip
 
 2. Update Terms app:
@@ -26,10 +26,10 @@ This folder contains development scripts, which are used to generate lua files (
         * /en                   <- from ClassicUA_en.zip
         *   /chats*
         *   /gossip*
-        *   /objects*
+        *   /object_texts*
         * /ClassicUA.tbx
 
-    - Run python gen_book_lua.py > translation_from_crowdin/gen_book_lua_output.txt
+    - Run python gen_item_text_lua.py > translation_from_crowdin/gen_item_text_lua_output.txt
     - Run python gen_chat_lua.py > translation_from_crowdin/gen_chat_lua_output.txt
     - Run python gen_gossip_lua.py > translation_from_crowdin/gen_gossip_lua_output.txt
     - Run python gen_misc_lua.py > translation_from_crowdin/gen_misc_lua_output.txt
