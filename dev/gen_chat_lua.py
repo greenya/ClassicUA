@@ -2,10 +2,12 @@ import sys, os, re
 import sqlite3
 import utils
 
-def resolve_npc_name_pair(npc_exp: str, npc_id: int, db_npcs_rows: list) -> tuple:
-    for exp, id, name_en, name_uk in db_npcs_rows:
-        if exp in utils.known_expansions_inclusion[npc_exp] and id == npc_id:
-            return name_en, name_uk
+def resolve_npc_name_pair(npc_exp: str, npc_id: int, db_npcs: dict) -> tuple:
+    # the name of chat file's own expansion, older ones as a fallback
+    for exp in reversed(utils.known_expansions_inclusion[npc_exp]):
+        name_pair = db_npcs.get((exp, npc_id))
+        if name_pair:
+            return name_pair
 
     return None, None
 
@@ -14,9 +16,9 @@ def collect_chats():
     print(f'Using {database_path} to resolve npc names')
 
     conn = sqlite3.connect(database_path)
-    db_npcs_rows = [
-        r for r in conn.execute('SELECT expansion, id, name, name_ua FROM npcs ORDER BY id, expansion')
-    ]
+    db_npcs = {
+        (exp, id): (name_en, name_uk) for exp, id, name_en, name_uk in conn.execute('SELECT expansion, id, name, name_ua FROM npcs')
+    }
 
     chats = { e: {} for e in utils.known_expansions }
     issues = []
@@ -51,7 +53,7 @@ def collect_chats():
 
                     npc_name_from_filename, npc_id = re_search_result.groups()
                     npc_id = int(npc_id)
-                    npc_name_en, npc_name_uk = resolve_npc_name_pair(expansion, npc_id, db_npcs_rows)
+                    npc_name_en, npc_name_uk = resolve_npc_name_pair(expansion, npc_id, db_npcs)
 
                     if not npc_name_en:
                         npc_name_en = npc_name_from_filename
