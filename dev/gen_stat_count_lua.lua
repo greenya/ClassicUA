@@ -60,6 +60,13 @@ local known_entity_types = {
         files = { "object.lua" },
     },
     {
+        name = "object_texts",
+        expansions = known_expansions,
+        addon_table_keys = { "object_text" },
+        files = { "object_text.lua" },
+        count_entry = function (entry) return type(entry[1]) == "table" and #entry or 1 end,
+    },
+    {
         name = "zones",
         addon_table_keys = { "zone" },
         files = { "zone.lua" },
@@ -92,13 +99,13 @@ local known_entity_types = {
     },
 }
 
-local function table_keys_count(tbl)
+local function count_entries(tbl, count_entry)
     local count = 0
-    for _ in pairs(tbl) do count = count + 1 end
+    for _, entry in pairs(tbl) do count = count + (count_entry and count_entry(entry) or 1) end
     return count
 end
 
-local function count_in_file(filename, addon_table_keys)
+local function count_in_file(filename, addon_table_keys, count_entry)
     local script = loadfile(filename)
     if script then
         local addon_table = {}
@@ -110,7 +117,7 @@ local function count_in_file(filename, addon_table_keys)
 
         local c = 0
         for _, k in ipairs(addon_table_keys) do
-            c = c + table_keys_count(addon_table[k])
+            c = c + count_entries(addon_table[k], count_entry)
         end
 
         print(string.format("%i\t-- %s", c, filename))
@@ -139,7 +146,7 @@ local function collect_stats(path)
 
                 stats[exp][et.name] = 0
                 for _, file in ipairs(et.files) do
-                    local count = count_in_file(path .. "/" .. exp .. "/" .. file, et.addon_table_keys)
+                    local count = count_in_file(path .. "/" .. exp .. "/" .. file, et.addon_table_keys, et.count_entry)
                     stats[exp][et.name] = stats[exp][et.name] + count
                     stats.total[et.name] = stats.total[et.name] + count
                 end
@@ -150,7 +157,7 @@ local function collect_stats(path)
             end
         else
             for _, file in ipairs(et.files) do
-                local count = count_in_file(path .. "/" .. file, et.addon_table_keys)
+                local count = count_in_file(path .. "/" .. file, et.addon_table_keys, et.count_entry)
                 stats.total[et.name] = stats.total[et.name] + count
             end
         end
