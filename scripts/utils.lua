@@ -278,7 +278,8 @@ utils.chat_bubble_font_string_with_text = function (text)
 
     -- The client does not hand the chat bubble the exact string that came with the CHAT_MSG_* event:
     -- trailing newlines in bubble are trimmed (but not trailing spaces)
-    local target = string_trim(text)
+    -- Also, some addons (like Prat) add a color code to player name
+    local target = string_trim(utils.strip_color_codes(text))
 
     local bubbles = C_ChatBubbles:GetAllChatBubbles()
     for _, bubble in pairs(bubbles) do
@@ -287,7 +288,7 @@ utils.chat_bubble_font_string_with_text = function (text)
             for i = 1, frame:GetNumRegions() do
                 local region = select(i, frame:GetRegions())
                 if region:GetObjectType() == "FontString" then
-                    local region_text = region:GetText()
+                    local region_text = utils.strip_color_codes(region:GetText())
                     if region_text and string_trim(region_text) == target then
                         return region
                     end
