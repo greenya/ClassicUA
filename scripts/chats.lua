@@ -104,8 +104,8 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
         return nil, chat_text, npc_name, lang_name, ...
     end
 
-    if type(chat_text_uk) == 'string' and chat_text_uk:match("%%s") then
-        chat_text_uk = string_format(chat_text_uk, npc_name_uk)
+    if type(chat_text_uk) == 'string' then
+        chat_text_uk = chat_text_uk:gsub("%%s", function () return npc_name_uk end)
     end
 
     if known_event.verb then
@@ -113,7 +113,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
     end
 
     if is_replacement then
-        return nil, chat_text_uk, npc_name_uk, resolve_lang_name(self, lang_name), ...
+        return nil, (chat_text_uk:gsub("%%", "%%%%")), npc_name_uk, resolve_lang_name(self, lang_name), ...
     end
 
     if options.account.chat_style == "addition" then
