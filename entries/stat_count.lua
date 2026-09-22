@@ -15,8 +15,8 @@ total = {
     objects = 1626,
     object_texts = 19,
     zones = 3405,
-    chats = 719,
-    gossips = 106,
+    chats = 2903,
+    gossips = 731,
     misc = 288,
 },
 classic = {
@@ -27,8 +27,8 @@ classic = {
     spells = 6952,
     objects = 1071,
     object_texts = 9,
-    chats = 392,
-    gossips = 10,
+    chats = 1445,
+    gossips = 375,
 },
 sod = {
     quests = 937,
@@ -39,8 +39,8 @@ sod = {
     sod_engravings = 267,
     objects = 259,
     object_texts = 10,
-    chats = 79,
-    gossips = 7,
+    chats = 214,
+    gossips = 47,
 },
 tbc = {
     quests = 1943,
@@ -50,8 +50,8 @@ tbc = {
     spells = 2768,
     objects = 294,
     object_texts = 0,
-    chats = 241,
-    gossips = 89,
+    chats = 1192,
+    gossips = 309,
 },
 wrath = {
     quests = 271,
@@ -72,7 +72,7 @@ cata = {
     spells = 2459,
     objects = 2,
     object_texts = 0,
-    chats = 7,
+    chats = 52,
     gossips = 0,
 },
 mists = {

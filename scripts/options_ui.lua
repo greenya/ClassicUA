@@ -243,8 +243,8 @@ local function setup_stat_count_frame(content_frame)
             objects         = "Об'єкти",
             object_texts    = "Тексти об'єктів",
             zones           = "Локації *",
-            chats           = "Чати **",
-            gossips         = "Плітки **",
+            chats           = "Чати",
+            gossips         = "Плітки",
             misc            = "Додаткові фрази *",
         },
         display_delta_pos = {
@@ -340,10 +340,7 @@ local function setup_stat_count_frame(content_frame)
     foot_note:SetFontObject(fonts.content)
     foot_note:SetJustifyH("LEFT")
     foot_note:SetTextColor(0, 0, 0)
-    foot_note:SetText(
-        "* Локації та додаткові фрази не прив'язані до конкретних доповнень.\n" ..
-        "** Чати та плітки відображають кількість персонажів для яких є фрази, а не загальну кількість фраз."
-    )
+    foot_note:SetText("* Локації та додаткові фрази не прив'язані до конкретних доповнень.")
 
     y = y - foot_note:GetHeight() - 20
 

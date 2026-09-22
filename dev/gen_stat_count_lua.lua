@@ -1,4 +1,16 @@
 local known_expansions = { "classic", "sod", "tbc", "wrath", "cata", "mists" }
+
+-- translations under text hashes; [1] of a chat is the npc name, "!code" maps codes to hashes
+local function count_phrases(entry)
+    local count = 0
+    for key, value in pairs(entry) do
+        if type(value) == "string" and key ~= 1 then
+            count = count + 1
+        end
+    end
+    return count
+end
+
 local known_entity_types = {
     {
         name = "quests",
@@ -71,17 +83,19 @@ local known_entity_types = {
         addon_table_keys = { "zone" },
         files = { "zone.lua" },
     },
-    {   -- todo: count phrases, not npcs
+    {
         name = "chats",
         expansions = known_expansions,
         addon_table_keys = { "chat" },
         files = { "chat.lua" },
+        count_entry = count_phrases,
     },
-    {   -- todo: count phrases, not npcs
+    {
         name = "gossips",
         expansions = known_expansions,
         addon_table_keys = { "gossip" },
         files = { "gossip.lua" },
+        count_entry = count_phrases,
     },
     -- todo: count strings
     -- note: this doesn't work at the moment, as string.lua checks _G[key] inside;
