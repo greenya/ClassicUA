@@ -393,13 +393,13 @@ entries.get_entry = function (entry_type, entry_id)
         return
     end
 
-    if entry_type == "book" then
-        local book = at.book[entry_id]
+    if entry_type == "item_text" then
+        local item_text = at.item_text[entry_id]
 
-        if book then
-            return make_text_array(book)
+        if item_text then
+            return make_text_array(item_text)
         elseif options.account.dev_mode and entry_id ~= 8383 then -- #8383 is a saved letter inventory item
-            dev_log.missing_book_page(entry_id, ItemTextGetPage(), ItemTextGetText())
+            dev_log.missing_item_text(entry_id, ItemTextGetPage(), ItemTextGetText())
         end
 
         return

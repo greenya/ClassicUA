@@ -47,10 +47,10 @@ data_hooks.original = {
 local translations_cache = {}
 
 local translate_option_by_data_type = {
-    header  = "translate_quest",
-    quest   = "translate_quest",
-    gossip  = "translate_gossip",
-    book    = "translate_book",
+    header    = "translate_quest",
+    quest     = "translate_quest",
+    gossip    = "translate_gossip",
+    item_text = "translate_book",
 }
 
 data_hooks.set_translation = function (data_type, data_key, text_en, text_uk)

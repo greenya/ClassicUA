@@ -23,7 +23,7 @@ def collect_objects():
     names = load_object_names()
 
     for expansion in objects:
-        folder_name = f'objects_{expansion}' if expansion != 'classic' else 'objects'
+        folder_name = f'object_texts_{expansion}' if expansion != 'classic' else 'object_texts'
         uk_path = f'translation_from_crowdin/uk/{folder_name}/'
         en_path = f'translation_from_crowdin/en/{folder_name}/'
         print(f'Processing {uk_path}')

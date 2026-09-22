@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local book = { -- [id] = { page1, page2 (optional), page3 (optional), ... }
+local item_text = { -- [id] = { page1, page2 (optional), page3 (optional), ... }
 [203723] = { -- Cuttys Note (1 page)
 [===[Товар в мене. Я заникаюсь на річці, неподалік від Кришталевого озера, біля стіни. Як пошлеш когось зі своїх по мене, дивись, щоб вони не засвітились!
 
@@ -265,8 +265,8 @@ local book = { -- [id] = { page1, page2 (optional), page3 (optional), ... }
 },
 }
 
-if addonTable.book then
-    for k, v in pairs(book) do addonTable.book[k] = v end
+if addonTable.item_text then
+    for k, v in pairs(item_text) do addonTable.item_text[k] = v end
 else
-    addonTable.book = book
+    addonTable.item_text = item_text
 end
