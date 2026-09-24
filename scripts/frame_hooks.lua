@@ -11,6 +11,8 @@ local utils         = addon_table.use("utils") ---@class utils_class
 
 local string_format = _G.string.format
 local string_gmatch = _G.string.gmatch
+local C_QuestLog    = _G.C_QuestLog
+local GetQuestID    = _G.GetQuestID
 local UnitName      = _G.UnitName
 
 local is_set_text_hook_allowed = true
@@ -371,6 +373,11 @@ local function update_lang_switchers()
 end
 
 local function update_known_game_ui_places()
+    -- WoW: Forever has none of the classic quest log and tracker functions refreshed below
+    if utils.is_forever then
+        return
+    end
+
     if QuestLogFrameTrackButton and QuestLogFrameTrackButton.Click then
         -- this will effectively update all places, it is short but ugly,
         -- as we are actually clicking track/untrack for particular quest
@@ -459,6 +466,54 @@ local function prepare_quest_window_hooks()
     end
 end
 
+-- the game decorates a quest title (e.g. a dungeon icon, "Failed"), so only the english title in it is swapped
+local function splice_quest_title(text, quest_id, title_uk)
+    local title_en = C_QuestLog.GetTitleForQuestID(quest_id) or GetTitleText()
+    local from, to
+    if title_en and title_en ~= "" then
+        from, to = text:find(title_en, 1, true)
+    end
+    return from and text:sub(1, from - 1) .. title_uk .. text:sub(to + 1) or title_uk
+end
+
+-- WoW: Forever runs the retail ui, where the quest texts can not be translated by data_hooks (see data_hooks.prepare)
+-- So now we set text as its widget gets it; it goes through data_hooks.set_translation(), so the language switcher serves it as on the other clients
+local function hook_quest_text(widget, entry_field, get_quest_id)
+    hooksecurefunc(widget, "SetText", function (self, text)
+        if not is_set_text_hook_allowed or type(text) ~= "string" or not options.can_lookup("translate_quest") then
+            return
+        end
+
+        local quest_id = get_quest_id()
+        local quest_entry = entries.get_entry("quest", quest_id)
+        if quest_entry and quest_entry[entry_field] then
+            local text_uk = quest_entry[entry_field]
+            if entry_field == 1 then
+                text_uk = splice_quest_title(text, quest_id, text_uk)
+            end
+            local text_new = data_hooks.set_translation("quest", quest_id, text, text_uk)
+
+            is_set_text_hook_allowed = false
+            self:SetText(text_new)
+            is_set_text_hook_allowed = true
+        end
+    end)
+end
+
+-- the quest window shows either the quest log's selected quest or the one an npc offers
+local function quest_info_quest_id()
+    return QuestInfoFrame.questLog and C_QuestLog.GetSelectedQuest() or GetQuestID()
+end
+
+local function prepare_forever_quest_texts()
+    hook_quest_text(QuestInfoTitleHeader,       1, quest_info_quest_id)
+    hook_quest_text(QuestInfoDescriptionText,   2, quest_info_quest_id)
+    hook_quest_text(QuestInfoObjectivesText,    3, quest_info_quest_id)
+    hook_quest_text(QuestInfoRewardText,        5, quest_info_quest_id)
+    hook_quest_text(QuestProgressTitleText,     1, GetQuestID)
+    hook_quest_text(QuestProgressText,          4, GetQuestID)
+end
+
 frame_hooks.update_gossip_npc_name = update_gossip_npc_name
 
 frame_hooks.prepare = function ()
@@ -466,4 +521,8 @@ frame_hooks.prepare = function ()
     update_hooked_labels() -- need this update to initially translate labels which never gets updated by the game
     prepare_lang_switchers()
     prepare_quest_window_hooks()
+
+    if utils.is_forever then
+        prepare_forever_quest_texts()
+    end
 end
