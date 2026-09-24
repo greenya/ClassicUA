@@ -9,11 +9,12 @@ local frames        = addon_table.use("frames") ---@class frames_class
 local options       = addon_table.use("options") ---@class options_class
 local utils         = addon_table.use("utils") ---@class utils_class
 
-local string_format = _G.string.format
-local string_gmatch = _G.string.gmatch
-local C_QuestLog    = _G.C_QuestLog
-local GetQuestID    = _G.GetQuestID
-local UnitName      = _G.UnitName
+local string_format        = _G.string.format
+local string_gmatch        = _G.string.gmatch
+local C_QuestLog           = _G.C_QuestLog
+local GetQuestID           = _G.GetQuestID
+local GetQuestLogQuestText = _G.GetQuestLogQuestText
+local UnitName             = _G.UnitName
 
 local is_set_text_hook_allowed = true
 
@@ -372,6 +373,13 @@ local function update_lang_switchers()
     is_set_text_hook_allowed = true
 end
 
+-- WoW: Forever shows a finished quest with its completion text, which is often the objectives text of the quest
+local function translate_forever_quest_completion_text(quest_id, text)
+    local _, objectives_en = GetQuestLogQuestText(C_QuestLog.GetLogIndexForQuestID(quest_id))
+    local quest_entry = text == objectives_en and entries.get_entry("quest", quest_id)
+    return quest_entry and quest_entry[3]
+end
+
 -- WoW: Forever, the quest tracker lays out its blocks by the heights of the english texts, so the heights a translation
 -- adds are added to its line, its block and the module (after the game sets the module height, see prepare)
 local forever_quest_tracker_added_height = 0
@@ -411,8 +419,8 @@ local function forever_quest_tracker_blocks()
     return QuestObjectiveTracker.usedBlocks[QuestObjectiveTracker.blockTemplate] or {}
 end
 
--- WoW: Forever, the quest tracker has just set the texts of its blocks (keyed by quest id): the header and
--- the objective lines (keyed by their index)
+-- WoW: Forever, the quest tracker has just set the texts of its blocks (keyed by quest id): the header, the objective
+-- lines (keyed by their index) and the completion text (keyed "QuestComplete")
 local function update_forever_quest_tracker()
     forever_quest_tracker_added_height = 0
 
@@ -437,6 +445,7 @@ local function update_forever_quest_tracker()
             for key, line in pairs(block.usedLines) do
                 local text_en = line.Text:GetText()
                 local text_uk = type(key) == "number" and entries.translate_forever_quest_objective(text_en)
+                    or key == "QuestComplete" and translate_forever_quest_completion_text(quest_id, text_en)
                 if text_uk then
                     line.Text.classicua = { en=text_en, uk=text_uk, shown=text_en }
                 end
@@ -609,8 +618,10 @@ local function update_forever_quest_log_list()
     end
 
     local is_resized = false
+    local buttons_by_quest_id = {}
 
     for button in QuestScrollFrame.titleFramePool:EnumerateActive() do
+        buttons_by_quest_id[button.questID] = button
         local title_uk = entries.get_quest_title(button.questID)
         local text = button.Text:GetText()
         -- the title is shown with the quest level and icons around it
@@ -622,6 +633,25 @@ local function update_forever_quest_log_list()
             -- the list is rebuilt on every hover of a quest on the map, so it is laid out again only when needed
             local height_change = button.Text:GetHeight() - height
             if height_change ~= 0 then
+                button:SetHeight(button:GetHeight() + height_change)
+                is_resized = true
+            end
+        end
+    end
+
+    -- the objectives (or the completion text) are under the title, and make its button taller
+    for objective in QuestScrollFrame.objectiveFramePool:EnumerateActive() do
+        local text = objective.Text:GetText()
+        local text_uk = entries.translate_forever_quest_objective(text)
+            or translate_forever_quest_completion_text(objective.questID, text)
+        if text_uk then
+            local height = objective.Text:GetStringHeight()
+            objective.Text:SetText(text_uk)
+
+            local height_change = objective.Text:GetStringHeight() - height
+            if height_change ~= 0 then
+                objective:SetHeight(objective:GetHeight() + height_change)
+                local button = buttons_by_quest_id[objective.questID]
                 button:SetHeight(button:GetHeight() + height_change)
                 is_resized = true
             end
