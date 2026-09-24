@@ -372,9 +372,104 @@ local function update_lang_switchers()
     is_set_text_hook_allowed = true
 end
 
+-- WoW: Forever, the quest tracker lays out its blocks by the heights of the english texts, so the heights a translation
+-- adds are added to its line, its block and the module (after the game sets the module height, see prepare)
+local forever_quest_tracker_added_height = 0
+
+-- a text of the quest tracker is kept in both languages, so the language switchers swap it in place (laying the
+-- tracker out again from here would taint it); a text the game has set anew since is left alone.
+-- Returns the height the switch added
+local function switch_forever_quest_tracker_text(font_string)
+    local texts = font_string.classicua
+    if not texts or font_string:GetText() ~= texts.shown then
+        return 0
+    end
+
+    local height = font_string:GetHeight()
+    -- like the game, the height is cleared before the text, or GetHeight() may report the previous one
+    font_string:SetHeight(0)
+    font_string:SetText(data_hooks.preferred_lang == "uk" and texts.uk or texts.en)
+    texts.shown = font_string:GetText()
+
+    return font_string:GetHeight() - height
+end
+
+local function switch_forever_quest_tracker_block(block)
+    local block_added_height = switch_forever_quest_tracker_text(block.HeaderText)
+
+    for _, line in pairs(block.usedLines) do
+        local added_height = switch_forever_quest_tracker_text(line.Text)
+        line:SetHeight(line:GetHeight() + added_height)
+        block_added_height = block_added_height + added_height
+    end
+
+    block:SetHeight(block:GetHeight() + block_added_height)
+    forever_quest_tracker_added_height = forever_quest_tracker_added_height + block_added_height
+end
+
+local function forever_quest_tracker_blocks()
+    return QuestObjectiveTracker.usedBlocks[QuestObjectiveTracker.blockTemplate] or {}
+end
+
+-- WoW: Forever, the quest tracker has just set the texts of its blocks (keyed by quest id): the header and
+-- the objective lines (keyed by their index)
+local function update_forever_quest_tracker()
+    forever_quest_tracker_added_height = 0
+
+    if not options.can_translate("translate_quest") then
+        return
+    end
+
+    for quest_id, block in pairs(forever_quest_tracker_blocks()) do
+        if block.used then
+            local title_en = C_QuestLog.GetTitleForQuestID(quest_id)
+            local title_uk = entries.get_quest_title(quest_id)
+            local text = block.HeaderText:GetText()
+            -- the title is shown with the quest level before it
+            local from, to
+            if title_en and text then
+                from, to = text:find(title_en, 1, true)
+            end
+            if title_uk and from then
+                block.HeaderText.classicua = { en=text, uk=text:sub(1, from - 1) .. title_uk .. text:sub(to + 1), shown=text }
+            end
+
+            for key, line in pairs(block.usedLines) do
+                local text_en = line.Text:GetText()
+                local text_uk = type(key) == "number" and entries.translate_forever_quest_objective(text_en)
+                if text_uk then
+                    line.Text.classicua = { en=text_en, uk=text_uk, shown=text_en }
+                end
+            end
+
+            switch_forever_quest_tracker_block(block)
+        end
+    end
+end
+
+-- the game sets the height of the module by the english texts, the height the translations added comes on top
+local function update_forever_quest_tracker_height(module)
+    module:SetHeight(module:GetHeight() + forever_quest_tracker_added_height)
+end
+
+-- the language switchers swap the tracker texts in place, and the module takes the height that changed
+local function switch_forever_quest_tracker()
+    local added_height = forever_quest_tracker_added_height
+
+    for _, block in pairs(forever_quest_tracker_blocks()) do
+        if block.used then
+            switch_forever_quest_tracker_block(block)
+        end
+    end
+
+    QuestObjectiveTracker:SetHeight(QuestObjectiveTracker:GetHeight() + forever_quest_tracker_added_height - added_height)
+end
+
 local function update_known_game_ui_places()
-    -- WoW: Forever has none of the classic quest log and tracker functions refreshed below
+    -- WoW: Forever, the tracker texts are switched in place (see switch_forever_quest_tracker), as the classic quest
+    -- log and tracker functions refreshed below don't exist there
     if utils.is_forever then
+        switch_forever_quest_tracker()
         return
     end
 
@@ -545,6 +640,22 @@ local function update_forever_quest_log_list()
     end
 end
 
+-- WoW: Forever, the objectives of a quest in the quest window, a text each
+local function update_forever_quest_info_objectives()
+    if not options.can_lookup("translate_quest") then
+        return
+    end
+
+    local quest_id = quest_info_quest_id()
+    for _, objective in ipairs(QuestInfoObjectivesFrame.Objectives) do
+        local text = objective:GetText()
+        local text_uk = objective:IsShown() and text and entries.translate_forever_quest_objective(text)
+        if text_uk then
+            objective:SetText(data_hooks.set_translation("quest", quest_id, text, text_uk))
+        end
+    end
+end
+
 local function prepare_forever_quest_texts()
     hook_quest_text(QuestInfoTitleHeader,       1, quest_info_quest_id)
     hook_quest_text(QuestInfoDescriptionText,   2, quest_info_quest_id)
@@ -553,7 +664,10 @@ local function prepare_forever_quest_texts()
     hook_quest_text(QuestProgressTitleText,     1, GetQuestID)
     hook_quest_text(QuestProgressText,          4, GetQuestID)
 
+    hooksecurefunc("QuestInfo_Display", update_forever_quest_info_objectives)
     hooksecurefunc("QuestLogQuests_Update", update_forever_quest_log_list)
+    hooksecurefunc(QuestObjectiveTracker, "LayoutContents", update_forever_quest_tracker)
+    hooksecurefunc(QuestObjectiveTracker, "UpdateHeight", update_forever_quest_tracker_height)
 end
 
 frame_hooks.update_gossip_npc_name = update_gossip_npc_name
