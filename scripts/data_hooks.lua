@@ -440,6 +440,12 @@ local function prepare_data_hooks_for_zones()
 end
 
 data_hooks.prepare = function ()
+    -- WoW: Forever runs the retail ui, where secure code that calls a replaced game function gets tainted.
+    -- Also, the classic quest log functions these replacements call don't exist there.
+    if utils.is_forever then
+        return
+    end
+
     prepare_data_hooks_for_quests()
     prepare_data_hooks_for_quest_greetings()
     prepare_data_hooks_for_gossip()
