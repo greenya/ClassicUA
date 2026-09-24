@@ -363,6 +363,28 @@ entries.get_object_text_pages = function (name, first_page_text)
     return make_text_array(entry)
 end
 
+-- a quest of the player's faction or of both factions; a missing one is logged in dev mode
+local function find_quest(quest_id)
+    quest_id = tonumber(quest_id)
+    if not quest_id or quest_id == 0 then
+        return
+    end
+
+    local at = addon_table
+    local quest = at.quest_faction[quest_id] or at.quest_both[quest_id]
+    if not quest and options.account.dev_mode then
+        dev_log.missing_quest(quest_id)
+    end
+
+    return quest
+end
+
+-- only the title of a quest, without making the rest of its texts
+entries.get_quest_title = function (quest_id)
+    local quest = find_quest(quest_id)
+    return quest and make_text(quest[1])
+end
+
 entries.get_entry = function (entry_type, entry_id)
     if not entry_type or not entry_id then
         return
@@ -376,21 +398,8 @@ entries.get_entry = function (entry_type, entry_id)
     end
 
     if entry_type == "quest" then
-        local quest = nil
-
-        if at.quest_faction[entry_id] then
-            quest = at.quest_faction[entry_id]
-        elseif at.quest_both[entry_id] then
-            quest = at.quest_both[entry_id]
-        end
-
-        if quest then
-            return make_text_array(quest)
-        elseif options.account.dev_mode then
-            dev_log.missing_quest(entry_id)
-        end
-
-        return
+        local quest = find_quest(entry_id)
+        return quest and make_text_array(quest)
     end
 
     if entry_type == "item_text" then
