@@ -505,6 +505,46 @@ local function quest_info_quest_id()
     return QuestInfoFrame.questLog and C_QuestLog.GetSelectedQuest() or GetQuestID()
 end
 
+-- WoW: Forever, the quest list of the map: the game sizes every quest button by its title right after setting it,
+-- so once the list is built, each title is swapped, its button resized by the height the title changed, and the
+-- list laid out again
+local function update_forever_quest_log_list()
+    if data_hooks.preferred_lang ~= "uk" or not options.can_translate("translate_quest") then
+        return
+    end
+
+    local is_resized = false
+
+    for button in QuestScrollFrame.titleFramePool:EnumerateActive() do
+        local title_uk = entries.get_quest_title(button.questID)
+        local text = button.Text:GetText()
+        -- the title is shown with the quest level and icons around it
+        local from, to = text:find(button.info.title, 1, true)
+        if title_uk and from then
+            local height = button.Text:GetHeight()
+            button.Text:SetText(text:sub(1, from - 1) .. title_uk .. text:sub(to + 1))
+
+            -- the list is rebuilt on every hover of a quest on the map, so it is laid out again only when needed
+            local height_change = button.Text:GetHeight() - height
+            if height_change ~= 0 then
+                button:SetHeight(button:GetHeight() + height_change)
+                is_resized = true
+            end
+        end
+    end
+
+    for button in QuestScrollFrame.headerFramePool:EnumerateActive() do
+        local text_uk = entries.get_glossary_text(button:GetText(), nil, "zone")
+        if text_uk then
+            button:SetText(text_uk)
+        end
+    end
+
+    if is_resized then
+        QuestScrollFrame.Contents:Layout()
+    end
+end
+
 local function prepare_forever_quest_texts()
     hook_quest_text(QuestInfoTitleHeader,       1, quest_info_quest_id)
     hook_quest_text(QuestInfoDescriptionText,   2, quest_info_quest_id)
@@ -512,6 +552,8 @@ local function prepare_forever_quest_texts()
     hook_quest_text(QuestInfoRewardText,        5, quest_info_quest_id)
     hook_quest_text(QuestProgressTitleText,     1, GetQuestID)
     hook_quest_text(QuestProgressText,          4, GetQuestID)
+
+    hooksecurefunc("QuestLogQuests_Update", update_forever_quest_log_list)
 end
 
 frame_hooks.update_gossip_npc_name = update_gossip_npc_name
