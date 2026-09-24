@@ -9,6 +9,7 @@ local utils     = addon_table.use("utils") ---@class utils_class
 
 local GetBindLocation       = _G.GetBindLocation
 local GameTooltipStatusBar  = _G.GameTooltipStatusBar
+local TooltipUtil           = _G.TooltipUtil
 local UnitAura              = _G.UnitAura
 local WorldFrame            = _G.WorldFrame
 local issecretvalue         = _G.issecretvalue
@@ -372,11 +373,18 @@ local function tooltip_set_unit_aura(self, data)
 end
 
 local function tooltip_updated(self)
-    if self.classicua.entry_type then
+    if self.classicua.entry_type or utils.tooltip_has_secret(self) then
         return
     end
 
-    local name, unit = self:GetUnit()
+    -- WoW: Forever has GetUnit() on GameTooltip only (not on the comparison tooltips), TooltipUtil works for any tooltip
+    -- TODO: TooltipUtil.GetDisplayedUnit() exists on the other clients too, check it there and drop the split
+    local name, unit
+    if utils.is_forever then
+        name, unit = TooltipUtil.GetDisplayedUnit(self)
+    else
+        name, unit = self:GetUnit()
+    end
     local has_status_bar = GameTooltipStatusBar and GameTooltipStatusBar:IsShown()
     if name or unit or has_status_bar then
         return
