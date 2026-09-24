@@ -324,8 +324,15 @@ local function tooltip_set_item(self, data)
     end
 end
 
-local function tooltip_set_spell(self)
-    local _, id = self:GetSpell()
+local function tooltip_set_spell(self, data)
+    local id
+    if utils.is_forever then
+        -- WoW: Forever hands the spell id over with the tooltip data
+        id = not issecretvalue(data.id) and data.id
+    else
+        id = select(2, self:GetSpell())
+    end
+
     if not id then
         return
     end
@@ -337,14 +344,30 @@ local function tooltip_set_spell(self)
     end
 end
 
-local function tooltip_set_unit(self)
-    local _, unit = self:GetUnit()
-    if unit and options.can_lookup("translate_npc", "translate_npc_tooltip") then
-        local npc_id = utils.npc_id_from_unit_id(unit)
-        if npc_id then
-            add_entry_to_tooltip(self, "npc", npc_id, false,
-                options.can_translate("translate_npc", "translate_npc_tooltip"))
-        end
+local function tooltip_set_unit(self, data)
+    if not options.can_lookup("translate_npc", "translate_npc_tooltip") then
+        return
+    end
+
+    local npc_id
+    if utils.is_forever then
+        -- WoW: Forever hands the unit's guid over with the tooltip data
+        npc_id = not issecretvalue(data.guid) and utils.npc_id_from_guid(data.guid)
+    else
+        local _, unit = self:GetUnit()
+        npc_id = utils.npc_id_from_unit_id(unit)
+    end
+
+    if npc_id then
+        add_entry_to_tooltip(self, "npc", npc_id, false,
+            options.can_translate("translate_npc", "translate_npc_tooltip"))
+    end
+end
+
+-- WoW: Forever, the tooltip of an aura (a buff or debuff), with the spell id in the tooltip data
+local function tooltip_set_unit_aura(self, data)
+    if not issecretvalue(data.id) and options.can_lookup("translate_spell") then
+        add_entry_to_tooltip(self, "spell", data.id, true, options.can_translate("translate_spell"))
     end
 end
 
@@ -442,6 +465,9 @@ tooltips.prepare = function ()
 
     if utils.is_forever then
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, forever_post_call(tooltip_set_item))
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Spell, forever_post_call(tooltip_set_spell))
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.UnitAura, forever_post_call(tooltip_set_unit_aura))
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, forever_post_call(tooltip_set_unit))
     end
 
     -- we don't need to handle "SetTalent" for Mists as talent tooltip there is a spell tooltip hooked on "OnTooltipSetSpell"
