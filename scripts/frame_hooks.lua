@@ -686,26 +686,71 @@ local function update_forever_quest_info_objectives()
     end
 end
 
--- WoW: Forever, the zone names the game shows: the zone and subzone on entering them and the minimap zone
+-- WoW: Forever, the zone names the game shows: the zone and subzone on entering them, the minimap zone and the zone
+-- under the cursor on the world map, which comes with its levels: "Durotar|cffffff00 (1-10)|r"
 local function hook_forever_zone_text(font_string)
     hooksecurefunc(font_string, "SetText", function (self, text)
         if not is_set_text_hook_allowed or type(text) ~= "string" then
             return
         end
 
-        local text_uk = data_hooks.translate_zone_text(text)
-        if text_uk ~= text then
+        local name, levels = text:match("^(.-)(|c.*)$")
+        name = name or text
+        local name_uk = data_hooks.translate_zone_text(name)
+        if name_uk ~= name then
             is_set_text_hook_allowed = false
-            self:SetText(text_uk)
+            self:SetText(name_uk .. (levels or ""))
             is_set_text_hook_allowed = true
         end
     end)
+end
+
+-- WoW: Forever, the buttons of the world map above it, one per map from the continent down: "Kalimdor", "Durotar";
+-- each is as wide as its text. The first one is the home button ("World"), an interface text, not a zone
+local function update_forever_world_map_nav_bar(nav_bar)
+    for i = 2, #nav_bar.navList do
+        local button = nav_bar.navList[i]
+        local text = button:GetText()
+        local text_uk = data_hooks.translate_zone_text(text)
+        if text_uk ~= text then
+            local width = button.text:GetStringWidth()
+            button:SetText(text_uk)
+            button:SetWidth(button:GetWidth() + button.text:GetStringWidth() - width)
+        end
+    end
 end
 
 local function prepare_forever_zone_texts()
     hook_forever_zone_text(ZoneTextString)
     hook_forever_zone_text(SubZoneTextString)
     hook_forever_zone_text(MinimapZoneText)
+
+    for provider in pairs(WorldMapFrame.dataProviders) do
+        if provider.OnSetAreaLabel then
+            hook_forever_zone_text(provider.Label.Name)
+        end
+    end
+
+    hooksecurefunc(WorldMapFrame.NavBar, "Refresh", update_forever_world_map_nav_bar)
+
+    -- the list of sibling maps behind the arrow of such button; every navigation bar (e.g. the dungeon journal) has
+    -- this menu tag
+    Menu.ModifyMenu("MENU_MINIMAP_BATTLEFIELD", function (owner, root_description)
+        if owner:GetParent():GetParent() ~= WorldMapFrame.NavBar then
+            return
+        end
+
+        -- a button shows the text its initializer got, so one more initializer shows the translation
+        for _, element in root_description:EnumerateElementDescriptions() do
+            local text = MenuUtil.GetElementText(element)
+            local text_uk = data_hooks.translate_zone_text(text)
+            if text_uk ~= text then
+                element:AddInitializer(function (button)
+                    button.fontString:SetTextToFit(text_uk)
+                end)
+            end
+        end
+    end)
 
     -- the minimap got its zone while the game was loading, the next one comes with a zone change
     MinimapZoneText:SetText(MinimapZoneText:GetText())
