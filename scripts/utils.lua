@@ -10,6 +10,7 @@ local string_split          = _G.string.split
 local string_trim           = _G.string.trim
 local table_concat          = _G.table.concat
 local C_ChatBubbles         = _G.C_ChatBubbles
+local C_QuestLog            = _G.C_QuestLog
 local GetMouseFoci          = _G.GetMouseFoci
 local GetMouseFocus         = _G.GetMouseFocus
 local GetQuestID            = _G.GetQuestID
@@ -355,7 +356,13 @@ utils.get_currently_viewed_quest_id = function ()
         return npc_quest_id
     end
 
-    local questlog_quest_id = GetQuestLogSelectedID()
+    local questlog_quest_id
+    if utils.is_forever then
+        questlog_quest_id = C_QuestLog.GetSelectedQuest()
+    else
+        questlog_quest_id = GetQuestLogSelectedID()
+    end
+
     if questlog_quest_id and questlog_quest_id > 0 then
         return questlog_quest_id
     end
