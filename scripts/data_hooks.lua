@@ -331,6 +331,8 @@ local function translate_zone_text(text)
     return options.can_translate("translate_zone") and text_uk or text
 end
 
+data_hooks.translate_zone_text = translate_zone_text
+
 local function prepare_data_hooks_for_zones()
     _G.C_Map.GetMapInfo = function (...)
         local info = data_hooks.original.C_Map_GetMapInfo(...)
