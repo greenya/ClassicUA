@@ -11,6 +11,7 @@ local GetBindLocation       = _G.GetBindLocation
 local GameTooltipStatusBar  = _G.GameTooltipStatusBar
 local UnitAura              = _G.UnitAura
 local WorldFrame            = _G.WorldFrame
+local issecretvalue         = _G.issecretvalue
 
 local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_can_be_spell_id, parent_item_id)
     if not content then
@@ -93,7 +94,7 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
     local heading = entries.make_entry_text(entry[1], tooltip)
 
     if utils.tooltip_item_suffix_id(tooltip) then
-        local item_name_en = tooltip:GetItem()
+        local item_name_en = utils.tooltip_item(tooltip)
         local item_suffix_uk = entries.get_item_suffix(item_name_en)
         if item_suffix_uk then
             heading = heading .. " " .. item_suffix_uk
@@ -220,7 +221,8 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
         end
     end
 
-    if updated and tooltip:IsShown() then
+    -- WoW: Forever shows (and sizes) the tooltip itself right after the post calls, see tooltips.prepare()
+    if updated and tooltip:IsShown() and not utils.is_forever then
         tooltip:Show()
     end
 
@@ -302,8 +304,15 @@ local function handle_talent_tooltip(tooltip, talent_id)
     end
 end
 
-local function tooltip_set_item(self)
-    local id = utils.tooltip_item_id(self)
+local function tooltip_set_item(self, data)
+    local id
+    if utils.is_forever then
+        -- WoW: Forever hands the item id over with the tooltip data
+        id = not issecretvalue(data.id) and data.id
+    else
+        id = utils.tooltip_item_id(self)
+    end
+
     if not id then
         return
     end
@@ -377,6 +386,16 @@ local function tooltip_cleared(self)
     self.classicua.entry_id = false
 end
 
+-- WoW: Forever runs the retail ui, where the tooltip data processor calls back once it has filled a tooltip;
+-- the callback comes for every tooltip in the game, so only the ones we know are served
+local function forever_post_call(handler)
+    return function (tooltip, data)
+        if tooltip.classicua and not tooltip:IsForbidden() and not utils.tooltip_has_secret(tooltip) then
+            handler(tooltip, data)
+        end
+    end
+end
+
 tooltips.prepare = function ()
     local known_tooltips = {}
 
@@ -419,6 +438,10 @@ tooltips.prepare = function ()
                 end
             end)
         end
+    end
+
+    if utils.is_forever then
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, forever_post_call(tooltip_set_item))
     end
 
     -- we don't need to handle "SetTalent" for Mists as talent tooltip there is a spell tooltip hooked on "OnTooltipSetSpell"

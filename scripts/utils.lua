@@ -14,7 +14,9 @@ local GetMouseFoci          = _G.GetMouseFoci
 local GetMouseFocus         = _G.GetMouseFocus
 local GetQuestID            = _G.GetQuestID
 local GetQuestLogSelectedID = _G.GetQuestLogSelectedID
+local TooltipUtil           = _G.TooltipUtil
 local UnitGUID              = _G.UnitGUID
+local issecretvalue         = _G.issecretvalue
 
 utils.prepare = function ()
     local build_version = GetBuildInfo()
@@ -260,13 +262,41 @@ utils.item_id_from_link = function (item_link)
     end
 end
 
+-- WoW: Forever runs the retail ui, where only GameTooltip keeps a lua GetItem(); the comparison tooltips
+-- and ItemRefTooltip are read through TooltipUtil
+utils.tooltip_item = function (tooltip)
+    if utils.is_forever then
+        return TooltipUtil.GetDisplayedItem(tooltip)
+    end
+
+    return tooltip:GetItem()
+end
+
+-- WoW: Forever hands out secret values (in combat, in instances); an addon touching a tooltip that holds
+-- one taints the tooltip until a reload, so such a tooltip is left alone
+utils.tooltip_has_secret = function (tooltip)
+    if not utils.is_forever then
+        return false
+    end
+
+    local name = tooltip:GetName()
+    for i = 1, tooltip:NumLines() do
+        local left, right = _G[name .. "TextLeft" .. i], _G[name .. "TextRight" .. i]
+        if (left and issecretvalue(left:GetText())) or (right and issecretvalue(right:GetText())) then
+            return true
+        end
+    end
+
+    return false
+end
+
 utils.tooltip_item_id = function (tooltip)
-    local _, item_link = tooltip:GetItem()
+    local _, item_link = utils.tooltip_item(tooltip)
     return utils.item_id_from_link(item_link)
 end
 
 utils.tooltip_item_suffix_id = function (tooltip)
-    local _, item_link = tooltip:GetItem()
+    local _, item_link = utils.tooltip_item(tooltip)
     if item_link then
         local suffix_id = select(8, string_split(":", item_link))
         if suffix_id then
