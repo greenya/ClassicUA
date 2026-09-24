@@ -18,8 +18,11 @@ local UnitGUID              = _G.UnitGUID
 
 utils.prepare = function ()
     local build_version = GetBuildInfo()
+    local _, minor_version = string_split(".", build_version)
 
-    utils.is_classic        = string_byte(build_version, 1) == string_byte("1")
+    -- WoW: Forever (1.60.x) shares the major version with Classic Era and Season of Discovery (1.15.x)
+    utils.is_forever        = string_byte(build_version, 1) == string_byte("1") and tonumber(minor_version) >= 60
+    utils.is_classic        = string_byte(build_version, 1) == string_byte("1") and not utils.is_forever
     utils.is_classic_sod    = utils.is_classic and C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
     utils.is_tbc            = string_byte(build_version, 1) == string_byte("2")
     utils.is_wrath          = string_byte(build_version, 1) == string_byte("3")
@@ -31,6 +34,7 @@ utils.prepare = function ()
     elseif utils.is_wrath   then utils.expansion_key = "wrath"
     elseif utils.is_cata    then utils.expansion_key = "cata"
     elseif utils.is_mists   then utils.expansion_key = "mists"
+    elseif utils.is_forever then utils.expansion_key = "forever"
     else                         utils.expansion_key = "???" end
 end
 
