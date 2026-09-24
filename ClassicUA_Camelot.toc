@@ -1,0 +1,18 @@
+## Interface: 16001
+
+## Title: |cff1177eeClassic|r|cffffdd00UA|r
+## Notes: Game localization to Ukrainian language.
+## Author: Greenya, Jakanis, and others
+## Version: 6.8
+## Category: Quests
+## IconTexture: Interface\Addons\ClassicUA\assets\icon.png
+## SavedVariables: ClassicUA_Options, ClassicUA_DevLog
+## SavedVariablesPerCharacter: ClassicUA_Character_Options
+
+ui\ClassicUA_UISliderTemplateWithLabels.xml
+
+entries\index.xml
+entries\classic\index.xml
+entries\sod\index.xml
+
+scripts\index.xml
