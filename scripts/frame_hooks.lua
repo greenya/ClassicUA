@@ -656,6 +656,31 @@ local function update_forever_quest_info_objectives()
     end
 end
 
+-- WoW: Forever, the zone names the game shows: the zone and subzone on entering them and the minimap zone
+local function hook_forever_zone_text(font_string)
+    hooksecurefunc(font_string, "SetText", function (self, text)
+        if not is_set_text_hook_allowed or type(text) ~= "string" then
+            return
+        end
+
+        local text_uk = data_hooks.translate_zone_text(text)
+        if text_uk ~= text then
+            is_set_text_hook_allowed = false
+            self:SetText(text_uk)
+            is_set_text_hook_allowed = true
+        end
+    end)
+end
+
+local function prepare_forever_zone_texts()
+    hook_forever_zone_text(ZoneTextString)
+    hook_forever_zone_text(SubZoneTextString)
+    hook_forever_zone_text(MinimapZoneText)
+
+    -- the minimap got its zone while the game was loading, the next one comes with a zone change
+    MinimapZoneText:SetText(MinimapZoneText:GetText())
+end
+
 local function prepare_forever_quest_texts()
     hook_quest_text(QuestInfoTitleHeader,       1, quest_info_quest_id)
     hook_quest_text(QuestInfoDescriptionText,   2, quest_info_quest_id)
@@ -680,5 +705,6 @@ frame_hooks.prepare = function ()
 
     if utils.is_forever then
         prepare_forever_quest_texts()
+        prepare_forever_zone_texts()
     end
 end
