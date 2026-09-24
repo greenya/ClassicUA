@@ -6,6 +6,7 @@ local options   = addon_table.use("options") ---@class options_class
 local utils     = addon_table.use("utils") ---@class utils_class
 
 local pcall         = _G.pcall
+local COMPLETE      = _G.COMPLETE
 local string_format = _G.string.format
 local string_gmatch = _G.string.gmatch
 local string_split  = _G.string.split
@@ -773,6 +774,35 @@ entries.translate_quest_objective_task = function (text)
     end
 
     return text
+end
+
+-- WoW: Forever puts the count of an objective first: "0/8 Kobold Vermin slain" (its QUEST_MONSTERS_KILLED), "0/4 Fungal Spores".
+-- Classic clients show them as "Kobold Vermin slain: 0/8" and "Fungal Spores: 0/4"
+-- TODO: make translate_quest_objective_task universal
+entries.translate_forever_quest_objective = function (text)
+    local at = addon_table
+    local complete_en = " (" .. COMPLETE .. ")"
+    local complete_uk = ""
+    if text:sub(-#complete_en) == complete_en then
+        text = text:sub(1, -#complete_en - 1)
+        complete_uk = " (" .. (at.string[COMPLETE] or COMPLETE) .. ")"
+    end
+
+    local done, total, task = text:match("^(%d+)/(%d+) (.+)$")
+    if not done then
+        return
+    end
+
+    local text_classic
+    local monster = task:match("^(.+) slain$")
+    if monster then
+        text_classic = string_format(at.string_globals.QUEST_MONSTERS_KILLED, monster, done, total)
+    else
+        text_classic = string_format("%s: %d/%d", task, done, total)
+    end
+
+    local text_uk = entries.translate_quest_objective_task(text_classic)
+    return text_uk ~= text_classic and text_uk .. complete_uk or nil
 end
 
 entries.translate_taxi_node_name = function (text)
