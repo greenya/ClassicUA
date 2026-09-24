@@ -333,15 +333,18 @@ utils.chat_bubble_font_string_with_text = function (text)
 end
 
 -- unit_id is one of https://warcraft.wiki.gg/wiki/UnitId
+utils.npc_id_from_guid = function (guid)
+    if type(guid) == "string" then
+        local kind, _, _, _, _, id, _ = string_split("-", guid)
+        if id and (kind == "Creature" or kind == "Vehicle") then
+            return tonumber(id)
+        end
+    end
+end
+
 utils.npc_id_from_unit_id = function (unit_id)
     if type(unit_id) == "string" then
-        local guid = UnitGUID(unit_id)
-        if guid then
-            local kind, _, _, _, _, id, _ = string_split("-", guid)
-            if id and (kind == "Creature" or kind == "Vehicle") then
-                return tonumber(id)
-            end
-        end
+        return utils.npc_id_from_guid(UnitGUID(unit_id))
     end
 end
 
