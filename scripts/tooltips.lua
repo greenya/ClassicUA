@@ -394,13 +394,20 @@ tooltips.prepare = function ()
     end
 
     for _, tt in pairs(known_tooltips) do
-        tt:HookScript("OnTooltipSetItem", tooltip_set_item)
-        tt:HookScript("OnTooltipSetSpell", tooltip_set_spell)
-        tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
+        if not utils.is_forever then
+            -- WoW: Forever runs the retail ui, where tooltips have no OnTooltipSet* scripts
+            tt:HookScript("OnTooltipSetItem", tooltip_set_item)
+            tt:HookScript("OnTooltipSetSpell", tooltip_set_spell)
+            tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
+        end
         tt:HookScript("OnUpdate", tooltip_updated)
         tt:HookScript("OnTooltipCleared", tooltip_cleared)
 
-        if tt == ItemRefTooltip then
+        -- WoW: Forever needs no such workaround, and it breaks the tooltip there: its OnUpdate is the game's own, which
+        -- fills in the item data as it arrives and shows the comparisons. Replaced by SetScript() below, an item that is
+        -- not cached yet needs a click per portion of its data: "Retrieving item information" first, then the name and
+        -- basic stats, then the item effects; and Shift shows no comparison
+        if tt == ItemRefTooltip and not utils.is_forever then
             -- ItemRefTooltip is "special" tooltip as it clears "OnUpdate" hook every time,
             -- making it work only once, so we reset it back.
             -- Some details here: https://github.com/arkayenro/arkinventory/issues/1337
@@ -423,24 +430,27 @@ tooltips.prepare = function ()
         end)
     end
 
-    hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
-        local id = select(10, UnitAura(unit, index, filter))
-        if id and options.can_lookup("translate_spell") then
-            add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
-        end
-    end)
+    -- WoW: Forever has no UnitAura(), which the aura hooks below read the spell id from
+    if not utils.is_forever then
+        hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
+            local id = select(10, UnitAura(unit, index, filter))
+            if id and options.can_lookup("translate_spell") then
+                add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
+            end
+        end)
 
-    hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
-        local id = select(10, UnitAura(unit, index, "HELPFUL"))
-        if id and options.can_lookup("translate_spell") then
-            add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
-        end
-    end)
+        hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
+            local id = select(10, UnitAura(unit, index, "HELPFUL"))
+            if id and options.can_lookup("translate_spell") then
+                add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
+            end
+        end)
 
-    hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
-        local id = select(10, UnitAura(unit, index, "HARMFUL"))
-        if id and options.can_lookup("translate_spell") then
-            add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
-        end
-    end)
+        hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
+            local id = select(10, UnitAura(unit, index, "HARMFUL"))
+            if id and options.can_lookup("translate_spell") then
+                add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
+            end
+        end)
+    end
 end
