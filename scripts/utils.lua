@@ -273,8 +273,12 @@ utils.tooltip_item = function (tooltip)
     return tooltip:GetItem()
 end
 
--- WoW: Forever hands out secret values (in combat, in instances); an addon touching a tooltip that holds
--- one taints the tooltip until a reload, so such a tooltip is left alone
+-- WoW: Forever hands out secret values in combat/dungeons, we can't touch this
+utils.is_secret = function (value)
+    return utils.is_forever and issecretvalue(value)
+end
+
+-- addon touching a tooltip with secret value taints the tooltip until a reload
 utils.tooltip_has_secret = function (tooltip)
     if not utils.is_forever then
         return false
@@ -322,7 +326,7 @@ utils.chat_bubble_font_string_with_text = function (text)
             local frame = select(1, bubble:GetChildren())
             for i = 1, frame:GetNumRegions() do
                 local region = select(i, frame:GetRegions())
-                if region:GetObjectType() == "FontString" then
+                if region:GetObjectType() == "FontString" and not utils.is_secret(region:GetText()) then
                     local region_text = utils.strip_color_codes(region:GetText())
                     if region_text and string_trim(region_text) == target then
                         return region
@@ -333,10 +337,8 @@ utils.chat_bubble_font_string_with_text = function (text)
     end
 end
 
--- unit_id is one of https://warcraft.wiki.gg/wiki/UnitId
 utils.npc_id_from_guid = function (guid)
-    -- WoW: Forever keeps the guid a secret where addons are restricted, e.g. in dungeons
-    if type(guid) == "string" and not (utils.is_forever and issecretvalue(guid)) then
+    if type(guid) == "string" and not utils.is_secret(guid) then
         local kind, _, _, _, _, id, _ = string_split("-", guid)
         if id and (kind == "Creature" or kind == "Vehicle") then
             return tonumber(id)
@@ -344,6 +346,7 @@ utils.npc_id_from_guid = function (guid)
     end
 end
 
+-- unit_id is one of https://warcraft.wiki.gg/wiki/UnitId
 utils.npc_id_from_unit_id = function (unit_id)
     if type(unit_id) == "string" then
         return utils.npc_id_from_guid(UnitGUID(unit_id))
