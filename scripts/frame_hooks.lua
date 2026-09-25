@@ -721,6 +721,21 @@ local function update_forever_world_map_nav_bar(nav_bar)
     end
 end
 
+-- WoW: Forever, a flight point hovered on the flight master's map: its name ("Crossroads, The Barrens") is the first
+-- line of the tooltip, which is shown again to fit the translation
+local function update_forever_taxi_node_tooltip()
+    if not options.can_lookup("translate_zone") then
+        return
+    end
+
+    local text = GameTooltipTextLeft1:GetText()
+    local text_uk = text and entries.translate_taxi_node_name(text)
+    if options.can_translate("translate_zone") and text_uk ~= text then
+        GameTooltipTextLeft1:SetText(text_uk)
+        GameTooltip:Show()
+    end
+end
+
 local function prepare_forever_zone_texts()
     hook_forever_zone_text(ZoneTextString)
     hook_forever_zone_text(SubZoneTextString)
@@ -733,6 +748,7 @@ local function prepare_forever_zone_texts()
     end
 
     hooksecurefunc(WorldMapFrame.NavBar, "Refresh", update_forever_world_map_nav_bar)
+    hooksecurefunc("TaxiNodeOnButtonEnter", update_forever_taxi_node_tooltip)
 
     -- the list of sibling maps behind the arrow of such button; every navigation bar (e.g. the dungeon journal) has
     -- this menu tag
