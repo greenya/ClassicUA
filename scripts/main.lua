@@ -248,6 +248,7 @@ local event_frame = CreateFrame("Frame")
 
 event_frame:RegisterEvent("ADDON_LOADED")
 event_frame:RegisterEvent("PLAYER_LOGIN")
+event_frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 event_frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
@@ -275,7 +276,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
     elseif event == "PLAYER_LOGIN" then
         entries.prepare()
         data_hooks.prepare()
-        frame_hooks.prepare()
         options_ext_ui.prepare()
         options_ui.prepare()
 
@@ -285,6 +285,12 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
             .. (options.account.dev_mode and " — Режим розробки" or "")
         )
+
+    elseif event == "PLAYER_ENTERING_WORLD" then
+        -- the hooks on the game's frames are set once the player is in the world: WoW: Forever (since 1.60.1.70009)
+        -- leaves the ones set earlier without effect, or even breaks the hooked methods
+        self:UnregisterEvent("PLAYER_ENTERING_WORLD")
+        frame_hooks.prepare()
 
     elseif event == "PLAYER_TARGET_CHANGED" then
         on_player_target_changed()
