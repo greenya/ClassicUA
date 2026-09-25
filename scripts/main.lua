@@ -26,9 +26,18 @@ local UnitName          = _G.UnitName
 
 ItemTextFrame.classicua = {}
 
+-- WoW: Forever runs the retail reader: it has the title on the frame itself
+local function set_item_text_title(text)
+    if utils.is_forever then
+        ItemTextFrame:SetTitle(text)
+    else
+        ItemTextTitleText:SetText(text)
+    end
+end
+
 local function set_item_text_page(text)
-    -- classic reader puts a line break before every page, retail-based reader (forever) does not
-    ItemTextPageText:SetText(ItemTextTitleText and ("\n" .. text) or text)
+    -- WoW: Forever has no line break before a page
+    ItemTextPageText:SetText(utils.is_forever and text or "\n" .. text)
     utils.update_item_text_scrollbar()
 end
 
@@ -64,8 +73,7 @@ local function on_item_text_ready()
         if item_entry then
             local en = ItemTextGetItem()
             local uk = utils.cap(item_entry[1])
-            local translation = data_hooks.set_translation("item_text", item_id, en, uk)
-            ItemTextTitleText:SetText(translation)
+            set_item_text_title(data_hooks.set_translation("item_text", item_id, en, uk))
         end
 
         local item_text_entry = entries.get_entry("item_text", item_id)
@@ -85,12 +93,7 @@ local function on_item_text_ready()
 
             local name_uk = entries.get_glossary_text(name_en, nil, "object")
             if name_uk then
-                local translation = data_hooks.set_translation("item_text", name_en, name_en, utils.cap(name_uk))
-                if ItemTextTitleText then
-                    ItemTextTitleText:SetText(translation)
-                elseif ItemTextFrame.SetTitle then
-                    ItemTextFrame:SetTitle(translation)
-                end
+                set_item_text_title(data_hooks.set_translation("item_text", name_en, name_en, utils.cap(name_uk)))
             end
 
             -- the pages are found once per reading: namesakes are told apart by the first page
