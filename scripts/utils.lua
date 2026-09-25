@@ -385,17 +385,25 @@ utils.mouse_hover_frame = function ()
 end
 
 utils.update_item_text_scrollbar = function ()
-    local sf, sb = ItemTextScrollFrame, ItemTextScrollFrameScrollBar
+    -- WoW: Forever runs the retail reader, where the scroll bar has no name of its own
+    local sf = ItemTextScrollFrame
+    local sb = utils.is_forever and sf.ScrollBar or ItemTextScrollFrameScrollBar
     if not sf or not sb then return end
 
-    sf.scrollBarHideable = false
+    if not utils.is_forever then
+        sf.scrollBarHideable = false
+    end
     sf:GetScrollChild():SetHeight(1)
     sf:UpdateScrollChildRect()
     if math_floor(sf:GetVerticalScrollRange()) > 0 then
         sf:GetScrollChild():SetHeight(sf:GetHeight() + sf:GetVerticalScrollRange() + 30)
     end
 
-    sb:SetValue(0)
+    if utils.is_forever then
+        sb:ScrollToBegin()
+    else
+        sb:SetValue(0)
+    end
 end
 
 utils.get_match_list_of_equal_meaning_english_texts_for_phrase = function (phrase)
