@@ -217,7 +217,8 @@ local lang_switchers = {
       end },
 
     -- gossips (npc talk and player replies)
-    { hd_type="gossip", parent={ frame=GossipFrameInset, point="TOPRIGHT", x=-6, y=-10 },
+    { hd_type="gossip", parent={ frame=GossipFrameInset, relative_to=GossipFrame.GreetingPanel.ScrollBox,
+                                 point="TOPRIGHT", x=-12, y=-10 },
       post_update=function ()
           update_gossip_scroll_box()
           update_gossip_npc_name()
@@ -506,9 +507,9 @@ local function update_known_game_ui_places()
     end
 end
 
-local function create_lang_switcher_frame(parent, point, x, y)
+local function create_lang_switcher_frame(parent, relative_to, point, x, y)
     local root = CreateFrame("CheckButton", nil, parent)
-    root:SetPoint(point, parent, x, y)
+    root:SetPoint(point, relative_to or parent, x, y)
     root:SetSize(40, 40)
 
     root:SetNormalTexture(assets.icon_scroll)
@@ -538,7 +539,7 @@ local function prepare_lang_switchers()
     for _, switcher in ipairs(lang_switchers) do
         local p = switcher.parent
         if p.frame then
-            switcher.frame = create_lang_switcher_frame(p.frame, p.point, p.x, p.y)
+            switcher.frame = create_lang_switcher_frame(p.frame, p.relative_to, p.point, p.x, p.y)
         end
     end
 end
