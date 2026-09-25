@@ -274,6 +274,19 @@ local function get_talent_rank(ranks, spell_id)
     end
 end
 
+-- the next rank of a talent; the values of its text are the second match in the tooltip, the first is the rank in use
+local function add_next_rank_to_tooltip(tooltip, spell_id)
+    local entry = entries.get_entry("spell", spell_id)
+    if not (entry and entry[2] and options.can_translate("translate_spell")) then
+        return false
+    end
+
+    tooltip:AddLine(" ")
+    tooltip:AddLine("Наступний ранг:", 1, 1, 1)
+    add_line_to_tooltip(tooltip, entries.make_entry_text(entry[2], tooltip, 1), "TEXT", 1, 0.82, 0)
+    return true
+end
+
 -- adds the rank in use and the next rank of a talent to its tooltip
 local function handle_talent_tooltip(tooltip, talent_id)
     local ranks = addon_table.talent_tree[talent_id]
@@ -290,17 +303,13 @@ local function handle_talent_tooltip(tooltip, talent_id)
     end
 
     local rank = claim.entry_type == "spell" and get_talent_rank(ranks, claim.entry_id)
-    local next_entry = rank and ranks[rank + 1] and entries.get_entry("spell", ranks[rank + 1])
-    if not (next_entry and next_entry[2] and options.can_translate("translate_spell")) then
+    local next_rank_id = rank and ranks[rank + 1]
+    if not next_rank_id then
         return
     end
 
-    tooltip:AddLine(" ")
-    tooltip:AddLine("Наступний ранг:", 1, 1, 1)
-    -- the values of the next rank are the second match in the tooltip, the first is the rank in use
-    add_line_to_tooltip(tooltip, entries.make_entry_text(next_entry[2], tooltip, 1), "TEXT", 1, 0.82, 0)
-
-    if tooltip:IsShown() then
+    local is_added = add_next_rank_to_tooltip(tooltip, next_rank_id)
+    if is_added and tooltip:IsShown() then
         tooltip:Show()
     end
 end
@@ -336,6 +345,30 @@ local function tooltip_set_spell(self, data)
 
     if not id then
         return
+    end
+
+    -- WoW: Forever, talent tooltip shows talent ranks as spells
+    if utils.is_forever then
+        local info = self:GetProcessingTooltipInfo()
+        if info and info.getterName == "GetTraitEntry" then
+            local claim = self.classicua
+            if claim.talent_rank_id then
+                if options.can_lookup("translate_spell") then
+                    add_entry_to_tooltip(self, "spell", claim.talent_rank_id, false, options.can_translate("translate_spell"))
+                    add_next_rank_to_tooltip(self, id)
+                else
+                    claim_tooltip(self, "spell", claim.talent_rank_id)
+                end
+                claim.talent_rank_id = nil
+                return
+            end
+
+            local node = self:GetOwner() and self:GetOwner().nodeInfo
+            if not claim.entry_type and node and node.nextEntry and node.ranksPurchased > 0 then
+                claim.talent_rank_id = id
+                return
+            end
+        end
     end
 
     if options.can_lookup("translate_spell") then
@@ -415,6 +448,7 @@ end
 local function tooltip_cleared(self)
     self.classicua.entry_type = false
     self.classicua.entry_id = false
+    self.classicua.talent_rank_id = nil
 end
 
 -- WoW: Forever runs the retail ui, where the tooltip data processor calls back once it has filled a tooltip;
