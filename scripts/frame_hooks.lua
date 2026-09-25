@@ -58,8 +58,15 @@ local function update_gossip_npc_name()  -- todo: move from frame_hooks?
 end
 
 local function update_quest_npc_name()
-    local name = QuestFrameNpcNameText and npc_name_in_preferred_lang("questnpc")
-    if name then
+    local name = npc_name_in_preferred_lang("questnpc")
+    if not name then
+        return
+    end
+
+    -- WoW: Forever runs the retail quest window, which shows the npc name as its title
+    if utils.is_forever then
+        QuestFrame:SetTitle(name)
+    elseif QuestFrameNpcNameText then
         QuestFrameNpcNameText:SetText(name)
     end
 end
