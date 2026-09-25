@@ -335,7 +335,8 @@ end
 
 -- unit_id is one of https://warcraft.wiki.gg/wiki/UnitId
 utils.npc_id_from_guid = function (guid)
-    if type(guid) == "string" then
+    -- WoW: Forever keeps the guid a secret where addons are restricted, e.g. in dungeons
+    if type(guid) == "string" and not (utils.is_forever and issecretvalue(guid)) then
         local kind, _, _, _, _, id, _ = string_split("-", guid)
         if id and (kind == "Creature" or kind == "Vehicle") then
             return tonumber(id)
