@@ -184,45 +184,47 @@ end
 -- "values" is an array of { key, label }; "on_select" receives the frame and the selected key.
 -- Call "set_selected" on the returned frame to show another value.
 frames.create_dropdown_frame = function (parent, name, point, x, y, width, values, selected_key, tooltip_text, on_select)
-    local root = CreateFrame("Frame", name, parent, "UIDropDownMenuTemplate")
+    local root = CreateFrame("DropdownButton", name, parent, "WowStyle1DropdownTemplate")
+    root:SetPoint(point, x, y)
+    root:SetWidth(width)
 
-    -- template keeps ~16px of its left border outside of the text area - shifting back to align
-    root:SetPoint(point, x - 16, y)
-    root.values = values
-
-    root.value_by_key = {}
+    local value_by_key = {}
     for _, v in ipairs(values) do
-        root.value_by_key[v.key] = v
+        value_by_key[v.key] = v
     end
 
     root.set_selected = function (self, key)
-        local value = self.value_by_key[key] or self.values[1]
-
-        self.selected_key = value.key
-        UIDropDownMenu_SetText(self, value.label)
+        self.selected_key = (value_by_key[key] or values[1]).key
+        self:GenerateMenu() -- shows the label of the selected value
     end
 
-    UIDropDownMenu_SetWidth(root, width)
-    UIDropDownMenu_Initialize(root, function (self)
-        for _, v in ipairs(self.values) do
-            local info = UIDropDownMenu_CreateInfo()
-            info.text = v.label
-            info.value = v.key
-            info.checked = v.key == self.selected_key
-            info.func = function (item)
-                self:set_selected(item.value)
-                if on_select then
-                    on_select(self, item.value)
-                end
-            end
-            UIDropDownMenu_AddButton(info)
+    local function is_selected(key)
+        return key == root.selected_key
+    end
+
+    local function on_radio_select(key)
+        root.selected_key = key
+        if on_select then
+            on_select(root, key)
+        end
+    end
+
+    root:SetupMenu(function (_, root_description)
+        for _, v in ipairs(values) do
+            root_description:CreateRadio(v.label, is_selected, on_radio_select, v.key)
         end
     end)
     root:set_selected(selected_key)
 
     if tooltip_text then
-        root:EnableMouse(true)
-        frames.add_tooltip_for_frame(root, "ANCHOR_RIGHT", tooltip_text)
+        -- hooked, as the template has its own OnEnter and OnLeave
+        root:HookScript("OnEnter", function (self)
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+            GameTooltip:SetText(tooltip_text, nil, nil, nil, nil, true)
+        end)
+        root:HookScript("OnLeave", function ()
+            GameTooltip:Hide()
+        end)
     end
 
     return root
