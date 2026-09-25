@@ -14,7 +14,7 @@ local math_ceil         = _G.math.ceil
 
 local function register_static_popup_dialogs()
     StaticPopupDialogs.CLASSICUA_CONFIRM_DEV_LOG_RESET = {
-        text        = "Дійсно скинути всі накопичені дані?",
+        text        = "Дійсно очистити всі накопичені дані?",
         button1     = "Так",
         button2     = "Ні",
         OnAccept    = function ()
@@ -749,7 +749,7 @@ local function create_dev_page()
     local reset_button = CreateFrame("Button", "$parent.Reset", frame, "UIPanelButtonTemplate")
     reset_button:SetPoint("LEFT", show_button, "RIGHT", 8, 0)
     reset_button:SetSize(110, 26)
-    reset_button:SetText("Скинути")
+    reset_button:SetText("Очистити")
     reset_button:SetScript("OnClick", function ()
         StaticPopup_Show("CLASSICUA_CONFIRM_DEV_LOG_RESET")
     end)
