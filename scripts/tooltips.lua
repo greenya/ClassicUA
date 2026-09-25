@@ -353,7 +353,7 @@ local function tooltip_set_unit(self, data)
     local npc_id
     if utils.is_forever then
         -- WoW: Forever hands the unit's guid over with the tooltip data
-        npc_id = not issecretvalue(data.guid) and utils.npc_id_from_guid(data.guid)
+        npc_id = utils.npc_id_from_guid(data.guid)
     else
         local _, unit = self:GetUnit()
         npc_id = utils.npc_id_from_unit_id(unit)
