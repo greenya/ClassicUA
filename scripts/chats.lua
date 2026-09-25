@@ -80,6 +80,11 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
         return nil, chat_text, npc_name, lang_name, ...
     end
 
+    -- WoW: Forever may keep the text or the speaker a secret (see utils.is_secret)
+    if utils.is_secret(chat_text) or utils.is_secret(npc_name) then
+        return nil, chat_text, npc_name, lang_name, ...
+    end
+
     local npc_name_key = npc_name
     if npc_name == UnitName("player") then
         npc_name_key = "!player"
