@@ -410,11 +410,7 @@ end
 
 local function set_widget_dimmed(widget, dimmed)
     if widget.is_dropdown then
-        if dimmed then
-            UIDropDownMenu_DisableDropDown(widget)
-        else
-            UIDropDownMenu_EnableDropDown(widget)
-        end
+        widget:SetEnabled(not dimmed)
         local c = dimmed and 0.4 or 0.6
         widget.label:SetTextColor(c, c, c)
     elseif dimmed then
