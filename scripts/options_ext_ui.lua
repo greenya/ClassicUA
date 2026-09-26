@@ -721,7 +721,12 @@ local function create_dev_page()
         options.account.dev_mode,
         "Запам'ятовувати відсутні переклади сутностей, які трапляються під час гри."
             .. "\n\nТакож відображає ID у підказках за відсутності перекладу.",
-        function (self) options.account.dev_mode = self:GetChecked() end
+        function (self)
+            options.account.dev_mode = self:GetChecked()
+            if options.account.dev_mode then
+                dev_log.record_unrecorded_errors()
+            end
+        end
     )
 
     y = y - 24
@@ -875,4 +880,11 @@ options_ext_ui.prepare = function ()
     for _, page in ipairs(pages) do
         page.frame = page.create_func()
     end
+
+    -- dev_log.page_link comes back through EventRegistry when clicked, as every "addon" link does
+    EventRegistry:RegisterCallback("SetItemRef", function (_, link)
+        if link == dev_log.page_link_id then
+            options_ext_ui.open("dev")
+        end
+    end)
 end
