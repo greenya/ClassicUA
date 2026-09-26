@@ -7,8 +7,11 @@ local utils     = addon_table.use("utils") ---@class utils_class
 
 local pcall         = _G.pcall
 local COMPLETE      = _G.COMPLETE
+local string_find   = _G.string.find
 local string_format = _G.string.format
 local string_gmatch = _G.string.gmatch
+local string_gsub   = _G.string.gsub
+local string_match  = _G.string.match
 local string_split  = _G.string.split
 local string_trim   = _G.string.trim
 local UnitName      = _G.UnitName
@@ -91,14 +94,7 @@ local function prepare_codes(name, name_cases, race, class, is_male)
         end
     end
 
-    -- sex
-
-    -- only "стать" is needed, but we make possible to use any letter casing
-    -- (even if it has nothing to do with the letter case of the result, as text gets shown as is)
-    codes["{стать:(.-):(.-)}"] = function (a, b) return is_male and a or b end
-    codes["{Стать:(.-):(.-)}"] = function (a, b) return is_male and a or b end
-    codes["{СТАТЬ:(.-):(.-)}"] = function (a, b) return is_male and a or b end
-
+    at.player_sex = sex
     at.codes = codes
 end
 
@@ -162,16 +158,28 @@ entries.prepare = function ()
     prepare_glossary()
 end
 
+-- the text of an inline code: a prepared one, e.g. "{клас:о}", or a form of the sex one, "{стать:знайшов:знайшла}";
+-- nil keeps an unknown code
+local function expand_code(code)
+    local at = addon_table
+    local text = at.codes[code]
+    if text then
+        return text
+    end
+
+    local male, female = string_match(code, "^{стать:(.-):(.*)}$")
+    if male then
+        return at.player_sex == 1 and male or female
+    end
+end
+
+-- expands the inline codes in one pass
 local function make_text(text)
-    if not text then
-        return
+    if not text or not string_find(text, "{", 1, true) then
+        return text
     end
 
-    for k, v in pairs(addon_table.codes) do
-        text = text:gsub(k, v)
-    end
-
-    return text
+    return (string_gsub(text, "{[^{}]+}", expand_code))
 end
 
 local function make_text_array(array)
