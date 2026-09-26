@@ -809,8 +809,8 @@ entries.translate_taxi_node_name = function (text)
     -- try parse: "NAME1, NAME2"
     local key1, key2 = string_gmatch(text, "(.*), (.*)")()
     if key1 and key2 then
-        key1_text = entries.get_glossary_text(key1, key1, "zone")
-        key2_text = entries.get_glossary_text(key2, key2, "zone")
+        local key1_text = entries.get_glossary_text(key1, key1, "zone")
+        local key2_text = entries.get_glossary_text(key2, key2, "zone")
         text = string_format("%s, %s", key1_text, key2_text)
     else
         text = entries.get_glossary_text(text, text)
