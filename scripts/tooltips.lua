@@ -400,11 +400,16 @@ local function tooltip_set_unit(self, data)
     end
 end
 
--- WoW: Forever, the tooltip of an aura (a buff or debuff), with the spell id in the tooltip data
-local function tooltip_set_unit_aura(self, data)
-    if not utils.is_secret(data.id) and options.can_lookup("translate_spell") then
-        add_entry_to_tooltip(self, "spell", data.id, true, options.can_translate("translate_spell"))
+-- the tooltip of an aura (a buff or debuff)
+local function add_aura_to_tooltip(tooltip, spell_id)
+    if spell_id and options.can_lookup("translate_spell") then
+        add_entry_to_tooltip(tooltip, "spell", spell_id, true, options.can_translate("translate_spell"))
     end
+end
+
+-- WoW: Forever, the tooltip of an aura, with the spell id in the tooltip data
+local function tooltip_set_unit_aura(self, data)
+    add_aura_to_tooltip(self, not utils.is_secret(data.id) and data.id)
 end
 
 local function tooltip_updated(self)
@@ -528,24 +533,15 @@ tooltips.prepare = function ()
     -- WoW: Forever has no UnitAura(), which the aura hooks below read the spell id from
     if not utils.is_forever then
         hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
-            local id = select(10, UnitAura(unit, index, filter))
-            if id and options.can_lookup("translate_spell") then
-                add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
-            end
+            add_aura_to_tooltip(self, select(10, UnitAura(unit, index, filter)))
         end)
 
         hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
-            local id = select(10, UnitAura(unit, index, "HELPFUL"))
-            if id and options.can_lookup("translate_spell") then
-                add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
-            end
+            add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HELPFUL")))
         end)
 
         hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
-            local id = select(10, UnitAura(unit, index, "HARMFUL"))
-            if id and options.can_lookup("translate_spell") then
-                add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
-            end
+            add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HARMFUL")))
         end)
     end
 end
