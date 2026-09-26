@@ -9,6 +9,7 @@ local options_ext_ui    = addon_table.use("options_ext_ui") ---@class options_ex
 local utils             = addon_table.use("utils") ---@class utils_class
 
 local CreateFrame       = _G.CreateFrame
+local IsBetaBuild       = _G.IsBetaBuild
 local UnitName          = _G.UnitName
 local math_ceil         = _G.math.ceil
 
@@ -725,7 +726,12 @@ local function create_dev_page()
             options.account.dev_mode = self:GetChecked()
             if options.account.dev_mode then
                 dev_log.record_unrecorded_errors()
+                -- WoW: Forever beta, the welcome invites to dev mode, so it is done with once dev mode is on
+                if utils.is_forever then
+                    options.account.forever_welcome = false
+                end
             end
+            frame.OnRefresh()
         end
     )
 
@@ -738,6 +744,20 @@ local function create_dev_page()
         "Повідомляти в чат про кожен новий запис.",
         function (self) options.account.dev_mode_notify_activity = self:GetChecked() end
     )
+
+    -- WoW: Forever beta, the welcome at login (see main.lua)
+    if utils.is_forever and IsBetaBuild() then
+        y = y - 24
+
+        frame.forever_welcome_checkbox = frames.create_checkbox_frame(
+            frame, "TOPLEFT", l.pad_x, y,
+            "Не нагадувати при вході в гру",
+            not options.account.forever_welcome,
+            "Не показувати при вході в гру пропозицію збору даних.",
+            function (self) options.account.forever_welcome = not self:GetChecked() end
+        )
+        frame.forever_welcome_checkbox:SetShown(not options.account.dev_mode)
+    end
 
     y = y - 40
 
@@ -798,6 +818,10 @@ local function create_dev_page()
     frame.OnRefresh = function ()
         frame.dev_mode_checkbox:SetChecked(options.account.dev_mode)
         frame.dev_mode_notify_activity_checkbox:SetChecked(options.account.dev_mode_notify_activity)
+        if frame.forever_welcome_checkbox then
+            frame.forever_welcome_checkbox:SetChecked(not options.account.forever_welcome)
+            frame.forever_welcome_checkbox:SetShown(not options.account.dev_mode)
+        end
 
         for i, stat in ipairs(dev_log.get_stats()) do
             local value = frame.stat_values[i]
