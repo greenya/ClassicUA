@@ -51,6 +51,10 @@ def collect_objects():
                 if not pages:
                     continue
 
+                for page in pages:
+                    for issue in utils.get_inline_code_issues(page):
+                        issues.append(f'{expansion}: object #{id} "{filename_name.strip()}": {issue}')
+
                 name = resolve_name(names, id, expansion)
                 if not name:
                     name = filename_name.strip()

@@ -56,6 +56,24 @@ def get_clean_text(text):
 
     return '\n'.join(lines[:last_non_empty_line_idx + 1]) if last_non_empty_line_idx >= 0 else ''
 
+inline_code_pattern = re.compile(r'\{[^{}]+\}')
+known_inline_code_pattern = re.compile(
+    r"^\{(ім'я|Ім'я|ІМ'Я)(:[нрдзомк])?\}$"
+    r"|^\{(раса|Раса|РАСА|клас|Клас|КЛАС)(:м?[нрдзомк])?\}$"
+    r"|^\{стать:[^:]*:[^:]*\}$"
+)
+optional_block_pattern = re.compile(r'\[[^\]]*#[^\]]*\]')
+
+def get_inline_code_issues(text) -> list:
+    # removing number templates {1} from optional blocks, so they won't trigger issues
+    text = optional_block_pattern.sub(lambda m: re.sub(r'\{\d+\}', '', m.group(0)), text)
+
+    return [
+        f'unknown code {code}'
+        for code in inline_code_pattern.findall(text)
+        if not known_inline_code_pattern.match(code)
+    ]
+
 def get_strings_map_from_xml_file(filename) -> map | list:
     result, issues = {}, []
 

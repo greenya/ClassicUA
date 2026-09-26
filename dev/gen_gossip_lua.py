@@ -59,6 +59,9 @@ def collect_gossip():
                     continue
 
                 for string in npc_gossip_strings:
+                    for issue in utils.get_inline_code_issues(string['uk']):
+                        issues.append(f'[!] Gossip [{expansion}] {filename}: {issue}')
+
                     if '.' not in string['en_code']:
                         # remove en_code if translation doesn't have dynamic codes,
                         # e.g. this removes fuzzy key for "Bank", "Auction House", "I want to browse your goods." etc.
