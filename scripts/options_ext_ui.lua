@@ -699,7 +699,9 @@ end
 local function create_dev_page()
     local l = layout
 
+    -- WoW: Forever has only its beta so far, the folder of the live realms is not known yet
     local game_sub_dir_name =
+        utils.is_forever and    "_classic_beta_" or
         utils.is_classic and    "_classic_era_" or
         utils.is_tbc and        "_anniversary_" or
                                 "_classic_"
