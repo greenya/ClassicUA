@@ -1,5 +1,6 @@
 local _, addon_table = ...
 
+local assets            = addon_table.use("assets") ---@class assets_class
 local chats             = addon_table.use("chats") ---@class chats_class
 local dev_log           = addon_table.use("dev_log") ---@class dev_log_class
 local dev_log_ui        = addon_table.use("dev_log_ui") ---@class dev_log_ui_class
@@ -9,12 +10,14 @@ local options_ext_ui    = addon_table.use("options_ext_ui") ---@class options_ex
 local utils             = addon_table.use("utils") ---@class utils_class
 
 local CreateFrame       = _G.CreateFrame
+local InCombatLockdown  = _G.InCombatLockdown
+local IsBetaBuild       = _G.IsBetaBuild
 local UnitName          = _G.UnitName
 local math_ceil         = _G.math.ceil
 
 local function register_static_popup_dialogs()
     StaticPopupDialogs.CLASSICUA_CONFIRM_DEV_LOG_RESET = {
-        text        = "Дійсно скинути всі накопичені дані?",
+        text        = "Дійсно очистити всі накопичені дані?",
         button1     = "Так",
         button2     = "Ні",
         OnAccept    = function ()
@@ -410,11 +413,7 @@ end
 
 local function set_widget_dimmed(widget, dimmed)
     if widget.is_dropdown then
-        if dimmed then
-            UIDropDownMenu_DisableDropDown(widget)
-        else
-            UIDropDownMenu_EnableDropDown(widget)
-        end
+        widget:SetEnabled(not dimmed)
         local c = dimmed and 0.4 or 0.6
         widget.label:SetTextColor(c, c, c)
     elseif dimmed then
@@ -702,7 +701,9 @@ end
 local function create_dev_page()
     local l = layout
 
+    -- WoW: Forever has only its beta so far, the folder of the live realms is not known yet
     local game_sub_dir_name =
+        utils.is_forever and    "_classic_beta_" or
         utils.is_classic and    "_classic_era_" or
         utils.is_tbc and        "_anniversary_" or
                                 "_classic_"
@@ -725,7 +726,17 @@ local function create_dev_page()
         options.account.dev_mode,
         "Запам'ятовувати відсутні переклади сутностей, які трапляються під час гри."
             .. "\n\nТакож відображає ID у підказках за відсутності перекладу.",
-        function (self) options.account.dev_mode = self:GetChecked() end
+        function (self)
+            options.account.dev_mode = self:GetChecked()
+            if options.account.dev_mode then
+                dev_log.record_unrecorded_errors()
+                -- WoW: Forever beta, the welcome invites to dev mode, so it is done with once dev mode is on
+                if utils.is_forever then
+                    options.account.forever_welcome = false
+                end
+            end
+            frame.OnRefresh()
+        end
     )
 
     y = y - 24
@@ -737,6 +748,20 @@ local function create_dev_page()
         "Повідомляти в чат про кожен новий запис.",
         function (self) options.account.dev_mode_notify_activity = self:GetChecked() end
     )
+
+    -- WoW: Forever beta, the welcome at login (see main.lua)
+    if utils.is_forever and IsBetaBuild() then
+        y = y - 24
+
+        frame.forever_welcome_checkbox = frames.create_checkbox_frame(
+            frame, "TOPLEFT", l.pad_x, y,
+            "Не нагадувати при вході в гру",
+            not options.account.forever_welcome,
+            "Не показувати при вході в гру пропозицію збору даних.",
+            function (self) options.account.forever_welcome = not self:GetChecked() end
+        )
+        frame.forever_welcome_checkbox:SetShown(not options.account.dev_mode)
+    end
 
     y = y - 40
 
@@ -753,7 +778,7 @@ local function create_dev_page()
     local reset_button = CreateFrame("Button", "$parent.Reset", frame, "UIPanelButtonTemplate")
     reset_button:SetPoint("LEFT", show_button, "RIGHT", 8, 0)
     reset_button:SetSize(110, 26)
-    reset_button:SetText("Скинути")
+    reset_button:SetText("Очистити")
     reset_button:SetScript("OnClick", function ()
         StaticPopup_Show("CLASSICUA_CONFIRM_DEV_LOG_RESET")
     end)
@@ -797,6 +822,10 @@ local function create_dev_page()
     frame.OnRefresh = function ()
         frame.dev_mode_checkbox:SetChecked(options.account.dev_mode)
         frame.dev_mode_notify_activity_checkbox:SetChecked(options.account.dev_mode_notify_activity)
+        if frame.forever_welcome_checkbox then
+            frame.forever_welcome_checkbox:SetChecked(not options.account.forever_welcome)
+            frame.forever_welcome_checkbox:SetShown(not options.account.dev_mode)
+        end
 
         for i, stat in ipairs(dev_log.get_stats()) do
             local value = frame.stat_values[i]
@@ -824,7 +853,17 @@ local function page_by_key(page_key)
     end
 end
 
+options_ext_ui.print_settings_blocked_in_combat = function ()
+    DEFAULT_CHAT_FRAME:AddMessage(assets.icon_ua_inline .. " |cffffbb22ClassicUA: налаштування можна відкрити лише поза"
+        .. " боєм.|r")
+end
+
 options_ext_ui.open = function (page_key)
+    if InCombatLockdown() then
+        options_ext_ui.print_settings_blocked_in_combat()
+        return
+    end
+
     local page = page_by_key(page_key) or page_by_key("settings")
 
     if page.category_id and Settings and Settings.OpenToCategory then
@@ -879,4 +918,11 @@ options_ext_ui.prepare = function ()
     for _, page in ipairs(pages) do
         page.frame = page.create_func()
     end
+
+    -- dev_log.page_link comes back through EventRegistry when clicked, as every "addon" link does
+    EventRegistry:RegisterCallback("SetItemRef", function (_, link)
+        if link == dev_log.page_link_id then
+            options_ext_ui.open("dev")
+        end
+    end)
 end

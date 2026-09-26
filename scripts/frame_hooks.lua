@@ -9,9 +9,13 @@ local frames        = addon_table.use("frames") ---@class frames_class
 local options       = addon_table.use("options") ---@class options_class
 local utils         = addon_table.use("utils") ---@class utils_class
 
-local string_format = _G.string.format
-local string_gmatch = _G.string.gmatch
-local UnitName      = _G.UnitName
+local math_max             = _G.math.max
+local string_format        = _G.string.format
+local string_gmatch        = _G.string.gmatch
+local C_QuestLog           = _G.C_QuestLog
+local GetQuestID           = _G.GetQuestID
+local GetQuestLogQuestText = _G.GetQuestLogQuestText
+local UnitName             = _G.UnitName
 
 local is_set_text_hook_allowed = true
 
@@ -55,8 +59,15 @@ local function update_gossip_npc_name()  -- todo: move from frame_hooks?
 end
 
 local function update_quest_npc_name()
-    local name = QuestFrameNpcNameText and npc_name_in_preferred_lang("questnpc")
-    if name then
+    local name = npc_name_in_preferred_lang("questnpc")
+    if not name then
+        return
+    end
+
+    -- WoW: Forever runs the retail quest window, which shows the npc name as its title
+    if utils.is_forever then
+        QuestFrame:SetTitle(name)
+    elseif QuestFrameNpcNameText then
         QuestFrameNpcNameText:SetText(name)
     end
 end
@@ -177,6 +188,28 @@ local function update_gossip_scroll_box()
     end
 end
 
+-- WoW: Forever, a quest title of the quest greeting, sized as the game sizes it
+local function set_forever_quest_greeting_title(button, text)
+    button:SetText(text)
+    button:SetHeight(math_max(button:GetTextHeight() + 2, button.Icon:GetHeight()))
+end
+
+-- WoW: Forever, the quest titles of the quest greeting are pooled buttons of its panel, out of the scroll frame the
+-- language switcher walks
+local function update_forever_quest_greeting_titles()
+    local npc_id = utils.npc_id_from_unit_id("npc")
+    if not npc_id then
+        return
+    end
+
+    for button in QuestFrameGreetingPanel.titleButtonPool:EnumerateActive() do
+        local found = data_hooks.get_translation("gossip", npc_id, button:GetText())
+        if found then
+            set_forever_quest_greeting_title(button, found)
+        end
+    end
+end
+
 local lang_switchers = {
     -- quests
     { hd_type="quest", parent={ frame=QuestDetailScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
@@ -214,13 +247,19 @@ local lang_switchers = {
       end },
 
     -- gossips (npc talk and player replies)
-    { hd_type="gossip", parent={ frame=GossipFrameInset, point="TOPRIGHT", x=-6, y=-10 },
+    { hd_type="gossip", parent={ frame=GossipFrameInset, relative_to=GossipFrame.GreetingPanel.ScrollBox,
+                                 point="TOPRIGHT", x=-12, y=-10 },
       post_update=function ()
           update_gossip_scroll_box()
           update_gossip_npc_name()
       end },
     { hd_type="gossip", parent={ frame=QuestGreetingScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
-      post_update=function () update_quest_npc_name() end },
+      post_update=function ()
+          update_quest_npc_name()
+          if utils.is_forever then
+              update_forever_quest_greeting_titles()
+          end
+      end },
 }
 
 local function on_hooked_label_set_text(self, text)
@@ -370,7 +409,121 @@ local function update_lang_switchers()
     is_set_text_hook_allowed = true
 end
 
+-- the game decorates a quest title (the quest level, a dungeon icon, "Failed"), so only the english title in the text
+-- is swapped; nil when the text has no such title
+local function splice_quest_title(text, title_en, title_uk)
+    local from, to
+    if text and title_en and title_en ~= "" then
+        from, to = text:find(title_en, 1, true)
+    end
+    return from and text:sub(1, from - 1) .. title_uk .. text:sub(to + 1)
+end
+
+-- WoW: Forever shows a finished quest with its completion text, which is often the objectives text of the quest
+local function translate_forever_quest_completion_text(quest_id, text)
+    local _, objectives_en = GetQuestLogQuestText(C_QuestLog.GetLogIndexForQuestID(quest_id))
+    local quest_entry = text == objectives_en and entries.get_entry("quest", quest_id)
+    return quest_entry and quest_entry[3]
+end
+
+-- WoW: Forever, the quest tracker lays out its blocks by the heights of the english texts, so the heights a translation
+-- adds are added to its line, its block and the module (after the game sets the module height, see prepare)
+local forever_quest_tracker_added_height = 0
+
+-- a text of the quest tracker is kept in both languages, so the language switchers swap it in place (laying the
+-- tracker out again from here would taint it); a text the game has set anew since is left alone.
+-- Returns the height the switch added
+local function switch_forever_quest_tracker_text(font_string)
+    local texts = font_string.classicua
+    if not texts or font_string:GetText() ~= texts.shown then
+        return 0
+    end
+
+    local height = font_string:GetHeight()
+    -- like the game, the height is cleared before the text, or GetHeight() may report the previous one
+    font_string:SetHeight(0)
+    font_string:SetText(data_hooks.preferred_lang == "uk" and texts.uk or texts.en)
+    texts.shown = font_string:GetText()
+
+    return font_string:GetHeight() - height
+end
+
+local function switch_forever_quest_tracker_block(block)
+    local block_added_height = switch_forever_quest_tracker_text(block.HeaderText)
+
+    for _, line in pairs(block.usedLines) do
+        local added_height = switch_forever_quest_tracker_text(line.Text)
+        line:SetHeight(line:GetHeight() + added_height)
+        block_added_height = block_added_height + added_height
+    end
+
+    block:SetHeight(block:GetHeight() + block_added_height)
+    forever_quest_tracker_added_height = forever_quest_tracker_added_height + block_added_height
+end
+
+local function forever_quest_tracker_blocks()
+    return QuestObjectiveTracker.usedBlocks[QuestObjectiveTracker.blockTemplate] or {}
+end
+
+-- WoW: Forever, the quest tracker has just set the texts of its blocks (keyed by quest id): the header, the objective
+-- lines (keyed by their index) and the completion text (keyed "QuestComplete")
+local function update_forever_quest_tracker()
+    forever_quest_tracker_added_height = 0
+
+    if not options.can_translate("translate_quest") then
+        return
+    end
+
+    for quest_id, block in pairs(forever_quest_tracker_blocks()) do
+        if block.used then
+            local title_uk = entries.get_quest_title(quest_id)
+            local text = block.HeaderText:GetText()
+            -- the title is shown with the quest level before it
+            local text_uk = title_uk and splice_quest_title(text, C_QuestLog.GetTitleForQuestID(quest_id), title_uk)
+            if text_uk then
+                block.HeaderText.classicua = { en=text, uk=text_uk, shown=text }
+            end
+
+            for key, line in pairs(block.usedLines) do
+                local text_en = line.Text:GetText()
+                local text_uk = type(key) == "number" and entries.translate_forever_quest_objective(text_en)
+                    or key == "QuestComplete" and translate_forever_quest_completion_text(quest_id, text_en)
+                if text_uk then
+                    line.Text.classicua = { en=text_en, uk=text_uk, shown=text_en }
+                end
+            end
+
+            switch_forever_quest_tracker_block(block)
+        end
+    end
+end
+
+-- the game sets the height of the module by the english texts, the height the translations added comes on top
+local function update_forever_quest_tracker_height(module)
+    module:SetHeight(module:GetHeight() + forever_quest_tracker_added_height)
+end
+
+-- the language switchers swap the tracker texts in place, and the module takes the height that changed
+local function switch_forever_quest_tracker()
+    local added_height = forever_quest_tracker_added_height
+
+    for _, block in pairs(forever_quest_tracker_blocks()) do
+        if block.used then
+            switch_forever_quest_tracker_block(block)
+        end
+    end
+
+    QuestObjectiveTracker:SetHeight(QuestObjectiveTracker:GetHeight() + forever_quest_tracker_added_height - added_height)
+end
+
 local function update_known_game_ui_places()
+    -- WoW: Forever, the tracker texts are switched in place (see switch_forever_quest_tracker), as the classic quest
+    -- log and tracker functions refreshed below don't exist there
+    if utils.is_forever then
+        switch_forever_quest_tracker()
+        return
+    end
+
     if QuestLogFrameTrackButton and QuestLogFrameTrackButton.Click then
         -- this will effectively update all places, it is short but ugly,
         -- as we are actually clicking track/untrack for particular quest
@@ -395,9 +548,9 @@ local function update_known_game_ui_places()
     end
 end
 
-local function create_lang_switcher_frame(parent, point, x, y)
+local function create_lang_switcher_frame(parent, relative_to, point, x, y)
     local root = CreateFrame("CheckButton", nil, parent)
-    root:SetPoint(point, parent, x, y)
+    root:SetPoint(point, relative_to or parent, x, y)
     root:SetSize(40, 40)
 
     root:SetNormalTexture(assets.icon_scroll)
@@ -427,7 +580,7 @@ local function prepare_lang_switchers()
     for _, switcher in ipairs(lang_switchers) do
         local p = switcher.parent
         if p.frame then
-            switcher.frame = create_lang_switcher_frame(p.frame, p.point, p.x, p.y)
+            switcher.frame = create_lang_switcher_frame(p.frame, p.relative_to, p.point, p.x, p.y)
         end
     end
 end
@@ -459,6 +612,248 @@ local function prepare_quest_window_hooks()
     end
 end
 
+-- WoW: Forever runs the retail ui, where the quest texts can not be translated by data_hooks (see data_hooks.prepare)
+-- So now we set text as its widget gets it; it goes through data_hooks.set_translation(), so the language switcher serves it as on the other clients
+local function hook_quest_text(widget, entry_field, get_quest_id)
+    hooksecurefunc(widget, "SetText", function (self, text)
+        if not is_set_text_hook_allowed or type(text) ~= "string" or not options.can_lookup("translate_quest") then
+            return
+        end
+
+        local quest_id = get_quest_id()
+        local quest_entry = entries.get_entry("quest", quest_id)
+        if quest_entry and quest_entry[entry_field] then
+            local text_uk = quest_entry[entry_field]
+            if entry_field == 1 then
+                local title_en = C_QuestLog.GetTitleForQuestID(quest_id) or GetTitleText()
+                text_uk = splice_quest_title(text, title_en, text_uk) or text_uk
+            end
+            local text_new = data_hooks.set_translation("quest", quest_id, text, text_uk)
+
+            is_set_text_hook_allowed = false
+            self:SetText(text_new)
+            is_set_text_hook_allowed = true
+        end
+    end)
+end
+
+-- the quest window shows either the quest log's selected quest or the one an npc offers
+local function quest_info_quest_id()
+    return QuestInfoFrame.questLog and C_QuestLog.GetSelectedQuest() or GetQuestID()
+end
+
+-- WoW: Forever, the quest list of the map: the game sizes every quest button by its title right after setting it,
+-- so once the list is built, each title is swapped, its button resized by the height the title changed, and the
+-- list laid out again
+local function update_forever_quest_log_list()
+    if data_hooks.preferred_lang ~= "uk" or not options.can_translate("translate_quest") then
+        return
+    end
+
+    local is_resized = false
+    local buttons_by_quest_id = {}
+
+    for button in QuestScrollFrame.titleFramePool:EnumerateActive() do
+        buttons_by_quest_id[button.questID] = button
+        local title_uk = entries.get_quest_title(button.questID)
+        local text = button.Text:GetText()
+        -- the title is shown with the quest level and icons around it
+        local text_uk = title_uk and splice_quest_title(text, button.info.title, title_uk)
+        if text_uk then
+            local height = button.Text:GetHeight()
+            button.Text:SetText(text_uk)
+
+            -- the list is rebuilt on every hover of a quest on the map, so it is laid out again only when needed
+            local height_change = button.Text:GetHeight() - height
+            if height_change ~= 0 then
+                button:SetHeight(button:GetHeight() + height_change)
+                is_resized = true
+            end
+        end
+    end
+
+    -- the objectives (or the completion text) are under the title, and make its button taller
+    for objective in QuestScrollFrame.objectiveFramePool:EnumerateActive() do
+        local text = objective.Text:GetText()
+        local text_uk = entries.translate_forever_quest_objective(text)
+            or translate_forever_quest_completion_text(objective.questID, text)
+        if text_uk then
+            local height = objective.Text:GetStringHeight()
+            objective.Text:SetText(text_uk)
+
+            local height_change = objective.Text:GetStringHeight() - height
+            if height_change ~= 0 then
+                objective:SetHeight(objective:GetHeight() + height_change)
+                local button = buttons_by_quest_id[objective.questID]
+                button:SetHeight(button:GetHeight() + height_change)
+                is_resized = true
+            end
+        end
+    end
+
+    for button in QuestScrollFrame.headerFramePool:EnumerateActive() do
+        local text_uk = entries.get_glossary_text(button:GetText(), nil, "zone")
+        if text_uk then
+            button:SetText(text_uk)
+        end
+    end
+
+    if is_resized then
+        QuestScrollFrame.Contents:Layout()
+    end
+end
+
+-- WoW: Forever, the objectives of a quest in the quest window, a text each
+local function update_forever_quest_info_objectives()
+    if not options.can_lookup("translate_quest") then
+        return
+    end
+
+    local quest_id = quest_info_quest_id()
+    for _, objective in ipairs(QuestInfoObjectivesFrame.Objectives) do
+        local text = objective:GetText()
+        local text_uk = objective:IsShown() and text and entries.translate_forever_quest_objective(text)
+        if text_uk then
+            objective:SetText(data_hooks.set_translation("quest", quest_id, text, text_uk))
+        end
+    end
+end
+
+-- WoW: Forever, the window of an npc that only offers quests: its greeting, and the quest titles by their ids; like on
+-- the other clients (see data_hooks.prepare_data_hooks_for_quest_greetings), it goes by the gossip option
+local function update_forever_quest_greeting()
+    local npc_id = utils.npc_id_from_unit_id("npc")
+    if not npc_id or not options.can_lookup("translate_gossip") then
+        return
+    end
+
+    local text = GreetingText:GetText()
+    local text_uk = entries.get_gossip_text_for_npc_talk(npc_id, text)
+    if text_uk then
+        GreetingText:SetText(data_hooks.set_translation("gossip", npc_id, text, text_uk))
+    end
+
+    for button in QuestFrameGreetingPanel.titleButtonPool:EnumerateActive() do
+        local quest_id
+        if button.isActive == 1 then
+            quest_id = GetActiveQuestID(button:GetID())
+        else
+            quest_id = select(5, GetAvailableQuestInfo(button:GetID()))
+        end
+
+        local title_uk = quest_id and entries.get_quest_title(quest_id)
+        if title_uk then
+            local title = data_hooks.set_translation("gossip", npc_id, button:GetText(), title_uk)
+            set_forever_quest_greeting_title(button, title)
+        end
+    end
+end
+
+-- WoW: Forever, the zone names the game shows: the zone and subzone on entering them, the minimap zone and the zone
+-- under the cursor on the world map, which comes with its levels: "Durotar|cffffff00 (1-10)|r"
+local function hook_forever_zone_text(font_string)
+    hooksecurefunc(font_string, "SetText", function (self, text)
+        if not is_set_text_hook_allowed or type(text) ~= "string" then
+            return
+        end
+
+        local name, levels = text:match("^(.-)(|c.*)$")
+        name = name or text
+        local name_uk = data_hooks.translate_zone_text(name)
+        if name_uk ~= name then
+            is_set_text_hook_allowed = false
+            self:SetText(name_uk .. (levels or ""))
+            is_set_text_hook_allowed = true
+        end
+    end)
+end
+
+-- WoW: Forever, the buttons of the world map above it, one per map from the continent down: "Kalimdor", "Durotar";
+-- each is as wide as its text. The first one is the home button ("World"), an interface text, not a zone
+local function update_forever_world_map_nav_bar(nav_bar)
+    for i = 2, #nav_bar.navList do
+        local button = nav_bar.navList[i]
+        local text = button:GetText()
+        local text_uk = data_hooks.translate_zone_text(text)
+        if text_uk ~= text then
+            local width = button.text:GetStringWidth()
+            button:SetText(text_uk)
+            button:SetWidth(button:GetWidth() + button.text:GetStringWidth() - width)
+        end
+    end
+end
+
+-- WoW: Forever, a flight point hovered on the flight master's map: its name ("Crossroads, The Barrens") is the first
+-- line of the tooltip, which is shown again to fit the translation
+local function update_forever_taxi_node_tooltip()
+    if not options.can_lookup("translate_zone") then
+        return
+    end
+
+    local text = GameTooltipTextLeft1:GetText()
+    local text_uk = text and entries.translate_taxi_node_name(text)
+    if options.can_translate("translate_zone") and text_uk ~= text then
+        GameTooltipTextLeft1:SetText(text_uk)
+        GameTooltip:Show()
+    end
+end
+
+local function prepare_forever_zone_texts()
+    hook_forever_zone_text(ZoneTextString)
+    hook_forever_zone_text(SubZoneTextString)
+    hook_forever_zone_text(MinimapZoneText)
+
+    for provider in pairs(WorldMapFrame.dataProviders) do
+        if provider.OnSetAreaLabel then
+            hook_forever_zone_text(provider.Label.Name)
+        end
+    end
+
+    hooksecurefunc(WorldMapFrame.NavBar, "Refresh", update_forever_world_map_nav_bar)
+    hooksecurefunc("TaxiNodeOnButtonEnter", update_forever_taxi_node_tooltip)
+
+    -- the list of sibling maps behind the arrow of such button; every navigation bar (e.g. the dungeon journal) has
+    -- this menu tag
+    Menu.ModifyMenu("MENU_MINIMAP_BATTLEFIELD", function (owner, root_description)
+        if owner:GetParent():GetParent() ~= WorldMapFrame.NavBar then
+            return
+        end
+
+        -- a button shows the text its initializer got, so one more initializer shows the translation
+        for _, element in root_description:EnumerateElementDescriptions() do
+            local text = MenuUtil.GetElementText(element)
+            local text_uk = data_hooks.translate_zone_text(text)
+            if text_uk ~= text then
+                element:AddInitializer(function (button)
+                    button.fontString:SetTextToFit(text_uk)
+                end)
+            end
+        end
+    end)
+
+    -- the minimap got its zone while the game was loading, the next one comes with a zone change
+    MinimapZoneText:SetText(MinimapZoneText:GetText())
+end
+
+local function prepare_forever_quest_texts()
+    hook_quest_text(QuestInfoTitleHeader,       1, quest_info_quest_id)
+    hook_quest_text(QuestInfoDescriptionText,   2, quest_info_quest_id)
+    hook_quest_text(QuestInfoObjectivesText,    3, quest_info_quest_id)
+    hook_quest_text(QuestInfoRewardText,        5, quest_info_quest_id)
+    hook_quest_text(QuestProgressTitleText,     1, GetQuestID)
+    hook_quest_text(QuestProgressText,          4, GetQuestID)
+
+    hooksecurefunc("QuestInfo_Display", update_forever_quest_info_objectives)
+    hooksecurefunc("QuestLogQuests_Update", update_forever_quest_log_list)
+    hooksecurefunc(QuestObjectiveTracker, "LayoutContents", update_forever_quest_tracker)
+    hooksecurefunc(QuestObjectiveTracker, "UpdateHeight", update_forever_quest_tracker_height)
+
+    -- the greeting panel runs QuestFrameGreetingPanel_OnShow() as its OnShow (bound in xml, so hooked as a script) and
+    -- by name to redraw on QUEST_LOG_UPDATE
+    QuestFrameGreetingPanel:HookScript("OnShow", update_forever_quest_greeting)
+    hooksecurefunc("QuestFrameGreetingPanel_OnShow", update_forever_quest_greeting)
+end
+
 frame_hooks.update_gossip_npc_name = update_gossip_npc_name
 
 frame_hooks.prepare = function ()
@@ -466,4 +861,9 @@ frame_hooks.prepare = function ()
     update_hooked_labels() -- need this update to initially translate labels which never gets updated by the game
     prepare_lang_switchers()
     prepare_quest_window_hooks()
+
+    if utils.is_forever then
+        prepare_forever_quest_texts()
+        prepare_forever_zone_texts()
+    end
 end

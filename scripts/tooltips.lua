@@ -9,6 +9,7 @@ local utils     = addon_table.use("utils") ---@class utils_class
 
 local GetBindLocation       = _G.GetBindLocation
 local GameTooltipStatusBar  = _G.GameTooltipStatusBar
+local TooltipUtil           = _G.TooltipUtil
 local UnitAura              = _G.UnitAura
 local WorldFrame            = _G.WorldFrame
 
@@ -93,7 +94,7 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
     local heading = entries.make_entry_text(entry[1], tooltip)
 
     if utils.tooltip_item_suffix_id(tooltip) then
-        local item_name_en = tooltip:GetItem()
+        local item_name_en = utils.tooltip_item(tooltip)
         local item_suffix_uk = entries.get_item_suffix(item_name_en)
         if item_suffix_uk then
             heading = heading .. " " .. item_suffix_uk
@@ -205,9 +206,12 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
             add_general_entry_to_tooltip(tooltip, entry)
         end
     elseif not entry and options.account.dev_mode then
-        updated = true
-        tooltip:AddLine(" ")
-        tooltip:AddLine(assets.icon_ua_inline .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
+        -- a missing entry is logged either way, its id is shown only where its translation is on
+        if is_translation_on then
+            updated = true
+            tooltip:AddLine(" ")
+            tooltip:AddLine(assets.icon_ua_inline .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
+        end
 
         if entry_type == "npc" then
             dev_log.missing_npc(entry_id, tt_title_line)
@@ -220,7 +224,8 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
         end
     end
 
-    if updated and tooltip:IsShown() then
+    -- WoW: Forever shows (and sizes) the tooltip itself right after the post calls, see tooltips.prepare()
+    if updated and tooltip:IsShown() and not utils.is_forever then
         tooltip:Show()
     end
 
@@ -271,6 +276,19 @@ local function get_talent_rank(ranks, spell_id)
     end
 end
 
+-- the next rank of a talent; the values of its text are the second match in the tooltip, the first is the rank in use
+local function add_next_rank_to_tooltip(tooltip, spell_id)
+    local entry = entries.get_entry("spell", spell_id)
+    if not (entry and entry[2] and options.can_translate("translate_spell")) then
+        return false
+    end
+
+    tooltip:AddLine(" ")
+    tooltip:AddLine("Наступний ранг:", 1, 1, 1)
+    add_line_to_tooltip(tooltip, entries.make_entry_text(entry[2], tooltip, 1), "TEXT", 1, 0.82, 0)
+    return true
+end
+
 -- adds the rank in use and the next rank of a talent to its tooltip
 local function handle_talent_tooltip(tooltip, talent_id)
     local ranks = addon_table.talent_tree[talent_id]
@@ -287,23 +305,26 @@ local function handle_talent_tooltip(tooltip, talent_id)
     end
 
     local rank = claim.entry_type == "spell" and get_talent_rank(ranks, claim.entry_id)
-    local next_entry = rank and ranks[rank + 1] and entries.get_entry("spell", ranks[rank + 1])
-    if not (next_entry and next_entry[2] and options.can_translate("translate_spell")) then
+    local next_rank_id = rank and ranks[rank + 1]
+    if not next_rank_id then
         return
     end
 
-    tooltip:AddLine(" ")
-    tooltip:AddLine("Наступний ранг:", 1, 1, 1)
-    -- the values of the next rank are the second match in the tooltip, the first is the rank in use
-    add_line_to_tooltip(tooltip, entries.make_entry_text(next_entry[2], tooltip, 1), "TEXT", 1, 0.82, 0)
-
-    if tooltip:IsShown() then
+    local is_added = add_next_rank_to_tooltip(tooltip, next_rank_id)
+    if is_added and tooltip:IsShown() then
         tooltip:Show()
     end
 end
 
-local function tooltip_set_item(self)
-    local id = utils.tooltip_item_id(self)
+local function tooltip_set_item(self, data)
+    local id
+    if utils.is_forever then
+        -- WoW: Forever hands the item id over with the tooltip data
+        id = not utils.is_secret(data.id) and data.id
+    else
+        id = utils.tooltip_item_id(self)
+    end
+
     if not id then
         return
     end
@@ -315,10 +336,41 @@ local function tooltip_set_item(self)
     end
 end
 
-local function tooltip_set_spell(self)
-    local _, id = self:GetSpell()
+local function tooltip_set_spell(self, data)
+    local id
+    if utils.is_forever then
+        -- WoW: Forever hands the spell id over with the tooltip data
+        id = not utils.is_secret(data.id) and data.id
+    else
+        id = select(2, self:GetSpell())
+    end
+
     if not id then
         return
+    end
+
+    -- WoW: Forever, talent tooltip shows talent ranks as spells
+    if utils.is_forever then
+        local info = self:GetProcessingTooltipInfo()
+        if info and info.getterName == "GetTraitEntry" then
+            local claim = self.classicua
+            if claim.talent_rank_id then
+                if options.can_lookup("translate_spell") then
+                    add_entry_to_tooltip(self, "spell", claim.talent_rank_id, false, options.can_translate("translate_spell"))
+                    add_next_rank_to_tooltip(self, id)
+                else
+                    claim_tooltip(self, "spell", claim.talent_rank_id)
+                end
+                claim.talent_rank_id = nil
+                return
+            end
+
+            local node = self:GetOwner() and self:GetOwner().nodeInfo
+            if not claim.entry_type and node and node.nextEntry and node.ranksPurchased > 0 then
+                claim.talent_rank_id = id
+                return
+            end
+        end
     end
 
     if options.can_lookup("translate_spell") then
@@ -328,23 +380,51 @@ local function tooltip_set_spell(self)
     end
 end
 
-local function tooltip_set_unit(self)
-    local _, unit = self:GetUnit()
-    if unit and options.can_lookup("translate_npc", "translate_npc_tooltip") then
-        local npc_id = utils.npc_id_from_unit_id(unit)
-        if npc_id then
-            add_entry_to_tooltip(self, "npc", npc_id, false,
-                options.can_translate("translate_npc", "translate_npc_tooltip"))
-        end
-    end
-end
-
-local function tooltip_updated(self)
-    if self.classicua.entry_type then
+local function tooltip_set_unit(self, data)
+    if not options.can_lookup("translate_npc", "translate_npc_tooltip") then
         return
     end
 
-    local name, unit = self:GetUnit()
+    local npc_id
+    if utils.is_forever then
+        -- WoW: Forever hands the unit's guid over with the tooltip data
+        npc_id = utils.npc_id_from_guid(data.guid)
+    else
+        local _, unit = self:GetUnit()
+        npc_id = utils.npc_id_from_unit_id(unit)
+    end
+
+    if npc_id then
+        add_entry_to_tooltip(self, "npc", npc_id, false,
+            options.can_translate("translate_npc", "translate_npc_tooltip"))
+    end
+end
+
+-- the tooltip of an aura (a buff or debuff)
+local function add_aura_to_tooltip(tooltip, spell_id)
+    if spell_id and options.can_lookup("translate_spell") then
+        add_entry_to_tooltip(tooltip, "spell", spell_id, true, options.can_translate("translate_spell"))
+    end
+end
+
+-- WoW: Forever, the tooltip of an aura, with the spell id in the tooltip data
+local function tooltip_set_unit_aura(self, data)
+    add_aura_to_tooltip(self, not utils.is_secret(data.id) and data.id)
+end
+
+local function tooltip_updated(self)
+    if self.classicua.entry_type or utils.tooltip_has_secret(self) then
+        return
+    end
+
+    -- WoW: Forever has GetUnit() on GameTooltip only (not on the comparison tooltips), TooltipUtil works for any tooltip
+    -- TODO: TooltipUtil.GetDisplayedUnit() exists on the other clients too, check it there and drop the split
+    local name, unit
+    if utils.is_forever then
+        name, unit = TooltipUtil.GetDisplayedUnit(self)
+    else
+        name, unit = self:GetUnit()
+    end
     local has_status_bar = GameTooltipStatusBar and GameTooltipStatusBar:IsShown()
     if name or unit or has_status_bar then
         return
@@ -375,6 +455,17 @@ end
 local function tooltip_cleared(self)
     self.classicua.entry_type = false
     self.classicua.entry_id = false
+    self.classicua.talent_rank_id = nil
+end
+
+-- WoW: Forever runs the retail ui, where the tooltip data processor calls back once it has filled a tooltip;
+-- the callback comes for every tooltip in the game, so only the ones we know are served
+local function forever_post_call(handler)
+    return function (tooltip, data)
+        if tooltip.classicua and not tooltip:IsForbidden() and not utils.tooltip_has_secret(tooltip) then
+            handler(tooltip, data)
+        end
+    end
 end
 
 tooltips.prepare = function ()
@@ -385,6 +476,8 @@ tooltips.prepare = function ()
         ShoppingTooltip1,
         ShoppingTooltip2,
         ItemRefTooltip,
+        ItemRefShoppingTooltip1, -- the comparisons of an item linked in chat
+        ItemRefShoppingTooltip2,
         WorldMapTooltip, -- Note: WorldMapTooltip is deprecated in 8.1.5
     }) do
         if tt then
@@ -394,13 +487,20 @@ tooltips.prepare = function ()
     end
 
     for _, tt in pairs(known_tooltips) do
-        tt:HookScript("OnTooltipSetItem", tooltip_set_item)
-        tt:HookScript("OnTooltipSetSpell", tooltip_set_spell)
-        tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
+        if not utils.is_forever then
+            -- WoW: Forever runs the retail ui, where tooltips have no OnTooltipSet* scripts
+            tt:HookScript("OnTooltipSetItem", tooltip_set_item)
+            tt:HookScript("OnTooltipSetSpell", tooltip_set_spell)
+            tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
+        end
         tt:HookScript("OnUpdate", tooltip_updated)
         tt:HookScript("OnTooltipCleared", tooltip_cleared)
 
-        if tt == ItemRefTooltip then
+        -- WoW: Forever needs no such workaround, and it breaks the tooltip there: its OnUpdate is the game's own, which
+        -- fills in the item data as it arrives and shows the comparisons. Replaced by SetScript() below, an item that is
+        -- not cached yet needs a click per portion of its data: "Retrieving item information" first, then the name and
+        -- basic stats, then the item effects; and Shift shows no comparison
+        if tt == ItemRefTooltip and not utils.is_forever then
             -- ItemRefTooltip is "special" tooltip as it clears "OnUpdate" hook every time,
             -- making it work only once, so we reset it back.
             -- Some details here: https://github.com/arkayenro/arkinventory/issues/1337
@@ -414,6 +514,13 @@ tooltips.prepare = function ()
         end
     end
 
+    if utils.is_forever then
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, forever_post_call(tooltip_set_item))
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Spell, forever_post_call(tooltip_set_spell))
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.UnitAura, forever_post_call(tooltip_set_unit_aura))
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, forever_post_call(tooltip_set_unit))
+    end
+
     -- we don't need to handle "SetTalent" for Mists as talent tooltip there is a spell tooltip hooked on "OnTooltipSetSpell"
     if utils.is_classic or utils.is_tbc or utils.is_wrath or utils.is_cata then
         hooksecurefunc(GameTooltip, "SetTalent", function (self, talent_id, is_inspect, is_pet)
@@ -423,24 +530,18 @@ tooltips.prepare = function ()
         end)
     end
 
-    hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
-        local id = select(10, UnitAura(unit, index, filter))
-        if id and options.can_lookup("translate_spell") then
-            add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
-        end
-    end)
+    -- WoW: Forever has no UnitAura(), which the aura hooks below read the spell id from
+    if not utils.is_forever then
+        hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
+            add_aura_to_tooltip(self, select(10, UnitAura(unit, index, filter)))
+        end)
 
-    hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
-        local id = select(10, UnitAura(unit, index, "HELPFUL"))
-        if id and options.can_lookup("translate_spell") then
-            add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
-        end
-    end)
+        hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
+            add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HELPFUL")))
+        end)
 
-    hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
-        local id = select(10, UnitAura(unit, index, "HARMFUL"))
-        if id and options.can_lookup("translate_spell") then
-            add_entry_to_tooltip(self, "spell", id, true, options.can_translate("translate_spell"))
-        end
-    end)
+        hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
+            add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HARMFUL")))
+        end)
+    end
 end

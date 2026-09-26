@@ -16,6 +16,7 @@ local utils         = addon_table.use("utils") ---@class utils_class
 
 local GameTooltip       = _G.GameTooltip
 local GossipFrame       = _G.GossipFrame
+local IsBetaBuild       = _G.IsBetaBuild
 local ShouldShowName    = _G.ShouldShowName
 local TargetFrame       = _G.TargetFrame
 local UnitName          = _G.UnitName
@@ -26,9 +27,18 @@ local UnitName          = _G.UnitName
 
 ItemTextFrame.classicua = {}
 
+-- WoW: Forever runs the retail reader: it has the title on the frame itself
+local function set_item_text_title(text)
+    if utils.is_forever then
+        ItemTextFrame:SetTitle(text)
+    else
+        ItemTextTitleText:SetText(text)
+    end
+end
+
 local function set_item_text_page(text)
-    -- classic reader puts a line break before every page, retail-based reader (forever) does not
-    ItemTextPageText:SetText(ItemTextTitleText and ("\n" .. text) or text)
+    -- WoW: Forever has no line break before a page
+    ItemTextPageText:SetText(utils.is_forever and text or "\n" .. text)
     utils.update_item_text_scrollbar()
 end
 
@@ -64,8 +74,7 @@ local function on_item_text_ready()
         if item_entry then
             local en = ItemTextGetItem()
             local uk = utils.cap(item_entry[1])
-            local translation = data_hooks.set_translation("item_text", item_id, en, uk)
-            ItemTextTitleText:SetText(translation)
+            set_item_text_title(data_hooks.set_translation("item_text", item_id, en, uk))
         end
 
         local item_text_entry = entries.get_entry("item_text", item_id)
@@ -85,12 +94,7 @@ local function on_item_text_ready()
 
             local name_uk = entries.get_glossary_text(name_en, nil, "object")
             if name_uk then
-                local translation = data_hooks.set_translation("item_text", name_en, name_en, utils.cap(name_uk))
-                if ItemTextTitleText then
-                    ItemTextTitleText:SetText(translation)
-                elseif ItemTextFrame.SetTitle then
-                    ItemTextFrame:SetTitle(translation)
-                end
+                set_item_text_title(data_hooks.set_translation("item_text", name_en, name_en, utils.cap(name_uk)))
             end
 
             -- the pages are found once per reading: namesakes are told apart by the first page
@@ -134,7 +138,7 @@ local function on_gossip_show()
         return
     end
 
-    local is_any_reply_translated = false
+    local is_any_text_translated = false
 
     for _, child in gossip_scroll_box:EnumerateFrames() do
         local element_data = child.GetElementData and child:GetElementData()
@@ -147,12 +151,31 @@ local function on_gossip_show()
                 child:Resize()
                 element_data.info.name = translation
                 element_data.titleOptionButton:Setup(element_data.info)
-                is_any_reply_translated = true
+                is_any_text_translated = true
+            end
+
+        -- WoW: Forever has no data hooks for the npc text and the quest titles (see data_hooks.prepare)
+        -- TODO: use for classic as well
+        elseif utils.is_forever and element_data and element_data.buttonType == GOSSIP_BUTTON_TYPE_TITLE then
+            local text_ua = entries.get_gossip_text_for_npc_talk(npc_id, element_data.text)
+            if text_ua and is_translation_on then
+                element_data.text = data_hooks.set_translation("gossip", npc_id, element_data.text, text_ua) or text_ua
+                child:Setup(element_data.text)
+                is_any_text_translated = true
+            end
+
+        elseif utils.is_forever and element_data and element_data.info and element_data.info.questID then
+            local title_ua = entries.get_quest_title(element_data.info.questID)
+            if title_ua and is_translation_on then
+                local info = element_data.info
+                info.title = data_hooks.set_translation("gossip", npc_id, info.title, title_ua) or title_ua
+                child:Setup(info)
+                is_any_text_translated = true
             end
         end
     end
 
-    if is_any_reply_translated then
+    if is_any_text_translated then
         gossip_scroll_box:FullUpdate(true)
     end
 end
@@ -161,7 +184,12 @@ local function on_quest_log_update()
     -- the gossip window redraws itself on this event while it has active quests,
     -- which puts the original npc name back into its header
     if GossipFrame:IsShown() then
-        frame_hooks.update_gossip_npc_name()
+        -- WoW: Forever, the redraw also puts back the original npc text and quest titles (see on_gossip_show)
+        if utils.is_forever then
+            on_gossip_show()
+        else
+            frame_hooks.update_gossip_npc_name()
+        end
     end
 end
 
@@ -221,6 +249,7 @@ local event_frame = CreateFrame("Frame")
 
 event_frame:RegisterEvent("ADDON_LOADED")
 event_frame:RegisterEvent("PLAYER_LOGIN")
+event_frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 event_frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 event_frame:RegisterEvent("ITEM_TEXT_BEGIN")
 event_frame:RegisterEvent("ITEM_TEXT_CLOSED")
@@ -248,7 +277,6 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
     elseif event == "PLAYER_LOGIN" then
         entries.prepare()
         data_hooks.prepare()
-        frame_hooks.prepare()
         options_ext_ui.prepare()
         options_ui.prepare()
 
@@ -258,6 +286,19 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
             .. (options.account.dev_mode and " — Режим розробки" or "")
         )
+
+        -- WoW: Forever beta, its players are invited at every login to help find what is not translated yet; not in dev
+        -- mode, nor once turned off on the dev page
+        if utils.is_forever and IsBetaBuild() and options.account.forever_welcome and not options.account.dev_mode then
+            DEFAULT_CHAT_FRAME:AddMessage(assets.icon_ua_inline .. " |cffffbb22Вітаємо у бета-тесті WoW: Forever! Ви можете"
+                .. " допомогти нам зі збором даних для перекладу -|r " .. dev_log.page_link)
+        end
+
+    elseif event == "PLAYER_ENTERING_WORLD" then
+        -- the hooks on the game's frames are set once the player is in the world: WoW: Forever (since 1.60.1.70009)
+        -- leaves the ones set earlier without effect, or even breaks the hooked methods
+        self:UnregisterEvent("PLAYER_ENTERING_WORLD")
+        frame_hooks.prepare()
 
     elseif event == "PLAYER_TARGET_CHANGED" then
         on_player_target_changed()

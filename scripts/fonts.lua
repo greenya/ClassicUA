@@ -3,6 +3,7 @@ local _, addon_table = ...
 local assets    = addon_table.use("assets") ---@class assets_class
 local fonts     = addon_table.use("fonts") ---@class fonts_class
 local options   = addon_table.use("options") ---@class options_class
+local utils     = addon_table.use("utils") ---@class utils_class
 
 -- Since 2.5.6 (and corresponding builds for other versions) GetFont() reports internal font attributes (e.g. FILTER, FIXEDHEIGHT) among flags.
 -- Passing FIXEDHEIGHT back into SetFont() breaks rendering of pooled combat text font strings,
@@ -22,6 +23,28 @@ local function sanitize_font_flags(font_flags)
     return table.concat(result, ", ")
 end
 
+-- height, when given, is set instead of the current one
+local function override_font(f, height)
+    local font = _G[f.name]
+    if not font then
+        return
+    end
+
+    local _, font_height, font_flags = font:GetFont()
+    if font_height > 120 and f.height then
+        -- 120 is a maximum font height. But, as example, for CombatTextFont:GetFont() height is ~100256, though actual height in CombatText1..20 frames is 25
+        font_height = f.height
+    end
+    font_height = height or font_height
+
+    -- the retail ui draws no shadow once the font is changed, unless it is set again
+    local shadow_x, shadow_y = font:GetShadowOffset()
+    local shadow_r, shadow_g, shadow_b, shadow_a = font:GetShadowColor()
+    font:SetFont(f.file, font_height, sanitize_font_flags(font_flags))
+    font:SetShadowOffset(shadow_x, shadow_y)
+    font:SetShadowColor(shadow_r, shadow_g, shadow_b, shadow_a)
+end
+
 fonts.prepare = function ()
     if not options.can_translate("override_system_fonts") then
         return
@@ -30,8 +53,10 @@ fonts.prepare = function ()
     local font_overrides = {
         { name="CombatTextFont",                    file=assets.font_frizqt, height=25 },
         { name="CombatTextFontOutline",             file=assets.font_frizqt, height=25 },
+        { name="Game15Font_Shadow",                 file=assets.font_frizqt },
         { name="GameTooltipHeader",                 file=assets.font_frizqt },
         { name="MailFont_Large",                    file=assets.font_morpheus },
+        { name="ObjectiveTrackerLineFont",          file=assets.font_frizqt },
         { name="PVPInfoTextFont",                   file=assets.font_frizqt },
         { name="QuestFont_Huge",                    file=assets.font_morpheus },
         { name="QuestFont_Large",                   file=assets.font_morpheus },
@@ -60,14 +85,19 @@ fonts.prepare = function ()
     }
 
     for _, f in ipairs(font_overrides) do
-        local font = _G[f.name]
-        if font then
-            local _, font_height, font_flags = font:GetFont()
-            if font_height > 120 and f.height then
-                -- 120 is a maximum font height. But, as example, for CombatTextFont:GetFont() height is ~100256, though actual height in CombatText1..20 frames is 25
-                font_height = f.height
+        override_font(f)
+    end
+
+    -- WoW: Forever, the text size setting of the quest tracker gives its lines another font family, which no longer changes the size of the font set above
+    -- May be replaced with list of tracked fonts that can change size
+    if utils.is_forever then
+        hooksecurefunc(ObjectiveTrackerLineFont, "SetFontObject", function (_, font_family)
+            -- the game passes the name of the font family, an addon could pass the font object itself
+            if type(font_family) == "string" then
+                font_family = _G[font_family]
             end
-            font:SetFont(f.file, font_height, sanitize_font_flags(font_flags))
-        end
+            local _, height = font_family:GetFont()
+            override_font({ name="ObjectiveTrackerLineFont", file=assets.font_frizqt }, height)
+        end)
     end
 end

@@ -2,6 +2,7 @@ local _, addon_table = ...
 
 local options   = addon_table.use("options") ---@class options_class
 local strings   = addon_table.use("strings") ---@class strings_class
+local utils     = addon_table.use("utils") ---@class utils_class
 
 strings.prepare = function ()
     if not addon_table.string_globals then
@@ -9,6 +10,11 @@ strings.prepare = function ()
     end
 
     if not options.can_translate("translate_string") then
+        return
+    end
+
+    -- WoW: Forever runs the retail ui, where secure code reads these globals
+    if utils.is_forever then
         return
     end
 

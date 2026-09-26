@@ -10,16 +10,22 @@ local string_split          = _G.string.split
 local string_trim           = _G.string.trim
 local table_concat          = _G.table.concat
 local C_ChatBubbles         = _G.C_ChatBubbles
+local C_QuestLog            = _G.C_QuestLog
 local GetMouseFoci          = _G.GetMouseFoci
 local GetMouseFocus         = _G.GetMouseFocus
 local GetQuestID            = _G.GetQuestID
 local GetQuestLogSelectedID = _G.GetQuestLogSelectedID
+local TooltipUtil           = _G.TooltipUtil
 local UnitGUID              = _G.UnitGUID
+local issecretvalue         = _G.issecretvalue
 
 utils.prepare = function ()
     local build_version = GetBuildInfo()
+    local _, minor_version = string_split(".", build_version)
 
-    utils.is_classic        = string_byte(build_version, 1) == string_byte("1")
+    -- WoW: Forever (1.60.x) shares the major version with Classic Era and Season of Discovery (1.15.x)
+    utils.is_forever        = string_byte(build_version, 1) == string_byte("1") and tonumber(minor_version) >= 60
+    utils.is_classic        = string_byte(build_version, 1) == string_byte("1") and not utils.is_forever
     utils.is_classic_sod    = utils.is_classic and C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
     utils.is_tbc            = string_byte(build_version, 1) == string_byte("2")
     utils.is_wrath          = string_byte(build_version, 1) == string_byte("3")
@@ -31,6 +37,7 @@ utils.prepare = function ()
     elseif utils.is_wrath   then utils.expansion_key = "wrath"
     elseif utils.is_cata    then utils.expansion_key = "cata"
     elseif utils.is_mists   then utils.expansion_key = "mists"
+    elseif utils.is_forever then utils.expansion_key = "forever"
     else                         utils.expansion_key = "???" end
 end
 
@@ -256,13 +263,45 @@ utils.item_id_from_link = function (item_link)
     end
 end
 
+-- WoW: Forever runs the retail ui, where only GameTooltip keeps a lua GetItem(); the comparison tooltips
+-- and ItemRefTooltip are read through TooltipUtil
+utils.tooltip_item = function (tooltip)
+    if utils.is_forever then
+        return TooltipUtil.GetDisplayedItem(tooltip)
+    end
+
+    return tooltip:GetItem()
+end
+
+-- WoW: Forever hands out secret values in combat/dungeons, we can't touch this
+utils.is_secret = function (value)
+    return utils.is_forever and issecretvalue(value)
+end
+
+-- addon touching a tooltip with secret value taints the tooltip until a reload
+utils.tooltip_has_secret = function (tooltip)
+    if not utils.is_forever then
+        return false
+    end
+
+    local name = tooltip:GetName()
+    for i = 1, tooltip:NumLines() do
+        local left, right = _G[name .. "TextLeft" .. i], _G[name .. "TextRight" .. i]
+        if (left and issecretvalue(left:GetText())) or (right and issecretvalue(right:GetText())) then
+            return true
+        end
+    end
+
+    return false
+end
+
 utils.tooltip_item_id = function (tooltip)
-    local _, item_link = tooltip:GetItem()
+    local _, item_link = utils.tooltip_item(tooltip)
     return utils.item_id_from_link(item_link)
 end
 
 utils.tooltip_item_suffix_id = function (tooltip)
-    local _, item_link = tooltip:GetItem()
+    local _, item_link = utils.tooltip_item(tooltip)
     if item_link then
         local suffix_id = select(8, string_split(":", item_link))
         if suffix_id then
@@ -287,7 +326,7 @@ utils.chat_bubble_font_string_with_text = function (text)
             local frame = select(1, bubble:GetChildren())
             for i = 1, frame:GetNumRegions() do
                 local region = select(i, frame:GetRegions())
-                if region:GetObjectType() == "FontString" then
+                if region:GetObjectType() == "FontString" and not utils.is_secret(region:GetText()) then
                     local region_text = utils.strip_color_codes(region:GetText())
                     if region_text and string_trim(region_text) == target then
                         return region
@@ -298,16 +337,19 @@ utils.chat_bubble_font_string_with_text = function (text)
     end
 end
 
+utils.npc_id_from_guid = function (guid)
+    if type(guid) == "string" and not utils.is_secret(guid) then
+        local kind, _, _, _, _, id, _ = string_split("-", guid)
+        if id and (kind == "Creature" or kind == "Vehicle") then
+            return tonumber(id)
+        end
+    end
+end
+
 -- unit_id is one of https://warcraft.wiki.gg/wiki/UnitId
 utils.npc_id_from_unit_id = function (unit_id)
     if type(unit_id) == "string" then
-        local guid = UnitGUID(unit_id)
-        if guid then
-            local kind, _, _, _, _, id, _ = string_split("-", guid)
-            if id and (kind == "Creature" or kind == "Vehicle") then
-                return tonumber(id)
-            end
-        end
+        return utils.npc_id_from_guid(UnitGUID(unit_id))
     end
 end
 
@@ -318,7 +360,13 @@ utils.get_currently_viewed_quest_id = function ()
         return npc_quest_id
     end
 
-    local questlog_quest_id = GetQuestLogSelectedID()
+    local questlog_quest_id
+    if utils.is_forever then
+        questlog_quest_id = C_QuestLog.GetSelectedQuest()
+    else
+        questlog_quest_id = GetQuestLogSelectedID()
+    end
+
     if questlog_quest_id and questlog_quest_id > 0 then
         return questlog_quest_id
     end
@@ -341,17 +389,25 @@ utils.mouse_hover_frame = function ()
 end
 
 utils.update_item_text_scrollbar = function ()
-    local sf, sb = ItemTextScrollFrame, ItemTextScrollFrameScrollBar
+    -- WoW: Forever runs the retail reader, where the scroll bar has no name of its own
+    local sf = ItemTextScrollFrame
+    local sb = utils.is_forever and sf.ScrollBar or ItemTextScrollFrameScrollBar
     if not sf or not sb then return end
 
-    sf.scrollBarHideable = false
+    if not utils.is_forever then
+        sf.scrollBarHideable = false
+    end
     sf:GetScrollChild():SetHeight(1)
     sf:UpdateScrollChildRect()
     if math_floor(sf:GetVerticalScrollRange()) > 0 then
         sf:GetScrollChild():SetHeight(sf:GetHeight() + sf:GetVerticalScrollRange() + 30)
     end
 
-    sb:SetValue(0)
+    if utils.is_forever then
+        sb:ScrollToBegin()
+    else
+        sb:SetValue(0)
+    end
 end
 
 utils.get_match_list_of_equal_meaning_english_texts_for_phrase = function (phrase)
