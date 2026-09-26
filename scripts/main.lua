@@ -16,6 +16,7 @@ local utils         = addon_table.use("utils") ---@class utils_class
 
 local GameTooltip       = _G.GameTooltip
 local GossipFrame       = _G.GossipFrame
+local IsBetaBuild       = _G.IsBetaBuild
 local ShouldShowName    = _G.ShouldShowName
 local TargetFrame       = _G.TargetFrame
 local UnitName          = _G.UnitName
@@ -285,6 +286,13 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
             .. " — |cffffbb22" .. _G.SLASH_CLASSICUA_SETTINGS1 .. "|r"
             .. (options.account.dev_mode and " — Режим розробки" or "")
         )
+
+        -- WoW: Forever beta, its players are invited at every login to help find what is not translated yet; not in dev
+        -- mode, nor once turned off on the dev page
+        if utils.is_forever and IsBetaBuild() and options.account.forever_welcome and not options.account.dev_mode then
+            DEFAULT_CHAT_FRAME:AddMessage(assets.icon_ua_inline .. " |cffffbb22Вітаємо у бета-тесті WoW: Forever! Ви можете"
+                .. " допомогти нам зі збором даних для перекладу -|r " .. dev_log.page_link)
+        end
 
     elseif event == "PLAYER_ENTERING_WORLD" then
         -- the hooks on the game's frames are set once the player is in the world: WoW: Forever (since 1.60.1.70009)
