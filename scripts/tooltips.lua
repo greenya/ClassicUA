@@ -12,7 +12,6 @@ local GameTooltipStatusBar  = _G.GameTooltipStatusBar
 local TooltipUtil           = _G.TooltipUtil
 local UnitAura              = _G.UnitAura
 local WorldFrame            = _G.WorldFrame
-local issecretvalue         = _G.issecretvalue
 
 local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_can_be_spell_id, parent_item_id)
     if not content then
@@ -321,7 +320,7 @@ local function tooltip_set_item(self, data)
     local id
     if utils.is_forever then
         -- WoW: Forever hands the item id over with the tooltip data
-        id = not issecretvalue(data.id) and data.id
+        id = not utils.is_secret(data.id) and data.id
     else
         id = utils.tooltip_item_id(self)
     end
@@ -341,7 +340,7 @@ local function tooltip_set_spell(self, data)
     local id
     if utils.is_forever then
         -- WoW: Forever hands the spell id over with the tooltip data
-        id = not issecretvalue(data.id) and data.id
+        id = not utils.is_secret(data.id) and data.id
     else
         id = select(2, self:GetSpell())
     end
@@ -403,7 +402,7 @@ end
 
 -- WoW: Forever, the tooltip of an aura (a buff or debuff), with the spell id in the tooltip data
 local function tooltip_set_unit_aura(self, data)
-    if not issecretvalue(data.id) and options.can_lookup("translate_spell") then
+    if not utils.is_secret(data.id) and options.can_lookup("translate_spell") then
         add_entry_to_tooltip(self, "spell", data.id, true, options.can_translate("translate_spell"))
     end
 end
