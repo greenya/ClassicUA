@@ -73,3 +73,11 @@ Known so far:
 Target dummy can be used for easy getting into combat and testing if ui working properly when making changes.
 
 PS.: maybe we should consider option for a player like "Allow Combat-Secured Translation" and explain in the tooltip so player knows what it means, basically player can choose to see maximum translated ui and agrees to have some "failed" messages in chat and "blocked" messages in popups when in combat.
+
+### WoW: Forever
+
+Forever runs the retail ui, which guards itself much more strictly:
+- the addon replaces no game functions and no global strings there: replaced ones taint secure code, which then fails on secret values (unit frames, character frame, edit mode). Everything is translated where it is shown instead: `hooksecurefunc` on widgets and functions, `HookScript`, `TooltipDataProcessor` post calls, chat filters
+- secret values: in combat and in instances the game hands out values an addon must not read (unit guids and names, lines of aura tooltips and of spells on cooldown, some chat), see `utils.is_secret` and `utils.tooltip_has_secret`. Such texts stay in English
+- hooks on the game's frames are set on the first PLAYER_ENTERING_WORLD: hooks set earlier stop working (since 1.60.1.70009)
+- taint log: while it is on, the game's calls to the hooked widget methods fail (quest titles, zone texts, quest tracker), so some translations stop working; `taintLog 2` + opening a dropdown made with the Menu API crashes the client; `/reload` empties Logs/taint.log, so exit the game before reading it;
