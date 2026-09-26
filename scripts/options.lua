@@ -34,6 +34,11 @@ local default_character = { ---@class character_options_class
 }
 
 options.prepare = function ()
+    -- WoW: Forever beta, the welcome inviting to dev mode at login (see main.lua)
+    if utils.is_forever then
+        default_account.forever_welcome = true
+    end
+
     ClassicUA_Options = ClassicUA_Options or utils.copy_table_deep({}, default_account)
     options.account = ClassicUA_Options
     utils.table_sync_keys(options.account, default_account)
