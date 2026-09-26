@@ -66,6 +66,9 @@ def collect_quests():
                 string_text = utils.get_clean_text(s.text)
                 new_quest[string_attr] = string_text
 
+                for issue in utils.get_inline_code_issues(string_text):
+                    issues.append(f'[!] Quest #{id} {string_attr}: {issue}')
+
                 for c in string_text:
                     code = ord(c)
                     new_quest_chars[code] = 1 + new_quest_chars[code] if code in new_quest_chars else 1

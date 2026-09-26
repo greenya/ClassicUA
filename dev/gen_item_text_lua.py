@@ -4,6 +4,7 @@ import utils
 
 def collect_item_texts():
     item_texts = { e: {} for e in utils.known_expansions }
+    issues = []
     filename_pattern = re.compile(r'^([^_]+)_(\d+)\.xml$')
 
     for expansion in item_texts:
@@ -26,14 +27,18 @@ def collect_item_texts():
 
                 if pages:
                     name, id = re.search(filename_pattern, filename).groups()
+                    for page in pages:
+                        for issue in utils.get_inline_code_issues(page):
+                            issues.append(f'[!] Item text [{expansion}] #{id} {name.strip()}: {issue}')
+
                     pages_wording = 'page' if len(pages) == 1 else 'pages'
                     item_texts[expansion][int(id)] = (pages, f'{name.strip()} ({len(pages)} {pages_wording})')
 
         item_texts[expansion] = dict(sorted(item_texts[expansion].items()))
 
-    return item_texts
+    return item_texts, issues
 
-def print_report(item_texts):
+def print_report(item_texts, issues):
     print('-' * 80)
     for expansion in item_texts:
         for id in item_texts[expansion]:
@@ -43,10 +48,16 @@ def print_report(item_texts):
     print('-' * 80)
     print('Total item texts:', ', '.join([f'[{e}] {len(item_texts[e])}' for e in item_texts]))
 
+    if issues:
+        print('-' * 80)
+        print('ISSUES FOUND:')
+        for text in issues:
+            print(text)
+
 def main():
     sys.stdout.reconfigure(encoding='utf-8')
 
-    item_texts = collect_item_texts()
+    item_texts, issues = collect_item_texts()
 
     for expansion in item_texts:
         utils.write_lua_item_text_file(
@@ -55,6 +66,6 @@ def main():
             item_texts  =item_texts[expansion]
         )
 
-    print_report(item_texts)
+    print_report(item_texts, issues)
 
 main()
