@@ -1,5 +1,6 @@
 local _, addon_table = ...
 
+local assets            = addon_table.use("assets") ---@class assets_class
 local chats             = addon_table.use("chats") ---@class chats_class
 local dev_log           = addon_table.use("dev_log") ---@class dev_log_class
 local dev_log_ui        = addon_table.use("dev_log_ui") ---@class dev_log_ui_class
@@ -9,6 +10,7 @@ local options_ext_ui    = addon_table.use("options_ext_ui") ---@class options_ex
 local utils             = addon_table.use("utils") ---@class utils_class
 
 local CreateFrame       = _G.CreateFrame
+local InCombatLockdown  = _G.InCombatLockdown
 local IsBetaBuild       = _G.IsBetaBuild
 local UnitName          = _G.UnitName
 local math_ceil         = _G.math.ceil
@@ -851,7 +853,17 @@ local function page_by_key(page_key)
     end
 end
 
+options_ext_ui.print_settings_blocked_in_combat = function ()
+    DEFAULT_CHAT_FRAME:AddMessage(assets.icon_ua_inline .. " |cffffbb22ClassicUA: налаштування можна відкрити лише поза"
+        .. " боєм.|r")
+end
+
 options_ext_ui.open = function (page_key)
+    if InCombatLockdown() then
+        options_ext_ui.print_settings_blocked_in_combat()
+        return
+    end
+
     local page = page_by_key(page_key) or page_by_key("settings")
 
     if page.category_id and Settings and Settings.OpenToCategory then
