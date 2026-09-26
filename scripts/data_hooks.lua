@@ -117,8 +117,7 @@ local function prepare_data_hooks_for_quests()
                 end
             else
                 local quest_id = data[8]
-                local quest_entry = entries.get_entry("quest", quest_id)
-                local quest_title = quest_entry and quest_entry[1] or entries.get_glossary_text(data[1])
+                local quest_title = entries.get_quest_title(quest_id) or entries.get_glossary_text(data[1])
                 if quest_title then
                     data[1] = data_hooks.set_translation("quest", quest_id, data[1], quest_title)
                 end
@@ -131,9 +130,9 @@ local function prepare_data_hooks_for_quests()
         local text = data_hooks.original.GetTitleText(...)
         if type(text) == "string" and options.can_lookup("translate_quest") then
             local quest_id = GetQuestID()
-            local quest_entry = entries.get_entry("quest", quest_id)
-            if quest_entry and quest_entry[1] then
-                text = data_hooks.set_translation("quest", quest_id, text, quest_entry[1])
+            local text_uk = entries.get_quest_title(quest_id)
+            if text_uk then
+                text = data_hooks.set_translation("quest", quest_id, text, text_uk)
             end
         end
         return text
@@ -143,9 +142,9 @@ local function prepare_data_hooks_for_quests()
         local text = data_hooks.original.GetQuestText(...)
         if type(text) == "string" and options.can_lookup("translate_quest") then
             local quest_id = GetQuestID()
-            local quest_entry = entries.get_entry("quest", quest_id)
-            if quest_entry and quest_entry[2] then
-                text = data_hooks.set_translation("quest", quest_id, text, quest_entry[2])
+            local text_uk = entries.get_quest_description(quest_id)
+            if text_uk then
+                text = data_hooks.set_translation("quest", quest_id, text, text_uk)
             end
         end
         return text
@@ -155,9 +154,9 @@ local function prepare_data_hooks_for_quests()
         local text = data_hooks.original.GetObjectiveText(...)
         if type(text) == "string" and options.can_lookup("translate_quest") then
             local quest_id = GetQuestID()
-            local quest_entry = entries.get_entry("quest", quest_id)
-            if quest_entry and quest_entry[3] then
-                text = data_hooks.set_translation("quest", quest_id, text, quest_entry[3])
+            local text_uk = entries.get_quest_objective(quest_id)
+            if text_uk then
+                text = data_hooks.set_translation("quest", quest_id, text, text_uk)
             end
         end
         return text
@@ -167,9 +166,9 @@ local function prepare_data_hooks_for_quests()
         local text = data_hooks.original.GetProgressText(...)
         if type(text) == "string" and options.can_lookup("translate_quest") then
             local quest_id = GetQuestID()
-            local quest_entry = entries.get_entry("quest", quest_id)
-            if quest_entry and quest_entry[4] then
-                text = data_hooks.set_translation("quest", quest_id, text, quest_entry[4])
+            local text_uk = entries.get_quest_progress(quest_id)
+            if text_uk then
+                text = data_hooks.set_translation("quest", quest_id, text, text_uk)
             end
         end
         return text
@@ -179,9 +178,9 @@ local function prepare_data_hooks_for_quests()
         local text = data_hooks.original.GetRewardText(...)
         if type(text) == "string" and options.can_lookup("translate_quest") then
             local quest_id = GetQuestID()
-            local quest_entry = entries.get_entry("quest", quest_id)
-            if quest_entry and quest_entry[5] then
-                text = data_hooks.set_translation("quest", quest_id, text, quest_entry[5])
+            local text_uk = entries.get_quest_completion(quest_id)
+            if text_uk then
+                text = data_hooks.set_translation("quest", quest_id, text, text_uk)
             end
         end
         return text
@@ -192,14 +191,13 @@ local function prepare_data_hooks_for_quests()
         if data and type(data[1]) == "string" and type(data[2]) == "string" and options.can_lookup("translate_quest") then
             local quest_idx = ...
             local quest_id = get_quest_log_quest_id(quest_idx)
-            local quest_entry = entries.get_entry("quest", quest_id)
-            if quest_entry then
-                if quest_entry[2] then
-                    data[1] = data_hooks.set_translation("quest", quest_id, data[1], quest_entry[2])
-                end
-                if quest_entry[3] then
-                    data[2] = data_hooks.set_translation("quest", quest_id, data[2], quest_entry[3])
-                end
+            local description_uk = entries.get_quest_description(quest_id)
+            if description_uk then
+                data[1] = data_hooks.set_translation("quest", quest_id, data[1], description_uk)
+            end
+            local objective_uk = entries.get_quest_objective(quest_id)
+            if objective_uk then
+                data[2] = data_hooks.set_translation("quest", quest_id, data[2], objective_uk)
             end
         end
         return unpack(data)
@@ -304,8 +302,7 @@ local function prepare_data_hooks_for_gossip()
         for _, item in ipairs(list) do
             local title_ua
             if item.questID then
-                local quest_entry = entries.get_entry("quest", item.questID)
-                title_ua = quest_entry and quest_entry[1]
+                title_ua = entries.get_quest_title(item.questID)
             end
             item.title = translate_gossip_title(item.title, title_ua)
         end

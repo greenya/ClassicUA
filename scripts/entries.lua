@@ -388,10 +388,29 @@ local function find_quest(quest_id)
     return quest
 end
 
--- only the title of a quest, without making the rest of its texts
-entries.get_quest_title = function (quest_id)
+local function get_quest_text(quest_id, field)
     local quest = find_quest(quest_id)
-    return quest and make_text(quest[1])
+    return quest and make_text(quest[field])
+end
+
+entries.get_quest_title = function (quest_id)
+    return get_quest_text(quest_id, 1)
+end
+
+entries.get_quest_description = function (quest_id)
+    return get_quest_text(quest_id, 2)
+end
+
+entries.get_quest_objective = function (quest_id)
+    return get_quest_text(quest_id, 3)
+end
+
+entries.get_quest_progress = function (quest_id)
+    return get_quest_text(quest_id, 4)
+end
+
+entries.get_quest_completion = function (quest_id)
+    return get_quest_text(quest_id, 5)
 end
 
 entries.get_entry = function (entry_type, entry_id)
