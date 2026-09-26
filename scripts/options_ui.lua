@@ -426,7 +426,7 @@ options_ui.select_tab = function (tab_index, force_refresh)
     tab_button:LockHighlight()
 
     for child_frame_index in pairs(of.tab_child_frames) do
-        child_frame = of.tab_child_frames[child_frame_index]
+        local child_frame = of.tab_child_frames[child_frame_index]
         if child_frame and child_frame_index ~= tab_button.tab_index then
             child_frame:Hide()
         end
