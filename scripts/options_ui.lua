@@ -7,6 +7,8 @@ local options_ext_ui = addon_table.use("options_ext_ui") ---@class options_ext_u
 local options_ui    = addon_table.use("options_ui") ---@class options_ui_class
 local utils         = addon_table.use("utils") ---@class utils_class
 
+local InCombatLockdown = _G.InCombatLockdown
+
 ---@class Frame
 options_ui.frame = nil
 
@@ -33,6 +35,11 @@ local function register_game_options_category()
 end
 
 options_ui.open = function ()
+    if InCombatLockdown() then
+        options_ext_ui.print_settings_blocked_in_combat()
+        return
+    end
+
     if Settings and Settings.OpenToCategory then
         Settings.OpenToCategory(options_ui.frame.category_id)
     elseif InterfaceAddOnsList_Update and InterfaceOptionsFrame_OpenToCategory then
