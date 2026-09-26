@@ -207,9 +207,12 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
             add_general_entry_to_tooltip(tooltip, entry)
         end
     elseif not entry and options.account.dev_mode then
-        updated = true
-        tooltip:AddLine(" ")
-        tooltip:AddLine(assets.icon_ua_inline .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
+        -- a missing entry is logged either way, its id is shown only where its translation is on
+        if is_translation_on then
+            updated = true
+            tooltip:AddLine(" ")
+            tooltip:AddLine(assets.icon_ua_inline .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
+        end
 
         if entry_type == "npc" then
             dev_log.missing_npc(entry_id, tt_title_line)
