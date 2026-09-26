@@ -469,6 +469,8 @@ tooltips.prepare = function ()
         ShoppingTooltip1,
         ShoppingTooltip2,
         ItemRefTooltip,
+        ItemRefShoppingTooltip1, -- the comparisons of an item linked in chat
+        ItemRefShoppingTooltip2,
         WorldMapTooltip, -- Note: WorldMapTooltip is deprecated in 8.1.5
     }) do
         if tt then
