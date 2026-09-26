@@ -422,8 +422,7 @@ end
 -- WoW: Forever shows a finished quest with its objective text, given by the game as the quest's completion text
 local function translate_forever_finished_quest_text(quest_id, text)
     local _, objective_en = GetQuestLogQuestText(C_QuestLog.GetLogIndexForQuestID(quest_id))
-    local quest_entry = text == objective_en and entries.get_entry("quest", quest_id)
-    return quest_entry and quest_entry[3]
+    return text == objective_en and entries.get_quest_objective(quest_id)
 end
 
 -- WoW: Forever, the quest tracker lays out its blocks by the heights of the english texts, so the heights a translation
@@ -614,17 +613,16 @@ end
 
 -- WoW: Forever runs the retail ui, where the quest texts can not be translated by data_hooks (see data_hooks.prepare)
 -- So now we set text as its widget gets it; it goes through data_hooks.set_translation(), so the language switcher serves it as on the other clients
-local function hook_quest_text(widget, entry_field, get_quest_id)
+local function hook_quest_text(widget, text_uk_getter, quest_id_getter)
     hooksecurefunc(widget, "SetText", function (self, text)
         if not is_set_text_hook_allowed or type(text) ~= "string" or not options.can_lookup("translate_quest") then
             return
         end
 
-        local quest_id = get_quest_id()
-        local quest_entry = entries.get_entry("quest", quest_id)
-        if quest_entry and quest_entry[entry_field] then
-            local text_uk = quest_entry[entry_field]
-            if entry_field == 1 then
+        local quest_id = quest_id_getter()
+        local text_uk = text_uk_getter(quest_id)
+        if text_uk then
+            if text_uk_getter == entries.get_quest_title then
                 local title_en = C_QuestLog.GetTitleForQuestID(quest_id) or GetTitleText()
                 text_uk = splice_quest_title(text, title_en, text_uk) or text_uk
             end
@@ -836,12 +834,12 @@ local function prepare_forever_zone_texts()
 end
 
 local function prepare_forever_quest_texts()
-    hook_quest_text(QuestInfoTitleHeader,       1, quest_info_quest_id)
-    hook_quest_text(QuestInfoDescriptionText,   2, quest_info_quest_id)
-    hook_quest_text(QuestInfoObjectivesText,    3, quest_info_quest_id)
-    hook_quest_text(QuestInfoRewardText,        5, quest_info_quest_id)
-    hook_quest_text(QuestProgressTitleText,     1, GetQuestID)
-    hook_quest_text(QuestProgressText,          4, GetQuestID)
+    hook_quest_text(QuestInfoTitleHeader,       entries.get_quest_title,        quest_info_quest_id)
+    hook_quest_text(QuestInfoDescriptionText,   entries.get_quest_description,  quest_info_quest_id)
+    hook_quest_text(QuestInfoObjectivesText,    entries.get_quest_objective,    quest_info_quest_id)
+    hook_quest_text(QuestInfoRewardText,        entries.get_quest_completion,   quest_info_quest_id)
+    hook_quest_text(QuestProgressTitleText,     entries.get_quest_title,        GetQuestID)
+    hook_quest_text(QuestProgressText,          entries.get_quest_progress,     GetQuestID)
 
     hooksecurefunc("QuestInfo_Display", update_forever_quest_info_objectives)
     hooksecurefunc("QuestLogQuests_Update", update_forever_quest_log_list)
