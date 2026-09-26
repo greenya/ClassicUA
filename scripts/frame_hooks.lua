@@ -381,6 +381,16 @@ local function update_lang_switchers()
     is_set_text_hook_allowed = true
 end
 
+-- the game decorates a quest title (the quest level, a dungeon icon, "Failed"), so only the english title in the text
+-- is swapped; nil when the text has no such title
+local function splice_quest_title(text, title_en, title_uk)
+    local from, to
+    if text and title_en and title_en ~= "" then
+        from, to = text:find(title_en, 1, true)
+    end
+    return from and text:sub(1, from - 1) .. title_uk .. text:sub(to + 1)
+end
+
 -- WoW: Forever shows a finished quest with its completion text, which is often the objectives text of the quest
 local function translate_forever_quest_completion_text(quest_id, text)
     local _, objectives_en = GetQuestLogQuestText(C_QuestLog.GetLogIndexForQuestID(quest_id))
@@ -438,16 +448,12 @@ local function update_forever_quest_tracker()
 
     for quest_id, block in pairs(forever_quest_tracker_blocks()) do
         if block.used then
-            local title_en = C_QuestLog.GetTitleForQuestID(quest_id)
             local title_uk = entries.get_quest_title(quest_id)
             local text = block.HeaderText:GetText()
             -- the title is shown with the quest level before it
-            local from, to
-            if title_en and text then
-                from, to = text:find(title_en, 1, true)
-            end
-            if title_uk and from then
-                block.HeaderText.classicua = { en=text, uk=text:sub(1, from - 1) .. title_uk .. text:sub(to + 1), shown=text }
+            local text_uk = title_uk and splice_quest_title(text, C_QuestLog.GetTitleForQuestID(quest_id), title_uk)
+            if text_uk then
+                block.HeaderText.classicua = { en=text, uk=text_uk, shown=text }
             end
 
             for key, line in pairs(block.usedLines) do
@@ -578,16 +584,6 @@ local function prepare_quest_window_hooks()
     end
 end
 
--- the game decorates a quest title (e.g. a dungeon icon, "Failed"), so only the english title in it is swapped
-local function splice_quest_title(text, quest_id, title_uk)
-    local title_en = C_QuestLog.GetTitleForQuestID(quest_id) or GetTitleText()
-    local from, to
-    if title_en and title_en ~= "" then
-        from, to = text:find(title_en, 1, true)
-    end
-    return from and text:sub(1, from - 1) .. title_uk .. text:sub(to + 1) or title_uk
-end
-
 -- WoW: Forever runs the retail ui, where the quest texts can not be translated by data_hooks (see data_hooks.prepare)
 -- So now we set text as its widget gets it; it goes through data_hooks.set_translation(), so the language switcher serves it as on the other clients
 local function hook_quest_text(widget, entry_field, get_quest_id)
@@ -601,7 +597,8 @@ local function hook_quest_text(widget, entry_field, get_quest_id)
         if quest_entry and quest_entry[entry_field] then
             local text_uk = quest_entry[entry_field]
             if entry_field == 1 then
-                text_uk = splice_quest_title(text, quest_id, text_uk)
+                local title_en = C_QuestLog.GetTitleForQuestID(quest_id) or GetTitleText()
+                text_uk = splice_quest_title(text, title_en, text_uk) or text_uk
             end
             local text_new = data_hooks.set_translation("quest", quest_id, text, text_uk)
 
@@ -633,10 +630,10 @@ local function update_forever_quest_log_list()
         local title_uk = entries.get_quest_title(button.questID)
         local text = button.Text:GetText()
         -- the title is shown with the quest level and icons around it
-        local from, to = text:find(button.info.title, 1, true)
-        if title_uk and from then
+        local text_uk = title_uk and splice_quest_title(text, button.info.title, title_uk)
+        if text_uk then
             local height = button.Text:GetHeight()
-            button.Text:SetText(text:sub(1, from - 1) .. title_uk .. text:sub(to + 1))
+            button.Text:SetText(text_uk)
 
             -- the list is rebuilt on every hover of a quest on the map, so it is laid out again only when needed
             local height_change = button.Text:GetHeight() - height
