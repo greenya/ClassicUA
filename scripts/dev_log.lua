@@ -51,11 +51,70 @@ local function log_init()
     if not log.issues                   then log.issues = {} end
 end
 
+-- an error raised with ClassicUA mentioned goes to the issues in dev mode
+-- otherwise the player is asked, once per session, to turn dev mode on, and the errors are kept in memory until then
+local is_error_notice_shown = false
+local unrecorded_errors = {} -- [message] = stack, or false without one
+
+-- a chat link to the dev page - opened by options_ext_ui
+dev_log.page_link_id = "addon:ClassicUA:dev"
+dev_log.page_link = "|cff4488ff|H" .. dev_log.page_link_id .. "|h[Розробка]|h|r"
+
+local function on_lua_error(message, stack)
+    if type(message) ~= "string" or utils.is_secret(message) or not message:find("ClassicUA", 1, true) then
+        return
+    end
+
+    -- WoW: Forever may hand out the stack as a secret, which could not be shown with the data later
+    if utils.is_secret(stack) then
+        stack = nil
+    end
+
+    if options.account.dev_mode then
+        dev_log.issue(message, stack)
+        return
+    end
+
+    unrecorded_errors[message] = unrecorded_errors[message] or stack or false
+
+    if not is_error_notice_shown then
+        is_error_notice_shown = true
+        DEFAULT_CHAT_FRAME:AddMessage(assets.icon_ua_inline .. " |cffff8844ClassicUA: сталася помилка. Щоб допомогти"
+            .. " нам її виправити, увімкніть режим розробки на сторінці|r " .. dev_log.page_link)
+    end
+end
+
 dev_log.prepare = function ()
     ClassicUA_DevLog = ClassicUA_DevLog or utils.copy_table_deep({}, default_log)
     log = ClassicUA_DevLog
     utils.table_sync_keys(log, default_log)
     log_init()
+
+    local game_error_handler = geterrorhandler()
+    seterrorhandler(function (message, ...)
+        -- the stack from the error on: level 1 is this handler, level 2 the game calling it, level 3 the error itself
+        pcall(on_lua_error, message, debugstack(3))
+        return game_error_handler(message, ...)
+    end)
+
+    -- BugGrabber disables seterrorhandler() above, but announces every error it catches; its users see the errors, so
+    -- ours are only recorded in dev mode
+    if BugGrabber then
+        EventRegistry:RegisterCallback("BugGrabber.BugGrabbed", function (_, error_id)
+            local is_found, error_object = pcall(BugGrabber.GetErrorByID, BugGrabber, error_id)
+            if options.account.dev_mode and is_found and error_object then
+                pcall(on_lua_error, error_object.message, error_object.stack)
+            end
+        end)
+    end
+end
+
+-- called once dev mode is turned on
+dev_log.record_unrecorded_errors = function ()
+    for message, stack in pairs(unrecorded_errors) do
+        dev_log.issue(message, stack)
+    end
+    unrecorded_errors = {}
 end
 
 dev_log.reset = function ()
