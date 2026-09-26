@@ -9,6 +9,7 @@ local frames        = addon_table.use("frames") ---@class frames_class
 local options       = addon_table.use("options") ---@class options_class
 local utils         = addon_table.use("utils") ---@class utils_class
 
+local math_max             = _G.math.max
 local string_format        = _G.string.format
 local string_gmatch        = _G.string.gmatch
 local C_QuestLog           = _G.C_QuestLog
@@ -187,6 +188,28 @@ local function update_gossip_scroll_box()
     end
 end
 
+-- WoW: Forever, a quest title of the quest greeting, sized as the game sizes it
+local function set_forever_quest_greeting_title(button, text)
+    button:SetText(text)
+    button:SetHeight(math_max(button:GetTextHeight() + 2, button.Icon:GetHeight()))
+end
+
+-- WoW: Forever, the quest titles of the quest greeting are pooled buttons of its panel, out of the scroll frame the
+-- language switcher walks
+local function update_forever_quest_greeting_titles()
+    local npc_id = utils.npc_id_from_unit_id("npc")
+    if not npc_id then
+        return
+    end
+
+    for button in QuestFrameGreetingPanel.titleButtonPool:EnumerateActive() do
+        local found = data_hooks.get_translation("gossip", npc_id, button:GetText())
+        if found then
+            set_forever_quest_greeting_title(button, found)
+        end
+    end
+end
+
 local lang_switchers = {
     -- quests
     { hd_type="quest", parent={ frame=QuestDetailScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
@@ -231,7 +254,12 @@ local lang_switchers = {
           update_gossip_npc_name()
       end },
     { hd_type="gossip", parent={ frame=QuestGreetingScrollFrame, point="TOPRIGHT", x=-6, y=-10 },
-      post_update=function () update_quest_npc_name() end },
+      post_update=function ()
+          update_quest_npc_name()
+          if utils.is_forever then
+              update_forever_quest_greeting_titles()
+          end
+      end },
 }
 
 local function on_hooked_label_set_text(self, text)
@@ -691,6 +719,36 @@ local function update_forever_quest_info_objectives()
     end
 end
 
+-- WoW: Forever, the window of an npc that only offers quests: its greeting, and the quest titles by their ids; like on
+-- the other clients (see data_hooks.prepare_data_hooks_for_quest_greetings), it goes by the gossip option
+local function update_forever_quest_greeting()
+    local npc_id = utils.npc_id_from_unit_id("npc")
+    if not npc_id or not options.can_lookup("translate_gossip") then
+        return
+    end
+
+    local text = GreetingText:GetText()
+    local text_uk = entries.get_gossip_text_for_npc_talk(npc_id, text)
+    if text_uk then
+        GreetingText:SetText(data_hooks.set_translation("gossip", npc_id, text, text_uk))
+    end
+
+    for button in QuestFrameGreetingPanel.titleButtonPool:EnumerateActive() do
+        local quest_id
+        if button.isActive == 1 then
+            quest_id = GetActiveQuestID(button:GetID())
+        else
+            quest_id = select(5, GetAvailableQuestInfo(button:GetID()))
+        end
+
+        local title_uk = quest_id and entries.get_quest_title(quest_id)
+        if title_uk then
+            local title = data_hooks.set_translation("gossip", npc_id, button:GetText(), title_uk)
+            set_forever_quest_greeting_title(button, title)
+        end
+    end
+end
+
 -- WoW: Forever, the zone names the game shows: the zone and subzone on entering them, the minimap zone and the zone
 -- under the cursor on the world map, which comes with its levels: "Durotar|cffffff00 (1-10)|r"
 local function hook_forever_zone_text(font_string)
@@ -789,6 +847,11 @@ local function prepare_forever_quest_texts()
     hooksecurefunc("QuestLogQuests_Update", update_forever_quest_log_list)
     hooksecurefunc(QuestObjectiveTracker, "LayoutContents", update_forever_quest_tracker)
     hooksecurefunc(QuestObjectiveTracker, "UpdateHeight", update_forever_quest_tracker_height)
+
+    -- the greeting panel runs QuestFrameGreetingPanel_OnShow() as its OnShow (bound in xml, so hooked as a script) and
+    -- by name to redraw on QUEST_LOG_UPDATE
+    QuestFrameGreetingPanel:HookScript("OnShow", update_forever_quest_greeting)
+    hooksecurefunc("QuestFrameGreetingPanel_OnShow", update_forever_quest_greeting)
 end
 
 frame_hooks.update_gossip_npc_name = update_gossip_npc_name
