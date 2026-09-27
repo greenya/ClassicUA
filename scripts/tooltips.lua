@@ -7,6 +7,7 @@ local options   = addon_table.use("options") ---@class options_class
 local tooltips  = addon_table.use("tooltips") ---@class tooltips_class
 local utils     = addon_table.use("utils") ---@class utils_class
 
+local C_UnitAuras           = _G.C_UnitAuras
 local GetBindLocation       = _G.GetBindLocation
 local GameTooltipStatusBar  = _G.GameTooltipStatusBar
 local TooltipUtil           = _G.TooltipUtil
@@ -543,5 +544,17 @@ tooltips.prepare = function ()
         hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
             add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HARMFUL")))
         end)
+
+        -- party frames, compact raid frames and nameplates show an aura by its instance id
+        for _, method in ipairs({
+            "SetUnitAuraByAuraInstanceID", "SetUnitBuffByAuraInstanceID", "SetUnitDebuffByAuraInstanceID",
+        }) do
+            if GameTooltip[method] then
+                hooksecurefunc(GameTooltip, method, function (self, unit, aura_instance_id)
+                    local aura = C_UnitAuras.GetAuraDataByAuraInstanceID(unit, aura_instance_id)
+                    add_aura_to_tooltip(self, aura and aura.spellId)
+                end)
+            end
+        end
     end
 end
