@@ -334,7 +334,7 @@ end
 
 dev_log.missing_gossip = function (npc_id, gossip_code, gossip_text_en, is_reply)
     npc_id = tonumber(npc_id)
-    if not npc_id then
+    if not npc_id or gossip_code == "" then
         return
     end
 

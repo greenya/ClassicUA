@@ -92,7 +92,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
 
     local npc_name_uk, chat_text_uk, chat_text_code = entries.get_chat_text(npc_name_key, chat_text)
 
-    if not chat_text_uk and chat_text_code then
+    if not chat_text_uk and chat_text_code and options.account.dev_mode then
         dev_log.missing_chat_text(npc_name_key, chat_text_code, chat_text, lang_name)
     end
 
