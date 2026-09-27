@@ -183,7 +183,7 @@ end
 local function on_quest_log_update()
     -- the gossip window redraws itself on this event while it has active quests,
     -- which puts the original npc name back into its header
-    if GossipFrame:IsShown() then
+    if GossipFrame:IsShown() and GossipFrame.hasActiveQuests then
         -- WoW: Forever, the redraw also puts back the original npc text and quest titles (see on_gossip_show)
         if utils.is_forever then
             on_gossip_show()
