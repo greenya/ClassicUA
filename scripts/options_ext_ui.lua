@@ -265,6 +265,8 @@ local function create_page_frame(frame_name, page_title, page_desc)
 
     y = y - desc:GetHeight() - 14
 
+    frame:Hide()
+
     return frame, y
 end
 
@@ -425,14 +427,8 @@ local function set_widget_dimmed(widget, dimmed)
     end
 end
 
-local function create_extra_page()
+local function build_extra_page(frame, y)
     local l = layout
-
-    local frame, y = create_page_frame(
-        "ClassicUA_Options_Extra_Frame",
-        "Налаштування",
-        "Тут можна вимкнути окремі частини перекладу."
-    )
 
     frame.widgets = {}
 
@@ -581,8 +577,6 @@ local function create_extra_page()
     frame.refresh = frame.OnRefresh
 
     update_row_states()
-    update_reload_button()
-    return frame
 end
 
 -- a label with a read only box next to it, so the value can be selected and copied
@@ -602,14 +596,8 @@ local function create_copyable_row(frame, y, label_text, value_text, box_width)
     return y - 30
 end
 
-local function create_character_page()
+local function build_character_page(frame, y)
     local l = layout
-
-    local frame, y = create_page_frame(
-        "ClassicUA_Options_Character_Frame",
-        "Персонаж",
-        addon_table.info.player_character_desc
-    )
 
     local name = frame:CreateFontString("$parent.Name")
     name:SetPoint("TOPLEFT", l.pad_x, y)
@@ -694,11 +682,9 @@ local function create_character_page()
         end
     end
     frame.refresh = frame.OnRefresh
-
-    return frame
 end
 
-local function create_dev_page()
+local function build_dev_page(frame, y)
     local l = layout
 
     -- WoW: Forever has only its beta so far, the folder of the live realms is not known yet
@@ -707,12 +693,6 @@ local function create_dev_page()
         utils.is_classic and    "_classic_era_" or
         utils.is_tbc and        "_anniversary_" or
                                 "_classic_"
-
-    local frame, y = create_page_frame(
-        "ClassicUA_Options_Dev_Frame",
-        "Розробка",
-        addon_table.info.dev_mode_desc
-    )
 
     y = create_copyable_row(frame, y, "Ваш файл з даними:",
         "[тека гри]\\" .. game_sub_dir_name .. "\\WTF\\Account\\[акаунт]\\SavedVariables\\ClassicUA.lua", 460)
@@ -835,14 +815,15 @@ local function create_dev_page()
         end
     end
     frame.refresh = frame.OnRefresh
-
-    return frame
 end
 
 local pages = {
-    { key = "character",    create_func = create_character_page },
-    { key = "settings",     create_func = create_extra_page },
-    { key = "dev",          create_func = create_dev_page },
+    { key = "character", frame_name = "ClassicUA_Options_Character_Frame", title = "Персонаж",
+      desc = addon_table.info.player_character_desc, build_func = build_character_page },
+    { key = "settings", frame_name = "ClassicUA_Options_Extra_Frame", title = "Налаштування",
+      desc = "Тут можна вимкнути окремі частини перекладу.", build_func = build_extra_page },
+    { key = "dev", frame_name = "ClassicUA_Options_Dev_Frame", title = "Розробка",
+      desc = addon_table.info.dev_mode_desc, build_func = build_dev_page },
 }
 
 local function page_by_key(page_key)
@@ -915,8 +896,18 @@ end
 options_ext_ui.prepare = function ()
     register_static_popup_dialogs()
 
+    -- the settings panel needs the frames of the pages on load, their content is built when a page is first shown
     for _, page in ipairs(pages) do
-        page.frame = page.create_func()
+        local frame, y = create_page_frame(page.frame_name, page.title, page.desc)
+        frame:SetScript("OnShow", function ()
+            if not frame.is_built then
+                frame.is_built = true
+                page.build_func(frame, y)
+                update_reload_button()
+                frame.OnRefresh()
+            end
+        end)
+        page.frame = frame
     end
 
     -- dev_log.page_link comes back through EventRegistry when clicked, as every "addon" link does

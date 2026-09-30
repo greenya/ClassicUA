@@ -64,11 +64,21 @@ local tree_view_options = {
     progress_bar_width  = 180,
 }
 
+local create_tree_view_row
+
 local function update_tree_view(row)
     local tvo = tree_view_options
 
     if row.is_expandable then
         if row.is_expanded then
+            -- the rows under a row are made when it is expanded for the first time
+            if not row.frame.rows_created then
+                row.frame.rows_created = true
+                for _, sub_row in ipairs(row.rows) do
+                    create_tree_view_row(sub_row, row.frame.root_row, row.frame.rows)
+                end
+            end
+
             local rows_height = 0
             for i, sub_row in ipairs(row.rows) do
                 local sub_row_height = update_tree_view(sub_row)
@@ -94,7 +104,7 @@ local function update_tree_view(row)
     return row.frame:GetHeight()
 end
 
-local function create_tree_view_row(row, root_row, parent_rows_frame)
+create_tree_view_row = function (row, root_row, parent_rows_frame)
     local tvo = tree_view_options
 
     local row_frame = CreateFrame("Frame", "$parent.Row", parent_rows_frame)
@@ -173,11 +183,6 @@ local function create_tree_view_row(row, root_row, parent_rows_frame)
         row_frame.rows = CreateFrame("Frame", "$parent.Rows", row_frame, "BackdropTemplate")
         row_frame.rows:SetPoint("TOPLEFT", tvo.row_offset_x, -tvo.row_height)
         row_frame.rows:SetSize(parent_rows_frame:GetWidth() - tvo.row_offset_x, 0)
-
-        local y = 0
-        for _, sub_row in ipairs(row.rows) do
-            create_tree_view_row(sub_row, root_row, row_frame.rows)
-        end
     end
 end
 
@@ -405,10 +410,10 @@ options_ui._update_tab_scrollbar = function ()
     end
 end
 
-options_ui.select_tab = function (tab_index, force_refresh)
+options_ui.select_tab = function (tab_index)
     local of = options_ui.frame
 
-    if tab_index == of.current_tab_index and not force_refresh then
+    if tab_index == of.current_tab_index then
         return
     end
 
@@ -424,6 +429,12 @@ options_ui.select_tab = function (tab_index, force_refresh)
     of.current_tab.content_tab_base_height = of.current_tab.content:GetHeight()
     of.current_tab_index = tab_button.tab_index
     tab_button:LockHighlight()
+
+    -- the page of a tab is made when the tab is selected for the first time
+    local setup_func = tab_button.tab_data.child_frame_setup_func
+    if setup_func and not of.tab_child_frames[tab_button.tab_index] then
+        of.tab_child_frames[tab_button.tab_index] = setup_func(of.current_tab.content)
+    end
 
     for child_frame_index in pairs(of.tab_child_frames) do
         local child_frame = of.tab_child_frames[child_frame_index]
@@ -520,29 +531,22 @@ local function prepare_options_frame()
         f:SetScript("OnClick", function (self)
             options_ui.select_tab(self.tab_index)
         end)
-
-        options_ui.frame.tab_child_frames[tab_index] = nil
-        if tab_data.child_frame_setup_func then
-            options_ui.frame.tab_child_frames[tab_index] = tab_data.child_frame_setup_func(options_ui.frame.current_tab.content)
-            options_ui.frame.tab_child_frames[tab_index]:Hide()
-        end
     end
-
-    options_ui.select_tab(1)
 
     -- setup options frame details
 
     options_ui.frame.name = "ClassicUA"
     options_ui.frame.default = options_ext_ui.reset_options
 
-    -- force tab reselection to fix font rendering issue on game cold start
-    options_ui.frame.was_shown_once = false
-    options_ui.frame:SetScript("OnShow", function (self)
-        if not options_ui.frame.was_shown_once then
-            options_ui.frame.was_shown_once = true
-            options_ui.select_tab(options_ui.frame.current_tab_index, true)
+    -- first tab selected on the first show
+    options_ui.frame:SetScript("OnShow", function ()
+        if options_ui.frame.current_tab_index == -1 then
+            options_ui.select_tab(1)
         end
     end)
+
+    -- hidden until the settings panel shows it, so that its OnShow runs on the first showing too
+    options_ui.frame:Hide()
 end
 
 options_ui.prepare = function ()
