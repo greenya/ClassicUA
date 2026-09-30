@@ -76,10 +76,13 @@ data_hooks.set_translation = function (data_type, data_key, text_en, text_uk)
 
     text_uk = entries.make_optional_text(text_uk, text_en)
     local data = cache[data_type][data_key]
-    local text_en_hash = utils.string_hash(string_trim(text_en))
-    local text_uk_hash = utils.string_hash(string_trim(text_uk))
-    data[text_en_hash] = { en=text_en, uk=text_uk }
-    data[text_uk_hash] = data[text_en_hash]
+    local text_en_key = string_trim(text_en)
+    local pair = data[text_en_key]
+    if not pair or pair.en ~= text_en or pair.uk ~= text_uk then
+        pair = { en=text_en, uk=text_uk }
+        data[text_en_key] = pair
+    end
+    data[string_trim(text_uk)] = pair
 
     return data_hooks.preferred_lang == "uk" and text_uk or text_en
 end
@@ -91,10 +94,9 @@ data_hooks.get_translation = function (data_type, data_key, text, fallback)
         return fallback
     end
 
-    local data = cache[data_type][data_key]
-    local hash = utils.string_hash(string_trim(text))
+    local pair = cache[data_type][data_key][string_trim(text)]
 
-    return data[hash] and data[hash][data_hooks.preferred_lang] or fallback
+    return pair and pair[data_hooks.preferred_lang] or fallback
 end
 
 local function get_quest_log_quest_id(quest_idx_maybe)
