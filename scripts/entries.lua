@@ -445,6 +445,17 @@ entries.get_entry = function (entry_type, entry_id)
     return resolve_entry_with_possible_ref(entry_type, entry_id)
 end
 
+entries.get_npc_name_and_tag = function (entry, unit)
+    if entry.feminine and unit then
+        local sex = UnitSex(unit)
+        if not utils.is_secret(sex) and sex == 3 then
+            return entry.feminine, entry.feminine_tag or entry[2]
+        end
+    end
+
+    return entry[1], entry[2]
+end
+
 -- Resolves a single variant of an optional block, e.g. "від {1} до {2}#target for {1} to {2}", "{1}#target for {1}"
 -- Returns nil when the variant does not satisfy its conditions.
 -- Conditions within a variant are separated by "#" and must all match.

@@ -12,6 +12,7 @@ local GetBindLocation       = _G.GetBindLocation
 local GameTooltipStatusBar  = _G.GameTooltipStatusBar
 local TooltipUtil           = _G.TooltipUtil
 local UnitAura              = _G.UnitAura
+local UnitTokenFromGUID     = _G.UnitTokenFromGUID
 local WorldFrame            = _G.WorldFrame
 
 local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_can_be_spell_id, parent_item_id)
@@ -173,14 +174,15 @@ local function add_sod_engraving_entry_to_tooltip(tooltip, entry, sod_engraving_
     end
 end
 
-local function add_general_entry_to_tooltip(tooltip, entry)
-    local heading = entries.make_entry_text(entry[1], tooltip)
+local function add_npc_entry_to_tooltip(tooltip, entry, unit)
+    local name, tag = entries.get_npc_name_and_tag(entry, unit)
+    local heading = entries.make_entry_text(name, tooltip)
     tooltip:AddLine(assets.icon_ua_inline .. " " .. utils.cap(heading), 1, 1, 1)
 
-    add_line_to_tooltip(tooltip, entry[2], "TEXT", 1, 1, 1)
+    add_line_to_tooltip(tooltip, tag, "TEXT", 1, 1, 1)
 end
 
-local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_translation_on)
+local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_translation_on, unit)
     if tooltip.classicua.entry_type then
         return
     end
@@ -203,8 +205,8 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
             add_spell_entry_to_tooltip(tooltip, entry, entry_id, is_aura, false)
         elseif entry_type == "sod_engraving" then
             add_sod_engraving_entry_to_tooltip(tooltip, entry, entry_id)
-        else
-            add_general_entry_to_tooltip(tooltip, entry)
+        elseif entry_type == "npc" then
+            add_npc_entry_to_tooltip(tooltip, entry, unit)
         end
     elseif not entry and options.account.dev_mode then
         -- a missing entry is logged either way, its id is shown only where its translation is on
@@ -386,18 +388,19 @@ local function tooltip_set_unit(self, data)
         return
     end
 
-    local npc_id
+    local _, unit, npc_id
     if utils.is_forever then
         -- WoW: Forever hands the unit's guid over with the tooltip data
         npc_id = utils.npc_id_from_guid(data.guid)
+        unit = npc_id and UnitTokenFromGUID(data.guid)
     else
-        local _, unit = self:GetUnit()
+        _, unit = self:GetUnit()
         npc_id = utils.npc_id_from_unit_id(unit)
     end
 
     if npc_id then
         add_entry_to_tooltip(self, "npc", npc_id, false,
-            options.can_translate("translate_npc", "translate_npc_tooltip"))
+            options.can_translate("translate_npc", "translate_npc_tooltip"), unit)
     end
 end
 

@@ -193,50 +193,39 @@ local function on_quest_log_update()
     end
 end
 
--- ----------------
--- [ target frame ]
--- ----------------
+-- -------------------------------
+-- [ target frame and nameplates ]
+-- -------------------------------
 
-local function on_player_target_changed()
-    if not options.can_lookup("translate_npc", "translate_npc_target_frame") then
+local function translate_npc_name(font_string, unit, option_key)
+    if not options.can_lookup("translate_npc", option_key) then
         return
     end
 
-    local npc_id = utils.npc_id_from_unit_id("target")
-    if npc_id then
-        local entry = entries.get_entry("npc", npc_id)
-        if not entry then
-            if options.account.dev_mode then
-                dev_log.missing_npc(npc_id, UnitName("target"))
-            end
-        elseif options.can_translate("translate_npc", "translate_npc_target_frame") then
-            TargetFrame.name:SetText(utils.cap(entry[1]))
+    local npc_id = utils.npc_id_from_unit_id(unit)
+    if not npc_id then
+        return
+    end
+
+    local entry = entries.get_entry("npc", npc_id)
+    if not entry then
+        if options.account.dev_mode then
+            dev_log.missing_npc(npc_id, UnitName(unit))
         end
+    elseif options.can_translate("translate_npc", option_key) then
+        local name = entries.get_npc_name_and_tag(entry, unit)
+        font_string:SetText(utils.cap(name))
     end
 end
 
--- --------------
--- [ nameplates ]
--- --------------
+local function on_player_target_changed()
+    translate_npc_name(TargetFrame.name, "target", "translate_npc_target_frame")
+end
 
 local function prepare_nameplates()
     hooksecurefunc("CompactUnitFrame_UpdateName", function (self)
-        if not options.can_lookup("translate_npc", "translate_nameplates") then
-            return
-        end
-
         if ShouldShowName(self) and not self:IsForbidden() then
-            local npc_id = utils.npc_id_from_unit_id(self.unit)
-            if npc_id then
-                local entry = entries.get_entry("npc", npc_id)
-                if not entry then
-                    if options.account.dev_mode then
-                        dev_log.missing_npc(npc_id, UnitName(self.unit))
-                    end
-                elseif options.can_translate("translate_npc", "translate_nameplates") then
-                    self.name:SetText(utils.cap(entry[1]))
-                end
-            end
+            translate_npc_name(self.name, self.unit, "translate_nameplates")
         end
     end)
 end

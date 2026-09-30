@@ -79,12 +79,22 @@ class Term:
     def is_female(self) -> bool:
         return self.has_tag('жін')
 
+    def is_minor(self) -> bool:
+        return self.has_tag('мінорний')
+
     def is_location(self) -> bool:
         return self.has_tag('локація')
 
     def translation(self, is_female=False) -> str:
         cases = self.text_uk.split('/', maxsplit=1)
         return cases[1] if is_female and len(cases) > 1 else cases[0]
+
+    def name_forms(self, name: str) -> tuple[str, str]:
+        if not self.is_minor():
+            return name, ''
+
+        masculine, _, feminine = name.partition('/')
+        return masculine, feminine
 
     def desc(self, known_terms: Terms = None) -> str:
         for tag in self.tags:
@@ -140,25 +150,39 @@ class Term:
                 npc_name = self.text_uk
 
         npc_desc = known_terms.translate(npc_desc_orig, fallback=npc_desc_orig, is_female=self.is_female())
+
+        npc_name, npc_name_feminine = self.name_forms(npc_name)
+        npc_desc_feminine = ''
+        if npc_name_feminine and npc_desc:
+            npc_desc_feminine = known_terms.translate(npc_desc_orig, fallback=npc_desc_orig, is_female=True)
+            if npc_desc_feminine == npc_desc:
+                npc_desc_feminine = ''
+
         if npc_desc == npc_desc_orig:
             npc_desc_orig = ''
 
-        return NpcIdTag(npc_id, npc_exp, npc_name, npc_desc, npc_name_en, npc_desc_orig)
+        return NpcIdTag(npc_id, npc_exp, npc_name, npc_desc, npc_name_en, npc_desc_orig,
+                        npc_name_feminine, npc_desc_feminine)
 
 class NpcIdTag:
 
-    def __init__(self, id: int, exp: str, name: str, desc: str = '', name_en: str = '', desc_en: str = '') -> None:
+    def __init__(self, id: int, exp: str, name: str, desc: str = '', name_en: str = '', desc_en: str = '',
+                 name_feminine: str = '', desc_feminine: str = '') -> None:
         self.id = id
         self.exp = exp
         self.name = name
         self.desc = desc
         self.name_en = name_en
         self.desc_en = desc_en
+        self.name_feminine = name_feminine
+        self.desc_feminine = desc_feminine
 
     def __repr__(self) -> str:
         return str.strip(' '.join(filter(None, [
             f'@npc_id_tag #{self.id}:{self.exp} {self.name}',
             f'<{self.desc}>' if self.desc else '',
+            f'name_feminine={self.name_feminine}' if self.name_feminine else '',
+            f'desc_feminine={self.desc_feminine}' if self.desc_feminine else '',
             f'name_en={self.name_en}' if self.name_en else '',
             f'desc_en={self.desc_en}' if self.desc_en else '',
         ])))
