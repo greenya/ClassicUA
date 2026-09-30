@@ -5,6 +5,7 @@ local utils = addon_table.use("utils") ---@class utils_class
 local math_floor            = _G.math.floor
 local math_fmod             = _G.math.fmod
 local string_byte           = _G.string.byte
+local string_find           = _G.string.find
 local string_gmatch         = _G.string.gmatch
 local string_split          = _G.string.split
 local string_trim           = _G.string.trim
@@ -184,7 +185,7 @@ utils.fix_float_number = function (value)
 end
 
 utils.strip_color_codes = function (text)
-    if type(text) == "string" then
+    if type(text) == "string" and string_find(text, "|", 1, true) then
         text = text:gsub("|c%x%x%x%x%x%x%x%x", "")
         text = text:gsub("|c%x%x%x%x%x%x %x", "")
         text = text:gsub("|r", "")
@@ -216,7 +217,7 @@ utils.split_by_text = function (separator, text)
 end
 
 utils.first_line_only = function (text)
-    if type(text) == "string" then
+    if type(text) == "string" and string_find(text, "[\n\r|]") then
         local lines = { string_split("\n\r", text) }
         local esc_nl_pos = lines[1]:find("|n")
         if esc_nl_pos then

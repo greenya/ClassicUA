@@ -610,30 +610,35 @@ entries.get_glossary_text = function (entry_key, fallback, hint_type)
 
     local key, key1, key2
 
-    -- check using Questie' quest format: [57+] Feathermoon Stronghold
-    key = string_gmatch(entry_key, "%[.+%] (.*)")()
-    if key then
-        if at.glossary[key] then
-            return utils.cap(at.glossary[key])
+    -- the formats below need a "[" or a "(": a plain find is much cheaper than a pattern that fails
+    if string_find(entry_key, "[", 1, true) then
+        -- check using Questie' quest format: [57+] Feathermoon Stronghold
+        key = string_match(entry_key, "%[.+%] (.*)")
+        if key then
+            if at.glossary[key] then
+                return utils.cap(at.glossary[key])
+            end
         end
-    end
 
-    -- check using Questie' quest format: [57+] Feathermoon Stronghold (12345)
-    key = string_gmatch(entry_key, "%[.+%] (.*) %((.*)%)")()
-    if key then
-        if at.glossary[key] then
-            return utils.cap(at.glossary[key])
+        -- check using Questie' quest format: [57+] Feathermoon Stronghold (12345)
+        key = string_match(entry_key, "%[.+%] (.*) %((.*)%)")
+        if key then
+            if at.glossary[key] then
+                return utils.cap(at.glossary[key])
+            end
         end
     end
 
     -- check using Questie' npc format: John Smith (Wind Rider Master)
-    key1, key2 = string_gmatch(entry_key, "(.*) %((.*)%)")()
-    if key1 and key2 then
-        if at.glossary[key1] then
-            if at.glossary[key2] then
-                return utils.cap(at.glossary[key1]) .. " (" .. utils.cap(at.glossary[key2]) .. ")"
-            else
-                return utils.cap(at.glossary[key1])
+    if string_find(entry_key, "(", 1, true) then
+        key1, key2 = string_match(entry_key, "(.*) %((.*)%)")
+        if key1 and key2 then
+            if at.glossary[key1] then
+                if at.glossary[key2] then
+                    return utils.cap(at.glossary[key1]) .. " (" .. utils.cap(at.glossary[key2]) .. ")"
+                else
+                    return utils.cap(at.glossary[key1])
+                end
             end
         end
     end
