@@ -48,7 +48,8 @@ local function npc_name_in_preferred_lang(unit_id)
         return
     end
 
-    return data_hooks.preferred_lang == "uk" and utils.cap(entry[1]) or UnitName(unit_id)
+    local name = entries.get_npc_name_and_tag(entry, unit_id)
+    return data_hooks.preferred_lang == "uk" and utils.cap(name) or UnitName(unit_id)
 end
 
 local function update_gossip_npc_name()  -- todo: move from frame_hooks?
