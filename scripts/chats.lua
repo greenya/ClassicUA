@@ -27,19 +27,51 @@ chats.styles = {
     { key = "addition",    label = "Доповнення" },  -- let the game print the original, then add ours underneath
 }
 
--- the game builds the npc chat line itself, prefixing it with the speaker name and a verb;
--- like the interface strings, these are written once and only put back by a reload
-local function replace_chat_prefixes()
-    if not options.can_translate("translate_chat")
-        or options.account.chat_style ~= "replacement" then
+-- the game builds the npc chat line itself, prefixing it with the speaker name and a verb ("%s says: ")
+-- the verb is swapped in the line right after the game adds it to a chat frame
+local pending_line -- { prefix_en, prefix_uk }, created by chat filter handler, immediately used by chat frame handler
+local hooked_frames = {}
+
+local function on_chat_frame_add_message(frame, text)
+    local line = pending_line
+    if not line or utils.is_secret(text) or type(text) ~= "string" or not text:find(line.prefix_en, 1, true) then
         return
     end
 
-    for key, val_uk in pairs(addon_table.chat_string_globals) do
-        if type(_G[key]) == "string" then
-            _G[key] = val_uk
+    pending_line = nil
+    frame:TransformMessages(function (message)
+        return not utils.is_secret(message) and type(message) == "string" and message:find(text, 1, true) ~= nil
+    end, function (message, ...)
+        local from, to = message:find(line.prefix_en, 1, true)
+        if from then
+            message = message:sub(1, from - 1) .. line.prefix_uk .. message:sub(to + 1)
+        end
+        return message, ...
+    end)
+end
+
+local function hook_chat_frames()
+    for _, name in ipairs(CHAT_FRAMES) do
+        local frame = _G[name]
+        if frame and frame.TransformMessages and not hooked_frames[frame] then
+            hooked_frames[frame] = true
+            hooksecurefunc(frame, "AddMessage", on_chat_frame_add_message)
         end
     end
+end
+
+local function remember_line(event, npc_name)
+    local key = "CHAT_" .. event:sub(10) .. "_GET" -- CHAT_MSG_MONSTER_YELL -> CHAT_MONSTER_YELL_GET
+    local format_uk = addon_table.chat_string_globals[key]
+    if not format_uk or type(_G[key]) ~= "string" then
+        return
+    end
+
+    hook_chat_frames()
+    pending_line = {
+        prefix_en   = string_format(_G[key], npc_name),
+        prefix_uk   = string_format(format_uk, npc_name),
+    }
 end
 
 local function resolve_npc_name(npc_name, npc_name_uk)
@@ -75,6 +107,8 @@ local function resolve_lang_name(chat_frame, lang_name)
 end
 
 local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
+    pending_line = nil
+
     local known_event = known_chat_msg_events[event]
     if not known_event or not options.can_lookup("translate_chat") then
         return nil, chat_text, npc_name, lang_name, ...
@@ -104,7 +138,9 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
 
     if not chat_text_uk then
         if is_replacement then
-            return nil, chat_text, resolve_npc_name(npc_name, npc_name_uk), resolve_lang_name(self, lang_name), ...
+            local npc_name_shown = resolve_npc_name(npc_name, npc_name_uk)
+            remember_line(event, npc_name_shown)
+            return nil, chat_text, npc_name_shown, resolve_lang_name(self, lang_name), ...
         end
         return nil, chat_text, npc_name, lang_name, ...
     end
@@ -118,6 +154,7 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
     end
 
     if is_replacement then
+        remember_line(event, npc_name_uk)
         return nil, (chat_text_uk:gsub("%%", "%%%%")), npc_name_uk, resolve_lang_name(self, lang_name), ...
     end
 
@@ -136,8 +173,6 @@ local function filter_chat_msg(self, event, chat_text, npc_name, lang_name, ...)
 end
 
 chats.prepare = function()
-    replace_chat_prefixes()
-
     for event_name, _ in pairs(known_chat_msg_events) do
         ChatFrame_AddMessageEventFilter(event_name, filter_chat_msg)
     end

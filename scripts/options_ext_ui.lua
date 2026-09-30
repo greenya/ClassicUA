@@ -145,9 +145,8 @@ local option_rows = {
         key         = "chat",
         option_key  = "translate_chat",
         name        = "Чат",
-        reload      = false, -- chat translation functionality itself does not require reload, but system strings replacement does (see chat_string_globals)
+        reload      = false,
         tooltip     = "Фрази персонажів у світі: розмова, вигуки, шепіт, емоції."
-            .. "\n\nЗміна може потребувати перезавантаження інтерфейсу."
     },
     {
         dropdown    = "chat_style",
@@ -158,7 +157,6 @@ local option_rows = {
         tooltip     = "Як відображати переклад у чаті."
             .. "\n\nЗаміна — замість оригіналу, як звичайне повідомлення."
             .. "\nДоповнення — окремим рядком після оригіналу."
-            .. "\n\nЗміна може потребувати перезавантаження інтерфейсу."
     },
     {
         key         = "chat_bubble",
