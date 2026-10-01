@@ -599,6 +599,7 @@ entries.get_glossary_text = function (entry_key, fallback, hint_type)
 
     -- prepare entry_key
     entry_key = utils.strip_color_codes(entry_key)
+    entry_key = utils.strip_icons(entry_key)
     entry_key = utils.first_line_only(entry_key)
     entry_key = string_trim(entry_key)
     entry_key = entry_key:lower()

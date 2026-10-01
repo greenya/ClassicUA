@@ -193,6 +193,15 @@ utils.strip_color_codes = function (text)
     return text
 end
 
+-- inline textures and atlases, e.g. the arrow before a minimap point above or below the player
+utils.strip_icons = function (text)
+    if type(text) == "string" and string_find(text, "|", 1, true) then
+        text = text:gsub("|T.-|t", "")
+        text = text:gsub("|A.-|a", "")
+    end
+    return text
+end
+
 -- Splits text by a plain separator string and returns the parts as a table,
 -- e.g. utils.split_by_text("||", "a||b") -> { "a", "b" }
 utils.split_by_text = function (separator, text)
