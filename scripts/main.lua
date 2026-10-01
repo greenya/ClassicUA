@@ -45,9 +45,14 @@ end
 local function on_item_text_begin()
     local tt_meta = GameTooltip.classicua or {}
     local meta = ItemTextFrame.classicua
-    if tt_meta.entry_type == "item" and tt_meta.entry_id then
-        meta.entry_type = tt_meta.entry_type
-        meta.entry_id = tonumber(tt_meta.entry_id)
+    -- the item under the cursor, read two ways, as each covers a case the other misses:
+    -- - event comes after hiding tooltip - our metadata survives
+    -- - event comes before loading non-cached tooltip - the tooltip itself knows item id
+    local item_id = tt_meta.entry_type == "item" and tt_meta.entry_id
+        or GameTooltip:IsShown() and utils.tooltip_item_id(GameTooltip)
+    if item_id then
+        meta.entry_type = "item"
+        meta.entry_id = tonumber(item_id)
     -- else if ItemTextGetCreator(): translate mail
     elseif not ItemTextGetCreator() then
         -- a readable world object: no item under the cursor and no creator; the name comes at ITEM_TEXT_READY
