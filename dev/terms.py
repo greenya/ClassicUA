@@ -146,8 +146,10 @@ class Term:
             npc_name = match_name_with_desc[1].strip()
             npc_desc_orig = match_name_with_desc[2].strip()
 
+            # only a description after the id: the name is the term's own, and so is its english
             if not npc_name:
                 npc_name = self.text_uk
+                npc_name_en = self.text_en
 
         npc_desc = known_terms.translate(npc_desc_orig, fallback=npc_desc_orig, is_female=self.is_female())
 
