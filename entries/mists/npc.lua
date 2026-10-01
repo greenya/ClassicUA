@@ -4,7 +4,566 @@
 
 local _, addonTable = ...
 
-local npc = { -- [id] = { title, description (optional) }
+local npc = { -- [id] = { title, description (optional), feminine=title and feminine_tag=description of a female model (optional) }
+[4953] = { "водяна змія", en="Water Snake" }, -- Water Snake
+[5409] = { "поневолений жнець", en="Enslaved Harvester" }, -- Enslaved Harvester
+[6827] = { "береговий краб", en="Strand Crab" }, -- Shore Crab
+[7395] = { "тарган Підмістя", en="Undercity Cockroach" }, -- Cockroach
+[13036] = { "гончак Ґордоків", en="Gordok Hound" }, -- Gordok Hound
+[15476] = { "скорпід", en="Scorpid" }, -- scorpid
+[36714] = { "смирна вівця", en="Docile Sheep" }, -- Docile Sheep
+[47194] = { "смирна вівця", en="Docile Sheep" }, -- Docile Sheep
+[50331] = { "Ґо-Кан", en="Go-Kan" }, -- Go-Kan
+[54620] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[54906] = { "Ейтріґ", en="Eitrigg" }, -- Eitrigg
+[54907] = { "Моквар", en="Mokvar" }, -- Mokvar
+[54983] = { "деревань", en="Treant" }, -- Treant
+[54984] = { "деревань", en="Treant" }, -- Treant
+[54985] = { "деревань", en="Treant" }, -- Treant
+[55283] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[55343] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[55353] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[55372] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[55405] = { "Ембер Кірнен", en="Amber Kearnen" }, -- Amber Kearnen
+[55442] = { "тужливий предок", en="Wailing Ancestor" }, -- Wailing Ancestor
+[55489] = { "древній дух", en="Ancient Spirit" }, -- Ancient Spirit
+[55579] = { "старший адмірал Джес-Терет", en="Grand Admiral Jes-Tereth" }, -- Grand Admiral Jes-Tereth
+[55580] = { "Мітрас Залізопагорб", en="Mithras Ironhill" }, -- Mithras Ironhill
+[55825] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[55826] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[56045] = { "метелик", en="Butterfly" }, -- Butterfly
+[56046] = { "білка", en="Squirrel" }, -- Squirrel
+[56047] = { "кролик", en="Rabbit" }, -- Rabbit
+[56133] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[56282] = { "метелик", en="Butterfly" }, -- Butterfly
+[56284] = { "білка", en="Squirrel" }, -- Squirrel
+[56285] = { "кролик", en="Rabbit" }, -- Rabbit
+[56304] = { "імлистий підкрадач", en="Mist Creeper" }, -- Mist Creeper
+[56343] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[56434] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[56461] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[56485] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[56562] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[56571] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[56611] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[56649] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[56677] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[56839] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[57250] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[57282] = { "канатолаз", en="Rope Climber" }, -- Rope Climber
+[57706] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[57934] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[57950] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[58029] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[58229] = { "небесний змій", en="Cloud Serpent" }, -- Cloud Serpent
+[58353] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[58421] = { "Гемет Ернінґвей", en="Hemet Nesingwary" }, -- Hemet Nesingwary
+[58422] = { "Гемет Ернінґвей-молодший", en="Hemet Nesingwary Jr." }, -- Hemet Nesingwary Jr.
+[58433] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
+[58446] = { "Гемет Ернінґвей-молодший", en="Hemet Nesingwary Jr." }, -- Hemet Nesingwary Jr.
+[58447] = { "Гемет Ернінґвей", en="Hemet Nesingwary" }, -- Hemet Nesingwary
+[58461] = { "Гемет Ернінґвей-молодший", en="Hemet Nesingwary Jr." }, -- Hemet Nesingwary Jr.
+[58462] = { "Гемет Ернінґвей", en="Hemet Nesingwary" }, -- Hemet Nesingwary
+[58488] = { "дух вовка", en="Spirit Wolf" }, -- Spirit Wolf
+[58517] = { "Гіацинт", en="Hyacinth" }, -- Hyacinth
+[58522] = { "Гіацинт", en="Hyacinth" }, -- Hyacinth
+[58590] = { "ревнитель Багряного Походу", en="Scarlet Zealot", feminine="ревнителька Багряного Походу" }, -- Scarlet Zealot
+[58609] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[58676] = { "оборонець Багряного Походу", en="Scarlet Defender", feminine="оборонниця Багряного Походу" }, -- Scarlet Defender
+[58683] = { "мірмідон Багряного Походу", en="Scarlet Myrmidon", feminine="мірмідонка Багряного Походу" }, -- Scarlet Myrmidon
+[58722] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[58756] = { "пробудитель Багряного Походу", en="Scarlet Evoker", feminine="пробудителька Багряного Походу" }, -- Scarlet Evoker
+[58757] = { "послушник Некроситету", en="Scholomance Acolyte", feminine="послушниця Некроситету" }, -- Scholomance Acolyte
+[58758] = { "фрагмент душі", en="Soul Fragment" }, -- Soul Fragment
+[58770] = { "Бабс Шипокрутка", en="Babs Fizzletorque" }, -- Babs Fizzletorque
+[58777] = { "Балдрук", "приборкувач грифонів", en="Baldruc" }, -- Baldruc <Gryphon Master>
+[58783] = { "посвячений Багряного Походу", en="Scarlet Initiate", feminine="посвячена Багряного Походу" }, -- Scarlet Initiate
+[58822] = { "воскреслий страж", en="Risen Guard" }, -- Risen Guard
+[58823] = { "неофіт Некроситету", en="Scholomance Neophyte", feminine="неофітка Некроситету" }, -- Scholomance Neophyte
+[58829] = { "примарний дослідник", en="Spectral Researcher" }, -- Spectral Researcher
+[58842] = { "скелет", en="Skeleton" }, -- Skeleton
+[58875] = { "темний магістр Ґандлінґ", en="Darkmaster Gandling" }, -- Darkmaster Gandling
+[58965] = { "вартовий гніву", en="Wrathguard" }, -- Wrathguard
+[58971] = { "оплутана жертва", en="Webbed Victim" }, -- Webbed Victim
+[58998] = { "оборонець Багряного Походу", en="Scarlet Defender", feminine="оборонниця Багряного Походу" }, -- Scarlet Defender
+[59000] = { "вартовий жаху", en="Terrorguard" }, -- terrorguard
+[59080] = { "темний магістр Ґандлінґ", en="Darkmaster Gandling" }, -- Darkmaster Gandling
+[59153] = { "Брязкоклин", en="Rattlegore" }, -- Rattlegore
+[59184] = { "Джандіс Барова", en="Jandice Barov" }, -- Jandice Barov
+[59188] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[59189] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[59200] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[59215] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[59217] = { "Джандіс Барова", en="Jandice Barov" }, -- Jandice Barov
+[59220] = { "Джандіс Барова", en="Jandice Barov" }, -- Jandice Barov
+[59300] = { "оборонець Багряного Походу", en="Scarlet Defender", feminine="оборонниця Багряного Походу" }, -- Scarlet Defender
+[59301] = { "оборонець Багряного Походу", en="Scarlet Defender", feminine="оборонниця Багряного Походу" }, -- Scarlet Defender
+[59369] = { "доктор Теолен Крастінов", "м'ясар", en="Doctor Theolen Krastinov" }, -- Doctor Theolen Krastinov <The Butcher>
+[59501] = { "реанімований труп", en="Reanimated Corpse" }, -- Reanimated Corpse
+[59536] = { "пес", en="Dog" }, -- Dog
+[59563] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[59602] = { "Луна", en="Luna" }, -- Luna
+[59608] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[59658] = { "Плямчик", en="Spot" }, -- Spot
+[59704] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[59746] = { "центуріон Багряного Походу", en="Scarlet Centurion", feminine="центуріонка Багряного Походу" }, -- Scarlet Centurion
+[59757] = { "смерколов", en="Duskstalker" }, -- Duskstalker
+[59971] = { "кам'яний вартовий", en="Stone Guardian" }, -- Stone Guardian
+[59973] = { "кам'яний вартовий", en="Stone Guardian" }, -- Stone Guardian
+[60017] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[60112] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[60165] = { "розлючений дух", en="Enraged Spirit" }, -- Enraged Spirit
+[60240] = { "тотем духів", en="Spirit Totem" }, -- Spirit Totem
+[60287] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[60547] = { "Наташа", en="Natasha" }, -- Natasha Morris
+[60761] = { "прибережний краб", en="Shore Crab" }, -- Shore Crab
+[60770] = { "друїд Орди", en="Horde Druid", feminine="друїдка Орди" }, -- Horde Druid
+[60781] = { "фрагмент душі", en="Soul Fragment" }, -- Soul Fragment
+[60800] = { "приручена гієна", en="Tamed Hyena" }, -- Tamed Hyena
+[60825] = { "змучений дух", en="Tormented Spirit" }, -- Tormented Spirit
+[60834] = { "друїд Орди", en="Horde Druid", feminine="друїдка Орди" }, -- Horde Druid
+[60877] = { "жрець Альянсу", en="Alliance Priest", feminine="жриця Альянсу" }, -- Alliance Priest
+[60878] = { "жрець Альянсу", en="Alliance Priest", feminine="жриця Альянсу" }, -- Alliance Priest
+[60895] = { "жрець Альянсу", en="Alliance Priest", feminine="жриця Альянсу" }, -- Alliance Priest
+[60896] = { "друїд Орди", en="Horde Druid", feminine="друїдка Орди" }, -- Horde Druid
+[60974] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[60975] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[60976] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[60986] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
+[61071] = { "маленька жаба", en="Small Frog" }, -- Frog
+[61072] = { "фрагмент душі", en="Soul Fragment" }, -- Soul Fragment
+[61080] = { "кролик", en="Rabbit" }, -- Rabbit
+[61081] = { "білка", en="Squirrel" }, -- Squirrel
+[61141] = { "лугова собачка", en="Prairie Dog" }, -- Prairie Dog
+[61142] = { "змія", en="Snake" }, -- Snake
+[61143] = { "миша", en="Mouse" }, -- Mouse
+[61158] = { "прибережний краб", en="Shore Crab" }, -- Shore Crab
+[61165] = { "оленя", en="Fawn" }, -- Fawn
+[61169] = { "тарган", en="Roach" }, -- Roach
+[61170] = { "вівця", en="Sheep" }, -- Sheep
+[61255] = { "скунс", en="Skunk" }, -- Skunk
+[61257] = { "чорний пацюк", en="Black Rat" }, -- Black Rat
+[61312] = { "береговий краб", en="Strand Crab" }, -- Shore Crab
+[61313] = { "папуга", en="Parrot" }, -- Parrot
+[61319] = { "жук", en="Beetle" }, -- Beetle
+[61322] = { "Поллі", en="Polly" }, -- Polly
+[61325] = { "гадюка", en="Adder" }, -- Adder
+[61326] = { "скорпід", en="Scorpid" }, -- scorpid
+[61327] = { "павук", en="Spider" }, -- Spider
+[61328] = { "вогняний жук", en="Fire Beetle" }, -- Fire Beetle
+[61366] = { "пацюк", en="Rat" }, -- Rat
+[61367] = { "водяна змія", en="Water Snake" }, -- Water Snake
+[61368] = { "величезна жаба", en="Huge Toad" }, -- Huge Toad
+[61369] = { "ропуха", en="Toad" }, -- Toad
+[61372] = { "водяна змія", en="Moccasin" }, -- Moccasin
+[61383] = { "лавовий краб", en="Lava Crab" }, -- Lava Crab
+[61384] = { "великий тарган", en="Cockroach" }, -- Cockroach
+[61404] = { "кор'кронський гвардієць", en="Kor'kron Elite", feminine="кор'кронська гвардійка" }, -- Kor'kron Elite
+[61437] = { "жук", en="Beetle" }, -- Beetle
+[61456] = { "баран", en="Ram" }, -- Ram
+[61669] = { "Кремнепал", "їжа для гончаків", en="Oggleflint" }, -- Oggleflint
+[61684] = { "Імла", en="Mist" }, -- Mist
+[61750] = { "олень", en="Deer" }, -- Deer
+[61751] = { "заєць", en="Hare" }, -- Hare
+[61752] = { "бурий бабак", en="Brown Marmot" }, -- Brown Marmot
+[61753] = { "черв", en="Maggot" }, -- Maggot
+[61828] = { "заражена білка", en="Infected Squirrel" }, -- Infected Squirrel
+[61896] = { "Джозі", en="Josie" }, -- Josie
+[62019] = { "кішка", en="Cat" }, -- Cat
+[62022] = { "личинка", en="Larva" }, -- Larva
+[62142] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[62163] = { "газель", en="Gazelle" }, -- Gazelle
+[62178] = { "ельфійський кролик", en="Elfin Rabbit" }, -- Elfin Rabbit
+[62299] = { "берсерк Амані", "зандаларські загарбники", en="Amani Berserker" }, -- Amani Berserker <Zandalari Invaders>
+[62312] = { "жаба", en="Frog" }, -- Frog
+[62314] = { "заражений тарган", en="Tainted Cockroach" }, -- Tainted Cockroach
+[62316] = { "заражений щур", en="Tainted Rat" }, -- Tainted Rat
+[62624] = { "берсерк Амані", "зандаларські загарбники", en="Amani Berserker" }, -- Amani Berserker <Zandalari Invaders>
+[62653] = { "Нефрит", en="Jade" }, -- Jade
+[62664] = { "курка", en="Chicken" }, -- Chicken
+[62672] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[62779] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[62815] = { "жовчна жаба", en="Biletoad" }, -- Biletoad
+[62861] = { "водяний елементаль", en="Water Elemental" }, -- Water Elemental
+[62960] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[62963] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[62973] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[63000] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[63074] = { "Пушок", "бойовий улюбленець", en="Fluffy" }, -- Fluffy <Battle Pet>
+[63084] = { "По", "бойовий улюбленець", en="Poe" }, -- Poe <Battle Pet>
+[63097] = { "прибережний повзун", en="Shore Crawler" }, -- Shore Crawler
+[63105] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[63116] = { "солонопанцирний кусач", en="Brineshell Snapper" }, -- Brineshell Snapper
+[63139] = { "ночезуб", en="Nightsaber" }, -- Nightsaber
+[63155] = { "кам'яний вартовий", en="Stone Guardian" }, -- Stone Guardian
+[63277] = { "пес", "команда «Туманного Стрибуна»", en="Dog" }, -- Dog <Crew of the Mist-Hopper>
+[63280] = { "матрос", "команда «Туманного Стрибуна»", en="Deckhand" }, -- deckhand <Crew of the Mist-Hopper>
+[63314] = { "троль-слуга Водін", en="Wodin the Troll-Servant" }, -- Wodin the Troll-Servant
+[63315] = { "Ґурґток", "організатор боїв", en="Gurgthock" }, -- Gurgthock
+[63320] = { "Імла", en="Mist" }, -- Mist
+[63381] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[63607] = { "білка", en="Squirrel" }, -- Squirrel
+[63721] = { "Нет Пеґл", "квартирмейстер Рибалок", en="Nat Pagle" }, -- Nat Pagle
+[63955] = { "пес", "команда «Туманного Стрибуна»", en="Dog" }, -- Dog <Crew of the Mist-Hopper>
+[63981] = { "солонопанцирний кусач", en="Brineshell Snapper" }, -- Brineshell Snapper
+[64106] = { "Ерін", en="Erin" }, -- Erin
+[64107] = { "Саді", en="Sadi" }, -- Sadi
+[64361] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[64402] = { "вівця", en="Sheep" }, -- Sheep
+[64420] = { "сержант Громовий Ріг", "квартирмейстер завоювання", en="Sergeant Thunderhorn" }, -- Sergeant Thunderhorn <Conquest Quartermaster>
+[64423] = { "капітан Молотолам", "квартирмейстер завоювання", en="Captain Dirgehammer" }, -- Captain Dirgehammer <Conquest Quartermaster>
+[64464] = { "Анді", en="Andi" }, -- Andi
+[64486] = { "небесний змій", en="Cloud Serpent" }, -- Cloud Serpent
+[64535] = { "небесний змій", en="Cloud Serpent" }, -- Cloud Serpent
+[64540] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[64560] = { "леді Джайна Праудмур", "правителька Терамору", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[64576] = { "бандит", "бойовий улюбленець", en="Bandit", feminine="бандитка" }, -- Bandit <Battle Pet>
+[64608] = { "фрагмент душі", en="Soul Fragment" }, -- Soul Fragment
+[64628] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[64630] = { "джунглева ропуха", en="Jungle Toad" }, -- Jungle Toad
+[64661] = { "черв", en="Maggot" }, -- Maggot
+[64690] = { "Імла", en="Mist" }, -- Mist
+[64727] = { "леді Джайна Праудмур", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[64746] = { "арканічний фамільяр", en="Arcane Familiar" }, -- Arcane Familiar
+[64837] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[64839] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[64848] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[64922] = { "Бранн Бронзобородий", "тренер археології", en="Brann Bronzebeard" }, -- Brann Bronzebeard <Archaeology Trainer>
+[64946] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[64951] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[65012] = { "пан Бац", "перший корабельний помічник", en="Mr. Smite" }, -- Mr. Smite
+[65013] = { "пан Бац", "перший корабельний помічник", en="Mr. Smite" }, -- Mr. Smite
+[65014] = { "пан Бац", "перший корабельний помічник", en="Mr. Smite" }, -- Mr. Smite
+[65075] = { "Гіацинт", en="Hyacinth" }, -- Hyacinth
+[65183] = { "цілителька духу", en="Spirit Healer" }, -- Spirit Healer
+[65297] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[65338] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
+[65423] = { "загублена душа", en="Lost Soul" }, -- Lost Soul
+[65525] = { "поривчастий вихор", en="Gusting Vortex" }, -- Gusting Vortex
+[65570] = { "краб", en="Crab" }, -- crab
+[65631] = { "доктор Теолен Крастінов", "м'ясар", en="Doctor Theolen Krastinov" }, -- Doctor Theolen Krastinov <The Butcher>
+[65680] = { "викликаний елементаль води", "прислужник Джайни", en="Summoned Water Elemental" }, -- Summoned Water Elemental
+[65936] = { "рій женців", en="Harvester Swarm" }, -- Harvester Swarm
+[66056] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[66145] = { "Кусака", en="Spike" }, -- Spike
+[66163] = { "кішка", en="Cat" }, -- Cat
+[66166] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[66167] = { "маршал Редпат", en="Marshal Redpath" }, -- Marshal Redpath
+[66168] = { "Валдред Морей", en="Valdred Moray" }, -- Valdred Moray
+[66349] = { "вершник на кажані Ґурубаші", "зандаларські загарбники", en="Gurubashi Bat Rider" }, -- Gurubashi Bat Rider <Zandalari Invaders>
+[66368] = { "стерв'ятник", en="Carrion Vulture" }, -- Carrion Vulture
+[66375] = { "кам'яношкурий", en="Rockhide" }, -- rockhide
+[66417] = { "Верба", en="Willow" }, -- Willow
+[66469] = { "Кригопаща", en="Frostmaw" }, -- Frostmaw
+[66488] = { "Обсидіон", en="Obsidion" }, -- Obsidion
+[66498] = { "ночелов", en="Nightstalker" }, -- Nightstalker
+[66509] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[66541] = { "Скрегатель", en="Gnasher" }, -- Gnasher
+[66544] = { "Нефритожарі", en="Jadefire" }, -- Jadefire
+[66580] = { "павук", en="Spider" }, -- Spider
+[66631] = { "Ґріззл", en="Grizzle" }, -- Grizzle
+[66718] = { "сирена", en="Siren" }, -- siren
+[66901] = { "сукуб", en="Succubus" }, -- succubus
+[66915] = { "кор'кронський гвардієць", en="Kor'kron Elite", feminine="кор'кронська гвардійка" }, -- Kor'kron Elite
+[66922] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[66975] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[66983] = { "місяцескрад", en="Moonstalker" }, -- Moonstalker
+[67138] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[67158] = { "кор'кронський гвардієць", en="Kor'kron Elite", feminine="кор'кронська гвардійка" }, -- Kor'kron Elite
+[67235] = { "тіньовий марник", en="Shadowfiend" }, -- Shadowfiend
+[67306] = { "поневолений археолог", "Ліга дослідників", en="Enslaved Archaeologist", feminine="поневолена археологиня" }, -- Enslaved Archaeologist <Explorers' League>
+[67344] = { "стрімкий сірий вовк", en="Swift Gray Wolf" }, -- Swift Gray Wolf
+[67368] = { "папуга", en="Parrot" }, -- Parrot
+[67387] = { "мехмайстер Надспалах", "головний архітектор гномської інженерії", en="Tinkmaster Overspark" }, -- Tinkmaster Overspark
+[67414] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[67415] = { "цілющий оберіг", en="Healing Ward" }, -- Healing Ward
+[67447] = { "Джорн Небесний Провидець", "володар звірів", en="Jorn Skyseer" }, -- Jorn Skyseer <Beastmaster>
+[67495] = { "Трощило", "соло-гітарист ЗГУБИ", en="Thrash" }, -- Thrash
+[67510] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[67539] = { "гоблінська міна", en="Goblin Land Mine" }, -- Goblin Land Mine
+[67558] = { "мисливець Блейк", "володар звірів", en="Huntsman Blake" }, -- Huntsman Blake <Beastmaster>
+[67571] = { "Міллхаус Манашторм", en="Millhouse Manastorm" }, -- Millhouse Manastorm
+[67581] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[67588] = { "Акама", en="Akama" }, -- Akama
+[67593] = { "арканічний караульний", en="Arcane Sentry" }, -- Arcane Sentry
+[67678] = { "темний закликач", en="Dark Summoner", feminine="темна закликачка" }, -- Dark Summoner
+[67682] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[67786] = { "кор'кронський гвардієць", en="Kor'kron Elite", feminine="кор'кронська гвардійка" }, -- Kor'kron Elite
+[67864] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[67866] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[67900] = { "стражниця Альянсу", en="Alliance Sentinel" }, -- Alliance Sentinel
+[67902] = { "жрець Альянсу", en="Alliance Priest", feminine="жриця Альянсу" }, -- Alliance Priest
+[67903] = { "рубайло Орди", en="Horde Grunt" }, -- Horde Grunt
+[67904] = { "жрець Орди", en="Horde Priest", feminine="жриця Орди" }, -- Horde Priest
+[67948] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[67950] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[67953] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[67959] = { "мехмайстер Надспалах", "головний архітектор гномської інженерії", en="Tinkmaster Overspark" }, -- Tinkmaster Overspark
+[67964] = { "провидець Нобундо", "Служителі Землі", en="Farseer Nobundo" }, -- Farseer Nobundo <Earthen Ring>
+[67965] = { "королівський вартовий Штормовію", en="Stormwind Royal Guard", feminine="королівська вартова Штормовію" }, -- Stormwind Royal Guard
+[67968] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[67976] = { "мехмайстер Надспалах", "головний архітектор гномської інженерії", en="Tinkmaster Overspark" }, -- Tinkmaster Overspark
+[67987] = { "стражниця Дарнаса", en="Darnassus Sentinel" }, -- Darnassus Sentinel
+[67990] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[67992] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[67996] = { "архімагиня Модера", "Кірін-Тор", en="Archmage Modera" }, -- Archmage Modera <Kirin Tor>
+[68004] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68017] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68023] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[68025] = { "Тралл", en="Thrall" }, -- Thrall
+[68059] = { "Тралл", en="Thrall" }, -- Thrall
+[68084] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[68096] = { "прималіст Попеловустих", en="Ashtongue Primalist" }, -- Ashtongue Primalist
+[68098] = { "робітник Попеловустих", en="Ashtongue Worker" }, -- Ashtongue Worker
+[68106] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68108] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68129] = { "шаман Попеловустих", en="Ashtongue Shaman" }, -- Ashtongue Shaman
+[68137] = { "Акама", en="Akama" }, -- Akama
+[68150] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68156] = { "загублена душа", en="Lost Soul" }, -- Lost Soul
+[68157] = { "стрімкий сірий вовк", en="Swift Gray Wolf" }, -- Swift Gray Wolf
+[68224] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68234] = { "провидець Нобундо", "Служителі Землі", en="Farseer Nobundo" }, -- Farseer Nobundo <Earthen Ring>
+[68236] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68237] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[68276] = { "ельф крові-магістр", en="Blood Elf Magister" }, -- Blood Elf Magister
+[68278] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[68287] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[68289] = { "Зі'рі", en="Xi'ri" }, -- Xi'ri
+[68293] = { "почесний вартовий", en="Honor Guard", feminine="почесна вартова" }, -- Honor Guard
+[68329] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[68333] = { "жрець Орди", en="Horde Priest", feminine="жриця Орди" }, -- Horde Priest
+[68334] = { "мисливець Орди", en="Horde Hunter", feminine="мисливиця Орди" }, -- Horde Hunter
+[68370] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[68391] = { "лицар крові", en="Blood Knight", feminine="лицарка крові" }, -- Blood Knight
+[68431] = { "лицар крові", en="Blood Knight", feminine="лицарка крові" }, -- Blood Knight
+[68483] = { "стражниця Альянсу", en="Alliance Sentinel" }, -- Alliance Sentinel
+[68486] = { "друїд Альянсу", en="Alliance Druid", feminine="друїдка Альянсу" }, -- Alliance Druid
+[68548] = { "ночезуб", en="Nightsaber" }, -- Nightsaber
+[68609] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68617] = { "архімаг Лан'далок", en="Archmage Lan'dalock" }, -- Archmage Lan'dalock
+[68644] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[68651] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68652] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68655] = { "містер Біґлсворт", en="Mr. Bigglesworth" }, -- Mr. Bigglesworth
+[68677] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68678] = { "викликаний елементаль води", "прислужник Джайни", en="Summoned Water Elemental" }, -- Summoned Water Elemental
+[68689] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68691] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68739] = { "кор'кронський гвардієць", en="Kor'kron Elite", feminine="кор'кронська гвардійка" }, -- Kor'kron Elite
+[68749] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68793] = { "стрімкий сірий вовк", en="Swift Gray Wolf" }, -- Swift Gray Wolf
+[68795] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68801] = { "Флора", en="Flora" }, -- Flora
+[68812] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68832] = { "мехмайстер Надспалах", "головний архітектор гномської інженерії", en="Tinkmaster Overspark" }, -- Tinkmaster Overspark
+[68842] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[68871] = { "Ембер Кірнен", en="Amber Kearnen" }, -- Amber Kearnen
+[68881] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68902] = { "Сонечко", en="Sunny" }, -- Sunny
+[68903] = { "кор'кронський вершник на виверні", en="Kor'kron Wind Rider", feminine="кор'кронська вершниця на виверні" }, -- Kor'kron Wind Rider
+[68908] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[68922] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68923] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68939] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68944] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[68966] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68970] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[68972] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[68987] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[69044] = { "вибухова вівця", en="Explosive Sheep" }, -- Explosive Sheep
+[69045] = { "Ґаррош", "син Пеклокрика", en="Garrosh" }, -- Garrosh
+[69049] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[69079] = { "дух вовка", en="Spirit Wolf" }, -- Spirit Wolf
+[69132] = { "верховна жриця Мар'лі", en="High Priestess Mar'li" }, -- Mar'li
+[69249] = { "Нефрит", en="Jade" }, -- Jade
+[69257] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[69465] = { "Джін'рох Руйнівник", en="Jin'rokh the Breaker" }, -- Jin'rokh the Breaker
+[69478] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[69481] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[69505] = { "сторожовий тотем", en="Sentry Totem" }, -- Sentry Totem
+[69599] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[69616] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[69617] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[69672] = { "Тінь", en="Shadow" }, -- Shadow
+[69678] = { "проєкція архімага Варґота", en="Image of Archmage Vargoth" }, -- Archmage Vargoth
+[69741] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[69742] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[69773] = { "скарабей", en="Scarab" }, -- Scarab
+[69797] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[69799] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[69806] = { "мстивий дух", en="Vengeful Spirit" }, -- Vengeful Spirit
+[69905] = { "берсерк Ґурубаші", en="Gurubashi Berserker" }, -- Gurubashi Berserker
+[69916] = { "берсерк Ґурубаші", en="Gurubashi Berserker" }, -- Gurubashi Berserker
+[69948] = { "личинка Ґоріші", en="Gorishi Grub" }, -- Gorishi Grub
+[69975] = { "капітан Молотолам", "квартирмейстер завоювання", en="Captain Dirgehammer" }, -- Captain Dirgehammer <Conquest Quartermaster>
+[69978] = { "сержант Громовий Ріг", "квартирмейстер завоювання", en="Sergeant Thunderhorn" }, -- Sergeant Thunderhorn <Conquest Quartermaster>
+[70000] = { "Ал'табім Всевидющий", en="Al'tabim the All-Seeing" }, -- Al'tabim the All-Seeing
+[70003] = { "Молтор", "хранитель брами", en="Molthor" }, -- Molthor
+[70040] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[70055] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[70072] = { "скверногонча", en="Felhunter" }, -- Felhunter
+[70075] = { "володар безодні", en="Pit Lord" }, -- pit lord
+[70084] = { "Теренас Менетіл", en="Terenas Menethil" }, -- Terenas Menethil
+[70092] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[70131] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[70132] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[70325] = { "кам'яна почвара", en="Stone Behemoth" }, -- Stone Behemoth
+[70341] = { "змучений дух", en="Tormented Spirit" }, -- Tormented Spirit
+[70362] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[70363] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[70370] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[70371] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[70413] = { "сторожовий тотем", en="Sentry Totem" }, -- Sentry Totem
+[70441] = { "загублена душа", en="Lost Soul" }, -- Lost Soul
+[70473] = { "морозогривий мисливець за головами", en="Frostmane Headhunter", feminine="морозогрива мисливиця за головами" }, -- Frostmane Headhunter
+[70483] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[70495] = { "маленька жаба", en="Small Frog" }, -- Frog
+[70517] = { "архімаг Лан'далок", en="Archmage Lan'dalock" }, -- Archmage Lan'dalock
+[70542] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[70574] = { "маг Кірін-Тору", en="Kirin Tor Mage", feminine="магиня Кірін-Тору" }, -- Kirin Tor Mage
+[70804] = { "Муїджін", en="Muigin" }, -- Muigin
+[70805] = { "Ларіон", en="Larion" }, -- Larion
+[70971] = { "вартовий селища Сен'джин", en="Sen'jin Guardian", feminine="вартова селища Сен'джин" }, -- Sen'jin Guardian
+[70972] = { "сен'джинський вартовий", en="Sen'jin Watcher", feminine="сен'джинська вартова" }, -- Sen'jin Watcher
+[70978] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[70979] = { "водяний елементаль", en="Water Elemental" }, -- Water Elemental
+[71027] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[71033] = { "підступний біс", en="Fiendish Imp" }, -- Fiendish Imp
+[71126] = { "стрімкий блакитний раптор", en="Swift Blue Raptor" }, -- Swift Blue Raptor
+[71127] = { "стрімкий оливковий раптор", en="Swift Olive Raptor" }, -- Swift Olive Raptor
+[71128] = { "стрімкий помаранчевий раптор", en="Swift Orange Raptor" }, -- Swift Orange Raptor
+[71129] = { "розплавлений елементаль", en="Molten Elemental" }, -- Molten Elemental
+[71147] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[71148] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[71149] = { "Тралл", en="Thrall" }, -- Thrall
+[71150] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[71151] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[71249] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[71250] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[71276] = { "пророк Скерам", en="The Prophet Skeram" }, -- The Prophet Skeram
+[71278] = { "Валянок", "проєкт К1Т", en="Boots" }, -- Boots
+[71281] = { "вартовий селища Сен'джин", en="Sen'jin Guardian", feminine="вартова селища Сен'джин" }, -- Sen'jin Guardian
+[71282] = { "сен'джинський вартовий", en="Sen'jin Watcher", feminine="сен'джинська вартова" }, -- Sen'jin Watcher
+[71283] = { "сен'джинський вартовий", en="Sen'jin Watcher", feminine="сен'джинська вартова" }, -- Sen'jin Watcher
+[71284] = { "Валянок", "проєкт К1Т", en="Boots" }, -- Boots
+[71285] = { "вартовий селища Сен'джин", en="Sen'jin Guardian", feminine="вартова селища Сен'джин" }, -- Sen'jin Guardian
+[71305] = { "вартовий селища Сен'джин", en="Sen'jin Guardian", feminine="вартова селища Сен'джин" }, -- Sen'jin Guardian
+[71306] = { "вартовий селища Сен'джин", en="Sen'jin Guardian", feminine="вартова селища Сен'джин" }, -- Sen'jin Guardian
+[71307] = { "сен'джинський вартовий", en="Sen'jin Watcher", feminine="сен'джинська вартова" }, -- Sen'jin Watcher
+[71308] = { "сен'джинський вартовий", en="Sen'jin Watcher", feminine="сен'джинська вартова" }, -- Sen'jin Watcher
+[71319] = { "сен'джинський вартовий", en="Sen'jin Watcher", feminine="сен'джинська вартова" }, -- Sen'jin Watcher
+[71344] = { "Тралл", en="Thrall" }, -- Thrall
+[71345] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[71347] = { "в'ючний мул", en="Pack Mule" }, -- Pack Mule
+[71348] = { "в'ючний кодо", en="Pack Kodo" }, -- Pack Kodo
+[71360] = { "кор'кронський гвардієць", en="Kor'kron Elite", feminine="кор'кронська гвардійка" }, -- Kor'kron Elite
+[71444] = { "корова", en="Cow" }, -- Cow
+[71448] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[71500] = { "змія", en="Snake" }, -- Snake
+[71593] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[71748] = { "водяний елементаль", en="Water Elemental" }, -- Water Elemental
+[71855] = { "вогняний елементаль", en="Fire Elemental" }, -- Fire Elemental
+[71856] = { "крижаний елементаль", en="Ice Elemental" }, -- Ice Elemental
+[71881] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[71892] = { "небесний змій", en="Cloud Serpent" }, -- Cloud Serpent
+[71895] = { "небесний змій", en="Cloud Serpent" }, -- Cloud Serpent
+[71896] = { "небесний змій", en="Cloud Serpent" }, -- Cloud Serpent
+[71927] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[72129] = { "Нііру Вогняне Лезо", en="Neeru Fireblade" }, -- Neeru Fireblade
+[72130] = { "Кор'жус", "продавець грибів", en="Kor'jus" }, -- Kor'jus <Mushroom Vendor>
+[72132] = { "Полохливий Дрок", en="Craven Drok" }, -- Craven Drok
+[72139] = { "Ґан'рул Криваве Око", en="Gan'rul Bloodeye" }, -- Gan'rul Bloodeye
+[72144] = { "Зеврост", "тренер чорнокнижників", en="Zevrost" }, -- Zevrost <Warlock Trainer>
+[72145] = { "Ґрол'дар", "тренер чорнокнижників", en="Grol'dar" }, -- Grol'dar <Warlock Trainer>
+[72152] = { "Міркет", "тренерка чорнокнижників", en="Mirket" }, -- Mirket <Warlock Trainer>
+[72153] = { "Курґул", "тренер демонів", en="Kurgul" }, -- Kurgul <Demon Trainer>
+[72155] = { "Казул", en="Cazul" }, -- Cazul
+[72157] = { "Гаґрус", "реагенти", en="Hagrus" }, -- Hagrus <Reagents>
+[72158] = { "Катіс", "продавчиня жезлів", en="Katis" }, -- Katis <Wand Merchant>
+[72159] = { "Мураґус", "продавець посохів", en="Muragus" }, -- Muragus <Staff Merchant>
+[72173] = { "Карет", "продавець клинків", en="Kareth" }, -- Kareth <Blade Merchant>
+[72174] = { "Реккул", "продавець отрут", en="Rekkul" }, -- Rekkul <Poison Supplies>
+[72175] = { "Ормок", "тренер пройдисвітів", en="Ormok" }, -- Ormok <Rogue Trainer>
+[72177] = { "Ґест", "тренер пройдисвітів", en="Gest" }, -- Gest <Rogue Trainer>
+[72191] = { "властитель Рунтак", en="Overlord Runthak" }, -- Overlord Runthak
+[72192] = { "Ґамон", en="Gamon" }, -- Gamon
+[72257] = { "вітролом Драконової Пащі", en="Dragonmaw Wind Reaver", feminine="вітроломка Драконової Пащі" }, -- Dragonmaw Wind Reaver
+[72282] = { "верховний надповелитель Саурфанґ", en="High Overlord Saurfang" }, -- Varok Saurfang
+[72293] = { "Шустрик", en="Speedy" }, -- Speedy
+[72302] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[72372] = { "верховий раптор", en="Riding Raptor" }, -- Riding Raptor
+[72392] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[72394] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[72405] = { "Совік", "інженерні припаси", en="Sovik" }, -- Sovik <Engineering Supplies>
+[72406] = { "Ріллі Мастилоплюв", en="Rilli Greasygob" }, -- Rilli Greasygob
+[72407] = { "Роксік", "тренер інженерії", en="Roxxik" }, -- Roxxik <Engineering Trainer>
+[72410] = { "Ноґґ", "учень інженера", en="Nogg" }, -- Nogg <Apprentice Engineer>
+[72428] = { "Гортій", "реагенти", en="Horthus" }, -- Horthus <Reagents>
+[72429] = { "Ольвія", "продавчиня м'яса", en="Olvia" }, -- Olvia <Meat Vendor>
+[72430] = { "Шан'ті", "продавчиня фруктів", en="Shan'ti" }, -- Shan'ti <Fruit Vendor>
+[72432] = { "Ейтріґ", en="Eitrigg" }, -- Eitrigg
+[72483] = { "Сарок", en="Sarok" }, -- Sarok
+[72484] = { "Зазо", en="Zazo" }, -- Zazo
+[72485] = { "Ґома", en="Goma" }, -- Goma
+[72486] = { "Дойо'да", en="Doyo'da" }, -- Doyo'da
+[72487] = { "Козіш", en="Kozish" }, -- Kozish
+[72488] = { "корчмарка Гришка", "корчмарка", en="Innkeeper Gryshka" }, -- Innkeeper Gryshka <Innkeeper>
+[72489] = { "бармен Мораґ", en="Barkeep Morag" }, -- Barkeep Morag
+[72492] = { "Шімра", "торговельні принади", en="Shimra" }, -- Shimra <Trade Supplies>
+[72493] = { "Трак'ґен", "товари загального вжитку", en="Trak'gen" }, -- Trak'gen <General Goods>
+[72560] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[72561] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[72584] = { "гоблін-інженер", en="Goblin Engineer" }, -- Goblin Engineer
+[72676] = { "цілителька духу", en="Spirit Healer" }, -- Spirit Healer
+[72807] = { "скельний ловець", en="Crag Stalker" }, -- Crag Stalker
+[72941] = { "рубайло Драконової Пащі", en="Dragonmaw Grunt" }, -- Dragonmaw Grunt
+[73030] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[73061] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[73100] = { "скелет", en="Skeleton" }, -- Skeleton
+[73102] = { "водяний елементаль", en="Water Elemental" }, -- Water Elemental
+[73192] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[73196] = { "Тигр", en="Tiger" }, -- Tiger
+[73207] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[73208] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[73209] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[73210] = { "леді Джайна Праудмур", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[73211] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[73212] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[73213] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[73223] = { "жаходактиль", en="Pterrordax" }, -- Pterrordax
+[73280] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[73369] = { "водяний елементаль", en="Water Elemental" }, -- Water Elemental
+[73460] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[73483] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[73488] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[73530] = { "рубайло Драконової Пащі", en="Dragonmaw Grunt" }, -- Dragonmaw Grunt
+[73554] = { "леді Джайна Праудмур", "лідерка Кірін-Тора", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[73586] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
+[73591] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[73597] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[73598] = { "леді Джайна Праудмур", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[73600] = { "королівський вартовий Штормовію", en="Stormwind Royal Guard", feminine="королівська вартова Штормовію" }, -- Stormwind Royal Guard
+[73602] = { "оргріммарський рубайло", en="Orgrimmar Grunt" }, -- Orgrimmar Grunt
+[73603] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[73605] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
+[73606] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[73607] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[73614] = { "мехмайстер Надспалах", "припаси Альянсу", en="Tinkmaster Overspark" }, -- Tinkmaster Overspark
+[73691] = { "Хромі", "Мандрівники в часі", en="Chromie" }, -- Chromie <The Timewalkers>
+[73709] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[73710] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[73716] = { "верховний надповелитель Саурфанґ", en="High Overlord Saurfang" }, -- Varok Saurfang
+[73927] = { "Верховний штукар Меккакруть", "король гномів", en="High Tinker Mekkatorque" }, -- Gelbin Mekkatorque
+[73941] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[73942] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[73962] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[74130] = { "Ґаррош", "син Пеклокрика", en="Garrosh" }, -- Garrosh
+[74216] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[74217] = { "Верховний штукар Меккакруть", "король гномів", en="High Tinker Mekkatorque" }, -- Gelbin Mekkatorque
+[74218] = { "вартовий Залізогарта", en="Ironforge Guard" }, -- Ironforge Guard
+[74219] = { "стражниця Дарнаса", en="Darnassus Sentinel" }, -- Darnassus Sentinel
+[258469] = { "лицар Багряного Походу", en="Scarlet Crusader", feminine="лицарка Багряного Походу" }, -- Scarlet Crusader
 }
 
 if addonTable.npc then

@@ -4,71 +4,1542 @@
 
 local _, addonTable = ...
 
-local npc = { -- [id] = { title, description (optional) }
-[34668] = { "Шпичка Гайкокрут", "ваша виконавча асистентка" }, -- Sassy Hardwrench
+local npc = { -- [id] = { title, description (optional), feminine=title and feminine_tag=description of a female model (optional) }
+[38] = { "дрібний розбійник", en="Two-Bit Thug" }, -- Two-Bit Thug
+[94] = { "кишеньковий злодій", en="Cutpurse", feminine="кишенькова злодійка" }, -- Cutpurse
+[116] = { "бандит", en="Bandit", feminine="бандитка" }, -- Bandit
+[202] = { "гниле страховище", en="Rotting Horror" }, -- Rotting Horror
+[234] = { "маршал Ґріан Міцнокрив", "бригада Західного краю", en="Marshal Gryan Stoutmantle" }, -- Gryan Stoutmantle <The Westfall Brigade>
+[299] = { "молодий вовк", en="Young Wolf" }, -- Young Wolf
+[379] = { "Дарсі Паркер", en="Darcy Parker" }, -- Darcy
+[397] = { "верховний чаклун Доун", en="Grand Magus Doane" }, -- Darkblaze
+[464] = { "капітан варти Паркер", en="Watch Captain Parker" }, -- Guard Parker
+[474] = { "чарівник-пройдисвіт", en="Rogue Wizard", feminine="чарівниця-пройдисвітка" }, -- Rogue Wizard
+[487] = { "захисник Біалон", "бригада Західного краю", en="Protector Bialon" }, -- Protector Bialon <The Westfall Brigade>
+[488] = { "захисник Ткач", "бригада Західного краю", en="Protector Weaver" }, -- Protector Weaver <The Westfall Brigade>
+[489] = { "захисник Датфілд", "бригада Західного краю", en="Protector Dutfield" }, -- Protector Dutfield <The Westfall Brigade>
+[490] = { "захисниця Ґарієль", "бригада Західного краю", en="Protector Gariel" }, -- Protector Gariel <The Westfall Brigade>
+[534] = { "Мерзен", "мати лігва", en="Nefaru" }, -- Nefaru
+[543] = { "Налізетта Шаленородна", "доглядачка стайні", en="Nalesette Wildbringer" }, -- Nalesette Wildbringer <Stable Master>
+[583] = { "душитель", en="Ambusher" }, -- ambusher
+[703] = { "генерал Тельбухожбур", en="General Fangore" }, -- Lieutenant Fangore
+[789] = { "Кімберлі Хітт", "майстриня луків", en="Kimberly Hiett" }, -- Kimberly Hiett <Bowyer>
+[820] = { "розвідниця Ріелла", "бригада Західного краю", en="Scout Riell" }, -- Scout Riell <The Westfall Brigade>
+[821] = { "капітан Данувін", "бригада Західного краю", en="Captain Danuvin" }, -- Captain Danuvin <The Westfall Brigade>
+[823] = { "сержант Віллем", en="Sergeant Willem" }, -- Deputy Willem
+[832] = { "розкутий циклон", en="Unbound Cyclone" }, -- Unbound Cyclone
+[869] = { "захисниця Дорана", "бригада Західного краю", en="Protector Dorana" }, -- Protector Dorana <The Westfall Brigade>
+[870] = { "захисниця Дені", "бригада Західного краю", en="Protector Deni" }, -- Protector Deni <The Westfall Brigade>
+[874] = { "захисник Корелор", "бригада Західного краю", en="Protector Korelor" }, -- Protector Korelor <The Westfall Brigade>
+[876] = { "захисник Лейк", "бригада Західного краю", en="Protector Leick" }, -- Protector Leick <The Westfall Brigade>
+[878] = { "розвідник Галіаан", "бригада Західного краю", en="Scout Galiaan" }, -- Scout Galiaan <The Westfall Brigade>
+[946] = { "морозогривий послушник", "слуга Ґрік'ніра", en="Frostmane Novice", feminine="морозогрива послушниця" }, -- Frostmane Novice
+[951] = { "брат Пакстон", en="Brother Paxton" }, -- Brother Paxton
+[1063] = { "Нефрит", "жертва кошмару", en="Jade" }, -- Jade
+[1073] = { "Ашлан Камнесміх", "вогнепальна зброя", en="Ashlan Stonesmirk" }, -- Ashlan Stonesmirk <Gunsmith>
+[1156] = { "Вірен Стрімковій", "корчмарка", en="Vyrin Swiftwind" }, -- Vyrin Swiftwind <Innkeeper>
+[1186] = { "чорний ведмідь", en="Black Bear" }, -- Black Bear
+[1298] = { "Фредерік Пічник", "продавець луків", en="Frederick Stover" }, -- Frederick Stover <Bow Merchant>
+[1382] = { "Муддук", "тренер куховарства", en="Mudduk" }, -- Mudduk <Cooking Trainer>
+[1425] = { "Кубб", "знавець м'яса й риби", en="Kubb" }, -- Kubb
+[1430] = { "Томас", "тренер куховарства", en="Tomas" }, -- Tomas <Cooking Trainer>
+[1462] = { "Едвіна Монзор", "майстриня луків", en="Edwina Monzor" }, -- Edwina Monzor <Bowyer>
+[1493] = { "Мок'раш-Колун", en="Mok'rash the Cleaver" }, -- Mok'rash
+[1706] = { "в'язень", en="Prisoner" }, -- Prisoner
+[1711] = { "каторжник", en="Convict" }, -- Convict
+[1715] = { "заколотник", en="Insurgent" }, -- Insurgent
+[1766] = { "скажений ворг", en="Rabid Worg" }, -- Rabid Worg
+[1780] = { "нападник Жевріючої Павутини", en="Skitterweb Striker" }, -- Skitterweb Striker
+[1781] = { "маскун Жевріючої Павутини", en="Skitterweb Lurker" }, -- Skitterweb Lurker
+[1797] = { "велетенський скажений ведмідь", en="Giant Rabid Bear" }, -- Giant Rabid Bear
+[1888] = { "наглядач Бурштинового Млина", en="Ambermill Watcher", feminine="наглядачка Бурштинового Млина" }, -- Ambermill Watcher
+[1889] = { "чаклун Бурштинового Млина", en="Ambermill Witchalok", feminine="чаклунка Бурштинового Млина" }, -- Ambermill Witchalok
+[1912] = { "захисник Бурштинового Млина", en="Ambermill Protector", feminine="захисниця Бурштинового Млина" }, -- Ambermill Protector
+[1913] = { "чатовий Бурштинового Млина", en="Ambermill Warder", feminine="чатова Бурштинового Млина" }, -- Ambermill Warder
+[1914] = { "магістр Бурштинового Млина", en="Ambermill Magister" }, -- Ambermill Magister
+[1915] = { "заклинатель Бурштинового Млина", en="Ambermill Conjuror", feminine="заклинателька Бурштинового Млина" }, -- Ambermill Conjuror
+[1920] = { "писар заклинань Бурштинового Млина", en="Ambermill Spellscribe", feminine="писарка заклинань Бурштинового Млина" }, -- Ambermill Spellscribe
+[2079] = { "Ільталайн", en="Ilthalaine" }, -- Conservator Ilthalaine
+[2258] = { "Маґґаррак", "володар гір", en="Maggarrak" }, -- Maggarrak
+[2326] = { "Тамнер Пол", "тренер першої допомоги", en="Thamner Pol" }, -- Thamner Pol <First Aid Trainer>
+[2329] = { "Мішель Бель", "тренерка першої допомоги", en="Michelle Belle" }, -- Michelle Belle <First Aid Trainer>
+[2349] = { "одомашнений підкрадач", en="Domesticated Creeper" }, -- Domesticated Creeper
+[2350] = { "лісовий підкрадач", en="Forest Creeper" }, -- Forest Creeper
+[2351] = { "зачумлений ведмідь", en="Blighted Bear" }, -- Blighted Bear
+[2385] = { "ловець передгір'я", en="Foothill Stalker" }, -- Foothill Stalker
+[2386] = { "вартовий Альянсу", en="Alliance Guard", feminine="вартова Альянсу" }, -- Alliance Guard
+[2476] = { "Ґош-Галдір", "мати кладки", en="Gosh-Haldir" }, -- Gosh-Haldir
+[2530] = { "Єнніку", "посланець Занзіла", en="Yenniku" }, -- Yenniku
+[2531] = { "прислужник Доуна", en="Minion of Doane" }, -- Darkblaze
+[2540] = { "змій Бурштинового Млина", en="Ambermill Serpent" }, -- Ambermill Serpent
+[2585] = { "стромвартський солдат", en="Stromgarde Soldier", feminine="стромвартська солдатка" }, -- Stromgarde Soldier
+[2598] = { "Дарбела Монтроуз", en="Darbel Montrose" }, -- Darbel Montrose
+[2635] = { "старий кроколіск-тріскощелеп", en="Elder Snapjaw Crocolisk" }, -- Elder Snapjaw Crocolisk
+[2704] = { "Ганаші", en="Hanashi" }, -- Hanashi
+[2749] = { "Барикада", en="Barricade" }, -- Barricade
+[2808] = { "Віккі Лонсав", "корчмарка", en="Vikki Lonsav" }, -- Vikki Lonsav <Innkeeper>
+[2830] = { "всохлий канюк", en="Parched Buzzard" }, -- Parched Buzzard
+[2952] = { "щетиношкурий загарбник", en="Bristleback Invaders" }, -- Bristleback Invaders
+[2966] = { "молодий бойовий кнур", en="Young Battleboar" }, -- Young Battleboar
+[3005] = { "Магу", "кравецькі припаси", en="Mahu" }, -- Mahu <Tailoring Supplies>
+[3008] = { "Мак", "товари для шкірництва", en="Mak" }, -- Mak <Leatherworking Supplies>
+[3067] = { "П'ял Тихобіг", "тренер куховарства", en="Pyall Silentstride" }, -- Pyall Silentstride <Cooking Trainer>
+[3106] = { "береговий повзун", en="Surf Crawler" }, -- Surf Crawler
+[3107] = { "дорослий береговий повзун", en="Mature Surf Crawler" }, -- Mature Surf Crawler
+[3203] = { "Фіззл Темнопазур", en="Fizzle Darkclaw" }, -- Fizzle Darkclaw
+[3267] = { "бритвогривий грабіжник", en="Razormane Plunderer" }, -- Razormane Plunderer
+[3295] = { "шламова аномалія", en="Sludge Anomaly" }, -- Sludge Anomaly
+[3317] = { "Олланій", "продавець тканинних обладунків", en="Ollanus" }, -- Ollanus <Cloth Armor Merchant>
+[3322] = { "Кайя", "продавчиня луків і рушниць", en="Kaja" }, -- Kaja
+[3405] = { "Зіл'ая", "реагенти та отрути", en="Zeal'aya" }, -- Zeal'aya <Reagents & Poisons>
+[3442] = { "Гуркоклапан", "незалежний підрядник", en="Sputtervalve" }, -- Sputtervalve
+[3577] = { "бровар Бурштинового Млина", en="Ambermill Brewmaster" }, -- Ambermill Brewmaster
+[3578] = { "шахтар Бурштинового Млина", en="Ambermill Miner" }, -- Ambermill Miner
+[3628] = { "Стівен Логан", "корчмар", en="Steven Lohan" }, -- Steven Lohan <Innkeeper>
+[3678] = { "Муйо", "послідовник Наралекса", en="Muyoh" }, -- Muyoh
+[3698] = { "Бол'юн", en="Bolyun" }, -- Bolyun
+[3734] = { "орк-розпорядник", en="Orc Overseer", feminine="орчиня-розпорядниця" }, -- Orc Overseer
+[3780] = { "обпалений шаркун", en="Singed Shambler" }, -- Singed Shambler
+[3841] = { "Телдіра Перомісяць", "приборкувачка гіпогрифів", en="Teldira Moonfeather" }, -- Teldira Moonfeather <Hippogryph Master>
+[3969] = { "Фагран Тихоклин", "продавець отрут", en="Fahran Silentblade" }, -- Fahran Silentblade <Poison Vendor>
+[3992] = { "оборонець ТзНБ \"Авантюра\"", en="Venture Co. Holdout", feminine="оборонниця ТзНБ \"Авантюра\"" }, -- Venture Co. Holdout
+[4021] = { "осквернений живичний звір", en="Corrupted Sap Beast" }, -- Corrupted Sap Beast
+[4132] = { "Кркк'кс", en="Krkk'kx" }, -- Krkk'kx
+[4460] = { "хмурожабрий стужевій", en="Murkgill Coldbringer" }, -- Murkgill Coldbringer
+[4578] = { "Жозефіна Переліч", "тренерка кравецтва", en="Josephine Lister" }, -- Josephine Lister <Tailoring Trainer>
+[4787] = { "розвідник Талрід", en="Scout Thaelrid" }, -- Argent Guard Thaelrid
+[4886] = { "Ганс Вестон", "обладунки та зброя", en="Hans Weston" }, -- Hans Weston
+[4888] = { "Марі Холдстон", "тренерка ковальства", en="Marie Holdston" }, -- Marie Holdston <Blacksmithing Trainer>
+[4892] = { "Дженсен Фарран", "тренер мисливців і майстер луків", en="Jensen Farran" }, -- Jensen Farran
+[4894] = { "Крейг Нолворд", "тренер куховарства", en="Craig Nollward" }, -- Craig Nollward <Cooking Trainer>
+[4896] = { "Інна Доброч", "товари загального вжитку та реагенти", en="Charity Mipsy" }, -- Charity Mipsy
+[4941] = { "Каз Двокрут", "тренер інженерії", en="Caz Twosprocket" }, -- Caz Twosprocket <Engineering Trainer>
+[5043] = { "заколотник", en="Rioter" }, -- Rioter
+[5083] = { "казначей Лендрі", "банкір", en="Paymaster Lendry" }, -- Clerk Lendry <Banker>
+[5164] = { "Ґрумнус Сталетес", "тренер ковальства", en="Grumnus Steelshaper" }, -- Grumnus Steelshaper <Blacksmithing Trainer>
+[5388] = { "Інґо Вовнистий Кущ", "тренер та продавець товарів для ювелірної справи", en="Ingo Woolybush" }, -- Ingo Woolybush
+[5510] = { "Тулман Кремнескельний", "продавець вогнепальної зброї", en="Thulman Flintcrag" }, -- Thulman Flintcrag <Gun Vendor>
+[5520] = { "Спекл Шипшинчик", "тренер демонів", en="Spackle Thornberry" }, -- Spackle Thornberry <Demon Trainer>
+[5749] = { "Кайла Сміт", "тренерка демонів", en="Kayla Smithe" }, -- Kayla Smithe <Demon Trainer>
+[5750] = { "Джина Ленґ", "тренерка демонів", en="Gina Lang" }, -- Gina Lang <Demon Trainer>
+[5753] = { "Марта Стрейн", "тренерка демонів", en="Martha Strain" }, -- Martha Strain <Demon Trainer>
+[5809] = { "сержант Кертіс", en="Sergeant Curtis" }, -- Sergeant Curtis
+[5815] = { "Курґул", "тренер демонів", en="Kurgul" }, -- Kurgul <Demon Trainer>
+[5927] = { "тотем опору стихіям", en="Elemental Resistance Totem" }, -- Elemental Resistance Totem
+[5944] = { "Йонада", "товари для кравецтва і шкірництва", en="Yonada" }, -- Yonada
+[5983] = { "кісткогриз-скверножер", en="Bonepicker Felfeeder" }, -- Bonepicker Felfeeder
+[6004] = { "ритуаліст тінеклятів", en="Shadowsworn Ritualist", feminine="ритуалістка тінеклятів" }, -- Shadowsworn Ritualist
+[6027] = { "Кіта", "тренерка демонів", en="Kitha" }, -- Kitha <Demon Trainer>
+[6286] = { "Заррін", "тренер куховарства", en="Zarrin" }, -- Zarrin <Cooking Trainer>
+[6328] = { "Денні Шипобульк", "тренерка демонів", en="Dannie Fizzwizzle" }, -- Dannie Fizzwizzle <Demon Trainer>
+[6373] = { "Дейн Вінслоу", "тренер демонів", en="Dane Winslow" }, -- Dane Winslow <Demon Trainer>
+[6374] = { "Силіна Темносерда", "тренерка демонів", en="Cylina Darkheart" }, -- Cylina Darkheart <Demon Trainer>
+[6376] = { "Врена Темноприск", "тренерка демонів", en="Wren Darkspring" }, -- Wren Darkspring <Demon Trainer>
+[6382] = { "Джубал Трупогляд", "тренер демонів", en="Jubahl Corpseseeker" }, -- Jubahl Corpseseeker <Demon Trainer>
+[6827] = { "прибережний краб", en="Shore Crab" }, -- Shore Crab
+[6846] = { "начальник доку", en="Dockmaster" }, -- Dockmaster
+[6866] = { "тілоохоронець", en="Bodyguard" }, -- Bodyguard
+[6927] = { "портовий робітник", en="Dockworker", feminine="портова робітниця" }, -- Dockworker
+[7230] = { "Шаїс Сталелють", "тренерка ковальства", en="Shayis Steelfury" }, -- Shayis Steelfury <Blacksmithing Trainer>
+[7231] = { "Келґрук Кривава Сокира", "тренер ковальства", en="Kelgruk Bloodaxe" }, -- Kelgruk Bloodaxe <Blacksmithing Trainer>
+[7232] = { "Борґус Сталерук", "тренер ковальства", en="Borgus Steelhand" }, -- Borgus Steelhand <Blacksmithing Trainer>
+[7430] = { "молодий кригозуб", en="Young Frostsaber" }, -- Young Frostsaber
+[7714] = { "Бикко", "колишній корчмар", en="Byula" }, -- Innkeeper Byula
+[7866] = { "Пітер Ґален", "тренер шкірництва", en="Peter Galen" }, -- Peter Galen <Leatherworking Trainer>
+[7867] = { "Торкаф Драконяче Око", "тренер шкірництва", en="Thorkaf Dragoneye" }, -- Thorkaf Dragoneye <Leatherworking Trainer>
+[7868] = { "Сара Кожум'яка", "тренерка шкірництва", en="Sarah Tanner" }, -- Sarah Tanner <Leatherworking Trainer>
+[7869] = { "Брумн Зимове Копито", "тренер шкірництва", en="Brumn Winterhoof" }, -- Brumn Winterhoof <Leatherworking Trainer>
+[7870] = { "Кариссія Місячна Мисливиця", "тренерка шкірництва", en="Caryssia Moonhunter" }, -- Caryssia Moonhunter <Leatherworking Trainer>
+[7871] = { "Се'Джиб", "тренер шкірництва", en="Se'Jib" }, -- Se'Jib <Leatherworking Trainer>
+[7876] = { "Тран'рек", "інженерні припаси", en="Tran'rek" }, -- Tran'rek <Engineering Supplies>
+[7954] = { "Бінджі Перосвист", "тренер верхової їзди", en="Binjy Featherwhistle" }, -- Binjy Featherwhistle <Riding Trainer>
+[7975] = { "сміливець табору Нараче", en="Camp Narache Brave", feminine="сміливиця табору Нараче" }, -- Camp Narache Brave
+[8096] = { "вартовий бригади Західного краю", en="Westfall Brigade Guard", feminine="вартова бригади Західного краю" }, -- Westfall Brigade Guard
+[8207] = { "Жарокрил", en="Emberwing" }, -- Emberwing
+[8306] = { "Дунґ", "тренер куховарства", en="Duhng" }, -- Duhng <Cooking Trainer>
+[8563] = { "нікчемний-лісник", en="Wretched Woodsman" }, -- Wretched Woodsman
+[8564] = { "нікчемний слідопит", en="Wretched Ranger" }, -- Wretched Ranger
+[8565] = { "нікчемний-розвідник", en="Wretched Pathstrider" }, -- Wretched Pathstrider
+[8664] = { "сонцеходиця Серн", "тренерка паладинів", en="Sunwalker Saern" }, -- Saern Priderunner <Paladin Trainer>
+[8962] = { "Ніда", en="Nida" }, -- Nida
+[9117] = { "Джей Ді Коллі", "експедиція Маршала", en="J.D. Collie" }, -- J.D. Collie <Marshal Expeditions>
+[9176] = { "Ґорлоп", en="Gorlop" }, -- Gorlop
+[9270] = { "Вілліден Маршал", "експедиція Маршала", en="Williden Marshal" }, -- Williden Marshal <Marshal Expeditions>
+[9271] = { "Холанія Маршал", "експедиція Маршала", en="Hol'anyee Marshal" }, -- Hol'anyee Marshal <Marshal Expeditions>
+[9272] = { "Іскр Ніцокоп", "експедиція Маршала", en="Spark Nilminer" }, -- Spark Nilminer <Marshal Expeditions>
+[9397] = { "відкопана скам'янілість", en="Unearthed Fossil" }, -- Unearthed Fossil
+[9584] = { "Джелейн Айроль", "тренерка кравецтва", en="Jalane Ayrole" }, -- Jalane Ayrole <Tailoring Trainer>
+[9618] = { "Карна Сноходень", "експедиція Маршала", en="Karna Remtravel" }, -- Karna Remtravel <Marshal Expeditions>
+[9983] = { "Келсува", "колишній доглядач стайні", en="Kelsuwa" }, -- Kelsuwa
+[9997] = { "Сулиця Везам", "експедиція Маршала", en="Spraggle Frock" }, -- Spraggle Frock <Marshal Expeditions>
+[9998] = { "Шиззл", "експедиція Маршала", en="Shizzle" }, -- Shizzle <Marshal Expeditions>
+[10296] = { "Акрід", en="Acride" }, -- Acridostrasz
+[10299] = { "Акрід", "легіон Рубаного Щита", en="Acride" }, -- Acridostrasz <Scarshield Legion>
+[10301] = { "Жарон Каменотес", en="Jaron Stoneshaper" }, -- Jaron Stoneshaper
+[10302] = { "Кракл", "експедиція Маршала", en="Krakle" }, -- Krakle <Marshal Expeditions>
+[10418] = { "воскреслий гвардієць", en="Risen Guardsman", feminine="воскресла гвардійка" }, -- Risen Guardsman
+[10419] = { "воскреслий заклинатель", en="Risen Conjuror", feminine="воскресла заклинателька" }, -- Risen Conjuror
+[10420] = { "воскреслий посвячений", en="Risen Initiate", feminine="воскресла посвячена" }, -- Risen Initiate
+[10421] = { "воскреслий захисник", en="Risen Defender", feminine="воскресла захисниця" }, -- Risen Defender
+[10422] = { "воскреслий чаклун", en="Risen Sorcerer", feminine="воскресла чаклунка" }, -- Risen Sorcerer
+[10423] = { "воскреслий жрець", en="Risen Priest", feminine="воскресла жриця" }, -- Risen Priest
+[10424] = { "воскреслий сміливець", en="Risen Gallant", feminine="воскресла сміливиця" }, -- Risen Gallant
+[10425] = { "воскреслий бойовий маг", en="Risen Battle Mage", feminine="воскресла бойова магиня" }, -- Risen Battle Mage
+[10426] = { "воскреслий інквізитор", en="Risen Inquisitor", feminine="воскресла інквізиторка" }, -- Risen Inquisitor
+[10811] = { "інструктор Ґалфорд", en="Instructor Galford" }, -- Archivist Galford
+[10824] = { "мисливець смерті Соколиний Спис", en="Death-Hunter Hawkspear" }, -- Ranger Lord Hawkspear
+[10828] = { "Ліннія Аббендіс", "занепала надія", en="Lynnia Abbendis" }, -- Lynnia Abbendis
+[10839] = { "офіцер Сріблястого Світанку Ґаруш", "Сріблястий Похід", en="Argent Officer Garush" }, -- Argent Officer Garush <The Argent Crusade>
+[10840] = { "офіцерка Сріблястого Світанку Чистосердна", "Сріблястий Похід", en="Argent Officer Pureheart" }, -- Argent Officer Pureheart <The Argent Crusade>
+[10857] = { "квартирмейстер Іскросяй", "Сріблястий Похід", en="Argent Quartermaster Lightspark" }, -- Argent Quartermaster Lightspark <The Argent Crusade>
+[10977] = { "Квіксіль", "експедиція Маршала", en="Quixxil" }, -- Quixxil <Marshal Expeditions>
+[10997] = { "Віллі Руйнівник Надій", "канонір", en="Willey Hopebreaker" }, -- Cannon Master Willey
+[11032] = { "командир Малор", en="Commander Malor" }, -- Malor the Zealous
+[11034] = { "лорд Максвелл Тірос", "Сріблястий Похід", en="Lord Maxwell Tyrosus" }, -- Lord Maxwell Tyrosus <The Argent Crusade>
+[11036] = { "Леонід Варфоломій Шанований", "Сріблястий Похід", en="Leonid Barthalomew the Revered" }, -- Leonid Barthalomew <The Argent Crusade>
+[11039] = { "герцог Ніколас Зверенгоф", "Сріблястий Похід", en="Duke Nicholas Zverenhoff" }, -- Duke Nicholas Zverenhoff <The Argent Crusade>
+[11043] = { "воскреслий монах", en="Risen Monk", feminine="воскресла монахиня" }, -- Risen Monk
+[11054] = { "воскреслий стрілець", en="Risen Rifleman", feminine="воскресла стрільчиня" }, -- Risen Rifleman
+[11063] = { "Карлін Редпат", "Сріблястий Похід", en="Carlin Redpath" }, -- Carlin Redpath <The Argent Crusade>
+[11102] = { "вершник Сріблястого Світанку", "Сріблястий Похід", en="Argent Rider", feminine="вершниця Сріблястого Світанку" }, -- Argent Rider <The Argent Crusade>
+[11120] = { "воскреслий коваль молотів", en="Risen Hammersmith" }, -- Risen Hammersmith
+[11146] = { "Залізій Кригосталь", "тренер ковальства", en="Ironus Coldsteel" }, -- Ironus Coldsteel
+[11177] = { "Окотос Сталелют", "тренер ковальства", en="Okothos Ironrager" }, -- Okothos Ironrager <Blacksmithing Trainer>
+[11178] = { "Борґош Лавоклят", "тренер ковальства", en="Borgosh Corebender" }, -- Borgosh Corebender <Blacksmithing Trainer>
+[11194] = { "захисник Сріблястого Світанку", "Сріблястий Похід", en="Argent Defender", feminine="захисниця Сріблястого Світанку" }, -- Argent Defender <The Argent Crusade>
+[11466] = { "високородний закликач", "дім Шен'дралар", en="Highborne Summoner", feminine="високородна закликачка" }, -- Highborne Summoner <House of Shen'dralar>
+[11486] = { "принц Тортельдрін", "правитель Шен'дралар", en="Prince Tortheldrin" }, -- Prince Tortheldrin
+[11498] = { "Шрамм Зламаний", en="Skarr the Broken" }, -- Skarr the Unbreakable
+[11536] = { "квартирмейстер Міранда Затвор", "Сріблястий Похід", en="Quartermaster Miranda Breechlock" }, -- Quartermaster Miranda Breechlock <The Argent Crusade>
+[11616] = { "Натаніель Дюма", "Сріблястий Похід", en="Nathaniel Dumah" }, -- Nathaniel Dumah <Argent Crusade>
+[11673] = { "гончак ядра", en="Core Hound" }, -- Core Hound
+[11681] = { "лісоруб Пісні Війни", en="Warsong Logger", feminine="лісорубка Пісні Війни" }, -- Warsong Logger
+[11684] = { "гоблінський лісозаготівельник", en="Goblin Deforester" }, -- Goblin Deforester
+[11858] = { "Ґрандіґ Темна Хмара", "ватаг", en="Grundig Darkcloud" }, -- Grundig Darkcloud <Chieftain>
+[11865] = { "Бульвайф Камнерук", en="Buliwyf Stonehand" }, -- Buliwyf Stonehand
+[11866] = { "Іленія Місяцежар", en="Ilyenia Moonfire" }, -- Ilyenia Moonfire
+[11867] = { "Ву Пінь", en="Woo Ping" }, -- Woo Ping
+[11868] = { "Сайок", en="Sayoc" }, -- Sayoc
+[11869] = { "Ансехва", en="Ansekhwa" }, -- Ansekhwa
+[11870] = { "Арчибальд", en="Archibald" }, -- Archibald
+[11915] = { "скелестраж Крутих Валунів", en="Boulderslide Rock Keeper" }, -- Boulderslide Rock Keeper
+[11917] = { "геомант Крутих Валунів", en="Boulderslide Geomancer" }, -- Boulderslide Geomancer
+[11918] = { "камнебій Крутих Валунів", en="Boulderslide Stonepounder" }, -- Boulderslide Stonepounder
+[12239] = { "дух Ґелка", "другий хан", en="Spirit of Gelk" }, -- Spirit of Gelk
+[12240] = { "дух Колка", "перший хан", en="Spirit of Kolk" }, -- Spirit of Kolk
+[12241] = { "дух Маґри", "третій хан", en="Spirit of Magra" }, -- Spirit of Magra
+[12242] = { "дух Мародоса", "четвертий хан", en="Spirit of Maraudos" }, -- Spirit of Maraudos
+[12243] = { "дух Венґа", "п'ятий хан", en="Spirit of Veng" }, -- Spirit of Veng
+[12433] = { "Кретіс Тінеткачка", en="Krethis the Shadowspinner" }, -- Krethis Shadowspinner
+[12776] = { "Грауґ", "тренер демонів", en="Hraug" }, -- Hraug <Demon Trainer>
+[12918] = { "вождь Мурґут", "король Гидколісових", en="Chief Murgut" }, -- Chief Murgut
+[12939] = { "лікар Ґустав ван Хаузен", "тренер першої допомоги", en="Doctor Gustaf VanHowzen" }, -- Doctor Gustaf VanHowzen <First Aid Trainer>
+[13084] = { "Біксі Брязка", en="Bixi Wobblebonk" }, -- Bixi Wobblebonk
+[13219] = { "Джорек Залізнобокий", "офіцер постачань Морозних Вовків", en="Jorek Ironside" }, -- Jorek Ironside
+[13321] = { "маленька жаба", en="Small Frog" }, -- Frog
+[13476] = { "Зен'Балай", "тренерка друїдів", en="Zen'Balai" }, -- Zen'Balai <Druid Trainer>
+[13738] = { "Венґ", "п'ятий хан", en="Veng" }, -- Veng
+[13739] = { "Мародос", "четвертий хан", en="Maraudos" }, -- Maraudos
+[13740] = { "Маґра", "третій хан", en="Magra" }, -- Magra
+[13741] = { "Ґелк", "другий хан", en="Gelk" }, -- Gelk
+[13742] = { "Колк", "перший хан", en="Kolk" }, -- Kolk
+[14355] = { "Аж'Тордін", "дім Шен'дралар", en="Azj'Tordin" }, -- Azj'Tordin <House of Shen'dralar>
+[14358] = { "старійшина Шен'дралар", "дім Шен'дралар", en="Shen'dralar Ancient" }, -- Shen'dralar Ancient <House of Shen'dralar>
+[14361] = { "світлик Шен'дралар", "дім Шен'дралар", en="Shen'dralar Wisp" }, -- Shen'dralar Wisp <House of Shen'dralar>
+[14364] = { "дух Шен'дралар", "дім Шен'дралар", en="Shen'dralar Spirit" }, -- Shen'dralar Spirit <House of Shen'dralar>
+[14368] = { "хранитель знань Лідрос", "дім Шен'дралар", en="Lorekeeper Lydros" }, -- Lorekeeper Lydros <House of Shen'dralar>
+[14369] = { "ревнитель Шен'дралар", "дім Шен'дралар", en="Shen'dralar Zealot", feminine="ревнителька Шен'дралар" }, -- Shen'dralar Zealot <House of Shen'dralar>
+[14371] = { "розпорядник Шен'дралар", "дім Шен'дралар", en="Shen'dralar Provisioner" }, -- Shen'dralar Provisioner <House of Shen'dralar>
+[14381] = { "хранитель знань Явон", "дім Шен'дралар", en="Lorekeeper Javon" }, -- Lorekeeper Javon <House of Shen'dralar>
+[14382] = { "хранителька знань Мікос", "дім Шен'дралар", en="Lorekeeper Mykos" }, -- Lorekeeper Mykos <House of Shen'dralar>
+[14383] = { "хранитель знань Кілдрат", "дім Шен'дралар", en="Lorekeeper Kildrath" }, -- Lorekeeper Kildrath <House of Shen'dralar>
+[14445] = { "капітан Зміюр", "жертва кошмару", en="Captain Wyrmak" }, -- Lord Captain Wyrmak
+[14487] = { "Булькль", en="Gluggl" }, -- Gluggle
+[14828] = { "Ґелвас Пилошлюз", "призові сувеніри та іграшки", en="Gelvas Grimegate" }, -- Gelvas Grimegate
+[14844] = { "Силанія", "продавчиня напоїв", en="Sylannia" }, -- Sylannia <Drink Vendor>
+[14845] = { "Гуп Громовий Ріг", "продавець їжі", en="Stamp Thunderhorn" }, -- Stamp Thunderhorn <Food Vendor>
+[14846] = { "Лгара", "призові улюбленці та верхові тварини", en="Lhara" }, -- Lhara
+[14847] = { "професор Таддеус Палео", "карти Темного місяця", en="Professor Thaddeus Paleo" }, -- Professor Thaddeus Paleo
+[14849] = { "працівник Темного Місяця", en="Darkmoon Carnie", feminine="працівниця Темного Місяця" }, -- Darkmoon Faire Carnie
+[14990] = { "посланець Труїтелів", en="Defilers Envoy", feminine="посланниця Труїтелів" }, -- Defilers Envoy
+[15105] = { "посланець Пісні Війни", en="Warsong Envoy", feminine="посланниця Пісні Війни" }, -- Warsong Envoy
+[15106] = { "посланець Морозних Вовків", en="Frostwolf Envoy", feminine="посланниця Морозних Вовків" }, -- Frostwolf Envoy
+[15193] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[15532] = { "кам'яна вартова Глиняне Копито", "збирачка рунічних бинтів", en="Stone Guard Clayhoof" }, -- Stoneguard Clayhoof
+[15533] = { "кривава вартова Сиромаз", "збирачка пісних вовчих стейків", en="Blood Guard Rawtar" }, -- Bloodguard Rawtar
+[16032] = { "Фалрін Деревотворець", "дім Шен'дралар", en="Falrin Treeshaper" }, -- Falrin Treeshaper <House of Shen'dralar>
+[16112] = { "командир походу Корфакс", "братство Світла", en="Crusade Commander Korfax" }, -- Korfax, Champion of the Light <Brotherhood of the Light>
+[16115] = { "командир походу Еліґор Світанковий", "братство Світла", en="Crusade Commander Eligor Dawnbringer" }, -- Crusade Commander Eligor Dawnbringer <Brotherhood of the Light>
+[16378] = { "караульний Сріблястого Світанку", "Сріблястий Похід", en="Argent Sentry", feminine="караульна Сріблястого Світанку" }, -- Argent Sentry <The Argent Crusade>
+[16583] = { "Рогок", "тренер ковальства", en="Rohok" }, -- Rohok <Blacksmithing Trainer>
+[16588] = { "аптекар Антонівич", "тренер алхімії", en="Apothecary Antonivich" }, -- Apothecary Antonivich <Alchemy Trainer>
+[16823] = { "Гамфрі", "тренер ковальства", en="Humphry" }, -- Humphry <Blacksmithing Trainer>
+[17105] = { "емісар Валустраа", en="Emissary Valustraa" }, -- Emissary Valustraa
+[17598] = { "Ренн'аз", en="Renn'az" }, -- Renn'az
+[18802] = { "алхімік Ґріббл", "тренер алхімії", en="Alchemist Gribble" }, -- Alchemist Gribble <Alchemy Trainer>
+[19576] = { "Ксірол", "тренер інженерії", en="Xyrol" }, -- Xyrol <Engineering Trainer>
+[20500] = { "Олрокк", "тренер польотів", en="Olrokk" }, -- Olrokk <Flying Trainer>
+[20511] = { "Ільса Буревар", "тренерка польотів", en="Ilsa Blusterbrew" }, -- Ilsa Blusterbrew <Flying Trainer>
+[21209] = { "Дамфрі", "тренер ковальства", en="Dumphry" }, -- Dumphry <Blacksmithing Trainer>
+[23559] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[23566] = { "Калія Гастінґс", "тренерка пройдисвітів", en="Calia Hastings" }, -- Calia Hastings <Rogue Trainer>
+[23896] = { "\"Нечупара\" Майкл Кроу", "тренер та продавець товарів для рибальства", en="\"Dirty\" Michael Crowe" }, -- "Dirty" Michael Crowe <Fishing Trainer & Supplies>
+[28704] = { "Дороті Іґан", "тренерка травництва", en="Dorothy Egan" }, -- Dorothy Egan <Herbalism Trainer>
+[31423] = { "Кайя", "продавчиня вогнепальної зброї", en="Kaja" }, -- Kaja <Gun Vendor>
+[31734] = { "Маліґос", en="Malygos" }, -- Malygos
+[32888] = { "сутінковий фанатик", en="Twilight Fanatic", feminine="сутінкова фанатичка" }, -- Twilight Fanatic
+[32911] = { "Ґершала Нічношерех", en="Gershala Nightwhisper" }, -- Gershala Nightwhisper
+[32959] = { "Цереліан Білопазур", en="Cerellean Whiteclaw" }, -- Cerellean Whiteclaw
+[32960] = { "Волкор", en="Volcor" }, -- Volcor
+[32961] = { "Шалдін", en="Shaldyn" }, -- Shaldyn
+[32962] = { "Ґершала Нічношерех", en="Gershala Nightwhisper" }, -- Gershala Nightwhisper
+[32964] = { "стражниця Айнаша", en="Sentinel Aynasha" }, -- Sentinel Aynasha
+[32965] = { "стражниця Тиша Місяцеклинок", en="Sentinel Tysha Moonblade" }, -- Tysha Moonblade
+[32966] = { "Балтул Тіневдар", en="Balthule Shadowstrike" }, -- Balthule Shadowstrike
+[32974] = { "Лейрд", en="Laird" }, -- Laird
+[32976] = { "хвилевий повзун", en="Tide Crawler" }, -- Tide Crawler
+[32977] = { "Бацбах Корбаклац", en="Wizbang Cranktoggle" }, -- Wizbang Cranktoggle
+[32978] = { "Тарнаріун Дереволюб", en="Tharnariun Treetender" }, -- Tharnariun Treetender
+[32979] = { "Ґорбольд Сталерук", "торговельні принади", en="Gorbold Steelhand" }, -- Gorbold Steelhand <Trade Supplies>
+[33001] = { "Тандріс Вітроткач", en="Thundris Windweaver" }, -- Thundris Windweaver
+[33020] = { "Зенн Брудна Ратиця", en="Zenn Foulhoof" }, -- Zenn Foulhoof
+[33033] = { "стражниця Елісса Зоребриз", en="Sentinel Elissa Starbreeze" }, -- Elissa Starbreeze
+[33035] = { "Талдан", "продавець напоїв", en="Taldan" }, -- Taldan <Drink Vendor>
+[33037] = { "Кейліс Перомісяць", "приборкувачка гіпогрифів", en="Caylais Moonfeather" }, -- Caylais Moonfeather <Hippogryph Master>
+[33039] = { "розлючений гіпогриф", en="Enraged Hippogryph" }, -- Enraged Hippogryph
+[33053] = { "Хмуропазур", en="Grimclaw" }, -- Grimclaw
+[33055] = { "Аланндаріан Нічна Пісня", en="Alanndarian Nightsong" }, -- Alanndarian Nightsong
+[33072] = { "Ону", "древній знань", en="Onu" }, -- Onu <Ancient of Lore>
+[33091] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[33093] = { "Цереліан Білопазур", en="Cerellean Whiteclaw" }, -- Cerellean Whiteclaw
+[33094] = { "Волкор", en="Volcor" }, -- Volcor
+[33095] = { "Шалдін", en="Shaldyn" }, -- Shaldyn
+[33096] = { "Барітрас Місячна Тінь", en="Barithras Moonshade" }, -- Barithras Moonshade
+[33097] = { "Далмонд", en="Dalmond" }, -- Dalmond
+[33098] = { "Ґрондал Місячний Бриз", en="Grondal Moonbreeze" }, -- Grondal Moonbreeze
+[33099] = { "Терентіс", en="Terenthis" }, -- Terenthis
+[33100] = { "Валдарон", en="Valdaron" }, -- Valdaron
+[33101] = { "Алліндія", en="Allyndia" }, -- Allyndia
+[33102] = { "Ґвенніт Блі'Леґґонд", en="Gwennyth Bly'Leggonde" }, -- Gwennyth Bly'Leggonde
+[33103] = { "Мавралін", en="Mavralyn" }, -- Mavralyn
+[33127] = { "місяцескрад", en="Moonstalker" }, -- Moonstalker
+[33176] = { "Керлоній Вічнотінь", en="Kerlonian Evershade" }, -- Kerlonian Evershade
+[33179] = { "проклята високородна", en="Cursed Highborne" }, -- Cursed Highborne
+[33180] = { "судорожний високородний", en="Writhing Highborne" }, -- Writhing Highborne
+[33181] = { "Анайя Зорегін", en="Anaya Dawnrunner" }, -- Anaya Dawnrunner
+[33182] = { "Батран", en="Bathran" }, -- Bathran
+[33231] = { "Еліза Сталерука", "ковальські припаси", en="Elisa Steelhand" }, -- Elisa Steelhand <Blacksmithing Supplies>
+[33232] = { "археологиня Холлі", "Ліга дослідників", en="Archaeologist Hollee" }, -- Archaeologist Hollee <Explorers' League>
+[33249] = { "стражниця Тиша Місяцеклинок", en="Sentinel Tysha Moonblade" }, -- Tysha Moonblade
+[33262] = { "сіромлистий хвилелов", en="Greymist Tidehunter" }, -- Greymist Tidehunter
+[33276] = { "жриця місяця Маєстра", en="Moon Priestess Maestra" }, -- Moon Priestess Maestra
+[33277] = { "сіромлистий воїн", en="Greymist Warrior" }, -- Greymist Warrior
+[33347] = { "Дельґрен Очиститель", en="Delgren the Purifier" }, -- Delgren the Purifier
+[33348] = { "Фіро Залізорук", en="Feero Ironhand" }, -- Feero Ironhand
+[33706] = { "подрібнювач Пісні Війни", en="Warsong Shredder" }, -- Warsong Shredder
+[33837] = { "Кадрак", en="Kadrak" }, -- Kadrak
+[33944] = { "вартовий Тріснутого Дерева", en="Splintertree Guard", feminine="вартова Тріснутого Дерева" }, -- Splintertree Guard
+[34006] = { "Кадрак", en="Kadrak" }, -- Kadrak
+[34052] = { "вартовий Тріснутого Дерева", en="Splintertree Guard", feminine="вартова Тріснутого Дерева" }, -- Splintertree Guard
+[34136] = { "вартовий Тріснутого Дерева", en="Splintertree Guard", feminine="вартова Тріснутого Дерева" }, -- Splintertree Guard
+[34343] = { "розвідувач Сноходень", "Ліга дослідників", en="Prospector Remtravel" }, -- Prospector Remtravel <Explorers' League>
+[34357] = { "Аман", en="Aman" }, -- Aman
+[34422] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[34426] = { "сміхотлива сестра", en="Laughing Sister" }, -- Laughing Sister
+[34487] = { "бритвогривий рейдер", en="Razormane Raider" }, -- Razormane Raider
+[34494] = { "стражниця Астранаара", en="Astranaar Sentinel" }, -- Astranaar Sentinel
+[34599] = { "Бол'юн", en="Bolyun" }, -- Bolyun
+[34600] = { "Аленндаар Лапідаар", "тренер мисливців", en="Alenndaar Lapidaar" }, -- Alenndaar Lapidaar <Hunter Trainer>
+[34601] = { "Гарлоун Темноплет", "товари для шкірництва", en="Harlown Darkweave" }, -- Harlown Darkweave <Leatherworking Supplies>
+[34668] = { "Шпичка Гайкокрут", "ваша виконавча асистентка", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[34672] = { "біс", en="Imp" }, -- Imp
 [34692] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
 [34695] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
+[34809] = { "рубайло Каміннопазуристих гір", en="Stonetalon Grunt" }, -- Stonetalon Grunt
 [34853] = { "орк-в'язень", en="Orc Prisoner" }, -- Orc Prisoner
-[35650] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
+[34867] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
+[34897] = { "чорний дракончик", en="Black Drake" }, -- Black Drake
+[34898] = { "дитинча чорного дракона", en="Black Dragon Whelp" }, -- Black Dragon Whelp
+[35194] = { "Аґ'тор Кровокулак", en="Ag'tor Bloodfist" }, -- Ag'tor Bloodfist
+[35334] = { "гном-інженер", en="Gnome Engineer", feminine="гномка-інженерка" }, -- Gnome Engineer
+[35591] = { "молодший пекельник", en="Lesser Infernal" }, -- Lesser Infernal
+[35628] = { "споліморфлений тарган", en="Polymorphed Cockroach" }, -- Polymorphed Cockroach
+[35650] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка", en="Sassy Hardwrench" }, -- Sassy Hardwrench
 [35786] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
 [35805] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
+[35844] = { "краб", en="Crab" }, -- crab
+[35874] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
 [36077] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
+[36144] = { "колкарський кентавр", en="Kolkar Centaur" }, -- Kolkar Centaur
+[36145] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
+[36161] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
+[36188] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
+[36201] = { "краб", en="Crab" }, -- crab
+[36203] = { "краб", en="Crab" }, -- crab
+[36207] = { "відречений-душогуб", en="Forsaken Assassin", feminine="відречена-душогубка" }, -- Forsaken Assassin
+[36373] = { "Корала Місяцевій", "учень Зілема", en="Coral Moongale" }, -- Coral Moongale
+[36374] = { "Нирілл", "учень Зілема", en="Nyrill" }, -- Nyrill
 [36379] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
-[36425] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
+[36425] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[36436] = { "дух Азуреґоса", en="Spirit of Azuregos" }, -- Azuregos
+[36507] = { "краб", en="Crab" }, -- crab
 [36521] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
 [36523] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
-[37680] = { "Шпичка Гайкокрут", "ваша виконавча асистентка" }, -- Sassy Hardwrench
+[36539] = { "краб", en="Crab" }, -- crab
+[36591] = { "жаба", en="Frog" }, -- Frog
+[36622] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
+[36629] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
+[36648] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[36671] = { "відречений-розвідник", en="Forsaken Scout", feminine="відречена-розвідниця" }, -- Forsaken Scout
+[36676] = { "Азуреґос", en="Azuregos" }, -- Azuregos
+[36714] = { "вівця", en="Sheep" }, -- Sheep
+[36728] = { "Кроум", "капітан вершників на вивернах", en="Kroum" }, -- Kroum
+[36922] = { "поранений солдат", "батальйон Трюмної води", en="Wounded Soldier", feminine="поранена солдатка" }, -- Wounded Soldier
+[37058] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[37115] = { "Тео Буремолот", "тренер шаманів", en="Teo Hammerstorm" }, -- Teo Hammerstorm <Shaman Trainer>
+[37199] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[37206] = { "рівнинний скрадач", en="Plains Prowler" }, -- Plains Prowler
+[37208] = { "громоголов", en="Thunderhead" }, -- Thunderhead
+[37557] = { "громояструб-захмарник", en="Thunderhawk Cloudscraper" }, -- Thunderhawk Cloudscraper
+[37560] = { "бритвогривий слідопит", en="Razormane Pathfinder" }, -- Razormane Pathfinder
+[37570] = { "Наралекс", en="Naralex" }, -- Naralex
+[37660] = { "бритвогривий очман", en="Razormane Warfrenzy" }, -- Razormane Warfrenzy
+[37661] = { "бритвогрива провидиця", en="Razormane Seer" }, -- Razormane Seer
+[37680] = { "Шпичка Гайкокрут", "ваша виконавча асистентка", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[37724] = { "провидиця Вороняче Перо", "тренерка жерців", en="Seer Ravenfeather" }, -- Seer Ravenfeather <Priest Trainer>
+[37803] = { "Маркус", en="Marcus" }, -- Marcus
 [37804] = { "повітряна куля \"Каджа-Коли\"", en="Kaja'Cola Balloon" }, -- Kaja'Cola Balloon
+[37847] = { "Манкрік", en="Mankrik" }, -- Mankrik
+[37940] = { "Кривозуб", "ватаг Бритвогривих", en="Mangletooth" }, -- Mangletooth
 [38120] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
 [38124] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
-[38387] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
+[38225] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[38314] = { "Муйо", "послідовник Наралекса", en="Muyoh" }, -- Muyoh
+[38326] = { "шаман Темного Списа", en="Darkspear Shaman", feminine="шаманка Темного Списа" }, -- Darkspear Shaman
+[38387] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[38467] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
+[38469] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
 [38515] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
 [38516] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
-[38869] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
-[38928] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка" }, -- Sassy Hardwrench
+[38530] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[38532] = { "Марін Гогельмогель", "барон Пристробляха", en="Marin Noggenfogger" }, -- Marin Noggenfogger
+[38798] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
+[38806] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
+[38832] = { "барон", "вихованець мисливця Блейка", en="Baron" }, -- Huntsman Blake
+[38869] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[38895] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[38910] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[38928] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[38935] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
+[38966] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[38999] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[39004] = { "карликовий береговий повзун", en="Pygmy Surf Crawler" }, -- Pygmy Surf Crawler
+[39035] = { "троль-слуга Водін", en="Wodin the Troll-Servant" }, -- Wodin the Troll-Servant
+[39036] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[39038] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[39118] = { "генерал Двокосий", en="General Twinbraid" }, -- General Twinbraid
+[39119] = { "Мебок Міцрікс", en="Mebok Mizzyrix" }, -- Mebok Mizzyrix
+[39174] = { "Фіґлі Вигнанець", en="Feegly the Exiled" }, -- Feegly the Exiled
 [39199] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
 [39281] = { "Фентон Стомосхиб", en="Fenton Frazzlecraz" }, -- Fenton Frazzlecraz
+[39339] = { "скельний велетень", en="Cliff Giant" }, -- Cliff Giant
+[39391] = { "сутінковий неофіт", en="Twilight Neophyte", feminine="сутінкова неофітка" }, -- Twilight Neophyte
+[39394] = { "Летлас", en="Lethlas" }, -- Lethlas
+[39403] = { "сутінковий вогнегубитель", en="Twilight Flamereaver", feminine="сутінкова вогнегубителька" }, -- Twilight Flamereaver
+[39407] = { "Ісондра", en="Ysondre" }, -- Ysondre
+[39411] = { "шаман Служителів Землі", "Служителі Землі", en="Earthen Ring Shaman", feminine="шаманка Служителів Землі" }, -- Earthen Ring Shaman <The Earthen Ring>
+[39480] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[39588] = { "гіджальський олень", en="Hyjal Stag" }, -- Hyjal Stag
+[39594] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
+[39660] = { "цілителька духу", en="Spirit Healer" }, -- Spirit Healer
+[39728] = { "воїн Гребеня Ненависті", en="Hatecrest Warrior" }, -- Hatecrest Warrior
+[39733] = { "чаклунка Гребеня Ненависті", en="Hatecrest Sorceress" }, -- Hatecrest Sorceress
+[39810] = { "палаючий вигнанець", en="Burning Exile" }, -- Burning Exile
+[39829] = { "палаючий вигнанець", en="Burning Exile" }, -- Burning Exile
+[39853] = { "Таерар", en="Taerar" }, -- Taerar
+[39857] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[39858] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[39867] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[39893] = { "Джоун Плоскогірний", en="Jawn Highmesa" }, -- Jawn Highmesa
+[39895] = { "Канаті Сіра Хмара", en="Kanati Greycloud" }, -- Kanati Greycloud
+[39896] = { "лихошрамний єті", en="Feral Scar Yeti" }, -- Feral Scar Yeti
+[39898] = { "Шин", "приборкувачка виверн", en="Shyn" }, -- Shyn <Wind Rider Master>
+[39908] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[39933] = { "Тайрус Чорноріг", en="Tyrus Blackhorn" }, -- Tyrus Blackhorn
+[39946] = { "Кариссія Місячна Мисливиця", "лідерка Нового Таланаару", en="Caryssia Moonhunter" }, -- Caryssia Moonhunter
+[39950] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[39963] = { "Мотеґа Вогняна Грива", en="Motega Firemane" }, -- Motega Firemane
+[39992] = { "Рендо", "продавчиня шкіряних обладунків", en="Rendow" }, -- Rendow <Leather Armor Merchant>
+[40011] = { "Плямчик", en="Spot" }, -- Spot
+[40026] = { "гірський велетень", en="Mountain Giant" }, -- mountain giant
+[40027] = { "Фіззл Латуноболт", "співвласник Швидкісної баржі Фіззла та Поззіка", en="Fizzle Brassbolts" }, -- Fizzle Brassbolts
+[40028] = { "Поззік", en="Pozzik" }, -- Pozzik
+[40061] = { "буревійка племені Ґалак", en="Galak Stormer" }, -- Galak Stormer
+[40062] = { "молотобій племені Ґалак", en="Galak Mauler" }, -- Galak Mauler
+[40063] = { "чередник племені Ґалак", en="Galak Wrangler" }, -- Galak Wrangler
+[40109] = { "розвідувач Ґунстан", "Ліга дослідників", en="Prospector Gunstan" }, -- Prospector Gunstan <Explorers' League>
+[40132] = { "Вестія Місяцеспис", en="Vestia Moonspear" }, -- Vestia Moonspear
+[40140] = { "верховний друїд Фендрал Оленеріг", en="Arch Druid Fandral Staghelm" }, -- Fandral Staghelm
+[40147] = { "барон Геддон", en="Baron Geddon" }, -- Baron Geddon
+[40172] = { "Тайрус Чорноріг", en="Tyrus Blackhorn" }, -- Tyrus Blackhorn
+[40180] = { "верховний друїд Фендрал Оленеріг", en="Arch Druid Fandral Staghelm" }, -- Fandral Staghelm
+[40224] = { "лютошрамний єті", en="Rage Scar Yeti" }, -- Rage Scar Yeti
+[40226] = { "Пратт Макґруббен", "товари для шкірництва", en="Pratt McGrubben" }, -- Pratt McGrubben <Leatherworking Supplies>
+[40289] = { "Ізера", en="Ysera" }, -- Ysera
+[40344] = { "Ніса", en="Nyse" }, -- Nyse
+[40345] = { "Тиссіана", en="Thyssiana" }, -- Thyssiana
+[40369] = { "Фалфіндел Шляхостраж", en="Falfindel Waywarder" }, -- Falfindel Waywarder
+[40412] = { "м'ясар", en="Butcher", feminine="м'ясарка" }, -- butcher
+[40475] = { "Джинкі Скрутка", "інженерні припаси", en="Jinky Twizzlefixxit" }, -- Jinky Twizzlefixxit <Engineering Supplies>
+[40487] = { "Раззерік", en="Razzeric" }, -- Razzeric
+[40539] = { "жук", en="Beetle" }, -- Beetle
+[40554] = { "Різзл Латуноболт", en="Rizzle Brassbolts" }, -- Rizzle Brassbolts
+[40556] = { "Замек", en="Zamek" }, -- Zamek
+[40572] = { "Гордовита Модистка", "кутюр'є", en="Haughty Modiste" }, -- Haughty Modiste
+[40585] = { "спора", en="Spore" }, -- Spore
+[40589] = { "Могиль Хуткоріз", "м'ясар", en="Dirge Quikcleave" }, -- Dirge Quikcleave <Butcher>
+[40591] = { "гощик-майстер Міґлен", en="Drag Master Miglen" }, -- Drag Master Miglen
+[40595] = { "Килимошип", en="Rugfizzle" }, -- Rugfizzle
+[40598] = { "гощик-майстер Міґлен", en="Drag Master Miglen" }, -- Drag Master Miglen
+[40599] = { "Килимошип", en="Rugfizzle" }, -- Rugfizzle
+[40688] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
+[40689] = { "Ізера", en="Ysera" }, -- Ysera
+[40763] = { "Марін Гогельмогель", "барон Пристробляха", en="Marin Noggenfogger" }, -- Marin Noggenfogger
+[40773] = { "Кенарій", en="Cenarius" }, -- Cenarius
+[40793] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
+[40794] = { "син полум'я", en="Son of Flame" }, -- Son of Flame
+[40803] = { "Кенарій", en="Cenarius" }, -- Cenarius
+[40804] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[40805] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[40832] = { "Дейзі", "корчмарка", en="Daisy" }, -- Daisy <Innkeeper>
+[40833] = { "Тіала Білогрива", en="Tiala Whitemane" }, -- Tiala Whitemane
+[40885] = { "Віззл Латуноболт", en="Wizzle Brassbolts" }, -- Wizzle Brassbolts
+[40888] = { "Синдж", en="Synge" }, -- Synge
+[40907] = { "Кларисса", en="Clarissa" }, -- Clarissa
+[40928] = { "Ізера", en="Ysera" }, -- Ysera
+[40940] = { "молодий вендиго", en="Young Wendigo" }, -- wendigo
+[40941] = { "вендиго", en="Wendigo" }, -- wendigo
+[40969] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[41003] = { "Мортіс Шелест Крила", "друїд Кігтя", en="Morthis Whisperwing" }, -- Morthis Whisperwing <Druid of the Talon>
+[41006] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
+[41008] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[41032] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[41046] = { "гном-інженер", en="Gnome Engineer", feminine="гномка-інженерка" }, -- Gnome Engineer
+[41059] = { "кровопивця Піщанолютих", en="Sandfury Blood Drinker" }, -- Sandfury Blood Drinker
+[41065] = { "знахар Піщанолютих", en="Sandfury Witch Doctor", feminine="знахарка Піщанолютих" }, -- Sandfury Witch Doctor
+[41066] = { "темний мисливець Піщанолютих", en="Sandfury Shadowhunter", feminine="темна мисливиця Піщанолютих" }, -- Sandfury Shadowhunter
+[41072] = { "рубайло Драконової Пащі", en="Dragonmaw Grunt" }, -- Dragonmaw Grunt
+[41074] = { "горянин Ґруґельм", en="Mountaineer Grugelm" }, -- Mountaineer Grugelm
+[41075] = { "горянин Рарен", en="Mountaineer Rharen" }, -- Mountaineer Rharen
+[41080] = { "розвідник Драконової Пащі", en="Dragonmaw Scout" }, -- Dragonmaw Scout
+[41097] = { "соляний василіск", en="Saltstone Basilisk" }, -- Saltstone Basilisk
+[41099] = { "соляний кришталешкур", en="Saltstone Crystalhide" }, -- Saltstone Crystalhide
+[41100] = { "скорпід-розоритель", en="Scorpid Reaver" }, -- Scorpid Reaver
+[41101] = { "скорпід-вбивця", en="Scorpid Terror" }, -- Scorpid Terror
+[41103] = { "блископанцирний міцнохап", en="Sparkleshell Snapper" }, -- Sparkleshell Snapper
+[41104] = { "блископанцирна черепаха", en="Sparkleshell Tortoise" }, -- Sparkleshell Tortoise
+[41109] = { "соляний камнегляд", en="Saltstone Gazer" }, -- Saltstone Gazer
+[41111] = { "стерв'ятник соляних рівнин", en="Salt Flats Vulture" }, -- Salt Flats Vulture
+[41113] = { "блископанцирний бурильник", en="Sparkleshell Borer" }, -- Sparkleshell Borer
+[41114] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
+[41121] = { "морозогривий провидець", en="Frostmane Seer", feminine="морозогрива провидиця" }, -- Frostmane Seer
+[41122] = { "морозогривий снігоступ", en="Frostmane Snowstrider", feminine="морозогрива снігоступка" }, -- Frostmane Snowstrider
+[41135] = { "\"Курча\" Джонсон", en="\"Plucky\" Johnson" }, -- "Plucky" Johnson
+[41148] = { "шукач Порожнечі", en="Void Seeker" }, -- Void Seeker
+[41172] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[41184] = { "Різнек", en="Riznek" }, -- Riznek
+[41190] = { "Краззл Жвавоверт", en="Crazzle Sprysprocket" }, -- Crazzle Sprysprocket
+[41196] = { "Крейвел Вуглеборід", en="Kravel Koalbeard" }, -- Kravel Koalbeard
+[41199] = { "начальник перегонового треку Жерін", en="Trackmaster Zherin" }, -- Trackmaster Zherin
+[41217] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[41234] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
+[41239] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
+[41243] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[41270] = { "Оніксія", en="Onyxia" }, -- Onyxia
+[41278] = { "\"Кухарчик\" Недосоленко", "шеф-кухар", en="\"Cookie\" McWeaksauce" }, -- "Cookie" McWeaksauce <Chef>
+[41279] = { "Лорам Таліпедес", en="Loramus Thalipedes" }, -- Loramus Thalipedes
+[41280] = { "Разеліх-Губитель", en="Razelikh the Defiler" }, -- Razelikh the Defiler
+[41287] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[41297] = { "Карл Боран", en="Karl Boran" }, -- Karl Boran
+[41302] = { "молотобій племені Ґалак", en="Galak Mauler" }, -- Galak Mauler
+[41305] = { "буревійка племені Ґалак", en="Galak Stormer" }, -- Galak Stormer
+[41306] = { "чередник племені Ґалак", en="Galak Wrangler" }, -- Galak Wrangler
+[41307] = { "перший помічник Снелліґ", en="First Mate Snellig" }, -- First Mate Snellig
+[41342] = { "строкатий верескун", en="Mottled Screecher" }, -- Mottled Screecher
+[41343] = { "строкатий раптор", en="Mottled Raptor" }, -- Mottled Raptor
+[41371] = { "шукач Порожнечі", en="Void Seeker" }, -- Void Seeker
+[41376] = { "Нефаріан", en="Nefarian" }, -- Nefarian
+[41379] = { "лорд Віктор Нефарій", "повелитель Чорнокаменю", en="Lord Victor Nefarius" }, -- Lord Victor Nefarius
+[41390] = { "мохошкурий гнол", en="Mosshide Gnoll" }, -- Mosshide Gnoll
+[41391] = { "мохошкурий містик", en="Mosshide Mystic" }, -- Mosshide Mystic
+[41392] = { "Квентін", en="Quentin" }, -- Quentin
+[41400] = { "плоскогірний бритвозуб", en="Highland Razormaw" }, -- Highland Razormaw
+[41401] = { "плоскогірний серпопазур", en="Highland Scytheclaw" }, -- Highland Scytheclaw
+[41406] = { "Аессіна", en="Aessina" }, -- Aessina
+[41411] = { "розвідувач Вельґар", "Ліга дослідників", en="Prospector Whelgar" }, -- Prospector Whelgar <Explorers' League>
+[41412] = { "Ормер Залізов'яз", en="Ormer Ironbraid" }, -- Ormer Ironbraid
+[41413] = { "Меррін Кам'яноткач", "Ліга дослідників", en="Merrin Rockweaver" }, -- Merrin Rockweaver <Explorers' League>
+[41419] = { "кроколіск Заболоття", en="Wetlands Crocolisk" }, -- Wetlands Crocolisk
+[41421] = { "Рау Скелеброд", en="Rau Cliffrunner" }, -- Rau Cliffrunner
+[41425] = { "синьожабрий мурлок", en="Bluegill Murloc" }, -- Bluegill Murloc
+[41426] = { "синьожабрий оракул", en="Bluegill Oracle" }, -- Bluegill Oracle
+[41427] = { "проклятий морський піхотинець", en="Cursed Marine" }, -- Cursed Marine
+[41428] = { "проклятий моряк", en="Cursed Sailor" }, -- Cursed Sailor
+[41429] = { "капітан Галиндор", en="Captain Halyndor" }, -- Captain Halyndor
+[41433] = { "Джеймс Галлоран", en="James Halloran" }, -- James Halloran
+[41435] = { "Фрадд Хуткозчіп", "інженерні припаси", en="Fradd Swiftgear" }, -- Fradd Swiftgear <Engineering Supplies>
+[41444] = { "Брієнна Зореблиск", en="Brienna Starglow" }, -- Brienna Starglow
+[41446] = { "Талія Бурштиношкура", en="Thalia Amberhide" }, -- Thalia Amberhide
+[41447] = { "Бор'зен", en="Bor'zehn" }, -- Bor'zehn
+[41448] = { "Наґ'зен", en="Nag'zehn" }, -- Nag'zehn
+[41452] = { "Старн", "вогнепальна зброя та луки", en="Starn" }, -- Starn <Gunsmith & Bowyer>
+[41458] = { "спостерігач скель Довгорогий", en="Cliffwatcher Longhorn" }, -- Cliffwatcher Longhorn
+[41468] = { "сміливець Розкутого Вітру", en="Freewind Brave", feminine="сміливиця Розкутого Вітру" }, -- Freewind Brave
+[41474] = { "гончак мани", en="Manahound" }, -- Manahound
+[41478] = { "сніжний вовк-вистежувач", en="Snow Tracker Wolf" }, -- Snow Tracker Wolf
+[41480] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[41503] = { "Ретіль Вартовий Природи", en="Rethiel the Greenwarden" }, -- Rethiel the Greenwarden
+[41556] = { "Балґарас Паскудний", en="Balgaras the Foul" }, -- Balgaras the Foul
+[41559] = { "капітан Міцнорук", en="Captain Stoutfist" }, -- Captain Stoutfist
+[41630] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[41631] = { "Кенарій", en="Cenarius" }, -- Cenarius
+[41632] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[41634] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
+[41651] = { "Ворона", en="Raven" }, -- Raven
+[41652] = { "сутінковий чемпіон", en="Twilight Champion", feminine="сутінкова чемпіонка" }, -- Twilight Champion
+[41682] = { "архієпископ Бенедикт", en="Archbishop Benedictus" }, -- Archbishop Benedictus
+[41710] = { "леді Джайна Праудмур", "правителька Терамору", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[41865] = { "дарнаський розвідник", en="Darnassian Scout", feminine="дарнаська розвідниця" }, -- Darnassian Scout
+[41872] = { "сукуб-прислужниця", en="Succubus Minion" }, -- Succubus Minion
+[41873] = { "біс-прислужник", en="Imp Minion" }, -- Imp Minion
+[41897] = { "горянин Дун-Морога", en="Dun Morogh Mountaineer", feminine="горянка Дун-Морога" }, -- Dun Morogh Mountaineer
+[41944] = { "Ґален Тролебій", "полеглий принц Стромварту", en="Galen Trollbane" }, -- Galen Trollbane
+[41983] = { "учень Крітен", en="Apprentice Kryten" }, -- Apprentice Kryten
+[41984] = { "Кларисса", en="Clarissa" }, -- Clarissa
+[42107] = { "рубайло Драконової Пащі", en="Dragonmaw Grunt" }, -- Dragonmaw Grunt
+[42110] = { "синьожабрий калюжник", en="Bluegill Puddlejumper" }, -- Bluegill Puddlejumper
+[42111] = { "синьожабрий здобувач", en="Bluegill Forager" }, -- Bluegill Forager
+[42130] = { "Ґор'мул", en="Gor'mul" }, -- Gor'mul
+[42131] = { "Фальстад Дикий Молот", "представник клану Диких Молотів", en="Falstad Wildhammer" }, -- Falstad Wildhammer
+[42162] = { "скелет", en="Skeleton" }, -- Skeleton
+[42170] = { "сніжний леопард", en="Snow Leopard" }, -- Snow Leopard
+[42193] = { "примарнолапий бігун", en="Ghostpaw Runner" }, -- Ghostpaw Runner
 [42195] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
+[42218] = { "королівський вартовий Штормовію", en="Stormwind Royal Guard", feminine="королівська вартова Штормовію" }, -- Stormwind Royal Guard
+[42230] = { "Ґромаґ", en="Grawmug" }, -- Grawmug
+[42242] = { "примарнолапий альфа", en="Ghostpaw Alpha" }, -- Ghostpaw Alpha
+[42265] = { "заколотник Темного Заліза", en="Dark Iron Insurgent" }, -- Dark Iron Insurgent
+[42283] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[42290] = { "сніжний вовк", en="Winter Wolf" }, -- Winter Wolf
+[42304] = { "штормовійський вартовий", en="Stormwind City Guard", feminine="штормовійська вартова" }, -- Stormwind City Guard
+[42307] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[42317] = { "Верховний штукар Меккакруть", "король гномів", en="High Tinker Mekkatorque" }, -- Gelbin Mekkatorque
+[42328] = { "тренувальний манекен", en="Practice Dummy" }, -- Practice Dummy
+[42427] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
+[42515] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
+[42600] = { "Керн Криваве Копито", "верховний ватаг", en="Cairne Bloodhoof" }, -- Cairne Bloodhoof
+[42602] = { "Рексар", "чемпіон Орди", en="Rexxar" }, -- Rexxar
+[42613] = { "старійшина Розірваний Бивень", en="Elder Torntusk" }, -- Elder Torntusk
+[42623] = { "вартовий бескиду", en="Bluffwatcher", feminine="вартова бескиду" }, -- Bluffwatcher
 [42640] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
+[42642] = { "голова Розірваний Бивень", en="Primal Torntusk" }, -- Primal Torntusk
+[42656] = { "найманець", en="Mercenary" }, -- mercenary
+[42662] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
+[42663] = { "гіджальська сова", en="Hyjal Owl" }, -- Hyjal Owl
+[42680] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
+[42686] = { "Керн Криваве Копито", "верховний ватаг", en="Cairne Bloodhoof" }, -- Cairne Bloodhoof
+[42688] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[42697] = { "Едвін Ван-Кліф", "бос Непокірних", en="Edwin VanCleef" }, -- Edwin VanCleef
+[42698] = { "лайдак Непокірних", en="Defias Blackguard", feminine="лайдачка Непокірних" }, -- Defias Blackguard
+[42699] = { "воїн Альянсу", en="Alliance Warrior" }, -- Alliance Warrior
+[42700] = { "пройдисвіт Альянсу", en="Alliance Rogue", feminine="пройдисвітка Альянсу" }, -- Alliance Rogue
+[42701] = { "мисливець Альянсу", en="Alliance Hunter" }, -- Alliance Hunter
+[42702] = { "маг Альянсу", en="Alliance Mage", feminine="магиня Альянсу" }, -- Alliance Mage
+[42703] = { "жрець Альянсу", en="Alliance Priest", feminine="жриця Альянсу" }, -- Alliance Priest
+[42717] = { "молодий вовк", en="Young Wolf" }, -- Young Wolf
+[42729] = { "Сарк Тотем Люті", en="Sark Ragetotem" }, -- Sark Ragetotem
+[42750] = { "маршал Ґріан Міцнокрив", "бригада Західного краю", en="Marshal Gryan Stoutmantle" }, -- Gryan Stoutmantle <The Westfall Brigade>
+[42751] = { "капітан Данувін", "бригада Західного краю", en="Captain Danuvin" }, -- Captain Danuvin <The Westfall Brigade>
+[42752] = { "розвідник Галіаан", "бригада Західного краю", en="Scout Galiaan" }, -- Scout Galiaan <The Westfall Brigade>
+[42769] = { "лайдак Непокірних", en="Defias Blackguard", feminine="лайдачка Непокірних" }, -- Defias Blackguard
+[42783] = { "вартовий Залізогарта", en="Ironforge Guard" }, -- Ironforge Guard
+[42790] = { "повелитель крові Мандокір", en="Bloodlord Mandokir" }, -- Bloodlord Mandokir
+[42794] = { "король Маґні Бронзобородий", "лорд Залізогарта", en="King Magni Bronzebeard" }, -- Magni Bronzebeard
+[42795] = { "Мурадін Бронзобородий", en="Muradin Bronzebeard" }, -- Muradin Bronzebeard
+[42797] = { "Верховний штукар Меккакруть", "король гномів", en="High Tinker Mekkatorque" }, -- Gelbin Mekkatorque
+[42799] = { "повелитель крові Мандокір", en="Bloodlord Mandokir" }, -- Bloodlord Mandokir
+[42837] = { "вершник на кажані Ґурубаші", en="Gurubashi Bat Rider" }, -- Gurubashi Bat Rider
+[42842] = { "повелитель крові Мандокір", en="Bloodlord Mandokir" }, -- Bloodlord Mandokir
+[42845] = { "скелебур", en="Rock Borer" }, -- Rock Borer
+[42849] = { "Верховний штукар Меккакруть", "король гномів", en="High Tinker Mekkatorque" }, -- Gelbin Mekkatorque
+[42855] = { "дух вовка", en="Spirit Wolf" }, -- Spirit Wolf
+[42874] = { "вартовий скверни", en="Felguard" }, -- felguard
+[42877] = { "Мортаґ'я-Хранителька", en="Morta'gya the Keeper" }, -- Morta'gya the Keeper
+[42879] = { "породження Шадри", en="Spawn of Shadra" }, -- Shadra
+[42914] = { "верховна жриця Лортуна", en="High Priestess Lorthuna" }, -- High Priestess Lorthuna
+[42919] = { "К'яґа-Хранителька", en="Qiaga the Keeper" }, -- Qiaga the Keeper
+[42928] = { "Мурадін Бронзобородий", "представник Бронзобородих", en="Muradin Bronzebeard" }, -- Muradin Bronzebeard
+[42941] = { "повелитель крові Мандокір", en="Bloodlord Mandokir" }, -- Bloodlord Mandokir
+[42971] = { "каменекрилий гаргуйль", en="Rockwing Gargoyle" }, -- Rockwing Gargoyle
+[42973] = { "око Наксрамаса", en="Eye of Naxxramas" }, -- Eye of Naxxramas
+[42975] = { "чумний гуль", en="Plague Ghoul" }, -- Plague Ghoul
+[43007] = { "Шадра", "королева отрути", en="Shadra" }, -- Shadra
+[43014] = { "біс", en="Imp" }, -- Imp
+[43023] = { "Бадд", en="Budd" }, -- Budd Nedreck
 [43095] = { "Шпичка Гайкокрут", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[43108] = { "Керр Залізогляд", en="Kerr Ironsight" }, -- Kerr Ironsight
+[43156] = { "Фраґґар Громовержець", en="Fraggar Thundermantle" }, -- Fraggar Thundermantle
+[43157] = { "Доран Сталекрил", en="Doran Steelwing" }, -- Doran Steelwing
+[43161] = { "Гостродзьоб", en="Sharpbeak" }, -- Sharpbeak
+[43194] = { "десятник Ослоу", en="Foreman Oslow" }, -- Foreman Oslow
+[43215] = { "приборкувач грифонів Кігтеруб", en="Gryphon Master Talonaxe" }, -- Gryphon Master Talonaxe
+[43245] = { "Занзіл-Вигнанець", en="Zanzil the Outcast" }, -- Zanzil the Outcast
+[43255] = { "Занзіл-Вигнанець", en="Zanzil the Outcast" }, -- Zanzil the Outcast
+[43257] = { "верховна жриця Жеклік", en="High Priestess Jeklik" }, -- High Priestess Jeklik
+[43322] = { "Занзіл-Вигнанець", en="Zanzil the Outcast" }, -- Zanzil the Outcast
+[43323] = { "верховний жрець Веноксіс", en="High Priest Venoxis" }, -- High Priest Venoxis
 [43333] = { "Шпичка Гайкокрут", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[43365] = { "туман Сну", en="Dream Fog" }, -- Dream Fog
+[43390] = { "громило Драконової Пащі", en="Dragonmaw Enforcer" }, -- Dragonmaw Enforcer
+[43391] = { "Міллхаус Манашторм", en="Millhouse Manastorm" }, -- Millhouse Manastorm
+[43396] = { "лорд Віктор Нефарій", "повелитель Чорнокаменю", en="Lord Victor Nefarius" }, -- Lord Victor Nefarius
+[43406] = { "вогняний елементаль", en="Fire Elemental" }, -- Fire Elemental
+[43496] = { "Чорний Пломінь", en="Darkblaze" }, -- Darkblaze
+[43532] = { "бруднуля", en="Muckdweller" }, -- muckdweller
+[43575] = { "громило Драконової Пащі", en="Dragonmaw Enforcer" }, -- Dragonmaw Enforcer
+[43628] = { "шаман Драконової Пащі", en="Dragonmaw Shaman", feminine="шаманка Драконової Пащі" }, -- Dragonmaw Shaman
+[43629] = { "шаман Драконової Пащі", en="Dragonmaw Shaman", feminine="шаманка Драконової Пащі" }, -- Dragonmaw Shaman
+[43713] = { "виверна", en="Wyvern" }, -- wyvern
+[43747] = { "гіпогриф", en="Hippogryph" }, -- hippogryph
+[43751] = { "гіпогриф", en="Hippogryph" }, -- hippogryph
+[43760] = { "забіяка Грабіжної Бухти", en="Booty Bay Bruiser" }, -- Booty Bay Bruiser
+[43761] = { "Морбент Скверн", en="Morbent Fel" }, -- Morbent Fel
+[43791] = { "виверна", en="Wyvern" }, -- wyvern
+[43813] = { "чемпіон Чорнокаменю", en="Blackrock Champion" }, -- Blackrock Champion
+[43830] = { "палаючий вигнанець", en="Burning Exile" }, -- Burning Exile
+[43837] = { "верховна жриця Лортуна", en="High Priestess Lorthuna" }, -- High Priestess Lorthuna
+[43845] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[43852] = { "Незримий", en="Unseen" }, -- Unseen
+[43859] = { "Тремтіній", en="Jitters" }, -- Jitters
+[43861] = { "Свен Йорґен", en="Sven Yorgen" }, -- Sven Yorgen
+[43862] = { "Стібок", "подарунок від Бальзамувальника", en="Stitches" }, -- Stitches
+[43867] = { "Шандріс Перомісяць", en="Shandris Feathermoon" }, -- Shandris Feathermoon
+[43903] = { "гвардієць Нічної варти", en="Night Watch Guard", feminine="гвардійка Нічної варти" }, -- Night Watch Guard
+[43909] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
+[43915] = { "Аберкромбі", "Бальзамувальник", en="Abercrombie" }, -- Abercrombie <The Embalmer>
+[43917] = { "скелебур", en="Rock Borer" }, -- Rock Borer
+[43923] = { "неприкаяний дух", en="Forlorn Spirit" }, -- Forlorn Spirit
+[43934] = { "фрагмент душі", en="Soul Fragment" }, -- Soul Fragment
+[43989] = { "повелитель крові Мандокір", en="Bloodlord Mandokir" }, -- Bloodlord Mandokir
+[44026] = { "шаман Драконової Пащі", en="Dragonmaw Shaman", feminine="шаманка Драконової Пащі" }, -- Dragonmaw Shaman
+[44031] = { "Магмадар", en="Magmadar" }, -- Magmadar
+[44033] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
+[44046] = { "шаман Служителів Землі", en="Earthen Ring Shaman", feminine="шаманка Служителів Землі" }, -- Earthen Ring Shaman
+[44088] = { "шаман Служителів Землі", en="Earthen Ring Shaman", feminine="шаманка Служителів Землі" }, -- Earthen Ring Shaman
+[44202] = { "Піп Хуткокміт", en="Pip Quickwit" }, -- Pip Quickwit
+[44226] = { "Сарлозуб", en="Sarltooth" }, -- Sarltooth
+[44238] = { "Гаррісон Джонс", "тренер археології", en="Harrison Jones" }, -- Harrison Jones <Archaeology Trainer>
+[44293] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[44317] = { "Прожера", en="The Ravenian" }, -- The Ravenian
+[44318] = { "Брязкоклин", en="Rattlegore" }, -- Rattlegore
+[44319] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[44320] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[44323] = { "темний магістр Ґандлінґ", "культ Проклятих", en="Darkmaster Gandling" }, -- Darkmaster Gandling <Cult of the Damned>
+[44365] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[44372] = { "Лавиніон", "повелитель елементалів", en="Avalanchion" }, -- Avalanchion
+[44391] = { "корчмарка Ширія", "корчмарка", en="Innkeeper Shyria" }, -- Innkeeper Shyria <Innkeeper>
+[44402] = { "Ольд Кам'яний Шпиль", en="Auld Stonespire" }, -- Auld Stonespire
+[44415] = { "дух Аґамаґґана", "древній", en="Spirit of Agamaggan" }, -- Agamaggan
+[44442] = { "інструкторка Малісія", en="Instructor Malicia" }, -- Instructor Malicia
+[44451] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[44458] = { "Дел Ґаррон", en="Del Gahrron" }, -- Del Gahrron
+[44461] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
+[44463] = { "барон", "вихованець мисливця Блейка", en="Baron" }, -- Huntsman Blake
+[44483] = { "Вісник Кіртонос", en="Kirtonos the Herald" }, -- Kirtonos the Herald
+[44744] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[44750] = { "Халіф Скорпідожал", en="Caliph Scorpidsting" }, -- Caliph Scorpidsting
+[44759] = { "Андре Вогнебородий", en="Andre Firebeard" }, -- Andre Firebeard
+[44765] = { "Кусака", en="Spike" }, -- Spike
+[44776] = { "Гостродзьоб", en="Sharpbeak" }, -- Sharpbeak
+[44790] = { "смертолов", en="Deathstalker", feminine="смертоловка" }, -- deathstalker
+[44860] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[44862] = { "палаючий дух", en="Burning Spirit" }, -- Burning Spirit
+[44869] = { "Марвон Заклепник", en="Marvon Rivetseeker" }, -- Marvon Rivetseeker
+[44873] = { "канюк", en="Buzzard" }, -- Buzzard
+[44875] = { "Міллхаус Манашторм", "розпорядник кузні", en="Millhouse Manastorm" }, -- Millhouse Manastorm
+[44905] = { "Дел Ґаррон", en="Del Gahrron" }, -- Del Gahrron
+[44929] = { "Тран'рек", en="Tran'rek" }, -- Tran'rek
+[44941] = { "оплутана жертва", en="Webbed Victim" }, -- Webbed Victim
+[44993] = { "Фін Оделік", en="Phin Odelic" }, -- Phin Odelic
+[44994] = { "Бартоло Ґінсетті", en="Bartolo Ginsetti" }, -- Bartolo Ginsetti
+[44995] = { "знавець Діббс", en="Loremaster Dibbs" }, -- Loremaster Dibbs
+[44996] = { "війт Генрі Малеб", en="Magistrate Henry Maleb" }, -- Henry Maleb
+[44997] = { "доглядач Смітерс", en="Caretaker Smithers" }, -- Caretaker Smithers
+[44998] = { "шаман Служителів Землі", en="Earthen Ring Shaman", feminine="шаманка Служителів Землі" }, -- Earthen Ring Shaman
+[45004] = { "виверна", en="Wyvern" }, -- wyvern
+[45005] = { "виверна", en="Wyvern" }, -- wyvern
+[45009] = { "король Маґні Бронзобородий", "лорд Залізогарта", en="King Magni Bronzebeard" }, -- Magni Bronzebeard
+[45024] = { "виверна", en="Wyvern" }, -- wyvern
+[45040] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[45042] = { "Тралл", en="Thrall" }, -- Thrall
+[45051] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[45066] = { "духовний путівник Альянсу", en="Alliance Spirit Guide", feminine="духовна путівниця Альянсу" }, -- Alliance Spirit Guide
+[45067] = { "духовний путівник Орди", en="Horde Spirit Guide", feminine="духовна путівниця Орди" }, -- Horde Spirit Guide
+[45068] = { "духовний путівник Альянсу", en="Alliance Spirit Guide", feminine="духовна путівниця Альянсу" }, -- Alliance Spirit Guide
+[45069] = { "духовний путівник Альянсу", en="Alliance Spirit Guide", feminine="духовна путівниця Альянсу" }, -- Alliance Spirit Guide
+[45070] = { "духовний путівник Альянсу", en="Alliance Spirit Guide", feminine="духовна путівниця Альянсу" }, -- Alliance Spirit Guide
+[45071] = { "духовний путівник Альянсу", en="Alliance Spirit Guide", feminine="духовна путівниця Альянсу" }, -- Alliance Spirit Guide
+[45072] = { "духовний путівник Альянсу", en="Alliance Spirit Guide", feminine="духовна путівниця Альянсу" }, -- Alliance Spirit Guide
+[45073] = { "духовний путівник Альянсу", en="Alliance Spirit Guide", feminine="духовна путівниця Альянсу" }, -- Alliance Spirit Guide
+[45074] = { "духовний путівник Орди", en="Horde Spirit Guide", feminine="духовна путівниця Орди" }, -- Horde Spirit Guide
+[45075] = { "духовний путівник Орди", en="Horde Spirit Guide", feminine="духовна путівниця Орди" }, -- Horde Spirit Guide
+[45076] = { "духовний путівник Орди", en="Horde Spirit Guide", feminine="духовна путівниця Орди" }, -- Horde Spirit Guide
+[45077] = { "духовний путівник Орди", en="Horde Spirit Guide", feminine="духовна путівниця Орди" }, -- Horde Spirit Guide
+[45078] = { "духовний путівник Орди", en="Horde Spirit Guide", feminine="духовна путівниця Орди" }, -- Horde Spirit Guide
+[45079] = { "духовний путівник Орди", en="Horde Spirit Guide", feminine="духовна путівниця Орди" }, -- Horde Spirit Guide
+[45107] = { "Єва Сархова", en="Eva Sarkhoff" }, -- Eva Sarkhoff
+[45108] = { "Люсьєн Сархов", en="Lucien Sarkhoff" }, -- Lucien Sarkhoff
+[45109] = { "Велдон Баров", "рід Барових", en="Weldon Barov" }, -- Weldon Barov
+[45110] = { "Алексій Баров", "рід Барових", en="Alexi Barov" }, -- Alexi Barov
+[45111] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[45143] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
 [45167] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
-[45213] = { "Сінестра", "дружина Смертекрила" }, -- Sinestra
+[45180] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[45200] = { "командир походу Еліґор Світанковий", "братство Світла", en="Crusade Commander Eligor Dawnbringer" }, -- Crusade Commander Eligor Dawnbringer <Brotherhood of the Light>
+[45203] = { "Димень ЛаРу", en="Smokey LaRue" }, -- Smokey LaRue
+[45206] = { "командир походу Корфакс", "братство Світла", en="Crusade Commander Korfax" }, -- Korfax, Champion of the Light <Brotherhood of the Light>
+[45207] = { "командирка Багряного Походу Маржан", "Багряний Похід", en="Scarlet Commander Marjhan" }, -- Scarlet Commander Marjhan <The Scarlet Crusade>
+[45213] = { "Сінестра", "дружина Смертекрила", en="Sinestra" }, -- Sinestra
+[45219] = { "доглядач Смітерс", en="Caretaker Smithers" }, -- Caretaker Smithers
+[45238] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[45271] = { "Монтарр", "хранитель знань", en="Montarr" }, -- Montarr <Lorekeeper>
+[45272] = { "корчмар Абеква", "корчмар", en="Innkeeper Abeqwa" }, -- Innkeeper Abeqwa <Innkeeper>
+[45274] = { "магістр Елосай", en="Magistrix Elosai" }, -- Magistrix Elosai
+[45275] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[45278] = { "сміливець Розкутого Вітру", en="Freewind Brave", feminine="сміливиця Розкутого Вітру" }, -- Freewind Brave
+[45285] = { "скелет", en="Skeleton" }, -- Skeleton
+[45296] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[45313] = { "смертолов", en="Deathstalker", feminine="смертоловка" }, -- deathstalker
+[45323] = { "в'юнник Камнелуп", "братство Світла", en="Packmaster Stonebruiser" }, -- Packmaster Stonebruiser <Brotherhood of the Light>
+[45325] = { "в'ючний мул", en="Pack Mule" }, -- Pack Mule
+[45328] = { "в'юнник Камнелуп", "братство Світла", en="Packmaster Stonebruiser" }, -- Packmaster Stonebruiser <Brotherhood of the Light>
+[45329] = { "командир походу Еліґор Світанковий", "братство Світла", en="Crusade Commander Eligor Dawnbringer" }, -- Crusade Commander Eligor Dawnbringer <Brotherhood of the Light>
+[45330] = { "архімагиня Анжела Досантос", "братство Світла", en="Archmage Angela Dosantos" }, -- Angela Dosantos <Brotherhood of the Light>
+[45345] = { "потвора", en="Abomination" }, -- abomination
+[45381] = { "геомант Зловісного Тотема", en="Grimtotem Geomancer", feminine="геомантка Зловісного Тотема" }, -- Grimtotem Geomancer
+[45383] = { "тупотун Зловісного Тотема", en="Grimtotem Stomper", feminine="тупотунка Зловісного Тотема" }, -- Grimtotem Stomper
+[45385] = { "розоритель Зловісного Тотема", en="Grimtotem Reaver", feminine="розорителька Зловісного Тотема" }, -- Grimtotem Reaver
+[45398] = { "Гризлак", "помічник троголупа", en="Grizlak" }, -- Grizlak
+[45415] = { "воскреслий гвардієць", en="Risen Guardsman", feminine="воскресла гвардійка" }, -- Risen Guardsman
+[45418] = { "Ґрандіґ Темна Хмара", "вождь Зловісного Тотема", en="Grundig Darkcloud" }, -- Grundig Darkcloud
+[45438] = { "Арнак Зловісний Тотем", "вождь усіх вождів Зловісного Тотема з Темнохмарного верхів'я", en="Arnak Grimtotem" }, -- Arnak Grimtotem
+[45439] = { "великий тарган", en="Cockroach" }, -- Cockroach
+[45442] = { "Лакота Пісня Вітру", en="Lakota Windsong" }, -- Lakota Windsong
+[45446] = { "Арікара", "Помста", en="Arikara" }, -- Arikara
+[45447] = { "Арікара", "Помста", en="Arikara" }, -- Arikara
+[45448] = { "Арікара", "Помста", en="Arikara" }, -- Arikara
+[45449] = { "Арікара", "Помста", en="Arikara" }, -- Arikara
+[45453] = { "чумний гончак", en="Blighthound" }, -- Blighthound
+[45505] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[45525] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[45529] = { "Керн Криваве Копито", "верховний ватаг", en="Cairne Bloodhoof" }, -- Cairne Bloodhoof
+[45560] = { "Акрідостраз", en="Acridostrasz" }, -- Acridostrasz
+[45605] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[45617] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[45666] = { "король Маґні Бронзобородий", "лорд Залізогарта", en="King Magni Bronzebeard" }, -- Magni Bronzebeard
+[45667] = { "Верховний штукар Меккакруть", "король гномів", en="High Tinker Mekkatorque" }, -- Gelbin Mekkatorque
 [45668] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[45774] = { "пророк Велен", en="Prophet Velen" }, -- Prophet Velen
+[45776] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[45779] = { "архімаг Атерік", en="Archmage Ataeric" }, -- Archmage Ataeric
+[45796] = { "майстер Матіас Гич", "лідер ШУР", en="Master Mathias Shaw" }, -- Mathias Shaw
+[45801] = { "Еліза", "наречена Бальзамувальника", en="Eliza" }, -- Eliza
+[45803] = { "архімаг Атерік", en="Archmage Ataeric" }, -- Archmage Ataeric
+[45807] = { "пилкозубий кроколіск", en="Sawtooth Crocolisk" }, -- Sawtooth Crocolisk
+[45815] = { "тінемагиня Вівіан Лягроб", "карґатський експедиційний загін", en="Shadowmage Vivian Lagrave" }, -- Vivian Lagrave <Kargath Expeditionary Force>
+[45817] = { "ієрофант Теодора Мульваданія", "карґатський експедиційний загін", en="Hierophant Theodora Mulvadania" }, -- Theodora Mulvadania <Kargath Expeditionary Force>
+[45818] = { "Лекслорт", "карґатський експедиційний загін", en="Lexlort" }, -- Lexlort <Kargath Expeditionary Force>
+[45820] = { "Разал'клин", "карґатський експедиційний загін", en="Razal'blade" }, -- Razal'blade <Kargath Expeditionary Force>
+[45821] = { "Тал'трак Гордий Бивень", "карґатський експедиційний загін", en="Thal'trak Proudtusk" }, -- Thal'trak Proudtusk <Kargath Expeditionary Force>
+[45823] = { "верховний кат Нузрак", "карґатський експедиційний загін", en="High Executioner Nuzrak" }, -- High Executioner Nuzrak <Kargath Expeditionary Force>
+[45824] = { "Громосерд", "карґатський експедиційний загін", en="Thunderheart" }, -- Thunderheart <Kargath Expeditionary Force>
+[45839] = { "Ґаламав-Стрілець", "карґатський експедиційний загін", en="Galamav the Marksman" }, -- Galamav the Marksman <Kargath Expeditionary Force>
+[45840] = { "воєвода Клинозуб", "карґатський експедиційний загін", en="Warlord Goretooth" }, -- Warlord Goretooth <Kargath Expeditionary Force>
+[45843] = { "Юка Гвинтокран", "інженерні припаси", en="Yuka Screwspigot" }, -- Yuka Screwspigot <Engineering Supplies>
+[45849] = { "Тінкі Пароварченко", en="Tinkee Steamboil" }, -- Tinkee Steamboil
+[45850] = { "Максворт Суперблиск", en="Maxwort Uberglint" }, -- Maxwort Uberglint
+[45888] = { "Маяра Яскравокрила", "ополчення Моргани", en="Mayara Brightwing" }, -- Mayara Brightwing <Morgan's Militia>
+[45890] = { "маршал Максвелл", "ополчення Моргани", en="Marshal Maxwell" }, -- Marshal Maxwell <Morgan's Militia>
+[45891] = { "Оралій", "ополчення Моргани", en="Oralius" }, -- Oralius <Morgan's Militia>
+[45892] = { "Джалінда Гілочка", "ополчення Моргани", en="Jalinda Sprig" }, -- Jalinda Sprig <Morgan's Militia>
+[45903] = { "Моргана", "ополчення Моргани", en="Morgan" }, -- Morgan <Morgan's Militia>
+[45951] = { "Памела Редпат", en="Pamela Redpath" }, -- Pamela Redpath
+[45956] = { "баронеса Анастарі", en="Baroness Anastari" }, -- Baroness Anastari
+[45960] = { "Рімблат Землетрощитель", "Служителі Землі", en="Rimblat Earthshatter" }, -- Rimblat Earthshatter <The Earthen Ring>
+[45961] = { "Памела Редпат", en="Pamela Redpath" }, -- Pamela Redpath
+[46022] = { "Бізіль Гайкоключ", en="Beezil Linkspanner" }, -- Beezil Linkspanner
+[46026] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[46043] = { "Бізіль Гайкоключ", en="Beezil Linkspanner" }, -- Beezil Linkspanner
+[46049] = { "архімаг Атерік", en="Archmage Ataeric" }, -- Archmage Ataeric
+[46058] = { "потвора", en="Abomination" }, -- abomination
+[46059] = { "Фін Оделік", en="Phin Odelic" }, -- Phin Odelic
+[46060] = { "Бартоло Ґінсетті", en="Bartolo Ginsetti" }, -- Bartolo Ginsetti
+[46061] = { "знавець Діббс", en="Loremaster Dibbs" }, -- Loremaster Dibbs
+[46062] = { "війт Генрі Малеб", en="Magistrate Henry Maleb" }, -- Henry Maleb
+[46092] = { "командирка Багряного Походу Маржан", "Багряний Похід", en="Scarlet Commander Marjhan" }, -- Scarlet Commander Marjhan <The Scarlet Crusade>
+[46093] = { "Матаус Гнівоклят", "Багряний Похід", en="Mataus the Wrathcaster" }, -- Mataus the Wrathcaster <The Scarlet Crusade>
+[46094] = { "мисливець Леопольд", "Багряний Похід", en="Huntsman Leopold" }, -- Huntsman Leopold <The Scarlet Crusade>
+[46095] = { "Роган-Душогуб", "Багряний Похід", en="Rohan the Assassin" }, -- Rohan the Assassin <The Scarlet Crusade>
+[46096] = { "лорд Багряного Походу Вальдемар", en="Crusader Lord Valdelmar" }, -- Crusader Lord Valdelmar
+[46124] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[46167] = { "Стівен Лобар", en="Stephen Browman" }, -- Stephen Browman
+[46252] = { "річколапий шаман", en="Riverpaw Shaman" }, -- Riverpaw Shaman
+[46254] = { "Кнурило", en="Hogger" }, -- Hogger
+[46338] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[46385] = { "майстер Матіас Гич", "лідер ШУР", en="Master Mathias Shaw" }, -- Mathias Shaw
+[46405] = { "вартовий в'язниці", en="Stockade Guard" }, -- Stockade Guard
+[46407] = { "поранений вартовий в'язниці", en="Injured Stockade Guard" }, -- Injured Stockade Guard
+[46409] = { "наглядач Телвотер", en="Warden Thelwater" }, -- Warden Thelwater
+[46410] = { "медсестра Ліліан", en="Nurse Lillian" }, -- Nurse Lillian
+[46447] = { "поранений гном", en="Injured Gnome" }, -- Injured Gnome
+[46453] = { "Фела", "продавчиня важких обладунків", en="Fela" }, -- Fela <Heavy Armor Merchant>
+[46458] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[46463] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[46466] = { "Тельдурін Загублений", en="Theldurin the Lost" }, -- Theldurin the Lost
+[46471] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[46484] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[46500] = { "Кнурило", en="Hogger" }, -- Hogger
+[46502] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[46518] = { "в'ючний мул", en="Pack Mule" }, -- Pack Mule
+[46520] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[46537] = { "в'ючний мул", en="Pack Mule" }, -- Pack Mule
+[46539] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[46550] = { "штормовійський вартовий", en="Stormwind City Guard", feminine="штормовійська вартова" }, -- Stormwind City Guard
+[46573] = { "оракул Злобного Плавника", en="Vile Fin Oracle" }, -- Vile Fin Oracle
+[46574] = { "хвилелов Злобного Плавника", en="Vile Fin Tidehunter" }, -- Vile Fin Tidehunter
+[46594] = { "сержант Громовий Ріг", "квартирмейстер завоювання", en="Sergeant Thunderhorn" }, -- Sergeant Thunderhorn <Conquest Quartermaster>
+[46653] = { "Ґаріанна Шипотюк", en="Garyanne Fleezlebop" }, -- Garyanne Fleezlebop
 [46654] = { "Рея", en="Rhea" }, -- Rhea
+[46656] = { "Джаммал'ан-Пророк", en="Jammal'an the Prophet" }, -- Jammal'an the Prophet
+[46745] = { "штормовійський вартовий", en="Stormwind City Guard", feminine="штормовійська вартова" }, -- Stormwind City Guard
+[46768] = { "Вартовий", en="The Warden" }, -- The Warden
+[46782] = { "Бадд", en="Budd" }, -- Budd Nedreck
 [46785] = { "лорд Розпал", en="Lord Cannon" }, -- Lord Cannon
+[46795] = { "оргріммарський рубайло", en="Orgrimmar Grunt" }, -- Orgrimmar Grunt
+[46798] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[46820] = { "викликаний елементаль води", en="Summoned Water Elemental" }, -- Summoned Water Elemental
+[46852] = { "Ерік \"Стрімкий\"", en="Eric \"The Swift\"" }, -- Eric "The Swift"
+[46853] = { "Бейлоґ", en="Baelog" }, -- Baelog
+[46854] = { "Олаф", en="Olaf" }, -- Olaf
+[46855] = { "Ерік \"Стрімкий\"", en="Eric \"The Swift\"" }, -- Eric "The Swift"
+[46856] = { "Бейлоґ", en="Baelog" }, -- Baelog
+[46857] = { "Олаф", en="Olaf" }, -- Olaf
+[46875] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[46890] = { "вбивця Розтрощеної Руки", en="Shattered Hand Assassin" }, -- Shattered Hand Assassin
+[46892] = { "майстер Матіас Гич", "лідер ШУР", en="Master Mathias Shaw" }, -- Mathias Shaw
 [46895] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[46910] = { "гончак ядра", en="Core Hound" }, -- Core Hound
+[46911] = { "лавовий сплеск", en="Lava Surger" }, -- Lava Surger
+[46935] = { "Ґурґток", "організатор боїв", en="Gurgthock" }, -- Gurgthock
+[46936] = { "троль-слуга Водін", en="Wodin the Troll-Servant" }, -- Wodin the Troll-Servant
+[46940] = { "Маґінор Дюма", "маг-майстер", en="Maginor Dumas" }, -- Maginor Dumas
+[46941] = { "верховний чаклун Андромат", en="High Sorcerer Andromath" }, -- High Sorcerer Andromath
+[46942] = { "генерал Марк Джонатан", "верховний командир штормовійської оборони", en="General Marcus Jonathan" }, -- Marcus Jonathan
 [46955] = { "Рея", en="Rhea" }, -- Rhea
+[46957] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[46961] = { "оргріммарський рубайло", en="Orgrimmar Grunt" }, -- Orgrimmar Grunt
+[46978] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[46981] = { "Нічнохльостка", en="Nightlash" }, -- Nightlash
+[46986] = { "пророк Велен", en="Prophet Velen" }, -- Prophet Velen
+[47001] = { "анахорет Авуун", en="Anchorite Avuun" }, -- Anchorite Avuun
+[47004] = { "Маґтур", en="Magtoor" }, -- Magtoor
+[47008] = { "Фенвік Татрос", en="Fenwick Thatros" }, -- Fenwick Thatros
+[47017] = { "вогняний елементаль", en="Fire Elemental" }, -- Fire Elemental
+[47023] = { "Тул Воронокіготь", en="Thule Ravenclaw" }, -- Thule Ravenclaw
+[47041] = { "Ніка Кровошрам", en="Neeka Bloodscar" }, -- Neeka Bloodscar
+[47050] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[47060] = { "караульний Сріблястого Світанку", "Сріблястий Похід", en="Argent Sentry", feminine="караульна Сріблястого Світанку" }, -- Argent Sentry <The Argent Crusade>
+[47063] = { "Валянок", en="Boots" }, -- Boots
+[47080] = { "Люсьєн Ключожбур", en="Lucien Tosselwrench" }, -- Lucien Tosselwrench
+[47113] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[47152] = { "сутінковий елементаліст", en="Twilight Elementalist", feminine="сутінкова елементалістка" }, -- Twilight Elementalist
+[47157] = { "Тельдурін Загублений", en="Theldurin the Lost" }, -- Theldurin the Lost
+[47158] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[47163] = { "Люсьєн Ключожбур", en="Lucien Tosselwrench" }, -- Lucien Tosselwrench
+[47194] = { "вівця", en="Sheep" }, -- Sheep
 [47208] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
 [47209] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
+[47243] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
+[47244] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
+[47339] = { "Бісик", en="Impsy" }, -- Impsy
+[47360] = { "Бісик", en="Impsy" }, -- Impsy
+[47366] = { "Бісик", en="Impsy" }, -- Impsy
+[47383] = { "Ласовпар", "продавець морозива", en="Brivelthwerp" }, -- Brivelthwerp
+[47388] = { "силітид-спустошник", en="Silithid Ravager" }, -- Silithid Ravager
+[47445] = { "жеребець-скелет", en="Skeletal Steed" }, -- Skeletal Steed
+[47471] = { "Пао'ка Стрімка Гора", en="Pao'ka Swiftmountain" }, -- Pao'ka Swiftmountain
+[47486] = { "Серцеріз", en="Heartrazor" }, -- Heartrazor
+[47488] = { "жеребець-скелет", en="Skeletal Steed" }, -- Skeletal Steed
+[47499] = { "верховна карателька Дарталія", en="High Executor Darthalia" }, -- High Executor Darthalia
+[47503] = { "Серцеріз", en="Heartrazor" }, -- Heartrazor
+[47504] = { "Серцеріз", en="Heartrazor" }, -- Heartrazor
+[47507] = { "Серцеріз", en="Heartrazor" }, -- Heartrazor
+[47508] = { "Серцеріз", en="Heartrazor" }, -- Heartrazor
+[47580] = { "Лакота Пісня Вітру", en="Lakota Windsong" }, -- Lakota Windsong
+[47592] = { "майстер Матіас Гич", "лідер ШУР", en="Master Mathias Shaw" }, -- Mathias Shaw
+[47644] = { "Дарла Гарріс", "приборкувачка кажанів", en="Darla Harris" }, -- Darla Harris <Bat Handler>
+[47656] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[47679] = { "Вінна Грозза", en="Winna Hazzard" }, -- Winna Hazzard
+[47687] = { "кошеня Вінни", en="Winna's Kitten" }, -- Winna Hazzard
+[47692] = { "Альтсоба Тотем Люті", en="Altsoba Ragetotem" }, -- Altsoba Ragetotem
+[47718] = { "Маґата Зловісний Тотем", "старша відьма", en="Magatha Grimtotem" }, -- Magatha Grimtotem
+[47726] = { "Тигр", en="Tiger" }, -- Tiger
+[47735] = { "Іллідан Шаленство Бурі", "Зрадник", en="Illidan Stormrage" }, -- Illidan Stormrage <The Betrayer>
+[47736] = { "Маґата Зловісний Тотем", "старша відьма", en="Magatha Grimtotem" }, -- Magatha Grimtotem
+[47745] = { "Маґата Зловісний Тотем", "старша відьма", en="Magatha Grimtotem" }, -- Magatha Grimtotem
+[47767] = { "Корла", "тренерка мисливців", en="Korla" }, -- Korla <Hunter Trainer>
+[47789] = { "писар Горацій Білокінь", en="Clerk Horrace Whitesteed" }, -- Horrace Whitesteed
+[47790] = { "війт Шкваростін", en="Magistrate Burnside" }, -- Magistrate Burnside
+[47791] = { "містянин Вілкс", en="Citizen Wilkes" }, -- Citizen Wilkes
+[47792] = { "коваль Веррінґтан", en="Blacksmith Verringtan" }, -- Avery Verringtan
+[47794] = { "змія", en="Snake" }, -- Snake
+[47795] = { "вартовий приречення", en="Doomguard" }, -- Doomguard
+[47800] = { "скверногонча", en="Felhound" }, -- Felhound
+[47802] = { "пекельник", en="Infernal" }, -- Infernal
+[47808] = { "чорний вовк", en="Black Wolf" }, -- Black Wolf
+[47818] = { "Бивня", "улюблениця Корли", en="Tusker" }, -- Tusker
+[47819] = { "Іллідан Шаленство Бурі", "Зрадник", en="Illidan Stormrage" }, -- Illidan Stormrage <The Betrayer>
+[47862] = { "війт Генрі Малеб", en="Magistrate Henry Maleb" }, -- Henry Maleb
+[47897] = { "продавець Місячного фестивалю", en="Lunar Festival Vendor" }, -- Lunar Festival Vendor
+[47919] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[47929] = { "Обсідія", en="Obsidia" }, -- Obsidia
+[47941] = { "Арікара", "Помста", en="Arikara" }, -- Arikara
+[48005] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[48034] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48045] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48051] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <Earthen Ring>
+[48079] = { "провидець Нобундо", "Служителі Землі", en="Farseer Nobundo" }, -- Farseer Nobundo <Earthen Ring>
+[48082] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48125] = { "радник Сарофас", "їжа та напої", en="Advisor Sarophas" }, -- Advisor Sarophas <Food & Drink>
 [48129] = { "Гелькулар", en="Helcular" }, -- Helcular
+[48134] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[48135] = { "Тіранда Шелест Вітру", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[48146] = { "соляний камнегляд", en="Saltstone Gazer" }, -- Saltstone Gazer
+[48147] = { "блископанцирна черепаха", en="Sparkleshell Tortoise" }, -- Sparkleshell Tortoise
+[48148] = { "блископанцирний міцнохап", en="Sparkleshell Snapper" }, -- Sparkleshell Snapper
+[48149] = { "скорпід-вбивця", en="Scorpid Terror" }, -- Scorpid Terror
+[48150] = { "скорпід-розоритель", en="Scorpid Reaver" }, -- Scorpid Reaver
+[48151] = { "соляний кришталешкур", en="Saltstone Crystalhide" }, -- Saltstone Crystalhide
+[48162] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48167] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48177] = { "силітид-спустошник", en="Silithid Ravager" }, -- Silithid Ravager
+[48178] = { "силітид-спустошник", en="Silithid Ravager" }, -- Silithid Ravager
+[48186] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48219] = { "Ванндар Бурешпиль", "генерал клану Бурешпиля", en="Vanndar Stormpike" }, -- Vanndar Stormpike
+[48223] = { "капітан Балінда Кам'яне Вогнище", "капітан Бурешпиля", en="Captain Balinda Stonehearth" }, -- Captain Balinda Stonehearth
+[48229] = { "кобольд-землекоп", en="Kobold Digger" }, -- Kobold Digger
+[48280] = { "гоблін-ремісник", en="Goblin Craftsman" }, -- Goblin Craftsman
+[48292] = { "Акрід", en="Acride" }, -- Acride
+[48320] = { "первісне чудовсько", en="Primordial Behemoth" }, -- Primordial Behemoth
+[48334] = { "пиловий дідько", en="Dust Devil" }, -- Dust Devil
+[48344] = { "Крошій", "вісник падіння Легіону", en="Kroshius" }, -- Kroshius
 [48365] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[48386] = { "Ґорлоп", en="Gorlop" }, -- Gorlop
+[48403] = { "Ванндар Бурешпиль", "генерал клану Бурешпиля", en="Vanndar Stormpike" }, -- Vanndar Stormpike
+[48407] = { "капітан Балінда Кам'яне Вогнище", "капітан Бурешпиля", en="Captain Balinda Stonehearth" }, -- Captain Balinda Stonehearth
+[48419] = { "шахтар Непокірних", en="Defias Miner" }, -- Defias Miner
+[48420] = { "землекоп Непокірних", en="Defias Digger" }, -- Defias Digger
+[48421] = { "розпорядник Непокірних", en="Defias Overseer", feminine="розпорядниця Непокірних" }, -- Defias Overseer
+[48435] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48439] = { "гоблін-інженер", en="Goblin Engineer" }, -- Goblin Engineer
 [48478] = { "Сінестра", en="Sinestra" }, -- Sinestra
+[48482] = { "горянин Бурешпиля", en="Stormpike Mountaineer", feminine="горянка Бурешпиля" }, -- Stormpike Mountaineer
+[48483] = { "вершник Бурешпилів", en="Stormpike Ram Rider", feminine="вершниця Бурешпилів" }, -- Stormpike Ram Rider
 [48494] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
 [48496] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
+[48507] = { "капітан Балінда Кам'яне Вогнище", "капітан Бурешпиля", en="Captain Balinda Stonehearth" }, -- Captain Balinda Stonehearth
+[48508] = { "Ванндар Бурешпиль", "генерал клану Бурешпиля", en="Vanndar Stormpike" }, -- Vanndar Stormpike
+[48510] = { "Кел Пригрошах", "продавець трициклів", en="Kall Worthaton" }, -- Kall Worthaton
+[48511] = { "Плямчик", "компаньйон Кела", en="Spot" }, -- Spot
+[48521] = { "вітроплет Непокірних", en="Defias Squallshaper", feminine="вітроплетка Непокірних" }, -- Defias Squallshaper
+[48522] = { "пірат Непокірних", en="Defias Pirate", feminine="піратка Непокірних" }, -- Defias Pirate
+[48528] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48547] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48558] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48568] = { "Ейтріґ", en="Eitrigg" }, -- Eitrigg
+[48569] = { "Ейтріґ", en="Eitrigg" }, -- Eitrigg
+[48570] = { "Ейтріґ", en="Eitrigg" }, -- Eitrigg
+[48572] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[48604] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48623] = { "світлик", en="Wisp" }, -- wisp
+[48624] = { "світлик", en="Wisp" }, -- wisp
+[48628] = { "лютий єті", en="Ferocious Yeti" }, -- Ferocious Yeti
+[48698] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48703] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48737] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[48738] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[48752] = { "банші", en="Banshee" }, -- banshee
+[48964] = { "лорд Віктор Нефарій", "повелитель Чорнокаменю", en="Lord Victor Nefarius" }, -- Lord Victor Nefarius
+[48969] = { "Дрек'Тар", "генерал Морозних Вовків", en="Drek'Thar" }, -- Drek'Thar
+[48980] = { "капітан Ґальванґар", "капітан Морозних Вовків", en="Captain Galvangar" }, -- Captain Galvangar
 [48993] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
+[48996] = { "розпорядник перегонів Вайлоїзд", en="Race Master Kronkrider" }, -- Race Master Kronkrider
 [49026] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[49112] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[49151] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[49157] = { "Фобід", "ведучий перегонів", en="Fobeed" }, -- Fobeed
+[49158] = { "Зузубі", "ведучий перегонів", en="Zuzubee" }, -- Zuzubee
 [49196] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[49203] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[49204] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[49226] = { "лорд Віктор Нефарій", "повелитель Чорнокаменю", en="Lord Victor Nefarius" }, -- Lord Victor Nefarius
+[49230] = { "маршал Редпат", en="Marshal Redpath" }, -- Marshal Redpath
+[49231] = { "Валдред Морей", en="Valdred Moray" }, -- Valdred Moray
+[49232] = { "гуль", en="Ghoul" }, -- Ghoul
+[49247] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[49248] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[49251] = { "дикий грифон", en="Wild Gryphon" }, -- Wild Gryphon
 [49270] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[49351] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[49353] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
 [49358] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[49411] = { "Валянок", en="Boots" }, -- Boots
+[49420] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[49424] = { "маршал Редпат", en="Marshal Redpath" }, -- Marshal Redpath
+[49427] = { "Нефаріан", en="Nefarian" }, -- Nefarian
+[49444] = { "Піп Хуткокміт", en="Pip Quickwit" }, -- Pip Quickwit
+[49446] = { "Ізера", en="Ysera" }, -- Ysera
+[49459] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[49460] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[49461] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[49462] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[49463] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[49468] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[49469] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[49470] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[49471] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[49472] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[49476] = { "Піп Хуткокміт", en="Pip Quickwit" }, -- Pip Quickwit
+[49480] = { "Таріндрелла", en="Tarindrella" }, -- Tarindrella
+[49533] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[49563] = { "Кенарій", en="Cenarius" }, -- Cenarius
+[49571] = { "шаман Драконової Пащі", en="Dragonmaw Shaman", feminine="шаманка Драконової Пащі" }, -- Dragonmaw Shaman
+[49580] = { "лорд Віктор Нефарій", "повелитель Чорнокаменю", en="Lord Victor Nefarius" }, -- Lord Victor Nefarius
+[49625] = { "Ізера", en="Ysera" }, -- Ysera
+[49694] = { "потвора", en="Abomination" }, -- abomination
+[49728] = { "ельфійський кролик", en="Elfin Rabbit" }, -- Elfin Rabbit
+[49799] = { "лорд Віктор Нефарій", "повелитель Чорнокаменю", en="Lord Victor Nefarius" }, -- Lord Victor Nefarius
+[49808] = { "Ґренгільд Чорнопазур", "тренерка шаманів", en="Grenhild Darktalon" }, -- Grenhild Darktalon <Shaman Trainer>
+[49820] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
 [49900] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
 [49901] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
-[51152] = { "ультрамариновий кіразький бойовий танк" }, -- Qiraji Battle Tank
+[49941] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[50041] = { "Мізраель", en="Myzrael" }, -- Myzrael
+[50055] = { "вогнеклят", en="Firesworn" }, -- Firesworn
+[50056] = { "Ґарр", en="Garr" }, -- Garr
+[50073] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
+[50081] = { "Мортіс Шелест Крила", "друїд Кігтя", en="Morthis Whisperwing" }, -- Morthis Whisperwing <Druid of the Talon>
+[50083] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[50299] = { "Санат Лім-йо", "учень Зілема", en="Sanath Lim-yo" }, -- Sanath Lim-yo
+[50321] = { "зоротський біс", en="Xorothian Imp" }, -- Xorothian Imp
+[50325] = { "Умбранс Маромовець", en="Umbranse the Spiritspeaker" }, -- Umbranse the Spiritspeaker
+[50331] = { "Шелест Крила", en="Whisperwing" }, -- Whisperwing
+[50369] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[50465] = { "майстер Матіас Гич", "лідер ШУР", en="Master Mathias Shaw" }, -- Mathias Shaw
+[50472] = { "шаман Служителів Землі", "Служителі Землі", en="Earthen Ring Shaman", feminine="шаманка Служителів Землі" }, -- Earthen Ring Shaman <The Earthen Ring>
+[50497] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
+[50597] = { "кривавий вартовий Розтрощеної Руки", en="Shattered Hand Blood Guard" }, -- Shattered Hand Blood Guard
+[50609] = { "Натанос Гнилоклич", "тренер мисливців", en="Nathanos Blightcaller" }, -- Nathanos Marris <Hunter Trainer>
+[50613] = { "стогнучий гвардієць", en="Wailing Guardsman" }, -- Wailing Guardsman
+[50615] = { "змучений офіцер", en="Tormented Officer" }, -- Tormented Officer
+[50644] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[50645] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[50646] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[50647] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[50648] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[50649] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[50650] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[50651] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[50652] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[50834] = { "Ретілют", "вартовий в'язниці", en="Rethilgore" }, -- Rethilgore
+[50851] = { "повелитель вовків Нандос", en="Wolf Master Nandos" }, -- Wolf Master Nandos
+[50857] = { "Одо-Сліпогляд", en="Odo the Blindwatcher" }, -- Odo the Blindwatcher
+[50869] = { "Бритвопал-М'ясник", en="Razorclaw the Butcher" }, -- Razorclaw the Butcher
+[51060] = { "провидець Нобундо", "Служителі Землі", en="Farseer Nobundo" }, -- Farseer Nobundo <Earthen Ring>
+[51125] = { "Гостродзьоб", en="Sharpbeak" }, -- Sharpbeak
+[51152] = { "ультрамариновий кіразький бойовий танк", en="Ultramarine Qiraji Battle Tank" }, -- Qiraji Battle Tank
+[51174] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
+[51254] = { "капітан Молотолам", "квартирмейстер завоювання", en="Captain Dirgehammer" }, -- Captain Dirgehammer <Conquest Quartermaster>
+[51337] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
+[51355] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[51375] = { "кенарійська розвідниця Жалія", en="Cenarion Scout Jalia" }, -- Cenarion Scout Jalia
 [51394] = { "гігантське пазуристе щупальце", en="Giant Claw Tentacle" }, -- Giant Claw Tentacle
+[51410] = { "Хромаґґус", en="Chromaggus" }, -- Chromaggus
+[51412] = { "Магмадар", en="Magmadar" }, -- Magmadar
+[51413] = { "барон Геддон", en="Baron Geddon" }, -- Baron Geddon
+[51414] = { "Шаззрах", en="Shazzrah" }, -- Shazzrah
+[51415] = { "Геєнас", en="Gehennas" }, -- Gehennas
+[51418] = { "Вогнечрев", en="Firemaw" }, -- Firemaw
+[51419] = { "воєвождь Ренд Чорнорук", en="Warchief Rend Blackhand" }, -- Rend Blackhand
+[51420] = { "Ґіт", en="Gyth" }, -- Gyth
+[51426] = { "хроматичний дракончик", en="Chromatic Whelp" }, -- Chromatic Whelp
 [51428] = { "пазуристе щупальце", en="Claw Tentacle" }, -- Claw Tentacle
-[51571] = { "Курдран Дикий Молот", "представник клану Диких Молотів" }, -- Kurdran Wildhammer
+[51429] = { "оргріммарський рубайло", en="Orgrimmar Grunt" }, -- Orgrimmar Grunt
+[51432] = { "Ариґос", "рід Маліґоса", en="Arygos" }, -- Arygos
+[51434] = { "Міллхаус Манашторм", "розпорядник кузні", en="Millhouse Manastorm" }, -- Millhouse Manastorm
+[51438] = { "володар роду Хлист Бича", en="Broodlord Lashlayer" }, -- Broodlord Lashlayer
+[51439] = { "оргріммарський рубайло", en="Orgrimmar Grunt" }, -- Orgrimmar Grunt
+[51442] = { "Звір", en="The Beast" }, -- The Beast
+[51446] = { "генерал Драккісат", en="General Drakkisath" }, -- Drakkisath
+[51452] = { "Нефаріан", en="Nefarian" }, -- Nefarian
+[51478] = { "печерний повзун", en="Cavern Crawler" }, -- Cavern Crawler
+[51515] = { "захисник Мулґора", en="Mulgore Protector", feminine="захисниця Мулґора" }, -- Mulgore Protector
+[51571] = { "Курдран Дикий Молот", "представник клану Диких Молотів", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[51633] = { "знахар Зів'ялої Кори", en="Witherbark Witch Doctor", feminine="знахарка Зів'ялої Кори" }, -- Witherbark Witch Doctor
+[51634] = { "Булька", en="Bubbles" }, -- Bubbles
+[51659] = { "монах Багряного Походу", en="Scarlet Monk" }, -- Scarlet Monk
+[51660] = { "капелан Багряного Походу", en="Scarlet Chaplain", feminine="капеланка Багряного Походу" }, -- Scarlet Chaplain
+[51681] = { "дитинча кригозуба", en="Frostsaber Cub" }, -- Frostsaber Cub
+[51769] = { "стражниця Аубердіна", en="Auberdine Sentinel" }, -- Auberdine Sentinel
+[51770] = { "стражниця Астранаара", en="Astranaar Sentinel" }, -- Astranaar Sentinel
+[51774] = { "шаман Служителів Землі", "Служителі Землі", en="Earthen Ring Shaman", feminine="шаманка Служителів Землі" }, -- Earthen Ring Shaman <The Earthen Ring>
+[51777] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[51787] = { "рубайло Лігва", en="Den Grunt" }, -- Den Grunt
+[51807] = { "поборник Ша'тар", en="Sha'tar Vindicator", feminine="поборниця Ша'тар" }, -- Sha'tar Vindicator
+[51810] = { "караульний Сріблястого Світанку", "Сріблястий Похід", en="Argent Sentry", feminine="караульна Сріблястого Світанку" }, -- Argent Sentry <The Argent Crusade>
+[51812] = { "захисник Сріблястого Світанку", "Сріблястий Похід", en="Argent Defender", feminine="захисниця Сріблястого Світанку" }, -- Argent Defender <The Argent Crusade>
+[51814] = { "вартовий Тріснутого Дерева", en="Splintertree Guard", feminine="вартова Тріснутого Дерева" }, -- Splintertree Guard
+[51822] = { "вартовий повстанців", en="Rebel Watchman", feminine="вартова повстанців" }, -- Rebel Watchman
+[51829] = { "рубайло Каміннопазуристих гір", en="Stonetalon Grunt" }, -- Stonetalon Grunt
+[51832] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[51839] = { "вартовий оплоту Найджела", en="Nijel's Point Guard", feminine="вартова оплоту Найджела" }, -- Nijel's Point Guard
+[51840] = { "сміливець застави Блукаючих Привидів", en="Ghost Walker Brave", feminine="сміливиця застави Блукаючих Привидів" }, -- Ghost Walker Brave
+[51841] = { "вартовий селища Тінездобич", en="Shadowprey Guardian", feminine="вартова селища Тінездобич" }, -- Shadowprey Guardian
+[51848] = { "телсамарський горянин", en="Thelsamar Mountaineer", feminine="телсамарська горянка" }, -- Thelsamar Mountaineer
+[51850] = { "елітний смертестраж", en="Deathguard Elite", feminine="елітна смертестражниця" }, -- Deathguard Elite
+[51854] = { "елітний смертестраж", en="Deathguard Elite", feminine="елітна смертестражниця" }, -- Deathguard Elite
+[51858] = { "елітний смертестраж", en="Deathguard Elite", feminine="елітна смертестражниця" }, -- Deathguard Elite
+[51871] = { "кор'кронський гвардієць", en="Kor'kron Elite", feminine="кор'кронська гвардійка" }, -- Kor'kron Elite
+[51881] = { "вітролом Небесної гвардії", en="Skyguard Windcharger" }, -- Skyguard Windcharger
+[51882] = { "захисник Ґарадара", en="Garadar Defender", feminine="захисниця Ґарадара" }, -- Garadar Defender
+[51899] = { "вартовий Молотобою", en="Hammerfall Guardian", feminine="вартова Молотобою" }, -- Hammerfall Guardian
+[51900] = { "захисник Опорного пункту", en="Refuge Pointe Defender", feminine="захисниця Опорного пункту" }, -- Refuge Pointe Defender
+[51901] = { "наглядач Сколотого Бивня", en="Revantusk Watcher", feminine="наглядачка Сколотого Бивня" }, -- Revantusk Watcher
+[51911] = { "рубайло Колючого Пагорба", en="Razor Hill Grunt" }, -- Razor Hill Grunt
+[51912] = { "горянин Дун-Морога", en="Dun Morogh Mountaineer", feminine="горянка Дун-Морога" }, -- Dun Morogh Mountaineer
+[51913] = { "вартовий селища Сен'джин", en="Sen'jin Guardian", feminine="вартова селища Сен'джин" }, -- Sen'jin Guardian
+[51914] = { "ординський вартовий", en="Horde Guard", feminine="ординська вартова" }, -- Horde Guard
+[51915] = { "вартовий бригади Західного краю", en="Westfall Brigade Guard", feminine="вартова бригади Західного краю" }, -- Westfall Brigade Guard
+[51916] = { "смертестраж Тарренського Млина", en="Tarren Mill Deathguard", feminine="смертестражниця Тарренського Млина" }, -- Tarren Mill Deathguard
+[51917] = { "рубайло Ґром'ґола", en="Grom'gol Grunt" }, -- Grom'gol Grunt
+[51918] = { "камінардський рубайло", en="Stonard Grunt" }, -- Stonard Grunt
+[51919] = { "громило Папорохащі", en="Brackenwall Enforcer" }, -- Brackenwall Enforcer
+[51920] = { "сміливець табору Мохаче", en="Camp Mojache Brave", feminine="сміливиця табору Мохаче" }, -- Camp Mojache Brave
+[51921] = { "вартовий Приозер'я", en="Lakeshire Guard" }, -- Lakeshire Guard
+[51923] = { "караульний Дикого Молота", en="Wildhammer Sentry" }, -- Wildhammer Sentry
+[51924] = { "тераморський вартовий", en="Theramore Guard", feminine="тераморська вартова" }, -- Theramore Guard
+[51925] = { "стражниця Тельдрассіля", en="Teldrassil Sentinel" }, -- Teldrassil Sentinel
+[51972] = { "чорний ведмідь", en="Black Bear" }, -- Black Bear
+[51973] = { "молодий чорний ведмідь", en="Young Black Bear" }, -- Young Black Bear
+[51986] = { "караульний Сріблястого Світанку", "Сріблястий Похід", en="Argent Sentry", feminine="караульна Сріблястого Світанку" }, -- Argent Sentry <The Argent Crusade>
+[51988] = { "опікунка сиротинця Ночевітер", en="Orphan Matron Nightingale" }, -- Orphan Matron Nightingale
+[51989] = { "опікунка сиротинця Зойк Битви", en="Orphan Matron Battlewail" }, -- Orphan Matron Battlewail
+[52000] = { "стражниця Астранаара", en="Astranaar Sentinel" }, -- Astranaar Sentinel
+[52077] = { "берсерк Ґурубаші", en="Gurubashi Berserker" }, -- Gurubashi Berserker
+[52084] = { "караульний Дикого Молота", en="Wildhammer Sentry" }, -- Wildhammer Sentry
+[52085] = { "гадюка Раззаші", en="Razzashi Adder" }, -- Razzashi Adder
+[52086] = { "знахар Гаккарі", en="Hakkari Witch Doctor", feminine="знахарка Гаккарі" }, -- Hakkari Witch Doctor
+[52135] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[52136] = { "мисливець за головами Ґурубаші", en="Gurubashi Headhunter", feminine="мисливиця за головами Ґурубаші" }, -- Gurubashi Headhunter
+[52151] = { "повелитель крові Мандокір", en="Bloodlord Mandokir" }, -- Bloodlord Mandokir
+[52155] = { "верховний жрець Веноксіс", en="High Priest Venoxis" }, -- High Priest Venoxis
+[52156] = { "прикутий дух", en="Chained Spirit" }, -- Chained Spirit
+[52157] = { "Охґан", en="Ohgan" }, -- Ohgan
+[52161] = { "гидколісний слідопит", en="Foulweald Pathfinder" }, -- Foulweald Pathfinder
+[52165] = { "шламова потвора", en="Sludge Beast" }, -- Sludge Beast
+[52173] = { "змій Раззаші", en="Razzashi Serpent" }, -- Razzashi Serpent
+[52183] = { "дитина-сирота", en="Human Orphan" }, -- Human Orphan
+[52191] = { "верховний жрець Веноксіс", "аватар Гетісс", en="High Priest Venoxis" }, -- High Priest Venoxis
+[52193] = { "закликач Палаючого Леза", en="Burning Blade Summoner", feminine="закликачка Палаючого Леза" }, -- Burning Blade Summoner
+[52196] = { "забіяка Палаючого Леза", en="Burning Blade Bruiser" }, -- Burning Blade Bruiser
+[52231] = { "командувач флоту Морський Ріг", en="Fleet Master Seahorn" }, -- Fleet Master Seahorn
+[52233] = { "Лінкен", en="Linken" }, -- Linken
+[52238] = { "Манкрік", en="Mankrik" }, -- Mankrik
+[52243] = { "Моґ'дорґ Мудрий", en="Mog'dorg the Wizened" }, -- Mog'dorg the Wizened
+[52244] = { "Нет Пеґл", en="Nat Pagle" }, -- Nat Pagle
+[52250] = { "Бадд", en="Budd" }, -- Budd Nedreck
+[52252] = { "Тельдурін Загублений", en="Theldurin the Lost" }, -- Theldurin the Lost
+[52254] = { "Ґурґток", en="Gurgthock" }, -- Gurgthock
+[52258] = { "Ґрі'лек", en="Gri'lek" }, -- Gri'lek
+[52261] = { "Гемет Ернінґвей", en="Hemet Nesingwary" }, -- Hemet Nesingwary
+[52262] = { "архімаг Зілем", en="Archmage Xylem" }, -- Archmage Xylem
+[52263] = { "проєкція архімага Варґота", en="Image of Archmage Vargoth" }, -- Archmage Vargoth
+[52264] = { "архімаг Лан'далок", en="Archmage Lan'dalock" }, -- Archmage Lan'dalock
+[52265] = { "Хромі", en="Chromie" }, -- Chromie
 [52267] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
+[52269] = { "Ренатакі", en="Renataki" }, -- Renataki
+[52271] = { "Газза'ра", en="Hazza'rah" }, -- Hazza'rah
+[52284] = { "кошмарна ілюзія", en="Nightmare Illusion" }, -- Nightmare Illusion
+[52286] = { "Вушулай", en="Wushoolay" }, -- Wushoolay
+[52291] = { "Барніл Камнекухоль", en="Barnil Stonepot" }, -- Barnil Stonepot
+[52293] = { "Барвина Гіняй", en="Ajeck Rouack" }, -- Ajeck Rouack
+[52294] = { "Гемет Ернінґвей-молодший", en="Hemet Nesingwary Jr." }, -- Hemet Nesingwary Jr.
+[52295] = { "Мжичник", en="Drizzlik" }, -- Drizzlik
+[52296] = { "Жакіліна Драме", "досвідчена майстриня сокир", en="Jaquilina Dramet" }, -- Jaquilina Dramet
+[52297] = { "Кронжек", en="Krazek" }, -- Krazek
+[52298] = { "пан Йарс Имин", en="Sir S. J. Erlgadin" }, -- Sir S. J. Erlgadin
+[52301] = { "верховний жрець Веноксіс", en="High Priest Venoxis" }, -- High Priest Venoxis
+[52304] = { "Охґан", en="Ohgan" }, -- Ohgan
+[52325] = { "кровопивця Ґурубаші", en="Gurubashi Blood Drinker" }, -- Gurubashi Blood Drinker
+[52341] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[52356] = { "чорнороб ТзНБ \"Авантюра\"", en="Venture Co. Drudger", feminine="чорноробка ТзНБ \"Авантюра\"" }, -- Venture Co. Drudger
+[52357] = { "найманець ТзНБ \"Авантюра\"", en="Venture Co. Mercenary" }, -- Venture Co. Mercenary
+[52399] = { "Ґаленґіс", "незламний", en="Galenges" }, -- Galenges
+[52404] = { "вартовий повстанців", en="Rebel Watchman", feminine="вартова повстанців" }, -- Rebel Watchman
+[52409] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
+[52410] = { "лейтенант Дорен", en="Lieutenant Doren" }, -- Lieutenant Doren
+[52411] = { "повелитель крові Мандокір", en="Bloodlord Mandokir" }, -- Bloodlord Mandokir
+[52416] = { "подрібнювач Кривошип-са", en="Wizzlecrank's Shredder" }, -- Wizzlecrank's Shredder
+[52425] = { "Тооґа", en="Tooga" }, -- Tooga
+[52429] = { "Занза Неупокоєний", en="Zanza the Restless" }, -- Zanza the Restless
+[52444] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
+[52461] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[52491] = { "Мортіс Шелест Крила", "друїд Кігтя", en="Morthis Whisperwing" }, -- Morthis Whisperwing <Druid of the Talon>
+[52546] = { "капітан Молотолам", "квартирмейстер завоювання", en="Captain Dirgehammer" }, -- Captain Dirgehammer <Conquest Quartermaster>
+[52549] = { "сержант Громовий Ріг", "квартирмейстер завоювання", en="Sergeant Thunderhorn" }, -- Sergeant Thunderhorn <Conquest Quartermaster>
+[52578] = { "орк-сирота", en="Orcish Orphan" }, -- Orcish Orphan
+[52592] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
+[52609] = { "Анахронос", en="Anachronos" }, -- Anachronos
+[52667] = { "головодав Зандаларів", en="Zandalar Headshrinker", feminine="головодавка Зандаларів" }, -- Zandalar Headshrinker
+[52689] = { "Ал'табім Всевидющий", en="Al'tabim the All-Seeing" }, -- Al'tabim the All-Seeing
+[52690] = { "Фалтір Незрячий", en="Falthir the Sightless" }, -- Falthir the Sightless
+[52700] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
+[52728] = { "Джін'рох Руйнівник", en="Jin'rokh the Breaker" }, -- Jin'rokh the Breaker
+[52729] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[52761] = { "розоритель Ґордоків", en="Gordok Reaver" }, -- Gordok Reaver
+[52767] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[52777] = { "предок Рунний Тотем", en="Elder Runetotem" }, -- Elder Runetotem
+[52778] = { "предок Серпанкова Мандрівниця", en="Elder Mistwalker" }, -- Elder Mistwalker
+[52779] = { "предок Криваве Копито", en="Elder Bloodhoof" }, -- Elder Bloodhoof
+[52780] = { "предок Провидець Снів", en="Elder Dreamseer" }, -- Elder Dreamseer
+[52781] = { "предок Небесний Провидець", en="Elder Skyseer" }, -- Elder Skyseer
+[52782] = { "предок Кам'яний Шпиль", en="Elder Stonespire" }, -- Elder Stonespire
+[52788] = { "світлик", en="Wisp" }, -- wisp
+[52792] = { "Тралл", en="Thrall" }, -- Thrall
+[52793] = { "Ізера", en="Ysera" }, -- Ysera
+[52796] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[52797] = { "Ноздорму", en="Nozdormu" }, -- Nozdormu
+[52799] = { "Алекстраза", en="Alexstrasza" }, -- Alexstrasza
+[52801] = { "Фендрал Оленеріг", en="Fandral Staghelm" }, -- Fandral Staghelm
+[52838] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[52845] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[52868] = { "Ариґос", en="Arygos" }, -- Arygos
+[52869] = { "Смертекрил", en="Deathwing" }, -- Deathwing
+[52901] = { "Мортіс Шелест Крила", "друїд Кігтя", en="Morthis Whisperwing" }, -- Morthis Whisperwing <Druid of the Talon>
+[52907] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
+[52924] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[52931] = { "Кенарій", en="Cenarius" }, -- Cenarius
+[52932] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[52949] = { "Ариґос", en="Arygos" }, -- Arygos
+[52951] = { "Смертекрил", en="Deathwing" }, -- Deathwing
+[52964] = { "Турак Рунний Тотем", en="Turak Runetotem" }, -- Turak Runetotem
+[52996] = { "командир Аґґро'ґош", en="Commander Aggro'gosh" }, -- Commander Aggro'gosh
+[53000] = { "рубайло Ґром'ґола", en="Grom'gol Grunt" }, -- Grom'gol Grunt
+[53008] = { "Тиста", "приборкувачка виверн", en="Thysta" }, -- Thysta <Wind Rider Master>
+[53015] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[53069] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
+[53134] = { "древній гончак ядра", en="Ancient Core Hound" }, -- Ancient Core Hound
+[53140] = { "син полум'я", en="Son of Flame" }, -- Son of Flame
+[53153] = { "крижаний елементаль", "Конус холоду", en="Ice Elemental" }, -- Ice Elemental
+[53179] = { "Охґан", en="Ohgan" }, -- Ohgan
+[53189] = { "розплавлений елементаль", en="Molten Elemental" }, -- Molten Elemental
+[53252] = { "Ариґос", en="Arygos" }, -- Arygos
+[53259] = { "Арторн Пісня Вітру", "друїдка Кігтя", en="Arthorn Windsong" }, -- Arthorn Windsong <Druid of the Talon>
+[53262] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[53286] = { "Валстанн Оленеріг", en="Valstann Staghelm" }, -- Valstann Staghelm
+[53288] = { "генерал Раджакс", en="General Rajaxx" }, -- General Rajaxx
+[53290] = { "верховний друїд Фендрал Оленеріг", en="Arch Druid Fandral Staghelm" }, -- Fandral Staghelm
+[53291] = { "Істарія", en="Istaria" }, -- Istaria
+[53293] = { "Фендрал Оленеріг", en="Fandral Staghelm" }, -- Fandral Staghelm
+[53327] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[53329] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[53350] = { "Фендрал Оленеріг", en="Fandral Staghelm" }, -- Fandral Staghelm
+[53364] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[53385] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[53424] = { "Таріндрелла", en="Tarindrella" }, -- Tarindrella
+[53438] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
+[53441] = { "Кін'вілей", en="Kin'weelay" }, -- Kin'weelay
+[53447] = { "Турак Рунний Тотем", en="Turak Runetotem" }, -- Turak Runetotem
+[53481] = { "Тізалі Ворона", en="Thisalee Crow" }, -- Thisalee Crow
+[53518] = { "Тралл", en="Thrall" }, -- Thrall
+[53527] = { "в'язень", en="Prisoner" }, -- Prisoner
+[53537] = { "Тралл", en="Thrall" }, -- Thrall
+[53562] = { "стражниця Перомісяця", en="Feathermoon Sentinel" }, -- Feathermoon Sentinel
+[53563] = { "вартовий Місячної галявини", en="Moonglade Warden", feminine="вартова Місячної галявини" }, -- Moonglade Warden
+[53569] = { "змій Раззаші", en="Razzashi Serpent" }, -- Razzashi Serpent
+[53603] = { "сміливець Розкутого Вітру", en="Freewind Brave", feminine="сміливиця Розкутого Вітру" }, -- Freewind Brave
+[53622] = { "породження лави", en="Lava Spawn" }, -- Lava Spawn
+[53626] = { "штормовійський сирота", en="Stormwind Orphan", feminine="штормовійська сирота" }, -- Stormwind Orphan
+[53649] = { "Тралл", en="Thrall" }, -- Thrall
+[53657] = { "Тралл", en="Thrall" }, -- Thrall
+[53663] = { "Тралл", en="Thrall" }, -- Thrall
+[53667] = { "Тралл", en="Thrall" }, -- Thrall
+[53676] = { "Тралл", en="Thrall" }, -- Thrall
+[53736] = { "Тралл", en="Thrall" }, -- Thrall
+[53755] = { "Тралл", en="Thrall" }, -- Thrall
+[53835] = { "Мардант Міцнодуб", en="Mardant Strongoak" }, -- Mardant Strongoak
+[53840] = { "Ґарт Мрякогін", en="Gart Mistrunner" }, -- Gart Mistrunner
+[53842] = { "Мардант Міцнодуб", en="Mardant Strongoak" }, -- Mardant Strongoak
+[53845] = { "Ґарт Мрякогін", en="Gart Mistrunner" }, -- Gart Mistrunner
+[53872] = { "Кенарій", en="Cenarius" }, -- Cenarius
+[53873] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[53874] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[53875] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[53876] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[53879] = { "Смертекрил", "Руйнівник", en="Deathwing" }, -- Deathwing
+[53905] = { "Тралл", en="Thrall" }, -- Thrall
+[53912] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[53913] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[53920] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
+[53956] = { "Тралл", en="Thrall" }, -- Thrall
+[53957] = { "Тралл", en="Thrall" }, -- Thrall
+[53958] = { "Тралл", en="Thrall" }, -- Thrall
+[53959] = { "Тралл", en="Thrall" }, -- Thrall
+[53960] = { "Тралл", en="Thrall" }, -- Thrall
+[53977] = { "Янка Темноклич", en="Darkcaller Yanka" }, -- Darkcaller Yanka
+[53983] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[53984] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
+[54030] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[54070] = { "Тенарон Штормохап", en="Tenaron Stormgrip" }, -- Tenaron Stormgrip
+[54072] = { "Санат Лім-йо", "слуга архімага Зілема", en="Sanath Lim-yo" }, -- Sanath Lim-yo
+[54081] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
+[54109] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[54110] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[54144] = { "магматир", en="Magmakin" }, -- Magmakin
+[54168] = { "Тралл", en="Thrall" }, -- Thrall
+[54172] = { "Ізера", en="Ysera" }, -- Ysera
+[54173] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[54174] = { "Ноздорму", en="Nozdormu" }, -- Nozdormu
+[54176] = { "Алекстраза", en="Alexstrasza" }, -- Alexstrasza
+[54177] = { "провидець Нобундо", "Служителі Землі", en="Farseer Nobundo" }, -- Farseer Nobundo <Earthen Ring>
+[54179] = { "Тіранда Шелест Вітру", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[54180] = { "леді Джайна Праудмур", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[54197] = { "гуль", en="Ghoul" }, -- Ghoul
+[54226] = { "Тралл", en="Thrall" }, -- Thrall
+[54258] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
+[54272] = { "Булька", "улюблениця мисливця", en="Bubbles" }, -- Bubbles
+[54297] = { "Тралл", en="Thrall" }, -- Thrall
+[54300] = { "Тралл", en="Thrall" }, -- Thrall
+[54301] = { "Тралл", en="Thrall" }, -- Thrall
+[54302] = { "Тралл", en="Thrall" }, -- Thrall
+[54303] = { "вартовий приречення", en="Doomguard" }, -- Doomguard
+[54313] = { "Тралл", en="Thrall" }, -- Thrall
+[54371] = { "річколапий бандит", en="Riverpaw Bandit" }, -- Riverpaw Bandit
+[54372] = { "річколапий моцак", en="Riverpaw Brute" }, -- Riverpaw Brute
+[54373] = { "річколапий травник", en="Riverpaw Herbalist" }, -- Riverpaw Herbalist
+[54404] = { "мажордом Екзекутус", en="Majordomo Executus" }, -- Majordomo Executus
+[54435] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
+[54475] = { "краб", en="Crab" }, -- crab
+[54476] = { "Ноздорму", en="Nozdormu" }, -- Nozdormu
+[54488] = { "плакальниця", en="Wailer" }, -- Wailer
+[54489] = { "потвора", en="Abomination" }, -- abomination
+[54499] = { "Мерзенний Ґрінч", en="The Abominable Greench" }, -- The Abominable Greench
+[54523] = { "дивний сніговик", en="Strange Snowman" }, -- Strange Snowman
+[54548] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[54606] = { "кам'яний вартовий Сток'тон", en="Stone Guard Stok'ton" }, -- Stone Guard Stok'ton
+[54629] = { "Пістоль", en="Gunny" }, -- Gunny
+[54634] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[54636] = { "Каза'рез", en="Caza'rez" }, -- Caza'rez
+[54658] = { "сержант Громовий Ріг", "квартирмейстер завоювання", en="Sergeant Thunderhorn" }, -- Sergeant Thunderhorn <Conquest Quartermaster>
+[54661] = { "капітан Молотолам", "квартирмейстер завоювання", en="Captain Dirgehammer" }, -- Captain Dirgehammer <Conquest Quartermaster>
 [54667] = { "наглядачка Джанг", en="Watcher Jhang" }, -- Watcher Jhang
+[54668] = { "Нагууд", en="Nahuud" }, -- Nahuud
+[54674] = { "Т'шу", en="T'shu" }, -- T'shu
 [54675] = { "наглядачка Джанг", en="Watcher Jhang" }, -- Watcher Jhang
 [54678] = { "натураліст Кус", en="Naturalist Bite" }, -- Naturalist Bite
+[54692] = { "артефактор Морфалій", en="Artificer Morphalius" }, -- Artificer Morphalius
+[54705] = { "Га'лей", en="Ha'lei" }, -- Ha'lei
+[54751] = { "Ноздорму", en="Nozdormu" }, -- Nozdormu
+[54840] = { "Ісфар", en="Isfar" }, -- Isfar
 [54848] = { "наглядачка Джанг", en="Watcher Jhang" }, -- Watcher Jhang
 [54849] = { "натураліст Кус", en="Naturalist Bite" }, -- Naturalist Bite
 [54851] = { "вітрозов Кіготь", en="Windcaller Claw" }, -- Windcaller Claw
 [54852] = { "землев'яз Райдж", en="Earthbinder Rayge" }, -- Earthbinder Rayge
 [54890] = { "бойовий командир Мафуун", en="Field Commander Mahfuun" }, -- Field Commander Mahfuun
 [54891] = { "шпигунка Ґрік'та", en="Spy Grik'tha" }, -- Spy Grik'tha
+[54931] = { "кам'яний вартовий Сток'тон", en="Stone Guard Stok'ton" }, -- Stone Guard Stok'ton
+[54932] = { "Каза'рез", en="Caza'rez" }, -- Caza'rez
+[54934] = { "Пістоль", en="Gunny" }, -- Gunny
+[54938] = { "архієпископ Бенедикт", en="Archbishop Benedictus" }, -- Archbishop Benedictus
+[54953] = { "архієпископ Бенедикт", en="Archbishop Benedictus" }, -- Archbishop Benedictus
+[54969] = { "Маннорот", "Руйнівник", en="Mannoroth" }, -- Mannoroth
+[54971] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[54972] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[55111] = { "сутінковий розбіяка", en="Twilight Thug", feminine="сутінкова розбіяка" }, -- Twilight Thug
+[55119] = { "карликовий куроліск", en="Pygmy Cockatrice" }, -- Pygmy Cockatrice
+[55133] = { "Коркі", en="Corki" }, -- Corki
+[55136] = { "кам'яний вартовий Сток'тон", en="Stone Guard Stok'ton" }, -- Stone Guard Stok'ton
+[55252] = { "Майкл", en="Michael" }, -- Michael
+[55260] = { "північний олень", en="Winter Reindeer" }, -- Winter Reindeer
+[55262] = { "крихітний сніговик", en="Tiny Snowman" }, -- Tiny Snowman
+[55393] = { "Ізера", "Сновидиця", en="Ysera" }, -- Ysera
+[55394] = { "Алекстраза", "Берегиня Життя", en="Alexstrasza" }, -- Alexstrasza <The Life-Binder>
+[55395] = { "Сорідормі", "дружина Ноздорму", en="Soridormi" }, -- Soridormi
+[55400] = { "Нелтаріон", "Страж Землі", en="Neltharion" }, -- Neltharion
+[55493] = { "елекк", en="Elekk" }, -- elekk
+[55500] = { "Іллідан Шаленство Бурі", en="Illidan Stormrage" }, -- Illidan Stormrage
+[55524] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[55532] = { "Іллідан Шаленство Бурі", en="Illidan Stormrage" }, -- Illidan Stormrage
+[55570] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
+[55624] = { "Ноздорму", en="Nozdormu" }, -- Nozdormu
+[55662] = { "скверногонча", en="Felhound" }, -- Felhound
+[55699] = { "Дейзі", en="Daisy" }, -- Daisy
+[55713] = { "старенька Емма", en="Ol' Emma" }, -- Ol' Emma
+[55718] = { "Срааз", en="Sraaz" }, -- Sraaz
+[55719] = { "Томас Міллер", en="Thomas Miller" }, -- Thomas Miller
+[55722] = { "Бреанні", en="Breanni" }, -- Breanni
+[55727] = { "Топпер Макнабб", en="Topper McNabb" }, -- Topper McNabb
+[55730] = { "Нет Пеґл", en="Nat Pagle" }, -- Nat Pagle
+[55779] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[55829] = { "Ґіт", "їздовий дракон Ренда Чорнорука", en="Gyth" }, -- Gyth
+[55971] = { "Смертекрил", "Руйнівник", en="Deathwing" }, -- Deathwing
+[56001] = { "скверногонча", en="Felhound" }, -- Felhound
+[56002] = { "вартовий скверни", en="Felguard" }, -- felguard
+[56036] = { "пекельник", en="Infernal" }, -- Infernal
+[56099] = { "Алекстраза", "Берегиня Життя", en="Alexstrasza" }, -- Alexstrasza <The Life-Binder>
+[56100] = { "Ізера", "Пробуджена", en="Ysera" }, -- Ysera
+[56102] = { "Ноздорму", "Позачасовий", en="Nozdormu" }, -- Nozdormu
+[56103] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[56126] = { "манекен-мішень", en="Target Dummy" }, -- Target Dummy
+[56173] = { "Смертекрил", "Руйнівник", en="Deathwing" }, -- Deathwing
+[56190] = { "Маннорот", "Руйнівник", en="Mannoroth" }, -- Mannoroth
+[56380] = { "Алекстраза", "Берегиня Життя", en="Alexstrasza" }, -- Alexstrasza <The Life-Binder>
+[56383] = { "Ізера", "Пробуджена", en="Ysera" }, -- Ysera
+[56475] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[56584] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[56602] = { "Симона Кантрелл", "ландшафтна дизайнерка", en="Simone Cantrell" }, -- Simone Cantrell
+[56613] = { "майстер Канґ", en="Master Kang" }, -- Master Kang
+[56667] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[56894] = { "вартовий Тріснутого Дерева", en="Splintertree Guard", feminine="вартова Тріснутого Дерева" }, -- Splintertree Guard
+[57266] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[57478] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [57682] = { "Тіріґоса", en="Tyrygosa" }, -- Tyrygosa
-[57684] = { "проєкція Тіріґоси" }, -- Tyrygosa
+[57684] = { "проєкція Тіріґоси", en="Image of Tyrygosa" }, -- Tyrygosa
+[57755] = { "Фаград", "великий майстер-пройдисвіт", en="Fahrad" }, -- Fahrad
+[57761] = { "Фаград", "великий майстер-пройдисвіт", en="Fahrad" }, -- Fahrad
+[57913] = { "Хромі", en="Chromie" }, -- Chromie
+[57915] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[57946] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[57962] = { "Смертекрил", en="Deathwing" }, -- Deathwing
+[58051] = { "майстер Канґ", en="Master Kang" }, -- Master Kang
+[58072] = { "Вінстон Вулф", "Вовк", en="Winstone Wolfe" }, -- Winstone Wolfe
+[58119] = { "Фаград", "великий майстер-пройдисвіт", en="Fahrad" }, -- Fahrad
+[58195] = { "Хромі", "посланниця бронзових драконів", en="Chromie" }, -- Chromie
+[58207] = { "Алекстраза", "Аспект Життя", en="Alexstrasza" }, -- Alexstrasza
+[58208] = { "Ноздорму", "Аспект Часу", en="Nozdormu" }, -- Nozdormu
+[58209] = { "Ізера", "Аспект Сну", en="Ysera" }, -- Ysera
+[58232] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
+[225965] = { "Фрікс Ксіззікс", "продавець спорядження кровожерливого гладіатора", en="Frix Xizzix" }, -- Frix Xizzix
 }
 
 if addonTable.npc then
