@@ -1138,7 +1138,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- For my entire life I have thought my bloodline cursed. I have lived beneath the shadow of my father's greatest failure.
 [2954757036] = [===[Все своє життя я вважав свій рід проклятим. Я жив у тіні найбільшої помилки свого батька.]===],
 -- I am Garrosh Hellscream, son of Grom, chieftain of the Mag'har! Let the battle call of Hellscream give you courage and strength! Be lifted by my rallying cry.
-[2039023675] = [===[Я — Ґаррош Пеклокрик, син Ґрома, вождь Маґ'харів! Нехай бойовий клич Пеклокрика наповнить вас відвагою та силою! Надихайтеся моїм бойовим кличем.]===],
+[2039023675] = [===[Я — Ґаррош Пеклокрик, син Ґрома, вождь Маґ'харів! Нехай бойовий поклик Пеклокрика наповнить вас відвагою та силою! Надихайтеся моїм кличем!]===],
 -- I hated him for what he had done. I hated him for the burden he left me. But now...
 [4128827153] = [===[Я ненавидів його за те, що він зробив. Я ненавидів його за тягар, що він лишив мені. Але тепер...]===],
 -- On this day, a great burden has been lifted from my chest. My heart swells with pride. And for the first time, I can proudly proclaim who I am. I can finally unleash the fury in my heart.
