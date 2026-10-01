@@ -236,14 +236,21 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
     tooltip.classicua.entry_id = entry_id
 end
 
-local function add_glossary_entry_to_tooltip(tooltip, glossary_key)
+local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processing)
     if tooltip.classicua.entry_type then
         return
     end
 
+    -- a miss is not claimed, only remembered by the key it was looked up for
+    tooltip.classicua.entry_id = glossary_key
+
     glossary_key = utils.strip_color_codes(glossary_key)
     if glossary_key then
         local found = entries.get_glossary_text(glossary_key)
+        if found then
+            tooltip.classicua.entry_type = "glossary"
+        end
+
         if found and options.can_translate("translate_other_tooltips") then
             local result_text = utils.cap(found)
 
@@ -253,16 +260,13 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key)
 
             tooltip:AddLine(assets.icon_ua_inline .. " " .. result_text, 1, 1, 1, true)
 
-            if tooltip:IsShown() then
+            if tooltip:IsShown() and not is_processing then
                 tooltip:Show()
             end
         elseif not found and options.account.dev_mode and utils.mouse_hover_frame() == WorldFrame then
             dev_log.missing_object(glossary_key)
         end
     end
-
-    tooltip.classicua.entry_type = "glossary"
-    tooltip.classicua.entry_id = glossary_key
 end
 
 local function claim_tooltip(tooltip, entry_type, entry_id)
@@ -416,8 +420,22 @@ local function tooltip_set_unit_aura(self, data)
     add_aura_to_tooltip(self, not utils.is_secret(data.id) and data.id)
 end
 
+-- WoW: Forever builds the tooltip of a world object, a corpse or a minimap point from tooltip data: added here, the
+-- line comes with the game's own lines, not a frame after the tooltip shows (tooltip_updated), and stays on rebuilds
+local function tooltip_set_world_name(self)
+    if options.can_lookup("translate_other_tooltips") then
+        add_glossary_entry_to_tooltip(self, _G[self:GetName() .. "TextLeft1"]:GetText(), true)
+    end
+end
+
 local function tooltip_updated(self)
-    if self.classicua.entry_type or utils.tooltip_has_secret(self) then
+    if self.classicua.entry_type or self.classicua.skipped then
+        return
+    end
+
+    -- a secret line or a unit stays until the tooltip is cleared, so such a tooltip is checked once, not every frame
+    if utils.tooltip_has_secret(self) then
+        self.classicua.skipped = true
         return
     end
 
@@ -429,8 +447,13 @@ local function tooltip_updated(self)
     else
         name, unit = self:GetUnit()
     end
+    if name or unit then
+        self.classicua.skipped = true
+        return
+    end
+
     local has_status_bar = GameTooltipStatusBar and GameTooltipStatusBar:IsShown()
-    if name or unit or has_status_bar then
+    if has_status_bar then
         return
     end
 
@@ -460,6 +483,7 @@ local function tooltip_cleared(self)
     self.classicua.entry_type = false
     self.classicua.entry_id = false
     self.classicua.talent_rank_id = nil
+    self.classicua.skipped = nil
 end
 
 -- WoW: Forever runs the retail ui, where the tooltip data processor calls back once it has filled a tooltip;
@@ -523,6 +547,10 @@ tooltips.prepare = function ()
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Spell, forever_post_call(tooltip_set_spell))
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.UnitAura, forever_post_call(tooltip_set_unit_aura))
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, forever_post_call(tooltip_set_unit))
+        for _, data_type in ipairs({ "Object", "Corpse", "MinimapMouseover" }) do
+            TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType[data_type],
+                forever_post_call(tooltip_set_world_name))
+        end
     end
 
     -- we don't need to handle "SetTalent" for Mists as talent tooltip there is a spell tooltip hooked on "OnTooltipSetSpell"
