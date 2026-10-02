@@ -4,6 +4,9 @@ import utils
 
 # TODO: impl Terms.get_issues(), which should check for all possible/known issues
 
+# the tags of the terms an npc description may refer to
+npc_desc_tags = ('ранг', 'група', 'клас', 'титул')
+
 class Terms(list['Term']):
 
     @staticmethod
@@ -37,7 +40,10 @@ class Terms(list['Term']):
     def locations(self) -> 'Terms':
         return filter(lambda t: t.is_location(), self)
 
-    def translate(self, text_en: str, fallback=None, is_female=False) -> str:
+    def translate_npc_desc(self, text_en: str, fallback=None, is_female=False) -> str:
+        return self.translate(text_en, fallback, is_female, only_tags=npc_desc_tags)
+
+    def translate(self, text_en: str, fallback=None, is_female=False, only_tags=None) -> str:
         text_en_lower = text_en.lower()
 
         text_en_lower_patterns = [
@@ -50,6 +56,9 @@ class Terms(list['Term']):
             text_en_lower_patterns.append(text_en_lower[4:])
 
         for term in self:
+            if only_tags and not any(term.has_tag(tag) for tag in only_tags):
+                continue
+
             if term.text_en.lower() in text_en_lower_patterns:
                 return term.translation(is_female=is_female)
 
@@ -100,7 +109,7 @@ class Term:
         for tag in self.tags:
             if tag.startswith('<') and tag.endswith('>'):
                 desc = tag[1:-1].strip()
-                return known_terms.translate(desc, fallback=desc, is_female=self.is_female()) if known_terms else desc
+                return known_terms.translate_npc_desc(desc, fallback=desc, is_female=self.is_female()) if known_terms else desc
 
         return ''
 
@@ -151,12 +160,12 @@ class Term:
                 npc_name = self.text_uk
                 npc_name_en = self.text_en
 
-        npc_desc = known_terms.translate(npc_desc_orig, fallback=npc_desc_orig, is_female=self.is_female())
+        npc_desc = known_terms.translate_npc_desc(npc_desc_orig, fallback=npc_desc_orig, is_female=self.is_female())
 
         npc_name, npc_name_feminine = self.name_forms(npc_name)
         npc_desc_feminine = ''
         if npc_name_feminine and npc_desc:
-            npc_desc_feminine = known_terms.translate(npc_desc_orig, fallback=npc_desc_orig, is_female=True)
+            npc_desc_feminine = known_terms.translate_npc_desc(npc_desc_orig, fallback=npc_desc_orig, is_female=True)
             if npc_desc_feminine == npc_desc:
                 npc_desc_feminine = ''
 
