@@ -3,11 +3,12 @@ import re
 from pathlib import Path
 from xml.etree import ElementTree
 
-known_expansions = ('classic', 'sod', 'tbc', 'wrath', 'cata', 'mists')
+known_expansions = ('classic', 'sod', 'forever', 'tbc', 'wrath', 'cata', 'mists')
 known_expansions_inclusion = {
     # this should match expansion TOC files
     'classic'   : ('classic',),
     'sod'       : ('classic', 'sod'),
+    'forever'   : ('classic', 'sod', 'forever'),
     'tbc'       : ('classic', 'tbc'),
     'wrath'     : ('classic', 'tbc', 'wrath'),
     'cata'      : ('classic', 'tbc', 'wrath', 'cata'),

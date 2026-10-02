@@ -1,4 +1,4 @@
-local known_expansions = { "classic", "sod", "tbc", "wrath", "cata", "mists" }
+local known_expansions = { "classic", "sod", "forever", "tbc", "wrath", "cata", "mists" }
 
 -- translations under text hashes; [1] of a chat is the npc name, "!code" maps codes to hashes
 local function count_phrases(entry)
