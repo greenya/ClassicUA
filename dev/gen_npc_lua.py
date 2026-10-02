@@ -1,4 +1,5 @@
 import re
+import sqlite3
 import sys
 import utils
 from terms import Terms
@@ -17,6 +18,19 @@ def split_issue(masculine: str, feminine: str, text_en: str) -> str:
 
     return ''
 
+def collect_source_names(database_path='database/classicua.db'):
+    # Source names of NPCs from database. Used for `en` values.
+    names = {}
+    with sqlite3.connect(database_path) as conn:
+        for id, expansion, name in conn.execute('SELECT id, expansion, name FROM npcs'):
+            names.setdefault(id, {})[expansion] = name
+    return names
+
+def source_name(names, id, expansion):
+    # Getting first NPC entry for target expansion, iterating from target through parent expansions
+    candidates = names.get(id, {})
+    return next((candidates[e] for e in reversed(utils.known_expansions_inclusion[expansion]) if e in candidates), None)
+
 def collect_npcs():
     tbx_file = 'translation_from_crowdin/ClassicUA.tbx'
     print(f'Processing {tbx_file}')
@@ -25,9 +39,12 @@ def collect_npcs():
     issues = []
     terms = Terms.from_tbx(tbx_file)
     desc_texts_en = set() # descs the terms translate, which they split at the slash by sex too
+    source_names = collect_source_names()
 
     for term in terms.npcs():
         for npc in term.npc_id_tags(terms):
+            npc.name_en = source_name(source_names, npc.id, npc.exp) or npc.name_en
+
             if npc.id in npcs[npc.exp]:
                 issues.append(f'[!] NPC #{npc.id} duplication! Probably terms has one of these NPCs with wrong ID.\n\t- old NPC: {npcs[npc.exp][npc.id][0]}\n\t- new NPC: {npc}')
 
