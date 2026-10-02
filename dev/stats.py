@@ -10,6 +10,7 @@ known_extra_translations = {
     # expansion keys
     "classic"                   : "Класична (Classic)",
     "sod"                       : "Сезон Відкриттів (SOD)",
+    "forever"                   : "Forever",
     "tbc"                       : "Палаючий Похід (TBC)",
     "wrath"                     : "Гнів Короля-ліча (WOTLK)",
     "cata"                      : "Катаклізм (Cataclysm)",
