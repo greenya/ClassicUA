@@ -52,7 +52,7 @@ def collect_npcs():
             npcs[npc.exp][npc.id] = (npc, term.text_en + (f' <{npc.desc_en}>' if npc.desc_en else ''))
 
     for text_en in sorted(desc_texts_en):
-        masculine, feminine = terms.translate(text_en), terms.translate(text_en, is_female=True)
+        masculine, feminine = terms.translate_npc_desc(text_en), terms.translate_npc_desc(text_en, is_female=True)
         issue = split_issue(masculine, feminine, text_en) if masculine != feminine else ''
         if issue:
             issues.append(f'[?] NPC desc <{text_en}> is split at the slash, but {issue}: {masculine}/{feminine}')
