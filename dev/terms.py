@@ -55,19 +55,29 @@ class Terms(list['Term']):
         if text_en_lower.startswith('the '):
             text_en_lower_patterns.append(text_en_lower[4:])
 
-        for term in self:
+        # only the terms whose english or alias is one of the patterns, in the glossary's order (a term's english before
+        # its alias), rather than all of them on every call
+        matches = sorted((match for pattern in text_en_lower_patterns for match in self._index().get(pattern, [])),
+                         key=lambda match: (match[0], match[1]))
+
+        for _, is_alias, term in matches:
             if only_tags and not any(term.has_tag(tag) for tag in only_tags):
                 continue
 
-            if term.text_en.lower() in text_en_lower_patterns:
-                return term.translation(is_female=is_female)
-
-            if term.is_location():
-                for alias in term.location_aliases():
-                    if alias.lower() in text_en_lower_patterns:
-                        return term.text_uk
+            return term.text_uk if is_alias else term.translation(is_female=is_female)
 
         return fallback
+
+    def _index(self) -> dict:
+        # english, lowercased, and a location's aliases -> [(position, is_alias, term)], built once
+        if not hasattr(self, '_matches'):
+            self._matches = {}
+            for position, term in enumerate(self):
+                self._matches.setdefault(term.text_en.lower(), []).append((position, False, term))
+                if term.is_location():
+                    for alias in term.location_aliases():
+                        self._matches.setdefault(alias.lower(), []).append((position, True, term))
+        return self._matches
 
 class Term:
 
