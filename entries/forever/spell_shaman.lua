@@ -4,6 +4,8 @@ local shaman_spells = {
 
 -- See /entries/classic/spell.lua for data format details.
 
+-- Ancestral Fortitude
+[16177] = { "Стійкість пращурів", "Збільшує броню від предметів на {1}%.#by {1}%", "Збільшує броню від предметів на {1}%.#by {1}%", en="Ancestral Fortitude" },
 -- Ancestral Knowledge
 [17485] = { "Знання пращурів", "Збільшує ваш інтелект на {1}%.#by {1}%", en="Ancestral Knowledge" },
 -- Call of Flame
@@ -16,6 +18,8 @@ local shaman_spells = {
 [66842] = { "Поклик стихій", "Одночасно розміщає всі 4 тотеми з панелі тотемів.", en="Call of the Elements" },
 -- Call of the Spirits
 [66844] = { "Поклик духів", "Одночасно розміщає всі 4 тотеми з панелі тотемів. Може викликати тотеми, відмінні від тотемів \"Поклику предків\".", en="Call of the Spirits" },
+-- Clearcasting
+[16246] = { "Ясномова", "Ваше наступне стихійне бойове закляття витратить на {1}% менше мани.#by {1}%", "Ваше наступне стихійне бойове закляття витратить на {1}% менше мани.#by {1}%", en="Clearcasting" },
 -- Concussion
 [16035] = { "Струс", "Збільшує шкоду заклять \"Блискавка\", \"Ланцюгова блискавка\" та \"Земний шок\" на {1}%.#by {1}%", en="Concussion" },
 -- Convection
@@ -53,6 +57,8 @@ local shaman_spells = {
 [8181] = { "Тотем опору кризі", "Викликає тотем опору кризі з {1} здоров'я на {2} хв, який збільшує опір кризі учасників групи чи рейду в межах {4} м на {3}.#with {1} health#for {2} min#resistance by {3}#within {4} y", en="Frost Resistance Totem" },
 [10478] = { ref=8181 }, -- Frost Resistance Totem
 [10479] = { ref=8181 }, -- Frost Resistance Totem
+-- Grounding Totem
+[8178] = { "Тотем заземлення", nil, "Спрямує одне вороже бойове закляття на тотем заземлення.", en="Grounding Totem" },
 -- Healing Grace
 [29189] = { "Цілюща благодать", "Зменшує загрозу від ваших заклять зцілення на {1}%.#by {1}%", en="Healing Grace" },
 [29191] = { ref=29189 }, -- Healing Grace
@@ -93,9 +99,6 @@ local shaman_spells = {
 [1223033] = { "Усвідомленість", "Дозволяє {1}% відновлення мани продовжуватися під час вимови заклять.#{1}% of your Mana", en="Mindfulness" },
 -- Natural Grace
 [29187] = { "Природна благодать", "Зменшує загрозу від ваших заклять на {1}%.#by {1}%", en="Natural Grace" },
--- Nature Resistance
-[10598] = { ref=10596 }, -- Nature Resistance
-[10599] = { ref=10596 }, -- Nature Resistance
 -- Nature Resistance Totem
 [10595] = { "Тотем опору природі", "Викликає тотем опору природі з {1} здоров'я на {2} хв, який збільшує опір природі учасників групи чи рейду в межах {3} м на {4}.#with {1} health#for {2} min#within {3} yards by {4}", en="Nature Resistance Totem" },
 [10600] = { ref=10595 }, -- Nature Resistance Totem

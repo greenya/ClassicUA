@@ -35,9 +35,6 @@ local warlock_spells = {
 [30063] = { ref=30060 }, -- Contagion
 [30064] = { ref=30060 }, -- Contagion
 -- Create Firestone
-[6366] = { "Створення каменя вогню", "При застосуванні на зброю збільшує пряму шкоду заклять на {1}%, а показник критичного удару заклять на {2}. Триває {3} год.#direct spells by {1}%#spell critical strike rating by {2}#Lasts for {3} h", en="Create Firestone" },
-[17951] = { ref=6366 }, -- Create Firestone
-[17952] = { ref=6366 }, -- Create Firestone
 [17953] = { ref=6366 }, -- Create Firestone
 [27250] = { ref=6366 }, -- Create Firestone
 -- Create Spellstone
@@ -96,7 +93,7 @@ local warlock_spells = {
 -- Demonic Circle: Teleport
 [48020] = { "Демонічне коло: Телепортація", "Телепортує вас до вашого демонічного кола та знімає всі ефекти знерухомлення.", en="Demonic Circle: Teleport" },
 -- Demonic Embrace
-[18697] = { "Демонічні обійми", "Збільшує вашу сумарну витривалість на {1}%.#by {1}%", en="Demonic Embrace" },
+[18697] = { "Демонічні обійми", "Збільшує вашу витривалість на {1}%.#by {1}%", en="Demonic Embrace" },
 [18698] = { ref=18697 }, -- Demonic Embrace
 [18699] = { ref=18697 }, -- Demonic Embrace
 -- Demonic Empowerment
@@ -362,6 +359,11 @@ local warlock_spells = {
 [34439] = { ref=34438 }, -- Unstable Affliction
 [47841] = { ref=30108 }, -- Unstable Affliction
 [47843] = { ref=30108 }, -- Unstable Affliction
+
+-- Firestone
+[6366] = { "Створення каменя вогню", "При застосуванні на зброю збільшує пряму шкоду заклять на {1}%, а показник критичного удару заклять на {2}. Триває {3} год.#direct spells by {1}%#spell critical strike rating by {2}#Lasts for {3} h", en="Create Firestone" },
+[17951] = { ref=6366 }, -- Create Firestone
+[17952] = { ref=6366 }, -- Create Firestone
 
 -- Item effects
 [23720] = { "Благословення Чорної книги", "Підсилює вашого прислужника, збільшуючи його силу заклять на {1}, силу атаки на {2} та броню на {3} протягом {4} с. Ефект діє лише на біса, сукуба, інкуба, пустотника, скверногончу та вартового скверни.#spell damage by {1}#attack power by {2}#armor by {3} for {4} sec", "Силу заклять збільшено на {1}.\nСилу атаки збільшено на {2}.\nБроню збільшено на {3}.#Spell power increased by {1}#Attack power increased by {2}#Armor increased by {3}", en="Blessing of the Black Book" },
