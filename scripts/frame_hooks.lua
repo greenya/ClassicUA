@@ -144,11 +144,123 @@ local function update_quest_frame_item_names(quest_state)
     update_numbered_item_buttons(quest_state .. "Item", get_item_link)
 end
 
+local function forever_gossip_translation(get_text, ...)
+    local npc_id = utils.npc_id_from_unit_id("npc")
+    if not npc_id or not options.can_lookup("translate_gossip") then
+        return
+    end
+
+    local text_uk = get_text(npc_id, ...)
+    return options.can_translate("translate_gossip") and text_uk or nil
+end
+
+local function get_forever_gossip_quest_title(_, quest_id)
+    return entries.get_quest_title(quest_id)
+end
+
+-- a row: the hidden copies are children of the gossip window itself, the rows shown are in its scroll box
+local function set_forever_gossip_row_text(row, text_en, text_uk)
+    if row:GetParent() == GossipFrame then
+        local height_en = row:GetHeight()
+        row:SetText(text_uk)
+        row:Resize()
+        if row:GetHeight() < height_en then
+            row:SetText(text_en)
+            row:Resize()
+        end
+    else
+        row:SetText(data_hooks.preferred_lang == "uk" and text_uk or text_en)
+        row:Resize()
+    end
+end
+
+-- a player reply as GossipOptionButtonMixin:Setup() shows it
+local function forever_gossip_reply_text(info, name)
+    local flags = info.flags or 0
+    local prepends = {}
+    if FlagsUtil.IsSet(flags, Enum.GossipOptionRecFlags.QuestLabelPrepend) then
+        prepends[#prepends + 1] = QUEST_PREPEND
+    end
+    if FlagsUtil.IsSet(flags, Enum.GossipOptionRecFlags.PlayMovieLabelPrepend) then
+        prepends[#prepends + 1] = PLAY_MOVIE_PREPEND
+    end
+    return #prepends > 0 and string_format(GOSSIP_OPTION_PREPEND, table.concat(prepends, " "), name) or name
+end
+
+-- a quest title as GossipSharedQuestButtonMixin:UpdateTitleForQuest() shows it
+local function forever_gossip_quest_text(info, title)
+    local format = info.isIgnored and IGNORED_QUEST_DISPLAY or info.isTrivial and TRIVIAL_QUEST_DISPLAY
+        or NORMAL_QUEST_DISPLAY
+    return string_format(format, title)
+end
+
+local function on_forever_gossip_reply_setup(row, info)
+    local text_uk = forever_gossip_translation(entries.get_gossip_text_for_player_reply, info.name)
+    if text_uk then
+        set_forever_gossip_row_text(row, forever_gossip_reply_text(info, info.name),
+            forever_gossip_reply_text(info, text_uk))
+    end
+end
+
+local function on_forever_gossip_quest_setup(row, info)
+    local title_uk = forever_gossip_translation(get_forever_gossip_quest_title, info.questID)
+    if title_uk then
+        set_forever_gossip_row_text(row, forever_gossip_quest_text(info, info.title),
+            forever_gossip_quest_text(info, title_uk))
+    end
+end
+
+local function on_forever_gossip_npc_talk_setup(row, text)
+    local text_uk = forever_gossip_translation(entries.get_gossip_text_for_npc_talk, text)
+    if text_uk then
+        row.GreetingText:SetText(data_hooks.preferred_lang == "uk" and text_uk or text)
+        row:SetHeight(row.GreetingText:GetHeight())
+    end
+end
+
+local function on_forever_gossip_get_text()
+    for _, child in ipairs({ GossipFrame:GetChildren() }) do
+        local font_string = child.GreetingText
+        if font_string then
+            font_string:SetHeight(0) -- back to fitting its text
+            local text = data_hooks.original.C_GossipInfo_GetText()
+            local text_uk = forever_gossip_translation(entries.get_gossip_text_for_npc_talk, text)
+            if text_uk then
+                -- setting height to the highest of texts
+                font_string:SetText(text_uk)
+                local height_uk = font_string:GetHeight()
+                font_string:SetText(text)
+                font_string:SetHeight(math_max(height_uk, font_string:GetHeight()))
+            end
+            return
+        end
+    end
+end
+
+local function switch_forever_gossip_rows(scroll_box)
+    for _, row in scroll_box:EnumerateFrames() do
+        local data = row.GetElementData and row:GetElementData()
+        local button_type = data and data.buttonType
+        if button_type == GOSSIP_BUTTON_TYPE_TITLE then
+            on_forever_gossip_npc_talk_setup(row, data.text)
+        elseif button_type == GOSSIP_BUTTON_TYPE_OPTION then
+            on_forever_gossip_reply_setup(row, data.info)
+        elseif button_type == GOSSIP_BUTTON_TYPE_ACTIVE_QUEST or button_type == GOSSIP_BUTTON_TYPE_AVAILABLE_QUEST then
+            on_forever_gossip_quest_setup(row, data.info)
+        end
+    end
+end
+
 local function update_gossip_scroll_box()
     local npc_id = utils.npc_id_from_unit_id("npc")
     local scroll_box = GossipFrame and GossipFrame.GreetingPanel and GossipFrame.GreetingPanel.ScrollBox
 
     if not npc_id or not scroll_box then
+        return
+    end
+
+    if utils.is_forever then
+        switch_forever_gossip_rows(scroll_box)
         return
     end
 
@@ -839,6 +951,14 @@ local function prepare_forever_quest_texts()
     hooksecurefunc("QuestFrameGreetingPanel_OnShow", update_forever_quest_greeting)
 end
 
+local function prepare_forever_gossip()
+    hooksecurefunc(GossipGreetingTextMixin, "Setup", on_forever_gossip_npc_talk_setup)
+    hooksecurefunc(GossipOptionButtonMixin, "Setup", on_forever_gossip_reply_setup)
+    hooksecurefunc(GossipAvailableQuestButtonMixin, "Setup", on_forever_gossip_quest_setup)
+    hooksecurefunc(GossipActiveQuestButtonMixin, "Setup", on_forever_gossip_quest_setup)
+    hooksecurefunc(C_GossipInfo, "GetText", on_forever_gossip_get_text)
+end
+
 frame_hooks.update_gossip_npc_name = update_gossip_npc_name
 
 frame_hooks.prepare = function ()
@@ -850,5 +970,6 @@ frame_hooks.prepare = function ()
     if utils.is_forever then
         prepare_forever_quest_texts()
         prepare_forever_zone_texts()
+        prepare_forever_gossip()
     end
 end
