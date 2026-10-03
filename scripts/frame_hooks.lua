@@ -641,15 +641,13 @@ local function quest_info_quest_id()
     return QuestInfoFrame.questLog and C_QuestLog.GetSelectedQuest() or GetQuestID()
 end
 
--- WoW: Forever, the quest list of the map: the game sizes every quest button by its title right after setting it,
--- so once the list is built, each title is swapped, its button resized by the height the title changed, and the
--- list laid out again
+-- WoW: Forever, the quest list on the map: the game sizes every quest button by its title right after setting it, so
+-- each title is swapped and its button resized before the game lays the list out
 local function update_forever_quest_log_list()
     if data_hooks.preferred_lang ~= "uk" or not options.can_translate("translate_quest") then
         return
     end
 
-    local is_resized = false
     local buttons_by_quest_id = {}
 
     for button in QuestScrollFrame.titleFramePool:EnumerateActive() do
@@ -661,17 +659,11 @@ local function update_forever_quest_log_list()
         if text_uk then
             local height = button.Text:GetHeight()
             button.Text:SetText(text_uk)
-
-            -- the list is rebuilt on every hover of a quest on the map, so it is laid out again only when needed
-            local height_change = button.Text:GetHeight() - height
-            if height_change ~= 0 then
-                button:SetHeight(button:GetHeight() + height_change)
-                is_resized = true
-            end
+            button:SetHeight(button:GetHeight() + button.Text:GetHeight() - height)
         end
     end
 
-    -- the objectives (or the completion text) are under the title, and make its button taller
+    -- objectives (or completion text) under the title
     for objective in QuestScrollFrame.objectiveFramePool:EnumerateActive() do
         local text = objective.Text:GetText()
         local text_uk = entries.translate_forever_quest_objective(text)
@@ -681,12 +673,9 @@ local function update_forever_quest_log_list()
             objective.Text:SetText(text_uk)
 
             local height_change = objective.Text:GetStringHeight() - height
-            if height_change ~= 0 then
-                objective:SetHeight(objective:GetHeight() + height_change)
-                local button = buttons_by_quest_id[objective.questID]
-                button:SetHeight(button:GetHeight() + height_change)
-                is_resized = true
-            end
+            objective:SetHeight(objective:GetHeight() + height_change)
+            local button = buttons_by_quest_id[objective.questID]
+            button:SetHeight(button:GetHeight() + height_change)
         end
     end
 
@@ -695,10 +684,6 @@ local function update_forever_quest_log_list()
         if text_uk then
             button:SetText(text_uk)
         end
-    end
-
-    if is_resized then
-        QuestScrollFrame.Contents:Layout()
     end
 end
 
@@ -843,7 +828,8 @@ local function prepare_forever_quest_texts()
     hook_quest_text(QuestProgressText,          entries.get_quest_progress,     GetQuestID)
 
     hooksecurefunc("QuestInfo_Display", update_forever_quest_info_objectives)
-    hooksecurefunc("QuestLogQuests_Update", update_forever_quest_log_list)
+    -- last call before QuestLogQuests_Update() lays the list out; our Layout() call would taint the map
+    hooksecurefunc(QuestScrollFrame, "UpdateBackground", update_forever_quest_log_list)
     hooksecurefunc(QuestObjectiveTracker, "LayoutContents", update_forever_quest_tracker)
     hooksecurefunc(QuestObjectiveTracker, "UpdateHeight", update_forever_quest_tracker_height)
 
