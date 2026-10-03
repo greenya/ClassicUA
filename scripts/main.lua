@@ -132,7 +132,8 @@ local function on_gossip_show()
 
     frame_hooks.update_gossip_npc_name()
 
-    if not options.can_lookup("translate_gossip") then
+    -- WoW: Forever translates rows as game sets them up (see frame_hooks)
+    if utils.is_forever or not options.can_lookup("translate_gossip") then
         return
     end
 
@@ -158,25 +159,6 @@ local function on_gossip_show()
                 element_data.titleOptionButton:Setup(element_data.info)
                 is_any_text_translated = true
             end
-
-        -- WoW: Forever has no data hooks for the npc text and the quest titles (see data_hooks.prepare)
-        -- TODO: use for classic as well
-        elseif utils.is_forever and element_data and element_data.buttonType == GOSSIP_BUTTON_TYPE_TITLE then
-            local text_ua = entries.get_gossip_text_for_npc_talk(npc_id, element_data.text)
-            if text_ua and is_translation_on then
-                element_data.text = data_hooks.set_translation("gossip", npc_id, element_data.text, text_ua) or text_ua
-                child:Setup(element_data.text)
-                is_any_text_translated = true
-            end
-
-        elseif utils.is_forever and element_data and element_data.info and element_data.info.questID then
-            local title_ua = entries.get_quest_title(element_data.info.questID)
-            if title_ua and is_translation_on then
-                local info = element_data.info
-                info.title = data_hooks.set_translation("gossip", npc_id, info.title, title_ua) or title_ua
-                child:Setup(info)
-                is_any_text_translated = true
-            end
         end
     end
 
@@ -189,12 +171,7 @@ local function on_quest_log_update()
     -- the gossip window redraws itself on this event while it has active quests,
     -- which puts the original npc name back into its header
     if GossipFrame:IsShown() and GossipFrame.hasActiveQuests then
-        -- WoW: Forever, the redraw also puts back the original npc text and quest titles (see on_gossip_show)
-        if utils.is_forever then
-            on_gossip_show()
-        else
-            frame_hooks.update_gossip_npc_name()
-        end
+        frame_hooks.update_gossip_npc_name()
     end
 end
 
