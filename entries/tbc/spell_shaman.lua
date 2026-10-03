@@ -41,7 +41,7 @@ local shaman_spells = {
 -- Elemental Focus
 [16164] = { "Стихійна зосередженість", "Коли ви завдаєте критичного удару закляттями вогню, криги чи природи, ви отримуєте ефект \"Ясномова\", що зменшує витрати мани на {1} наступні бойові закляття на {2}%.#next {1} damage#by {2}%", en="Elemental Focus" },
 -- Elemental Precision
-[30672] = { "Стихійна точність", "Збільшує ймовірність завдання удару закляттями вогню, криги та природи на {1}% та зменшує загрозу заклять вогню, криги та природи на {2}%.#hit with Fire, Frost and Nature spells by {1}%#caused by Fire, Frost and Nature spells by {2}%", en="Elemental Precision" },
+[30672] = { "Точність стихій", "Збільшує ймовірність завдання удару закляттями вогню, криги та природи на {1}% та зменшує загрозу заклять вогню, криги та природи на {2}%.#hit with Fire, Frost and Nature spells by {1}%#caused by Fire, Frost and Nature spells by {2}%", en="Elemental Precision" },
 [30673] = { ref=30672 }, -- Elemental Precision
 [30674] = { ref=30672 }, -- Elemental Precision
 -- Elemental Shields
@@ -104,7 +104,7 @@ local shaman_spells = {
 [16233] = { ref=16181 }, -- Healing Focus
 [16234] = { ref=16181 }, -- Healing Focus
 -- Healing Grace
-[29187] = { "Цілюще благовоління", "Зменшує загрозу від ваших цілющих заклять на {1}% та зменшує ймовірність того, що ваші ефекти буде розвіяно на {2}%.#spells by {1}%#dispelled by {2}%", en="Healing Grace" },
+[29187] = { "Цілюща благодать", "Зменшує загрозу від ваших цілющих заклять на {1}% та зменшує ймовірність того, що ваші ефекти буде розвіяно на {2}%.#spells by {1}%#dispelled by {2}%", en="Healing Grace" },
 [29189] = { ref=29187 }, -- Healing Grace
 [29191] = { ref=29187 }, -- Healing Grace
 -- Healing Stream Totem

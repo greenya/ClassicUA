@@ -4,12 +4,6 @@ local pet_spells = {
 
 -- See /entries/classic/spell.lua for data format details.
 
--- Arcane Resistance
-[24500] = { ref=24493 }, -- Arcane Resistance
-[24501] = { ref=24493 }, -- Arcane Resistance
-[24508] = { ref=24493 }, -- Arcane Resistance
-[24509] = { ref=24493 }, -- Arcane Resistance
-[24510] = { ref=24493 }, -- Arcane Resistance
 -- Boar Charge
 [25999] = { "Ривок кнура", "Знерухомлює ціль на {1} с.#for {1} sec", "Знерухомлено.", en="Boar Charge" },
 -- Demoralizing Screech
@@ -53,6 +47,8 @@ local pet_spells = {
 [1263110] = { "Швидша атака VII", ref=1263099, en="Faster Attack VII" },
 -- Fire Shield
 [2947] = { "Вогняний щит", "Оточує ціль щитом з вогню. Кожен удар по цілі завдає нападникові {1} шкоди вогнем. Триває {2} хв. Ваш прислужник не може накласти \"Вогняний щит\" на себе.#causes {1} Fire#Lasts {2} min", "Завдає {1} шкоди вогнем нападникові при отриманні удару.#Does {1}", en="Fire Shield" },
+-- Firebolt
+[3110] = { "Вогняна стріла", "Завдає цілі від {1} до {2} шкоди від вогню.#Deals {1} to {2} Fire", en="Firebolt" },
 -- Furious Howl
 [24597] = { "Скажене виття", "Вовк виє, збільшуючи силу атаки ближнього бою всіх учасників групи в межах {1} м на {2}. Триває {3} хв.#within {1} y#by {2}.#Lasts {3} min", "Збільшує силу атаки ближнього бою на {1}.#power by {1}", en="Furious Howl" },
 [24605] = { "Скажене виття", "Вовк виє, збільшуючи силу атаки ближнього бою всіх учасників групи в межах {1} м на {2}–{3}. Триває {4} хв.#within {1} yards#by {2} to {3}.#Lasts {4} min", "Збільшує силу атаки ближнього бою на {1}–{2}.#by {1} to {2}.", en="Furious Howl" },

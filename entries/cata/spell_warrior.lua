@@ -67,7 +67,7 @@ local warrior_spells = {
 -- Death Wish
 [12292] = { "Жага смерті", "Ви входите в стан несамовитості, збільшуючи свою фізичну шкоду на {1}%, але збільшуючи отриману шкоду на {2}%. Триває {3} с.#damage by {1}%#taken by {2}%#Lasts {3} sec", "Завдану фізичну шкоду збільшено на {1}%.[ Всю отриману шкоду збільшено на {1}%.#Increases all damage taken by {1}%]#dealt by {1}%", en="Death Wish" },
 -- Demoralizing Roar
-[15727] = { ref=10968 }, -- Demoralizing Roar
+[15727] = { nil, nil, "Силу атаки ближнього бою зменшено.", ref=10968 }, -- Demoralizing Roar
 [20753] = { "Деморалізуючий рев", "Зменшує силу атаки ближнього бою навколишніх ворогів на {1} протягом {2} с.#enemies by {1} for {2} sec", "Силу атаки ближнього бою зменшено на {1}.#by {1}", en="Demoralizing Roar" },
 [27551] = { ref=20753 }, -- Demoralizing Roar
 -- Demoralizing Shout
