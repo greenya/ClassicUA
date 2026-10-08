@@ -14,5 +14,6 @@ ui\ClassicUA_UISliderTemplateWithLabels.xml
 entries\index.xml
 entries\classic\index.xml
 entries\sod\index.xml
+entries\forever\index.xml
 
 scripts\index.xml
