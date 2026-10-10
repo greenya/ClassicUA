@@ -133,6 +133,16 @@ addonTable.race = { -- [id] = { [н/р/д/з/о/м/к] = { 1=male, 2=female, 3=n
     ["к"] = { "пандарене", "пандаренко", "пандарени" },
 },
 
+["skyborne"] = {
+    ["н"] = { "небороджений", "небороджена", "небороджені" },
+    ["р"] = { "небородженого", "небородженої", "небороджених" },
+    ["д"] = { "небородженому", "небородженій", "небородженим" },
+    ["з"] = { "небородженого", "небороджену", "небороджених" },
+    ["о"] = { "небородженим", "небородженою", "небородженими" },
+    ["м"] = { "небородженому", "небородженій", "небороджених" },
+    ["к"] = { "небороджений", "небороджена", "небороджені" },
+},
+
 }
 
 -- Adding key for plural chat cases: {раса:мн}, {раса:мр}, etc
@@ -149,4 +159,7 @@ for _, race_table in pairs(addonTable.race) do
     end
 end
 
-addonTable.race["undead"] = addonTable.race["scourge"]  -- Alias for raceName
+-- Aliases for raceName
+addonTable.race["undead"] = addonTable.race["scourge"]
+addonTable.race["highorderskyborne"] = addonTable.race["skyborne"]
+addonTable.race["windshaperskyborne"] = addonTable.race["skyborne"]
