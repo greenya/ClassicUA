@@ -482,6 +482,8 @@ local known_gossip_dynamic_seq_with_multiple_words_for_get_text_code = {
     {"highmountain tauren", "highmountaintauren"},
     {"mag'har orc", "magharorc"},
     {"zandalari troll", "zandalaritroll"},
+    {"high order skyborne", "highorderskyborne"},
+    {"windshaper skyborne", "windshaperskyborne"},
 }
 local MAX_TEXT_CODE_LENGTH = 42
 
