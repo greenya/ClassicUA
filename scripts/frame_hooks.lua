@@ -598,7 +598,7 @@ local function update_forever_quest_tracker()
 
             for key, line in pairs(block.usedLines) do
                 local text_en = line.Text:GetText()
-                local text_uk = type(key) == "number" and entries.translate_forever_quest_objective(text_en)
+                local text_uk = type(key) == "number" and entries.translate_quest_objective(text_en, quest_id)
                     or key == "QuestComplete" and translate_forever_finished_quest_text(quest_id, text_en)
                 if text_uk then
                     line.Text.classicua = { en=text_en, uk=text_uk, shown=text_en }
@@ -778,7 +778,7 @@ local function update_forever_quest_log_list()
     -- objectives (or completion text) under the title
     for objective in QuestScrollFrame.objectiveFramePool:EnumerateActive() do
         local text = objective.Text:GetText()
-        local text_uk = entries.translate_forever_quest_objective(text)
+        local text_uk = entries.translate_quest_objective(text, objective.questID)
             or translate_forever_finished_quest_text(objective.questID, text)
         if text_uk then
             local height = objective.Text:GetStringHeight()
@@ -808,7 +808,7 @@ local function update_forever_quest_info_objectives()
     local quest_id = quest_info_quest_id()
     for _, objective in ipairs(QuestInfoObjectivesFrame.Objectives) do
         local text = objective:GetText()
-        local text_uk = objective:IsShown() and text and entries.translate_forever_quest_objective(text)
+        local text_uk = objective:IsShown() and text and entries.translate_quest_objective(text, quest_id)
         if text_uk then
             objective:SetText(data_hooks.set_translation("quest", quest_id, text, text_uk))
         end

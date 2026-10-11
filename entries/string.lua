@@ -123,7 +123,6 @@ local global_strings = {
 { "POSTMASTER_PIPE_OUTLAND", "Позамежжя" }, -- "Outland"
 { "POSTMASTER_PIPE_PANDARIA", "Пандарія" }, -- "Pandaria"
 { "QUEST_DESCRIPTION", "Опис" }, -- "Description"
-{ "QUEST_MONSTERS_KILLED", "%s: %d/%d вбито" }, -- "%s slain: %d/%d" -- keep "%s:...", addon will split by ":" and lookup left part for translation, details in translate_quest_objective_task()
 { "QUEST_OBJECTIVES", "Доручення" }, -- "Quest Objectives"
 { "QUEST_SPELL_NEEDED", "Вивчіть заклинання: %s" }, -- "Learn Spell: %s"
 -- @taint

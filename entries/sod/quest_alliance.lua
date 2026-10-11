@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_alliance = { -- [id] = { title, description, objective, progress, completion }
+local quest_alliance = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
 [77568] = { en="A Hunter's Strength",
 [===[Сила мисливця]===],
 [===[Мисливці черпають силу з довіри та поваги до всіх істот, а не лише до своїх улюбленців. На службі в Альянсу ти вполюєш багато звірів, але навіть у бою ти {стать:повинен:повинна} поважати свого ворога.

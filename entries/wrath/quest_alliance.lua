@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_alliance = { -- [id] = { title, description, objective, progress, completion }
+local quest_alliance = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
 [7] = { en="Kobold Camp Cleanup",
 [===[Зачистка табору кобольдів]===],
 [===[Твоє перше завдання буде пов'язане із зачищенням, {ім'я}. Клан кобольдів заполонив ліси на півночі. Направляйся туди та знищ усіх кобольдів-шкідників, що зустрінуться на твоєму шляху. Зменш їхню популяцію настільки, щоб одного дня ми змогли остаточно вигнати їх з Північнокраю.]===],

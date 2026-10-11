@@ -25,9 +25,10 @@ def collect_quests():
             issues.append(f'[!] Unexpected expansion "{expansion}" for #{id}.')
             continue
 
-        cat, side, title = conn.execute(
-            f'SELECT cat, side, title FROM quests WHERE expansion="{expansion}" AND id={id}'
+        cat, side, title, tasks = conn.execute(
+            f'SELECT cat, side, title, tasks FROM quests WHERE expansion="{expansion}" AND id={id}'
         ).fetchone()
+        tasks_en = tasks.split('\n') if tasks else []
 
         quests_folder_name = f'quests_{expansion}' if expansion != 'classic' else 'quests'
         quest_path = f'translation_from_crowdin/uk/{quests_folder_name}/{cat}'
@@ -57,6 +58,7 @@ def collect_quests():
             'description': False,
             'progress': False,
             'completion': False,
+            'tasks': {},
         }
 
         new_quest_chars = {}
@@ -64,7 +66,15 @@ def collect_quests():
             if s.text:
                 string_attr = s.attrib['name'].lower()
                 string_text = utils.get_clean_text(s.text)
-                new_quest[string_attr] = string_text
+                if string_attr.startswith('task_'):
+                    n = int(string_attr[len('task_'):])
+                    task_en = tasks_en[n - 1] if n <= len(tasks_en) else None
+                    if not task_en or s.attrib.get('comment', '').rsplit(': ', 1)[0] != task_en:
+                        issues.append(f'[!] Quest #{id} {string_attr}: the database has another line ({task_en})')
+                        continue
+                    new_quest['tasks'][task_en] = string_text
+                else:
+                    new_quest[string_attr] = string_text
 
                 for issue in utils.get_inline_code_issues(string_text):
                     issues.append(f'[!] Quest #{id} {string_attr}: {issue}')
