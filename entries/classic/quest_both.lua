@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_both = { -- [id] = { title, description, objective, progress, completion }
+local quest_both = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
 [10] = { en="The Scrimshank Redemption",
 [===[Спокута Полотноміра]===],
 [===[О, це жахливо! Я відправив мого найкращого помічника, молодшого землеміра Полотноміра, в пустелю на південь звідси. Цей район ми називаємо Зяючим проваллям. Що ж, він зник, а в його останньому звіті йшлося про дивних комах. Чи може бути так, що вони захопили два великі регіони пустелі?

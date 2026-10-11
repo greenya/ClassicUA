@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_both = { -- [id] = { title, description, objective, progress, completion }
+local quest_both = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
 [17] = { en="Uldaman Reagent Run",
 [===[В Ульдаман за реагентами]===],
 [===[Я чув про нещодавно відкриту рослину — гриб-малиновик. Вони ростуть цілими колоніями на розкопках Ульдамана. Їх можна знайти як в зовнішніх тунелях, так і в глибших, незвіданих місцях. Я хочу вивчити можливості їх застосування в алхімії і тут-то ти мені й знадобишся.

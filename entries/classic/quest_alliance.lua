@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_alliance = { -- [id] = { title, description, objective, progress, completion }
+local quest_alliance = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
 [5] = { en="Jitters' Growling Gut",
 [===[Бурчання Тремтінієвого живота]===],
 [===[Я вже декілька тижнів ховаюсь в цьому містечку-привиді, і їм лише комах та бур'яни! Мені потрібна нормальна їжа, і я готовий добре заплатити за неї.

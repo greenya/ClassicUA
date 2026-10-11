@@ -210,8 +210,8 @@ local function prepare_data_hooks_for_quests()
         if data and type(data[1]) == "string" and options.can_lookup("translate_quest") then
             local _, quest_idx = ...
             local quest_id = get_quest_log_quest_id(quest_idx)
-            local quest_task_uk = entries.translate_quest_objective_task(data[1])
-            if quest_task_uk ~= data[1] then
+            local quest_task_uk = entries.translate_quest_objective(data[1], quest_id)
+            if quest_task_uk then
                 data[1] = data_hooks.set_translation("quest", quest_id, data[1], quest_task_uk)
             end
         end

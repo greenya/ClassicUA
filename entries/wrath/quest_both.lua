@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_both = { -- [id] = { title, description, objective, progress, completion }
+local quest_both = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
 [78] = { en="The Legend of Stalvan",
 [===[Легенда про Сталвана]===],
 [===[Я знаю когось, хто, можливо, зможе тобі допомогти. Коли я був на чолі стражі Штормовія, ми часто відпочивали в таверні «Багряний Ворон» в Темнодолі. Тамтешній корчмар, Сміттс, був неабияким знавцем місцевої історії. Покажи йому цю сторінку і послухай, що він скаже.]===],

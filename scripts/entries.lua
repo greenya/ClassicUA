@@ -792,39 +792,12 @@ entries.get_item_suffix = function (item_name_en)
     return at.item_suffix[item_suffix_en]
 end
 
-entries.translate_quest_objective_task = function (text)
-    -- try parse "LEFT: RIGHT"
-    local parts = { string_split(":", text, 2) }
-    if #parts == 2 and #parts[1] > 0 then
-        local found_left = entries.get_glossary_text(parts[1])
-        if found_left then
-            parts[1] = found_left
-        elseif #parts[1] > 1 and parts[1]:sub(#parts[1], #parts[1]) == "s" then
-            -- try plural => singular, e.g. "Kobold Workers" => "Kobold Worker"
-            local found_singular = entries.get_glossary_text(parts[1]:sub(1, #parts[1] - 1))
-            if found_singular then
-                parts[1] = found_singular
-            end
-        end
+-- our wording of a kill line, from the game's "Kobold Vermin slain: 3/8"
+local QUEST_MONSTERS_KILLED_UK = "%s: %d/%d вбито"
 
-        local found_right = entries.get_glossary_text(parts[2])
-        if found_right then
-            parts[2] = " " .. found_right
-        end
-
-        text = parts[1] .. ":" .. parts[2]
-    else
-        text = entries.get_glossary_text(text, text)
-    end
-
-    return text
-end
-
--- WoW: Forever puts the count of an objective first: "0/8 Kobold Vermin slain" (its QUEST_MONSTERS_KILLED), "0/4 Fungal Spores".
--- Classic clients show them as "Kobold Vermin slain: 0/8" and "Fungal Spores: 0/4"
--- TODO: make translate_quest_objective_task universal
-entries.translate_forever_quest_objective = function (text)
+local function translate_objective_line(text, quest_id, is_count_first)
     local at = addon_table
+
     local complete_en = " (" .. COMPLETE .. ")"
     local complete_uk = ""
     if text:sub(-#complete_en) == complete_en then
@@ -832,21 +805,36 @@ entries.translate_forever_quest_objective = function (text)
         complete_uk = " (" .. (at.string[COMPLETE] or COMPLETE) .. ")"
     end
 
-    local done, total, task = text:match("^(%d+)/(%d+) (.+)$")
-    if not done then
-        return
-    end
-
-    local text_classic
-    local monster = task:match("^(.+) slain$")
-    if monster then
-        text_classic = string_format(at.string_globals.QUEST_MONSTERS_KILLED, monster, done, total)
+    local task, done, total
+    if is_count_first then
+        done, total, task = string_match(text, "^(%d+)/(%d+) (.+)$")
     else
-        text_classic = string_format("%s: %d/%d", task, done, total)
+        task, done, total = string_match(text, "^(.+): (%d+)/(%d+)$")
     end
 
-    local text_uk = entries.translate_quest_objective_task(text_classic)
-    return text_uk ~= text_classic and text_uk .. complete_uk or nil
+    local quest = find_quest(quest_id)
+    local text_uk = quest and quest.tasks and make_text(quest.tasks[task or text])
+
+    -- a task first, as some are worded as kills ("Gnolls slain")
+    if not done then
+        text_uk = text_uk or entries.get_glossary_text(text)
+    elseif text_uk then
+        text_uk = text_uk .. ": " .. done .. "/" .. total
+    else
+        local monster = string_match(task, "^(.+) slain$")
+        local name_uk = entries.get_glossary_text(monster or task)
+        if monster and name_uk then
+            text_uk = string_format(QUEST_MONSTERS_KILLED_UK, name_uk, done, total)
+        elseif name_uk then
+            text_uk = name_uk .. ": " .. done .. "/" .. total
+        end
+    end
+
+    return text_uk and text_uk .. complete_uk
+end
+
+entries.translate_quest_objective = function (text, quest_id)
+    return translate_objective_line(text, quest_id, utils.is_forever)
 end
 
 entries.translate_taxi_node_name = function (text)
