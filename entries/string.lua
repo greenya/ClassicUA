@@ -206,13 +206,6 @@ local global_strings = {
 { "ZOOM_OUT", "Віддалити" }, -- "Zoom Out"
 }
 
--- chat_string_globals are managed in scripts\chats.lua only
-addonTable.chat_string_globals = { -- [key] = text
-["CHAT_MONSTER_SAY_GET"] = "%s каже: ", -- "%s says: "
-["CHAT_MONSTER_WHISPER_GET"] = "%s шепоче: ", -- "%s whispers: "
-["CHAT_MONSTER_YELL_GET"] = "%s вигукує: ", -- "%s yells: "
-}
-
 addonTable.string = {}
 addonTable.string_back = {}
 addonTable.string_globals = {}

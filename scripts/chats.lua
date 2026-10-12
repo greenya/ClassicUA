@@ -61,16 +61,16 @@ local function hook_chat_frames()
 end
 
 local function remember_line(event, npc_name)
-    local key = "CHAT_" .. event:sub(10) .. "_GET" -- CHAT_MSG_MONSTER_YELL -> CHAT_MONSTER_YELL_GET
-    local format_uk = addon_table.chat_string_globals[key]
-    if not format_uk or type(_G[key]) ~= "string" then
+    local verb = known_chat_msg_events[event].verb
+    local format_en = _G["CHAT_" .. event:sub(10) .. "_GET"] -- CHAT_MSG_MONSTER_YELL -> CHAT_MONSTER_YELL_GET
+    if not verb or type(format_en) ~= "string" or not format_en:find("^%%s %a+: $") then
         return
     end
 
     hook_chat_frames()
     pending_line = {
-        prefix_en   = string_format(_G[key], npc_name),
-        prefix_uk   = string_format(format_uk, npc_name),
+        prefix_en   = string_format(format_en, npc_name),
+        prefix_uk   = string_format("%s %s: ", npc_name, verb),
     }
 end
 
