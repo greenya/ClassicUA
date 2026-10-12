@@ -8,6 +8,7 @@ local tooltips  = addon_table.use("tooltips") ---@class tooltips_class
 local utils     = addon_table.use("utils") ---@class utils_class
 
 local C_UnitAuras           = _G.C_UnitAuras
+local Enum                  = _G.Enum
 local GetBindLocation       = _G.GetBindLocation
 local GameTooltipStatusBar  = _G.GameTooltipStatusBar
 local TooltipUtil           = _G.TooltipUtil
@@ -157,12 +158,43 @@ local function add_sod_engraving_entry_to_tooltip(tooltip, entry, sod_engraving_
     end
 end
 
+local function add_unit_quest_lines_to_tooltip(tooltip)
+    local data = tooltip:GetPrimaryTooltipData()
+    if not (data and data.lines and options.can_translate("translate_quest")) then
+        return
+    end
+
+    local line_types = Enum.TooltipDataLineType
+    local quest_id, title_uk
+    for _, line in ipairs(data.lines) do
+        local text = line.leftText
+        if type(text) == "string" and not utils.is_secret(text) then
+            if line.type == line_types.QuestTitle then
+                quest_id = not utils.is_secret(line.id) and tonumber(line.id)
+                title_uk = quest_id and entries.get_quest_title(quest_id) or entries.get_glossary_text(text)
+                if title_uk then
+                    tooltip:AddLine(title_uk, 1, 0.82, 0)
+                end
+            elseif line.type == line_types.QuestObjective and title_uk then
+                local text_uk = entries.translate_quest_objective(text, quest_id)
+                if text_uk then
+                    tooltip:AddLine(" - " .. text_uk, 1, 1, 1)
+                end
+            end
+        end
+    end
+end
+
 local function add_npc_entry_to_tooltip(tooltip, entry, unit)
     local name, tag = entries.get_npc_name_and_tag(entry, unit)
     local heading = entries.make_entry_text(name, tooltip)
     tooltip:AddLine(assets.icon_ua_inline .. " " .. utils.cap(heading), 1, 1, 1)
 
     add_line_to_tooltip(tooltip, tag, "TEXT", 1, 1, 1)
+
+    if utils.is_forever then
+        add_unit_quest_lines_to_tooltip(tooltip)
+    end
 end
 
 local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_translation_on, unit)
