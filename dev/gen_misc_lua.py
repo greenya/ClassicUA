@@ -2,7 +2,7 @@ import sys
 import utils
 from terms import Terms
 
-term_tags_to_export = [ 'група', 'клас', 'подія', 'ремесло' ]
+term_tags_to_export = [ 'група', 'клас', 'подія', 'ремесло', 'термін' ]
 
 def collect_misc():
     tbx_file = 'translation_from_crowdin/ClassicUA.tbx'
