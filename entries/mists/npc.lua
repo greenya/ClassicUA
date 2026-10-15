@@ -35,6 +35,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [56046] = { "білка", en="Squirrel" }, -- Squirrel
 [56047] = { "кролик", en="Rabbit" }, -- Rabbit
 [56133] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[56198] = { "ловець хащів", en="Thicket Stalker" }, -- Thicket Stalker
 [56282] = { "метелик", en="Butterfly" }, -- Butterfly
 [56284] = { "білка", en="Squirrel" }, -- Squirrel
 [56285] = { "кролик", en="Rabbit" }, -- Rabbit

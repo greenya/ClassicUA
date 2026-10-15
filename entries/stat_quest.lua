@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-addonTable.stat_quest = { name="root", count=7428, total=16878, rows={
+addonTable.stat_quest = { name="root", count=7467, total=16876, rows={
     { name="Класична (Classic)", count=4275, total=4275, rows={
         { name="Калімдор", count=1277, total=1277, rows={
             { name="Азшара", count=33, total=33 },
@@ -227,41 +227,41 @@ addonTable.stat_quest = { name="root", count=7428, total=16878, rows={
             { name="Штормовій", count=7, total=7 },
         } },
     } },
-    { name="Forever", count=0, total=951, rows={
-        { name="Калімдор", count=0, total=154, rows={
+    { name="Forever", count=39, total=949, rows={
+        { name="Калімдор", count=11, total=154, rows={
             { name="Громовий Бескид", count=0, total=3 },
             { name="Дарнас", count=0, total=2 },
-            { name="Дуротар", count=0, total=19 },
-            { name="Каміннопазуристі гори", count=0, total=4 },
-            { name="Мулґор", count=0, total=22 },
+            { name="Дуротар", count=1, total=19 },
+            { name="Каміннопазуристі гори", count=1, total=4 },
+            { name="Мулґор", count=2, total=22 },
             { name="Орґріммар", count=0, total=7 },
-            { name="Поле велетнів", count=0, total=1 },
-            { name="Спустошище", count=0, total=25 },
+            { name="Поле велетнів", count=1, total=1 },
+            { name="Спустошище", count=2, total=25 },
             { name="Степи", count=0, total=19 },
-            { name="Тельдрассіль", count=0, total=15 },
-            { name="Темнобережжя", count=0, total=8 },
-            { name="Тисяча Шипів", count=0, total=5 },
+            { name="Тельдрассіль", count=1, total=15 },
+            { name="Темнобережжя", count=1, total=8 },
+            { name="Тисяча Шипів", count=1, total=5 },
             { name="Шен'дралас", count=0, total=19 },
-            { name="Ясенеділ", count=0, total=5 },
+            { name="Ясенеділ", count=1, total=5 },
         } },
-        { name="Класи", count=0, total=148, rows={
+        { name="Класи", count=14, total=148, rows={
             { name="Воїн", count=0, total=3 },
             { name="Друїд", count=0, total=20 },
-            { name="Жрець", count=0, total=30 },
+            { name="Жрець", count=12, total=30 },
             { name="Маг", count=0, total=5 },
             { name="Мисливець", count=0, total=10 },
-            { name="Паладин", count=0, total=32 },
+            { name="Паладин", count=2, total=32 },
             { name="Пройдисвіт", count=0, total=8 },
             { name="Чорнокнижник", count=0, total=1 },
             { name="Шаман", count=0, total=39 },
         } },
-        { name="Підземелля", count=0, total=45, rows={
+        { name="Підземелля", count=1, total=45, rows={
             { name="Excavation Site Wetlands", count=0, total=14 },
             { name="Багряний монастир", count=0, total=1 },
             { name="Даларан", count=0, total=8 },
             { name="Зала Танів", count=0, total=4 },
             { name="Затоплене місто", count=0, total=3 },
-            { name="Мертві копальні", count=0, total=2 },
+            { name="Мертві копальні", count=1, total=2 },
             { name="Руїни Лордерона", count=0, total=13 },
         } },
         { name="Поля битв", count=0, total=20, rows={
@@ -271,39 +271,39 @@ addonTable.stat_quest = { name="root", count=7428, total=16878, rows={
             { name="Crafting", count=0, total=150 },
             { name="Рибальство", count=0, total=3 },
         } },
-        { name="Різне", count=0, total=228, rows={
+        { name="Різне", count=1, total=226, rows={
             { name="Без категорії", count=0, total=10 },
             { name="Навала Скари", count=0, total=1 },
             { name="Нічний ельф", count=0, total=1 },
-            { name="Острів Зефрас", count=0, total=113 },
-            { name="Спеціальні", count=0, total=2 },
+            { name="Острів Зефрас", count=0, total=111 },
+            { name="Спеціальні", count=1, total=2 },
             { name="Табори", count=0, total=101 },
         } },
         { name="Свята", count=0, total=3, rows={
             { name="Зимова Покрова", count=0, total=1 },
             { name="Місячний фестиваль", count=0, total=2 },
         } },
-        { name="Східні Королівства", count=0, total=200, rows={
-            { name="Альтерацькі гори", count=0, total=9 },
+        { name="Східні Королівства", count=12, total=200, rows={
+            { name="Альтерацькі гори", count=1, total=9 },
             { name="Багрянокряжові гори", count=0, total=7 },
             { name="Болото Скорбот", count=0, total=6 },
-            { name="Височина Араті", count=0, total=7 },
+            { name="Височина Араті", count=2, total=7 },
             { name="Дун-Морог", count=0, total=20 },
             { name="Ельвиннський ліс", count=0, total=27 },
-            { name="Заболоття", count=0, total=28 },
+            { name="Заболоття", count=3, total=28 },
             { name="Залізогарт", count=0, total=5 },
-            { name="Західний край", count=0, total=18 },
+            { name="Західний край", count=1, total=18 },
             { name="Каменярська дамба", count=0, total=1 },
             { name="Ковмар", count=0, total=1 },
             { name="Лох-Модан", count=0, total=6 },
-            { name="Передгір'я Гіллзбраду", count=0, total=4 },
+            { name="Передгір'я Гіллзбраду", count=2, total=4 },
             { name="Підмістя", count=0, total=3 },
             { name="Поріччя", count=0, total=1 },
-            { name="Смерколісся", count=0, total=7 },
-            { name="Срібнохвойний праліс", count=0, total=9 },
+            { name="Смерколісся", count=1, total=7 },
+            { name="Срібнохвойний праліс", count=1, total=9 },
             { name="Терниста долина", count=0, total=11 },
             { name="Тірісфальське перелісся", count=0, total=18 },
-            { name="Штормовій", count=0, total=12 },
+            { name="Штормовій", count=1, total=12 },
         } },
     } },
     { name="Палаючий Похід (TBC)", count=1943, total=2348, rows={

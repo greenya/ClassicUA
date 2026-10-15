@@ -1205,7 +1205,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- We're doomed!
 [2985966305] = [===[Нам кінець!]===],
 },
-["Blackhand Summoner"] = { "закликач Чорнорука",
+["Blackhand Summoner"] = { "закликачка Чорнорука",
 -- %s begins to summon in a Blackhand Dreadweaver!
 [2839291088] = [===[%s починає викликати жахоткача Чорнорука!]===],
 -- %s begins to summon in a Blackhand Veteran!
@@ -1846,7 +1846,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- %s looks at you expectantly.
 [4002245215] = [===[%s очікує від вас чогось смачного.]===],
 },
-["Chief Engineer Hinderweir VII"] = { "старший інженер Греблер",
+["Chief Engineer Hinderweir VII"] = { "старший інженер Греблер VII",
 -- The Stonewrought Dam has been saved!  Three cheers for <name>!
 [1860081449] = [===[Каменярську дамбу врятовано! Славімо {ім'я:з}!#for <name>!]===],
 ["!code"] = {
@@ -2164,7 +2164,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- Move to the stairs and defend!
 [1016984614] = [===[Рухайтеся до сходів і обороняйтеся!]===],
 },
-["Crimson Courier"] = { "кур'єр Багряного Походу",
+["Crimson Courier"] = { "кур'єрка Багряного Походу",
 -- Assassins! Guards! Guards!
 [15376703] = [===[Вбивці! Охорона! Охорона!]===],
 -- I sense danger up ahead.
@@ -3810,7 +3810,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 ["tslt.-"] = 1508820764,
 },
 },
-["Stormscale Toxicologist"] = { "штормолуский токсиколог",
+["Stormscale Toxicologist"] = { "штормолуска токсикологиня",
 -- You've interfered with our plans for the last time, foolish <class>!
 [4101778386] = [===[Ти востаннє втручаєшся в наші плани, {клас:к}!#foolish <class>!]===],
 ["!code"] = {

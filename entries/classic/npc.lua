@@ -2070,6 +2070,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [2879] = { "Карріна Мекенда", "дресирувальниця", en="Karrina Mekenda" }, -- Karrina Mekenda <Pet Trainer>
 [2887] = { "призматичний вигнанець", en="Prismatic Exile" }, -- Prismatic Exile
 [2888] = { "Ґарек", en="Garek" }, -- Garek
+[2891] = { "каменесклепий череполом", en="Stonevault Skullthumper" }, -- Stonevault Skullthumper
 [2892] = { "каменесклепий провидець", en="Stonevault Seer" }, -- Stonevault Seer
 [2893] = { "каменесклепий кісткохруст", en="Stonevault Bonesnapper" }, -- Stonevault Bonesnapper
 [2894] = { "каменесклепий шаман", en="Stonevault Shaman" }, -- Stonevault Shaman
@@ -2276,8 +2277,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [3119] = { "колкарський чорнороб", en="Kolkar Drudge" }, -- Kolkar Drudge
 [3120] = { "колкарська вістова", en="Kolkar Outrunner" }, -- Kolkar Outrunner
 [3121] = { "дуротарський тигр", en="Durotar Tiger" }, -- Durotar Tiger
-[3122] = { "кривавопазуровий хвостохляст", en="Bloodtalon Taillasher" }, -- Bloodtalon Taillasher
-[3123] = { "кривавопазуровий косопащ", en="Bloodtalon Scythemaw" }, -- Bloodtalon Scythemaw
+[3122] = { "кровопазуровий хвостохляст", en="Bloodtalon Taillasher" }, -- Bloodtalon Taillasher
+[3123] = { "кровопазуровий косопащ", en="Bloodtalon Scythemaw" }, -- Bloodtalon Scythemaw
 [3124] = { "скорпід-робітник", en="Scorpid Worker" }, -- Scorpid Worker
 [3125] = { "скорпід-цокало", en="Clattering Scorpid" }, -- Clattering Scorpid
 [3126] = { "броньований скорпід", en="Armored Scorpid" }, -- Armored Scorpid
@@ -2372,7 +2373,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [3224] = { "сміливець Хмура Грива", en="Brave Cloudmane" }, -- Brave Cloudmane
 [3225] = { "споганений крапчастий кнур", en="Corrupted Mottled Boar" }, -- Corrupted Mottled Boar
 [3226] = { "споганений скорпід", en="Corrupted Scorpid" }, -- Corrupted Scorpid
-[3227] = { "споганений кривавопазуровий косопащ", en="Corrupted Bloodtalon Scythemaw" }, -- Corrupted Bloodtalon Scythemaw
+[3227] = { "споганений кровопазуровий косопащ", en="Corrupted Bloodtalon Scythemaw" }, -- Corrupted Bloodtalon Scythemaw
 [3228] = { "споганений береговий повзун", en="Corrupted Surf Crawler" }, -- Corrupted Surf Crawler
 [3229] = { "Колючкошкур \"Верескун\"", en="\"Squealer\" Thornmantle" }, -- "Squealer" Thornmantle
 [3230] = { "Назґрел", "радник Тралла", en="Nazgrel" }, -- Nazgrel
@@ -2723,7 +2724,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [3603] = { "Циндра Доброшепіт", "алхімік-підмайстер", en="Cyndra Kindwhisper" }, -- Cyndra Kindwhisper <Journeyman Alchemist>
 [3604] = { "Малорн Клинколист", "травник", en="Malorne Bladeleaf" }, -- Malorne Bladeleaf <Herbalist>
 [3605] = { "Надія Гривопряд", "шкірниця-підмайстриня", en="Nadyia Maneweaver" }, -- Nadyia Maneweaver <Journeyman Leatherworker>
-[3606] = { "Аланна Вороноока", "чародій-підмайстер", en="Alanna Raveneye" }, -- Alanna Raveneye <Journeyman Enchanter>
+[3606] = { "Аланна Вороноока", "чародійка-підмайстриня", en="Alanna Raveneye" }, -- Alanna Raveneye <Journeyman Enchanter>
 [3607] = { "Андрол Дуборукий", "рибалка", en="Androl Oakhand" }, -- Androl Oakhand <Fisherman>
 [3608] = { "Альдія", "загальні припаси", en="Aldia" }, -- Aldia <General Supplies>
 [3609] = { "Шаломон", "зброяр", en="Shalomon" }, -- Shalomon <Weaponsmith>
@@ -2763,7 +2764,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [3653] = { "Чавк", en="Kresh" }, -- Kresh
 [3654] = { "Мутанус-Пожирач", en="Mutanus the Devourer" }, -- Mutanus the Devourer
 [3655] = { "Божевільний Маґґліш", en="Mad Magglish" }, -- Mad Magglish
-[3657] = { "стражниця Елісса Зоребриз", en="Sentinel Elissa Starbreeze" }, -- Elissa Starbreeze
+[3657] = { "стражниця Елісса Зоряний Бриз", en="Sentinel Elissa Starbreeze" }, -- Elissa Starbreeze
 [3658] = { "Ліззарік", "торговець зброєю", en="Lizzarik" }, -- Lizzarik
 [3659] = { "Джорб", "тілоохоронець Ліззаріка", en="Jorb" }, -- Jorb
 [3660] = { "Атрік Нарассін", "культ Темного Пасма", en="Athrikus Narassin" }, -- Athrikus Narassin <Cult of the Dark Strand>
@@ -3595,6 +3596,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [4700] = { "старий кодо", en="Aged Kodo" }, -- Aged Kodo
 [4701] = { "вмираючий кодо", en="Dying Kodo" }, -- Dying Kodo
 [4702] = { "древній кодо", en="Ancient Kodo" }, -- Ancient Kodo
+[4704] = { "мародінський гонець", en="Maraudine Pack Runner" }, -- Maraudine Pack Runner
 [4705] = { "заклинатель Палаючого Леза", en="Burning Blade Invoker", feminine="заклинателька Палаючого Леза" }, -- Burning Blade Invoker
 [4706] = { "Раззерік", en="Razzeric" }, -- Razzeric
 [4707] = { "Зузубі", "ведучий перегонів", en="Zuzubee" }, -- Zuzubee
@@ -6394,9 +6396,9 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [11065] = { "Тоніс Пілон", "чародій-підмайстер", en="Thonys Pillarstone" }, -- Thonys Pillarstone <Journeyman Enchanter>
 [11066] = { "Джаґ", "чародій-підмайстер", en="Jhag" }, -- Jhag <Journeyman Enchanter>
 [11067] = { "Малкомб Вінн", "чародій-підмайстер", en="Malcomb Wynn" }, -- Malcomb Wynn <Journeyman Enchanter>
-[11068] = { "Бетті Квін", "чародій-підмайстер", en="Betty Quin" }, -- Betty Quin <Journeyman Enchanter>
+[11068] = { "Бетті Квін", "чародійка-підмайстриня", en="Betty Quin" }, -- Betty Quin <Journeyman Enchanter>
 [11069] = { "Дженова Камнещит", "доглядачка стайні", en="Jenova Stoneshield" }, -- Jenova Stoneshield <Stable Master>
-[11070] = { "Сильванна Літній Місяць", "чародій-підмайстер", en="Lalina Summermoon" }, -- Lalina Summermoon <Journeyman Enchanter>
+[11070] = { "Сильванна Літній Місяць", "чародійка-підмайстриня", en="Lalina Summermoon" }, -- Lalina Summermoon <Journeyman Enchanter>
 [11071] = { "Мот Світанковий Мандрівник", "чародій-підмайстер", en="Mot Dawnstrider" }, -- Mot Dawnstrider <Journeyman Enchanter>
 [11072] = { "Кітта Вогневітер", "чародій-ремісник", en="Kitta Firewind" }, -- Kitta Firewind <Artisan Enchanter>
 [11073] = { "Аннора", "чародійка-майстриня", en="Annora" }, -- Annora
@@ -6785,8 +6787,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [11824] = { "Ерік Фелікс", en="Erik Felixe" }, -- Erik Felixe
 [11825] = { "Пейдж Фелікс", en="Paige Felixe" }, -- Paige Felixe
 [11826] = { "Крісті Ґрант", en="Kristy Grant" }, -- Kristy Grant
-[11827] = { "Кімберлі Грант", en="Kimberly Grant" }, -- Kimberly Grant
-[11828] = { "Келлі Грант", en="Kelly Grant" }, -- Kelly Grant
+[11827] = { "Кімберлі Ґрант", en="Kimberly Grant" }, -- Kimberly Grant
+[11828] = { "Келлі Ґрант", en="Kelly Grant" }, -- Kelly Grant
 [11829] = { "Фаграк", en="Fahrak" }, -- Fahrak
 [11830] = { "жрець Гаккарі", en="Hakkari Priest", feminine="жриця Гаккарі" }, -- Hakkari Priest
 [11831] = { "знахар Гаккарі", en="Hakkari Witch Doctor", feminine="знахарка Гаккарі" }, -- Hakkari Witch Doctor
@@ -7238,6 +7240,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [13152] = { "командир Малґор", en="Commander Malgor" }, -- Commander Malgor
 [13153] = { "командир Мулфорт", en="Commander Mulfort" }, -- Commander Mulfort
 [13154] = { "командир Луї Філіпс", en="Commander Louis Philips" }, -- Commander Louis Philips
+[13155] = { "агент Смертоловів", en="Deathstalker Agent", feminine="агентка Смертоловів" }, -- Deathstalker Agent
 [13157] = { "Макасґар", en="Makasgar" }, -- Makasgar
 [13158] = { "лейтенант Сандерс", en="Lieutenant Sanders" }, -- Lieutenant Sanders
 [13159] = { "Джеймс Кларк", en="James Clark" }, -- James Clark
@@ -7674,7 +7677,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [14555] = { "стрімкий імлозуб", en="Swift Mistsaber" }, -- Swift Mistsaber
 [14556] = { "стрімкий кригозуб", en="Swift Frostsaber" }, -- Swift Frostsaber
 [14558] = { "ліловий бойовий кінь-скелет", en="Purple Skeletal Warhorse" }, -- Purple Skeletal Warhorse
-[14559] = { "стрімкий соловий кінь", en="Swift Palamino" }, -- Swift Palamino
+[14559] = { "стрімкий соловий кінь", en="Swift Palamino" }, -- Swift Palomino
 [14560] = { "стрімкий білий кінь", en="Swift White Steed" }, -- Swift White Steed
 [14561] = { "стрімкий гнідий кінь", en="Swift Brown Steed" }, -- Swift Brown Steed
 [14562] = { "стрімкий синій механобіг", en="Swift Blue Mechanostrider" }, -- Swift Blue Mechanostrider
