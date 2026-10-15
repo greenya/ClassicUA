@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_horde = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
+local quest_horde = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text }, ai = true if AI translated a text }
 [363] = { en="Rude Awakening",
 [===[Різке пробудження]===],
 [===[Нарешті ти {стать:прокинувся:прокинулася}. Ми вже думали кинути тебе у вогнище, як інших, але, схоже, ти {стать:оговтався:оговталася}.

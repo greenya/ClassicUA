@@ -21,6 +21,8 @@ local known_entity_types = {
             "quest_horde.lua",
             "quest_both.lua",
         },
+        -- the counts are of the proofread translations
+        count_entry = function (entry) return entry.ai and 0 or 1 end,
     },
     {
         name = "item_texts",

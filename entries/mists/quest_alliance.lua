@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_alliance = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
+local quest_alliance = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text }, ai = true if AI translated a text }
 }
 
 if addonTable.quest_alliance then

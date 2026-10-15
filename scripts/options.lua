@@ -26,6 +26,7 @@ local default_account = { ---@class account_options_class
     translate_other_tooltips = true,
     translate_string = true,
     translate_zone = true,
+    translate_ai = true,
 }
 
 options.character = nil ---@class character_options_class

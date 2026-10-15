@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_both = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
+local quest_both = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text }, ai = true if AI translated a text }
 [77690] = { en="A Small Upgrade",
 [===[Невелике покращення]===],
 [===[Вітаю, {стать:шановний:шановна} {клас:к}! Моє звати Джон Прикрас, я всесвітньо відомий мандрівник та розгадувач загадок! Ніколи не {стать:чув:чула} про мене, так? Не біда! Я тут, у Залізогарті, шукаю дві найпрестижніші коштовності, які коли-небудь бачили на цьому боці Азероту! Кажуть, що вони утворюють головоломку!

@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_alliance = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
+local quest_alliance = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text }, ai = true if AI translated a text }
 [156] = { en="Gather Rot Blossoms",
 [===[Збір гнилоцвіту]===],
 [===[Якщо ти принесеш мені кілька гнилоцвітів, то я зможу зварити для тебе сік зомбі.

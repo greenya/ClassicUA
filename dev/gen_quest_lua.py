@@ -4,6 +4,17 @@ from xml.etree import ElementTree
 import stats
 import utils
 
+quest_text_names = ('title', 'objective', 'description', 'progress', 'completion')
+
+# AI's translations by expansion and id: the texts by name, and the task lines (line n translates line n of the
+# quest's tasks)
+def get_ai_quests(conn):
+    return {
+        (expansion, id): (dict(zip(quest_text_names, texts)), tasks.split('\n') if tasks else [])
+        for expansion, id, *texts, tasks in conn.execute(
+            f'SELECT expansion, id, {", ".join(quest_text_names)}, tasks FROM quests_ai')
+    }
+
 def collect_quests():
     database_path = 'database/classicua.db'
     print(f'Processing {database_path}')
@@ -13,6 +24,7 @@ def collect_quests():
     quest_expansion_and_id_pairs = [
         r for r in conn.execute('SELECT expansion, id FROM quests ORDER BY id')
     ]
+    ai_quests = get_ai_quests(conn)
 
     quests = { e: { s: [] for s in utils.known_sides } for e in utils.known_expansions }
     quests_cat_count = { e: {} for e in utils.known_expansions }
@@ -29,6 +41,7 @@ def collect_quests():
             f'SELECT cat, side, title, tasks FROM quests WHERE expansion="{expansion}" AND id={id}'
         ).fetchone()
         tasks_en = tasks.split('\n') if tasks else []
+        ai_quest = ai_quests.get((expansion, id))
 
         quests_folder_name = f'quests_{expansion}' if expansion != 'classic' else 'quests'
         quest_path = f'translation_from_crowdin/uk/{quests_folder_name}/{cat}'
@@ -36,23 +49,20 @@ def collect_quests():
         xml_path_filename = f'{quest_path}/{quest_filename}.xml'
 
         try:
-            tree = ElementTree.parse(xml_path_filename)
+            strings = ElementTree.parse(xml_path_filename).getroot().findall('./string')
+            quests_cat_total[expansion][cat] =\
+                1 + quests_cat_total[expansion][cat] if cat in quests_cat_total[expansion] else 1
         except FileNotFoundError:
             issues.append(f'[!] File not found {xml_path_filename}')
-            continue
+            strings = []
 
-        root = tree.getroot()
-        strings = root.findall('./string')
-
-        quests_cat_total[expansion][cat] =\
-            1 + quests_cat_total[expansion][cat] if cat in quests_cat_total[expansion] else 1
-
-        if not strings:
+        if not strings and not ai_quest:
             continue
 
         new_quest = {
             'id': id,
             'en': title,
+            'ai': False,
             'title': False,
             'objective': False,
             'description': False,
@@ -61,7 +71,7 @@ def collect_quests():
             'tasks': {},
         }
 
-        new_quest_chars = {}
+        approved_names = []
         for s in strings:
             if s.text:
                 string_attr = s.attrib['name'].lower()
@@ -75,14 +85,40 @@ def collect_quests():
                     new_quest['tasks'][task_en] = string_text
                 else:
                     new_quest[string_attr] = string_text
+                approved_names.append(string_attr)
 
-                for issue in utils.get_inline_code_issues(string_text):
-                    issues.append(f'[!] Quest #{id} {string_attr}: {issue}')
+        # AI's translation for the texts not approved on Crowdin yet
+        if ai_quest:
+            ai_texts, ai_tasks = ai_quest
+            ai_names = []
+            for name in quest_text_names:
+                if ai_texts[name] and not new_quest[name]:
+                    new_quest[name] = utils.get_clean_text(ai_texts[name])
+                    ai_names.append(name)
+            for n, (task_en, task) in enumerate(zip(tasks_en, ai_tasks), 1):
+                if task_en not in new_quest['tasks']:
+                    new_quest['tasks'][task_en] = utils.get_clean_text(task)
+                    ai_names.append(f'task_{n}')
 
-                for c in string_text:
-                    code = ord(c)
-                    new_quest_chars[code] = 1 + new_quest_chars[code] if code in new_quest_chars else 1
-                    text_chars_used[code] = 1 + text_chars_used[code] if code in text_chars_used else 1
+            new_quest['ai'] = bool(ai_names)
+            if ai_names and approved_names:
+                issues.append(f'[?] Quest #{id} is partly approved on Crowdin, still AI: {", ".join(ai_names)}')
+
+        # the tasks in the order of the english lines
+        new_quest['tasks'] = { t: new_quest['tasks'][t] for t in tasks_en if t in new_quest['tasks'] }
+
+        texts = [ (name, new_quest[name]) for name in quest_text_names if new_quest[name] ]
+        texts += [ (f'task_{tasks_en.index(t) + 1}', text) for t, text in new_quest['tasks'].items() ]
+
+        new_quest_chars = {}
+        for name, text in texts:
+            for issue in utils.get_inline_code_issues(text):
+                issues.append(f'[!] Quest #{id} {name}: {issue}')
+
+            for c in text:
+                code = ord(c)
+                new_quest_chars[code] = 1 + new_quest_chars[code] if code in new_quest_chars else 1
+                text_chars_used[code] = 1 + text_chars_used[code] if code in text_chars_used else 1
 
         for b1, b2 in [ ('(', ')'), ('[', ']'), ('{', '}'), ('<', '>')]:
             b1_code, b2_code = ord(b1), ord(b2)
@@ -94,10 +130,12 @@ def collect_quests():
                 issues.append(f'[?] Bracers "{b1}" and "{b2}" don\'t match\n\t- quest: {new_quest}')
 
         if new_quest['title']:
-            print(f'{expansion} quest #{id} -> {new_quest["title"]}')
+            print(f'{expansion} quest #{id} -> {new_quest["title"]}' + (' (AI)' if new_quest['ai'] else ''))
             quests[expansion][side].append(new_quest)
-            quests_cat_count[expansion][cat] =\
-                1 + quests_cat_count[expansion][cat] if cat in quests_cat_count[expansion] else 1
+            # the counts are of the proofread translations
+            if not new_quest['ai']:
+                quests_cat_count[expansion][cat] =\
+                    1 + quests_cat_count[expansion][cat] if cat in quests_cat_count[expansion] else 1
 
     return quests, quests_cat_count, quests_cat_total, text_chars_used, issues
 
@@ -121,17 +159,22 @@ def generate_and_write_lua_stat_quest_file(tbx_path, entries_path, filename, var
 def print_report(quests, quests_cat_count, quests_cat_total, text_chars_used, issues):
     print('-' * 80)
     total = 0
+    total_ai = 0
 
     for expansion in quests:
         expansion_total = 0
+        expansion_ai = 0
         for side in quests[expansion]:
             expansion_side_total = len(quests[expansion][side])
+            expansion_side_ai = sum(1 for q in quests[expansion][side] if q['ai'])
             expansion_total += expansion_side_total
+            expansion_ai += expansion_side_ai
             total += expansion_side_total
-            print(f'[{expansion}] [{side}] quests: {expansion_side_total}')
-        print(f'[{expansion}] quests: {expansion_total}\n')
+            total_ai += expansion_side_ai
+            print(f'[{expansion}] [{side}] quests: {expansion_side_total} (AI: {expansion_side_ai})')
+        print(f'[{expansion}] quests: {expansion_total} (AI: {expansion_ai})\n')
 
-    print(f'Total quests: {total}')
+    print(f'Total quests: {total} (AI: {total_ai})')
 
     print('-' * 80)
     for expansion in quests_cat_count:
