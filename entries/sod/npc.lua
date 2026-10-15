@@ -186,6 +186,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [211955] = { "допоміжний захист від несанкціонованого доступу", en="Auxiliary Anti-Tamper Mechanism" }, -- Auxiliary Anti-Tamper Mechanism
 [211956] = { "Шрамній Мандрівний", "проклятий захисник", en="Scarimous the Wandering" }, -- Scarimous the Wandering
 [211965] = { "Карродин", en="Carrodin" }, -- Carrodin
+[211967] = { "труп кровопивця-ловця", en="Leech Stalker Corpse" }, -- Leech Stalker Corpse
 [212157] = { "тотем-приманка", en="Decoy Totem" }, -- Decoy Totem
 [212159] = { "старий Серра'кіс", "виїдений", en="Old Serra'kis" }, -- Old Serra'kis
 [212186] = { "Ґрюґімдерн", en="Grugimdern" }, -- Grugimdern
@@ -897,7 +898,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [232381] = { "Валкс Тріскошип", "учениця бібліотекаря", en="Valxx Cracklequil" }, -- Valxx Cracklequil
 [232386] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [232398] = { "первісне полум'я", en="Primordial Flame" }, -- Primordial Flame
-[232399] = { "манаспраглий біс", en="Outcast Cryomancer" }, -- Outcast Cryomancer
+[232399] = { "кріомант-вигнанець", en="Outcast Cryomancer" }, -- Outcast Cryomancer
 [232422] = { "земляний елементаль", en="Earth Elemental" }, -- Earth Elemental
 [232429] = { "магічний камінь", en="Magical Stone" }, -- Magical Stone
 [232466] = { "магічний камінь", en="Magical Stone" }, -- Magical Stone

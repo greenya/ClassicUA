@@ -82,7 +82,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [12795] = { "головний сержант Хола'махі", "квартирмейстерка старовинних обладунків", en="First Sergeant Hola'mahi" }, -- First Sergeant Hola'mahi
 [12796] = { "рейдер Борк", "квартирмейстер бойових верхових тварин", en="Raider Bork" }, -- Raider Bork
 [12807] = { "Ґрешка", en="Greshka" }, -- Greshka
-[14559] = { "стрімкий соловий кінь", en="Swift Palomino" }, -- Swift Palamino
+[14559] = { "стрімкий соловий кінь", en="Swift Palomino" }, -- Swift Palomino
 [15580] = { "предок Езра Пшеничне Копито", en="Elder Ezra Wheathoof" }, -- Elder Ezra Wheathoof
 [15977] = { "отруйний швидколап", en="Poisonous Skitterer" }, -- Poisonous Skitterer
 [16025] = { "зшитий велетень", en="Stitched Giant" }, -- Stitched Giant
@@ -134,6 +134,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [27290] = { "голодний мрець", en="Hungering Dead" }, -- Hungering Dead
 [27335] = { "голодний мрець", en="Hungering Dead" }, -- Hungering Dead
 [27458] = { "Флора", en="Flora" }, -- Flora
+[27551] = { "розлючена примара", en="Enraged Apparition" }, -- Enraged Apparition
 [27619] = { "принц Валанар", "Сан'лейн", en="Prince Valanar" }, -- Prince Valanar <The San'layn>
 [27678] = { "шаман Пісні Війни", en="Warsong Shaman", feminine="шаманка Пісні Війни" }, -- Warsong Shaman
 [27734] = { "склепний марник", en="Crypt Fiend" }, -- Crypt Fiend
@@ -202,6 +203,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [29112] = { "Готик-Жнець", en="Gothik the Harvester" }, -- Gothik the Harvester
 [29113] = { "Нот Чумний", en="Noth the Plaguebringer" }, -- Noth the Plaguebringer
 [29152] = { "портовий робітник Штормовію", en="Stormwind Dock Worker", feminine="портова робітниця Штормовію" }, -- Stormwind Dock Worker
+[29156] = { "архімагиня Селіндра", "тренерка порталів", en="Archmage Celindra" }, -- Archmage Celindra <Portal Trainer>
 [29157] = { "Лютобух Громовар", en="Grimbooze Thunderbrew" }, -- Grimbooze Thunderbrew
 [29176] = { "Корфакс, поборник Світла", en="Korfax, Champion of the Light" }, -- Korfax, Champion of the Light
 [29177] = { "командир Еліґор Світанковий", en="Commander Eligor Dawnbringer" }, -- Commander Eligor Dawnbringer
@@ -260,6 +262,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [31099] = { "Клаптик", en="Patchwerk" }, -- Patchwerk
 [31107] = { "лейтенант Мурп", en="Lieutenant Murp" }, -- Lieutenant Murp
 [31216] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
+[31271] = { "Різня", en="Carnage" }, -- Carnage
 [31301] = { "Король-ліч", en="The Lich King" }, -- The Lich King
 [31334] = { "Коріалстраз", "консорт королеви", en="Korialstrasz" }, -- Korialstrasz
 [31395] = { "Іллідан Шаленство Бурі", en="Illidan Stormrage" }, -- Illidan Stormrage

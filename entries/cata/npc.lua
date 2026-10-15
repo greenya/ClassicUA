@@ -303,7 +303,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [32979] = { "Ґорбольд Сталерук", "торговельні принади", en="Gorbold Steelhand" }, -- Gorbold Steelhand <Trade Supplies>
 [33001] = { "Тандріс Вітроткач", en="Thundris Windweaver" }, -- Thundris Windweaver
 [33020] = { "Зенн Брудна Ратиця", en="Zenn Foulhoof" }, -- Zenn Foulhoof
-[33033] = { "стражниця Елісса Зоребриз", en="Sentinel Elissa Starbreeze" }, -- Elissa Starbreeze
+[33033] = { "стражниця Елісса Зоряний Бриз", en="Sentinel Elissa Starbreeze" }, -- Elissa Starbreeze
 [33035] = { "Талдан", "продавець напоїв", en="Taldan" }, -- Taldan <Drink Vendor>
 [33037] = { "Кейліс Перомісяць", "приборкувачка гіпогрифів", en="Caylais Moonfeather" }, -- Caylais Moonfeather <Hippogryph Master>
 [33039] = { "розлючений гіпогриф", en="Enraged Hippogryph" }, -- Enraged Hippogryph
@@ -355,6 +355,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [34672] = { "біс", en="Imp" }, -- Imp
 [34692] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
 [34695] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
+[34750] = { "капітан Гарві", "флібустьєри Південних морів", en="Cap'n Garvey" }, -- Cap'n Garvey <Southsea Freebooters>
 [34809] = { "рубайло Каміннопазуристих гір", en="Stonetalon Grunt" }, -- Stonetalon Grunt
 [34853] = { "орк-в'язень", en="Orc Prisoner" }, -- Orc Prisoner
 [34867] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
@@ -410,6 +411,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [37803] = { "Маркус", en="Marcus" }, -- Marcus
 [37804] = { "повітряна куля \"Каджа-Коли\"", en="Kaja'Cola Balloon" }, -- Kaja'Cola Balloon
 [37847] = { "Манкрік", en="Mankrik" }, -- Mankrik
+[37908] = { "Кальдер Сірий", en="Calder Gray" }, -- Calder Gray
 [37940] = { "Кривозуб", "ватаг Бритвогривих", en="Mangletooth" }, -- Mangletooth
 [38120] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
 [38124] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
@@ -895,6 +897,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [46167] = { "Стівен Лобар", en="Stephen Browman" }, -- Stephen Browman
 [46252] = { "річколапий шаман", en="Riverpaw Shaman" }, -- Riverpaw Shaman
 [46254] = { "Кнурило", en="Hogger" }, -- Hogger
+[46279] = { "молодий кроколіск", en="Young Crocolisk" }, -- Young Crocolisk
 [46338] = { "Бадд", en="Budd" }, -- Budd Nedreck
 [46385] = { "майстер Матіас Гич", "лідер ШУР", en="Master Mathias Shaw" }, -- Mathias Shaw
 [46405] = { "вартовий в'язниці", en="Stockade Guard" }, -- Stockade Guard
@@ -907,6 +910,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [46463] = { "Бадд", en="Budd" }, -- Budd Nedreck
 [46466] = { "Тельдурін Загублений", en="Theldurin the Lost" }, -- Theldurin the Lost
 [46471] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[46477] = { "молодий кроколіск", en="Young Crocolisk" }, -- Young Crocolisk
 [46484] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
 [46500] = { "Кнурило", en="Hogger" }, -- Hogger
 [46502] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
@@ -985,6 +989,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [47504] = { "Серцеріз", en="Heartrazor" }, -- Heartrazor
 [47507] = { "Серцеріз", en="Heartrazor" }, -- Heartrazor
 [47508] = { "Серцеріз", en="Heartrazor" }, -- Heartrazor
+[47512] = { "Кальдер Сірий", en="Calder Gray" }, -- Calder Gray
 [47580] = { "Лакота Пісня Вітру", en="Lakota Windsong" }, -- Lakota Windsong
 [47592] = { "майстер Матіас Гич", "лідер ШУР", en="Master Mathias Shaw" }, -- Mathias Shaw
 [47644] = { "Дарла Гарріс", "приборкувачка кажанів", en="Darla Harris" }, -- Darla Harris <Bat Handler>
@@ -1020,6 +1025,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [48051] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <Earthen Ring>
 [48079] = { "провидець Нобундо", "Служителі Землі", en="Farseer Nobundo" }, -- Farseer Nobundo <Earthen Ring>
 [48082] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[48084] = { "Мулн Лють Землі", "Служителі Землі", en="Muln Earthfury" }, -- Muln Earthfury <Earthen Ring>
 [48125] = { "радник Сарофас", "їжа та напої", en="Advisor Sarophas" }, -- Advisor Sarophas <Food & Drink>
 [48129] = { "Гелькулар", en="Helcular" }, -- Helcular
 [48134] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
@@ -1166,6 +1172,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [50857] = { "Одо-Сліпогляд", en="Odo the Blindwatcher" }, -- Odo the Blindwatcher
 [50869] = { "Бритвопал-М'ясник", en="Razorclaw the Butcher" }, -- Razorclaw the Butcher
 [51060] = { "провидець Нобундо", "Служителі Землі", en="Farseer Nobundo" }, -- Farseer Nobundo <Earthen Ring>
+[51065] = { "Мулн Лють Землі", en="Muln Earthfury" }, -- Muln Earthfury
 [51125] = { "Гостродзьоб", en="Sharpbeak" }, -- Sharpbeak
 [51152] = { "ультрамариновий кіразький бойовий танк", en="Ultramarine Qiraji Battle Tank" }, -- Qiraji Battle Tank
 [51174] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
@@ -1276,6 +1283,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [52263] = { "проєкція архімага Варґота", en="Image of Archmage Vargoth" }, -- Archmage Vargoth
 [52264] = { "архімаг Лан'далок", en="Archmage Lan'dalock" }, -- Archmage Lan'dalock
 [52265] = { "Хромі", en="Chromie" }, -- Chromie
+[52266] = { "Кальдер Сірий", en="Calder Gray" }, -- Calder Gray
 [52267] = { "Гобарт Грейфер", en="Hobart Grapplehammer" }, -- Hobart Grapplehammer
 [52269] = { "Ренатакі", en="Renataki" }, -- Renataki
 [52271] = { "Газза'ра", en="Hazza'rah" }, -- Hazza'rah
@@ -1422,6 +1430,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [54174] = { "Ноздорму", en="Nozdormu" }, -- Nozdormu
 [54176] = { "Алекстраза", en="Alexstrasza" }, -- Alexstrasza
 [54177] = { "провидець Нобундо", "Служителі Землі", en="Farseer Nobundo" }, -- Farseer Nobundo <Earthen Ring>
+[54178] = { "Мулн Лють Землі", "Служителі Землі", en="Muln Earthfury" }, -- Muln Earthfury <Earthen Ring>
 [54179] = { "Тіранда Шелест Вітру", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
 [54180] = { "леді Джайна Праудмур", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
 [54197] = { "гуль", en="Ghoul" }, -- Ghoul

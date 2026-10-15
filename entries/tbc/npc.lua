@@ -2288,7 +2288,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [22128] = { "спостерігач Дарнгольда", en="Durnholde Lookout", feminine="спостерігачка Дарнгольда" }, -- Durnholde Lookout
 [22133] = { "Фарадрелла", en="Faradrella" }, -- Faradrella
 [22134] = { "око Кілроґґа Тінистого Місяця", en="Shadowmoon Eye of Kilrogg" }, -- Shadowmoon Eye of Kilrogg
-[22137] = { "викликаний древній бог", en="Summoned Old God" }, -- Summoned Old God
+[22137] = { "викликаний старий бог", en="Summoned Old God" }, -- Summoned Old God
 [22138] = { "ритуаліст Темного Конклаву", en="Dark Conclave Ritualist" }, -- Dark Conclave Ritualist
 [22143] = { "хребтолам Ґордунні", en="Gordunni Back-Breaker" }, -- Gordunni Back-Breaker
 [22144] = { "елементаліст Ґордунні", en="Gordunni Elementalist" }, -- Gordunni Elementalist
@@ -2693,6 +2693,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [24370] = { "підсвітній ловець Ма'дуун", en="Nether-Stalker Mah'duun" }, -- Nether-Stalker Mah'duun
 [24375] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
 [24424] = { "проєкція екзарха Маладаара", en="Exarch Maladaar Image" }, -- Exarch Maladaar
+[24455] = { "Холлі", en="Hollee" }, -- Hollee
 [24477] = { "злодій Синдикату", en="Syndicate Thief", feminine="злодійка Синдикату" }, -- Syndicate Thief
 [24664] = { "Кель'тас Сонячний Блукач", "повелитель ельфів крові", en="Kael'thas Sunstrider" }, -- Kael'thas Sunstrider
 [24667] = { "сержант Громовий Ріг", "забезпечення зброєю", en="Sergeant Thunderhorn" }, -- Sergeant Thunderhorn <Weapons Quartermaster>

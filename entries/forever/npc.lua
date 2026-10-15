@@ -5,6 +5,7 @@
 local _, addonTable = ...
 
 local npc = { -- [id] = { title, description (optional), feminine=title and feminine_tag=description of a female model (optional) }
+[219] = { "наглядач Ломар", en="Groundskeeper Lomar" }, -- Groundskeeper Lomar
 [2614] = { "медик Сріблястого Світанку", en="Argent Medic" }, -- Argent Medic
 [2615] = { "стромвартський вершник", en="Stromgarde Roughrider" }, -- Stromgarde Roughrider
 [2756] = { "Ґрунд Дрокда", en="Grund Drokda" }, -- Grund Drokda
@@ -22,7 +23,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [12799] = { "сержант Ба'ша", en="Sergeant Ba'sha" }, -- Sergeant Ba'sha
 [12805] = { "офіцер Арейн", en="Officer Areyn" }, -- Officer Areyn
 [14242] = { "Сулгаса", en="Sulhasa" }, -- Sulhasa
-[14559] = { "стрімкий соловий кінь", en="Swift Palomino" }, -- Swift Palamino
+[14559] = { "стрімкий соловий кінь", en="Swift Palomino" }, -- Swift Palomino
 [15078] = { "Чанґ", "нагороди риболовного турніру", en="Jang" }, -- Jang
 [16134] = { "Рімблат Землетрощитель", "Служителі Землі", en="Rimblat Earthshatter" }, -- Rimblat Earthshatter <Earthen Ring>
 [20735] = { "архімаг Лан'далок", en="Archmage Lan'dalock" }, -- Archmage Lan'dalock
@@ -101,6 +102,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [244525] = { "гіджальський ведмідь", en="Hyjal Bear" }, -- Hyjal Bear
 [244808] = { "Араміс Молоторукий", "тренер паладинів", en="Aramis Hammerhand" }, -- Aramis Hammerhand <Paladin Trainer>
 [245999] = { "арканічна аномалія", en="Arcane Anomaly" }, -- Arcane Anomaly
+[246016] = { "арканічна загадка", en="Arcanic Enigma" }, -- Arcanic Enigma
+[246020] = { "тінь архімага", en="Shade of the Archmage" }, -- Shade of the Archmage
 [246143] = { "наляканий паладин", en="Frightened Paladin", feminine="налякана паладинка" }, -- Frightened Paladin
 [246152] = { "Шарі Стілвелл", "тренерка паладинів", en="Shari Stilwell" }, -- Shari Stilwell <Paladin Trainer>
 [246249] = { "кобольд-різнороб", en="Kobold Laborer" }, -- Kobold Laborer
@@ -111,7 +114,10 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [246378] = { "Даніта Мор", en="Danitha Morr" }, -- Danitha Morr
 [246389] = { "Гільда Руйнівниця", "тренерка паладинів", en="Hilda the Breaker" }, -- Hilda the Breaker <Paladin Trainer>
 [246393] = { "Джорін Крог", en="Jorin Croge" }, -- Jorin Croge
+[246394] = { "Андер Солліден", "дозорний", en="Ander Solliden" }, -- Ander Solliden
+[246600] = { "відлуння мани", en="Mana Echo" }, -- Mana Echo
 [246602] = { "манник", en="Mana Fiend" }, -- Mana Fiend
+[246664] = { "розколотий караульний", en="Fragmented Sentry" }, -- Fragmented Sentry
 [246690] = { "арканічний караульний", en="Arcane Sentry" }, -- Arcane Sentry
 [246692] = { "Адореан Лью", en="Adorean Lew" }, -- Adorean Lew
 [246694] = { "Бітті Кригокид", en="Bitty Frostflinger" }, -- Bitty Frostflinger
@@ -121,6 +127,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [246709] = { "Бабаґануш", en="Babagahnoosh" }, -- Babagahnoosh
 [246732] = { "Мерло", en="Merleaux" }, -- Merleaux
 [246738] = { "ілюзіоністка Карина", en="Illusionist Karina" }, -- Illusionist Karina
+[246745] = { "архімагиня Селіндра", "Кірін-Тор", en="Archmage Celindra" }, -- Archmage Celindra <Kirin Tor>
 [246748] = { "архімагиня Модера", en="Archmage Modera" }, -- Archmage Modera
 [246751] = { "алхімік Вишня", en="Alchemist Burroughs" }, -- Alchemist Burroughs
 [246752] = { "арканіст Семенко", en="Arcanist Ginsberg" }, -- Arcanist Ginsberg
@@ -131,12 +138,17 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [246794] = { "Дороті Іґан", en="Dorothy Egan" }, -- Dorothy Egan
 [246799] = { "арканічний караульний", en="Arcane Sentry" }, -- Arcane Sentry
 [246848] = { "вартовий Кірін-Тору", en="Kirin Tor Guard", feminine="вартова Кірін-Тору" }, -- Kirin Tor Guard
+[246900] = { "розколотий караульний", en="Fragmented Sentry" }, -- Fragmented Sentry
 [246931] = { "мана-привид", en="Mana Wraith" }, -- Mana Wraith
 [246991] = { "магістр Соколиний Шолом", en="Magister Hawkhelm" }, -- Magister Hawkhelm
 [246993] = { "ловець мани", en="Mana Stalker" }, -- Mana Stalker
+[247001] = { "насичений лишок", en="Saturated Remnant" }, -- Saturated Remnant
+[247003] = { "нишпорливий лишок", en="Seeking Remnant" }, -- Seeking Remnant
 [247047] = { "безтямний скелет", en="Mindless Skeleton" }, -- Mindless Skeleton
+[247126] = { "Атрексіс Могильний Лицар", en="Atrexis the Grave Knight" }, -- Atrexis the Grave Knight
 [247226] = { "Келсі Фарго", "молодша тренерка гірництва", en="Kelsey Fargo" }, -- Kelsey Fargo <Junior Mining Trainer>
 [247229] = { "Деніел", "помічник бібліотекаря", en="Daniel" }, -- Daniel
+[247264] = { "емісар Жак", "Кірін-Тор", en="Emissary Jacques" }, -- Emissary Jacques <Kirin Tor>
 [247473] = { "Ізві Золотобульк", en="Izvi Gildfizz" }, -- Izvi Gildfizz
 [247809] = { "молодий вовк", en="Young Wolf" }, -- Young Wolf
 [248041] = { "гіджальський олень", en="Hyjal Stag" }, -- Hyjal Stag
@@ -146,6 +158,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [248265] = { "Ормін Пелфорд", en="Ormin Pelford" }, -- Ormin Pelford
 [248266] = { "Гаґар Лоу", en="Hagar Lowe" }, -- Hagar Lowe
 [248277] = { "Мерелл Росс", "капітан варти", en="Merell Ross" }, -- Merell Ross
+[248278] = { "Квакун", en="Croaky" }, -- Croaky
 [248299] = { "В'язолап", en="Elmpaw" }, -- Elmpaw
 [248362] = { "шукач блискіток Нарф", en="Shinyfinder Narf" }, -- Shinyfinder Narf
 [248366] = { "Ясен", en="Fraxinus" }, -- Fraxinus
@@ -153,6 +166,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [248415] = { "Тордрін Сувороклин", "тренер мисливців", en="Tordrin Sternblade" }, -- Tordrin Sternblade <Hunter Trainer>
 [248419] = { "Мірт", en="Mirt" }, -- Mirt
 [248463] = { "Гуркотун", en="Rumbler" }, -- Rumbler
+[248464] = { "Німсі", "учень геоскульптора", en="Nimsy" }, -- Nimsy
 [248474] = { "землескульптор Йіп", en="Geosculptor Yip" }, -- Geosculptor Yip
 [248641] = { "Ясен", "древній", en="Fraxinus" }, -- Fraxinus <Ancient>
 [248755] = { "Люміна Пісня Вітру", en="Lumina Windsinger" }, -- Lumina Windsinger
@@ -175,6 +189,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [249493] = { "ночезуб-вартовий", en="Nightsaber Guardian" }, -- Nightsaber Guardian
 [249518] = { "Моркан Арканев", en="Morqhan Arkanev" }, -- Morqhan Arkanev
 [249561] = { "верховий вовк", en="Riding Wolf" }, -- Riding Wolf
+[249713] = { "дивна дитина", en="Odd Child" }, -- Odd Child
 [249722] = { "матріарх Дубошкірих", en="Barkskin Matriarch" }, -- Barkskin Matriarch
 [249746] = { "скунс", en="Skunk" }, -- Skunk
 [249968] = { "Гназ Грубопал", en="Hnaz Blunderflame" }, -- Hnaz Blunderflame
@@ -190,6 +205,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [250618] = { "скелет", en="Skeleton" }, -- Skeleton
 [250619] = { "чорна вдова", en="Broodwidow" }, -- Broodwidow
 [250620] = { "вересклива банші", en="Shrieking Banshee" }, -- Shrieking Banshee
+[250621] = { "кадавр", en="Cadaver" }, -- Cadaver
 [250622] = { "подертий гуль", en="Ragged Ghoul" }, -- Ragged Ghoul
 [250623] = { "понівечений кадавр", en="Mangled Cadaver" }, -- Mangled Cadaver
 [250624] = { "скелетний маг", en="Skeletal Mage" }, -- Skeletal Mage
@@ -197,12 +213,15 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [250627] = { "гуль", en="Ghoul" }, -- Ghoul
 [250628] = { "темний вершник", en="Dark Rider" }, -- Dark Rider
 [250630] = { "чумний гуль", en="Plague Ghoul" }, -- Plague Ghoul
+[250631] = { "Покинутий", en="The Abandoned" }, -- The Abandoned
 [250649] = { "безтямний невмерлий", en="Mindless Undead" }, -- Mindless Undead
 [250650] = { "плакуча банші", en="Wailing Banshee" }, -- Wailing Banshee
 [250652] = { "злостивий фантом", en="Spiteful Phantom" }, -- Spiteful Phantom
 [250653] = { "спектральний житель", en="Spectral Citizen", feminine="спектральна жителька" }, -- Spectral Citizen
 [250654] = { "примарний житель", en="Ghostly Citizen", feminine="примарна жителька" }, -- Ghostly Citizen
+[250656] = { "полеглий берсерк", en="Fallen Berserker" }, -- Fallen Berserker
 [250657] = { "Рат'маель", en="Rath'mael" }, -- Rath'mael
+[250660] = { "Барон", en="The Baron" }, -- The Baron
 [250686] = { "Табіта Серцеткач", en="Tabitha Heartweaver" }, -- Tabitha Heartweaver
 [250689] = { "ходяче чудовисько", en="Living Monstrosity" }, -- Living Monstrosity
 [250741] = { "павук", en="Spider" }, -- Spider
@@ -219,6 +238,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [250937] = { "урсера-падальник", en="Ursera Scavenger" }, -- Ursera Scavenger
 [250969] = { "пацюк", en="Rat" }, -- Rat
 [251001] = { "смертестраж Крістоф", en="Deathguard Kristof" }, -- Deathguard Kristof
+[251096] = { "розгніваний дух", en="Bitter Spirit" }, -- Bitter Spirit
 [251115] = { "Урс'ана", "мати лігва", en="Urs'anah" }, -- Urs'anah
 [251143] = { "вирливі вітри", en="Roiling Winds" }, -- Roiling Winds
 [251145] = { "моцак Ал'Акету", en="Al'Aketh Brute", feminine="моцачка Ал'Акету" }, -- Al'Aketh Brute
@@ -226,6 +246,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [251166] = { "менший прояв землі", en="Minor Manifestation of Earth" }, -- Minor Manifestation of Earth
 [251169] = { "настирлива перистомуха", en="Pesky Cirrusfly" }, -- Pesky Cirrusfly
 [251245] = { "пазур зграї", en="Prideclaw" }, -- Prideclaw
+[251247] = { "тіневійна мантикора", en="Shadowgale Manticore" }, -- Shadowgale Manticore
 [251261] = { "гіпогриф-матріарх", en="Hippogryph Matriarch" }, -- Hippogryph Matriarch
 [251284] = { "гіпогриф-захисник", en="Hippogryph Protector" }, -- Hippogryph Protector
 [251291] = { "молодий гіпогриф", en="Hippogryph Youth" }, -- Hippogryph Youth
@@ -236,8 +257,11 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [251343] = { "шен'дралар-житель", en="Shen'dralar Citizen", feminine="шен'дралар-жителька" }, -- Shen'dralar Citizen
 [251354] = { "скелет", en="Skeleton" }, -- Skeleton
 [251361] = { "Роріан Шукач Світанку", en="Rorian the Dayseeker" }, -- Rorian the Dayseeker
+[251362] = { "Айлі Далеке Серце", "слідопити гаю Тендала", en="Ailee Farheart" }, -- Ailee Farheart <Rangers of Thendal Grove>
 [251363] = { "Далія Збирачка", en="Dalia the Collector" }, -- Dalia the Collector
 [251366] = { "Етін Шквальна", "старійшина острова Зефрас", en="Aetheen of the Gales" }, -- Aetheen of the Gales
+[251368] = { "Елатрелл Легке Перо", "слідопити гаю Тендала", en="Elatrell Featherlight" }, -- Elatrell Featherlight <Rangers of Thendal Grove>
+[251371] = { "Фалорн Осінній Вітер", "Вищий орден", en="Falorne Fallwind" }, -- Falorne Fallwind <High Order>
 [251373] = { "Ксітон Срібний Вітер", "тренер друїдів", en="Xyton Silverwind" }, -- Xyton Silverwind <Druid Trainer>
 [251374] = { "вітротворець Боро", "тренер шаманів", en="Windshaper Boro" }, -- Windshaper Boro <Shaman Trainer>
 [251376] = { "Тай'рі Далекозора", "тренерка мисливців", en="Tai'ree Farsight" }, -- Tai'ree Farsight <Hunter Trainer>
@@ -249,6 +273,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [251437] = { "світлячки", en="Fireflies" }, -- Fireflies
 [251448] = { "неофіт Ал'Акету", en="Al'Aketh Neophyte", feminine="неофітка Ал'Акету" }, -- Al'Aketh Neophyte
 [251451] = { "душитель Ал'Акету", en="Al'Aketh Ambusher", feminine="душителька Ал'Акету" }, -- Al'Aketh Ambusher
+[251487] = { "Вентаарі Ясне Бажання", "Вітротворці", en="Ventaari Brightwish" }, -- Ventaari Brightwish <Windshapers>
+[251493] = { "капітан Макманус", en="Captain McManus" }, -- Captain McManus
 [251507] = { "Жозефіна Карсон", "тренерка мисливців", en="Josephine Carson" }, -- Josephine Carson <Hunter Trainer>
 [251523] = { "вартова Аонда", "миротвориця", en="Constable Aonda" }, -- Constable Aonda <Peacekeeper>
 [251559] = { "запасливець", en="Hoarder" }, -- Hoarder
@@ -276,6 +302,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [251913] = { "Еді Трикований", "коваль", en="Aedi Thriceforged" }, -- Aedi Thriceforged <Blacksmith>
 [251918] = { "бандит височини", en="Highlands Bandit", feminine="бандитка височини" }, -- Highlands Bandit
 [251925] = { "Фаладіель", en="Faladiel" }, -- Faladiel
+[251926] = { "Санія", en="Sania" }, -- Sania
 [251956] = { "Лізі Срібнокамінь", en="Lizi Silverstone" }, -- Lizi Silverstone
 [251964] = { "майстриня клинка Рен", "тренерка воїнів", en="Blademaster Ren" }, -- Blademaster Ren <Warrior Trainer>
 [251966] = { "командир Циклас", en="Commander Cyclas" }, -- Commander Cyclas
@@ -292,24 +319,30 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [252076] = { "верховна жриця Лортуна", en="High Priestess Lorthuna" }, -- High Priestess Lorthuna
 [252077] = { "небесний жрець Аандерс", en="Skypriest Aanders" }, -- Skypriest Aanders
 [252081] = { "Себастьян Бауер", en="Sebastian Bower" }, -- Sebastian Bower
+[252085] = { "архімагиня Селіндра", "Кірін-Тор", en="Archmage Celindra" }, -- Archmage Celindra <Kirin Tor>
 [252087] = { "кінь", en="Horse" }, -- Horse
 [252088] = { "льодолапий ведмідь", en="Ice Claw Bear" }, -- Ice Claw Bear
 [252089] = { "деметродон", en="Diemetradon" }, -- Diemetradon
 [252090] = { "білий лев", en="White Lion" }, -- White Lion
 [252092] = { "морозний вовк", en="Frostwolf" }, -- Frostwolf
 [252093] = { "зграйка риб", en="School of Fish" }, -- School of Fish
+[252095] = { "Ганаа Нічний Вітер", "слідопити гаю Тендала", en="Hanaa Nightwind" }, -- Hanaa Nightwind <Rangers of Thendal Grove>
 [252111] = { "Пухнастик", en="Fuzz" }, -- Fuzz
 [252113] = { "жаба-дереволаз", en="Dart Frog" }, -- Dart Frog
 [252116] = { "мертволісий тотеміст", en="Deadwood Totemic" }, -- Deadwood Totemic
 [252137] = { "змія", en="Snake" }, -- Snake
 [252155] = { "миротворець Ваанієл", en="Peacekeeper Vaaniel" }, -- Peacekeeper Vaaniel
+[252157] = { "головоріз Ал'Акету", en="Al'Aketh Cutthroat", feminine="головорізка Ал'Акету" }, -- Al'Aketh Cutthroat
 [252168] = { "Френкі", en="Frankie" }, -- Frankie
 [252172] = { "Данарій Гримуча Вуаль", "радник", en="Danarii Bellowveil" }, -- Danarii Bellowveil <Advisor>
 [252346] = { "Гназ Грубопал", en="Hnaz Blunderflame" }, -- Hnaz Blunderflame
 [252356] = { "Роджер", en="Roger" }, -- Roger
 [252357] = { "курка", en="Chicken" }, -- Chicken
+[252359] = { "Лотелуум Зоряний Бриз", "тренер друїдів", en="Lotheluum Starbreeze" }, -- Lotheluum Starbreeze <Druid Trainer>
 [252362] = { "Тобі", en="Toby" }, -- Toby
 [252364] = { "Млинчик", en="Pancakes" }, -- Pancakes
+[252373] = { "Анатамаас Ефірний Вітер", "тренер магів", en="Anathamaas Aetherwind" }, -- Anathamaas Aetherwind <Mage Trainer>
+[252377] = { "Сіна Неболом", "тренерка воїнів", en="Seena Skybreaker" }, -- Seena Skybreaker <Warrior Trainer>
 [252378] = { "Йорана Вітряний Очерет", "миротвориця", en="Yorana Windyreed" }, -- Yorana Windyreed <Peacekeeper>
 [252382] = { "Сессарія Небоступ", "тренерка шаманів", en="Sessaria Skystride" }, -- Sessaria Skystride <Shaman Trainer>
 [252383] = { "Валенія Кулак Бурі", "капітан миротворців", en="Valennia Stormfist" }, -- Valennia Stormfist <Peacekeeper Captain>
@@ -339,6 +372,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [252536] = { "Лулу", en="Lulu" }, -- Lulu
 [252664] = { "буреловець Ал'Акету", en="Al'Aketh Stormchaser", feminine="буреловиця Ал'Акету" }, -- Al'Aketh Stormchaser
 [252665] = { "піхотинець Ал'Акету", en="Al'Aketh Footsoldier", feminine="піхотинка Ал'Акету" }, -- Al'Aketh Footsoldier
+[252666] = { "командирка Белґілос", "руйнівниця", en="Commander Belguilos" }, -- Commander Belguilos
 [252695] = { "захисник пілона", en="Pylon Protector" }, -- Pylon Protector
 [252696] = { "вартовий осколка", en="Shard Guard" }, -- Shard Guard
 [252758] = { "Ал'Акір Володар Вітрів", en="Al'Akir the Windlord" }, -- Al'Akir the Windlord
@@ -355,8 +389,15 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [252957] = { "верховна жриця Лортуна", en="High Priestess Lorthuna" }, -- High Priestess Lorthuna
 [253002] = { "Філліон Полум'яний Бриз", en="Fillion Flamebreeze" }, -- Fillion Flamebreeze
 [253004] = { "Іадарія Гіркий Вітер", "алхімік", en="Iaadaria Bitterwind" }, -- Iaadaria Bitterwind <Alchemist>
+[253066] = { "Умарак", "клан Колкарів", en="Umarak" }, -- Umarak
 [253092] = { "Альба Ясний Місяць", en="Alba Fairmoon" }, -- Alba Fairmoon
+[253096] = { "Галея", en="Halea" }, -- Halea
+[253097] = { "Мірда", en="Mirda" }, -- Mirda
 [253136] = { "Орґрул", en="Orgrul" }, -- Orgrul
+[253139] = { "Ґоргак", "квартирмейстер клану Маґрамів", en="Gorhak" }, -- Gorhak
+[253140] = { "Молкар", "квартирмейстер клану Ґелкісів", en="Molkar" }, -- Molkar
+[253163] = { "Ґролкар", en="Grolkar" }, -- Grolkar
+[253166] = { "Талра", en="Talra" }, -- Talra
 [253177] = { "Нерлох", en="Nerlokh" }, -- Nerlokh
 [253195] = { "проповідник Ал'Акету", en="Al'Aketh Preacher", feminine="проповідниця Ал'Акету" }, -- Al'Aketh Preacher
 [253204] = { "Дондаліон Шелест Вітру", en="Dondallion Whisperwind" }, -- Dondallion Whisperwind
@@ -370,17 +411,22 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [253285] = { "Філліон Полум'яний Бриз", en="Fillion Flamebreeze" }, -- Fillion Flamebreeze
 [253306] = { "Езотеричний каталог", en="Index Esoteria" }, -- Index Esoteria
 [253310] = { "шаман Вітротворців", en="Windshaper Shaman", feminine="шаманка Вітротворців" }, -- Windshaper Shaman
+[253360] = { "новопосталий невмерлий спустошник", en="Nascent Undead Ravager" }, -- Nascent Undead Ravager
 [253372] = { "мертвий культист", en="Dead Cultist" }, -- Dead Cultist
 [253395] = { "Озвін Залізозуб", en="Ozwin Ironsprocket" }, -- Ozwin Ironsprocket
 [253431] = { "бранець Ґелкісів", en="Gelkis Captive", feminine="бранка Ґелкісів" }, -- Gelkis Captive
+[253446] = { "змучені кістки", en="Haggard Bones" }, -- Haggard Bones
 [253471] = { "Мордент Вечірня Тінь", en="Mordent Evenshade" }, -- Mordent Evenshade
 [253474] = { "миротворець", en="Peacekeeper", feminine="миротвориця" }, -- peacekeeper
 [253511] = { "грабіжник Ал'Акету", en="Al'Aketh Pillager", feminine="грабіжниця Ал'Акету" }, -- Al'Aketh Pillager
+[253524] = { "щетиношкурий кочівник", en="Bristleback Nomad" }, -- Bristleback Nomad
 [253525] = { "щетиношкурий терноткач", en="Bristleback Thornweaver" }, -- Bristleback Thornweaver
+[253526] = { "щетиношкурий череполам", en="Bristleback Skullcrusher" }, -- Bristleback Skullcrusher
 [253574] = { "Ал'Акір Володар Вітрів", en="Al'Akir the Windlord" }, -- Al'Akir the Windlord
 [253576] = { "Гюса Стрімкий Бриз", "миротвориця", en="Hyusaa Quickbreeze" }, -- Hyusaa Quickbreeze <Peacekeeper>
 [253590] = { "Валенія Кулак Бурі", "капітан миротворців", en="Valennia Stormfist" }, -- Valennia Stormfist <Peacekeeper Captain>
 [253622] = { "командир Гаалієн", en="Commander Haalien" }, -- Commander Haalien
+[253713] = { "Мулара", "голос Терадрас", en="Mulara" }, -- Mulara
 [253781] = { "миротворець", en="Peacekeeper", feminine="миротвориця" }, -- peacekeeper
 [253782] = { "нападник Ал'Акету", en="Al'Aketh Attacker", feminine="нападниця Ал'Акету" }, -- Al'Aketh Attacker
 [253787] = { "нападник Ал'Акету", en="Al'Aketh Attacker", feminine="нападниця Ал'Акету" }, -- Al'Aketh Attacker
@@ -391,14 +437,19 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [253849] = { "Аєсса Світанкова Пісня", "верховна небесна провидиця Вітротворців", en="Ayessa Dawnsinger" }, -- Ayessa Dawnsinger
 [253851] = { "Гаґіак", en="Hagiak" }, -- Hagiak
 [253852] = { "щетиношкурий свинобраз", en="Bristleback Quilboar" }, -- Bristleback Quilboar
+[253957] = { "Мулн Лють Землі", "Служителі Землі", en="Muln Earthfury" }, -- Muln Earthfury <Earthen Ring>
 [253958] = { "архімаг Ансірем Рунопис", "Кірін-Тор", en="Archmage Ansirem Runeweaver" }, -- Ansirem Runeweaver <Kirin Tor>
+[254040] = { "Рокрен", en="Rokren" }, -- Rokren
 [254078] = { "Том \"Півриба\" Вілсон", en="Tom \"Half-fish\" Wilson" }, -- Tom "Half-fish" Wilson
 [254082] = { "Аарнор Шквальний Удар", "тренер шаманів", en="Aarnor Galestrike" }, -- Aarnor Galestrike <Shaman Trainer>
 [254083] = { "корова", en="Cow" }, -- Cow
+[254084] = { "Елая Легковій", "тренерка мисливців", en="Elayaa Easewind" }, -- Elayaa Easewind <Hunter Trainer>
 [254089] = { "Коріелла Тихий Бриз", "корчмарка", en="Coriella Calmbreeze" }, -- Coriella Calmbreeze <Innkeeper>
 [254100] = { "житель острова Зефрас", en="Zephras Citizen", feminine="жителька острова Зефрас" }, -- Zephras Citizen
 [254149] = { "Сірокка \"Плавець\" Зоряне Перо", en="Sirocca \"Swimmers\" Starfeather" }, -- Sirocca "Swimmers" Starfeather
 [254151] = { "Вайн Місячний Погляд", en="Vayn Moongaze" }, -- Vayn Moongaze
+[254283] = { "розвідник-вигнанець", en="Outcast Scout" }, -- Outcast Scout
+[254284] = { "мародер-вигнанець", en="Outcast Marauder" }, -- Outcast Marauder
 [254287] = { "миротворець-гвардієць", en="Peacekeeper Elite", feminine="миротвориця-гвардійка" }, -- Peacekeeper Elite
 [254294] = { "маг Вищого ордену", en="High Order Mage", feminine="магиня Вищого ордену" }, -- High Order Mage
 [254296] = { "шаман Вітротворців", en="Windshaper Shaman", feminine="шаманка Вітротворців" }, -- Windshaper Shaman
@@ -411,14 +462,16 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [254572] = { "злісний чорнобривець", en="Malevolent Marigold" }, -- Malevolent Marigold
 [254578] = { "Мітера", en="Mithera" }, -- Mithera
 [254588] = { "повзун Пісні Вітру", en="Windsong Crawler" }, -- Windsong Crawler
-[254589] = { "Лисопащ Ненаситний", en="Vulgara the Insatiable" }, -- Vulgara the Insatiable
+[254589] = { "Лисюга Ненаситна", en="Vulgara the Insatiable" }, -- Vulgara the Insatiable
 [254596] = { "цілитель Ал'Акету", en="Al'Aketh Healer", feminine="цілителька Ал'Акету" }, -- Al'Aketh Healer
 [254626] = { "душогуб Ал'Акету", en="Al'Aketh Assassin", feminine="душогубка Ал'Акету" }, -- Al'Aketh Assassin
 [254656] = { "магістр Кірандіс", en="Magister Kirandis" }, -- Magister Kirandis
 [254695] = { "ремонтний робот", en="Repair Bot" }, -- Repair Bot
+[254770] = { "Пеллук", en="Pelluk" }, -- Pelluk
 [254782] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [254825] = { "бранець Ґелкісів", en="Gelkis Captive", feminine="бранка Ґелкісів" }, -- Gelkis Captive
 [254915] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
+[255003] = { "Ґімаші", en="Gimashi" }, -- Gimashi
 [255070] = { "скелетний чатовий", en="Skeletal Warder" }, -- Skeletal Warder
 [255072] = { "темний заклинач", en="Dark Caster" }, -- Dark Caster
 [255109] = { "м'ясний голем", en="Flesh Golem" }, -- Flesh Golem
@@ -462,10 +515,12 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [255901] = { "піщаний повзун", en="Sand Crawler" }, -- Sand Crawler
 [255903] = { "мурлок-мисливець", en="Murloc Hunter" }, -- Murloc Hunter
 [255951] = { "гном-інженер", en="Gnome Engineer", feminine="гномка-інженерка" }, -- Gnome Engineer
+[255964] = { "полеглий некромант", en="Fallen Necromancer" }, -- Fallen Necromancer
 [255979] = { "слідопит гаю Тендала", en="Thendal Grove Ranger", feminine="слідопитка гаю Тендала" }, -- Thendal Grove Ranger
 [255996] = { "рубайло Роґ'мару", en="Rog'mar Grunt" }, -- Rog'mar Grunt
 [256028] = { "Заблукалий", en="The Lost One" }, -- The Lost One
 [256076] = { "пошкоджене творіння", en="Damaged Construct" }, -- Damaged Construct
+[256083] = { "Ріаані Нічний Вітер", "ремісник Вітротворців", en="Riaani Nightwind" }, -- Riaani Nightwind
 [256092] = { "тіневійний верескун", en="Shadowgale Shriekling" }, -- Shadowgale Shriekling
 [256102] = { "герб Лордерону", en="Crest of Lordaeron" }, -- Crest of Lordaeron
 [256108] = { "тіневійний верескун", en="Shadowgale Shrieker" }, -- Shadowgale Shrieker
@@ -505,6 +560,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [256617] = { "барон Ковадлакс", en="Baron Anvillaxx" }, -- Baron Anvillaxx
 [256618] = { "шаман Вітротворців", en="Windshaper Shaman", feminine="шаманка Вітротворців" }, -- Windshaper Shaman
 [256619] = { "маг Вищого ордену", en="High Order Mage", feminine="магиня Вищого ордену" }, -- High Order Mage
+[256620] = { "Мулн Лють Землі", "Служителі Землі", en="Muln Earthfury" }, -- Muln Earthfury <Earthen Ring>
 [256621] = { "архімаг Ансірем Рунопис", "Кірін-Тор", en="Archmage Ansirem Runeweaver" }, -- Ansirem Runeweaver <Kirin Tor>
 [256635] = { "миротворець", en="Peacekeeper", feminine="миротвориця" }, -- peacekeeper
 [256710] = { "Тран'ґул", en="Tran'gul" }, -- Tran'gul
@@ -524,6 +580,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [256978] = { "Бреруфа", en="Brerufa" }, -- Brerufa
 [256996] = { "воїн Ал'Акету", en="Al'Aketh Warrior", feminine="воїтелька Ал'Акету" }, -- Al'Aketh Warrior
 [256997] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
+[257006] = { "Ніала Ясне Полум'я", "кухарка", en="Nyalah Brightfire" }, -- Nyalah Brightfire <Cook>
 [257018] = { "Налія Латкошив", "медик", en="Naleeia Tattermend" }, -- Naleeia Tattermend <Medic>
 [257019] = { "Ніасса Прудке Зілля", "алхімік", en="Nyassa Swiftdraught" }, -- Nyassa Swiftdraught <Alchemist>
 [257020] = { "Насаланна Пісня Вітру", "чародій", en="Nasalanna Windsinger" }, -- Nasalanna Windsinger <Enchanter>
@@ -538,14 +595,20 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [257079] = { "кінний розвідник Альтурін", en="Cavalry Scout Alturin" }, -- Cavalry Scout Alturin
 [257080] = { "кінний вартовий", en="Cavalry Guard", feminine="кінна вартова" }, -- Cavalry Guard
 [257196] = { "Заал Щит Бурі", en="Zaal Stormshield" }, -- Zaal Stormshield
+[257281] = { "Ма'люк", "коротун Скелеламів", en="Sos'mol" }, -- Sos'mol
 [257282] = { "Алан Пролаза", en="Alan Sneeks" }, -- Alan Sneeks
+[257296] = { "Муґґол Вітробородий", "клан Диких Молотів", en="Muggol Breezebeard" }, -- Muggol Breezebeard <Wildhammer Clan>
 [257304] = { "Еліс", en="Alyce" }, -- Alyce
 [257315] = { "Аш'аларі", en="Ash'alari" }, -- Ash'alari
+[257316] = { "боягузливий батрак", "самопроголошений хоробрий батрак", en="Cowardly Peon" }, -- Cowardly Peon
+[257317] = { "Ґремблі", en="Grembly" }, -- Grembly
 [257322] = { "Мураче", en="Murache" }, -- Murache
 [257437] = { "Ґаріанна Шипотюк", en="Garyanne Fleezlebop" }, -- Garyanne Fleezlebop
 [257446] = { "Тео Буремолот", "тренер шаманів", en="Teo Hammerstorm" }, -- Teo Hammerstorm <Shaman Trainer>
 [257521] = { "учень Вищого ордену", en="High Order Apprentice", feminine="учениця Вищого ордену" }, -- High Order Apprentice
 [257532] = { "провидець-послушник Вітротворців", en="Windshaper Novice Seer", feminine="провидиця-послушниця Вітротворців" }, -- Windshaper Novice Seer
+[257548] = { "перебіжчик Ал'Акету", en="Al'Aketh Turncoat" }, -- Al'Aketh Turncoat
+[257551] = { "Валреаа Долинний Вітер", "слідопити гаю Тендала", en="Valreaa Valewind" }, -- Valreaa Valewind <Rangers of Thendal Grove>
 [257554] = { "Галаан Соколине Око", "слідопити гаю Тендала", en="Halaan Hawk-Eye" }, -- Halaan Hawk-Eye <Rangers of Thendal Grove>
 [257591] = { "Еш Ембергол", en="Ashe Amberhall" }, -- Ashe Amberhall
 [257597] = { "Бруеґс Вогнеродний", en="Bruegs Kindleborn" }, -- Bruegs Kindleborn
@@ -566,10 +629,19 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [258023] = { "сержант Ріфтан", en="Sergeant Riftan" }, -- Sergeant Riftan
 [258031] = { "Неза Кровоморда", en="Neza Bloodsnout" }, -- Neza Bloodsnout
 [258043] = { "Норрік Лохтан", en="Norric Lochthane" }, -- Norric Lochthane
+[258049] = { "перебіжчик Ал'Акету", en="Al'Aketh Turncoat" }, -- Al'Aketh Turncoat
 [258098] = { "Ельдрун Бурелам", "тренер шаманів", en="Eldrun Stormbreaker" }, -- Eldrun Stormbreaker <Shaman Trainer>
 [258130] = { "Йорел Пісня Вітру", "друїд Нічного Пазура", en="Jorel Windsinger" }, -- Jorel Windsinger <Nightclaw Druid>
+[258134] = { "Наалеос Шепіт Листя", "друїд Нічного Пазура", en="Naaleos Leafwhisper" }, -- Naaleos Leafwhisper <Nightclaw Druid>
+[258137] = { "Теленос Шепіт Листя", "друїд Нічного Пазура", en="Telenos Leafwhisper" }, -- Telenos Leafwhisper <Nightclaw Druid>
+[258138] = { "Наїла Гаркливе Ікло", "друїдка Нічного Пазура", en="Nayeela Snarlfang" }, -- Nayeela Snarlfang <Nightclaw Druid>
 [258139] = { "Фротрік Сеґрунд", en="Frothrik Saegrund" }, -- Frothrik Saegrund
 [258203] = { "Гервдана Сеґрунд", en="Hervdana Saegrund" }, -- Hervdana Saegrund
+[258267] = { "Мітралес Суворий Шквал", "друїд Нічного Пазура", en="Mithraless Sterngale" }, -- Mithraless Sterngale <Nightclaw Druid>
+[258275] = { "Неястіл Цілющий Мох", "друїд Нічного Пазура", en="Neyasteel Mossmender" }, -- Neyasteel Mossmender <Nightclaw Druid>
+[258277] = { "Брієс Шквалолов", "друїд Нічного Пазура", en="Bryaes Galechaser" }, -- Bryaes Galechaser <Nightclaw Druid>
+[258288] = { "Мітралес Суворий Шквал", "друїд Нічного Пазура", en="Mithraless Sterngale" }, -- Mithraless Sterngale <Nightclaw Druid>
+[258289] = { "Бео Гострий Удар", "друїд Нічного Пазура", en="Baeo Sharpstrike" }, -- Baeo Sharpstrike <Nightclaw Druid>
 [258317] = { "Бенджі Колісник", en="Benjy Wheeler" }, -- Benjy Wheeler
 [258326] = { "миротворець-гвардієць", en="Peacekeeper Elite", feminine="миротвориця-гвардійка" }, -- Peacekeeper Elite
 [258331] = { "молодий блідоіклий кнур", en="Young Paletusk" }, -- Young Paletusk
@@ -590,6 +662,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [259005] = { "вітрострибка", en="Gustjumper" }, -- Gustjumper
 [259006] = { "співоча вітрострибка", en="Musical Gustjumper" }, -- Musical Gustjumper
 [259011] = { "біженка Бан'етала", en="Ban'aethal Refugee" }, -- Ban'aethal Refugee
+[259012] = { "Еалаан Хмароступ", "біженка Бан'етала", en="Ealaane Nimbuswalker" }, -- Ealaane Nimbuswalker
+[259013] = { "Ресаан Хмароступ", "житель Бан'етала", en="Resaan Nimbuswalker" }, -- Resaan Nimbuswalker
 [259023] = { "Вейрік Громодім", en="Veyric Thunderhame" }, -- Veyric Thunderhame
 [259046] = { "прісноводний кроколіск", en="Freshwater Crocolisk" }, -- Freshwater Crocolisk
 [259049] = { "Роббі Голмсбі", en="Robbie Holmsby" }, -- Robbie Holmsby
@@ -598,9 +672,11 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [259057] = { "Данстон Вілліс", en="Dunston Willis" }, -- Dunston Willis
 [259058] = { "шаман Вітротворців", en="Windshaper Shaman", feminine="шаманка Вітротворців" }, -- Windshaper Shaman
 [259060] = { "маг Вищого ордену", en="High Order Mage", feminine="магиня Вищого ордену" }, -- High Order Mage
+[259084] = { "Денааріс Зоряний Шквал", "Вищий орден", en="Denaaris Stargale" }, -- Denaaris Stargale <High Order>
 [259094] = { "їздовий грифон", en="Riding Gryphon" }, -- Riding Gryphon
 [259096] = { "кенарійський вартовий", en="Cenarion Warden", feminine="кенарійська вартова" }, -- Cenarion Warden
-[259102] = { "Ґурґток", "любитель верхових тварин небородних", en="Gurgthock" }, -- Gurgthock
+[259102] = { "Ґурґток", "любитель верхових тварин небороджених", en="Gurgthock" }, -- Gurgthock
+[259118] = { "Мулн Лють Землі", "Служителі Землі", en="Muln Earthfury" }, -- Muln Earthfury <Earthen Ring>
 [259119] = { "Алаана Бурехід", "Вітротворці", en="Alaana Stormwalker" }, -- Alaana Stormwalker <Windshapers>
 [259175] = { "покірний буреступ", en="Docile Galestrider" }, -- Docile Galestrider
 [259189] = { "їздовий кінь (бойовий кінь)", en="Riding Horse (Warhorse)" }, -- Riding Horse (Warhorse)
@@ -669,6 +745,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [260231] = { "Арґо Солесвист", en="Argo Brinewhistle" }, -- Argo Brinewhistle
 [260235] = { "Капканоріз", en="Trapclaw" }, -- Trapclaw
 [260271] = { "Саллі Макклірі", en="Sully McCleary" }, -- Sully McCleary
+[260325] = { "Тінезуб", en="Shadetooth" }, -- Shadetooth
+[260326] = { "вартовий реліквій", en="Relic Guardian" }, -- Relic Guardian
 [260359] = { "Саді", en="Sadi" }, -- Sadi
 [260396] = { "шепітливе страховище", en="Whispering Horror" }, -- Whispering Horror
 [260405] = { "завідувач причалу Парошип", en="Wharfmaster Steamfizzle" }, -- Wharfmaster Steamfizzle
@@ -688,8 +766,13 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [260568] = { "Джаззл Підлобій", en="Jazzle Cheapshot" }, -- Jazzle Cheapshot
 [260569] = { "сумнівний контрабандист", en="Shady Smuggler", feminine="сумнівна контрабандистка" }, -- Shady Smuggler
 [260628] = { "Валенія Кулак Бурі", "капітан миротворців", en="Valennia Stormfist" }, -- Valennia Stormfist <Peacekeeper Captain>
+[260798] = { "молодий кроколіск", en="Young Crocolisk" }, -- Young Crocolisk
+[260800] = { "маскун хащів", en="Thicket Lurker" }, -- Thicket Lurker
+[260801] = { "мисливець хащів", en="Thicket Hunter" }, -- Thicket Hunter
+[260802] = { "матріарх хащів", en="Thicket Matriarch" }, -- Thicket Matriarch
 [260803] = { "плоскогірний павук", en="Highland Spider" }, -- Highland Spider
 [260804] = { "плоскогірний маскун", en="Highland Lurker" }, -- Highland Lurker
+[260808] = { "плоскогірне страховище", en="Highland Horror" }, -- Highland Horror
 [260809] = { "плоскогірна черепаха", en="Highland Tortoise" }, -- Highland Tortoise
 [260822] = { "осквернений блукач гаю", en="Tainted Grovewalker" }, -- Tainted Grovewalker
 [260825] = { "Фібі Високопера", en="Phoebe Highfeather" }, -- Phoebe Highfeather
@@ -700,6 +783,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [261025] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [261306] = { "Фалдрім Ковмар", en="Faldrim Anvilmar" }, -- Faldrim Anvilmar
 [261319] = { "Дурґен Тугомолот", en="Durgen Dirgehammer" }, -- Durgen Dirgehammer
+[261366] = { "Волтон", "кожум'яка", en="Walton" }, -- Walton
 [261367] = { "Террі Довгопий", "мисливець за головами", en="Terry Longdrink" }, -- Terry Longdrink <Bounty Hunter>
 [261368] = { "кул-тіраський морський піхотинець", en="Kul Tiras Marine", feminine="кул-тіраська морська піхотинка" }, -- Kul Tiras Marine
 [261371] = { "Вранґ Дикоклин", "зброя та обладунки", en="Vrang Wildgore" }, -- Vrang Wildgore
@@ -711,6 +795,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [261689] = { "хворий лісовий деревань", en="Diseased Forest Walker" }, -- Diseased Forest Walker
 [261791] = { "папуга", en="Parrot" }, -- Parrot
 [261928] = { "оплутаний брудномордий гнол", en="Webbed Mudsnout Gnoll" }, -- Webbed Mudsnout Gnoll
+[261932] = { "Ґорґраш", "в'язень-втікач із Дарнгольда", en="Gorgrash" }, -- Gorgrash
+[261961] = { "Гекші", "шпигун Зандаларів", en="Hekshi" }, -- Hekshi
 [261992] = { "поранений солдат", "Сріблястий Світанок", en="Injured Soldier" }, -- Injured Soldier <The Argent Dawn>
 [262016] = { "полегла шукачка пригод", en="Fallen Adventurer" }, -- Fallen Adventurer
 [262031] = { "сестра Роуленд", en="Sister Rowland" }, -- Sister Rowland
@@ -726,15 +812,19 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [262504] = { "шаман Служителів Землі", en="Earthen Ring Shaman", feminine="шаманка Служителів Землі" }, -- Earthen Ring Shaman
 [262520] = { "в'ючний кодо", en="Pack Kodo" }, -- Pack Kodo
 [262523] = { "буреступ", en="Galestrider" }, -- Galestrider
+[262681] = { "Ардін Трав'яний", en="Ardin Grassman" }, -- Ardin Grassman
 [262838] = { "маґрамський мародер", en="Magram Marauder" }, -- Magram Marauder
 [263071] = { "майстер клинка Кайджо", en="Blademaster Kaijo" }, -- Blademaster Kaijo
 [263089] = { "Тесса Ясносвіт", en="Tessa Dawnbright" }, -- Tessa Dawnbright
+[263113] = { "Міріаал Пробудниця Туманів", "слідопити гаю Тендала", en="Myriaal Mistwake" }, -- Myriaal Mistwake <Rangers of Thendal Grove>
 [263120] = { "Ґрей Ясносвіт", en="Gray Dawnbright" }, -- Gray Dawnbright
 [263190] = { "Тан'джані", en="Tan'jani" }, -- Tan'jani
 [263343] = { "низинний канюк", en="Low Plains Buzzard" }, -- Low Plains Buzzard
 [263348] = { "мандрівний довгоніг", en="Roving Tallstrider" }, -- Roving Tallstrider
 [263367] = { "Слібо Шипоструй", en="Sleebo Fizzlespout" }, -- Sleebo Fizzlespout
+[263389] = { "розлючена примара", en="Enraged Apparition" }, -- Enraged Apparition
 [263390] = { "змучена душа", en="Tormented Soul" }, -- Tormented Soul
+[263399] = { "Сем Сарсапарила", "шукач пригод", en="Sam Sarsaparilla" }, -- Sam Sarsaparilla <Adventurer>
 [263406] = { "Елаєна Місячний Шепіт", en="Elaena Moonwhisper" }, -- Elaena Moonwhisper
 [263440] = { "Гамур", en="Hamur" }, -- Hamur
 [263455] = { "Бал'моґ", en="Bal'mog" }, -- Bal'mog
@@ -748,7 +838,14 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [263757] = { "Скверноблиск", en="Felflick" }, -- Felflick
 [263852] = { "маг Вищого ордену", en="High Order Mage", feminine="магиня Вищого ордену" }, -- High Order Mage
 [263930] = { "миротворець", en="Peacekeeper", feminine="миротвориця" }, -- peacekeeper
+[264072] = { "Йорн Зловісний Тотем", "Служителі Землі", en="Yorn Grimtotem" }, -- Yorn Grimtotem <Earthen Ring>
+[264074] = { "Мазу'кон", "Служителі Землі", en="Mazu'kon" }, -- Mazu'kon <Earthen Ring>
+[264079] = { "павученя Похмурого верхів'я", en="Gloomrise Hatchling" }, -- Gloomrise Hatchling
+[264081] = { "ткач Похмурого верхів'я", en="Gloomrise Spinner" }, -- Gloomrise Spinner
+[264082] = { "мати виводка Валракс", en="Broodmother Valraxx" }, -- Broodmother Valraxx
+[264083] = { "солдат Похмурого верхів'я", en="Gloomrise Soldier" }, -- Gloomrise Soldier
 [264089] = { "Елунет", en="Eluneth" }, -- Eluneth
+[264096] = { "обгризений труп", en="Gnawed Corpse" }, -- Gnawed Corpse
 [264149] = { "нестабільний розлом мани", en="Unstable Mana Rift" }, -- Unstable Mana Rift
 [264259] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
 [264265] = { "чаклун Олвек", en="Magus Olvek" }, -- Magus Olvek
@@ -761,6 +858,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [264713] = { "командир Гаалієн", en="Commander Haalien" }, -- Commander Haalien
 [264715] = { "світлик", en="Wisp" }, -- wisp
 [264936] = { "провидець землі Фарсен", en="Earthseer Farsen" }, -- Earthseer Farsen
+[264943] = { "Афадра Дунмур", "хранителька знань Залізогарту", en="Afadra Dunwall" }, -- Afadra Dunwall
+[265002] = { "примарна служниця", en="Ghostly Attendant" }, -- Ghostly Attendant
 [265003] = { "Том Цупко", en="Thom Filch" }, -- Thom Filch
 [265220] = { "оберіг Зум'ри", en="Ward of Zum'rah" }, -- Witch Doctor Zum'rah
 [265348] = { "Аґріель Вогневар", en="Agriel Firebrew" }, -- Agriel Firebrew
@@ -791,23 +890,28 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [266006] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [266216] = { "лорд Томас", en="Lord Tomas" }, -- Lord Tomas
 [266345] = { "павук", en="Spider" }, -- Spider
+[266357] = { "Бартон", en="Barton" }, -- Barton
 [266449] = { "Джеремі Серцеткач", en="Jeremy Heartweaver" }, -- Jeremy Heartweaver
 [266484] = { "Морбін Згуба Світла", en="Morbin Lightbane" }, -- Morbin Lightbane
 [266735] = { "жвавий слиз", en="Excitable Slime" }, -- Excitable Slime
 [266802] = { "Тарк Ґоракс", en="Thark Gorax" }, -- Thark Gorax
 [266803] = { "Квінт Вейнворт", en="Quintus Wainworth" }, -- Quintus Wainworth
+[266847] = { "Анастасія Міллер", en="Anastasia Miller" }, -- Anastasia Miller
 [266849] = { "тіньокряжний маскун", en="Ridgeshade Lurker" }, -- Ridgeshade Lurker
 [266850] = { "тіньокряжний підкрадач", en="Ridgeshade Creeper" }, -- Ridgeshade Creeper
 [266851] = { "Згуба Укора", en="Ukorsbane" }, -- Ukorsbane
 [266852] = { "Галікор", en="Halikor" }, -- Halikor
 [266860] = { "пташеня буреступа", en="Galestrider Chick" }, -- Galestrider Chick
+[266881] = { "Па'зула", "чародійка-підмайстриня", en="Pa'zula" }, -- Pa'zula <Journeyman Enchanter>
 [266890] = { "Макс", en="Max" }, -- Max
 [266940] = { "Туррок", en="Turroc" }, -- Turroc
 [266956] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
 [266999] = { "Ліам", en="Liam" }, -- Liam
 [267002] = { "Луна", en="Luna" }, -- Luna
+[267006] = { "темний неофіт", "культ Проклятих", en="Dark Neophyte", feminine="темна неофітка" }, -- Dark Neophyte <Cult of the Damned>
 [267007] = { "вартовий гавані Штормовію", en="Stormwind Harbor Guard", feminine="вартова гавані Штормовію" }, -- Stormwind Harbor Guard
 [267008] = { "Леонід Варфоломій Шанований", "Сріблястий Світанок", en="Leonid Barthalomew the Revered" }, -- Leonid Barthalomew <The Argent Dawn>
+[267009] = { "Гадрік Гарлсон", "Сріблястий Світанок", en="Hadric Harlson" }, -- Hadric Harlson <The Argent Dawn>
 [267064] = { "штормовійський канонір", en="Stormwind Cannoneer", feminine="штормовійська канонірка" }, -- Stormwind Cannoneer
 [267097] = { "Меріон Телемахес", en="Maerion Thaelemaches" }, -- Maerion Thaelemaches
 [267118] = { "Ґілберт Сірий", en="Gilbert Gray" }, -- Gilbert Gray
@@ -860,13 +964,14 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [268318] = { "рябий кінь", en="Pinto" }, -- Pinto
 [268511] = { "вантажний писар Філмор", en="Manifest Clerk Philmor" }, -- Manifest Clerk Philmor
 [268519] = { "вартовий Кірін-Тору", en="Kirin Tor Guard", feminine="вартова Кірін-Тору" }, -- Kirin Tor Guard
-[268530] = { "матріарх кривавопазурових", en="Bloodtalon Matriarch" }, -- Bloodtalon Matriarch
+[268530] = { "матріарх кровопазурових", en="Bloodtalon Matriarch" }, -- Bloodtalon Matriarch
 [268558] = { "Чакуяк", en="Chakuyak" }, -- Chakuyak
 [268568] = { "Рой Льюелз", en="Roy Lewells" }, -- Roy Lewells
 [268592] = { "Оларіан Прудкий Жар", "Вітротворці", en="Olariaan Swiftburn" }, -- Olariaan Swiftburn <Windshapers>
 [268602] = { "небесний жрець Фаладіель", en="Skypriest Faladiel" }, -- Faladiel
 [268605] = { "Курамаа", "дух пустощів", en="Kuramaa" }, -- Kuramaa
 [268614] = { "примара Ольґри", en="Ghost of Olgra" }, -- Ghost of Olgra
+[268622] = { "солдат-загарбник", en="Encroaching Soldier", feminine="солдатка-загарбниця" }, -- Encroaching Soldier
 [268623] = { "розлючений грабіжник", en="Outraged Pillager" }, -- Outraged Pillager
 [268624] = { "бритвогривий рейдер", en="Razormane Raider" }, -- Razormane Raider
 [268677] = { "скелет", en="Skeleton" }, -- Skeleton
@@ -877,13 +982,18 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [268685] = { "Моґра", en="Mogra" }, -- Mogra
 [268686] = { "Пак", en="Puk" }, -- Puk
 [268701] = { "Татоґ", en="Thatog" }, -- Thatog
+[268705] = { "Ака'рай", en="Aka'rai" }, -- Aka'rai
+[268743] = { "Рексі Мідехват", en="Rexxie Copperclutch" }, -- Rexxie Copperclutch
 [268761] = { "Рендал", en="Randal" }, -- Randal
 [268762] = { "жертовна жаровня", en="Brazier of Offering" }, -- Brazier of Offering
 [268763] = { "втілення полум'я", en="Manifestation of Flames" }, -- Manifestation of Flames
 [268764] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
 [268831] = { "рівнинний скрадач", en="Plains Prowler" }, -- Plains Prowler
+[268840] = { "примарне ведмежа", en="Spectral Bear Cub" }, -- Spectral Bear Cub
 [268925] = { "нічна ельфа-кур'єрка", en="Night Elf Courier" }, -- Night Elf Courier
+[268992] = { "Зіммікс Іскрочих", en="Zimmix Sputterspark" }, -- Zimmix Sputterspark
 [269003] = { "чароїд", en="Spell Eater" }, -- Spell Eater
+[269068] = { "Ейла Сонячний Ріг", "сонячна жриця Ан'ше", en="Eylah Sunhorn" }, -- Eylah Sunhorn
 [269075] = { "сніжний леопард-скрадач", en="Snow Leopard Prowler" }, -- Snow Leopard Prowler
 [269127] = { "проєкція архімагині Модери", en="Image of Archmage Modera" }, -- Archmage Modera
 [269133] = { "скелет", en="Skeleton" }, -- Skeleton
@@ -918,6 +1028,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [269729] = { "воскреслий бойовий кінь", en="Risen Warhorse" }, -- Risen Warhorse
 [269730] = { "воскреслий скакун", en="Risen Charger" }, -- Risen Charger
 [269756] = { "злісний міраж", en="Malevolent Mirage" }, -- Malevolent Mirage
+[270038] = { "Кальдер Сірий", "учень Королівського товариства аптекарів", en="Calder Gray" }, -- Calder Gray
 [270094] = { "Буресерд", en="Stormheart" }, -- Stormheart
 [270196] = { "Джай'ванел", en="Jai'vhanel" }, -- Jai'vhanel
 [270201] = { "боєць Ал'Акету", en="Al'Aketh Brawler", feminine="бійчиня Ал'Акету" }, -- Al'Aketh Brawler
@@ -942,6 +1053,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [270844] = { "Сілесса Шепіт Сутінків", en="Sylessa Duskwhisper" }, -- Sylessa Duskwhisper
 [270846] = { "сутінковий тінемант", en="Twilight Shadowmancer", feminine="сутінкова тінемантка" }, -- Twilight Shadowmancer
 [270847] = { "сутінковий неофіт", en="Twilight Neophyte", feminine="сутінкова неофітка" }, -- Twilight Neophyte
+[270883] = { "Вар'Така", en="Var'Taka" }, -- Var'Taka
 [270892] = { "чатовий Ґоаза", en="Goaz Warder" }, -- Goaz Warder
 [270915] = { "змія", en="Snake" }, -- Snake
 [271007] = { "допитувач Воронокрил", en="Interrogator Ravenwing" }, -- Interrogator Ravenwing
@@ -955,12 +1067,14 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [271332] = { "грифон Орлиного піку", en="Aerie Gryphon" }, -- Aerie Gryphon
 [271333] = { "грифон Орлиного піку", en="Aerie Gryphon" }, -- Aerie Gryphon
 [271334] = { "навіжений гнилокіготь", en="Maddened Rotclaw" }, -- Maddened Rotclaw
+[271336] = { "Різня", en="Carnage" }, -- Carnage
 [271338] = { "Адос", en="Ados" }, -- Ados
 [271346] = { "шпигун Драконової Пащі", en="Dragonmaw Infiltrator" }, -- Dragonmaw Infiltrator
 [271348] = { "душев'яз Драконової Пащі", en="Dragonmaw Soulbinder" }, -- Dragonmaw Soulbinder
 [271351] = { "відновник Драконової Пащі", en="Dragonmaw Reclaimer" }, -- Dragonmaw Reclaimer
 [271373] = { "приборканий драконід", en="Subdued Dragonspawn" }, -- Subdued Dragonspawn
 [271446] = { "червоний драк", en="Red Drake" }, -- Red Drake
+[271458] = { "Неру", en="Neru" }, -- Neru
 [271460] = { "Модр", en="Modr" }, -- Modr
 [271462] = { "Ґолм", en="Golm" }, -- Golm
 [271481] = { "полонений вогняний елементаль", en="Captive Fire Elemental" }, -- Captive Fire Elemental
@@ -972,6 +1086,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [271707] = { "молодий хмаробіг", en="Juvenile Cloudrunner" }, -- Juvenile Cloudrunner
 [271710] = { "матріарх хмаробігів", en="Cloudrunner Matriarch" }, -- Cloudrunner Matriarch
 [271712] = { "хмаробіг", en="Cloudrunner" }, -- Cloudrunner
+[271732] = { "ловець хащів", en="Thicket Stalker" }, -- Thicket Stalker
 [271736] = { "Джош", en="Josh" }, -- Josh
 [271742] = { "абат Шунке", en="Abbot Schuncke" }, -- Abbot Schuncke
 [271746] = { "капрал Туїг", en="Corporal Twohig" }, -- Corporal Twohig
@@ -998,12 +1113,15 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [272054] = { "аватар Сейлінан", "дух великої вітрородної кішки", en="Avatar of Saeyleenan" }, -- Saeyleenan
 [272096] = { "осквернений павутинолісий павук", en="Befouled Webwood" }, -- Befouled Webwood
 [272101] = { "смертестражниця Лізабета", en="Deathguard Lizabetha" }, -- Deathguard Lizabetha
+[272112] = { "Куротел", en="Kurothel" }, -- Kurothel
 [272116] = { "Ксеторр Лихий", en="Xethorr the Wicked" }, -- Xethorr the Wicked
-[272173] = { "чистильник ТзНБ \"Авантюра\"", en="Venture Co. Clearclutter" }, -- Venture Co. Clearclutter
+[272173] = { "лісоповальник ТзНБ \"Авантюра\"", en="Venture Co. Clearclutter" }, -- Venture Co. Clearclutter
+[272203] = { "Періт Штормове Копито", "довгоходець", en="Perith Stormhoof" }, -- Perith Stormhoof <Longwalker>
 [272228] = { "жнивальний вартовий", en="Harvest Sentry" }, -- Harvest Sentry
 [272260] = { "заблукала ловчиня", en="Lost Stalker" }, -- Lost Stalker
 [272273] = { "заблукалий вартовий", en="Lost Watcher" }, -- Lost Watcher
 [272282] = { "Гостродзьоб", en="Sharpbeak" }, -- Sharpbeak
+[272284] = { "загублений захисник", en="Lost Defender", feminine="загублена захисниця" }, -- Lost Defender
 [272291] = { "заблукалий лицар", en="Lost Knight" }, -- Lost Knight
 [272313] = { "солонопанцирний тріскун", en="Brineshell Clacker" }, -- Brineshell Clacker
 [272315] = { "солонопанцирний кусач", en="Brineshell Snapper" }, -- Brineshell Snapper
@@ -1014,6 +1132,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [272420] = { "Ґал'нок", en="Gal'nok" }, -- Gal'nok
 [272450] = { "стара Сенді", en="Ol' Sandy" }, -- Ol' Sandy
 [272520] = { "плоскогірна черепаха", en="Highland Tortoise" }, -- Highland Tortoise
+[272521] = { "ловець хащів", en="Thicket Stalker" }, -- Thicket Stalker
 [272526] = { "Ґлікс Ксіззікс", "візіонер, підприємець, перукар", en="Glix Xizzix" }, -- Glix Xizzix
 [272527] = { "вартовий Залізогарта", en="Ironforge Guard" }, -- Ironforge Guard
 [272641] = { "Саманта Колісник", en="Samantha Wheeler" }, -- Samantha Wheeler
@@ -1025,6 +1144,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [273003] = { "цуценя ворга", en="Worg Pup" }, -- Worg Pup
 [273004] = { "кішка", en="Cat" }, -- Cat
 [273006] = { "вартовий Залізогарта", en="Ironforge Guard" }, -- Ironforge Guard
+[273017] = { "Фендаал Вітрокамінь", "миротворець", en="Fendaal Windstone" }, -- Fendaal Windstone <Peacekeeper>
 [273065] = { "Рібблі Вертосвист", en="Ribbly Spinwhistle" }, -- Ribbly Spinwhistle
 [273077] = { "Джудіт Керол", en="Judith Carol" }, -- Judith Carol
 [273084] = { "Чедсворт", en="Chadsworth" }, -- Chadsworth
@@ -1110,6 +1230,9 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [275030] = { "архіваріус Делв Фортуз", en="Archivist Delv Fortuz" }, -- Archivist Delv Fortuz
 [275031] = { "даларанський адепт", en="Dalaran Adept", feminine="даларанська адептка" }, -- Dalaran Adept
 [275035] = { "громило Грабіжної Бухти", en="Booty Bay Enforcer" }, -- Booty Bay Enforcer
+[275044] = { "чатовий Драконової Пащі", en="Dragonmaw Warder" }, -- Dragonmaw Warder
+[275045] = { "диверсант Драконової Пащі", en="Dragonmaw Saboteur" }, -- Dragonmaw Saboteur
+[275046] = { "тауматург Драконової Пащі", en="Dragonmaw Thaumaturgist" }, -- Dragonmaw Thaumaturgist
 [275049] = { "полонений вогняний елементаль", en="Captive Fire Elemental" }, -- Captive Fire Elemental
 [275075] = { "захисник Приозер'я", en="Lakeshire Protector", feminine="захисниця Приозер'я" }, -- Lakeshire Protector
 [275086] = { "захисник Південнобережжя", en="Southshore Defender", feminine="захисниця Південнобережжя" }, -- Southshore Defender
@@ -1122,6 +1245,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [275186] = { "буреступ", en="Galestrider" }, -- Galestrider
 [275269] = { "начальник доку Вищого ордену", en="High Order Dockmaster" }, -- High Order Dockmaster
 [275270] = { "начальник доку Вітротворців", en="Windshapers Dockmaster" }, -- Windshapers Dockmaster
+[275273] = { "Брелінда Макфаррі", en="Brelinda McFarry" }, -- Brelinda McFarry
 [275276] = { "Нізук Буф", en="Nizook Boof" }, -- Nizook Boof
 [275283] = { "Бреанні", en="Breanni" }, -- Breanni
 [275351] = { "Адореан Лью", en="Adorean Lew" }, -- Adorean Lew
@@ -1133,6 +1257,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [275398] = { "арканіст Бредін", en="Arcanist Braedin" }, -- Arcanist Braedin
 [275430] = { "слідча Кет'лін", en="Investigator Kath'leen" }, -- Investigator Kath'leen
 [275432] = { "слідчий Сільва", en="Investigator Silva" }, -- Investigator Silva
+[275437] = { "темний громило", "культ Проклятих", en="Dark Enforcer" }, -- Dark Enforcer <Cult of the Damned>
 [275491] = { "Рендал Емерсон", "королівський радник", en="Randal Emerson" }, -- Randal Emerson
 [275657] = { "Геґлан Тіньоока", en="Heglan Shadeeye" }, -- Heglan Shadeeye
 [275662] = { "огидохльостий розвідник", en="Spitelash Scout" }, -- Spitelash Scout
@@ -1143,13 +1268,14 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [275708] = { "квітучий хляскун", en="Blooming Lasher" }, -- Blooming Lasher
 [275744] = { "стражниця Лінесса Вечірній Цвіт", en="Sentinel Lynessa Duskblossom" }, -- Sentinel Lynessa Duskblossom
 [275767] = { "Герак Грабіжник", en="Herak the Pillager" }, -- Herak the Pillager
-[275789] = { "Малаг Довгий Вітер", en="Malah Longwind" }, -- Malah Longwind
+[275789] = { "Мала Довгий Вітер", en="Malah Longwind" }, -- Malah Longwind
 [275811] = { "Пал'джу", "темна мисливиця-учениця", en="Pal'juh" }, -- Pal'juh
 [275847] = { "Лорен Вороночуб", en="Loren Ravenlock" }, -- Loren Ravenlock
 [275929] = { "деревань", en="Treant" }, -- Treant
 [275954] = { "Барет Зорекамінь", en="Bareth Dawnstone" }, -- Bareth Dawnstone
 [275980] = { "шахтар Фаргольда", en="Farholde Miner", feminine="шахтарка Фаргольда" }, -- Farholde Miner
 [276003] = { "молодший крижаний елементаль", en="Minor Ice Elemental" }, -- Minor Ice Elemental
+[276009] = { "Лавин", "загублена паморозь", en="Avala" }, -- Avala
 [276020] = { "Рвидер", en="Riptear" }, -- Riptear
 [276061] = { "дряхлий жнець", en="Decrepit Harvester" }, -- Decrepit Harvester
 [276080] = { "горянин Вуглебородий", en="Mountaineer Coalbeard" }, -- Mountaineer Coalbeard
@@ -1163,6 +1289,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [276109] = { "Рилоскал", en="Snarlsnout" }, -- Snarlsnout
 [276110] = { "лицар скорботи", en="Knight of Mourning" }, -- Knight of Mourning
 [276111] = { "Примарне Ікло", en="Ghostfang" }, -- Ghostfang
+[276170] = { "Белана Вітряна Вуаль", "квартирмейстерка тканин Вищого ордену", en="Belanaa Windveil" }, -- Belanaa Windveil
+[276171] = { "Оура Бурепрядка", "квартирмейстерка тканин Вітротворців", en="Oura Stormspinner" }, -- Oura Stormspinner
 [276180] = { "старійшина Плавцевидець", en="Elder Finseer" }, -- Elder Finseer
 [276189] = { "матріарх Щетиношерста", en="Matriarch Bristlefur" }, -- Matriarch Bristlefur
 [276194] = { "пиловійна доглядачка кладки", en="Dustwind Eggtender" }, -- Dustwind Eggtender
@@ -1185,7 +1313,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [276781] = { "потвора", en="Abomination" }, -- abomination
 [276783] = { "стрімкий білий баран", en="Swift White Ram" }, -- Swift White Ram
 [276785] = { "стрімкий гнідий кінь", en="Swift Brown Steed" }, -- Swift Brown Steed
-[276786] = { "стрімкий соловий кінь", en="Swift Palomino" }, -- Swift Palamino
+[276786] = { "стрімкий соловий кінь", en="Swift Palomino" }, -- Swift Palomino
 [276787] = { "стрімкий білий кінь", en="Swift White Steed" }, -- Swift White Steed
 [276788] = { "гнідий кінь", en="Brown Horse" }, -- Brown Horse
 [276789] = { "рябий кінь", en="Pinto" }, -- Pinto
@@ -1197,6 +1325,24 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [276801] = { "стрімкий помаранчевий раптор", en="Swift Orange Raptor" }, -- Swift Orange Raptor
 [276803] = { "стрімкий блакитний раптор", en="Swift Blue Raptor" }, -- Swift Blue Raptor
 [276805] = { "стрімкий сірий вовк", en="Swift Gray Wolf" }, -- Swift Gray Wolf
+[276832] = { "стрімкий лісовий вовк", en="Swift Timber Wolf" }, -- Swift Timber Wolf
+[276833] = { "стрімкий бурий вовк", en="Swift Brown Wolf" }, -- Swift Brown Wolf
+[276876] = { "великий бурий кодо", en="Great Brown Kodo" }, -- Great Brown Kodo
+[276877] = { "великий сірий кодо", en="Great Gray Kodo" }, -- Great Gray Kodo
+[276879] = { "великий білий кодо", en="Great White Kodo" }, -- Great White Kodo
+[276888] = { "стрімкий гнідий кінь", en="Swift Brown Steed" }, -- Swift Brown Steed
+[276889] = { "стрімкий білий кінь", en="Swift White Steed" }, -- Swift White Steed
+[276890] = { "стрімкий соловий кінь", en="Swift Palomino" }, -- Swift Palomino
+[276891] = { "стрімкий гнідий кінь", en="Swift Brown Steed" }, -- Swift Brown Steed
+[276892] = { "стрімкий білий кінь", en="Swift White Steed" }, -- Swift White Steed
+[276893] = { "стрімкий соловий кінь", en="Swift Palomino" }, -- Swift Palomino
+[277132] = { "манекен", en="Dummy" }, -- Dummy
+[277154] = { "Кайл Несамовитий", en="Kyle the Frenzied" }, -- Kyle the Frenzied
+[277182] = { "Агаб Пшеничне Копито", "Старий фермер", en="Ahab Wheathoof" }, -- Ahab Wheathoof
+[277185] = { "агент Смертоловів", en="Deathstalker Agent", feminine="агентка Смертоловів" }, -- Deathstalker Agent
+[277186] = { "агент Смертоловів", en="Deathstalker Agent", feminine="агентка Смертоловів" }, -- Deathstalker Agent
+[277700] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[277868] = { "розповсюдник чуми", en="Plague Spreader" }, -- Plague Spreader
 }
 
 if addonTable.npc then

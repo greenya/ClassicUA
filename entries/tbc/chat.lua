@@ -1556,7 +1556,7 @@ local chat = { -- [npc_name_en] = { [1] = npc_name_uk (optional), [hash]=transla
 -- %s begins to sputter as its engine malfunctions.
 [4082657824] = [===[%s починає гуркотіти, коли його двигун виходить з ладу.]===],
 },
-["Infinite Defiler"] = { "труїтель з крила нескінченності",
+["Infinite Defiler"] = { "труїтелька з крила нескінченності",
 -- All that you know... will be undone.
 [1160144871] = [===[Усе, що ви знаєте... зникне.]===],
 -- Do not think you can win!
