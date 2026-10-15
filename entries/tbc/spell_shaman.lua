@@ -54,6 +54,10 @@ local shaman_spells = {
 [29080] = { ref=16266 }, -- Elemental Weapons
 -- Fire Elemental Totem
 [2894] = { "Тотем елементаля вогню", "Викликає тотем, який закликає великого вогняного елементаля, який нищить ворогів. Існує {1} хв.#Lasts {1} min", en="Fire Elemental Totem" },
+-- Fire Nova
+[8349] = { "Вогненний спалах", ref=1535, en="Fire Nova" },
+[25535] = { ref=8349 }, -- Fire Nova
+[25537] = { ref=8349 }, -- Fire Nova
 -- Fire Nova Totem
 [25546] = { ref=1535 }, -- Fire Nova Totem
 [25547] = { ref=1535 }, -- Fire Nova Totem
