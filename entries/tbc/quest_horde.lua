@@ -4,7 +4,7 @@
 
 local _, addonTable = ...
 
-local quest_horde = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text } }
+local quest_horde = { -- [id] = { title, description, objective, progress, completion, tasks = { [objective line] = text }, ai = true if AI translated a text }
 [216] = { en="Between a Rock and a Thistlefur",
 [===[Між каменем та Колючохутрими]===],
 [===[Хутропузи з клану Колючохутрих загрожують нашій експансії! Селище Колючохутрих на схід звідси блокує шлях між нами та заставою при Тріснутому Дереві. Це шлях в обхід села Астранаар. Без нього ми подаруємо Альянсу зайвий шанс до розширення.

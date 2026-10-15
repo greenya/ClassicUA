@@ -23,6 +23,16 @@ local function prepare_quests(is_alliance)
     at.quest_faction = is_alliance and at.quest_alliance or at.quest_horde
     -- drop opposite faction quests
     at[ is_alliance and "quest_horde" or "quest_alliance" ] = nil
+    -- drop AI translated quests if option is disabled
+    if not options.account.translate_ai then
+        for _, quests in ipairs({ at.quest_faction, at.quest_both }) do
+            for quest_id, quest in pairs(quests) do
+                if quest.ai then
+                    quests[quest_id] = nil
+                end
+            end
+        end
+    end
 end
 
 -- pushes codes "xxx", "Xxx", "XXX" to given table
@@ -411,6 +421,14 @@ end
 
 entries.get_quest_completion = function (quest_id)
     return get_quest_text(quest_id, 5)
+end
+
+-- whether AI translated a text of the quest, not proofread yet
+entries.is_quest_ai = function (quest_id)
+    local at = addon_table
+    quest_id = tonumber(quest_id)
+    local quest = quest_id and (at.quest_faction[quest_id] or at.quest_both[quest_id])
+    return quest and quest.ai or false
 end
 
 entries.get_entry = function (entry_type, entry_id)

@@ -724,6 +724,19 @@ local function prepare_quest_window_hooks()
     end
 end
 
+-- the robot icon before the title of AI translated quest
+local QUEST_AI_LINK = "classicua_ai:0"
+
+local function on_quest_info_hyperlink_enter(owner, link)
+    if link == QUEST_AI_LINK then
+        GameTooltip:SetOwner(owner, "ANCHOR_CURSOR_RIGHT")
+        GameTooltip:SetText("Перекладено ШІ", 1, 1, 1)
+        GameTooltip:AddLine("Перекладачі ще не вичитали цей текст. Переклади ШІ можна вимкнути в налаштуваннях (/ua).",
+            nil, nil, nil, true)
+        GameTooltip:Show()
+    end
+end
+
 -- WoW: Forever runs the retail ui, where the quest texts can not be translated by data_hooks (see data_hooks.prepare)
 -- So now we set text as its widget gets it; it goes through data_hooks.set_translation(), so the language switcher serves it as on the other clients
 local function hook_quest_text(widget, text_uk_getter, quest_id_getter)
@@ -738,6 +751,9 @@ local function hook_quest_text(widget, text_uk_getter, quest_id_getter)
             if text_uk_getter == entries.get_quest_title then
                 local title_en = C_QuestLog.GetTitleForQuestID(quest_id) or GetTitleText()
                 text_uk = splice_quest_title(text, title_en, text_uk) or text_uk
+                if entries.is_quest_ai(quest_id) then
+                    text_uk = "|H" .. QUEST_AI_LINK .. "|h" .. assets.icon_ai_inline .. "|h " .. text_uk
+                end
             end
             local text_new = data_hooks.set_translation("quest", quest_id, text, text_uk)
 
@@ -940,6 +956,7 @@ local function prepare_forever_quest_texts()
     hook_quest_text(QuestProgressText,          entries.get_quest_progress,     GetQuestID)
 
     hooksecurefunc("QuestInfo_Display", update_forever_quest_info_objectives)
+    hooksecurefunc("QuestInfo_OnHyperlinkEnter", on_quest_info_hyperlink_enter)
     -- last call before QuestLogQuests_Update() lays the list out; our Layout() call would taint the map
     hooksecurefunc(QuestScrollFrame, "UpdateBackground", update_forever_quest_log_list)
     hooksecurefunc(QuestObjectiveTracker, "LayoutContents", update_forever_quest_tracker)
