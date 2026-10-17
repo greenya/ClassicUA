@@ -184,7 +184,7 @@ local function expand_code(code)
 end
 
 -- expands the inline codes in one pass
-local function make_text(text)
+entries.make_text = function (text)
     if not text or not string_find(text, "{", 1, true) then
         return text
     end
@@ -199,7 +199,7 @@ local function make_text_array(array)
 
     local result = {}
     for i = 1, #array do
-        result[i] = make_text(array[i])
+        result[i] = entries.make_text(array[i])
     end
 
     return result
@@ -400,7 +400,7 @@ end
 
 local function get_quest_text(quest_id, field)
     local quest = find_quest(quest_id)
-    return quest and make_text(quest[field])
+    return quest and entries.make_text(quest[field])
 end
 
 entries.get_quest_title = function (quest_id)
@@ -689,7 +689,7 @@ local function get_gossip_text(npc_id, gossip_text)
     for _, gossip_key in ipairs({ npc_id, '!common' }) do
         local npc_strings = at.gossip[gossip_key]
         if npc_strings and npc_strings[gossip_text_hash] then
-            return make_text(entries.make_optional_text(npc_strings[gossip_text_hash], gossip_text)), nil
+            return entries.make_text(entries.make_optional_text(npc_strings[gossip_text_hash], gossip_text)), nil
         end
     end
 
@@ -705,7 +705,7 @@ local function get_gossip_text(npc_id, gossip_text)
                 local gossip_key = utils.match_text_code(gossip_code, known_gossip_keys)
                 if gossip_key then
                     local hash = npc_strings['!code'][gossip_key]
-                    return make_text(entries.make_optional_text(npc_strings[hash], gossip_text)), gossip_code
+                    return entries.make_text(entries.make_optional_text(npc_strings[hash], gossip_text)), gossip_code
                 end
             end
         end
@@ -831,7 +831,7 @@ local function translate_objective_line(text, quest_id, is_count_first)
     end
 
     local quest = find_quest(quest_id)
-    local text_uk = quest and quest.tasks and make_text(quest.tasks[task or text])
+    local text_uk = quest and quest.tasks and entries.make_text(quest.tasks[task or text])
 
     -- a task first, as some are worded as kills ("Gnolls slain")
     if not done then

@@ -14,6 +14,7 @@
     <Script file="main.lua"/>
     <Script file="options.lua"/>
     <Script file="strings.lua"/>
+    <Script file="subtitles.lua"/>
     <Script file="tooltips.lua"/>
     <Script file="utils.lua"/>
 
@@ -21,4 +22,5 @@
     <Script file="dev_log_ui.lua"/>
     <Script file="options_ext_ui.lua"/>
     <Script file="options_ui.lua"/>
+    <Script file="subtitles_ui.lua"/>
 </Ui>
