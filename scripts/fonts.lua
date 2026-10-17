@@ -56,6 +56,7 @@ fonts.prepare = function ()
         { name="Game15Font_Shadow",                 file=assets.font_frizqt },
         { name="GameTooltipHeader",                 file=assets.font_frizqt },
         { name="MailFont_Large",                    file=assets.font_morpheus },
+        { name="MovieSubtitleFont",                 file=assets.font_frizqt },
         { name="ObjectiveTrackerLineFont",          file=assets.font_frizqt },
         { name="PVPInfoTextFont",                   file=assets.font_frizqt },
         { name="QuestFont_Huge",                    file=assets.font_morpheus },

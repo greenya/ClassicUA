@@ -7,6 +7,7 @@ local dev_log_ui        = addon_table.use("dev_log_ui") ---@class dev_log_ui_cla
 local frames            = addon_table.use("frames") ---@class frames_class
 local options           = addon_table.use("options") ---@class options_class
 local options_ext_ui    = addon_table.use("options_ext_ui") ---@class options_ext_ui_class
+local subtitles_ui      = addon_table.use("subtitles_ui") ---@class subtitles_ui_class
 local utils             = addon_table.use("utils") ---@class utils_class
 
 local CreateFrame       = _G.CreateFrame
@@ -165,6 +166,17 @@ local option_rows = {
         sub         = true,
         name        = "Бульбашки",
         tooltip     = "Текст у бульбашках над персонажами."
+    },
+    {
+        key         = "subtitle",
+        option_key  = "translate_subtitles",
+        name        = "Субтитри",
+        tooltip     = "Субтитри відеороликів і кат-сцен, зокрема вступних роликів рас."
+            .. "\n\nВідображаються, якщо субтитри увімкнено в налаштуваннях гри.",
+        play_button = {
+            tooltip     = "Переглянути відеоролики гри з субтитрами.",
+            on_click    = function (self) subtitles_ui.toggle(self) end,
+        },
     },
     {
         key         = "ai",
@@ -555,6 +567,18 @@ local function build_extra_page(frame, y)
             checkbox.parent_key = row.parent_key
             checkbox.update_row_states = update_row_states
             frame.widgets[row.key] = checkbox
+
+            if row.play_button then
+                local button = CreateFrame("Button", nil, content, "UIPanelButtonTemplate")
+                button:SetSize(26, 21)
+                button:SetPoint("LEFT", checkbox.Text, "RIGHT", 8, 0)
+                local icon = button:CreateTexture(nil, "OVERLAY")
+                icon:SetSize(10, 10)
+                icon:SetPoint("CENTER")
+                icon:SetTexture("Interface\\OptionsFrame\\VoiceChat-Play")
+                button:SetScript("OnClick", row.play_button.on_click)
+                frames.add_tooltip_for_frame(button, "ANCHOR_RIGHT", row.play_button.tooltip)
+            end
 
             row_y = row_y - l.checkbox_height
         end
