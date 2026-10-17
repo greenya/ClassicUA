@@ -20,5 +20,6 @@
     <Script file="spell_shaman.lua"/>
     <Script file="spell_warlock.lua"/>
     <Script file="spell_warrior.lua"/>
+    <Script file="subtitle.lua"/>
     <Script file="talent_tree.lua"/>
 </Ui>
