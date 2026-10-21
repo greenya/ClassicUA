@@ -1,7 +1,8 @@
 local _, addonTable = ...
 
--- direct translation of some global strings
+-- direct translation of some global strings, by the name of the global
 -- please keep in alphabetical order for easier maintenance
+-- a later expansion's string.lua replaces the ones its client words otherwise
 -- reference: https://www.townlong-yak.com/framexml/era/Helix/GlobalStrings.lua
 -- use /dump command to query any value in-game, e.g. "/dump CONTESTED_TERRITORY"
 
@@ -42,7 +43,7 @@ local global_strings = {
 { "ERR_ITEM_COOLDOWN", "Предмет ще не готовий." }, -- "Item is not ready yet."
 { "ERR_LEARN_ABILITY_S", "Ви вивчили нову здібність: %s." }, -- "You have learned a new ability: %s."
 { "ERR_LEARN_PASSIVE_S", "Ви отримали новий пасивний ефект: %s." }, -- "You have learned a new passive effect: %s."
-{ "ERR_LEARN_SPELL_S", "Ви вивчили нове заклинання: %s." }, -- "You have learned a new spell: %s."
+{ "ERR_LEARN_SPELL_S", "Ви вивчили нове закляття: %s." }, -- "You have learned a new spell: %s."
 { "ERR_LEFT_GROUP_S", "%s полишає групу." }, -- "%s leaves the party."
 { "ERR_LEFT_GROUP_YOU", "Ви полишаєте групу." }, -- "You leave the group."
 { "ERR_MAIL_INVALID_ATTACHMENT_SLOT", "Ви не можете прикріпити більше 12 предметів до листа." }, -- "You cannot attach more than 12 items to mail."
@@ -91,7 +92,7 @@ local global_strings = {
 { "ITEM_SIGNABLE", "<Клацніть правою кнопкою для подробиць>" }, -- "<Right Click for Details>"
 { "ITEM_STARTS_QUEST", "Цей предмет розпочинає завдання" }, -- "This Item Begins a Quest"
 { "KEYRING", "Кільце для ключів" }, -- "Keyring"
-{ "LEARN_SPELL_OBJECTIVE", "Вивчіть заклинання:" }, -- "Learn Spell:"
+{ "LEARN_SPELL_OBJECTIVE", "Вивчіть закляття:" }, -- "Learn Spell:"
 { "LEAVING_COMBAT", "Завершення бою" }, -- "Leaving Combat"
 { "LEGSSLOT", "Ноги" }, -- "Legs"
 { "LEVEL_UP", "Вітаємо! Ви досягли %d-го рівня!" }, -- "Congratulations, you have reached level %d!"
@@ -124,7 +125,7 @@ local global_strings = {
 { "POSTMASTER_PIPE_PANDARIA", "Пандарія" }, -- "Pandaria"
 { "QUEST_DESCRIPTION", "Опис" }, -- "Description"
 { "QUEST_OBJECTIVES", "Доручення" }, -- "Quest Objectives"
-{ "QUEST_SPELL_NEEDED", "Вивчіть заклинання: %s" }, -- "Learn Spell: %s"
+{ "QUEST_SPELL_NEEDED", "Вивчіть закляття: %s" }, -- "Learn Spell: %s"
 -- @taint
 -- { "RAID_TARGET_1", "Зірка" }, -- "Star"
 -- { "RAID_TARGET_2", "Коло" }, -- "Circle"
@@ -142,7 +143,7 @@ local global_strings = {
 { "REQUIRED_MONEY", "Потрібні гроші:" }, -- "Required Money:"
 { "REWARDS", "Винагороди" }, -- "Rewards"
 { "REWARD_ABILITY", "Ви навчитеся наступному:" }, -- "You will learn the following:"
-{ "REWARD_AURA", "На вас буде накладено наступне заклинання:" }, -- "The following will be cast on you:"
+{ "REWARD_AURA", "На вас буде накладено наступне закляття:" }, -- "The following will be cast on you:"
 { "REWARD_CHOICES", "Ви зможете обрати одну з цих винагород:" }, -- "You will be able to choose one of these rewards:"
 { "REWARD_CHOOSE", "Оберіть собі винагороду:" }, -- "Choose your reward:"
 { "REWARD_FOLLOWER", "До вас приєднаються послідовники:" }, -- "You will gain these followers:"
@@ -151,7 +152,7 @@ local global_strings = {
 { "REWARD_SPELL", "Ви навчитеся:" }, -- "You will learn:"
 { "REWARD_TITLE", "Вас буде удостоєно званням:" }, -- "You shall be granted the title:"
 { "REWARD_TRADESKILL_SPELL", "Ви навчитеся створювати:" }, -- "You will learn how to create:"
-{ "REWARD_UNLOCK", "Ви відриєте доступ до наступного:" }, -- "You will unlock access to the following:"
+{ "REWARD_UNLOCK", "Ви відкриєте доступ до наступного:" }, -- "You will unlock access to the following:"
 { "SANCTUARY_TERRITORY", "(Прихисток)" }, -- "(Sanctuary)"
 { "SECONDARYHANDSLOT", "Неосновна рука" }, -- "Off Hand"
 { "SHIELDSLOT", "Щит" }, -- "Shield"
@@ -191,7 +192,7 @@ local global_strings = {
 { "TIME_PLAYED_LEVEL", "Час гри на цьому рівні: %s" }, -- "Time played this level: %s"
 { "TIME_PLAYED_TOTAL", "Загальний час гри: %s" }, -- "Total time played: %s"
 { "TIME_REMAINING", "Часу залишилось:" }, -- "Time Remaining:"
-{ "TIME_TEMPLATE_LONG", "%d д, %s год, %d хв, %d сек" }, -- "%d days, %d hours, %d minutes, %d seconds"
+{ "TIME_TEMPLATE_LONG", "%d д, %d год, %d хв, %d сек" }, -- "%d days, %d hours, %d minutes, %d seconds"
 { "TRACKING", "Вистежування" }, -- "Tracking"
 { "TRINKET0SLOT", "Дрібничка" }, -- "Trinket"
 { "TRINKET1SLOT", "Дрібничка" }, -- "Trinket"
@@ -206,16 +207,9 @@ local global_strings = {
 { "ZOOM_OUT", "Віддалити" }, -- "Zoom Out"
 }
 
-addonTable.string = {}
-addonTable.string_back = {}
-addonTable.string_globals = {}
+if not addonTable.string_globals then
+    addonTable.string_globals = {}
+end
 for _, s in ipairs(global_strings) do
-    local key = s[1]
-    local val_en = _G[key]
-    if type(val_en) == "string" then
-        local val_uk = s[2]
-        addonTable.string[val_en] = val_uk
-        addonTable.string_back[val_uk] = val_en
-        addonTable.string_globals[key] = val_uk
-    end
+    addonTable.string_globals[s[1]] = s[2]
 end
