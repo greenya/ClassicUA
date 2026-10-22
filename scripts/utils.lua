@@ -7,6 +7,7 @@ local math_fmod             = _G.math.fmod
 local string_byte           = _G.string.byte
 local string_find           = _G.string.find
 local string_gmatch         = _G.string.gmatch
+local string_gsub           = _G.string.gsub
 local string_split          = _G.string.split
 local string_trim           = _G.string.trim
 local table_concat          = _G.table.concat
@@ -294,8 +295,13 @@ utils.tooltip_has_secret = function (tooltip)
         return false
     end
 
+    local count = tooltip:NumLines()
+    if issecretvalue(count) then
+        return true
+    end
+
     local name = tooltip:GetName()
-    for i = 1, tooltip:NumLines() do
+    for i = 1, count do
         local left, right = _G[name .. "TextLeft" .. i], _G[name .. "TextRight" .. i]
         if (left and issecretvalue(left:GetText())) or (right and issecretvalue(right:GetText())) then
             return true
@@ -518,4 +524,16 @@ utils.match_text_code = function (code, candidates)
         end
     end
     return false
+end
+
+-- rendering game's plural codes, as WoW: Forever's tooltip data holds them
+-- "1 |4hour:hrs;" -> "1 hour"; "5 |4hour:hrs;" -> "5 hrs"
+utils.render_plurals = function (text)
+    if not string_find(text, "|4", 1, true) then
+        return text
+    end
+    text = string_gsub(text, "([%d%.,]+)(%s*)|4([^:;]*):([^;]*);", function (number, space, one, other)
+        return number .. space .. (tonumber((string_gsub(number, ",", ""))) == 1 and one or other)
+    end)
+    return (string_gsub(text, "|4([^:;]*):[^;]*;", "%1"))
 end
