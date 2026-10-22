@@ -240,72 +240,25 @@ dev_log.missing_quest = function (quest_id)
     log.missing_quests[quest_id] = true
 end
 
-dev_log.missing_npc = function (npc_id, npc_name)
-    npc_id = tonumber(npc_id)
-    if not npc_id then
-        return
-    end
+local missing_entry_logs = {
+    npc             = { key = "missing_npcs",           notice = "Відсутній персонаж" },
+    item            = { key = "missing_items",          notice = "Відсутній предмет" },
+    spell           = { key = "missing_spells",         notice = "Відсутнє закляття" },
+    sod_engraving   = { key = "missing_sod_engravings", notice = "Відсутнє SOD гравіювання" },
+}
 
-    if log.missing_npcs[npc_id] then
-        return
-    end
-
-    if options.account.dev_mode_notify_activity then
-        dev_print("Відсутній персонаж #" .. tostring(npc_id) .. " " .. npc_name)
-    end
-
-    log.missing_npcs[npc_id] = npc_name
-end
-
-dev_log.missing_item = function (item_id, item_name)
-    item_id = tonumber(item_id)
-    if not item_id then
-        return
-    end
-
-    if log.missing_items[item_id] then
+dev_log.missing_entry = function (entry_type, entry_id, entry_name)
+    local entry_log = missing_entry_logs[entry_type]
+    entry_id = tonumber(entry_id)
+    if not entry_log or not entry_id or log[entry_log.key][entry_id] then
         return
     end
 
     if options.account.dev_mode_notify_activity then
-        dev_print("Відсутній предмет #" .. tostring(item_id) .. " " .. item_name)
+        dev_print(entry_log.notice .. " #" .. tostring(entry_id) .. " " .. entry_name)
     end
 
-    log.missing_items[item_id] = item_name
-end
-
-dev_log.missing_spell = function (spell_id, spell_name)
-    spell_id = tonumber(spell_id)
-    if not spell_id then
-        return
-    end
-
-    if log.missing_spells[spell_id] then
-        return
-    end
-
-    if options.account.dev_mode_notify_activity then
-        dev_print("Відсутнє закляття #" .. tostring(spell_id) .. " " .. spell_name)
-    end
-
-    log.missing_spells[spell_id] = spell_name
-end
-
-dev_log.missing_sod_engraving = function (sod_engraving_id, sod_engraving_name)
-    sod_engraving_id = tonumber(sod_engraving_id)
-    if not sod_engraving_id then
-        return
-    end
-
-    if log.missing_sod_engravings[sod_engraving_id] then
-        return
-    end
-
-    if options.account.dev_mode_notify_activity then
-        dev_print("Відсутнє SOD гравіювання #" .. tostring(sod_engraving_id) .. " " .. sod_engraving_name)
-    end
-
-    log.missing_sod_engravings[sod_engraving_id] = sod_engraving_name
+    log[entry_log.key][entry_id] = entry_name
 end
 
 dev_log.missing_item_text = function (item_id, page_number, page_text)

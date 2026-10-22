@@ -193,7 +193,7 @@ local function translate_npc_name(font_string, unit, option_key)
     local entry = entries.get_entry("npc", npc_id)
     if not entry then
         if options.account.dev_mode then
-            dev_log.missing_npc(npc_id, UnitName(unit))
+            dev_log.missing_entry("npc", npc_id, UnitName(unit))
         end
     elseif options.can_translate("translate_npc", option_key) then
         local name = entries.get_npc_name_and_tag(entry, unit)
