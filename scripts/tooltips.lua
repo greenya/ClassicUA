@@ -233,15 +233,7 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
             tooltip:AddLine(assets.icon_ua_inline .. " " .. entry_type .. "#" .. entry_id, 1, 1, 1)
         end
 
-        if entry_type == "npc" then
-            dev_log.missing_npc(entry_id, tt_title_line)
-        elseif entry_type == "item" then
-            dev_log.missing_item(entry_id, tt_title_line)
-        elseif entry_type == "spell" then
-            dev_log.missing_spell(entry_id, tt_title_line)
-        elseif entry_type == "sod_engraving" then
-            dev_log.missing_sod_engraving(entry_id, tt_title_line)
-        end
+        dev_log.missing_entry(entry_type, entry_id, tt_title_line)
     end
 
     -- WoW: Forever shows (and sizes) the tooltip itself right after the post calls, see tooltips.prepare()
