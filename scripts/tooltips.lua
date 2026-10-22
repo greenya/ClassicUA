@@ -250,6 +250,7 @@ end
 -- Our texts go into the game's own lines
 -- Each line we change is kept in tooltip.classicua.lines as { game's text, our text }, so the modifier key can show original text
 local style_options = { item = "tooltip_style_item" }
+local line_sides = { "TextLeft", "TextRight" }
 
 local function is_replacement_style(kind)
     return options.account[style_options[kind]] == "replacement"
@@ -321,14 +322,72 @@ local function replace_lines(tooltip, texts)
     return is_replaced
 end
 
+-- a stat change under a comparison: the colored number stays. A socket keeps its icon (tbc).
+-- "|cff20ff20+25|r Armor" -> "|cff20ff20+25|r броня", "|cff20ff20+1|r [icon] Yellow Socket" -> "|cff20ff20+1|r [icon] жовте гніздо"
+local function translate_stat_change(text)
+    -- the number's color is a hex code, or a named one ("|cnGREEN_FONT_COLOR:+25|r")
+    local number, stat = text:match("^(|c%x%x%x%x%x%x%x%x[%+%-][%d%.,]+|r) (.+)$")
+    if not number then
+        number, stat = text:match("^(|cn[%w_]+:[%+%-][%d%.,]+|r) (.+)$")
+    end
+    if not stat then
+        return
+    end
+
+    local icon, name = stat:match("^(|T.-|t%s*)(.+)$")
+    local stat_uk = entries.translate_string_text(name or stat)
+    return stat_uk and number .. " " .. (icon or "") .. stat_uk
+end
+
+-- an item's effect that is one of the game's phrases; an effect from the item's entry is translated already (add_effect_texts)
+-- "Equip: Improves hit rating by 10." (tbc) -> "При спорядженні: Збільшує показник влучності на 10."
+local function translate_effect_line(text)
+    for _, effect in ipairs(item_effects) do
+        if text:sub(1, #effect.prefix) == effect.prefix then
+            local text_uk = entries.translate_string_text(text:sub(#effect.prefix + 1))
+            return text_uk and fill_template(effect.template, utils.cap(text_uk))
+        end
+    end
+end
+
+-- tooltip_texts are lowercase as inside a line: "Sword" -> "Меч", "Requires Level 60" -> "Потрібний рівень: 60"
+-- The spaces and line breaks a line starts with stay before the translation: tbc spaces a recipe's reagents from the lines above with "\n"
+local function translate_line(text)
+    local space, rest = text:match("^(%s+)(.+)$")
+    if space then
+        local rest_uk = translate_line(rest)
+        return rest_uk and space .. rest_uk
+    end
+
+    -- a whole line before the "Equip:" rule: forever's own phrases include "Equip:" ("Equip: +%1$d Attack Power."), tbc's don't
+    local text_uk = translate_stat_change(text) or entries.translate_string_text(text) or translate_effect_line(text)
+    return text_uk and utils.cap(text_uk)
+end
+
+local function replace_string_lines(tooltip, first_line)
+    local name = tooltip:GetName()
+    local is_replaced = false
+    for i = first_line, tooltip:NumLines() do
+        for _, side in ipairs(line_sides) do
+            local font_string = _G[name .. side .. i]
+            local text = font_string and font_string:GetText()
+            if text and text ~= "" and not is_line_replaced(tooltip, font_string) then
+                is_replaced = replace_line(tooltip, font_string, translate_line(text)) or is_replaced
+            end
+        end
+    end
+    return is_replaced
+end
+
 -- ----------------------------
 -- [ the replace style: items ]
 -- ----------------------------
 
--- "Use: ... (30 Secs Cooldown)" -> " (30 Secs Cooldown)", english for now
+-- "Use: ... (30 Secs Cooldown)" -> " (Відновлення: 30 с)", the game's when we have none
 local function get_cooldown_text(text)
     local cooldown = text:match(" (%([^()]+%))$")
-    return cooldown and " " .. cooldown or ""
+    local cooldown_uk = cooldown and entries.translate_string_text(cooldown)
+    return cooldown and " " .. (cooldown_uk or cooldown) or ""
 end
 
 -- Toy's use line is the game's "Use: Adds this toy to your Toy Box.". Its actual effect comes later and checked against item's spell description.
@@ -389,7 +448,11 @@ local function get_item_texts(tooltip, entry, entry_id, lines_en, title_index)
     local first_line = (title_index or 0) + 1
 
     -- not cached yet: the game builds the tooltip anew once it has the item
-    if not entry or title_index and lines_en[title_index] == RETRIEVING_ITEM_INFO then
+    if title_index and lines_en[title_index] == RETRIEVING_ITEM_INFO then
+        texts[title_index] = translate_line(RETRIEVING_ITEM_INFO)
+        return texts
+    end
+    if not entry then
         return texts
     end
 
@@ -421,8 +484,9 @@ local function get_item_texts(tooltip, entry, entry_id, lines_en, title_index)
 end
 
 local function replace_item_lines(tooltip, entry, entry_id)
-    local lines_en = get_lines_en(tooltip)
-    return replace_lines(tooltip, get_item_texts(tooltip, entry, entry_id, lines_en, get_title_line_index(tooltip)))
+    local title_index = get_title_line_index(tooltip)
+    local is_replaced = replace_lines(tooltip, get_item_texts(tooltip, entry, entry_id, get_lines_en(tooltip), title_index))
+    return replace_string_lines(tooltip, title_index + 1) or is_replaced
 end
 
 -- -----------------------------
@@ -477,6 +541,20 @@ local function lay_out(tooltip, width_before)
         tooltip:Show()
     else
         fit_width(tooltip, width_before)
+    end
+end
+
+-- the classic clients: the lines the game adds after we translated an item's tooltip (the stat changes under a comparison, a recipe's reagents)
+local function replace_late_lines(tooltip)
+    local claim = tooltip.classicua
+    local replaced_lines = claim.replaced_lines
+    if replaced_lines and tooltip:NumLines() > replaced_lines then
+        claim.replaced_lines = tooltip:NumLines()
+        -- the width before translating: lay_out() fits the box by the change where it can't call Show()
+        local width = get_lines_width(tooltip)
+        if replace_string_lines(tooltip, replaced_lines + 1) and tooltip:IsShown() then
+            lay_out(tooltip, width)
+        end
     end
 end
 
@@ -582,7 +660,19 @@ local function plan_tooltip(tooltip, data)
     end
 
     claim.plan = claim.plan or {}
-    plan_texts(claim.plan, lines, get_item_texts(tooltip, entries.get_entry("item", id), id, lines_en, name_index))
+    local plan = claim.plan
+    plan_texts(plan, lines, get_item_texts(tooltip, entries.get_entry("item", id), id, lines_en, name_index))
+
+    for i, line in ipairs(lines) do
+        local planned = plan[line]
+        if i ~= name_index and lines_en[i] ~= "" and not (planned and planned.left) then
+            plan_line(plan, line, translate_line(lines_en[i]))
+        end
+        local right = line.rightText
+        if type(right) == "string" and right ~= "" and not (planned and planned.right) then
+            plan_line(plan, line, nil, translate_line(utils.render_plurals(right)))
+        end
+    end
 end
 
 local function color_code(r, g, b)
@@ -616,6 +706,8 @@ local function add_planned_line(tooltip, line)
     local left, r, g, b = color_text(left_text, line.leftColor)
     local left_en = color_text(line.leftText or "", line.leftColor)
     local wrap = line.wrapText or false
+    -- our own lines: the AddLine hooks leave them, see replace_added_line()
+    claim.is_adding = true
     if line.rightText == nil then
         tooltip:AddLine(left, r, g, b, wrap, line.leftOffset)
     else
@@ -624,8 +716,43 @@ local function add_planned_line(tooltip, line)
         claim.lines[_G[tooltip:GetName() .. "TextRight" .. tooltip:NumLines()]] =
             { color_text(line.rightText, line.rightColor), right }
     end
+    claim.is_adding = false
     claim.lines[_G[tooltip:GetName() .. "TextLeft" .. tooltip:NumLines()]] = { left_en, left }
     return true
+end
+
+-- the lines the game's Lua adds after an item's data: the sell price, the stat changes under a comparison
+local function replace_added_line(tooltip, side, text)
+    local claim = tooltip.classicua
+    if claim.is_adding or not claim.plan or type(text) ~= "string" or text == "" or utils.is_secret(text) then
+        return
+    end
+
+    -- the line just added is the last one
+    local index = tooltip:NumLines()
+    local font_string = not utils.is_secret(index) and _G[tooltip:GetName() .. side .. index]
+    local text_uk = font_string and translate_line(text)
+    if text_uk then
+        -- forever's GetText() has no color codes: the line's color goes inline, so either text keeps it on Alt
+        local code = color_code(font_string:GetTextColor())
+        claim.lines[font_string] = { code .. text .. "|r", code .. text_uk .. "|r" }
+        font_string:SetText(code .. text_uk .. "|r")
+    end
+end
+
+-- the label over a comparison, which the game sizes its frame for right after setting it: "Equipped" -> "Споряджено"
+local function replace_compare_label(tooltip, label, text)
+    local texts = tooltip.classicua.lines[label]
+    if type(text) ~= "string" or utils.is_secret(text) or texts and text == texts[1]
+        or not is_replacement_style("item") or not options.can_translate("translate_item") then
+        return
+    end
+
+    local text_uk = translate_line(text)
+    if text_uk then
+        tooltip.classicua.lines[label] = { text, text_uk }
+        label:SetText(text_uk)
+    end
 end
 
 -- a tooltip built while the modifier key is held got translated: it switches to the game's texts now, sized by fit_width() as Show() is already running
@@ -648,6 +775,9 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
 
     local tt_title_line = utils.tooltip_title_line(tooltip)
     if tt_title_line == "Unknown" or tt_title_line == RETRIEVING_ITEM_INFO then
+        if tt_title_line == RETRIEVING_ITEM_INFO and is_translation_on and not utils.is_forever and is_replacement_style("item") then
+            replace_string_lines(tooltip, 1)
+        end
         return
     end
 
@@ -658,7 +788,8 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
     if is_replacement and utils.is_forever then
         -- WoW: Forever's lines are planned from the tooltip data, see plan_tooltip()
     elseif is_replacement then
-        updated = entry and is_translation_on and replace_item_lines(tooltip, entry, entry_id) or false
+        -- an item with no entry gets the game's phrases too
+        updated = is_translation_on and replace_item_lines(tooltip, entry, entry_id)
     elseif entry and is_translation_on then
         updated = true
         tooltip:AddLine(" ")
@@ -693,6 +824,10 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
 
     tooltip.classicua.entry_type = entry_type
     tooltip.classicua.entry_id = entry_id
+    -- lines past this count are the ones the game adds later, see replace_late_lines()
+    if is_replacement and is_translation_on and not utils.is_forever then
+        tooltip.classicua.replaced_lines = tooltip:NumLines()
+    end
 end
 
 local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processing)
@@ -797,6 +932,12 @@ local function tooltip_set_item(self, data)
     end
 
     if not id then
+        return
+    end
+
+    -- the classic clients fire OnTooltipSetItem for a recipe again, after adding its reagents
+    if self.classicua.entry_type == "item" and self.classicua.entry_id == id then
+        replace_late_lines(self)
         return
     end
 
@@ -925,6 +1066,7 @@ local function tooltip_cleared(self)
     self.classicua.entry_id = false
     self.classicua.talent_rank_id = nil
     self.classicua.skipped = nil
+    self.classicua.replaced_lines = nil
     self.classicua.plan = nil
     self.classicua.style_kind = nil
     wipe(self.classicua.lines)
@@ -973,8 +1115,22 @@ end
 local function hook_item_tooltips()
     if utils.is_forever then
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, for_known_tooltips(tooltip_set_item))
-    else
-        hook_tooltip_script("OnTooltipSetItem", tooltip_set_item)
+        return
+    end
+
+    hook_tooltip_script("OnTooltipSetItem", tooltip_set_item)
+
+    -- the replace style: a comparison gets its stat changes inside SetCompareItem(), for both of its tooltips at once
+    -- Translated there, they are shown sized for the translation, see replace_late_lines()
+    for _, tt in ipairs(known_tooltips) do
+        if tt.SetCompareItem then
+            hooksecurefunc(tt, "SetCompareItem", function (self, other)
+                replace_late_lines(self)
+                if type(other) == "table" and other.classicua then
+                    replace_late_lines(other)
+                end
+            end)
+        end
     end
 end
 
@@ -1083,6 +1239,22 @@ local function hook_forever_tooltip_methods()
         for _, tt in ipairs(known_tooltips) do
             -- SetText() replaces the whole tooltip: else the modifier key would write an old item's lines into it
             hooksecurefunc(tt, "SetText", tooltip_cleared)
+
+            hooksecurefunc(tt, "AddLine", function (tooltip, text)
+                replace_added_line(tooltip, "TextLeft", text)
+            end)
+            hooksecurefunc(tt, "AddDoubleLine", function (tooltip, text_left, text_right)
+                replace_added_line(tooltip, "TextLeft", text_left)
+                replace_added_line(tooltip, "TextRight", text_right)
+            end)
+
+            -- only the comparison tooltips have a header ("Equipped") over them
+            local header = tt.CompareHeader
+            if header then
+                hooksecurefunc(header.Label, "SetText", function (_, text)
+                    replace_compare_label(tt, header.Label, text)
+                end)
+            end
 
             -- a comparison is shown again by SetShown() after the game adds its stat changes
             hooksecurefunc(tt, "Show", tooltip_shown)
