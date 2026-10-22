@@ -395,6 +395,31 @@
             is_female () {
                 return !!this.tags.find(e => e.name == 'жін')
             }
+
+            has_any_tags (tags) {
+                for (let i = 0; i < this.tags.length; i++) {
+                    if (tags.indexOf(this.tags[i]) >= 0) {
+                        return true
+                    }
+                }
+                return false
+            }
+
+            has_all_tags (tags) {
+                for (let i = 0; i < tags.length; i++) {
+                    if (this.tags.indexOf(tags[i]) == -1) {
+                        return false
+                    }
+                }
+                return true
+            }
+
+            matches_id_tag (re) {
+                for (let i = 0; i < this.id_tags.length; i++) {
+                    if (this.id_tags[i].name.search(re) >= 0) return true
+                }
+                return false
+            }
         }
 
         new Vue({
@@ -438,7 +463,7 @@
                     const tags = this.filterTags;
                     return this.terms
                         .filter(term => !tags.length || this.termHasTags(term, tags))
-                        .filter(term => !re || term.en.search(re) >= 0 || term.uk.search(re) >= 0)
+                        .filter(term => !re || this.termMatchesRe(term, re))
                         .sort((term1, term2) => term1.en.localeCompare(term2.en))
                         .splice(0, this.maxVisibleTerms);
                 },
@@ -536,21 +561,14 @@
                     }
                 },
                 termHasTags: function (term, tags) {
-                    if (this.filterTagsMatchAll) {
-                        for (let i = 0; i < tags.length; i++) {
-                            if (term.tags.indexOf(tags[i]) == -1) {
-                                return false;
-                            }
-                        }
-                        return true;
-                    } else {
-                        for (let i = 0; i < term.tags.length; i++) {
-                            if (tags.indexOf(term.tags[i]) >= 0) {
-                                return true;
-                            }
-                        }
-                        return false;
-                    }
+                    return this.filterTagsMatchAll
+                        ? term.has_all_tags(tags)
+                        : term.has_any_tags(tags)
+                },
+                termMatchesRe: function (term, re) {
+                    return term.en.search(re) >= 0
+                        || term.uk.search(re) >= 0
+                        || term.matches_id_tag(re)
                 },
                 openTermDetails: function (term) {
                     let subtitle_text_en = term.subtitle_text()
