@@ -454,8 +454,9 @@ local function tooltip_updated(self)
         return
     end
 
-    local has_status_bar = GameTooltipStatusBar and GameTooltipStatusBar:IsShown()
-    if has_status_bar then
+    -- a unit's health bar (each tooltip has its own)
+    local status_bar = _G[self:GetName() .. "StatusBar"]
+    if status_bar and status_bar:IsShown() then
         return
     end
 
@@ -609,26 +610,15 @@ local function hook_world_tooltips()
 end
 
 local function hook_other_tooltips()
-    hook_tooltip_script("OnUpdate", tooltip_updated)
-    if utils.is_forever then
-        return
-    end
-
-    -- ItemRefTooltip is "special" tooltip as it clears "OnUpdate" hook every time,
-    -- making it work only once, so we reset it back.
-    -- Some details here: https://github.com/arkayenro/arkinventory/issues/1337
-    -- TODO: find better solution, check other addons on how they handle ItemRefTooltip
-    --
-    -- WoW: Forever needs no such workaround, and it breaks the tooltip there: its OnUpdate is the game's own, which
-    -- fills in the item data as it arrives and shows the comparisons. Replaced by SetScript() below, an item that is
-    -- not cached yet needs a click per portion of its data: "Retrieving item information" first, then the name and
-    -- basic stats, then the item effects; and Shift shows no comparison
-    ItemRefTooltip:HookScript("OnShow", function (self)
-        tooltip_updated(self)
-        if self:GetScript("OnUpdate") ~= tooltip_updated then
-            self:SetScript("OnUpdate", tooltip_updated)
+    for _, tt in ipairs(known_tooltips) do
+        -- the classic clients' ItemRefTooltip (a link clicked in chat) resets its OnUpdate script on enter, leave and hide (ItemRef.xml), dropping our hook.
+        -- The game fills it by SetHyperlink() only: a quest link on Wrath, Cata and Mists.
+        if tt == ItemRefTooltip and not utils.is_forever then
+            hooksecurefunc(tt, "SetHyperlink", tooltip_updated)
+        else
+            tt:HookScript("OnUpdate", tooltip_updated)
         end
-    end)
+    end
 end
 
 tooltips.prepare = function ()
