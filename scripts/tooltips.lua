@@ -18,6 +18,8 @@ local WorldFrame            = _G.WorldFrame
 
 local HOME_CODE = "{домівка}"
 
+local known_tooltips = {}
+
 local function resolve_hearthstone_location(text)
     if not text:find(HOME_CODE, 1, true) then
         return text
@@ -472,18 +474,6 @@ local function tooltip_updated(self)
         return
     end
 
-    if addon_table.sod_engraving and options.can_lookup("translate_spell") then
-        local owner = self:GetOwner()
-        if owner then
-            local owner_name = owner:GetName()
-            if owner_name and owner_name:find("^EngravingFrameScrollFrameButton") and owner.skillLineAbilityID then
-                add_entry_to_tooltip(self, "sod_engraving", owner.skillLineAbilityID, false,
-                    options.can_translate("translate_spell"))
-                return
-            end
-        end
-    end
-
     local text = _G[self:GetName() .. "TextLeft1"]:GetText()
     if text == self.classicua.entry_id then
         return
@@ -501,19 +491,15 @@ local function tooltip_cleared(self)
     self.classicua.skipped = nil
 end
 
--- WoW: Forever runs the retail ui, where the tooltip data processor calls back once it has filled a tooltip;
--- the callback comes for every tooltip in the game, so only the ones we know are served
-local function forever_post_call(handler)
-    return function (tooltip, data)
-        if tooltip.classicua and not tooltip:IsForbidden() and not utils.tooltip_has_secret(tooltip) then
-            handler(tooltip, data)
-        end
-    end
-end
+-- --------------------------
+-- [ hooks, by tooltip kind ]
+-- --------------------------
 
-tooltips.prepare = function ()
-    local known_tooltips = {}
+-- Each kind of tooltip is hooked in its own function, which splits by client inside:
+-- classic clients tell us what a tooltip shows by its scripts (OnTooltipSetItem...) and GameTooltip's methods
+-- WoW: Forever runs retail ui, where the tooltip data processor uses callbacks after it fills a tooltip.
 
+local function prepare_known_tooltips()
     for _, tt in pairs({
         GameTooltip,
         ShoppingTooltip1,
@@ -526,81 +512,150 @@ tooltips.prepare = function ()
         if tt then
             known_tooltips[#known_tooltips + 1] = tt
             tt.classicua = { entry_type = false, entry_id = false }
+            tt:HookScript("OnTooltipCleared", tooltip_cleared)
         end
     end
+end
 
-    for _, tt in pairs(known_tooltips) do
-        if not utils.is_forever then
-            -- WoW: Forever runs the retail ui, where tooltips have no OnTooltipSet* scripts
-            tt:HookScript("OnTooltipSetItem", tooltip_set_item)
-            tt:HookScript("OnTooltipSetSpell", tooltip_set_spell)
-            tt:HookScript("OnTooltipSetUnit", tooltip_set_unit)
+local function hook_tooltip_script(script, handler)
+    for _, tt in ipairs(known_tooltips) do
+        tt:HookScript(script, handler)
+    end
+end
+
+local function for_known_tooltips(handler)
+    return function (tooltip, data)
+        if not tooltip:IsForbidden() and tooltip.classicua and not utils.tooltip_has_secret(tooltip) then
+            handler(tooltip, data)
         end
-        tt:HookScript("OnUpdate", tooltip_updated)
-        tt:HookScript("OnTooltipCleared", tooltip_cleared)
+    end
+end
 
-        -- WoW: Forever needs no such workaround, and it breaks the tooltip there: its OnUpdate is the game's own, which
-        -- fills in the item data as it arrives and shows the comparisons. Replaced by SetScript() below, an item that is
-        -- not cached yet needs a click per portion of its data: "Retrieving item information" first, then the name and
-        -- basic stats, then the item effects; and Shift shows no comparison
-        if tt == ItemRefTooltip and not utils.is_forever then
-            -- ItemRefTooltip is "special" tooltip as it clears "OnUpdate" hook every time,
-            -- making it work only once, so we reset it back.
-            -- Some details here: https://github.com/arkayenro/arkinventory/issues/1337
-            -- TODO: find better solution, check other addons on how they handle ItemRefTooltip
-            tt:HookScript("OnShow", function (self)
-                tooltip_updated(tt)
-                if tt:GetScript("OnUpdate") ~= tooltip_updated then
-                    tt:SetScript("OnUpdate", tooltip_updated)
-                end
+local function hook_item_tooltips()
+    if utils.is_forever then
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, for_known_tooltips(tooltip_set_item))
+    else
+        hook_tooltip_script("OnTooltipSetItem", tooltip_set_item)
+    end
+end
+
+local function hook_spell_tooltips()
+    if utils.is_forever then
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Spell, for_known_tooltips(tooltip_set_spell))
+    else
+        hook_tooltip_script("OnTooltipSetSpell", tooltip_set_spell)
+    end
+end
+
+-- WoW: Forever has no UnitAura(): its auras come as tooltip data
+local function hook_aura_tooltips()
+    if utils.is_forever then
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.UnitAura, for_known_tooltips(tooltip_set_unit_aura))
+        return
+    end
+
+    hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
+        add_aura_to_tooltip(self, select(10, UnitAura(unit, index, filter)))
+    end)
+
+    hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
+        add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HELPFUL")))
+    end)
+
+    hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
+        add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HARMFUL")))
+    end)
+
+    -- party frames, compact raid frames and nameplates show an aura by its instance id
+    for _, method in ipairs({
+        "SetUnitAuraByAuraInstanceID", "SetUnitBuffByAuraInstanceID", "SetUnitDebuffByAuraInstanceID",
+    }) do
+        if GameTooltip[method] then
+            hooksecurefunc(GameTooltip, method, function (self, unit, aura_instance_id)
+                local aura = C_UnitAuras.GetAuraDataByAuraInstanceID(unit, aura_instance_id)
+                add_aura_to_tooltip(self, aura and aura.spellId)
             end)
         end
     end
+end
 
+-- Mists' talent tooltip is a spell tooltip, and WoW: Forever's talent ranks come as spells (tooltip_set_spell)
+local function hook_talent_tooltips()
+    if not (utils.is_classic or utils.is_tbc or utils.is_wrath or utils.is_cata) then
+        return
+    end
+
+    hooksecurefunc(GameTooltip, "SetTalent", function (self, talent_id, is_inspect, is_pet)
+        if not is_pet and options.can_lookup("translate_spell") then
+            handle_talent_tooltip(self, talent_id)
+        end
+    end)
+end
+
+-- season of discovery: the rune list (EngravingFrame) shows a rune by SetEngravingRune()
+local function hook_engraving_tooltips()
+    if not utils.is_classic_sod then
+        return
+    end
+
+    hooksecurefunc(GameTooltip, "SetEngravingRune", function (self, skill_line_ability_id)
+        if options.can_lookup("translate_spell") then
+            add_entry_to_tooltip(self, "sod_engraving", skill_line_ability_id, false, options.can_translate("translate_spell"))
+        end
+    end)
+end
+
+local function hook_unit_tooltips()
     if utils.is_forever then
-        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, forever_post_call(tooltip_set_item))
-        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Spell, forever_post_call(tooltip_set_spell))
-        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.UnitAura, forever_post_call(tooltip_set_unit_aura))
-        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, forever_post_call(tooltip_set_unit))
-        for _, data_type in ipairs({ "Object", "Corpse", "MinimapMouseover" }) do
-            TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType[data_type],
-                forever_post_call(tooltip_set_world_name))
-        end
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, for_known_tooltips(tooltip_set_unit))
+    else
+        hook_tooltip_script("OnTooltipSetUnit", tooltip_set_unit)
     end
+end
 
-    -- we don't need to handle "SetTalent" for Mists as talent tooltip there is a spell tooltip hooked on "OnTooltipSetSpell"
-    if utils.is_classic or utils.is_tbc or utils.is_wrath or utils.is_cata then
-        hooksecurefunc(GameTooltip, "SetTalent", function (self, talent_id, is_inspect, is_pet)
-            if not is_pet and options.can_lookup("translate_spell") then
-                handle_talent_tooltip(self, talent_id)
-            end
-        end)
-    end
-
-    -- WoW: Forever has no UnitAura(), which the aura hooks below read the spell id from
+-- on the classic clients these are looked up like other tooltips (hook_other_tooltips)
+local function hook_world_tooltips()
     if not utils.is_forever then
-        hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
-            add_aura_to_tooltip(self, select(10, UnitAura(unit, index, filter)))
-        end)
-
-        hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
-            add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HELPFUL")))
-        end)
-
-        hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
-            add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HARMFUL")))
-        end)
-
-        -- party frames, compact raid frames and nameplates show an aura by its instance id
-        for _, method in ipairs({
-            "SetUnitAuraByAuraInstanceID", "SetUnitBuffByAuraInstanceID", "SetUnitDebuffByAuraInstanceID",
-        }) do
-            if GameTooltip[method] then
-                hooksecurefunc(GameTooltip, method, function (self, unit, aura_instance_id)
-                    local aura = C_UnitAuras.GetAuraDataByAuraInstanceID(unit, aura_instance_id)
-                    add_aura_to_tooltip(self, aura and aura.spellId)
-                end)
-            end
-        end
+        return
     end
+
+    for _, data_type in ipairs({ "Object", "Corpse", "MinimapMouseover" }) do
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType[data_type],
+            for_known_tooltips(tooltip_set_world_name))
+    end
+end
+
+local function hook_other_tooltips()
+    hook_tooltip_script("OnUpdate", tooltip_updated)
+    if utils.is_forever then
+        return
+    end
+
+    -- ItemRefTooltip is "special" tooltip as it clears "OnUpdate" hook every time,
+    -- making it work only once, so we reset it back.
+    -- Some details here: https://github.com/arkayenro/arkinventory/issues/1337
+    -- TODO: find better solution, check other addons on how they handle ItemRefTooltip
+    --
+    -- WoW: Forever needs no such workaround, and it breaks the tooltip there: its OnUpdate is the game's own, which
+    -- fills in the item data as it arrives and shows the comparisons. Replaced by SetScript() below, an item that is
+    -- not cached yet needs a click per portion of its data: "Retrieving item information" first, then the name and
+    -- basic stats, then the item effects; and Shift shows no comparison
+    ItemRefTooltip:HookScript("OnShow", function (self)
+        tooltip_updated(self)
+        if self:GetScript("OnUpdate") ~= tooltip_updated then
+            self:SetScript("OnUpdate", tooltip_updated)
+        end
+    end)
+end
+
+tooltips.prepare = function ()
+    prepare_known_tooltips()
+    hook_item_tooltips()
+    hook_spell_tooltips()
+    hook_aura_tooltips()
+    hook_talent_tooltips()
+    hook_engraving_tooltips()
+    hook_unit_tooltips()
+    hook_world_tooltips()
+    hook_other_tooltips()
 end
