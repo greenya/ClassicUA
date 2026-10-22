@@ -286,9 +286,14 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processin
     end
 end
 
-local function claim_tooltip(tooltip, entry_type, entry_id)
-    tooltip.classicua.entry_type = entry_type
-    tooltip.classicua.entry_id = entry_id
+-- with the lookup off, the tooltip is only claimed: else tooltip_updated would look its name up in the glossary
+local function handle_entry(tooltip, entry_type, entry_id, option_key)
+    if options.can_lookup(option_key) then
+        add_entry_to_tooltip(tooltip, entry_type, entry_id, false, options.can_translate(option_key))
+    else
+        tooltip.classicua.entry_type = entry_type
+        tooltip.classicua.entry_id = entry_id
+    end
 end
 
 -- the rank of a talent a spell is, nil when it is none of them
@@ -324,7 +329,7 @@ local function handle_talent_tooltip(tooltip, talent_id)
     -- the tooltip already; a talent with no point spent gets no spell tooltip and shows its first rank
     local claim = tooltip.classicua
     if not claim.entry_type then
-        add_entry_to_tooltip(tooltip, "spell", ranks[1], false, options.can_translate("translate_spell"))
+        handle_entry(tooltip, "spell", ranks[1], "translate_spell")
         return
     end
 
@@ -353,11 +358,7 @@ local function tooltip_set_item(self, data)
         return
     end
 
-    if options.can_lookup("translate_item") then
-        add_entry_to_tooltip(self, "item", id, false, options.can_translate("translate_item"))
-    else
-        claim_tooltip(self, "item", id)
-    end
+    handle_entry(self, "item", id, "translate_item")
 end
 
 local function tooltip_set_spell(self, data)
@@ -379,12 +380,8 @@ local function tooltip_set_spell(self, data)
         if info and info.getterName == "GetTraitEntry" then
             local claim = self.classicua
             if claim.talent_rank_id then
-                if options.can_lookup("translate_spell") then
-                    add_entry_to_tooltip(self, "spell", claim.talent_rank_id, false, options.can_translate("translate_spell"))
-                    add_next_rank_to_tooltip(self, id)
-                else
-                    claim_tooltip(self, "spell", claim.talent_rank_id)
-                end
+                handle_entry(self, "spell", claim.talent_rank_id, "translate_spell")
+                add_next_rank_to_tooltip(self, id)
                 claim.talent_rank_id = nil
                 return
             end
@@ -397,11 +394,7 @@ local function tooltip_set_spell(self, data)
         end
     end
 
-    if options.can_lookup("translate_spell") then
-        add_entry_to_tooltip(self, "spell", id, false, options.can_translate("translate_spell"))
-    else
-        claim_tooltip(self, "spell", id)
-    end
+    handle_entry(self, "spell", id, "translate_spell")
 end
 
 local function tooltip_set_unit(self, data)
@@ -456,8 +449,8 @@ local function tooltip_updated(self)
         return
     end
 
-    -- WoW: Forever has GetUnit() on GameTooltip only (not on the comparison tooltips), TooltipUtil works for any tooltip
-    -- TODO: TooltipUtil.GetDisplayedUnit() exists on the other clients too, check it there and drop the split
+    -- WoW: Forever has GetUnit() on GameTooltip only (not on the comparison tooltips), TooltipUtil works for any tooltip.
+    -- The classic clients have no TooltipUtil
     local name, unit
     if utils.is_forever then
         name, unit = TooltipUtil.GetDisplayedUnit(self)
@@ -599,9 +592,7 @@ local function hook_engraving_tooltips()
     end
 
     hooksecurefunc(GameTooltip, "SetEngravingRune", function (self, skill_line_ability_id)
-        if options.can_lookup("translate_spell") then
-            add_entry_to_tooltip(self, "sod_engraving", skill_line_ability_id, false, options.can_translate("translate_spell"))
-        end
+        handle_entry(self, "sod_engraving", skill_line_ability_id, "translate_spell")
     end)
 end
 
