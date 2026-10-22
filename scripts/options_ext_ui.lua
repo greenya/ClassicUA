@@ -8,6 +8,7 @@ local frames            = addon_table.use("frames") ---@class frames_class
 local options           = addon_table.use("options") ---@class options_class
 local options_ext_ui    = addon_table.use("options_ext_ui") ---@class options_ext_ui_class
 local subtitles_ui      = addon_table.use("subtitles_ui") ---@class subtitles_ui_class
+local tooltips          = addon_table.use("tooltips") ---@class tooltips_class
 local utils             = addon_table.use("utils") ---@class utils_class
 
 local CreateFrame       = _G.CreateFrame
@@ -90,6 +91,10 @@ local layout = {
 -- "parent_key" dims the row while the named checkbox is unchecked.
 -- "reload" marks switches which are only applied on interface reload, because the module
 -- they belong to overwrites game data once, at load time.
+
+local TOOLTIP_STYLES_HELP = "\n\nЗаміна — замість оригіналу. Оригінал видно, поки затиснуто клавішу, вибрану в «Оригінал»."
+    .. "\nДоповнення — окремим блоком під оригіналом."
+
 local option_rows = {
     { group = "Шрифти" },
     {
@@ -192,10 +197,25 @@ local option_rows = {
 
     { group = "Назви та підказки" },
     {
+        dropdown    = "tooltip_original_key",
+        option_key  = "tooltip_original_key",
+        label       = "Оригінал",
+        values      = tooltips.original_keys,
+        tooltip     = "Клавіша, при натисненні якої підказка показує оригінальний текст (у стилі «Заміна»)."
+    },
+    {
         key         = "item",
         option_key  = "translate_item",
         name        = "Предмети",
         tooltip     = "Назви та описи предметів у підказках."
+    },
+    {
+        dropdown    = "tooltip_style_item",
+        option_key  = "tooltip_style_item",
+        parent_key  = "item",
+        label       = "Стиль",
+        values      = tooltips.styles,
+        tooltip     = "Стиль відображення перекладу в підказках предметів." .. TOOLTIP_STYLES_HELP
     },
     {
         key         = "quest_item",

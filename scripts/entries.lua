@@ -558,7 +558,7 @@ entries.make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     if not tooltip_matches_to_skip then
         tooltip_matches_to_skip = 0
     end
-    local tt_lines = utils.tooltip_lines(tooltip)
+    local tt_lines = tooltip.NumLines and utils.tooltip_lines(tooltip) or tooltip
 
     text = resolve_optional_entry_text(text, tt_lines, tooltip_matches_to_skip)
     text = { string_split("#", text) }

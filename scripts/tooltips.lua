@@ -7,16 +7,45 @@ local options   = addon_table.use("options") ---@class options_class
 local tooltips  = addon_table.use("tooltips") ---@class tooltips_class
 local utils     = addon_table.use("utils") ---@class utils_class
 
+local C_Item                = _G.C_Item
+local C_Spell               = _G.C_Spell
 local C_UnitAuras           = _G.C_UnitAuras
+local CreateFrame           = _G.CreateFrame
 local Enum                  = _G.Enum
 local GetBindLocation       = _G.GetBindLocation
-local GameTooltipStatusBar  = _G.GameTooltipStatusBar
+local IsAltKeyDown          = _G.IsAltKeyDown
+local IsControlKeyDown      = _G.IsControlKeyDown
+local IsShiftKeyDown        = _G.IsShiftKeyDown
+local NORMAL_FONT_COLOR     = _G.NORMAL_FONT_COLOR
+local RETRIEVING_ITEM_INFO  = _G.RETRIEVING_ITEM_INFO
 local TooltipUtil           = _G.TooltipUtil
+local UIParent              = _G.UIParent
 local UnitAura              = _G.UnitAura
+local UnitExists            = _G.UnitExists
 local UnitTokenFromGUID     = _G.UnitTokenFromGUID
 local WorldFrame            = _G.WorldFrame
+local wipe                  = _G.wipe
 
 local HOME_CODE = "{домівка}"
+
+tooltips.styles = {
+    { key = "replacement", label = "Заміна" },
+    { key = "addition",    label = "Доповнення" },
+}
+
+tooltips.original_keys = {
+    { key = "ALT",      label = "Alt" },
+    { key = "CTRL",     label = "Ctrl" },
+    { key = "SHIFT",    label = "Shift" },
+}
+
+local is_original_key_down = { ALT = IsAltKeyDown, CTRL = IsControlKeyDown, SHIFT = IsShiftKeyDown }
+
+local item_effects = {
+    { field = "equip",  prefix = _G.ITEM_SPELL_TRIGGER_ONEQUIP .. " ",  template = "При спорядженні: TEXT" },
+    { field = "hit",    prefix = _G.ITEM_SPELL_TRIGGER_ONPROC .. " ",   template = "Шанс при влучанні: TEXT" },
+    { field = "use",    prefix = _G.ITEM_SPELL_TRIGGER_ONUSE .. " ",    template = "Використання: TEXT" },
+}
 
 local known_tooltips = {}
 
@@ -29,9 +58,10 @@ local function resolve_hearthstone_location(text)
     return (text:gsub(HOME_CODE, entries.get_glossary_text(home, home, "zone")))
 end
 
-local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_can_be_spell_id, parent_item_id)
+local function get_entry_texts(tooltip, content, content_can_be_spell_id, parent_item_id)
+    local texts = {}
     if not content then
-        return
+        return texts
     end
 
     local lines = type(content) == "table" and content or { content }
@@ -59,12 +89,36 @@ local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_
             text = utils.cap(text)
         end
 
+        texts[i] = text and resolve_hearthstone_location(text) or false
+    end
+    return texts
+end
+
+local function fill_template(template, text)
+    return (template:gsub("TEXT", text:gsub("%%", "%%%%"), 1))
+end
+
+local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_can_be_spell_id, parent_item_id)
+    for _, text in ipairs(get_entry_texts(tooltip, content, content_can_be_spell_id, parent_item_id)) do
         if text then
-            text = resolve_hearthstone_location(text)
-            local result = template:gsub("TEXT", text:gsub("%%", "%%%%"), 1)
-            tooltip:AddLine(result, r, g, b, true)
+            tooltip:AddLine(fill_template(template, text), r, g, b, true)
         end
     end
+end
+
+local function get_item_heading(tooltip, entry, lines)
+    local heading = entries.make_entry_text(entry[1], lines or tooltip)
+
+    if heading and utils.tooltip_item_suffix_id(tooltip) then
+        -- WoW: Forever gives no name of an item it hasn't cached yet
+        local item_name_en = utils.tooltip_item(tooltip)
+        local item_suffix_uk = item_name_en and entries.get_item_suffix(item_name_en)
+        if item_suffix_uk then
+            heading = heading .. " " .. item_suffix_uk
+        end
+    end
+
+    return heading and utils.cap(heading)
 end
 
 local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_depth)
@@ -79,22 +133,12 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
     end
 
     local prefix = sub_item_depth == 1 and assets.icon_ua_inline .. " " or ""
-    local heading = entries.make_entry_text(entry[1], tooltip)
-
-    if utils.tooltip_item_suffix_id(tooltip) then
-        local item_name_en = utils.tooltip_item(tooltip)
-        local item_suffix_uk = entries.get_item_suffix(item_name_en)
-        if item_suffix_uk then
-            heading = heading .. " " .. item_suffix_uk
-        end
-    end
-
-    tooltip:AddLine(prefix .. utils.cap(heading), 1, 1, 1)
+    tooltip:AddLine(prefix .. get_item_heading(tooltip, entry), 1, 1, 1)
 
     add_line_to_tooltip(tooltip, entry.desc, "TEXT", 1, 1, 1)
-    add_line_to_tooltip(tooltip, entry.equip, "При спорядженні: TEXT", 0, 1, 0, true, entry_id)
-    add_line_to_tooltip(tooltip, entry.hit, "Шанс при влучанні: TEXT", 0, 1, 0, true, entry_id)
-    add_line_to_tooltip(tooltip, entry.use, "Використання: TEXT", 0, 1, 0, true, entry_id)
+    for _, effect in ipairs(item_effects) do
+        add_line_to_tooltip(tooltip, entry[effect.field], effect.template, 0, 1, 0, true, entry_id)
+    end
 
     if entry.recipe_result_item then
         if tonumber(entry_id) ~= tonumber(entry.recipe_result_item) then
@@ -199,20 +243,423 @@ local function add_npc_entry_to_tooltip(tooltip, entry, unit)
     end
 end
 
+-- ---------------------
+-- [ the replace style ]
+-- ---------------------
+
+-- Our texts go into the game's own lines
+-- Each line we change is kept in tooltip.classicua.lines as { game's text, our text }, so the modifier key can show original text
+local style_options = { item = "tooltip_style_item" }
+
+local function is_replacement_style(kind)
+    return options.account[style_options[kind]] == "replacement"
+end
+
+-- whether any kind of tooltip uses the replace style, so the modifier key has lines to switch
+local function is_any_replacement_style()
+    return is_replacement_style("item")
+end
+
+local function is_original_shown()
+    local is_down = is_original_key_down[options.account.tooltip_original_key]
+    return is_down and is_down() or false
+end
+
+local function is_line_replaced(tooltip, font_string)
+    local texts = tooltip.classicua.lines[font_string]
+    if not texts then
+        return false
+    end
+
+    -- WoW: Forever adds its lines anew on every build
+    if utils.is_forever then
+        return true
+    end
+
+    local text = font_string:GetText()
+    if text == texts[2] or text == texts[1] and is_original_shown() then
+        return true
+    end
+    tooltip.classicua.lines[font_string] = nil
+    return false
+end
+
+local function replace_line(tooltip, font_string, text_uk)
+    local text_en = font_string and font_string:GetText()
+    -- a translation with a value left unfilled ("{1}": none in the game's line) leaves the game's line as it is
+    if not text_uk or text_uk:find("{%d+}") or not text_en or text_en == text_uk or is_line_replaced(tooltip, font_string) then
+        return false
+    end
+
+    tooltip.classicua.lines[font_string] = { text_en, text_uk }
+    if not is_original_shown() then
+        font_string:SetText(text_uk)
+    end
+    return true
+end
+
+local function get_title_line_index(tooltip)
+    local first = _G[tooltip:GetName() .. "TextLeft1"]
+    return tooltip:NumLines() > 1 and first:GetText() == _G.CURRENTLY_EQUIPPED and 2 or 1
+end
+
+local function get_lines_en(tooltip)
+    local lines = {}
+    local name = tooltip:GetName()
+    for i = 1, tooltip:NumLines() do
+        lines[i] = _G[name .. "TextLeft" .. i]:GetText() or ""
+    end
+    return lines
+end
+
+local function replace_lines(tooltip, texts)
+    local name = tooltip:GetName()
+    local is_replaced = false
+    for i, text_uk in pairs(texts) do
+        is_replaced = replace_line(tooltip, _G[name .. "TextLeft" .. i], text_uk) or is_replaced
+    end
+    return is_replaced
+end
+
+-- ----------------------------
+-- [ the replace style: items ]
+-- ----------------------------
+
+-- "Use: ... (30 Secs Cooldown)" -> " (30 Secs Cooldown)", english for now
+local function get_cooldown_text(text)
+    local cooldown = text:match(" (%([^()]+%))$")
+    return cooldown and " " .. cooldown or ""
+end
+
+-- Toy's use line is the game's "Use: Adds this toy to your Toy Box.". Its actual effect comes later and checked against item's spell description.
+local function get_toy_effect(item_id)
+    local _, spell_id = C_Item.GetItemSpell(item_id)
+    local description = spell_id and C_Spell.GetSpellDescription(spell_id)
+    if description and not utils.is_secret(description) and description ~= "" then
+        return description
+    end
+end
+
+-- The entry lists an item's effects in the game's order, so the n-th "Equip:" line gets the n-th equip text
+local function add_effect_texts(texts, entry, entry_id, lines_en, first, last)
+    local effects = {}
+    for _, effect in ipairs(item_effects) do
+        effects[effect] = { texts = get_entry_texts(lines_en, entry[effect.field], true, entry_id), count = 0 }
+    end
+    local flavor = get_entry_texts(lines_en, entry.flavor)[1]
+    local toy_effect
+
+    for i = first, last do
+        local text = lines_en[i]
+        if text == _G.ITEM_TOY_ONUSE then
+            toy_effect = get_toy_effect(entry_id)
+        else
+            local is_toy_effect = toy_effect and text:sub(1, #toy_effect) == toy_effect
+            for _, effect in ipairs(item_effects) do
+                local is_toy_use = is_toy_effect and effect.field == "use"
+                if is_toy_use or text:sub(1, #effect.prefix) == effect.prefix then
+                    local found = effects[effect]
+                    found.count = found.count + 1
+                    local text_uk = found.texts[found.count]
+                    local template = is_toy_use and "TEXT" or effect.template
+                    texts[i] = text_uk and fill_template(template, text_uk) .. get_cooldown_text(text)
+                end
+            end
+        end
+        if flavor and text:find('^".*"$') then
+            texts[i] = '"' .. flavor .. '"'
+        end
+    end
+end
+
+-- the line with the made item's name in recipes, with everything around the name: color, tbc's line break before it
+local function find_result_item_line(lines_en, first_line, name_en)
+    for i = first_line, #lines_en do
+        local text = lines_en[i]
+        local from, to = text:find(name_en, 1, true)
+        if from and utils.strip_color_codes(text):match("^%s*(.-)%s*$") == name_en then
+            return i, text:sub(1, from - 1), text:sub(to + 1)
+        end
+    end
+end
+
+-- our texts by line index, made from the english lines: our texts take their numbers from them
+local function get_item_texts(tooltip, entry, entry_id, lines_en, title_index)
+    local texts = {}
+    local first_line = (title_index or 0) + 1
+
+    -- not cached yet: the game builds the tooltip anew once it has the item
+    if not entry or title_index and lines_en[title_index] == RETRIEVING_ITEM_INFO then
+        return texts
+    end
+
+    if title_index then
+        texts[title_index] = get_item_heading(tooltip, entry, lines_en)
+    end
+
+    local result_id = entry.recipe_result_item
+    local result = result_id and result_id ~= entry_id and entries.get_entry("item", result_id)
+    local result_line, before_name, after_name
+    if result then
+        -- the client's own name: later clients corrected some items ("Alchemists' Stone" -> "Alchemist's Stone")
+        local result_name_en = C_Item.GetItemNameByID(result_id) or result.en
+        result_line, before_name, after_name = find_result_item_line(lines_en, first_line, result_name_en)
+    elseif result_id and options.account.dev_mode then
+        dev_log.issue_entry("item", entry_id, result_id == entry_id and "значення recipe_result_item ідентичне entry_id"
+            or "невірне значення recipe_result_item " .. tostring(result_id))
+    end
+
+    -- Recipe tooltip shows both own lines and the made item's lines starting from its name. Each part takes the texts of its own entry.
+    local last_own_line = result_line and result_line - 1 or #lines_en
+    add_effect_texts(texts, entry, entry_id, lines_en, first_line, last_own_line)
+    if result_line then
+        local name_uk = get_item_heading(tooltip, result, lines_en)
+        texts[result_line] = name_uk and before_name .. name_uk .. after_name
+        add_effect_texts(texts, result, result_id, lines_en, result_line + 1, #lines_en)
+    end
+    return texts
+end
+
+local function replace_item_lines(tooltip, entry, entry_id)
+    local lines_en = get_lines_en(tooltip)
+    return replace_lines(tooltip, get_item_texts(tooltip, entry, entry_id, lines_en, get_title_line_index(tooltip)))
+end
+
+-- -----------------------------
+-- [ the replace style: sizing ]
+-- -----------------------------
+
+-- A tooltip is sized by its Show().
+-- Where our Show() isn't safe (can_show), its width changes by as much as its widest line did (fit_width).
+
+-- not for a world tooltip on classic clients (GameTooltip owned by UIParent): or else is stays on the screen forever
+-- WoW: Forever: only for a tooltip with no game data, whose layout may touch secret values
+local function can_show(tooltip)
+    if utils.is_forever then
+        return not tooltip.classicua.style_kind and not utils.tooltip_has_secret(tooltip)
+    end
+    return tooltip ~= GameTooltip or tooltip:GetOwner() ~= UIParent
+end
+
+-- nil when the lines can't tell: a secret line, a right text (the gap before it is unknown), or a wrapped line (its string width is the unwrapped text's)
+local function get_lines_width(tooltip)
+    if utils.tooltip_has_secret(tooltip) then
+        return nil
+    end
+
+    local name = tooltip:GetName()
+    local width = 0
+    for i = 1, tooltip:NumLines() do
+        local left, right = _G[name .. "TextLeft" .. i], _G[name .. "TextRight" .. i]
+        if right and right:IsShown() and (right:GetText() or "") ~= "" then
+            return nil
+        end
+        if left:IsShown() then
+            local rows, line_width = left:GetNumLines(), left:GetStringWidth()
+            if utils.is_secret(rows) or utils.is_secret(line_width) or rows > 1 then
+                return nil
+            end
+            width = math.max(width, line_width)
+        end
+    end
+    return width
+end
+
+local function fit_width(tooltip, width_before)
+    local width = width_before and get_lines_width(tooltip)
+    if width and width ~= width_before then
+        tooltip:SetWidth(tooltip:GetWidth() + width - width_before)
+    end
+end
+
+local function lay_out(tooltip, width_before)
+    if can_show(tooltip) then
+        tooltip:Show()
+    else
+        fit_width(tooltip, width_before)
+    end
+end
+
+-- -----------------------------------
+-- [ replace style: the modifier key ]
+-- -----------------------------------
+
+-- the mouse has left its unit or object: Show() would cancel the fade and keep it on the screen
+local function is_fading(tooltip)
+    if utils.is_forever then
+        return false
+    end
+    local _, unit = tooltip:GetUnit()
+    return tooltip:GetAlpha() < 1 or unit ~= nil and not UnitExists(unit)
+end
+
+local function switch_lines(tooltip, is_original)
+    for font_string, texts in pairs(tooltip.classicua.lines) do
+        local text = font_string:GetText()
+        if utils.is_forever or text == texts[1] or text == texts[2] then
+            font_string:SetText(is_original and texts[1] or texts[2])
+        else
+            tooltip.classicua.lines[font_string] = nil
+        end
+    end
+end
+
+local function on_modifier_state_changed(key)
+    if not is_any_replacement_style() or not key:find(options.account.tooltip_original_key, 1, true) then
+        return
+    end
+
+    local is_original = is_original_shown()
+    for _, tooltip in ipairs(known_tooltips) do
+        if tooltip:IsShown() and next(tooltip.classicua.lines) and not is_fading(tooltip) then
+            local width = get_lines_width(tooltip)
+            switch_lines(tooltip, is_original)
+            lay_out(tooltip, width)
+        end
+    end
+end
+
+-- ---------------------------------
+-- [ replace style on WoW: Forever ]
+-- ---------------------------------
+
+-- WoW: Forever builds its tooltips from tooltip data, and a line rewritten after that loses its color on the next layout.
+-- So our lines planned from english lines first (plan_tooltip), and each goes in as game adds it (add_planned_line).
+
+-- the line types the game adds in their post-call (sell price, socket icon): they are translated once added (replace_added_line)
+local kept_line_types = {}
+
+local function plan_line(plan, line, left_uk, right_uk)
+    -- a translation with a value left unfilled ("{1}": none in the game's line) leaves the game's line as it is
+    left_uk = left_uk and not left_uk:find("{%d+}") and left_uk or nil
+    if not line or not (left_uk or right_uk) or kept_line_types[line.type] then
+        return
+    end
+
+    local planned = plan[line] or {}
+    planned.left = planned.left or left_uk or nil
+    planned.right = planned.right or right_uk or nil
+    plan[line] = planned
+end
+
+local function plan_texts(plan, lines, texts)
+    for i, text_uk in pairs(texts) do
+        plan_line(plan, lines[i], text_uk)
+    end
+end
+
+-- a tooltip pre-call: plans the translations for the lines of an item's data before game adds them
+local function plan_tooltip(tooltip, data)
+    local lines = type(data) == "table" and data.lines
+    if type(lines) ~= "table" then
+        return
+    end
+
+    -- the kind of the data, which also tells can_show() that game builds this tooltip from data
+    local is_item = data.type == Enum.TooltipDataType.Item
+    local claim = tooltip.classicua
+    claim.style_kind = is_item and "item" or "other"
+    local id = not utils.is_secret(data.id) and data.id
+    if not (is_item and id and is_replacement_style("item") and options.can_translate("translate_item")) then
+        return
+    end
+
+    local lines_en = {}
+    for i, line in ipairs(lines) do
+        if utils.is_secret(line.leftText) or utils.is_secret(line.rightText) then
+            return
+        end
+        lines_en[i] = type(line.leftText) == "string" and utils.render_plurals(line.leftText) or ""
+    end
+
+    -- the name's line is the one the data marks, else line 1, unless the data is appended to a tooltip with lines
+    local name_index = tooltip:NumLines() == 0 and 1 or nil
+    for i, line in ipairs(lines) do
+        if line.type == Enum.TooltipDataLineType.ItemName then
+            name_index = i
+            break
+        end
+    end
+
+    claim.plan = claim.plan or {}
+    plan_texts(claim.plan, lines, get_item_texts(tooltip, entries.get_entry("item", id), id, lines_en, name_index))
+end
+
+local function color_code(r, g, b)
+    return ("|cff%02x%02x%02x"):format(math.floor(r * 255 + 0.5), math.floor(g * 255 + 0.5), math.floor(b * 255 + 0.5))
+end
+
+-- a color given to AddLine() alone doesn't last on this client, so it goes into the text too
+local function color_text(text, color)
+    if utils.is_secret(color) or type(color) ~= "table" or not color.GetRGB then
+        color = NORMAL_FONT_COLOR
+    end
+    local r, g, b = color:GetRGB()
+    return color_code(r, g, b) .. text .. "|r", r, g, b
+end
+
+-- a line pre-call: returning true skips game's line, as the translated one is added in its place
+local function add_planned_line(tooltip, line)
+    if tooltip:IsForbidden() or not tooltip.classicua then
+        return
+    end
+    local claim = tooltip.classicua
+    local planned = claim.plan and claim.plan[line]
+    local left_text = planned and (planned.left or line.leftText)
+
+    -- the game spaces the name of an item linked in chat for the close button (TooltipDataRules)
+    if type(left_text) ~= "string"
+        or tooltip == ItemRefTooltip and line.type == Enum.TooltipDataLineType.ItemName and line.rightText then
+        return
+    end
+
+    local left, r, g, b = color_text(left_text, line.leftColor)
+    local left_en = color_text(line.leftText or "", line.leftColor)
+    local wrap = line.wrapText or false
+    if line.rightText == nil then
+        tooltip:AddLine(left, r, g, b, wrap, line.leftOffset)
+    else
+        local right, right_r, right_g, right_b = color_text(planned.right or line.rightText, line.rightColor)
+        tooltip:AddDoubleLine(left, right, r, g, b, right_r, right_g, right_b, wrap, line.leftOffset)
+        claim.lines[_G[tooltip:GetName() .. "TextRight" .. tooltip:NumLines()]] =
+            { color_text(line.rightText, line.rightColor), right }
+    end
+    claim.lines[_G[tooltip:GetName() .. "TextLeft" .. tooltip:NumLines()]] = { left_en, left }
+    return true
+end
+
+-- a tooltip built while the modifier key is held got translated: it switches to the game's texts now, sized by fit_width() as Show() is already running
+local function tooltip_shown(tooltip)
+    if is_any_replacement_style() and is_original_shown() and next(tooltip.classicua.lines) then
+        local width = get_lines_width(tooltip)
+        switch_lines(tooltip, true)
+        fit_width(tooltip, width)
+    end
+end
+
+-- ------------------------------------
+-- [ entries in tooltips, both styles ]
+-- ------------------------------------
+
 local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_translation_on, unit)
     if tooltip.classicua.entry_type then
         return
     end
 
     local tt_title_line = utils.tooltip_title_line(tooltip)
-    if tt_title_line == "Unknown" or tt_title_line == "Retrieving item information" then
+    if tt_title_line == "Unknown" or tt_title_line == RETRIEVING_ITEM_INFO then
         return
     end
 
     local updated = false
     local entry = entries.get_entry(entry_type, entry_id)
+    local is_replacement = entry_type == "item" and is_replacement_style("item")
 
-    if entry and is_translation_on then
+    if is_replacement and utils.is_forever then
+        -- WoW: Forever's lines are planned from the tooltip data, see plan_tooltip()
+    elseif is_replacement then
+        updated = entry and is_translation_on and replace_item_lines(tooltip, entry, entry_id) or false
+    elseif entry and is_translation_on then
         updated = true
         tooltip:AddLine(" ")
 
@@ -225,7 +672,9 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
         elseif entry_type == "npc" then
             add_npc_entry_to_tooltip(tooltip, entry, unit)
         end
-    elseif not entry and options.account.dev_mode then
+    end
+
+    if not entry and options.account.dev_mode then
         -- a missing entry is logged either way, its id is shown only where its translation is on
         if is_translation_on then
             updated = true
@@ -236,8 +685,9 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
         dev_log.missing_entry(entry_type, entry_id, tt_title_line)
     end
 
-    -- WoW: Forever shows (and sizes) the tooltip itself right after the post calls, see tooltips.prepare()
-    if updated and tooltip:IsShown() and not utils.is_forever then
+    -- Game resizes tooltip itself after OnTooltipSetItem in Classic, and after post calls of any kind in Forever.
+    local is_sized_by_game = utils.is_forever or entry_type == "item" or entry_type == "sod_engraving"
+    if updated and tooltip:IsShown() and not is_sized_by_game then
         tooltip:Show()
     end
 
@@ -475,6 +925,9 @@ local function tooltip_cleared(self)
     self.classicua.entry_id = false
     self.classicua.talent_rank_id = nil
     self.classicua.skipped = nil
+    self.classicua.plan = nil
+    self.classicua.style_kind = nil
+    wipe(self.classicua.lines)
 end
 
 -- --------------------------
@@ -483,7 +936,7 @@ end
 
 -- Each kind of tooltip is hooked in its own function, which splits by client inside:
 -- classic clients tell us what a tooltip shows by its scripts (OnTooltipSetItem...) and GameTooltip's methods
--- WoW: Forever runs retail ui, where the tooltip data processor uses callbacks after it fills a tooltip.
+-- WoW: Forever runs retail ui, where the tooltip data processor uses callbacks before and after it fills a tooltip.
 
 local function prepare_known_tooltips()
     for _, tt in pairs({
@@ -497,7 +950,7 @@ local function prepare_known_tooltips()
     }) do
         if tt then
             known_tooltips[#known_tooltips + 1] = tt
-            tt.classicua = { entry_type = false, entry_id = false }
+            tt.classicua = { entry_type = false, entry_id = false, lines = {} }
             tt:HookScript("OnTooltipCleared", tooltip_cleared)
         end
     end
@@ -621,6 +1074,49 @@ local function hook_other_tooltips()
     end
 end
 
+-- WoW: Forever: hooks on the tooltips' methods work only when set at the first entering of the world
+local function hook_forever_tooltip_methods()
+    local event_frame = CreateFrame("Frame")
+    event_frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+    event_frame:SetScript("OnEvent", function (self)
+        self:UnregisterEvent("PLAYER_ENTERING_WORLD")
+        for _, tt in ipairs(known_tooltips) do
+            -- SetText() replaces the whole tooltip: else the modifier key would write an old item's lines into it
+            hooksecurefunc(tt, "SetText", tooltip_cleared)
+
+            -- a comparison is shown again by SetShown() after the game adds its stat changes
+            hooksecurefunc(tt, "Show", tooltip_shown)
+            hooksecurefunc(tt, "SetShown", function (tooltip, is_shown)
+                if not utils.is_secret(is_shown) and is_shown then
+                    tooltip_shown(tooltip)
+                end
+            end)
+        end
+    end)
+end
+
+local function hook_replace_style()
+    local event_frame = CreateFrame("Frame")
+    event_frame:RegisterEvent("MODIFIER_STATE_CHANGED")
+    event_frame:SetScript("OnEvent", function (_, _, key)
+        on_modifier_state_changed(key)
+    end)
+
+    if not utils.is_forever then
+        return
+    end
+
+    local line_types = Enum.TooltipDataLineType
+    for _, kept in ipairs({ "SellPrice", "GemSocket", "Separator", "UnitThreat", "LearnableSpell", "AzeriteEssenceSlot", "AzeriteEssencePower" }) do
+        if line_types[kept] then
+            kept_line_types[line_types[kept]] = true
+        end
+    end
+    TooltipDataProcessor.AddTooltipPreCall(TooltipDataProcessor.AllTypes, for_known_tooltips(plan_tooltip))
+    TooltipDataProcessor.AddLinePreCall(TooltipDataProcessor.AllTypes, add_planned_line)
+    hook_forever_tooltip_methods()
+end
+
 tooltips.prepare = function ()
     prepare_known_tooltips()
     hook_item_tooltips()
@@ -631,4 +1127,5 @@ tooltips.prepare = function ()
     hook_unit_tooltips()
     hook_world_tooltips()
     hook_other_tooltips()
+    hook_replace_style()
 end
