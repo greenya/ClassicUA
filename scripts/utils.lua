@@ -8,6 +8,7 @@ local string_byte           = _G.string.byte
 local string_find           = _G.string.find
 local string_gmatch         = _G.string.gmatch
 local string_gsub           = _G.string.gsub
+local string_match          = _G.string.match
 local string_split          = _G.string.split
 local string_trim           = _G.string.trim
 local table_concat          = _G.table.concat
@@ -526,6 +527,14 @@ utils.match_text_code = function (code, candidates)
     return false
 end
 
+-- ------------------
+-- [ format strings ]
+-- ------------------
+
+-- one conversion of a format string: "%d", "%2$s" (the second argument), "%.1f" (one digit after the point), "%%" (a percent sign)
+-- What each kind takes is told where it is read: the game's in value_capture(), the translations' in entries' fill_format()
+utils.FORMAT_CONVERSION = "%%([%d%$%.]*)([sSNdfc%%])"
+
 -- rendering game's plural codes, as WoW: Forever's tooltip data holds them
 -- "1 |4hour:hrs;" -> "1 hour"; "5 |4hour:hrs;" -> "5 hrs"
 utils.render_plurals = function (text)
@@ -536,4 +545,111 @@ utils.render_plurals = function (text)
         return number .. space .. (tonumber((string_gsub(number, ",", ""))) == 1 and one or other)
     end)
     return (string_gsub(text, "|4([^:;]*):[^;]*;", "%1"))
+end
+
+-- our plural codes of three forms, chosen by the Ukrainian rule, as the game would show them by the English one:
+-- 1, 21, 31… take the first form; 2–4, 22–24… the second; the rest the third; a fraction the second
+-- "2 |4самоцвіт:самоцвіти:самоцвітів;" -> "2 самоцвіти", "11 |4самоцвіт:самоцвіти:самоцвітів;" -> "11 самоцвітів"
+utils.render_plurals_uk = function (text)
+    return (string_gsub(text, "([%d%.,]+)(%s*)|4([^;]*);", function (number, space, forms)
+        local one, few, many = string_match(forms, "^([^:]*):([^:]*):([^:]*)$")
+        local n = tonumber((string_gsub(number, ",", "")))
+        -- not three forms, or no number before the code: it stays for the game to draw
+        if not many or not n then
+            return
+        end
+
+        local last, last_two = n % 10, n % 100
+        local form = many
+        if n % 1 ~= 0 then
+            form = few
+        elseif last == 1 and last_two ~= 11 then
+            form = one
+        elseif last >= 2 and last <= 4 and (last_two < 12 or last_two > 14) then
+            form = few
+        end
+        return number .. space .. form
+    end))
+end
+
+-- "%d |4Charge:Charges;" -> { "%d Charge", "%d Charges" }
+local function plural_forms(format)
+    local from, to, forms = string_find(format, "|4([^;]*);")
+    if not from then
+        return { format }
+    end
+
+    -- each form of this code, followed by each form of the codes after it
+    local results = {}
+    for _, rest in ipairs(plural_forms(format:sub(to + 1))) do
+        for form in string_gmatch(forms .. ":", "([^:]*):") do
+            results[#results + 1] = format:sub(1, from - 1) .. form .. rest
+        end
+    end
+    return results
+end
+
+-- the capture of one value: "%s" takes any text, the game's "%c" a sign, "%f" a number with a fraction, "%d" a whole number
+-- A whole number has no thousands separator: mists' "+1,959 Haste" is matched by our "%c%s Haste" (mists/string.lua)
+local function value_capture(kind)
+    if kind == "s" then
+        return "(.-)"
+    elseif kind == "c" then
+        return "([%+%-])"
+    elseif kind == "f" then
+        return "(%-?%d+%.?%d*)"
+    end
+    return "(%-?%d+)"
+end
+
+-- the lua patterns that match the texts of one of the game's format strings, one per form of its plural codes
+-- order: the argument number of each captured value ("%2$s" captures argument 2)
+-- head, tail: the text before the first value and after the last one; text_length: the length of all its text but the values
+-- is_side_by_side: two values have only spaces between them, so a text can be split between them in more than one way
+-- "%c%d Stamina" -> "^([%+%-])(%-?%d+) Stamina$", the game's "%c" is a sign
+utils.format_patterns = function (format)
+    local patterns = {}
+    for _, form in ipairs(plural_forms(format)) do
+        local parts, order = {}, {}
+        local head, tail
+        local text_length = 0
+        local position = 1
+        local is_after_value, is_side_by_side = false, false
+        -- Each step takes the text up to the next conversion, escaped to match itself, then the conversion's capture.
+        -- "Durability %d / %d": "Durability ", "(%-?%d+)", " / ", "(%-?%d+)", then the empty text after the last value
+        while true do
+            local from, to, spec, kind = string_find(form, utils.FORMAT_CONVERSION, position)
+            local text = form:sub(position, from and from - 1)
+            text_length = text_length + #text
+            parts[#parts + 1] = (string_gsub(text, "[%^%$%(%)%%%.%[%]%*%+%-%?]", "%%%0"))
+            if not from then
+                tail = text
+                break
+            end
+
+            if kind == "%" then
+                -- "%%" is a percent sign of the text, no value
+                parts[#parts + 1] = "%%"
+                text_length = text_length + 1
+                is_after_value = false
+            else
+                head = head or form:sub(1, from - 1)
+                parts[#parts + 1] = value_capture(kind)
+                -- "%2$s" names its argument, a plain conversion takes the next one
+                local index = spec:match("^(%d+)%$")
+                order[#order + 1] = index and tonumber(index) or #order + 1
+                is_side_by_side = is_side_by_side or is_after_value and not string_find(text, "[^ ]")
+                is_after_value = true
+            end
+            position = to + 1
+        end
+
+        if #order > 0 then
+            patterns[#patterns + 1] = {
+                pattern = "^" .. table_concat(parts) .. "$", order = order, head = head, tail = tail, text_length = text_length,
+                is_side_by_side = is_side_by_side,
+            }
+        end
+    end
+    return patterns
 end

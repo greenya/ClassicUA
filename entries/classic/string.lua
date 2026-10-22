@@ -207,9 +207,231 @@ local global_strings = {
 { "ZOOM_OUT", "Віддалити" }, -- "Zoom Out"
 }
 
+-- the game's phrases in its tooltips, by the name of the global; never written into the game's globals, tooltips.lua puts ours into the lines
+-- "%S" is ours: it puts the value with the first letter of each of its names capitalized ("Класи: Друїд, Шаман")
+-- "%N" is ours: it puts the value as the game wrote it, a player's own text ("<Виготовлено: Varmi>")
+-- a number the game writes with "%s" takes "%d" in ours ("%.2f" for a weapon's speed), so a name is never read as that number: the set piece "Bonelink Armor" is no "%s Armor" line
+local tooltip_strings = {
+{ "AMMO_DAMAGE_TEMPLATE", "Додає %s шкоди за секунду" }, -- "Adds %s damage per second"
+{ "AMMO_SCHOOL_DAMAGE_TEMPLATE", "Додає %s шкоди (%s) за секунду" }, -- "Adds %s %s damage per second"
+{ "ARMOR_TEMPLATE", "%d броні" }, -- "%s Armor"
+{ "CONTAINER_SLOTS", "%2$s (комірок: %1$d)" }, -- "%d Slot %s"
+{ "DAMAGE_TEMPLATE", "Шкода: %s – %s" }, -- "%s - %s Damage"
+{ "DAMAGE_TEMPLATE_WITH_SCHOOL", "Шкода (%3$s): %1$s – %2$s" }, -- "%s - %s %s Damage"
+{ "DPS_TEMPLATE", "(%s шкоди за секунду)" }, -- "(%s damage per second)"
+{ "DURABILITY_TEMPLATE", "Міцність: %d / %d" }, -- "Durability %d / %d"
+{ "EQUIPMENT_SETS", "Набори спорядження: |cFFFFFFFF%N|r" }, -- "Equipment Sets: |cFFFFFFFF%s|r"
+{ "HOURS_ABBR", "%d год" }, -- "%d |4Hr:Hrs;"
+{ "INVTYPE_2HWEAPON", "Дворучна" }, -- "Two-Hand"
+{ "INVTYPE_AMMO", "Набої" }, -- "Ammo"
+{ "INVTYPE_BAG", "Сумка" }, -- "Bag"
+{ "INVTYPE_BODY", "Сорочка" }, -- "Shirt"
+{ "INVTYPE_CHEST", "Груди" }, -- "Chest"
+{ "INVTYPE_CLOAK", "Спина" }, -- "Back"
+{ "INVTYPE_FEET", "Ступні" }, -- "Feet"
+{ "INVTYPE_FINGER", "Палець" }, -- "Finger"
+{ "INVTYPE_HAND", "Руки" }, -- "Hands"
+{ "INVTYPE_HEAD", "Голова" }, -- "Head"
+{ "INVTYPE_HOLDABLE", "У неосновній руці" }, -- "Held In Off-hand"
+{ "INVTYPE_LEGS", "Ноги" }, -- "Legs"
+{ "INVTYPE_NECK", "Шия" }, -- "Neck"
+{ "INVTYPE_QUIVER", "Сагайдак" }, -- "Quiver"
+{ "INVTYPE_RANGED", "Дальній бій" }, -- "Ranged"
+{ "INVTYPE_RANGEDRIGHT", "Дальній бій" }, -- "Ranged"
+{ "INVTYPE_RELIC", "Реліквія" }, -- "Relic"
+{ "INVTYPE_ROBE", "Груди" }, -- "Chest"
+{ "INVTYPE_SHIELD", "Неосновна рука" }, -- "Off Hand"
+{ "INVTYPE_SHOULDER", "Плечі" }, -- "Shoulder"
+{ "INVTYPE_TABARD", "Гербова накидка" }, -- "Tabard"
+{ "INVTYPE_THROWN", "Метальна зброя" }, -- "Thrown", the type of the weapon too
+{ "INVTYPE_TRINKET", "Дрібничка" }, -- "Trinket"
+{ "INVTYPE_WAIST", "Пояс" }, -- "Waist"
+{ "INVTYPE_WEAPON", "Одноручна" }, -- "One-Hand"
+{ "INVTYPE_WEAPONMAINHAND", "Основна рука" }, -- "Main Hand"
+{ "INVTYPE_WEAPONOFFHAND", "Неосновна рука" }, -- "Off Hand"
+{ "INVTYPE_WRIST", "Зап'ястя" }, -- "Wrist"
+{ "ITEM_BIND_ON_EQUIP", "Прив'язується при спорядженні" }, -- "Binds when equipped"
+{ "ITEM_BIND_ON_PICKUP", "Прив'язується при отриманні" }, -- "Binds when picked up"
+{ "ITEM_BIND_ON_USE", "Прив'язується при використанні" }, -- "Binds when used"
+{ "ITEM_BIND_QUEST", "Предмет завдання" }, -- "Quest Item"
+{ "ITEM_CLASSES_ALLOWED", "Класи: %S" }, -- "Classes: %s"
+{ "ITEM_CONJURED", "Начаклований предмет" }, -- "Conjured Item"
+{ "ITEM_COOLDOWN_TIME", "Відновлення: ще %s" }, -- "Cooldown remaining: %s"
+{ "ITEM_COOLDOWN_TIME_MIN", "Відновлення: ще %d хв" }, -- "Cooldown remaining: %d min"
+{ "ITEM_COOLDOWN_TIME_SEC", "Відновлення: ще %d с" }, -- "Cooldown remaining: %d sec"
+{ "ITEM_COOLDOWN_TOTAL", "(Відновлення: %s)" }, -- "(%s Cooldown)"
+{ "ITEM_COOLDOWN_TOTAL_DAYS", "(Відновлення: %d д)" }, -- "(%d |4Day:Days; Cooldown)"
+{ "ITEM_COOLDOWN_TOTAL_HOURS", "(Відновлення: %d год)" }, -- "(%d |4Hour:Hours; Cooldown)"
+{ "ITEM_COOLDOWN_TOTAL_MIN", "(Відновлення: %d хв)" }, -- "(%d Min Cooldown)"
+{ "ITEM_COOLDOWN_TOTAL_SEC", "(Відновлення: %d с)" }, -- "(%d Sec Cooldown)"
+{ "ITEM_CREATED_BY", "|cff00ff00<Виготовлено: %N>|r" }, -- "|cff00ff00<Made by %s>|r"
+{ "ITEM_DISENCHANT_ANY_SKILL", "Можна розчарувати" }, -- "Disenchantable"
+{ "ITEM_DISENCHANT_MIN_SKILL", "Для розчарування потрібно: %S (%d)" }, -- "Disenchanting requires %s (%d)"
+{ "ITEM_DISENCHANT_NOT_DISENCHANTABLE", "Не можна розчарувати" }, -- "Cannot be disenchanted"
+{ "ITEM_DURATION_DAYS", "Тривалість: %d д" }, -- "Duration: %d days"
+{ "ITEM_DURATION_HOURS", "Тривалість: %d год" }, -- "Duration: %d hrs"
+{ "ITEM_DURATION_MIN", "Тривалість: %d хв" }, -- "Duration: %d min"
+{ "ITEM_DURATION_SEC", "Тривалість: %d с" }, -- "Duration: %d sec"
+{ "ITEM_LIMIT_CATEGORY", "Унікальний: %s (%d)" }, -- "Unique: %s (%d)"
+{ "ITEM_LIMIT_CATEGORY_MULTIPLE", "Унікальний у спорядженні: %s (%d)" }, -- "Unique-Equipped: %s (%d)"
+{ "ITEM_MIN_LEVEL", "Потрібний рівень: %d" }, -- "Requires Level %d"
+{ "ITEM_MIN_SKILL", "Потрібно: %S (%d)" }, -- "Requires %s (%d)"
+{ "ITEM_MOD_AGILITY", "%c%d спритності" }, -- "%c%d Agility"
+{ "ITEM_MOD_BLOCK_VALUE", "Збільшує силу блокування щитом на %s." }, -- "Increases the block value of your shield by %s."
+{ "ITEM_MOD_HEALTH", "%c%d здоров'я" }, -- "%c%d Health"
+{ "ITEM_MOD_HEALTH_REGEN", "Відновлює %s здоров'я кожні 5 с." }, -- "Restores %s health per 5 sec."
+{ "ITEM_MOD_HEALTH_REGENERATION", "Відновлює %s здоров'я кожні 5 с." }, -- "Restores %s health per 5 sec."
+{ "ITEM_MOD_INTELLECT", "%c%d інтелекту" }, -- "%c%d Intellect"
+{ "ITEM_MOD_MANA", "%c%d мани" }, -- "%c%d Mana"
+{ "ITEM_MOD_MANA_REGENERATION", "Відновлює %s мани кожні 5 с." }, -- "Restores %s mana per 5 sec."
+{ "ITEM_MOD_SPELL_DAMAGE_DONE", "Збільшує шкоду від магічних заклять і ефектів на %s." }, -- "Increases damage done by magical spells and effects by up to %s."
+{ "ITEM_MOD_SPELL_HEALING_DONE", "Збільшує зцілення від магічних заклять і ефектів на %s." }, -- "Increases healing done by magical spells and effects by up to %s."
+{ "ITEM_MOD_SPIRIT", "%c%d духу" }, -- "%c%d Spirit"
+{ "ITEM_MOD_STAMINA", "%c%d витривалості" }, -- "%c%d Stamina"
+{ "ITEM_MOD_STRENGTH", "%c%d сили" }, -- "%c%d Strength"
+{ "ITEM_RACES_ALLOWED", "Раси: %S" }, -- "Races: %s"
+{ "ITEM_REQ_ALLIANCE", "Лише для Альянсу" }, -- "Alliance Only"
+{ "ITEM_REQ_HORDE", "Лише для Орди" }, -- "Horde Only"
+{ "ITEM_REQ_REPUTATION", "Потрібна репутація: %s – %s" }, -- "Requires %s - %s"
+{ "ITEM_REQ_SKILL", "Потрібно: %S" }, -- "Requires %s"
+{ "ITEM_RESIST_ALL", "%c%d опору всім школам" }, -- "%c%d to All Resistances"
+{ "ITEM_SOULBOUND", "Прив'язаний до персонажа" }, -- "Soulbound"
+{ "ITEM_SPELL_CHARGES", "Зарядів: %d" }, -- "%d |4Charge:Charges;"
+{ "ITEM_SPELL_CHARGES_NONE", "Зарядів немає" }, -- "No charges"
+{ "ITEM_SPELL_KNOWN", "Уже вивчено" }, -- "Already known"
+{ "ITEM_UNIQUE", "Унікальний" }, -- "Unique"
+{ "ITEM_UNIQUE_EQUIPPABLE", "Унікальний у спорядженні" }, -- "Unique-Equipped"
+{ "ITEM_UNIQUE_MULTIPLE", "Унікальний (%d)" }, -- "Unique (%d)"
+{ "ITEM_WRAPPED_BY", "|cff00ff00<Подарунок від: %N>|r" }, -- "|cff00ff00<Gift from %s>|r"
+{ "ITEM_WRITTEN_BY", "Автор: %N" }, -- "Written by %s"
+{ "MINUTES_ABBR", "%d хв" }, -- "%d |4Min:Mins;"
+{ "RETRIEVING_ITEM_INFO", "Отримання інформації про предмет" }, -- "Retrieving item information"
+{ "SECONDS_ABBR", "%d с" }, -- "%d |4Sec:Secs;"
+{ "SELL_PRICE", "Ціна продажу" }, -- "Sell Price"
+{ "SHIELD_BLOCK_TEMPLATE", "%d блокування" }, -- "%d Block"
+{ "TRANSMOGRIFY_TOOLTIP_APPEARANCE_UNKNOWN", "Ви ще не зібрали цей вигляд" }, -- "You haven't collected this appearance"
+}
+
+-- the phrases and names the game has no global of (item classes, stats, reputation standings), by the english text;
+-- lowercase as inside a line, tooltips.lua capitalizes a line's first letter
+local tooltip_texts = {
+{ "Ammo Pouch", "підсумок" },
+{ "Arcane", "аркана" },
+{ "Arcane Damage", "шкода від аркани" },
+{ "%c%d Arcane Resistance", "%c%d опору аркані" },
+{ "Arcane Resistance", "опір аркані" },
+{ "%c%d Armor", "%c%d броні" }, -- a bonus to armor: an enchantment ("+10 Armor"), or a line under the armor on WoW: Forever
+{ "Armor", "броня" },
+{ "Armor Penetration", "пробиття броні" },
+{ "Arrow", "стріла" },
+{ "Attack Power", "сила атаки" },
+{ "Attack Power In Forms", "сила атаки у формах" },
+{ "Axe", "сокира" },
+{ "Block", "блокування" },
+{ "Block Value", "сила блокування" },
+{ "Bonus Armor", "додаткова броня" },
+{ "Bonus Damage", "бонус шкоди" },
+{ "Bonus Healing", "бонус зцілення" },
+{ "Bow", "лук" },
+{ "Bullet", "куля" },
+{ "Cloth", "тканина" },
+{ "Critical Strike", "критичний удар" },
+{ "Critical Strike (Melee)", "критичний удар (ближній бій)" },
+{ "Critical Strike (Ranged)", "критичний удар (дальній бій)" },
+{ "Critical Strike (Spell)", "критичний удар (закляття)" },
+{ "Crossbow", "арбалет" },
+{ "Dagger", "кинджал" },
+{ "Damage Per Second", "шкода за секунду" },
+{ "%d |4Day:Days; %d |4Hr:Hrs;", "%d д %d год" }, -- a time of two units ("(1 Day 2 Hrs Cooldown)")
+{ "Defense", "захист" },
+{ "Dodge", "ухилення" },
+{ "Enchanting Bag", "сумка зачарувальника" },
+{ "Engineering Bag", "сумка інженера" },
+{ "Exalted", "возвеличена" },
+{ "Expertise", "вправність" },
+{ "Fire", "вогонь" },
+{ "Fire Damage", "шкода від вогню" },
+{ "%c%d Fire Resistance", "%c%d опору вогню" },
+{ "Fire Resistance", "опір вогню" },
+{ "Fishing Pole", "вудка" },
+{ "Fist Weapon", "кулачна зброя" },
+{ "Friendly", "дружня" },
+{ "Frost", "крига" },
+{ "Frost Damage", "шкода від криги" },
+{ "%c%d Frost Resistance", "%c%d опору кризі" },
+{ "Frost Resistance", "опір кризі" },
+{ "Gun", "рушниця" },
+{ "Haste", "швидкість" },
+{ "Hated", "ненависна" },
+{ "Health", "здоров'я" },
+{ "Health Per 5 Sec.", "здоров'я кожні 5 с" },
+{ "Health Regeneration", "відновлення здоров'я" },
+{ "Herb Bag", "сумка травника" },
+{ "Hit", "влучання" },
+{ "Hit (Melee)", "влучання (ближній бій)" },
+{ "Hit (Ranged)", "влучання (дальній бій)" },
+{ "Hit (Spell)", "влучання (закляття)" },
+{ "Holy", "святість" },
+{ "Holy Damage", "шкода святістю" },
+{ "%c%d Holy Resistance", "%c%d опору святості" },
+{ "Holy Resistance", "опір святості" },
+{ "Honored", "почесна" },
+{ "Hostile", "ворожа" },
+{ "%d |4Hr:Hrs; %d |4Min:Mins;", "%d год %d хв" },
+{ "Idol", "ідол" },
+{ "Leather", "шкіра" },
+{ "Libram", "лібрам" },
+{ "Lockpicking", "зламування замків" },
+{ "Mace", "булава" },
+{ "Mail", "кольчуга" },
+{ "Mana", "мана" },
+{ "Mana Regeneration", "відновлення мани" },
+{ "%d |4Min:Mins; %d |4Sec:Secs;", "%d хв %d с" },
+{ "Miscellaneous", "різне" },
+{ "Nature", "природа" },
+{ "Nature Damage", "шкода від природи" },
+{ "%c%d Nature Resistance", "%c%d опору природі" },
+{ "Nature Resistance", "опір природі" },
+{ "Neutral", "нейтральна" },
+{ "Parry", "парирування" },
+{ "Plate", "лати" },
+{ "Polearm", "держакова зброя" },
+{ "PvP Resilience", "PvP-стійкість" },
+{ "Ranged Attack Power", "сила атаки дальнього бою" },
+{ "Revered", "шанована" },
+{ "Riding", "верхова їзда" },
+{ "Shadow", "тінь" },
+{ "Shadow Damage", "шкода від тіні" },
+{ "%c%d Shadow Resistance", "%c%d опору тіні" },
+{ "Shadow Resistance", "опір тіні" },
+{ "Shield", "щит" },
+{ "Soul Bag", "сумка для душ" },
+{ "Spear", "спис" },
+{ "Speed %s", "Швидкість %.2f" },
+{ "Spell Penetration", "проникність заклять" },
+{ "Spell Power", "сила заклять" },
+{ "Staff", "посох" },
+{ "Sword", "меч" },
+{ "Totem", "тотем" },
+{ "Unfriendly", "недружня" },
+{ "Wand", "жезл" },
+}
+
 if not addonTable.string_globals then
     addonTable.string_globals = {}
 end
 for _, s in ipairs(global_strings) do
     addonTable.string_globals[s[1]] = s[2]
+end
+if not addonTable.string_tooltip then
+    addonTable.string_tooltip = {}
+end
+for _, s in ipairs(tooltip_strings) do
+    addonTable.string_tooltip[s[1]] = s[2]
+end
+if not addonTable.string_tooltip_text then
+    addonTable.string_tooltip_text = {}
+end
+for _, s in ipairs(tooltip_texts) do
+    addonTable.string_tooltip_text[s[1]] = s[2]
 end

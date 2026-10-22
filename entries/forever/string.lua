@@ -47,9 +47,115 @@ local global_strings = {
 { "WARRIOR_STRENGTH_TOOLTIP", "Збільшує |cFFFFFFFFсилу атаки|r на %d\nЗбільшує |cFFFFFFFFпоказник блокування|r на %d" }, -- "Increases |cFFFFFFFFAttack Power|r by %d\nIncreases |cFFFFFFFFBlock Value|r by %d"
 }
 
+-- this client's item stats, whole "Equip:" lines of its own, worded as the items' and spells' entries word those effects;
+-- the label over a comparison (see classic/string.lua)
+local tooltip_strings = {
+{ "EQUIPPED", "Споряджено" }, -- "Equipped"
+{ "IF_EQUIPPED_TOGETHER", "Споряджено разом із" }, -- "Equipped With"
+{ "TOOLTIP_ITEM_STAT_AP_VS_BEAST_INCREASE", "При спорядженні: Збільшує силу атаки на %d в бою зі звірами." }, -- "Equip: +%1$d Attack Power against Beasts."
+{ "TOOLTIP_ITEM_STAT_AP_VS_DEMON_INCREASE", "При спорядженні: Збільшує силу атаки на %d в бою з демонами." }, -- "Equip: +%1$d Attack Power against Demons."
+{ "TOOLTIP_ITEM_STAT_AP_VS_DRAGONKIN_INCREASE", "При спорядженні: Збільшує силу атаки на %d в бою з драконами." }, -- "Equip: +%1$d Attack Power against Dragonkin."
+{ "TOOLTIP_ITEM_STAT_AP_VS_ELEMENTAL_INCREASE", "При спорядженні: Збільшує силу атаки на %d в бою з елементалями." }, -- "Equip: +%1$d Attack Power against Elementals."
+{ "TOOLTIP_ITEM_STAT_AP_VS_HUMANOID_INCREASE", "При спорядженні: Збільшує силу атаки на %d в бою з гуманоїдами." }, -- "Equip: +%1$d Attack Power against Humanoids."
+{ "TOOLTIP_ITEM_STAT_AP_VS_MECHANICAL_INCREASE", "При спорядженні: Збільшує силу атаки на %d в бою з механізмами." }, -- "Equip: +%1$d Attack Power against Mechanical units."
+{ "TOOLTIP_ITEM_STAT_AP_VS_UNDEAD_INCREASE", "При спорядженні: Збільшує силу атаки на %d в бою з невмерлими." }, -- "Equip: +%1$d Attack Power against Undead."
+{ "TOOLTIP_ITEM_STAT_ARCANE_DAMAGE_INCREASE", "При спорядженні: Збільшує шкоду від заклять і ефектів аркани на %d." }, -- "Equip: Increases damage done by Arcane spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_ATTACK_POWER_INCREASE", "При спорядженні: Збільшує силу атаки на %d." }, -- "Equip: +%1$d Attack Power."
+{ "TOOLTIP_ITEM_STAT_BLOCK_CHANCE_INCREASE", "При спорядженні: Збільшує шанс блокування атак щитом на %s%%." }, -- "Equip: Increases your chance to Block attacks with a shield by %1$.1f%%."
+{ "TOOLTIP_ITEM_STAT_BLOCK_VALUE_INCREASE", "При спорядженні: Збільшує силу блокування щитом на %d." }, -- "Equip: Increases the Block Value of your shield by %1$d."
+{ "TOOLTIP_ITEM_STAT_CRIT_PERCENT_INCREASE", "При спорядженні: Збільшує ймовірність завдання критичного удару на %s%%." }, -- "Equip: Improves your chance to get a critical strike by %1$.1f%%."
+{ "TOOLTIP_ITEM_STAT_DEFENSE_INCREASE", "При спорядженні: Збільшує навичку захисту на %d." }, -- "Equip: Increased Defense +%1$d."
+{ "TOOLTIP_ITEM_STAT_DODGE_PCT_INCREASE", "При спорядженні: Збільшує шанс ухилення від атаки на %s%%." }, -- "Equip: Increases your chance to Dodge an attack by %1$.1f%%."
+{ "TOOLTIP_ITEM_STAT_EXPERTISE_PCT_INCREASE", "При спорядженні: Зменшує шанс ухилення чи парирування ваших атак на %s%%." }, -- "Equip: Reduces chance to be Dodged or Parried by %1$.1f%%."
+{ "TOOLTIP_ITEM_STAT_FIRE_DAMAGE_INCREASE", "При спорядженні: Збільшує шкоду від заклять і ефектів вогню на %d." }, -- "Equip: Increases damage done by Fire spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_FROST_DAMAGE_INCREASE", "При спорядженні: Збільшує шкоду від заклять і ефектів криги на %d." }, -- "Equip: Increases damage done by Frost spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_HASTE_PCT_INCREASE", "При спорядженні: Збільшує швидкість атаки та вимови заклять на %s%%." }, -- "Equip: Increases your attack speed and casting speed by %1$.1f%%."
+{ "TOOLTIP_ITEM_STAT_HEALTH_REGEN_INCREASE", "При спорядженні: Відновлює %d здоров'я кожні 5 с." }, -- "Equip: Restores %1$d Health per 5 sec."
+{ "TOOLTIP_ITEM_STAT_HIT_PERCENT_INCREASE", "При спорядженні: Збільшує ймовірність завдання удару на %s%%." }, -- "Equip: Improves your chance to hit by %1$.1f%%."
+{ "TOOLTIP_ITEM_STAT_HOLY_DAMAGE_INCREASE", "При спорядженні: Збільшує шкоду від заклять і ефектів святості на %d." }, -- "Equip: Increases damage done by Holy spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_MANA_REGEN_INCREASE", "При спорядженні: Відновлює %d мани кожні 5 с." }, -- "Equip: Restores %1$d Mana per 5 sec."
+{ "TOOLTIP_ITEM_STAT_NATURE_DAMAGE_INCREASE", "При спорядженні: Збільшує шкоду від заклять і ефектів природи на %d." }, -- "Equip: Increases damage done by Nature spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_PARRY_PCT_DECREASE", "При спорядженні: Зменшує ваш шанс парирування атаки на %s%%." }, -- "Equip: Decreases your chance to Parry an attack by %1$.1f%%."
+{ "TOOLTIP_ITEM_STAT_PARRY_PCT_INCREASE", "При спорядженні: Збільшує шанс парирування атаки на %s%%." }, -- "Equip: Increases your chance to Parry an attack by %1$.1f%%."
+{ "TOOLTIP_ITEM_STAT_RANGED_ATTACK_POWER_INCREASE", "При спорядженні: Збільшує силу атаки дальнього бою на %d." }, -- "Equip: +%1$d Ranged Attack Power."
+{ "TOOLTIP_ITEM_STAT_SD_VS_BEAST_INCREASE", "При спорядженні: Збільшує шкоду від магічних заклять і ефектів в бою зі звірами на %d." }, -- "Equip: Increases damage done to Beasts by magical spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_SD_VS_DEMON_INCREASE", "При спорядженні: Збільшує шкоду від магічних заклять і ефектів в бою з демонами на %d." }, -- "Equip: Increases damage done to Demons by magical spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_SD_VS_ELEMENTAL_INCREASE", "При спорядженні: Збільшує шкоду від магічних заклять і ефектів у бою з елементалями на %d." }, -- "Equip: Increases damage done to Elementals by magical spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_SD_VS_UNDEAD_INCREASE", "При спорядженні: Збільшує шкоду від магічних заклять і ефектів в бою з невмерлими на %d." }, -- "Equip: Increases damage done to Undead by magical spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_SHADOW_DAMAGE_INCREASE", "При спорядженні: Збільшує шкоду від заклять і ефектів тіні на %d." }, -- "Equip: Increases damage done by Shadow spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_AXES_INCREASE", "При спорядженні: Збільшує навичку володіння сокирами на %d." }, -- "Equip: Increased Axes +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_BOWS_INCREASE", "При спорядженні: Збільшує навичку володіння луками на %d." }, -- "Equip: Increased Bows +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_COOKING_DECREASE", "При спорядженні: Зменшує навичку куховарства на %d." }, -- "Equip: Decreased Cooking -%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_CROSSBOWS_INCREASE", "При спорядженні: Збільшує навичку володіння арбалетами на %d." }, -- "Equip: Increased Crossbows +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_DAGGERS_INCREASE", "При спорядженні: Збільшує навичку володіння кинджалами на %d." }, -- "Equip: Increased Daggers +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_FISHING_INCREASE", "При спорядженні: Збільшує навичку риболовлі на %d." }, -- "Equip: Increased Fishing +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_FIST_WEAPONS_INCREASE", "При спорядженні: Збільшує навичку володіння кулачною зброєю на %d." }, -- "Equip: Increased Fist Weapons +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_GUNS_INCREASE", "При спорядженні: Збільшує навичку володіння рушницями на %d." }, -- "Equip: Increased Guns +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_HERBALISM_INCREASE", "При спорядженні: Збільшує навичку травництва на %d." }, -- "Equip: Increased Herbalism +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_MACES_INCREASE", "При спорядженні: Збільшує навичку володіння булавами на %d." }, -- "Equip: Increased Maces +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_MINING_INCREASE", "При спорядженні: Збільшує навичку гірництва на %d." }, -- "Equip: Increased Mining +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_POLEARMS_INCREASE", "При спорядженні: Збільшує навичку володіння держаковою зброєю на %d." }, -- "Equip: Increased Polearms +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_SKINNING_INCREASE", "При спорядженні: Збільшує навичку шкуродерства на %d." }, -- "Equip: Increased Skinning +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_SWORDS_INCREASE", "При спорядженні: Збільшує навичку володіння мечами на %d." }, -- "Equip: Increased Swords +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_TWO-HANDED_AXES_INCREASE", "При спорядженні: Збільшує навичку володіння дворучними сокирами на %d." }, -- "Equip: Increased Two-Handed Axes +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_TWO-HANDED_MACES_INCREASE", "При спорядженні: Збільшує навичку володіння дворучними булавами на %d." }, -- "Equip: Increased Two-Handed Maces +%1$d."
+{ "TOOLTIP_ITEM_STAT_SKILL_TWO-HANDED_SWORDS_INCREASE", "При спорядженні: Збільшує навичку володіння дворучними мечами на %d." }, -- "Equip: Increased Two-Handed Swords +%1$d."
+{ "TOOLTIP_ITEM_STAT_SPELL_DAMAGE_INCREASE", "При спорядженні: Збільшує шкоду від магічних заклять і ефектів на %d." }, -- "Equip: Increases damage done by magical spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_SPELL_HEALING_INCREASE", "При спорядженні: Збільшує зцілення від магічних заклять і ефектів на %d." }, -- "Equip: Increases healing done by magical spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_SPELL_HEALING_INCREASE_DAMAGE_INCREASE", "При спорядженні: Збільшує зцілення на %d, а шкоду на %d для всіх магічних заклять і ефектів." }, -- "Equip: Increases healing done by up to %1$d and damage done by up to %2$d for all magical spells and effects."
+{ "TOOLTIP_ITEM_STAT_SPELL_PENETRATION_INCREASE", "При спорядженні: Збільшує проникність заклять на %d." }, -- "Equip: Your spells pierce %1$d Magical Resistance."
+{ "TOOLTIP_ITEM_STAT_SPELL_POWER_INCREASE", "При спорядженні: Збільшує шкоду і зцілення від магічних заклять і ефектів на %d." }, -- "Equip: Increases damage and healing done by magical spells and effects by up to %1$d."
+{ "TOOLTIP_ITEM_STAT_WEAPON_DAMAGE_INCREASE", "При спорядженні: Збільшує шкоду зброї на %d." }, -- "Equip: +%1$d Weapon Damage."
+}
+
+-- the names of WoW: Forever's own data: an item's type, the stats its comparisons list ("Spell Damage", where Era has "Bonus Damage")
+local tooltip_texts = {
+{ "Arcane Piercing", "проникність аркани" },
+{ "Armor Piercing", "пробиття броні" },
+{ "Attack Power Vs Beasts", "сила атаки в бою зі звірами" },
+{ "Attack Power Vs Demons", "сила атаки в бою з демонами" },
+{ "Attack Power Vs Dragonkin", "сила атаки в бою з драконами" },
+{ "Attack Power Vs Elementals", "сила атаки в бою з елементалями" },
+{ "Attack Power Vs Giants", "сила атаки в бою з велетнями" },
+{ "Attack Power Vs Humanoids", "сила атаки в бою з гуманоїдами" },
+{ "Attack Power Vs Mechanical", "сила атаки в бою з механізмами" },
+{ "Attack Power Vs Undead", "сила атаки в бою з невмерлими" },
+{ "damage per second", "шкода за секунду" },
+{ "Fire Piercing", "проникність вогню" },
+{ "Frost Piercing", "проникність криги" },
+{ "Mana Regeneration per 5 sec", "відновлення мани кожні 5 с" },
+{ "Mount", "верхове створіння" }, -- a mount's item type, a creature or a machine
+{ "Nature Piercing", "проникність природи" },
+{ "Shadow Piercing", "проникність тіні" },
+{ "Spell Damage", "шкода від заклять" },
+{ "Spell Damage Vs Beasts", "шкода від заклять в бою зі звірами" },
+{ "Spell Damage Vs Demons", "шкода від заклять в бою з демонами" },
+{ "Spell Damage Vs Dragonkin", "шкода від заклять в бою з драконами" },
+{ "Spell Damage Vs Elementals", "шкода від заклять в бою з елементалями" },
+{ "Spell Damage Vs Giants", "шкода від заклять в бою з велетнями" },
+{ "Spell Damage Vs Humanoids", "шкода від заклять в бою з гуманоїдами" },
+{ "Spell Damage Vs Mechanical", "шкода від заклять в бою з механізмами" },
+{ "Spell Damage Vs Undead", "шкода від заклять в бою з невмерлими" },
+{ "Spell Healing", "зцілення від заклять" },
+{ "Spell Piercing", "проникність заклять" },
+{ "Spell Resistance", "опір закляттям" },
+}
+
 if not addonTable.string_globals then
     addonTable.string_globals = {}
 end
 for _, s in ipairs(global_strings) do
     addonTable.string_globals[s[1]] = s[2]
+end
+if not addonTable.string_tooltip then
+    addonTable.string_tooltip = {}
+end
+for _, s in ipairs(tooltip_strings) do
+    addonTable.string_tooltip[s[1]] = s[2]
+end
+if not addonTable.string_tooltip_text then
+    addonTable.string_tooltip_text = {}
+end
+for _, s in ipairs(tooltip_texts) do
+    addonTable.string_tooltip_text[s[1]] = s[2]
 end

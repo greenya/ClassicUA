@@ -10,9 +10,60 @@ local global_strings = {
 { "MARKED_DND", "Режим \"Не турбувати\" активовано: %s" }, -- "You are now Busy: %s"
 }
 
+-- the mists client's own tooltip phrases (see classic/string.lua)
+local tooltip_strings = {
+{ "ITEM_HEROIC", "Героїчний" }, -- "Heroic"
+{ "ITEM_LEVEL", "Рівень предмета: %d" }, -- "Item Level %d"
+{ "ITEM_MOD_BLOCK_RATING", "Збільшує блокування щитом на %s." }, -- "Increases your shield block by %s."
+{ "ITEM_MOD_CRIT_RATING", "Збільшує критичний удар на %s." }, -- "Increases your critical strike by %s."
+{ "ITEM_MOD_DEFENSE_SKILL_RATING", "Збільшує захист на %s." }, -- "Increases defense by %s."
+{ "ITEM_MOD_DODGE_RATING", "Збільшує ухилення на %s." }, -- "Increases your dodge by %s."
+{ "ITEM_MOD_EXPERTISE_RATING", "Збільшує вправність на %s." }, -- "Increases your expertise by %s."
+{ "ITEM_MOD_HASTE_RATING", "Збільшує швидкість на %s." }, -- "Increases your haste by %s."
+{ "ITEM_MOD_HIT_RATING", "Збільшує влучність на %s." }, -- "Increases your hit by %s."
+{ "ITEM_MOD_MASTERY_RATING", "Збільшує майстерність на %s." }, -- "Increases your mastery by %s."
+{ "ITEM_MOD_PARRY_RATING", "Збільшує парирування на %s." }, -- "Increases your parry by %s."
+{ "ITEM_MOD_PVP_POWER", "Збільшує PvP-силу на %s." }, -- "Increases your PvP power by %s."
+{ "ITEM_MOD_RESILIENCE_RATING", "Збільшує PvP-стійкість на %s." }, -- "Increases your PvP resilience by %s."
+{ "ITEM_REQ_ARENA_RATING", "Потрібен рейтинг арени %d" }, -- "Requires arena rating of %d"
+{ "ITEM_REQ_ARENA_RATING_3V3", "Потрібен рейтинг арени %d|nу категоріях 3 на 3 або 5 на 5" }, -- "Requires arena rating of %d|nin 3v3 or 5v5 brackets"
+{ "ITEM_REQ_ARENA_RATING_5V5", "Потрібен рейтинг арени %d|nу категорії 5 на 5" }, -- "Requires arena rating of %d|nin 5v5 brackets"
+{ "ITEM_REQ_SPECIALIZATION", "Потрібна спеціалізація: %s" }, -- "Requires: %s"
+{ "ITEM_UPGRADE_TOOLTIP_FORMAT", "Рівень покращення: %d/%d" }, -- "Upgrade Level: %d/%d"
+{ "RAID_FINDER", "Пошук рейду" }, -- "Raid Finder", an item's tag
+}
+
+-- the stats mists draws as "+%s <name>" ("+1,959 Haste"), and its own in a comparison's changes (see classic/string.lua)
+local tooltip_texts = {
+{ "%c%s Critical Strike", "%c%d критичного удару" },
+{ "%c%s Dodge", "%c%d ухилення" },
+{ "%c%s Expertise", "%c%d вправності" },
+{ "%c%s Haste", "%c%d швидкості" },
+{ "%c%s Hit", "%c%d влучності" },
+{ "%c%s Mastery", "%c%d майстерності" },
+{ "Mastery", "майстерність" },
+{ "%c%s Parry", "%c%d парирування" },
+{ "%c%s PvP Power", "%c%d PvP-сили" },
+{ "PvP Power", "PvP-сила" },
+{ "%c%s PvP Resilience", "%c%d PvP-стійкості" },
+{ "%c%s Spell Power", "%c%d сили заклять" },
+}
+
 if not addonTable.string_globals then
     addonTable.string_globals = {}
 end
 for _, s in ipairs(global_strings) do
     addonTable.string_globals[s[1]] = s[2]
+end
+if not addonTable.string_tooltip then
+    addonTable.string_tooltip = {}
+end
+for _, s in ipairs(tooltip_strings) do
+    addonTable.string_tooltip[s[1]] = s[2]
+end
+if not addonTable.string_tooltip_text then
+    addonTable.string_tooltip_text = {}
+end
+for _, s in ipairs(tooltip_texts) do
+    addonTable.string_tooltip_text[s[1]] = s[2]
 end

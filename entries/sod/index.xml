@@ -21,4 +21,5 @@
     <Script file="spell_shaman.lua"/>
     <Script file="spell_warlock.lua"/>
     <Script file="spell_warrior.lua"/>
+    <Script file="string.lua"/>
 </Ui>
