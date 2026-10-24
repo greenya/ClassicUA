@@ -295,6 +295,8 @@ local tooltip_strings = {
 { "ITEM_REQ_REPUTATION", "Потрібна репутація: %s – %s" }, -- "Requires %s - %s"
 { "ITEM_REQ_SKILL", "Потрібно: %S" }, -- "Requires %s"
 { "ITEM_RESIST_ALL", "%c%d опору всім школам" }, -- "%c%d to All Resistances"
+{ "ITEM_SET_BONUS", "Комплект: %s" }, -- "Set: %s"
+{ "ITEM_SET_BONUS_GRAY", "(%d) Комплект: %s" }, -- "(%d) Set: %s"
 { "ITEM_SOULBOUND", "Прив'язаний до персонажа" }, -- "Soulbound"
 { "ITEM_SPELL_CHARGES", "Зарядів: %d" }, -- "%d |4Charge:Charges;"
 { "ITEM_SPELL_CHARGES_NONE", "Зарядів немає" }, -- "No charges"

@@ -1,0 +1,18 @@
+local _, addonTable = ...
+
+local item_set = { -- see classic/item_set.lua
+[201] = { "регалії арканіста", items={ 16802, 16799, 16795, 16800, 16801, 16796, 16797, 16798 },
+    bonuses={ { 3, 41657 }, { 5, 41660 }, { 8, 23545 } }, en="Arcanist Regalia" },
+[205] = { "кенарійські обладунки", items={ 16828, 16829, 16830, 16833, 16831, 16834, 16835, 16836 },
+    bonuses={ { 3, 41718 }, { 5, 39507 }, { 8, 23556 } }, en="Cenarion Raiment" },
+[212] = { "шати відплати", items={ 16933, 16927, 16934, 16928, 16930, 16931, 16929, 16932 },
+    bonuses={ { 3, 32449 }, { 5, 21741 }, { 8, 23555 } }, en="Nemesis Raiment" },
+}
+
+if addonTable.item_set then
+    for k, v in pairs(item_set) do
+        addonTable.item_set[k] = v
+    end
+else
+    addonTable.item_set = item_set
+end

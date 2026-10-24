@@ -6,6 +6,7 @@ local options   = addon_table.use("options") ---@class options_class
 local utils     = addon_table.use("utils") ---@class utils_class
 
 local pcall         = _G.pcall
+local C_Item        = _G.C_Item
 local COMPLETE      = _G.COMPLETE
 local string_find   = _G.string.find
 local string_format = _G.string.format
@@ -812,6 +813,21 @@ entries.get_item_suffix = function (item_name_en)
     return at.item_suffix[item_suffix_en]
 end
 
+-- the set the game puts an item in, if the set's entry lists the item: WoW: Forever gave some classic set ids to its own sets
+entries.get_item_set = function (item_id)
+    local set_id = select(16, C_Item.GetItemInfo(item_id))
+    local item_set = set_id and addon_table.item_set[set_id]
+    if not item_set then
+        return
+    end
+
+    for _, id in ipairs(item_set.items) do
+        if id == item_id then
+            return item_set
+        end
+    end
+end
+
 -- our wording of a kill line, from the game's "Kobold Vermin slain: 3/8"
 local QUEST_MONSTERS_KILLED_UK = "%s: %d/%d вбито"
 
@@ -977,10 +993,11 @@ end
 -- A value that is not a name keeps the whole line original rather than half translated.
 -- - "Increases attack power by 117 when fighting Demons.", not "Збільшує силу атаки на 117 when fighting Demons.":
 --     tbc's "Increases attack power by %s." takes "117 when fighting Demons"
+-- - "Set: Your Feint ability has a chance to reset your threat.": a set's bonus
 -- is_strict keeps no name, for find_format() to prefer a format whose values are all translated
 local function keep_english_name(name, is_strict)
     local bare = string_match(name, "^(.-) %(%d+%)$") or name
-    return not is_strict and not string_find(bare, "%d") and name or nil
+    return not is_strict and not string_find(bare, "%d") and not string_find(bare, "%.$") and name or nil
 end
 
 -- a value the game filled a format with: a number stays, a name becomes translated, and so does each of several names joined by commas
