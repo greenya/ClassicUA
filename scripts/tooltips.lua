@@ -299,16 +299,20 @@ local function replace_line(tooltip, font_string, text_uk)
     return true
 end
 
-local function get_title_line_index(tooltip)
-    local first = _G[tooltip:GetName() .. "TextLeft1"]
-    return tooltip:NumLines() > 1 and first:GetText() == _G.CURRENTLY_EQUIPPED and 2 or 1
+local function get_title_line_index(lines_en)
+    return #lines_en > 1 and lines_en[1] == _G.CURRENTLY_EQUIPPED and 2 or 1
 end
 
+-- the game's text of every line: a line we replaced keeps it in tooltip.classicua.lines, for a pass over lines the game added later
 local function get_lines_en(tooltip)
     local lines = {}
     local name = tooltip:GetName()
+    local replaced = tooltip.classicua.lines
     for i = 1, tooltip:NumLines() do
-        lines[i] = _G[name .. "TextLeft" .. i]:GetText() or ""
+        local font_string = _G[name .. "TextLeft" .. i]
+        local text = font_string:GetText() or ""
+        local texts = replaced[font_string]
+        lines[i] = texts and (text == texts[2] or text == texts[1]) and texts[1] or text
     end
     return lines
 end
@@ -379,6 +383,72 @@ local function replace_string_lines(tooltip, first_line)
     return is_replaced
 end
 
+-- --------------------------------
+-- [ the replace style: item sets ]
+-- --------------------------------
+
+-- a set's bonus it doesn't give yet names its pieces, "(4) Set: ...", one it gives doesn't, "Set: ..."
+local set_bonus_keys = { "ITEM_SET_BONUS_GRAY", "ITEM_SET_BONUS" }
+local set_bonus_patterns
+
+-- the bonus a set's line shows: a gray one is the first with its pieces, a green one the next in the set's order
+local function find_set_bonus(item_set, next_bonus, pieces)
+    for i = next_bonus, pieces and #item_set.bonuses or 0 do
+        if item_set.bonuses[i][1] == pieces then
+            return i
+        end
+    end
+    return next_bonus
+end
+
+-- the set's lines from first to last: its name with the pieces worn, its pieces' names, each bonus as its spell's description
+-- Names keep indents and colors the game put around them
+-- "Dreamwalker Raiment (2/9)" -> "Вбрання сноходця (2/9)", "(4) Set: ..." -> "(4) Комплект: ..."
+local function add_item_set_texts(texts, item_set, lines_en, first, last)
+    if not set_bonus_patterns then
+        set_bonus_patterns = {}
+        for i, key in ipairs(set_bonus_keys) do
+            set_bonus_patterns[i] = utils.format_patterns(_G[key])[1]
+        end
+    end
+
+    local names = { [item_set.en] = utils.cap(item_set[1]) }
+    for _, id in ipairs(item_set.items) do
+        local item = entries.get_entry("item", id)
+        if item and item[1] and item.en then
+            names[item.en] = utils.cap(item[1])
+        end
+    end
+
+    local next_bonus = 1
+    for i = first, last do
+        local text = lines_en[i]
+        local bare = utils.strip_color_codes(text):match("^%s*(.-)%s*$")
+        local name_en = bare:match("^(.-) %(%d+/%d+%)$") or bare
+        local from, to = text:find(name_en, 1, true)
+        if names[name_en] and from then
+            texts[i] = text:sub(1, from - 1) .. names[name_en] .. text:sub(to + 1)
+        else
+            for kind, pattern in ipairs(set_bonus_patterns) do
+                local captures = { text:match(pattern.pattern) }
+                if #captures == #pattern.order then
+                    local pieces = kind == 1 and tonumber(captures[1]) or nil
+                    local index = find_set_bonus(item_set, next_bonus, pieces)
+                    next_bonus = index + 1
+                    local bonus = item_set.bonuses[index]
+                    local spell = bonus and entries.get_entry("spell", bonus[2])
+                    local text_uk = spell and get_entry_texts({ text }, spell[2])[1]
+                    local format_uk = addon_table.string_tooltip[set_bonus_keys[kind]]
+                    if text_uk and format_uk then
+                        texts[i] = pieces and format_uk:format(pieces, text_uk) or format_uk:format(text_uk)
+                    end
+                    break
+                end
+            end
+        end
+    end
+end
+
 -- ----------------------------
 -- [ the replace style: items ]
 -- ----------------------------
@@ -442,6 +512,16 @@ local function find_result_item_line(lines_en, first_line, name_en)
     end
 end
 
+local function add_item_texts(texts, entry, entry_id, lines_en, first, last)
+    if entry then
+        add_effect_texts(texts, entry, entry_id, lines_en, first, last)
+    end
+    local item_set = entries.get_item_set(entry_id)
+    if item_set then
+        add_item_set_texts(texts, item_set, lines_en, first, last)
+    end
+end
+
 -- our texts by line index, made from the english lines: our texts take their numbers from them
 local function get_item_texts(tooltip, entry, entry_id, lines_en, title_index)
     local texts = {}
@@ -452,15 +532,12 @@ local function get_item_texts(tooltip, entry, entry_id, lines_en, title_index)
         texts[title_index] = translate_line(RETRIEVING_ITEM_INFO)
         return texts
     end
-    if not entry then
-        return texts
-    end
 
-    if title_index then
+    if entry and title_index then
         texts[title_index] = get_item_heading(tooltip, entry, lines_en)
     end
 
-    local result_id = entry.recipe_result_item
+    local result_id = entry and entry.recipe_result_item
     local result = result_id and result_id ~= entry_id and entries.get_entry("item", result_id)
     local result_line, before_name, after_name
     if result then
@@ -474,19 +551,20 @@ local function get_item_texts(tooltip, entry, entry_id, lines_en, title_index)
 
     -- Recipe tooltip shows both own lines and the made item's lines starting from its name. Each part takes the texts of its own entry.
     local last_own_line = result_line and result_line - 1 or #lines_en
-    add_effect_texts(texts, entry, entry_id, lines_en, first_line, last_own_line)
+    add_item_texts(texts, entry, entry_id, lines_en, first_line, last_own_line)
     if result_line then
         local name_uk = get_item_heading(tooltip, result, lines_en)
         texts[result_line] = name_uk and before_name .. name_uk .. after_name
-        add_effect_texts(texts, result, result_id, lines_en, result_line + 1, #lines_en)
+        add_item_texts(texts, result, result_id, lines_en, result_line + 1, #lines_en)
     end
     return texts
 end
 
-local function replace_item_lines(tooltip, entry, entry_id)
-    local title_index = get_title_line_index(tooltip)
-    local is_replaced = replace_lines(tooltip, get_item_texts(tooltip, entry, entry_id, get_lines_en(tooltip), title_index))
-    return replace_string_lines(tooltip, title_index + 1) or is_replaced
+local function replace_item_lines(tooltip, entry, entry_id, first_phrase_line)
+    local lines_en = get_lines_en(tooltip)
+    local title_index = get_title_line_index(lines_en)
+    local is_replaced = replace_lines(tooltip, get_item_texts(tooltip, entry, entry_id, lines_en, title_index))
+    return replace_string_lines(tooltip, first_phrase_line or title_index + 1) or is_replaced
 end
 
 -- -----------------------------
@@ -544,7 +622,8 @@ local function lay_out(tooltip, width_before)
     end
 end
 
--- the classic clients: the lines the game adds after we translated an item's tooltip (the stat changes under a comparison, a recipe's reagents)
+-- the classic clients: the lines the game adds after we translated an item's tooltip:
+-- stat changes under comparison, recipe reagents, set bonuses whose spells hadn't loaded yet, get the item's texts and our phrases, as the first lines did
 local function replace_late_lines(tooltip)
     local claim = tooltip.classicua
     local replaced_lines = claim.replaced_lines
@@ -552,7 +631,9 @@ local function replace_late_lines(tooltip)
         claim.replaced_lines = tooltip:NumLines()
         -- the width before translating: lay_out() fits the box by the change where it can't call Show()
         local width = get_lines_width(tooltip)
-        if replace_string_lines(tooltip, replaced_lines + 1) and tooltip:IsShown() then
+        local id = claim.entry_id
+        -- the game's phrases only in the new lines, as the lines before them have been tried
+        if replace_item_lines(tooltip, entries.get_entry("item", id), id, replaced_lines + 1) and tooltip:IsShown() then
             lay_out(tooltip, width)
         end
     end

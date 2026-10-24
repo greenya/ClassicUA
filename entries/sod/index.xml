@@ -3,6 +3,7 @@
     <Script file="engraving.lua"/>
     <Script file="gossip.lua"/>
     <Script file="item.lua"/>
+    <Script file="item_set.lua"/>
     <Script file="item_text.lua"/>
     <Script file="npc.lua"/>
     <Script file="object.lua"/>
