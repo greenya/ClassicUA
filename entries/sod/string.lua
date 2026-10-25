@@ -1,22 +1,24 @@
 local _, addonTable = ...
 
--- the item tags of season of discovery (see classic/string.lua)
+-- see classic/string.lua
+
 local tooltip_texts = {
 { "Bloodied", "закривавлений" },
 { "Core Forged", "викуваний у Ядрі" },
-{ "Draconic", "драконячий" },
+{ "Draconic", "драконічний" },
 { "Molten", "палаючий" },
 { "Raid Unique (%d)", "унікальний у рейді (%d)" },
 { "Sanctified", "освячений" },
-{ "Scarlet Uniform", "уніформа Багряного Походу" },
+{ "Scarlet Uniform", "форма Багряного Походу" },
 { "Season of Discovery", "Сезон відкриттів" },
-{ "Shadowflame", "тіньового полум'я" },
-{ "Soulfrost", "душеморозу" },
+{ "Shadowflame", "загартований тіньовим полум'ям" },
 { "Timeworn", "зношений часом" },
-{ "Void-Touched", "торкнутий Порожнечею" },
+{ "Void-Touched", "просякнутий Порожнечею" },
 }
 
-if not addonTable.string_tooltip_text then
+if not addonTable.string_globals then
+    addonTable.string_globals = {}
+    addonTable.string_tooltip = {}
     addonTable.string_tooltip_text = {}
 end
 for _, s in ipairs(tooltip_texts) do
