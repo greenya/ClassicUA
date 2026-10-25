@@ -355,7 +355,9 @@ local function translate_effect_line(text)
 end
 
 -- tooltip_texts are lowercase as inside a line: "Sword" -> "Меч", "Requires Level 60" -> "Потрібний рівень: 60"
--- The spaces and line breaks a line starts with stay before the translation: tbc spaces a recipe's reagents from the lines above with "\n"
+-- The spaces and line breaks a line starts with stay before the translation: tbc spaces a recipe's reagents from the lines above with "\n".
+-- A color around the whole line stays around the translation too; the line is tried with it first, as a phrase may have its own ("|cff00ff00<Made by %s>|r").
+-- tbc colors a socketed gem's line: "|cffffffff+5 Agility and +7 Stamina|r"; a tag of SoD items has a space for a zero in its color: "|cFFFFAC 0Core Forged|r"
 local function translate_line(text)
     local space, rest = text:match("^(%s+)(.+)$")
     if space then
@@ -365,7 +367,35 @@ local function translate_line(text)
 
     -- a whole line before the "Equip:" rule: forever's own phrases include "Equip:" ("Equip: +%1$d Attack Power."), tbc's don't
     local text_uk = translate_stat_change(text) or entries.translate_string_text(text) or translate_effect_line(text)
-    return text_uk and utils.cap(text_uk)
+    if text_uk then
+        return utils.cap(text_uk)
+    end
+
+    -- several lines in one, each translated on its own: meta gems list conditions that way:
+    --   "|cff808080Requires at least 2 Red gems|r\n  |cff808080Requires at least 2 Yellow gems|r"
+    local first, others
+    if text:find("\n", 1, true) then
+        first, others = text:match("^([^\n]+)\n(.+)$")
+    end
+    if first then
+        local first_uk, others_uk = translate_line(first), translate_line(others)
+        return (first_uk or others_uk) and (first_uk or first) .. "\n" .. (others_uk or others) or nil
+    end
+
+    local color, colored = text:match("^(|c[%x ][%x ][%x ][%x ][%x ][%x ][%x ][%x ])(.+)|r$")
+    if color and not colored:find("|r", 1, true) then
+        local colored_uk = translate_line(colored)
+        return colored_uk and color .. colored_uk .. "|r"
+    end
+
+    -- a phrase after a phrase, in brackets: a poison's charges after its time, "Instant Poison (30 min) (40 Charges)"
+    local head, tail
+    if text:sub(-1) == ")" then
+        head, tail = text:match("^(.+) %(([^()]+)%)$")
+    end
+    local tail_uk = head and entries.translate_string_text(tail)
+    local head_uk = tail_uk and translate_line(head)
+    return head_uk and head_uk .. " (" .. tail_uk .. ")" or nil
 end
 
 local function replace_string_lines(tooltip, first_line)
