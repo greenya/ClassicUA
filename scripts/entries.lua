@@ -891,8 +891,11 @@ end
 -- [ the game's phrases ]
 -- ----------------------
 
--- A line of the game's phrases is looked up in our strings (entries/*/string.lua): first as a whole text, then against the formats ("Requires Level %d").
--- The tooltip texts go before the interface strings, which a tooltip shows too ("This Item Begins a Quest").
+-- A line of the game's phrases is looked up in our names of enchantments (entries/*/enchant.lua) and strings (entries/*/string.lua):
+-- first as a whole text, then against the formats ("Requires Level %d", "+%d Agility and +%d Stamina").
+-- Enchantments go first, then tooltip texts, then interface strings, then zones
+-- Formats come from enchantments and tooltip texts only, for finer coverage:
+--   else "%s completed." would take unexpected lines ("This was not available until ... completed.")
 -- Their values are translated in turn: numbers stay, names and nested phrases become translated.
 -- "Requires Level 60" -> "Потрібний рівень: 60", "Classes: Warrior, Mage" -> "Класи: Воїн, Маг"
 
@@ -910,7 +913,7 @@ local function prepare_formats()
     local at = addon_table
     local groups = { by_head = {}, by_tail = {}, others = {} }
     local is_known = {}
-    for _, texts in ipairs({ at.string_tooltip_text, at.string }) do
+    for _, texts in ipairs({ at.enchant, at.string_tooltip_text }) do
         for text_en, text_uk in pairs(texts) do
             -- a text with a "%" is a format; the same english met again in a later lookup is skipped
             if not is_known[text_en] and string_find(text_en, "%", 1, true) then
@@ -973,7 +976,7 @@ local function get_class_or_race_name(name_en)
     return race and (race["н"].neutral_singular or race["н"][1])
 end
 
--- our name for an english one: a class or a race, a text of our strings (a reputation standing), or a name the glossary knows (a skill, a faction, an item)
+-- our name for an english one: a class or a race, an enchantment or a text of our strings (a reputation standing), or a name the glossary knows (a skill, a faction, an item)
 -- The count of a recipe's reagent stays after it: "Linen Cloth (2)" -> "Лляна тканина (2)"
 local function translate_name(name)
     local bare, count = string_match(name, "^(.-)( %(%d+%))$")
@@ -1143,7 +1146,7 @@ end
 -- a label before a value with no words in it: "Sell Price: 12 [copper icon]" -> "Ціна продажу: 12 [copper icon]"
 entries.translate_string_text = function (text)
     local at = addon_table
-    local text_uk = at.string_tooltip_text[text] or at.string[text]
+    local text_uk = at.enchant[text] or at.string_tooltip_text[text] or at.string[text] or at.zone[text]
     if text_uk then
         return text_uk
     end
