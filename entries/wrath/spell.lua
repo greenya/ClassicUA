@@ -339,11 +339,18 @@ local spells = {
 [33721] = { "Еліксир сили заклять", "Збільшує силу заклять на {1} протягом {2} год. Бойовий еліксир.#by {1} for {2} h", "Силу заклять збільшено на {1}. Бойовий еліксир.#by {1}", en="Spellpower Elixir" },
 [34952] = { ref=34950 }, -- Go for the Throat
 [38920] = { "Підірвати телепорт", "Спричинити потужний вибух в найближчому телепорті Легіону.", en="Detonate Teleporter" },
+[41785] = { ref=18382 }, -- Increased Critical Spell
 [43680] = { "Бездіяльність", "Ваші товариші по команді поскаржилися на вас за лінощі! Вступайте в PvP-бій, інакше вам буде зараховано неактивність і ви не зможете отримувати очки та знаки честі.", "Ваші товариші по команді поскаржилися на вас за лінощі! Вступайте в PvP-бій, інакше вам буде зараховано неактивність і ви не зможете отримувати очки честі.", en="Idle" },
 [43681] = { "Неактивність", "Ви не можете отримувати очки та знаки честі, поки не вступите в PvP-бій.\nЯкщо ви залишитесь в неактивності, вас виженуть з поля бою.", "Ви не можете отримувати очки честі, поки не вступите в PvP-бій.\nЯкщо ви залишитесь в неактивності, вас виженуть з поля бою.", en="Inactive" },
 [46441] = { ref=56 }, -- Stun
+[47468] = { "Дряпання", "Дряпає ворога, завдаючи шкоди.", en="Claw" },
+[49633] = { ref=49220 }, -- Impurity
+[49635] = { ref=49220 }, -- Impurity
+[49636] = { ref=49220 }, -- Impurity
+[49638] = { nil, "Збільшує силу заклять на {1}% від сили атаки.#additional {1}% benefit", ref=49220 }, -- Impurity
 [50293] = { ref=3396 }, -- Corrosive Poison
 [52174] = { "Героїчний стрибок", "Потужний стрибок до вказаного місця, що завдає {2}% шкоди зброї всім ворогам в межах {1} м від місця приземлення та приголомшує їх на {3} с.#within {1} y#causing {2}% weapon damage#for {3} sec", "Приголомшено.", en="Heroic Leap" },
+[52752] = { "Пробудження пращурів", "Критичні ефекти \"Хвилі зцілення\" та \"Малої хвиля зцілення\" викликають вам на допомогу духа пращурів, який миттєво зцілює учасника групи чи рейду з найнижчим запасом здоров'я в радіусі {1} м.#within {1} yards", en="Ancestral Awakening" },
 [52893] = { "Антимагічна зона", "Розміщує велику антимагічну зону, що зменшує магічну шкоду, отриману учасниками групи, на {1}%. Антимагічна зона діє {2} с або поки не поглине {3} шкоди.#by {1}%#for {2} sec#absorbs {3} spell", en="Anti-Magic Zone" },
 [52894] = { nil, nil, "Поглинає {1}% магічної шкоди.#Blocks {1}% of", ref=52893 }, -- Anti-Magic Zone
 [53636] = { ref=52894 }, -- Anti-Magic Zone
@@ -356,6 +363,7 @@ local spells = {
 [65974] = { ref=60103 }, -- Lava Lash
 [67719] = { ref=55095 }, -- Frost Fever
 [67767] = { ref=55095 }, -- Frost Fever
+[69724] = { ref=19196 }, -- Surge
 [69917] = { ref=55095 }, -- Frost Fever
 [69936] = { ref=36847 }, -- Mirror Image
 [69939] = { ref=36847 }, -- Mirror Image
@@ -1159,10 +1167,23 @@ local spells = {
 [26297] = { "Берсерк", "Збільшує швидкість атаки та вимови заклять на {1}% протягом {2} с.#by {1}% for {2} sec", "Швидкість атаки та вимови заклять збільшено.", en="Berserking" },
 [28730] = { "Арканічний потік", "Знемовлює всіх ворогів у межах {1} м на {2} с і відновлює {3}% мани. Також перериває вимову заклять цілей, що не є гравцями, на {4} с.#within {1} yards for {2}#restores {3}% of#interrupted for {4}", "Знемовлено.", en="Arcane Torrent" },
 [28878] = { ref=6562 }, -- Heroic Presence
-[28880] = { "Дар Наару", "Зцілює {1} здоров'я цілі протягом {2} с. Обсяг зцілення збільшується від вашої сили атаки.#for {1} over {2} sec", "Зцілює {1} здоров'я кожні {2} с.#Healing {1} every {2} sec", en="Gift of the Naaru" },
+[28880] = { "Дар Наару", "Зцілює {1} здоров'я цілі протягом {2} с. Обсяг зцілення збільшується від вашої сили атаки.#for {1} over {2} sec", "Зцілює {1} здоров'я кожні {2} с.#Healing {1}#every {2} sec", en="Gift of the Naaru" },
 [33697] = { "Кривава шаленість", "Збільшує силу атаки ближнього бою на {1} і шкоду заклять на {2}. Триває {3} с.#by {1} and#{2}. Lasts {3} sec", "Силу атаки ближнього бою збільшено на {1}, а шкоду заклять на {2}.#by {1} and#damage increased by {2}.", en="Blood Fury" },
 [33702] = { "Кривава шаленість", "Збільшує силу заклять на {1}. Триває {2} с.#by {1}.#Lasts {2} sec", "Силу заклять збільшено на {1}.#increased by {1}", en="Blood Fury" },
+[50613] = { "Арканічний потік", "Знемовлює всіх ворогів у межах {1} м на {2} с і відновлює {3} сили рун. Також перериває вимову заклять цілей, що не є гравцями, на {4} с.#within {1} yards for {2}#restores {3} Runic#interrupted for {4}", "Знемовлено.", en="Arcane Torrent" },
+[54562] = { ref=21563 }, -- Command
+[58943] = { "Танок вуду", "Зменшує тривалість усіх ефектів обмеження руху на {1}%. Тролі нестримні!#effects by {1}%", en="Da Voodoo Shuffle" },
+[58984] = { "Злиття з тінями", "Активуйте, щоб злитися з тінями, зменшуючи ймовірність того, що вороги помітять вас. Діє до скасування або руху. Після скасування ефекту вся загроза щодо ворогів, які ще перебувають у бою, відновлюється.", "Злиття з тінями.", en="Shadowmeld" },
+[58985] = { "Сприйняття", "Посилює вашу здатність виявлення непомітності.", en="Perception" },
+[59224] = { ref=20864 }, -- Mace Specialization
+[59542] = { nil, "Зцілює {1} здоров'я цілі протягом {2} с. Обсяг зцілення збільшується від вашої сили заклять або сили атаки, залежно від того, що з них більше.#for {1} over {2} sec", ref=28880 }, -- Gift of the Naaru
+[59543] = { nil, nil, "Зцілює {1} здоров'я кожні {2} с.#Healing {1}#every {2} sec", ref=28880 }, -- Gift of the Naaru
+[59544] = { nil, "Зцілює {1} здоров'я цілі протягом {2} с. Обсяг зцілення збільшується від сили заклять.#for {1} over {2} sec", ref=28880 }, -- Gift of the Naaru
+[59545] = { ref=28880 }, -- Gift of the Naaru
+[59547] = { ref=59542 }, -- Gift of the Naaru
+[59548] = { ref=59544 }, -- Gift of the Naaru
 [59752] = { "Воля до виживання", "Знімає всі ефекти обмеження руху і всі ефекти, що спричиняють втрату контролю над персонажем. Цей ефект має спільний час відновлення з іншими подібними ефектами.", en="Will to Survive" },
+[65222] = { ref=20575 }, -- Command
 
 -- Scrolls
 [8094] = { "Броня", "Збільшує броню цілі на {1} протягом {2} хв.#by {1} for {2} min", "Броню збільшено на {1}.#by {1}", en="Armor" },
@@ -1189,10 +1210,83 @@ local spells = {
 [33082] = { ref=8119 }, -- Strength
 
 -- Set bonuses
+[21092] = { "Збільшення шансу критичного ефекту святості", "Збільшує показник критичного удару на {1}.#by {1}.", en="Increased Critical Holy" },
+[23570] = { ref=18382 }, -- Increased Critical Spell
 [30777] = { "Збільшення шкоди заклять - комплект магістра", "Збільшує силу заклять на {1}.#Increases spell power by {1}", en="Increase Spell Dam 23 - Magister" },
 [30778] = { "Збільшення шкоди заклять - комплект імли жаху", "Збільшує силу заклять на {1}.#Increases spell power by {1}", en="Increase Spell Dam 23 - Dreadmist" },
 [30779] = { "Збільшення шкоди заклять - комплект відданості", "Збільшує силу заклять на {1}.#Increases spell power by {1}", en="Increase Spell Dam 23 - Devout" },
 [30780] = { "Збільшення шкоди заклять - комплект стихій", "Збільшує силу заклять на {1}.#Increases spell power by {1}", en="Increase Spell Dam 23 - Elements" },
+[32196] = { "Збільшення шкоди - Інтелект", ref=31584, en="Increased Dam - Intellect" },
+[32200] = { "Збільшення зцілення - Інтелект", ref=31584, en="Increased Healing - Intellect" },
+[32449] = { ref=9342 }, -- Increase Spell Dam 23
+[32451] = { ref=9342 }, -- Increase Spell Dam 23
+[37607] = { "Показник влучності заклять", ref=15464, en="Spell Hit Rating" },
+[37619] = { "Бонус до сили заклять", "Ваші бойові закляття можуть збільшити силу заклять на {1} протягом {2} с.#you {1} spell#for {2} sec", en="Spell Power Bonus" },
+[39420] = { ref=18382 }, -- Increased Critical Spell
+[39422] = { ref=18382 }, -- Increased Critical Spell
+[39447] = { ref=18382 }, -- Increased Critical Spell
+[39507] = { ref=18382 }, -- Increased Critical Spell
+[39543] = { ref=9342 }, -- Increase Spell Dam 23
+[39702] = { ref=23727 }, -- Increased Spell Hit Chance 8
+[39881] = { ref=18382 }, -- Increased Critical Spell
+[41644] = { ref=7675 }, -- Increase Healing 11
+[41648] = { ref=9342 }, -- Increase Spell Dam 71
+[41650] = { "Показник влучності", ref=15464, en="Increased Hit" },
+[41651] = { ref=9342 }, -- Increase Spell Dam 28
+[41654] = { ref=9342 }, -- Increase Spell Dam 23
+[41657] = { ref=9342 }, -- Increase Spell Dam 18
+[41658] = { ref=23727 }, -- Increased Spell Hit Chance 16
+[41660] = { "Опір перериванню/затримці", "Зменшує затримку вимови чи промовляння при отриманні шкоди на {1}%.#damaged by {1}%", en="Resist Interrupt/Pushback" },
+[41676] = { ref=18382 }, -- Increased Critical Spell
+[41687] = { ref=9342 }, -- Increase Spell Dam 23
+[41697] = { ref=9342 }, -- Increase Spell Dam 23
+[41703] = { ref=9342 }, -- Increase Spell Dam 23
+[41705] = { ref=30777 }, -- Increase Spell Dam 23 - Magister
+[41709] = { ref=9342 }, -- Increase Spell Dam 23
+[41715] = { ref=9342 }, -- Increase Spell Dam 23
+[41718] = { ref=7675 }, -- Increase Healing 22
+[41729] = { ref=9342 }, -- Increase Spell Dam 23
+[41734] = { ref=9342 }, -- Increase Spell Dam 12
+[41736] = { ref=30778 }, -- Increase Spell Dam 23 - Dreadmist
+[41740] = { ref=7690 }, -- Increase Nature Dam 7
+[41752] = { ref=9342 }, -- Increase Spell Dam 15
+[41753] = { ref=9342 }, -- Increase Spell Dam 23
+[41760] = { ref=9342 }, -- Increase Spell Dam 23
+[41762] = { ref=9342 }, -- Increase Spell Dam 23
+[41766] = { ref=9342 }, -- Increase Spell Dam 23
+[41777] = { ref=9342 }, -- Increase Spell Dam 12
+[41780] = { ref=9342 }, -- Increase Spell Dam 20
+[41782] = { ref=9342 }, -- Increase Spell Dam 47
+[41783] = { ref=7675 }, -- Increase Healing 55
+[41789] = { ref=9342 }, -- Increase Spell Dam 23
+[41795] = { ref=9342 }, -- Increase Spell Dam 23
+[41799] = { ref=9342 }, -- Increase Spell Dam 23
+[41805] = { ref=9342 }, -- Increase Spell Dam 23
+[41807] = { ref=9342 }, -- Increase Spell Dam 23
+[41811] = { ref=9342 }, -- Increase Spell Dam 23
+[41815] = { ref=9342 }, -- Increase Spell Dam 23
+[41825] = { ref=9342 }, -- Increase Spell Dam 23
+[41828] = { ref=9342 }, -- Increase Spell Dam 23
+[41829] = { ref=18382 }, -- Increased Critical Spell
+[41830] = { ref=7675 }, -- Increase Healing 33
+[41833] = { ref=18382 }, -- Increased Critical Spell
+[41834] = { ref=9342 }, -- Increase Spell Dam 18
+[41841] = { ref=23727 }, -- Increased Spell Hit Chance 16
+[41850] = { ref=18382 }, -- Increased Critical Spell
+[41854] = { ref=18382 }, -- Increased Critical Spell
+[41856] = { ref=30780 }, -- Increase Spell Dam 23 - Elements
+[41860] = { ref=9342 }, -- Increase Spell Dam 23
+[41872] = { ref=9342 }, -- Increase Spell Dam 12
+[41875] = { ref=9342 }, -- Increase Spell Dam 15
+[41879] = { ref=30779 }, -- Increase Spell Dam 23 - Devout
+[41884] = { ref=9342 }, -- Increase Spell Dam 23
+[41890] = { ref=7675 }, -- Increase Healing 33
+[41891] = { ref=9342 }, -- Increase Spell Dam 15
+[41894] = { ref=9342 }, -- Increase Spell Dam 6
+[41900] = { ref=9342 }, -- Increase Spell Dam 23
+[41902] = { ref=9342 }, -- Increase Spell Dam 23
+[41905] = { ref=9342 }, -- Increase Spell Dam 23
+[42155] = { ref=15464 }, -- Increased Hit Rating 15
 
 -- World buffs
 [15366] = { "Серенада піснеквіта", "Збільшує показник критичного удару на {1}, а також збільшує всі характеристики на {2} протягом {3} год.#rating by {1} and all attributes by {2} for {3} h", "Збільшує показник критичного удару на {1} та всі характеристики на {2}.#rating by {1} and all attributes by {2}", en="Songflower Serenade" },

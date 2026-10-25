@@ -182,7 +182,9 @@ local spells = {
 [30167] = { "Червоний костюм огра", "Станьте величезним червоним огром на {1} хв!#for {1} min", "Ррррр!", en="Red Ogre Costume" },
 [30195] = { ref=20253 }, -- Intercept Stun
 [30197] = { ref=20253 }, -- Intercept Stun
+[31707] = { "Водяна стріла", "Завдає цілі [від {1} до {2}#Deals {1} to {2} Frost||{1}#Deals {1} Frost] шкоди від криги.", en="Waterbolt" },
 [32038] = { "Ілюзія пташиного духа", "Набути подоби пташиного духа. Діє в руїнах Бога'му.", "Замасковано під пташиного духа.", en="Bird Spirit Illusion" },
+[32203] = { "Опір перериванню/затримці", "Збільшує ймовірність уникнути затримки та переривання вимови заклять на {1}%.#by {1}%", en="Resist Interrupt/Pushback" },
 [32355] = { "Зосереджена сила", ref=23271, en="Focused Power" },
 [32925] = { "Сила заклять", "Збільшує шкоду заклинань на {1} та зцілення на {2} протягом {3} с.#damage by up to {1} and healing by up to {2} for {3} sec", "Магічну шкоду збільшено на {1}, а зцілення збільшено на {2}.#damage increased by up to {1}#healing increased by up to {2}", en="Spell Power" },
 [32927] = { ref=32955 }, -- Heroism
@@ -224,6 +226,7 @@ local spells = {
 [40944] = { ref=36847 }, -- Mirror Image
 [42347] = { "Непомітність", "Дозволяє пересуватись непомітно. Триває до відміни.", "Непомітність.", en="Stealth" },
 [42435] = { "Хмільний фестиваль - приголомшення", ref=56, en="Brewfest - Stun" },
+[42650] = { "Армія мерців", en="Army of the Dead" },
 [43265] = { ref=37788 }, -- Death and Decay
 [44272] = { ref=27603 }, -- Goblin Dragon Gun
 [44893] = { ref=24694 }, -- Attack Power - Feral (+0178)
@@ -1037,7 +1040,7 @@ local spells = {
 [28875] = { "Різьба по каменю", "Навичку ювелірної справи збільшено на {1}.#by {1}", en="Gemcutting" },
 [28877] = { "Спорідненість з арканою", "Навичку зачарування збільшено на {1}.#by {1}.", en="Arcane Affinity" },
 [28878] = { "Наснажлива присутність", "Збільшує ймовірність завдання удару закляттями на {1}% вам та всім учасникам групи в межах {2} м.#spells by {1}% for#within {2} y", "Ймовірність завдання удару закляттями збільшено на {1}%.#by {1}%", en="Inspiring Presence" },
-[28880] = { "Дар Наару", "Зцілює {1} здоров'я цілі протягом {2} с.#of {1} damage over {2} sec", "Зцілює {1} здоров'я кожні {2} с.#{1} damage every {2} sec", en="Gift of the Naaru" },
+[28880] = { "Дар Наару", "Зцілює {1} здоров'я цілі протягом {2} с.#of {1} damage over {2} sec", "Зцілює {1} здоров'я кожні {2} с.#Healing {1}#every {2} sec", en="Gift of the Naaru" },
 [33697] = { "Кривава шаленість", "Збільшує силу атаки ближнього бою на {1}, а шкоду і зцілення від заклять та ефектів на {2}, але зменшує отримане зцілення на {3}%. Триває {4} с.#by {1} and#to {2},#by {3}%#Lasts {4} sec", "Силу атаки ближнього бою збільшено на {1}, а магічну шкоду і зцілення на {2}.#by {1} and#done increased by {2}.", en="Blood Fury" },
 [33702] = { "Кривава шаленість", "Збільшує шкоду і зцілення від заклять та ефектів на {1}, але зменшує отримане зцілення на {2}%. Триває {3} с.#to {1},#by {2}%#Lasts {3} sec", "Магічну шкоду і зцілення збільшено на {1}.#by {1}.", en="Blood Fury" },
 
@@ -1051,10 +1054,317 @@ local spells = {
 [33082] = { ref=8118 }, -- Strength
 
 -- Set bonuses
+[20607] = { "Збільшення навички посохів", "Збільшує навичку володіння посохами на {1}.#by {1}.", en="Increased Staff" },
+[21092] = { "Збільшення шансу критичного ефекту святості", "Збільшує показник критичного удару заклять на {1}.#by {1}.", en="Increased Critical Holy" },
+[21870] = { "Збільшення шансу критичного ефекту природи", "Збільшує показник критичного удару заклять природи на {1}.#by {1}.", en="Increased Critical Nature" },
+[23570] = { ref=18382 }, -- Increased Critical Spell
+[28118] = { "Збільшення критичних ударів PvP-обладунків {1}#Critical {1}", ref=7597, en="PvP Armor Increased Critical 14" },
+[28756] = { "Союзник вистежувача", "Поки вихованець активний, збільшує силу атаки вам і вихованцеві на {1}.#by {1} for", en="Stalker's Ally" },
 [30770] = { "Сила атаки - комплект доблесті", "Збільшує силу атаки на {1}.#Increases attack power by {1}.", en="Attack Power 40 - Valor" },
 [30771] = { "Сила атаки - комплект тіньового ремесла", "Збільшує силу атаки на {1}.#Increases attack power by {1}.", en="Attack Power 40 - Shadowcraft" },
 [30772] = { "Сила атаки - комплект ловця звірів", "Збільшує силу атаки на {1}.#Increases attack power by {1}.", en="Attack Power 40 - Beaststalker" },
 [30775] = { "Сила атаки - світлокований комплект", "Збільшує силу атаки на {1}.#Increases attack power by {1}.", en="Attack Power 40 - Lightforge" },
+[32102] = { "Відновлення мани {1}%#Regen {1}%", "Дозволяє {1}% відновлення мани продовжуватися під час вимови заклять.#Allow {1}% of", en="Mana Regen 5%" },
+[32106] = { "Малі вибухові чари", ref=25906, en="Lesser Spell Blasting" },
+[32145] = { "Збільшення стійкості {1}#Resilience {1}", "Збільшує показник стійкості на {1}.#+{1} Resilience", en="Increased Resilience 35" },
+[32196] = { "Збільшення шкоди - Інтелект", ref=31584, en="Increased Dam - Intellect" },
+[32200] = { "Збільшення зцілення - Інтелект", "Збільшує зцілення на {1}% від інтелекту.#to {1}% of", en="Increased Healing - Intellect" },
+[32449] = { ref=9342 }, -- Increase Spell Dam 23
+[32451] = { ref=9342 }, -- Increase Spell Dam 23
+[37607] = { "Показник влучності заклять", ref=23727, en="Spell Hit Rating" },
+[37608] = { "Показник влучності", ref=15464, en="Hit Rating" },
+[37609] = { ref=37608 }, -- Hit Rating
+[37610] = { ref=37608 }, -- Hit Rating
+[37611] = { "Бонус до сили атаки", "Ваші атаки можуть збільшити вашу силу атаки на {1} протягом {2} с.#you {1} attack#for {2} sec", en="Attack Power Bonus" },
+[37617] = { ref=37611 }, -- Attack Power Bonus
+[37618] = { ref=37611 }, -- Attack Power Bonus
+[37619] = { "Бонус до сили заклять", "Ваші бойові закляття можуть збільшити шкоду та зцілення ваших заклять на {1} протягом {2} с.#to {1} spell#for {2} sec", en="Spell Power Bonus" },
+[39372] = { "Крижане тінеплетіння", "Закляття, що завдають шкоди від криги та тіні, відновлюють вам здоров'я в обсязі {1}% від завданої шкоди.#for {1}% of", en="Frozen Shadoweave" },
+[39418] = { ref=7597 }, -- Increased Critical 14
+[39420] = { ref=18382 }, -- Increased Critical Spell
+[39422] = { ref=18382 }, -- Increased Critical Spell
+[39433] = { ref=7597 }, -- Increased Critical 14
+[39447] = { ref=18382 }, -- Increased Critical Spell
+[39486] = { ref=7597 }, -- Increased Critical 14
+[39507] = { ref=18382 }, -- Increased Critical Spell
+[39509] = { ref=7597 }, -- Increased Critical 28
+[39510] = { ref=15464 }, -- Increased Hit Rating 10
+[39516] = { ref=15464 }, -- Increased Hit Rating 20
+[39543] = { ref=9342 }, -- Increase Spell Dam 23
+[39545] = { ref=7597 }, -- Increased Critical 14
+[39548] = { ref=7597 }, -- Increased Critical 14
+[39702] = { ref=23727 }, -- Increased Spell Hit Chance 8
+[39880] = { ref=13669 }, -- Increased Dodge 12
+[39881] = { ref=18382 }, -- Increased Critical Spell
+[39884] = { ref=7597 }, -- Increased Critical 14
+[39982] = { ref=15464 }, -- Increased Hit Rating 20
+[40042] = { ref=32145 }, -- Increased Resilience 35
+[40043] = { ref=32145 }, -- Increased Resilience 35
+[40044] = { ref=32145 }, -- Increased Resilience 35
+[40045] = { ref=32145 }, -- Increased Resilience 35
+[40046] = { ref=32145 }, -- Increased Resilience 35
+[40047] = { ref=32145 }, -- Increased Resilience 35
+[40048] = { ref=32145 }, -- Increased Resilience 35
+[40049] = { ref=32145 }, -- Increased Resilience 35
+[40050] = { ref=32145 }, -- Increased Resilience 35
+[40051] = { ref=32145 }, -- Increased Resilience 35
+[40052] = { ref=32145 }, -- Increased Resilience 35
+[40053] = { ref=32145 }, -- Increased Resilience 35
+[41041] = { ref=7597 }, -- Increased Critical 14
+[41433] = { ref=12822 }, -- Demon Slaying 200
+[41434] = { "Парні клинки Аззінота", "Атаки ближнього бою можуть збільшити показник швидкості на {1} протягом {2} с.#by {1} for {2} sec", en="The Twin Blades of Azzinoth" },
+[41561] = { ref=7597 }, -- Increased Critical 14
+[41636] = { ref=7468 }, -- Increased Intellect 06
+[41638] = { ref=7477 }, -- Increased Stamina 05
+[41639] = { ref=7477 }, -- Increased Stamina 05
+[41640] = { ref=7477 }, -- Increased Stamina 05
+[41641] = { ref=7511 }, -- Increased Defense
+[41642] = { ref=7511 }, -- Increased Defense
+[41643] = { ref=7597 }, -- Increased Critical 14
+[41644] = { ref=7675 }, -- Increase Healing 11
+[41645] = { ref=9136 }, -- Attack Power 10
+[41646] = { ref=9136 }, -- Attack Power 26
+[41647] = { ref=9136 }, -- Attack Power 28
+[41648] = { ref=9342 }, -- Increase Spell Dam 71
+[41649] = { ref=9136 }, -- Attack Power 40
+[41650] = { ref=18382 }, -- Increased Critical Spell
+[41651] = { ref=9342 }, -- Increase Spell Dam 28
+[41652] = { ref=7477 }, -- Increased Stamina 20
+[41653] = { ref=7477 }, -- Increased Stamina 15
+[41654] = { ref=9342 }, -- Increase Spell Dam 23
+[41656] = { ref=25975 }, -- Increased Spell Penetration 38
+[41657] = { ref=9342 }, -- Increase Spell Dam 18
+[41658] = { ref=23727 }, -- Increased Spell Hit Chance 16
+[41660] = { ref=32203 }, -- Resist Interrupt/Pushback
+[41661] = { ref=9760 }, -- Increased Armor 200
+[41665] = { ref=9760 }, -- Increased Armor 200
+[41667] = { ref=9136 }, -- Attack Power 40
+[41669] = { ref=14540 }, -- Increased Fire Resist 10
+[41670] = { ref=7597 }, -- Increased Critical 14
+[41671] = { ref=7511 }, -- Increased Defense
+[41672] = { ref=9136 }, -- Attack Power 10
+[41674] = { ref=13665 }, -- Increased Parry 20
+[41676] = { ref=18382 }, -- Increased Critical Spell
+[41678] = { ref=15464 }, -- Increased Hit Rating 20
+[41679] = { ref=15464 }, -- Increased Hit Rating 20
+[41681] = { ref=7511 }, -- Increased Defense
+[41683] = { ref=15464 }, -- Increased Hit Rating 10
+[41684] = { ref=12981 }, -- Undead Slayer 15
+[41685] = { ref=14663 }, -- Increased Shadow Resist 05
+[41686] = { ref=9760 }, -- Increased Armor 10
+[41687] = { ref=9342 }, -- Increase Spell Dam 23
+[41688] = { ref=7477 }, -- Increased Stamina 20
+[41689] = { ref=9136 }, -- Attack Power 40
+[41690] = { ref=13665 }, -- Increased Parry 20
+[41691] = { ref=7477 }, -- Increased Stamina 20
+[41692] = { ref=7477 }, -- Increased Stamina 15
+[41693] = { ref=9136 }, -- Attack Power 40
+[41694] = { ref=7477 }, -- Increased Stamina 20
+[41695] = { ref=9136 }, -- Attack Power 40
+[41696] = { ref=7477 }, -- Increased Stamina 20
+[41697] = { ref=9342 }, -- Increase Spell Dam 23
+[41698] = { ref=7471 }, -- Increased Agility 20
+[41699] = { ref=7477 }, -- Increased Stamina 20
+[41700] = { ref=7477 }, -- Increased Stamina 15
+[41701] = { ref=13665 }, -- Increased Parry 20
+[41702] = { ref=7477 }, -- Increased Stamina 15
+[41703] = { ref=9342 }, -- Increase Spell Dam 23
+[41704] = { ref=7477 }, -- Increased Stamina 20
+[41705] = { ref=30777 }, -- Increase Spell Dam 23 - Magister
+[41706] = { ref=7477 }, -- Increased Stamina 20
+[41707] = { ref=9136 }, -- Attack Power 40
+[41708] = { ref=7477 }, -- Increased Stamina 15
+[41709] = { ref=9342 }, -- Increase Spell Dam 23
+[41710] = { ref=7477 }, -- Increased Stamina 15
+[41711] = { ref=9136 }, -- Attack Power 40
+[41712] = { ref=7477 }, -- Increased Stamina 20
+[41713] = { ref=9136 }, -- Attack Power 40
+[41714] = { ref=7477 }, -- Increased Stamina 15
+[41715] = { ref=9342 }, -- Increase Spell Dam 23
+[41716] = { ref=7477 }, -- Increased Stamina 15
+[41717] = { ref=13665 }, -- Increased Parry 20
+[41718] = { ref=7675 }, -- Increase Healing 22
+[41719] = { ref=9136 }, -- Attack Power 50
+[41720] = { ref=9760 }, -- Increased Armor 200
+[41722] = { ref=9136 }, -- Attack Power 40
+[41723] = { ref=13665 }, -- Increased Parry 20
+[41725] = { ref=9760 }, -- Increased Armor 50
+[41726] = { ref=7511 }, -- Increased Defense
+[41727] = { ref=9760 }, -- Increased Armor 200
+[41729] = { ref=9342 }, -- Increase Spell Dam 23
+[41730] = { "Показник вправності", "Збільшує показник вправності на {1}.#expertise rating by {1}.", en="Expertise Rating" },
+[41731] = { ref=9760 }, -- Increased Armor 10
+[41732] = { ref=14664 }, -- Increased Arcane Resist 05
+[41733] = { ref=9136 }, -- Attack Power 10
+[41734] = { ref=9342 }, -- Increase Spell Dam 12
+[41736] = { ref=30778 }, -- Increase Spell Dam 23 - Dreadmist
+[41738] = { ref=29090 }, -- Increased Armor 200 Dreadmist
+[41739] = { ref=41730 }, -- Expertise Rating
+[41740] = { ref=7690 }, -- Increase Nature Dam 7
+[41741] = { ref=7468 }, -- Increased Intellect 10
+[41742] = { ref=13665 }, -- Increased Parry 20
+[41743] = { ref=7464 }, -- Increased Strength 25
+[41744] = { ref=7464 }, -- Increased Strength 20
+[41746] = { ref=13669 }, -- Increased Dodge 20
+[41747] = { ref=7477 }, -- Increased Stamina 20
+[41748] = { ref=7597 }, -- Increased Critical 15
+[41749] = { ref=15464 }, -- Increased Hit Rating 20
+[41750] = { ref=9760 }, -- Increased Armor 200
+[41752] = { ref=9342 }, -- Increase Spell Dam 15
+[41753] = { ref=9342 }, -- Increase Spell Dam 23
+[41754] = { ref=7477 }, -- Increased Stamina 20
+[41755] = { ref=9136 }, -- Attack Power 40
+[41756] = { ref=7477 }, -- Increased Stamina 20
+[41757] = { ref=7477 }, -- Increased Stamina 20
+[41758] = { ref=7471 }, -- Increased Agility 20
+[41759] = { ref=7477 }, -- Increased Stamina 20
+[41760] = { ref=9342 }, -- Increase Spell Dam 23
+[41761] = { ref=7477 }, -- Increased Stamina 20
+[41762] = { ref=9342 }, -- Increase Spell Dam 23
+[41763] = { ref=9136 }, -- Attack Power 40
+[41764] = { ref=7477 }, -- Increased Stamina 20
+[41765] = { ref=7477 }, -- Increased Stamina 20
+[41766] = { ref=9342 }, -- Increase Spell Dam 23
+[41767] = { ref=7477 }, -- Increased Stamina 20
+[41768] = { ref=9136 }, -- Attack Power 40
+[41769] = { ref=13665 }, -- Increased Parry 20
+[41771] = { ref=7468 }, -- Increased Intellect 20
+[41772] = { ref=7597 }, -- Increased Critical 14
+[41773] = { ref=9760 }, -- Increased Armor 150
+[41774] = { ref=7511 }, -- Increased Defense
+[41777] = { ref=9342 }, -- Increase Spell Dam 12
+[41778] = { ref=7477 }, -- Increased Stamina 18
+[41779] = { ref=9760 }, -- Increased Armor 100
+[41780] = { ref=9342 }, -- Increase Spell Dam 20
+[41781] = { ref=9760 }, -- Increased Armor 200
+[41782] = { ref=9342 }, -- Increase Spell Dam 47
+[41783] = { ref=7675 }, -- Increase Healing 55
+[41784] = { ref=7597 }, -- Increased Critical 14
+[41785] = { ref=18382 }, -- Increased Critical Spell
+[41786] = { ref=7477 }, -- Increased Stamina 15
+[41787] = { ref=28118 }, -- PvP Armor Increased Critical 14
+[41788] = { ref=7477 }, -- Increased Stamina 20
+[41789] = { ref=9342 }, -- Increase Spell Dam 23
+[41790] = { ref=9136 }, -- Attack Power 40
+[41791] = { ref=7477 }, -- Increased Stamina 20
+[41792] = { ref=7477 }, -- Increased Stamina 15
+[41793] = { ref=13665 }, -- Increased Parry 20
+[41794] = { ref=7477 }, -- Increased Stamina 20
+[41795] = { ref=9342 }, -- Increase Spell Dam 23
+[41796] = { ref=9136 }, -- Attack Power 40
+[41797] = { ref=7477 }, -- Increased Stamina 20
+[41798] = { ref=7477 }, -- Increased Stamina 20
+[41799] = { ref=9342 }, -- Increase Spell Dam 23
+[41800] = { ref=7471 }, -- Increased Agility 20
+[41801] = { ref=7477 }, -- Increased Stamina 20
+[41802] = { ref=7477 }, -- Increased Stamina 15
+[41803] = { ref=13665 }, -- Increased Parry 20
+[41804] = { ref=7477 }, -- Increased Stamina 15
+[41805] = { ref=9342 }, -- Increase Spell Dam 23
+[41806] = { ref=7477 }, -- Increased Stamina 20
+[41807] = { ref=9342 }, -- Increase Spell Dam 23
+[41808] = { ref=9136 }, -- Attack Power 40
+[41809] = { ref=7477 }, -- Increased Stamina 20
+[41810] = { ref=7477 }, -- Increased Stamina 15
+[41811] = { ref=9342 }, -- Increase Spell Dam 23
+[41812] = { ref=7477 }, -- Increased Stamina 15
+[41813] = { ref=9136 }, -- Attack Power 40
+[41814] = { ref=7477 }, -- Increased Stamina 15
+[41815] = { ref=9342 }, -- Increase Spell Dam 23
+[41816] = { ref=7477 }, -- Increased Stamina 15
+[41817] = { ref=13665 }, -- Increased Parry 20
+[41818] = { ref=30775 }, -- Attack Power 40 - Lightforge
+[41821] = { ref=9136 }, -- Attack Power 20
+[41823] = { ref=9136 }, -- Attack Power 30
+[41825] = { ref=9342 }, -- Increase Spell Dam 23
+[41827] = { ref=7468 }, -- Increased Intellect 05
+[41828] = { ref=9342 }, -- Increase Spell Dam 23
+[41829] = { ref=18382 }, -- Increased Critical Spell
+[41830] = { ref=7675 }, -- Increase Healing 33
+[41831] = { ref=9136 }, -- Attack Power 20
+[41832] = { ref=9136 }, -- Attack Power 40
+[41833] = { ref=18382 }, -- Increased Critical Spell
+[41834] = { ref=9342 }, -- Increase Spell Dam 18
+[41835] = { ref=30771 }, -- Attack Power 40 - Shadowcraft
+[41840] = { ref=9760 }, -- Increased Armor 200
+[41841] = { ref=23727 }, -- Increased Spell Hit Chance 16
+[41842] = { ref=9760 }, -- Increased Armor 200
+[41844] = { ref=9136 }, -- Attack Power 40
+[41845] = { ref=9136 }, -- Attack Power 14
+[41846] = { ref=7464 }, -- Increased Strength 20
+[41847] = { ref=7511 }, -- Increased Defense
+[41848] = { ref=7477 }, -- Increased Stamina 05
+[41849] = { ref=7477 }, -- Increased Stamina 05
+[41850] = { ref=18382 }, -- Increased Critical Spell
+[41851] = { ref=7477 }, -- Increased Stamina 05
+[41852] = { ref=7477 }, -- Increased Stamina 05
+[41853] = { ref=7477 }, -- Increased Stamina 05
+[41854] = { ref=18382 }, -- Increased Critical Spell
+[41855] = { ref=7477 }, -- Increased Stamina 05
+[41856] = { ref=30780 }, -- Increase Spell Dam 23 - Elements
+[41858] = { ref=9760 }, -- Increased Armor 200
+[41860] = { ref=9342 }, -- Increase Spell Dam 23
+[41861] = { ref=9136 }, -- Attack Power 10
+[41862] = { ref=7597 }, -- Increased Critical 14
+[41863] = { ref=9760 }, -- Increased Armor 20
+[41864] = { ref=7511 }, -- Increased Defense
+[41865] = { ref=7477 }, -- Increased Stamina 05
+[41866] = { ref=7477 }, -- Increased Stamina 05
+[41867] = { ref=7477 }, -- Increased Stamina 05
+[41868] = { ref=7477 }, -- Increased Stamina 05
+[41869] = { ref=7468 }, -- Increased Intellect 10
+[41870] = { ref=14664 }, -- Increased Arcane Resist 10
+[41871] = { ref=14540 }, -- Increased Fire Resist 10
+[41872] = { ref=9342 }, -- Increase Spell Dam 12
+[41873] = { ref=9760 }, -- Increased Armor 50
+[41874] = { ref=41730 }, -- Expertise Rating
+[41875] = { ref=9342 }, -- Increase Spell Dam 15
+[41876] = { "Стійкість", "Збільшує стійкість на {1}.#by {1}.", "Стійкість збільшено на {1}.#by {1}.", en="Resilience" },
+[41877] = { ref=7597 }, -- Increased Critical 15
+[41878] = { ref=15464 }, -- Increased Hit Rating 15
+[41879] = { ref=30779 }, -- Increase Spell Dam 23 - Devout
+[41881] = { ref=9760 }, -- Increased Armor 200
+[41882] = { ref=9760 }, -- Increased Armor 200
+[41884] = { ref=9342 }, -- Increase Spell Dam 23
+[41885] = { ref=13674 }, -- Increased Block 10
+[41886] = { ref=7477 }, -- Increased Stamina 20
+[41887] = { ref=7477 }, -- Increased Stamina 20
+[41888] = { ref=9136 }, -- Attack Power 40
+[41889] = { ref=7477 }, -- Increased Stamina 20
+[41890] = { ref=7675 }, -- Increase Healing 33
+[41891] = { ref=9342 }, -- Increase Spell Dam 15
+[41892] = { ref=9136 }, -- Attack Power 26
+[41894] = { ref=9342 }, -- Increase Spell Dam 6
+[41895] = { ref=9136 }, -- Attack Power 40
+[41896] = { ref=7477 }, -- Increased Stamina 20
+[41897] = { ref=7471 }, -- Increased Agility 20
+[41898] = { ref=7477 }, -- Increased Stamina 20
+[41899] = { ref=7477 }, -- Increased Stamina 20
+[41900] = { ref=9342 }, -- Increase Spell Dam 23
+[41901] = { ref=7477 }, -- Increased Stamina 20
+[41902] = { ref=9342 }, -- Increase Spell Dam 23
+[41903] = { ref=7477 }, -- Increased Stamina 20
+[41904] = { ref=9136 }, -- Attack Power 40
+[41905] = { ref=9342 }, -- Increase Spell Dam 23
+[41906] = { ref=7477 }, -- Increased Stamina 20
+[41907] = { ref=9136 }, -- Attack Power 40
+[41908] = { ref=7477 }, -- Increased Stamina 20
+[41989] = { "Кулаки люті", "Може огорнути ворога полум'ям, завдаючи від {1} до {2} шкоди від вогню.#causing {1} to {2} Fire", en="Fists of Fury" },
+[42155] = { "Показник влучності {1}#Increased Hit Rating {1}", "Збільшує показник влучності ближнього бою на {1}.#by {1}.", en="Increased Hit Rating 15" },
+[46412] = { ref=32145 }, -- Increased Resilience 35
+[46413] = { ref=32145 }, -- Increased Resilience 35
+[46414] = { ref=32145 }, -- Increased Resilience 35
+[46415] = { ref=32145 }, -- Increased Resilience 35
+[46435] = { ref=32145 }, -- Increased Resilience 35
+[46436] = { ref=32145 }, -- Increased Resilience 35
+[46437] = { ref=32145 }, -- Increased Resilience 35
+[46438] = { ref=32145 }, -- Increased Resilience 35
+[46454] = { ref=32145 }, -- Increased Resilience 35
+[46455] = { ref=32145 }, -- Increased Resilience 35
+[46456] = { ref=32145 }, -- Increased Resilience 35
+[46528] = { ref=32145 }, -- Increased Resilience 35
+[46530] = { ref=32145 }, -- Increased Resilience 35
+[46534] = { ref=32145 }, -- Increased Resilience 35
 
 -- World buffs
 [15366] = { "Серенада піснеквіта", "Збільшує показники критичного удару та критичного удару заклять на {1}, а також збільшує всі характеристики на {2} протягом {3} год.#rating by {1} and all attributes by {2} for {3} h", "Збільшує показники критичного удару та критичного удару заклять на {1}, а також збільшує всі характеристики на {2}.#rating by {1} and all attributes by {2}", en="Songflower Serenade" },
