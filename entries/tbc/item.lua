@@ -497,7 +497,7 @@ local items = {
 [21204] = { "перстень-печатка бронзових драконів", equip={ 15464, 9332 }, flavor="Шлях завойовника", en="Signet Ring of the Bronze Dragonflight" },
 [21205] = { "перстень-печатка бронзових драконів", equip={ 15464, 14027 }, flavor="Шлях завойовника", en="Signet Ring of the Bronze Dragonflight" },
 [21268] = { "благословенний кіразький бойовий молот", equip={ 44901, 13387 }, flavor="Зброя, наповнена та укріплена елементієм.", en="Blessed Qiraji War Hammer" },
-[21278] = { "рукавиці штомового покриву", equip={ "Збільшує показник влучності на {1}.#hit rating by {1}.", "Збільшує показник критичного удару на {1}.#strike rating by {1}." }, en="Stormshroud Gloves" },
+[21278] = { "рукавиці штормового покриву", equip={ "Збільшує показник влучності на {1}.#hit rating by {1}.", "Збільшує показник критичного удару на {1}.#strike rating by {1}." }, en="Stormshroud Gloves" },
 [21365] = { "чоботи нападника", equip={ 9396, 14049 }, en="Striker's Footguards" },
 [21366] = { "діадема нападника", equip={ 7597, 9417, 15808 }, en="Striker's Diadem" },
 [21367] = { "напліччя нападника", equip={ 9396, 15806 }, en="Striker's Pauldrons" },
