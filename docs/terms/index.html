@@ -358,31 +358,69 @@
     </div>
     <script>
 
+        const known_expansions = {
+            'classic'   : { wh: 'classic' },
+            'sod'       : { wh: 'classic' },
+            'tbc'       : { wh: 'tbc' },
+            'wrath'     : { wh: 'wotlk' },
+            'cata'      : { wh: 'cata' },
+            'mists'     : { wh: 'mop-classic' },
+            'forever'   : { wh: 'forever' },
+        }
+
+        // Matches "expansion" in "#id[:expansion] description with spaces"
+        const expansion_pattern = /^#\d+(?::(\w+))?/
+
         class Tag {
-            constructor (name, main = false) {
-                this.name = name;
-                this.main = main;
-                this.count = 0;
+            constructor (name, args = {}) {
+                this.name = name
+                this.main = !!args.main
+                this.exp = !!args.exp
+                this.count = 0
+            }
+
+            use () {
+                this.count++
+                return this
             }
         }
 
         class Term {
             constructor (en, uk, all_tags) {
-                this.en = en;
-                this.uk = uk;
+                this.en = en
+                this.uk = uk
 
                 this.tags = []
                 this.id_tags = []
                 this.alias_tags = []
-                all_tags.forEach(e => {
-                    if (e.name.startsWith('~') && e.name.endsWith('~')) {
-                        e.name = e.name.replace('_', ',')
-                        this.alias_tags.push(e)
-                    } else if (e.name.startsWith('#')) {
-                        e.name = e.name.replace('_', ',')
-                        this.id_tags.push(e)
+
+                const exp_hit = {} // Expansion name (string) => true
+                const add_exp_tag_maybe = t => {
+                    const match = t.name.match(expansion_pattern)
+                    if (!match) return
+
+                    const exp_name = match[1] || 'classic'
+                    if (exp_hit[exp_name]) return
+
+                    const exp_tag = known_expansions[exp_name]?.tag
+                    if (exp_tag) {
+                        exp_hit[exp_name] = true
+                        this.tags.push(exp_tag.use())
                     } else {
-                        this.tags.push(e)
+                        console.error(`Unknown expansion "${exp_name}" in "${t.name}"`)
+                    }
+                }
+
+                all_tags.forEach(t => {
+                    if (t.name.startsWith('~') && t.name.endsWith('~')) {
+                        t.name = t.name.replace('_', ',')
+                        this.alias_tags.push(t)
+                    } else if (t.name.startsWith('#')) {
+                        t.name = t.name.replace('_', ',')
+                        this.id_tags.push(t)
+                        add_exp_tag_maybe(t)
+                    } else {
+                        this.tags.push(t.use())
                     }
                 })
             }
@@ -490,9 +528,35 @@
                     });
                 },
                 parse: function (xml) {
-                    const map = {};
-                    const dom = (new DOMParser()).parseFromString(xml, 'text/xml');
+                    // Ultimately we do the following:
+                    // 1. Register expansion tags
+                    // 2. Register term tags
+                    //      - new tag gets main=true if it is the first in the list (so we have nice "нпц", "локація" etc.)
+                    //          * only used when creating new tag, "main" never changes after tag creation
+                    //      - maybe this should be reworked into predefined list
+                    //          * at the moment, "main" (aka "type") is only visual distinction, no vital logic depends on it
+                    // 3. Pass list of tags to the Term constructor, so it can classify ids, expansions, aliases
+                    //      - it reports usage via Tag.use()
+                    // 4. Remove all id and alias tags (stating with "#" or "~") from this.tags
 
+                    const tag_index = {} // Tag name (string) => index (number) in this.tags
+                    const tag = (name, creation_args) => {
+                        return tag_index[name] === undefined
+                            ? new Tag(name, creation_args)
+                            : this.tags[tag_index[name]]
+                    }
+                    const tag_register_maybe = t => {
+                        if (tag_index[t.name] !== undefined) return
+                        if (t.exp) known_expansions[t.name].tag = t
+                        tag_index[t.name] = this.tags.length
+                        this.tags.push(t)
+                    }
+
+                    for (const name in known_expansions) {
+                        tag_register_maybe(new Tag(name, { exp: true }))
+                    }
+
+                    const dom = (new DOMParser()).parseFromString(xml, 'text/xml');
                     dom.querySelectorAll('termEntry').forEach(entry => {
                         let en = entry.querySelector('langSet[*|lang="en"] tig term').textContent;
                         const uk = entry.querySelector('langSet[*|lang="uk"] tig term').textContent;
@@ -505,20 +569,16 @@
                         const labels = desc
                             .split('\n')
                             .reduce((acc, cur) => {
-                                acc.push(...cur.split(',').map(e => e.trim()));
-                                return acc;
+                                acc.push(...cur.split(',').map(e => e.trim()))
+                                return acc
                             }, [])
 
                         labels.forEach((name, index) => {
-                            if (map[name] === undefined) {
-                                this.tags.push(new Tag(name, index == 0));
-                                map[name] = this.tags.length - 1;
-                            }
-                            this.tags[map[name]].count++;
+                            tag_register_maybe(tag(name, { main: index == 0 }))
                         });
 
-                        const tags = labels.map(name => this.tags[map[name]]);
-                        this.terms.push(new Term(en, uk, tags));
+                        const tags = labels.map(name => tag(name))
+                        this.terms.push(new Term(en, uk, tags))
                     });
 
                     this.tags = this.tags.filter(e => !e.name.startsWith('#') && !e.name.startsWith('~'));
@@ -634,16 +694,8 @@
                     }
 
                     if (id && exp) {
-                        const wh_exp_map = {
-                            'classic'   : 'classic',
-                            'sod'       : 'classic',
-                            'tbc'       : 'tbc',
-                            'wrath'     : 'wotlk',
-                            'cata'      : 'cata',
-                            'mists'     : 'mop-classic',
-                            'forever'   : 'forever',
-                        }
-                        return `https://www.wowhead.com/${wh_exp_map[exp]}/npc=${id}`
+                        const wh_exp = known_expansions[exp]?.wh ?? exp
+                        return `https://www.wowhead.com/${wh_exp}/npc=${id}`
                     }
                 },
                 openLink: function (href) {
