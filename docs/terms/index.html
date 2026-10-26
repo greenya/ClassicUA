@@ -274,7 +274,7 @@
                                                 @click.prevent.stop="toggleFilterTag(tag)">
                                                 {{ tag.name }}
                                                 <span class="badge"
-                                                    :class="{ 'badge-danger': filterTags.indexOf(tag) >= 0, 'badge-light': filterTags.indexOf(tag) == -1 }">
+                                                    :class="{ 'badge-warning': filterTags.indexOf(tag) >= 0, 'badge-light': filterTags.indexOf(tag) == -1 }">
                                                     {{ formatNumber(tag.count) }}
                                                 </span>
                                             </button>
