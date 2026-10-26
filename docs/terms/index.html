@@ -635,12 +635,13 @@
 
                     if (id && exp) {
                         const wh_exp_map = {
-                            'classic': 'classic',
-                            'sod': 'classic',
-                            'tbc': 'tbc',
-                            'wrath': 'wotlk',
-                            'cata': 'cata',
-                            'mists': 'mop-classic',
+                            'classic'   : 'classic',
+                            'sod'       : 'classic',
+                            'tbc'       : 'tbc',
+                            'wrath'     : 'wotlk',
+                            'cata'      : 'cata',
+                            'mists'     : 'mop-classic',
+                            'forever'   : 'forever',
                         }
                         return `https://www.wowhead.com/${wh_exp_map[exp]}/npc=${id}`
                     }
@@ -655,8 +656,8 @@
                 },
                 reEscape: function (text) {
                     return text.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
-                }
-            }
+                },
+            },
         });
 
     </script>
