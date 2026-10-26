@@ -217,12 +217,7 @@
                                 type="text" placeholder="Шукати...">
                             <div class="filter-term-bar input-group-append">
                                 <button v-for="tag in filterTags" :key="tag.name" type="button" class="btn active-tag"
-                                    :class="{
-                                        'btn-info'              : tag.main && filterTagsMatchAll,
-                                        'btn-outline-info'      : tag.main && !filterTagsMatchAll,
-                                        'btn-secondary'         : !tag.main && filterTagsMatchAll,
-                                        'btn-outline-secondary' : !tag.main && !filterTagsMatchAll,
-                                    }"
+                                    :class="(filterTagsMatchAll ? 'btn-' : 'btn-outline-') + tag.color"
                                     @click.prevent.stop="removeFilterTag(tag)">{{ tag.name }}</button>
                                 <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
                                     type="button" data-toggle="dropdown" data-display="static" aria-haspopup="true"
@@ -272,15 +267,18 @@
                                         </div>
                                     </div>
                                     <div class="content px-3 pb-3">
-                                        <button v-for="tag in visibleDropdownTags" :key="tag.name" type="button"
-                                            class="btn" :class="{ 'btn-info': tag.main, 'btn-secondary': !tag.main }"
-                                            @click.prevent.stop="toggleFilterTag(tag)">
-                                            {{ tag.name }}
-                                            <span class="badge"
-                                                :class="{ 'badge-warning': filterTags.indexOf(tag) >= 0, 'badge-light': filterTags.indexOf(tag) == -1 }">
-                                                {{ formatNumber(tag.count) }}
-                                            </span>
-                                        </button>
+                                        <div v-for="group in visibleDropdownTagGroups" :key="group.name" class="mt-2">
+                                            <h6 class="font-weight-bold text-secondary m-2">{{ group.title }}</h6>
+                                            <button v-for="tag in group.tags" :key="tag.name" type="button"
+                                                class="btn" :class="'btn-' + tag.color"
+                                                @click.prevent.stop="toggleFilterTag(tag)">
+                                                {{ tag.name }}
+                                                <span class="badge"
+                                                    :class="{ 'badge-danger': filterTags.indexOf(tag) >= 0, 'badge-light': filterTags.indexOf(tag) == -1 }">
+                                                    {{ formatNumber(tag.count) }}
+                                                </span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +296,7 @@
                         <th scope="col">
                             <div class="d-flex align-items-center justify-content-between">
                                 <span>Мітки</span>
-                                <span :class="[ 'badge', visibleTerms.length == maxVisibleTerms ? 'badge-danger' : 'badge-warning' ]"
+                                <span :class="[ 'badge', visibleTerms.length == maxVisibleTerms ? 'badge-danger' : 'badge-secondary' ]"
                                     :title="`Кількість результатів пошуку.\nМаксимально: ${formatNumber(maxVisibleTerms)}.${
                                         visibleTerms.length == maxVisibleTerms ? '\nДеталізуйте фільтр, щоб побачити інші результати.' : ''
                                     }`"
@@ -317,7 +315,7 @@
                             <a class="term-tag badge badge-light float-right m-0 p-0 text-secondary" href="#"
                                 @click.prevent.stop="openTermDetails(term)"><i class="material-icons">tag</i></a>
                             <a v-for="tag in term.tags" :key="tag.name" class="term-tag badge" href="#"
-                                :class="{ 'badge-info': tag.main, 'badge-secondary': !tag.main }"
+                                :class="'badge-' + tag.color"
                                 @click.prevent.stop="addFilterTag(tag)">{{ tag.name }}</a>
                         </td>
                     </tr>
@@ -344,11 +342,11 @@
                         </div>
                         <div class="modal-body">
                             <a v-for="tag in termDetails.tags" :key="tag.name" class="term-tag is-large badge" href="#"
-                                :class="{ 'badge-info': tag.main, 'badge-secondary': !tag.main }"
+                                :class="'badge-' + tag.color"
                                 @click.prevent.stop="toggleFilterTag(tag)">{{ tag.name }}</a>
                         </div>
                         <div v-if="termDetails.links && termDetails.links.length > 0" class="modal-footer justify-content-start">
-                            <button v-for="link in termDetails.links" :key="link.text" type="button" class="btn btn-lg btn-warning font-weight-bold"
+                            <button v-for="link in termDetails.links" :key="link.text" type="button" class="btn btn-lg btn-dark font-weight-bold"
                                 @click.prevent.stop="openLink(link.href)">{{ link.text }}</button>
                         </div>
                     </div>
@@ -371,11 +369,20 @@
         // Matches "expansion" in "#id[:expansion] description with spaces"
         const expansion_pattern = /^#\d+(?::(\w+))?/
 
+        // The first matching filter owns the tag; the final filter catches all remaining tags
+        // `color` can be "primary", "secondary", "success", "danger", "warning", "info", "light" or "dark" only
+        const tag_groups = [
+            { name: 'exp'   , title: 'Доповнення'   , filter: tag=>tag.exp  , color: 'dark' },
+            { name: 'main'  , title: 'Основні'      , filter: tag=>tag.main , color: 'info' },
+            { name: 'other' , title: 'Інші'         , filter: tag=>true     , color: 'secondary' },
+        ]
+
         class Tag {
             constructor (name, args = {}) {
                 this.name = name
                 this.main = !!args.main
                 this.exp = !!args.exp
+                this.color = tag_groups.find(group => group.filter(this)).color
                 this.count = 0
             }
 
@@ -423,6 +430,9 @@
                         this.tags.push(t.use())
                     }
                 })
+
+                const group_index = tag => tag_groups.findIndex(group => group.filter(tag))
+                this.tags.sort((a, b) => group_index(a) - group_index(b))
             }
 
             subtitle_text () {
@@ -496,26 +506,38 @@
             },
             computed: {
                 visibleTerms: function () {
-                    const text = this.filterText;
-                    const re = text ? new RegExp(this.reEscape(text), 'i') : false;
-                    const tags = this.filterTags;
+                    const text = this.filterText
+                    const re = text ? new RegExp(this.reEscape(text), 'i') : false
+                    const tags = this.filterTags
                     return this.terms
                         .filter(term => !tags.length || this.termHasTags(term, tags))
                         .filter(term => !re || this.termMatchesRe(term, re))
                         .sort((term1, term2) => term1.en.localeCompare(term2.en))
-                        .splice(0, this.maxVisibleTerms);
+                        .splice(0, this.maxVisibleTerms)
                 },
                 visibleDropdownTags: function () {
                     const re = this.filterDropdownTagsText
                         ? new RegExp(this.reEscape(this.filterDropdownTagsText), 'i')
-                        : false;
+                        : false
                     return this.tags
                         .filter(tag => !this.filterDropdownTagsCountLimit || tag.count > 1)
                         .filter(tag => !re || tag.name.search(re) >= 0)
                         .sort((tag1, tag2) => this.filterDropdownTagsSortAbc
                             ? tag1.name.localeCompare(tag2.name)
-                            : tag2.count - tag1.count || tag1.name.localeCompare(tag2.name));
-                }
+                            : tag2.count - tag1.count || tag1.name.localeCompare(tag2.name))
+                },
+                visibleDropdownTagGroups: function () {
+                    const groups = tag_groups.map(group => ({ ...group, tags: [] }))
+                    this.visibleDropdownTags.forEach(tag => {
+                        for (const g of groups) {
+                            if (g.filter(tag)) {
+                                g.tags.push(tag)
+                                break
+                            }
+                        }
+                    })
+                    return groups.filter(group => group.tags.length > 0)
+                },
             },
             methods: {
                 load: function (url) {
