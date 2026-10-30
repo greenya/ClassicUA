@@ -20,7 +20,6 @@ local NORMAL_FONT_COLOR     = _G.NORMAL_FONT_COLOR
 local RETRIEVING_ITEM_INFO  = _G.RETRIEVING_ITEM_INFO
 local TooltipUtil           = _G.TooltipUtil
 local UIParent              = _G.UIParent
-local UnitAura              = _G.UnitAura
 local UnitExists            = _G.UnitExists
 local UnitTokenFromGUID     = _G.UnitTokenFromGUID
 local WorldFrame            = _G.WorldFrame
@@ -1253,24 +1252,22 @@ local function hook_spell_tooltips()
     end
 end
 
--- WoW: Forever has no UnitAura(): its auras come as tooltip data
+-- WoW: Forever's auras come as tooltip data
 local function hook_aura_tooltips()
     if utils.is_forever then
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.UnitAura, for_known_tooltips(tooltip_set_unit_aura))
         return
     end
 
-    hooksecurefunc(GameTooltip, "SetUnitAura", function (self, unit, index, filter)
-        add_aura_to_tooltip(self, select(10, UnitAura(unit, index, filter)))
-    end)
-
-    hooksecurefunc(GameTooltip, "SetUnitBuff", function (self, unit, index)
-        add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HELPFUL")))
-    end)
-
-    hooksecurefunc(GameTooltip, "SetUnitDebuff", function (self, unit, index)
-        add_aura_to_tooltip(self, select(10, UnitAura(unit, index, "HARMFUL")))
-    end)
+    -- each setter's own getter with the caller's filter: the target of target's debuffs pass "RAID"
+    for method, getter in pairs({
+        SetUnitAura = "GetAuraDataByIndex", SetUnitBuff = "GetBuffDataByIndex", SetUnitDebuff = "GetDebuffDataByIndex",
+    }) do
+        hooksecurefunc(GameTooltip, method, function (self, unit, index, filter)
+            local aura = C_UnitAuras[getter](unit, index, filter)
+            add_aura_to_tooltip(self, aura and aura.spellId)
+        end)
+    end
 
     -- party frames, compact raid frames and nameplates show an aura by its instance id
     for _, method in ipairs({
