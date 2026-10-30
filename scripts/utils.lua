@@ -533,10 +533,9 @@ end
 
 -- one conversion of a format string: "%d", "%2$s" (the second argument), "%.1f" (one digit after the point), "%%" (a percent sign)
 -- What each kind takes is told where it is read: the game's in value_capture(), the translations' in entries' fill_format()
-utils.FORMAT_CONVERSION = "%%([%d%$%.]*)([sSNdfc%%])"
+utils.FORMAT_CONVERSION = "%%([%d%$%.]*)([sSNdfgc%%])"
 
--- rendering game's plural codes, as WoW: Forever's tooltip data holds them
--- "1 |4hour:hrs;" -> "1 hour"; "5 |4hour:hrs;" -> "5 hrs"
+-- rendering game's plural codes: "1 |4hour:hrs;" -> "1 hour"; "5 |4hour:hrs;" -> "5 hrs"
 utils.render_plurals = function (text)
     if not string_find(text, "|4", 1, true) then
         return text
@@ -590,13 +589,14 @@ local function plural_forms(format)
 end
 
 -- the capture of one value: "%s" takes any text, the game's "%c" a sign, "%f" a number with a fraction, "%d" a whole number
+-- "%g" is a number with a fraction only when it has one, as a spell's "%.3g sec cast" gives "1.5 sec cast" and "30 sec cast".
 -- A whole number has no thousands separator: mists' "+1,959 Haste" is matched by our "%c%s Haste" (mists/string.lua)
 local function value_capture(kind)
     if kind == "s" then
         return "(.-)"
     elseif kind == "c" then
         return "([%+%-])"
-    elseif kind == "f" then
+    elseif kind == "f" or kind == "g" then
         return "(%-?%d+%.?%d*)"
     end
     return "(%-?%d+)"
