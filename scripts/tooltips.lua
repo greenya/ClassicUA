@@ -1112,7 +1112,7 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
     end
 end
 
-local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processing)
+local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processing, is_world)
     if tooltip.classicua.entry_type then
         return
     end
@@ -1122,7 +1122,7 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processin
 
     glossary_key = utils.strip_color_codes(glossary_key)
     if glossary_key then
-        local found = entries.get_glossary_text(glossary_key)
+        local found = is_world and entries.get_object_text(glossary_key) or entries.get_glossary_text(glossary_key)
         if found then
             tooltip.classicua.entry_type = "glossary"
         end
@@ -1313,7 +1313,7 @@ end
 -- line comes with the game's own lines, not a frame after the tooltip shows (tooltip_updated), and stays on rebuilds
 local function tooltip_set_world_name(self)
     if options.can_lookup("translate_other_tooltips") then
-        add_glossary_entry_to_tooltip(self, _G[self:GetName() .. "TextLeft1"]:GetText(), true)
+        add_glossary_entry_to_tooltip(self, _G[self:GetName() .. "TextLeft1"]:GetText(), true, true)
     end
 end
 
@@ -1353,7 +1353,7 @@ local function tooltip_updated(self)
     end
 
     if options.can_lookup("translate_other_tooltips") then
-        add_glossary_entry_to_tooltip(self, text)
+        add_glossary_entry_to_tooltip(self, text, false, self == GameTooltip and self:GetOwner() == UIParent)
     end
 end
 

@@ -98,7 +98,7 @@ local function on_item_text_ready()
         if type(name_en) == "string" and name_en ~= "" then
             meta.entry_id = name_en
 
-            local name_uk = entries.get_glossary_text(name_en, nil, "object")
+            local name_uk = entries.get_object_text(name_en) or entries.get_glossary_text(name_en, nil, "object")
             if name_uk then
                 set_item_text_title(data_hooks.set_translation("item_text", name_en, name_en, utils.cap(name_uk)))
             end

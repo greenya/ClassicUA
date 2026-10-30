@@ -609,6 +609,12 @@ entries.get_language_text = function (language_name)
     return at.language[language_name] or language_name
 end
 
+-- a world object's own translation: the glossary may give its name another meaning ("Chest", a slot)
+entries.get_object_text = function (name)
+    local text = addon_table.object[name]
+    return text and utils.cap(text)
+end
+
 entries.get_glossary_text = function (entry_key, fallback, hint_type)
     local at = addon_table
 
