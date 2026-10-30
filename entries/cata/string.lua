@@ -6,8 +6,10 @@ local _, addonTable = ...
 
 local tooltip_strings = {
 { "EMPTY_SOCKET_COGWHEEL", "гніздо для шестірні" }, -- "Cogwheel Socket"
+{ "HOLY_POWER_COST", "%d сили Світла" }, -- "%s Holy Power"
 { "ITEM_TOY_ONUSE", "Використання: Додає цю іграшку до вашої колекції." }, -- "Use: Adds this toy to your Toy Box."
 { "REFORGED", "Перековано" }, -- "Reforged"
+{ "SOUL_SHARDS_COST", "Осколки душі: %d" }, -- "%s Soul |4Shard:Shards;"
 { "TOY", "Іграшка" }, -- "Toy"
 { "TRANSMOGRIFIED_HEADER", "Трансмогрифіковано в:" }, -- "Transmogrified to:"
 { "TRANSMOGRIFY_TOOLTIP_APPEARANCE_UNKNOWN", "Ви ще не зібрали цей вигляд" }, -- "You haven't collected this appearance"
@@ -15,6 +17,7 @@ local tooltip_strings = {
 
 local tooltip_texts = {
 { "%c%s Mastery", "%c%d майстерності" },
+{ "Illustrious", "знаменитий" },
 { "Reforged from Critical Strike", "перековано з критичного удару" },
 { "Reforged from Dodge", "перековано з ухилення" },
 { "Reforged from Expertise", "перековано з вправності" },
@@ -23,6 +26,7 @@ local tooltip_texts = {
 { "Reforged from Mastery", "перековано з майстерності" },
 { "Reforged from Parry", "перековано з парирування" },
 { "Reforged from Spirit", "перековано з духу" },
+{ "Special Ability", "особлива здібність" },
 { "Twilight", "сутінковий" },
 }
 

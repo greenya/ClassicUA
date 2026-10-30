@@ -76,6 +76,7 @@ local tooltip_strings = {
 local tooltip_texts = {
 { "Gem Bag", "сумка ювеліра" },
 { "Leatherworking Bag", "сумка шкірника" },
+{ "Master", "майстер" },
 { "Mining Bag", "сумка гірника" },
 { "Requires at least %d Blue |4gem:gems;", "потрібно: %d |4синій самоцвіт:сині самоцвіти:синіх самоцвітів;" },
 { "Requires at least %d Red |4gem:gems;", "потрібно: %d |4червоний самоцвіт:червоні самоцвіти:червоних самоцвітів;" },

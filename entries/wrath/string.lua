@@ -12,9 +12,11 @@ local tooltip_strings = {
 { "ITEM_LEVEL_RANGE_CURRENT", "Потрібний рівень: %d – %d (%d)" }, -- "Requires level %d to %d (%d)"
 { "MAJOR_GLYPH", "Великий символ" }, -- "Major Glyph"
 { "MINOR_GLYPH", "Малий символ" }, -- "Minor Glyph"
+{ "RUNIC_POWER_COST", "%d рунічної сили" }, -- "%s Runic Power"
 }
 
 local tooltip_texts = {
+{ "Grand Master", "гросмейстер" },
 { "Heroic", "героїчний" },
 { "Inscription Bag", "сумка писаря" },
 }

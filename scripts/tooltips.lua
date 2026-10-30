@@ -12,12 +12,17 @@ local C_Spell               = _G.C_Spell
 local C_UnitAuras           = _G.C_UnitAuras
 local CreateFrame           = _G.CreateFrame
 local Enum                  = _G.Enum
+local GameTooltip           = _G.GameTooltip
 local GetBindLocation       = _G.GetBindLocation
+local hooksecurefunc        = _G.hooksecurefunc
 local IsAltKeyDown          = _G.IsAltKeyDown
 local IsControlKeyDown      = _G.IsControlKeyDown
 local IsShiftKeyDown        = _G.IsShiftKeyDown
+local ItemRefTooltip        = _G.ItemRefTooltip
 local NORMAL_FONT_COLOR     = _G.NORMAL_FONT_COLOR
 local RETRIEVING_ITEM_INFO  = _G.RETRIEVING_ITEM_INFO
+local table_concat          = _G.table.concat
+local TooltipDataProcessor  = _G.TooltipDataProcessor
 local TooltipUtil           = _G.TooltipUtil
 local UIParent              = _G.UIParent
 local UnitExists            = _G.UnitExists
@@ -248,7 +253,8 @@ end
 
 -- Our texts go into the game's own lines
 -- Each line we change is kept in tooltip.classicua.lines as { game's text, our text }, so the modifier key can show original text
-local style_options = { item = "tooltip_style_item" }
+local style_options = { item = "tooltip_style_item", spell = "tooltip_style_spell" }
+local style_kinds = { item = "item", spell = "spell", sod_engraving = "spell" }
 local line_sides = { "TextLeft", "TextRight" }
 
 local function is_replacement_style(kind)
@@ -257,7 +263,7 @@ end
 
 -- whether any kind of tooltip uses the replace style, so the modifier key has lines to switch
 local function is_any_replacement_style()
-    return is_replacement_style("item")
+    return is_replacement_style("item") or is_replacement_style("spell")
 end
 
 local function is_original_shown()
@@ -597,6 +603,107 @@ local function replace_item_lines(tooltip, entry, entry_id, first_phrase_line)
 end
 
 -- -----------------------------
+-- [ the replace style: spells ]
+-- -----------------------------
+
+-- a spell's description as its tooltip shows it, plural codes chosen, nil when it is secret
+local function get_spell_description(spell_id)
+    local description = C_Spell.GetSpellDescription(spell_id)
+    return type(description) == "string" and not utils.is_secret(description) and utils.render_plurals(description) or nil
+end
+
+-- a spell whose description's line holds other spells' descriptions too, a paragraph each: the runes of season of discovery, some headed by the rune's icon
+-- Cata and mists have a few such spells too, as Conjure Refreshment's note on conjured items.
+-- Each one's translation joins the description the same way, its numbers from that spell's own description.
+local function add_rune_paragraphs(text_uk, line_en, entry, spell_id)
+    -- WoW: Forever's Feral Charge (1238122) has no text of its own, only its runes'
+    local paragraphs = text_uk ~= "" and { text_uk } or {}
+    local rune_spells = type(entry.rune) == "table" and entry.rune or { entry.rune }
+    for _, rune_spell_id in ipairs(rune_spells) do
+        local rune_spell = entries.get_entry("spell", rune_spell_id)
+        local rune_text_en = (get_spell_description(rune_spell_id) or ""):gsub("%s+$", "")
+        local rune_text = rune_spell and rune_spell[2]
+            and utils.cap(entries.make_entry_text(rune_spell[2], { rune_text_en ~= "" and rune_text_en or line_en }))
+        if rune_text then
+            local start = rune_text_en ~= "" and line_en:find(rune_text_en, 1, true)
+            local icon = start and line_en:sub(1, start - 1):match("|T[^|]+|t%s*$")
+            paragraphs[#paragraphs + 1] = (icon or "") .. rune_text
+        elseif options.account.dev_mode then
+            dev_log.issue_entry("spell", spell_id, "невірне значення rune, невірне id закляття " .. tostring(rune_spell_id))
+        end
+    end
+    return table_concat(paragraphs, "\n\n")
+end
+
+-- the translated texts for a spell's lines, keyed by line index: its name (in the line name_index, if given) and its description
+-- The description's line is the one WoW: Forever's data marks (description_index), else the line equal to the game's description.
+-- An aura's text is the first line under its name, unless that line is one of the game's phrases ("29 min remaining").
+-- The description takes its numbers from its own line, so a cast time "1.5 sec cast" above it can't fill "{1} sec".
+local function get_spell_texts(entry, spell_id, is_aura, heading, lines_en, name_index, description_index)
+    local texts = {}
+    if name_index then
+        texts[name_index] = heading or entry and entry[1] and utils.cap(entries.make_entry_text(entry[1], lines_en))
+    end
+    local description_uk = entry and entry[is_aura and 3 or 2]
+    if not description_uk then
+        return texts
+    end
+
+    if not description_index then
+        local description = not is_aura and get_spell_description(spell_id)
+        for i = (name_index or 0) + 1, #lines_en do
+            local text = lines_en[i]
+            if text ~= "" and (is_aura or text == description) then
+                description_index = not (is_aura and entries.translate_string_text(text)) and i or nil
+                break
+            end
+        end
+    end
+    local line_en = description_index and lines_en[description_index]
+    local text_uk = line_en and line_en ~= "" and get_entry_texts({ line_en }, description_uk)[1]
+    if not text_uk then
+        return texts
+    end
+
+    if not is_aura and entry.rune then
+        text_uk = add_rune_paragraphs(text_uk, line_en, entry, spell_id)
+    end
+    texts[description_index] = text_uk
+    return texts
+end
+
+-- the classic clients: a spell's tooltip gets the translated texts (get_spell_texts), then the rank on the right of the name and the game's phrases
+-- The name itself is never a phrase: a spell named "Shadowflame" isn't the item tag.
+local function replace_spell_lines(tooltip, entry, spell_id, is_aura, heading)
+    local is_replaced = replace_lines(tooltip, get_spell_texts(entry, spell_id, is_aura, heading, get_lines_en(tooltip), 1))
+    local rank = _G[tooltip:GetName() .. "TextRight1"]
+    local rank_text = rank and rank:GetText()
+    if rank_text and rank_text ~= "" then
+        is_replaced = replace_line(tooltip, rank, translate_line(rank_text)) or is_replaced
+    end
+    return replace_string_lines(tooltip, 2) or is_replaced
+end
+
+-- a talent's next rank, in the game's line found by its text (the spell's description), which its numbers come from
+local function replace_next_rank_line(tooltip, spell_id)
+    local entry = entries.get_entry("spell", spell_id)
+    local description = get_spell_description(spell_id)
+    if not (entry and entry[2] and description and description ~= "") then
+        return false
+    end
+
+    local name = tooltip:GetName()
+    for i = 2, tooltip:NumLines() do
+        local font_string = _G[name .. "TextLeft" .. i]
+        if font_string:GetText() == description then
+            local text_uk = entries.make_entry_text(entry[2], { description })
+            return replace_line(tooltip, font_string, text_uk and utils.cap(text_uk))
+        end
+    end
+    return false
+end
+
+-- -----------------------------
 -- [ the replace style: sizing ]
 -- -----------------------------
 
@@ -716,6 +823,8 @@ end
 
 -- the line types the game adds in their post-call (sell price, socket icon): they are translated once added (replace_added_line)
 local kept_line_types = {}
+-- the kinds of data planned, by the option that translates them
+local kind_options = { item = "translate_item", spell = "translate_spell" }
 
 local function plan_line(plan, line, left_uk, right_uk)
     -- a translation with a value left unfilled ("{1}": none in the game's line) leaves the game's line as it is
@@ -736,7 +845,15 @@ local function plan_texts(plan, lines, texts)
     end
 end
 
--- a tooltip pre-call: plans the translations for the lines of an item's data before game adds them
+local function find_line(lines, line_type)
+    for i, line in ipairs(lines) do
+        if line.type == line_type then
+            return i
+        end
+    end
+end
+
+-- a tooltip pre-call: plans the translations for the lines of an item's or a spell's data (an aura's too) before the game adds them
 local function plan_tooltip(tooltip, data)
     local lines = type(data) == "table" and data.lines
     if type(lines) ~= "table" then
@@ -744,11 +861,13 @@ local function plan_tooltip(tooltip, data)
     end
 
     -- the kind of the data, which also tells can_show() that game builds this tooltip from data
-    local is_item = data.type == Enum.TooltipDataType.Item
+    local data_types, line_types = Enum.TooltipDataType, Enum.TooltipDataLineType
+    local is_aura = data.type == data_types.UnitAura
+    local kind = data.type == data_types.Item and "item" or (data.type == data_types.Spell or is_aura) and "spell" or "other"
     local claim = tooltip.classicua
-    claim.style_kind = is_item and "item" or "other"
+    claim.style_kind = kind
     local id = not utils.is_secret(data.id) and data.id
-    if not (is_item and id and is_replacement_style("item") and options.can_translate("translate_item")) then
+    if not (id and kind_options[kind] and is_replacement_style(kind) and options.can_translate(kind_options[kind])) then
         return
     end
 
@@ -760,18 +879,18 @@ local function plan_tooltip(tooltip, data)
         lines_en[i] = type(line.leftText) == "string" and utils.render_plurals(line.leftText) or ""
     end
 
-    -- the name's line is the one the data marks, else line 1, unless the data is appended to a tooltip with lines
-    local name_index = tooltip:NumLines() == 0 and 1 or nil
-    for i, line in ipairs(lines) do
-        if line.type == Enum.TooltipDataLineType.ItemName then
-            name_index = i
-            break
-        end
-    end
+    -- name line is the one the data marks, else line 1, unless the data is appended to a tooltip with lines (talent's next rank)
+    local name_index = find_line(lines, kind == "item" and line_types.ItemName or line_types.SpellName) or tooltip:NumLines() == 0 and 1 or nil
 
     claim.plan = claim.plan or {}
     local plan = claim.plan
-    plan_texts(plan, lines, get_item_texts(tooltip, entries.get_entry("item", id), id, lines_en, name_index))
+    local entry = entries.get_entry(kind, id)
+    if kind == "item" then
+        plan_texts(plan, lines, get_item_texts(tooltip, entry, id, lines_en, name_index))
+    else -- spell or aura
+        plan_texts(plan, lines, get_spell_texts(entry, id, is_aura, nil, lines_en, name_index,
+            find_line(lines, line_types.SpellDescription)))
+    end
 
     for i, line in ipairs(lines) do
         local planned = plan[line]
@@ -810,6 +929,10 @@ local function add_planned_line(tooltip, line)
     -- the game spaces the name of an item linked in chat for the close button (TooltipDataRules)
     if type(left_text) ~= "string"
         or tooltip == ItemRefTooltip and line.type == Enum.TooltipDataLineType.ItemName and line.rightText then
+        -- The game adds this line itself, and replace_added_line() puts the planned text into it (a linked item's name) or leaves it, as the plan has tried it already (a name with no entry is no phrase).
+        -- A kept line still gets the game's phrases there, as no plan can take its place.
+        claim.data_text = claim.plan and not utils.is_secret(line.leftText) and not kept_line_types[line.type] and line.leftText or nil
+        claim.data_uk = planned and planned.left
         return
     end
 
@@ -831,17 +954,48 @@ local function add_planned_line(tooltip, line)
     return true
 end
 
--- the lines the game's Lua adds after an item's data: the sell price, the stat changes under a comparison
+local function get_talent_owner(tooltip)
+    local owner = tooltip:GetOwner()
+    return not utils.is_secret(owner) and type(owner) == "table" and owner.nodeInfo and owner or nil
+end
+
+-- lines the game's Lua adds after item/spell data (sell price, stat changes under comparison)
+-- or talent's title and rank, added before any data
 local function replace_added_line(tooltip, side, text)
     local claim = tooltip.classicua
-    if claim.is_adding or not claim.plan or type(text) ~= "string" or text == "" or utils.is_secret(text) then
+    if claim.is_adding or type(text) ~= "string" or utils.is_secret(text) or text == "" then
         return
+    end
+    local talent = not claim.plan and is_replacement_style("spell") and options.can_translate("translate_spell") and get_talent_owner(tooltip)
+    if not (claim.plan or talent) then
+        return
+    end
+    -- a data line our pre-call left to the game (add_planned_line): the plan already tried it, and gave its text if it had one
+    local text_uk
+    if side == "TextLeft" and text == claim.data_text then
+        text_uk = claim.data_uk
+        claim.data_text, claim.data_uk = nil, nil
+        if not text_uk then
+            return
+        end
     end
 
     -- the line just added is the last one
     local index = tooltip:NumLines()
     local font_string = not utils.is_secret(index) and _G[tooltip:GetName() .. side .. index]
-    local text_uk = font_string and translate_line(text)
+    if not font_string then
+        return
+    end
+
+    if talent and index == 1 then
+        -- the title is always a talent's spell name
+        local spell_id = talent.definitionInfo and talent.definitionInfo.spellID
+        local entry = spell_id and entries.get_entry("spell", spell_id)
+        text_uk = entry and entry[1] and utils.cap(entries.make_entry_text(entry[1], { text }))
+    elseif not text_uk then
+        text_uk = translate_line(text)
+    end
+
     if text_uk then
         -- forever's GetText() has no color codes: the line's color goes inline, so either text keeps it on Alt
         local code = color_code(font_string:GetTextColor())
@@ -878,6 +1032,37 @@ end
 -- [ entries in tooltips, both styles ]
 -- ------------------------------------
 
+-- the replace style
+local function replace_entry_lines(tooltip, entry_type, entry, entry_id, is_aura)
+    if utils.is_forever then
+        return false
+    elseif entry_type == "item" then
+        -- an item with no entry gets the game's phrases too
+        return replace_item_lines(tooltip, entry, entry_id)
+    elseif entry_type == "spell" then
+        return replace_spell_lines(tooltip, entry, entry_id, is_aura)
+    end
+
+    -- SoD engraving shows its spell's tooltip under the engraving's name
+    local spell_id = entry and entry.spell
+    local heading = entry and utils.cap(entries.make_entry_text(entry[1], tooltip))
+    return replace_spell_lines(tooltip, spell_id and entries.get_entry("spell", spell_id), spell_id, false, heading)
+end
+
+-- the addition style
+local function add_entry_lines(tooltip, entry_type, entry, entry_id, is_aura, unit)
+    tooltip:AddLine(" ")
+    if entry_type == "item" then
+        add_item_entry_to_tooltip(tooltip, entry, entry_id)
+    elseif entry_type == "spell" then
+        add_spell_entry_to_tooltip(tooltip, entry, entry_id, is_aura, false)
+    elseif entry_type == "sod_engraving" then
+        add_sod_engraving_entry_to_tooltip(tooltip, entry, entry_id)
+    elseif entry_type == "npc" then
+        add_npc_entry_to_tooltip(tooltip, entry, unit)
+    end
+end
+
 local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_translation_on, unit)
     if tooltip.classicua.entry_type then
         return
@@ -893,26 +1078,13 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
 
     local updated = false
     local entry = entries.get_entry(entry_type, entry_id)
-    local is_replacement = entry_type == "item" and is_replacement_style("item")
+    local is_replacement = is_replacement_style(style_kinds[entry_type])
 
-    if is_replacement and utils.is_forever then
-        -- WoW: Forever's lines are planned from the tooltip data, see plan_tooltip()
-    elseif is_replacement then
-        -- an item with no entry gets the game's phrases too
-        updated = is_translation_on and replace_item_lines(tooltip, entry, entry_id)
+    if is_replacement then
+        updated = is_translation_on and replace_entry_lines(tooltip, entry_type, entry, entry_id, is_aura)
     elseif entry and is_translation_on then
+        add_entry_lines(tooltip, entry_type, entry, entry_id, is_aura, unit)
         updated = true
-        tooltip:AddLine(" ")
-
-        if entry_type == "item" then
-            add_item_entry_to_tooltip(tooltip, entry, entry_id)
-        elseif entry_type == "spell" then
-            add_spell_entry_to_tooltip(tooltip, entry, entry_id, is_aura, false)
-        elseif entry_type == "sod_engraving" then
-            add_sod_engraving_entry_to_tooltip(tooltip, entry, entry_id)
-        elseif entry_type == "npc" then
-            add_npc_entry_to_tooltip(tooltip, entry, unit)
-        end
     end
 
     if not entry and options.account.dev_mode then
@@ -934,8 +1106,8 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
 
     tooltip.classicua.entry_type = entry_type
     tooltip.classicua.entry_id = entry_id
-    -- lines past this count are the ones the game adds later, see replace_late_lines()
-    if is_replacement and is_translation_on and not utils.is_forever then
+    if is_replacement and entry_type == "item" and is_translation_on and not utils.is_forever then
+        -- lines past this count are the ones the game adds later, see replace_late_lines()
         tooltip.classicua.replaced_lines = tooltip:NumLines()
     end
 end
@@ -1022,6 +1194,18 @@ local function handle_talent_tooltip(tooltip, talent_id)
 
     local rank = claim.entry_type == "spell" and get_talent_rank(ranks, claim.entry_id)
     local next_rank_id = rank and ranks[rank + 1]
+
+    if is_replacement_style("spell") then
+        if options.can_translate("translate_spell") then
+            local is_replaced = next_rank_id and replace_next_rank_line(tooltip, next_rank_id)
+            is_replaced = replace_string_lines(tooltip, 2) or is_replaced
+            if is_replaced and tooltip:IsShown() then
+                tooltip:Show()
+            end
+        end
+        return
+    end
+
     if not next_rank_id then
         return
     end
@@ -1074,7 +1258,9 @@ local function tooltip_set_spell(self, data)
             local claim = self.classicua
             if claim.talent_rank_id then
                 handle_entry(self, "spell", claim.talent_rank_id, "translate_spell")
-                add_next_rank_to_tooltip(self, id)
+                if not is_replacement_style("spell") then
+                    add_next_rank_to_tooltip(self, id)
+                end
                 claim.talent_rank_id = nil
                 return
             end
@@ -1178,6 +1364,9 @@ local function tooltip_cleared(self)
     self.classicua.skipped = nil
     self.classicua.replaced_lines = nil
     self.classicua.plan = nil
+    self.classicua.data_text = nil
+    self.classicua.data_uk = nil
+    self.classicua.is_adding = nil
     self.classicua.style_kind = nil
     wipe(self.classicua.lines)
 end

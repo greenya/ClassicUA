@@ -232,6 +232,14 @@ local option_rows = {
         tooltip     = "Назви та описи заклять, здібностей і талантів."
     },
     {
+        dropdown    = "tooltip_style_spell",
+        option_key  = "tooltip_style_spell",
+        parent_key  = "spell",
+        label       = "Стиль",
+        values      = tooltips.styles,
+        tooltip     = "Стиль відображення перекладу в підказках заклять, аур і талантів." .. TOOLTIP_STYLES_HELP
+    },
+    {
         key         = "npc",
         option_key  = "translate_npc",
         name        = "Персонажі",

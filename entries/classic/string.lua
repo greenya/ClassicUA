@@ -202,6 +202,7 @@ local tooltip_strings = {
 { "AMMO_DAMAGE_TEMPLATE", "Додає %s шкоди за секунду" }, -- "Adds %s damage per second"
 { "AMMO_SCHOOL_DAMAGE_TEMPLATE", "Додає %s шкоди (%s) за секунду" }, -- "Adds %s %s damage per second"
 { "ARMOR_TEMPLATE", "%d броні" }, -- "%s Armor"
+{ "COMBO_POINTS_COST", "Прийомів комбінації: %d" }, -- "%s Combo |4Point:Points;"
 { "CONTAINER_SLOTS", "%2$s (комірок: %1$d)" }, -- "%d Slot %s"
 { "DAMAGE_TEMPLATE", "%s – %s шкоди" }, -- "%s - %s Damage"
 { "DAMAGE_TEMPLATE_WITH_SCHOOL", "%s – %s шкоди (%s)" }, -- "%s - %s %s Damage"
@@ -209,7 +210,12 @@ local tooltip_strings = {
 { "DURABILITY_TEMPLATE", "Міцність: %d / %d" }, -- "Durability %d / %d"
 { "ENCHANT_ITEM_REQ_LEVEL", "Для зачарування потрібний рівень: %d" }, -- "Enchantment Requires Level %d"
 { "ENCHANT_ITEM_REQ_SKILL", "Для зачарування потрібно: %S" }, -- "Enchantment Requires %s"
+{ "ENERGY_COST", "%d енергії" }, -- "%s Energy"
+{ "ENERGY_COST_PER_TIME", "%s енергії, плюс %s за секунду" }, -- "%s Energy, plus %s per sec"
+{ "ENERGY_COST_PER_TIME_NO_BASE", "%s енергії за секунду" }, -- "%s Energy per sec"
 { "EQUIPMENT_SETS", "Набори спорядження: |cFFFFFFFF%N|r" }, -- "Equipment Sets: |cFFFFFFFF%s|r"
+{ "FOCUS_COST", "%d концентрації" }, -- "%s Focus"
+{ "HEALTH_COST", "%d здоров'я" }, -- "%s Health"
 { "HOURS_ABBR", "%d год" }, -- "%d |4Hr:Hrs;"
 { "INVTYPE_2HWEAPON", "Дворучна" }, -- "Two-Hand"
 { "INVTYPE_AMMO", "Набої" }, -- "Ammo"
@@ -300,6 +306,10 @@ local tooltip_strings = {
 { "ITEM_WRAPPED_BY", "|cff00ff00<Подарунок від: %N>|r" }, -- "|cff00ff00<Gift from %s>|r"
 { "ITEM_WRITTEN_BY", "Автор: %N" }, -- "Written by %s"
 { "LOCKED", "Замкнено" }, -- "Locked"
+{ "MANA_COST", "%d мани" }, -- "%s Mana"
+{ "MANA_COST_PER_TIME", "%s мани, плюс %s за секунду" }, -- "%s Mana, plus %s per sec"
+{ "MANA_COST_PER_TIME_NO_BASE", "%s мани за секунду" }, -- "%s Mana per sec"
+{ "MELEE_RANGE", "Ближній бій" }, -- "Melee Range"
 { "MINUTES_ABBR", "%d хв" }, -- "%d |4Min:Mins;"
 { "PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL", "+%s – %s шкоди (%s)" }, -- "+ %s - %s %s Damage"
 { "PLUS_SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL", "+%d шкоди (%s)" }, -- "+%s %s Damage"
@@ -331,12 +341,40 @@ local tooltip_strings = {
 { "PVP_RANK_8_1", "майстер-сержант" }, -- "Master Sergeant"
 { "PVP_RANK_9_0", "головний сержант" }, -- "First Sergeant"
 { "PVP_RANK_9_1", "сержант-майор" }, -- "Sergeant Major"
+{ "RAGE_COST", "%d люті" }, -- "%s Rage"
+{ "RAGE_COST_PER_TIME", "%s люті, плюс %s за секунду" }, -- "%s Rage, plus %s per sec"
+{ "RAGE_COST_PER_TIME_NO_BASE", "%s люті за секунду" }, -- "%s Rage per sec"
 { "RETRIEVING_ITEM_INFO", "Отримання інформації про предмет" }, -- "Retrieving item information"
 { "SECONDS_ABBR", "%d с" }, -- "%d |4Sec:Secs;"
 { "SELL_PRICE", "Ціна продажу" }, -- "Sell Price"
 { "SHIELD_BLOCK_TEMPLATE", "%d блокування" }, -- "%d Block"
 { "SINGLE_DAMAGE_TEMPLATE", "%d шкоди" }, -- "%s Damage"
 { "SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL", "%d шкоди (%s)" }, -- "%s %s Damage"
+{ "SPELL_CAST_CHANNELED", "Промовляння" }, -- "Channeled"
+{ "SPELL_CAST_TIME_INSTANT", "Миттєва вимова" }, -- "Instant cast"
+{ "SPELL_CAST_TIME_INSTANT_NO_MANA", "Миттєво" }, -- "Instant"
+{ "SPELL_CAST_TIME_MIN", "Вимова: %s хв" }, -- "%.3g min cast"
+{ "SPELL_CAST_TIME_SEC", "Вимова: %s с" }, -- "%.3g sec cast"
+{ "SPELL_ON_NEXT_SWING", "Наступна атака ближнього бою" }, -- "Next melee"
+{ "SPELL_PASSIVE", "Пасивна" }, -- "Passive"
+{ "SPELL_RANGE", "Дальність: %s м" }, -- "%s yd range"
+{ "SPELL_RANGE_AREA", "Довкола заклинача" }, -- "Area around caster"
+{ "SPELL_RANGE_DUAL", "%1$s: дальність %2$s м" }, -- "%1$s: %2$s yd range"
+{ "SPELL_RANGE_UNLIMITED", "Необмежена дальність" }, -- "Unlimited range"
+{ "SPELL_RECAST_TIME_DAYS", "Відновлення: %s д" }, -- "%.3g day cooldown"
+{ "SPELL_RECAST_TIME_HOURS", "Відновлення: %s год" }, -- "%.3g hour cooldown"
+{ "SPELL_RECAST_TIME_INSTANT", "Миттєве відновлення" }, -- "Instant cooldown"
+{ "SPELL_RECAST_TIME_MIN", "Відновлення: %s хв" }, -- "%.3g min cooldown"
+{ "SPELL_RECAST_TIME_SEC", "Відновлення: %s с" }, -- "%.3g sec cooldown"
+{ "SPELL_TIME_REMAINING_DAYS", "Залишилося: %d д" }, -- "%d |4day:days; remaining"
+{ "SPELL_TIME_REMAINING_HOURS", "Залишилося: %d год" }, -- "%d |4hour:hours; remaining"
+{ "SPELL_TIME_REMAINING_MIN", "Залишилося: %d хв" }, -- "%d |4minute:minutes; remaining"
+{ "SPELL_TIME_REMAINING_SEC", "Залишилося: %d с" }, -- "%d |4second:seconds; remaining"
+{ "TOOLTIP_TALENT_LEARN", "Клацніть, щоб вивчити" }, -- "Click to learn"
+{ "TOOLTIP_TALENT_NEXT_RANK", "Наступний ранг:" }, -- "Next rank:"
+{ "TOOLTIP_TALENT_PREREQ", "Потрібно очок у «%2$s»: %1$d" }, -- "Requires %1$d |4point:points; in %2$s"
+{ "TOOLTIP_TALENT_RANK", "Ранг %d/%d" }, -- "Rank %d/%d"
+{ "TOOLTIP_TALENT_TIER_POINTS", "Потрібно очок у талантах «%2$N»: %1$d" }, -- "Requires %d points in %s Talents"
 { "XP", "Досвід" }, -- "XP"
 }
 
@@ -350,6 +388,7 @@ local tooltip_texts = {
 { "%d |4Min:Mins; %d |4Sec:Secs;", "%d хв %d с" },
 { "Agility", "спритність" },
 { "Ammo Pouch", "підсумок" },
+{ "Apprentice", "учень" },
 { "Arcane", "аркана" },
 { "Arcane Damage", "шкода від аркани" },
 { "%c%d Arcane Resistance", "%c%d опору аркані" },
@@ -358,6 +397,7 @@ local tooltip_texts = {
 { "Armor", "броня" },
 { "Armor Penetration", "пробиття броні" },
 { "Arrow", "стріла" },
+{ "Artisan", "ремісник" },
 { "Attack Power", "сила атаки" },
 { "Attack Power In Forms", "сила атаки у формах" },
 { "Axe", "сокира" },
@@ -374,19 +414,23 @@ local tooltip_texts = {
 { "Critical Strike (Ranged)", "критичний удар (дальній бій)" },
 { "Critical Strike (Spell)", "критичний удар (закляття)" },
 { "Crossbow", "арбалет" },
+{ "Curse", "прокляття" },
 { "Dagger", "кинджал" },
 { "Damage Per Second", "шкода за секунду" },
 { "Defense", "захист" },
+{ "Disease", "хвороба" },
 { "Dodge", "ухилення" },
 { "Enchanting Bag", "сумка зачарувальника" },
 { "Engineering Bag", "сумка інженера" },
 { "Exalted", "возвеличена" },
+{ "Expert", "експерт" },
 { "Expertise", "вправність" },
 { "Fire", "вогонь" },
 { "Fire Damage", "шкода від вогню" },
 { "%c%d Fire Resistance", "%c%d опору вогню" },
 { "Fire Resistance", "опір вогню" },
 { "Fishing Pole", "вудка" },
+{ "Fishing Poles", "вудки" },
 { "Fist Weapon", "кулачна зброя" },
 { "Friendly", "дружня" },
 { "Frost", "крига" },
@@ -413,13 +457,16 @@ local tooltip_texts = {
 { "Idol", "ідол" },
 { "Increases damage and healing done by magical spells and effects by up to %s.", "збільшує шкоду і зцілення магічних заклять і ефектів на %d." },
 { "Intellect", "інтелект" },
+{ "Journeyman", "підмайстер" },
 { "Leather", "шкіра" },
 { "Libram", "манускрипт" },
 { "Lockpicking", "зламування замків" },
 { "Mace", "булава" },
+{ "Magic", "магія" },
 { "Mail", "кольчуга" },
 { "Mana", "мана" },
 { "Mana Regeneration", "відновлення мани" },
+{ "Melee Weapon", "зброя ближнього бою" },
 { "Miscellaneous", "різне" },
 { "Mount", "верхове створіння" },
 { "Nature", "природа" },
@@ -429,18 +476,25 @@ local tooltip_texts = {
 { "Neutral", "нейтральна" },
 { "Parry", "парирування" },
 { "Plate", "лати" },
+{ "Poison", "отрута" },
 { "Polearm", "держакова зброя" },
 { "Projectile", "снаряд" },
 { "PvP Resilience", "PvP-стійкість" },
+{ "Racial", "расова" },
+{ "Racial Passive", "расова пасивна" },
 { "Ranged Attack Power", "сила атаки дальнього бою" },
+{ "Ranged Weapon", "зброя дальнього бою" },
 { "Rank %d", "ранг %d" },
+{ "Reagents: %s", "Реагенти: %s" },
 { "Revered", "шанована" },
 { "Riding", "верхова їзда" },
 { "Shadow", "тінь" },
 { "Shadow Damage", "шкода від тіні" },
 { "%c%d Shadow Resistance", "%c%d опору тіні" },
 { "Shadow Resistance", "опір тіні" },
+{ "Shapeshift", "зміна подоби" },
 { "Shield", "щит" },
+{ "Shields", "щити" },
 { "Soul Bag", "сумка душ" },
 { "Spear", "спис" },
 { "Speed %s", "Швидкість %.2f" },
@@ -450,7 +504,9 @@ local tooltip_texts = {
 { "Staff", "посох" },
 { "Stamina", "витривалість" },
 { "Strength", "сила" },
+{ "Summon", "виклик" },
 { "Sword", "меч" },
+{ "Tools: %s", "Інструменти: %s" },
 { "Totem", "тотем" },
 { "Unfriendly", "недружня" },
 { "Wand", "жезл" },

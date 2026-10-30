@@ -13,6 +13,10 @@ local global_strings = {
 }
 
 local tooltip_strings = {
+{ "BURNING_EMBERS_COST", "Палаючі жарини: %d" }, -- "%s Burning |4Ember:Embers;"
+{ "CHI_COST", "%d ці" }, -- "%s Chi"
+{ "CHI_COST_PER_TIME", "%s ці, плюс %s за секунду" }, -- "%s Chi, plus %s per sec"
+{ "DEMONIC_FURY_COST", "%d демонічної люті" }, -- "%s Demonic Fury"
 { "EMPTY_SOCKET_HYDRAULIC", "торкнуте ша" }, -- "Sha-Touched"
 { "ITEM_HEROIC", "Героїчний" }, -- "Heroic"
 { "ITEM_LEVEL", "Рівень предмета: %d" }, -- "Item Level %d"
@@ -32,7 +36,15 @@ local tooltip_strings = {
 { "ITEM_REQ_ARENA_RATING_5V5", "Потрібен рейтинг арени %d|nу категорії 5 на 5" }, -- "Requires arena rating of %d|nin 5v5 brackets"
 { "ITEM_REQ_SPECIALIZATION", "Потрібна спеціалізація: %s" }, -- "Requires: %s"
 { "ITEM_UPGRADE_TOOLTIP_FORMAT", "Рівень покращення: %d/%d" }, -- "Upgrade Level: %d/%d"
+{ "MOUNT_JOURNAL_WRONG_FACTION", "Це верхове створіння не для вашої фракції." }, -- "You are not the right faction for this mount."
 { "RAID_FINDER", "Пошук рейду" }, -- "Raid Finder"
+{ "SOCKETING_ITEM_MIN_LEVEL_I", "Потрібний рівень предмета: %d" }, -- "Requires Item Level: %d"
+{ "SPELL_CAST_TIME_INSTANT", "Миттєво" }, -- "Instant"
+{ "SPELL_MAX_CHARGES", "Максимум зарядів: %d" }, -- "Max %d Charges"
+{ "SPELL_ON_NEXT_RANGED", "Швидкість атаки" }, -- "Attack speed"
+{ "SPELL_RECAST_TIME_CHARGES_HOURS", "Відновлення заряду: %s год" }, -- "%.3g hour recharge"
+{ "SPELL_RECAST_TIME_CHARGES_MIN", "Відновлення заряду: %s хв" }, -- "%.3g min recharge"
+{ "SPELL_RECAST_TIME_CHARGES_SEC", "Відновлення заряду: %s с" }, -- "%.3g sec recharge"
 }
 
 local tooltip_texts = {
@@ -58,6 +70,7 @@ local tooltip_texts = {
 { "Scenario Item", "предмет сценарію" },
 { "Season %d", "сезон %d" },
 { "Season %d Elite", "сезон %d, елітний" },
+{ "Talent", "талант" },
 { "Thunderforged", "викуваний громом" },
 { "Timeless", "позачасовий" },
 { "Warforged", "викуваний війною" },

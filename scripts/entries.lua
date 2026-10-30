@@ -907,7 +907,6 @@ local formats
 
 -- how deep a value may be one of our phrases in turn: "Socket Bonus: +4 Strength" has "+4 Strength" inside it
 local MAX_NESTED_FORMATS = 3
-local nested_formats = 0
 
 local function prepare_formats()
     local at = addon_table
@@ -978,17 +977,27 @@ end
 
 -- our name for an english one: a class or a race, an enchantment or a text of our strings (a reputation standing), or a name the glossary knows (a skill, a faction, an item)
 -- The count of a recipe's reagent stays after it: "Linen Cloth (2)" -> "Лляна тканина (2)"
-local function translate_name(name)
+local function translate_name(name, depth)
     local bare, count = string_match(name, "^(.-)( %(%d+%))$")
     if bare then
-        local bare_uk = translate_name(bare)
+        local bare_uk = translate_name(bare, depth)
         return bare_uk and bare_uk .. count
+    end
+
+    -- Color and line break around the name stays: "|n|cffff2020Wild Thornroot|r" -> "|n|cffff2020Дикий шипокорінь|r"
+    if string_find(name, "|", 1, true) then
+        bare = string_trim((string_gsub(utils.strip_color_codes(name), "|n", "")))
+        if bare ~= name then
+            local bare_uk = bare ~= "" and translate_name(bare, depth)
+            local head, tail = string_match(name, "^(.*)" .. utils.esc(bare) .. "(.*)$")
+            return bare_uk and head and head .. bare_uk .. tail
+        end
     end
 
     -- the glossary is read by its own key: get_glossary_text() also reads Questie's forms ("Name (Title)")
     local glossary = addon_table.glossary
     local glossary_uk = glossary and glossary[string_trim(name):lower()]
-    return get_class_or_race_name(name) or entries.translate_string_text(name) or glossary_uk and utils.cap(glossary_uk)
+    return get_class_or_race_name(name) or entries.translate_string_text(name, depth) or glossary_uk and utils.cap(glossary_uk)
 end
 
 -- a name we have no translation of stays english inside the translated line, so one unknown name doesn't leave the whole line english:
@@ -1006,20 +1015,20 @@ end
 -- a value the game filled a format with: a number stays, a name becomes translated, and so does each of several names joined by commas
 -- nil for a sentence we have no translation of
 -- "Warrior, Mage" (in "Classes: %s") -> "воїн, маг"
-local function translate_value(value, is_strict)
-    if not string_find(value, "%a") then
+local function translate_value(value, is_strict, depth)
+    if not string_find(utils.strip_color_codes(value), "%a") then
         return value
     end
 
     -- the whole value first, as a name may have a comma of its own ("Sulfuras, Hand of Ragnaros")
-    local value_uk = translate_name(value)
+    local value_uk = translate_name(value, depth)
     if value_uk or not string_find(value, ", ", 1, true) then
         return value_uk or keep_english_name(value, is_strict)
     end
 
     local names = utils.split_by_text(", ", value)
     for i, name in ipairs(names) do
-        names[i] = translate_name(name) or keep_english_name(name, is_strict)
+        names[i] = translate_name(name, depth) or keep_english_name(name, is_strict)
         if not names[i] then
             return
         end
@@ -1031,7 +1040,7 @@ end
 -- First format whose values are all translated wins over the first that merely makes the text.
 -- Nested value may only be a number, or else a name like "Shadowcraft Armor" would be read as "%s Armor".
 -- Values side by side only make a text when they are all translated: "+%s %s Damage" splits "+30 Healing and Spell Damage" too.
-local function find_format(text, groups)
+local function find_format(text, groups, depth)
     local first_format, first_values
     for k = 1, 3 do
         local list
@@ -1049,22 +1058,20 @@ local function find_format(text, groups)
             if string_find(text, format.pattern) then
                 local captures = { string_match(text, format.pattern) }
                 local is_translated = true
-                if nested_formats > 0 then
+                if depth > 0 then
                     -- inside another phrase's value, a format's values may only be numbers: "+4 Strength" in "Socket Bonus: %s"
                     for _, value in ipairs(captures) do
                         is_translated = is_translated and not string_find(value, "%a")
                     end
                 else
                     -- each value must have a translation; a phrase in a value is looked up one level down
-                    nested_formats = nested_formats + 1
                     for _, value in ipairs(captures) do
-                        is_translated = is_translated and translate_value(value, true) ~= nil
+                        is_translated = is_translated and translate_value(value, true, depth + 1) ~= nil
                     end
-                    nested_formats = nested_formats - 1
                 end
 
                 -- all values translated: this format at once; else the first match at the top is kept, unless its values sit side by side
-                if is_translated or nested_formats == 0 and not first_format and not format.is_side_by_side then
+                if is_translated or depth == 0 and not first_format and not format.is_side_by_side then
                     local values = {}
                     for j, value in ipairs(captures) do
                         values[format.order[j]] = value
@@ -1091,7 +1098,7 @@ end
 
 -- our format filled with the game's values, nil when a value has no translation and can't stay as it is
 -- "%2$s (комірок: %1$d)" with "16", "Bag" -> "сумка (комірок: 16)"
-local function fill_format(format_uk, values)
+local function fill_format(format_uk, values, depth)
     local index = 0
     local is_failed = false
     local text_uk = string_gsub(format_uk, utils.FORMAT_CONVERSION, function (spec, kind)
@@ -1113,10 +1120,11 @@ local function fill_format(format_uk, values)
             return ""
         elseif kind == "N" then
             -- "%N" is in translations only: a player's own text (a character's name, an equipment set's) stays as the game wrote it
+            -- So does a talent tree's name, which the lookup would take for something else (a shaman's "Elemental" for the creature type).
             return value
         elseif kind == "s" or kind == "S" then
             -- "%S", also in translations only: each name capitalized
-            local value_uk = translate_value(value)
+            local value_uk = translate_value(value, false, depth)
             is_failed = is_failed or not value_uk
             return value_uk and (kind == "S" and cap_names(value_uk) or value_uk) or ""
         elseif kind == "c" then
@@ -1144,7 +1152,8 @@ end
 -- the whole text: "Soulbound" -> "Прив'язаний до персонажа";
 -- a format filled with the text's values: "Durability 16 / 16" -> "Міцність: 16 / 16";
 -- a label before a value with no words in it: "Sell Price: 12 [copper icon]" -> "Ціна продажу: 12 [copper icon]"
-entries.translate_string_text = function (text)
+entries.translate_string_text = function (text, depth)
+    depth = depth or 0
     local at = addon_table
     local text_uk = at.enchant[text] or at.string_tooltip_text[text] or at.string[text] or at.zone[text]
     if text_uk then
@@ -1152,13 +1161,10 @@ entries.translate_string_text = function (text)
     end
 
     formats = formats or prepare_formats()
-    local format, values = find_format(text, formats)
+    local format, values = find_format(text, formats, depth)
 
-    if format and nested_formats < MAX_NESTED_FORMATS then
-        nested_formats = nested_formats + 1
-        text_uk = fill_format(format.text_uk, values)
-        nested_formats = nested_formats - 1
-        return text_uk
+    if format and depth < MAX_NESTED_FORMATS then
+        return fill_format(format.text_uk, values, depth + 1)
     elseif format then
         return
     end

@@ -49,9 +49,19 @@ local global_strings = {
 }
 
 local tooltip_strings = {
+{ "AURA_CAST_BY", "Накладено: %N" }, -- "Cast by %s"
 { "EQUIPPED", "Споряджено" }, -- "Equipped"
+{ "GENERIC_TRAIT_FRAME_EDGE_REQUIREMENTS_BUTTON_TOOLTIP", "Потрібні всі попередні таланти" }, -- "Requires all preceding talents"
 { "IF_EQUIPPED_TOGETHER", "Споряджено разом із" }, -- "Equipped With"
 { "ITEM_TOY_ONUSE", "Використання: Додає цю іграшку до вашої колекції." }, -- "Use: Adds this toy to your Toy Box."
+{ "SPELL_CAST_TIME_INSTANT", "Миттєво" }, -- "Instant"
+{ "TALENT_BUTTON_TOOLTIP_NEXT_RANK", "Наступний ранг:" }, -- "Next Rank:"
+{ "TALENT_BUTTON_TOOLTIP_NOT_ON_ACTION_BAR", "Ви не додали це на жодну панель дій" }, -- "You haven't added this to your action bars"
+{ "TALENT_BUTTON_TOOLTIP_ON_DISABLED_ACTIONBAR", "Ви додали це на панель дій, яку приховано або вимкнено" }, -- "You've added this to an action bar that is hidden or disabled"
+{ "TALENT_BUTTON_TOOLTIP_ON_INACTIVE_BONUSBAR", "Ви додали це на панель дій, але для іншої стійки" }, -- "You've added this to your action bar, but on a different stance"
+{ "TALENT_BUTTON_TOOLTIP_RANK_FORMAT", "Ранг %s/%s" }, -- "Rank %s/%s"
+{ "TALENT_BUTTON_TOOLTIP_REFUND_INSTRUCTIONS", "Клацніть правою кнопкою, щоб забути" }, -- "Right click to unlearn"
+{ "TALENT_BUTTON_TOOLTIP_REPLACED_BY_FORMAT", "Замінено на «%S»" }, -- "Replaced by %s"
 { "TOOLTIP_ITEM_STAT_AP_VS_BEAST_INCREASE", "При спорядженні: Збільшує силу атаки на %d в бою зі звірами." }, -- "Equip: +%1$d Attack Power against Beasts."
 { "TOOLTIP_ITEM_STAT_AP_VS_DEMON_INCREASE", "При спорядженні: Збільшує силу атаки на %d в бою з демонами." }, -- "Equip: +%1$d Attack Power against Demons."
 { "TOOLTIP_ITEM_STAT_AP_VS_DRAGONKIN_INCREASE", "При спорядженні: Збільшує силу атаки на %d в бою з драконами." }, -- "Equip: +%1$d Attack Power against Dragonkin."
