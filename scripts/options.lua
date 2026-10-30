@@ -25,6 +25,7 @@ local default_account = { ---@class account_options_class
     translate_npc_target_frame = true,
     translate_other_tooltips = true,
     tooltip_style_item = "replacement", -- key from tooltips.styles
+    tooltip_style_spell = "replacement", -- key from tooltips.styles
     tooltip_original_key = "ALT", -- key from tooltips.original_keys
     translate_string = true,
     translate_zone = true,
