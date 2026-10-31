@@ -31,18 +31,6 @@ known_extra_translations = {
     "Uncategorized"             : "Без категорії",
     "World Events"              : "Свята",
 
-    # proper category names which most likely should be in terms as they also can be seen as Quest Log categories
-    "Ahn'Qiraj War Effort"      : "Військова кампанія Ан'Кіража",   # todo: maybe add to Crowdin terms (event?)
-    "Cataclysm"                 : "Катаклізм",                      # todo: maybe add to Crowdin terms (event?)
-    "Day of the Dead"           : "День мертвих",                   # todo: maybe add to Crowdin terms (world event)
-    "Death Knight"              : "Лицар смерті",                   # todo: maybe add to Crowdin terms (class)
-    "Elemental Bonds"           : "Кайдани стихій",                 # todo: maybe add to Crowdin terms (event?, epic quest chain)
-    "Firelands Invasion"        : "Вторгнення у Вогнезем'я",        # todo: maybe add to Crowdin terms (event)
-    "Lost City Of The Tolvir"   : "Загублене місто Толвірів",       # todo: maybe add to Crowdin terms (location, dungeon)
-    "New Year's Eve"            : "Новий рік",                      # todo: maybe add to Crowdin terms (world event)
-    "Scourge Invasion"          : "Навала Скари",                   # todo: maybe add to Crowdin terms (event)
-    "Tournament"                : "Турнір",                         # todo: maybe add to Crowdin terms (event?)
-
     # proper category names which just has different name in the database; sometimes its different because in database
     # we use names which are also used as directory names, and some characters cannot be part of the disk file name,
     # for example ":"
@@ -51,12 +39,12 @@ known_extra_translations = {
     "Azjol Nerub"               : "===Azjol-Nerub",
     "Blades Edge Mountains"     : "===Blade's Edge Mountains",
     "Draktharon Keep"           : "===Drak'Tharon Keep",
+    "Excavation Site Wetlands"  : "===Excavation Site: Wetlands",
     "Isle Of Queldanas"         : "===Isle of Quel'Danas",
     "Kelpthar Forest"           : "===Kelp'thar Forest",
+    "Lost City Of The Tolvir"   : "===Lost City of the Tol'vir",
     "Magisters Terrace"         : "===Magisters' Terrace",
     "Magtheridons Lair"         : "===Magtheridon's Lair",
-    "Mana Tombs"                : "===Mana-Tombs",
-    "Scarlet Enclave"           : "===The Scarlet Enclave",
     "Vashjir"                   : "===Vashj'ir",
 }
 
@@ -80,7 +68,7 @@ class Stats:
             if found_name.startswith("==="):
                 found_name = Stats.terms.translate(found_name[3:])
         else:
-            found_name = Stats.terms.translate(name)
+            found_name = Stats.terms.translate(name, only_tags=('завдання',)) or Stats.terms.translate(name)
 
         return found_name[:1].upper() + found_name[1:] if found_name else name
 
