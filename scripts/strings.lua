@@ -4,10 +4,38 @@ local options   = addon_table.use("options") ---@class options_class
 local strings   = addon_table.use("strings") ---@class strings_class
 local utils     = addon_table.use("utils") ---@class utils_class
 
+-- builds lookups by the game's english text:
+-- at.string, the interface strings (global_strings of entries/*/string.lua, by global name), which the glossary reads too;
+-- at.string_tooltip_text, the tooltip texts (tooltip_texts by english text, tooltip_strings by global name), which only tooltips read
+-- and which are never written into globals
+local function prepare_lookups()
+    local at = addon_table
+    at.string = {}
+    at.string_back = {}
+    for key, val_uk in pairs(at.string_tooltip) do
+        local val_en = _G[key]
+        if type(val_en) == "string" then
+            at.string_tooltip_text[val_en] = val_uk
+        end
+    end
+    for key, val_uk in pairs(at.string_globals) do
+        local val_en = _G[key]
+        if type(val_en) == "string" then
+            at.string[val_en] = val_uk
+            at.string_back[val_uk] = val_en
+        else
+            -- A global the client doesn't have is dropped.
+            at.string_globals[key] = nil
+        end
+    end
+end
+
 strings.prepare = function ()
     if not addon_table.string_globals then
         return
     end
+
+    prepare_lookups()
 
     if not options.can_translate("translate_string") then
         return

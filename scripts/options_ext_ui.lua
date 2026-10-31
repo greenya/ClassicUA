@@ -7,6 +7,8 @@ local dev_log_ui        = addon_table.use("dev_log_ui") ---@class dev_log_ui_cla
 local frames            = addon_table.use("frames") ---@class frames_class
 local options           = addon_table.use("options") ---@class options_class
 local options_ext_ui    = addon_table.use("options_ext_ui") ---@class options_ext_ui_class
+local subtitles_ui      = addon_table.use("subtitles_ui") ---@class subtitles_ui_class
+local tooltips          = addon_table.use("tooltips") ---@class tooltips_class
 local utils             = addon_table.use("utils") ---@class utils_class
 
 local CreateFrame       = _G.CreateFrame
@@ -89,6 +91,10 @@ local layout = {
 -- "parent_key" dims the row while the named checkbox is unchecked.
 -- "reload" marks switches which are only applied on interface reload, because the module
 -- they belong to overwrites game data once, at load time.
+
+local TOOLTIP_STYLES_HELP = "\n\nЗаміна — замість оригіналу. Оригінал видно, поки затиснуто клавішу, вибрану в «Оригінал»."
+    .. "\nДоповнення — окремим блоком під оригіналом."
+
 local option_rows = {
     { group = "Шрифти" },
     {
@@ -167,6 +173,17 @@ local option_rows = {
         tooltip     = "Текст у бульбашках над персонажами."
     },
     {
+        key         = "subtitle",
+        option_key  = "translate_subtitles",
+        name        = "Субтитри",
+        tooltip     = "Субтитри відеороликів і кат-сцен, зокрема вступних роликів рас."
+            .. "\n\nВідображаються, якщо субтитри увімкнено в налаштуваннях гри.",
+        play_button = {
+            tooltip     = "Переглянути відеоролики гри з субтитрами.",
+            on_click    = function (self) subtitles_ui.toggle(self) end,
+        },
+    },
+    {
         key         = "ai",
         option_key  = "translate_ai",
         name        = "Переклади ШІ",
@@ -180,10 +197,25 @@ local option_rows = {
 
     { group = "Назви та підказки" },
     {
+        dropdown    = "tooltip_original_key",
+        option_key  = "tooltip_original_key",
+        label       = "Оригінал",
+        values      = tooltips.original_keys,
+        tooltip     = "Клавіша, при натисненні якої підказка показує оригінальний текст (у стилі «Заміна»)."
+    },
+    {
         key         = "item",
         option_key  = "translate_item",
         name        = "Предмети",
         tooltip     = "Назви та описи предметів у підказках."
+    },
+    {
+        dropdown    = "tooltip_style_item",
+        option_key  = "tooltip_style_item",
+        parent_key  = "item",
+        label       = "Стиль",
+        values      = tooltips.styles,
+        tooltip     = "Стиль відображення перекладу в підказках предметів." .. TOOLTIP_STYLES_HELP
     },
     {
         key         = "quest_item",
@@ -198,6 +230,14 @@ local option_rows = {
         option_key  = "translate_spell",
         name        = "Закляття й таланти",
         tooltip     = "Назви та описи заклять, здібностей і талантів."
+    },
+    {
+        dropdown    = "tooltip_style_spell",
+        option_key  = "tooltip_style_spell",
+        parent_key  = "spell",
+        label       = "Стиль",
+        values      = tooltips.styles,
+        tooltip     = "Стиль відображення перекладу в підказках заклять, аур і талантів." .. TOOLTIP_STYLES_HELP
     },
     {
         key         = "npc",
@@ -555,6 +595,18 @@ local function build_extra_page(frame, y)
             checkbox.parent_key = row.parent_key
             checkbox.update_row_states = update_row_states
             frame.widgets[row.key] = checkbox
+
+            if row.play_button then
+                local button = CreateFrame("Button", nil, content, "UIPanelButtonTemplate")
+                button:SetSize(26, 21)
+                button:SetPoint("LEFT", checkbox.Text, "RIGHT", 8, 0)
+                local icon = button:CreateTexture(nil, "OVERLAY")
+                icon:SetSize(10, 10)
+                icon:SetPoint("CENTER")
+                icon:SetTexture("Interface\\OptionsFrame\\VoiceChat-Play")
+                button:SetScript("OnClick", row.play_button.on_click)
+                frames.add_tooltip_for_frame(button, "ANCHOR_RIGHT", row.play_button.tooltip)
+            end
 
             row_y = row_y - l.checkbox_height
         end

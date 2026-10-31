@@ -6,6 +6,7 @@ local options   = addon_table.use("options") ---@class options_class
 local utils     = addon_table.use("utils") ---@class utils_class
 
 local pcall         = _G.pcall
+local C_Item        = _G.C_Item
 local COMPLETE      = _G.COMPLETE
 local string_find   = _G.string.find
 local string_format = _G.string.format
@@ -14,6 +15,8 @@ local string_gsub   = _G.string.gsub
 local string_match  = _G.string.match
 local string_split  = _G.string.split
 local string_trim   = _G.string.trim
+local table_concat  = _G.table.concat
+local table_sort    = _G.table.sort
 local UnitName      = _G.UnitName
 local UnitSex       = _G.UnitSex
 
@@ -184,7 +187,7 @@ local function expand_code(code)
 end
 
 -- expands the inline codes in one pass
-local function make_text(text)
+entries.make_text = function (text)
     if not text or not string_find(text, "{", 1, true) then
         return text
     end
@@ -199,7 +202,7 @@ local function make_text_array(array)
 
     local result = {}
     for i = 1, #array do
-        result[i] = make_text(array[i])
+        result[i] = entries.make_text(array[i])
     end
 
     return result
@@ -400,7 +403,7 @@ end
 
 local function get_quest_text(quest_id, field)
     local quest = find_quest(quest_id)
-    return quest and make_text(quest[field])
+    return quest and entries.make_text(quest[field])
 end
 
 entries.get_quest_title = function (quest_id)
@@ -558,7 +561,7 @@ entries.make_entry_text = function (text, tooltip, tooltip_matches_to_skip)
     if not tooltip_matches_to_skip then
         tooltip_matches_to_skip = 0
     end
-    local tt_lines = utils.tooltip_lines(tooltip)
+    local tt_lines = tooltip.NumLines and utils.tooltip_lines(tooltip) or tooltip
 
     text = resolve_optional_entry_text(text, tt_lines, tooltip_matches_to_skip)
     text = { string_split("#", text) }
@@ -604,6 +607,12 @@ entries.get_language_text = function (language_name)
     end
 
     return at.language[language_name] or language_name
+end
+
+-- a world object's own translation: the glossary may give its name another meaning ("Chest", a slot)
+entries.get_object_text = function (name)
+    local text = addon_table.object[name]
+    return text and utils.cap(text)
 end
 
 entries.get_glossary_text = function (entry_key, fallback, hint_type)
@@ -689,7 +698,7 @@ local function get_gossip_text(npc_id, gossip_text)
     for _, gossip_key in ipairs({ npc_id, '!common' }) do
         local npc_strings = at.gossip[gossip_key]
         if npc_strings and npc_strings[gossip_text_hash] then
-            return make_text(entries.make_optional_text(npc_strings[gossip_text_hash], gossip_text)), nil
+            return entries.make_text(entries.make_optional_text(npc_strings[gossip_text_hash], gossip_text)), nil
         end
     end
 
@@ -705,7 +714,7 @@ local function get_gossip_text(npc_id, gossip_text)
                 local gossip_key = utils.match_text_code(gossip_code, known_gossip_keys)
                 if gossip_key then
                     local hash = npc_strings['!code'][gossip_key]
-                    return make_text(entries.make_optional_text(npc_strings[hash], gossip_text)), gossip_code
+                    return entries.make_text(entries.make_optional_text(npc_strings[hash], gossip_text)), gossip_code
                 end
             end
         end
@@ -810,6 +819,21 @@ entries.get_item_suffix = function (item_name_en)
     return at.item_suffix[item_suffix_en]
 end
 
+-- the set the game puts an item in, if the set's entry lists the item: WoW: Forever gave some classic set ids to its own sets
+entries.get_item_set = function (item_id)
+    local set_id = select(16, C_Item.GetItemInfo(item_id))
+    local item_set = set_id and addon_table.item_set[set_id]
+    if not item_set then
+        return
+    end
+
+    for _, id in ipairs(item_set.items) do
+        if id == item_id then
+            return item_set
+        end
+    end
+end
+
 -- our wording of a kill line, from the game's "Kobold Vermin slain: 3/8"
 local QUEST_MONSTERS_KILLED_UK = "%s: %d/%d вбито"
 
@@ -831,7 +855,7 @@ local function translate_objective_line(text, quest_id, is_count_first)
     end
 
     local quest = find_quest(quest_id)
-    local text_uk = quest and quest.tasks and make_text(quest.tasks[task or text])
+    local text_uk = quest and quest.tasks and entries.make_text(quest.tasks[task or text])
 
     -- a task first, as some are worded as kills ("Gnolls slain")
     if not done then
@@ -867,4 +891,296 @@ entries.translate_taxi_node_name = function (text)
     end
 
     return text
+end
+
+-- ----------------------
+-- [ the game's phrases ]
+-- ----------------------
+
+-- A line of the game's phrases is looked up in our names of enchantments (entries/*/enchant.lua) and strings (entries/*/string.lua):
+-- first as a whole text, then against the formats ("Requires Level %d", "+%d Agility and +%d Stamina").
+-- Enchantments go first, then tooltip texts, then interface strings, then zones
+-- Formats come from enchantments and tooltip texts only, for finer coverage:
+--   else "%s completed." would take unexpected lines ("This was not available until ... completed.")
+-- Their values are translated in turn: numbers stay, names and nested phrases become translated.
+-- "Requires Level 60" -> "Потрібний рівень: 60", "Classes: Warrior, Mage" -> "Класи: Воїн, Маг"
+
+-- Every line of an item's tooltip is tried against the formats, so they are grouped by the first 4 characters of their english text.
+-- A format that starts with a value goes by its last 3 ("%c%d Stamina"), and a line is only tried against its own groups.
+local FORMAT_HEAD_LENGTH = 4
+local FORMAT_TAIL_LENGTH = 3
+local formats
+
+-- how deep a value may be one of our phrases in turn: "Socket Bonus: +4 Strength" has "+4 Strength" inside it
+local MAX_NESTED_FORMATS = 3
+
+local function prepare_formats()
+    local at = addon_table
+    local groups = { by_head = {}, by_tail = {}, others = {} }
+    local is_known = {}
+    for _, texts in ipairs({ at.enchant, at.string_tooltip_text }) do
+        for text_en, text_uk in pairs(texts) do
+            -- a text with a "%" is a format; the same english met again in a later lookup is skipped
+            if not is_known[text_en] and string_find(text_en, "%", 1, true) then
+                is_known[text_en] = true
+                for _, format in ipairs(utils.format_patterns(text_en)) do
+                    format.text_en, format.text_uk = text_en, text_uk
+                    local list
+                    if format.text_length == 0 then
+                        -- values alone ("%s") make any text
+                    elseif #format.head >= FORMAT_HEAD_LENGTH then
+                        local key = format.head:sub(1, FORMAT_HEAD_LENGTH)
+                        list = groups.by_head[key] or {}
+                        groups.by_head[key] = list
+                    elseif #format.tail >= FORMAT_TAIL_LENGTH then
+                        local key = format.tail:sub(-FORMAT_TAIL_LENGTH)
+                        list = groups.by_tail[key] or {}
+                        groups.by_tail[key] = list
+                    else
+                        -- too little text at either end to group by: every line tries these
+                        list = groups.others
+                    end
+                    if list then
+                        list[#list + 1] = format
+                    end
+                end
+            end
+        end
+    end
+
+    -- of two formats that could both make a text, the one with more text of its own is tried first ("Requires Level %d" before "Requires %s")
+    local function longer_first(a, b)
+        if a.text_length ~= b.text_length then
+            return a.text_length > b.text_length
+        end
+        -- the same length of text: the longer english, then the alphabet, so the order doesn't depend on pairs()
+        return #a.text_en > #b.text_en or #a.text_en == #b.text_en and a.text_en < b.text_en
+    end
+    for _, group in ipairs({ groups.by_head, groups.by_tail }) do
+        for _, list in pairs(group) do
+            table_sort(list, longer_first)
+        end
+    end
+    table_sort(groups.others, longer_first)
+    return groups
+end
+
+-- items list classes in "Classes:" and races in "Races:"
+-- "Tauren" -> "таурен", "Death Knight" -> "лицар смерті"
+local function get_class_or_race_name(name_en)
+    local at = addon_table
+    -- class.lua and race.lua key them lowercase with no spaces: "Night Elf" -> "nightelf"
+    local key = name_en:lower():gsub(" ", "")
+    local class = at.class[key]
+    if class then
+        return class["н"][1]
+    end
+
+    local race = at.race[key]
+    -- humans use neutral_singular: "людина", not "чоловік"
+    return race and (race["н"].neutral_singular or race["н"][1])
+end
+
+-- our name for an english one: a class or a race, an enchantment or a text of our strings (a reputation standing), or a name the glossary knows (a skill, a faction, an item)
+-- The count of a recipe's reagent stays after it: "Linen Cloth (2)" -> "Лляна тканина (2)"
+local function translate_name(name, depth)
+    local bare, count = string_match(name, "^(.-)( %(%d+%))$")
+    if bare then
+        local bare_uk = translate_name(bare, depth)
+        return bare_uk and bare_uk .. count
+    end
+
+    -- Color and line break around the name stays: "|n|cffff2020Wild Thornroot|r" -> "|n|cffff2020Дикий шипокорінь|r"
+    if string_find(name, "|", 1, true) then
+        bare = string_trim((string_gsub(utils.strip_color_codes(name), "|n", "")))
+        if bare ~= name then
+            local bare_uk = bare ~= "" and translate_name(bare, depth)
+            local head, tail = string_match(name, "^(.*)" .. utils.esc(bare) .. "(.*)$")
+            return bare_uk and head and head .. bare_uk .. tail
+        end
+    end
+
+    -- the glossary is read by its own key: get_glossary_text() also reads Questie's forms ("Name (Title)")
+    local glossary = addon_table.glossary
+    local glossary_uk = glossary and glossary[string_trim(name):lower()]
+    return get_class_or_race_name(name) or entries.translate_string_text(name, depth) or glossary_uk and utils.cap(glossary_uk)
+end
+
+-- a name we have no translation of stays english inside the translated line, so one unknown name doesn't leave the whole line english:
+--   "Unique-Equipped: Black Blood of Y'Shaarj (1)" -> "Унікальний у спорядженні: Black Blood of Y'Shaarj (1)"
+-- A value that is not a name keeps the whole line original rather than half translated.
+-- - "Increases attack power by 117 when fighting Demons.", not "Збільшує силу атаки на 117 when fighting Demons.":
+--     tbc's "Increases attack power by %s." takes "117 when fighting Demons"
+-- - "Set: Your Feint ability has a chance to reset your threat.": a set's bonus
+-- is_strict keeps no name, for find_format() to prefer a format whose values are all translated
+local function keep_english_name(name, is_strict)
+    local bare = string_match(name, "^(.-) %(%d+%)$") or name
+    return not is_strict and not string_find(bare, "%d") and not string_find(bare, "%.$") and name or nil
+end
+
+-- a value the game filled a format with: a number stays, a name becomes translated, and so does each of several names joined by commas
+-- nil for a sentence we have no translation of
+-- "Warrior, Mage" (in "Classes: %s") -> "воїн, маг"
+local function translate_value(value, is_strict, depth)
+    if not string_find(utils.strip_color_codes(value), "%a") then
+        return value
+    end
+
+    -- the whole value first, as a name may have a comma of its own ("Sulfuras, Hand of Ragnaros")
+    local value_uk = translate_name(value, depth)
+    if value_uk or not string_find(value, ", ", 1, true) then
+        return value_uk or keep_english_name(value, is_strict)
+    end
+
+    local names = utils.split_by_text(", ", value)
+    for i, name in ipairs(names) do
+        names[i] = translate_name(name, depth) or keep_english_name(name, is_strict)
+        if not names[i] then
+            return
+        end
+    end
+    return table_concat(names, ", ")
+end
+
+-- the format that makes a text, and the values it was filled with, keyed by their argument numbers
+-- First format whose values are all translated wins over the first that merely makes the text.
+-- Nested value may only be a number, or else a name like "Shadowcraft Armor" would be read as "%s Armor".
+-- Values side by side only make a text when they are all translated: "+%s %s Damage" splits "+30 Healing and Spell Damage" too.
+local function find_format(text, groups, depth)
+    local first_format, first_values
+    for k = 1, 3 do
+        local list
+        if k == 1 then
+            list = groups.by_head[text:sub(1, FORMAT_HEAD_LENGTH)]
+        elseif k == 2 then
+            list = groups.by_tail[text:sub(-FORMAT_TAIL_LENGTH)]
+        else
+            list = groups.others
+        end
+
+        for i = 1, list and #list or 0 do
+            local format = list[i]
+            -- most formats tried don't match: those make no table of captures
+            if string_find(text, format.pattern) then
+                local captures = { string_match(text, format.pattern) }
+                local is_translated = true
+                if depth > 0 then
+                    -- inside another phrase's value, a format's values may only be numbers: "+4 Strength" in "Socket Bonus: %s"
+                    for _, value in ipairs(captures) do
+                        is_translated = is_translated and not string_find(value, "%a")
+                    end
+                else
+                    -- each value must have a translation; a phrase in a value is looked up one level down
+                    for _, value in ipairs(captures) do
+                        is_translated = is_translated and translate_value(value, true, depth + 1) ~= nil
+                    end
+                end
+
+                -- all values translated: this format at once; else the first match at the top is kept, unless its values sit side by side
+                if is_translated or depth == 0 and not first_format and not format.is_side_by_side then
+                    local values = {}
+                    for j, value in ipairs(captures) do
+                        values[format.order[j]] = value
+                    end
+                    if is_translated then
+                        return format, values
+                    end
+                    first_format, first_values = format, values
+                end
+            end
+        end
+    end
+    return first_format, first_values
+end
+
+-- "друїд, шаман" (in "Класи: %S") -> "Друїд, Шаман"
+local function cap_names(value)
+    local names = utils.split_by_text(", ", value)
+    for i, name in ipairs(names) do
+        names[i] = utils.cap(name)
+    end
+    return table_concat(names, ", ")
+end
+
+-- our format filled with the game's values, nil when a value has no translation and can't stay as it is
+-- "%2$s (комірок: %1$d)" with "16", "Bag" -> "сумка (комірок: 16)"
+local function fill_format(format_uk, values, depth)
+    local index = 0
+    local is_failed = false
+    local text_uk = string_gsub(format_uk, utils.FORMAT_CONVERSION, function (spec, kind)
+        if kind == "%" then
+            return "%"
+        end
+
+        -- a numbered conversion ("%2$s") takes its own value, a plain one the next in turn
+        local number = spec:match("^(%d+)%$")
+        if number then
+            spec = spec:sub(#number + 2)
+        else
+            index = index + 1
+        end
+
+        local value = values[number and tonumber(number) or index]
+        if value == nil then
+            -- the translation asks for a value the game's text has none of
+            return ""
+        elseif kind == "N" then
+            -- "%N" is in translations only: a player's own text (a character's name, an equipment set's) stays as the game wrote it
+            -- So does a talent tree's name, which the lookup would take for something else (a shaman's "Elemental" for the creature type).
+            return value
+        elseif kind == "s" or kind == "S" then
+            -- "%S", also in translations only: each name capitalized
+            local value_uk = translate_value(value, false, depth)
+            is_failed = is_failed or not value_uk
+            return value_uk and (kind == "S" and cap_names(value_uk) or value_uk) or ""
+        elseif kind == "c" then
+            -- the game's sign of a number
+            return value
+        end
+
+        -- "%d" and "%f": a number keeps the game's own writing unless our format asks for another
+        -- The game's "%s" takes any text: a value that is no number fails the line (mists' "%c%s Stamina" reads "+5 Agility and +7 Stamina")
+        if not string_find(value, "^%-?%d[%d,%.]*$") then
+            is_failed = true
+            return value
+        end
+        local number_value = tonumber(value)
+        if not number_value or kind == "d" and number_value % 1 ~= 0 then
+            return value
+        end
+        return string_format("%" .. spec .. kind, number_value)
+    end)
+    -- our plural codes take the forms of the numbers just filled in
+    return not is_failed and utils.render_plurals_uk(text_uk) or nil
+end
+
+-- our text for one of the game's phrases, nil when nothing fits:
+-- the whole text: "Soulbound" -> "Прив'язаний до персонажа";
+-- a format filled with the text's values: "Durability 16 / 16" -> "Міцність: 16 / 16";
+-- a label before a value with no words in it: "Sell Price: 12 [copper icon]" -> "Ціна продажу: 12 [copper icon]"
+entries.translate_string_text = function (text, depth)
+    depth = depth or 0
+    local at = addon_table
+    local text_uk = at.enchant[text] or at.string_tooltip_text[text] or at.string[text] or at.zone[text]
+    if text_uk then
+        return text_uk
+    end
+
+    formats = formats or prepare_formats()
+    local format, values = find_format(text, formats, depth)
+
+    if format and depth < MAX_NESTED_FORMATS then
+        return fill_format(format.text_uk, values, depth + 1)
+    elseif format then
+        return
+    end
+
+    local label, value
+    if string_find(text, ":", 1, true) then
+        label, value = string_match(text, "^([^:]+):(.*)$")
+    end
+    local label_uk = label and (at.string_tooltip_text[label] or at.string[label])
+    if label_uk and not string_find(utils.strip_icons(utils.strip_color_codes(value)), "%a") then
+        return label_uk .. ":" .. value
+    end
 end

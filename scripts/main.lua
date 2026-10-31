@@ -11,6 +11,7 @@ local options       = addon_table.use("options") ---@class options_class
 local options_ext_ui = addon_table.use("options_ext_ui") ---@class options_ext_ui_class
 local options_ui    = addon_table.use("options_ui") ---@class options_ui_class
 local strings       = addon_table.use("strings") ---@class strings_class
+local subtitles     = addon_table.use("subtitles") ---@class subtitles_class
 local tooltips      = addon_table.use("tooltips") ---@class tooltips_class
 local utils         = addon_table.use("utils") ---@class utils_class
 
@@ -97,7 +98,7 @@ local function on_item_text_ready()
         if type(name_en) == "string" and name_en ~= "" then
             meta.entry_id = name_en
 
-            local name_uk = entries.get_glossary_text(name_en, nil, "object")
+            local name_uk = entries.get_object_text(name_en) or entries.get_glossary_text(name_en, nil, "object")
             if name_uk then
                 set_item_text_title(data_hooks.set_translation("item_text", name_en, name_en, utils.cap(name_uk)))
             end
@@ -192,7 +193,7 @@ local function translate_npc_name(font_string, unit, option_key)
     local entry = entries.get_entry("npc", npc_id)
     if not entry then
         if options.account.dev_mode then
-            dev_log.missing_npc(npc_id, UnitName(unit))
+            dev_log.missing_entry("npc", npc_id, UnitName(unit))
         end
     elseif options.can_translate("translate_npc", option_key) then
         local name = entries.get_npc_name_and_tag(entry, unit)
@@ -243,6 +244,7 @@ event_frame:SetScript("OnEvent", function (self, event, ...)
         fonts.prepare()
         tooltips.prepare()
         chats.prepare()
+        subtitles.prepare()
         prepare_nameplates()
 
     elseif event == "PLAYER_LOGIN" then
