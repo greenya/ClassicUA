@@ -252,6 +252,10 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [30561] = { "Ґріан Міцнокрив", en="Gryan Stoutmantle" }, -- Gryan Stoutmantle
 [30565] = { "Джозеф Редпат", en="Joseph Redpath" }, -- Joseph Redpath
 [30573] = { "герцог", en="Duke" }, -- duke
+[30647] = { "тотем сили землі VII", en="Strength of Earth Totem VII" }, -- Strength of Earth Totem
+[30652] = { "тотем гніву II", en="Totem of Wrath II" }, -- Totem of Wrath
+[30653] = { "тотем гніву III", en="Totem of Wrath III" }, -- Totem of Wrath
+[30654] = { "тотем гніву IV", en="Totem of Wrath IV" }, -- Totem of Wrath
 [30691] = { "А'дал", en="A'dal" }, -- A'dal
 [30994] = { "війт Бартілас", en="Magistrate Barthilas" }, -- Magistrate Barthilas
 [30997] = { "Хромі", en="Chromie" }, -- Chromie
@@ -261,6 +265,32 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [31091] = { "командир Дардош", en="Commander Dardosh" }, -- Commander Dardosh
 [31099] = { "Клаптик", en="Patchwerk" }, -- Patchwerk
 [31107] = { "лейтенант Мурп", en="Lieutenant Murp" }, -- Lieutenant Murp
+[31120] = { "тотем кам'яного пазура VIII", en="Stoneclaw Totem VIII" }, -- Stoneclaw Totem
+[31121] = { "тотем кам'яного пазура IX", en="Stoneclaw Totem IX" }, -- Stoneclaw Totem
+[31122] = { "тотем кам'яного пазура X", en="Stoneclaw Totem X" }, -- Stoneclaw Totem
+[31129] = { "тотем сили землі VIII", en="Strength of Earth Totem VIII" }, -- Strength of Earth Totem
+[31132] = { "тотем язика полум'я VI", en="Flametongue Totem VI" }, -- Flametongue Totem
+[31133] = { "тотем язика полум'я VIII", en="Flametongue Totem VIII" }, -- Flametongue Totem
+[31158] = { "тотем язика полум'я VII", en="Flametongue Totem VII" }, -- Flametongue Totem
+[31162] = { "тотем обпалення VIII", en="Searing Totem VIII" }, -- Searing Totem
+[31164] = { "тотем обпалення IX", en="Searing Totem IX" }, -- Searing Totem
+[31165] = { "тотем обпалення X", en="Searing Totem X" }, -- Searing Totem
+[31166] = { "тотем магми VI", en="Magma Totem VI" }, -- Magma Totem
+[31167] = { "тотем магми VII", en="Magma Totem VII" }, -- Magma Totem
+[31169] = { "тотем опору вогню V", en="Fire Resistance Totem V" }, -- Fire Resistance Totem
+[31170] = { "тотем опору вогню VI", en="Fire Resistance Totem VI" }, -- Fire Resistance Totem
+[31171] = { "тотем опору кризі V", en="Frost Resistance Totem V" }, -- Frost Resistance Totem
+[31172] = { "тотем опору кризі VI", en="Frost Resistance Totem VI" }, -- Frost Resistance Totem
+[31173] = { "тотем опору природі V", en="Nature Resistance Totem V" }, -- Nature Resistance Totem
+[31174] = { "тотем опору природі VI", en="Nature Resistance Totem VI" }, -- Nature Resistance Totem
+[31175] = { "тотем кам'яної шкіри IX", en="Stoneskin Totem IX" }, -- Stoneskin Totem
+[31176] = { "тотем кам'яної шкіри X", en="Stoneskin Totem X" }, -- Stoneskin Totem
+[31181] = { "тотем цілющого потоку VII", en="Healing Stream Totem VII" }, -- Healing Stream Totem
+[31182] = { "тотем цілющого потоку VIII", en="Healing Stream Totem VIII" }, -- Healing Stream Totem
+[31185] = { "тотем цілющого потоку IX", en="Healing Stream Totem IX" }, -- Healing Stream Totem
+[31186] = { "тотем джерела мани VI", en="Mana Spring Totem VI" }, -- Mana Spring Totem
+[31189] = { "тотем джерела мани VII", en="Mana Spring Totem VII" }, -- Mana Spring Totem
+[31190] = { "тотем джерела мани VIII", en="Mana Spring Totem VIII" }, -- Mana Spring Totem
 [31216] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
 [31271] = { "Різня", en="Carnage" }, -- Carnage
 [31301] = { "Король-ліч", en="The Lich King" }, -- The Lich King
@@ -370,6 +400,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [34156] = { "отрутошкірий равазавр", en="Venomhide Ravasaur" }, -- Venomhide Ravasaur
 [34238] = { "чорний кінь-скелет", en="Black Skeletal Horse" }, -- Riding Skeletal Horse (Black)
 [34365] = { "опікунка сиротинця Арія", en="Orphan Matron Aria" }, -- Orphan Matron Aria
+[34686] = { "тотем цілющого потоку", en="Healing Stream Totem" }, -- Healing Stream Totem
+[34687] = { "тотем обпалення", en="Searing Totem" }, -- Searing Totem
 [34992] = { "леді Джайна Праудмур", "правителька Терамору", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
 [34994] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
 [35169] = { "охристий бойовий кінь-скелет", en="Ochre Skeletal Warhorse" }, -- Ochre Skeletal Warhorse
@@ -385,6 +417,10 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [36208] = { "Зераш Вогняне Лезо", en="Xerash Fireblade" }, -- Xerash Fireblade
 [36273] = { "Браґор Кровокулак", "капітан кор'крона", en="Bragor Bloodfist" }, -- Bragor Bloodfist
 [36517] = { "Алерік Хокінс", "Смертолови", en="Aleric Hawkins" }, -- Aleric Hawkins <The Deathstalkers>
+[36532] = { "нестабільний тотем обпалення", en="Unstable Searing Totem" }, -- Searing Totem
+[36542] = { "нестабільний тотем цілющого потоку", en="Unstable Healing Stream Totem" }, -- Healing Stream Totem
+[36550] = { "нестабільний тотем кам'яної шкіри", en="Unstable Stoneskin Totem" }, -- Stoneskin Totem
+[36556] = { "нестабільний тотем повітряного гніву", en="Unstable Wrath of Air Totem" }, -- Wrath of Air Totem
 [36597] = { "Король-ліч", en="The Lich King" }, -- The Lich King
 [36644] = { "Агмо Громовий Ріг", en="Ahmo Thunderhorn" }, -- Ahmo Thunderhorn
 [36737] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
@@ -419,6 +455,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [37765] = { "капітан Аурік Сонцелов", "представник вищих ельфів", en="Captain Auric Sunchaser" }, -- Captain Auric Sunchaser
 [37775] = { "вартовий Залізогарта", en="Ironforge Guard" }, -- Ironforge Guard
 [37790] = { "стражниця Дарнаса", en="Darnassus Sentinel" }, -- Darnassus Sentinel
+[37810] = { "тотем цілющого потоку", en="Healing Stream Totem" }, -- Healing Stream Totem
 [37857] = { "Король-ліч", en="The Lich King" }, -- The Lich King
 [37860] = { "вартовий бескиду", en="Bluffwatcher", feminine="вартова бескиду" }, -- Bluffwatcher
 [37869] = { "оргріммарський рубайло", en="Orgrimmar Grunt" }, -- Orgrimmar Grunt

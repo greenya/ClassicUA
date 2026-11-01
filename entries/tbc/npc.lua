@@ -283,7 +283,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [11066] = { "Джаґ", "учень чародія", en="Jhag" }, -- Jhag <Apprentice Enchanter>
 [11067] = { "Малкомб Вінн", "учень чародія", en="Malcomb Wynn" }, -- Malcomb Wynn <Apprentice Enchanter>
 [11068] = { "Бетті Квін", "учениця чародія", en="Betty Quin" }, -- Betty Quin <Apprentice Enchanter>
-[11070] = { "Сильванна Літній Місяць", "учениця чародія", en="Lalina Summermoon" }, -- Lalina Summermoon <Apprentice Enchanter>
+[11070] = { "Лаліна Літній Місяць", "учениця чародія", en="Lalina Summermoon" }, -- Lalina Summermoon <Apprentice Enchanter>
 [11071] = { "Мот Світанковий Мандрівник", "учень чародія", en="Mot Dawnstrider" }, -- Mot Dawnstrider <Apprentice Enchanter>
 [11072] = { "Кітта Вогневітер", "тренерка накладання чарів", en="Kitta Firewind" }, -- Kitta Firewind <Enchanting Trainer>
 [11073] = { "Аннора", "тренерка накладання чарів", en="Annora" }, -- Annora <Enchanting Trainer>
@@ -354,8 +354,28 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [15418] = { "магістр Джароніс", en="Magister Jaronis" }, -- Magister Jaronis
 [15419] = { "Канія", "товари для накладання чарів", en="Kania" }, -- Kania <Enchanting Supplies>
 [15420] = { "розвідувач Ковадлогляд", en="Prospector Anvilward" }, -- Prospector Anvilward
+[15430] = { "тотем елементаля землі", en="Earth Elemental Totem" }, -- Earth Elemental Totem
 [15433] = { "корчмарка Деланіель", "корчмарка", en="Innkeeper Delaniel" }, -- Innkeeper Delaniel <Innkeeper>
+[15439] = { "тотем елементаля вогню", en="Fire Elemental Totem" }, -- Fire Elemental Totem
+[15447] = { "тотем повітряного гніву", en="Wrath of Air Totem" }, -- Wrath of Air Totem
+[15470] = { "тотем кам'яної шкіри VII", en="Stoneskin Totem VII" }, -- Stoneskin Totem
+[15474] = { "тотем кам'яної шкіри VIII", en="Stoneskin Totem VIII" }, -- Stoneskin Totem
+[15478] = { "тотем кам'яного пазура VII", en="Stoneclaw Totem VII" }, -- Stoneclaw Totem
+[15479] = { "тотем сили землі VI", en="Strength of Earth Totem VI" }, -- Strength of Earth Totem
+[15480] = { "тотем обпалення VII", en="Searing Totem VII" }, -- Searing Totem
+[15482] = { "тотем вогненного спалаху VI", en="Fire Nova Totem VI" }, -- Fire Nova Totem
+[15483] = { "тотем вогненного спалаху VII", en="Fire Nova Totem VII" }, -- Fire Nova Totem
+[15484] = { "тотем магми V", en="Magma Totem V" }, -- Magma Totem
+[15485] = { "тотем язика полум'я V", en="Flametongue Totem V" }, -- Flametongue Totem
+[15486] = { "тотем опору кризі IV", en="Frost Resistance Totem IV" }, -- Frost Resistance Totem
+[15487] = { "тотем опору вогню IV", en="Fire Resistance Totem IV" }, -- Fire Resistance Totem
+[15488] = { "тотем цілющого потоку VI", en="Healing Stream Totem VI" }, -- Healing Stream Totem
+[15489] = { "тотем джерела мани V", en="Mana Spring Totem V" }, -- Mana Spring Totem
+[15490] = { "тотем опору природі IV", en="Nature Resistance Totem IV" }, -- Nature Resistance Totem
+[15492] = { "тотем стіни вітру IV", en="Windwall Totem IV" }, -- Windwall Totem
 [15493] = { "Марсілла Світанкова Зоря", en="Marsilla Dawnstar" }, -- Marsilla Dawnstar
+[15496] = { "тотем буревію IV", en="Windfury Totem IV" }, -- Windfury Totem
+[15497] = { "тотем буревію V", en="Windfury Totem V" }, -- Windfury Totem
 [15513] = { "слідопит Салліна", "тренерка мисливців", en="Ranger Sallina" }, -- Ranger Sallina <Hunter Trainer>
 [15547] = { "примарний скакун", en="Spectral Charger" }, -- Spectral Charger
 [15636] = { "зелений хранитель Вічноспіву", en="Eversong Green Keeper" }, -- Eversong Green Keeper
@@ -873,6 +893,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [17530] = { "елекк", en="Elekk" }, -- elekk
 [17536] = { "Назан", "верхова істота Вазрудена", en="Nazan" }, -- Nazan
 [17538] = { "О'рос", en="O'ros" }, -- O'ros
+[17539] = { "тотем гніву", en="Totem of Wrath" }, -- Totem of Wrath
 [17542] = { "молодий хутропуз-шаман", en="Young Furbolg Shaman" }, -- Young Furbolg Shaman
 [17544] = { "М'уру", en="M'uru" }, -- M'uru
 [17545] = { "К'уре", en="K'ure" }, -- K'ure
@@ -1031,6 +1052,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [17937] = { "батрак Орди", en="Horde Peon", feminine="батрачка Орди" }, -- Horde Peon
 [17938] = { "спостерігач Крученого Ікла", en="Coilfang Observer" }, -- Coilfang Observer
 [17940] = { "технік Крученого Ікла", en="Coilfang Technician" }, -- Coilfang Technician
+[17941] = { "Менну Зрадник", en="Mennu the Betrayer" }, -- Mennu the Betrayer
 [17942] = { "Трясовун", en="Quagmirran" }, -- Quagmirran
 [17944] = { "дріада", en="Dryad" }, -- dryad
 [17948] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
@@ -1142,11 +1164,15 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [18170] = { "вбивця з крила нескінченності", en="Infinite Slayer" }, -- Infinite Slayer
 [18171] = { "труїтелька з крила нескінченності", en="Infinite Defiler" }, -- Infinite Defiler
 [18172] = { "диверсант з крила нескінченності", en="Infinite Saboteur" }, -- Infinite Saboteur
+[18176] = { "заплямований тотем землехвату", en="Tainted Earthgrab Totem" }, -- Earthgrab Totem
+[18177] = { "заплямований тотем кам'яної шкіри", en="Tainted Stoneskin Totem" }, -- Stoneskin Totem
+[18179] = { "осквернений тотем спалаху", en="Corrupted Nova Totem" }, -- Fire Nova Totem
 [18180] = { "Гемет Ернінґвей", en="Hemet Nesingwary" }, -- Hemet Nesingwary
 [18181] = { "слуга Ґурока", en="Minion of Gurok" }, -- Minion of Gurok
 [18182] = { "Ґурок Узурпатор", en="Gurok the Usurper" }, -- Gurok the Usurper
 [18183] = { "Арехрон", en="Arechron" }, -- Arechron
 [18185] = { "зміїний дух Дикотвані", en="Feralfen Serpent Spirit" }, -- Feralfen Serpent Spirit
+[18186] = { "тотем Дикотвані", en="Feralfen Totem" }, -- Feralfen Totem
 [18197] = { "старійшина Куруті", en="Elder Kuruti" }, -- Elder Kuruti
 [18200] = { "Горій \"Грег\" Сіра Грива", en="Shado 'Fitz' Farstrider" }, -- Shado 'Fitz' Farstrider
 [18202] = { "хмурокровий осквернитель", en="Murkblood Putrifier" }, -- Murkblood Putrifier
@@ -1167,6 +1193,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [18229] = { "Саурфанґ Молодший", en="Saurfang the Younger" }, -- Saurfang the Younger
 [18233] = { "елементаліст Іокі", "Служителі Землі", en="Elementalist Ioki" }, -- Elementalist Ioki <The Earthen Ring>
 [18234] = { "елементаліст Ял'гаг", "Служителі Землі", en="Elementalist Yal'hah" }, -- Elementalist Yal'hah <The Earthen Ring>
+[18235] = { "осквернений тотем цілющого потоку", en="Corrupted Healing Stream Totem" }, -- Healing Stream Totem
+[18236] = { "осквернений тотем повітря", en="Corrupted Air Totem" }, -- Air Totem
 [18238] = { "хмурокровий загарбник", en="Murkblood Invader" }, -- Murkblood Invader
 [18240] = { "мешканець Сонцеджерельної застави", en="Sunspring Villager", feminine="мешканка Сонцеджерельної застави" }, -- Sunspring Villager
 [18248] = { "Нехтар", en="Nekthar" }, -- Nekthar
@@ -1322,6 +1350,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [18681] = { "посланниця Крученого Ікла", en="Coilfang Emissary" }, -- Coilfang Emissary
 [18687] = { "матір Кашур", en="Mother Kashur" }, -- Mother Kashur
 [18688] = { "древній предок орків", en="Ancient Orc Ancestor" }, -- Ancient Orc Ancestor
+[18691] = { "тотем тіні", en="Shadow Totem" }, -- Shadow Totem
 [18704] = { "Таела Вічнохід", en="Taela Everstride" }, -- Taela Everstride
 [18705] = { "Мауґ Лютостріл", en="Mawg Grimshot" }, -- Mawg Grimshot
 [18707] = { "Торґос", en="Torgos" }, -- Torgos
@@ -1345,6 +1374,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [18760] = { "Ісла Зоряна Грива", en="Isla Starmane" }, -- Isla Starmane
 [18764] = { "зброяр Дарнгольда", en="Durnholde Armorer" }, -- Durnholde Armorer
 [18765] = { "кухарка Дарнгольда", en="Durnholde Cook" }, -- Durnholde Cook
+[18795] = { "менший опікаючий тотем", en="Lesser Scorching Totem" }, -- Scorching Totem
 [18802] = { "алхімік Ґріббл", "майстер-тренер алхімії", en="Alchemist Gribble" }, -- Alchemist Gribble <Master Alchemy Trainer>
 [18803] = { "посол Тихохвоїв Олорґ", "посланець Тихохвоїв", en="Stillpine Ambassador Olorg" }, -- Stillpine Ambassador Olorg
 [18804] = { "розвідувач Начлан", "Ліга дослідників", en="Prospector Nachlan" }, -- Prospector Nachlan <Explorers' League>
@@ -1426,6 +1456,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [19217] = { "Равандвір", "учень Кірін-Тора", en="Ravandwyr" }, -- Ravandwyr
 [19219] = { "механолорд Конденсатрон", en="Mechano-Lord Capacitus" }, -- Mechano-Lord Capacitus
 [19220] = { "Паталеон Обчислювач", en="Pathaleon the Calculator" }, -- Pathaleon the Calculator
+[19222] = { "тотем потоку магми", en="Magma Flow Totem" }, -- Magma Flow Totem
+[19225] = { "тотем сили бурі", en="Strength of the Storm Totem" }, -- Strength of the Storm Totem
 [19229] = { "командир Дарон", en="Commander Duron" }, -- Commander Duron
 [19253] = { "генерал-лейтенант Оріон", en="Lieutenant General Orion" }, -- Lieutenant General Orion
 [19254] = { "воєвода Дар'тун", en="Warlord Dar'toon" }, -- Warlord Dar'toon
@@ -1717,6 +1749,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [20205] = { "Оді Голка", en="Audi the Needle" }, -- Audi the Needle
 [20206] = { "Сір-ко", "вірний гончак Трейсі", en="Fei Fei" }, -- Fei Fei
 [20207] = { "стрілець Сонячної Люті", en="Sunfury Bowman", feminine="стрільчиня Сонячної Люті" }, -- Sunfury Bowman
+[20208] = { "цілющий оберіг Менну", en="Mennu's Healing Ward" }, -- Mennu the Betrayer
 [20210] = { "сланцешкурий скеледер", en="Shaleskin Flayer" }, -- Shaleskin Flayer
 [20211] = { "матріарх гніздів'я Рууан", en="Ruuan'ok Matriarch" }, -- Ruuan'ok Matriarch
 [20215] = { "Пентатарон", en="Pentatharon" }, -- Pentatharon
@@ -1749,6 +1782,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [20340] = { "плотомарник", en="Fleshfiend" }, -- Fleshfiend
 [20341] = { "підсвітний ловець Оазул", en="Nether-Stalker Oazul" }, -- Nether-Stalker Oazul
 [20342] = { "Гел Макалістер", en="Hal McAllister" }, -- Hal McAllister
+[20343] = { "тотем чарів", en="Charming Totem" }, -- Charming Totem
 [20344] = { "Нет Пеґл", en="Nat Pagle" }, -- Nat Pagle
 [20345] = { "командир Моґрейн", en="Commander Mograine" }, -- Highlord Mograine
 [20346] = { "Ізіллієн", en="Isillien" }, -- Grand Inquisitor Isillien
@@ -1800,6 +1834,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [20452] = { "вбивця Ефіріума", en="Ethereum Assassin" }, -- Ethereum Assassin
 [20453] = { "штурмовик Ефіріума", en="Ethereum Shocktrooper" }, -- Ethereum Shocktrooper
 [20454] = { "король сплетіння Салгадаар", en="Nexus-King Salhadaar" }, -- Salhadaar
+[20455] = { "тотем жаху", en="Terror Totem" }, -- Terror Totem
 [20456] = { "дослідник Ефіріума", en="Ethereum Researcher" }, -- Ethereum Researcher
 [20458] = { "архонт Ефіріума", en="Ethereum Archon" }, -- Ethereum Archon
 [20459] = { "властитель Ефіріума", en="Ethereum Overlord" }, -- Ethereum Overlord
@@ -2073,6 +2108,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [21411] = { "Тобіас Брудожер", en="Tobias the Filth Gorger" }, -- Tobias the Filth Gorger
 [21416] = { "Лакаан", "осквернитель води", en="Lakaan" }, -- Lakaan
 [21419] = { "бойовий пекельник", en="Infernal Attacker" }, -- Infernal Attacker
+[21420] = { "осквернений тотем води", en="Corrupt Water Totem" }, -- Water Totem
 [21425] = { "король сплетіння Салгадаар", en="Nexus-King Salhadaar" }, -- Salhadaar
 [21434] = { "Горді", en="Gordie" }, -- Gordie
 [21446] = { "злий дух клану Клинорогих", en="Bladespire Evil Spirit" }, -- Bladespire Evil Spirit
@@ -2132,6 +2168,9 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [21700] = { "Акама", en="Akama" }, -- Akama
 [21701] = { "смертеклят Попеловустих", en="Ashtongue Deathsworn" }, -- Ashtongue Deathsworn
 [21702] = { "заклинач життя Ефіріума", en="Ethereum Life-Binder" }, -- Ethereum Life-Binder
+[21703] = { "осквернений тотем вогню", en="Corrupt Fire Totem" }, -- Fire Totem
+[21704] = { "осквернений тотем землі", en="Corrupt Earth Totem" }, -- Earth Totem
+[21705] = { "осквернений тотем повітря", en="Corrupt Air Totem" }, -- Air Totem
 [21709] = { "Ейкенен", "осквернитель землі", en="Eykenen" }, -- Eykenen
 [21710] = { "Уйлару", "осквернитель вогню", en="Uylaru" }, -- Uylaru
 [21711] = { "Гаалум", "осквернитель повітря", en="Haalum" }, -- Haalum
@@ -2240,6 +2279,9 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [21981] = { "розпорядник Нуаар", en="Overseer Nuaar" }, -- Overseer Nuaar
 [21983] = { "Самія Догад", en="Samia Inkling" }, -- Samia Inkling
 [21984] = { "Рексар", "чемпіон Орди", en="Rexxar" }, -- Rexxar
+[21992] = { "тотем сили землі", en="Strength of Earth Totem" }, -- Strength of Earth Totem
+[21994] = { "тотем кам'яної шкіри", en="Stoneskin Totem" }, -- Stoneskin Totem
+[21995] = { "тотем обпалення", en="Searing Totem" }, -- Searing Totem
 [21998] = { "кор'кронський вершник на виверні", en="Kor'kron Wind Rider", feminine="кор'кронська вершниця на виверні" }, -- Kor'kron Wind Rider
 [22000] = { "підсвітній драк Драконової Пащі", en="Dragonmaw Nether Drake" }, -- Dragonmaw Nether Drake
 [22004] = { "Леорокс", en="Leoroxx" }, -- Leoroxx
@@ -2273,6 +2315,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [22083] = { "володар Іллідан Шаленство Бурі", en="Lord Illidan Stormrage" }, -- Illidan Stormrage
 [22084] = { "обраний Тінистого Місяця", "слуга Іллідана", en="Shadowmoon Chosen" }, -- Shadowmoon Chosen <Servant of Illidan>
 [22089] = { "літаюча машина Тошлі", en="Toshley Flying Machine" }, -- Toshley Flying Machine
+[22091] = { "тотем вогнеплюя", en="Spitfire Totem" }, -- Spitfire Totem
 [22093] = { "вартовий Іллідарі", "Багряна печатка", en="Illidari Watcher" }, -- Illidari Watcher
 [22095] = { "заражений коренехід", en="Infested Root-Walker" }, -- Infested Root-Walker
 [22099] = { "постачальник культу змія", en="Wyrmcult Provisioner" }, -- Wyrmcult Provisioner
@@ -2302,12 +2345,14 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [22197] = { "орк Драконової Пащі", en="Dragonmaw Orc" }, -- Dragonmaw Orc
 [22199] = { "Слааґ", "син Ґруула", en="Slaag" }, -- Slaag
 [22203] = { "пекельник", en="Infernal" }, -- Infernal
+[22209] = { "осквернений тотем обпалення", en="Corrupted Searing Totem" }, -- Searing Totem
 [22211] = { "бойова магиня Віара", en="Battlemage Vyara" }, -- Battlemage Vyara
 [22214] = { "провісник Саронен", en="Harbinger Saronen" }, -- Harbinger Saronen
 [22215] = { "Дубоствол", en="Treebole" }, -- Treebole
 [22226] = { "дух коі-коі", en="Koi-Koi Spirit" }, -- Koi-Koi Spirit
 [22231] = { "Зеззак", en="Zezzak" }, -- Zezzak
 [22232] = { "араккоа Ґрішни", en="Grishna Arakkoa" }, -- Grishna Arakkoa
+[22236] = { "тотем елементаля води", en="Water Elemental Totem" }, -- Water Elemental Totem
 [22251] = { "лучник Драконової Пащі", en="Dragonmaw Archer" }, -- Dragonmaw Archer
 [22252] = { "наймит Драконової Пащі", en="Dragonmaw Peon" }, -- Dragonmaw Peon
 [22253] = { "вознесенець Драконової Пащі", en="Dragonmaw Ascendant" }, -- Dragonmaw Ascendant
@@ -2333,6 +2378,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [22312] = { "заклинатель духів Дохгар", en="Spiritcaller Dohgar" }, -- Spiritcaller Dohgar
 [22314] = { "викрадена дитина", en="Captive Child" }, -- Captive Child
 [22315] = { "міна Кузні Смерті", en="Deathforge Mine" }, -- Deathforge Mine
+[22318] = { "тотем закликання духів", en="Spirit Calling Totem" }, -- Spirit Calling Totem
 [22325] = { "ткач кошмару", en="Nightmare Weaver" }, -- Nightmare Weaver
 [22331] = { "гвардієць Драконової Пащі", en="Dragonmaw Elite" }, -- Dragonmaw Elite
 [22332] = { "нащадок Нелтараку", en="Brood of Neltharaku" }, -- Neltharaku
@@ -2392,6 +2438,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [22481] = { "Дворфовітц", "лідер експедиції", en="Dwarfowitz" }, -- Dwarfowitz
 [22482] = { "дорослий просіювач кісток", en="Mature Bone Sifter" }, -- Mature Bone Sifter
 [22484] = { "Зеппіт", en="Zeppit" }, -- Zeppit
+[22486] = { "великий тотем земного зв'язування", en="Greater Earthbind Totem" }, -- Earthbind Totem
+[22487] = { "великий тотем очищення отрут", en="Greater Poison Cleansing Totem" }, -- Poison Cleansing Totem
 [22488] = { "вартова Місячний Шепіт", en="Sentinel Moonwhisper" }, -- Sentinel Moonwhisper
 [22489] = { "рубайло Ґрак", en="Grunt Grahk" }, -- Grunt Grahk
 [22490] = { "Хаффер", en="Huffer" }, -- Huffer
@@ -2432,6 +2480,10 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [22891] = { "вартовий другого фрагмента", en="Second Fragment Guardian" }, -- Second Fragment Guardian
 [22892] = { "вартовий третього фрагмента", en="Third Fragment Guardian" }, -- Third Fragment Guardian
 [22893] = { "троль-слуга Водін", en="Wodin the Troll-Servant" }, -- Wodin the Troll-Servant
+[22894] = { "тотем циклону", en="Cyclone Totem" }, -- Cyclone Totem
+[22895] = { "викликаний тотем обпалення", en="Summoned Searing Totem" }, -- Searing Totem
+[22896] = { "тотем обпалення Попеловустих", en="Ashtongue Searing Totem" }, -- Searing Totem
+[22897] = { "викликаний тотем буревію", en="Summoned Windfury Totem" }, -- Windfury Totem
 [22899] = { "радниик Протекторату Рахім", "Протекторат", en="Protectorate Advisor Rahim" }, -- Protectorate Advisor Rahim <The Protectorate>
 [22900] = { "закатований передовик Протекторату", "Протекторат", en="Tortured Protectorate Vanguard" }, -- Tortured Protectorate Vanguard <The Protectorate>
 [22904] = { "око Іллідана", en="Eye of Illidan" }, -- Illidan Stormrage
@@ -2669,6 +2721,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [23786] = { "дух Каменедовбні", en="Stonemaul Spirit" }, -- Stonemaul Spirit
 [23789] = { "Жеврокрил", en="Smolderwing" }, -- Smolderwing
 [23797] = { "Моксі Сталешкварка", en="Moxie Steelgrille" }, -- Moxie Steelgrille
+[23811] = { "захоплений тотем", en="Captured Totem" }, -- Captured Totem
 [23835] = { "сержант Амелін", en="Sergeant Amelyn" }, -- Sergeant Amelyn
 [23841] = { "Гостроспин", en="Razorspine" }, -- Razorspine
 [23843] = { "Мордент Хмурний", en="Mordant Grimsby" }, -- Mordant Grimsby
@@ -2688,6 +2741,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [23948] = { "учень Тассерел", en="Apprentice Tasserel" }, -- Apprentice Tasserel
 [23951] = { "лейтенант Аден", en="Lieutenant Aden" }, -- Lieutenant Aden
 [23979] = { "гігантська болотна жаба", en="Giant Marsh Frog" }, -- Giant Marsh Frog
+[24320] = { "тотем вогненного спалаху", en="Fire Nova Totem" }, -- Fire Nova Totem
 [24358] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
 [24369] = { "вітряний торговець Джарім", en="Wind Trader Zhareem" }, -- Wind Trader Zhareem
 [24370] = { "підсвітній ловець Ма'дуун", en="Nether-Stalker Mah'duun" }, -- Nether-Stalker Mah'duun
@@ -2695,6 +2749,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [24424] = { "проєкція екзарха Маладаара", en="Exarch Maladaar Image" }, -- Exarch Maladaar
 [24455] = { "Холлі", en="Hollee" }, -- Hollee
 [24477] = { "злодій Синдикату", en="Syndicate Thief", feminine="злодійка Синдикату" }, -- Syndicate Thief
+[24649] = { "зламаний тотем елементаля землі", en="Broken Earth Elemental Totem" }, -- Earth Elemental Totem
 [24664] = { "Кель'тас Сонячний Блукач", "повелитель ельфів крові", en="Kael'thas Sunstrider" }, -- Kael'thas Sunstrider
 [24667] = { "сержант Громовий Ріг", "забезпечення зброєю", en="Sergeant Thunderhorn" }, -- Sergeant Thunderhorn <Weapons Quartermaster>
 [24668] = { "леді Палансір", "квартирмейстерка обладунків", en="Lady Palanseer" }, -- Lady Palanseer <Armor Quartermaster>
@@ -2725,6 +2780,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [25741] = { "М'уру", en="M'uru" }, -- M'uru
 [25905] = { "вартовий полум'я долини Тінистого Місяця", en="Shadowmoon Valley Flame Warden" }, -- Shadowmoon Valley Flame Warden
 [25938] = { "хранитель полум'я долини Тінистого Місяця", en="Shadowmoon Valley Flame Keeper" }, -- Shadowmoon Valley Flame Keeper
+[25961] = { "тотем Служителів Землі", en="Earthen Ring Totem" }, -- Earthen Ring Totem
 [26075] = { "казначей", en="Paymaster", feminine="казначейка" }, -- paymaster
 [26246] = { "пророк Велен", en="Prophet Velen" }, -- Prophet Velen
 [26247] = { "леді Ліадрін", "матріарх Лицарів крові", en="Lady Liadrin" }, -- Lady Liadrin

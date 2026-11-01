@@ -13,6 +13,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [15476] = { "скорпід", en="Scorpid" }, -- scorpid
 [36714] = { "смирна вівця", en="Docile Sheep" }, -- Docile Sheep
 [47194] = { "смирна вівця", en="Docile Sheep" }, -- Docile Sheep
+[47649] = { "дикий гриб", en="Wild Mushroom" }, -- Wild Mushroom
 [50331] = { "Ґо-Кан", en="Go-Kan" }, -- Go-Kan
 [54620] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
 [54906] = { "Ейтріґ", en="Eitrigg" }, -- Eitrigg
@@ -49,6 +50,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [56611] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
 [56649] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
 [56677] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[56711] = { "діжка розлючених духів", en="Keg of Angry Spirits" }, -- Keg of Angry Spirits
 [56839] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
 [57250] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
 [57282] = { "канатолаз", en="Rope Climber" }, -- Rope Climber
@@ -90,6 +92,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [59000] = { "вартовий жаху", en="Terrorguard" }, -- terrorguard
 [59080] = { "темний магістр Ґандлінґ", en="Darkmaster Gandling" }, -- Darkmaster Gandling
 [59153] = { "Брязкоклин", en="Rattlegore" }, -- Rattlegore
+[59172] = { "дикий гриб: чума", en="Wild Mushroom: Plague" }, -- Wild Mushroom: Plague
 [59184] = { "Джандіс Барова", en="Jandice Barov" }, -- Jandice Barov
 [59188] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
 [59189] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
@@ -100,6 +103,9 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [59300] = { "оборонець Багряного Походу", en="Scarlet Defender", feminine="оборонниця Багряного Походу" }, -- Scarlet Defender
 [59301] = { "оборонець Багряного Походу", en="Scarlet Defender", feminine="оборонниця Багряного Походу" }, -- Scarlet Defender
 [59369] = { "доктор Теолен Крастінов", "м'ясар", en="Doctor Theolen Krastinov" }, -- Doctor Theolen Krastinov <The Butcher>
+[59390] = { "глумливе знамено", en="Mocking Banner" }, -- Mocking Banner
+[59398] = { "деморалізуюче знамено", en="Demoralizing Banner" }, -- Demoralizing Banner
+[59399] = { "знамено з черепом", en="Skull Banner" }, -- Skull Banner
 [59501] = { "реанімований труп", en="Reanimated Corpse" }, -- Reanimated Corpse
 [59536] = { "пес", en="Dog" }, -- Dog
 [59563] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
@@ -107,8 +113,13 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [59608] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
 [59658] = { "Плямчик", en="Spot" }, -- Spot
 [59704] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
+[59712] = { "тотем кам'яного валу", en="Stone Bulwark Totem" }, -- Stone Bulwark Totem
+[59717] = { "тотем вітроступа", en="Windwalk Totem" }, -- Windwalk Totem
+[59738] = { "молот світла", en="Light's Hammer" }, -- Light's Hammer
 [59746] = { "центуріон Багряного Походу", en="Scarlet Centurion", feminine="центуріонка Багряного Походу" }, -- Scarlet Centurion
 [59757] = { "смерколов", en="Duskstalker" }, -- Duskstalker
+[59764] = { "тотем цілющого припливу", en="Healing Tide Totem" }, -- Healing Tide Totem
+[59776] = { "джутові пахощі удачі", en="Lucky Burlap Incense" }, -- Lucky Burlap Incense
 [59971] = { "кам'яний вартовий", en="Stone Guardian" }, -- Stone Guardian
 [59973] = { "кам'яний вартовий", en="Stone Guardian" }, -- Stone Guardian
 [60017] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
@@ -116,7 +127,9 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [60165] = { "розлючений дух", en="Enraged Spirit" }, -- Enraged Spirit
 [60240] = { "тотем духів", en="Spirit Totem" }, -- Spirit Totem
 [60287] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[60370] = { "тотем розлюченої мавпи", en="Angry Monkey Totem" }, -- Angry Monkey Totem
 [60547] = { "Наташа", en="Natasha" }, -- Natasha Morris
+[60561] = { "тотем землехвату", en="Earthgrab Totem" }, -- Earthgrab Totem
 [60761] = { "прибережний краб", en="Shore Crab" }, -- Shore Crab
 [60770] = { "друїд Орди", en="Horde Druid", feminine="друїдка Орди" }, -- Horde Druid
 [60781] = { "фрагмент душі", en="Soul Fragment" }, -- Soul Fragment
@@ -138,10 +151,12 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [61141] = { "лугова собачка", en="Prairie Dog" }, -- Prairie Dog
 [61142] = { "змія", en="Snake" }, -- Snake
 [61143] = { "миша", en="Mouse" }, -- Mouse
+[61146] = { "статуя Чорного Бика", en="Black Ox Statue" }, -- Black Ox Statue
 [61158] = { "прибережний краб", en="Shore Crab" }, -- Shore Crab
 [61165] = { "оленя", en="Fawn" }, -- Fawn
 [61169] = { "тарган", en="Roach" }, -- Roach
 [61170] = { "вівця", en="Sheep" }, -- Sheep
+[61245] = { "тотем заряду", en="Capacitor Totem" }, -- Capacitor Totem
 [61255] = { "скунс", en="Skunk" }, -- Skunk
 [61257] = { "чорний пацюк", en="Black Rat" }, -- Black Rat
 [61312] = { "береговий краб", en="Strand Crab" }, -- Shore Crab
@@ -164,12 +179,17 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [61456] = { "баран", en="Ram" }, -- Ram
 [61669] = { "Кремнепал", "їжа для гончаків", en="Oggleflint" }, -- Oggleflint
 [61684] = { "Імла", en="Mist" }, -- Mist
+[61711] = { "тотем води", en="Water Totem" }, -- Water Totem
+[61712] = { "тотем вогню", en="Fire Totem" }, -- Fire Totem
+[61713] = { "тотем землі", en="Earth Totem" }, -- Earth Totem
+[61714] = { "тотем повітря", en="Air Totem" }, -- Air Totem
 [61750] = { "олень", en="Deer" }, -- Deer
 [61751] = { "заєць", en="Hare" }, -- Hare
 [61752] = { "бурий бабак", en="Brown Marmot" }, -- Brown Marmot
 [61753] = { "черв", en="Maggot" }, -- Maggot
 [61828] = { "заражена білка", en="Infected Squirrel" }, -- Infected Squirrel
 [61896] = { "Джозі", en="Josie" }, -- Josie
+[62002] = { "тотем разючої бурі", en="Stormlash Totem" }, -- Stormlash Totem
 [62019] = { "кішка", en="Cat" }, -- Cat
 [62022] = { "личинка", en="Larva" }, -- Larva
 [62142] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
@@ -179,6 +199,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [62312] = { "жаба", en="Frog" }, -- Frog
 [62314] = { "заражений тарган", en="Tainted Cockroach" }, -- Tainted Cockroach
 [62316] = { "заражений щур", en="Tainted Rat" }, -- Tainted Rat
+[62493] = { "тотем мавпячого острова", en="Monkey Island Totem" }, -- Monkey Island Totem
+[62501] = { "тотем мавпячого острова", en="Monkey Island Totem" }, -- Monkey Island Totem
 [62624] = { "берсерк Амані", "зандаларські загарбники", en="Amani Berserker" }, -- Amani Berserker <Zandalari Invaders>
 [62653] = { "Нефрит", en="Jade" }, -- Jade
 [62664] = { "курка", en="Chicken" }, -- Chicken
@@ -218,6 +240,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [64535] = { "небесний змій", en="Cloud Serpent" }, -- Cloud Serpent
 [64540] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
 [64560] = { "леді Джайна Праудмур", "правителька Терамору", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[64571] = { "колодязь світла", en="Lightwell" }, -- Lightwell
 [64576] = { "бандит", "бойовий улюбленець", en="Bandit", feminine="бандитка" }, -- Bandit <Battle Pet>
 [64608] = { "фрагмент душі", en="Soul Fragment" }, -- Soul Fragment
 [64628] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
@@ -239,6 +262,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [65183] = { "цілителька духу", en="Spirit Healer" }, -- Spirit Healer
 [65297] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [65338] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
+[65349] = { "тотем цілющого припливу", en="Healing Tide Totem" }, -- Healing Tide Totem
 [65423] = { "загублена душа", en="Lost Soul" }, -- Lost Soul
 [65525] = { "поривчастий вихор", en="Gusting Vortex" }, -- Gusting Vortex
 [65570] = { "краб", en="Crab" }, -- crab
@@ -275,6 +299,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [67306] = { "поневолений археолог", "Ліга дослідників", en="Enslaved Archaeologist", feminine="поневолена археологиня" }, -- Enslaved Archaeologist <Explorers' League>
 [67344] = { "стрімкий сірий вовк", en="Swift Gray Wolf" }, -- Swift Gray Wolf
 [67368] = { "папуга", en="Parrot" }, -- Parrot
+[67380] = { "викликаний тотем обпалення", en="Summoned Searing Totem" }, -- Searing Totem
 [67387] = { "мехмайстер Надспалах", "головний архітектор гномської інженерії", en="Tinkmaster Overspark" }, -- Tinkmaster Overspark
 [67414] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
 [67415] = { "цілющий оберіг", en="Healing Ward" }, -- Healing Ward
@@ -360,6 +385,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [68832] = { "мехмайстер Надспалах", "головний архітектор гномської інженерії", en="Tinkmaster Overspark" }, -- Tinkmaster Overspark
 [68842] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
 [68871] = { "Ембер Кірнен", en="Amber Kearnen" }, -- Amber Kearnen
+[68872] = { "тотем заряду", en="Capacitor Totem" }, -- Capacitor Totem
 [68881] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
 [68902] = { "Сонечко", en="Sunny" }, -- Sunny
 [68903] = { "кор'кронський вершник на виверні", en="Kor'kron Wind Rider", feminine="кор'кронська вершниця на виверні" }, -- Kor'kron Wind Rider
@@ -379,6 +405,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [69132] = { "верховна жриця Мар'лі", en="High Priestess Mar'li" }, -- Mar'li
 [69249] = { "Нефрит", en="Jade" }, -- Jade
 [69257] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[69364] = { "ідол духовного зв'язку", en="Spirit Link Idol" }, -- Spirit Link Idol
 [69465] = { "Джін'рох Руйнівник", en="Jin'rokh the Breaker" }, -- Jin'rokh the Breaker
 [69478] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
 [69481] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
@@ -429,6 +456,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [70972] = { "сен'джинський вартовий", en="Sen'jin Watcher", feminine="сен'джинська вартова" }, -- Sen'jin Watcher
 [70978] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
 [70979] = { "водяний елементаль", en="Water Elemental" }, -- Water Elemental
+[70982] = { "тотем криги", en="Frost Totem" }, -- Frost Totem
 [71027] = { "Ембер Кірнен", "ШУР", en="Amber Kearnen" }, -- Amber Kearnen <SI:7>
 [71033] = { "підступний біс", en="Fiendish Imp" }, -- Fiendish Imp
 [71126] = { "стрімкий блакитний раптор", en="Swift Blue Raptor" }, -- Swift Blue Raptor
@@ -454,12 +482,14 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [71307] = { "сен'джинський вартовий", en="Sen'jin Watcher", feminine="сен'джинська вартова" }, -- Sen'jin Watcher
 [71308] = { "сен'джинський вартовий", en="Sen'jin Watcher", feminine="сен'джинська вартова" }, -- Sen'jin Watcher
 [71319] = { "сен'джинський вартовий", en="Sen'jin Watcher", feminine="сен'джинська вартова" }, -- Sen'jin Watcher
+[71334] = { "тотем отруйної стріли", en="Poison Bolt Totem" }, -- Poison Bolt Totem
 [71344] = { "Тралл", en="Thrall" }, -- Thrall
 [71345] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
 [71347] = { "в'ючний мул", en="Pack Mule" }, -- Pack Mule
 [71348] = { "в'ючний кодо", en="Pack Kodo" }, -- Pack Kodo
 [71360] = { "кор'кронський гвардієць", en="Kor'kron Elite", feminine="кор'кронська гвардійка" }, -- Kor'kron Elite
 [71444] = { "корова", en="Cow" }, -- Cow
+[71447] = { "зміїний оберіг", en="Serpent Ward" }, -- Serpent Ward
 [71448] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
 [71500] = { "змія", en="Snake" }, -- Snake
 [71593] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
@@ -470,6 +500,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [71892] = { "небесний змій", en="Cloud Serpent" }, -- Cloud Serpent
 [71895] = { "небесний змій", en="Cloud Serpent" }, -- Cloud Serpent
 [71896] = { "небесний змій", en="Cloud Serpent" }, -- Cloud Serpent
+[71925] = { "тотем магми", en="Magma Totem" }, -- Magma Totem
 [71927] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
 [72129] = { "Нііру Вогняне Лезо", en="Neeru Fireblade" }, -- Neeru Fireblade
 [72130] = { "Кор'жус", "продавець грибів", en="Kor'jus" }, -- Kor'jus <Mushroom Vendor>
@@ -515,12 +546,18 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [72493] = { "Трак'ґен", "товари загального вжитку", en="Trak'gen" }, -- Trak'gen <General Goods>
 [72560] = { "Лор'темар Терон", "лорд-регент Квел'Таласа", en="Lor'themar Theron" }, -- Lor'themar Theron
 [72561] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
+[72562] = { "тотем отруйної стріли", en="Poison Bolt Totem" }, -- Poison Bolt Totem
 [72584] = { "гоблін-інженер", en="Goblin Engineer" }, -- Goblin Engineer
 [72676] = { "цілителька духу", en="Spirit Healer" }, -- Spirit Healer
 [72807] = { "скельний ловець", en="Crag Stalker" }, -- Crag Stalker
 [72941] = { "рубайло Драконової Пащі", en="Dragonmaw Grunt" }, -- Dragonmaw Grunt
 [73030] = { "Чень Бурехміль", en="Chen Stormstout" }, -- Chen Stormstout
 [73061] = { "Андуїн Рінн", "принц Штормовію", en="Anduin Wrynn" }, -- Anduin Wrynn <Prince of Stormwind>
+[73085] = { "тотем магми", en="Magma Totem" }, -- Magma Totem
+[73086] = { "тотем цілющого припливу", en="Healing Tide Totem" }, -- Healing Tide Totem
+[73088] = { "бойове знамено Драконової Пащі", en="Dragonmaw War Banner" }, -- Dragonmaw War Banner
+[73093] = { "тотем магми", en="Magma Totem" }, -- Magma Totem
+[73094] = { "тотем цілющого припливу", en="Healing Tide Totem" }, -- Healing Tide Totem
 [73100] = { "скелет", en="Skeleton" }, -- Skeleton
 [73102] = { "водяний елементаль", en="Water Elemental" }, -- Water Elemental
 [73192] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
@@ -534,6 +571,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [73213] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
 [73223] = { "жаходактиль", en="Pterrordax" }, -- Pterrordax
 [73280] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
+[73310] = { "бойове знамено Драконової Пащі", en="Dragonmaw War Banner" }, -- Dragonmaw War Banner
 [73369] = { "водяний елементаль", en="Water Elemental" }, -- Water Elemental
 [73460] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [73483] = { "Тралл", "Служителі Землі", en="Thrall" }, -- Thrall <The Earthen Ring>
@@ -555,6 +593,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [73709] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
 [73710] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
 [73716] = { "верховний надповелитель Саурфанґ", en="High Overlord Saurfang" }, -- Varok Saurfang
+[73890] = { "тотем цілющого потоку", en="Healing Stream Totem" }, -- Healing Stream Totem
 [73927] = { "Верховний штукар Меккакруть", "король гномів", en="High Tinker Mekkatorque" }, -- Gelbin Mekkatorque
 [73941] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
 [73942] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
