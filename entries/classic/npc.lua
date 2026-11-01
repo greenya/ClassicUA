@@ -6398,7 +6398,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [11067] = { "Малкомб Вінн", "чародій-підмайстер", en="Malcomb Wynn" }, -- Malcomb Wynn <Journeyman Enchanter>
 [11068] = { "Бетті Квін", "чародійка-підмайстриня", en="Betty Quin" }, -- Betty Quin <Journeyman Enchanter>
 [11069] = { "Дженова Камнещит", "доглядачка стайні", en="Jenova Stoneshield" }, -- Jenova Stoneshield <Stable Master>
-[11070] = { "Сильванна Літній Місяць", "чародійка-підмайстриня", en="Lalina Summermoon" }, -- Lalina Summermoon <Journeyman Enchanter>
+[11070] = { "Лаліна Літній Місяць", "чародійка-підмайстриня", en="Lalina Summermoon" }, -- Lalina Summermoon <Journeyman Enchanter>
 [11071] = { "Мот Світанковий Мандрівник", "чародій-підмайстер", en="Mot Dawnstrider" }, -- Mot Dawnstrider <Journeyman Enchanter>
 [11072] = { "Кітта Вогневітер", "чародій-ремісник", en="Kitta Firewind" }, -- Kitta Firewind <Artisan Enchanter>
 [11073] = { "Аннора", "чародійка-майстриня", en="Annora" }, -- Annora
@@ -7639,7 +7639,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [14516] = { "лицар смерті Тінегубитель", en="Death Knight Darkreaver" }, -- Darkreaver
 [14517] = { "верховна жриця Жеклік", en="High Priestess Jeklik" }, -- High Priestess Jeklik
 [14518] = { "аспект бездумності", en="Aspect of Banality" }, -- Aspect of Banality
-[14519] = { "аспехт гріха", en="Aspect of Corruption" }, -- Aspect of Corruption
+[14519] = { "аспект гріха", en="Aspect of Corruption" }, -- Aspect of Corruption
 [14520] = { "аспект злостивості", en="Aspect of Malice" }, -- Aspect of Malice
 [14521] = { "аспект темрями", en="Aspect of Shadow" }, -- Aspect of Shadow
 [14522] = { "Ур'дан", en="Ur'dan" }, -- Ur'dan
@@ -7708,10 +7708,10 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [14636] = { "покоївка Ніжностиск", en="Chambermaid Pillaclencher" }, -- Chambermaid Pillaclencher
 [14637] = { "Зорбін Блимоверт", en="Zorbin Fandazzle" }, -- Zorbin Fandazzle
 [14661] = { "Жалохвіст", en="Stinglasher" }, -- Stinglasher
-[14662] = { "осквернений тотем вогненного спалаху V", en="Corrupted Fire Nova Totem V" }, -- Corrupted Fire Nova Totem
-[14663] = { "осквернений тотем кам'яної шкіри VI", en="Corrupted Stoneskin Totem VI" }, -- Corrupted Stoneskin Totem
-[14664] = { "осквернений тотем цілющого потоку V", en="Corrupted Healing Stream Totem V" }, -- Corrupted Healing Stream Totem
-[14666] = { "осквернений тотем буревію III", en="Corrupted Windfury Totem III" }, -- Corrupted Windfury Totem
+[14662] = { "осквернений тотем вогненного спалаху V", en="Corrupted Fire Nova Totem V" }, -- Fire Nova Totem
+[14663] = { "осквернений тотем кам'яної шкіри VI", en="Corrupted Stoneskin Totem VI" }, -- Stoneskin Totem
+[14664] = { "осквернений тотем цілющого потоку V", en="Corrupted Healing Stream Totem V" }, -- Healing Stream Totem
+[14666] = { "осквернений тотем буревію III", en="Corrupted Windfury Totem III" }, -- Windfury Totem
 [14667] = { "осквернений тотем", en="Corrupted Totem" }, -- Corrupted Totem
 [14668] = { "осквернений пекельник", en="Corrupted Infernal" }, -- Corrupted Infernal
 [14682] = { "Розірвень", en="Sever" }, -- Sever

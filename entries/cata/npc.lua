@@ -284,9 +284,11 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [23559] = { "Бадд", en="Budd" }, -- Budd Nedreck
 [23566] = { "Калія Гастінґс", "тренерка пройдисвітів", en="Calia Hastings" }, -- Calia Hastings <Rogue Trainer>
 [23896] = { "\"Нечупара\" Майкл Кроу", "тренер та продавець товарів для рибальства", en="\"Dirty\" Michael Crowe" }, -- "Dirty" Michael Crowe <Fishing Trainer & Supplies>
+[25494] = { "очищувальний тотем", en="Purifying Totem" }, -- Purifying Totem
 [28704] = { "Дороті Іґан", "тренерка травництва", en="Dorothy Egan" }, -- Dorothy Egan <Herbalism Trainer>
 [31423] = { "Кайя", "продавчиня вогнепальної зброї", en="Kaja" }, -- Kaja <Gun Vendor>
 [31734] = { "Маліґос", en="Malygos" }, -- Malygos
+[31897] = { "колодязь світла", en="Lightwell" }, -- Lightwell
 [32888] = { "сутінковий фанатик", en="Twilight Fanatic", feminine="сутінкова фанатичка" }, -- Twilight Fanatic
 [32911] = { "Ґершала Нічношерех", en="Gershala Nightwhisper" }, -- Gershala Nightwhisper
 [32959] = { "Цереліан Білопазур", en="Cerellean Whiteclaw" }, -- Cerellean Whiteclaw
@@ -395,6 +397,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [36676] = { "Азуреґос", en="Azuregos" }, -- Azuregos
 [36714] = { "вівця", en="Sheep" }, -- Sheep
 [36728] = { "Кроум", "капітан вершників на вивернах", en="Kroum" }, -- Kroum
+[36915] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [36922] = { "поранений солдат", "батальйон Трюмної води", en="Wounded Soldier", feminine="поранена солдатка" }, -- Wounded Soldier
 [37058] = { "Бейн Криваве Копито", "верховний ватаг", en="Baine Bloodhoof" }, -- Baine Bloodhoof
 [37115] = { "Тео Буремолот", "тренер шаманів", en="Teo Hammerstorm" }, -- Teo Hammerstorm <Shaman Trainer>
@@ -419,6 +422,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [38314] = { "Муйо", "послідовник Наралекса", en="Muyoh" }, -- Muyoh
 [38326] = { "шаман Темного Списа", en="Darkspear Shaman", feminine="шаманка Темного Списа" }, -- Darkspear Shaman
 [38387] = { "Шпичка Гайкокрут", "ваша колишня виконавча асистентка", en="Sassy Hardwrench" }, -- Sassy Hardwrench
+[38427] = { "зміїний оберіг", en="Serpent Ward" }, -- Serpent Ward
+[38428] = { "тотем цілющого потоку DCCXLII", en="Healing Stream Totem DCCXLII" }, -- Healing Stream Totem
 [38467] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
 [38469] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
 [38515] = { "Макс Лавина", "тренер шаманів", en="Maxx Avalanche" }, -- Maxx Avalanche <Shaman Trainer>
@@ -439,6 +444,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [39035] = { "троль-слуга Водін", en="Wodin the Troll-Servant" }, -- Wodin the Troll-Servant
 [39036] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
 [39038] = { "Ліліан Восс", en="Lilian Voss" }, -- Lilian Voss
+[39051] = { "тотем потоку мани", en="Mana Stream Totem" }, -- Mana Stream Totem
 [39118] = { "генерал Двокосий", en="General Twinbraid" }, -- General Twinbraid
 [39119] = { "Мебок Міцрікс", en="Mebok Mizzyrix" }, -- Mebok Mizzyrix
 [39174] = { "Фіґлі Вигнанець", en="Feegly the Exiled" }, -- Feegly the Exiled
@@ -462,6 +468,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [39857] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
 [39858] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
 [39867] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
+[39881] = { "хвилемовниця Валорен", "Служителі Землі", en="Wavespeaker Valoren" }, -- Wavespeaker Valoren <The Earthen Ring>
 [39893] = { "Джоун Плоскогірний", en="Jawn Highmesa" }, -- Jawn Highmesa
 [39895] = { "Канаті Сіра Хмара", en="Kanati Greycloud" }, -- Kanati Greycloud
 [39896] = { "лихошрамний єті", en="Feral Scar Yeti" }, -- Feral Scar Yeti
@@ -476,9 +483,12 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [40026] = { "гірський велетень", en="Mountain Giant" }, -- mountain giant
 [40027] = { "Фіззл Латуноболт", "співвласник Швидкісної баржі Фіззла та Поззіка", en="Fizzle Brassbolts" }, -- Fizzle Brassbolts
 [40028] = { "Поззік", en="Pozzik" }, -- Pozzik
+[40053] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[40060] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [40061] = { "буревійка племені Ґалак", en="Galak Stormer" }, -- Galak Stormer
 [40062] = { "молотобій племені Ґалак", en="Galak Mauler" }, -- Galak Mauler
 [40063] = { "чередник племені Ґалак", en="Galak Wrangler" }, -- Galak Wrangler
+[40105] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [40109] = { "розвідувач Ґунстан", "Ліга дослідників", en="Prospector Gunstan" }, -- Prospector Gunstan <Explorers' League>
 [40132] = { "Вестія Місяцеспис", en="Vestia Moonspear" }, -- Vestia Moonspear
 [40140] = { "верховний друїд Фендрал Оленеріг", en="Arch Druid Fandral Staghelm" }, -- Fandral Staghelm
@@ -504,15 +514,21 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [40595] = { "Килимошип", en="Rugfizzle" }, -- Rugfizzle
 [40598] = { "гощик-майстер Міґлен", en="Drag Master Miglen" }, -- Drag Master Miglen
 [40599] = { "Килимошип", en="Rugfizzle" }, -- Rugfizzle
+[40601] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [40688] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
 [40689] = { "Ізера", en="Ysera" }, -- Ysera
+[40697] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[40736] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[40746] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [40763] = { "Марін Гогельмогель", "барон Пристробляха", en="Marin Noggenfogger" }, -- Marin Noggenfogger
 [40773] = { "Кенарій", en="Cenarius" }, -- Cenarius
 [40793] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
 [40794] = { "син полум'я", en="Son of Flame" }, -- Son of Flame
+[40801] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [40803] = { "Кенарій", en="Cenarius" }, -- Cenarius
 [40804] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
 [40805] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[40825] = { "Ерунак Каменемовець", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker
 [40832] = { "Дейзі", "корчмарка", en="Daisy" }, -- Daisy <Innkeeper>
 [40833] = { "Тіала Білогрива", en="Tiala Whitemane" }, -- Tiala Whitemane
 [40885] = { "Віззл Латуноболт", en="Wizzle Brassbolts" }, -- Wizzle Brassbolts
@@ -567,6 +583,8 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [41305] = { "буревійка племені Ґалак", en="Galak Stormer" }, -- Galak Stormer
 [41306] = { "чередник племені Ґалак", en="Galak Wrangler" }, -- Galak Wrangler
 [41307] = { "перший помічник Снелліґ", en="First Mate Snellig" }, -- First Mate Snellig
+[41328] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[41341] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [41342] = { "строкатий верескун", en="Mottled Screecher" }, -- Mottled Screecher
 [41343] = { "строкатий раптор", en="Mottled Raptor" }, -- Mottled Raptor
 [41371] = { "шукач Порожнечі", en="Void Seeker" }, -- Void Seeker
@@ -603,21 +621,38 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [41503] = { "Ретіль Вартовий Природи", en="Rethiel the Greenwarden" }, -- Rethiel the Greenwarden
 [41556] = { "Балґарас Паскудний", en="Balgaras the Foul" }, -- Balgaras the Foul
 [41559] = { "капітан Міцнорук", en="Captain Stoutfist" }, -- Captain Stoutfist
+[41600] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[41618] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [41630] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
 [41631] = { "Кенарій", en="Cenarius" }, -- Cenarius
 [41632] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
 [41634] = { "Раґнарос", en="Ragnaros" }, -- Ragnaros
+[41640] = { "хвилемовниця Валорен", "Служителі Землі", en="Wavespeaker Valoren" }, -- Wavespeaker Valoren <The Earthen Ring>
 [41651] = { "Ворона", en="Raven" }, -- Raven
 [41652] = { "сутінковий чемпіон", en="Twilight Champion", feminine="сутінкова чемпіонка" }, -- Twilight Champion
 [41682] = { "архієпископ Бенедикт", en="Archbishop Benedictus" }, -- Archbishop Benedictus
 [41710] = { "леді Джайна Праудмур", "правителька Терамору", en="Lady Jaina Proudmoore" }, -- Jaina Proudmoore
+[41751] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[41777] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[41788] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[41794] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[41802] = { "хвилемовниця Валорен", "Служителі Землі", en="Wavespeaker Valoren" }, -- Wavespeaker Valoren <The Earthen Ring>
+[41803] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[41844] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [41865] = { "дарнаський розвідник", en="Darnassian Scout", feminine="дарнаська розвідниця" }, -- Darnassian Scout
+[41869] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [41872] = { "сукуб-прислужниця", en="Succubus Minion" }, -- Succubus Minion
 [41873] = { "біс-прислужник", en="Imp Minion" }, -- Imp Minion
 [41897] = { "горянин Дун-Морога", en="Dun Morogh Mountaineer", feminine="горянка Дун-Морога" }, -- Dun Morogh Mountaineer
+[41938] = { "тотем тремтіння", en="Tremor Totem" }, -- Tremor Totem
+[41939] = { "тотем тремтіння", en="Tremor Totem" }, -- Tremor Totem
+[41940] = { "тотем буревію", en="Windfury Totem" }, -- Windfury Totem
+[41941] = { "тотем буревію", en="Windfury Totem" }, -- Windfury Totem
 [41944] = { "Ґален Тролебій", "полеглий принц Стромварту", en="Galen Trollbane" }, -- Galen Trollbane
+[41967] = { "тотем кам'яної шкіри", en="Stoneskin Totem" }, -- Stoneskin Totem
 [41983] = { "учень Крітен", en="Apprentice Kryten" }, -- Apprentice Kryten
 [41984] = { "Кларисса", en="Clarissa" }, -- Clarissa
+[42054] = { "тотем ув'язнення Ерунака", en="Erunak's Confinement Totem" }, -- Erunak Stonespeaker
 [42107] = { "рубайло Драконової Пащі", en="Dragonmaw Grunt" }, -- Dragonmaw Grunt
 [42110] = { "синьожабрий калюжник", en="Bluegill Puddlejumper" }, -- Bluegill Puddlejumper
 [42111] = { "синьожабрий здобувач", en="Bluegill Forager" }, -- Bluegill Forager
@@ -627,9 +662,11 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [42170] = { "сніжний леопард", en="Snow Leopard" }, -- Snow Leopard
 [42193] = { "примарнолапий бігун", en="Ghostpaw Runner" }, -- Ghostpaw Runner
 [42195] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
+[42211] = { "тотем магми", en="Magma Totem" }, -- Magma Totem
 [42218] = { "королівський вартовий Штормовію", en="Stormwind Royal Guard", feminine="королівська вартова Штормовію" }, -- Stormwind Royal Guard
 [42230] = { "Ґромаґ", en="Grawmug" }, -- Grawmug
 [42242] = { "примарнолапий альфа", en="Ghostpaw Alpha" }, -- Ghostpaw Alpha
+[42261] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [42265] = { "заколотник Темного Заліза", en="Dark Iron Insurgent" }, -- Dark Iron Insurgent
 [42283] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
 [42290] = { "сніжний вовк", en="Winter Wolf" }, -- Winter Wolf
@@ -637,10 +674,13 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [42307] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
 [42317] = { "Верховний штукар Меккакруть", "король гномів", en="High Tinker Mekkatorque" }, -- Gelbin Mekkatorque
 [42328] = { "тренувальний манекен", en="Practice Dummy" }, -- Practice Dummy
+[42394] = { "тотем зменшення Валорен", en="Valoren's Shrinkage Totem" }, -- Wavespeaker Valoren
 [42427] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
 [42515] = { "загадкова постать", en="Shadowy Figure" }, -- Shadowy Figure
 [42600] = { "Керн Криваве Копито", "верховний ватаг", en="Cairne Bloodhoof" }, -- Cairne Bloodhoof
 [42602] = { "Рексар", "чемпіон Орди", en="Rexxar" }, -- Rexxar
+[42604] = { "тотем опору стихіям", en="Elemental Resistance Totem" }, -- Elemental Resistance Totem
+[42605] = { "тотем язика полум'я", en="Flametongue Totem" }, -- Flametongue Totem
 [42613] = { "старійшина Розірваний Бивень", en="Elder Torntusk" }, -- Elder Torntusk
 [42623] = { "вартовий бескиду", en="Bluffwatcher", feminine="вартова бескиду" }, -- Bluffwatcher
 [42640] = { "капітан Варіят", en="Captain Krazz" }, -- Captain Krazz
@@ -706,7 +746,9 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [43391] = { "Міллхаус Манашторм", en="Millhouse Manastorm" }, -- Millhouse Manastorm
 [43396] = { "лорд Віктор Нефарій", "повелитель Чорнокаменю", en="Lord Victor Nefarius" }, -- Lord Victor Nefarius
 [43406] = { "вогняний елементаль", en="Fire Elemental" }, -- Fire Elemental
+[43423] = { "викликаний тотем обпалення", en="Summoned Searing Totem" }, -- Searing Totem
 [43496] = { "Чорний Пломінь", en="Darkblaze" }, -- Darkblaze
+[43519] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [43532] = { "бруднуля", en="Muckdweller" }, -- muckdweller
 [43575] = { "громило Драконової Пащі", en="Dragonmaw Enforcer" }, -- Dragonmaw Enforcer
 [43628] = { "шаман Драконової Пащі", en="Dragonmaw Shaman", feminine="шаманка Драконової Пащі" }, -- Dragonmaw Shaman
@@ -727,6 +769,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [43862] = { "Стібок", "подарунок від Бальзамувальника", en="Stitches" }, -- Stitches
 [43867] = { "Шандріс Перомісяць", en="Shandris Feathermoon" }, -- Shandris Feathermoon
 [43903] = { "гвардієць Нічної варти", en="Night Watch Guard", feminine="гвардійка Нічної варти" }, -- Night Watch Guard
+[43908] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [43909] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
 [43915] = { "Аберкромбі", "Бальзамувальник", en="Abercrombie" }, -- Abercrombie <The Embalmer>
 [43917] = { "скелебур", en="Rock Borer" }, -- Rock Borer
@@ -758,6 +801,11 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [44461] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
 [44463] = { "барон", "вихованець мисливця Блейка", en="Baron" }, -- Huntsman Blake
 [44483] = { "Вісник Кіртонос", en="Kirtonos the Herald" }, -- Kirtonos the Herald
+[44518] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
+[44659] = { "тотем вогню", en="Fire Totem" }, -- Fire Totem
+[44663] = { "тотем повітря", en="Air Totem" }, -- Air Totem
+[44664] = { "тотем води", en="Water Totem" }, -- Water Totem
+[44665] = { "тотем землі", en="Earth Totem" }, -- Earth Totem
 [44744] = { "Смертекрил", "Аспект Смерті", en="Deathwing" }, -- Deathwing
 [44750] = { "Халіф Скорпідожал", en="Caliph Scorpidsting" }, -- Caliph Scorpidsting
 [44759] = { "Андре Вогнебородий", en="Andre Firebeard" }, -- Andre Firebeard
@@ -843,6 +891,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [45449] = { "Арікара", "Помста", en="Arikara" }, -- Arikara
 [45453] = { "чумний гончак", en="Blighthound" }, -- Blighthound
 [45505] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
+[45514] = { "хвилемовниця Валорен", "Служителі Землі", en="Wavespeaker Valoren" }, -- Wavespeaker Valoren <The Earthen Ring>
 [45525] = { "леді Сильвана Вітрогін", "Королева-Банші", en="Lady Sylvanas Windrunner" }, -- Sylvanas Windrunner <Banshee Queen>
 [45529] = { "Керн Криваве Копито", "верховний ватаг", en="Cairne Bloodhoof" }, -- Cairne Bloodhoof
 [45560] = { "Акрідостраз", en="Acridostrasz" }, -- Acridostrasz
@@ -851,6 +900,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [45666] = { "король Маґні Бронзобородий", "лорд Залізогарта", en="King Magni Bronzebeard" }, -- Magni Bronzebeard
 [45667] = { "Верховний штукар Меккакруть", "король гномів", en="High Tinker Mekkatorque" }, -- Gelbin Mekkatorque
 [45668] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
+[45702] = { "Ерунак Каменемовець", "Служителі Землі", en="Erunak Stonespeaker" }, -- Erunak Stonespeaker <The Earthen Ring>
 [45774] = { "пророк Велен", en="Prophet Velen" }, -- Prophet Velen
 [45776] = { "Тіранда Шелест Вітру", "верховна жриця Елуни", en="Tyrande Whisperwind" }, -- Tyrande Whisperwind
 [45779] = { "архімаг Атерік", en="Archmage Ataeric" }, -- Archmage Ataeric
@@ -964,6 +1014,9 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [47050] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
 [47060] = { "караульний Сріблястого Світанку", "Сріблястий Похід", en="Argent Sentry", feminine="караульна Сріблястого Світанку" }, -- Argent Sentry <The Argent Crusade>
 [47063] = { "Валянок", en="Boots" }, -- Boots
+[47069] = { "тотем спокою", en="Totem of Tranquil Mind" }, -- Totem of Tranquil Mind
+[47070] = { "тотем бурі", en="Storm Totem" }, -- Storm Totem
+[47077] = { "тотем цілющого потоку", en="Healing Stream Totem" }, -- Healing Stream Totem
 [47080] = { "Люсьєн Ключожбур", en="Lucien Tosselwrench" }, -- Lucien Tosselwrench
 [47113] = { "Бадд", en="Budd" }, -- Budd Nedreck
 [47152] = { "сутінковий елементаліст", en="Twilight Elementalist", feminine="сутінкова елементалістка" }, -- Twilight Elementalist
@@ -1095,6 +1148,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [49151] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
 [49157] = { "Фобід", "ведучий перегонів", en="Fobeed" }, -- Fobeed
 [49158] = { "Зузубі", "ведучий перегонів", en="Zuzubee" }, -- Zuzubee
+[49178] = { "Ґролнар-Берсерк", en="Grolnar the Berserk" }, -- Grolnar the Berserk
 [49196] = { "Курдран Дикий Молот", en="Kurdran Wildhammer" }, -- Kurdran Wildhammer
 [49203] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
 [49204] = { "Бранн Бронзобородий", en="Brann Bronzebeard" }, -- Brann Bronzebeard
@@ -1353,6 +1407,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [52964] = { "Турак Рунний Тотем", en="Turak Runetotem" }, -- Turak Runetotem
 [52996] = { "командир Аґґро'ґош", en="Commander Aggro'gosh" }, -- Commander Aggro'gosh
 [53000] = { "рубайло Ґром'ґола", en="Grom'gol Grunt" }, -- Grom'gol Grunt
+[53006] = { "тотем духовного зв'язку", en="Spirit Link Totem" }, -- Spirit Link Totem
 [53008] = { "Тиста", "приборкувачка виверн", en="Thysta" }, -- Thysta <Wind Rider Master>
 [53015] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
 [53069] = { "Вол'джин", en="Vol'jin" }, -- Vol'jin
@@ -1378,6 +1433,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [53438] = { "дзеркальне відображення", en="Mirror Image" }, -- Mirror Image
 [53441] = { "Кін'вілей", en="Kin'weelay" }, -- Kin'weelay
 [53447] = { "Турак Рунний Тотем", en="Turak Runetotem" }, -- Turak Runetotem
+[53475] = { "припікаюче полум'я", en="Cauterizing Flame" }, -- Cauterizing Flame
 [53481] = { "Тізалі Ворона", en="Thisalee Crow" }, -- Thisalee Crow
 [53518] = { "Тралл", en="Thrall" }, -- Thrall
 [53527] = { "в'язень", en="Prisoner" }, -- Prisoner

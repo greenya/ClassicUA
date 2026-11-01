@@ -75,7 +75,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [207358] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
 [207359] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
 [207367] = { "жриця припливу Чорноводних глибин", en="Blackfathom Tide Priestess" }, -- Blackfathom Tide Priestess
-[207397] = { "осквернений тотем буревію", en="Corrupted Windfury Totem" }, -- Corrupted Windfury Totem
+[207397] = { "осквернений тотем буревію", en="Corrupted Windfury Totem" }, -- Windfury Totem
 [207457] = { "осквернений тотем щита блискавки", en="Corrupted Lightning Shield Totem" }, -- Corrupted Lightning Shield Totem
 [207515] = { "Сховогрив", en="Lurkmane" }, -- Lurkmane
 [207520] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker

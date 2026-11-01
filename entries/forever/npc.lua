@@ -52,9 +52,14 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [35826] = { "Кей Туґі", en="Kaye Toogie" }, -- Kaye Toogie
 [36856] = { "Шенді Лискоблиск", en="Shandy Glossgleam" }, -- Shandy Glossgleam
 [40833] = { "Тіала Білогрива", en="Tiala Whitemane" }, -- Tiala Whitemane
+[41938] = { "тотем тремтіння", en="Tremor Totem" }, -- Tremor Totem
+[41940] = { "тотем буревію", en="Windfury Totem" }, -- Windfury Totem
+[42604] = { "тотем опору стихіям", en="Elemental Resistance Totem" }, -- Elemental Resistance Totem
+[42605] = { "тотем язика полум'я", en="Flametongue Totem" }, -- Flametongue Totem
 [49808] = { "Ґренгільд Чорнопазур", en="Grenhild Darktalon" }, -- Grenhild Darktalon
 [121295] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [130357] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
+[214208] = { "Н'ора Сердечна", en="N'ora Anyheart" }, -- N'ora Anyheart
 [218616] = { "Бальназар", en="Balnazzar" }, -- Balnazzar
 [218631] = { "виючий жах", en="Screeching Terror" }, -- Screeching Terror
 [218726] = { "світлоносець Багряного Походу", en="Scarlet Lightbearer" }, -- Scarlet Lightbearer
@@ -624,7 +629,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [257866] = { "маг Кірін-Тору", en="Kirin Tor Mage", feminine="магиня Кірін-Тору" }, -- Kirin Tor Mage
 [257901] = { "буканьєр Східних морів", en="Eastsea Buccaneer", feminine="буканьєрка Східних морів" }, -- Eastsea Buccaneer
 [257923] = { "світлик", en="Wisp" }, -- wisp
-[257926] = { "розвідник-новобранець Фаргольда", en="Farholde Scout Trainee", feminine="розвідниця-новобранка Фаргольда" }, -- Farholde Scout Trainee
+[257926] = { "розвідник Фаргольда", en="Farholde Scout", feminine="розвідниця Фаргольда" }, -- Farholde Scout
 [257944] = { "Елеґаель Терниста Лапа", "друїдка Нічного Пазура", en="Elegael Thornpaw" }, -- Elegael Thornpaw <Nightclaw Druid>
 [258023] = { "сержант Ріфтан", en="Sergeant Riftan" }, -- Sergeant Riftan
 [258031] = { "Неза Кровоморда", en="Neza Bloodsnout" }, -- Neza Bloodsnout
@@ -988,6 +993,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [268762] = { "жертовна жаровня", en="Brazier of Offering" }, -- Brazier of Offering
 [268763] = { "втілення полум'я", en="Manifestation of Flames" }, -- Manifestation of Flames
 [268764] = { "невидимий кролик", en="Invisible Bunny" }, -- Invisible Bunny
+[268765] = { "тотем потоку лави", en="Lava Spout Totem" }, -- Lava Spout Totem
 [268831] = { "рівнинний скрадач", en="Plains Prowler" }, -- Plains Prowler
 [268840] = { "примарне ведмежа", en="Spectral Bear Cub" }, -- Spectral Bear Cub
 [268925] = { "нічна ельфа-кур'єрка", en="Night Elf Courier" }, -- Night Elf Courier
@@ -1045,7 +1051,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [270572] = { "Емілі", en="Emily" }, -- Emily
 [270589] = { "оповита ніччю купа гнилі", en="Nightveiled Rotheap" }, -- Nightveiled Rotheap
 [270637] = { "Говін Доброперий", en="Howin Kindfeather" }, -- Howin Kindfeather
-[270667] = { "посвячений жрець Фаргольда", en="Farholde Priest Initiate", feminine="посвячена жриця Фаргольда" }, -- Farholde Priest Initiate
+[270667] = { "жрець Фаргольда", en="Farholde Priest", feminine="жриця Фаргольда" }, -- Farholde Priest
 [270693] = { "Кинджалозуб", en="Daggerfang" }, -- Daggerfang
 [270723] = { "Драззіт Прокрапельник", en="Drazzit Dripvalve" }, -- Drazzit Dripvalve
 [270727] = { "Ґіззікс Бруднобульк", en="Gizzix Grimegurgle" }, -- Gizzix Grimegurgle
@@ -1175,7 +1181,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [274734] = { "Йійо Ночеходець", en="Yiyo Nightwalker" }, -- Yiyo Nightwalker
 [274740] = { "Кітці Працебах", en="Kitzy Werkblaster" }, -- Kitzy Werkblaster
 [274757] = { "храмова гвардійка", en="Temple Highguard" }, -- Temple Highguard
-[274770] = { "сміливець Кам'яний Смолоскип", en="Brave Stonetorch" }, -- Brave Stonetorch
+[274770] = { "Слізі Кріґ", en="Slizzy Kreeg" }, -- Slizzy Kreeg
 [274780] = { "Дамін Світанкова Тінь", en="Damin Dawnshadow" }, -- Damin Dawnshadow
 [274781] = { "залізний королівський гвардієць", en="Iron Kingsguard", feminine="залізна королівська гвардійка" }, -- Iron Kingsguard
 [274786] = { "Поллеро Рін", en="Pollero Rene" }, -- Pollero Rene
@@ -1343,6 +1349,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [277186] = { "агент Смертоловів", en="Deathstalker Agent", feminine="агентка Смертоловів" }, -- Deathstalker Agent
 [277700] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker
 [277868] = { "розповсюдник чуми", en="Plague Spreader" }, -- Plague Spreader
+[277993] = { "тотем припливу мани IV", en="Mana Tide Totem IV" }, -- Mana Tide Totem
 }
 
 if addonTable.npc then

@@ -26,8 +26,6 @@ local gossip = { -- [npc_id] = { [hash]=translation, ..., [!code]={...} (optiona
 [1582545310] = [===[Я з тобою, Тралле.]===],
 -- Lady Proudmoore's forces have bled to delay Archimonde and his Burning Legion, and now this grim task falls to us. Are you ready to stand with me against the onslaught?
 [1791273726] = [===[Сили леді Праудмур проливали кров, стримуючи Архімонда та його Палаючий Легіон, і тепер це завдання лягає на нас. Ти {стать:готовий:готова} стояти зі мною проти цього натиску?]===],
--- May the spirits be with you.
-[1787114019] = [===[Нехай духи бережуть тебе.]===],
 -- Outstanding! Kaz'rogal's death cry should strike fear into the core of the Burning Legion. They now know the power your forces possess, so expect the worst the Legion can offer.
 [322899723] = [===[Неймовірно! Передсмертний крик Каз'роґала мав вразити навіть війська Палаючого Легіону. Тепер вони знають, на що здатне наше військо, тож чекай найгіршого, що може запропонувати Легіон.]===],
 -- Outstanding! Killing a Pit Lord such as Azgalor is no small feat, my friend. If we had more time, I would love to hear the story of you and your companions. Archimonde will not give us that pleasure, however. My scouts have already reported that the Legion is amassing an immense force outside our camp, and Archimonde is very close to the World Tree. We are evacuating with the help of Lady Proudmoore. You should head to the World Tree at once. The fate of our world is still undecided.
