@@ -1299,9 +1299,16 @@ end
 
 -- the tooltip of an aura (a buff or debuff)
 local function add_aura_to_tooltip(tooltip, spell_id)
-    if spell_id then
-        handle_entry(tooltip, "spell", spell_id, "translate_spell", true)
+    if not spell_id then
+        return
     end
+
+    if not utils.is_forever then
+        -- kept past the tooltip's clear: see tooltip_updated()
+        tooltip.classicua.aura_id = spell_id
+        tooltip.classicua.aura_owner = tooltip:GetOwner()
+    end
+    handle_entry(tooltip, "spell", spell_id, "translate_spell", true)
 end
 
 -- WoW: Forever, the tooltip of an aura, with the spell id in the tooltip data
@@ -1349,6 +1356,13 @@ local function tooltip_updated(self)
 
     local text = _G[self:GetName() .. "TextLeft1"]:GetText()
     if text == self.classicua.entry_id then
+        return
+    end
+
+    -- classic clients fill aura's tooltip again once its spell has loaded, with no setter call for our hook
+    local aura_id = self.classicua.aura_id
+    if aura_id and self:GetOwner() == self.classicua.aura_owner and C_Spell.GetSpellName and text == C_Spell.GetSpellName(aura_id) then
+        add_aura_to_tooltip(self, aura_id)
         return
     end
 
