@@ -820,7 +820,7 @@ end
 -- -----------------------------
 
 -- A tooltip is sized by its Show().
--- Where our Show() isn't safe (can_show), its width changes by as much as its widest line did (fit_width).
+-- Where our Show() isn't safe (can_show), its width is fitted to its lines (fit_width).
 
 -- not for a world tooltip on classic clients (GameTooltip owned by UIParent): or else is stays on the screen forever
 -- WoW: Forever: only for a tooltip with no game data, whose layout may touch secret values
@@ -831,18 +831,19 @@ local function can_show(tooltip)
     return tooltip ~= GameTooltip or tooltip:GetOwner() ~= UIParent
 end
 
--- nil when the lines can't tell: a secret line, a right text (the gap before it is unknown), or a wrapped line (its string width is the unwrapped text's)
+-- the widest left text, and whether a line has a right text
+-- nil when the lines can't tell: a secret line, or a wrapped line (its string width is the unwrapped one)
 local function get_lines_width(tooltip)
     if utils.tooltip_has_secret(tooltip) then
         return nil
     end
 
     local name = tooltip:GetName()
-    local width = 0
+    local width, has_right_text = 0, false
     for i = 1, tooltip:NumLines() do
         local left, right = _G[name .. "TextLeft" .. i], _G[name .. "TextRight" .. i]
         if right and right:IsShown() and (right:GetText() or "") ~= "" then
-            return nil
+            has_right_text = true
         end
         if left:IsShown() then
             local rows, line_width = left:GetNumLines(), left:GetStringWidth()
@@ -852,13 +853,34 @@ local function get_lines_width(tooltip)
             width = math.max(width, line_width)
         end
     end
-    return width
+    return width, has_right_text
+end
+
+-- the room the left texts have: the box minus edges, the right one as wide as the left one
+local function get_text_room(tooltip)
+    local box_left, text_left = tooltip:GetLeft(), _G[tooltip:GetName() .. "TextLeft1"]:GetLeft()
+    if not box_left or not text_left or utils.is_secret(box_left) or utils.is_secret(text_left) then
+        return nil
+    end
+    return tooltip:GetWidth() - 2 * (text_left - box_left)
 end
 
 local function fit_width(tooltip, width_before)
-    local width = width_before and get_lines_width(tooltip)
-    if width and width ~= width_before then
+    local width, has_right_text
+    if width_before then
+        width, has_right_text = get_lines_width(tooltip)
+    end
+    if not width or width == width_before then
+        return
+    end
+
+    if not has_right_text then
         tooltip:SetWidth(tooltip:GetWidth() + width - width_before)
+        return
+    end
+    local room = get_text_room(tooltip)
+    if room and width > room then
+        tooltip:SetWidth(tooltip:GetWidth() + width - room)
     end
 end
 
@@ -918,7 +940,8 @@ local function on_modifier_state_changed(key)
 
     local is_original = is_original_shown()
     for _, tooltip in ipairs(known_tooltips) do
-        if tooltip:IsShown() and next(tooltip.classicua.lines) and not is_fading(tooltip) then
+        -- a fading tooltip is left alone only where lay_out() would Show() it: a world tooltip is just resized
+        if tooltip:IsShown() and next(tooltip.classicua.lines) and not (can_show(tooltip) and is_fading(tooltip)) then
             local width = get_lines_width(tooltip)
             switch_lines(tooltip, is_original)
             lay_out(tooltip, width)
