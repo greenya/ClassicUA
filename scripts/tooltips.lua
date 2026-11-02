@@ -1146,9 +1146,9 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processin
 end
 
 -- with the lookup off, the tooltip is only claimed: else tooltip_updated would look its name up in the glossary
-local function handle_entry(tooltip, entry_type, entry_id, option_key)
+local function handle_entry(tooltip, entry_type, entry_id, option_key, is_aura)
     if options.can_lookup(option_key) then
-        add_entry_to_tooltip(tooltip, entry_type, entry_id, false, options.can_translate(option_key))
+        add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, options.can_translate(option_key))
     else
         tooltip.classicua.entry_type = entry_type
         tooltip.classicua.entry_id = entry_id
@@ -1299,8 +1299,8 @@ end
 
 -- the tooltip of an aura (a buff or debuff)
 local function add_aura_to_tooltip(tooltip, spell_id)
-    if spell_id and options.can_lookup("translate_spell") then
-        add_entry_to_tooltip(tooltip, "spell", spell_id, true, options.can_translate("translate_spell"))
+    if spell_id then
+        handle_entry(tooltip, "spell", spell_id, "translate_spell", true)
     end
 end
 
