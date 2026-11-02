@@ -132,6 +132,7 @@ local tooltip_texts = {
 { "Mana Regeneration per 5 sec", "відновлення мани кожні 5 с" },
 { "Mining Bag", "сумка гірника" },
 { "Nature Piercing", "проникність природи" },
+{ "Non-combat Pet", "небойовий вихованець" },
 { "Shadow Piercing", "проникність тіні" },
 { "Spell Damage", "шкода заклять" },
 { "Spell Damage Vs Beasts", "шкода заклять в бою зі звірами" },
@@ -145,6 +146,7 @@ local tooltip_texts = {
 { "Spell Healing", "зцілення заклять" },
 { "Spell Piercing", "проникність заклять" },
 { "Spell Resistance", "опір закляттям" },
+{ "Wild Pet", "дикий вихованець" },
 }
 
 if not addonTable.string_globals then

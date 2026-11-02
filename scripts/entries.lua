@@ -615,6 +615,13 @@ entries.get_object_text = function (name)
     return text and utils.cap(text)
 end
 
+-- a unit's faction: a reputation's name, a city's, or the game's own ("Darkspear Trolls", "Orgrimmar", "Horde")
+entries.get_faction_text = function (name)
+    local at = addon_table
+    local text = at.misc[name] or at.zone[name] or at.string[name]
+    return text and utils.cap(text)
+end
+
 entries.get_glossary_text = function (entry_key, fallback, hint_type)
     local at = addon_table
 

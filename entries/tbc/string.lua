@@ -70,10 +70,12 @@ local tooltip_strings = {
 }
 
 local tooltip_texts = {
+{ "Gas Cloud", "газова хмара" },
 { "Gem Bag", "сумка ювеліра" },
 { "Leatherworking Bag", "сумка шкірника" },
 { "Master", "майстер" },
 { "Mining Bag", "сумка гірника" },
+{ "Non-combat Pet", "небойовий вихованець" },
 { "Requires at least %d Blue |4gem:gems;", "потрібно: %d |4синій самоцвіт:сині самоцвіти:синіх самоцвітів;" },
 { "Requires at least %d Red |4gem:gems;", "потрібно: %d |4червоний самоцвіт:червоні самоцвіти:червоних самоцвітів;" },
 { "Requires at least %d Yellow |4gem:gems;", "потрібно: %d |4жовтий самоцвіт:жовті самоцвіти:жовтих самоцвітів;" },

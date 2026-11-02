@@ -13,6 +13,7 @@ local C_UnitAuras           = _G.C_UnitAuras
 local CreateFrame           = _G.CreateFrame
 local Enum                  = _G.Enum
 local GameTooltip           = _G.GameTooltip
+local GameTooltipTextLeft1  = _G.GameTooltipTextLeft1
 local GetBindLocation       = _G.GetBindLocation
 local hooksecurefunc        = _G.hooksecurefunc
 local IsAltKeyDown          = _G.IsAltKeyDown
@@ -27,6 +28,7 @@ local TooltipUtil           = _G.TooltipUtil
 local UIParent              = _G.UIParent
 local UnitExists            = _G.UnitExists
 local UnitTokenFromGUID     = _G.UnitTokenFromGUID
+local unpack                = _G.unpack
 local WorldFrame            = _G.WorldFrame
 local wipe                  = _G.wipe
 
@@ -253,8 +255,8 @@ end
 
 -- Our texts go into the game's own lines
 -- Each line we change is kept in tooltip.classicua.lines as { game's text, our text }, so the modifier key can show original text
-local style_options = { item = "tooltip_style_item", spell = "tooltip_style_spell" }
-local style_kinds = { item = "item", spell = "spell", sod_engraving = "spell" }
+local style_options = { item = "tooltip_style_item", spell = "tooltip_style_spell", npc = "tooltip_style_npc" }
+local style_kinds = { item = "item", spell = "spell", sod_engraving = "spell", npc = "npc" }
 local line_sides = { "TextLeft", "TextRight" }
 
 local function is_replacement_style(kind)
@@ -263,7 +265,7 @@ end
 
 -- whether any kind of tooltip uses the replace style, so the modifier key has lines to switch
 local function is_any_replacement_style()
-    return is_replacement_style("item") or is_replacement_style("spell")
+    return is_replacement_style("item") or is_replacement_style("spell") or is_replacement_style("npc")
 end
 
 local function is_original_shown()
@@ -703,6 +705,116 @@ local function replace_next_rank_line(tooltip, spell_id)
     return false
 end
 
+-- ----------------------------
+-- [ the replace style: units ]
+-- ----------------------------
+
+-- An npc's tooltip: its name, its title, the level line and the lines the game words alone under the level line.
+-- Only these get ours: the lines other addons add to it stay theirs, even where we know their words.
+
+-- every level line starts as "Level %s" does
+local LEVEL_PREFIX = _G.TOOLTIP_UNIT_LEVEL:match("^[^%%]*")
+-- the lines the game words alone under the level line
+local unit_line_texts = {
+    [_G.UNIT_SKINNABLE_BOLTS] = true,
+    [_G.UNIT_SKINNABLE_HERB] = true,
+    [_G.UNIT_SKINNABLE_LEATHER] = true,
+    [_G.UNIT_SKINNABLE_ROCK] = true,
+}
+
+-- our texts for an npc's lines up to the last (WoW: Forever lists its quests after them), keyed by line index:
+-- - the name, where line 1 is the npc's english one: a renamed npc keeps its own;
+-- - the one line between the name and the level line: the npc's title, or its owner's ("Varmi's Totem");
+-- - the level line, the lines the game words alone under it ("Skinnable"), and the faction right under it.
+-- "Khelden Bremen", "Mage Trainer", "Level 15 Humanoid", "Stormwind" -> "Хелден Бремен", "Тренер магів", "Гуманоїд 15-го рівня", "Штормовій"
+local function get_unit_texts(entry, unit, lines_en, last)
+    local texts = {}
+    local tag_uk
+    -- npc name and tag; applied only if line 1 is equal to entry's english one, so renamed npc keeps its own
+    if entry then
+        local name_uk
+        name_uk, tag_uk = entries.get_npc_name_and_tag(entry, unit)
+        if lines_en[1] == entry.en then
+            texts[1] = utils.cap(entries.make_entry_text(name_uk, lines_en))
+        end
+    end
+
+    -- lines under the name are placed by the level line: the first that starts as "Level %s"
+    local level_index
+    for i = 2, last do
+        if lines_en[i]:sub(1, #LEVEL_PREFIX) == LEVEL_PREFIX then
+            level_index = i
+            break
+        end
+    end
+    if not level_index then
+        return texts
+    end
+
+    -- title sits between name and level lines; an npc with none has its level line right under the name
+    -- An npc's tag translates the title, else a phrase does, as for an owner's line ("Posipaka's Totem/Pet").
+    if level_index == 3 then
+        local title = lines_en[2]
+        if tag_uk then
+            local title_uk = utils.cap(entries.make_entry_text(tag_uk, lines_en))
+            texts[2] = title:find("^<.+>$") and "<" .. title_uk .. ">" or title_uk
+        else
+            texts[2] = translate_line(title)
+        end
+    end
+
+    texts[level_index] = translate_line(lines_en[level_index])
+    local faction_index = level_index + 1
+    for i = level_index + 1, last do
+        local text = lines_en[i]
+        if unit_line_texts[text] then
+            texts[i] = translate_line(text)
+        elseif utils.is_forever and addon_table.string_tooltip_text[text] then
+            -- WoW: Forever puts a creature's type ("Humanoid") or "Corpse" on a line of its own, before the faction
+            texts[i] = translate_line(text)
+            if i == faction_index then
+                faction_index = i + 1
+            end
+        elseif i == faction_index then
+            texts[i] = entries.get_faction_text(text)
+        end
+    end
+    return texts
+end
+
+-- the classic clients: an npc's lines rewritten in place
+local function replace_unit_lines(tooltip, entry, unit)
+    local lines_en = get_lines_en(tooltip)
+    return replace_lines(tooltip, get_unit_texts(entry, unit, lines_en, #lines_en))
+end
+
+-- the classic clients: an addon that writes the name anew after us, in colors of its own, gets ours back inside them.
+-- Leatrix Plus writes it from UnitName(), and greys a dead mob's line as it stands (ours, or the game's while the
+-- modifier key is held)
+local function replace_rewritten_name(font_string, text)
+    local claim = GameTooltip.classicua
+    local texts = claim.lines[font_string]
+
+    -- line not translated, or modifier key pressed
+    if not texts or type(text) ~= "string" or text == texts[1] or text == texts[2] then
+        return
+    end
+
+    for _, name in ipairs(texts) do
+        local from, to = text:find(name, 1, true)
+        if from then
+            local before, after = text:sub(1, from - 1), text:sub(to + 1)
+            local new_texts = { before .. texts[1] .. after, before .. texts[2] .. after }
+            claim.lines[font_string] = new_texts
+            local shown = new_texts[is_original_shown() and 1 or 2]
+            if shown ~= text then
+                font_string:SetText(shown)
+            end
+            return
+        end
+    end
+end
+
 -- -----------------------------
 -- [ the replace style: sizing ]
 -- -----------------------------
@@ -823,8 +935,14 @@ end
 
 -- the line types the game adds in their post-call (sell price, socket icon): they are translated once added (replace_added_line)
 local kept_line_types = {}
--- the kinds of data planned, by the option that translates them
-local kind_options = { item = "translate_item", spell = "translate_spell" }
+-- the line types whose post-call adds an icon to them (a quest objective's): the game adds the line, and the planned text goes into it (replace_added_line)
+local filled_line_types = {}
+-- the kinds of data planned, by the options that translate them
+local kind_options = {
+    item = { "translate_item" },
+    spell = { "translate_spell" },
+    npc = { "translate_npc", "translate_npc_tooltip" },
+}
 
 local function plan_line(plan, line, left_uk, right_uk)
     -- a translation with a value left unfilled ("{1}": none in the game's line) leaves the game's line as it is
@@ -853,7 +971,41 @@ local function find_line(lines, line_type)
     end
 end
 
--- a tooltip pre-call: plans the translations for the lines of an item's or a spell's data (an aura's too) before the game adds them
+-- the quests an npc's tooltip lists
+local function plan_quest_lines(plan, lines, lines_en)
+    if not options.can_translate("translate_quest") then
+        return
+    end
+
+    -- a title line has its quest's id, which the objective lines under it go by; a title with no id goes by the glossary
+    local line_types = Enum.TooltipDataLineType
+    local quest_id
+    for i, line in ipairs(lines) do
+        if line.type == line_types.QuestTitle then
+            quest_id = not utils.is_secret(line.id) and tonumber(line.id)
+            plan_line(plan, line, quest_id and entries.get_quest_title(quest_id) or entries.get_glossary_text(lines_en[i]))
+        elseif line.type == line_types.QuestObjective then
+            plan_line(plan, line, entries.translate_quest_objective(lines_en[i], quest_id))
+        end
+    end
+end
+
+-- an npc's lines, up to its quests, then the quests; the names of group members on a quest stay theirs
+local function plan_unit_lines(plan, lines, lines_en, npc_id, guid)
+    local line_types = Enum.TooltipDataLineType
+    local last = #lines
+    for i, line in ipairs(lines) do
+        if line.type == line_types.QuestTitle or line.type == line_types.QuestObjective or line.type == line_types.QuestPlayer then
+            last = i - 1
+            break
+        end
+    end
+
+    plan_texts(plan, lines, get_unit_texts(entries.get_entry("npc", npc_id), UnitTokenFromGUID(guid), lines_en, last))
+    plan_quest_lines(plan, lines, lines_en)
+end
+
+-- a tooltip pre-call: plans the translations for the lines of an item's, a spell's (an aura's too) or an npc's data before the game adds them
 local function plan_tooltip(tooltip, data)
     local lines = type(data) == "table" and data.lines
     if type(lines) ~= "table" then
@@ -863,11 +1015,19 @@ local function plan_tooltip(tooltip, data)
     -- the kind of the data, which also tells can_show() that game builds this tooltip from data
     local data_types, line_types = Enum.TooltipDataType, Enum.TooltipDataLineType
     local is_aura = data.type == data_types.UnitAura
-    local kind = data.type == data_types.Item and "item" or (data.type == data_types.Spell or is_aura) and "spell" or "other"
+    local kind = data.type == data_types.Item and "item" or (data.type == data_types.Spell or is_aura) and "spell"
+        or data.type == data_types.Unit and "npc" or "other"
     local claim = tooltip.classicua
     claim.style_kind = kind
-    local id = not utils.is_secret(data.id) and data.id
-    if not (id and kind_options[kind] and is_replacement_style(kind) and options.can_translate(kind_options[kind])) then
+    local id
+    if kind == "npc" then
+        -- players and pets have no npc id: their tooltips stay as they are
+        id = utils.npc_id_from_guid(data.guid)
+    else
+        id = not utils.is_secret(data.id) and data.id
+    end
+    local option_keys = kind_options[kind]
+    if not (id and option_keys and is_replacement_style(kind) and options.can_translate(unpack(option_keys))) then
         return
     end
 
@@ -879,11 +1039,17 @@ local function plan_tooltip(tooltip, data)
         lines_en[i] = type(line.leftText) == "string" and utils.render_plurals(line.leftText) or ""
     end
 
+    claim.plan = claim.plan or {}
+    local plan = claim.plan
+
+    if kind == "npc" then
+        plan_unit_lines(plan, lines, lines_en, id, data.guid)
+        return
+    end
+
     -- name line is the one the data marks, else line 1, unless the data is appended to a tooltip with lines (talent's next rank)
     local name_index = find_line(lines, kind == "item" and line_types.ItemName or line_types.SpellName) or tooltip:NumLines() == 0 and 1 or nil
 
-    claim.plan = claim.plan or {}
-    local plan = claim.plan
     local entry = entries.get_entry(kind, id)
     if kind == "item" then
         plan_texts(plan, lines, get_item_texts(tooltip, entry, id, lines_en, name_index))
@@ -926,10 +1092,10 @@ local function add_planned_line(tooltip, line)
     local planned = claim.plan and claim.plan[line]
     local left_text = planned and (planned.left or line.leftText)
 
-    -- the game spaces the name of an item linked in chat for the close button (TooltipDataRules)
-    if type(left_text) ~= "string"
+    -- the game's post-call adds an icon to the line (filled_line_types), or the game spaces the name of an item linked in chat for the close button (TooltipDataRules)
+    if type(left_text) ~= "string" or filled_line_types[line.type]
         or tooltip == ItemRefTooltip and line.type == Enum.TooltipDataLineType.ItemName and line.rightText then
-        -- The game adds this line itself, and replace_added_line() puts the planned text into it (a linked item's name) or leaves it, as the plan has tried it already (a name with no entry is no phrase).
+        -- The game adds this line itself, and replace_added_line() puts the planned text into it (a linked item's name, a quest objective) or leaves it, as the plan has tried it already (a name with no entry is no phrase).
         -- A kept line still gets the game's phrases there, as no plan can take its place.
         claim.data_text = claim.plan and not utils.is_secret(line.leftText) and not kept_line_types[line.type] and line.leftText or nil
         claim.data_uk = planned and planned.left
@@ -978,6 +1144,9 @@ local function replace_added_line(tooltip, side, text)
         if not text_uk then
             return
         end
+    elseif claim.style_kind == "npc" then
+        -- the game adds no lines after a unit's data: these are other addons'
+        return
     end
 
     -- the line just added is the last one
@@ -1033,7 +1202,7 @@ end
 -- ------------------------------------
 
 -- the replace style
-local function replace_entry_lines(tooltip, entry_type, entry, entry_id, is_aura)
+local function replace_entry_lines(tooltip, entry_type, entry, entry_id, is_aura, unit)
     if utils.is_forever then
         return false
     elseif entry_type == "item" then
@@ -1041,6 +1210,8 @@ local function replace_entry_lines(tooltip, entry_type, entry, entry_id, is_aura
         return replace_item_lines(tooltip, entry, entry_id)
     elseif entry_type == "spell" then
         return replace_spell_lines(tooltip, entry, entry_id, is_aura)
+    elseif entry_type == "npc" then
+        return replace_unit_lines(tooltip, entry, unit)
     end
 
     -- SoD engraving shows its spell's tooltip under the engraving's name
@@ -1081,7 +1252,7 @@ local function add_entry_to_tooltip(tooltip, entry_type, entry_id, is_aura, is_t
     local is_replacement = is_replacement_style(style_kinds[entry_type])
 
     if is_replacement then
-        updated = is_translation_on and replace_entry_lines(tooltip, entry_type, entry, entry_id, is_aura)
+        updated = is_translation_on and replace_entry_lines(tooltip, entry_type, entry, entry_id, is_aura, unit)
     elseif entry and is_translation_on then
         add_entry_lines(tooltip, entry_type, entry, entry_id, is_aura, unit)
         updated = true
@@ -1514,6 +1685,7 @@ local function hook_unit_tooltips()
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, for_known_tooltips(tooltip_set_unit))
     else
         hook_tooltip_script("OnTooltipSetUnit", tooltip_set_unit)
+        hooksecurefunc(GameTooltipTextLeft1, "SetText", replace_rewritten_name)
     end
 end
 
@@ -1595,6 +1767,7 @@ local function hook_replace_style()
             kept_line_types[line_types[kept]] = true
         end
     end
+    filled_line_types[line_types.QuestObjective] = true
     TooltipDataProcessor.AddTooltipPreCall(TooltipDataProcessor.AllTypes, for_known_tooltips(plan_tooltip))
     TooltipDataProcessor.AddLinePreCall(TooltipDataProcessor.AllTypes, add_planned_line)
     hook_forever_tooltip_methods()

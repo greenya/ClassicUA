@@ -47,6 +47,7 @@ local tooltip_texts = {
 { "%c%s PvP Power", "%c%d PvP-сили" },
 { "%c%s PvP Resilience", "%c%d PvP-стійкості" },
 { "%c%s Spell Power", "%c%d сили заклять" },
+{ "Aberration", "аберація" },
 { "Celestial", "небесний" },
 { "Cooking Bag", "сумка кухаря" },
 { "Crafting Material", "матеріал ремесла" },
@@ -64,6 +65,7 @@ local tooltip_texts = {
 { "Thunderforged", "викуваний громом" },
 { "Timeless", "позачасовий" },
 { "Warforged", "викуваний війною" },
+{ "Wild Pet", "дикий вихованець" },
 }
 
 if not addonTable.string_globals then
