@@ -201,12 +201,15 @@ local tooltip_strings = {
 { "AMMO_DAMAGE_TEMPLATE", "Додає %s шкоди за секунду" }, -- "Adds %s damage per second"
 { "AMMO_SCHOOL_DAMAGE_TEMPLATE", "Додає %s шкоди (%s) за секунду" }, -- "Adds %s %s damage per second"
 { "ARMOR_TEMPLATE", "%d броні" }, -- "%s Armor"
+{ "BOSS", "бос" }, -- "Boss"
 { "COMBO_POINTS_COST", "Прийомів комбінації: %d" }, -- "%s Combo |4Point:Points;"
 { "CONTAINER_SLOTS", "%2$s (комірок: %1$d)" }, -- "%d Slot %s"
+{ "CORPSE", "труп" }, -- "Corpse"
 { "DAMAGE_TEMPLATE", "%s – %s шкоди" }, -- "%s - %s Damage"
 { "DAMAGE_TEMPLATE_WITH_SCHOOL", "%s – %s шкоди (%s)" }, -- "%s - %s %s Damage"
 { "DPS_TEMPLATE", "(%s шкоди за секунду)" }, -- "(%s damage per second)"
 { "DURABILITY_TEMPLATE", "Міцність: %d / %d" }, -- "Durability %d / %d"
+{ "ELITE", "елітний" }, -- "Elite"
 { "ENCHANT_ITEM_REQ_LEVEL", "Для зачарування потрібний рівень: %d" }, -- "Enchantment Requires Level %d"
 { "ENCHANT_ITEM_REQ_SKILL", "Для зачарування потрібно: %S" }, -- "Enchantment Requires %s"
 { "ENERGY_COST", "%d енергії" }, -- "%s Energy"
@@ -378,9 +381,36 @@ local tooltip_strings = {
 { "TOOLTIP_TALENT_PREREQ", "Потрібно %d |4очко:очка:очок; у таланті «%N»" }, -- "Requires %1$d |4point:points; in %2$s"
 { "TOOLTIP_TALENT_RANK", "Ранг %d/%d" }, -- "Rank %d/%d"
 { "TOOLTIP_TALENT_TIER_POINTS", "Потрібно %d очок у гілці «%N»" }, -- "Requires %d points in %s Talents"
+{ "TOOLTIP_UNIT_LEVEL", "Рівень %s" }, -- "Level %s"
+{ "TOOLTIP_UNIT_LEVEL_TYPE", "Рівень %s (%s)" }, -- "Level %s (%s)"
 { "TOY", "Іграшка" }, -- "Toy"
 { "TRANSMOGRIFIED_HEADER", "Трансмогрифіковано в:" }, -- "Transmogrified to:"
 { "TRANSMOGRIFY_TOOLTIP_APPEARANCE_UNKNOWN", "Ви ще не зібрали цей вигляд" }, -- "You haven't collected this appearance"
+{ "UNITNAME_SUMMON_TITLE10", "Скакун: %N" }, -- "%s's Mount"
+{ "UNITNAME_SUMMON_TITLE4", "Тотем: %N" }, -- "%s's Totem"
+{ "UNITNAME_SUMMON_TITLE6", "Рунічний клинок: %N" }, -- "%s's Runeblade"
+{ "UNITNAME_SUMMON_TITLE7", "Конструкт: %N" }, -- "%s's Construct"
+{ "UNITNAME_SUMMON_TITLE9", "Транспорт: %N" }, -- "%s's Vehicle"
+{ "UNITNAME_TITLE_COMPANION", "Супутник: %N" }, -- "%s's Companion"
+{ "UNITNAME_TITLE_CREATION", "Створіння: %N" }, -- "%s's Creation"
+{ "UNITNAME_TITLE_GUARDIAN", "Охоронець: %N" }, -- "%s's Guardian"
+{ "UNITNAME_TITLE_MINION", "Прислужник: %N" }, -- "%s's Minion"
+{ "UNITNAME_TITLE_OPPONENT", "Суперник: %N" }, -- "%s's Opponent"
+{ "UNITNAME_TITLE_PET", "Вихованець: %N" }, -- "%s's Pet"
+{ "UNITNAME_TITLE_SQUIRE", "Зброєносець: %N" }, -- "%s's Squire"
+{ "UNIT_LETHAL_LEVEL_DEAD_TEMPLATE", "Труп невідомого рівня" }, -- "Level ?? Corpse"
+{ "UNIT_LETHAL_LEVEL_TEMPLATE", "Невідомий рівень" }, -- "Level ??"
+{ "UNIT_LEVEL_DEAD_TEMPLATE", "Труп %d-го рівня" }, -- "Level %d Corpse"
+{ "UNIT_LEVEL_TEMPLATE", "Рівень %d" }, -- "Level %d"
+{ "UNIT_PLUS_LEVEL_TEMPLATE", "Рівень %d (елітний)" }, -- "Level %d Elite"
+{ "UNIT_SKINNABLE_BOLTS", "Потрібна інженерія" }, -- "Requires Engineering"
+{ "UNIT_SKINNABLE_HERB", "Потрібне травництво" }, -- "Requires Herbalism"
+{ "UNIT_SKINNABLE_LEATHER", "Можна зняти шкіру" }, -- "Skinnable"
+{ "UNIT_SKINNABLE_ROCK", "Потрібне гірництво" }, -- "Requires Mining"
+{ "UNIT_TYPE_LETHAL_LEVEL_TEMPLATE", "%s невідомого рівня" }, -- "Level ?? %s"
+{ "UNIT_TYPE_LEVEL_FACTION_TEMPLATE", "%2$s %1$d-го рівня (%3$s)" }, -- "Level %d %s (%s)"
+{ "UNIT_TYPE_LEVEL_TEMPLATE", "%2$s %1$d-го рівня" }, -- "Level %d %s"
+{ "UNIT_TYPE_PLUS_LEVEL_TEMPLATE", "%2$s %1$d-го рівня (елітний)" }, -- "Level %d Elite %s"
 { "XP", "Досвід" }, -- "XP"
 }
 
@@ -407,6 +437,7 @@ local tooltip_texts = {
 { "Attack Power", "сила атаки" },
 { "Attack Power In Forms", "сила атаки у формах" },
 { "Axe", "сокира" },
+{ "Beast", "звір" },
 { "Block", "блокування" },
 { "Block Value", "сила блокування" },
 { "Bonus Armor", "додаткова броня" },
@@ -419,13 +450,17 @@ local tooltip_texts = {
 { "Critical Strike (Melee)", "критичний удар (ближній бій)" },
 { "Critical Strike (Ranged)", "критичний удар (дальній бій)" },
 { "Critical Strike (Spell)", "критичний удар (закляття)" },
+{ "Critter", "тваринка" },
 { "Crossbow", "арбалет" },
 { "Curse", "прокляття" },
 { "Dagger", "кинджал" },
 { "Damage Per Second", "шкода за секунду" },
 { "Defense", "захист" },
+{ "Demon", "демон" },
 { "Disease", "хвороба" },
 { "Dodge", "ухилення" },
+{ "Dragonkin", "драконід" },
+{ "Elemental", "елементаль" },
 { "Enchanting Bag", "сумка чародія" },
 { "Enemy: %s yd range", "Ворог: дальність %s м" },
 { "Engineering Bag", "сумка інженера" },
@@ -445,6 +480,7 @@ local tooltip_texts = {
 { "Frost Damage", "шкода від криги" },
 { "%c%d Frost Resistance", "%c%d опору кризі" },
 { "Frost Resistance", "опір кризі" },
+{ "Giant", "велетень" },
 { "Gun", "рушниця" },
 { "Haste", "швидкість" },
 { "Hated", "ненависна" },
@@ -462,11 +498,13 @@ local tooltip_texts = {
 { "Holy Resistance", "опір святості" },
 { "Honored", "почесна" },
 { "Hostile", "ворожа" },
+{ "Humanoid", "гуманоїд" },
 { "Idol", "ідол" },
 { "Increases damage and healing done by magical spells and effects by up to %s.", "збільшує шкоду і зцілення магічних заклять і ефектів на %d." },
 { "Intellect", "інтелект" },
 { "Journeyman", "підмайстер" },
 { "Leather", "шкіра" },
+{ "Level ?? (%s)", "Невідомий рівень (%s)" },
 { "Libram", "манускрипт" },
 { "Lockpicking", "зламування замків" },
 { "Mace", "булава" },
@@ -474,6 +512,7 @@ local tooltip_texts = {
 { "Mail", "кольчуга" },
 { "Mana", "мана" },
 { "Mana Regeneration", "відновлення мани" },
+{ "Mechanical", "механізм" },
 { "Melee Weapon", "зброя ближнього бою" },
 { "Miscellaneous", "різне" },
 { "Mount", "верхове створіння" },
@@ -516,6 +555,7 @@ local tooltip_texts = {
 { "Sword", "меч" },
 { "Tools: %s", "Інструменти: %s" },
 { "Totem", "тотем" },
+{ "Undead", "невмерлий" },
 { "Unfriendly", "недружня" },
 { "Wand", "жезл" },
 }

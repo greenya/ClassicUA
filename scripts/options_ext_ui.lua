@@ -260,7 +260,16 @@ local option_rows = {
         parent_key  = "npc",
         sub         = true,
         name        = "Підказки",
-        tooltip     = "Ім'я та тег у підказці."
+        tooltip     = "Ім'я, тег і рівень у підказці."
+    },
+    {
+        dropdown    = "tooltip_style_npc",
+        option_key  = "tooltip_style_npc",
+        parent_key  = "npc_tooltip",
+        sub         = true,
+        label       = "Стиль",
+        values      = tooltips.styles,
+        tooltip     = "Стиль відображення перекладу в підказках персонажів." .. TOOLTIP_STYLES_HELP
     },
     {
         key         = "npc_target_frame",
