@@ -318,6 +318,7 @@ local tooltip_strings = {
 { "MANA_COST_PER_TIME_NO_BASE", "%s мани за секунду" }, -- "%s Mana per sec"
 { "MELEE_RANGE", "Ближній бій" }, -- "Melee Range"
 { "MINUTES_ABBR", "%d хв" }, -- "%d |4Min:Mins;"
+{ "PLAYER", "гравець" }, -- "Player"
 { "PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL", "+%s – %s шкоди (%s)" }, -- "+ %s - %s %s Damage"
 { "PLUS_SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL", "+%d шкоди (%s)" }, -- "+%s %s Damage"
 { "PVP_RANK_10_0", "кам'яний вартовий" }, -- "Stone Guard"
@@ -382,6 +383,10 @@ local tooltip_strings = {
 { "TOOLTIP_TALENT_RANK", "Ранг %d/%d" }, -- "Rank %d/%d"
 { "TOOLTIP_TALENT_TIER_POINTS", "Потрібно %d очок у гілці «%N»" }, -- "Requires %d points in %s Talents"
 { "TOOLTIP_UNIT_LEVEL", "Рівень %s" }, -- "Level %s"
+{ "TOOLTIP_UNIT_LEVEL_CLASS", "%2$s %1$s-го рівня" }, -- "Level %s %s"
+{ "TOOLTIP_UNIT_LEVEL_CLASS_TYPE", "%2$s %1$s-го рівня (%3$s)" }, -- "Level %s %s (%s)"
+{ "TOOLTIP_UNIT_LEVEL_RACE_CLASS", "%2$s-%3$s %1$s-го рівня" }, -- "Level %s %s %s"
+{ "TOOLTIP_UNIT_LEVEL_RACE_CLASS_TYPE", "%2$s-%3$s %1$s-го рівня (%4$s)" }, -- "Level %s %s %s (%s)"
 { "TOOLTIP_UNIT_LEVEL_TYPE", "Рівень %s (%s)" }, -- "Level %s (%s)"
 { "TOY", "Іграшка" }, -- "Toy"
 { "TRANSMOGRIFIED_HEADER", "Трансмогрифіковано в:" }, -- "Transmogrified to:"
@@ -504,6 +509,9 @@ local tooltip_texts = {
 { "Intellect", "інтелект" },
 { "Journeyman", "підмайстер" },
 { "Leather", "шкіра" },
+{ "Level ?? %s %s", "%s-%s невідомого рівня" },
+{ "Level ?? %s %s (%s)", "%s-%s невідомого рівня (%s)" },
+{ "Level ?? %s (%s)", "%s невідомого рівня (%s)" },
 { "Level ?? (%s)", "Невідомий рівень (%s)" },
 { "Libram", "манускрипт" },
 { "Lockpicking", "зламування замків" },

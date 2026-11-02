@@ -13,9 +13,11 @@ local string_format = _G.string.format
 local string_gmatch = _G.string.gmatch
 local string_gsub   = _G.string.gsub
 local string_match  = _G.string.match
+local string_rep    = _G.string.rep
 local string_split  = _G.string.split
 local string_trim   = _G.string.trim
 local table_concat  = _G.table.concat
+local table_insert  = _G.table.insert
 local table_sort    = _G.table.sort
 local UnitName      = _G.UnitName
 local UnitSex       = _G.UnitSex
@@ -972,28 +974,35 @@ local function prepare_formats()
     return groups
 end
 
--- items list classes in "Classes:" and races in "Races:"
--- "Tauren" -> "таурен", "Death Knight" -> "лицар смерті"
-local function get_class_or_race_name(name_en)
+-- items list classes in "Classes:" and races in "Races:", and a player's level line names both, a woman's in her form
+-- "Tauren" -> "таурен" (or "тауренка"), "Death Knight" -> "лицар смерті"
+local function get_class_or_race_name(name_en, is_female)
     local at = addon_table
     -- class.lua and race.lua key them lowercase with no spaces: "Night Elf" -> "nightelf"
     local key = name_en:lower():gsub(" ", "")
     local class = at.class[key]
     if class then
-        return class["н"][1]
+        return class["н"][is_female and 2 or 1]
     end
 
-    local race = at.race[key]
+    -- the undead are "scourge" in the game's data
+    local race = at.race[key == "undead" and "scourge" or key]
     -- humans use neutral_singular: "людина", not "чоловік"
-    return race and (race["н"].neutral_singular or race["н"][1])
+    return race and (race["н"].neutral_singular or race["н"][is_female and 2 or 1])
+end
+
+-- a player's class on a line of its own (WoW: Forever): "Druid" -> "Друїдка"
+entries.get_class_or_race_text = function (name_en, is_female)
+    local name = get_class_or_race_name(name_en, is_female)
+    return name and utils.cap(name)
 end
 
 -- our name for an english one: a class or a race, an enchantment or a text of our strings (a reputation standing), or a name the glossary knows (a skill, a faction, an item)
 -- The count of a recipe's reagent stays after it: "Linen Cloth (2)" -> "Лляна тканина (2)"
-local function translate_name(name, depth)
+local function translate_name(name, depth, is_female)
     local bare, count = string_match(name, "^(.-)( %(%d+%))$")
     if bare then
-        local bare_uk = translate_name(bare, depth)
+        local bare_uk = translate_name(bare, depth, is_female)
         return bare_uk and bare_uk .. count
     end
 
@@ -1001,7 +1010,7 @@ local function translate_name(name, depth)
     if string_find(name, "|", 1, true) then
         bare = string_trim((string_gsub(utils.strip_color_codes(name), "|n", "")))
         if bare ~= name then
-            local bare_uk = bare ~= "" and translate_name(bare, depth)
+            local bare_uk = bare ~= "" and translate_name(bare, depth, is_female)
             local head, tail = string_match(name, "^(.*)" .. utils.esc(bare) .. "(.*)$")
             return bare_uk and head and head .. bare_uk .. tail
         end
@@ -1010,7 +1019,8 @@ local function translate_name(name, depth)
     -- the glossary is read by its own key: get_glossary_text() also reads Questie's forms ("Name (Title)")
     local glossary = addon_table.glossary
     local glossary_uk = glossary and glossary[string_trim(name):lower()]
-    return get_class_or_race_name(name) or entries.translate_string_text(name, depth) or glossary_uk and utils.cap(glossary_uk)
+    return get_class_or_race_name(name, is_female) or entries.translate_string_text(name, is_female, depth)
+        or glossary_uk and utils.cap(glossary_uk)
 end
 
 -- a name we have no translation of stays english inside the translated line, so one unknown name doesn't leave the whole line english:
@@ -1028,20 +1038,20 @@ end
 -- a value the game filled a format with: a number stays, a name becomes translated, and so does each of several names joined by commas
 -- nil for a sentence we have no translation of
 -- "Warrior, Mage" (in "Classes: %s") -> "воїн, маг"
-local function translate_value(value, is_strict, depth)
+local function translate_value(value, is_strict, depth, is_female)
     if not string_find(utils.strip_color_codes(value), "%a") then
         return value
     end
 
     -- the whole value first, as a name may have a comma of its own ("Sulfuras, Hand of Ragnaros")
-    local value_uk = translate_name(value, depth)
+    local value_uk = translate_name(value, depth, is_female)
     if value_uk or not string_find(value, ", ", 1, true) then
         return value_uk or keep_english_name(value, is_strict)
     end
 
     local names = utils.split_by_text(", ", value)
     for i, name in ipairs(names) do
-        names[i] = translate_name(name, depth) or keep_english_name(name, is_strict)
+        names[i] = translate_name(name, depth, is_female) or keep_english_name(name, is_strict)
         if not names[i] then
             return
         end
@@ -1049,11 +1059,62 @@ local function translate_value(value, is_strict, depth)
     return table_concat(names, ", ")
 end
 
+-- how many words a name split anew (resplit_values) may have on average: "Blood Elf", "Death Knight"
+local MAX_NAME_WORDS = 3
+
+-- words from first on split into count names we know, the shortest first name first; nil when no split works
+-- { "Night", "Elf", "Warrior" }, 2 names -> { "Night Elf", "Warrior" }
+local function split_names(words, first, count, depth, is_female)
+    if count == 1 then
+        local name = table_concat(words, " ", first)
+        return translate_value(name, true, depth, is_female) and { name }
+    end
+
+    for last = first, #words - count + 1 do
+        local name = table_concat(words, " ", first, last)
+        local rest = translate_value(name, true, depth, is_female) and split_names(words, last + 1, count - 1, depth, is_female)
+        if rest then
+            table_insert(rest, 1, name)
+            return rest
+        end
+    end
+end
+
+-- values with a space alone between them are split anew where the plain match made a name we don't know, as a name may have spaces too
+local function resplit_values(gaps, captures, depth, is_female)
+    local first = 1
+    while first < #captures do
+        local last = first
+        while last < #captures and gaps[last] == " " do
+            last = last + 1
+        end
+
+        if last > first then
+            -- a run whose values are all names we know stays as the plain match split it
+            local is_known = true
+            for j = first, last do
+                is_known = is_known and translate_value(captures[j], true, depth, is_female) ~= nil
+            end
+
+            -- else its words are split anew
+            local count = last - first + 1
+            local words = not is_known and utils.split_by_text(" ", table_concat(captures, " ", first, last))
+            local names = words and #words <= MAX_NAME_WORDS * count and split_names(words, 1, count, depth, is_female)
+            if names then
+                for j = first, last do
+                    captures[j] = names[j - first + 1]
+                end
+            end
+        end
+        first = last + 1
+    end
+end
+
 -- the format that makes a text, and the values it was filled with, keyed by their argument numbers
 -- First format whose values are all translated wins over the first that merely makes the text.
 -- Nested value may only be a number, or else a name like "Shadowcraft Armor" would be read as "%s Armor".
 -- Values side by side only make a text when they are all translated: "+%s %s Damage" splits "+30 Healing and Spell Damage" too.
-local function find_format(text, groups, depth)
+local function find_format(text, groups, depth, is_female)
     local first_format, first_values
     for k = 1, 3 do
         local list
@@ -1077,9 +1138,12 @@ local function find_format(text, groups, depth)
                         is_translated = is_translated and not string_find(value, "%a")
                     end
                 else
+                    if format.is_side_by_side then
+                        resplit_values(format.gaps, captures, depth + 1, is_female)
+                    end
                     -- each value must have a translation; a phrase in a value is looked up one level down
                     for _, value in ipairs(captures) do
-                        is_translated = is_translated and translate_value(value, true, depth + 1) ~= nil
+                        is_translated = is_translated and translate_value(value, true, depth + 1, is_female) ~= nil
                     end
                 end
 
@@ -1109,9 +1173,21 @@ local function cap_names(value)
     return table_concat(names, ", ")
 end
 
+-- a value that leaves a color on gets it closed after it, as a translation's order may put text after the value
+-- Color codes stack, so each "|c" needs its own "|r".
+local function close_colors(value)
+    if string_find(value, "^|c%x%x%x%x%x%x%x%x$") then
+        return value
+    end
+
+    local _, opened = string_gsub(value, "|c", "")
+    local _, closed = string_gsub(value, "|r", "")
+    return opened > closed and value .. string_rep("|r", opened - closed) or value
+end
+
 -- our format filled with the game's values, nil when a value has no translation and can't stay as it is
 -- "%2$s (комірок: %1$d)" with "16", "Bag" -> "сумка (комірок: 16)"
-local function fill_format(format_uk, values, depth)
+local function fill_format(format_uk, values, depth, is_female)
     local index = 0
     local is_failed = false
     local text_uk = string_gsub(format_uk, utils.FORMAT_CONVERSION, function (spec, kind)
@@ -1134,12 +1210,12 @@ local function fill_format(format_uk, values, depth)
         elseif kind == "N" then
             -- "%N" is in translations only: a player's own text (a character's name, an equipment set's) stays as the game wrote it
             -- So does a talent tree's name, which the lookup would take for something else (a shaman's "Elemental" for the creature type).
-            return value
+            return close_colors(value)
         elseif kind == "s" or kind == "S" then
             -- "%S", also in translations only: each name capitalized
-            local value_uk = translate_value(value, false, depth)
+            local value_uk = translate_value(value, false, depth, is_female)
             is_failed = is_failed or not value_uk
-            return value_uk and (kind == "S" and cap_names(value_uk) or value_uk) or ""
+            return value_uk and close_colors(kind == "S" and cap_names(value_uk) or value_uk) or ""
         elseif kind == "c" then
             -- the game's sign of a number
             return value
@@ -1165,7 +1241,8 @@ end
 -- the whole text: "Soulbound" -> "Прив'язаний до персонажа";
 -- a format filled with the text's values: "Durability 16 / 16" -> "Міцність: 16 / 16";
 -- a label before a value with no words in it: "Sell Price: 12 [copper icon]" -> "Ціна продажу: 12 [copper icon]"
-entries.translate_string_text = function (text, depth)
+-- With is_female, a race or a class in it takes a woman's form: "Level 60 Tauren Druid" -> "тауренка-друїдка 60-го рівня"
+entries.translate_string_text = function (text, is_female, depth)
     depth = depth or 0
     local at = addon_table
     local text_uk = at.enchant[text] or at.string_tooltip_text[text] or at.string[text] or at.zone[text]
@@ -1174,10 +1251,10 @@ entries.translate_string_text = function (text, depth)
     end
 
     formats = formats or prepare_formats()
-    local format, values = find_format(text, formats, depth)
+    local format, values = find_format(text, formats, depth, is_female)
 
     if format and depth < MAX_NESTED_FORMATS then
-        return fill_format(format.text_uk, values, depth + 1)
+        return fill_format(format.text_uk, values, depth + 1, is_female)
     elseif format then
         return
     end
