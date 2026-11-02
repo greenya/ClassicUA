@@ -13,7 +13,6 @@ local C_UnitAuras           = _G.C_UnitAuras
 local CreateFrame           = _G.CreateFrame
 local Enum                  = _G.Enum
 local GameTooltip           = _G.GameTooltip
-local GameTooltipTextLeft1  = _G.GameTooltipTextLeft1
 local GetBindLocation       = _G.GetBindLocation
 local hooksecurefunc        = _G.hooksecurefunc
 local IsAltKeyDown          = _G.IsAltKeyDown
@@ -27,6 +26,8 @@ local TooltipDataProcessor  = _G.TooltipDataProcessor
 local TooltipUtil           = _G.TooltipUtil
 local UIParent              = _G.UIParent
 local UnitExists            = _G.UnitExists
+local UnitIsPlayer          = _G.UnitIsPlayer
+local UnitSex               = _G.UnitSex
 local UnitTokenFromGUID     = _G.UnitTokenFromGUID
 local unpack                = _G.unpack
 local WorldFrame            = _G.WorldFrame
@@ -365,15 +366,16 @@ end
 -- The spaces and line breaks a line starts with stay before the translation: tbc spaces a recipe's reagents from the lines above with "\n".
 -- A color around the whole line stays around the translation too; the line is tried with it first, as a phrase may have its own ("|cff00ff00<Made by %s>|r").
 -- tbc colors a socketed gem's line: "|cffffffff+5 Agility and +7 Stamina|r"; a tag of SoD items has a space for a zero in its color: "|cFFFFAC 0Core Forged|r"
-local function translate_line(text)
+-- With is_female, a race or a class in the line takes a woman's form (a player's level line).
+local function translate_line(text, is_female)
     local space, rest = text:match("^(%s+)(.+)$")
     if space then
-        local rest_uk = translate_line(rest)
+        local rest_uk = translate_line(rest, is_female)
         return rest_uk and space .. rest_uk
     end
 
     -- a whole line before the "Equip:" rule: forever's own phrases include "Equip:" ("Equip: +%1$d Attack Power."), tbc's don't
-    local text_uk = translate_stat_change(text) or entries.translate_string_text(text) or translate_effect_line(text)
+    local text_uk = translate_stat_change(text) or entries.translate_string_text(text, is_female) or translate_effect_line(text)
     if text_uk then
         return utils.cap(text_uk)
     end
@@ -385,13 +387,14 @@ local function translate_line(text)
         first, others = text:match("^([^\n]+)\n(.+)$")
     end
     if first then
-        local first_uk, others_uk = translate_line(first), translate_line(others)
+        local first_uk, others_uk = translate_line(first, is_female), translate_line(others, is_female)
         return (first_uk or others_uk) and (first_uk or first) .. "\n" .. (others_uk or others) or nil
     end
 
+    -- the last "|r" closes the first color only with no other color inside
     local color, colored = text:match("^(|c[%x ][%x ][%x ][%x ][%x ][%x ][%x ][%x ])(.+)|r$")
-    if color and not colored:find("|r", 1, true) then
-        local colored_uk = translate_line(colored)
+    if color and not colored:find("|[cr]") then
+        local colored_uk = translate_line(colored, is_female)
         return colored_uk and color .. colored_uk .. "|r"
     end
 
@@ -401,7 +404,7 @@ local function translate_line(text)
         head, tail = text:match("^(.+) %(([^()]+)%)$")
     end
     local tail_uk = head and entries.translate_string_text(tail)
-    local head_uk = tail_uk and translate_line(head)
+    local head_uk = tail_uk and translate_line(head, is_female)
     return head_uk and head_uk .. " (" .. tail_uk .. ")" or nil
 end
 
@@ -709,8 +712,7 @@ end
 -- [ the replace style: units ]
 -- ----------------------------
 
--- An npc's tooltip: its name, its title, the level line and the lines the game words alone under the level line.
--- Only these get ours: the lines other addons add to it stay theirs, even where we know their words.
+-- A unit's tooltip (npc, player, pet): name, title, level line and lines the game words alone under the level line.
 
 -- every level line starts as "Level %s" does
 local LEVEL_PREFIX = _G.TOOLTIP_UNIT_LEVEL:match("^[^%%]*")
@@ -722,12 +724,9 @@ local unit_line_texts = {
     [_G.UNIT_SKINNABLE_ROCK] = true,
 }
 
--- our texts for an npc's lines up to the last (WoW: Forever lists its quests after them), keyed by line index:
--- - the name, where line 1 is the npc's english one: a renamed npc keeps its own;
--- - the one line between the name and the level line: the npc's title, or its owner's ("Varmi's Totem");
--- - the level line, the lines the game words alone under it ("Skinnable"), and the faction right under it.
--- "Khelden Bremen", "Mage Trainer", "Level 15 Humanoid", "Stormwind" -> "Хелден Бремен", "Тренер магів", "Гуманоїд 15-го рівня", "Штормовій"
-local function get_unit_texts(entry, unit, lines_en, last)
+-- translations of unit's lines, keyed by line index
+-- lines_en ["Khelden Bremen", "Mage Trainer", "Level 15 Humanoid", "Stormwind"] -> "Хелден Бремен", "Тренер магів", "Гуманоїд 15-го рівня", "Штормовій"
+local function get_unit_texts(entry, unit, lines_en, last, is_player)
     local texts = {}
     local tag_uk
     -- npc name and tag; applied only if line 1 is equal to entry's english one, so renamed npc keeps its own
@@ -753,7 +752,7 @@ local function get_unit_texts(entry, unit, lines_en, last)
 
     -- title sits between name and level lines; an npc with none has its level line right under the name
     -- An npc's tag translates the title, else a phrase does, as for an owner's line ("Posipaka's Totem/Pet").
-    if level_index == 3 then
+    if level_index == 3 and not is_player then
         local title = lines_en[2]
         if tag_uk then
             local title_uk = utils.cap(entries.make_entry_text(tag_uk, lines_en))
@@ -763,10 +762,16 @@ local function get_unit_texts(entry, unit, lines_en, last)
         end
     end
 
-    texts[level_index] = translate_line(lines_en[level_index])
+    -- the level line, a player's race and class
+    local sex = is_player and unit and UnitSex(unit)
+    local is_female = not utils.is_secret(sex) and sex == 3
+    texts[level_index] = translate_line(lines_en[level_index], is_female)
+
+    -- under the level line: game's own lines ("Skinnable"), player's class or faction
     local faction_index = level_index + 1
     for i = level_index + 1, last do
         local text = lines_en[i]
+        local class_uk = is_player and i == level_index + 1 and entries.get_class_or_race_text(text, is_female)
         if unit_line_texts[text] then
             texts[i] = translate_line(text)
         elseif utils.is_forever and addon_table.string_tooltip_text[text] then
@@ -775,6 +780,9 @@ local function get_unit_texts(entry, unit, lines_en, last)
             if i == faction_index then
                 faction_index = i + 1
             end
+        elseif class_uk then
+            texts[i] = class_uk
+            faction_index = i + 1
         elseif i == faction_index then
             texts[i] = entries.get_faction_text(text)
         end
@@ -782,17 +790,14 @@ local function get_unit_texts(entry, unit, lines_en, last)
     return texts
 end
 
--- the classic clients: an npc's lines rewritten in place
-local function replace_unit_lines(tooltip, entry, unit)
-    local lines_en = get_lines_en(tooltip)
-    return replace_lines(tooltip, get_unit_texts(entry, unit, lines_en, #lines_en))
-end
-
--- the classic clients: an addon that writes the name anew after us, in colors of its own, gets ours back inside them.
--- Leatrix Plus writes it from UnitName(), and greys a dead mob's line as it stands (ours, or the game's while the
--- modifier key is held)
-local function replace_rewritten_name(font_string, text)
-    local claim = GameTooltip.classicua
+-- line that is rewritten by some addon gets translation back
+-- Leatrix Plus writes a name from UnitName(), and greys a dead mob's line as it stands (translated, or the game's while the modifier key is held).
+-- It also writes a player's level line its own way, and colors the level by its difficulty for a hostile player.
+-- So it does for an attackable mob's level line, which it finds only in english (built while the modifier key is held), with a space at the end.
+-- "Level 70 Tauren |cffff7c0aDruid|cffffffff|r" -> "Таурен-|cffff7c0aдруїд|cffffffff|r|r 70-го рівня"
+-- "|cff9d9d9dLevel 7|cffffffff |cffffffffBeast|cffffffff " -> "Звір |cff9d9d9d7|r-го рівня"
+local function replace_rewritten_line(tooltip, font_string, text)
+    local claim = tooltip.classicua
     local texts = claim.lines[font_string]
 
     -- line not translated, or modifier key pressed
@@ -800,19 +805,64 @@ local function replace_rewritten_name(font_string, text)
         return
     end
 
-    for _, name in ipairs(texts) do
-        local from, to = text:find(name, 1, true)
+    local new_texts
+    for _, line_text in ipairs(texts) do
+        local from, to = text:find(line_text, 1, true)
         if from then
             local before, after = text:sub(1, from - 1), text:sub(to + 1)
-            local new_texts = { before .. texts[1] .. after, before .. texts[2] .. after }
-            claim.lines[font_string] = new_texts
-            local shown = new_texts[is_original_shown() and 1 or 2]
-            if shown ~= text then
-                font_string:SetText(shown)
-            end
-            return
+            new_texts = { before .. texts[1] .. after, before .. texts[2] .. after }
+            break
         end
     end
+
+    if not new_texts then
+        local _, unit = tooltip:GetUnit()
+        local is_female = unit ~= nil and UnitIsPlayer(unit) and UnitSex(unit) == 3
+        local text_uk = translate_line(text, is_female)
+
+        if not text_uk then
+            text_uk = translate_line(utils.strip_color_codes(text):match("^%s*(.-)%s*$"), is_female)
+            local color, number = text:match("(|c%x%x%x%x%x%x%x%x)[^|]-(%d+)")
+            local from, to
+            if number and text_uk then
+                from, to = text_uk:find("%f[%d]" .. number .. "%f[%D]")
+            end
+            if from then
+                text_uk = text_uk:sub(1, from - 1) .. color .. number .. "|r" .. text_uk:sub(to + 1)
+            end
+        end
+        new_texts = text_uk and { text, text_uk }
+    end
+    if not new_texts then
+        return
+    end
+
+    claim.lines[font_string] = new_texts
+    local shown = new_texts[is_original_shown() and 1 or 2]
+    if shown ~= text then
+        font_string:SetText(shown)
+    end
+end
+
+-- the lines replace_rewritten_line() follows, hooked the first time they are translated: the game makes a tooltip's lines as it first needs them
+local followed_lines = {}
+
+-- the classic clients: a unit's lines rewritten in place
+local function replace_unit_lines(tooltip, entry, unit)
+    local lines_en = get_lines_en(tooltip)
+    local is_player = unit ~= nil and UnitIsPlayer(unit)
+    local is_replaced = replace_lines(tooltip, get_unit_texts(entry, unit, lines_en, #lines_en, is_player))
+
+    -- some addon may write a translated line anew after us
+    for font_string in pairs(tooltip.classicua.lines) do
+        if not followed_lines[font_string] then
+            followed_lines[font_string] = true
+            hooksecurefunc(font_string, "SetText", function (self, text)
+                replace_rewritten_line(tooltip, self, text)
+            end)
+        end
+    end
+    return is_replaced
 end
 
 -- -----------------------------
@@ -1013,8 +1063,8 @@ local function plan_quest_lines(plan, lines, lines_en)
     end
 end
 
--- an npc's lines, up to its quests, then the quests; the names of group members on a quest stay theirs
-local function plan_unit_lines(plan, lines, lines_en, npc_id, guid)
+-- a unit's lines, up to its quests, then the quests; the names of group members on a quest stay theirs
+local function plan_unit_lines(plan, lines, lines_en, guid)
     local line_types = Enum.TooltipDataLineType
     local last = #lines
     for i, line in ipairs(lines) do
@@ -1024,7 +1074,9 @@ local function plan_unit_lines(plan, lines, lines_en, npc_id, guid)
         end
     end
 
-    plan_texts(plan, lines, get_unit_texts(entries.get_entry("npc", npc_id), UnitTokenFromGUID(guid), lines_en, last))
+    local npc_id = utils.npc_id_from_guid(guid)
+    local entry = npc_id and entries.get_entry("npc", npc_id)
+    plan_texts(plan, lines, get_unit_texts(entry, UnitTokenFromGUID(guid), lines_en, last, guid:find("^Player%-") ~= nil))
     plan_quest_lines(plan, lines, lines_en)
 end
 
@@ -1044,8 +1096,8 @@ local function plan_tooltip(tooltip, data)
     claim.style_kind = kind
     local id
     if kind == "npc" then
-        -- players and pets have no npc id: their tooltips stay as they are
-        id = utils.npc_id_from_guid(data.guid)
+        -- a unit goes by its guid: an npc's has its id in it, a player's and a pet's don't
+        id = not utils.is_secret(data.guid) and type(data.guid) == "string" and data.guid
     else
         id = not utils.is_secret(data.id) and data.id
     end
@@ -1066,7 +1118,7 @@ local function plan_tooltip(tooltip, data)
     local plan = claim.plan
 
     if kind == "npc" then
-        plan_unit_lines(plan, lines, lines_en, id, data.guid)
+        plan_unit_lines(plan, lines, lines_en, id)
         return
     end
 
@@ -1488,6 +1540,11 @@ local function tooltip_set_unit(self, data)
     if npc_id then
         add_entry_to_tooltip(self, "npc", npc_id, false,
             options.can_translate("translate_npc", "translate_npc_tooltip"), unit)
+    elseif unit and not utils.is_forever and is_replacement_style("npc") and options.can_translate("translate_npc", "translate_npc_tooltip") then
+        -- a player or a pet: the game's lines only (WoW: Forever plans them in plan_tooltip)
+        if replace_unit_lines(self, nil, unit) and self:IsShown() then
+            self:Show()
+        end
     end
 end
 
@@ -1708,7 +1765,6 @@ local function hook_unit_tooltips()
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, for_known_tooltips(tooltip_set_unit))
     else
         hook_tooltip_script("OnTooltipSetUnit", tooltip_set_unit)
-        hooksecurefunc(GameTooltipTextLeft1, "SetText", replace_rewritten_name)
     end
 end
 

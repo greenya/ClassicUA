@@ -112,6 +112,8 @@ local tooltip_strings = {
 { "TOOLTIP_ITEM_STAT_SPELL_PENETRATION_INCREASE", "При спорядженні: Збільшує проникність заклять на %d." }, -- "Equip: Your spells pierce %1$d Magical Resistance."
 { "TOOLTIP_ITEM_STAT_SPELL_POWER_INCREASE", "При спорядженні: Збільшує шкоду і зцілення магічних заклять і ефектів на %d." }, -- "Equip: Increases damage and healing done by magical spells and effects by up to %1$d."
 { "TOOLTIP_ITEM_STAT_WEAPON_DAMAGE_INCREASE", "При спорядженні: Збільшує шкоду зброї на %d." }, -- "Equip: +%1$d Weapon Damage."
+{ "TOOLTIP_UNIT_LEVEL_RACE", "%2$s %1$s-го рівня" }, -- "Level %s %s"
+{ "TOOLTIP_UNIT_LEVEL_RACE_TYPE", "%2$s %1$s-го рівня (%3$s)" }, -- "Level %s %s (%s)"
 }
 
 local tooltip_texts = {
@@ -129,6 +131,7 @@ local tooltip_texts = {
 { "Fire Piercing", "проникність вогню" },
 { "Frost Piercing", "проникність криги" },
 { "Leatherworking Bag", "сумка шкірника" },
+{ "Level %s %s %s", "%2$s-%3$s %1$s-го рівня" },
 { "Mana Regeneration per 5 sec", "відновлення мани кожні 5 с" },
 { "Mining Bag", "сумка гірника" },
 { "Nature Piercing", "проникність природи" },

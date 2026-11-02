@@ -588,12 +588,12 @@ local function plural_forms(format)
     return results
 end
 
--- the capture of one value: "%s" takes any text, the game's "%c" a sign, "%f" a number with a fraction, "%d" a whole number
+-- the capture of one value: "%s" takes any non-empty text, the game's "%c" a sign, "%f" a number with a fraction, "%d" a whole number
 -- "%g" is a number with a fraction only when it has one, as a spell's "%.3g sec cast" gives "1.5 sec cast" and "30 sec cast".
 -- A whole number has no thousands separator: mists' "+1,959 Haste" is matched by our "%c%s Haste" (mists/string.lua)
 local function value_capture(kind)
     if kind == "s" then
-        return "(.-)"
+        return "(..-)"
     elseif kind == "c" then
         return "([%+%-])"
     elseif kind == "f" or kind == "g" then
@@ -606,11 +606,12 @@ end
 -- order: the argument number of each captured value ("%2$s" captures argument 2)
 -- head, tail: the text before the first value and after the last one; text_length: the length of all its text but the values
 -- is_side_by_side: two values have only spaces between them, so a text can be split between them in more than one way
+-- gaps: the text between each captured value and the next
 -- "%c%d Stamina" -> "^([%+%-])(%-?%d+) Stamina$", the game's "%c" is a sign
 utils.format_patterns = function (format)
     local patterns = {}
     for _, form in ipairs(plural_forms(format)) do
-        local parts, order = {}, {}
+        local parts, order, gaps = {}, {}, {}
         local head, tail
         local text_length = 0
         local position = 1
@@ -635,6 +636,9 @@ utils.format_patterns = function (format)
             else
                 head = head or form:sub(1, from - 1)
                 parts[#parts + 1] = value_capture(kind)
+                if is_after_value then
+                    gaps[#order] = text
+                end
                 -- "%2$s" names its argument, a plain conversion takes the next one
                 local index = spec:match("^(%d+)%$")
                 order[#order + 1] = index and tonumber(index) or #order + 1
@@ -647,7 +651,7 @@ utils.format_patterns = function (format)
         if #order > 0 then
             patterns[#patterns + 1] = {
                 pattern = "^" .. table_concat(parts) .. "$", order = order, head = head, tail = tail, text_length = text_length,
-                is_side_by_side = is_side_by_side,
+                is_side_by_side = is_side_by_side, gaps = gaps,
             }
         end
     end
