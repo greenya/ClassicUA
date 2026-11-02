@@ -16,7 +16,7 @@ This folder contains development scripts, which are used to generate lua files (
 2. Update Terms app:
     - Update file /docs/terms/ClassicUA.tbx
     - Update the date in /docs/terms/index.html
-    - Commit "Update terms"
+    - Commit "Terms App: Crowdin sync"
 
 3. Generate lua files:
     - Clean up folder "translation_from_crowdin"
