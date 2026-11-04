@@ -283,7 +283,15 @@ local option_rows = {
         key         = "other_tooltip",
         option_key  = "translate_other_tooltips",
         name        = "Решта підказок",
-        tooltip     = "Доповнюваний переклад будь-яких розпізнаних написів на підказках: об'єктів, локацій, вказівників тощо."
+        tooltip     = "Переклад будь-яких розпізнаних написів на підказках: об'єктів, локацій, вказівників тощо."
+    },
+    {
+        dropdown    = "tooltip_style_other",
+        option_key  = "tooltip_style_other",
+        parent_key  = "other_tooltip",
+        label       = "Стиль",
+        values      = tooltips.styles,
+        tooltip     = "Стиль відображення перекладу в підказках об'єктів і точок на мінікарті." .. TOOLTIP_STYLES_HELP
     },
 }
 
