@@ -8,25 +8,32 @@ local tooltips  = addon_table.use("tooltips") ---@class tooltips_class
 local utils     = addon_table.use("utils") ---@class utils_class
 
 local C_Item                = _G.C_Item
+local C_QuestLog            = _G.C_QuestLog
 local C_Spell               = _G.C_Spell
 local C_UnitAuras           = _G.C_UnitAuras
 local CreateFrame           = _G.CreateFrame
 local Enum                  = _G.Enum
 local GameTooltip           = _G.GameTooltip
 local GetBindLocation       = _G.GetBindLocation
+local GetNumGroupMembers    = _G.GetNumGroupMembers
+local GetNumSubgroupMembers = _G.GetNumSubgroupMembers
 local hooksecurefunc        = _G.hooksecurefunc
 local IsAltKeyDown          = _G.IsAltKeyDown
 local IsControlKeyDown      = _G.IsControlKeyDown
+local IsInRaid              = _G.IsInRaid
 local IsShiftKeyDown        = _G.IsShiftKeyDown
 local ItemRefTooltip        = _G.ItemRefTooltip
 local NORMAL_FONT_COLOR     = _G.NORMAL_FONT_COLOR
+local QUEST_DASH            = _G.QUEST_DASH
 local RETRIEVING_ITEM_INFO  = _G.RETRIEVING_ITEM_INFO
+local string_trim           = _G.string.trim
 local table_concat          = _G.table.concat
 local TooltipDataProcessor  = _G.TooltipDataProcessor
 local TooltipUtil           = _G.TooltipUtil
 local UIParent              = _G.UIParent
 local UnitExists            = _G.UnitExists
 local UnitIsPlayer          = _G.UnitIsPlayer
+local UnitName              = _G.UnitName
 local UnitSex               = _G.UnitSex
 local UnitTokenFromGUID     = _G.UnitTokenFromGUID
 local unpack                = _G.unpack
@@ -256,7 +263,8 @@ end
 
 -- Our texts go into the game's own lines
 -- Each line we change is kept in tooltip.classicua.lines as { game's text, our text }, so the modifier key can show original text
-local style_options = { item = "tooltip_style_item", spell = "tooltip_style_spell", npc = "tooltip_style_npc" }
+-- The world under the cursor (an object, a corpse, the minimap's points) goes by the style of the rest of the tooltips.
+local style_options = { item = "tooltip_style_item", spell = "tooltip_style_spell", npc = "tooltip_style_npc", world = "tooltip_style_other" }
 local style_kinds = { item = "item", spell = "spell", sod_engraving = "spell", npc = "npc" }
 local line_sides = { "TextLeft", "TextRight" }
 
@@ -266,7 +274,8 @@ end
 
 -- whether any kind of tooltip uses the replace style, so the modifier key has lines to switch
 local function is_any_replacement_style()
-    return is_replacement_style("item") or is_replacement_style("spell") or is_replacement_style("npc")
+    return is_replacement_style("item") or is_replacement_style("spell")
+    or is_replacement_style("npc") or is_replacement_style("world")
 end
 
 local function is_original_shown()
@@ -408,15 +417,16 @@ local function translate_line(text, is_female)
     return head_uk and head_uk .. " (" .. tail_uk .. ")" or nil
 end
 
-local function replace_string_lines(tooltip, first_line)
+local function replace_string_lines(tooltip, first_line, last_line, translate)
+    translate = translate or translate_line
     local name = tooltip:GetName()
     local is_replaced = false
-    for i = first_line, tooltip:NumLines() do
+    for i = first_line, last_line or tooltip:NumLines() do
         for _, side in ipairs(line_sides) do
             local font_string = _G[name .. side .. i]
             local text = font_string and font_string:GetText()
             if text and text ~= "" and not is_line_replaced(tooltip, font_string) then
-                is_replaced = replace_line(tooltip, font_string, translate_line(text)) or is_replaced
+                is_replaced = replace_line(tooltip, font_string, translate(text)) or is_replaced
             end
         end
     end
@@ -959,6 +969,113 @@ local function replace_late_lines(tooltip)
     end
 end
 
+-- -------------------------------------------------
+-- [ the replace style: the world under the cursor ]
+-- -------------------------------------------------
+
+-- A world tooltip names an object, a corpse or the minimap's points
+
+-- whether a unit has this name: "Name", or "Name-Realm" for a character of another realm
+local function is_unit_named(unit, name)
+    local unit_name, realm = UnitName(unit)
+    if not unit_name or utils.is_secret(unit_name) then
+        return false
+    end
+    return name == unit_name or realm ~= nil and realm ~= "" and not utils.is_secret(realm) and name == unit_name .. "-" .. realm
+end
+
+-- whether a name is of a character in the player's group, whose point on the minimap keeps the player's name
+local function is_group_name(name)
+    if is_unit_named("player", name) or is_unit_named("pet", name) then
+        return true
+    end
+    local prefix, count = "party", GetNumSubgroupMembers()
+    if IsInRaid() then
+        prefix, count = "raid", GetNumGroupMembers()
+    end
+    for i = 1, count do
+        if is_unit_named(prefix .. i, name) then
+            return true
+        end
+    end
+    return false
+end
+
+-- Forever's minimap names a quest without id: its id is found in player's quest log by english title
+local function find_logged_quest_id(title)
+    for i = 1, C_QuestLog.GetNumQuestLogEntries() do
+        local info = C_QuestLog.GetInfo(i)
+        if info and not info.isHeader and info.title == title then
+            return info.questID
+        end
+    end
+end
+
+-- the names in line 1: one name, or minimap's points, joined by line breaks, each in its own color
+-- WoW: Forever's minimap lists a quest there too: its title, then its objectives after dashes.
+-- "Peacebloom\nKobold Camp Cleanup\n- 7/10 Kobold Vermin slain" -> "Мироквіт\nЗачистка табору кобольдів\n- Кобольд-шкідник: 7/10 вбито"
+local function translate_world_names(text)
+    local parts = utils.split_by_text("\n", text)
+    local is_translated = false
+    local quest_id
+    for i, part in ipairs(parts) do
+        local bare = string_trim(utils.strip_color_codes(part))
+        local part_uk
+        if bare:sub(1, #QUEST_DASH) == QUEST_DASH then
+            -- an objective of the quest above it
+            local objective_uk = options.can_translate("translate_quest")
+                and entries.translate_quest_objective(bare:sub(#QUEST_DASH + 1), quest_id)
+            part_uk = objective_uk and QUEST_DASH .. objective_uk
+        else
+            local next_bare = parts[i + 1] and string_trim(utils.strip_color_codes(parts[i + 1]))
+            local is_quest_title = next_bare ~= nil and next_bare:sub(1, #QUEST_DASH) == QUEST_DASH
+            quest_id = is_quest_title and utils.is_forever and find_logged_quest_id(bare) or nil
+            if quest_id then
+                part_uk = options.can_translate("translate_quest") and entries.get_quest_title(quest_id)
+            elseif not is_group_name(bare) then
+                part_uk = entries.get_object_text(bare) or entries.get_glossary_text(bare) or translate_line(bare)
+            end
+        end
+
+        -- the translation takes the english's place inside the part, so the part's colors stay
+        if part_uk and bare ~= "" then
+            local count
+            parts[i], count = part:gsub(utils.esc(bare), (part_uk:gsub("%%", "%%%%")), 1)
+            is_translated = is_translated or count > 0
+        end
+    end
+    return is_translated and table_concat(parts, "\n") or nil
+end
+
+-- a line under the name: a game's phrase, or a name the glossary knows (the skill a herb or a vein needs: "Herbalism")
+local function translate_world_line(text)
+    return translate_line(text) or entries.get_glossary_text(text)
+end
+
+-- classic clients build a world tooltip without Lua calls: a line a Lua call adds to it is another addon's, which keeps its words
+local function note_added_line(tooltip)
+    local claim = tooltip.classicua
+    claim.first_added_line = claim.first_added_line or tooltip:NumLines()
+end
+
+-- classic clients: a world tooltip lines rewritten in place
+local function replace_world_lines(tooltip)
+    if not options.can_translate("translate_other_tooltips") then
+        return false
+    end
+
+    -- width before translating: lay_out() fits box by the change
+    local width = get_lines_width(tooltip)
+    local name_line = _G[tooltip:GetName() .. "TextLeft1"]
+    local is_replaced = replace_line(tooltip, name_line, translate_world_names(name_line:GetText() or ""))
+    local first_added_line = tooltip.classicua.first_added_line
+    is_replaced = replace_string_lines(tooltip, 2, first_added_line and first_added_line - 1, translate_world_line) or is_replaced
+    if is_replaced and tooltip:IsShown() then
+        lay_out(tooltip, width)
+    end
+    return is_replaced
+end
+
 -- -----------------------------------
 -- [ replace style: the modifier key ]
 -- -----------------------------------
@@ -1015,6 +1132,7 @@ local kind_options = {
     item = { "translate_item" },
     spell = { "translate_spell" },
     npc = { "translate_npc", "translate_npc_tooltip" },
+    world = { "translate_other_tooltips" },
 }
 
 local function plan_line(plan, line, left_uk, right_uk)
@@ -1044,7 +1162,18 @@ local function find_line(lines, line_type)
     end
 end
 
--- the quests an npc's tooltip lists
+-- the lines of a unit or an object before the quests its tooltip lists
+local function count_own_lines(lines)
+    local line_types = Enum.TooltipDataLineType
+    for i, line in ipairs(lines) do
+        if line.type == line_types.QuestTitle or line.type == line_types.QuestObjective or line.type == line_types.QuestPlayer then
+            return i - 1
+        end
+    end
+    return #lines
+end
+
+-- the quests an npc's or an object's tooltip lists
 local function plan_quest_lines(plan, lines, lines_en)
     if not options.can_translate("translate_quest") then
         return
@@ -1065,22 +1194,23 @@ end
 
 -- a unit's lines, up to its quests, then the quests; the names of group members on a quest stay theirs
 local function plan_unit_lines(plan, lines, lines_en, guid)
-    local line_types = Enum.TooltipDataLineType
-    local last = #lines
-    for i, line in ipairs(lines) do
-        if line.type == line_types.QuestTitle or line.type == line_types.QuestObjective or line.type == line_types.QuestPlayer then
-            last = i - 1
-            break
-        end
-    end
-
     local npc_id = utils.npc_id_from_guid(guid)
     local entry = npc_id and entries.get_entry("npc", npc_id)
+    local last = count_own_lines(lines)
     plan_texts(plan, lines, get_unit_texts(entry, UnitTokenFromGUID(guid), lines_en, last, guid:find("^Player%-") ~= nil))
     plan_quest_lines(plan, lines, lines_en)
 end
 
--- a tooltip pre-call: plans the translations for the lines of an item's, a spell's (an aura's too) or an npc's data before the game adds them
+-- the world under the cursor: the names in line 1, the game's phrases under them, then the quests an object lists
+local function plan_world_lines(plan, lines, lines_en)
+    plan_line(plan, lines[1], translate_world_names(lines_en[1]))
+    for i = 2, count_own_lines(lines) do
+        plan_line(plan, lines[i], translate_world_line(lines_en[i]))
+    end
+    plan_quest_lines(plan, lines, lines_en)
+end
+
+-- a tooltip pre-call: plans the translations for the lines of an item's, a spell's (an aura's too), an npc's or the world's data before the game adds them
 local function plan_tooltip(tooltip, data)
     local lines = type(data) == "table" and data.lines
     if type(lines) ~= "table" then
@@ -1090,8 +1220,9 @@ local function plan_tooltip(tooltip, data)
     -- the kind of the data, which also tells can_show() that game builds this tooltip from data
     local data_types, line_types = Enum.TooltipDataType, Enum.TooltipDataLineType
     local is_aura = data.type == data_types.UnitAura
+    local is_world = data.type == data_types.Object or data.type == data_types.Corpse or data.type == data_types.MinimapMouseover
     local kind = data.type == data_types.Item and "item" or (data.type == data_types.Spell or is_aura) and "spell"
-        or data.type == data_types.Unit and "npc" or "other"
+        or data.type == data_types.Unit and "npc" or is_world and "world" or "other"
     local claim = tooltip.classicua
     claim.style_kind = kind
     local id
@@ -1102,7 +1233,8 @@ local function plan_tooltip(tooltip, data)
         id = not utils.is_secret(data.id) and data.id
     end
     local option_keys = kind_options[kind]
-    if not (id and option_keys and is_replacement_style(kind) and options.can_translate(unpack(option_keys))) then
+    -- the world goes by the names in its lines, with no id
+    if not ((id or is_world) and option_keys and is_replacement_style(kind) and options.can_translate(unpack(option_keys))) then
         return
     end
 
@@ -1119,6 +1251,9 @@ local function plan_tooltip(tooltip, data)
 
     if kind == "npc" then
         plan_unit_lines(plan, lines, lines_en, id)
+        return
+    elseif kind == "world" then
+        plan_world_lines(plan, lines, lines_en)
         return
     end
 
@@ -1219,8 +1354,8 @@ local function replace_added_line(tooltip, side, text)
         if not text_uk then
             return
         end
-    elseif claim.style_kind == "npc" then
-        -- the game adds no lines after a unit's data: these are other addons'
+    elseif claim.style_kind == "npc" or claim.style_kind == "world" then
+        -- the game adds no lines after a unit's data or the world's: these are other addons'
         return
     end
 
@@ -1373,7 +1508,20 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processin
             tooltip.classicua.entry_type = "glossary"
         end
 
-        if found and options.can_translate("translate_other_tooltips") then
+        if is_world and is_replacement_style("world") then
+            -- the replace style: WoW: Forever has planned the lines from the data (plan_world_lines)
+            local is_replaced
+            if utils.is_forever then
+                is_replaced = next(tooltip.classicua.lines) ~= nil
+            else
+                is_replaced = replace_world_lines(tooltip)
+            end
+            -- a line translated by a phrase alone (a corpse's) claims the tooltip too, or it would be looked up again as a name
+            if is_replaced then
+                tooltip.classicua.entry_type = "glossary"
+            end
+        elseif found and options.can_translate("translate_other_tooltips") then
+            -- the addition style
             local result_text = utils.cap(found)
 
             if tooltip:NumLines() > 1 then
@@ -1385,7 +1533,9 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processin
             if tooltip:IsShown() and not is_processing then
                 tooltip:Show()
             end
-        elseif not found and options.account.dev_mode and utils.mouse_hover_frame() == WorldFrame then
+        end
+
+        if not found and options.account.dev_mode and utils.mouse_hover_frame() == WorldFrame then
             dev_log.missing_object(glossary_key)
         end
     end
@@ -1571,7 +1721,9 @@ end
 -- line comes with the game's own lines, not a frame after the tooltip shows (tooltip_updated), and stays on rebuilds
 local function tooltip_set_world_name(self)
     if options.can_lookup("translate_other_tooltips") then
-        add_glossary_entry_to_tooltip(self, _G[self:GetName() .. "TextLeft1"]:GetText(), true, true)
+        local name_line = _G[self:GetName() .. "TextLeft1"]
+        local texts = self.classicua.lines[name_line]
+        add_glossary_entry_to_tooltip(self, texts and texts[1] or name_line:GetText(), true, true)
     end
 end
 
@@ -1633,6 +1785,7 @@ local function tooltip_cleared(self)
     self.classicua.data_uk = nil
     self.classicua.is_adding = nil
     self.classicua.style_kind = nil
+    self.classicua.first_added_line = nil
     wipe(self.classicua.lines)
 end
 
@@ -1771,6 +1924,8 @@ end
 -- on the classic clients these are looked up like other tooltips (hook_other_tooltips)
 local function hook_world_tooltips()
     if not utils.is_forever then
+        hooksecurefunc(GameTooltip, "AddLine", note_added_line)
+        hooksecurefunc(GameTooltip, "AddDoubleLine", note_added_line)
         return
     end
 

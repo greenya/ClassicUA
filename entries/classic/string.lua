@@ -205,6 +205,7 @@ local tooltip_strings = {
 { "COMBO_POINTS_COST", "Прийомів комбінації: %d" }, -- "%s Combo |4Point:Points;"
 { "CONTAINER_SLOTS", "%2$s (комірок: %1$d)" }, -- "%d Slot %s"
 { "CORPSE", "труп" }, -- "Corpse"
+{ "CORPSE_TOOLTIP", "Труп: %N" }, -- "Corpse of %s"
 { "DAMAGE_TEMPLATE", "%s – %s шкоди" }, -- "%s - %s Damage"
 { "DAMAGE_TEMPLATE_WITH_SCHOOL", "%s – %s шкоди (%s)" }, -- "%s - %s %s Damage"
 { "DPS_TEMPLATE", "(%s шкоди за секунду)" }, -- "(%s damage per second)"
