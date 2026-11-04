@@ -969,11 +969,9 @@ local function replace_late_lines(tooltip)
     end
 end
 
--- -------------------------------------------------
--- [ the replace style: the world under the cursor ]
--- -------------------------------------------------
-
--- A world tooltip names an object, a corpse or the minimap's points
+-- -------------------
+-- [ a player's text ]
+-- -------------------
 
 -- whether a unit has this name: "Name", or "Name-Realm" for a character of another realm
 local function is_unit_named(unit, name)
@@ -1000,6 +998,25 @@ local function is_group_name(name)
     end
     return false
 end
+
+-- a group member's name, or the name of the member a list shows: the guild roster's (owner's memberInfo), a chat channel's (owner's memberName)
+local function is_player_text(tooltip, text)
+    local bare = string_trim(utils.strip_icons(utils.strip_color_codes(text)))
+    local owner = tooltip:GetOwner()
+    if owner and not utils.is_secret(owner) and not owner:IsForbidden() then
+        local member = owner.memberInfo
+        if type(member) == "table" and utils.safe_equals(member.name, bare) or utils.safe_equals(owner.memberName, bare) then
+            return true
+        end
+    end
+    return is_group_name(bare)
+end
+
+-- -------------------------------------------------
+-- [ the replace style: the world under the cursor ]
+-- -------------------------------------------------
+
+-- A world tooltip names an object, a corpse or the minimap's points
 
 -- Forever's minimap names a quest without id: its id is found in player's quest log by english title
 local function find_logged_quest_id(title)
@@ -1502,7 +1519,7 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processin
     tooltip.classicua.entry_id = glossary_key
 
     glossary_key = utils.strip_color_codes(glossary_key)
-    if glossary_key then
+    if glossary_key and not is_player_text(tooltip, glossary_key) then
         local found = is_world and entries.get_object_text(glossary_key) or entries.get_glossary_text(glossary_key)
         if found then
             tooltip.classicua.entry_type = "glossary"
