@@ -290,6 +290,11 @@ utils.is_secret = function (value)
     return utils.is_forever and issecretvalue(value)
 end
 
+-- a secret value is never compared, so it equals nothing
+utils.safe_equals = function (value, expected)
+    return not utils.is_secret(value) and value == expected
+end
+
 -- addon touching a tooltip with secret value taints the tooltip until a reload
 utils.tooltip_has_secret = function (tooltip)
     if not utils.is_forever then
