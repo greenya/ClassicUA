@@ -1060,6 +1060,14 @@ local function translate_value(value, is_strict, depth, is_female)
     return table_concat(names, ", ")
 end
 
+-- Line of names, joined by commas, each keeping its count and color. Spaces before the names stay. nil unless every name is known.
+-- Used in recipe reagents on Forever
+entries.translate_names = function (text)
+    local space, names = string_match(text, "^(%s*)(.*)$")
+    local names_uk = translate_value(names, true, 1)
+    return names_uk and names_uk ~= names and space .. names_uk or nil
+end
+
 -- how many words a name split anew (resplit_values) may have on average: "Blood Elf", "Death Knight"
 local MAX_NAME_WORDS = 3
 
