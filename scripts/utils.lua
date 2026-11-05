@@ -323,16 +323,6 @@ utils.tooltip_item_id = function (tooltip)
     return utils.item_id_from_link(item_link)
 end
 
-utils.tooltip_item_suffix_id = function (tooltip)
-    local _, item_link = utils.tooltip_item(tooltip)
-    if item_link then
-        local suffix_id = select(8, string_split(":", item_link))
-        if suffix_id then
-            return tonumber(suffix_id)
-        end
-    end
-end
-
 utils.chat_bubble_font_string_with_text = function (text)
     if type(text) ~= "string" then
         return
