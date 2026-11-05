@@ -20,6 +20,7 @@ local GetQuestID            = _G.GetQuestID
 local GetQuestLogSelectedID = _G.GetQuestLogSelectedID
 local TooltipUtil           = _G.TooltipUtil
 local UnitGUID              = _G.UnitGUID
+local WorldFrame            = _G.WorldFrame
 local issecretvalue         = _G.issecretvalue
 
 utils.prepare = function ()
@@ -402,12 +403,15 @@ utils.get_currently_viewed_text_id = function ()
     return (meta.entry_type == "item" or meta.entry_type == "object") and meta.entry_id or 0
 end
 
+-- frame under cursor; with nothing focused it is the world, as GetMouseFoci() may be empty over it
 utils.mouse_hover_frame = function ()
+    local focus
     if GetMouseFocus then
-        return GetMouseFocus()
+        focus = GetMouseFocus()
     elseif GetMouseFoci then
-        return GetMouseFoci()[1]
+        focus = GetMouseFoci()[1]
     end
+    return focus or WorldFrame
 end
 
 utils.update_item_text_scrollbar = function ()
