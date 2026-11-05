@@ -822,10 +822,11 @@ entries.get_chat_text = function (npc_name, chat_text)
     return nil, nil, chat_code
 end
 
-entries.get_item_suffix = function (item_name_en)
-    local at = addon_table
-    local item_suffix_en = item_name_en:match(".+ (of .-)$")
-    return at.item_suffix[item_suffix_en]
+entries.get_item_suffix = function (item_id, item_name_en)
+    local own_name = C_Item.GetItemNameByID(item_id)
+    if own_name and item_name_en:sub(1, #own_name + 1) == own_name .. " " then
+        return addon_table.item_suffix[item_name_en:sub(#own_name + 2)]
+    end
 end
 
 -- the set the game puts an item in, if the set's entry lists the item: WoW: Forever gave some classic set ids to its own sets

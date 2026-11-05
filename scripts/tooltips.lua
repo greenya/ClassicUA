@@ -120,18 +120,12 @@ local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_
     end
 end
 
-local function get_item_heading(tooltip, entry, lines)
-    local heading = entries.make_entry_text(entry[1], lines or tooltip)
-
-    if heading and utils.tooltip_item_suffix_id(tooltip) then
-        -- WoW: Forever gives no name of an item it hasn't cached yet
-        local item_name_en = utils.tooltip_item(tooltip)
-        local item_suffix_uk = item_name_en and entries.get_item_suffix(item_name_en)
-        if item_suffix_uk then
-            heading = heading .. " " .. item_suffix_uk
-        end
+local function get_item_heading(source, entry, item_id, name_en)
+    local heading = entries.make_entry_text(entry[1], source)
+    local suffix_uk = heading and name_en and entries.get_item_suffix(item_id, name_en)
+    if suffix_uk then
+        heading = heading .. " " .. suffix_uk
     end
-
     return heading and utils.cap(heading)
 end
 
@@ -147,7 +141,8 @@ local function add_item_entry_to_tooltip(tooltip, entry, entry_id, sub_item_dept
     end
 
     local prefix = sub_item_depth == 1 and assets.icon_ua_inline .. " " or ""
-    tooltip:AddLine(prefix .. get_item_heading(tooltip, entry), 1, 1, 1)
+    local name_en = sub_item_depth == 1 and utils.tooltip_title_line(tooltip)
+    tooltip:AddLine(prefix .. get_item_heading(tooltip, entry, entry_id, name_en), 1, 1, 1)
 
     add_line_to_tooltip(tooltip, entry.desc, "TEXT", 1, 1, 1)
     for _, effect in ipairs(item_effects) do
@@ -573,7 +568,7 @@ local function add_item_texts(texts, entry, entry_id, lines_en, first, last)
 end
 
 -- our texts by line index, made from the english lines: our texts take their numbers from them
-local function get_item_texts(tooltip, entry, entry_id, lines_en, title_index)
+local function get_item_texts(entry, entry_id, lines_en, title_index)
     local texts = {}
     local first_line = (title_index or 0) + 1
 
@@ -584,7 +579,7 @@ local function get_item_texts(tooltip, entry, entry_id, lines_en, title_index)
     end
 
     if entry and title_index then
-        texts[title_index] = get_item_heading(tooltip, entry, lines_en)
+        texts[title_index] = get_item_heading(lines_en, entry, entry_id, lines_en[title_index])
     end
 
     local result_id = entry and entry.recipe_result_item
@@ -603,7 +598,7 @@ local function get_item_texts(tooltip, entry, entry_id, lines_en, title_index)
     local last_own_line = result_line and result_line - 1 or #lines_en
     add_item_texts(texts, entry, entry_id, lines_en, first_line, last_own_line)
     if result_line then
-        local name_uk = get_item_heading(tooltip, result, lines_en)
+        local name_uk = get_item_heading(lines_en, result)
         texts[result_line] = name_uk and before_name .. name_uk .. after_name
         add_item_texts(texts, result, result_id, lines_en, result_line + 1, #lines_en)
     end
@@ -613,7 +608,7 @@ end
 local function replace_item_lines(tooltip, entry, entry_id, first_phrase_line)
     local lines_en = get_lines_en(tooltip)
     local title_index = get_title_line_index(lines_en)
-    local is_replaced = replace_lines(tooltip, get_item_texts(tooltip, entry, entry_id, lines_en, title_index))
+    local is_replaced = replace_lines(tooltip, get_item_texts(entry, entry_id, lines_en, title_index))
     return replace_string_lines(tooltip, first_phrase_line or title_index + 1) or is_replaced
 end
 
@@ -1279,7 +1274,7 @@ local function plan_tooltip(tooltip, data)
 
     local entry = entries.get_entry(kind, id)
     if kind == "item" then
-        plan_texts(plan, lines, get_item_texts(tooltip, entry, id, lines_en, name_index))
+        plan_texts(plan, lines, get_item_texts(entry, id, lines_en, name_index))
     else -- spell or aura
         plan_texts(plan, lines, get_spell_texts(entry, id, is_aura, nil, lines_en, name_index,
             find_line(lines, line_types.SpellDescription)))
