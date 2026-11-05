@@ -514,8 +514,10 @@ local function get_toy_effect(item_id)
     end
 end
 
--- The entry lists an item's effects in the game's order, so the n-th "Equip:" line gets the n-th equip text
-local function add_effect_texts(texts, entry, entry_id, lines_en, first, last)
+-- The entry lists an item's effects in the game's order, so the n-th "Equip:" line gets the n-th equip text.
+-- When entry runs out of texts of a kind, next lines take fallback_effects.
+-- Returns entry's effects with count of texts taken.
+local function add_effect_texts(texts, entry, entry_id, lines_en, first, last, fallback_effects)
     local effects = {}
     for _, effect in ipairs(item_effects) do
         effects[effect] = { texts = get_entry_texts(lines_en, entry[effect.field], true, entry_id), count = 0 }
@@ -533,6 +535,9 @@ local function add_effect_texts(texts, entry, entry_id, lines_en, first, last)
                 local is_toy_use = is_toy_effect and effect.field == "use"
                 if is_toy_use or text:sub(1, #effect.prefix) == effect.prefix then
                     local found = effects[effect]
+                    if fallback_effects and found.count == #found.texts then
+                        found = fallback_effects[effect]
+                    end
                     found.count = found.count + 1
                     local text_uk = found.texts[found.count]
                     local template = is_toy_use and "TEXT" or effect.template
@@ -544,6 +549,7 @@ local function add_effect_texts(texts, entry, entry_id, lines_en, first, last)
             texts[i] = '"' .. flavor .. '"'
         end
     end
+    return effects
 end
 
 -- the line with the made item's name in recipes, with everything around the name: color, tbc's line break before it
@@ -557,14 +563,13 @@ local function find_result_item_line(lines_en, first_line, name_en)
     end
 end
 
-local function add_item_texts(texts, entry, entry_id, lines_en, first, last)
-    if entry then
-        add_effect_texts(texts, entry, entry_id, lines_en, first, last)
-    end
+local function add_item_texts(texts, entry, entry_id, lines_en, first, last, fallback_effects)
+    local effects = entry and add_effect_texts(texts, entry, entry_id, lines_en, first, last, fallback_effects)
     local item_set = entries.get_item_set(entry_id)
     if item_set then
         add_item_set_texts(texts, item_set, lines_en, first, last)
     end
+    return effects
 end
 
 -- our texts by line index, made from the english lines: our texts take their numbers from them
@@ -594,13 +599,14 @@ local function get_item_texts(entry, entry_id, lines_en, title_index)
             or "невірне значення recipe_result_item " .. tostring(result_id))
     end
 
-    -- Recipe tooltip shows both own lines and the made item's lines starting from its name. Each part takes the texts of its own entry.
+    -- Recipe tooltip shows both own lines and the made item's lines starting from its name. Each part takes the texts of its own entry;
+    -- WoW: Forever puts the recipe's own effects under the made item's lines, and they take the recipe's texts left.
     local last_own_line = result_line and result_line - 1 or #lines_en
-    add_item_texts(texts, entry, entry_id, lines_en, first_line, last_own_line)
+    local own_effects = add_item_texts(texts, entry, entry_id, lines_en, first_line, last_own_line)
     if result_line then
         local name_uk = get_item_heading(lines_en, result)
         texts[result_line] = name_uk and before_name .. name_uk .. after_name
-        add_item_texts(texts, result, result_id, lines_en, result_line + 1, #lines_en)
+        add_item_texts(texts, result, result_id, lines_en, result_line + 1, #lines_en, utils.is_forever and own_effects)
     end
     return texts
 end
