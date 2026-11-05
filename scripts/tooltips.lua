@@ -1228,6 +1228,10 @@ local function plan_world_lines(plan, lines, lines_en)
     plan_quest_lines(plan, lines, lines_en)
 end
 
+local function translate_item_line(text)
+    return translate_line(text) or entries.translate_names(text)
+end
+
 -- a tooltip pre-call: plans the translations for the lines of an item's, a spell's (an aura's too), an npc's or the world's data before the game adds them
 local function plan_tooltip(tooltip, data)
     local lines = type(data) == "table" and data.lines
@@ -1286,10 +1290,11 @@ local function plan_tooltip(tooltip, data)
             find_line(lines, line_types.SpellDescription)))
     end
 
+    local translate = kind == "item" and translate_item_line or translate_line
     for i, line in ipairs(lines) do
         local planned = plan[line]
         if i ~= name_index and lines_en[i] ~= "" and not (planned and planned.left) then
-            plan_line(plan, line, translate_line(lines_en[i]))
+            plan_line(plan, line, translate(lines_en[i]))
         end
         local right = line.rightText
         if type(right) == "string" and right ~= "" and not (planned and planned.right) then
