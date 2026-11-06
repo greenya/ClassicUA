@@ -374,6 +374,7 @@ end
 
 -- tooltip_texts are lowercase as inside a line: "Sword" -> "Меч", "Requires Level 60" -> "Потрібний рівень: 60"
 -- The spaces and line breaks a line starts with stay before the translation: tbc spaces a recipe's reagents from the lines above with "\n".
+-- The spaces it ends with stay after it.
 -- A color around the whole line stays around the translation too; the line is tried with it first, as a phrase may have its own ("|cff00ff00<Made by %s>|r").
 -- tbc colors a socketed gem's line: "|cffffffff+5 Agility and +7 Stamina|r"; a tag of SoD items has a space for a zero in its color: "|cFFFFAC 0Core Forged|r"
 -- With is_female, a race or a class in the line takes a woman's form (a player's level line).
@@ -388,6 +389,13 @@ local function translate_line(text, is_female)
     local text_uk = translate_stat_change(text) or entries.translate_string_text(text, is_female) or translate_effect_line(text)
     if text_uk then
         return utils.cap(text_uk)
+    end
+
+    -- the spaces it ends with, once the whole line found nothing: a phrase may end with a space of its own
+    local core, trailing = text:match("^(.-%S)(%s+)$")
+    if core then
+        local core_uk = translate_line(core, is_female)
+        return core_uk and core_uk .. trailing
     end
 
     -- several lines in one, each translated on its own: meta gems list conditions that way:
