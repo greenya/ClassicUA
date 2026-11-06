@@ -685,7 +685,7 @@ local items = {
 [213290] = { "кислотні калоші", equip=9416, en="Acidic Waders" },
 [213291] = { "Токсичний месник II", hit=435169, en="Toxic Revenger II" },
 [213292] = { "гізмотронний гігарубач", en="Gizmotron Gigachopper" },
-[213293] = { "високотехнологічна суперрушниця Mk.VII", equip=9141, en="Hi-tech Supergun Mk.VII" },
+[213293] = { "високотехнологічна суперрушниця Mk.VII", equip="Збільшує силу атаки на {1}.#attack power by {1}.", en="Hi-tech Supergun Mk.VII" },
 [213294] = { "печерні сабатони", equip=7517, en="Caverndeep Sabatons" },
 [213295] = { "ультразвуковий віброклинок", hit=434837, en="Ultrasonic Vibroblade" },
 [213296] = { "заряджений головоруб", hit=434842, en="Supercharged Headchopper" },
