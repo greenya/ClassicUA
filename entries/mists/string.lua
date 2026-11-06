@@ -47,7 +47,7 @@ local tooltip_texts = {
 { "%c%s PvP Power", "%c%d PvP-сили" },
 { "%c%s PvP Resilience", "%c%d PvP-стійкості" },
 { "%c%s Spell Power", "%c%d сили заклять" },
-{ "Aberration", "аберація" },
+{ "Aberration", "покруч" },
 { "Celestial", "небесний" },
 { "Cooking Bag", "сумка кухаря" },
 { "Crafting Material", "матеріал ремесла" },
