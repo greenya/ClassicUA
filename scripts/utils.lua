@@ -205,6 +205,11 @@ utils.strip_icons = function (text)
     return text
 end
 
+-- text without color codes, icons and spaces around it
+utils.bare_text = function (text)
+    return string_trim(utils.strip_icons(utils.strip_color_codes(text)))
+end
+
 -- Splits text by a plain separator string and returns the parts as a table,
 -- e.g. utils.split_by_text("||", "a||b") -> { "a", "b" }
 utils.split_by_text = function (separator, text)

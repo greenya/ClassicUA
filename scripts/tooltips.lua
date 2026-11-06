@@ -26,7 +26,6 @@ local ItemRefTooltip        = _G.ItemRefTooltip
 local NORMAL_FONT_COLOR     = _G.NORMAL_FONT_COLOR
 local QUEST_DASH            = _G.QUEST_DASH
 local RETRIEVING_ITEM_INFO  = _G.RETRIEVING_ITEM_INFO
-local string_trim           = _G.string.trim
 local table_concat          = _G.table.concat
 local TooltipDataProcessor  = _G.TooltipDataProcessor
 local TooltipUtil           = _G.TooltipUtil
@@ -1034,7 +1033,7 @@ end
 
 -- a group member's name, or the name of the member a list shows: the guild roster's (owner's memberInfo), a chat channel's (owner's memberName)
 local function is_player_text(tooltip, text)
-    local bare = string_trim(utils.strip_icons(utils.strip_color_codes(text)))
+    local bare = utils.bare_text(text)
     local owner = tooltip:GetOwner()
     if owner and not utils.is_secret(owner) and not owner:IsForbidden() then
         local member = owner.memberInfo
@@ -1069,7 +1068,7 @@ local function translate_world_names(text)
     local is_translated = false
     local quest_id
     for i, part in ipairs(parts) do
-        local bare = string_trim(utils.strip_color_codes(part))
+        local bare = utils.bare_text(part)
         local part_uk
         if bare:sub(1, #QUEST_DASH) == QUEST_DASH then
             -- an objective of the quest above it
@@ -1077,7 +1076,7 @@ local function translate_world_names(text)
                 and entries.translate_quest_objective(bare:sub(#QUEST_DASH + 1), quest_id)
             part_uk = objective_uk and QUEST_DASH .. objective_uk
         else
-            local next_bare = parts[i + 1] and string_trim(utils.strip_color_codes(parts[i + 1]))
+            local next_bare = parts[i + 1] and utils.bare_text(parts[i + 1])
             local is_quest_title = next_bare ~= nil and next_bare:sub(1, #QUEST_DASH) == QUEST_DASH
             quest_id = is_quest_title and utils.is_forever and find_logged_quest_id(bare) or nil
             if quest_id then
@@ -1555,9 +1554,12 @@ local function add_glossary_entry_to_tooltip(tooltip, glossary_key, is_processin
 
     -- a miss is not claimed, only remembered by the key it was looked up for
     tooltip.classicua.entry_id = glossary_key
+    if not glossary_key then
+        return
+    end
 
-    glossary_key = utils.strip_color_codes(glossary_key)
-    if glossary_key and not is_player_text(tooltip, glossary_key) then
+    glossary_key = utils.bare_text(glossary_key)
+    if not is_player_text(tooltip, glossary_key) then
         local found = is_world and entries.get_object_text(glossary_key) or entries.get_glossary_text(glossary_key)
         if found then
             tooltip.classicua.entry_type = "glossary"
