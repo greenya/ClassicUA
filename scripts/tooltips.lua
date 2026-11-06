@@ -112,6 +112,12 @@ local function fill_template(template, text)
     return (template:gsub("TEXT", text:gsub("%%", "%%%%"), 1))
 end
 
+-- a spell's description as its tooltip shows it, plural codes chosen, nil when it is secret
+local function get_spell_description(spell_id)
+    local description = C_Spell.GetSpellDescription(spell_id)
+    return type(description) == "string" and not utils.is_secret(description) and utils.render_plurals(description) or nil
+end
+
 local function add_line_to_tooltip(tooltip, content, template, r, g, b, content_can_be_spell_id, parent_item_id)
     for _, text in ipairs(get_entry_texts(tooltip, content, content_can_be_spell_id, parent_item_id)) do
         if text then
@@ -436,14 +442,36 @@ end
 local set_bonus_keys = { "ITEM_SET_BONUS_GRAY", "ITEM_SET_BONUS" }
 local set_bonus_patterns
 
+-- a bonus's text with its numbers replaced with N, as a set's line can show "1.0%" where its spell's description has "1%"
+local function get_bonus_shape(text)
+    return (utils.strip_color_codes(text):gsub("%d[%d.,]*", "N"):gsub("%s+", " "):match("^ ?(.-) ?$"))
+end
+
 -- the bonus a set's line shows: a gray one is the first with its pieces, a green one the next in the set's order
-local function find_set_bonus(item_set, next_bonus, pieces)
-    for i = next_bonus, pieces and #item_set.bonuses or 0 do
-        if item_set.bonuses[i][1] == pieces then
-            return i
+local function find_set_bonus(item_set, used, pieces, bonus_en)
+    local first, is_tied
+    for i, bonus in ipairs(item_set.bonuses) do
+        if not used[i] and bonus[1] == (pieces or bonus[1]) then
+            pieces = bonus[1]
+            if first then
+                is_tied = true
+                break
+            end
+            first = i
         end
     end
-    return next_bonus
+
+    -- Clients order bonuses for the same pieces differently, so those go by their spells' descriptions.
+    if is_tied then
+        local shape = get_bonus_shape(bonus_en)
+        for i, bonus in ipairs(item_set.bonuses) do
+            local description = not used[i] and bonus[1] == pieces and get_spell_description(bonus[2])
+            if description and get_bonus_shape(description) == shape then
+                return i
+            end
+        end
+    end
+    return first
 end
 
 -- the set's lines from first to last: its name with the pieces worn, its pieces' names, each bonus as its spell's description
@@ -465,7 +493,7 @@ local function add_item_set_texts(texts, item_set, lines_en, first, last)
         end
     end
 
-    local next_bonus = 1
+    local used = {}
     for i = first, last do
         local text = lines_en[i]
         local bare = utils.strip_color_codes(text):match("^%s*(.-)%s*$")
@@ -478,9 +506,11 @@ local function add_item_set_texts(texts, item_set, lines_en, first, last)
                 local captures = { text:match(pattern.pattern) }
                 if #captures == #pattern.order then
                     local pieces = kind == 1 and tonumber(captures[1]) or nil
-                    local index = find_set_bonus(item_set, next_bonus, pieces)
-                    next_bonus = index + 1
-                    local bonus = item_set.bonuses[index]
+                    local index = find_set_bonus(item_set, used, pieces, captures[#captures])
+                    local bonus = index and item_set.bonuses[index]
+                    if index then
+                        used[index] = true
+                    end
                     local spell = bonus and entries.get_entry("spell", bonus[2])
                     local text_uk = spell and get_entry_texts({ text }, spell[2])[1]
                     local format_uk = addon_table.string_tooltip[set_bonus_keys[kind]]
@@ -621,12 +651,6 @@ end
 -- -----------------------------
 -- [ the replace style: spells ]
 -- -----------------------------
-
--- a spell's description as its tooltip shows it, plural codes chosen, nil when it is secret
-local function get_spell_description(spell_id)
-    local description = C_Spell.GetSpellDescription(spell_id)
-    return type(description) == "string" and not utils.is_secret(description) and utils.render_plurals(description) or nil
-end
 
 -- a spell whose description's line holds other spells' descriptions too, a paragraph each: the runes of season of discovery, some headed by the rune's icon
 -- Cata and mists have a few such spells too, as Conjure Refreshment's note on conjured items.
