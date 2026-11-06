@@ -46,10 +46,14 @@ local global_strings = {
 
 local tooltip_strings = {
 { "AURA_CAST_BY", "Заклинач: %N" }, -- "Cast by %s"
+{ "ENCHANTED_TOOLTIP_LINE", "Зачаровано: %s" }, -- "Enchanted: %s"
 { "EQUIPPED", "Споряджено" }, -- "Equipped"
 { "GENERIC_TRAIT_FRAME_EDGE_REQUIREMENTS_BUTTON_TOOLTIP", "Потрібні всі попередні таланти" }, -- "Requires all preceding talents"
+{ "ITEM_CAN_BE_READ", "<Цей предмет можна прочитати>" }, -- "<This item can be read>"
+{ "ITEM_COSMETIC", "Косметичний" }, -- "Cosmetic"
 { "ITEM_LEVEL", "Рівень предмета: %d" }, -- "Item Level %d"
 { "ITEM_RANDOM_ENCHANT", "<Випадкові додаткові характеристики>" }, -- "<Random additional stats>"
+{ "PROFESSIONS_USED_IN_COOKING", "Реагент для ремесла" }, -- "Crafting Reagent"
 { "SPELL_CAST_TIME_INSTANT", "Миттєво" }, -- "Instant"
 { "TALENT_BUTTON_TOOLTIP_NEXT_RANK", "Наступний ранг:" }, -- "Next Rank:"
 { "TALENT_BUTTON_TOOLTIP_NOT_ON_ACTION_BAR", "Ви не додали це на жодну панель дій" }, -- "You haven't added this to your action bars"
@@ -132,10 +136,12 @@ local tooltip_texts = {
 { "Frost Piercing", "проникність криги" },
 { "Leatherworking Bag", "сумка шкірника" },
 { "Level %s %s %s", "%2$s-%3$s %1$s-го рівня" },
+{ "Loot: %s", "Здобич: %N" },
 { "Mana Regeneration per 5 sec", "відновлення мани кожні 5 с" },
 { "Mining Bag", "сумка гірника" },
 { "Nature Piercing", "проникність природи" },
 { "Non-combat Pet", "небойовий вихованець" },
+{ "Scarce", "рідкісний" },
 { "Shadow Piercing", "проникність тіні" },
 { "Spell Damage", "шкода заклять" },
 { "Spell Damage Vs Beasts", "шкода заклять в бою зі звірами" },
