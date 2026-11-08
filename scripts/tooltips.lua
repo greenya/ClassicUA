@@ -1211,11 +1211,15 @@ local function find_line(lines, line_type)
     end
 end
 
+local function is_quest_line(line)
+    local line_types = Enum.TooltipDataLineType
+    return line.type == line_types.QuestTitle or line.type == line_types.QuestObjective or line.type == line_types.QuestPlayer
+end
+
 -- the lines of a unit or an object before the quests its tooltip lists
 local function count_own_lines(lines)
-    local line_types = Enum.TooltipDataLineType
     for i, line in ipairs(lines) do
-        if line.type == line_types.QuestTitle or line.type == line_types.QuestObjective or line.type == line_types.QuestPlayer then
+        if is_quest_line(line) then
             return i - 1
         end
     end
@@ -1241,13 +1245,20 @@ local function plan_quest_lines(plan, lines, lines_en)
     end
 end
 
--- a unit's lines, up to its quests, then the quests; the names of group members on a quest stay theirs
+-- unit lines up to quests, then quests, then game lines under them
 local function plan_unit_lines(plan, lines, lines_en, guid)
     local npc_id = utils.npc_id_from_guid(guid)
     local entry = npc_id and entries.get_entry("npc", npc_id)
     local last = count_own_lines(lines)
     plan_texts(plan, lines, get_unit_texts(entry, UnitTokenFromGUID(guid), lines_en, last, guid:find("^Player%-") ~= nil))
     plan_quest_lines(plan, lines, lines_en)
+
+    -- a corpse's looter under its quests
+    for i = last + 1, #lines do
+        if not is_quest_line(lines[i]) then
+            plan_line(plan, lines[i], translate_line(lines_en[i]))
+        end
+    end
 end
 
 -- the world under the cursor: the names in line 1, the game's phrases under them, then the quests an object lists
