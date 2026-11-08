@@ -408,11 +408,11 @@ local function translate_line(text, is_female)
         return (first_uk or others_uk) and (first_uk or first) .. "\n" .. (others_uk or others) or nil
     end
 
-    -- the last "|r" closes the first color only with no other color inside
-    local color, colored = text:match("^(|c[%x ][%x ][%x ][%x ][%x ][%x ][%x ][%x ])(.+)|r$")
-    if color and not colored:find("|[cr]") then
+    -- the last "|r" closes the first color only with no other color inside; a nested spell description may write "|C" and "|R"
+    local color, colored, close = text:match("^(|[cC][%x ][%x ][%x ][%x ][%x ][%x ][%x ][%x ])(.+)(|[rR])$")
+    if color and not colored:find("|[cCrR]") then
         local colored_uk = translate_line(colored, is_female)
-        return colored_uk and color .. colored_uk .. "|r"
+        return colored_uk and color .. colored_uk .. close
     end
 
     -- a phrase after a phrase, in brackets: a poison's charges after its time, "Instant Poison (30 min) (40 Charges)"
@@ -662,22 +662,33 @@ end
 -- a spell whose description's line holds other spells' descriptions too, a paragraph each: the runes of season of discovery, some headed by the rune's icon
 -- Cata and mists have a few such spells too, as Conjure Refreshment's note on conjured items.
 -- Each one's translation joins the description the same way, its numbers from that spell's own description.
+-- A spell with no text of its own gets them where they stand in the game's line, the rows above them as the game's phrases
 local function add_rune_paragraphs(text_uk, line_en, entry, spell_id)
-    -- WoW: Forever's Feral Charge (1238122) has no text of its own, only its runes'
-    local paragraphs = text_uk ~= "" and { text_uk } or {}
+    local paragraphs = { text_uk }
+    local text = text_uk == "" and line_en
     local rune_spells = type(entry.rune) == "table" and entry.rune or { entry.rune }
     for _, rune_spell_id in ipairs(rune_spells) do
         local rune_spell = entries.get_entry("spell", rune_spell_id)
         local rune_text_en = (get_spell_description(rune_spell_id) or ""):gsub("%s+$", "")
         local rune_text = rune_spell and rune_spell[2]
             and utils.cap(entries.make_entry_text(rune_spell[2], { rune_text_en ~= "" and rune_text_en or line_en }))
-        if rune_text then
-            local start = rune_text_en ~= "" and line_en:find(rune_text_en, 1, true)
+        local start = rune_text_en ~= "" and (text or line_en):find(rune_text_en, 1, true)
+        if not rune_text then
+            if options.account.dev_mode then
+                dev_log.issue_entry("spell", spell_id, "невірне значення rune, невірне id закляття " .. tostring(rune_spell_id))
+            end
+        elseif text then
+            if start then
+                text = text:sub(1, start - 1):gsub("[^\n]+", translate_line) .. rune_text .. text:sub(start + #rune_text_en)
+            end
+        else
             local icon = start and line_en:sub(1, start - 1):match("|T[^|]+|t%s*$")
             paragraphs[#paragraphs + 1] = (icon or "") .. rune_text
-        elseif options.account.dev_mode then
-            dev_log.issue_entry("spell", spell_id, "невірне значення rune, невірне id закляття " .. tostring(rune_spell_id))
         end
+    end
+    if text then
+        -- none found, as its spells aren't loaded yet: the game's line stays, with its phrases as any other line
+        return text ~= line_en and text or nil
     end
     return table_concat(paragraphs, "\n\n")
 end
@@ -1203,10 +1214,31 @@ local function plan_texts(plan, lines, texts)
     end
 end
 
-local function find_line(lines, line_type)
-    for i, line in ipairs(lines) do
-        if line.type == line_type then
+local function find_line(lines, line_type, first, last)
+    for i = first or 1, last or #lines do
+        if lines[i].type == line_type then
             return i
+        end
+    end
+end
+
+-- spells a description shows whole under it, each a block of lines headed by its name
+-- each is one of the spells the entry lists in rune field, found by the name its block has
+local function plan_nested_spells(plan, lines, lines_en, entry, description_index)
+    local spell_ids = entry and entry.rune
+    if not (spell_ids and description_index) then
+        return
+    end
+
+    local line_types = Enum.TooltipDataLineType
+    for i = description_index + 1, #lines do
+        if lines[i].type == line_types.SpellName then
+            for _, spell_id in ipairs(type(spell_ids) == "table" and spell_ids or { spell_ids }) do
+                if lines_en[i] == C_Spell.GetSpellName(spell_id) then
+                    plan_texts(plan, lines, get_spell_texts(entries.get_entry("spell", spell_id), spell_id, false, nil, lines_en, i,
+                        find_line(lines, line_types.SpellDescription, i + 1)))
+                end
+            end
         end
     end
 end
@@ -1321,15 +1353,18 @@ local function plan_tooltip(tooltip, data)
         return
     end
 
+    -- a name under a spell's description heads another spell
+    local description_index = kind == "spell" and find_line(lines, line_types.SpellDescription) or nil
     -- name line is the one the data marks, else line 1, unless the data is appended to a tooltip with lines (talent's next rank)
-    local name_index = find_line(lines, kind == "item" and line_types.ItemName or line_types.SpellName) or tooltip:NumLines() == 0 and 1 or nil
+    local name_index = find_line(lines, kind == "item" and line_types.ItemName or line_types.SpellName, 1, description_index)
+        or tooltip:NumLines() == 0 and 1 or nil
 
     local entry = entries.get_entry(kind, id)
     if kind == "item" then
         plan_texts(plan, lines, get_item_texts(entry, id, lines_en, name_index))
     else -- spell or aura
-        plan_texts(plan, lines, get_spell_texts(entry, id, is_aura, nil, lines_en, name_index,
-            find_line(lines, line_types.SpellDescription)))
+        plan_texts(plan, lines, get_spell_texts(entry, id, is_aura, nil, lines_en, name_index, description_index))
+        plan_nested_spells(plan, lines, lines_en, entry, description_index)
     end
 
     local translate = kind == "item" and translate_item_line or translate_line
