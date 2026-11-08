@@ -225699,6 +225699,19 @@
           </tig>
         </langSet>
       </termEntry>
+      <termEntry id="d62bd5e1be9a157e45aed37bd98743c234987">
+        <langSet xml:lang="en">
+          <tig>
+            <term id="d62bd5e1be9a157e45aed37bd98743c234987-en">comprehension</term>
+            <descrip type="definition">ремесло, професія магів для розифрування сувоїв, sod, forever</descrip>
+          </tig>
+        </langSet>
+        <langSet xml:lang="uk">
+          <tig>
+            <term id="d62bd5e1be9a157e45aed37bd98743c234987-uk">сприйняття</term>
+          </tig>
+        </langSet>
+      </termEntry>
     </body>
   </text>
 </martif>

@@ -346,6 +346,7 @@ addonTable.misc = { -- [key] = text
 ["alchemy"] = "алхімія",
 ["archaeology"] = "археологія",
 ["blacksmithing"] = "ковальство",
+["comprehension"] = "сприйняття",
 ["cooking"] = "куховарство",
 ["death knight"] = "лицар смерті",
 ["druid"] = "друїд",
