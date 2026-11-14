@@ -184,7 +184,7 @@ local hunter_spells = {
 [14300] = { ref=13797 }, -- Immolation Trap Effect
 [14301] = { ref=13797 }, -- Immolation Trap Effect
 -- Impale
-[24049] = { "Пронизування", "Завдає ворогу фізичної шкоди кожні {1} с протягом {2} с.#for {1} sec#for {2} sec", "Завдає від {1} до {2} шкоди кожні {3} с.#{1} to {2} damage#every {3} sec", en="Impale" },
+[24049] = { "Пронизування", "Завдає ворогу фізичної шкоди кожні {1} с протягом {2} с.#every {1} sec#for {2} sec", "Завдає від {1} до {2} шкоди кожні {3} с.#{1} to {2} damage#every {3} sec", en="Impale" },
 [26548] = { ref=24049 }, -- Impale
 -- Improved Arcane Shot
 [19454] = { "Покращений арканічний постріл", "Зменшує час відновлення \"Арканічного пострілу\" на {1} с.#Shot by {1} sec", en="Improved Arcane Shot" },
