@@ -372,6 +372,9 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [35805] = { "сестра Благозлотка", "тренерка жерців", en="Sister Goldskimmer" }, -- Sister Goldskimmer <Priest Trainer>
 [35844] = { "краб", en="Crab" }, -- crab
 [35874] = { "мисливець Блейк", "тренер мисливців", en="Huntsman Blake" }, -- Huntsman Blake <Hunter Trainer>
+[36012] = { "чорнопащий шаман", en="Blackmaw Shaman" }, -- Blackmaw Shaman
+[36013] = { "чорнопащий воїн", en="Blackmaw Warrior" }, -- Blackmaw Warrior
+[36015] = { "чорнопащий слідопит", en="Blackmaw Pathfinder" }, -- Blackmaw Pathfinder
 [36077] = { "асистентка Ґрілі", en="Assistant Greely" }, -- Assistant Greely
 [36144] = { "колкарський кентавр", en="Kolkar Centaur" }, -- Kolkar Centaur
 [36145] = { "Тралл", "воєвождь", en="Thrall" }, -- Thrall <Warchief>
@@ -538,9 +541,12 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [40940] = { "молодий вендиго", en="Young Wendigo" }, -- wendigo
 [40941] = { "вендиго", en="Wendigo" }, -- wendigo
 [40969] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[40997] = { "володар неба Омнурон", "друїд Кігтя", en="Skylord Omnuron" }, -- Skylord Omnuron <Druid of the Talon>
 [41003] = { "Мортіс Шелест Крила", "друїд Кігтя", en="Morthis Whisperwing" }, -- Morthis Whisperwing <Druid of the Talon>
 [41006] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
 [41008] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
+[41027] = { "червокрила верескуха", en="Wormwing Screecher" }, -- Wormwing Screecher
+[41028] = { "червокрила прудкопазурниця", en="Wormwing Swifttalon" }, -- Wormwing Swifttalon
 [41032] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
 [41046] = { "гном-інженер", en="Gnome Engineer", feminine="гномка-інженерка" }, -- Gnome Engineer
 [41059] = { "кровопивця Піщанолютих", en="Sandfury Blood Drinker" }, -- Sandfury Blood Drinker
@@ -558,6 +564,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [41104] = { "блископанцирна черепаха", en="Sparkleshell Tortoise" }, -- Sparkleshell Tortoise
 [41109] = { "соляний камнегляд", en="Saltstone Gazer" }, -- Saltstone Gazer
 [41111] = { "стерв'ятник соляних рівнин", en="Salt Flats Vulture" }, -- Salt Flats Vulture
+[41112] = { "Маріон Червокрила", en="Marion Wormwing" }, -- Marion Wormwing
 [41113] = { "блископанцирний бурильник", en="Sparkleshell Borer" }, -- Sparkleshell Borer
 [41114] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
 [41121] = { "морозогривий провидець", en="Frostmane Seer", feminine="морозогрива провидиця" }, -- Frostmane Seer
@@ -1199,6 +1206,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [50056] = { "Ґарр", en="Garr" }, -- Garr
 [50073] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
 [50081] = { "Мортіс Шелест Крила", "друїд Кігтя", en="Morthis Whisperwing" }, -- Morthis Whisperwing <Druid of the Talon>
+[50082] = { "володар неба Омнурон", "друїд Кігтя", en="Skylord Omnuron" }, -- Skylord Omnuron <Druid of the Talon>
 [50083] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
 [50299] = { "Санат Лім-йо", "учень Зілема", en="Sanath Lim-yo" }, -- Sanath Lim-yo
 [50321] = { "зоротський біс", en="Xorothian Imp" }, -- Xorothian Imp
@@ -1366,6 +1374,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [52429] = { "Занза Неупокоєний", en="Zanza the Restless" }, -- Zanza the Restless
 [52444] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
 [52461] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[52490] = { "володар неба Омнурон", "друїд Кігтя", en="Skylord Omnuron" }, -- Skylord Omnuron <Druid of the Talon>
 [52491] = { "Мортіс Шелест Крила", "друїд Кігтя", en="Morthis Whisperwing" }, -- Morthis Whisperwing <Druid of the Talon>
 [52546] = { "капітан Молотолам", "квартирмейстер завоювання", en="Captain Dirgehammer" }, -- Captain Dirgehammer <Conquest Quartermaster>
 [52549] = { "сержант Громовий Ріг", "квартирмейстер завоювання", en="Sergeant Thunderhorn" }, -- Sergeant Thunderhorn <Conquest Quartermaster>
@@ -1394,6 +1403,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [52799] = { "Алекстраза", en="Alexstrasza" }, -- Alexstrasza
 [52801] = { "Фендрал Оленеріг", en="Fandral Staghelm" }, -- Fandral Staghelm
 [52838] = { "верховний друїд Гамуул Рунний Тотем", en="Arch Druid Hamuul Runetotem" }, -- Hamuul Runetotem
+[52843] = { "володар неба Омнурон", "друїд Кігтя", en="Skylord Omnuron" }, -- Skylord Omnuron <Druid of the Talon>
 [52845] = { "Малфуріон Шаленство Бурі", en="Malfurion Stormrage" }, -- Malfurion Stormrage
 [52868] = { "Ариґос", en="Arygos" }, -- Arygos
 [52869] = { "Смертекрил", en="Deathwing" }, -- Deathwing
@@ -1471,6 +1481,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [53959] = { "Тралл", en="Thrall" }, -- Thrall
 [53960] = { "Тралл", en="Thrall" }, -- Thrall
 [53977] = { "Янка Темноклич", en="Darkcaller Yanka" }, -- Darkcaller Yanka
+[53982] = { "володар неба Омнурон", "друїд Кігтя", en="Skylord Omnuron" }, -- Skylord Omnuron <Druid of the Talon>
 [53983] = { "друїд Кігтя", en="Druid of the Talon", feminine="друїдка Кігтя" }, -- Druid of the Talon
 [53984] = { "Тізалі Ворона", "друїдка Кігтя", en="Thisalee Crow" }, -- Thisalee Crow <Druid of the Talon>
 [54030] = { "невидимий ловець", en="Invisible Stalker" }, -- Invisible Stalker

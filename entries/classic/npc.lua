@@ -3875,6 +3875,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [5190] = { "Меріл Ласкава", "продавчиня гербових накидок", en="Merill Pleasance" }, -- Merill Pleasance <Tabard Vendor>
 [5191] = { "Шалумон", "продавець гербових накидок", en="Shalumon" }, -- Shalumon <Tabard Vendor>
 [5193] = { "Ребекка Сміхт", "продавчиня гербових накидок", en="Rebecca Laughlin" }, -- Rebecca Laughlin <Tabard Vendor>
+[5194] = { "чорний верховий вовк", en="Black Riding Wolf" }, -- Black Riding Wolf
 [5195] = { "бурий верховий вовк", en="Brown Riding Wolf" }, -- Brown Riding Wolf
 [5196] = { "сірий верховий вовк", en="Gray Riding Wolf" }, -- Gray Riding Wolf
 [5197] = { "рудий верховий вовк", en="Red Riding Wolf" }, -- Red Riding Wolf
@@ -4130,6 +4131,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [5623] = { "душогуб Пустелебродів", en="Wastewander Assassin", feminine="душогубка Пустелебродів" }, -- Wastewander Assassin
 [5624] = { "вартовий Підмістя", en="Undercity Guardian" }, -- Undercity Guardian
 [5627] = { "Джонні", en="Johnny" }, -- Johnny
+[5630] = { "тераморський маг", en="Theramore Mage" }, -- Theramore Mage
 [5634] = { "Рапсодій Жартогін", en="Rhapsody Shindigger" }, -- Rhapsody Shindigger
 [5635] = { "Фальстад Дикий Молот", "верховний тан", en="Falstad Wildhammer" }, -- Falstad Wildhammer
 [5636] = { "приборкувач грифонів Кігтеруб", en="Gryphon Master Talonaxe" }, -- Gryphon Master Talonaxe
@@ -8472,6 +8474,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [16125] = { "невблаганний лицар смерті", en="Unrelenting Deathknight" }, -- Unrelenting Deathknight
 [16126] = { "невблаганний вершник", en="Unrelenting Rider" }, -- Unrelenting Rider
 [16127] = { "примарний учень", en="Spectral Trainee" }, -- Spectral Trainee
+[16128] = { "Ронін", en="Rhonin" }, -- Rhonin
 [16131] = { "Роган-Душогуб", "Багряний Похід", en="Rohan the Assassin" }, -- Rohan the Assassin <The Scarlet Crusade>
 [16132] = { "мисливець Леопольд", "Багряний Похід", en="Huntsman Leopold" }, -- Huntsman Leopold <The Scarlet Crusade>
 [16133] = { "Матаус Гнівоклят", "Багряний Похід", en="Mataus the Wrathcaster" }, -- Mataus the Wrathcaster <The Scarlet Crusade>
