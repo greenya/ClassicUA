@@ -53,6 +53,7 @@ fonts.prepare = function ()
     local font_overrides = {
         { name="CombatTextFont",                    file=assets.font_frizqt, height=25 },
         { name="CombatTextFontOutline",             file=assets.font_frizqt, height=25 },
+        { name="Game13Font",                        file=assets.font_frizqt },
         { name="Game15Font_Shadow",                 file=assets.font_frizqt },
         { name="GameTooltipHeader",                 file=assets.font_frizqt },
         { name="MailFont_Large",                    file=assets.font_morpheus },
