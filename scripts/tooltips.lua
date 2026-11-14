@@ -659,7 +659,7 @@ end
 -- [ the replace style: spells ]
 -- -----------------------------
 
--- a spell whose description's line holds other spells' descriptions too, a paragraph each: the runes of season of discovery, some headed by the rune's icon
+-- a spell whose description's line holds other spells' descriptions too, a paragraph each: the runes of season of discovery, some headed by the rune's icon or name
 -- Cata and mists have a few such spells too, as Conjure Refreshment's note on conjured items.
 -- Each one's translation joins the description the same way, its numbers from that spell's own description.
 -- A spell with no text of its own gets them where they stand in the game's line, the rows above them as the game's phrases
@@ -682,8 +682,18 @@ local function add_rune_paragraphs(text_uk, line_en, entry, spell_id)
                 text = text:sub(1, start - 1):gsub("[^\n]+", translate_line) .. rune_text .. text:sub(start + #rune_text_en)
             end
         else
-            local icon = start and line_en:sub(1, start - 1):match("|T[^|]+|t%s*$")
-            paragraphs[#paragraphs + 1] = (icon or "") .. rune_text
+            local before = start and line_en:sub(1, start - 1) or ""
+            local prefix = before:match("|T[^|]+|t%s*$") or ""
+            -- the line right above it, past its icon, is its heading if it reads that spell's name
+            local heading = before:sub(1, #before - #prefix):match("([^\r\n]+)\r?\n$")
+            local bare = heading and utils.bare_text(heading)
+            local name_en = bare and C_Spell.GetSpellName and C_Spell.GetSpellName(rune_spell_id)
+            if name_en and rune_spell[1] and bare == name_en then
+                local first, last = heading:find(bare, 1, true)
+                local name_uk = utils.cap(entries.make_entry_text(rune_spell[1], { line_en }))
+                prefix = (first and heading:sub(1, first - 1) .. name_uk .. heading:sub(last + 1) or name_uk) .. "\n" .. prefix
+            end
+            paragraphs[#paragraphs + 1] = prefix .. rune_text
         end
     end
     if text then
