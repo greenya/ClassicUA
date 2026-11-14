@@ -885,6 +885,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [231990] = { "Бетекк", "лоа пантер", en="Bethekk" }, -- Bethekk
 [231991] = { "Ширвалла", "лоа тигрів", en="Shirvallah" }, -- Shirvallah
 [231992] = { "Гір'ік", "лоа кажанів", en="Hir'eek" }, -- Hir'eek
+[231996] = { "Ґонк", "лоа полювання", en="Gonk" }, -- Gonk
 [232075] = { "інкуб-поневолювач", en="Incubus Enthraller" }, -- Incubus Enthraller
 [232103] = { "чорний дракончик", en="Black Whelp" }, -- Black Whelp
 [232104] = { "бронзовий дракончик", en="Bronze Whelp" }, -- Bronze Whelp

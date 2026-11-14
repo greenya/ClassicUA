@@ -125,6 +125,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [26525] = { "великий тарган", en="Cockroach" }, -- Cockroach
 [26527] = { "Хромі", en="Chromie" }, -- Chromie
 [26588] = { "Емілі", en="Emily" }, -- Emily
+[26626] = { "реаніматор Скари", en="Scourge Reanimator" }, -- Scourge Reanimator
 [26673] = { "проєкція архімагині Модери", "Кірін-Тор", en="Image of Archmage Modera" }, -- Archmage Modera <Kirin Tor>
 [26814] = { "Гаррісон Джонс", en="Harrison Jones" }, -- Harrison Jones
 [26859] = { "Рохан", en="Rokhan" }, -- Rokhan
@@ -193,6 +194,7 @@ local npc = { -- [id] = { title, description (optional), feminine=title and femi
 [29029] = { "інквізитор Багряного Походу", "невидимість у каплиці", en="Scarlet Inquisitor", feminine="інквізиторка Багряного Походу" }, -- Scarlet Inquisitor
 [29030] = { "лицар смерті", en="Death Knight", feminine="лицарка смерті" }, -- Deathknight
 [29031] = { "лицар смерті", en="Death Knight", feminine="лицарка смерті" }, -- Deathknight
+[29049] = { "Арілл Лазурозорий", "бармен", en="Arille Azuregaze" }, -- Arille Azuregaze <Bartender>
 [29076] = { "кур'єр Багряного Походу", en="Scarlet Courier" }, -- Scarlet Courier
 [29077] = { "верховний генерал Аббендіс", en="High General Abbendis" }, -- Lynnia Abbendis
 [29080] = { "чемпіон Багряного Походу", en="Scarlet Champion", feminine="чемпіонка Багряного Походу" }, -- Scarlet Champion
