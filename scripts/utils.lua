@@ -189,9 +189,9 @@ end
 
 utils.strip_color_codes = function (text)
     if type(text) == "string" and string_find(text, "|", 1, true) then
-        text = text:gsub("|c%x%x%x%x%x%x%x%x", "")
-        text = text:gsub("|c%x%x%x%x%x%x %x", "")
-        text = text:gsub("|r", "")
+        text = text:gsub("|[cC]%x%x%x%x%x%x%x%x", "")
+        text = text:gsub("|[cC]%x%x%x%x%x%x %x", "")
+        text = text:gsub("|[rR]", "")
     end
     return text
 end
